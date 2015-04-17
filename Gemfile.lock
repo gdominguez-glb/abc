@@ -1,4 +1,15 @@
 GIT
+  remote: git://github.com/spree-contrib/spree_digital.git
+  revision: 8a3c68cb1c8b911a7e4349b17c14bc84b540c17a
+  branch: 3-0-stable
+  specs:
+    spree_digital (1.1.1)
+      spree_api
+      spree_backend (~> 3.0.0)
+      spree_core (~> 3.0.0)
+      spree_frontend
+
+GIT
   remote: git://github.com/spree/spree_auth_devise.git
   revision: 347428395b8c06c79c3bfe516404314a1c365839
   branch: 3-0-stable
@@ -378,6 +389,7 @@ DEPENDENCIES
   sdoc (~> 0.4.0)
   spree (= 3.0.0)
   spree_auth_devise!
+  spree_digital!
   spree_gateway!
   spring
   turbolinks

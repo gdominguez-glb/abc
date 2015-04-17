@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150417175770) do
+ActiveRecord::Schema.define(version: 20150417185250) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -140,6 +140,30 @@ ActiveRecord::Schema.define(version: 20150417175770) do
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
   end
+
+  create_table "spree_digital_links", force: :cascade do |t|
+    t.integer  "digital_id"
+    t.integer  "line_item_id"
+    t.string   "secret"
+    t.integer  "access_counter"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "spree_digital_links", ["digital_id"], name: "index_spree_digital_links_on_digital_id", using: :btree
+  add_index "spree_digital_links", ["line_item_id"], name: "index_spree_digital_links_on_line_item_id", using: :btree
+  add_index "spree_digital_links", ["secret"], name: "index_spree_digital_links_on_secret", using: :btree
+
+  create_table "spree_digitals", force: :cascade do |t|
+    t.integer  "variant_id"
+    t.string   "attachment_file_name"
+    t.string   "attachment_content_type"
+    t.integer  "attachment_file_size"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "spree_digitals", ["variant_id"], name: "index_spree_digitals_on_variant_id", using: :btree
 
   create_table "spree_gateways", force: :cascade do |t|
     t.string   "type"
