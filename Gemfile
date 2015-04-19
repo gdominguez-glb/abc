@@ -57,3 +57,16 @@ gem 'spree', '3.0.0'
 gem 'spree_gateway', github: 'spree/spree_gateway', branch: '3-0-stable'
 gem 'spree_auth_devise', github: 'spree/spree_auth_devise', branch: '3-0-stable'
 gem 'spree_digital', github: 'spree-contrib/spree_digital', branch: '3-0-stable'
+
+
+# chef gems
+group :development do
+  gem 'knife-solo', '~> 0.4.2'
+end
+
+gem 'capistrano', '~> 3.4.0'
+gem 'capistrano-rbenv', '~> 2.0'
+gem 'capistrano-bundler', '~> 1.1.2'
+gem 'capistrano-rails', '~> 1.1'
+
+gem 'unicorn', '~> 4.8.3'

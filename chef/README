@@ -1,0 +1,4 @@
+# edit servers in nodes/
+# run follow commands to install in server
+knife solo prepare root@45.55.164.60
+knife solo cook root@45.55.164.60
