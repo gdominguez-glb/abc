@@ -4,3 +4,5 @@ default['nodejs']['dir']     = '/usr/local'
 default['nodejs']['version'] = '0.12.2'
 
 default['ruby']['version']   = '2.1.6'
+
+default['redis']['version']  = '3.0.0'

@@ -4,6 +4,7 @@
     "recipe[greatminds::users]",
     "recipe[greatminds::nodejs]",
     "recipe[greatminds::postgres]",
+    "recipe[greatminds::redis]",
     "recipe[greatminds::rbenv]",
     "recipe[greatminds::nginx]",
     "recipe[greatminds::app]"
