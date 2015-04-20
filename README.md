@@ -16,8 +16,11 @@
 
   `$ cp config/database.yml.example config/database.yml`
 
+2. set application.yml for environment variables
 
-2. Create the database, load the schema, and initialize the app with
+  `$ cp config/application.yml.example config/application.yml`
+
+3. Create the database, load the schema, and initialize the app with
    seed data:
 
     `$ bundle exec rake db:setup`
