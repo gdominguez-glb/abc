@@ -289,6 +289,8 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    quiet_assets (1.1.0)
+      railties (>= 3.1, < 5.0)
     rabl (0.9.4.pre1)
       activesupport (>= 2.3.14)
     rack (1.6.0)
@@ -514,6 +516,7 @@ DEPENDENCIES
   knife-solo (~> 0.4.2)
   pg
   phantomjs (~> 1.9.8)
+  quiet_assets
   rails (= 4.2.0)
   rspec-rails (~> 3.2.1)
   sass-rails (~> 4.0.3)
