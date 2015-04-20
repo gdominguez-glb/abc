@@ -17,6 +17,6 @@ end
 # create new postgres database
 execute "create new postgres database" do
   user "postgres"
-  command "psql -c \"create database #{node['app']} owner #{node['db']['user']['name']};\""
-  not_if { `sudo -u postgres psql -tAc \"SELECT * FROM pg_database WHERE datname='#{node['app']}'\" | wc -l`.chomp == "1" }
+  command "psql -c \"create database #{node['app']}_#{node['rails_env']} owner #{node['db']['user']['name']};\""
+  not_if { `sudo -u postgres psql -tAc \"SELECT * FROM pg_database WHERE datname='#{node['app']}_#{node['rails_env']}'\" | wc -l`.chomp == "1" }
 end

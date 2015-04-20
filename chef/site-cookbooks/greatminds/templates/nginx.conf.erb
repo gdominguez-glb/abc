@@ -3,13 +3,13 @@ upstream unicorn {
 }
 
 server {
-  server_name www.<%= node['app'] %>.com;
+  server_name <%= node['domain'] %>;
   return 301 $scheme://<%= node['app'] %>.com$request_uri;
 }
 
 server {
   listen 80 default deferred;
-  server_name <%= node['app'] %>.com;
+  server_name <%= node['domain'] %>;
   root /var/www/<%= node['app'] %>/current/public;
 
   location ^~ /assets/ {
