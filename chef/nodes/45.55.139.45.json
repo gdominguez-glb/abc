@@ -1,0 +1,26 @@
+{
+  "run_list": [
+    "recipe[greatminds]",
+    "recipe[greatminds::users]",
+    "recipe[greatminds::nodejs]",
+    "recipe[greatminds::postgres]",
+    "recipe[greatminds::rbenv]",
+    "recipe[greatminds::nginx]",
+    "recipe[greatminds::app]"
+  ],
+  "group": "deploy",
+  "user": {
+    "name": "deploy",
+    "password": "$1$GSGzIqIX$YjH2Yypf0Wiy3VKJDVP6D1"
+  },
+  "db": {
+    "root_password": "intridea4greatminds",
+    "user": {
+      "name": "greatminds",
+      "password": "intridea4greatminds"
+    }
+  },
+  "rails_env": "staging",
+  "rails_secrets": "64550adc426749daffc881dc6c90c541d3896be12efb1a9c789bdbaf9b5f34368ffc5411966bb245f544f8f296e5b38255e5cd6208ba5ffb04805e86eede3d84",
+  "domain": "gm-staging.intridea.com"
+}

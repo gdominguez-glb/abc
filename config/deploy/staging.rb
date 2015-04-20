@@ -5,9 +5,11 @@
 
 # server 'example.com', user: 'deploy', roles: %w{app db web}, my_property: :my_value
 # server 'example.com', user: 'deploy', roles: %w{app web}, other_property: :other_value
-# server 'db.example.com', user: 'deploy', roles: %w{db}
+server '45.55.139.45', user: 'deploy', roles: %w{web db}
 
 
+set :branch, 'master'
+set :rails_env, 'staging'                  # If the environment differs from the stage name
 
 # role-based syntax
 # ==================
