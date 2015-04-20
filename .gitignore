@@ -6,8 +6,6 @@
 
 # Ignore bundler config.
 /.bundle
-!bin/{bundle,rails,rake,spring}
-bin/
 
 # Ignore all logfiles and tempfiles.
 /log/*.log
