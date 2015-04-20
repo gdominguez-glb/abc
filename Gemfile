@@ -27,7 +27,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 gem "figaro"
 
-gem 'aws-sdk'
+gem 'aws-sdk', '< 2.0'
 
 group :development do
   gem 'spring'
