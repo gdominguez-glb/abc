@@ -4,6 +4,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   if Rails.env.qa? || Rails.env.staging?
-    http_basic_authenticate_with name: "greatminds ", password: "intridea4gm"
+    http_basic_authenticate_with name: "greatminds", password: "intridea4gm"
   end
 end
