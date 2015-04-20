@@ -5,6 +5,7 @@
     "recipe[greatminds::nodejs]",
     "recipe[greatminds::postgres]",
     "recipe[greatminds::redis]",
+    "recipe[greatminds::imagemagick]",
     "recipe[greatminds::rbenv]",
     "recipe[greatminds::nginx]",
     "recipe[greatminds::app]"
