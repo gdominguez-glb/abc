@@ -16,3 +16,33 @@ Spree.config do |config|
 end
 
 Spree.user_class = "Spree::User"
+
+attachment_config = {
+
+  s3_credentials: {
+    access_key_id:     ENV['aws_access_key_id'],
+    secret_access_key: ENV['aws_secret_access_key'],
+    bucket:            ENV['s3_bucket_name']
+  },
+
+  storage:        :s3,
+  s3_headers:     { "Cache-Control" => "max-age=31557600" },
+  s3_protocol:    "https",
+  bucket:         ENV['s3_bucket_name'],
+  url:            ":s3_domain_url",
+
+  styles: {
+      mini:     "48x48>",
+      small:    "100x100>",
+      product:  "240x240>",
+      large:    "600x600>"
+  },
+
+  path:           "/:class/:id/:style/:basename.:extension",
+  default_url:    "/:class/:id/:style/:basename.:extension",
+  default_style:  "product"
+}
+
+attachment_config.each do |key, value|
+  Spree::Image.attachment_definitions[:attachment][key.to_sym] = value
+end
