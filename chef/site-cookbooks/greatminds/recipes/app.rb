@@ -29,6 +29,14 @@ template "#{path}/secrets.yml" do
   group node['group']
 end
 
+# create database.yml file
+template "#{path}/application.yml" do
+  source "application.yml.erb"
+  mode 0640
+  owner node['user']['name']
+  group node['group']
+end
+
 # set unicorn config
 template "/etc/init.d/unicorn_#{node['app']}" do
   source "unicorn.sh.erb"
