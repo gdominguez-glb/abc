@@ -3,12 +3,11 @@ class Ability
 
   def initialize(user)
     # direct permissions
-     # can :create, SomeRailsObject
+    # can :create, SomeRailsObject
 
-     # or permissions by group
-     if spree_user.has_spree_role? "admin"
-       # can :create, SomeRailsAdminObject
-     end
-   end
+    # or permissions by group
+    if user.has_spree_role? "admin"
+      # can :create, SomeRailsAdminObject
+    end
   end
 end
