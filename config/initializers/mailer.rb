@@ -7,9 +7,9 @@ else
     address:              "smtp.mandrillapp.com",
     port:                 587,
     enable_starttls_auto: true,
-    domain:               "gm-#{Rails.env.downcase}.intridea.com",
-    user_name:            "web.admin@greatminds.net",
-    password:             "1W0RAoHxNG_o-IeS9VeFBA"
+    domain:               ENV['DOMAIN'],
+    user_name:            ENV['mandrill_username'],
+    password:             ENV['mandrill_password']
   }
 end
 
