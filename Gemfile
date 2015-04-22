@@ -46,6 +46,8 @@ group :test do
   gem 'phantomjs', '~> 1.9.8'
   gem 'webmock'
   gem 'vcr', '~> 2.9.3'
+
+  gem 'shoulda-matchers'
 end
 
 # Use ActiveModel has_secure_password
