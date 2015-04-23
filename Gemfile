@@ -30,6 +30,8 @@ gem 'zeroclipboard-rails'
 
 gem 'aws-sdk', '< 2.0'
 
+gem 'active_link_to'
+
 group :development do
   gem 'spring'
   gem 'quiet_assets'

@@ -15,7 +15,7 @@ Bundler.require(*Rails.groups)
 
 module GreatMinds
   class Application < Rails::Application
-    
+
     config.to_prepare do
       # Load application's model / class decorators
       Dir.glob(File.join(File.dirname(__FILE__), "../app/**/*_decorator*.rb")) do |c|
@@ -42,9 +42,15 @@ module GreatMinds
     config.active_record.raise_in_transactional_callbacks = true
 
     config.generators do |generate|
-      generate.test_framework :rspec, fixture: false
-      generate.fixture_replacement :factory_girl, dir: 'spec/factories'
+      generate.test_framework :rspec,
+          fixture:            false,
+          view_specs:         false,
+          routing_specs:      false,
+          request_specs:      false,
+          helper_specs:       false,
+          integration_specs:  false
 
+      generate.fixture_replacement :factory_girl, dir: 'spec/factories'
       generate.helper_specs false
       generate.view_specs false
     end
