@@ -15,8 +15,9 @@ Spree.config do |config|
 end
 
 Spree.user_class = "Spree::User"
-
+Spree::Ability.register_ability(Ability)
 Paperclip::Attachment.default_options[:storage] = :s3
+
 attachment_config = {
 
   s3_credentials: {
