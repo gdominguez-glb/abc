@@ -39,3 +39,13 @@ And the Admin login [here](http://localhost:3000/store/admin)
 
     user: spree@example.com
     password: spree123
+
+### QA / Staging
+
+Visit QA http://gm-qa.intridea.com/store/admin
+
+Visit Staging http://gm-staging.intridea.com/store/admin
+
+Login with
+    web.admin@greatminds.net
+    intridea4gm

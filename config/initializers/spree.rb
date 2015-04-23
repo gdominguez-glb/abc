@@ -10,14 +10,13 @@
 # In order to initialize a setting do:
 # config.setting_name = 'new value'
 Spree.config do |config|
-  # Example:
-  # Uncomment to stop tracking inventory levels in the application
-  # config.track_inventory_levels = false
+  config.allow_guest_checkout   = false
+  config.track_inventory_levels = false
 end
 
 Spree.user_class = "Spree::User"
-
 Spree::Ability.register_ability(Ability)
+Paperclip::Attachment.default_options[:storage] = :s3
 
 attachment_config = {
 

@@ -46,6 +46,8 @@ group :test do
   gem 'phantomjs', '~> 1.9.8'
   gem 'webmock'
   gem 'vcr', '~> 2.9.3'
+
+  gem 'shoulda-matchers'
 end
 
 # Use ActiveModel has_secure_password
@@ -58,7 +60,7 @@ gem 'spree', '3.0.0'
 gem 'spree_gateway', github: 'spree/spree_gateway', branch: '3-0-stable'
 gem 'spree_auth_devise', github: 'spree/spree_auth_devise', branch: '3-0-stable'
 gem 'spree_digital', github: 'spree-contrib/spree_digital', branch: '3-0-stable'
-
+gem 'spree_mail_settings', github: 'spree-contrib/spree_mail_settings', branch: '3-0-stable'
 
 # chef gems
 group :development do

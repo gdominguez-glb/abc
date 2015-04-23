@@ -11,6 +11,8 @@ else
     user_name:            ENV['mandrill_username'],
     password:             ENV['mandrill_password']
   }
+
+  ActionMailer::Base.default from: ENV['from_email']
 end
 
 if ENV['DOMAIN']
