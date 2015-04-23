@@ -13,6 +13,17 @@ Rails.application.routes.draw do
   get 'contact', to: 'contact#index'
   post 'contact', to: 'contact#create'
 
+  resources :account, only: [:index] do
+    collection do
+      get :profile
+      get :settings
+      get :admin
+      get :help
+      get :edit_profile
+      patch :save_profile
+    end
+  end
+
   root 'home#index'
 
   # Example of regular route:

@@ -6,4 +6,12 @@ class ApplicationController < ActionController::Base
   if Rails.env.qa? || Rails.env.staging?
     http_basic_authenticate_with name: "greatminds", password: "intridea4gm"
   end
+
+  protected
+
+  def authenticate_user!
+    if spree_current_user.blank?
+      redirect_to root_path, notice: "Please log in first."
+    end
+  end
 end

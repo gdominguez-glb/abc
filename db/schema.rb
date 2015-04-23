@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150422104557) do
+ActiveRecord::Schema.define(version: 20150423033420) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -971,6 +971,12 @@ ActiveRecord::Schema.define(version: 20150422104557) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "name"
+    t.string   "address"
+    t.string   "interested_subject"
+    t.string   "interested_grade_level"
+    t.boolean  "receive_newsletter"
+    t.string   "school_name"
+    t.string   "heard_from"
   end
 
   add_index "spree_users", ["deleted_at"], name: "index_spree_users_on_deleted_at", using: :btree

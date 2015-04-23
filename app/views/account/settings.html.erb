@@ -1,0 +1,52 @@
+<section style="margin-top: 50px;">
+  <div class="container container-secondary">
+    <div id="welcome" class="row">
+      <div class="col-xs-12">
+        <h1>Account Settings</h1>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="callout">
+  <div class="container">
+    <div class="row">
+      <div id="dashboard" class="col-xs-5">
+        <h2>Personal info section</h2>
+        <a href="/account/edit_profile">Edit Profile</a>
+        <p>
+          Email: <%= spree_current_user.email %>
+        </p>
+        <p>
+          Name: <%= spree_current_user.name %>
+        </p>
+        <p>
+          Interested Subject: <%= spree_current_user.interested_subject %>
+        </p>
+        <p>
+          Interested Grade Level: <%= spree_current_user.interested_grade_level %>
+        </p>
+        <p>
+          Name of school/district: <%= spree_current_user.school_name %>
+        </p>
+        <p>
+          Heard GreatMinds from: <%= spree_current_user.heard_from %>
+        </p>
+      </div>
+      <div id="dashboard" class="col-xs-5 col-xs-offset-1">
+        <h2>Payment method management</h2>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="callout bottom-space">
+  <div class="container">
+    <div class="row">
+      <div id="dashboard" class="col-xs-5 bottom-space">
+        <h2>Review past order receipts</h2>
+      </div>
+      <div id="dashboard" class="col-xs-5 col-xs-offset-1">
+        <h2>Opting in and out of updates and newsletters</h2>
+      </div>
+    </div>
+  </div>
+</section>

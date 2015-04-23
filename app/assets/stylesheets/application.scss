@@ -25,3 +25,33 @@ footer {
   padding-bottom: 300px;
   max-width: 100%;
 }
+.subnav {
+  margin-top: 43px;
+  top: 0px;
+  z-index: 1020;
+  background-color: #C0C0C0;
+  border-bottom: 1px solid #E1E1E1;
+  padding: 8px 0px 0px 0px;
+}
+#dashboard {
+  margin-top: 0px;
+  background-color: #eee;
+  height: 300px;
+  position: relative;
+}
+#reco {
+  background-color: #ccc;
+  height: 300px;
+  position: relative;
+}
+#reco-item {
+  color: #fff;
+  width: 75%;
+  height: 50%;
+  background-color: #333;
+  margin: 0 auto;
+}
+#reco-item h4 {
+  text-align: center;
+  padding-top: 60px;
+}
