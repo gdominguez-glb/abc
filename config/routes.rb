@@ -33,6 +33,6 @@ Rails.application.routes.draw do
     resources :pages
   end
 
-  resources :pages
+  get '/:slug', to: 'pages#show'
 
 end
