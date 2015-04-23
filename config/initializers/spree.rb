@@ -16,6 +16,7 @@ end
 
 Spree.user_class = "Spree::User"
 
+Paperclip::Attachment.default_options[:storage] = :s3
 attachment_config = {
 
   s3_credentials: {
