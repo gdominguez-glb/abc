@@ -1,0 +1,50 @@
+<section>
+  <div class="container">
+    <h2>Documents</h2>
+    <a href="/documents/new" class="btn btn-primary">Add New Document</a>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Category</th>
+          <th>File</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @documents.each do |document| %>
+          <tr>
+            <td><%= document.name %></td>
+            <td><%= document.category %></td>
+            <td>
+              <%= document.attachment_file_name %>
+            </td>
+            <td>
+              <%= link_to 'Edit', edit_document_path(document), class: 'btn btn-default' %>
+              <%= link_to 'Download', document_path(document), class: 'btn btn-default', target: '_blank' %>
+              <%= link_to 'Delete', document_path(document), class: 'btn btn-default', data: { method: :delete, confirm: "Are you sure?" } %>
+              <a class="btn btn-default copy-download-url-button" data-clipboard-text="<%= document_url(document) %>">Copy Download Url</a>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= paginate @documents %>
+  </div>
+</section>
+<%= content_for :javascripts do %>
+  <%= javascript_tag do %>
+    $(function() {
+      var client = new ZeroClipboard( $('.copy-download-url-button') );
+      client.on( 'ready', function(event) {
+        client.on( 'copy', function(event) {
+          event.clipboardData.setData('text/plain', $(event.target).attr('data-url'));
+        });
+
+        client.on( 'aftercopy', function(event) {
+          alert('Copied to your clipboard');
+        });
+      });
+    });
+  <% end %>
+<% end %>

@@ -509,6 +509,8 @@ GEM
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
     wmi-lite (1.0.0)
+    zeroclipboard-rails (0.1.0)
+      railties (>= 3.1)
 
 PLATFORMS
   ruby
@@ -547,3 +549,4 @@ DEPENDENCIES
   unicorn (~> 4.8.3)
   vcr (~> 2.9.3)
   webmock
+  zeroclipboard-rails

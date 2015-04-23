@@ -23,6 +23,7 @@ Rails.application.routes.draw do
       patch :save_profile
     end
   end
+  resources :documents
 
   root 'home#index'
 

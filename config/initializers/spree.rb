@@ -16,7 +16,16 @@ end
 
 Spree.user_class = "Spree::User"
 Spree::Ability.register_ability(Ability)
-Paperclip::Attachment.default_options[:storage] = :s3
+
+Paperclip::Attachment.default_options.merge!({
+  storage: :s3,
+  bucket: ENV['s3_bucket_name'],
+  s3_credentials: {
+    access_key_id:     ENV['aws_access_key_id'],
+    secret_access_key: ENV['aws_secret_access_key'],
+    bucket:            ENV['s3_bucket_name']
+  }
+})
 
 attachment_config = {
 
