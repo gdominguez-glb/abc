@@ -1,3 +1,5 @@
+set daemon 60
+
 check process nginx with pidfile /var/run/nginx.pid
     start program = "/etc/init.d/nginx start"
     stop program = "/etc/init.d/nginx stop"
