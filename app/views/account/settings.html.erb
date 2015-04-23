@@ -12,6 +12,24 @@
     <div class="row">
       <div id="dashboard" class="col-xs-5">
         <h2>Personal info section</h2>
+        <p>
+          Email: <%= spree_current_user.email %>
+        </p>
+        <p>
+          Name: <%= spree_current_user.name %>
+        </p>
+        <p>
+          Interested Subject: <%= spree_current_user.interested_subject %>
+        </p>
+        <p>
+          Interested Grade Level: <%= spree_current_user.interested_grade_level %>
+        </p>
+        <p>
+          Name of school/district: <%= spree_current_user.school_name %>
+        </p>
+        <p>
+          Heard GreatMinds from: <%= spree_current_user.heard_from %>
+        </p>
       </div>
       <div id="dashboard" class="col-xs-5 col-xs-offset-1">
         <h2>Payment method management</h2>
