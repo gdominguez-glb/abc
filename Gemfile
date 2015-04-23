@@ -34,6 +34,7 @@ group :development do
   gem 'spring'
   gem 'quiet_assets'
   gem 'letter_opener'
+  gem 'better_errors'
 end
 
 group :development, :test do
