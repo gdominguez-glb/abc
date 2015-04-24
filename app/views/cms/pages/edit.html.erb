@@ -1,6 +1,13 @@
-<h1>Editing Page</h1>
+<%= render 'cms_nav' %>
+<div class="col-md-9">
+  <section>
+    <div class='row'>
+      <h2>Editing Page</h2>
 
-<%= render 'form' %>
+      <%= render 'form' %>
 
-<%= link_to 'Show', [:cms, @page] %> |
-<%= link_to 'Back', cms_pages_path %>
+      <%= link_to 'Show', [:cms, @page], class: 'btn btn-default' %>
+      <%= link_to 'Back', cms_pages_path, class: 'btn btn-default' %>
+    </div>
+  </section>
+</div>
