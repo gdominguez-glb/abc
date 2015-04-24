@@ -1,6 +1,6 @@
 # GreatMinds Store / CMS
 
-[![Build Status](https://semaphoreci.com/api/v1/projects/204c885f-d98b-4320-8927-ee89532094ba/402649/badge.svg)](https://semaphoreci.com/int/greatminds)      
+[![Build Status](https://semaphoreci.com/api/v1/projects/204c885f-d98b-4320-8927-ee89532094ba/402649/badge.svg)](https://semaphoreci.com/int/greatminds)
 
 ### Rails version
 
@@ -30,6 +30,9 @@
 
 `$ bundle exec rake db:setup`
 `$ bundle exec rake db:seed`
+
+### Init Site Pages
+`$ bundle exec rake pages:load`
 
 This will ensure the default example spree data is loaded
 

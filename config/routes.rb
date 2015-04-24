@@ -35,6 +35,6 @@ Rails.application.routes.draw do
     resources :documents
   end
 
-  get '/:slug', to: 'pages#show'
+  get '*slug', to: 'pages#show'
 
 end

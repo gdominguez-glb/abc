@@ -1,0 +1,13 @@
+<% if !@sub_nav_items.blank? %>
+  <nav class="navbar navbar-default navbar-fixed-top subnav">
+    <div class="container">
+      <div id="nav">
+        <ul class="nav navbar-nav">
+          <% @sub_nav_items.each do |page| %>
+            <%= active_link_to page.title, "/#{page.slug}", wrap_tag: :li%>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+<% end %>

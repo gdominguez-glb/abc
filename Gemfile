@@ -31,12 +31,14 @@ gem 'zeroclipboard-rails'
 gem 'aws-sdk', '< 2.0'
 
 gem 'active_link_to'
+gem 'kaminari'
 
 group :development do
   gem 'spring'
   gem 'quiet_assets'
   gem 'letter_opener'
   gem 'better_errors'
+  gem "binding_of_caller"
 end
 
 group :development, :test do

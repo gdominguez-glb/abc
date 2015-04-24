@@ -1,3 +1,2 @@
-<% if controller_name == 'account' %>
-  <%= render 'account_nav' %>
-<% end %>
+<%= render "#{controller_name}_nav" if ['pages','account'].include?(controller_name) %>
+

@@ -4,7 +4,7 @@ class Cms::PagesController < Cms::BaseController
   # GET /pages
   # GET /pages.json
   def index
-    @pages = Page.all
+    @pages = Page.order('group_name ASC, position ASC').page(params[:page]).per(10)
   end
 
   # GET /pages/1
