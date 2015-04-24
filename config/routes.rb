@@ -33,6 +33,7 @@ Rails.application.routes.draw do
 
     resources :pages
     resources :documents
+    resources :contacts, only: [:index, :destroy, :edit, :update]
   end
 
   get '*slug', to: 'pages#show'
