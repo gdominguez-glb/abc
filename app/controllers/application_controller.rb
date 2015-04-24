@@ -3,6 +3,14 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  def current_ability
+    @current_ability ||= Spree::Ability.new(current_user)
+  end
+
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to :root, alert: exception.message
+  end
+
   if Rails.env.qa? || Rails.env.staging?
     http_basic_authenticate_with name: "greatminds", password: "intridea4gm"
   end

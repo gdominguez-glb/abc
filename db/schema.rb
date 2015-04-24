@@ -38,6 +38,20 @@ ActiveRecord::Schema.define(version: 20150423181230) do
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
+  create_table "pages", force: :cascade do |t|
+    t.string   "title"
+    t.text     "seo_content"
+    t.string   "slug",                           null: false
+    t.string   "group_name"
+    t.string   "sub_group_name"
+    t.integer  "position",       default: 0
+    t.string   "layout"
+    t.text     "body"
+    t.boolean  "visible",        default: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
+
   create_table "spree_addresses", force: :cascade do |t|
     t.string   "firstname"
     t.string   "lastname"
