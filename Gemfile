@@ -31,6 +31,7 @@ gem 'zeroclipboard-rails'
 gem 'aws-sdk', '< 2.0'
 
 gem 'active_link_to'
+gem 'kaminari'
 
 group :development do
   gem 'spring'

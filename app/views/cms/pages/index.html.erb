@@ -1,42 +1,40 @@
-<div class="col-xs-7">
-  <p id="notice"><%= notice %></p>
-  <table>
-    <thead>
+<h2>Page Lists</h2>
+<%= link_to 'New', new_cms_page_path, class: 'btn btn-default' %>
+<p id="notice"><%= notice %></p>
+<table class='table table-responsive table-striped table-hover'>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Seo content</th>
+      <th>Slug</th>
+      <th>Group name</th>
+      <th>Sub group name</th>
+      <th>Position</th>
+      <th>Layout</th>
+      <th>Body</th>
+      <th>Visible</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pages.each do |page| %>
       <tr>
-        <th>Title</th>
-        <th>Seo content</th>
-        <th>Slug</th>
-        <th>Group name</th>
-        <th>Sub group name</th>
-        <th>Position</th>
-        <th>Layout</th>
-        <th>Body</th>
-        <th>Visible</th>
-        <th colspan="3"></th>
+        <td><%= page.title %></td>
+        <td><%= page.seo_content %></td>
+        <td><%= page.slug %></td>
+        <td><%= page.group_name %></td>
+        <td><%= page.sub_group_name %></td>
+        <td><%= page.position %></td>
+        <td><%= page.layout %></td>
+        <td><%= page.body %></td>
+        <td><%= page.visible %></td>
+        <td><%= link_to 'Show', [:cms, page] %></td>
+        <td><%= link_to 'Edit', edit_cms_page_path(page) %></td>
+        <td><%= link_to 'Destroy', [:cms, page], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-    </thead>
+    <% end %>
+  </tbody>
+</table>
 
-    <tbody>
-      <% @pages.each do |page| %>
-        <tr>
-          <td><%= page.title %></td>
-          <td><%= page.seo_content %></td>
-          <td><%= page.slug %></td>
-          <td><%= page.group_name %></td>
-          <td><%= page.sub_group_name %></td>
-          <td><%= page.position %></td>
-          <td><%= page.layout %></td>
-          <td><%= page.body %></td>
-          <td><%= page.visible %></td>
-          <td><%= link_to 'Show', [:cms, page] %></td>
-          <td><%= link_to 'Edit', edit_cms_page_path(page) %></td>
-          <td><%= link_to 'Destroy', [:cms, page], method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-
-  <br>
-
-  <%= link_to 'New Page', new_cms_page_path %>
-</div>
+<%= paginate @pages %>

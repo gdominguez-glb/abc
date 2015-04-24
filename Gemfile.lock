@@ -541,6 +541,7 @@ DEPENDENCIES
   figaro
   jbuilder (~> 2.0)
   jquery-rails
+  kaminari
   knife-solo (~> 0.4.2)
   letter_opener
   pg
