@@ -32,6 +32,7 @@ gem 'aws-sdk', '< 2.0'
 
 gem 'active_link_to'
 gem 'kaminari'
+gem 'acts-as-taggable-on', '~> 3.4'
 
 group :development do
   gem 'spring'

@@ -82,6 +82,8 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    acts-as-taggable-on (3.5.0)
+      activerecord (>= 3.2, < 5)
     acts_as_list (0.6.0)
       activerecord (>= 3.0)
     addressable (2.3.8)
@@ -526,6 +528,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_link_to
+  acts-as-taggable-on (~> 3.4)
   aws-sdk (< 2.0)
   better_errors
   binding_of_caller

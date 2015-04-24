@@ -38,7 +38,7 @@ class Cms::DocumentsController < Cms::BaseController
   protected
 
   def document_params
-    params.require(:document).permit(:name, :category, :attachment)
+    params.require(:document).permit(:name, :category, :attachment, :tag_list)
   end
 
   def find_document

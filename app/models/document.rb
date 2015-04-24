@@ -3,4 +3,6 @@ class Document < ActiveRecord::Base
 
   validates_presence_of :name, :category
   validates_attachment :attachment, presence: true, content_type: { content_type: /\A*\Z/ }
+
+  acts_as_taggable
 end
