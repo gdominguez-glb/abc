@@ -25,6 +25,17 @@ ActiveRecord::Schema.define(version: 20150423181230) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "documents", force: :cascade do |t|
+    t.string   "name"
+    t.string   "category"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.string   "attachment_file_name"
+    t.string   "attachment_content_type"
+    t.integer  "attachment_file_size"
+    t.datetime "attachment_updated_at"
+  end
+
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
     t.integer  "sluggable_id",              null: false
