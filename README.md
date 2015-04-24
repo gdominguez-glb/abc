@@ -29,6 +29,7 @@
 ### Spree Setup
 
 `$ bundle exec rake db:setup`
+
 `$ bundle exec rake db:seed`
 
 ### Init Site Pages
