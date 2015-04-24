@@ -3,11 +3,15 @@ Rails.application.routes.draw do
   mount Spree::Core::Engine, at: '/store'
 
   devise_for :user,
-             :class_name => 'Spree::User',
-             :controllers => { :sessions => 'spree/admin/user_sessions',
-                               :passwords => 'spree/admin/user_passwords' },
-             :skip => [:unlocks, :omniauth_callbacks, :registrations],
-             :path_names => { :sign_out => 'logout' }
+             class_name: 'Spree::User',
+             controllers: {
+                            sessions: 'spree/admin/user_sessions',
+                            passwords: 'spree/admin/user_passwords'
+                          },
+             skip: [:unlocks, :omniauth_callbacks, :registrations],
+             path_names: {
+                           sign_out: 'logout'
+                         }
 
   get 'contact', to: 'contact#index'
   post 'contact', to: 'contact#create'
