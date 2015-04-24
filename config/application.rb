@@ -23,7 +23,7 @@ module GreatMinds
       end
 
       # Load application's view overrides
-      Dir.glob(File.join(File.dirname(__FILE__), "../app/overrides/*.rb")) do |c|
+      Dir.glob(File.join(File.dirname(__FILE__), "../app/overrides/**/*.rb")) do |c|
         Rails.configuration.cache_classes ? require(c) : load(c)
       end
     end
