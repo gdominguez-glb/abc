@@ -22,15 +22,17 @@ Rails.application.routes.draw do
       patch :save_profile
     end
   end
-  resources :documents
 
   root 'home#index'
+
+  resources :documents, only: [:show]
 
   namespace :cms do
     root 'dashboard#index'
     get '/dashboard', to: 'dashboard#index', as: :dashboard
 
     resources :pages
+    resources :documents
   end
 
   get '/:slug', to: 'pages#show'
