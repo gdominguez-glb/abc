@@ -1,4 +1,4 @@
-class Cms::DocumentsController < ApplicationController
+class Cms::DocumentsController < Cms::BaseController
   before_action :find_document, only: [:show, :edit, :destroy, :update]
   layout 'cms_admin'
 
