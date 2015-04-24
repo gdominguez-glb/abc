@@ -9,7 +9,14 @@
 <section>
   <div class="container callout">
     <div id="viewport" class="row">
-      <%= @page.body %>
+      <%= @page.body.html_safe %>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="container callout">
+    <div id="viewport" class="row">
+      Page button area
     </div>
   </div>
 </section>

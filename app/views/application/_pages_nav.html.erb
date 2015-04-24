@@ -4,7 +4,7 @@
       <div id="nav">
         <ul class="nav navbar-nav">
           <% @sub_nav_items.each do |page| %>
-            <%= active_link_to page.title, "/#{page.slug}", wrap_tag: :li%>
+            <%= active_link_to page.title, "/#{page.slug}", wrap_tag: :li %>
           <% end %>
         </ul>
       </div>
