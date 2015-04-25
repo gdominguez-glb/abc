@@ -35,6 +35,7 @@ gem 'kaminari'
 gem 'acts-as-taggable-on', '~> 3.4'
 
 group :development do
+  gem 'pry'
   gem 'spring'
   gem 'quiet_assets'
   gem 'letter_opener'
@@ -69,6 +70,8 @@ gem 'spree_gateway', github: 'spree/spree_gateway', branch: '3-0-stable'
 gem 'spree_auth_devise', github: 'spree/spree_auth_devise', branch: '3-0-stable'
 gem 'spree_digital', github: 'spree-contrib/spree_digital', branch: '3-0-stable'
 gem 'spree_mail_settings', github: 'spree-contrib/spree_mail_settings', branch: '3-0-stable'
+gem 'spree_better_terms_and_conditions', github: 'aleks/spree_better_terms_and_conditions'
+
 
 # chef gems
 group :development do

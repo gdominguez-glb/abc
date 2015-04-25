@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/aleks/spree_better_terms_and_conditions.git
+  revision: db2a6f5653ba6e0ddf7ba782ebb1b9006b46ddfe
+  specs:
+    spree_better_terms_and_conditions (2.2.1)
+      spree_core (>= 2.1.0)
+
+GIT
   remote: git://github.com/spree-contrib/spree_digital.git
   revision: 8a3c68cb1c8b911a7e4349b17c14bc84b540c17a
   branch: 3-0-stable
@@ -549,6 +556,7 @@ DEPENDENCIES
   letter_opener
   pg
   phantomjs (~> 1.9.8)
+  pry
   quiet_assets
   rails (= 4.2.0)
   rspec-rails (~> 3.2.1)
@@ -557,6 +565,7 @@ DEPENDENCIES
   shoulda-matchers
   spree (= 3.0.0)
   spree_auth_devise!
+  spree_better_terms_and_conditions!
   spree_digital!
   spree_gateway!
   spree_mail_settings!
