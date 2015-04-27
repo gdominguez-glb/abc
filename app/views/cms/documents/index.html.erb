@@ -3,12 +3,24 @@
   <section>
     <div>
       <h2>Documents</h2>
-      <a href="/cms/documents/new" class="btn btn-primary">Add New Document</a>
+      <a href="/cms/documents/new" class="btn btn-primary pull-right">Add New Document</a>
+      <%= form_tag '', method: :get, class: 'form-inline' do %>
+        <div class="form-group">
+          <label>Name</label>
+          <%= text_field_tag :name, params[:name], class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <label>Tags</label>
+          <%= text_field_tag :tags, params[:tags], class: 'form-control', placeholder: 'seperate by comma' %>
+        </div>
+        <button type="submit" class="btn btn-default">Search</button>
+      <% end %>
       <table class="table">
         <thead>
           <tr>
             <th>Name</th>
             <th>Category</th>
+            <th>Tags</th>
             <th>File</th>
             <th></th>
           </tr>
@@ -18,6 +30,7 @@
             <tr>
               <td><%= document.name %></td>
               <td><%= document.category %></td>
+              <td><%= document.tags.map(&:name).join(',') %></td>
               <td>
                 <%= document.attachment_file_name %>
               </td>
