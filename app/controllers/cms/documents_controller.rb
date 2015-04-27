@@ -4,6 +4,7 @@ class Cms::DocumentsController < Cms::BaseController
 
   def index
     @documents = Document.page(params[:page]).per(params[:per_page])
+    @documents = filter_documents(@documents)
   end
 
   def new
@@ -43,5 +44,15 @@ class Cms::DocumentsController < Cms::BaseController
 
   def find_document
     @document = Document.find(params[:id])
+  end
+
+  def filter_documents(documents)
+    if params[:name].present?
+      documents = documents.where("name like ?", "%#{params[:name]}%")
+    end
+    if params[:tags].present?
+      documents = documents.tagged_with(params[:tags].split(','))
+    end
+    documents
   end
 end
