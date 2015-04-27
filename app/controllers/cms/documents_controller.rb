@@ -3,7 +3,7 @@ class Cms::DocumentsController < Cms::BaseController
   layout 'cms_admin'
 
   def index
-    @documents = Document.page(params[:page]).per(params[:per_page])
+    @documents = Document.includes(:tags).page(params[:page]).per(params[:per_page])
     @documents = filter_documents(@documents)
   end
 
@@ -51,7 +51,7 @@ class Cms::DocumentsController < Cms::BaseController
       documents = documents.where("name like ?", "%#{params[:name]}%")
     end
     if params[:tags].present?
-      documents = documents.tagged_with(params[:tags].split(','))
+      documents = documents.tagged_with(params[:tags].split(','), any: true)
     end
     documents
   end

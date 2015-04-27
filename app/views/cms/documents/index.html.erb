@@ -20,6 +20,7 @@
           <tr>
             <th>Name</th>
             <th>Category</th>
+            <th>Tags</th>
             <th>File</th>
             <th></th>
           </tr>
@@ -29,6 +30,7 @@
             <tr>
               <td><%= document.name %></td>
               <td><%= document.category %></td>
+              <td><%= document.tags.map(&:name).join(',') %></td>
               <td>
                 <%= document.attachment_file_name %>
               </td>
