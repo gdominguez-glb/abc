@@ -33,6 +33,7 @@
 `$ bundle exec rake db:seed`
 
 ### Init Site Pages
+
 `$ bundle exec rake pages:load`
 
 This will ensure the default example spree data is loaded
@@ -43,6 +44,10 @@ And the Admin login [here](http://localhost:3000/store/admin)
 
     user: spree@example.com
     password: spree123
+
+### Start sidekiq
+
+`$ bundle exec sidekiq
 
 ### QA / Staging
 

@@ -33,6 +33,7 @@ gem 'aws-sdk', '< 2.0'
 gem 'active_link_to'
 gem 'kaminari'
 gem 'acts-as-taggable-on', '~> 3.4'
+gem 'sidekiq'
 
 group :development do
   gem 'pry'
@@ -82,5 +83,6 @@ gem 'capistrano', '~> 3.4.0'
 gem 'capistrano-rbenv', '~> 2.0'
 gem 'capistrano-bundler', '~> 1.1.2'
 gem 'capistrano-rails', '~> 1.1'
+gem 'capistrano-sidekiq', github: 'seuros/capistrano-sidekiq'
 
 gem 'unicorn', '~> 4.8.3'
