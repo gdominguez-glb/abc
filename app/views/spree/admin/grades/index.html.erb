@@ -1,0 +1,18 @@
+<% content_for :page_title do %>
+  <%= plural_resource_name(Spree::Grade) %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <%= button_link_to Spree.t(:new_grade), new_object_url, class: "btn-success", icon: 'add', id: 'admin_new_grade_link' %>
+<% end %>
+
+<% if @grades.any? %>
+  <div id="list-grades" data-hook>
+    <%= render 'list' %>
+  </div>
+<% else %>
+  <div class="alert alert-info no-objects-found">
+    <%= Spree.t(:no_resource_found, resource: plural_resource_name(Spree::Grade)) %>,
+    <%= link_to Spree.t(:add_one), new_object_url %>!
+  </div>
+<% end %>

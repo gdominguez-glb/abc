@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150424191104) do
+ActiveRecord::Schema.define(version: 20150427090004) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -217,6 +217,16 @@ ActiveRecord::Schema.define(version: 20150424191104) do
 
   add_index "spree_gateways", ["active"], name: "index_spree_gateways_on_active", using: :btree
   add_index "spree_gateways", ["test_mode"], name: "index_spree_gateways_on_test_mode", using: :btree
+
+  create_table "spree_grades", force: :cascade do |t|
+    t.string   "name"
+    t.string   "abbr"
+    t.string   "school"
+    t.integer  "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+  end
 
   create_table "spree_inventory_units", force: :cascade do |t|
     t.string   "state"

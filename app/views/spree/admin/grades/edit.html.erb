@@ -1,0 +1,12 @@
+<% content_for :page_title do %>
+  <%= Spree.t(:edit_grade) %>
+<% end %>
+
+<%= form_for [:admin, @grade] do |f| %>
+  <fieldset>
+    <%= render :partial => 'form', :locals => { :f => f } %>
+    <div class="form-actions" data-hook="buttons">
+      <%= button Spree.t(:update), 'save' %>
+    </div>
+  </fieldset>
+<% end %>
