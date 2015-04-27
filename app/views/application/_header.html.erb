@@ -24,7 +24,7 @@
         <%= active_link_to "Contact", contact_path, wrap_tag: :li %>
         <%= active_link_to "Account", '/account', wrap_tag: :li %>
         <%= active_link_to "Store", '/store', wrap_tag: :li %>
-        <%= active_link_to "CMS", '/cms', wrap_tag: :li if current_spree_user && current_spree_user.has_spree_role?(:admin) %>
+        <%= active_link_to "CMS", '/cms', wrap_tag: :li if current_spree_user && current_spree_user.admin? %>
       </ul>
 
       <form class="navbar-form navbar-left" role="search">

@@ -6,7 +6,7 @@ class Ability
     # can :create, SomeRailsObject
 
     # or permissions by group
-    if user.has_spree_role? "admin"
+    if user.admin?
       # can :create, SomeRailsAdminObject
     end
   end
