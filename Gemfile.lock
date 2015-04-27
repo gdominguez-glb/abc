@@ -6,6 +6,14 @@ GIT
       spree_core (>= 2.1.0)
 
 GIT
+  remote: git://github.com/seuros/capistrano-sidekiq.git
+  revision: e21647ceaaac5703acb2b668ac574ff71181dd23
+  specs:
+    capistrano-sidekiq (0.5.3)
+      capistrano
+      sidekiq
+
+GIT
   remote: git://github.com/spree-contrib/spree_digital.git
   revision: 8a3c68cb1c8b911a7e4349b17c14bc84b540c17a
   branch: 3-0-stable
@@ -559,6 +567,7 @@ DEPENDENCIES
   capistrano-bundler (~> 1.1.2)
   capistrano-rails (~> 1.1)
   capistrano-rbenv (~> 2.0)
+  capistrano-sidekiq!
   codeclimate-test-reporter
   coffee-rails (~> 4.0.0)
   database_cleaner (~> 1.4.1)

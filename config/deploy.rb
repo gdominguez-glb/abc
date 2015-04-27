@@ -24,7 +24,7 @@ set :rbenv_ruby, '2.1.6'
 # set :log_level, :debug
 
 # Default value for :pty is false
-# set :pty, true
+set :pty, false
 
 # Default value for :linked_files is []
 set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/secrets.yml', 'config/application.yml')
@@ -37,6 +37,8 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', '
 
 # Default value for keep_releases is 5
 set :keep_releases, 5
+
+set :sidekiq_role, :web
 
 namespace :deploy do
 
@@ -72,3 +74,4 @@ namespace :deploy do
 end
 
 after "deploy:finished", 'deploy:unicorn_restart'
+after "deploy:finished", 'sidekiq:restart'
