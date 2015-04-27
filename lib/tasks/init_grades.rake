@@ -16,8 +16,8 @@ namespace :grades do
         { name: 'Grade 10', abbr: '10', school: 'High School' },
         { name: 'Grade 11', abbr: '11', school: 'High School' },
         { name: 'Grade 12', abbr: '12', school: 'High School' },
-      ].each do |grade_hash|
-        Spree::Grade.create!(grade_hash)
+      ].each_with_index do |grade_hash, index|
+        Spree::Grade.create!(grade_hash.merge(position: index))
       end
     end
   end
