@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150427090004) do
+ActiveRecord::Schema.define(version: 20150427194720) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -222,9 +222,9 @@ ActiveRecord::Schema.define(version: 20150427090004) do
     t.string   "name"
     t.string   "abbr"
     t.string   "school"
-    t.integer  "position"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "position",   default: 0
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.datetime "deleted_at"
   end
 
@@ -473,6 +473,7 @@ ActiveRecord::Schema.define(version: 20150427090004) do
     t.string   "meta_title"
     t.integer  "license_length"
     t.text     "license_text"
+    t.string   "redirect_url"
   end
 
   add_index "spree_products", ["available_on"], name: "index_spree_products_on_available_on", using: :btree

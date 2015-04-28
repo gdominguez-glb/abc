@@ -21,3 +21,5 @@
 
 en:
   hello: "Hello world"
+  spree:
+    purchase_from_partner: "Purchase From Partner"
