@@ -1,0 +1,27 @@
+<table class="table sortable" id='listing_curriculums' data-hook  data-hook  data-sortable-link="<%= update_positions_admin_curriculums_url %>">
+  <thead>
+    <tr data-hook="curriculums_header">
+      <th class="no-border"></th>
+      <th><%= Spree.t(:name) %></th>
+      <th><%= Spree.t(:slug) %></th>
+      <th><%= Spree.t(:description) %></th>
+      <th class="actions"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @curriculums.each do |curriculum| %>
+      <tr id="<%= spree_dom_id curriculum %>" data-hook="curriculums_row">
+        <td class="move-handle">
+          <span class="icon icon-sort handle"></span>
+        </td>
+        <td><%= curriculum.name %></td>
+        <td><%= curriculum.slug %></td>
+        <td><%= curriculum.description %></td>
+        <td class="actions actions-2 text-right">
+          <%= link_to_edit curriculum.id, no_text: true %>
+          <%= link_to_delete curriculum, no_text: true %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
