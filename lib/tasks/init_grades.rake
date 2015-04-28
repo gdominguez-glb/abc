@@ -15,9 +15,19 @@ namespace :grades do
         { name: 'Grade 9', abbr: '9', school: 'High School' },
         { name: 'Grade 10', abbr: '10', school: 'High School' },
         { name: 'Grade 11', abbr: '11', school: 'High School' },
-        { name: 'Grade 12', abbr: '12', school: 'High School' },
+        { name: 'Grade 12', abbr: '12', school: 'High School' }
       ].each_with_index do |grade_hash, index|
-        Spree::Grade.create!(grade_hash.merge(position: index))
+        grade = Spree::Grade.create!(grade_hash.merge(position: index))
+        units_count = grade_hash[:name] == 'Grade 10' ? 4 : 6
+
+        (1..units_count).to_a.each do |unit_index|
+          Spree::GradeUnit.create!({
+            grade: grade,
+            name: "Unit #{unit_index}",
+            position: (unit_index-1)
+          })
+        end
+
       end
     end
   end
