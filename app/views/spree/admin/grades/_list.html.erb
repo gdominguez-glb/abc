@@ -18,6 +18,7 @@
         <td><%= grade.abbr %></td>
         <td><%= grade.school %></td>
         <td class="actions actions-2 text-right">
+          <%= link_to 'Manage Units', admin_grade_grade_units_path(grade), class: 'btn btn-primary btn-sm' %>
           <%= link_to_edit grade.id, no_text: true %>
           <%= link_to_delete grade, no_text: true %>
         </td>
