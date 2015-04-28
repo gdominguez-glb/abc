@@ -1,0 +1,12 @@
+<div data-hook="admin_inside_curriculum_form" class="form-group">
+  <%= f.field_container :name, class: ['form-group'] do %>
+    <%= f.label :name, Spree.t(:name) %> <span class="required">*</span>
+    <%= error_message_on :curriculum, :name, :class => 'error-message' %>
+    <%= text_field :curriculum, :name, :class => 'form-control' %>
+  <% end %>
+  <%= f.field_container :description, class: ['form-group'] do %>
+    <%= f.label :description, Spree.t(:description) %> <span class="required">*</span>
+    <%= error_message_on :curriculum, :description, :class => 'error-message' %>
+    <%= text_area :curriculum, :description, :class => 'form-control' %>
+  <% end %>
+</div>
