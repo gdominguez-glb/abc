@@ -1,0 +1,1 @@
+<%= collection_select(:product, :grade_unit_id, @grade_units, :id, :name, { :include_blank => Spree.t('match_choices.none') }, { :class => 'select2' }) %>
