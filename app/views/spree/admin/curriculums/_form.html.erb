@@ -4,6 +4,11 @@
     <%= error_message_on :curriculum, :name, :class => 'error-message' %>
     <%= text_field :curriculum, :name, :class => 'form-control' %>
   <% end %>
+  <%= f.field_container :slug, class: ['form-group'] do %>
+    <%= f.label :slug, Spree.t(:slug) %> <span class="required">*</span>
+    <%= error_message_on :curriculum, :slug, :class => 'error-message' %>
+    <%= text_field :curriculum, :slug, :class => 'form-control' %>
+  <% end %>
   <%= f.field_container :description, class: ['form-group'] do %>
     <%= f.label :description, Spree.t(:description) %> <span class="required">*</span>
     <%= error_message_on :curriculum, :description, :class => 'error-message' %>
