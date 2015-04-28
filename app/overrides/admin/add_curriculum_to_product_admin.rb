@@ -13,7 +13,7 @@ Deface::Override.new(
     text: <<-HTML
       <div data-hook="new_product_curriculum" class="col-md-4">
         <%= f.field_container :curriculum, :class => ['form-group'] do %>
-          <%= f.label :curriculum_id, Spree.t(:curriculum) %><span class="required">*</span>
+          <%= f.label :curriculum_id, Spree.t(:curriculum) %>
           <%= f.collection_select(:curriculum_id, @curriculums, :id, :name, { :include_blank => Spree.t('match_choices.none') }, { :class => 'select2' }) %>
           <%= f.error_message_on :curriculum_id %>
         <% end %>
