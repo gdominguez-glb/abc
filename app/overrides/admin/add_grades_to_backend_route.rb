@@ -1,6 +1,9 @@
 Spree::Core::Engine.routes.prepend do
   namespace :admin do
     resources :grades do
+      member do
+        get :grade_units_select
+      end
       collection do
         post :update_positions
       end
