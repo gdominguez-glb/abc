@@ -24,7 +24,7 @@ namespace :grades do
           Spree::GradeUnit.create!({
             grade: grade,
             name: "Unit #{unit_index}",
-            position: (unit_index-1)
+            position: unit_index
           })
         end
 

@@ -1,0 +1,18 @@
+<% content_for :page_title do %>
+  <%= link_to 'Grades', admin_grades_path %> / Units of Grade: <%= @grade.name %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <%= button_link_to Spree.t(:new_grade_unit), new_admin_grade_grade_unit_url(@grade), class: "btn-success", icon: 'add', id: 'admin_new_grade_grade_unit_link' %>
+<% end %>
+
+<% if @grade_units.any? %>
+  <div id="list-grade-units" data-hook>
+    <%= render 'list' %>
+  </div>
+<% else %>
+  <div class="alert alert-info no-objects-found">
+    <%= Spree.t(:no_resource_found, resource: plural_resource_name(Spree::GradeUnit)) %>,
+    <%= link_to Spree.t(:add_one), new_admin_grade_grade_unit_path(@grade) %>!
+  </div>
+<% end %>

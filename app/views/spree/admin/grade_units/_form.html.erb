@@ -1,0 +1,7 @@
+<div data-hook="admin_inside_grade_unit_form" class="form-group">
+  <%= f.field_container :name, class: ['form-group'] do %>
+    <%= f.label :name, Spree.t(:name) %> <span class="required">*</span>
+    <%= error_message_on :grade_unit, :name, :class => 'error-message' %>
+    <%= text_field :grade_unit, :name, :class => 'form-control' %>
+  <% end %>
+</div>

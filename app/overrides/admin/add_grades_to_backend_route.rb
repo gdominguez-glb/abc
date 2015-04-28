@@ -4,6 +4,11 @@ Spree::Core::Engine.routes.prepend do
       collection do
         post :update_positions
       end
+      resources :grade_units do
+        collection do
+          post :update_positions
+        end
+      end
     end
   end
 end
