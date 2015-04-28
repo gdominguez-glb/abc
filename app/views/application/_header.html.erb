@@ -21,7 +21,7 @@
         <% Page.show_in_top_navigation.each do |page| %>
           <%= active_link_to page.group_name.capitalize, "/#{page.slug}", wrap_tag: :li %>
         <% end %>
-        <%= active_link_to "Contact", contact_path, wrap_tag: :li %>
+        <%= active_link_to "Contact", main_app.contact_path, wrap_tag: :li %>
         <% if spree_current_user %>
           <%= active_link_to "Account", '/account', wrap_tag: :li %>
         <% else %>
