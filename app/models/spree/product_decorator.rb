@@ -7,13 +7,13 @@ Spree::Product.class_eval do
   belongs_to :grade_unit, class_name: 'Spree::GradeUnit'
 
   PRODUCT_TYPES = [
-    'curriculum',
-    'video',
-    'pdf',
-    'other'
+    'Curriculum',
+    'Video',
+    'Pdf',
+    'Other'
   ]
 
   PRODUCT_TYPES.each do |product_type|
-    scope product_type.pluralize, ->{ where(product_type: product_type) }
+    scope product_type.underscore.pluralize, ->{ where(product_type: product_type) }
   end
 end

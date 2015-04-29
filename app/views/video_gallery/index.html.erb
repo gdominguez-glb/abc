@@ -3,6 +3,8 @@
     <div class="col-md-3">
       <div class="video-gallery-side">
         <%= form_tag '', method: :get, class: 'side-search-form' do %>
+          <%= hidden_field_tag :grade_id, params[:grade_id] %>
+          <%= hidden_field_tag :curriculum_id, params[:curriculum_id] %>
           <div class="form-group">
             <%= text_field_tag :query, params[:query], class: 'form-control', placeholder: 'Search' %>
           </div>
@@ -11,6 +13,9 @@
           <div class="video-filter">
             <div class="video-sub-filter">
               <%= render 'grade_filter' %>
+            </div>
+            <div class="video-sub-filter">
+              <%= render 'curriculum_filter' %>
             </div>
           </div>
         </div>
@@ -23,3 +28,13 @@
     </div>
   </div>
 </div>
+<%= content_for :javascripts do %>
+  <%= javascript_tag do %>
+    $(function() {
+      $(".filter-header").click(function() {
+        var filter_container = $(this).parents('.video-sub-filter');
+        filter_container.find('ul').toggle();
+      })
+    });
+  <% end %>
+<% end %>
