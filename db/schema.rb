@@ -66,6 +66,14 @@ ActiveRecord::Schema.define(version: 20150429070414) do
     t.boolean  "group_root",     default: false
   end
 
+  create_table "school_districts", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "state_id"
+    t.string   "place_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "spree_addresses", force: :cascade do |t|
     t.string   "firstname"
     t.string   "lastname"
@@ -1035,13 +1043,15 @@ ActiveRecord::Schema.define(version: 20150429070414) do
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
-    t.string   "name"
     t.string   "address"
     t.string   "interested_subject"
     t.string   "interested_grade_level"
     t.boolean  "receive_newsletter"
     t.string   "school_name"
     t.string   "heard_from"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.integer  "school_district_id"
   end
 
   add_index "spree_users", ["deleted_at"], name: "index_spree_users_on_deleted_at", using: :btree

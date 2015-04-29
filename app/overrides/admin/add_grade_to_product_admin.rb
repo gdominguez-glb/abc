@@ -6,26 +6,28 @@ Spree::Admin::ProductsController.class_eval do
   end
 end
 
-CASCADE_GRADE_JS = <<-JS
-  <script type="text/javascript">
-  //<![CDATA[
-    (function($){
-      $("select[name='product[grade_id]']").change(function(){
-        var grade_id = $(this).val();
-        $.ajax({
-          url: '/store/admin/grades/' + grade_id + '/grade_units_select',
-          type: 'GET',
-          success: function(result) {
-            $("select[name='product[grade_unit_id]']").select2('destroy');
-            $("select[name='product[grade_unit_id]']").replaceWith(result);
-            $("select[name='product[grade_unit_id]']").select2();
-          }
+if !defined?(CASCADE_GRADE_JS)
+  CASCADE_GRADE_JS = <<-JS
+    <script type="text/javascript">
+    //<![CDATA[
+      (function($){
+        $("select[name='product[grade_id]']").change(function(){
+          var grade_id = $(this).val();
+          $.ajax({
+            url: '/store/admin/grades/' + grade_id + '/grade_units_select',
+            type: 'GET',
+            success: function(result) {
+              $("select[name='product[grade_unit_id]']").select2('destroy');
+              $("select[name='product[grade_unit_id]']").replaceWith(result);
+              $("select[name='product[grade_unit_id]']").select2();
+            }
+          });
         });
-      });
-    })(jQuery);
-  //]]>
-  </script>
-JS
+      })(jQuery);
+    //]]>
+    </script>
+  JS
+end
 
 Deface::Override.new(
     virtual_path: "spree/admin/products/new",
