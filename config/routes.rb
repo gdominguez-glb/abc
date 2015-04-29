@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   get 'contact', to: 'contact#index'
   post 'contact', to: 'contact#create'
 
+  resources :video_gallery, only: [:index, :show]
+
   resources :account, only: [:index] do
     collection do
       get :profile

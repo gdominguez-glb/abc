@@ -1,0 +1,17 @@
+<div class="filter-header">
+  <h4>
+    Curriculum <%= @selected_curriculum.try(:name) %>
+  <% if params[:curriculum_id].present? %>
+      <%= link_to params.merge(curriculum_id: nil), class: 'pull-right' do %>	
+        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+      <% end %>
+  <% end %>
+  </h4>
+</div>
+<ul>
+  <% @curriculums.each do |curriculum| %>
+    <li>
+      <%= link_to curriculum.name, params.merge({ curriculum_id: curriculum.id }), alt: curriculum.name, class: (params[:curriculum_id].to_i == curriculum.id ? 'active' : '') %>
+    </li>
+  <% end %>
+</ul>

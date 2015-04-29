@@ -1,0 +1,17 @@
+<div class="filter-header">
+  <h4>
+    Grade <%= @selected_grade.try(:abbr) %>
+  <% if params[:grade_id].present? %>
+      <%= link_to params.merge(grade_id: nil), class: 'pull-right' do %>	
+      <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+  <% end %>
+  <% end %>
+  </h4>
+</div>
+<ul>
+  <% @grades.each do |grade| %>
+    <li>
+  <%= link_to grade.abbr, params.merge({ grade_id: grade.id }), alt: grade.name, class: (params[:grade_id].to_i == grade.id ? 'active' : '') %>
+  </li>
+<% end %>
+</ul>

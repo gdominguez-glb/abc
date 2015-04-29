@@ -55,3 +55,31 @@ footer {
   text-align: center;
   padding-top: 60px;
 }
+.video-gallery-side {
+  background: #ccc;
+}
+.video-gallery-side .side-search-form {
+  padding: 5px;
+  background: #bbb;
+}
+.video-filter {
+}
+.video-filter ul {
+  list-style: none;
+  padding: 0 0;
+}
+.video-filter ul li {
+  display: block;
+}
+.video-filter ul li a {
+  text-align: center;
+  display: block;
+  padding: 5px 0;
+}
+.video-filter ul li a.active {
+  background: #bbb;
+}
+.video-sub-filter .filter-header {
+  padding: 4px 5px;
+  border-bottom: 1px solid #444;
+}
