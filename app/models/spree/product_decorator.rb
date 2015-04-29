@@ -5,4 +5,11 @@ Spree::Product.class_eval do
   belongs_to :curriculum, class_name: 'Spree::Curriculum'
   belongs_to :grade, class_name: 'Spree::Grade'
   belongs_to :grade_unit, class_name: 'Spree::GradeUnit'
+
+  PRODUCT_TYPES = [
+    'curriculum',
+    'video',
+    'pdf',
+    'other'
+  ]
 end
