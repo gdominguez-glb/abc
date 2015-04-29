@@ -12,4 +12,8 @@ Spree::Product.class_eval do
     'pdf',
     'other'
   ]
+
+  PRODUCT_TYPES.each do |product_type|
+    scope product_type.pluralize, ->{ where(product_type: product_type) }
+  end
 end

@@ -1,0 +1,8 @@
+<div class="video-product-wrapper">
+  <%= link_to small_image(video_product, itemprop: "image"), video_gallery_path(video_product), itemprop: 'url' %><br/>
+  <span class="video-product-name">
+    <%= link_to truncate(video_product.name, length: 50), video_gallery_path(video_product), class: 'info', itemprop: "name", title: video_product.name %>
+  </span>
+  <div class="video-product-grade"><%= video_product.grade.try(:name) %></div>
+  <div class="video-product-curriculum"><%= video_product.curriculum.try(:name) %></div>
+</div>
