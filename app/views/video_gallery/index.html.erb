@@ -1,23 +1,17 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3">
-      <%= form_tag '', method: :get do %>
-        <div class="form-group">
-          <%= text_field_tag :query, params[:query], class: 'form-control', placeholder: 'Search' %>
-        </div>
-      <% end %>
-      <div class="videos-filters">
-        <div class="video-filter">
-          <h3>Product</h3>
-          <div class="video-sub-filter">
-            <h4>Grade</h4>
-            <ul>
-              <% @grades.each do |grade| %>
-                <li>
-                <%= link_to grade.abbr, params.merge({ grade_id: grade.id }), alt: grade.name, class: (params[:grade_id].to_i == grade.id ? 'active' : '') %>
-                </li>
-              <% end %>
-            </ul>
+      <div class="video-gallery-side">
+        <%= form_tag '', method: :get, class: 'side-search-form' do %>
+          <div class="form-group">
+            <%= text_field_tag :query, params[:query], class: 'form-control', placeholder: 'Search' %>
+          </div>
+        <% end %>
+        <div class="videos-filters">
+          <div class="video-filter">
+            <div class="video-sub-filter">
+              <%= render 'grade_filter' %>
+            </div>
           </div>
         </div>
       </div>

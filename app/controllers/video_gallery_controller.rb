@@ -14,6 +14,7 @@ class VideoGalleryController < ApplicationController
 
   def load_filter_data
     @grades = Spree::Grade.order('position asc')
+    @selected_grade = Spree::Grade.find_by(id: params[:grade_id])
   end
 
   def filter_video_products(video_products)
