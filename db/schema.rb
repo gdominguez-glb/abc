@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150428103846) do
+ActiveRecord::Schema.define(version: 20150429070414) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -496,6 +496,7 @@ ActiveRecord::Schema.define(version: 20150428103846) do
     t.integer  "curriculum_id"
     t.integer  "grade_id"
     t.integer  "grade_unit_id"
+    t.string   "product_type"
   end
 
   add_index "spree_products", ["available_on"], name: "index_spree_products_on_available_on", using: :btree
