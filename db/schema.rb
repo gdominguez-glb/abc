@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150429070414) do
+ActiveRecord::Schema.define(version: 20150429010434) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,14 @@ ActiveRecord::Schema.define(version: 20150429070414) do
     t.boolean  "show_in_nav",    default: true
     t.boolean  "show_in_footer", default: false
     t.boolean  "group_root",     default: false
+  end
+
+  create_table "school_districts", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "state_id"
+    t.string   "place_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "spree_addresses", force: :cascade do |t|
