@@ -17,3 +17,12 @@
   margin-bottom: 20px;
   border-bottom: 1px solid #eee;
 }
+.school-district-control {
+  display: none;
+}
+.school-district-input-toggle {
+  width: 100%;
+  color: #aaa;
+  padding: 6px;
+  border: 1px dashed #ccc;
+}
