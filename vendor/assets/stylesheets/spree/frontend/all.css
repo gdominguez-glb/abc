@@ -26,3 +26,18 @@
   padding: 6px;
   border: 1px dashed #ccc;
 }
+#sign-in-wrapper {
+  background: #eee;
+  padding: 20px 40px;
+}
+#sign-in-wrapper h3 {
+  text-align: center;
+}
+.sign-in-forgot-password-wrapper {
+  text-align: center;
+  margin: 20px 0;
+}
+.signup-link-wrapper {
+  background: #ccc;
+  padding: 20px 0;
+}
