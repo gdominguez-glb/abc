@@ -8,4 +8,13 @@ Spree::User.class_eval do
   belongs_to :school_district
 
   accepts_nested_attributes_for :school_district, reject_if: proc { |attributes| attributes['name'].blank? }
+
+  def name
+    "#{first_name} #{last_name}"
+  end
+
+  def name=(new_name)
+    self.first_name = new_name.split(' ').first
+    self.last_name = new_name.split(' ').last
+  end
 end
