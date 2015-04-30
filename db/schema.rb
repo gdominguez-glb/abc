@@ -249,9 +249,9 @@ ActiveRecord::Schema.define(version: 20150429070414) do
     t.string   "name"
     t.string   "abbr"
     t.string   "school"
-    t.integer  "position"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "position",   default: 0
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.datetime "deleted_at"
   end
 
