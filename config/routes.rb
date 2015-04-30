@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-
   mount Spree::Core::Engine, at: '/store'
+
 
   devise_for :user,
              class_name: 'Spree::User',
@@ -42,6 +42,6 @@ Rails.application.routes.draw do
     resources :contacts, only: [:index, :destroy, :edit, :update]
   end
 
-  get '*slug', to: 'pages#show'
-
+  get '*slug', to: 'pages#show',
+    constraints: lambda { |request| !(request.path =~ /\/store.*/) }
 end
