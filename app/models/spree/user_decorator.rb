@@ -7,6 +7,9 @@ Spree::User.class_eval do
 
   belongs_to :school_district
 
+  has_many :completed_orders, ->{ where.not(completed_at: nil) }, class_name: 'Spree::Order'
+  has_many :products, through: :completed_orders, class_name: 'Spree::Product'
+
   accepts_nested_attributes_for :school_district, reject_if: proc { |attributes| attributes['name'].blank? }
 
   def name

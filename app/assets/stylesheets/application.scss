@@ -83,3 +83,12 @@ footer {
   padding: 4px 5px;
   border-bottom: 1px solid #444;
 }
+.video-product-wrapper.locked-product .video-product-image-wrapper {
+  width: 100px;
+  height: 100px;
+}
+.video-product-wrapper.locked-product .video-product-image-wrapper span.glyphicon {
+  display: block;
+  margin-top: calc(50% - 7px);
+  margin-left: calc(50% - 7px);
+}

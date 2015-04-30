@@ -1,0 +1,12 @@
+<div class="col-md-4">
+  <div class="video-product-wrapper locked-product">
+    <div class="video-product-image-wrapper">
+      <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+    </div>
+    <span class="video-product-name">
+      <%= truncate(video_product.name, length: 50) %>
+    </span>
+    <div class="video-product-grade"><%= video_product.grade.try(:name) %></div>
+    <div class="video-product-curriculum"><%= video_product.curriculum.try(:name) %></div>
+  </div>
+</div>

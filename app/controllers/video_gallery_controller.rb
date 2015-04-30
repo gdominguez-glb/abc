@@ -1,9 +1,13 @@
 class VideoGalleryController < ApplicationController
   before_action :load_filter_data, only: [:index]
 
+  helper_method :bought_product?
+
   def index
     @video_products = Spree::Product.videos.page(params[:page]).per(params[:per_page])
     @video_products = filter_video_products(@video_products)
+
+    @bought_product_ids = current_spree_user ? current_spree_user.products.where(id: @video_products.map(&:id)).pluck(:id) : []
   end
 
   def show
@@ -31,5 +35,9 @@ class VideoGalleryController < ApplicationController
       video_products = video_products.where(curriculum_id: params[:curriculum_id])
     end
     video_products
+  end
+
+  def bought_product?(product)
+    @bought_product_ids.include?(product.id)
   end
 end
