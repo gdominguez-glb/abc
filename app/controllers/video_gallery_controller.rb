@@ -21,6 +21,9 @@ class VideoGalleryController < ApplicationController
   end
 
   def filter_video_products(video_products)
+    if params[:query].present?
+      video_products = video_products.where("name like ?", "%#{params[:query]}%")
+    end
     if params[:grade_id].present?
       video_products = video_products.where(grade_id: params[:grade_id])
     end
