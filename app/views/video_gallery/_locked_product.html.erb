@@ -8,5 +8,15 @@
     </span>
     <div class="video-product-grade"><%= video_product.grade.try(:name) %></div>
     <div class="video-product-curriculum"><%= video_product.curriculum.try(:name) %></div>
+    <div class="video-product-drawer hide">
+      <button class="btn btn-default disabled">Subscription Required</button>
+      <%= truncate video_product.description, length: 100 %>
+      <% if video_product.description && video_product.description.length > 100 %>
+        <%= link_to 'MORE INFO', '#', class: 'more-info' %>
+      <% end %>
+      <%= link_to '#', class: 'btn btn-primary' do %>
+        Unlock Content
+      <% end %>
+    </div>
   </div>
 </div>
