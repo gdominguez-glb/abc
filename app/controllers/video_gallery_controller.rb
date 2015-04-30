@@ -11,11 +11,17 @@ class VideoGalleryController < ApplicationController
   end
 
   def show
-    @video_product = Spree::Product.videos.find_by(params[:slug])
+    @video_product = Spree::Product.videos.find_by(slug: params[:id])
   end
 
   def show_description
-    @video_product = Spree::Product.videos.find_by(params[:slug])
+    @video_product = Spree::Product.videos.find_by(slug: params[:id])
+  end
+
+  def play
+    if current_spree_user
+      @video_product = current_spree_user.products.find_by(slug: params[:id])
+    end
   end
 
   private

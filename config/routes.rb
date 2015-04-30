@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   resources :video_gallery, only: [:index, :show] do
     member do
       get :show_description
+      get :play
     end
   end
 
