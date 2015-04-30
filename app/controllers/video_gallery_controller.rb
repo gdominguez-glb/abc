@@ -14,6 +14,10 @@ class VideoGalleryController < ApplicationController
     @video_product = Spree::Product.videos.find_by(params[:slug])
   end
 
+  def show_description
+    @video_product = Spree::Product.videos.find_by(params[:slug])
+  end
+
   private
 
   def load_filter_data

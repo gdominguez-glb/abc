@@ -16,7 +16,11 @@ Rails.application.routes.draw do
   get 'contact', to: 'contact#index'
   post 'contact', to: 'contact#create'
 
-  resources :video_gallery, only: [:index, :show]
+  resources :video_gallery, only: [:index, :show] do
+    member do
+      get :show_description
+    end
+  end
 
   resources :account, only: [:index] do
     collection do

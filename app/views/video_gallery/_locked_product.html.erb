@@ -9,12 +9,12 @@
     <div class="video-product-grade"><%= video_product.grade.try(:name) %></div>
     <div class="video-product-curriculum"><%= video_product.curriculum.try(:name) %></div>
     <div class="video-product-drawer hide">
-      <button class="btn btn-default disabled">Subscription Required</button>
+      <button class="btn btn-default disabled" style="display: block;">Subscription Required</button>
       <%= truncate video_product.description, length: 100 %>
       <% if video_product.description && video_product.description.length > 100 %>
-        <%= link_to 'MORE INFO', '#', class: 'more-info' %>
+        <%= link_to 'MORE INFO', show_description_video_gallery_path(video_product), remote: true, class: 'more-info' %>
       <% end %>
-      <%= link_to '#', class: 'btn btn-primary' do %>
+      <%= link_to '#', class: 'btn btn-primary', style: 'display: block;' do %>
         Unlock Content
       <% end %>
     </div>
