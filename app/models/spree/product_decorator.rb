@@ -16,4 +16,8 @@ Spree::Product.class_eval do
   PRODUCT_TYPES.each do |product_type|
     scope product_type.underscore.pluralize, ->{ where(product_type: product_type) }
   end
+
+  def free?
+    price == 0
+  end
 end
