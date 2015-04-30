@@ -1,5 +1,5 @@
 <div class="col-md-4">
-  <div class="video-product-wrapper <%= 'locked-product' if locked_product %>">
+  <div class="video-product-wrapper">
     <div class="video-product-image-wrapper">
       <%= link_to small_image(video_product, itemprop: "image"), video_gallery_path(video_product), itemprop: 'url' %>
     </div>
@@ -8,5 +8,15 @@
     </span>
     <div class="video-product-grade"><%= video_product.grade.try(:name) %></div>
     <div class="video-product-curriculum"><%= video_product.curriculum.try(:name) %></div>
+    <div class="video-product-drawer hide">
+      <button class="btn btn-default disabled" style="display: block;"><%= video_product.curriculum.try(:name) %></button>
+      <%= truncate video_product.description, length: 100 %>
+      <% if video_product.description && video_product.description.length > 100 %>
+        <%= link_to 'MORE INFO', show_description_video_gallery_path(video_product), remote: true, class: 'more-info' %>
+      <% end %>
+      <%= link_to '#', class: 'btn btn-primary', style: 'display: block;' do %>
+        Add to Favorites
+      <% end %>
+    </div>
   </div>
 </div>
