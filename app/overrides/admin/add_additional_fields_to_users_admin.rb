@@ -30,8 +30,8 @@ Deface::Override.new(
             <%= error_message_on :user, :school_name %>
           <% end %>
 
-          <%= f.field_container :school_direct_id, class: ['form-group'] do %>
-            <%= f.label :school_direct, Spree.t(:school_direct) %>
+          <%= f.field_container :school_district_id, class: ['form-group'] do %>
+            <%= f.label :school_district, Spree.t(:school_district) %>
             <%= f.collection_select :school_district_id, SchoolDistrict.all, :id, :name, { prompt: true }, { class: 'form-control' } %>
             <%= error_message_on :user, :school_name %>
           <% end %>
