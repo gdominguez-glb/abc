@@ -6,10 +6,16 @@ Deface::Override.new(
     text: <<-DIV
       <div data-hook="admin_user_additional_fields_part1" class="row">
         <div class="col-md-6">
-          <%= f.field_container :name, class: ['form-group'] do %>
-            <%= f.label :name, Spree.t(:name) %>
-            <%= f.text_field :name, :class => 'form-control' %>
-            <%= error_message_on :user, :name %>
+          <%= f.field_container :first_name, class: ['form-group'] do %>
+            <%= f.label :first_name, Spree.t(:first_name) %>
+            <%= f.text_field :first_name, :class => 'form-control' %>
+            <%= error_message_on :user, :first_name %>
+          <% end %>
+
+          <%= f.field_container :last_name, class: ['form-group'] do %>
+            <%= f.label :last_name, Spree.t(:last_name) %>
+            <%= f.text_field :last_name, :class => 'form-control' %>
+            <%= error_message_on :user, :last_name %>
           <% end %>
 
           <%= f.field_container :address, class: ['form-group'] do %>
@@ -24,10 +30,12 @@ Deface::Override.new(
             <%= error_message_on :user, :school_name %>
           <% end %>
 
-          <%= f.field_container :receive_newsletter, class: ['form-group'] do %>
-            <%= f.label :receive_newsletter, Spree.t(:receive_newsletter) %>
-            <%= f.check_box :receive_newsletter, :class => 'form-control' %>
+          <%= f.field_container :school_direct_id, class: ['form-group'] do %>
+            <%= f.label :school_direct, Spree.t(:school_direct) %>
+            <%= f.collection_select :school_district_id, SchoolDistrict.all, :id, :name, { prompt: true }, { class: 'form-control' } %>
+            <%= error_message_on :user, :school_name %>
           <% end %>
+
         </div>
 
         <div data-hook="admin_user_additional_fields_part2" class="col-md-6">
@@ -47,6 +55,11 @@ Deface::Override.new(
             <%= f.label :heard_from, Spree.t(:heard_from) %>
             <%= f.text_field :heard_from, :class => 'form-control' %>
             <%= f.error_message_on :heard_from %>
+          <% end %>
+
+          <%= f.field_container :receive_newsletter, class: ['form-group'] do %>
+            <%= f.label :receive_newsletter, Spree.t(:receive_newsletter) %>
+            <%= f.check_box :receive_newsletter, :class => 'form-control' %>
           <% end %>
         </div>
       </div>

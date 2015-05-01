@@ -57,4 +57,7 @@ attachment_config.each do |key, value|
   Spree::Image.attachment_definitions[:attachment][key.to_sym] = value
 end
 
-Spree::PermittedAttributes.user_attributes.concat([:name, :address, :interested_subject, :interested_grade_level, :school_name, :heard_from, :receive_newsletter])
+Spree::PermittedAttributes.user_attributes.concat([
+  :first_name, :last_name, :address, :interested_subject, :interested_grade_level,
+  :school_name, :heard_from, :receive_newsletter, :school_district_id
+])
