@@ -10,7 +10,14 @@
  *= require spree/frontend/spree_digital
  *= require spree/frontend/spree_better_terms_and_conditions
 */
-
+body {
+  padding-top: 70px;
+  padding-bottom: 30px;
+}
+footer {
+  height: 270px;
+  background-color: #333333;
+}
 #signup-form-heading {
   text-align: center;
   padding-bottom: 20px;
