@@ -22,6 +22,7 @@ class VideoGalleryController < ApplicationController
     if current_spree_user
       @video_product = current_spree_user.products.find_by(slug: params[:id])
     end
+    @video_product ||= Spree::Product.free.find_by(slug: params[:id])
   end
 
   private

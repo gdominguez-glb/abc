@@ -6,6 +6,15 @@ Spree::Product.class_eval do
   belongs_to :grade, class_name: 'Spree::Grade'
   belongs_to :grade_unit, class_name: 'Spree::GradeUnit'
 
+  has_many :master_price, class_name: '', through: :master
+
+  scope :free, -> {
+    joins("join spree_variants on spree_variants.product_id = spree_products.id").
+    joins("join spree_prices on spree_prices.variant_id = spree_variants.id").
+    where({spree_variants: { deleted_at: nil, is_master: true}}).
+    where({spree_prices: { deleted_at: nil, amount: 0 }})
+  }
+
   PRODUCT_TYPES = [
     'Curriculum',
     'Video',
