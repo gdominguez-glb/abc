@@ -5,5 +5,5 @@
     </noscript>
     &nbsp;
   </li>
-  <script>Spree.fetch_cart()</script>
+  <script>if(typeof Spree !== 'undefined') { Spree.fetch_cart() }</script>
 </ul>
