@@ -15,7 +15,12 @@
       </span>
       <div class="video-product-grade"><%= @video_product.grade.try(:name) %></div>
       <div class="video-product-curriculum"><%= @video_product.curriculum.try(:name) %></div>
-      <%= @video_product.description %>
+      <p>
+        <%= @video_product.description %>
+      </p>
+      <%= link_to add_favorite_video_gallery_path(@video_product, ref_id: "#fav-button-#{@video_product.id}"), remote: true, class: "btn btn-primary #{'disabled' if !can_favorite_product?(@video_product)}", style: 'display: block;', id: "fav-button-#{@video_product.id}", data: { method: :post } do %>
+        Add to Favorites
+      <% end %>
     </div>
   </div>
 </div>

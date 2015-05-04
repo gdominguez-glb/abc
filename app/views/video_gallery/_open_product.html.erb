@@ -17,7 +17,7 @@
       <% if video_product.description && video_product.description.length > 100 %>
         <%= link_to 'MORE INFO', show_description_video_gallery_path(video_product), remote: true, class: 'more-info' %>
       <% end %>
-      <%= link_to '#', class: 'btn btn-primary', style: 'display: block;' do %>
+      <%= link_to add_favorite_video_gallery_path(video_product, ref_id: "#fav-button-#{video_product.id}"), remote: true, class: "btn btn-primary #{'disabled' if favorited_product?(video_product)}", style: 'display: block;', id: "fav-button-#{video_product.id}", data: { method: :post } do %>
         Add to Favorites
       <% end %>
     </div>

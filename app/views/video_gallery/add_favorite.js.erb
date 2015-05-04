@@ -1,0 +1,5 @@
+<% if @favorite_product %>
+  $("<%= params[:ref_id] %>").addClass('disabled');
+<% else %>
+  alert("Please log in first!")
+<% end %>
