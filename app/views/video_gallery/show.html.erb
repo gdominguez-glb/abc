@@ -1,8 +1,13 @@
-<div class="container">
+<div class="container" id="video-page">
   <%= link_to "< Back", video_gallery_index_path, class: 'btn btn-default' %>
   <div class="row">
     <div class="col-md-6">
-      <%= link_to large_image(@video_product, itemprop: "image"), video_gallery_path(@video_product), itemprop: 'url' %><br/>
+      <%= link_to large_image(@video_product, itemprop: "image"), video_gallery_path(@video_product), itemprop: 'url', class: 'video-image' %>
+      <% if can_play_video?(@video_product) %>
+        <%= link_to play_video_gallery_path(@video_product), remote: true, class: 'play-video-button' do %>
+          <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span>
+        <% end %>
+      <% end %>
     </div>
     <div class="col-md-6">
       <span class="video-product-name">
