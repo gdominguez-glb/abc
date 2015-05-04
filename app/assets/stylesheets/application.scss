@@ -108,3 +108,15 @@ footer {
 .video-toggler {
   margin-bottom: 10px;
 }
+.open-video {
+  display: block;
+}
+.play-video-button {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  z-index: 10000;
+}
+.video-product-wrapper:hover .open-video {
+  opacity: 0.5;
+}

@@ -2,7 +2,7 @@
   <div class="video-product-wrapper">
     <div class="video-product-image-wrapper">
       <%= link_to small_image(video_product, itemprop: "image"), video_gallery_path(video_product), itemprop: 'url', class: 'open-video' %>
-      <%= link_to play_video_gallery_path(video_product), remote: true do %>
+      <%= link_to play_video_gallery_path(video_product), remote: true, class: 'play-video-button hide' do %>
         <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span>
       <% end %>
     </div>

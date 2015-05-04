@@ -37,8 +37,10 @@
       })
       $(".video-product-wrapper").mouseover(function() {
         $(this).find('.video-product-drawer').removeClass('hide');
+        $(this).find('.play-video-button').removeClass('hide');
       }).mouseleave(function(){
         $(this).find('.video-product-drawer').addClass('hide');
+        $(this).find('.play-video-button').addClass('hide');
       });
     });
   <% end %>
