@@ -1,13 +1,3 @@
-Spree::Core::Engine.routes.prepend do
-  namespace :admin do
-    resources :curriculums do
-      collection do
-        post :update_positions
-      end
-    end
-  end
-end
-
 Deface::Override.new(
   virtual_path: "spree/admin/shared/sub_menu/_configuration",
   name: "add_curriculums_to_configurations",

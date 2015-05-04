@@ -26,6 +26,11 @@ module GreatMinds
       Dir.glob(File.join(File.dirname(__FILE__), "../app/overrides/**/*.rb")) do |c|
         Rails.configuration.cache_classes ? require(c) : load(c)
       end
+
+      # load spree routes overrides
+      File.join(File.dirname(__FILE__), "../config/spree_routes.rb").tap do |c|
+        Rails.configuration.cache_classes ? require(c) : load(c)
+      end
     end
 
     # Settings in config/environments/* take precedence over those specified here.

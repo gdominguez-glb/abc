@@ -23,7 +23,9 @@
             <td><%= product.name %></td>
             <td><%= product.license_length %></td>
             <td>
-              <%= link_to_edit product, no_text: true, class: 'edit' if can?(:edit, product) && !product.deleted? %>
+              <%= link_to edit_admin_product_path(product), no_text: true, class: 'btn btn-primary btn-sm icon-link with-tip action-edit no-text' do %>
+                <span class="icon icon-edit"></span>
+              <% end %>
             </td>
           </tr>
         <% end %>

@@ -1,21 +1,3 @@
-Spree::Core::Engine.routes.prepend do
-  namespace :admin do
-    resources :grades do
-      member do
-        get :grade_units_select
-      end
-      collection do
-        post :update_positions
-      end
-      resources :grade_units do
-        collection do
-          post :update_positions
-        end
-      end
-    end
-  end
-end
-
 Deface::Override.new(
   virtual_path: "spree/admin/shared/sub_menu/_configuration",
   name: "add_grades_to_configurations",

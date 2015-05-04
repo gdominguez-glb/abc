@@ -1,11 +1,3 @@
-Spree::Admin::ProductsController.class_eval do
-  before_action :load_curriculums, except: :index
-
-  def load_curriculums
-    @curriculums = Spree::Curriculum.order('position asc')
-  end
-end
-
 Deface::Override.new(
     virtual_path: "spree/admin/products/new",
     name: "add_curriculum_to_product_new",

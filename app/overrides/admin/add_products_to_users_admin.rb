@@ -1,13 +1,3 @@
-Spree::Core::Engine.routes.prepend do
-  namespace :admin do
-    resources :users do
-      member do
-        get :products
-      end
-    end
-  end
-end
-
 Deface::Override.new(
     virtual_path: "spree/admin/users/_sidebar",
     name: "add_products_to_admin_users_sidebar",
