@@ -6,10 +6,10 @@
       </div>
       <div class="modal-body">
         <div class="video-toggler">
-          <button class="btn btn-default btn-sm active" data-url="<%= @video_product.vimeo_url %>">Vimeo</button>
-          <button class="btn btn-default btn-sm" data-url="<%= @video_product.youtube_url %>">Youtube</button>
+          <button class="btn btn-default btn-sm <%= 'active' if preference_video_player == 'vimeo' %>" data-player="vimeo" data-url="<%= @video_product.vimeo_url %>">Vimeo</button>
+          <button class="btn btn-default btn-sm <%= 'active' if preference_video_player == 'youtube' %>" data-player="youtube" data-url="<%= @video_product.youtube_url %>">Youtube</button>
         </div>
-        <iframe src="<%= @video_product.vimeo_url %>" width="850" height="540" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+        <iframe src="<%= preference_video_player == 'vimeo' ? @video_product.vimeo_url : @video_product.youtube_url %>" width="850" height="540" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
       </div>
     </div>
   </div>
@@ -18,10 +18,18 @@
   $(function() {
     $(".video-toggler button").click(function() {
       var video_url = $(this).attr('data-url');
+      var player = $(this).attr('data-player');
+
       $(this).parent().find('button').removeClass('active');
       $(this).addClass('active');
       $(this).parent().next('iframe').attr('src', video_url);
       $(this).blur();
+
+      $.ajax({
+        url: '/video_gallery/set_player',
+        type: 'POST',
+        data: { player: player }
+      })
     });
   });
 <% end %>

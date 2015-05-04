@@ -1,7 +1,7 @@
 class VideoGalleryController < ApplicationController
   before_action :load_filter_data, only: [:index]
 
-  helper_method :bought_product?
+  helper_method :bought_product?, :preference_video_player
 
   def index
     @video_products = Spree::Product.videos.page(params[:page]).per(params[:per_page])
@@ -23,6 +23,15 @@ class VideoGalleryController < ApplicationController
       @video_product = current_spree_user.products.find_by(slug: params[:id])
     end
     @video_product ||= Spree::Product.free.find_by(slug: params[:id])
+  end
+
+  def set_player
+    if current_spree_user
+      current_spree_user.update(preference_video_player: params[:player])
+    else
+      session[:preference_video_player] = params[:player]
+    end
+    render nothing: true
   end
 
   private
@@ -50,5 +59,9 @@ class VideoGalleryController < ApplicationController
 
   def bought_product?(product)
     @bought_product_ids.include?(product.id)
+  end
+
+  def preference_video_player
+    (spree_current_user.blank? ? session[:preference_video_player] : spree_current_user.preference_video_player) || 'vimeo'
   end
 end

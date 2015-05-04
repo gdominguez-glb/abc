@@ -21,6 +21,9 @@ Rails.application.routes.draw do
       get :show_description
       get :play
     end
+    collection do
+      post :set_player
+    end
   end
 
   resources :account, only: [:index] do
