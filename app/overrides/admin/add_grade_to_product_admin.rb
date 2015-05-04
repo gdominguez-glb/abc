@@ -1,11 +1,3 @@
-Spree::Admin::ProductsController.class_eval do
-  before_action :load_grades, except: :index
-
-  def load_grades
-    @grades = Spree::Grade.order('position asc')
-  end
-end
-
 if !defined?(CASCADE_GRADE_JS)
   CASCADE_GRADE_JS = <<-JS
     <script type="text/javascript">

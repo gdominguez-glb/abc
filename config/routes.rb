@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   mount Spree::Core::Engine, at: '/store'
 
-
   devise_for :user,
              class_name: 'Spree::User',
              controllers: {
