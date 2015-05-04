@@ -1,0 +1,5 @@
+$("body").append("<%= escape_javascript(render 'description_modal') %>");
+$(".video-product-description-modal-<%= @video_product.id %>").on("hidden.bs.modal", function() {
+  $(".video-product-description-modal-<%= @video_product.id %>").remove();
+})
+$(".video-product-description-modal-<%= @video_product.id %>").modal('show');

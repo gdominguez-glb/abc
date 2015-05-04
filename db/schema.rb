@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150429070414) do
+ActiveRecord::Schema.define(version: 20150504080751) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -220,6 +220,13 @@ ActiveRecord::Schema.define(version: 20150429070414) do
 
   add_index "spree_digitals", ["variant_id"], name: "index_spree_digitals_on_variant_id", using: :btree
 
+  create_table "spree_favorite_products", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "spree_gateways", force: :cascade do |t|
     t.string   "type"
     t.string   "name"
@@ -249,9 +256,9 @@ ActiveRecord::Schema.define(version: 20150429070414) do
     t.string   "name"
     t.string   "abbr"
     t.string   "school"
-    t.integer  "position",   default: 0
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.integer  "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.datetime "deleted_at"
   end
 
@@ -505,6 +512,8 @@ ActiveRecord::Schema.define(version: 20150429070414) do
     t.integer  "grade_id"
     t.integer  "grade_unit_id"
     t.string   "product_type"
+    t.string   "youtube_url"
+    t.string   "vimeo_url"
   end
 
   add_index "spree_products", ["available_on"], name: "index_spree_products_on_available_on", using: :btree
@@ -1014,15 +1023,15 @@ ActiveRecord::Schema.define(version: 20150429070414) do
   add_index "spree_trackers", ["active"], name: "index_spree_trackers_on_active", using: :btree
 
   create_table "spree_users", force: :cascade do |t|
-    t.string   "encrypted_password",     limit: 128
-    t.string   "password_salt",          limit: 128
+    t.string   "encrypted_password",      limit: 128
+    t.string   "password_salt",           limit: 128
     t.string   "email"
     t.string   "remember_token"
     t.string   "persistence_token"
     t.string   "reset_password_token"
     t.string   "perishable_token"
-    t.integer  "sign_in_count",                      default: 0, null: false
-    t.integer  "failed_attempts",                    default: 0, null: false
+    t.integer  "sign_in_count",                       default: 0, null: false
+    t.integer  "failed_attempts",                     default: 0, null: false
     t.datetime "last_request_at"
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
@@ -1035,9 +1044,9 @@ ActiveRecord::Schema.define(version: 20150429070414) do
     t.string   "unlock_token"
     t.datetime "locked_at"
     t.datetime "reset_password_sent_at"
-    t.datetime "created_at",                                     null: false
-    t.datetime "updated_at",                                     null: false
-    t.string   "spree_api_key",          limit: 48
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
+    t.string   "spree_api_key",           limit: 48
     t.datetime "remember_created_at"
     t.datetime "deleted_at"
     t.string   "confirmation_token"
@@ -1052,6 +1061,7 @@ ActiveRecord::Schema.define(version: 20150429070414) do
     t.string   "first_name"
     t.string   "last_name"
     t.integer  "school_district_id"
+    t.string   "preference_video_player"
   end
 
   add_index "spree_users", ["deleted_at"], name: "index_spree_users_on_deleted_at", using: :btree

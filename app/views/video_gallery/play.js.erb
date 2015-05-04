@@ -1,0 +1,9 @@
+<% if @video_product %>
+  $("body").append("<%= escape_javascript(render 'video_modal') %>");
+  $(".video-product-play-modal-<%= @video_product.id %>").on("hidden.bs.modal", function() {
+    $(".video-product-play-modal-<%= @video_product.id %>").remove();
+  })
+  $(".video-product-play-modal-<%= @video_product.id %>").modal('show');
+<% else %>
+  alert('Please buy the video first!')
+<% end %>

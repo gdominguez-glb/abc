@@ -83,3 +83,47 @@ footer {
   padding: 4px 5px;
   border-bottom: 1px solid #444;
 }
+.video-product-wrapper.locked-product .video-product-image-wrapper {
+  width: 100px;
+  height: 100px;
+}
+.video-product-wrapper.locked-product .video-product-image-wrapper span.glyphicon {
+  display: block;
+  margin-top: calc(50% - 7px);
+  margin-left: calc(50% - 7px);
+}
+.video-product-wrapper {
+  position: relative;
+}
+.video-product-wrapper .video-product-drawer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  right: -100%;
+  top: 0;
+}
+.video-product-description-modal .modal-content {
+  padding: 10px 20px;
+}
+.video-toggler {
+  margin-bottom: 10px;
+}
+.open-video {
+  display: block;
+}
+.play-video-button {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  z-index: 10000;
+}
+.video-product-wrapper:hover .open-video {
+  opacity: 0.5;
+}
+#video-page .video-image {
+  opacity: 0.5;
+}
+#video-page .play-video-button {
+  top: 150px;
+  left: 150px;
+}
