@@ -22,6 +22,8 @@ Rails.application.routes.draw do
       post :add_favorite
     end
     collection do
+      get :s3_videos
+      get :hosting_videos
       post :set_player
     end
   end
