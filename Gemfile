@@ -35,6 +35,8 @@ gem 'kaminari'
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'sidekiq'
 
+gem "mediaelement_rails"
+
 group :development do
   gem 'pry'
   gem 'spring'

@@ -14,4 +14,5 @@
 //= require bootstrap-sprockets
 //= require jquery_ujs
 //= require zeroclipboard
+//= require mediaelement_rails
 //= require_tree .
