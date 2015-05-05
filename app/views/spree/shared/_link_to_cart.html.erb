@@ -1,0 +1,36 @@
+<% if simple_current_order.item_count > 0 %>
+  <% 
+      text = text ? h(text) : Spree.t('cart')
+      css_class = nil
+
+      if simple_current_order.nil? or simple_current_order.item_count.zero?
+        text = "<span class='glyphicon glyphicon-shopping-cart'></span> #{text}: (#{Spree.t('empty')})"
+        css_class = 'empty'
+      else
+        text = "<span class='glyphicon glyphicon-shopping-cart'></span> #{text}: (#{simple_current_order.item_count})  <span class='amount'>#{simple_current_order.display_total.to_html}</span>"
+        css_class = 'full'
+      end
+  %>
+  <%= link_to spree.cart_path, :class => "cart-info #{css_class}" do %>
+    <%= text.html_safe %>
+  <% end %>
+  <div class="gm-order-info-popup">
+    <table>
+      <% simple_current_order.line_items.each do |line_item| %>
+        <% variant = line_item.variant %>
+        <tr>
+          <td><%= link_to line_item.name, product_path(variant.product) %></td>
+          <td><%= line_item.single_money.to_html %></td>
+          <td><%= line_item.quantity %></td>
+        </tr>
+      <% end %>
+      <tr class="total-row">
+        <td>Total</td>
+        <td colspan="2"><%= simple_current_order.display_total %></td>
+      </tr>
+    </table>
+    <div>
+      <%= link_to "Proceed to checkout", spree.cart_path, class: 'btn btn-primary proceed-button' %>
+    </div>
+  </div>
+<% end %>
