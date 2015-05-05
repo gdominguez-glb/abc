@@ -1,0 +1,24 @@
+<%= form_for simple_current_order, url: update_simple_cart_path, html: { id: 'simple-update-cart' } do |order_form| %>
+  <table>
+    <% simple_current_order.line_items.each do |line_item| %>
+      <% variant = line_item.variant %>
+      <tr class="line-item">
+        <td><%= link_to line_item.name, product_path(variant.product) %></td>
+        <td><%= line_item.single_money.to_html %></td>
+        <td>X</td>
+        <td>
+          <%= order_form.fields_for :line_items, line_item do |item_form| %>
+            <%= item_form.number_field :quantity, min: 0, class: "form-control line_item_quantity", size: 5 %>
+          <% end %>
+        </td>
+        <td class="cart-item-delete" data-hook="cart_item_delete">
+          <%= link_to content_tag(:span, '', class: 'glyphicon glyphicon-minus-sign'), '#', class: 'delete', id: "delete_#{dom_id(line_item)}" %>
+        </td>
+      </tr>
+    <% end %>
+    <tr class="total-row">
+      <td>Total</td>
+      <td colspan="4"><%= simple_current_order.display_total %></td>
+    </tr>
+  </table>
+<% end %>
