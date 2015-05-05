@@ -576,6 +576,7 @@ DEPENDENCIES
   database_cleaner (~> 1.4.1)
   factory_girl_rails (~> 4.5.0)
   figaro
+  httparty
   jbuilder (~> 2.0)
   jquery-rails
   kaminari
