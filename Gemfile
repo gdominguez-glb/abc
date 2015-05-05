@@ -37,6 +37,8 @@ gem 'sidekiq'
 
 gem "mediaelement_rails"
 
+gem 'httparty', require: false
+
 group :development do
   gem 'pry'
   gem 'spring'
