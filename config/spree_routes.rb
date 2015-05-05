@@ -26,4 +26,5 @@ Spree::Core::Engine.routes.prepend do
       end
     end
   end
+  patch '/simple_cart', :to => 'orders#update_simple_cart', :as => :update_simple_cart
 end
