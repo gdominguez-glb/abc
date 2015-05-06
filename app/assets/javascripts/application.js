@@ -13,6 +13,7 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require jquery_ujs
+//= require jquery.validate
 //= require zeroclipboard
 //= require mediaelement_rails
 //= require_tree .
