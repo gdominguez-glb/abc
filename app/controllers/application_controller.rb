@@ -11,9 +11,10 @@ class ApplicationController < ActionController::Base
     redirect_to :root, alert: exception.message
   end
 
-  if Rails.env.qa? || Rails.env.staging?
-    http_basic_authenticate_with name: "greatminds", password: "intridea4gm"
-  end
+  # comment for video demo
+  # if Rails.env.qa? || Rails.env.staging?
+  #   http_basic_authenticate_with name: "greatminds", password: "intridea4gm"
+  # end
 
   protected
 
