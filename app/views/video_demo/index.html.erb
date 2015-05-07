@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <title>Video Demo</title>
+    <%= javascript_include_tag 'application' %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <h2>s3 video</h2>
+        <video class="mejs-player" src="http://s3.amazonaws.com/greatminds-development/documents/attachments/000/000/006/original/GPKM3_TH_L42-SD.mp4?1430828392" width="500" height="400"></video>
+      </div>
+      <div class="row">
+        <h2>Hosting video</h2>
+        <video class="mejs-player" src="/gpkm3_th_l42_sd.mp4" width="500" height="400"></video>
+      </div>
+      <div class="row">
+        <h2>Vimeo video</h2>
+        <iframe src="//player.vimeo.com/video/126161412" width="850" height="540" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
+      </div>
+      <div class="row">
+        <h2>Youtube video</h2>
+        <iframe src="https://www.youtube.com/embed/-KpA-PwLA1s" width="850" height="540" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
+      </div>
+    </div>
+  </body>
+</html>
