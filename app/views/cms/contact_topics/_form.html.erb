@@ -1,0 +1,7 @@
+<%= form_for [:cms, @contact_topic], class: 'form' do |f| %>
+  <div class="form-group">
+    <label for="name">Name</label>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+  <%= f.submit class: 'btn btn-primary' %>
+<% end %>

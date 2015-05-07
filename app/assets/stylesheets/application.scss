@@ -131,3 +131,28 @@ footer {
 .contact-header {
   text-align: center;
 }
+tr.dragged {
+  background: #eee;
+}
+tr.placeholder {
+  background: #ddd;
+  height: 5px;
+}
+body.dragging, body.dragging * {
+  cursor: move !important;
+}
+
+.dragged {
+  position: absolute;
+  opacity: 0.5;
+  z-index: 2000;
+}
+
+table.contact-topics-list tr.placeholder {
+  position: relative;
+  /** More li styles **/
+}
+table.contact-topics-list tr.placeholder:before {
+  position: absolute;
+  /** Define arrowhead **/
+}

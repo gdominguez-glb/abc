@@ -50,6 +50,11 @@ Rails.application.routes.draw do
     resources :pages
     resources :documents
     resources :contacts, only: [:index, :destroy, :edit, :update]
+    resources :contact_topics do
+      collection do
+        post :update_positions
+      end
+    end
   end
 
   get '*slug', to: 'pages#show',
