@@ -35,7 +35,7 @@
           <div class="row">
             <div class="col-md-6">
               <label for="topic">Topic</label>
-              <select id="topic" name="topic" class="form-control"><option value=""></option></select>
+              <%= select_tag :topic, options_for_select(@topics), prompt: "Select a Topic", class: 'form-control' %>
             </div>
             <div class="col-md-6">
               <div class="form-group">

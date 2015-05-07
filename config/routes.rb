@@ -13,7 +13,6 @@ Rails.application.routes.draw do
                          }
 
   get 'contact', to: 'contact#index'
-  post 'contact', to: 'contact#create'
 
   resources :video_gallery, only: [:index, :show] do
     member do
