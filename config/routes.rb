@@ -13,7 +13,6 @@ Rails.application.routes.draw do
                          }
 
   get 'contact', to: 'contact#index'
-  post 'contact', to: 'contact#create'
 
   get 'video_demo', to: 'video_demo#index'
 
@@ -52,6 +51,11 @@ Rails.application.routes.draw do
     resources :pages
     resources :documents
     resources :contacts, only: [:index, :destroy, :edit, :update]
+    resources :contact_topics do
+      collection do
+        post :update_positions
+      end
+    end
   end
 
   get '*slug', to: 'pages#show',
