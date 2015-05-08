@@ -17,14 +17,12 @@ module GreatMinds
   class Application < Rails::Application
 
     config.to_prepare do
-      # Load application's model / class decorators
-      Dir.glob(File.join(File.dirname(__FILE__), "../app/**/*_decorator*.rb")) do |c|
-        Rails.configuration.cache_classes ? require(c) : load(c)
-      end
 
-      # Load application's view overrides
-      Dir.glob(File.join(File.dirname(__FILE__), "../app/overrides/**/*.rb")) do |c|
-        Rails.configuration.cache_classes ? require(c) : load(c)
+      # load spree overrides/decorator
+      ["../app/**/*_decorator*.rb", "../app/overrides/**/*.rb", ].each do |dir|
+        Dir.glob(File.join(File.dirname(__FILE__), dir)) do |c|
+          Rails.configuration.cache_classes ? require(c) : load(c)
+        end
       end
 
       # load spree routes overrides
