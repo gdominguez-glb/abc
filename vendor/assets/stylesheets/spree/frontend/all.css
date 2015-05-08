@@ -9,6 +9,7 @@
  *= require_tree .
  *= require spree/frontend/spree_digital
  *= require spree/frontend/spree_better_terms_and_conditions
+ *= require link_to_cart
 */
 body {
   padding-top: 70px;
@@ -47,28 +48,4 @@ footer {
 .signup-link-wrapper {
   background: #ccc;
   padding: 20px 0;
-}
-#link-to-cart {
-  position: relative;
-}
-#link-to-cart .gm-order-info-popup {
-  position: absolute;
-  width: 300px;
-  top: 50px;
-  right: 0;
-  display: none;
-  background: #ccc;
-}
-#link-to-cart:hover .gm-order-info-popup {
-  display: block;
-}
-#link-to-cart .gm-order-info-popup table tr td {
-  padding: 5px 10px;
-}
-#link-to-cart .gm-order-info-popup table tr.total-row {
-  background: #eee;
-}
-#link-to-cart .gm-order-info-popup .proceed-button {
-  margin: 5px 10%;
-  width: 80%;
 }

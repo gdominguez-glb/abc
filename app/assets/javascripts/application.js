@@ -18,3 +18,15 @@
 //= require jquery-sortable
 //= require mediaelement_rails
 //= require_tree .
+
+Gm = {
+  fetch_cart: function() {
+    $.ajax({
+        url: '/store/cart_link',
+        type: 'GET',
+        success: function(result) {
+          $("#link-to-cart").html(result);
+        }
+    })
+  }
+};
