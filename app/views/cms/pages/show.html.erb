@@ -1,56 +1,37 @@
 <%= render 'cms_nav' %>
 <div class="col-md-9">
-  <section>
-    <div class='row'>
-      <p id="notice"><%= notice %></p>
+  <dl class="dl-horizontal">
+    <dt>Title</dt>
+    <dd><%= @page.title %></dd>
 
-      <p>
-        <strong>Title:</strong>
-        <%= @page.title %>
-      </p>
+    <dt>Seo content</dt>
+    <dd><%= @page.seo_content %></dd>
 
-      <p>
-        <strong>Seo content:</strong>
-        <%= @page.seo_content %>
-      </p>
+    <dt>Slug</dt>
+    <dd><%= @page.slug %></dd>
 
-      <p>
-        <strong>Slug:</strong>
-        <%= @page.slug %>
-      </p>
+    <dt>Group name</dt>
+    <dd><%= @page.group_name %></dd>
 
-      <p>
-        <strong>Group name:</strong>
-        <%= @page.group_name %>
-      </p>
+    <dt>Sub group name</dt>
+    <dd><%= @page.sub_group_name %></dd>
 
-      <p>
-        <strong>Sub group name:</strong>
-        <%= @page.sub_group_name %>
-      </p>
+    <dt>Position</dt>
+    <dd><%= @page.position %></dd>
 
-      <p>
-        <strong>Position:</strong>
-        <%= @page.position %>
-      </p>
+    <dt>Layout</dt>
+    <dd><%= @page.layout %></dd>
 
-      <p>
-        <strong>Layout:</strong>
-        <%= @page.layout %>
-      </p>
+    <dt>Body</dt>
+    <dd><%= @page.body %></dd>
 
-      <p>
-        <strong>Body:</strong>
-        <%= @page.body %>
-      </p>
+    <dt>Visible</dt>
+    <dd><%= @page.visible %></dd>
 
-      <p>
-        <strong>Visible:</strong>
-        <%= @page.visible %>
-      </p>
-
-      <%= link_to 'Edit', edit_cms_page_path(@page), class: 'btn btn-default' %> |
+    <dt></dt>
+    <dd>
+      <%= link_to 'Edit', edit_cms_page_path(@page), class: 'btn btn-default' %>
       <%= link_to 'Back', cms_pages_path, class: 'btn btn-default' %>
-    </div>
-  </section>
+    </dd>
+  </dl>
 </div>
