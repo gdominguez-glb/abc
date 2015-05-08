@@ -13,6 +13,14 @@ Spree::User.class_eval do
 
   accepts_nested_attributes_for :school_district, reject_if: proc { |attributes| attributes['name'].blank? }
 
+  before_create :assign_user_role
+
+  def assign_user_role
+    unless spree_roles.present?
+      spree_roles << Spree::Role.where(name: 'user').first
+    end
+  end
+
   def name
     "#{first_name} #{last_name}"
   end
