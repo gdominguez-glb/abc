@@ -1,18 +1,17 @@
-<% 
-    text = text ? h(text) : Spree.t('cart')
-    css_class = nil
+<% if simple_current_order.nil? or simple_current_order.item_count.zero? %>
+  $("li#link-to-cart").html('');
+<% else %>
+  <%
+      text = text ? h(text) : Spree.t('cart')
+      css_class = nil
 
-    if simple_current_order.nil? or simple_current_order.item_count.zero?
-      text = "<span class='glyphicon glyphicon-shopping-cart'></span> #{text}: (#{Spree.t('empty')})"
-      css_class = 'empty'
-    else
       text = "<span class='glyphicon glyphicon-shopping-cart'></span> #{text}: (#{simple_current_order.item_count})  <span class='amount'>#{simple_current_order.display_total.to_html}</span>"
       css_class = 'full'
-    end
-%>
+  %>
 
-$("#link-to-cart .cart-info").html("<%= escape_javascript(text.html_safe) %>");
+  $("#link-to-cart .cart-info").html("<%= escape_javascript(text.html_safe) %>");
 
-$("#simple-update-cart").replaceWith("<%= escape_javascript(render 'simple_order_form') %>");
+  $("#simple-update-cart").replaceWith("<%= escape_javascript(render 'simple_order_form') %>");
 
-Spree.bindSimpleCartEvents();
+  Spree.bindSimpleCartEvents();
+<% end %>
