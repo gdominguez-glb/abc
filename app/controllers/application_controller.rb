@@ -23,4 +23,10 @@ class ApplicationController < ActionController::Base
       redirect_to root_path, notice: "Please log in first."
     end
   end
+
+  def authenticate_school_admin!
+    unless (spree_current_user && spree_current_user.has_school_admin_role?)
+      redirect_to root_path, notice: "Please log in as school admin."
+    end
+  end
 end

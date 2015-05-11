@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150507022123) do
+ActiveRecord::Schema.define(version: 20150511014432) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -290,8 +290,9 @@ ActiveRecord::Schema.define(version: 20150507022123) do
     t.integer  "product_id"
     t.integer  "order_id"
     t.datetime "expire_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "quantity",   default: 0
   end
 
   create_table "spree_line_items", force: :cascade do |t|
@@ -481,6 +482,17 @@ ActiveRecord::Schema.define(version: 20150507022123) do
 
   add_index "spree_prices", ["deleted_at"], name: "index_spree_prices_on_deleted_at", using: :btree
   add_index "spree_prices", ["variant_id", "currency"], name: "index_spree_prices_on_variant_id_and_currency", using: :btree
+
+  create_table "spree_product_distributions", force: :cascade do |t|
+    t.integer  "licensed_product_id"
+    t.integer  "from_user_id"
+    t.integer  "to_user_id"
+    t.integer  "quantity"
+    t.string   "email"
+    t.integer  "product_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
 
   create_table "spree_product_option_types", force: :cascade do |t|
     t.integer  "position"

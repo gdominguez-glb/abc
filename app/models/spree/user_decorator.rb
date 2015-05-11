@@ -16,9 +16,19 @@ Spree::User.class_eval do
   before_create :assign_user_role
 
   def assign_user_role
-    unless spree_roles.present?
-      spree_roles << Spree::Role.where(name: 'user').first
+    if spree_roles.empty?
+      spree_roles << Spree::Role.user
     end
+  end
+
+  def assign_school_admin_role
+    if !has_school_admin_role?
+      spree_roles << Spree::Role.school_admin
+    end
+  end
+
+  def has_school_admin_role?
+    spree_roles.where(id: Spree::Role.school_admin.id).count > 0
   end
 
   def name
