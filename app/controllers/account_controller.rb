@@ -1,5 +1,6 @@
 class AccountController < ApplicationController
   before_action :authenticate_user!
+  before_action :authenticate_school_admin!, only: [:admin]
 
   def index
   end
