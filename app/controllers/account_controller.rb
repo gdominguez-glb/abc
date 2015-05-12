@@ -22,6 +22,6 @@ class AccountController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :address, :interested_subject, :interested_grade_level, :school_name, :heard_from)
+    params.require(:user).permit(:first_name, :last_name, :address, :interested_subject, :interested_grade_level, :school_name, :heard_from)
   end
 end
