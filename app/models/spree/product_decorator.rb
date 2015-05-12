@@ -15,12 +15,14 @@ Spree::Product.class_eval do
     where({spree_prices: { deleted_at: nil, amount: 0 }})
   }
 
-  PRODUCT_TYPES = [
-    'Curriculum',
-    'Video',
-    'Pdf',
-    'Other'
-  ]
+  if !defined?(PRODUCT_TYPES)
+    PRODUCT_TYPES = [
+      'Curriculum',
+      'Video',
+      'Pdf',
+      'Other'
+    ]
+  end
 
   PRODUCT_TYPES.each do |product_type|
     scope product_type.underscore.pluralize, ->{ where(product_type: product_type) }

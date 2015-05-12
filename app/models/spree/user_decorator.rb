@@ -31,12 +31,7 @@ Spree::User.class_eval do
     spree_roles.where(id: Spree::Role.school_admin.id).count > 0
   end
 
-  def name
-    "#{first_name} #{last_name}"
-  end
-
-  def name=(new_name)
-    self.first_name = new_name.split(' ').first
-    self.last_name = new_name.split(' ').last
+  def full_name
+    [first_name, last_name].compact.join(' ')
   end
 end
