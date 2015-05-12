@@ -1,0 +1,6 @@
+<%= @distribution.from_user.full_name %> just disributed license to you.
+<% if @distribution.to_user %>
+  Log in to checkout.
+<% else %>
+  Register new account to checkout.
+<% end %>
