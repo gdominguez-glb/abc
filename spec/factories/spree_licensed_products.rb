@@ -1,9 +1,11 @@
 FactoryGirl.define do
+  sequence :email do |n|
+    "person#{n}@example.com"
+  end
+
   factory :spree_licensed_product, :class => 'Spree::LicensedProduct' do
-    user_id 1
-    product_id 1
-    order_id 1
-    expire_at "2015-05-06 20:23:50"
+    user { create(:user, email: generate(:email), first_name: 'John', last_name: 'Doe', school_district: create(:school_district)) }
+    product
   end
 
 end
