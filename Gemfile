@@ -40,6 +40,7 @@ gem "mediaelement_rails"
 gem 'httparty', require: false
 
 group :development do
+  gem 'spring'
   gem 'pry'
   gem 'quiet_assets'
   gem 'letter_opener'
