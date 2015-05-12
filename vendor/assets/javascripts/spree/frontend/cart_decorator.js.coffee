@@ -12,7 +12,8 @@ Spree.bindSimpleCartEvents  = ->
       submitForm(($ this).parents('form').first())
 
     ($ 'form#simple-update-cart a.delete').unbind('click')
-    ($ 'form#simple-update-cart a.delete').bind 'click', ->
+    ($ 'form#simple-update-cart a.delete').bind 'click', (e)->
+      e.preventDefault()
       ($ this).parents('.line-item').first().find('input.line_item_quantity').val 0
       submitForm(($ this).parents('form').first())
 
