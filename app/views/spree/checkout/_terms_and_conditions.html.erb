@@ -2,7 +2,7 @@
   <h4><%= Spree.t('terms_and_conditions.title') %></h4>
 
   <div class="terms_and_conditions_text">
-    <%= @current_order.products.first.license_text %>
+    <%= simple_format @current_order.products.first.license_text %>
   </div>
 
   <div style="margin-top: 5px;">
