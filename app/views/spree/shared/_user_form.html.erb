@@ -30,10 +30,18 @@
   <div class="row">
     <div class="col-md-6">
       <div class="form-group">
-        <label>Select School District</label>
-        <%= f.collection_select :school_district_id, SchoolDistrict.all, :id, :name, { prompt: true }, { class: 'form-control' } %>
+        <label>Select your Role</label>
+        <%= f.select :title, options_for_select(Spree::User::TITLES), { prompt: 'Please select your role' }, { class: 'form-control' } %>
       </div>
     </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Select School District</label>
+        <%= f.collection_select :school_district_id, SchoolDistrict.all, :id, :name, { prompt: 'Please select your district' }, { class: 'form-control' } %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
     <div class="col-md-6">
       <div class="form-group">
         <label>Add District Name</label>
@@ -46,14 +54,14 @@
         </div>
       </div>
     </div>
-  </div>
-  <div class="row school-district-control">
-    <div class="col-md-6">
+    <div class="col-md-6 school-district-control">
       <label>District State</label>
       <%= f.fields_for :school_district do |school_district_form| %>
         <%= school_district_form.collection_select :state_id, Spree::Country.find_by(iso: 'US').states, :id, :name, { prompt: true } , { class: 'form-control' } %>
       <% end %>
     </div>
+  </div>
+  <div class="row school-district-control">
     <div class="col-md-6">
       <label>Is this a school or a district</label>
       <div class="radio">
