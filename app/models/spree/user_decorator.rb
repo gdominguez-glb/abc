@@ -34,4 +34,8 @@ Spree::User.class_eval do
   def full_name
     [first_name, last_name].compact.join(' ')
   end
+
+  if !defined?(TITLES)
+    TITLES = ['Educator', 'Administrator', 'Purchaser', 'Parent']
+  end
 end
