@@ -10,3 +10,10 @@ from_email: "web.admin@greatminds.net"
 DOMAIN: "gm-development.intridea.com"
 
 VIMEO_ACCESS_TOKEN: "2e5b8398384dfc31f88974c97dd12eb4"
+
+salesforce_client_id: ''
+salesforce_client_secret: ''
+
+salesforce_username: ''
+salesforce_password: ''
+salesforce_security_token: ''
