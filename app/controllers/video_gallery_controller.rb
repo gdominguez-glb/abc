@@ -56,9 +56,9 @@ class VideoGalleryController < ApplicationController
     if params[:query].present?
       video_products = video_products.where("name like ?", "%#{params[:query]}%")
     end
-    if params[:taxon_id].present?
-      @taxon = Spree::Taxon.friendly.find(params[:taxon_id])
-      video_products = video_products.in_taxon(@taxon) if @taxon
+    if params[:taxon_ids].present?
+      taxons = Spree::Taxon.where(id: params[:taxon_ids])
+      video_products = video_products.in_taxons(taxons) if !taxons.empty?
     end
     video_products
   end

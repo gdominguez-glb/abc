@@ -15,6 +15,12 @@ Spree::Product.class_eval do
     where({spree_prices: { deleted_at: nil, amount: 0 }})
   }
 
+  add_search_scope :in_taxons do |taxons|
+    includes(:classifications).
+    where("spree_products_taxons.taxon_id" => taxons.map{ |taxon| taxon.self_and_descendants.pluck(:id) }.flatten ).
+    order("spree_products_taxons.position ASC")
+  end
+
   if !defined?(PRODUCT_TYPES)
     PRODUCT_TYPES = [
       'Curriculum',
