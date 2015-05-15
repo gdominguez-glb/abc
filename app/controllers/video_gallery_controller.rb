@@ -1,5 +1,6 @@
 class VideoGalleryController < ApplicationController
   before_action :load_filter_data, only: [:index]
+  before_action :find_video_product, only: [:show, :show_description]
 
   helper_method :bought_product?, :preference_video_player, :can_play_video?, :favorited_product?, :can_favorite_product?
 
@@ -15,11 +16,9 @@ class VideoGalleryController < ApplicationController
   end
 
   def show
-    @video_product = Spree::Product.videos.find_by(slug: params[:id])
   end
 
   def show_description
-    @video_product = Spree::Product.videos.find_by(slug: params[:id])
   end
 
   def play
@@ -46,6 +45,10 @@ class VideoGalleryController < ApplicationController
   end
 
   private
+
+  def find_video_product
+    @video_product = Spree::Product.videos.find_by(slug: params[:id])
+  end
 
   def load_filter_data
     @grades = Spree::Grade.order('position asc')

@@ -3,7 +3,7 @@
     <div class="col-md-3">
       <div class="video-gallery-side">
         <%= form_tag '', method: :get, class: 'side-search-form' do %>
-          <% Array.new(params[:taxon_ids]).each do |taxon_id| %>
+          <% params[:taxon_ids].each do |taxon_id| %>
             <%= hidden_field_tag "taxon_ids[]", taxon_id %>
           <% end %>
           <div class="form-group">
