@@ -1,9 +1,12 @@
 class VideoGalleryController < ApplicationController
-  before_action :load_filter_data, only: [:index]
+  before_action :find_video_product, only: [:show, :show_description]
 
   helper_method :bought_product?, :preference_video_player, :can_play_video?, :favorited_product?, :can_favorite_product?
 
   def index
+    params[:taxon_ids] ||= []
+    @taxonomies = Spree::Taxonomy.includes(root: :children)
+
     @video_products = Spree::Product.videos.page(params[:page]).per(params[:per_page])
     @video_products = filter_video_products(@video_products)
 
@@ -12,11 +15,9 @@ class VideoGalleryController < ApplicationController
   end
 
   def show
-    @video_product = Spree::Product.videos.find_by(slug: params[:id])
   end
 
   def show_description
-    @video_product = Spree::Product.videos.find_by(slug: params[:id])
   end
 
   def play
@@ -44,23 +45,17 @@ class VideoGalleryController < ApplicationController
 
   private
 
-  def load_filter_data
-    @grades = Spree::Grade.order('position asc')
-    @selected_grade = Spree::Grade.find_by(id: params[:grade_id])
-
-    @curriculums = Spree::Curriculum.order('position asc')
-    @selected_curriculum = Spree::Curriculum.find_by(id: params[:curriculum_id])
+  def find_video_product
+    @video_product = Spree::Product.videos.find_by(slug: params[:id])
   end
 
   def filter_video_products(video_products)
     if params[:query].present?
       video_products = video_products.where("name like ?", "%#{params[:query]}%")
     end
-    if params[:grade_id].present?
-      video_products = video_products.where(grade_id: params[:grade_id])
-    end
-    if params[:curriculum_id].present?
-      video_products = video_products.where(curriculum_id: params[:curriculum_id])
+    if params[:taxon_ids].present?
+      taxons = Spree::Taxon.where(id: params[:taxon_ids])
+      video_products = video_products.in_taxons(taxons) if !taxons.empty?
     end
     video_products
   end
