@@ -2,9 +2,9 @@
 <div class="col-md-9">
   <section>
     <div>
-      <h2>Documents</h2>
-      <div>
-        <a href="/cms/documents/new" class="btn btn-primary">Add New Document</a>
+      <div class="clearfix documents-header">
+        <h2 class="pull-left">Documents</h2>
+        <a href="/cms/documents/new" class="btn btn-primary pull-right">Add New Document</a>
       </div>
       <%= form_tag '', method: :get, class: 'form-inline' do %>
         <div class="form-group">
@@ -28,7 +28,7 @@
             <th>Category</th>
             <th>Tags</th>
             <th>File</th>
-            <th></th>
+            <th colspan="4"></th>
           </tr>
         </thead>
         <tbody>
@@ -41,10 +41,16 @@
                 <%= document.attachment_file_name %>
               </td>
               <td>
-                <%= link_to 'Edit', edit_cms_document_path(document), class: 'btn btn-default' %>
-                <%= link_to 'Download', document_path(document), class: 'btn btn-default', target: '_blank' %>
-                <%= link_to 'Delete', cms_document_path(document), class: 'btn btn-default', data: { method: :delete, confirm: "Are you sure?" } %>
-                <a class="btn btn-default copy-download-url-button" data-clipboard-text="<%= document_url(document) %>">Copy Download Url</a>
+                <%= link_to 'Edit', edit_cms_document_path(document), class: 'btn btn-default btn-sm' %>
+              </td>
+              <td>
+                <%= link_to 'Download', document_path(document), class: 'btn btn-default btn-sm', target: '_blank' %>
+              </td>
+              <td>
+                <%= link_to 'Delete', cms_document_path(document), class: 'btn btn-default btn-sm', data: { method: :delete, confirm: "Are you sure?" } %>
+              </td>
+              <td>
+                <a class="btn btn-default copy-download-url-button btn-sm" data-clipboard-text="<%= document_url(document) %>">Copy Url</a>
               </td>
             </tr>
           <% end %>
