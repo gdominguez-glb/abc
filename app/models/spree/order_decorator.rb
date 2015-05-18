@@ -20,6 +20,12 @@ Spree::Order.class_eval do
     end
   end
 
+  remove_checkout_step :terms_and_conditions
+  insert_checkout_step :terms_and_conditions, :before => :delivery, if: -> (order) {
+    order.products.first &&
+      order.products.first.license_text.present?
+  }
+
 end
 
 Spree::Order.state_machine.after_transition :to => :complete, :do => :create_licensed_products!
