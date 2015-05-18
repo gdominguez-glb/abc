@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150513084252) do
+ActiveRecord::Schema.define(version: 20150518113656) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -223,6 +223,8 @@ ActiveRecord::Schema.define(version: 20150513084252) do
     t.integer  "attachment_file_size"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "wistia_id"
+    t.string   "wistia_hashed_id"
   end
 
   add_index "spree_digitals", ["variant_id"], name: "index_spree_digitals_on_variant_id", using: :btree
