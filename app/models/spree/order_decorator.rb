@@ -20,23 +20,11 @@ Spree::Order.class_eval do
     end
   end
 
-  checkout_flow do
-    remove_checkout_step :terms_and_conditions
-
-    go_to_state :address
-    go_to_state :terms_and_conditions, if: -> (order) {
-      order.products.first &&
-        order.products.first.license_text.present?
-    }
-    go_to_state :delivery
-    go_to_state :payment, if: ->(order) {
-      order.update_totals
-      order.payment_required?
-    }
-    go_to_state :confirm, if: ->(order) { order.confirmation_required? }
-    go_to_state :complete
-    remove_transition :from => :delivery, :to => :confirm
-  end
+  remove_checkout_step :terms_and_conditions
+  insert_checkout_step :terms_and_conditions, :before => :delivery, if: -> (order) {
+    order.products.first &&
+      order.products.first.license_text.present?
+  }
 
 end
 
