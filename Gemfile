@@ -41,6 +41,8 @@ gem 'httparty', require: false
 
 gem 'databasedotcom'
 
+gem 'wistia-api'
+
 group :development do
   gem 'pry'
   gem 'quiet_assets'
