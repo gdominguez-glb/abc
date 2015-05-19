@@ -26,6 +26,14 @@ Spree::Order.class_eval do
       order.products.first.license_text.present?
   }
 
+  remove_checkout_step :delivery
+  insert_checkout_step :delivery, after: :address, if: -> (order) {
+    order.products.any? do |product|
+      product.shipping_category.name == 'Digital Delivery' &&
+        product.digitals.present?
+    end
+  }
+
 end
 
 Spree::Order.state_machine.after_transition :to => :complete, :do => :create_licensed_products!
