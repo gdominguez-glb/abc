@@ -19,3 +19,19 @@ attachment_config = {
 attachment_config.each do |key, value|
   Spree::Digital.attachment_definitions[:attachment][key.to_sym] = value
 end
+
+Paperclip::Attachment.class_eval do
+  # monkey patch this method to add callback on file upload
+  def after_flush_writes
+    unlink_files(@queued_for_write.values)
+    if @instance && @instance.respond_to?(:post_flush_writes)
+      @instance.post_flush_writes
+    end
+  end
+end
+
+Spree::Digital.class_eval do
+  def post_flush_writes
+    WistiaWorker.perform_async(self.id) if self.wistia_id.blank?
+  end
+end

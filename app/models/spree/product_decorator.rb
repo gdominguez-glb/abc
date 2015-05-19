@@ -37,4 +37,8 @@ Spree::Product.class_eval do
   def free?
     price == 0
   end
+
+  def video_id
+    digitals.where.not(wistia_hashed_id: nil).first.try(:wistia_hashed_id)
+  end
 end

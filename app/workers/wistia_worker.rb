@@ -4,10 +4,11 @@ class WistiaWorker
   include Sidekiq::Worker
 
   def perform(digital_id)
+    logger.info "** running wistia worker with digital id: #{digital_id} **"
     digital = Spree::Digital.find_by(id: digital_id)
     if digital && digital.attachment.content_type =~ /video/i
       media_data = GmWistiaUploader.new.upload(
-        url:         digital.attachment.url,
+        url:         digital.attachment.expiring_url(60*60),
         name:        digital.variant.product.name,
         description: digital.variant.product.description
       )
