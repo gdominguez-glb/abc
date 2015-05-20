@@ -31,6 +31,10 @@ Spree::User.class_eval do
     spree_roles.where(id: Spree::Role.school_admin.id).count > 0
   end
 
+  def has_admin_role?
+    spree_roles.where(id: Spree::Role.admin.id).count > 0
+  end
+
   def full_name
     [first_name, last_name].compact.join(' ')
   end
