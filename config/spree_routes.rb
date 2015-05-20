@@ -1,4 +1,4 @@
-Spree::Core::Engine.routes.prepend do
+spree_routes_overrides = Proc.new do
   namespace :admin do
     resources :curriculums do
       collection do
@@ -27,4 +27,9 @@ Spree::Core::Engine.routes.prepend do
     end
   end
   patch '/simple_cart', :to => 'orders#update_simple_cart', :as => :update_simple_cart
+end
+if Rails.env.development?
+  Spree::Core::Engine.add_routes(&spree_routes_overrides)
+else
+  Spree::Core::Engine.routes.prepend(&spree_routes_overrides)
 end
