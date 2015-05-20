@@ -20,21 +20,25 @@ Spree::Order.class_eval do
     end
   end
 
-  remove_checkout_step :terms_and_conditions
-  insert_checkout_step :terms_and_conditions, :before => :delivery, if: -> (order) {
-    order.products.first &&
-      order.products.first.license_text.present?
-  }
+  def has_license_products?
+    products.first && products.first.license_text.present?
+  end
+
+  def has_digital_delivery?
+    self.products.any? do |product|
+      product.shipping_category.name == 'Digital Delivery' && product.digitals.present?
+    end
+  end
 
   remove_checkout_step :delivery
-  insert_checkout_step :delivery, after: :address, if: -> (order) {
-    order.products.any? do |product|
-      product.shipping_category.name == 'Digital Delivery' &&
-        product.digitals.present?
-    end
-  }
+  insert_checkout_step :delivery, after: :address, if: -> (order) { order.has_digital_delivery? }
+
+  remove_checkout_step :terms_and_conditions
+  insert_checkout_step :terms_and_conditions, :before => :delivery, if: -> (order) { order.has_license_products?  }
 
 end
 
 Spree::Order.state_machine.after_transition :to => :complete, :do => :create_licensed_products!
 Spree::Order.state_machine.after_transition :to => :complete, :do => :promote_user_to_school_admin!
+
+Spree::Order.state_machine.before_transition :to => :delivery, :do => :valid_terms_and_conditions?
