@@ -26,7 +26,7 @@
         <% else %>
           <%= active_link_to "Login", '/store/login', wrap_tag: :li %>
         <% end %>
-        <%= active_link_to "Store", '/store', wrap_tag: :li, active: /^(.(?!login))*$/ %>
+        <%= active_link_to "Store", '/store', wrap_tag: :li %>
         <%= active_link_to "CMS", '/cms', wrap_tag: :li if current_spree_user && current_spree_user.admin? %>
       </ul>
 
