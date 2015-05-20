@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150519132242) do
+ActiveRecord::Schema.define(version: 20150520023517) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -542,10 +542,12 @@ ActiveRecord::Schema.define(version: 20150519132242) do
     t.integer  "grade_id"
     t.integer  "grade_unit_id"
     t.string   "product_type"
+    t.datetime "expiration_date"
   end
 
   add_index "spree_products", ["available_on"], name: "index_spree_products_on_available_on", using: :btree
   add_index "spree_products", ["deleted_at"], name: "index_spree_products_on_deleted_at", using: :btree
+  add_index "spree_products", ["expiration_date"], name: "index_spree_products_on_expiration_date", using: :btree
   add_index "spree_products", ["name"], name: "index_spree_products_on_name", using: :btree
   add_index "spree_products", ["shipping_category_id"], name: "index_spree_products_on_shipping_category_id", using: :btree
   add_index "spree_products", ["slug"], name: "index_spree_products_on_slug", unique: true, using: :btree
