@@ -41,4 +41,8 @@ Spree::Product.class_eval do
   def video_id
     digitals.where.not(wistia_hashed_id: nil).first.try(:wistia_hashed_id)
   end
+
+  def categories
+    taxons.map(&:taxonomy).uniq.map(&:name)
+  end
 end

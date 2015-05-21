@@ -4,17 +4,19 @@
       <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
     </div>
     <span class="video-product-name">
-      <%= truncate(video_product.name, length: 50) %>
+      <h3><%= truncate(video_product.name, length: 50) %></h2>
     </span>
-    <div class="video-product-grade"><%= video_product.grade.try(:name) %></div>
-    <div class="video-product-curriculum"><%= video_product.curriculum.try(:name) %></div>
+    <div class="video-product-categories"><%= video_product.categories.join(", ") %></div>
+    <div class="video-product-taxons"><%= video_product.taxons.map(&:name).join(", ") %></div>
     <div class="video-product-drawer hide">
       <button class="btn btn-default disabled" style="display: block;">Subscription Required</button>
-      <%= truncate video_product.description, length: 100 %>
-      <% if video_product.description && video_product.description.length > 100 %>
-        <%= link_to 'MORE INFO', show_description_video_gallery_path(video_product), remote: true, class: 'more-info' %>
-      <% end %>
-      <%= link_to '#', class: 'btn btn-primary', style: 'display: block;' do %>
+      <div class="product-description">
+        <%= truncate video_product.description, length: 100 %>
+        <% if video_product.description && video_product.description.length > 100 %>
+          <%= link_to 'MORE INFO', show_description_video_gallery_path(video_product), remote: true, class: 'more-info' %>
+        <% end %>
+      </div>
+      <%= link_to '#', class: 'btn btn-primary unblock-button', style: 'display: block;' do %>
         Unlock Content
       <% end %>
     </div>
