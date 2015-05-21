@@ -14,6 +14,9 @@ namespace 'pages' do
   task :reset => :environment do
     pages_array.each do |params|
       page = Page.where(slug: params[:slug]).first_or_create
+      if !params[:body].include?('container')
+        params[:body] = "<div class='container'>#{params[:body]}</div>"
+      end
       page.update_attributes(params)
       page.update_attributes(visible: true)
 

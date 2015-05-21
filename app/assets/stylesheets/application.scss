@@ -114,8 +114,11 @@ table.contact-topics-list tr.placeholder:before {
   position: absolute;
   /** Define arrowhead **/
 }
-body.account, body.pages {
+body.account {
   padding-top: 120px;
+}
+body.pages {
+  padding-top: 50px;
 }
 .documents-header {
   margin: 20px 0;
