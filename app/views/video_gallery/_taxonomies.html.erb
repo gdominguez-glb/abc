@@ -1,24 +1,22 @@
 <% max_level = Spree::Config[:max_level_in_taxons_menu] || 1 %>
 <% @taxonomies.each do |taxonomy| %>
-  <% cache [I18n.locale, taxonomy, max_level] do %>
-    <div class="taxonomy-wrapper">
-      <div class="taxonomy-header clearfix">
-        <h4 class='taxonomy-root unselectable pull-left'><%= taxonomy.name %></h4>
-        <% selected_taxons = taxonomy.root.children.where(id: params[:taxon_ids]) %>
-        <% if selected_taxons.count > 0 %>
-          <div class="selected-taxons-wrapper pull-right">
-            <% selected_taxons.each do |selected_taxon| %>
-              <span class="selected-taxon">
-                <%= selected_taxon.name %>
-                <%= link_to params.merge(taxon_ids: (params[:taxon_ids] - [selected_taxon.id.to_s])) do %>
-                  <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                <% end %>
-              </span>
-            <% end %>
-          </div>
-        <% end %>
-      </div>
-      <%= video_gallery_taxons_tree(taxonomy.root, @taxon, max_level) %>
+  <div class="taxonomy-wrapper">
+  <div class="taxonomy-header clearfix">
+    <h4 class='taxonomy-root unselectable pull-left'><%= taxonomy.name %></h4>
+    <% selected_taxons = taxonomy.root.children.where(id: params[:taxon_ids]) %>
+    <% if selected_taxons.count > 0 %>
+      <div class="selected-taxons-wrapper pull-right">
+      <% selected_taxons.each do |selected_taxon| %>
+        <span class="selected-taxon">
+        <%= selected_taxon.name %>
+        <%= link_to params.merge(taxon_ids: (params[:taxon_ids] - [selected_taxon.id.to_s])) do %>
+          <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+      <% end %>
+      </span>
+    <% end %>
     </div>
   <% end %>
+  </div>
+  <%= video_gallery_taxons_tree(taxonomy.root, @taxon, max_level) %>
+</div>
 <% end %>
