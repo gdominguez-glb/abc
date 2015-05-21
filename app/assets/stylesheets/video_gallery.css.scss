@@ -1,0 +1,147 @@
+.video-gallery-side {
+  margin-bottom: 20px;
+
+  .taxonomies-filters {
+    .taxonomy-header {
+      border-bottom: 1px solid #555;
+      .selected-taxons-wrapper {
+        margin-top: 5px;
+        padding: 5px 10px;
+      }
+    }
+    .taxonomy-wrapper {
+      h4 {
+        padding-left: 10px;
+        padding-bottom: 5px;
+        cursor: pointer;
+      }
+
+      .list-group {
+        .list-group-item {
+          border: none;
+          text-align: center;
+          background-color: transparent;
+          &.active {
+            background-color: #aaa;
+          }
+        }
+      }
+    }
+  }
+}
+
+.video-product-wrapper {
+  margin-bottom: 20px;
+  padding: 10px;
+  position: relative;
+
+  .open-video {
+    display: block;
+  }
+  .video-product-drawer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    right: -100%;
+    top: 0;
+    background: #bbb;
+    z-index: 1000;
+    padding: 10px;
+
+    .product-description {
+      padding: 10px 0;
+      .more-info {
+        display: block;
+        margin-top: 10px;
+      }
+    }
+
+    .favorite-button, .unblock-button {
+      position: absolute;
+      bottom: 10px;
+      margin: 0 auto;
+      width: 90%;
+    }
+  }
+
+  &.locked-product {
+    .video-product-image-wrapper {
+      background-color: #eee;
+      width: 240px;
+      height: 240px;
+      position: relative;
+      .glyphicon-lock {
+        position: absolute;
+        font-size: 100px;
+        top: 80px;
+        left: 80px;
+      }
+    }
+  }
+
+  &:hover {
+    background: #eee;
+    .open-video {
+      opacity: 0.5;
+    }
+  }
+
+  .play-video-button {
+    position: absolute;
+    top: 80px;
+    left: 80px;
+    z-index: 100;
+    font-size: 100px;
+  }
+
+  .video-product-name a {
+    color: #000;
+  }
+  .video-product-categories {
+    font-weight: bold;
+    color: #666;
+  }
+  .video-product-taxons {
+    color: #777;
+  }
+}
+.video-product-description-modal .modal-content {
+  padding: 10px 20px;
+}
+#video-page {
+  margin-bottom: 50px;
+  .video-page-image-wrapper {
+    position: relative;
+    .video-image {
+      opacity: 0.5;
+      img {
+        width: 500px;
+        height: 500px;
+      }
+    }
+    .play-video-button {
+      font-size: 100px;
+      position: absolute;
+      top: 150px;
+      left: 200px;
+    }
+  }
+  .video-page-title {
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 15px;
+
+    .video-product-categories {
+      font-weight: bold;
+      color: #666;
+    }
+    .video-product-taxons {
+      color: #777;
+    }
+  }
+
+  .favorite-button {
+    display: block;
+    margin-top: 20px;
+  }
+}

@@ -2,23 +2,27 @@
   <%= link_to "< Back", video_gallery_index_path, class: 'btn btn-default' %>
   <div class="row">
     <div class="col-md-6">
-      <%= link_to large_image(@video_product, itemprop: "image"), video_gallery_path(@video_product), itemprop: 'url', class: 'video-image' %>
-      <% if can_play_video?(@video_product) %>
-        <%= link_to play_video_gallery_path(@video_product), remote: true, class: 'play-video-button' do %>
-          <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span>
+      <div class="video-page-image-wrapper">
+        <%= link_to large_image(@video_product, itemprop: "image"), video_gallery_path(@video_product), itemprop: 'url', class: 'video-image' %>
+        <% if can_play_video?(@video_product) %>
+          <%= link_to play_video_gallery_path(@video_product), remote: true, class: 'play-video-button' do %>
+            <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
     </div>
     <div class="col-md-6">
-      <span class="video-product-name">
-        <%= link_to truncate(@video_product.name, length: 50), video_gallery_path(@video_product), class: 'info', itemprop: "name", title: @video_product.name %>
-      </span>
-      <div class="video-product-grade"><%= @video_product.grade.try(:name) %></div>
-      <div class="video-product-curriculum"><%= @video_product.curriculum.try(:name) %></div>
+      <div class="video-page-title">
+        <h2 class="video-product-name">
+          <%= @video_product.name %>
+        </h2>
+        <div class="video-product-categories"><%= @video_product.grade.try(:name) %></div>
+        <div class="video-product-taxons"><%= @video_product.curriculum.try(:name) %></div>
+      </div>
       <p>
         <%= @video_product.description %>
       </p>
-      <%= link_to add_favorite_video_gallery_path(@video_product, ref_id: "#fav-button-#{@video_product.id}"), remote: true, class: "btn btn-primary #{'disabled' if !can_favorite_product?(@video_product)}", style: 'display: block;', id: "fav-button-#{@video_product.id}", data: { method: :post } do %>
+      <%= link_to add_favorite_video_gallery_path(@video_product, ref_id: "#fav-button-#{@video_product.id}"), remote: true, class: "btn btn-primary favorite-button #{'disabled' if !can_favorite_product?(@video_product)}", id: "fav-button-#{@video_product.id}", data: { method: :post } do %>
         Add to Favorites
       <% end %>
     </div>
