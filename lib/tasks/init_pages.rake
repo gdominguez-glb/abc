@@ -12,7 +12,9 @@ namespace 'pages' do
 
   desc "[Don't do this if you don't know what this is!] Reset all default pages."
   task :reset => :environment do
-    pages_array.each do |params|
+    pages_from_yaml = YAML.load_file(Rails.root.join('config/pages.yml'))
+    (pages_array + pages_from_yaml['pages']).each do |params|
+      params.symbolize_keys!
       page = Page.where(slug: params[:slug]).first_or_create
       if !params[:body].include?('container')
         params[:body] = "<div class='container'>#{params[:body]}</div>"
@@ -52,7 +54,6 @@ def pages_array
     {title: "Mission", seo_content: "Mission, Update this area", slug: "about/mission", group_name: "about", sub_group_name: "mission", position: 2, body: "Mission, Update this area", show_in_nav: false, show_in_footer: true},
     {title: "Staff", seo_content: "Staff, Update this area", slug: "about/staff", group_name: "about", sub_group_name: "mission", position: 3, body: "Mission, Update this area", show_in_nav: false, show_in_footer: true},
     {title: "Trustees", seo_content: "Trustees, Update this area", slug: "about/trustees", group_name: "about", sub_group_name: "mission", position: 4, body: "Mission, Update this area", show_in_nav: false, show_in_footer: true},
-    {title: "Careers", seo_content: "Career, Update this area", slug: "careers", group_name: "careers", sub_group_name: "", position: 5, body: "Career Overview, Update this area", show_in_nav: false, show_in_footer: true, group_root: true},
     {title: "Advocacy", seo_content: "Advocacy, Update this area", slug: "advocacy", group_name: "advocacy", sub_group_name: "", position: 6, body: "Advocacy, Update this area", show_in_nav: false, show_in_footer: true, group_root: true},
     {title: "Terms of Service", seo_content: "CarTerms of Serviceeer, Update this area", slug: "terms-of-service", group_name: "terms-of-service", sub_group_name: "", position: 7, body: "Terms of service Overview, Update this area", show_in_nav: false, show_in_footer: true, group_root: true},
 
