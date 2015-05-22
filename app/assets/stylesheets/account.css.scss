@@ -13,22 +13,29 @@
 
 .my-products {
   margin-bottom: 20px;
-
 }
-.recommended-products {
-  .recommended-product-wrapper {
-    background: #ddd;
-    margin-bottom: 20px;
-    text-align: center;
-    padding: 20px;
+.recommended-product-wrapper {
+  background: #ddd;
+  margin-bottom: 20px;
+  text-align: center;
+  padding: 20px;
+  position: relative;
 
-    img.thumbnail {
-      display: block;
-      margin: 0 auto;
+  .remove-recommended {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-left: 40px solid transparent;
+    border-top: 40px solid #000;
+    .glyphicon {
+      color: #fff;
+      top: -35px;
+      right: 15px;
     }
   }
 }
-
 .recent-history {
   padding: 10px;
   background: #aaa;
@@ -96,5 +103,13 @@
         right: 15px;
       }
     }
+  }
+}
+.history-list-wrapper {
+  .history-list-head {
+    margin: 20px 0;
+  }
+  .table {
+    margin: 20px 0;
   }
 }
