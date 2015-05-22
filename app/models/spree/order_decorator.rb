@@ -30,6 +30,13 @@ Spree::Order.class_eval do
     end
   end
 
+  def valid_terms_and_conditions?
+    if has_license_products? && terms_and_conditions != true
+      self.errors[:terms_and_conditions] << Spree.t('terms_and_conditions.must_be_accepted')
+      self.errors[:terms_and_conditions].empty? ? true : false
+    end
+  end
+
   remove_checkout_step :delivery
   insert_checkout_step :delivery, after: :address, if: -> (order) { order.has_digital_delivery? }
 
