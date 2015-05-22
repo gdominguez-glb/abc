@@ -1,18 +1,18 @@
-.my-products {
+.product-wrapper {
+  text-align: center;
+  background: #eee;
+  padding: 20px;
   margin-bottom: 20px;
 
-  .product-wrapper {
-    text-align: center;
-    background: #eee;
-    padding: 20px;
-    margin-bottom: 20px;
-
-    .grades-dropdown {
-      padding: 10px 0;
-      border-top: 1px dashed #eee;
-      border-bottom: 1px dashed #eee;
-    }
+  .grades-dropdown {
+    padding: 10px 0;
+    border-top: 1px dashed #eee;
+    border-bottom: 1px dashed #eee;
   }
+}
+
+.my-products {
+  margin-bottom: 20px;
 
 }
 .recommended-products {
@@ -68,6 +68,32 @@
         position: absolute;
         top: 10px;
         left: -16px;
+      }
+    }
+  }
+}
+.favorites-products {
+  .favorites-products-head {
+    margin: 10px 0;
+    .title {
+      font-size: 16px;
+    }
+  }
+
+  .product-wrapper {
+    position: relative;
+    .favorite-star {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 0;
+      height: 0;
+      border-left: 40px solid transparent;
+      border-top: 40px solid #000;
+      .glyphicon {
+        color: #fff;
+        top: -35px;
+        right: 15px;
       }
     }
   }
