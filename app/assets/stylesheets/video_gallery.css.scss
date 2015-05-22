@@ -117,20 +117,16 @@
 }
 #video-page {
   margin-bottom: 50px;
-  .video-page-image-wrapper {
+  .video-player-wrapper {
+    margin-top: 20px;
     position: relative;
-    .video-image {
-      opacity: 0.5;
-      img {
-        width: 500px;
-        height: 500px;
-      }
-    }
-    .play-video-button {
-      font-size: 100px;
+    min-height: 400px;
+    background: #eee;
+    .glyphicon-lock {
       position: absolute;
+      font-size: 100px;
       top: 150px;
-      left: 200px;
+      left: 220px;
     }
   }
   .video-page-title {
