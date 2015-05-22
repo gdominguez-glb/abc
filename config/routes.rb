@@ -35,6 +35,9 @@ Rails.application.routes.draw do
       get :settings
       get :admin
       get :help
+      get :favorites
+      get :recommended
+      get :history
       get :edit_profile
       patch :save_profile
     end

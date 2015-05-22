@@ -7,7 +7,7 @@
     <div class="collapse navbar-collapse" id="sub-nav">
       <ul class="nav navbar-nav">
         <li class="<%= 'active' if action_name == 'index' %>">
-          <a href="/account">Library<span class="sr-only">(current)</span></a>
+          <a href="/account">My Products<span class="sr-only">(current)</span></a>
         </li>
         <% if spree_current_user.has_admin_role? %>
           <li>
@@ -19,11 +19,20 @@
             <a href="/account/admin">Admin Dashboard<span class="sr-only">(current)</span></a>
           </li>
         <% end %>
-        <li class="<%= 'active' if action_name == 'help' %>">
-          <a href="/account/help ">Help<span class="sr-only">(current)</span></a>
+        <li class="<%= 'active' if action_name == 'favorites' %>">
+          <a href="/account/favorites">Favorites <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="<%= 'active' if action_name == 'recommended' %>">
+          <a href="/account/recommended">Recommended <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="<%= 'active' if action_name == 'history' %>">
+          <a href="/account/history">History <span class="sr-only">(current)</span></a>
         </li>
         <li class="<%= 'active' if action_name == 'settings' %>">
           <a href="/account/settings">Settings <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="<%= 'active' if action_name == 'help' %>">
+          <a href="/account/help ">Help<span class="sr-only">(current)</span></a>
         </li>
       </ul>
     </div>
