@@ -4,6 +4,7 @@
     $(".video-product-play-modal-<%= @video_product.id %>").remove();
   })
   $(".video-product-play-modal-<%= @video_product.id %>").modal('show');
+  $('.mejs-player').mediaelementplayer();
 <% else %>
   alert('Please buy the video first!')
 <% end %>

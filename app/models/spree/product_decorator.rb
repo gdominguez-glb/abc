@@ -38,8 +38,20 @@ Spree::Product.class_eval do
     price == 0
   end
 
+  def video_digital
+    digitals.where.not(wistia_hashed_id: nil).first
+  end
+
+  def wistia_ready?
+    video_digital.try(:wistia_ready?)
+  end
+
   def video_id
-    digitals.where.not(wistia_hashed_id: nil).first.try(:wistia_hashed_id)
+    video_digital.try(:wistia_hashed_id)
+  end
+
+  def video_s3_url
+    video_digital.try(:s3_url)
   end
 
   def categories
