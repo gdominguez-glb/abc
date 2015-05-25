@@ -18,3 +18,7 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
+
+every 5.minutes do
+  rake "wistia:refresh_media_status"
+end
