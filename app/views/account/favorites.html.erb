@@ -18,105 +18,20 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-md-4">
-          <div class="product-wrapper">
-            <h4>Eureka Math</h4>
-            <p>Modules 1-6</p>
-            <p class="grades-dropdown">Select grades ...<span class="caret"></span></p>
-            <a class="btn btn-default">See Modules</a>
-            <div class="favorite-star">
-              <span class="glyphicon glyphicon-star"></span>
+        <% @favorite_products.each do |favorite_product| %>
+          <div class="col-md-4">
+            <div class="product-wrapper">
+              <h4><%= favorite_product.product.name %></h4>
+              <p><%= favorite_product.product.categories.join(', ') %></p>
+              <p class="grades-dropdown"><%= favorite_product.product.taxons.map(&:name).join(', ') %></p>
+              <% url = spree.product_url(favorite_product.product) %>
+              <%= link_to 'See Modules', url, class: 'btn btn-default' %>
+              <div class="favorite-star">
+                <span class="glyphicon glyphicon-star"></span>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="col-md-4">
-          <div class="product-wrapper">
-            <h4>Eureka Math</h4>
-            <p>Modules 1-6</p>
-            <p class="grades-dropdown">Select grades ...<span class="caret"></span></p>
-            <a class="btn btn-default">See Modules</a>
-            <div class="favorite-star">
-              <span class="glyphicon glyphicon-star"></span>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="product-wrapper">
-            <h4>Eureka Math</h4>
-            <p>Modules 1-6</p>
-            <p class="grades-dropdown">Select grades ...<span class="caret"></span></p>
-            <a class="btn btn-default">See Modules</a>
-            <div class="favorite-star">
-              <span class="glyphicon glyphicon-star"></span>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="product-wrapper">
-            <h4>Eureka Math</h4>
-            <p>Modules 1-6</p>
-            <p class="grades-dropdown">Select grades ...<span class="caret"></span></p>
-            <a class="btn btn-default">See Modules</a>
-            <div class="favorite-star">
-              <span class="glyphicon glyphicon-star"></span>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="product-wrapper">
-            <h4>Eureka Math</h4>
-            <p>Modules 1-6</p>
-            <p class="grades-dropdown">Select grades ...<span class="caret"></span></p>
-            <a class="btn btn-default">See Modules</a>
-            <div class="favorite-star">
-              <span class="glyphicon glyphicon-star"></span>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="product-wrapper">
-            <h4>Eureka Math</h4>
-            <p>Modules 1-6</p>
-            <p class="grades-dropdown">Select grades ...<span class="caret"></span></p>
-            <a class="btn btn-default">See Modules</a>
-            <div class="favorite-star">
-              <span class="glyphicon glyphicon-star"></span>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="product-wrapper">
-            <h4>Eureka Math</h4>
-            <p>Modules 1-6</p>
-            <p class="grades-dropdown">Select grades ...<span class="caret"></span></p>
-            <a class="btn btn-default">See Modules</a>
-            <div class="favorite-star">
-              <span class="glyphicon glyphicon-star"></span>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="product-wrapper">
-            <h4>Eureka Math</h4>
-            <p>Modules 1-6</p>
-            <p class="grades-dropdown">Select grades ...<span class="caret"></span></p>
-            <a class="btn btn-default">See Modules</a>
-            <div class="favorite-star">
-              <span class="glyphicon glyphicon-star"></span>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="product-wrapper">
-            <h4>Eureka Math</h4>
-            <p>Modules 1-6</p>
-            <p class="grades-dropdown">Select grades ...<span class="caret"></span></p>
-            <a class="btn btn-default">See Modules</a>
-            <div class="favorite-star">
-              <span class="glyphicon glyphicon-star"></span>
-            </div>
-          </div>
-        </div>
+        <% end %>
       </div>
     </div>
   </div>
