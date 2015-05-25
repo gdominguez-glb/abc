@@ -12,7 +12,11 @@ class WistiaWorker
         name:        digital.variant.product.name,
         description: digital.variant.product.description
       )
-      digital.update(wistia_id: media_data['id'], wistia_hashed_id: media_data['hashed_id'])
+      digital.update(
+        wistia_id: media_data['id'],
+        wistia_hashed_id: media_data['hashed_id'],
+        wistia_status: media_data['status']
+      )
     end
   end
 end

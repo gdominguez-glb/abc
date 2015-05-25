@@ -16,7 +16,6 @@
 //= require jquery.validate
 //= require zeroclipboard
 //= require jquery-sortable
-//= require mediaelement_rails
 //= require_tree .
 
 Gm = {

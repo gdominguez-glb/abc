@@ -35,10 +35,7 @@ gem 'kaminari'
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'sidekiq'
 
-gem "mediaelement_rails"
-
 gem 'httparty', require: false
-
 gem 'databasedotcom'
 
 gem 'wistia-api'
