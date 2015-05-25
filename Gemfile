@@ -39,6 +39,7 @@ gem 'httparty', require: false
 gem 'databasedotcom'
 
 gem 'wistia-api'
+gem 'whenever', :require => false
 
 group :development do
   gem 'pry'

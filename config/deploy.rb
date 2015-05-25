@@ -40,6 +40,9 @@ set :keep_releases, 5
 
 set :sidekiq_role, :web
 
+set :whenever_identifier, ->{ "#{fetch(:application)}" }
+set :whenever_roles, [:web, :app]
+
 namespace :deploy do
 
   %w[start stop restart].each do |command|
