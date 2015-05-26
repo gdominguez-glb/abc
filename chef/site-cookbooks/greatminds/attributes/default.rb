@@ -6,3 +6,5 @@ default['nodejs']['version'] = '0.12.2'
 default['ruby']['version']   = '2.1.6'
 
 default['redis']['version']  = '3.0.0'
+
+default['elasticsearch']['version'] = '0.90.7'
