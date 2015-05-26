@@ -11,6 +11,10 @@ class AccountController < ApplicationController
   def profile
   end
 
+  def favorites
+    @favorite_products = current_spree_user.favorite_products.includes(:product)
+  end
+
   def save_profile
     if spree_current_user.update(user_params)
       redirect_to '/account/settings', notice: "Saved profile successfully"
