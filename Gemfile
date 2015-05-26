@@ -80,7 +80,7 @@ gem 'spree_auth_devise', github: 'spree/spree_auth_devise', branch: '3-0-stable'
 gem 'spree_digital', github: 'spree-contrib/spree_digital', branch: '3-0-stable'
 gem 'spree_mail_settings', github: 'spree-contrib/spree_mail_settings', branch: '3-0-stable'
 gem 'spree_better_terms_and_conditions', github: 'aleks/spree_better_terms_and_conditions'
-
+gem 'spree_related_products', github: 'spree-contrib/spree_related_products', branch: '3-0-stable'
 
 # chef gems
 group :development do
