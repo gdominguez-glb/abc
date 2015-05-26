@@ -34,4 +34,12 @@ Spree::Digital.class_eval do
   def post_flush_writes
     WistiaWorker.perform_async(self.id) if self.wistia_id.blank?
   end
+
+  def wistia_ready?
+    wistia_status == 'ready'
+  end
+
+  def s3_url
+    attachment.expiring_url(3600)
+  end
 end
