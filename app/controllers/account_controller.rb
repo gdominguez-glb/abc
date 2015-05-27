@@ -26,6 +26,12 @@ class AccountController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :address, :interested_subject, :interested_grade_level, :school_name, :heard_from)
+    _params = params.require(:user).permit(:first_name, :last_name, :email, :password, :title, :school_district_id, school_district_attributes: [:name, :state_id, :place_type])
+    if _params[:school_district_id].blank?
+      _params.delete(:school_district_id)
+    else
+      _params.delete(:school_district_attributes)
+    end
+    _params
   end
 end
