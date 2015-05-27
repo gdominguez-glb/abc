@@ -6,6 +6,7 @@ class AccountController < ApplicationController
   end
 
   def settings
+    @email_notifications = spree_current_user.settings(:email_notifications)
   end
 
   def profile
@@ -23,6 +24,11 @@ class AccountController < ApplicationController
     end
   end
 
+  def save_email_notifications
+    spree_current_user.settings(:email_notifications).update_attributes!(email_notifications_params)
+    redirect_to '/account/settings', notice: "Updated email notification successfully"
+  end
+
   private
 
   def user_params
@@ -31,6 +37,14 @@ class AccountController < ApplicationController
       _params.delete(:school_district_id)
     else
       _params.delete(:school_district_attributes)
+    end
+    _params
+  end
+
+  def email_notifications_params
+    _params = params.permit(:professional_development, :special_offers_and_products, :revision_updates, :phone_communication, :email_communication)
+    _params.each do |key, value|
+      _params[key] = (value == 'true' ? true : false)
     end
     _params
   end

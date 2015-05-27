@@ -1,4 +1,15 @@
 Spree::User.class_eval do
+
+  has_settings do |s|
+    s.key :email_notifications, :defaults => {
+      professional_development: true,
+      special_offers_and_products: true,
+      revision_updates: true,
+      phone_communication: true,
+      email_communication: true
+    }
+  end
+
   validates_presence_of :first_name, :last_name, :school_district
 
   # add any other characters you'd like to disallow inside the [ brackets ]
