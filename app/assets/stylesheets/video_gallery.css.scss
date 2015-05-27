@@ -118,6 +118,7 @@
 #video-page {
   margin-bottom: 50px;
   .video-player-wrapper {
+    z-index: 1000;
     margin-top: 20px;
     position: relative;
     min-height: 400px;
