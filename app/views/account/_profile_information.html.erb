@@ -1,0 +1,91 @@
+<%= form_for(spree_current_user, url: '/account/save_profile') do |f| %>
+  <div class="row">
+    <div class="col-md-5 col-md-offset-1">
+      <div class="form-group">
+        <label>First name</label>
+        <%= f.text_field :first_name, class: 'form-control', tabindex: 1 %>
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <%= f.text_field :email, class: 'form-control', tabindex: 3 %>
+      </div>
+      <div class="form-group">
+        <label>Phone Number</label>
+        <%= f.text_field :phone, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <label>Select School District</label>
+        <%= f.collection_select :school_district_id, SchoolDistrict.all, :id, :name, { include_blank: 'District Not List', prompt: 'Please select your district' }, { class: 'form-control' } %>
+      </div>
+      <div class="form-group school-district-control <%= 'hidden' if current_spree_user.school_district_id.present? %>">
+        <label>District State</label>
+        <%= f.fields_for :school_district do |school_district_form| %>
+            <%= school_district_form.collection_select :state_id, Spree::Country.find_by(iso: 'US').states, :id, :name, { prompt: true } , { class: 'form-control' } %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <div class="form-group">
+        <label>Last name</label>
+        <%= f.text_field :last_name, class: 'form-control', tabindex: 2 %>
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <%= f.password_field :password, class: 'form-control', tabindex: 4 %>
+      </div>
+      <div class="form-group">
+        <label>Select your Role</label>
+        <%= f.select :title, options_for_select(Spree::User::TITLES), { prompt: 'Please select your role' }, { class: 'form-control', tabindex: 5 } %>
+      </div>
+      <div class="form-group">
+        <label>Add District Name</label>
+        <% f.object.school_district ||= SchoolDistrict.new(place_type: 'school') %>
+        <%= f.fields_for :school_district do |school_district_form| %>
+          <%= school_district_form.text_field :name, class: "form-control school-district-control #{'hidden' if current_spree_user.school_district_id.present?}", placeholder: 'New District Name' %>
+        <% end %>
+        <div class="school-district-input-toggle">
+          District Name <span class="glyphicon glyphicon-plus pull-right"></span>
+        </div>
+      </div>
+      <div class="form-group school-district-control <%= 'hidden' if current_spree_user.school_district_id.present? %>">
+        <label>Is this a school or a district</label>
+        <div class="radio">
+          <%= f.fields_for :school_district do |school_district_form| %>
+            <label>
+            <%= school_district_form.radio_button :place_type, 'school' %>
+            This is a school
+          </label>
+          <label>
+            <%= school_district_form.radio_button :place_type, 'district' %>
+            This is a district
+          </label>
+        <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2 col-md-offset-5">
+      <button class="btn btn-primary btn-lg btn-block">Save</button>
+      <a href="#" class="center-block text-center" style="margin-top:10px;">Cancel</a>
+    </div>
+  </div>
+<% end %>
+<script type="text/javascript">
+//<![CDATA[
+  (function($){
+    $(".school-district-input-toggle").click(function(){
+      $('.school-district-control').removeClass('hidden');
+      $(".school-district-input-toggle").addClass('hidden');
+      $("select[name='user[school_district_id]']").val(null);
+    });
+    $("select[name='user[school_district_id]']").change(function(){
+      var value = $(this).val();
+      if(value) {
+        $('.school-district-control').addClass('hidden');
+        $(".school-district-input-toggle").removeClass('hidden');
+      }
+    });
+  })(jQuery);
+//]]>
+</script>

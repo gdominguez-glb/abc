@@ -40,6 +40,7 @@ Rails.application.routes.draw do
       get :history
       get :edit_profile
       patch :save_profile
+      patch :save_email_notifications
     end
   end
 

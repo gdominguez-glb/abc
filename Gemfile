@@ -44,6 +44,8 @@ gem 'databasedotcom'
 gem 'wistia-api'
 gem 'whenever', :require => false
 
+gem 'ledermann-rails-settings'
+
 group :development do
   gem 'pry'
   gem 'quiet_assets'
