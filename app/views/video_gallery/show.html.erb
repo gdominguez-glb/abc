@@ -5,7 +5,7 @@
       <div class="video-player-wrapper">
         <% if can_play_video?(@video_product) %>
           <% if @video_product.wistia_ready? %>
-            <iframe src="http://fast.wistia.net/embed/iframe/<%= @video_product.video_id %>" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" width="560" height="400"></iframe>
+            <iframe src="http://fast.wistia.net/embed/iframe/<%= @video_product.video_id %>" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" id="wistia-iframe" name="wistia_embed" width="560" height="400"></iframe>
           <% else %>
               <video class="mejs-player" src="<%= @video_product.video_s3_url %>" width="560" height="400"></video>
           <% end %>
@@ -31,3 +31,20 @@
     </div>
   </div>
 </div>
+<script src="//fast.wistia.net/assets/external/iframe-api-v1.js"></script>
+<%= content_for :javascripts do %>
+  <%= javascript_tag do %>
+    $(function(){
+      var wistia_iframe = $('#wistia-iframe').get(0);
+      if(wistia_iframe.wistiaApi) {
+        var wistiaEmbed = document.getElementById("wistia-iframe").wistiaApi;
+        wistiaEmbed.bind('play', function(){
+          $("#wistia-iframe").attr('width', 1120);
+        });
+        wistiaEmbed.bind('pause', function(){
+          $("#wistia-iframe").attr('width', 560);
+        });
+      }
+    });
+  <% end %>
+<% end %>
