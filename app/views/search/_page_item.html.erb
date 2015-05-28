@@ -1,0 +1,21 @@
+<div class="search-result-item">
+  <div class="row">
+    <div class="col-md-2">
+      <div class="result-itme-icon">
+        <span class="glyphicon glyphicon-download-alt"></span>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="result-item-center">
+        <span class="title"><%= item.title %></span>
+        <%# <span class="sub-title">Favorite</span> %>
+        <p><%= truncate strip_tags(item.body), length: 300 %></p>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="result-item-links">
+        <%= link_to 'View Item', item.slug , class: 'btn btn-primary' %>
+      </div>
+    </div>
+  </div>
+</div>

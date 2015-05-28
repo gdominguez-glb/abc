@@ -32,7 +32,7 @@
         <%= active_link_to "CMS", '/cms', wrap_tag: :li if current_spree_user && current_spree_user.admin? %>
       </ul>
 
-      <%= form_tag search_path, class: 'navbar-form navbar-left', method: :get do %>
+      <%= form_tag '/search', class: 'navbar-form navbar-left', method: :get do %>
         <div class="form-group">
           <%= text_field_tag :query, nil, class: 'form-control', placeholder: 'Search' %>
         </div>
