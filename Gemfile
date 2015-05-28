@@ -46,6 +46,8 @@ gem 'whenever', :require => false
 
 gem 'ledermann-rails-settings'
 
+gem 'searchkick'
+
 group :development do
   gem 'pry'
   gem 'quiet_assets'

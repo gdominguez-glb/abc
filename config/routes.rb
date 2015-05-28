@@ -16,6 +16,8 @@ Rails.application.routes.draw do
 
   get 'video_demo', to: 'video_demo#index'
 
+  get 'search', to: 'search#index'
+
   resources :video_gallery, only: [:index, :show] do
     member do
       get :show_description
