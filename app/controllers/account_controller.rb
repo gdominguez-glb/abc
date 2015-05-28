@@ -3,6 +3,7 @@ class AccountController < ApplicationController
   before_action :authenticate_school_admin!, only: [:admin]
 
   def index
+    @nav_name = 'My Products'
   end
 
   def settings
