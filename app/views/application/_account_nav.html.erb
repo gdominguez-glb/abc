@@ -1,9 +1,12 @@
 <nav class="navbar navbar-default navbar-fixed-top subnav">
   <div class="container">
-    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sub-nav">
-      <span class="sr-only">Toggle sub navigation</span>
-      <span class="glyphicon glyphicon-menu-hamburger"></span>
-    </button>
+    <div class="navbar-header">
+      <span class="subnav-name pull-left hidden"><%= @nav_name || action_name.titleize %></span>
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sub-nav">
+        <span class="sr-only">Toggle sub navigation</span>
+        <span class="glyphicon glyphicon-menu-down"></span>
+      </button>
+    </div>
     <div class="collapse navbar-collapse" id="sub-nav">
       <ul class="nav navbar-nav">
         <li class="<%= 'active' if action_name == 'index' %>">
