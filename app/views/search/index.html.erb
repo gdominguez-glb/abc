@@ -1,0 +1,47 @@
+<div class="container">
+  <div id="search-result">
+    <div class="search-result-head clearfix">
+      <span class="title pull-left">Search results for <strong><%= params[:query] %></strong></span>
+      <div class="dropdown pull-right">
+        Sort by:
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+          All
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="search-result-list">
+      <% 1.upto(10).each do %>
+        <div class="search-result-item">
+          <div class="row">
+            <div class="col-md-2">
+              <div class="result-itme-icon">
+                <span class="glyphicon glyphicon-download-alt"></span>
+              </div>
+            </div>
+            <div class="col-md-8">
+              <div class="result-item-center">
+                <span class="title">Search Result Title</span>
+                <span class="sub-title">Favorite</span>
+                <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cras mattis consectetur purus sit amet fermentum. Nulla vitae elit libero, a pharetra augue.</p>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="result-item-links">
+                <a href="" class="btn btn-primary">View Item</a>
+                <span>Or</span>
+                <a href="" class="btn btn-default">Download Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
