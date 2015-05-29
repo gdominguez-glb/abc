@@ -22,5 +22,5 @@
 job_type :rbenv_rake, %Q{export PATH=/home/deploy/.rbenv/shims:/home/deploy/.rbenv/bin:/usr/bin:$PATH; eval "$(rbenv init -)"; \ cd :path && RAILS_ENV=:environment bundle exec rake :task --silent :output }
 
 every 5.minutes do
-  rake "wistia:refresh_media_status"
+  rbenv_rake "wistia:refresh_media_status"
 end
