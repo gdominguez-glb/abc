@@ -117,7 +117,7 @@ table.contact-topics-list tr.placeholder:before {
   position: absolute;
   /** Define arrowhead **/
 }
-body.account {
+body.account, body.pages.with-subnav {
   padding-top: 120px;
 }
 body.pages {

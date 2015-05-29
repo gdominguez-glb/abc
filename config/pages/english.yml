@@ -1,0 +1,443 @@
+pages:
+  -
+    title: "Overview"
+    seo_content: "English, Update this area"
+    slug: "english"
+    group_name: "english"
+    sub_group_name: "overview"
+    position: 1
+    group_root: true
+    body: !xml |
+      <section id="background-grey" class="intro jumbo-text">
+        <div class="page-header container">
+          <h1>English Overview Page</h1>
+          <h3 class="sub-head">Welcome to the Wheatley English Page</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sed sapien quam. Sed dapibus est id enim facilisis, at posuere turpis adipiscing. Quisque sit amet dui dui.</p>
+          <a class="btn btn-primary" href="../marketing/product.html" role="button">Learn More</a>
+        </div>
+      </section>
+      <section>
+       <div class="container callout">
+        <div id="viewport" class="row">
+          <div class="col-xs-6">
+           <h2>Intro into Curriculum</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat.</p>
+           <a class="btn btn-primary" href="../marketing/product.html" role="button">Learn More</a>
+           <a class="btn btn-default" href="#" role="button">Secondary CTA</a>
+          </div>
+          <div class="col-xs-1"></div>
+          <div class="col-xs-5">  
+            <img src="../assets/img/fpo-image.jpg" class="img-thumbnail" alt="Responsive image">
+          </div>
+        </div>
+        <hr>
+        </div>
+      </section>
+      <section>
+        <div class="container">
+          <div id="viewport" class="row callout">
+            <div class="col-xs-5">  
+              <img src="../assets/img/fpo-image.jpg" class="img-thumbnail" alt="Responsive image">
+            </div>
+            <div class="col-xs-1"></div>
+            <div class="col-xs-6">
+             <h2>Curriculum Section</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+              consequat.</p>
+             <a class="btn btn-primary" href="../marketing/product.html" role="button">Learn More</a>
+             <a class="btn btn-default" href="#" role="button">Secondary CTA</a>
+            </div>
+          </div>
+          <hr>
+        </div>
+      </section>
+      <section>
+        <div class="container">
+          <div id="viewport" class="row">
+            <div class="col-xs-6">
+             <h2>Maps Section</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+              consequat.</p>
+             <a class="btn btn-primary" href="../marketing/product.html" role="button">Learn More</a>
+             <a class="btn btn-default" href="#" role="button">Secondary CTA</a>
+            </div>
+            <div class="col-xs-1"></div>
+            <div class="col-xs-5">  
+              <img src="../assets/img/fpo-image.jpg" class="img-thumbnail" alt="Responsive image">
+            </div>
+          </div>
+          <hr>
+        </div>
+      </section>
+      <section>
+        <div class="container">
+          <div id="viewport" class="row callout">
+            <div class="col-xs-5">  
+              <img src="../assets/img/fpo-image.jpg" class="img-thumbnail" alt="Responsive image">
+            </div>
+            <div class="col-xs-1"></div>
+            <div class="col-xs-6">
+             <h2>Training Section</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+              consequat.</p>
+            <a class="btn btn-primary" href="../marketing/product.html" role="button">Learn More</a>
+             <a class="btn btn-default" href="#" role="button">Secondary CTA</a>
+            </div>
+          </div>
+          <hr>
+        </div>
+      </section>
+      <section class="bottom-space">
+        <div class="container">
+          <div id="viewport" class="row">
+            <div class="col-xs-6">
+             <h2>Resources</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+              consequat.</p>
+             <a class="btn btn-primary" href="../marketing/product.html" role="button">Learn More</a>
+             <a class="btn btn-default" href="#" role="button">Secondary CTA</a>
+            </div>
+            <div class="col-xs-1"></div>
+            <div class="col-xs-5 bottom-space">  
+              <img src="../assets/img/fpo-image.jpg" class="img-thumbnail" alt="Responsive image">
+            </div>
+          </div>
+        </div>
+      </section>
+
+  -
+    title: "Admins"
+    seo_content: "English Admins, Update this area"
+    slug: "english/admins"
+    group_name: "english"
+    sub_group_name: "admins"
+    position: 2
+    body: !xml |
+      <section id="background-grey" class="intro jumbo-text">
+        <div class="page-header container">
+          <h1>English Admin Page</h1>
+          <h3 class="sub-head">Intro to Admin Page</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sed sapien quam. Sed dapibus est id enim facilisis, at posuere turpis adipiscing. Quisque sit amet dui dui.</p>
+          <a class="btn btn-primary" href="../../marketing/product.html" role="button">Learn More</a>
+        </div>
+      </section>
+      <section>
+       <div class="container callout">
+        <div id="viewport" class="row">
+          <div class="col-xs-6">
+           <h2>Curriculum Section Admin Specific</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat.</p>
+           <a class="btn btn-primary" href="../../marketing/product.html" role="button">Learn More</a>
+           <a class="btn btn-default" href="#" role="button">Secondary CTA</a>
+          </div>
+          <div class="col-xs-1"></div>
+          <div class="col-xs-5">  
+            <img src="../../assets/img/fpo-image.jpg" class="img-thumbnail" alt="Responsive image">
+          </div>
+        </div>
+        <hr>
+        </div>
+      </section>
+      <section>
+        <div class="container">
+          <div id="viewport" class="row callout">
+            <div class="col-xs-5">  
+              <img src="../../assets/img/fpo-image.jpg" class="img-thumbnail" alt="Responsive image">
+            </div>
+            <div class="col-xs-1"></div>
+            <div class="col-xs-6">
+             <h2>Maps Section Admin Specific</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+              consequat.</p>
+             <a class="btn btn-primary" href="../../marketing/product.html" role="button">Learn More</a>
+             <a class="btn btn-default" href="#" role="button">Secondary CTA</a>
+            </div>
+          </div>
+          <hr>
+        </div>
+      </section>
+      <section>
+      <div class="container">
+        <div id="viewport" class="row">
+          <div class="col-xs-6">
+           <h2>Training Section Admin Specific</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat.</p>
+           <a class="btn btn-primary" href="../../marketing/product.html" role="button">Learn More</a>
+           <a class="btn btn-default" href="#" role="button">Secondary CTA</a>
+          </div>
+          <div class="col-xs-1"></div>
+          <div class="col-xs-5">  
+            <img src="../../assets/img/fpo-image.jpg" class="img-thumbnail" alt="Responsive image">
+          </div>
+        </div>
+        <hr>
+        </div>
+      </section>
+
+  -
+    title: "Teathers"
+    seo_content: "English Teathers, Update this area"
+    slug: "english/teachers"
+    group_name: "english"
+    sub_group_name: "teachers"
+    position: 3
+    body: !xml |
+      <section id="background-grey" class="intro jumbo-text">
+        <div class="page-header container">
+          <h1>English Teacher Page</h1>
+          <h3 class="sub-head">Intro to Teacher Page</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sed sapien quam. Sed dapibus est id enim facilisis, at posuere turpis adipiscing. Quisque sit amet dui dui.</p>
+          <a class="btn btn-primary" href="../../marketing/product.html" role="button">Learn More</a>
+        </div>
+      </section>
+      <section>
+       <div class="container callout">
+        <div id="viewport" class="row">
+          <div class="col-xs-6">
+           <h2>Curriculum Section Teacher Specific</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat.</p>
+           <a class="btn btn-primary" href="../../marketing/product.html" role="button">Learn More</a>
+           <a class="btn btn-default" href="#" role="button">Secondary CTA</a>
+          </div>
+          <div class="col-xs-1"></div>
+          <div class="col-xs-5">  
+            <img src="../../assets/img/fpo-image.jpg" class="img-thumbnail" alt="Responsive image">
+          </div>
+        </div>
+        <hr>
+        </div>
+      </section>
+      <section>
+      <div class="container">
+        <div id="viewport" class="row callout">
+          <div class="col-xs-5">  
+            <img src="../../assets/img/fpo-image.jpg" class="img-thumbnail" alt="Responsive image">
+          </div>
+          <div class="col-xs-1"></div>
+          <div class="col-xs-6">
+           <h2>Maps Section Teacher Specific</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat.</p>
+           <a class="btn btn-primary" href="../../marketing/product.html" role="button">Learn More</a>
+           <a class="btn btn-default" href="#" role="button">Secondary CTA</a>
+          </div>
+        </div>
+        <hr>
+        </div>
+      </section>
+      <section>
+      <div class="container">
+        <div id="viewport" class="row">
+          <div class="col-xs-6">
+           <h2>Training Section Teacher Specific</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat.</p>
+           <a class="btn btn-primary" href="../../marketing/product.html" role="button">Learn More</a>
+           <a class="btn btn-default" href="#" role="button">Secondary CTA</a>
+          </div>
+          <div class="col-xs-1"></div>
+          <div class="col-xs-5">  
+            <img src="../../assets/img/fpo-image.jpg" class="img-thumbnail" alt="Responsive image">
+          </div>
+        </div>
+        <hr>
+        </div>
+      </section>
+      <section>
+      <div class="container bottom-space">
+        <div id="viewport" class="row callout">
+          <div class="col-xs-5 bottom-space">  
+            <img src="../../assets/img/fpo-image.jpg" class="img-thumbnail" alt="Responsive image">
+          </div>
+          <div class="col-xs-1"></div>
+          <div class="col-xs-6">
+           <h2>Resource Section Teacher Specific</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat.</p>
+          <a class="btn btn-primary" href="../../marketing/product.html" role="button">Learn More</a>
+           <a class="btn btn-default" href="#" role="button">Secondary CTA</a>
+          </div>
+        </div>
+        </div>
+      </section>
+
+  -
+    title: "Parents "
+    seo_content: "English Parents, Update this area"
+    slug: "english/parents"
+    group_name: "english"
+    sub_group_name: "parents"
+    position: 4
+    body: !xml |
+      <section id="background-grey" class="intro jumbo-text">
+        <div class="page-header container">
+          <h1>English Parents Page</h1>
+          <h3 class="sub-head">Intro to Parents Page</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sed sapien quam. Sed dapibus est id enim facilisis, at posuere turpis adipiscing. Quisque sit amet dui dui.</p>
+          <a class="btn btn-primary" href="../../marketing/product.html" role="button">Learn More</a>
+        </div>
+      </section>
+      <section>
+       <div class="container callout">
+        <div id="viewport" class="row">
+          <div class="col-xs-6">
+           <h2>Child Help Section Parent Specific</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat.</p>
+           <a class="btn btn-primary" href="../../marketing/product.html" role="button">Learn More</a>
+           <a class="btn btn-default" href="#" role="button">Secondary CTA</a>
+          </div>
+          <div class="col-xs-1"></div>
+          <div class="col-xs-5">  
+            <img src="../../assets/img/fpo-image.jpg" class="img-thumbnail" alt="Responsive image">
+          </div>
+        </div>
+        <hr>
+        </div>
+      </section>
+      <section>
+      <div class="container bottom-space">
+        <div id="viewport" class="row callout">
+          <div class="col-xs-5 bottom-space">  
+            <img src="../../assets/img/fpo-image.jpg" class="img-thumbnail" alt="Responsive image">
+          </div>
+          <div class="col-xs-1"></div>
+          <div class="col-xs-6">
+           <h2>Resource Section Parent Specific</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat.</p>
+           <a class="btn btn-primary" href="../../marketing/product.html" role="button">Learn More</a>
+           <a class="btn btn-default" href="#" role="button">Secondary CTA</a>
+          </div>
+        </div>
+        </div>
+      </section>
+
+  -
+    title: "Eurehka Shop"
+    seo_content: "English Eurehka Shop, Update this area"
+    slug: "english/wheatley-shop"
+    group_name: "english"
+    sub_group_name: "wheatley-shop"
+    position: 5
+    body: !xml |
+      <section>
+        <div class="page-header container container-secondary">
+        <h1>English Store Page</h1>
+        <ul class="filter">
+          <h3>FILTERS:</h3>
+          <li>Price ▼</li>
+          <li>Medium ▼</li>
+          <li>Curriculum ▼</li>
+        </ul>
+      </div>
+      </section>
+      <section class="callout bottom-space">
+      <div class="container">
+        <div class="row">
+          <div id="dashboard" class="col-xs-12 bottom-space">
+            <h2>English materials</h2>
+            <div class="col-xs-4">
+              <h4>Curriculum</h4>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox"> Item
+                </label>
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox"> Item
+                </label>
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox"> Item
+                </label>
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox"> Item
+                </label>
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox"> Item
+                </label>
+              </div>
+              <a class="btn btn-primary" href="../cart.html" role="button">Add to Cart</a>
+            </div>
+
+            <div class="col-xs-4">
+              <h4>Books</h4>
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox"> Item
+                  </label>
+                </div>
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox"> Item
+                  </label>
+                </div>
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox"> Item
+                  </label>
+                </div>
+                <a class="btn btn-primary" href="../cart.html" role="button">Add to Cart</a>
+            </div>
+
+            <div class="col-xs-4">
+              <h4>Videos</h4>
+              <div class="checkbox">
+                  <label>
+                    <input type="checkbox"> Item
+                  </label>
+                </div>
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox"> Item
+                  </label>
+                </div>
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox"> Item
+                  </label>
+                </div>
+                <a class="btn btn-primary" href="../cart.html" role="button">Add to Cart</a>
+            </div>
+          </div>
+        </div>
+      </div></section>
