@@ -19,6 +19,8 @@
 
 # Learn more: http://github.com/javan/whenever
 
+job_type :rake, 'export PATH="$HOME/.rbenv/bin:$PATH" ; eval "$(rbenv init -)"; cd :path && :environment_variable=:environment bundle exec rake :task --silent :output'
+
 every 5.minutes do
   rake "wistia:refresh_media_status"
 end
