@@ -1,4 +1,3 @@
-<% max_level = Spree::Config[:max_level_in_taxons_menu] || 1 %>
 <% @taxonomies.each do |taxonomy| %>
   <div class="taxonomy-wrapper">
   <div class="taxonomy-header clearfix">
@@ -17,6 +16,6 @@
     </div>
   <% end %>
   </div>
-  <%= video_gallery_taxons_tree(taxonomy.root, @taxon, max_level) %>
+  <%= video_gallery_taxons_tree(taxonomy.root, @taxon, taxonomy.allow_multiple_taxons_selected) %>
 </div>
 <% end %>
