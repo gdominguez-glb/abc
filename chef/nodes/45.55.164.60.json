@@ -2,6 +2,7 @@
   "run_list": [
     "recipe[greatminds]",
     "recipe[greatminds::users]",
+    // "recipe[greatminds::iptables]",
     "recipe[greatminds::monit]",
     "recipe[greatminds::nodejs]",
     "recipe[greatminds::postgres]",
