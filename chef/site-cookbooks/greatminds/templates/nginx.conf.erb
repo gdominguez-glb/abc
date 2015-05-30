@@ -12,7 +12,7 @@ server {
   server_name <%= node['domain'] %>;
   root /var/www/<%= node['app'] %>/current/public;
 
-  client_max_body_size 100m;
+  client_max_body_size 1024m;
 
   location ^~ /assets/ {
     gzip_static on;
