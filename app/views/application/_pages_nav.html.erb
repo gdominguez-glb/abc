@@ -10,7 +10,7 @@
       </div>
       <div class="collapse navbar-collapse" id="sub-nav">
         <ul class="nav navbar-nav">
-          <%= active_link_to @page.title, "/#{@page.slug}", wrap_tag: :li %>
+          <%= active_link_to @group_page.title, "/#{@group_page.slug}", active: (request.path == "/#{@group_page.slug}"), wrap_tag: :li if @group_page %>
           <% @sub_nav_items.each do |page| %>
             <%= active_link_to page.title, "/#{page.slug}", wrap_tag: :li %>
           <% end %>
