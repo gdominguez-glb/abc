@@ -11,10 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150529081110) do
+ActiveRecord::Schema.define(version: 20150601024629) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "answers", force: :cascade do |t|
+    t.integer  "question_id"
+    t.text     "content"
+    t.integer  "position"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "contact_topics", force: :cascade do |t|
     t.string   "name"
@@ -71,6 +79,14 @@ ActiveRecord::Schema.define(version: 20150529081110) do
     t.boolean  "show_in_nav",    default: true
     t.boolean  "show_in_footer", default: false
     t.boolean  "group_root",     default: false
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.string   "title"
+    t.integer  "position"
+    t.boolean  "display",    default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "school_districts", force: :cascade do |t|
