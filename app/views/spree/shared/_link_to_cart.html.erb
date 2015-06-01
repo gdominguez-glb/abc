@@ -17,7 +17,7 @@
   <div class="gm-order-info-popup">
     <%= render 'spree/orders/simple_order_form' %>
     <div>
-      <%= link_to "Proceed to checkout", spree.cart_path, class: 'btn btn-primary proceed-button' %>
+      <%= link_to "Proceed to checkout", spree.checkout_state_path(simple_current_order.checkout_steps.first), class: 'btn btn-primary proceed-button' %>
     </div>
   </div>
 <% end %>
