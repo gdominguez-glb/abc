@@ -31,6 +31,7 @@ Rails.application.routes.draw do
     end
   end
 
+  get '/account/help/qa/:id', to: 'account#help_qa', as: :qa
   resources :account, only: [:index] do
     collection do
       get :profile

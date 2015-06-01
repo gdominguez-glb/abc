@@ -1,0 +1,7 @@
+<div class="container">
+  <h3>QA: <%= @question.title %></h3>
+  <p>
+    <%= simple_format @question.answer.try(:content) %>
+  </p>
+  <%= link_to 'Back', '/account/help', class: 'btn btn-default' %>
+</div>

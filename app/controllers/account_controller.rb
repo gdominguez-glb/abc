@@ -30,6 +30,14 @@ class AccountController < ApplicationController
     redirect_to '/account/settings', notice: "Updated email notification successfully"
   end
 
+  def help
+    @qa = Question.displayable
+  end
+
+  def help_qa
+    @question = Question.find(params[:id])
+  end
+
   private
 
   def user_params
