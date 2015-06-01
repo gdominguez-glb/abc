@@ -53,4 +53,8 @@ Spree::User.class_eval do
   if !defined?(TITLES)
     TITLES = ['Educator', 'Administrator', 'Purchaser', 'Parent']
   end
+
+  if !defined?(SUBJECTS)
+    SUBJECTS = ['Math', 'English & Language Arts', 'History', 'Other']
+  end
 end
