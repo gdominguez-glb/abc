@@ -6,6 +6,11 @@
     top: 51px;
     width: 250px;
     height: 100%;
+    overflow: scroll;
+
+    .form-group {
+      margin: 0;
+    }
 
     .taxonomies-filters {
       .taxonomy-header {
@@ -26,11 +31,12 @@
           max-height: 0;
           margin: 0;
           overflow: hidden;
+
           @include transition(all, $transitionTiming);
 
           &.show-menu {
             max-height: 1000px;
-            margin: 0 0 20px;
+            border-bottom: 1px solid #555;
             overflow: auto;
           }
 
@@ -67,32 +73,54 @@
   position: relative;
   height: 400px;
   margin-bottom: 20px;
-  padding: 10px;
+  @include transition(all, $transitionTiming);
 
   &:hover {
-    z-index: 3;
     background: #eee;
 
     &:nth-child(3n+3) > .video-product-drawer {
       left: -65%;
+
+      @media screen and (max-width: 1200px) {
+        right: -65%;
+        left: auto;
+      }
     }
 
     .open-video {
       opacity: 0.5;
     }
 
+    > .video-info {
+      background: #eee;
+    }
+
     > .video-product-drawer {
-      opacity: 1;
       right: -65%;
       background: #bbb;
       z-index: 2;
+      opacity: 1;
     }
 
-    > .video-product-image-wrapper {
+    > .video-info .video-product-image-wrapper {
       .play-video-button {
         opacity: 1;
+        z-index: 4;
       }
     }
+  }
+
+  .video-info {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    padding: 10px;
+    background: #fff;
+    z-index: 3;
+
+    @include transition(all, $transitionTiming);
   }
 
   .video-product-image-wrapper {
@@ -121,18 +149,23 @@
   &:nth-child(3n+3) > .video-product-drawer {
     right: auto;
     left: 0;
+
+    @media screen and (max-width: 1200px) {
+      right: 0;
+      left: auto;
+    }
   }
 
   .video-product-drawer {
     position: absolute;
+    top: 0;
+    right: 0;
     width: 65%;
     height: 100%;
-    right: 0;
-    top: 0;
-    background: #eee;
-    z-index: 2;
     padding: 10px;
+    background: #eee;
     opacity: 0;
+    z-index: 2;
     @include transition(all, $transitionTiming);
 
     .product-description {
