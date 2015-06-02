@@ -1,12 +1,8 @@
-Spree::Admin::ProductsController.class_eval do
-  before_action :load_curriculums, except: :index
-  before_action :load_grades, except: :index
-
-  def load_curriculums
-    @curriculums = Spree::Curriculum.order('position asc')
-  end
-
-  def load_grades
-    @grades = Spree::Grade.order('position asc')
+Spree::ProductsController.class_eval do
+  def favorite
+    if current_spree_user
+      product = Spree::Product.find_by(slug: params[:id])
+      @favorite_product = current_spree_user.favorite_products.create(product_id: product.id)
+    end
   end
 end

@@ -50,6 +50,10 @@ Spree::User.class_eval do
     [first_name, last_name].compact.join(' ')
   end
 
+  def favorited_product?(product)
+    !!favorite_products.where(product_id: product.id).first
+  end
+
   if !defined?(TITLES)
     TITLES = ['Educator', 'Administrator', 'Purchaser', 'Parent']
   end
