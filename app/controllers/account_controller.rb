@@ -4,6 +4,8 @@ class AccountController < ApplicationController
 
   def index
     @nav_name = 'My Products'
+
+    @my_products = current_spree_user.products
   end
 
   def settings
