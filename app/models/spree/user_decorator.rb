@@ -1,13 +1,19 @@
 Spree::User.class_eval do
 
-  has_settings do |s|
-    s.key :email_notifications, :defaults => {
+  include RailsSettings::Extend
+
+  def self.defaults_email_notifications
+    {
       professional_development: true,
       special_offers_and_products: true,
       revision_updates: true,
       phone_communication: true,
       email_communication: true
     }
+  end
+
+  def email_notifications
+    settings[:email_notifications] || self.class.defaults_email_notifications
   end
 
   validates_presence_of :first_name, :last_name, :school_district

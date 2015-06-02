@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 gem 'rails', '4.2.0'
 # Use postgresql as the database for Active Record
 gem 'pg'
@@ -44,7 +43,7 @@ gem 'databasedotcom'
 gem 'wistia-api'
 gem 'whenever', :require => false
 
-gem 'ledermann-rails-settings'
+gem "rails-settings-cached", "0.4.1"
 
 gem 'searchkick'
 
