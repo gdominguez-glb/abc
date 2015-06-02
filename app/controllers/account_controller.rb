@@ -7,7 +7,7 @@ class AccountController < ApplicationController
   end
 
   def settings
-    @email_notifications = spree_current_user.settings(:email_notifications)
+    @email_notifications = spree_current_user.email_notifications
   end
 
   def profile
@@ -26,7 +26,7 @@ class AccountController < ApplicationController
   end
 
   def save_email_notifications
-    spree_current_user.settings(:email_notifications).update_attributes!(email_notifications_params)
+    spree_current_user.settings[:email_notifications] = email_notifications_params.symbolize_keys
     redirect_to '/account/settings', notice: "Updated email notification successfully"
   end
 
