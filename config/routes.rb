@@ -55,6 +55,9 @@ Rails.application.routes.draw do
     root 'dashboard#index'
     get '/dashboard', to: 'dashboard#index', as: :dashboard
 
+    get '/user_profile_settings', to: 'user_profile_settings#index'
+    post '/user_profile_settings', to: 'user_profile_settings#save'
+
     resources :pages
     resources :documents
     resources :questions

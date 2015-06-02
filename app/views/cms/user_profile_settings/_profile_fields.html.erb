@@ -1,0 +1,10 @@
+<% @basic_fields.each do |field| %>
+  <div class="form-group">
+    <label><%= check_box_tag "app[#{role}][#{field}]", true, true, disabled: true %>   <%= field %></label>
+  </div>
+<% end %>
+<% @profile_fields.each do |field| %>
+  <div class="form-group">
+    <label><%= check_box_tag "app[#{role}][#{field}]", true, ((AppSettings.user_profile_settings[role.to_sym][field.to_sym] == true) rescue false) %>   <%= field %></label>
+  </div>
+<% end %>
