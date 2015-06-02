@@ -13,7 +13,7 @@ class Cms::UserProfileSettingsController < Cms::BaseController
   def settings_params
     load_fields
     _params = params.require(:app).permit(admin: (@basic_fields + @profile_fields), school_district_admin: (@basic_fields + @profile_fields), user: (@basic_fields + @profile_fields))
-    _params.to_hash.deep_symbolize_keys!
+    _params = _params.to_hash.deep_symbolize_keys
     _params.each do |k, v|
       v.each do |_k, _v|
         _params[k][_k] = (_v == 'true' ? true : false)

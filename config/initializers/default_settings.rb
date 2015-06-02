@@ -1,4 +1,4 @@
-Setting.defaults[:user_profile_settings] = {
+AppSettings.defaults[:user_profile_settings] = {
   admin: {
     heard_from: true,
     interested_subject: true,

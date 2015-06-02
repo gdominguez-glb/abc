@@ -8,6 +8,14 @@ class AccountController < ApplicationController
 
   def settings
     @email_notifications = spree_current_user.email_notifications
+
+    @profile_fields = (if spree_current_user.has_spree_role?('admin')
+                        AppSettings.user_profile_settings[:admin]
+                      elsif spree_current_user.has_spree_role?('school admin')
+                        AppSettings.user_profile_settings[:school_district_admin]
+                      else
+                        AppSettings.user_profile_settings[:user]
+                      end || {}).keys
   end
 
   def profile
@@ -41,7 +49,19 @@ class AccountController < ApplicationController
   private
 
   def user_params
-    _params = params.require(:user).permit(:phone, :first_name, :last_name, :email, :password, :title, :school_district_id, school_district_attributes: [:name, :state_id, :place_type])
+    _params = params.require(:user).permit(
+      :phone,
+      :first_name,
+      :last_name,
+      :email,
+      :password,
+      :title,
+      :school_district_id,
+      :heard_from,
+      :interested_subject,
+      :interested_grade_level,
+      school_district_attributes: [:name, :state_id, :place_type]
+    )
     if _params[:school_district_id].blank?
       _params.delete(:school_district_id)
     else
@@ -51,7 +71,13 @@ class AccountController < ApplicationController
   end
 
   def email_notifications_params
-    _params = params.permit(:professional_development, :special_offers_and_products, :revision_updates, :phone_communication, :email_communication)
+    _params = params.permit(
+      :professional_development,
+      :special_offers_and_products,
+      :revision_updates,
+      :phone_communication,
+      :email_communication
+    )
     _params.each do |key, value|
       _params[key] = (value == 'true' ? true : false)
     end
