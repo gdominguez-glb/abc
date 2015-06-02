@@ -2,7 +2,7 @@ module VideoGalleryHelper
   include Spree::BaseHelper
 
   def video_gallery_taxons_tree(root_taxon, current_taxon, allow_multiple_taxons_selected)
-    content_tag :div, class: 'list-group', style: 'display: none;' do
+    content_tag :div, class: 'list-group' do
       sibling_ids = root_taxon.children.map(&:id)
       root_taxon.children.map do |taxon|
         video_gallery_taxon_item(taxon, sibling_ids, allow_multiple_taxons_selected)

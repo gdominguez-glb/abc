@@ -1,27 +1,25 @@
-<div class="col-md-4">
-  <div class="video-product-wrapper">
-    <div class="video-product-image-wrapper">
-      <%= link_to large_image(video_product, itemprop: "image"), video_gallery_path(video_product), itemprop: 'url', class: 'open-video' %>
-      <%= link_to play_video_gallery_path(video_product), remote: true, class: 'play-video-button hide' do %>
-        <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span>
+<div class="video-product-wrapper col-lg-4">
+  <div class="video-product-image-wrapper">
+    <%= link_to large_image(video_product, itemprop: "image"), video_gallery_path(video_product), itemprop: 'url', class: 'open-video' %>
+    <%= link_to play_video_gallery_path(video_product), remote: true, class: 'play-video-button' do %>
+      <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span>
+    <% end %>
+  </div>
+  <h3 class="video-product-name">
+    <%= link_to truncate(video_product.name, length: 50), video_gallery_path(video_product), class: 'info', itemprop: "name", title: video_product.name %>
+  </h3>
+  <div class="video-product-categories"><%= video_product.categories.join(", ") %></div>
+  <div class="video-product-taxons"><%= video_product.taxons.map(&:name).join(", ") %></div>
+  <div class="video-product-drawer">
+    <button class="btn btn-default disabled" style="display: block;"><%= video_product.curriculum.try(:name) %></button>
+    <div class="product-description">
+      <%= truncate video_product.description, length: 300 %>
+      <% if video_product.description && video_product.description.length > 100 %>
+        <%= link_to 'MORE INFO', show_description_video_gallery_path(video_product), remote: true, class: 'more-info' %>
       <% end %>
     </div>
-    <h3 class="video-product-name">
-      <%= link_to truncate(video_product.name, length: 50), video_gallery_path(video_product), class: 'info', itemprop: "name", title: video_product.name %>
-    </h3>
-    <div class="video-product-categories"><%= video_product.categories.join(", ") %></div>
-    <div class="video-product-taxons"><%= video_product.taxons.map(&:name).join(", ") %></div>
-    <div class="video-product-drawer hide">
-      <button class="btn btn-default disabled" style="display: block;"><%= video_product.curriculum.try(:name) %></button>
-      <div class="product-description">
-        <%= truncate video_product.description, length: 300 %>
-        <% if video_product.description && video_product.description.length > 100 %>
-          <%= link_to 'MORE INFO', show_description_video_gallery_path(video_product), remote: true, class: 'more-info' %>
-        <% end %>
-      </div>
-      <%= link_to spree.favorite_product_path(video_product, ref_id: "#fav-button-#{video_product.id}"), remote: true, class: "btn favorite-button btn-primary #{'disabled' if favorited_product?(video_product)}", style: 'display: block;', id: "fav-button-#{video_product.id}", data: { method: :post } do %>
-        Add to Favorites
-      <% end %>
-    </div>
+    <%= link_to add_favorite_video_gallery_path(video_product, ref_id: "#fav-button-#{video_product.id}"), remote: true, class: "btn favorite-button btn-primary #{'disabled' if favorited_product?(video_product)}", style: 'display: block;', id: "fav-button-#{video_product.id}", data: { method: :post } do %>
+      Add to Favorites
+    <% end %>
   </div>
 </div>
