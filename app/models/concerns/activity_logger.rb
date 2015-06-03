@@ -5,7 +5,7 @@ module ActivityLogger
     has_many :activities
   end
 
-  def log_acitivity(options={})
+  def log_activity(options={})
     self.activities.create(
       title:  options[:title],
       item:   options[:item],

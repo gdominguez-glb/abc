@@ -22,7 +22,7 @@ Spree::Order.class_eval do
 
   def log_purchase_activity!
     self.products.each do |product|
-      self.user.log_acitivity(
+      self.user.log_activity(
         item: product,
         title: product.name,
         action: 'buy'
