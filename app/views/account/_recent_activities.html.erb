@@ -1,0 +1,11 @@
+<a href="" class="btn btn-default center-block">Recent History</a>
+<a href="/account/history" class="view-all-link">View all</a>
+<div class="history-list">
+  <% @recent_activities.each do |activity| %>
+    <div class="history-item">
+      <span class="glyphicon glyphicon-info-sign"></span>
+      <h4><%= activity.title %></h4>
+      <p><%= activity.created_at.strftime("%b %d, %Y") %></p>
+    </div>
+  <% end %>
+</div>

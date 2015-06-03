@@ -6,6 +6,7 @@ class AccountController < ApplicationController
     @nav_name = 'My Products'
 
     @my_products = current_spree_user.products
+    @recent_activities = current_spree_user.activities.recent
   end
 
   def settings
