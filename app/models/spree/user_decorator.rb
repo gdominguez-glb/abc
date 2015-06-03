@@ -1,6 +1,7 @@
 Spree::User.class_eval do
 
   include RailsSettings::Extend
+  include ActivityLogger
 
   def self.defaults_email_notifications
     {
@@ -27,7 +28,6 @@ Spree::User.class_eval do
   has_many :completed_orders, ->{ where.not(completed_at: nil) }, class_name: 'Spree::Order'
   has_many :products, through: :completed_orders, class_name: 'Spree::Product'
   has_many :favorite_products, class_name: 'Spree::FavoriteProduct'
-  has_many :activities
 
   accepts_nested_attributes_for :school_district, reject_if: proc { |attributes| attributes['name'].blank? }
 
