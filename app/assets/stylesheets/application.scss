@@ -2,17 +2,19 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "mediaelement";
-@import "link_to_cart";
 @import "video_gallery";
 @import "pages";
 @import "account";
 @import "search";
-@import "bootstrap_overrides";
+
+// Components
+@import "components/header";
 
 body {
   padding-top: 70px;
   padding-bottom: 30px;
 }
+
 footer {
   height: 270px;
   background-color: #333333;

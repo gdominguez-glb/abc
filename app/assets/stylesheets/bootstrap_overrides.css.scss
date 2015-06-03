@@ -1,5 +1,10 @@
+.navbar-header {
+  posiiton: relative;
+}
+
 @media (max-width: 1200px) {
   .navbar-header {
+    posiiton: relative;
     float: none;
   }
   .navbar-toggle {
