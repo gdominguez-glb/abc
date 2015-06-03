@@ -1,6 +1,7 @@
 Spree::User.class_eval do
 
   include RailsSettings::Extend
+  include ActivityLogger
 
   def self.defaults_email_notifications
     {

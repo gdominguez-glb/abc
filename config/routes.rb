@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   end
 
   get '/account/help/qa/:id', to: 'account#help_qa', as: :qa
+  delete '/account/remove_history/:id', to: 'account#remove_history', as: :remove_history
   resources :account, only: [:index] do
     collection do
       get :profile

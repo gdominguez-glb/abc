@@ -6,6 +6,7 @@ class AccountController < ApplicationController
     @nav_name = 'My Products'
 
     @my_products = current_spree_user.products
+    @recent_activities = current_spree_user.activities.recent
   end
 
   def settings
@@ -38,6 +39,15 @@ class AccountController < ApplicationController
   def save_email_notifications
     spree_current_user.settings[:email_notifications] = email_notifications_params.symbolize_keys
     redirect_to '/account/settings', notice: "Updated email notification successfully"
+  end
+
+  def history
+    @activities = spree_current_user.activities.order('created_at desc').page(params[:page])
+  end
+
+  def remove_history
+    @activity = spree_current_user.activities.find(params[:id])
+    @activity.destroy
   end
 
   def help
