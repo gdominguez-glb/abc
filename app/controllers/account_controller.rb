@@ -41,6 +41,15 @@ class AccountController < ApplicationController
     redirect_to '/account/settings', notice: "Updated email notification successfully"
   end
 
+  def history
+    @activities = spree_current_user.activities.order('created_at desc').page(params[:page])
+  end
+
+  def remove_history
+    @activity = spree_current_user.activities.find(params[:id])
+    @activity.destroy
+  end
+
   def help
     @qa = Question.displayable
   end
