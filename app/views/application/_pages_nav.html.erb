@@ -14,6 +14,7 @@
           <% @sub_nav_items.each do |page| %>
             <%= active_link_to page.title, "/#{page.slug}", wrap_tag: :li %>
           <% end %>
+          <%= active_link_to "Video Gallery", '/video_gallery', wrap_tag: :li if current_spree_user %>
         </ul>
       </div>
     </div>
