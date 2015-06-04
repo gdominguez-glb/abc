@@ -40,6 +40,12 @@ Spree::Order.class_eval do
     end
   end
 
+  def free_digital_order?
+    self.products.all? do |product|
+      product.shipping_category.name == 'Digital Delivery' && product.digitals.present? && product.free?
+    end
+  end
+
   def valid_terms_and_conditions?
     if has_license_products? && terms_and_conditions != true
       self.errors[:terms_and_conditions] << Spree.t('terms_and_conditions.must_be_accepted')
@@ -47,12 +53,15 @@ Spree::Order.class_eval do
     end
   end
 
-  remove_checkout_step :delivery
-  insert_checkout_step :delivery, after: :address, if: -> (order) { order.has_digital_delivery? }
-
-  remove_checkout_step :terms_and_conditions
-  insert_checkout_step :terms_and_conditions, :before => :delivery, if: -> (order) { order.has_license_products?  }
-
+  checkout_flow do
+    go_to_state :address, if: -> (order) { !order.free_digital_order? }
+    go_to_state :terms_and_conditions, if: -> (order) { order.has_license_products?  }
+    go_to_state :delivery, if: -> (order) { order.has_digital_delivery? }
+    go_to_state :payment, if: ->(order) { order.payment_required? }
+    go_to_state :confirm, if: ->(order) { order.confirmation_required? }
+    go_to_state :complete
+    remove_transition from: :delivery, to: :confirm
+  end
 end
 
 Spree::Order.state_machine.after_transition :to => :complete, :do => :create_licensed_products!
