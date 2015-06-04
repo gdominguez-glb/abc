@@ -14,4 +14,20 @@
     <%= form.check_box :terms_and_conditions %> <%= label_tag(:terms_and_conditions, Spree.t('terms_and_conditions.checkbox')) %>
   </div>
 </div>
-<%= submit_tag Spree.t(:save_and_continue), :class => 'continue button primary' %>
+<%= submit_tag Spree.t(:save_and_continue), :class => 'continue btn btn-primary disabled term-continue-button' %>
+
+<script type="text/javascript">
+  $(function(){
+    if($('.terms_and_conditions_text').get(0).scrollHeight == ($('.terms_and_conditions_text').height() + 40)) {
+      setTimeout(function() {
+        $('.term-continue-button').removeClass('disabled');
+      }, 3000)
+    } else {
+      $('.terms_and_conditions_text').scroll(function () {
+        if (($(this).scrollTop() + 40) == $(this).get(0).scrollHeight - $(this).height()) {
+            $('.term-continue-button').removeClass('disabled');
+        }
+      });
+    }
+  })
+</script>
