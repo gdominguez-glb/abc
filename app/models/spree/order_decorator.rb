@@ -31,7 +31,9 @@ Spree::Order.class_eval do
   end
 
   def has_license_products?
-    products.first && products.first.license_text.present?
+    self.products.any? do |product|
+      product.license_text.present?
+    end
   end
 
   def has_digital_delivery?

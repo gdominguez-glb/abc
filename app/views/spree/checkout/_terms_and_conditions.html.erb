@@ -2,7 +2,12 @@
   <h4><%= Spree.t('terms_and_conditions.title') %></h4>
 
   <div class="terms_and_conditions_text">
-    <%= simple_format @current_order.products.first.license_text %>
+    <% @current_order.products.select{|p| p.license_text.present?}.each do |product| %>
+      <h5><%= product.name %></h5>
+      <p>
+        <%= simple_format product.license_text %>
+      </p>
+    <% end %>
   </div>
 
   <div style="margin-top: 5px;">
