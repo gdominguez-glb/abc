@@ -31,7 +31,7 @@ pages:
            <a class="btn btn-default" href="#" role="button">Secondary CTA</a>
           </div>
           <div class="col-xs-1"></div>
-          <div class="col-xs-5">  
+          <div class="col-xs-5">
             <img src="../assets/img/fpo-image.jpg" class="img-thumbnail" alt="Responsive image">
           </div>
         </div>
@@ -51,7 +51,7 @@ pages:
            <a class="btn btn-default" href="#" role="button">Secondary CTA</a>
           </div>
           <div class="col-xs-1"></div>
-          <div class="col-xs-5">  
+          <div class="col-xs-5">
             <img src="../assets/img/fpo-image.jpg" class="img-thumbnail" alt="Responsive image">
           </div>
         </div>
@@ -71,7 +71,7 @@ pages:
              <a class="btn btn-default" href="#" role="button">Secondary CTA</a>
             </div>
             <div class="col-xs-1"></div>
-            <div class="col-xs-5">  
+            <div class="col-xs-5">
               <img src="../assets/img/fpo-image.jpg" class="img-thumbnail" alt="Responsive image">
             </div>
           </div>
@@ -81,7 +81,7 @@ pages:
       <section class="bottom-space">
         <div class="container">
           <div id="viewport" class="row callout">
-            <div class="col-xs-5 bottom-space">  
+            <div class="col-xs-5 bottom-space">
               <img src="../assets/img/fpo-image.jpg" class="img-thumbnail" alt="Responsive image">
             </div>
             <div class="col-xs-1"></div>
@@ -130,7 +130,7 @@ pages:
            <a class="btn btn-default" href="#" role="button">Secondary CTA</a>
           </div>
           <div class="col-xs-1"></div>
-          <div class="col-xs-5">  
+          <div class="col-xs-5">
             <img src="../../assets/img/fpo-image.jpg" class="img-thumbnail" alt="Responsive image">
           </div>
         </div>
@@ -140,7 +140,7 @@ pages:
       <section>
         <div class="container">
           <div id="viewport" class="row callout">
-            <div class="col-xs-5">  
+            <div class="col-xs-5">
               <img src="../../assets/img/fpo-image.jpg" class="img-thumbnail" alt="Responsive image">
             </div>
             <div class="col-xs-1"></div>
@@ -170,7 +170,7 @@ pages:
              <a class="btn btn-default" href="#" role="button">Secondary CTA</a>
             </div>
             <div class="col-xs-1"></div>
-            <div class="col-xs-5">  
+            <div class="col-xs-5">
               <img src="../../assets/img/fpo-image.jpg" class="img-thumbnail" alt="Responsive image">
             </div>
           </div>
@@ -178,8 +178,8 @@ pages:
       </section>
 
   -
-    title: 'Teathers'
-    seo_content: 'Math Teathers, Update this area'
+    title: 'Teachers'
+    seo_content: 'Math Teachers, Update this area'
     slug: 'math/teachers'
     group_name: "math"
     sub_group_name: "teachers"
@@ -209,7 +209,7 @@ pages:
            <a class="btn btn-default" href="#" role="button">Secondary CTA</a>
           </div>
           <div class="col-xs-1"></div>
-          <div class="col-xs-5">  
+          <div class="col-xs-5">
             <img src="../../assets/img/fpo-image.jpg" class="img-thumbnail" alt="Responsive image">
           </div>
         </div>
@@ -219,7 +219,7 @@ pages:
       <section>
         <div class="container">
           <div id="viewport" class="row callout">
-            <div class="col-xs-5">  
+            <div class="col-xs-5">
               <img src="../../assets/img/fpo-image.jpg" class="img-thumbnail" alt="Responsive image">
             </div>
             <div class="col-xs-1"></div>
@@ -249,7 +249,7 @@ pages:
              <a class="btn btn-default" href="#" role="button">Secondary CTA</a>
             </div>
             <div class="col-xs-1"></div>
-            <div class="col-xs-5">  
+            <div class="col-xs-5">
               <img src="../../assets/img/fpo-image.jpg" class="img-thumbnail" alt="Responsive image">
             </div>
           </div>
@@ -285,7 +285,7 @@ pages:
            <a class="btn btn-default" href="#" role="button">Secondary CTA</a>
           </div>
           <div class="col-xs-1"></div>
-          <div class="col-xs-5">  
+          <div class="col-xs-5">
             <img src="../../assets/img/fpo-image.jpg" class="img-thumbnail" alt="Responsive image">
           </div>
         </div>
@@ -295,7 +295,7 @@ pages:
       <section>
         <div class="container bottom-space">
           <div id="viewport" class="row callout bottom-space">
-            <div class="col-xs-5">  
+            <div class="col-xs-5">
               <img src="../../assets/img/fpo-image.jpg" class="img-thumbnail" alt="Responsive image">
             </div>
             <div class="col-xs-1"></div>
@@ -314,8 +314,8 @@ pages:
       </section>
 
   -
-    title: "Eurehka Shop"
-    seo_content: "Math Eurehka Shop, Update this area"
+    title: "Eureka Shop"
+    seo_content: "Math Eureka Shop, Update this area"
     slug: "math/eureka-shop"
     group_name: "math"
     sub_group_name: "eureka-shop"
