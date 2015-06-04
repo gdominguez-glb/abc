@@ -30,7 +30,6 @@
         <li class="<%= store_active_class %>">
           <%= link_to "Store", '/store', class: store_active_class %>
         </li>
-        <%= active_link_to "CMS", '/cms', wrap_tag: :li if current_spree_user && current_spree_user.admin? %>
       </ul>
 
       <%= form_tag '/search', class: 'navbar-form navbar-left', method: :get do %>
