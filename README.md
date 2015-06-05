@@ -2,6 +2,8 @@
 
 [![Build Status](https://semaphoreci.com/api/v1/projects/204c885f-d98b-4320-8927-ee89532094ba/402649/badge.svg)](https://semaphoreci.com/int/greatminds)
 
+[![Code Climate](https://codeclimate.com/repos/5537ca5be30ba00665000ce2/badges/07406c2e96832b7012b3/gpa.svg)](https://codeclimate.com/repos/5537ca5be30ba00665000ce2/feed)
+
 ### Rails version
 
 4.2.0
