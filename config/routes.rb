@@ -26,7 +26,6 @@ Rails.application.routes.draw do
     collection do
       get :s3_videos
       get :hosting_videos
-      post :set_player
     end
   end
 
