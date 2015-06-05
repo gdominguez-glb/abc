@@ -19,23 +19,23 @@
 //= require mediaelement_rails
 //= require_tree .
 
-Gm = {
+window.Gm = {
   fetch_cart: function() {
     $.ajax({
         url: '/store/cart_link',
         type: 'GET',
         success: function(result) {
           $("#link-to-cart").html(result);
-          Gm.bind_simple_cart()
+          Gm.bind_simple_cart();
         }
-    })
+    });
   },
   submit_simple_cart_form: function($form) {
     $.ajax({
       url: $form.attr('action'),
       type: 'POST',
       data: $form.serializeArray()
-    })
+    });
   },
   bind_simple_cart: function() {
     if (($('form#simple-update-cart')).length > 0) {
