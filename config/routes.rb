@@ -22,7 +22,6 @@ Rails.application.routes.draw do
     member do
       get :show_description
       get :play
-      post :add_favorite
     end
     collection do
       get :s3_videos
