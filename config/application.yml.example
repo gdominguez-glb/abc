@@ -19,3 +19,6 @@ salesforce_password: ''
 salesforce_security_token: ''
 
 WISTIA_API_PASSWORD: '05cb082245e9e1400aee3af99f1fa3e6ff03475532e2b40b042825e3ac66f4ae'
+
+auth_username: ''
+auth_password: ''

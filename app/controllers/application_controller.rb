@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   end
 
   if Rails.env.qa? || Rails.env.staging?
-    http_basic_authenticate_with name: "greatminds", password: "intridea4gm"
+    http_basic_authenticate_with name: ENV['auth_username'], password: ENV['auth_password']
   end
 
   protected
