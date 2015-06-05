@@ -27,22 +27,6 @@ class VideoGalleryController < ApplicationController
     @video_product ||= Spree::Product.free.find_by(slug: params[:id])
   end
 
-  def set_player
-    if current_spree_user
-      current_spree_user.update(preference_video_player: params[:player])
-    else
-      session[:preference_video_player] = params[:player]
-    end
-    render nothing: true
-  end
-
-  def add_favorite
-    if current_spree_user
-      product = Spree::Product.find_by(slug: params[:id])
-      @favorite_product = current_spree_user.favorite_products.create(product_id: product.id)
-    end
-  end
-
   private
 
   def find_video_product
