@@ -19,7 +19,8 @@
 //= require mediaelement_rails
 //= require_tree .
 
-window.Gm = {
+var Gm;
+Gm = {
   fetch_cart: function() {
     $.ajax({
         url: '/store/cart_link',
@@ -52,3 +53,4 @@ window.Gm = {
     }
   }
 };
+window.Gm = Gm;
