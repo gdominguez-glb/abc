@@ -27,5 +27,9 @@ module Spree
     def source_required?
       false
     end
+
+    def payment_source_class
+      Spree::PurchaseOrder
+    end
   end
 end

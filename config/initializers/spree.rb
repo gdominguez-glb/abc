@@ -61,3 +61,7 @@ Spree::PermittedAttributes.user_attributes.concat([
   :first_name, :last_name, :address, :interested_subject, :interested_grade_level,
   :school_name, :heard_from, :receive_newsletter, :school_district_id
 ])
+
+Spree::PermittedAttributes.source_attributes.concat([
+  :po_number, :person_to_receive_license
+])
