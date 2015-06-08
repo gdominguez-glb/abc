@@ -42,4 +42,16 @@ Spree::Digital.class_eval do
   def s3_url
     attachment.expiring_url(3600)
   end
+
+  def video?
+    attachment.content_type =~ /video/i
+  end
+
+  def update_wistia_data(media_data)
+    update(
+      wistia_id:        media_data['id'],
+      wistia_hashed_id: media_data['hashed_id'],
+      wistia_status:    media_data['status']
+    )
+  end
 end
