@@ -5,6 +5,14 @@ class GmWistiaUploader
 
   UPLOAD_API = 'https://upload.wistia.com'
 
+  def upload_digital(digital)
+    upload({
+      url:         digital.attachment.expiring_url(60*60),
+      name:        digital.variant.product.name,
+      description: digital.variant.product.description
+    })
+  end
+
   def upload(options={})
     raise "Must specify url to upload" if options[:url].blank?
     params = {
