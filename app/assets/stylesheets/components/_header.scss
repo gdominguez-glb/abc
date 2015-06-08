@@ -10,6 +10,27 @@ nav {
   }
 }
 
+.navbar-default {
+  &.subnav {
+    .navbar-nav {
+      li {
+        &:first-child {
+          a {
+            padding-left: 0;
+          }
+        }
+      }
+
+      .active {
+        a {
+          background: transparent;
+          color: white;
+        }
+      }
+    }
+  }
+}
+
 .navbar-toggle {
   @media screen and (max-width: 1200px) {
     margin-right: 136px;
