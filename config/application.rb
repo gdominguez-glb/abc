@@ -57,5 +57,9 @@ module GreatMinds
       generate.helper_specs false
       generate.view_specs false
     end
+
+    initializer "spree.purchase_order.payment_methods", :after => "spree.register.payment_methods" do |app|
+      app.config.spree.payment_methods << Spree::PaymentMethod::PurchaseOrder
+    end
   end
 end
