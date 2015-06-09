@@ -1,25 +1,23 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-9">
-      <div class="alert alert-warning alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <strong>Warning!</strong> Better check yourself, you're not looking too good.
-      </div>
-      <div class="alert alert-warning alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <strong>Warning!</strong> Better check yourself, you're not looking too good.
-      </div>
-      <div class="my-products">
-        <%= render 'my_products' %>
-      </div>
-      <div class="recommended-products">
-        <%= render 'recommends' %>
-      </div>
+<div class="wrapper account-page">
+  <div class="content sidebar-right">
+    <div class="alert alert-warning alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <strong>Warning!</strong> Better check yourself, you're not looking too good.
     </div>
-    <div class="col-md-3">
-      <div class="recent-history">
-        <%= render 'recent_activities' %>
-      </div>
+    <div class="alert alert-warning alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <strong>Warning!</strong> Better check yourself, you're not looking too good.
+    </div>
+    <div class="my-products">
+      <%= render 'my_products' %>
+    </div>
+    <div class="recommended-products">
+      <%= render 'recommends' %>
+    </div>
+  </div>
+  <div class="fixed-sidebar right page-has-subnav">
+    <div class="recent-history">
+      <%= render 'recent_activities' %>
     </div>
   </div>
 </div>

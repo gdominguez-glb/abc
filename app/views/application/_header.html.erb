@@ -1,8 +1,6 @@
 <!-- Begin Navbar -->
 <nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container">
-    <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
-
+  <div class="wrapper">
     <div class="navbar-header">
        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav">
          Menu
@@ -15,7 +13,14 @@
       </a>
     </div>
 
-    <div class="collapse navbar-collapse" id="main-nav">
+
+    <div class="collapse navbar-collapse pull-left" id="main-nav">
+      <%= form_tag '/search', class: 'navbar-form nav-search', method: :get do %>
+        <div class="form-group">
+          <%= text_field_tag :query, nil, class: 'form-control', placeholder: 'Search' %>
+        </div>
+        <%= submit_tag 'Submit', class: 'btn btn-default' %>
+      <% end %>
       <ul class="nav navbar-nav">
         <% Page.show_in_top_navigation.each do |page| %>
           <%= active_link_to page.group_name.capitalize, "/#{page.slug}", wrap_tag: :li %>
@@ -31,14 +36,7 @@
           <%= link_to "Store", '/store', class: store_active_class %>
         </li>
       </ul>
-
-      <%= form_tag '/search', class: 'navbar-form navbar-left', method: :get do %>
-        <div class="form-group">
-          <%= text_field_tag :query, nil, class: 'form-control', placeholder: 'Search' %>
-        </div>
-        <%= submit_tag 'Submit', class: 'btn btn-default' %>
-      <% end %>
     </div>
     <%= render partial: 'spree/shared/main_nav_bar' if store_menu? %>
-  </div> <!-- /.container-fluid -->
+  </div>
 </nav> <!-- /.navbar -->

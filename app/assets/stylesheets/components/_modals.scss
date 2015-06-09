@@ -1,0 +1,63 @@
+// _modals.scss
+
+.video_gallery {
+
+  .modal {
+    &.fade {
+      .modal-dialog {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin: 0;
+        @include translate(-50%, -200%);
+        @include transition(transform, .5s);
+      }
+    }
+
+    &.in {
+      .modal-dialog {
+        @include translate(-50%, -50%);
+      }
+    }
+  }
+
+  .modal-backdrop {
+    &.in {
+      opacity: .75;
+    }
+  }
+
+  .modal-content {
+    background: transparent;
+    box-shadow: none;
+    border: none;
+  }
+
+  .modal-dialog {
+    &.modal-lg {
+      width: 850px;
+    }
+  }
+
+  .modal-header {
+    border: none;
+
+    .close {
+      position: absolute;
+      right: 0;
+      top: -15px;
+      margin-top: 0px;
+      color: white;
+      font-size: 40px;
+      opacity: .75;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  .modal-body {
+    padding: 0;
+  }
+}

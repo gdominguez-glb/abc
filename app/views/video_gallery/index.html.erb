@@ -1,18 +1,18 @@
-<div class="videos-wrapper clearfix">
-  <div class="video-gallery-side">
-    <%= form_tag '', method: :get, class: 'side-search-form' do %>
-      <% params[:taxon_ids].each do |taxon_id| %>
-        <%= hidden_field_tag "taxon_ids[]", taxon_id %>
-      <% end %>
-      <div class="form-group">
-        <%= text_field_tag :query, params[:query], class: 'form-control', placeholder: 'Search' %>
-      </div>
+<div class="fixed-sidebar left">
+  <%= form_tag '', method: :get, class: 'side-search-form' do %>
+    <% params[:taxon_ids].each do |taxon_id| %>
+      <%= hidden_field_tag "taxon_ids[]", taxon_id %>
     <% end %>
-    <div class="taxonomies-filters">
-      <%= render 'taxonomies' %>
+    <div class="form-group">
+      <%= text_field_tag :query, params[:query], class: 'form-control', placeholder: 'Search' %>
     </div>
+  <% end %>
+  <div class="taxonomies-filters">
+    <%= render 'taxonomies' %>
   </div>
-  <div class="videos-container">
+</div>
+<div class="videos-wrapper clearfix">
+  <div class="content sidebar-left">
     <% @video_products.each do |video_product| %>
       <%= render partial: 'video_product', locals: { video_product: video_product } %>
     <% end %>
