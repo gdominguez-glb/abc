@@ -23,3 +23,9 @@ en:
   hello: "Hello world"
   spree:
     purchase_from_partner: "Purchase From Partner"
+    purchase_order: "Purchase Order"
+
+  activerecord:
+    attributes:
+      spree/purchase_order:
+        po_number: "PO #"

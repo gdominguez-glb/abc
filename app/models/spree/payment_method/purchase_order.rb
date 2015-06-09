@@ -25,11 +25,19 @@ module Spree
     end
 
     def source_required?
-      false
+      true
+    end
+
+    def auto_capture?
+      true
     end
 
     def payment_source_class
       Spree::PurchaseOrder
+    end
+
+    def purchase(cents, source, gateway_options={})
+      ActiveMerchant::Billing::Response.new(true, "", {}, {})
     end
   end
 end
