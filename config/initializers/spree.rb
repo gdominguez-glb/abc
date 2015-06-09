@@ -12,6 +12,7 @@
 Spree.config do |config|
   config.allow_guest_checkout   = false
   config.track_inventory_levels = false
+  config.always_include_confirm_step = true
 end
 
 Spree.user_class = "Spree::User"
