@@ -10,7 +10,7 @@
         <%= f.email_field :email, :class => 'form-control', :placeholder => Spree.t(:email), tabindex: 3 %>
       </div>
       <div class="form-group">
-        <label>Interested Subject</label>
+        <label>Subject you are interested in</label>
         <%= f.select :interested_subject, options_for_select(Spree::User::SUBJECTS), { prompt: 'Please select interested subject' }, { class: 'form-control', tabindex: 5 } %>
       </div>
       <div class="form-group">
