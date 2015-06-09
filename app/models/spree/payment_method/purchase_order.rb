@@ -25,11 +25,11 @@ module Spree
     end
 
     def source_required?
-      true
+      false
     end
 
     def auto_capture?
-      true
+      false
     end
 
     def payment_source_class

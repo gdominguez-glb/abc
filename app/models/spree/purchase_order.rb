@@ -4,4 +4,16 @@ class Spree::PurchaseOrder < ActiveRecord::Base
   has_many :payments, as: :source
 
   validates_presence_of :po_number
+
+  def actions
+    %w{capture void}
+  end
+
+  def can_capture?(payment)
+    ['checkout', 'pending'].include?(payment.state)
+  end
+
+  def can_void?(payment)
+    payment.state != 'void'
+  end
 end
