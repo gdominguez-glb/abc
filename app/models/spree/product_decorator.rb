@@ -1,6 +1,8 @@
 Spree::Product.class_eval do
 
-  searchkick
+  unless Spree::Product.respond_to?(:searchkick_options)
+    searchkick
+  end
 
   validates :license_length, numericality: { only_integer: true }, allow_blank: true
   validates :redirect_url, format: { with: URI.regexp }, allow_blank: true
