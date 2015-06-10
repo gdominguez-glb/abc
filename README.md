@@ -17,6 +17,11 @@
   `$ brew install elasticsearch`
   `$ elasticsearch`
 
+### Redis
+
+  `$ brew install redis`
+  `$ redis-server`
+
 ### Database setup
 
 1. Run the following commands to instate the app's configuration:
@@ -30,18 +35,11 @@
 3. Create the database, load the schema, and initialize the app with
    seed data:
 
-    `$ bundle exec rake db:setup`
-
-
-### Spree Setup
-
-`$ bundle exec rake db:setup`
-
-`$ bundle exec rake db:seed`
+    `$ bundle exec rake db:create && bundle exec rake db:migrate && bundle exec rake db:seed`
 
 ### Init Site Pages
 
-`$ bundle exec rake pages:load`
+`$ bundle exec rake pages:reset`
 
 This will ensure the default example spree data is loaded
 
@@ -49,8 +47,8 @@ Access the store at [here](http://localhost:3000/store)
 
 And the Admin login [here](http://localhost:3000/store/admin)
 
-    user: spree@example.com
-    password: spree123
+    user: web.admin@greatminds.net
+    password: intridea4gm
 
 ### Start sidekiq
 
