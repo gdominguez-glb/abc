@@ -25,7 +25,7 @@
       <p>
         <%= @video_product.description %>
       </p>
-      <%= link_to add_favorite_video_gallery_path(@video_product, ref_id: "#fav-button-#{@video_product.id}"), remote: true, class: "btn btn-primary favorite-button #{'disabled' if !can_favorite_product?(@video_product)}", id: "fav-button-#{@video_product.id}", data: { method: :post } do %>
+      <%= link_to spree.favorite_product_path(@video_product, ref_id: "#fav-button-#{@video_product.id}"), remote: true, class: "btn btn-primary favorite-button #{'disabled' if !can_favorite_product?(@video_product)}", id: "fav-button-#{@video_product.id}", data: { method: :post } do %>
         Add to Favorites
       <% end %>
     </div>
@@ -36,7 +36,7 @@
   <%= javascript_tag do %>
     $(function(){
       var wistia_iframe = $('#wistia-iframe').get(0);
-      if(wistia_iframe.wistiaApi) {
+      if(wistia_iframe && wistia_iframe.wistiaApi) {
         var wistiaEmbed = document.getElementById("wistia-iframe").wistiaApi;
         wistiaEmbed.bind('play', function(){
           $("#wistia-iframe").attr('width', 1120);
