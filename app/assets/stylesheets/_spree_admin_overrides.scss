@@ -1,0 +1,80 @@
+// _spree_admin.scss
+
+// header
+
+.admin {
+  padding-top: 110px;
+
+  .navbar-header {
+    padding: 15px;
+  }
+
+  .navbar-brand {
+    float: none;
+    display: block;
+    margin-left: -15px;
+  }
+
+  #sidebar-toggle {
+    position: relative;
+    float: left;
+    margin: 0;
+  }
+
+  .navbar-inverse {
+    background: #f8f8f8;
+    border-color: darken(#f8f8f8, 20%);
+
+    .navbar-toggle {
+
+      &:hover {
+        background: #f8f8f8;
+      }
+
+      .icon-bar {
+        background: #333;
+      }
+    }
+  }
+
+  .dropdown {
+    &.user-menu {
+      a {
+        color: #333 !important;
+      }
+    }
+  }
+
+  // Tables
+  table {
+    min-width: 1000px;
+    max-width: none;
+  }
+}
+
+// Sidebar
+#wrapper {
+
+  #main-sidebar {
+    top: 95px;
+
+    &.hidden-xs {
+      display: block !important;
+    }
+  }
+
+  &.sidebar-minimized {
+
+    #main-sidebar {
+      width: 0;
+      overflow: hidden;
+    }
+  }
+}
+
+#main-part {
+
+  &.sidebar-collapsed {
+    padding-left: 15px;
+  }
+}
