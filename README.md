@@ -12,6 +12,11 @@
 
 2.2.1
 
+### Elasticsearch
+
+  `$ brew install elasticsearch`
+  `$ elasticsearch`
+
 ### Database setup
 
 1. Run the following commands to instate the app's configuration:
