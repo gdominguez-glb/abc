@@ -7,6 +7,7 @@
 
  *= require_self
  *= require_tree .
+ *= require application
  *= require spree/backend/spree_digital
  *= require spree/backend/spree_better_terms_and_conditions
 */
