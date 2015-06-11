@@ -1,0 +1,42 @@
+// _forms.scss
+
+// New User Form
+.school-district-details, .add-district-field {
+  max-height: 0;
+  overflow: hidden;
+  @include transition(all, .5s);
+
+  &.show-details {
+    max-height: 1000px;
+    overflow: auto;
+  }
+}
+
+.add-district-field {
+  margin-bottom: 0;
+
+  &.show-details {
+   margin-bottom: 15px;
+  }
+}
+
+.add-district {
+  position: relative;
+  height: 35px;
+  margin-bottom: 15px;
+}
+
+.add-district-button {
+  float: right;
+
+  .text, .close {
+    max-width: 0;
+    float: left;
+    overflow: hidden;
+    @include transition(all, .5s);
+
+    &.show-prompt {
+      max-width: 200px;
+    }
+  }
+}

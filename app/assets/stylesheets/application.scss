@@ -1,6 +1,3 @@
-// Components
-@import "components/header";
-
 // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
 @import "bootstrap-sprockets";
 @import "bootstrap";
@@ -11,6 +8,10 @@
 @import "search";
 @import "spree_admin_overrides";
 @import "select2_import";
+
+// Components
+@import "components/forms";
+@import "components/header";
 
 
 body {
@@ -149,3 +150,4 @@ body.pages {
 footer a {
   color: #333;
 }
+

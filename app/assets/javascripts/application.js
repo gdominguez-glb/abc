@@ -18,6 +18,7 @@
 //= require zeroclipboard
 //= require jquery-sortable
 //= require mediaelement_rails
+//= require user_form
 //= require_tree .
 
 var Gm;
