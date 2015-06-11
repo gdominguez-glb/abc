@@ -7,6 +7,7 @@ class AccountController < ApplicationController
 
     @my_products = current_spree_user.products
     @recent_activities = current_spree_user.activities.recent
+    @recommendations = Recommendation.limit(2)
   end
 
   def settings
