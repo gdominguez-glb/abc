@@ -28,7 +28,6 @@ class @GoogleAnalytics
         window._gaq.push ["_trackPageview", url]
       else
         window._gaq.push ["_trackPageview"]
-      window._gaq.push ["_trackPageLoadTime"]
 
   @isLocalRequest: ->
     GoogleAnalytics.documentDomainIncludes "local"
