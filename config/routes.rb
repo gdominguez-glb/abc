@@ -61,6 +61,7 @@ Rails.application.routes.draw do
     resources :documents
     resources :questions
     resources :contacts, only: [:index, :destroy, :edit, :update]
+    resources :recommendations
     resources :contact_topics do
       collection do
         post :update_positions

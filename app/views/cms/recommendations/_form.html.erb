@@ -1,0 +1,33 @@
+<%= form_for([:cms, @recommendation], class: 'form') do |f| %>
+  <% if @recommendation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@recommendation.errors.count, "error") %> prohibited this recommendation from being saved:</h2>
+
+      <ul>
+      <% @recommendation.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <label>Title</label>
+    <%= f.text_field :title, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <label>Sub Header</label>
+    <%= f.text_area :sub_header, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <label>Call to action button text</label>
+    <%= f.text_field :call_to_action_button_text, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <label>Call to action button link</label>
+    <%= f.text_field :call_to_action_button_link, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.submit class: 'btn btn-primary' %>
+  </div>
+<% end %>
