@@ -14,6 +14,7 @@
 //= require bootstrap-sprockets
 //= require jquery_ujs
 //= require jquery.validate
+//= require select2
 //= require zeroclipboard
 //= require jquery-sortable
 //= require mediaelement_rails

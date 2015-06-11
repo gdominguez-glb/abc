@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150608120642) do
+ActiveRecord::Schema.define(version: 20150611031537) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -91,12 +91,30 @@ ActiveRecord::Schema.define(version: 20150608120642) do
     t.boolean  "group_root",     default: false
   end
 
+  create_table "products_recommendations", id: false, force: :cascade do |t|
+    t.integer "product_id"
+    t.integer "recommendation_id"
+  end
+
   create_table "questions", force: :cascade do |t|
     t.string   "title"
     t.integer  "position"
     t.boolean  "display",    default: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+  end
+
+  create_table "recommendations", force: :cascade do |t|
+    t.string   "title"
+    t.text     "sub_header"
+    t.string   "call_to_action_button_text"
+    t.string   "call_to_action_button_link"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   create_table "school_districts", force: :cascade do |t|

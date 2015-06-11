@@ -57,10 +57,13 @@ Rails.application.routes.draw do
     get '/user_profile_settings', to: 'user_profile_settings#index'
     post '/user_profile_settings', to: 'user_profile_settings#save'
 
+    get 'products/search', to: 'products#search'
+
     resources :pages
     resources :documents
     resources :questions
     resources :contacts, only: [:index, :destroy, :edit, :update]
+    resources :recommendations
     resources :contact_topics do
       collection do
         post :update_positions

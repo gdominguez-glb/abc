@@ -1,0 +1,17 @@
+<h4>Recommended</h4>
+<div class="row">
+  <% @recommendations.each do |recommendation| %>
+    <div class="col-md-6">
+      <div class="recommended-product-wrapper">
+        <% if recommendation.photo.present? %>
+          <%= image_tag recommendation.photo.url, class: 'img-circle', width: 60, height: 60 %>
+        <% else %>
+          <img src="http://placehold.it/60x60" class="img-circle">
+        <% end %>
+        <h4><%= recommendation.title %></h4>
+        <p><%= recommendation.sub_header %></p>
+        <%= link_to recommendation.call_to_action_button_text, recommendation.call_to_action_button_link, class: 'btn btn-default' %>
+      </div>
+    </div>
+  <% end %>
+</div>

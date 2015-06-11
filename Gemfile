@@ -47,6 +47,8 @@ gem "rails-settings-cached", "0.4.1"
 
 gem 'searchkick'
 
+gem 'select2-rails'
+
 group :development do
   gem 'pry'
   gem 'quiet_assets'

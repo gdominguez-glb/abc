@@ -633,6 +633,7 @@ DEPENDENCIES
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
   searchkick
+  select2-rails
   shoulda-matchers
   sidekiq
   spree (= 3.0.0)
