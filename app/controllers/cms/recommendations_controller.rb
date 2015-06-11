@@ -37,7 +37,7 @@ class Cms::RecommendationsController < Cms::BaseController
   private
 
   def recommendation_params
-    params.require(:recommendation).permit(:title, :sub_header, :call_to_action_button_text, :call_to_action_button_link)
+    params.require(:recommendation).permit(:title, :sub_header, :call_to_action_button_text, :call_to_action_button_link, :photo)
   end
 
   def find_recommendation
