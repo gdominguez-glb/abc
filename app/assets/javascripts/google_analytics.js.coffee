@@ -39,6 +39,10 @@ class @GoogleAnalytics
   @analyticsId: ->
     if document.domain == 'greatminds.net'
       'UA-3728186-1'
+    else if document.domain == 'gm-qa.intridea.com'
+      'UA-3728186-5'
+    else if document.domain == 'gm-staging.intridea.com'
+      'UA-3728186-6'
     else
       ''
 
