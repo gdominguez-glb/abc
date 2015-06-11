@@ -1,0 +1,46 @@
+<%= content_for :javascripts do %>
+  <%= javascript_tag do %>
+    $(function(){
+      var url = "<%= cms_products_search_path %>";
+      var set_products_select = function(selector) {
+        if ($(selector).length > 0) {
+          $(selector).select2({
+            placeholder: "Select associated products",
+            multiple: true,
+            initSelection: function (element, callback) {
+              return $.getJSON(url, { ids: element.val() }, function (data) {
+                return callback(data['products']);
+              });
+            },
+            ajax: {
+              url: url,
+              datatype: 'json',
+              data: function (term, page) {
+                return {
+                  per_page: 50,
+                  page: page,
+                  without_children: true,
+                  q: term
+                };
+              },
+              results: function (data, page) {
+                var more = page < data.pages;
+                return {
+                  results: data['products'],
+                  more: more
+                };
+              }
+            },
+            formatResult: function (product) {
+              return product.name;
+            },
+            formatSelection: function (product) {
+              return product.name;
+            }
+          });
+        }
+      }
+      set_products_select($('#recommendation_product_ids'));
+    });
+  <% end %>
+<% end %>
