@@ -1,25 +1,21 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-3">
-      <div class="video-gallery-side">
-        <%= form_tag '', method: :get, class: 'side-search-form' do %>
-          <% params[:taxon_ids].each do |taxon_id| %>
-            <%= hidden_field_tag "taxon_ids[]", taxon_id %>
-          <% end %>
-          <div class="form-group">
-            <%= text_field_tag :query, params[:query], class: 'form-control', placeholder: 'Search' %>
-          </div>
-        <% end %>
-        <div class="taxonomies-filters">
-          <%= render 'taxonomies' %>
-        </div>
-      </div>
+<div class="fixed-sidebar left">
+  <%= form_tag '', method: :get, class: 'side-search-form' do %>
+    <% params[:taxon_ids].each do |taxon_id| %>
+      <%= hidden_field_tag "taxon_ids[]", taxon_id %>
+    <% end %>
+    <div class="form-group">
+      <%= text_field_tag :query, params[:query], class: 'form-control', placeholder: 'Search' %>
     </div>
-    <div class="col-md-9">
-      <% @video_products.each do |video_product| %>
-        <%= render partial: 'video_product', locals: { video_product: video_product } %>
-      <% end %>
-    </div>
+  <% end %>
+  <div class="taxonomies-filters">
+    <%= render 'taxonomies' %>
+  </div>
+</div>
+<div class="videos-wrapper clearfix">
+  <div class="content sidebar-left">
+    <% @video_products.each do |video_product| %>
+      <%= render partial: 'video_product', locals: { video_product: video_product } %>
+    <% end %>
   </div>
 </div>
 <%= content_for :javascripts do %>
@@ -27,15 +23,8 @@
     $(function() {
       $(".taxonomy-wrapper .taxonomy-root").click(function() {
         var filter_container = $(this).parents('.taxonomy-wrapper');
-        filter_container.find('.list-group').toggle();
+        filter_container.find('.list-group').toggleClass("show-menu");
       })
-      $(".video-product-wrapper").mouseover(function() {
-        $(this).find('.video-product-drawer').removeClass('hide');
-        $(this).find('.play-video-button').removeClass('hide');
-      }).mouseleave(function(){
-        $(this).find('.video-product-drawer').addClass('hide');
-        $(this).find('.play-video-button').addClass('hide');
-      });
     });
   <% end %>
 <% end %>

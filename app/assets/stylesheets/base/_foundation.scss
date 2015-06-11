@@ -1,0 +1,41 @@
+// _foundation.scss
+
+body {
+  padding-top: 51px;
+
+  &.account, &.pages.with-subnav {
+    padding-top: 101px;
+  }
+}
+
+.wrapper {
+  @include clearfix;
+
+  &.account-page {
+    background: #aaa;
+  }
+}
+
+.content {
+  position: relative;
+  height: 100%;
+  width: 82%;
+  padding: 20px;
+  background: #fff;
+  @include clearfix;
+
+  &.sidebar-left {
+    float: right;
+  }
+
+  &.sidebar-right {
+    float: left;
+  }
+}
+
+.container {
+  &.has-sidebar-right {
+    float: left;
+    width: 82%;
+  }
+}

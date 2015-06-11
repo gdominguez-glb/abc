@@ -1,0 +1,17 @@
+// _tables.scss
+
+.table {
+  tbody {
+    tr {
+      td {
+        vertical-align: middle;
+        padding: 10px;
+
+        .glyphicon {
+          font-size: 18px;
+          top: 2px;
+        }
+      }
+    }
+  }
+}

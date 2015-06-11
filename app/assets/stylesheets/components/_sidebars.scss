@@ -1,0 +1,68 @@
+// _sidebars.scss
+
+.fixed-sidebar {
+  width: 18%;
+  height: 100%;
+  background: #eee;
+  overflow: scroll;
+
+  &.left {
+    float: left;
+  }
+
+  &.right {
+    float: right;
+  }
+
+  .side-search-form {
+    padding: 10px;
+    background: #aaa;
+  }
+
+  .form-group {
+    margin: 0;
+  }
+}
+
+.taxonomies-filters {
+  .taxonomy-header {
+    border-bottom: 1px solid #555;
+    .selected-taxons-wrapper {
+      margin-top: 5px;
+      padding: 5px 10px;
+    }
+  }
+}
+
+.taxonomy-wrapper {
+  h4 {
+    padding-left: 10px;
+    cursor: pointer;
+  }
+
+  .list-group {
+    max-height: 0;
+    margin: 0;
+    overflow: hidden;
+
+    @include transition(all, $transitionTiming);
+
+    &.show-menu {
+      max-height: 1000px;
+      border-bottom: 1px solid #555;
+      overflow: auto;
+    }
+
+    .list-group-item {
+      border: none;
+      border-radius: 0;
+      text-align: center;
+      background-color: transparent;
+      @include transition(all, $transitionTiming);
+
+      &.active, &:hover {
+        background-color: #aaa;
+      }
+    }
+  }
+}
