@@ -1,42 +1,40 @@
 <!-- Begin Navbar -->
 <nav class="navbar navbar-default navbar-fixed-top">
-  <div class="wrapper">
-    <div class="navbar-header">
-       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav">
-         Menu
-        <span class="sr-only">Toggle navigation</span>
-        <span class="glyphicon glyphicon-menu-hamburger"></span>
-      </button>
+  <div class="navbar-header">
+     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav">
+       Menu
+      <span class="sr-only">Toggle navigation</span>
+      <span class="glyphicon glyphicon-menu-hamburger"></span>
+    </button>
 
-      <a class="navbar-brand" href="/">
-        <%= image_tag 'branding.gif', height: 20, width: 123 %>
-      </a>
-    </div>
-
-
-    <div class="collapse navbar-collapse pull-left" id="main-nav">
-      <%= form_tag '/search', class: 'navbar-form nav-search', method: :get do %>
-        <div class="form-group">
-          <%= text_field_tag :query, nil, class: 'form-control', placeholder: 'Search' %>
-        </div>
-        <%= submit_tag 'Submit', class: 'btn btn-default' %>
-      <% end %>
-      <ul class="nav navbar-nav">
-        <% Page.show_in_top_navigation.each do |page| %>
-          <%= active_link_to page.group_name.capitalize, "/#{page.slug}", wrap_tag: :li %>
-        <% end %>
-        <%= active_link_to "Contact", main_app.contact_path, wrap_tag: :li %>
-        <% if spree_current_user %>
-          <%= active_link_to "Account", '/account', wrap_tag: :li %>
-          <%= active_link_to "Logout", '/store/logout', wrap_tag: :li %>
-        <% else %>
-          <%= active_link_to "Login", '/store/login', wrap_tag: :li %>
-        <% end %>
-        <li class="<%= store_active_class %>">
-          <%= link_to "Store", '/store', class: store_active_class %>
-        </li>
-      </ul>
-    </div>
-    <%= render partial: 'spree/shared/main_nav_bar' if store_menu? %>
+    <a class="navbar-brand" href="/">
+      <%= image_tag 'branding.gif', height: 20, width: 123 %>
+    </a>
   </div>
+
+
+  <div class="collapse navbar-collapse pull-left" id="main-nav">
+    <%= form_tag '/search', class: 'navbar-form nav-search', method: :get do %>
+      <div class="form-group">
+        <%= text_field_tag :query, nil, class: 'form-control', placeholder: 'Search' %>
+      </div>
+      <%= submit_tag 'Submit', class: 'btn btn-default' %>
+    <% end %>
+    <ul class="nav navbar-nav">
+      <% Page.show_in_top_navigation.each do |page| %>
+        <%= active_link_to page.group_name.capitalize, "/#{page.slug}", wrap_tag: :li %>
+      <% end %>
+      <%= active_link_to "Contact", main_app.contact_path, wrap_tag: :li %>
+      <% if spree_current_user %>
+        <%= active_link_to "Account", '/account', wrap_tag: :li %>
+        <%= active_link_to "Logout", '/store/logout', wrap_tag: :li %>
+      <% else %>
+        <%= active_link_to "Login", '/store/login', wrap_tag: :li %>
+      <% end %>
+      <li class="<%= store_active_class %>">
+        <%= link_to "Store", '/store', class: store_active_class %>
+      </li>
+    </ul>
+  </div>
+  <%= render partial: 'spree/shared/main_nav_bar' if store_menu? %>
 </nav> <!-- /.navbar -->
