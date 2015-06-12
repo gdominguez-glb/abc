@@ -23,5 +23,6 @@ $(function(){
     }
   }, 250);
 
+  updateAccountBackground();
   $(window).on("resize", updateAccountBackground);
 });
