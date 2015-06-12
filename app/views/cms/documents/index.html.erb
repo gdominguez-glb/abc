@@ -44,13 +44,13 @@
                 <%= link_to 'Edit', edit_cms_document_path(document), class: 'btn btn-default btn-sm' %>
               </td>
               <td>
-                <%= link_to 'Download', document_path(document), class: 'btn btn-default btn-sm', target: '_blank' %>
+                <%= link_to 'Download', document.attachment.url, class: 'btn btn-default btn-sm', target: '_blank' %>
               </td>
               <td>
                 <%= link_to 'Delete', cms_document_path(document), class: 'btn btn-default btn-sm', data: { method: :delete, confirm: "Are you sure?" } %>
               </td>
               <td>
-                <a class="btn btn-default copy-download-url-button btn-sm" data-clipboard-text="<%= document_url(document) %>">Copy Url</a>
+                <a class="btn btn-default copy-download-url-button btn-sm" data-clipboard-text="<%= document.attachment.url %>">Copy Url</a>
               </td>
             </tr>
           <% end %>
