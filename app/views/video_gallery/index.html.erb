@@ -1,5 +1,5 @@
 <div class="wrapper">
-  <div class="fixed-sidebar left">
+  <div class="fixed-sidebar left responsive-sidebar video-gallery-sidenav">
     <%= form_tag '', method: :get, class: 'side-search-form' do %>
       <% params[:taxon_ids].each do |taxon_id| %>
         <%= hidden_field_tag "taxon_ids[]", taxon_id %>
@@ -12,10 +12,19 @@
       <%= render 'taxonomies' %>
     </div>
   </div>
+  <div class="overlay"></div>
   <div class="videos-wrapper clearfix">
-    <div class="content sidebar-left">
-      <% @video_products.each do |video_product| %>
-        <%= render partial: 'video_product', locals: { video_product: video_product } %>
+    <div class="content sidebar-left responsive-sidebar">
+      <% if @video_products.blank? %>
+        <div class="video-empty-state">
+          <h1>Uh Oh!</h1>
+          <h3>We couldn't find any videos for you</h3>
+          <h3>Please search again</h3>
+        </div>
+      <% else %>
+        <% @video_products.each do |video_product| %>
+          <%= render partial: 'video_product', locals: { video_product: video_product } %>
+        <% end %>
       <% end %>
     </div>
   </div>
