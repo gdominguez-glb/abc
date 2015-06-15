@@ -1,10 +1,11 @@
 <div class="video-product-wrapper col-lg-4">
   <div class="video-product-image-wrapper">
-    <%= link_to large_image(video_product, itemprop: "image"), video_gallery_path(video_product), itemprop: 'url', class: 'open-video' %>
+    <%= link_to "", video_gallery_path(video_product), itemprop: 'url', class: 'open-video', style: "background-image: url(#{image_path(video_product, itemprop: 'image')})" %>
     <%= link_to play_video_gallery_path(video_product), remote: true, class: 'play-video-button' do %>
       <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span>
     <% end %>
   </div>
+  <%=  %>
   <h3 class="video-product-name">
     <%= link_to truncate(video_product.name, length: 50), video_gallery_path(video_product), class: 'info', itemprop: "name", title: video_product.name %>
   </h3>
