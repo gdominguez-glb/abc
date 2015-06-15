@@ -43,6 +43,15 @@ Spree::Product.class_eval do
     price == 0
   end
 
+  def downloadable?
+    product_type == 'Pdf'
+  end
+
+  def downloadable_url
+    digital = digitals.first
+    digital.attachment.expiring_url(3600) if digital
+  end
+
   def video_digital
     digitals.where.not(wistia_hashed_id: nil).first
   end
