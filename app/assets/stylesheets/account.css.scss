@@ -17,10 +17,13 @@
 
 .recommended-product-wrapper {
   background: #ddd;
-  margin-bottom: 20px;
   text-align: center;
-  padding: 20px;
+  padding: 40px;
   position: relative;
+
+  img {
+    margin: 0 auto 15px;
+  }
 
   .remove-banner {
     position: absolute;

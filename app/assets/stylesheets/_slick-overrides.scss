@@ -1,0 +1,22 @@
+// _slick-overrides.scss
+
+.slick-prev, .slick-next {
+  width: 44px;
+  height: 44px;
+  color: #eee;
+  margin-top: 0;
+
+  @include translate(0, -50%);
+
+  &:before {
+    font-size: 40px;
+  }
+}
+
+.slick-prev {
+  left: 25px;
+}
+
+.slick-next {
+  right: 25px;
+}
