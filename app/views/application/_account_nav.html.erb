@@ -8,33 +8,21 @@
   </div>
   <div class="collapse navbar-collapse" id="sub-nav">
     <ul class="nav navbar-nav">
-      <li class="<%= 'active' if action_name == 'index' %>">
-        <a href="/account">My Products<span class="sr-only">(current)</span></a>
-      </li>
+      <%= active_link_to "My Products", '/account', wrap_tag: :li, active: :exact %>
       <% if spree_current_user.has_admin_role? %>
         <li>
           <a href="/store/admin ">Store Admin<span class="sr-only">(current)</span></a>
         </li>
       <% end %>
       <% if spree_current_user.has_school_admin_role? %>
-        <li class="<%= 'active' if action_name == 'admin' %>">
-          <a href="/account/admin">Admin Dashboard<span class="sr-only">(current)</span></a>
-        </li>
+        <%= active_link_to "Admin Dashboard", '/account/admin', wrap_tag: :li %>
       <% end %>
-      <li class="<%= 'active' if action_name == 'favorites' %>">
-        <a href="/account/favorites">Favorites <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="<%= 'active' if action_name == 'history' %>">
-        <a href="/account/history">History <span class="sr-only">(current)</span></a>
-      </li>
-      <%= active_link_to "Video Gallery", '/video_gallery', wrap_tag: :li if current_spree_user %>
-      <%= active_link_to "CMS", '/cms', wrap_tag: :li if current_spree_user && current_spree_user.admin? %>
-      <li class="<%= 'active' if action_name == 'settings' %>">
-        <a href="/account/settings">Settings <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="<%= 'active' if action_name == 'help' %>">
-        <a href="/account/help ">Help<span class="sr-only">(current)</span></a>
-      </li>
+      <%= active_link_to "Favorites", '/account/favorites', wrap_tag: :li %>
+      <%= active_link_to "History", '/account/history', wrap_tag: :li %>
+      <%= active_link_to "Video Gallery", '/video_gallery', wrap_tag: :li %>
+      <%= active_link_to "CMS", '/cms', wrap_tag: :li if current_spree_user.admin? %>
+      <%= active_link_to "Settings", '/account/settings', wrap_tag: :li %>
+      <%= active_link_to "Help", '/account/help', wrap_tag: :li %>
     </ul>
   </div>
 </nav>
