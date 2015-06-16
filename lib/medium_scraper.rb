@@ -1,22 +1,14 @@
 require 'httparty'
 
 class MediumScraper
-  PUBLICATIONS = [
-    'https://medium.com/eureka-math',
-    'https://medium.com/eureka-stories',
-    'https://medium.com/wheatley-blog',
-    'https://medium.com/great-minds-press',
-    'https://medium.com/great-minds-reports'
-  ]
-
   def scape_publications
-    PUBLICATIONS.each do |publication_url|
+    MediumPublication.all.each do |publication|
       begin
-        response = HTTParty.get(publication_url + '/latest', query: { format: 'json' }, parser: nil)
+        response = HTTParty.get(publication.url + '/latest', query: { format: 'json' }, parser: nil)
         publication_data = convert_to_json(response.body)
         publication_data['payload']['posts'].each do |post|
           slug            = post['slug']
-          post_url        = publication_url + '/' + slug + '-' + post['id']
+          post_url        = publication.url + '/' + slug + '-' + post['id']
           post_response   = HTTParty.get(post_url, query: { format: 'json' }, parser: nil)
           post_data       = convert_to_json(post_response.body)
           post_paragraphs = post_data['payload']['value']['content']['bodyModel']['paragraphs']
