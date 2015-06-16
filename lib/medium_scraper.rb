@@ -1,17 +1,20 @@
 require 'httparty'
+require 'medium_post_data_processor'
 
 class MediumScraper
-  def scape_publications
+  def scrape_publications
     MediumPublication.all.each do |publication|
       begin
         response = HTTParty.get(publication.url + '/latest', query: { format: 'json' }, parser: nil)
         publication_data = convert_to_json(response.body)
         publication_data['payload']['posts'].each do |post|
-          slug            = post['slug']
-          post_url        = publication.url + '/' + slug + '-' + post['id']
-          post_response   = HTTParty.get(post_url, query: { format: 'json' }, parser: nil)
-          post_data       = convert_to_json(post_response.body)
-          MediumPostDataProcessor.new(post_data)
+          slug          = post['slug']
+          post_url      = publication.url + '/' + slug + '-' + post['id']
+          post_response = HTTParty.get(post_url, query: { format: 'json' }, parser: nil)
+          post_data     = convert_to_json(post_response.body)
+          post_hash     = MediumPostDataProcessor.new(data: post_data).process
+          post          = Post.find_or_initialize_by(medium_id: post_hash[:medium_id])
+          post.update(post_hash.merge(medium_publication_id: publication.id))
         end
       rescue
       end
