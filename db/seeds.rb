@@ -59,3 +59,26 @@ if Spree::PaymentMethod.count == 0
     type: 'Spree::PaymentMethod::PurchaseOrder'
   )
 end
+
+if MediumPublication.count == 0
+  {
+    global: [
+      { title: 'Press', url: 'https://medium.com/great-minds-press' },
+      { title: 'Reports', url: 'https://medium.com/great-minds-reports' }
+    ],
+    curriculum: [
+      { title: 'Eureka Math', url: 'https://medium.com/eureka-math', curriculum: 'math' },
+      { title: 'Eureka Stories', url: 'https://medium.com/eureka-stories', curriculum: 'history' },
+      { title: 'Great Minds English Blog', url: 'https://medium.com/wheatley-blog', curriculum: 'english' }
+    ]
+  }.each do |blog_type, publications|
+    publications.each do |publication|
+      MediumPublication.create(
+        title: publication[:title],
+        url: publication[:url],
+        blog_type: blog_type,
+        curriculum: publication[:curriculum]
+      )
+    end
+  end
+end
