@@ -11,8 +11,7 @@ class MediumScraper
           post_url        = publication.url + '/' + slug + '-' + post['id']
           post_response   = HTTParty.get(post_url, query: { format: 'json' }, parser: nil)
           post_data       = convert_to_json(post_response.body)
-          post_paragraphs = post_data['payload']['value']['content']['bodyModel']['paragraphs']
-          puts post_paragraphs.count
+          MediumPostDataProcessor.new(post_data)
         end
       rescue
       end
