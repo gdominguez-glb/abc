@@ -8,17 +8,23 @@ module Medium
 
     def process
       return {} if @data['success'] != true
-      paragraphs   = @data['payload']['value']['content']['bodyModel']['paragraphs']
       title        = @data['payload']['value']['title']
       subtitle     = @data['payload']['value']['content']['subtitle']
       medium_id    = @data['payload']['value']['id']
       published_at = Time.at(@data['payload']['value']['latestPublishedAt']/1000)
+
+      paragraphs   = @data['payload']['value']['content']['bodyModel']['paragraphs']
+      body         = Medium::ParagraphsProcessor.new(paragraphs: paragraphs).process
+
+      preview_paragraphs = @data['payload']['value']['previewContent']['bodyModel']['paragraphs']
+      preview_content    = Medium::ParagraphsProcessor.new(paragraphs: preview_paragraphs).process
       {
         medium_id: medium_id,
         published_at: published_at,
         title: title,
         subtitle: subtitle,
-        body: Medium::ParagraphsProcessor.new(paragraphs: paragraphs).process
+        body: body,
+        preview_content: preview_content
       }
     end
 
