@@ -46,6 +46,8 @@ Rails.application.routes.draw do
     end
   end
 
+  get '/blog/global/:slug', to: 'blog#global', as: :global_blog
+
   root 'home#index'
 
   resources :documents, only: [:show]

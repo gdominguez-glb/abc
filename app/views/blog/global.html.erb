@@ -1,0 +1,19 @@
+<div class="container">
+  <ul class="nav nav-tabs">
+    <% @global_publications.each do |publication| %>
+      <li role="presentation" class="dropdown">
+        <%= link_to publication.title, global_blog_path(publication.slug) %>	
+      </li>
+    <% end %>
+  </ul>
+  <div class="posts">
+    <% @posts.each do |post| %>
+      <div class="post">
+        <p><%= post.published_at.strftime('%b %d %Y') %></p>
+        <p>
+          <%= raw post.body %>
+        </p>
+      </div>
+    <% end %>
+  </div>
+</div>

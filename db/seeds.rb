@@ -63,13 +63,13 @@ end
 if MediumPublication.count == 0
   {
     global: [
-      { title: 'Press', url: 'https://medium.com/great-minds-press' },
-      { title: 'Reports', url: 'https://medium.com/great-minds-reports' }
+      { title: 'Press', slug: 'press', url: 'https://medium.com/great-minds-press' },
+      { title: 'Reports', slug: 'reports', url: 'https://medium.com/great-minds-reports' }
     ],
     curriculum: [
-      { title: 'Eureka Math', url: 'https://medium.com/eureka-math', curriculum: 'math' },
-      { title: 'Eureka Stories', url: 'https://medium.com/eureka-stories', curriculum: 'history' },
-      { title: 'Great Minds English Blog', url: 'https://medium.com/wheatley-blog', curriculum: 'english' }
+      { title: 'Eureka Math', slug: 'eureka-math', url: 'https://medium.com/eureka-math', curriculum: 'math' },
+      { title: 'Eureka Stories', slug: 'eureka-stories', url: 'https://medium.com/eureka-stories', curriculum: 'history' },
+      { title: 'Great Minds English Blog', slug: 'english', url: 'https://medium.com/wheatley-blog', curriculum: 'english' }
     ]
   }.each do |blog_type, publications|
     publications.each do |publication|
@@ -77,6 +77,7 @@ if MediumPublication.count == 0
         title: publication[:title],
         url: publication[:url],
         blog_type: blog_type,
+        slug: publication[:slug],
         curriculum: publication[:curriculum]
       )
     end
