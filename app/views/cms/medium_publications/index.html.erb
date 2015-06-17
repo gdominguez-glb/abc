@@ -1,0 +1,38 @@
+<%= render 'cms_nav' %>
+
+<div class="col-md-9">
+  <section>
+    <div class='row'>
+      <h2>Medium Publications Lists</h2>
+      <%= link_to 'Create new medium publication', new_cms_medium_publication_path, class: 'btn btn-primary' %>
+      <table class='table table-responsive table-striped table-hover'>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Url</th>
+            <th>Blog Type</th>
+            <th>Curriculum</th>
+            <th>Position</th>
+            <th>Display</th>
+            <th colspan="2"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @medium_publications.each do |medium_publication| %>
+            <tr>
+              <td><%= medium_publication.title %></td>
+              <td><%= medium_publication.url %></td>
+              <td><%= medium_publication.blog_type %></td>
+              <td><%= medium_publication.curriculum %></td>
+              <td><%= medium_publication.position %></td>
+              <td><%= medium_publication.display ? 'Yes' : 'No' %></td>
+              <td><%= link_to 'Edit', edit_cms_medium_publication_path(medium_publication) %></td>
+              <td><%= link_to 'Destroy', [:cms, medium_publication], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</div>

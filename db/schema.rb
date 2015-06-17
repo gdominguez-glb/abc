@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150615003949) do
+ActiveRecord::Schema.define(version: 20150617080648) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,6 +74,18 @@ ActiveRecord::Schema.define(version: 20150615003949) do
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
+  create_table "medium_publications", force: :cascade do |t|
+    t.string   "title"
+    t.string   "url"
+    t.string   "blog_type"
+    t.string   "curriculum"
+    t.integer  "position"
+    t.boolean  "display"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "slug"
+  end
+
   create_table "pages", force: :cascade do |t|
     t.string   "title"
     t.text     "seo_content"
@@ -89,6 +101,18 @@ ActiveRecord::Schema.define(version: 20150615003949) do
     t.boolean  "show_in_nav",    default: true
     t.boolean  "show_in_footer", default: false
     t.boolean  "group_root",     default: false
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.integer  "medium_publication_id"
+    t.string   "title"
+    t.string   "subtitle"
+    t.datetime "published_at"
+    t.string   "medium_id"
+    t.text     "body"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+    t.text     "preview_content"
   end
 
   create_table "products_recommendations", id: false, force: :cascade do |t|

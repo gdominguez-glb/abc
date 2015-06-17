@@ -16,6 +16,14 @@
           </div>
         <% end %>
         <div class="col-xs-2">
+          <h4>Updates</h4>
+          <ul>
+            <% MediumPublication.global.each do |publication| %>
+              <li><%= link_to publication.title, global_blog_path(slug: publication.slug) %></li>
+            <% end %>
+          </ul>
+        </div>
+        <div class="col-xs-2">
           <h4>Social</h4>
           <ul>
             <li><a href="">Twitter</a></li>

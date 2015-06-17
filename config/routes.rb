@@ -46,6 +46,9 @@ Rails.application.routes.draw do
     end
   end
 
+  get '/blog/global/:slug', to: 'blog#global', as: :global_blog
+  get '/blog/global/post/:id', to: 'blog#global_post', as: :global_post
+
   root 'home#index'
 
   resources :documents, only: [:show]
@@ -64,6 +67,7 @@ Rails.application.routes.draw do
     resources :questions
     resources :contacts, only: [:index, :destroy, :edit, :update]
     resources :recommendations
+    resources :medium_publications
     resources :contact_topics do
       collection do
         post :update_positions
