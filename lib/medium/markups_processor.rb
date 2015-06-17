@@ -22,7 +22,7 @@ module Medium
       end
       markups.sort_by {|m| -m['end'] }.each do |markup|
         matched_text = texts.select{|text| text[:end] == markup['end']}.first
-        matched_text[:prev] << "</#{markup_tag(markup['type'])}>"
+        matched_text[:next] << "</#{markup_tag(markup['type'])}>"
       end
       texts.map do |text_data|
         "#{text_data[:prev].join('')}#{text_data[:text]}#{text_data[:next].join('')}"

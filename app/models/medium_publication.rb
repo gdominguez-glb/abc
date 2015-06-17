@@ -5,5 +5,5 @@ class MediumPublication < ActiveRecord::Base
 
   has_many :posts
 
-  scope :global, -> { where(blog_type: 'global').order('position asc') }
+  scope :global, -> { where(display: true).where(blog_type: 'global').order('position asc') }
 end

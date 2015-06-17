@@ -1,7 +1,5 @@
 module Medium
   class PostProcessor
-    include ActionView::Helpers::TagHelper
-
     def initialize(opts={})
       @data = opts[:data]
     end
