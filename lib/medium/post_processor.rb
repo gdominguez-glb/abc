@@ -14,10 +14,10 @@ module Medium
       published_at = Time.at(@data['payload']['value']['latestPublishedAt']/1000)
 
       paragraphs   = @data['payload']['value']['content']['bodyModel']['paragraphs']
-      body         = Medium::ParagraphsProcessor.new(paragraphs: paragraphs).process
+      body         = Medium::ParagraphsProcessor.new(paragraphs: paragraphs[1..-1]).process
 
       preview_paragraphs = @data['payload']['value']['previewContent']['bodyModel']['paragraphs']
-      preview_content    = Medium::ParagraphsProcessor.new(paragraphs: preview_paragraphs).process
+      preview_content    = Medium::ParagraphsProcessor.new(paragraphs: preview_paragraphs[1..-1]).process
       {
         medium_id: medium_id,
         published_at: published_at,

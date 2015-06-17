@@ -6,6 +6,10 @@ class BlogController < ApplicationController
     @posts = @medium_publication.posts.order('published_at desc').page(params[:page])
   end
 
+  def global_post
+    @post = Post.find(params[:id])
+  end
+
   private
   
   def load_global_publications

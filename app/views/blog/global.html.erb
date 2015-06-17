@@ -10,6 +10,7 @@
     <% @posts.each do |post| %>
       <div class="post">
         <p><%= post.published_at.strftime('%b %d %Y') %></p>
+        <h3><%= link_to post.title, global_post_path(post) %></h3>
         <p>
           <%= raw post.preview_content %>
         </p>
