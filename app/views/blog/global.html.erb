@@ -1,20 +1,4 @@
 <div class="container">
-  <ul class="nav nav-tabs">
-    <% @global_publications.each do |publication| %>
-      <li role="presentation" class="dropdown">
-        <%= link_to publication.title, global_blog_path(publication.slug) %>	
-      </li>
-    <% end %>
-  </ul>
-  <div class="posts">
-    <% @posts.each do |post| %>
-      <div class="post">
-        <p><%= post.published_at.strftime('%b %d %Y') %></p>
-        <h3><%= link_to post.title, global_post_path(post) %></h3>
-        <p>
-          <%= raw post.preview_content %>
-        </p>
-      </div>
-    <% end %>
-  </div>
+  <%= render partial: 'publications_nav', locals: { publications: @global_publications } %>
+  <%= render partial: 'posts', locals: { posts: @posts, blog_type: 'global', publication: @medium_publication } %>
 </div>

@@ -46,8 +46,11 @@ Rails.application.routes.draw do
     end
   end
 
-  get '/blog/global/:slug', to: 'blog#global', as: :global_blog
-  get '/blog/global/post/:id', to: 'blog#global_post', as: :global_post
+  get '/blog/global/:slug',          to: 'blog#global',          as: :global_blog
+  get '/blog/global/:slug/post/:id', to: 'blog#global_post',     as: :global_post
+
+  get '/:page_slug/blog/:slug',          to: 'blog#curriculum',      as: :curriculum_blog
+  get '/:page_slug/blog/:slug/post/:id', to: 'blog#curriculum_post', as: :curriculum_post
 
   root 'home#index'
 

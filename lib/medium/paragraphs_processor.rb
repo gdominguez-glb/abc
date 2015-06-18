@@ -2,11 +2,16 @@ module Medium
   class ParagraphsProcessor
     def initialize(opts = {})
       @paragraphs = opts[:paragraphs]
+      @url        = opts[:url]
     end
 
     def process
       @paragraphs.map do |paragraph|
-        process_paragraph(paragraph)
+        if paragraph['type'] == FIGURE_TAG_TYPE
+          process_figure(paragraph)
+        else
+          process_paragraph(paragraph)
+        end
       end.join("\n")
     end
 
@@ -17,6 +22,10 @@ module Medium
       markups = paragraph['markups']
       tag     = PARAGRAPH_TYPES[type]
       "<#{tag}>#{MarkupsProcessor.new(text: text, markups: markups).process}</#{tag}>"
+    end
+
+    def process_figure(paragraph)
+      FigureProcessor.new(url: @url, paragraph: paragraph).process
     end
 
     def paragraph_tag(type)

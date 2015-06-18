@@ -1,5 +1,4 @@
 <div class="container">
   <%= link_to 'Back', global_blog_path(slug: @post.medium_publication.slug) %>
-  <h3><%= @post.title %></h3>
-  <%= raw @post.body %>
+  <%= render 'post' %>
 </div>

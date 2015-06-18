@@ -2,6 +2,8 @@ class Page < ActiveRecord::Base
 
   searchkick
 
+  has_many :medium_publications
+
   validates :title, presence: true
   validates :slug, presence: true, uniqueness: true
   validates :group_name, presence: true

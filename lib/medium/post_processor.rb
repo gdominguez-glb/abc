@@ -2,29 +2,29 @@ module Medium
   class PostProcessor
     def initialize(opts={})
       @data = opts[:data]
+      @url  = opts[:url]
     end
 
     def process
       return {} if @data['success'] != true
-      title        = @data['payload']['value']['title']
-      subtitle     = @data['payload']['value']['content']['subtitle']
-      medium_id    = @data['payload']['value']['id']
-      published_at = Time.at(@data['payload']['value']['latestPublishedAt']/1000)
+      value = @data['payload']['value']
 
-      paragraphs   = @data['payload']['value']['content']['bodyModel']['paragraphs']
-      body         = Medium::ParagraphsProcessor.new(paragraphs: paragraphs[1..-1]).process
+      published_at    = Time.at(value['latestPublishedAt']/1000)
+      body            = process_paragraphs(value['content']['bodyModel']['paragraphs'])
+      preview_content = process_paragraphs(value['previewContent']['bodyModel']['paragraphs'])
 
-      preview_paragraphs = @data['payload']['value']['previewContent']['bodyModel']['paragraphs']
-      preview_content    = Medium::ParagraphsProcessor.new(paragraphs: preview_paragraphs[1..-1]).process
       {
-        medium_id: medium_id,
-        published_at: published_at,
-        title: title,
-        subtitle: subtitle,
-        body: body,
+        medium_id:       value['id'],
+        title:           value['title'],
+        subtitle:        value['content']['subtitle'],
+        published_at:    published_at,
+        body:            body,
         preview_content: preview_content
       }
     end
 
+    def process_paragraphs(paragraphs)
+      Medium::ParagraphsProcessor.new(paragraphs: paragraphs[1..-1], url: @url).process
+    end
   end
 end
