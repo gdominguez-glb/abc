@@ -9,24 +9,42 @@ module Medium
 
     def process
       return text if markups.blank?
-      positions = markups.map { |markup| [markup['start'], markup['end']] }.flatten.uniq.sort
-      texts = []
-      positions.each_with_index { |position, index|
-        if index < (positions.length - 1)
-          texts << ({ prev: [], text: text[position..(positions[index+1]-1)], next: [], start: position, end: positions[index+1] })
-        end
-      }
-      markups.sort_by {|m| m['start'] }.each do |markup|
-        matched_text = texts.select{|text| text[:start] == markup['start']}.first
-        matched_text[:prev] << "<#{markup_tag(markup['type'])}>"
-      end
-      markups.sort_by {|m| -m['end'] }.each do |markup|
-        matched_text = texts.select{|text| text[:end] == markup['end']}.first
-        matched_text[:next] << "</#{markup_tag(markup['type'])}>"
-      end
+      texts = construct_matched_texts
+      process_prev_text(texts)
+      process_next_text(texts)
+      assemble_tags(texts)
+    end
+
+    def assemble_tags(texts)
       texts.map do |text_data|
         "#{text_data[:prev].join('')}#{text_data[:text]}#{text_data[:next].join('')}"
       end.join('')
+    end
+
+    def construct_matched_texts
+      texts = []
+      positions = markups.map { |markup| [markup['start'], markup['end']] }.flatten.uniq.sort
+      positions.each_with_index do |position, index|
+        if index < (positions.length - 1)
+          texts << ({ prev: [], text: text[position..(positions[index+1]-1)], next: [], start: position, end: positions[index+1] })
+        end
+      end
+      texts
+    end
+
+    def process_prev_text(texts)
+      process_text(markups.sort_by {|m| m['start'] }, texts, 'start', :prev)
+    end
+
+    def process_next_text(texts)
+      process_text(markups.sort_by {|m| -m['end'] }, texts, 'end', :next)
+    end
+
+    def process_text(markups, texts, text_direction, direction)
+      markups.each do |markup|
+        matched_text = texts.select{|text| text[text_direction.to_sym] == markup[text_direction]}.first
+        matched_text[direction] << "<#{'/' if direction == :next }#{markup_tag(markup['type'])}>"
+      end
     end
 
     def markup_tag(type)
