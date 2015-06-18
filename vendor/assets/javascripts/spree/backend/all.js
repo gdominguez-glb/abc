@@ -8,6 +8,7 @@
 //= require jquery_ujs
 //= require spree/backend
 
+//= require spree_admin
 //= require_tree .
 //= require spree/backend/spree_digital
 //= require spree/backend/spree_better_terms_and_conditions
