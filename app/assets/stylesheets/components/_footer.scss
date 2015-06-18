@@ -17,3 +17,15 @@ footer {
   color: #fff;
   background-color: #7A7A7A;
 }
+
+.footer-section {
+  text-align: center;
+
+  &:first-child {
+    text-align: left;
+  }
+
+  &:last-child {
+    text-align: right;
+  }
+}

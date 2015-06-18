@@ -5,6 +5,7 @@
 // base application style
 @import "base/config";
 @import "base/foundation";
+@import "base/typography";
 
 @import "mediaelement";
 @import "video_gallery";
@@ -20,6 +21,8 @@
 @import "components/forms";
 @import "components/header";
 @import "components/modals";
+@import "components/nav-tabs";
+@import "components/posts";
 @import "components/sidebars";
 @import "components/tables";
 @import "components/wells";

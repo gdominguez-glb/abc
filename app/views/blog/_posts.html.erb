@@ -2,16 +2,53 @@
   <% posts.each do |post| %>
     <div class="post">
       <p><%= post.published_at.strftime('%b %d %Y') %></p>
-      <h3>
+      <h2>
         <% if blog_type == 'global' %>
           <%= link_to post.title, global_post_path(slug: publication.slug, id: post.id) %>
         <% else %>
           <%= link_to post.title, curriculum_post_path(page_slug: group_page.slug, slug: publication.slug, id: post.id) %>
         <% end %>
-      </h3>
+      </h2>
       <p>
         <%= raw post.preview_content %>
       </p>
+      <h4 class="read-more">
+        <% if blog_type == 'global' %>
+          <%= link_to "READ", global_post_path(slug: publication.slug, id: post.id) %>
+        <% else %>
+          <%= link_to "READ", curriculum_post_path(page_slug: group_page.slug, slug: publication.slug, id: post.id) %>
+        <% end %>
+      </h4>
     </div>
   <% end %>
+  <div class="post">
+    <p>June 18th, 2015</p>
+    <h2><a href="">Blog post title goes here</a></h2>
+    <p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+    <p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+    <p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+    <h4 class="read-more">
+      <a href="">READ</a>
+    </h4>
+  </div>
+  <div class="post">
+    <p>June 18th, 2015</p>
+    <h2><a href="">Blog post title goes here</a></h2>
+    <p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+    <p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+    <p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+    <h4 class="read-more">
+      <a href="">READ</a>
+    </h4>
+  </div>
+  <div class="post">
+    <p>June 18th, 2015</p>
+    <h2><a href="">Blog post title goes here</a></h2>
+    <p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+    <p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+    <p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+    <h4 class="read-more">
+      <a href="">READ</a>
+    </h4>
+  </div>
 </div>
