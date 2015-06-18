@@ -1,19 +1,28 @@
 // _foundation.scss
-body, #wrap, .container {
+html, body, .container {
   min-height: 100%;
   height: 100%;
   @include clearfix;
 }
 
 body {
-  padding: 51px 0 0;
+  padding: 55px 0 0;
 
   &.account, &.video_gallery, &.pages.with-subnav, &.blog.with-subnav {
-    padding: 101px 0 0;
+    padding: 110px 0 0;
+  }
+}
+
+#wrap {
+  min-height: 100%;
+
+  &.empty-state {
+    height: 100%;
   }
 }
 
 .wrapper {
+  position: relative;
   @include clearfix;
 
   &.account-page {
@@ -36,11 +45,22 @@ body {
   &.sidebar-right {
     float: left;
   }
+
+  &.responsive-sidebar {
+    @media screen and (max-width: $largeBP) {
+      width: 75%;
+    }
+  }
 }
 
-.container {
-  &.has-sidebar-right {
-    float: left;
-    width: 82%;
-  }
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: black;
+  opacity: 0;
+  z-index: -1;
+  @include transition(all, $transitionTiming);
 }

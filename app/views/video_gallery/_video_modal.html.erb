@@ -8,7 +8,7 @@
         <% if @video_product.wistia_ready? %>
           <iframe src="http://fast.wistia.net/embed/iframe/<%= @video_product.video_id %>" width="850" height="478" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
         <% else %>
-          <video class="mejs-player" src="<%= @video_product.video_s3_url %>" width="850" height="478"></video>
+          <video class="mejs-player" src="<%= @video_product.video_s3_url %>" width="100%" max-width="850" height="478"></video>
         <% end %>
       </div>
     </div>

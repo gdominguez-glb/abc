@@ -1,22 +1,71 @@
+.video_gallery {
+  .wrapper {
+    height: 100%;
+  }
+
+  .content {
+    @media screen and (max-width: 767px) {
+      width: 100%;
+    }
+  }
+}
+
 .videos-wrapper {
   background: #eee;
+  height: 100%;
 }
 
 .video-product-wrapper {
   position: relative;
-  height: 400px;
+  height: 425px;
   padding: 15px;
   margin: 0 0 15px;
   @include transition(all, $transitionTiming);
 
+  @media screen and (max-width: 575px) {
+    height: auto;
+  }
+
+  &:nth-child(3n+3) > .image-drawer-wrapper > .video-product-drawer {
+    right: auto;
+    left: 0;
+
+    @media screen and (max-width: $largeBP) {
+      right: 0;
+      left: auto;
+    }
+  }
+
+  &.locked-product {
+    .video-product-image-wrapper {
+      background-color: #eee;
+      position: relative;
+      border: 1px solid darken(#eee, 10%);
+      @include transition(all, $transitionTiming);
+
+      @media screen and (max-width: $largeBP) {
+        width: 100%;
+      }
+
+      .glyphicon-lock {
+        position: absolute;
+        font-size: 100px;
+        top: 50%;
+        left: 50%;
+        @include translate(-50%, -50%);
+      }
+    }
+  }
+
+  // Hover State
   &:hover {
     background: #eee;
 
-    &:nth-child(3n+3) > .video-product-drawer {
+    &:nth-child(3n+3) > .image-drawer-wrapper > .video-product-drawer {
       left: -65%;
 
-      @media screen and (max-width: 1200px) {
-        right: -65%;
+      @media screen and (max-width: $largeBP) {
+        right: 0;
         left: auto;
       }
     }
@@ -29,129 +78,136 @@
       background: #eee;
     }
 
-    > .video-product-drawer {
+    > .image-drawer-wrapper > .video-product-drawer {
       right: -65%;
       background: #bbb;
       z-index: 2;
       opacity: 1;
+
+      @media screen and (max-width: $largeBP) {
+        right: 0;
+      }
     }
 
     .play-video-button {
-      opacity: 1;
-      z-index: 4;
+      span {
+        opacity: 1;
+        z-index: 4;
+      }
     }
   }
+}
 
-  .video-info {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    padding: 10px;
-    background: #fff;
-    z-index: 3;
+.video-product-image-wrapper {
+  position: relative;
+  height: 300px;
 
-    @include transition(all, $transitionTiming);
+  @media screen and (max-width: $largeBP) {
+    position: relative;
+    float: left;
+    width: 50%;
+    border: none;
   }
 
-  .video-product-image-wrapper {
-    border: 1px solid darken(#eee, 10%);
-
-    img {
-      width: 100%;
-      height: 240px;
-    }
+  @media screen and (max-width: 575px) {
+    float: none;
+    width: 100%;
+    height: 250px;
   }
+}
 
-  .play-video-button {
+.image-drawer-wrapper {
+  border: 1px solid darken(#eee, 10%);
+}
+
+.open-video {
+  height: 100%;
+  display: block;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+}
+
+
+.play-video-button {
+  span {
     position: absolute;
-    top: 80px;
+    top: 50%;
     left: 50%;
-    z-index: 100;
+    z-index: 9;
     font-size: 100px;
     opacity: 0;
 
-    @include transition(all, .3s);
-    @include translate(-50%, 0);
-  }
-
-  .open-video {
-    display: block;
-  }
-
-  &:nth-child(3n+3) > .video-product-drawer {
-    right: auto;
-    left: 0;
-
-    @media screen and (max-width: 1200px) {
-      right: 0;
-      left: auto;
-    }
-  }
-
-  .video-product-drawer {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 65%;
-    height: 100%;
-    padding: 10px;
-    background: #eee;
-    opacity: 0;
-    z-index: 2;
     @include transition(all, $transitionTiming);
+    @include translate(-50%, -50%);
 
-    .product-description {
-      padding: 10px 0;
-      .more-info {
-        display: block;
-        margin-top: 10px;
-      }
+    @media screen and (max-width: 1024px) {
+      opacity: 1;
     }
-
-    .favorite-button, .unblock-button {
-      position: absolute;
-      bottom: 10px;
-      margin: 0 auto;
-      width: 90%;
-    }
-  }
-
-  &.locked-product {
-    .video-product-image-wrapper {
-      background-color: #eee;
-      height: 240px;
-      position: relative;
-      @include transition(all, $transitionTiming);
-
-      .glyphicon-lock {
-        position: absolute;
-        font-size: 100px;
-        top: 50%;
-        left: 50%;
-        @include translate(-50%, -50%);
-      }
-    }
-  }
-
-  .video-product-name a {
-    color: #000;
-  }
-
-  .video-product-categories {
-    font-weight: bold;
-    color: #666;
-  }
-
-  .video-product-taxons {
-    color: #777;
   }
 }
 
-.video-product-description-modal .modal-content {
-  padding: 10px 20px;
+.video-product-drawer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 65%;
+  height: 100%;
+  padding: 10px;
+  background: #eee;
+  opacity: 0;
+  z-index: 2;
+  @include transition(all, $transitionTiming);
+
+  @media screen and (max-width: $largeBP) {
+    position: relative;
+    float: right;
+    width: 50%;
+    height: 300px;
+    opacity: 1;
+  }
+
+  @media screen and (max-width: 575px) {
+    float: none;
+    width: 100%;
+    height: 250px;
+  }
+
+  .product-description {
+    padding: 10px 0;
+    .more-info {
+      display: block;
+      margin-top: 10px;
+    }
+  }
+
+  .favorite-button, .unblock-button {
+    position: absolute;
+    bottom: 10px;
+    margin: 0 auto;
+    width: 90%;
+
+    @media screen and (max-width: $largeBP) {
+      left: 10px;
+      right: 10px;
+      width: auto;
+    }
+  }
 }
+
+.video-product-name a {
+  color: #000;
+}
+
+.video-product-categories {
+  font-weight: bold;
+  color: #666;
+}
+
+.video-product-taxons {
+  color: #777;
+}
+
 #video-page {
   margin-bottom: 50px;
   .video-player-wrapper {

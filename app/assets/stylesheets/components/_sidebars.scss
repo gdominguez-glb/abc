@@ -6,6 +6,36 @@
   background: #eee;
   overflow: scroll;
 
+  &.responsive-sidebar {
+    @media screen and (max-width: $largeBP) {
+      width: 25%;
+    }
+  }
+
+  &.video-gallery-sidenav {
+    @media screen and (max-width: 767px) {
+      width: 75%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      float: none;
+      bottom: 0;
+      z-index: 10;
+
+      @include transition(all, $transitionTiming);
+      @include translate(-100%, 0);
+    }
+
+    &.show-nav {
+      @include translate(0, 0);
+
+      + .overlay {
+        opacity: .75;
+        z-index: 9;
+      }
+    }
+  }
+
   &.left {
     float: left;
   }
