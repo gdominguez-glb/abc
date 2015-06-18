@@ -8,7 +8,7 @@ body, #wrap, .container {
 body {
   padding: 51px 0 0;
 
-  &.account, &.video_gallery, &.pages.with-subnav {
+  &.account, &.video_gallery, &.pages.with-subnav, &.blog.with-subnav {
     padding: 101px 0 0;
   }
 }

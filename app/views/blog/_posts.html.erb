@@ -1,0 +1,17 @@
+<div class="posts">
+  <% posts.each do |post| %>
+    <div class="post">
+      <p><%= post.published_at.strftime('%b %d %Y') %></p>
+      <h3>
+        <% if blog_type == 'global' %>
+          <%= link_to post.title, global_post_path(slug: publication.slug, id: post.id) %>
+        <% else %>
+          <%= link_to post.title, curriculum_post_path(page_slug: group_page.slug, slug: publication.slug, id: post.id) %>
+        <% end %>
+      </h3>
+      <p>
+        <%= raw post.preview_content %>
+      </p>
+    </div>
+  <% end %>
+</div>

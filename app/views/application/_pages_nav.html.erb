@@ -2,7 +2,7 @@
   <nav class="navbar navbar-default navbar-fixed-top subnav">
     <div class="container">
       <div class="navbar-header">
-        <span class="subnav-name pull-left hidden"><%= @page.title %></span>
+        <span class="subnav-name pull-left hidden"><%= @page.title if @page %></span>
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sub-nav">
           <span class="sr-only">Toggle sub navigation</span>
           <span class="glyphicon glyphicon-menu-hamburger"></span>
@@ -15,6 +15,11 @@
             <%= active_link_to page.title, "/#{page.slug}", wrap_tag: :li %>
           <% end %>
           <%= active_link_to "Video Gallery", '/video_gallery', wrap_tag: :li if current_spree_user %>
+          <% if @group_page %>
+            <% @group_page.medium_publications.each do |publication| %>
+              <%= active_link_to publication.title, curriculum_blog_path(page_slug: @group_page.slug, slug: publication.slug), wrap_tag: :li %>
+            <% end %>
+          <% end %>
         </ul>
       </div>
     </div>
