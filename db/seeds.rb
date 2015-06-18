@@ -7,7 +7,9 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-Spree::Core::Engine.load_seed if defined?(Spree::Core)
+if defined?(Spree::Core) && Spree::Country.count == 0
+  Spree::Core::Engine.load_seed
+end
 # Spree::Auth::Engine.load_seed if defined?(Spree::Auth)
 
 if Spree::User.count == 0
