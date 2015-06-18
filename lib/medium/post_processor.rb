@@ -2,6 +2,7 @@ module Medium
   class PostProcessor
     def initialize(opts={})
       @data = opts[:data]
+      @url  = opts[:url]
     end
 
     def process
@@ -23,7 +24,7 @@ module Medium
     end
 
     def process_paragraphs(paragraphs)
-      Medium::ParagraphsProcessor.new(paragraphs: paragraphs[1..-1]).process
+      Medium::ParagraphsProcessor.new(paragraphs: paragraphs[1..-1], url: @url).process
     end
   end
 end

@@ -71,7 +71,5 @@ module Medium
     def markup_tag(type)
       MARKUP_TYPES[type] || 'span'
     end
-
-    # html_doc.xpath('//img[@data-image-id="1*vK0l5i5zKwbUkFtbo4jaaA.png"]')
   end
 end

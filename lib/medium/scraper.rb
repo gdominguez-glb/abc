@@ -15,7 +15,7 @@ module Medium
     def import_post_from_medium(publication, post_json)
       post_url  = construct_post_url(publication, post_json)
       post_data = request_data_from_medium(post_url)
-      post_hash = PostProcessor.new(data: post_data).process
+      post_hash = PostProcessor.new(data: post_data, url: post_url).process
       post      = Post.find_or_initialize_by(medium_id: post_hash[:medium_id])
       post.update(post_hash.merge(medium_publication_id: publication.id))
     end
