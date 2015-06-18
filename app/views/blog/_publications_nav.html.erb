@@ -1,7 +1,7 @@
 <ul class="nav nav-tabs">
   <% publications.each do |publication| %>
     <li role="presentation" class="dropdown">
-    <%= link_to publication.title, global_blog_path(publication.slug) %>	
+    <%= active_link_to publication.title, global_blog_path(publication.slug) %>
     </li>
   <% end %>
 </ul>

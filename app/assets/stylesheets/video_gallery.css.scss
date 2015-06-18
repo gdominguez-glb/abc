@@ -1,4 +1,11 @@
 .video_gallery {
+
+  #wrap {
+    &.empty-state {
+      height: 100%;
+    }
+  }
+
   .wrapper {
     height: 100%;
   }

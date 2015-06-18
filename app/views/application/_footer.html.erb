@@ -3,27 +3,29 @@
     <div class="container">
       <div class="row clear-top">
         <% Page.show_in_footer_as_top_links.each do |page| %>
-          <div class="col-xs-2">
-            <h4>
+          <div class="col-xs-2 footer-section">
+            <h6>
               <%= active_link_to page.group_name.capitalize, "/#{page.slug}" %>
-            </h4>
+            </h6>
             <% if (@sub_items = Page.show_in_footer_as_subgroup_links(page.group_name)).length > 1 %>
-              <% @sub_items.each do |page| %>
-                <%= active_link_to page.title, "/#{page.slug}", wrap_tag: :li  %>
-              <% end %>
+              <ul>
+                <% @sub_items.each do |page| %>
+                  <%= active_link_to page.title, "/#{page.slug}", wrap_tag: :li  %>
+                <% end %>
+              </ul>
             <% end %>
           </div>
         <% end %>
-        <div class="col-xs-2">
-          <h4>Updates</h4>
+        <div class="col-xs-2 footer-section">
+          <h6>Updates</h6>
           <ul>
             <% MediumPublication.global.each do |publication| %>
               <li><%= link_to publication.title, global_blog_path(slug: publication.slug) %></li>
             <% end %>
           </ul>
         </div>
-        <div class="col-xs-2">
-          <h4>Social</h4>
+        <div class="col-xs-2 footer-section">
+          <h6>Social</h6>
           <ul>
             <li><a href="">Twitter</a></li>
             <li><a href="">Facebook</a></li>

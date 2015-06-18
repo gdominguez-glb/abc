@@ -1,4 +1,6 @@
 <div class="container">
-  <%= link_to 'Back', global_blog_path(slug: @post.medium_publication.slug) %>
-  <%= render 'post' %>
+  <%= link_to 'Back', global_blog_path(slug: @post.medium_publication.slug), class: "previous-page" %>
+  <div class="post-view">
+    <%= render 'post' %>
+  </div>
 </div>
