@@ -18,4 +18,7 @@ module Medium
     2 => 'em',
     3 => 'a'
   }
+
+  LINK_TAG = 'a'
+  LINK_ATTRIBUTES = ['href', 'title', 'rel']
 end
