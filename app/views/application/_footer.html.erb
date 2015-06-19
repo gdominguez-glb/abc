@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row clear-top">
         <% Page.show_in_footer_as_top_links.each do |page| %>
-          <div class="col-xs-2 footer-section">
+          <div class="col-sm-2 footer-section">
             <h6>
               <%= active_link_to page.group_name.capitalize, "/#{page.slug}" %>
             </h6>
@@ -16,7 +16,7 @@
             <% end %>
           </div>
         <% end %>
-        <div class="col-xs-2 footer-section">
+        <div class="col-sm-2 footer-section">
           <h6>Updates</h6>
           <ul>
             <% MediumPublication.global.each do |publication| %>
@@ -24,7 +24,7 @@
             <% end %>
           </ul>
         </div>
-        <div class="col-xs-2 footer-section">
+        <div class="col-sm-2 footer-section">
           <h6>Social</h6>
           <ul>
             <li><a href="">Twitter</a></li>
