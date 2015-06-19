@@ -34,6 +34,10 @@ class Cms::MediumPublicationsController < Cms::BaseController
     redirect_to cms_medium_publications_path, notice: 'Successfully deleted new medium publication.'
   end
 
+  def trigger_medium_importer
+    MediumWorker.perform_async
+  end
+
   private
 
   def set_medium_publication
