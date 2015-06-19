@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  use_doorkeeper
   mount Spree::Core::Engine, at: '/store'
 
   devise_for :user,
@@ -80,6 +81,10 @@ Rails.application.routes.draw do
         post :update_positions
       end
     end
+  end
+
+  namespace :api do
+    get 'user/info', to: 'user#info'
   end
 
   get '*slug', to: 'pages#show',

@@ -229,6 +229,8 @@ GEM
       devise (>= 2.1.0)
     diff-lcs (1.2.5)
     docile (1.1.5)
+    doorkeeper (2.2.1)
+      railties (>= 3.2)
     elasticsearch (1.0.9)
       elasticsearch-api (= 1.0.9)
       elasticsearch-transport (= 1.0.9)
@@ -614,6 +616,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   database_cleaner (~> 1.4.1)
   databasedotcom
+  doorkeeper
   factory_girl_rails (~> 4.5.0)
   figaro
   httparty
@@ -650,6 +653,3 @@ DEPENDENCIES
   whenever
   wistia-api
   zeroclipboard-rails
-
-BUNDLED WITH
-   1.10.2
