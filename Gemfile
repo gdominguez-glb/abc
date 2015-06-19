@@ -49,6 +49,8 @@ gem 'searchkick'
 
 gem 'select2-rails'
 
+gem 'doorkeeper'
+
 group :development do
   gem 'pry'
   gem 'quiet_assets'

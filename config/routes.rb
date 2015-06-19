@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  use_doorkeeper
   mount Spree::Core::Engine, at: '/store'
 
   devise_for :user,
