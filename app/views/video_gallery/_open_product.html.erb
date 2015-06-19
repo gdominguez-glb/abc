@@ -7,7 +7,7 @@
       <% end %>
     </div>
     <div class="video-product-drawer">
-      <button class="btn btn-default disabled" style="display: block;"><%= video_product.curriculum.try(:name) %></button>
+      <button class="btn btn-default disabled" style="display: block;"><%= video_product.categories.join(' ') %></button>
       <div class="product-description">
         <%= truncate video_product.description, length: 300 %>
         <% if video_product.description && video_product.description.length > 100 %>
