@@ -15,6 +15,12 @@
     margin-left: -15px;
   }
 
+  div[data-hook="admin_login_navigation_bar"] {
+    @media screen and (max-width: 769px) {
+      float: right;
+    }
+  }
+
   #sidebar-toggle {
     position: relative;
     float: left;
@@ -55,6 +61,23 @@
   table {
     min-width: 1000px;
     max-width: none;
+  }
+}
+
+.with-sidebar {
+
+  table {
+    min-width: 0;
+  }
+
+  @media screen and (max-width: $largeBP) {
+    float: none;
+    width: 100%;
+
+    + div {
+      float: none;
+      width: 100%;
+    }
   }
 }
 
