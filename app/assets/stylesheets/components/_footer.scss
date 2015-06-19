@@ -10,22 +10,30 @@ footer {
   .text-muted {
     margin: 0;
   }
+
+  h6 {
+    color: #fff;
+
+    a {
+      color: #fff;
+    }
+  }
 }
 
 .footer-jumbo {
   padding: 60px 0;
   color: #fff;
   background-color: #7A7A7A;
+
+  @media screen and (max-width: 767px) {
+    padding: 0;
+  }
 }
 
 .footer-section {
-  text-align: center;
 
-  &:first-child {
-    text-align: left;
-  }
-
-  &:last-child {
-    text-align: right;
+  @media screen and (max-width: 767px) {
+    text-align: center;
+    margin: 30px 0;
   }
 }
