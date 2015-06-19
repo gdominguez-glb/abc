@@ -70,7 +70,11 @@ Rails.application.routes.draw do
     resources :questions
     resources :contacts, only: [:index, :destroy, :edit, :update]
     resources :recommendations
-    resources :medium_publications
+    resources :medium_publications do
+      collection do
+        post :trigger_medium_importer
+      end
+    end
     resources :contact_topics do
       collection do
         post :update_positions
