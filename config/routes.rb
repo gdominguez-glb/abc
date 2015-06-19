@@ -83,6 +83,10 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :api do
+    get 'user/info', to: 'user#info'
+  end
+
   get '*slug', to: 'pages#show',
     constraints: lambda { |request| !(request.path =~ /\/store.*/) }
 end
