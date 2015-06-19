@@ -6,10 +6,11 @@
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
-<body>
 
-  <div id="wrap">
+<body>
+  <div id="wrap" class="cms-wrapper">
     <%= render 'header' %>
+    <%= render 'account_nav' %>
     <%= render 'flashes' %>
     <div class="container">
       <div id="viewport" class="row">

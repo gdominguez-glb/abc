@@ -17,6 +17,10 @@ body {
   min-height: 100%;
 }
 
+.cms-wrapper {
+  padding: 55px 0 0;
+}
+
 .wrapper {
   position: relative;
   @include clearfix;
