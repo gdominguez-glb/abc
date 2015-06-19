@@ -7,7 +7,7 @@ class VideoGalleryController < ApplicationController
   def index
     params[:taxon_ids] ||= []
 
-    @video_products        = Spree::Product.videos.page(params[:page])
+    @video_products        = Spree::Product.videos.includes([taxons: [:taxonomy]]).page(params[:page])
     @video_products        = filter_video_products(@video_products)
 
     @bought_product_ids    = fetch_bought_ids(@video_products)
