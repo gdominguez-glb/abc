@@ -12,6 +12,7 @@
             <th>Url</th>
             <th>Blog Type</th>
             <th>Curriculum Page</th>
+            <th>Slug</th>
             <th>Position</th>
             <th>Display</th>
             <th colspan="2"></th>
@@ -25,6 +26,7 @@
               <td><%= medium_publication.url %></td>
               <td><%= medium_publication.blog_type %></td>
               <td><%= medium_publication.page.try(:group_name) %></td>
+              <td><%= medium_publication.slug %></td>
               <td><%= medium_publication.position %></td>
               <td><%= medium_publication.display ? 'Yes' : 'No' %></td>
               <td><%= link_to 'Edit', edit_cms_medium_publication_path(medium_publication) %></td>
