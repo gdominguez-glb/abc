@@ -27,3 +27,7 @@ end
 every 2.hours do
   rbenv_rake "medium:import_posts"
 end
+
+every 1.day, at: '00:00 am' do
+  command %Q{export PATH=/home/deploy/.rbenv/shims:/home/deploy/.rbenv/bin:/usr/bin:$PATH; eval "$(rbenv init -)"; backup perform -t db_backup}
+end
