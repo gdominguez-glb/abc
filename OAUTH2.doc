@@ -1,0 +1,43 @@
+Greatminds/Math app OAuth2 integration document
+
+Step 1: Before implement oauth2, need to create new application in greatminds web site(http://gm-qa.intridea.com/oauth/applications) which will give you app id, app secret and set redirect url to use in authorization.
+
+Step 2: when user click link in greatminds to math app, math app need to first check if user is login in math app already, if not, math app need to genereate authorize url and send user back to greatminds for authorization.
+
+  for example, with https://github.com/fkooman/php-oauth-client  php-oauth-client
+
+  // init configuration with app id/secret
+  $clientConfig = new ClientConfig(
+    array(
+        "authorize_endpoint" => "http://gm-qa.intridea.com/oauth/authorize",
+        "client_id" => "foo",
+        "client_secret" => "foobar",
+        "token_endpoint" => "http://gm-qa.intridea.com/oauth/token",
+    )
+  );
+  
+  // init $api object
+  $api = new Api("foo", $clientConfig, new SessionStorage(), new Guzzle3Client());
+
+  // send user to greatminds authorize using follow method to generate url
+
+  Api::getAuthorizeUri()
+  
+Step 3. after authorize in greatminds, user will redirect back to math app with the redirect url set in Step 1 with a code parameter, math app need to use this code parameter combine with other info go request user access token from greatminds.
+
+  Api::getAccessToken()
+
+Step 4. with access token in hand, math app can call any api method in greatminds with access token, for example.
+
+    http://gm-qa.intridea.com/api/user/info.json
+
+
+Notes:
+
+  The oauth2 implementation is pretty standard, so any post/tutorial on oauth2 would be used as this one.
+  This document only cover how to authorize between greatminds and math app, for product permissions, we can decide how to share products info in future and create another api in greatminds to give math app access for users' permission
+
+Reference: 
+
+  http://oauth.net
+  https://github.com/fkooman/php-oauth-client
