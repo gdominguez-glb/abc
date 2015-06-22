@@ -1,0 +1,45 @@
+# encoding: utf-8
+
+##
+# Backup Generated: db_backup
+# Once configured, you can run the backup with the following command:
+#
+# $ backup perform -t db_backup [-c <path_to_configuration_file>]
+#
+# For more information about Backup's components, see the documentation at:
+# http://backup.github.io/backup
+#
+Model.new(:db_backup, 'Description for db_backup') do
+
+  ##
+  # PostgreSQL [Database]
+  #
+  database PostgreSQL do |db|
+    # To dump all databases, set `db.name = :all` (or leave blank)
+    db.name               = "<%= node['app'] %>_<%= node['rails_env'] %>"
+    db.username           = "<%= node['db']['user']['name'] %>"
+    db.password           = "<%= node['db']['user']['password'] %>"
+    db.host               = "localhost"
+    db.additional_options = ["-xc", "-E=utf8"]
+  end
+
+  ##
+  # Amazon Simple Storage Service [Storage]
+  #
+  store_with S3 do |s3|
+    # AWS Credentials
+    s3.access_key_id     = "AKIAIG4RPQKGLBDHWPLA"
+    s3.secret_access_key = "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"
+    # Or, to use a IAM Profile:
+    # s3.use_iam_profile = true
+
+    s3.bucket            = "gm-s3-<%= node['rails_env'] %>.intridea.com"
+    s3.path              = ""
+  end
+
+  ##
+  # Gzip [Compressor]
+  #
+  compress_with Gzip
+
+end

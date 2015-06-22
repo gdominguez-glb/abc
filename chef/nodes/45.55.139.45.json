@@ -10,7 +10,8 @@
     "recipe[greatminds::imagemagick]",
     "recipe[greatminds::rbenv]",
     "recipe[greatminds::nginx]",
-    "recipe[greatminds::app]"
+    "recipe[greatminds::app]",
+    "recipe[greatminds::backup]"
   ],
   "group": "deploy",
   "user": {
