@@ -1,5 +1,7 @@
 class RegonlineEvent < ActiveRecord::Base
 
+  reverse_geocoded_by :latitude, :longitude
+
   class << self
     ATTRIBUTES_TO_IMPORT = ["ID", "Title", "StartDate", "EndDate", "ActiveDate", "City", "State", "Country", "PostalCode", "LocationName", "LocationRoom", "LocationBuilding", "LocationAddress1", "LocationAddress2", "Latitude", "Longitude"]
     def import(data)

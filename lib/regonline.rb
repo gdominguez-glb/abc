@@ -1,7 +1,13 @@
 require 'httparty'
 
 class Regonline
-  API_TOKEN = 'OO5NcLPlqn+YvxhnCHJYdx41BUbb+GpaYkjCNMIC7ycS1KazFUokDQ=='
+  API_TOKEN = ENV['regonline_api_token']
+
+  def self.import_events
+    Regonline.new.get_events.each do |event_data|
+      RegonlineEvent.import(event_data)
+    end
+  end
 
   EVENTS_API = 'https://www.regonline.com/api/default.asmx/GetEvents'
   def get_events
