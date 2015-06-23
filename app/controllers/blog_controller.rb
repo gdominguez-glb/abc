@@ -28,7 +28,7 @@ class BlogController < ApplicationController
   end
 
   def load_curriculum_publications
-    @curriculum_publications = MediumPublication.curriculum.where(page: @group_page)
+    @curriculum_publications = MediumPublication.curriculum.where(page: @group_page).sorted
   end
 
   def load_global_publication

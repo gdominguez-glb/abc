@@ -1,5 +1,5 @@
 <%= content_for :body_class, 'with-subnav' %>
 <div class="container">
-  <%= render partial: 'publications_nav', locals: { publications: @curriculum_publications } %>
+  <%= render partial: 'curriculum_publications_nav', locals: { page: @group_page, publications: @curriculum_publications } %>
   <%= render partial: 'posts', locals: { posts: @posts, blog_type: 'curriculum', group_page: @group_page, publication: @medium_publication } %>
 </div>

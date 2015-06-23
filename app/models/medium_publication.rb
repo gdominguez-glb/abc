@@ -3,6 +3,8 @@ class MediumPublication < ActiveRecord::Base
 
   BLOG_TYPES = ['global', 'curriculum']
 
+  scope :sorted, ->{ order('position asc') }
+
   has_many :posts
   belongs_to :page
 
