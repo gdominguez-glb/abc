@@ -15,10 +15,8 @@
             <%= active_link_to page.title, "/#{page.slug}", wrap_tag: :li %>
           <% end %>
           <%= active_link_to "Video Gallery", '/video_gallery', wrap_tag: :li if current_spree_user %>
-          <% if @group_page %>
-            <% @group_page.medium_publications.each do |publication| %>
-              <%= active_link_to publication.title, curriculum_blog_path(page_slug: @group_page.slug, slug: publication.slug), wrap_tag: :li %>
-            <% end %>
+          <% if @group_page && publication = @group_page.medium_publications.sorted.first %>
+            <%= active_link_to 'Blog', curriculum_blog_path(page_slug: @group_page.slug, slug: publication.slug), wrap_tag: :li, active: /#{@group_page.slug}\/blog/ %>
           <% end %>
         </ul>
       </div>
