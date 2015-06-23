@@ -224,10 +224,7 @@ ActiveRecord::Schema.define(version: 20150707080059) do
     t.string   "postal_code"
     t.string   "location_name"
     t.string   "location_room"
-<<<<<<< HEAD
     t.string   "location_building"
-=======
->>>>>>> GM-26 add RegonlineEvent model to store regonline events
     t.string   "location_address1"
     t.string   "location_address2"
     t.decimal  "latitude",          precision: 10, scale: 6

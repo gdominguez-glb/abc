@@ -12,6 +12,7 @@ class CreateRegonlineEvents < ActiveRecord::Migration
       t.string :postal_code
       t.string :location_name
       t.string :location_room
+      t.string :location_building
       t.string :location_address1
       t.string :location_address2
       t.decimal :latitude, precision: 10, scale: 6
