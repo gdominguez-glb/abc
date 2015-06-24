@@ -4,5 +4,4 @@ FactoryGirl.define do
     state_id 1
     place_type "MyString"
   end
-
 end
