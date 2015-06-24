@@ -13,6 +13,10 @@ Spree::Product.class_eval do
 
   has_many :master_price, class_name: '', through: :master
 
+  attr_accessor :new_image, :new_digital
+
+  after_create :assign_image_to_master, :assign_digital_to_master
+
   scope :free, -> {
     joins("join spree_variants on spree_variants.product_id = spree_products.id").
     joins("join spree_prices on spree_prices.variant_id = spree_variants.id").
@@ -70,5 +74,13 @@ Spree::Product.class_eval do
 
   def categories
     taxons.map(&:taxonomy).uniq.map(&:name)
+  end
+
+  def assign_image_to_master
+    self.master.images << Spree::Image.new(attachment: self.new_image) if self.new_image.present?
+  end
+
+  def assign_digital_to_master
+    self.master.digitals << Spree::Digital.new(attachment: self.new_digital) if self.new_digital.present?
   end
 end
