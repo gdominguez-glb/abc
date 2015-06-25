@@ -32,8 +32,9 @@
         return user.email;
       }
    });
-   $("#licensed_product_product_id").select2({
+   $("#licensed_product_product_ids").select2({
       placeholder: "Select product",
+      multiple: true,
       ajax: {
         url: '/storeapi/products',
         datatype: 'json',
