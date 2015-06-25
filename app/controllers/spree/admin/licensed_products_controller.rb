@@ -26,6 +26,16 @@ module Spree
           render :new
         end
       end
+
+      def import
+        if request.post?
+          if Spree::LicensedProduct.import(params[:file])
+            redirect_to spree.admin_licensed_products_path, notice: 'Imported successfully'
+          else
+            redirect_to spree.import_admin_licensed_products_path, error: 'Fail to import licenses'
+          end
+        end
+      end
     end
   end
 end
