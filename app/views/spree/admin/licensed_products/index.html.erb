@@ -2,6 +2,10 @@
   Product Licenses
 <% end %>
 
+<% content_for :page_actions do %>
+  <%= button_link_to Spree.t(:new_license), spree.new_admin_licensed_product_url, :class => "btn-success", :icon => 'add', :id => 'admin_new_licensed_product' %>
+<% end if can? :create, Spree::Order %>
+
 <% if @licensed_products.any? %>
   <table class="table" id="listing_licensed_products" data-hook>
     <thead>
@@ -18,7 +22,7 @@
         <tr>
           <td><%= link_to licensed_product.user.email, spree.admin_user_path(licensed_product.user) %></td>
           <td><%= link_to licensed_product.product.name, spree.admin_product_path(licensed_product.product) %></td>
-          <td><%= link_to licensed_product.order.number, spree.order_path(licensed_product.order) %></td>
+          <td><%= link_to licensed_product.order.number, spree.order_path(licensed_product.order) if licensed_product.order %></td>
           <td><%= licensed_product.expire_at %></td>
           <td><%= licensed_product.quantity %></td>
         </tr>
