@@ -51,6 +51,8 @@ gem 'select2-rails'
 
 gem 'doorkeeper'
 
+gem 'roo', '~> 2.0.0'
+
 group :development do
   gem 'pry'
   gem 'quiet_assets'

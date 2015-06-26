@@ -1,0 +1,69 @@
+<script type="text/javascript">
+//<![CDATA[
+  (function($){
+   $("#licensed_product_user_id").select2({
+      placeholder: "Select school district admin",
+      ajax: {
+        url: '/storeapi/users',
+        datatype: 'json',
+        data: function (term, page) {
+          return {
+            per_page: 50,
+            page: page,
+            without_children: true,
+            q: {
+              name_cont: term
+            },
+            token: Spree.api_key
+          };
+        },
+        results: function (data, page) {
+          var more = page < data.pages;
+          return {
+            results: data['users'],
+            more: more
+          };
+        }
+      },
+      formatResult: function (user) {
+        return user.email;
+      },
+      formatSelection: function (user) {
+        return user.email;
+      }
+   });
+   $("#licensed_product_product_ids").select2({
+      placeholder: "Select product",
+      multiple: true,
+      ajax: {
+        url: '/storeapi/products',
+        datatype: 'json',
+        data: function (term, page) {
+          return {
+            per_page: 50,
+            page: page,
+            without_children: true,
+            q: {
+              name_cont: term
+            },
+            token: Spree.api_key
+          };
+        },
+        results: function (data, page) {
+          var more = page < data.pages;
+          return {
+            results: data['products'],
+            more: more
+          };
+        }
+      },
+      formatResult: function (product) {
+        return product.name;
+      },
+      formatSelection: function (product) {
+        return product.name;
+      }
+   });
+  })(jQuery);
+//]]>
+</script>

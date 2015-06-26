@@ -1,0 +1,42 @@
+<% content_for :page_title do %>
+  Product Licenses
+<% end %>
+
+<% content_for :page_actions do %>
+  <%= button_link_to Spree.t(:new_license), spree.new_admin_licensed_product_url, :class => "btn-success", :icon => 'add', :id => 'admin_new_licensed_product' %>
+  <%= button_link_to "Import Licenses", spree.import_admin_licensed_products_path, class: 'btn-success', icon: 'add' %>
+<% end if can? :create, Spree::Order %>
+
+<% if @licensed_products.any? %>
+  <table class="table" id="listing_licensed_products" data-hook>
+    <thead>
+      <tr data-hook="admin_orders_index_headers">
+        <th>User</th>
+        <th>Product</th>
+        <th>Order</th>
+        <th>Expire At</th>
+        <th>Quantity</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @licensed_products.each do |licensed_product| %>
+        <tr>
+          <td>
+            <%= link_to licensed_product.user.email, spree.admin_user_path(licensed_product.user) if licensed_product.user %>
+            <%= licensed_product.email if licensed_product.email %>
+          </td>
+          <td><%= link_to licensed_product.product.name, spree.admin_product_path(licensed_product.product) %></td>
+          <td><%= link_to licensed_product.order.number, spree.order_path(licensed_product.order) if licensed_product.order %></td>
+          <td><%= licensed_product.expire_at %></td>
+          <td><%= licensed_product.quantity %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <div class="alert alert-info no-objects-found">
+    <%= Spree.t(:no_resource_found, resource: plural_resource_name(Spree::LicensedProduct)) %>,
+  </div>
+<% end %>
+
+<%= render :partial => 'spree/admin/shared/index_table_options', :locals => { :collection => @licensed_products, :simple => true } %>

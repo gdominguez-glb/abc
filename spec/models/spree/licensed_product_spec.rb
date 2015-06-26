@@ -1,6 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe Spree::LicensedProduct, type: :model do
+
+  it { belong_to(:product).class_name('Spree::Product') }
+  it { belong_to(:order).class_name('Spree::Order') }
+  it { belong_to(:user).class_name('Spree::User') }
+
+  it { should validate_numericality_of(:quantity).is_greater_than(0) }
+  it { should allow_value('john@doe.com').for(:email) }
+  it { should_not allow_value('johndoe.com').for(:email) }
+
   describe "#distribute_license" do
     let(:licensed_product) { create(:spree_licensed_product) }
     let(:to_user) { create(:user, email: 'john123@doe.com', first_name: 'John', last_name: 'Doe', school_district: create(:school_district) ) }

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150619073952) do
+ActiveRecord::Schema.define(version: 20150625114109) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -179,6 +179,27 @@ ActiveRecord::Schema.define(version: 20150619073952) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
+  end
+
+  create_table "regonline_events", force: :cascade do |t|
+    t.string   "regonline_id"
+    t.string   "title"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.datetime "active_date"
+    t.string   "city"
+    t.string   "state"
+    t.string   "country"
+    t.string   "postal_code"
+    t.string   "location_name"
+    t.string   "location_room"
+    t.string   "location_building"
+    t.string   "location_address1"
+    t.string   "location_address2"
+    t.decimal  "latitude",          precision: 10, scale: 6
+    t.decimal  "longitude",         precision: 10, scale: 6
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
   end
 
   create_table "school_districts", force: :cascade do |t|
@@ -415,6 +436,7 @@ ActiveRecord::Schema.define(version: 20150619073952) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.integer  "quantity",   default: 0
+    t.string   "email"
   end
 
   create_table "spree_line_items", force: :cascade do |t|
