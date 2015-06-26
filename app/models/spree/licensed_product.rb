@@ -6,6 +6,7 @@ class Spree::LicensedProduct < ActiveRecord::Base
   scope :available, -> { where("expire_at > ?", Time.now) }
 
   validates_presence_of :product
+  validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, allow_blank: true
   validates_numericality_of :quantity, :greater_than => 0
 
   before_create :set_expire_at
