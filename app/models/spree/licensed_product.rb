@@ -11,6 +11,8 @@ class Spree::LicensedProduct < ActiveRecord::Base
 
   before_create :set_expire_at, :set_user
 
+  after_create :send_notification
+
   def distribute_license(user_or_email, quantity=1)
     distribution_attrs = {
       licensed_product: self,
@@ -44,5 +46,9 @@ class Spree::LicensedProduct < ActiveRecord::Base
     if self.user.blank? && self.email.present?
       self.user_id = Spree::User.find_by(email: self.email).try(:id)
     end
+  end
+
+  def send_notification
+    LicenseMailer.notify(self).deliver_now
   end
 end
