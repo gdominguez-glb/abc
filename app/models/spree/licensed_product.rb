@@ -9,7 +9,7 @@ class Spree::LicensedProduct < ActiveRecord::Base
   validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, allow_blank: true
   validates_numericality_of :quantity, :greater_than => 0
 
-  before_create :set_expire_at
+  before_create :set_expire_at, :set_user
 
   def distribute_license(user_or_email, quantity=1)
     distribution_attrs = {
@@ -31,6 +31,12 @@ class Spree::LicensedProduct < ActiveRecord::Base
   def set_expire_at
     if self.product.license_length.present? && self.expire_at.blank?
       self.expire_at = product.license_length.days.since(Time.now)
+    end
+  end
+
+  def set_user
+    if self.user.blank? && self.email.present?
+      self.user_id = Spree::User.find_by(email: self.email).try(:id)
     end
   end
 end

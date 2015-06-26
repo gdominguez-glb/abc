@@ -22,8 +22,11 @@
       <% @licensed_products.each do |licensed_product| %>
         <tr>
           <td>
-            <%= link_to licensed_product.user.email, spree.admin_user_path(licensed_product.user) if licensed_product.user %>
-            <%= licensed_product.email if licensed_product.email %>
+            <% if licensed_product.user %>
+              <%= link_to licensed_product.user.email, spree.admin_user_path(licensed_product.user) %>
+            <% elsif licensed_product.email %>
+              <%= licensed_product.email %>
+            <% end %>
           </td>
           <td><%= link_to licensed_product.product.name, spree.admin_product_path(licensed_product.product) %></td>
           <td><%= link_to licensed_product.order.number, spree.order_path(licensed_product.order) if licensed_product.order %></td>
