@@ -28,10 +28,13 @@ Spree::User.class_eval do
   has_many :completed_orders, ->{ where.not(completed_at: nil) }, class_name: 'Spree::Order'
   has_many :products, through: :completed_orders, class_name: 'Spree::Product'
   has_many :favorite_products, class_name: 'Spree::FavoriteProduct'
+  has_many :licensed_products, class_name: 'Spree::LicensedProduct'
 
   accepts_nested_attributes_for :school_district, reject_if: proc { |attributes| attributes['name'].blank? }
 
   before_create :assign_user_role
+
+  after_create :assign_licenses
 
   def assign_user_role
     if spree_roles.empty?
@@ -67,5 +70,9 @@ Spree::User.class_eval do
 
   if !defined?(SUBJECTS)
     SUBJECTS = ['Math', 'English & Language Arts', 'History', 'Other']
+  end
+
+  def assign_licenses
+    Spree::LicensedProduct.assign_license_to(self)
   end
 end

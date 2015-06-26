@@ -9,6 +9,7 @@ RSpec.describe Spree::User do
   it { should have_many(:completed_orders).class_name('Spree::Order') }
   it { should have_many(:products).class_name('Spree::Product') }
   it { should have_many(:favorite_products).class_name('Spree::FavoriteProduct') }
+  it { should have_many(:licensed_products).class_name('Spree::LicensedProduct') }
 
   it { should validate_presence_of(:first_name) }
   it { should validate_presence_of(:last_name) }
@@ -21,6 +22,15 @@ RSpec.describe Spree::User do
   describe "#has_admin_role?" do
     it "return true for admin" do
       expect(admin_user.has_admin_role?).to eq(true)
+    end
+  end
+
+  describe "assign_licenses" do
+    let!(:licensed_product) { create(:spree_licensed_product, email: 'john@doe.com') }
+
+    it "assign license to register user for same email" do
+      user = create(:user, user_attributes.merge(email: 'john@doe.com'))
+      expect(user.licensed_products.first).to eq(licensed_product)
     end
   end
 end
