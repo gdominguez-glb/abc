@@ -11,7 +11,7 @@ class Spree::LicensedProduct < ActiveRecord::Base
 
   before_create :set_expire_at, :set_user
 
-  after_create :send_notification
+  after_create :send_notification, :assign_user_admin_role
 
   def distribute_license(user_or_email, quantity=1)
     distribution_attrs = {
@@ -50,5 +50,11 @@ class Spree::LicensedProduct < ActiveRecord::Base
 
   def send_notification
     LicenseMailer.notify(self).deliver_now
+  end
+
+  def assign_user_admin_role
+    if self.quantity > 1 && self.user
+      self.user.assign_school_admin_role
+    end
   end
 end
