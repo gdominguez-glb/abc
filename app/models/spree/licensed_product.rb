@@ -3,7 +3,7 @@ class Spree::LicensedProduct < ActiveRecord::Base
   belongs_to :order, class_name: 'Spree::Order'
   belongs_to :user, class_name: 'Spree::User'
 
-  scope :available, -> { where("expire_at > ?", Time.now) }
+  scope :available, -> { where("spree_licensed_products.expire_at is null or spree_licensed_products.expire_at > ?", Time.now) }
 
   validates_presence_of :product
   validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, allow_blank: true
