@@ -2,6 +2,7 @@ class Spree::LicensedProduct < ActiveRecord::Base
   belongs_to :product, class_name: 'Spree::Product'
   belongs_to :order, class_name: 'Spree::Order'
   belongs_to :user, class_name: 'Spree::User'
+  belongs_to :product_distribution, class_name: 'Spree::ProductDistribution'
 
   scope :available, -> { where("spree_licensed_products.expire_at is null or spree_licensed_products.expire_at > ?", Time.now) }
 

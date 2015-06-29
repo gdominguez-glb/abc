@@ -9,5 +9,16 @@ class Spree::ProductDistribution < ActiveRecord::Base
   private
 
   def distribute_license
+    from_licensed_product = from_user.licensed_products.find_by(product_id: self.product.id)
+    if from_licensed_product && from_licensed_product.quantity > self.quantity
+      from_licensed_product.update(quantity: from_licensed_product.quantity - self.quantity)
+      Spree::LicensedProduct.create(
+        user: self.to_user,
+        email: self.email,
+        quantity: self.quantity,
+        product: self.product,
+        product_distribution: self
+      )
+    end
   end
 end
