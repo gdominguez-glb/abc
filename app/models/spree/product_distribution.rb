@@ -4,6 +4,8 @@ class Spree::ProductDistribution < ActiveRecord::Base
   belongs_to :to_user, class_name: 'Spree::User'
   belongs_to :product, class_name: 'Spree::Product'
 
+  validates_presence_of :from_user, :product
+
   after_create :distribute_license
 
   private

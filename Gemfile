@@ -54,7 +54,6 @@ gem 'doorkeeper'
 gem 'roo', '~> 2.0.0'
 
 group :development do
-  gem 'pry'
   gem 'quiet_assets'
   gem 'letter_opener'
   gem 'better_errors'
@@ -62,6 +61,7 @@ group :development do
 end
 
 group :development, :test do
+  gem 'pry'
   gem 'rspec-rails', '~> 3.2.1'
 end
 
