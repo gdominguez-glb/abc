@@ -13,21 +13,39 @@ RSpec.describe Spree::ProductDistribution, type: :model do
   let(:to_user) { create(:gm_user) }
 
   let(:product) { create(:product, license_length: 365) }
+  let(:licensed_product) { create(:spree_licensed_product, user: from_user, product: product, quantity: 10) }
+  let(:distribution) { create(:spree_product_distribution, from_user: from_user, to_user: to_user, product: product, quantity: 1, licensed_product: licensed_product) }
 
   describe "licensed product creation" do
-    let!(:licensed_product) { create(:spree_licensed_product, user: from_user, product: product, quantity: 10) }
-
-    before(:each) do
-      create(:spree_product_distribution, from_user: from_user, to_user: to_user, product: product, quantity: 1)
-    end
+    before(:each) { distribution }
 
     it "create licensed product to distribution user" do
       licensed_product = to_user.licensed_products.first
       expect(licensed_product.quantity).to eq(1)
+      expect(licensed_product.product_distribution).to eq(distribution)
     end
 
     it "reduce license quantity from user" do
       expect(licensed_product.reload.quantity).to eq(9)
+    end
+  end
+
+  describe "#revoke" do
+    before(:each) do
+      distribution
+      distribution.revoke
+    end
+
+    it "destroy licensed product" do
+      expect(to_user.licensed_products.count).to eq(0)
+    end
+
+    it "destroy production distribution" do
+      expect(Spree::ProductDistribution.find_by(id: distribution.id)).to eq(nil)
+    end
+
+    it "increase original licensed products quantity" do
+      expect(licensed_product.reload.quantity).to eq(10)
     end
   end
 end
