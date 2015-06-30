@@ -5,27 +5,29 @@ class Spree::LicenseDistributer
   end
 
   def distribute
+    return { success: false, error: "File can't be blank" } if @file.blank?
     xlsx   = Roo::Excelx.new(@file.path)
     sheet  = xlsx.sheet(0)
     header = sheet.row(1)
     license_rows = (2..sheet.last_row).map do |i|
       Hash[[header, sheet.row(i)].transpose]
     end
-    return false if !validate_license_quantity(license_rows)
+    return { success: false, error: "Invalid licenses number " } if !validate_license_quantity(license_rows)
     distribute_licenses(license_rows)
+    { success: true }
   end
 
   def distribute_licenses(license_rows)
     records = license_rows.map do |row|
       construct_distribution(row)
     end
-    Spree::ProductDistribution.transation do
+    Spree::ProductDistribution.transaction do
       records.each{|r| r.save }
     end
   end
 
   def construct_distribution(row)
-    to_user = User.find_by(email: row['email'])
+    to_user = Spree::User.find_by(email: row['email'])
     email = to_user ? nil : row['email']
     Spree::ProductDistribution.new(
       from_user: @user,

@@ -46,6 +46,8 @@ Rails.application.routes.draw do
     patch 'save_email_notifications', to: 'settings#save_email_notifications'
 
     get 'admin', to: 'admin#index'
+    get 'admin/import_licenses', to: 'admin#import_licenses'
+    post 'admin/import_licenses', to: 'admin#import_licenses'
   end
 
   get '/blog/global/:slug',          to: 'blog#global',          as: :global_blog
