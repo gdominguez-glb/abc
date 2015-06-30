@@ -14,12 +14,6 @@ Spree::Order.class_eval do
     end
   end
 
-  def promote_user_to_school_admin!
-    if self.line_items.where("quantity > 1").count > 0
-      self.user.assign_school_admin_role
-    end
-  end
-
   def log_purchase_activity!
     self.products.each do |product|
       self.user.log_activity(
@@ -67,7 +61,6 @@ Spree::Order.class_eval do
 end
 
 Spree::Order.state_machine.after_transition :to => :complete, :do => :create_licensed_products!
-Spree::Order.state_machine.after_transition :to => :complete, :do => :promote_user_to_school_admin!
 Spree::Order.state_machine.after_transition :to => :complete, :do => :log_purchase_activity!
 
 Spree::Order.state_machine.before_transition :to => :delivery, :do => :valid_terms_and_conditions?

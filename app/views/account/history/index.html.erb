@@ -50,7 +50,7 @@
               <% end %>
             </td>
             <td>
-              <%= link_to remove_history_path(activity.id), remote: true, data: { confirm: 'Are you sure?', method: :delete } do %>
+              <%= link_to account_remove_history_path(activity.id), remote: true, data: { confirm: 'Are you sure?', method: :delete } do %>
                 <span class="glyphicon glyphicon-remove"></span>
               <% end %>
             </td>

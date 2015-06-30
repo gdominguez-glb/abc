@@ -43,7 +43,7 @@
           <ul>
             <% @qa.each do |question| %>
               <li>
-                <%= link_to question.title, qa_path(question.id) %>
+                <%= link_to question.title, account_qa_path(question.id) %>
               </li>
             <% end %>
           </ul>

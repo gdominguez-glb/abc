@@ -30,21 +30,22 @@ Rails.application.routes.draw do
     end
   end
 
-  get '/account/help/qa/:id', to: 'account#help_qa', as: :qa
-  delete '/account/remove_history/:id', to: 'account#remove_history', as: :remove_history
-  resources :account, only: [:index] do
-    collection do
-      get :profile
-      get :settings
-      get :admin
-      get :help
-      get :favorites
-      get :recommended
-      get :history
-      get :edit_profile
-      patch :save_profile
-      patch :save_email_notifications
-    end
+  namespace :account do
+    root 'products#index'
+
+    resources :favorites, only: [:index]
+
+    get 'help', to: 'help#index'
+    get 'help/qa/:id', to: 'help#qa', as: :qa
+
+    get 'history', to: 'history#index'
+    delete 'history/:id/remove', to: 'history#remove', as: :remove_history
+
+    get 'settings', to: 'settings#index'
+    patch 'save_profile', to: 'settings#save_profile'
+    patch 'save_email_notifications', to: 'settings#save_email_notifications'
+
+    get 'admin', to: 'admin#index'
   end
 
   get '/blog/global/:slug',          to: 'blog#global',          as: :global_blog

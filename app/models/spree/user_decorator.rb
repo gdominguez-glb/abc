@@ -29,6 +29,8 @@ Spree::User.class_eval do
   has_many :favorite_products, class_name: 'Spree::FavoriteProduct'
   has_many :licensed_products, -> { available }, class_name: 'Spree::LicensedProduct'
   has_many :products, through: :licensed_products, class_name: 'Spree::Product'
+  has_many :product_distributions, foreign_key: :from_user_id, class_name: 'Spree::ProductDistribution'
+  has_many :to_users, through: :product_distributions, class_name: 'Spree::User'
 
   accepts_nested_attributes_for :school_district, reject_if: proc { |attributes| attributes['name'].blank? }
 
