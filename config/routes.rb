@@ -48,6 +48,7 @@ Rails.application.routes.draw do
     get 'admin', to: 'admin#index'
     get 'admin/import_licenses', to: 'admin#import_licenses'
     post 'admin/import_licenses', to: 'admin#import_licenses'
+    get 'admin/distributions', to: 'admin#distributions'
   end
 
   get '/blog/global/:slug',          to: 'blog#global',          as: :global_blog

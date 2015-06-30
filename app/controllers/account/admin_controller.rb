@@ -11,4 +11,8 @@ class Account::AdminController < Account::BaseController
       end
     end
   end
+
+  def distributions
+    @distributions = current_spree_user.product_distributions.includes([:to_user, :product])
+  end
 end
