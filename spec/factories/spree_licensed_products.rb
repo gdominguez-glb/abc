@@ -4,9 +4,8 @@ FactoryGirl.define do
   end
 
   factory :spree_licensed_product, :class => 'Spree::LicensedProduct' do
-    user { create(:user, email: generate(:email), first_name: 'John', last_name: 'Doe', school_district: create(:school_district)) }
+    user { create(:gm_user) }
     product
     quantity 1
   end
-
 end

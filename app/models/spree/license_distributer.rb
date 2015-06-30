@@ -27,14 +27,16 @@ class Spree::LicenseDistributer
   end
 
   def construct_distribution(row)
-    to_user = Spree::User.find_by(email: row['email'])
-    email = to_user ? nil : row['email']
+    to_user          = Spree::User.find_by(email: row['email'])
+    email            = to_user ? nil : row['email']
+    licensed_product = @user.licensed_products.available.find_by(product_id: product_id)
     Spree::ProductDistribution.new(
       from_user: @user,
       product_id: row['product_id'],
       quantity: row['quantity'],
       to_user: to_user,
-      email: email
+      email: email,
+      licensed_product: licensed_product
     )
   end
 

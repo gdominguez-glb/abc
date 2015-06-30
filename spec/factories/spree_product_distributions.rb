@@ -1,8 +1,7 @@
 FactoryGirl.define do
   factory :spree_product_distribution, :class => 'Spree::ProductDistribution' do
-    licensed_product
-    from_user
-    to_user
+    from_user { gm_user }
+    to_user { gm_user }
     quantity 1
     email
     product
