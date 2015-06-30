@@ -18,6 +18,13 @@ class Spree::ProductDistribution < ActiveRecord::Base
     end
   end
 
+  def reassign_to(user)
+    self.class.transaction do
+      self.distributed_licensed_product.update(user: user) if self.distributed_licensed_product
+      self.update(to_user: user)
+    end
+  end
+
   private
 
   def distribute_license

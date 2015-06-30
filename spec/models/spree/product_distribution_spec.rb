@@ -11,6 +11,7 @@ RSpec.describe Spree::ProductDistribution, type: :model do
 
   let(:from_user) { create(:gm_user) }
   let(:to_user) { create(:gm_user) }
+  let(:reassign_user) { create(:gm_user) }
 
   let(:product) { create(:product, license_length: 365) }
   let(:licensed_product) { create(:spree_licensed_product, user: from_user, product: product, quantity: 10) }
@@ -46,6 +47,23 @@ RSpec.describe Spree::ProductDistribution, type: :model do
 
     it "increase original licensed products quantity" do
       expect(licensed_product.reload.quantity).to eq(10)
+    end
+  end
+
+  describe "#reassign_to" do
+    before(:each) do
+      distribution
+      distribution.reassign_to(reassign_user)
+    end
+
+    it "revoke license from original user" do
+      expect(to_user.licensed_products.count).to eq(0)
+    end
+
+    it "assign license to reassign user" do
+      licensed_product = reassign_user.licensed_products.first
+      expect(licensed_product).not_to be_nil
+      expect(licensed_product.product_distribution).to eq(distribution)
     end
   end
 end
