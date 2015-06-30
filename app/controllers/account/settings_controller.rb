@@ -1,16 +1,5 @@
-class AccountController < ApplicationController
-  before_action :authenticate_user!
-  before_action :authenticate_school_admin!, only: [:admin]
-
+class Account::SettingsController < Account::BaseController
   def index
-    @nav_name = 'My Products'
-
-    @my_products       = current_spree_user.products.distinct
-    @recent_activities = current_spree_user.activities.recent
-    @recommendations   = Recommendation.limit(2)
-  end
-
-  def settings
     @email_notifications = spree_current_user.email_notifications
 
     @profile_fields = (if spree_current_user.has_spree_role?('admin')
@@ -20,13 +9,6 @@ class AccountController < ApplicationController
                       else
                         AppSettings.user_profile_settings[:user]
                       end || {}).keys
-  end
-
-  def profile
-  end
-
-  def favorites
-    @favorite_products = current_spree_user.favorite_products.includes(:product)
   end
 
   def save_profile
@@ -40,23 +22,6 @@ class AccountController < ApplicationController
   def save_email_notifications
     spree_current_user.settings[:email_notifications] = email_notifications_params.symbolize_keys
     redirect_to '/account/settings', notice: "Updated email notification successfully"
-  end
-
-  def history
-    @activities = spree_current_user.activities.order('created_at desc').page(params[:page])
-  end
-
-  def remove_history
-    @activity = spree_current_user.activities.find(params[:id])
-    @activity.destroy
-  end
-
-  def help
-    @qa = Question.displayable
-  end
-
-  def help_qa
-    @question = Question.find(params[:id])
   end
 
   private
