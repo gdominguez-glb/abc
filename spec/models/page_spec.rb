@@ -6,7 +6,7 @@ RSpec.describe Page, type: :model do
   it { should validate_uniqueness_of(:slug) }
   it { should validate_presence_of(:group_name) }
 
-  it { have_many(:medium_publications) }
+  it { should have_many(:medium_publications) }
 
   describe ".visibles" do
     let!(:visible_page) { create(:page, visible: true) }

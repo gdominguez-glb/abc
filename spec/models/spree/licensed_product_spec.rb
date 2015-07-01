@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Spree::LicensedProduct, type: :model do
 
-  it { belong_to(:product).class_name('Spree::Product') }
-  it { belong_to(:order).class_name('Spree::Order') }
-  it { belong_to(:user).class_name('Spree::User') }
+  it { should belong_to(:product).class_name('Spree::Product') }
+  it { should belong_to(:order).class_name('Spree::Order') }
+  it { should belong_to(:user).class_name('Spree::User') }
 
   it { should validate_numericality_of(:quantity).is_greater_than(0) }
   it { should allow_value('john@doe.com').for(:email) }

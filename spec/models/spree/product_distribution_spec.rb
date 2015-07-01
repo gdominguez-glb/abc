@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Spree::ProductDistribution, type: :model do
-  it { belong_to(:licensed_product).class_name('Spree::LicensedProduct') }
-  it { belong_to(:from_user).class_name('Spree::User') }
-  it { belong_to(:to_user).class_name('Spree::User') }
-  it { belong_to(:product).class_name('Spree::Product') }
+  it { should belong_to(:licensed_product).class_name('Spree::LicensedProduct') }
+  it { should belong_to(:from_user).class_name('Spree::User') }
+  it { should belong_to(:to_user).class_name('Spree::User') }
+  it { should belong_to(:product).class_name('Spree::Product') }
 
   it { should validate_presence_of(:from_user) }
   it { should validate_presence_of(:product) }
