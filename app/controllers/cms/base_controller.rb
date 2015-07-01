@@ -6,6 +6,9 @@ class Cms::BaseController < ApplicationController
 
   def authenticate_cms_accessor!
     authenticate_spree_user!
+    unless current_spree_user.has_admin_role?
+      redirect_to '/'
+    end
   end
 
   def current_ability
