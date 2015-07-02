@@ -1,6 +1,8 @@
 class NotificationTrigger < ActiveRecord::Base
   serialize :user_ids, Array
 
+  has_many :notifications
+
   TARGET_TYPES = [
     :single_user,
     :group_users,
