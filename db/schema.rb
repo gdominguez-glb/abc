@@ -100,9 +100,9 @@ ActiveRecord::Schema.define(version: 20150702080344) do
     t.integer  "user_id"
     t.integer  "notification_trigger_id"
     t.text     "content"
-    t.boolean  "read"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.boolean  "read",                    default: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
   end
 
   create_table "oauth_access_grants", force: :cascade do |t|
