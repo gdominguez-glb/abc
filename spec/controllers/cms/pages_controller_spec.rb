@@ -30,6 +30,18 @@ RSpec.describe Cms::PagesController, type: :controller do
     end
   end
 
+  describe "POST 'create'" do
+    it "success" do
+      post :create, page: { title: 'a', slug: 'b', group_name: 'c' }
+      expect(response).to be_redirect
+    end
+
+    it "fail" do
+      post :create, page: { title: '' }
+      expect(response).to render_template(:new)
+    end
+  end
+
   describe "GET 'edit'" do
     it "success" do
       get :edit, id: page.id
