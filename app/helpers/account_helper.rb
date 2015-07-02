@@ -3,7 +3,7 @@ module AccountHelper
     if activity.item_type == 'Page'
       "/#{activity.item.slug}"
     elsif activity.item_type == 'Spree::Product'
-      spree.product_url(activity.item_id)
+      spree.product_path(activity.item.slug)
     end
   end
 end
