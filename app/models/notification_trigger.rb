@@ -2,7 +2,11 @@ class NotificationTrigger < ActiveRecord::Base
   serialize :user_ids, Array
 
   validates_presence_of :content, :notify_at
+
   has_many :notifications
+
+  belongs_to :single_user, class_name: 'Spree::User'
+  belongs_to :school_district_admin_user, class_name: 'Spree::User'
 
   after_create :send_notifications
 
@@ -20,11 +24,13 @@ class NotificationTrigger < ActiveRecord::Base
     end
   end
 
-  USER_TYPES = [
-    :district_admin,
-    :teacher,
-    :parent
-  ]
+  def group_users
+    User.where(id: self.user_ids)
+  end
+
+  def deliver!
+    update(status: 'delivered')
+  end
 
   private
 

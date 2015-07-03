@@ -69,6 +69,10 @@ Spree::User.class_eval do
 
   if !defined?(TITLES)
     TITLES = ['Educator', 'Administrator', 'Purchaser', 'Parent']
+
+    TITLES.each do |title|
+      scope "with_#{title.downcase}_title", -> { where(title: title) }
+    end
   end
 
   if !defined?(SUBJECTS)
