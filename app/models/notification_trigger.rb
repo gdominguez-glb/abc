@@ -29,6 +29,6 @@ class NotificationTrigger < ActiveRecord::Base
   private
 
   def send_notifications
-    NotificationWorker.perform_async(self.id)
+    NotificationWorker.perform_at(self.notify_at, self.id) if self.notify_at.present?
   end
 end
