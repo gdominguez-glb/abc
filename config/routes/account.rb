@@ -17,4 +17,10 @@ namespace :account do
   get 'admin/import_licenses', to: 'admin#import_licenses'
   post 'admin/import_licenses', to: 'admin#import_licenses'
   get 'admin/distributions', to: 'admin#distributions'
+
+  resources :notifications, only: [:index] do
+    member do
+      post :read
+    end
+  end
 end
