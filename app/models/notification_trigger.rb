@@ -1,6 +1,7 @@
 class NotificationTrigger < ActiveRecord::Base
   serialize :user_ids, Array
 
+  validates_presence_of :content, :notify_at
   has_many :notifications
 
   after_create :send_notifications

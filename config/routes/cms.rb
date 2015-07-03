@@ -6,6 +6,7 @@ namespace :cms do
   post '/user_profile_settings', to: 'user_profile_settings#save'
 
   get 'products/search', to: 'products#search'
+  get 'users/search', to: 'users#search'
 
   resources :pages
   resources :documents
@@ -22,4 +23,5 @@ namespace :cms do
       post :update_positions
     end
   end
+  resources :notification_triggers
 end
