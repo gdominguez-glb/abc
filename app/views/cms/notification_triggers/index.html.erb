@@ -1,0 +1,33 @@
+<%= render 'cms_nav' %>
+
+<div class="col-md-9">
+  <section>
+    <div class='row'>
+      <h2>Notification Lists</h2>
+      <%= link_to 'Create new notification', new_cms_notification_trigger_path, class: 'btn btn-primary' %>
+      <table class='table table-responsive table-striped table-hover'>
+        <thead>
+          <tr>
+            <th>Target</th>
+            <th>Content</th>
+            <th>Notify at</th>
+            <th>Status</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @notification_triggers.each do |notification_trigger| %>
+            <tr>
+              <td><%= notification_trigger.target_type %></td>
+              <td><%= notification_trigger.content %></td>
+              <td><%= notification_trigger.notify_at %></td>
+              <td><%= notification_trigger.status %></td>
+              <td></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= paginate @notification_triggers %>
+    </div>
+  </section>
+</div>

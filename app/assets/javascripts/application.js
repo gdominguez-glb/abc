@@ -14,6 +14,8 @@
 //= require bootstrap-sprockets
 //= require jquery_ujs
 //= require jquery.validate
+//= require moment
+//= require bootstrap-datetimepicker
 //= require select2
 //= require zeroclipboard
 //= require jquery-sortable

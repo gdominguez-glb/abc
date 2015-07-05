@@ -53,6 +53,9 @@ gem 'doorkeeper'
 
 gem 'roo', '~> 2.0.0'
 
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.14.30'
+
 group :development do
   gem 'quiet_assets'
   gem 'letter_opener'

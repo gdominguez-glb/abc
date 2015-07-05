@@ -1,5 +1,6 @@
 <div class="wrapper account-page">
   <div class="content sidebar-right">
+    <%= render partial: 'notifications', locals: { notifications: @notifications } %>
     <div class="my-products">
       <%= render 'my_products' %>
     </div>

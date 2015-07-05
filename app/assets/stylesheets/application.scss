@@ -2,6 +2,8 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+@import 'bootstrap-datetimepicker';
+
 // base application style
 @import "base/config";
 @import "base/foundation";
