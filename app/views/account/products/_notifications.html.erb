@@ -3,6 +3,6 @@
     <%= link_to read_account_notification_path(notification), class: 'close', remote: true, data: { method: :post } do %>
       <span aria-hidden="true">&times;</span>
     <% end %>
-    <%= notification.content %>
+    <%= raw notification.content %>
   </div>
 <% end %>
