@@ -5,7 +5,8 @@ RSpec.describe Spree::Order, type: :model do
   let(:product_without_license_length) { create(:product, license_length: nil, license_text: nil) }
   let(:license_line_item) { create(:line_item, order: order, variant: product_with_license_length.master, :price => 1.0, :quantity => 2) }
   let(:plain_line_item) { create(:line_item, order: order, variant: product_without_license_length.master, :price => 1.0, :quantity => 2) }
-  let(:order) { create(:order, user: create(:gm_user)) }
+  let(:user) { create(:gm_user) }
+  let(:order) { create(:order, user: user) }
 
   describe "#has_license_products?" do
     it "return true with products that has license text" do
@@ -46,6 +47,15 @@ RSpec.describe Spree::Order, type: :model do
       create(:line_item, order: order, variant: product_with_license_length.master, :price => 1.0, :quantity => 2)
       order.reload.valid_terms_and_conditions?
       expect(order.valid?).to eq(true)
+    end
+  end
+
+  describe "#log_purchase_activity!" do
+    it "create activity on product purchase" do
+      order = plain_line_item.order
+      order.reload.log_purchase_activity!
+      activity = user.activities.last
+      expect(activity.item).to eq(product_without_license_length)
     end
   end
 end
