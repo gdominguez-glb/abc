@@ -63,3 +63,7 @@ Visit Staging http://gm-staging.intridea.com/store/admin
 Login with
     web.admin@greatminds.net
     intridea4gm
+
+### Run tests with guard
+
+`$ bundle exec guard
