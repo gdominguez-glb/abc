@@ -242,6 +242,9 @@ GEM
       faraday
       multi_json
     erubis (2.7.0)
+    exception_notification (4.1.1)
+      actionmailer (>= 3.0.4)
+      activesupport (>= 3.0.4)
     execjs (2.5.2)
     factory_girl (4.5.0)
       activesupport (>= 3.0.0)
@@ -653,6 +656,7 @@ DEPENDENCIES
   database_cleaner (~> 1.4.1)
   databasedotcom
   doorkeeper
+  exception_notification
   factory_girl_rails (~> 4.5.0)
   figaro
   guard
