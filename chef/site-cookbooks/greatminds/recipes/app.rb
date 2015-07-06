@@ -49,3 +49,11 @@ end
 execute "update-rc.d unicorn_#{node['app']} defaults" do
   not_if "ls /etc/rc2.d | grep unicorn_#{node['app']}"
 end
+
+# add logrotate config file
+template "/etc/logrotate.d/#{node['app']}" do
+  source "logrotate.conf.erb"
+  mode 0755
+  owner node['user']['name']
+  group node['group']
+end

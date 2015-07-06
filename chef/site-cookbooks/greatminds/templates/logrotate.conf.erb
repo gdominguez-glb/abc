@@ -1,0 +1,9 @@
+/var/www/<%= node['app'] %>/current/log/*.log {
+  daily
+  missingok
+  rotate 7
+  compress
+  delaycompress
+  notifempty
+  copytruncate
+}
