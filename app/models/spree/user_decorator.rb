@@ -32,6 +32,7 @@ Spree::User.class_eval do
   has_many :product_distributions, foreign_key: :from_user_id, class_name: 'Spree::ProductDistribution'
   has_many :to_users, through: :product_distributions, class_name: 'Spree::User'
   has_many :notifications
+  has_many :activities
 
   accepts_nested_attributes_for :school_district, reject_if: proc { |attributes| attributes['name'].blank? }
 
