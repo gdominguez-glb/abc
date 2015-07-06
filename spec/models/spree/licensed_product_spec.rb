@@ -24,4 +24,12 @@ RSpec.describe Spree::LicensedProduct, type: :model do
       expect(distribution.email).to eq('john@doe.com')
     end
   end
+
+  describe "set user from email" do
+    it "set user with email in license" do
+      user = create(:gm_user, email: 'hello@foo.com')
+      licensed_product = create(:spree_licensed_product, email: 'hello@foo.com', user: nil)
+      expect(licensed_product.user).to eq(user)
+    end
+  end
 end
