@@ -25,7 +25,7 @@ class NotificationTrigger < ActiveRecord::Base
   end
 
   def group_users
-    User.where(id: self.user_ids)
+    Spree::User.where(id: self.user_ids)
   end
 
   def deliver!
@@ -35,6 +35,6 @@ class NotificationTrigger < ActiveRecord::Base
   private
 
   def send_notifications
-    NotificationWorker.perform_at(self.notify_at, self.id) if self.notify_at.present?
+    NotificationWorker.perform_at(self.notify_at, self.id)
   end
 end
