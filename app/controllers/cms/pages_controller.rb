@@ -46,6 +46,6 @@ class Cms::PagesController < Cms::BaseController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def page_params
-      params.require(:page).permit(:title, :seo_content, :slug, :group_name, :sub_group_name, :position, :layout, :body, :visible)
+      params.require(:page).permit(:title, :seo_content, :slug, :group_name, :sub_group_name, :position, :layout, :body, :visible, :curriculum_id)
     end
 end

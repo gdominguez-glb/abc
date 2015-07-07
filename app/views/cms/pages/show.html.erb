@@ -10,6 +10,9 @@
     <dt>Slug</dt>
     <dd><%= @page.slug %></dd>
 
+    <dt>Curriculum</dt>
+    <dd><%= @page.curriculum.try(:name) %></dd>
+
     <dt>Group name</dt>
     <dd><%= @page.group_name %></dd>
 

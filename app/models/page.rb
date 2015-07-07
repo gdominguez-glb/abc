@@ -2,6 +2,8 @@ class Page < ActiveRecord::Base
 
   searchkick
 
+  belongs_to :curriculum
+
   has_many :medium_publications
 
   validates :title, presence: true

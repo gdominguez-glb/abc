@@ -6,6 +6,7 @@ RSpec.describe Page, type: :model do
   it { should validate_uniqueness_of(:slug) }
   it { should validate_presence_of(:group_name) }
 
+  it { should belong_to(:curriculum) }
   it { should have_many(:medium_publications) }
 
   describe ".visibles" do

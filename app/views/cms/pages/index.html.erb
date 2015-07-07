@@ -11,6 +11,7 @@
           <tr>
             <th>Title</th>
             <th>Slug</th>
+            <th>Curriculum</th>
             <th>Group name</th>
             <th>Sub group name</th>
             <th>Position</th>
@@ -24,6 +25,7 @@
             <tr>
               <td><%= page.title %></td>
               <td><%= page.slug %></td>
+              <td><%= page.curriculum.try(:name) %></td>
               <td><%= page.group_name %></td>
               <td><%= page.sub_group_name %></td>
               <td><%= page.position %></td>

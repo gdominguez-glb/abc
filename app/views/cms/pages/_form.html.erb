@@ -12,6 +12,10 @@
   <% end %>
 
   <div class="form-group">
+    <%= f.label :curriculum %>
+    <%= f.select :curriculum_id, Curriculum.all.collect{|c| [c.name, c.id]}, { prompt: 'Choose curriculum' }, class: 'form-control' %>
+  </div>
+  <div class="form-group">
     <%= f.label :title %>
     <%= f.text_field :title, class: 'form-control' %>
   </div>
