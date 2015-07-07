@@ -48,6 +48,18 @@
     <%= f.text_area :body, class: 'form-control' %>
   </div>
   <div class="form-group">
+    <%= f.label :group_root %>
+    <%= f.check_box :group_root, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :show_in_nav %>
+    <%= f.check_box :show_in_nav, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :show_in_footer %>
+    <%= f.check_box :show_in_footer, class: 'form-control' %>
+  </div>
+  <div class="form-group">
     <%= f.label :visible %>
     <%= f.check_box :visible, class: 'form-control' %>
   </div>
