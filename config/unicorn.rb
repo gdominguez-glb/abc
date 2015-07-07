@@ -1,3 +1,7 @@
+before_exec do |server|
+  ENV['BUNDLE_GEMFILE'] = "/var/www/greatminds/current/Gemfile"
+end
+
 # Set the working application directory
 # working_directory "/path/to/your/app"
 working_directory "/var/www/greatminds/current"
