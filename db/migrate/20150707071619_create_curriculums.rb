@@ -3,7 +3,7 @@ class CreateCurriculums < ActiveRecord::Migration
     create_table :curriculums do |t|
       t.string :name
       t.integer :position, default: 0
-      t.boolean :display, default: false
+      t.boolean :visible, default: false
 
       t.timestamps null: false
     end

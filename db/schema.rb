@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 20150707071619) do
   create_table "curriculums", force: :cascade do |t|
     t.string   "name"
     t.integer  "position",   default: 0
-    t.boolean  "display",    default: false
+    t.boolean  "visible",    default: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
   end
