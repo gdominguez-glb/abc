@@ -7,7 +7,7 @@ class NotificationWorker
               [nt.single_user]
             elsif nt.school_district_target?
               [nt.school_district_admin_user.to_users]
-            elsif nt.group_user_target?
+            elsif nt.group_users_target?
               nt.group_users
             elsif nt.user_type_target?
               User.send("with_#{nt.user_type.downcase}_title")
