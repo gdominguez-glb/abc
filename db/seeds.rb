@@ -85,3 +85,9 @@ if MediumPublication.count == 0
     end
   end
 end
+
+if Curriculum.count == 0
+  ['Math', 'English', 'History'].each_with_index do |curriculum_name, index|
+    Curriculum.create(name: curriculum_name, position: (index+1), visible: true)
+  end
+end
