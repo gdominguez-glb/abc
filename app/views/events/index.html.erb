@@ -8,35 +8,37 @@
         </div>
       </div>
     </div>
-    <div>
-      <h3>Two amazing opportunities for Professional Development</h3>
-      <hr />
-      <div class="row">
-        <div class="col-md-5 col-offset-1">
-          <div>
-            <span class="glyphicon glyphicon-calendar"></span>
+    <div class="events-header clearfix">
+      <h3 class="pull-left">Upcoming training</h3>
+      <div class='pull-right'>
+        <div class="dropdown pull-right">
+          Sort by:
+          <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+            All
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
+          </ul>
+        </div>
+        <%= form_tag '', method: :get, class: 'pull-right' do %>
+          <%= text_field_tag :zipcode, params[:zipcode], class: 'form-control', placeholder: 'Search by ZIP' %>
+        <% end %>
+      </div>
+    </div>
+    <div class="events-list">
+      <% @events.each do |event| %>
+        <div class="event">
+          <div class="event-date">
+            <%= date_range(event.start_date, event.end_date, format: :short) if event.start_date.present? && event.end_date.present? %>
           </div>
-          <a href="">Select existing event</a>
+          <h4><%= raw event.title %></h4>
+          <hr />
         </div>
-        <div class="col-md-5">
-          <div>
-            <span class="glyphicon glyphicon-list-alt"></span>
-          </div>
-          <a href="">Schedule a new event</a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-10 col-offset-2">
-          <input type="text" class="form-control" placeholder="Zip Code, City or State"/>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-3">
-        </div>
-        <div class="col-md-9">
-          <%= render 'month_calendar' %>
-        </div>
-      </div>
+      <% end %>
     </div>
   </div>
 </div>
