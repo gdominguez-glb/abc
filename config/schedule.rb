@@ -24,8 +24,13 @@ job_type :rbenv_rake, %Q{export PATH=/home/deploy/.rbenv/shims:/home/deploy/.rbe
 every 5.minutes do
   rbenv_rake "wistia:refresh_media_status"
 end
+
 every 2.hours do
   rbenv_rake "medium:import_posts"
+end
+
+every 2.hours do
+  rbenv_rake "regonline:import_events"
 end
 
 every 1.day, at: '00:00 am' do
