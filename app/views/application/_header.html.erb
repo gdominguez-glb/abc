@@ -22,7 +22,7 @@
       <%= submit_tag 'Submit', class: 'btn btn-default' %>
     <% end %>
     <ul class="nav navbar-nav">
-      <% Page.show_in_top_navigation.each do |page| %>
+      <% Page.curriculum_nav.each do |page| %>
         <%= active_link_to page.group_name.capitalize, "/#{page.slug}", wrap_tag: :li %>
       <% end %>
       <%= active_link_to "Contact", main_app.contact_path, wrap_tag: :li %>

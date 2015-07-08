@@ -21,8 +21,10 @@ namespace 'pages' do
       if !params[:body].include?('container')
         params[:body] = "<div class='container'>#{params[:body]}</div>"
       end
-      page.update_attributes(params)
-      page.update_attributes(visible: true)
+      if params[:group_name].present? &&  curriculum = Curriculum.find_by(name: params[:group_name].titleize)
+        params[:curriculum_id] = curriculum.id
+      end
+      page.update_attributes(params.merge(visible: true))
 
       puts "Page: slug='#{page.slug}'' was updated."
     end

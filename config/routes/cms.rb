@@ -24,4 +24,5 @@ namespace :cms do
     end
   end
   resources :notification_triggers
+  resources :curriculums
 end

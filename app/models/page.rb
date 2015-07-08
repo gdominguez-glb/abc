@@ -2,6 +2,8 @@ class Page < ActiveRecord::Base
 
   searchkick
 
+  belongs_to :curriculum
+
   has_many :medium_publications
 
   validates :title, presence: true
@@ -10,6 +12,9 @@ class Page < ActiveRecord::Base
 
   scope :visibles, -> {
     where(visible: true).order('position ASC')
+  }
+  scope :curriculum_nav, -> {
+    show_in_top_navigation.joins(:curriculum).where({curriculums: { visible: true }})
   }
   scope :group_roots, -> {
     where(group_root: true)

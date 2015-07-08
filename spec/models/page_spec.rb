@@ -6,6 +6,7 @@ RSpec.describe Page, type: :model do
   it { should validate_uniqueness_of(:slug) }
   it { should validate_presence_of(:group_name) }
 
+  it { should belong_to(:curriculum) }
   it { should have_many(:medium_publications) }
 
   describe ".visibles" do
@@ -13,6 +14,15 @@ RSpec.describe Page, type: :model do
 
     it "return visible pages" do
       expect(Page.visibles).to include(visible_page)
+    end
+  end
+
+  describe "curriculum_nav" do
+    let(:curriculum) { create(:curriculum, visible: true) }
+    let!(:top_nav_page) { create(:page, visible: true, group_root: true, show_in_nav: true, curriculum: curriculum) }
+
+    it "return curriculum page nav" do
+      expect(Page.curriculum_nav).to include(top_nav_page)
     end
   end
 
