@@ -80,7 +80,8 @@ if MediumPublication.count == 0
         url: publication[:url],
         blog_type: blog_type,
         slug: publication[:slug],
-        curriculum: publication[:curriculum]
+        page: Page.show_in_top_navigation.find_by(slug: publication[:curriculum]),
+        display: true
       )
     end
   end
