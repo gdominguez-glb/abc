@@ -1,5 +1,9 @@
 // _slick-overrides.scss
 
+.slick-slider {
+  margin-bottom: 0;
+}
+
 .slick-prev, .slick-next {
   width: 44px;
   height: 44px;
@@ -9,14 +13,27 @@
   @include translate(0, -50%);
 
   &:before {
+    font-family: "Glyphicons Halflings";
     font-size: 40px;
   }
 }
 
 .slick-prev {
-  left: 25px;
+  left: 20px;
+
+  &:before {
+    content: "\e079";
+  }
 }
 
 .slick-next {
-  right: 25px;
+  right: 20px;
+
+  &:before {
+    content: "\e080";
+  }
+}
+
+.slick-dots {
+  bottom: -35px;
 }
