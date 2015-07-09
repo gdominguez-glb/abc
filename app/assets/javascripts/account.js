@@ -1,9 +1,40 @@
 $(function(){
 
-  // Recommended Section
+  // Recommended slider
   $(".recommended-products").slick({
     slidesToShow: 1,
     fade: true
+  });
+
+  // Products slider
+  $(".my-products").slick({
+    dots: true,
+    infinite: true,
+    speed: 300,
+    slidesToShow: 3,
+    slidesToScroll: 3,
+    adaptiveHeight: true,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+      // You can unslick at a given breakpoint by adding:
+      // settings: "unslick"
+      // instead of a settings object
+    ]
   });
 
   function debounce(func, wait, immediate) {

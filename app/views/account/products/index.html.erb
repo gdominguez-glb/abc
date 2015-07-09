@@ -1,14 +1,16 @@
 <div class="wrapper account-page">
   <div class="content sidebar-right">
     <%= render partial: 'notifications', locals: { notifications: @notifications } %>
-    <div class="my-products">
+    <div class="products">
       <%= render 'my_products' %>
     </div>
-    <div class="recommends col-md-6">
-      <%= render 'recommends' %>
-    </div>
-    <div class="twitter-feed-container col-md-6">
-      <%= render 'account/twitter' %>
+    <div class="row">
+      <div class="recommends col-md-6">
+        <%= render 'recommends' %>
+      </div>
+      <div class="twitter-feed-container col-md-6">
+        <%= render 'account/twitter' %>
+      </div>
     </div>
   </div>
   <div class="fixed-sidebar right page-has-subnav">

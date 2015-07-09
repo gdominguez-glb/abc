@@ -2,7 +2,6 @@
   text-align: center;
   background: #eee;
   padding: 20px;
-  margin-bottom: 20px;
 
   .grades-dropdown {
     padding: 10px 0;
@@ -11,8 +10,8 @@
   }
 }
 
-.my-products {
-  margin-bottom: 20px;
+.products {
+  margin-bottom: 60px;
 }
 
 .recommended-product-wrapper {
@@ -23,6 +22,7 @@
 
   img {
     margin: 0 auto 15px;
+    border: 5px solid white;
   }
 
   .remove-banner {
@@ -144,3 +144,9 @@
   }
 }
 
+// Twitter feed
+.twitter-feed-container {
+  .timeline {
+    border-radius: 0;
+  }
+}

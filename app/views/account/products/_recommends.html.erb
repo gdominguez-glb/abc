@@ -4,7 +4,7 @@
     <% @recommendations.each do |recommendation| %>
       <div class="recommended-product-wrapper">
         <% if recommendation.photo.present? %>
-          <%= image_tag recommendation.photo.url, class: 'img-circle', width: 100, height: 100 %>
+          <%= image_tag recommendation.photo.url, class: 'img-circle', width: 150, height: 150 %>
         <% else %>
           <img src="http://placehold.it/100x100" class="img-circle">
         <% end %>
