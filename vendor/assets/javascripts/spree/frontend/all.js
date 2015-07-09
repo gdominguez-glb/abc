@@ -8,6 +8,7 @@
 //= require jquery_ujs
 //= require spree/frontend
 
+//= require slick.min
 //= require user_form
 //= require_tree .
 //= require spree/frontend/spree_digital

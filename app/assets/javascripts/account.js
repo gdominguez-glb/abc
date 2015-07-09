@@ -1,5 +1,11 @@
 $(function(){
 
+  // Recommended Section
+  $(".recommended-products").slick({
+    slidesToShow: 1,
+    fade: true
+  });
+
   function debounce(func, wait, immediate) {
     var timeout;
     return function() {

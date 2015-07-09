@@ -20,6 +20,7 @@
 //= require zeroclipboard
 //= require jquery-sortable
 //= require mediaelement_rails
+//= require slick.min
 //= require user_form
 //= require_tree .
 
