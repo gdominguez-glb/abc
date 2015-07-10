@@ -10,6 +10,7 @@
           <tr>
             <th>Title</th>
             <th>Sub-header</th>
+            <th>Subject</th>
             <th>Call to action button text</th>
             <th>Call to action button link</th>
             <th colspan="2"></th>
@@ -20,6 +21,7 @@
             <tr>
               <td><%= recommendation.title %></td>
               <td><%= recommendation.sub_header %></td>
+              <td><%= recommendation.subject %></td>
               <td><%= recommendation.call_to_action_button_text %></td>
               <td><%= recommendation.call_to_action_button_link %></td>
               <td><%= link_to 'Edit', edit_cms_recommendation_path(recommendation), class: 'btn btn-default' %></td>
