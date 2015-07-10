@@ -7,4 +7,16 @@ class Notification < ActiveRecord::Base
   def mark_as_read!
     update(read: true)
   end
+
+  after_create :log_activity
+
+  def log_activity
+    if self.user
+      self.user.log_activity(
+        title: self.content,
+        item: self,
+        action: :create
+      )
+    end
+  end
 end
