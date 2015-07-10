@@ -29,3 +29,7 @@ $(document).on("click", ".add-district-button", function(){
   buttonText.toggleClass("show-prompt");
   close.toggleClass("show-prompt");
 });
+
+$(function(){
+  $("#spree_user_title").trigger('change');
+});

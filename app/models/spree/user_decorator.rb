@@ -17,11 +17,11 @@ Spree::User.class_eval do
     settings[:email_notifications] || self.class.defaults_email_notifications
   end
 
-  validates_presence_of :first_name, :last_name, :school_district
+  validates :school_district, presence: true, if: :require_shool_district?
 
   # add any other characters you'd like to disallow inside the [ brackets ]
   # metacharacters [, \, ^, $, ., |, ?, *, +, (, and ) need to be escaped with a \
-  validates_format_of :first_name, :last_name, :with => /\A[^0-9`!@#\$%\^&*+_=]+\z/
+  validates :first_name, :last_name, presence: true, format: { with: /\A[^0-9`!@#\$%\^&*+_=]+\z/ }
 
   belongs_to :school_district
 
@@ -82,5 +82,9 @@ Spree::User.class_eval do
 
   def assign_licenses
     Spree::LicensedProduct.assign_license_to(self)
+  end
+
+  def require_shool_district?
+    ['Educator', 'Administrator'].include?(self.title)
   end
 end

@@ -15,7 +15,6 @@ RSpec.describe Spree::User do
 
   it { should validate_presence_of(:first_name) }
   it { should validate_presence_of(:last_name) }
-  it { should validate_presence_of(:school_district) }
 
   describe "#email_notifications" do
     it "return default email notifications" do
