@@ -5,4 +5,6 @@ class Recommendation < ActiveRecord::Base
   validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
 
   has_and_belongs_to_many :products, class_name: 'Spree::Product', join_table: 'products_recommendations'
+
+  scope :with_subject, ->(subject){ where(subject: subject) }
 end
