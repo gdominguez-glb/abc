@@ -53,7 +53,7 @@ end
 # add logrotate config file
 template "/etc/logrotate.d/#{node['app']}" do
   source "logrotate.conf.erb"
-  mode 0755
-  owner node['user']['name']
-  group node['group']
+  mode 0644
+  owner 'root'
+  group 'root'
 end
