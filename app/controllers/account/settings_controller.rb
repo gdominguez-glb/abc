@@ -1,29 +1,14 @@
 class Account::SettingsController < Account::BaseController
+  before_action :load_settings, only: [:index, :save_profile]
+
   def index
-    @nav_name = 'My Products'
-
-    @my_products = current_spree_user.products
-    @recent_activities = current_spree_user.activities.recent
-    @recommendations = Recommendation.limit(3)
-  end
-
-  def settings
-    @email_notifications = spree_current_user.email_notifications
-
-    @profile_fields = (if spree_current_user.has_spree_role?('admin')
-                        AppSettings.user_profile_settings[:admin]
-                      elsif spree_current_user.has_spree_role?('school admin')
-                        AppSettings.user_profile_settings[:school_district_admin]
-                      else
-                        AppSettings.user_profile_settings[:user]
-                      end || {}).keys
   end
 
   def save_profile
     if spree_current_user.update(user_params)
       redirect_to '/account/settings', notice: "Saved profile successfully"
     else
-      render :edit_profile
+      render :index
     end
   end
 
@@ -68,5 +53,17 @@ class Account::SettingsController < Account::BaseController
       _params[key] = (value == 'true' ? true : false)
     end
     _params
+  end
+
+  def load_settings
+    @email_notifications = spree_current_user.email_notifications
+
+    @profile_fields = (if spree_current_user.has_spree_role?('admin')
+                        AppSettings.user_profile_settings[:admin]
+                      elsif spree_current_user.has_spree_role?('school admin')
+                        AppSettings.user_profile_settings[:school_district_admin]
+                      else
+                        AppSettings.user_profile_settings[:user]
+                      end || {}).keys
   end
 end
