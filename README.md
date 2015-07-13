@@ -10,7 +10,7 @@
 
 ### Ruby version
 
-2.2.1
+2.1.6
 
 ### Elasticsearch
 
