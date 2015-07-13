@@ -3,6 +3,8 @@ class RegonlineEvent < ActiveRecord::Base
   geocoded_by :full_address
   after_validation :geocode
 
+  scope :with_filter, ->(filter) { where('client_event_id like ?', "%#{filter}%") }
+
   def full_address
     [location_name, city, state, country].reject(&:blank?).join(',')
   end

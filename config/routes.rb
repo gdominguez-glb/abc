@@ -55,5 +55,7 @@ Rails.application.routes.draw do
     get 'user/info', to: 'user#info'
   end
 
+  get '/:page_slug/events', to: 'events#page', as: :page_events
+
   get '*slug', to: 'pages#show', constraints: lambda { |request| !(request.path =~ /\/(assets|store).*/) }
 end
