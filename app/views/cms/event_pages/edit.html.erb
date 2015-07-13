@@ -1,0 +1,13 @@
+<%= render 'cms_nav' %>
+<div class="col-md-9">
+  <section>
+    <div class='row'>
+      <h2>Editing Event Page</h2>
+
+      <%= render 'form' %>
+
+      <%= link_to 'Show', [:cms, @event_page], class: 'btn btn-default' %>
+      <%= link_to 'Back', cms_event_pages_path, class: 'btn btn-default' %>
+    </div>
+  </section>
+</div>
