@@ -8,7 +8,7 @@ class RegonlineEvent < ActiveRecord::Base
   end
 
   class << self
-    ATTRIBUTES_TO_IMPORT = ["ID", "Title", "StartDate", "EndDate", "ActiveDate", "City", "State", "Country", "PostalCode", "LocationName", "LocationRoom", "LocationBuilding", "LocationAddress1", "LocationAddress2", "Latitude", "Longitude"]
+    ATTRIBUTES_TO_IMPORT = ["ID", "Title", "StartDate", "EndDate", "ActiveDate", "City", "State", "Country", "PostalCode", "LocationName", "LocationRoom", "LocationBuilding", "LocationAddress1", "LocationAddress2", "Latitude", "Longitude", "ClientEventID"]
     def import(data)
       attrs = convert_data_to_attributes(data)
       event = RegonlineEvent.find_or_initialize_by(regonline_id: data['ID'])
