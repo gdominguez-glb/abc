@@ -15,10 +15,15 @@
 }
 
 .recommended-product-wrapper {
+  position: relative;
+  padding: 40px;
+  margin: 0 0 15px;
   background: #ddd;
   text-align: center;
-  padding: 40px;
-  position: relative;
+
+  &:last-child {
+    margin: 0;
+  }
 
   img {
     margin: 0 auto 15px;

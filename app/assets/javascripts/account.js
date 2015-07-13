@@ -1,11 +1,5 @@
 $(function(){
 
-  // Recommended slider
-  $(".recommended-products").slick({
-    slidesToShow: 1,
-    fade: true
-  });
-
   // Products slider
   $(".my-products").slick({
     dots: true,
