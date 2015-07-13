@@ -1,16 +1,16 @@
-<div class="container">
-  <div class="events-page">
-    <div class="events-masthead">
-      <div class="container">
-        <div class="inner">
-          <h2>Professional Development</h2>
-          <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
-        </div>
+<div class="events-page">
+  <div class="events-masthead">
+    <div class="container">
+      <div class="masthead-tagline text-center">
+        <h1>Professional Development</h1>
+        <h5>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</h5>
       </div>
     </div>
+  </div>
+  <div class="container">
     <div class="events-header clearfix">
-      <h3 class="pull-left">Upcoming training</h3>
-      <div class='pull-right'>
+      <h4 class="pull-left">Upcoming training</h4>
+      <div class='pull-right clearfix'>
         <div class="dropdown pull-right">
           Sort by:
           <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
@@ -26,6 +26,8 @@
         </div>
         <%= form_tag '', method: :get, class: 'pull-right' do %>
           <%= text_field_tag :zipcode, params[:zipcode], class: 'form-control', placeholder: 'Search by ZIP' %>
+          <label>Seach by ZIP</label>
+          <span class="glyphicon glyphicon-map-marker"></span>
         <% end %>
       </div>
     </div>
