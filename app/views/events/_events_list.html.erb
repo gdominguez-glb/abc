@@ -6,7 +6,6 @@
           <%= date_range(event.start_date, event.end_date, format: :short) if event.start_date.present? && event.end_date.present? %>
         </div>
         <h4><%= raw event.title %></h4>
-        <hr />
       </div>
     <% end %>
   <% else %>

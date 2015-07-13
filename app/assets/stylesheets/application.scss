@@ -9,16 +9,6 @@
 @import "base/foundation";
 @import "base/typography";
 
-@import "mediaelement";
-@import "video_gallery";
-@import "pages";
-@import "account";
-@import "search";
-@import "spree_admin_overrides";
-@import "select2_import";
-@import "slick";
-@import "slick-theme";
-@import "slick-overrides";
 
 // Components
 @import "components/alerts";
@@ -31,6 +21,18 @@
 @import "components/sidebars";
 @import "components/tables";
 @import "components/wells";
+
+@import "account";
+@import "events";
+@import "mediaelement";
+@import "pages";
+@import "search";
+@import "select2_import";
+@import "slick";
+@import "slick-theme";
+@import "spree_admin_overrides";
+@import "video_gallery";
+@import "slick-overrides";
 
 
 .callout {
