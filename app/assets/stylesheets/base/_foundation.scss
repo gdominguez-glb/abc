@@ -10,6 +10,10 @@ body {
 
   &.account, &.video_gallery, &.pages.with-subnav, &.blog.with-subnav , &.events.with-subnav{
     padding: 110px 0 0;
+
+    @media screen and (max-width: 500px) {
+      padding: 159px 0 0;
+    }
   }
 }
 
