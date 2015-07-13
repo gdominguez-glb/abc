@@ -14,13 +14,17 @@
 
 ### Elasticsearch
 
-  `$ brew install elasticsearch`
-  `$ elasticsearch`
+```
+$ brew install elasticsearch
+$ elasticsearch
+```
 
 ### Redis
 
-  `$ brew install redis`
-  `$ redis-server`
+```
+$ brew install redis
+$ redis-server
+```
 
 ### Database setup
 
@@ -52,7 +56,7 @@ And the Admin login [here](http://localhost:3000/store/admin)
 
 ### Start sidekiq
 
-`$ bundle exec sidekiq
+`$ bundle exec sidekiq`
 
 ### QA / Staging
 
@@ -66,4 +70,4 @@ Login with
 
 ### Run tests with guard
 
-`$ bundle exec guard
+`$ bundle exec guard`
