@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150710010339) do
+ActiveRecord::Schema.define(version: 20150713014715) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,6 +67,16 @@ ActiveRecord::Schema.define(version: 20150710010339) do
     t.string   "attachment_content_type"
     t.integer  "attachment_file_size"
     t.datetime "attachment_updated_at"
+  end
+
+  create_table "event_pages", force: :cascade do |t|
+    t.string   "title"
+    t.integer  "page_id"
+    t.boolean  "display",          default: false
+    t.string   "regonline_filter"
+    t.string   "slug"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -232,6 +242,7 @@ ActiveRecord::Schema.define(version: 20150710010339) do
     t.decimal  "longitude",         precision: 10, scale: 6
     t.datetime "created_at",                                 null: false
     t.datetime "updated_at",                                 null: false
+    t.string   "client_event_id"
   end
 
   create_table "school_districts", force: :cascade do |t|

@@ -6,6 +6,8 @@ class Page < ActiveRecord::Base
 
   has_many :medium_publications
 
+  has_one :event_page, ->{ where(display: true) }
+
   validates :title, presence: true
   validates :slug, presence: true, uniqueness: true
   validates :group_name, presence: true

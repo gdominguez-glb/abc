@@ -1,0 +1,38 @@
+<%= render 'cms_nav' %>
+
+<div class="col-md-9">
+  <section>
+    <div class='row'>
+      <h2>Event Page Lists</h2>
+      <%= link_to 'Create new event page', new_cms_event_page_path, class: 'btn btn-primary' %>
+      <table class='table table-responsive table-striped table-hover'>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Slug</th>
+            <th>Regonline filter</th>
+            <th>Page</th>
+            <th>Visible</th>
+            <th colspan="2"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @event_pages.each do |event_page| %>
+            <tr>
+              <td><%= event_page.title %></td>
+              <td><%= event_page.slug %></td>
+              <td><%= event_page.regonline_filter %></td>
+              <td><%= event_page.page.try(:title) %></td>
+              <td><%= event_page.display ? 'Yes' : 'No' %></td>
+              <td><%= link_to 'Edit', edit_cms_event_page_path(event_page) %></td>
+              <td><%= link_to 'Destroy', [:cms, event_page], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <%= paginate @event_pages %>
+    </div>
+  </section>
+</div>
