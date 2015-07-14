@@ -15,6 +15,7 @@ class VideoGalleryController < ApplicationController
   end
 
   def show
+    log_activity(@video_product)
   end
 
   def show_description
@@ -25,6 +26,7 @@ class VideoGalleryController < ApplicationController
       @video_product = current_spree_user.products.find_by(slug: params[:id])
     end
     @video_product ||= Spree::Product.free.find_by(slug: params[:id])
+    log_activity(@video_product)
   end
 
   private
@@ -70,5 +72,11 @@ class VideoGalleryController < ApplicationController
 
   def load_taxonomies
     @taxonomies = Spree::Taxonomy.includes(root: :children)
+  end
+
+  def log_activity(product)
+    if current_spree_user
+      current_spree_user.log_activity(item: product, title: product.name, action: :view)
+    end
   end
 end
