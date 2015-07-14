@@ -1,6 +1,8 @@
 // _typography.scss
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,700|Roboto+Slab);
 
-html {
+html, body {
+  font-family: "Roboto Slab";
   font: 100%/1.5
 }
 
@@ -30,6 +32,11 @@ h6 {
 
 p {
   font-size: 1em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Source Sans Pro";
+  font-weight: bold;
 }
 
 h1, h2, h3, h4, h5, h6, p {
