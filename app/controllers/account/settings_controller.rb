@@ -5,7 +5,12 @@ class Account::SettingsController < Account::BaseController
   end
 
   def save_profile
+    if user_params[:password].present? && !valid_password?
+      flash.now[:error] = 'You must enter valid current password.'
+      render :index and return
+    end
     if spree_current_user.update(user_params)
+      sign_in(:spree_user, spree_current_user, bypass: true)
       redirect_to '/account/settings', notice: "Saved profile successfully"
     else
       render :index
@@ -65,5 +70,9 @@ class Account::SettingsController < Account::BaseController
                       else
                         AppSettings.user_profile_settings[:user]
                       end || {}).keys
+  end
+
+  def valid_password?
+    current_spree_user.valid_password?(params[:current_password])
   end
 end
