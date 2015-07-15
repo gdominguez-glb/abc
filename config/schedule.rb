@@ -29,7 +29,7 @@ every 2.hours do
   rbenv_rake "medium:import_posts"
 end
 
-every 2.hours do
+every 1.day do
   rbenv_rake "regonline:import_events"
 end
 
