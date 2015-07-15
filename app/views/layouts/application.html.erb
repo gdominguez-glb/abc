@@ -15,9 +15,9 @@
       <%= render 'secondary_nav' %>
       <%= render 'flashes' %>
       <%= yield %>
-      <%= yield :javascripts %>
     </div>
     <%= render 'footer' %>
-
+    <div class="overlay"></div>
+    <%= yield :javascripts %>
   </body>
 </html>

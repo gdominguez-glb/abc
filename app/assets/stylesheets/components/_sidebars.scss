@@ -12,7 +12,7 @@
     }
   }
 
-  &.video-gallery-sidenav {
+  &.video-gallery-sidenav, &.account-fixed-sidebar {
     @media screen and (max-width: 767px) {
       width: 75%;
       position: absolute;
@@ -28,11 +28,6 @@
 
     &.show-nav {
       @include translate(0, 0);
-
-      + .overlay {
-        opacity: .75;
-        z-index: 9;
-      }
     }
   }
 

@@ -1,6 +1,48 @@
 // _spree_admin.scss
 
 // header
+body[data-hook="body"] {
+
+  @media screen and (max-width: 500px) {
+    padding: 120px 0 0;
+  }
+
+  #content {
+    padding-bottom: 30px;
+  }
+
+  .navbar-toggle {
+    margin-left: 15px;
+  }
+
+// Checkout Flow
+
+  #main-image {
+    .panel-body {
+      padding: 0;
+    }
+  }
+
+  #taxon-crumbs {
+    margin: 15px 0;
+  }
+}
+
+// Products Page
+#products {
+  .panel-body {
+    padding: 0;
+  }
+}
+
+body[data-hook="body"] {
+
+  @media screen and (max-width: 768px) {
+    .taxon-title {
+      margin: 15px 0;
+    }
+  }
+}
 
 .admin {
   padding-top: 110px;
