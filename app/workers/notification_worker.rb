@@ -10,9 +10,9 @@ class NotificationWorker
             elsif nt.group_users_target?
               nt.group_users
             elsif nt.user_type_target?
-              User.send("with_#{nt.user_type.downcase}_title")
+              Spree::User.send("with_#{nt.user_type.downcase}_title")
             elsif nt.every_target?
-              User.where("1 = 1")
+              Spree::User.where("1 = 1")
             end
     delivery_notifications(nt, users) if users.present?
     nt.deliver!
