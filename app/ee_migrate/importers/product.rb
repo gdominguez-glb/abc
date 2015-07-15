@@ -26,7 +26,7 @@ module Importers
         'exp_channel_titles.entry_date as entry_date',
         'exp_channel_data.field_id_79 as price'
       ]).joins("join exp_channel_data on exp_channel_data.entry_id = exp_channel_titles.entry_id")
-        .where("exp_channel_titles.channel_id = 35")
+        .where("exp_channel_titles.channel_id in (?)", [25, 57])
         .find_each do |product_data|
           unless Spree::Product.find_by(slug: product_data.slug)
             Spree::Product.create(
