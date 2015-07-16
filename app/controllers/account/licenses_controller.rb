@@ -3,6 +3,7 @@ class Account::LicensesController < Account::BaseController
 
   def index
     @assign_licenses_form = AssignLicensesForm.new
+    @products = current_spree_user.products
   end
 
   def assign
