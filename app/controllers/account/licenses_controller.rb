@@ -1,13 +1,18 @@
 class Account::LicensesController < Account::BaseController
   before_action :authenticate_school_admin!
+  before_action :load_products, only: [:index, :assign]
 
   def index
     @assign_licenses_form = AssignLicensesForm.new
-    @products = current_spree_user.products
   end
 
   def assign
-    redirect_to account_licenses_path
+    @assign_licenses_form = AssignLicensesForm.new(assign_licenses_params.merge(user: current_spree_user))
+    if @assign_licenses_form.valid?
+      redirect_to account_licenses_path
+    else
+      render :index
+    end
   end
 
   def import_licenses
@@ -23,5 +28,15 @@ class Account::LicensesController < Account::BaseController
 
   def distributions
     @distributions = current_spree_user.product_distributions.includes([:to_user, :product])
+  end
+
+  private
+
+  def assign_licenses_params
+    params.require(:assign_licenses_form).permit(:licenses_recipients, :product_id, :licenses_number, :total)
+  end
+
+  def load_products
+    @products = current_spree_user.products
   end
 end

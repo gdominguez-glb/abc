@@ -8,6 +8,16 @@
       <h3>Ready to assign some licenses ..</h3>
       <p>Assign one or more licenses to anyone you want</p>
     </div>
+    <% if @assign_licenses_form.errors.count > 0 %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@assign_licenses_form.errors.count, "error") %> prohibited this user from being saved:</h2>
+        <ul>
+          <% @assign_licenses_form.errors.full_messages.each do |msg| %>
+            <li> <%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
     <div class="form-group">
       <label for="">Licenses Recipient(s)</label>
       <%= f.text_field :licenses_recipients, class: 'form-control', placeholder: 'separate emails with comma' %>
