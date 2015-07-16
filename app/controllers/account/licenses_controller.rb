@@ -1,6 +1,14 @@
 class Account::LicensesController < Account::BaseController
   before_action :authenticate_school_admin!
 
+  def index
+    @assign_licenses_form = AssignLicensesForm.new
+  end
+
+  def assign
+    redirect_to account_licenses_path
+  end
+
   def import_licenses
     if request.post?
       result = Spree::LicenseDistributer.new(current_spree_user, params[:file]).distribute
