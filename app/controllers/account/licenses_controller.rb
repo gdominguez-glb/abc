@@ -1,4 +1,4 @@
-class Account::AdminController < Account::BaseController
+class Account::LicensesController < Account::BaseController
   before_action :authenticate_school_admin!
 
   def import_licenses

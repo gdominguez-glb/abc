@@ -1,0 +1,49 @@
+<%= render 'stats' %>
+
+<%= render 'tabs' %>
+
+<div class="container">
+<%= form_tag do %>
+  <div class="text-center">
+    <h3>Ready to assign some licenses ..</h3>
+    <p>Assign one or more licenses to anyone you want</p>
+  </div>
+  <div class="form-group">
+    <label for="">Licenses Recipient(s)</label>
+    <%= text_field_tag :licenses_recipients, nil, class: 'form-control' %>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form-group">
+        <label for="">Product to License</label>
+        <%= select_tag :product_id, [],  class: 'form-control' %>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="form-group">
+        <label for="">Number of Licenses</label>
+        <%= select_tag :number, [],  class: 'form-control' %>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="form-group">
+        <label for="">Total License(s) Assigned</label>
+        <%= text_field_tag :total, nil,  class: 'form-control' %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4 text-center">
+      <button class="btn btn-default">Upload Users From File +</button>
+    </div>
+  </div>
+  <div class="row text-center" style="margin-top: 40px;">
+    <div>
+      <%= submit_tag 'Assign License(s)', class: 'btn btn-primary' %>
+    </div>
+    <div>
+      <%= link_to 'Cancel', '', class: '' %>
+    </div>
+  </div>
+<% end %>
+</div>
