@@ -17,6 +17,13 @@ class AssignLicensesForm
   validates_presence_of :licenses_recipients, :product_id, :licenses_number
   
   def perform
+    licensed_product = @user.licensed_products.find_by(product_id: @product_id)
+    if licensed_product
+      emails.each do |email|
+        user_or_email = Spree::User.find_by(email: email) || email
+        licensed_product.distribute_license(user_or_email, @licenses_number)
+      end
+    end
   end
 
   def must_have_enough_licenses_quantity

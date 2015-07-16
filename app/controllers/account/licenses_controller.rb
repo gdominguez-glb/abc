@@ -9,6 +9,8 @@ class Account::LicensesController < Account::BaseController
   def assign
     @assign_licenses_form = AssignLicensesForm.new(assign_licenses_params.merge(user: current_spree_user))
     if @assign_licenses_form.valid?
+      @assign_licenses_form.perform
+      flash[:notice] = "Successully assigned licenses to recipients"
       redirect_to account_licenses_path
     else
       render :index
