@@ -3,7 +3,7 @@
     <div class="modal-content">
       <div class="modal-body">
         <h3>Would your like to send a reminder?</h3>
-        <%= form_for @reminder, url: account_reminders_path do |f| %>
+        <%= form_for @reminder, url: account_reminders_path, remote: true do |f| %>
           <div class="form-group">
             <label>Send Reminder To</label>
             <%= f.text_field :recipient, class: 'form-control' %>
