@@ -18,6 +18,7 @@ namespace :account do
       post :assign
       get :import_modal
       post :import
+      get :users
     end
   end
 
