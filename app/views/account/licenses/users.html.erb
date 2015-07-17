@@ -26,7 +26,9 @@
           <td><%= user.school_district.try(:name) %></td>
           <td><%= user.products.map(&:name).join(', ') %></td>
           <td><%= user.last_sign_in_at.strftime("%b %-d, %Y") %></td>
-          <td><a href="" class="btn btn-primary btn-sm">Remind</a></td>
+          <td>
+            <%= link_to 'Remind', new_account_reminder_path, class: 'btn btn-primary btn-sm', remote: true %>
+          </td>
           <td><a href="" class="btn btn-primary btn-sm">Reassign</a></td>
           <td><a href="" class="btn btn-primary btn-sm">Details</a></td>
           <td><a href="" class="btn btn-sm">Revoke</a></td>

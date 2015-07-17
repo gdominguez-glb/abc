@@ -1,2 +1,5 @@
 $("body").append("<%= escape_javascript(render 'import_modal') %>");
 $("#licenses-import-modal").modal('show');
+$('#licenses-import-modal').on('hidden.bs.modal', function (e) {
+  $('#licenses-import-modal').remove();
+})

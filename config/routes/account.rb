@@ -13,6 +13,8 @@ namespace :account do
   patch 'save_profile', to: 'settings#save_profile'
   patch 'save_email_notifications', to: 'settings#save_email_notifications'
 
+  resources :reminders, only: [:new, :create]
+
   resources :licenses do
     collection do
       post :assign
