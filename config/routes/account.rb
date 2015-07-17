@@ -17,6 +17,7 @@ namespace :account do
     collection do
       post :assign
       get :import_modal
+      post :import
     end
   end
 
