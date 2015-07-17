@@ -3,7 +3,7 @@ class Account::LicensesController < Account::BaseController
   before_action :load_products, only: [:index, :assign]
 
   def index
-    @assign_licenses_form = AssignLicensesForm.new
+    @assign_licenses_form = AssignLicensesForm.new(total: 0)
   end
 
   def assign

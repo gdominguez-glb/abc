@@ -16,6 +16,7 @@ namespace :account do
   resources :licenses do
     collection do
       post :assign
+      get :import_modal
     end
   end
 

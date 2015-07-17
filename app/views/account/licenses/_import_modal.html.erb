@@ -1,0 +1,23 @@
+<div class="modal fade" id="licenses-import-modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Easily Add Multiple Users at Once</h4>
+        <p>already have the template, jump ahead to step 2</p>
+      </div>
+      <div class="modal-body">
+        <p>1. <%= link_to 'Download', '', class: 'btn btn-default' %> our User Template and fill it in</p>
+        <p>2. <%= link_to 'Uplaod', '', class: 'btn btn-default' %> the completed file</p>
+        <div class="form-group">
+          <%= file_field_tag :file %>
+        </div>
+        <div class='text-center' style='margin-bottom: 10px;'>
+          <%= submit_tag 'Add Users', class: 'btn btn-primary' %>
+        </div>
+        <div class="text-center" style='margin-bottom: 10px;'>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
