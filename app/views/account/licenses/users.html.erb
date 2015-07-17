@@ -19,13 +19,13 @@
       </tr>
     </thead>
     <tbody>
-      <% 1.upto(10).each do |i| %>
+      <% @users.each do |user| %>
         <tr>
           <td><input type="checkbox" /></td>
-          <td>Jone Doe</td>
-          <td>USD 33</td>
-          <td>Eureka Math</td>
-          <td>July 9, 2015</td>
+          <td><%= user.full_name %></td>
+          <td><%= user.school_district.try(:name) %></td>
+          <td><%= user.products.map(&:name).join(', ') %></td>
+          <td><%= user.last_sign_in_at.strftime("%b %-d, %Y") %></td>
           <td><a href="" class="btn btn-primary btn-sm">Remind</a></td>
           <td><a href="" class="btn btn-primary btn-sm">Reassign</a></td>
           <td><a href="" class="btn btn-primary btn-sm">Details</a></td>
@@ -34,4 +34,5 @@
       <% end %>
     </tbody>
   </table>
+  <%= paginate @users %>
 </div>
