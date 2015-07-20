@@ -10,7 +10,7 @@ class AssignLicensesForm
   EMAIL_REGEX = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
 
   attr_accessor :user, :licenses_recipients, :product_id, :licenses_number, :total
-  
+
   validate :emails_must_be_correct
   validate :must_have_enough_licenses_quantity
 
