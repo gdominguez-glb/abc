@@ -1,0 +1,35 @@
+<div class="modal fade" id="licenses-reassign-modal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Reassign Jane Doe's license(s)</h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="">New License Recipient(s)</label>
+          <input type="text" class="form-control"/>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <label for="">Product to License</label>
+            <select id="" name="" class='form-control'><option value=""></option></select>
+          </div>
+          <div class="col-md-4">
+            <label for="">Number of Licenses</label>
+            <select id="" name="" class='form-control'><option value=""></option></select>
+          </div>
+          <div class="col-md-4">
+            <label for="">Total License(s) Assigned</label>
+            <input type="text" class="form-control" />
+          </div>
+        </div>
+        <div class='text-center' style='margin-bottom: 10px; margin-top: 10px;'>
+          <%= submit_tag 'Reassign License(s)', class: 'btn btn-primary' %>
+        </div>
+        <div class="text-center" style='margin-bottom: 10px;'>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

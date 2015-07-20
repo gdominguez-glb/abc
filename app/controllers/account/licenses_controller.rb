@@ -34,6 +34,9 @@ class Account::LicensesController < Account::BaseController
     @distributions = current_spree_user.product_distributions.includes([:to_user, :product])
   end
 
+  def reassign_modal
+  end
+
   private
 
   def assign_licenses_params

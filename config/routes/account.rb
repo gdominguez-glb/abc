@@ -21,6 +21,7 @@ namespace :account do
       get :import_modal
       post :import
       get :users
+      get :reassign_modal
     end
   end
 
