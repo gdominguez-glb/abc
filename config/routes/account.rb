@@ -23,6 +23,7 @@ namespace :account do
       get :users
       get :reassign_modal
       post :reassign
+      get :revoke_modal
     end
   end
 

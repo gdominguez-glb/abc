@@ -33,7 +33,9 @@
             <%= link_to 'Reassign', reassign_modal_account_licenses_path(from_user_id: user.id), class: 'btn btn-primary btn-sm', remote: true %>
           </td>
           <td><a href="" class="btn btn-primary btn-sm">Details</a></td>
-          <td><a href="" class="btn btn-sm">Revoke</a></td>
+          <td>
+            <%= link_to 'Revoke', revoke_modal_account_licenses_path(from_user_id: user.id), class: 'btn btn-default btn-sm', remote: true %>
+          </td>
         </tr>
       <% end %>
     </tbody>
