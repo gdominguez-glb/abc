@@ -10,11 +10,17 @@ class Spree::ProductDistribution < ActiveRecord::Base
 
   after_create :distribute_license
 
-  def revoke
+  def revoke(_quantity)
     self.class.transaction do
-      self.licensed_product.reload && self.licensed_product.update(quantity: self.licensed_product.quantity + self.quantity) if self.licensed_product
-      self.distributed_licensed_product.destroy if self.distributed_licensed_product
-      self.destroy
+      if _quantity < self.quantity
+        self.licensed_product.update(quantity: self.licensed_product.quantity + _quantity)
+        self.update(quantity: (self.quantity - _quantity))
+        self.distributed_licensed_product.update(quantity: (self.distributed_licensed_product.quantity - _quantity))
+      else
+        self.licensed_product.update(quantity: self.licensed_product.quantity + self.quantity)
+        self.distributed_licensed_product.destroy
+        self.destroy
+      end
     end
   end
 

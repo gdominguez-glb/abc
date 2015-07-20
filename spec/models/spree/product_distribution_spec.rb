@@ -32,21 +32,20 @@ RSpec.describe Spree::ProductDistribution, type: :model do
   end
 
   describe "#revoke" do
-    before(:each) do
-      distribution
-      distribution.revoke
+    it "reduce the quantity on distribution and licenses" do
+      distribution.revoke(1)
+      expect(distribution.reload.quantity).to eq(1)
+      expect(distribution.distributed_licensed_product.quantity).to eq(1)
     end
 
-    it "destroy licensed product" do
-      expect(to_user.licensed_products.count).to eq(0)
+    it "give back quantity to original user" do
+      distribution.revoke(1)
+      expect(licensed_product.reload.quantity).to eq(11)
     end
 
-    it "destroy production distribution" do
-      expect(Spree::ProductDistribution.find_by(id: distribution.id)).to eq(nil)
-    end
-
-    it "increase original licensed products quantity" do
-      expect(licensed_product.reload.quantity).to eq(10)
+    it "destroy distribution if all licenses are revoked" do
+      distribution.revoke(2)
+      expect(Spree::ProductDistribution.find_by(id: distribution)).to eq(nil)
     end
   end
 
