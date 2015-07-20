@@ -58,10 +58,35 @@ class Account::LicensesController < Account::BaseController
     end
   end
 
+  def revoke_modal
+    @revoke_user = find_revoke_user
+    if @revoke_user
+      @revoke_licenses_form = RevokeLicensesForm.new
+      @products = @revoke_user.products
+    end
+  end
+
+  def revoke
+    @revoke_user = find_revoke_user
+    if @revoke_user
+      @revoke_licenses_form = RevokeLicensesForm.new(revoke_licenses_params.merge(user: @revoke_user))
+      if @revoke_licenses_form.valid?
+        @revoke_licenses_form.perform
+        @success = true
+      else
+        @error_full_messages = @revoke_licenses_form.errors.full_messages.join(', ')
+      end
+    end
+  end
+
   private
 
   def assign_licenses_params
     params.require(:assign_licenses_form).permit(:licenses_recipients, :product_id, :licenses_number, :total)
+  end
+
+  def revoke_licenses_params
+    params.require(:revoke_licenses_form).permit(:reason, :product_id, :licenses_number)
   end
 
   def load_products(user=current_spree_user)
@@ -70,5 +95,9 @@ class Account::LicensesController < Account::BaseController
 
   def find_from_user
     current_spree_user.to_users.find(params[:from_user_id])
+  end
+
+  def find_revoke_user
+    current_spree_user.to_users.find(params[:revoke_user_id])
   end
 end

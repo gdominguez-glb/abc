@@ -34,7 +34,7 @@
           </td>
           <td><a href="" class="btn btn-primary btn-sm">Details</a></td>
           <td>
-            <%= link_to 'Revoke', revoke_modal_account_licenses_path(from_user_id: user.id), class: 'btn btn-default btn-sm', remote: true %>
+            <%= link_to 'Revoke', revoke_modal_account_licenses_path(revoke_user_id: user.id), class: 'btn btn-default btn-sm', remote: true %>
           </td>
         </tr>
       <% end %>
