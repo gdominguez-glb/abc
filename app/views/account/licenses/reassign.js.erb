@@ -1,0 +1,6 @@
+<% if @success %>
+  alert("Reassigned successfully");
+  window.location.reload(true);
+<% else %>
+  alert("<%= raw @error_full_messages %>");
+<% end %>

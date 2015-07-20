@@ -57,16 +57,6 @@
     </div>
   <% end %>
 </div>
-
 <%= content_for :javascripts do %>
-  <%= javascript_tag do %>
-    $("#assign_licenses_form_licenses_number, #assign_licenses_form_licenses_recipients").change(function(){
-      var emails = $('#assign_licenses_form_licenses_recipients').val();
-      var number = $('#assign_licenses_form_licenses_number').val();
-      var userCount = emails.split(',').length;
-      var number = parseInt(number);
-      var total = userCount*number;
-      $("#assign_licenses_form_total").val(total);
-    });
-  <% end %>
+  <%= render 'assign_form_js' %>
 <% end %>

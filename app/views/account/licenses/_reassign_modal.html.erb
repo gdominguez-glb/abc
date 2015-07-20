@@ -2,34 +2,38 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Reassign Jane Doe's license(s)</h4>
+        <h4 class="modal-title">Reassign <%= @from_user.full_name %>'s license(s)</h4>
       </div>
       <div class="modal-body">
-        <div class="form-group">
-          <label for="">New License Recipient(s)</label>
-          <input type="text" class="form-control"/>
-        </div>
-        <div class="row">
-          <div class="col-md-4">
-            <label for="">Product to License</label>
-            <select id="" name="" class='form-control'><option value=""></option></select>
+        <%= form_for @assign_licenses_form, url: reassign_account_licenses_path, remote: true do |f| %>
+          <%= hidden_field_tag :from_user_id, @from_user.id %>
+          <div class="form-group">
+            <label for="">New License Recipient(s)</label>
+            <%= f.text_field :licenses_recipients, class: "form-control" %>
           </div>
-          <div class="col-md-4">
-            <label for="">Number of Licenses</label>
-            <select id="" name="" class='form-control'><option value=""></option></select>
+          <div class="row">
+            <div class="col-md-4">
+              <label for="">Product to License</label>
+              <%= f.collection_select :product_id, @products, :id, :name, {}, class: 'form-control' %>
+            </div>
+            <div class="col-md-4">
+              <label for="">Number of Licenses</label>
+              <%= f.select :licenses_number, options_for_select(AssignLicensesForm::LICENSES_NUMBER_OPTIONS, @assign_licenses_form.licenses_number), {}, class: 'form-control' %>
+            </div>
+            <div class="col-md-4">
+              <label for="">Total License(s) Assigned</label>
+              <%= f.text_field :total, class: 'form-control', readonly: true %>
+            </div>
           </div>
-          <div class="col-md-4">
-            <label for="">Total License(s) Assigned</label>
-            <input type="text" class="form-control" />
+          <div class='text-center' style='margin-bottom: 10px; margin-top: 10px;'>
+            <%= f.submit 'Reassign License(s)', class: 'btn btn-primary' %>
           </div>
-        </div>
-        <div class='text-center' style='margin-bottom: 10px; margin-top: 10px;'>
-          <%= submit_tag 'Reassign License(s)', class: 'btn btn-primary' %>
-        </div>
-        <div class="text-center" style='margin-bottom: 10px;'>
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        </div>
+          <div class="text-center" style='margin-bottom: 10px;'>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
 </div>
+<%= render 'assign_form_js' %>

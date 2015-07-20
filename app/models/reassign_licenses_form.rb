@@ -6,7 +6,7 @@ class ReassignLicensesForm < AssignLicensesForm
     if distribution
       emails.each do |email|
         user = Spree::User.find_by(email: email)
-        distribution.reassign_to(user || email)
+        distribution.reassign_to((user || email), @licenses_number.to_i)
       end
     end
   end
