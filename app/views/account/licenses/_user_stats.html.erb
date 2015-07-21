@@ -4,22 +4,22 @@
     <div class="user-stats-wrapper">
       <div class="row">
         <div class="col-md-3">
-          <h4>JANE DOE</h4>
-          <p>Joined: February 17, 2015</p>
-          <p>Exp: Auguest 20, 2015</p>
-          <p>janedoe@schoolname.com</p>
-          <p>(123)456-7890</p>
+          <h4><%= @user.full_name %></h4>
+          <p>Joined: <%= @user.created_at.strftime("%b %-d, %Y") %></p>
+          <%# <p>Exp: Auguest 20, 2015</p> %>
+          <p><%= @user.email %></p>
+          <p><%= @user.phone %></p>
         </div>
         <div class="col-md-3">
-          <h4>7x</h4>
+          <h4><%= @user.logins_in_last_days(5) %>x</h4>
           <p>5 Day Log In</p>
         </div>
         <div class="col-md-3">
-          <h4>28x</h4>
+          <h4><%= @user.logins_in_last_days(10) %>x</h4>
           <p>10 Day Log In</p>
         </div>
         <div class="col-md-3">
-          <h4>65x</h4>
+          <h4><%= @user.logins_in_last_days(30) %>x</h4>
           <p>Monthly Log In</p>
         </div>
       </div>

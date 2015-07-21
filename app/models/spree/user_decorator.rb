@@ -99,4 +99,8 @@ Spree::User.class_eval do
   def remaining_licenses_count
     purchased_licenses_count - distributed_licenses_count
   end
+
+  def logins_in_last_days(days)
+    activities.login.in_last_days(days).count
+  end
 end
