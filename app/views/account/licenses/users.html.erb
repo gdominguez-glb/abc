@@ -20,7 +20,7 @@
     </thead>
     <tbody>
       <% @users.each do |user| %>
-        <tr>
+        <tr data-user-id='<%= user.id %>'>
           <td><input type="checkbox" /></td>
           <td><%= user.full_name %></td>
           <td><%= user.school_district.try(:name) %></td>
@@ -32,7 +32,9 @@
           <td>
             <%= link_to 'Reassign', reassign_modal_account_licenses_path(from_user_id: user.id), class: 'btn btn-primary btn-sm', remote: true %>
           </td>
-          <td><a href="" class="btn btn-primary btn-sm">Details</a></td>
+          <td>
+            <a href="<%= user_stats_account_licenses_path(user_id: user.id)  %>" class="btn btn-primary btn-sm user-details-btn">Details</a>
+          </td>
           <td>
             <%= link_to 'Revoke', revoke_modal_account_licenses_path(revoke_user_id: user.id), class: 'btn btn-default btn-sm', remote: true %>
           </td>
@@ -42,3 +44,21 @@
   </table>
   <%= paginate @users %>
 </div>
+<%= content_for :javascripts do %>
+  <%= javascript_tag do %>
+    $(function() {
+      $('.user-details-btn').click(function(e){
+        e.preventDefault();
+        var $tr = $(this).parents('tr');
+        var user_id = $tr.attr('data-user-id');
+        var url = $(this).attr('href');
+        var $user_tr = $("#user-stats-tr-"+user_id);
+        if ($user_tr.length > 0) {
+          $user_tr.remove()
+        } else {
+          $.get(url);
+        }
+      });
+    });
+  <% end %>
+<% end %>

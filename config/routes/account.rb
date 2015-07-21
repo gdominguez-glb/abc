@@ -25,6 +25,7 @@ namespace :account do
       post :reassign
       get :revoke_modal
       post :revoke
+      get :user_stats
     end
   end
 
