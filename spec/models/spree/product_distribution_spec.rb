@@ -10,6 +10,7 @@ RSpec.describe Spree::ProductDistribution, type: :model do
 
   it { should validate_presence_of(:from_user) }
   it { should validate_presence_of(:product) }
+  it { should validate_presence_of(:licensed_product) }
 
   let(:from_user) { create(:gm_user) }
   let(:to_user) { create(:gm_user) }
@@ -42,7 +43,7 @@ RSpec.describe Spree::ProductDistribution, type: :model do
 
     it "give back quantity to original user" do
       distribution.revoke(1)
-      expect(licensed_product.reload.quantity).to eq(11)
+      expect(licensed_product.reload.quantity).to eq(9)
     end
 
     it "destroy distribution if all licenses are revoked" do

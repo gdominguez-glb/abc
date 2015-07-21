@@ -6,7 +6,7 @@ class Spree::ProductDistribution < ActiveRecord::Base
 
   has_one :distributed_licensed_product, class_name: 'Spree::LicensedProduct', dependent: :destroy
 
-  validates_presence_of :from_user, :product
+  validates_presence_of :from_user, :product, :licensed_product
 
   after_create :distribute_license
 
@@ -25,6 +25,7 @@ class Spree::ProductDistribution < ActiveRecord::Base
     return false if _quantity > self.quantity
     self.class.transaction do
       Spree::ProductDistribution.create({
+        licensed_product: self.licensed_product,
         product: self.product,
         from_user: self.from_user,
         quantity: _quantity
@@ -45,16 +46,13 @@ class Spree::ProductDistribution < ActiveRecord::Base
   private
 
   def distribute_license
-    from_licensed_product = from_user.licensed_products.find_by(product_id: self.product.id)
-    if from_licensed_product && from_licensed_product.quantity > self.quantity
-      from_licensed_product.update(quantity: from_licensed_product.quantity - self.quantity)
-      Spree::LicensedProduct.create(
-        user: self.to_user,
-        email: self.email,
-        quantity: self.quantity,
-        product: self.product,
-        product_distribution: self
-      )
-    end
+    licensed_product.decrease_quantity!(self.quantity)
+    Spree::LicensedProduct.create(
+      user: self.to_user,
+      email: self.email,
+      quantity: self.quantity,
+      product: self.product,
+      product_distribution: self
+    )
   end
 end

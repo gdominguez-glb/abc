@@ -7,7 +7,7 @@ RSpec.describe ReassignLicensesForm do
 
   let!(:product) { create(:product, license_length: 365) }
   let!(:licensed_product) { create(:spree_licensed_product, user: school_admin_user, product: product, quantity: 10) }
-  let!(:distribution) { create(:spree_product_distribution, from_user: school_admin_user, to_user: user, product: product, quantity: 3) }
+  let!(:distribution) { create(:spree_product_distribution, from_user: school_admin_user, to_user: user, product: product, quantity: 3, licensed_product: licensed_product) }
 
   let(:reassign_licenses_form) do
     ReassignLicensesForm.new(licenses_recipients: 'john@doe.com', product_id: product.id, licenses_number: '1', user: user)
