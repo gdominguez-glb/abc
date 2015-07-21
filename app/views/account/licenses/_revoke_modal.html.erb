@@ -1,0 +1,38 @@
+<div class="modal fade" id="licenses-revoke-modal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Reassign Jane Doe's license(s)</h4>
+      </div>
+      <div class="modal-body">
+        <%= form_for @revoke_licenses_form, url: revoke_account_licenses_path, remote: true do |f| %>
+          <%= hidden_field_tag :revoke_user_id, params[:revoke_user_id] %>
+          <div class="form-group">
+            <label for="">Reason for Revoking</label>
+            <%= f.select :reason, options_for_select(RevokeLicensesForm::REASONS, @revoke_licenses_form.reason), {}, class: 'form-control' %>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="">Product to Revoke</label>
+                <%= f.collection_select :product_id, @products, :id, :name, {}, class: 'form-control' %>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="">Number of Licenses</label>
+                <%= f.select :licenses_number, options_for_select(RevokeLicensesForm::LICENSES_NUMBER_OPTIONS, @revoke_licenses_form.licenses_number), {}, class: 'form-control' %>
+              </div>
+            </div>
+            <div class='text-center' style='margin-bottom: 10px; margin-top: 10px;'>
+              <%= f.submit 'Revoke License(s)', class: 'btn btn-primary' %>
+            </div>
+            <div class="text-center" style='margin-bottom: 10px;'>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

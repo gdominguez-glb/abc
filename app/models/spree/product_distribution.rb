@@ -10,18 +10,35 @@ class Spree::ProductDistribution < ActiveRecord::Base
 
   after_create :distribute_license
 
-  def revoke
+  def revoke(_quantity)
     self.class.transaction do
-      self.licensed_product.reload && self.licensed_product.update(quantity: self.licensed_product.quantity + self.quantity) if self.licensed_product
-      self.distributed_licensed_product.destroy if self.distributed_licensed_product
-      self.destroy
+      if _quantity < self.quantity
+        self.licensed_product.update(quantity: self.licensed_product.quantity + _quantity)
+        self.update(quantity: (self.quantity - _quantity))
+        self.distributed_licensed_product.update(quantity: (self.distributed_licensed_product.quantity - _quantity))
+      else
+        self.licensed_product.update(quantity: self.licensed_product.quantity + self.quantity)
+        self.distributed_licensed_product.destroy
+        self.destroy
+      end
     end
   end
 
-  def reassign_to(user)
+  def reassign_to(user_or_email, _quantity)
+    return false if _quantity > self.quantity
     self.class.transaction do
-      self.distributed_licensed_product.update(user: user) if self.distributed_licensed_product
-      self.update(to_user: user)
+      Spree::ProductDistribution.create({
+        product: self.product,
+        from_user: self.from_user,
+        quantity: _quantity
+      }.merge(user_or_email.is_a?(Spree::User) ? { to_user: user_or_email } : { email: user_or_email } ))
+      if _quantity < self.quantity
+        self.update(quantity: (self.quantity - _quantity))
+        self.licensed_product.update(quantity: (self.quantity - _quantity))
+      else
+        self.licensed_product.destroy
+        self.destroy
+      end
     end
   end
 

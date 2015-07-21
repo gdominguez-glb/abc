@@ -1,0 +1,8 @@
+$("body").append("<%= escape_javascript(render 'modal') %>")
+$('#reminder-modal').modal('show');
+$('#reminder-modal').on('hidden.bs.modal', function (e) {
+  $('#reminder-modal').remove();
+})
+$('#reminder-modal').on('shown.bs.modal', function (e) {
+  $("#reminder_form_content").focus();
+})

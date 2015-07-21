@@ -13,10 +13,21 @@ namespace :account do
   patch 'save_profile', to: 'settings#save_profile'
   patch 'save_email_notifications', to: 'settings#save_email_notifications'
 
-  get 'admin', to: 'admin#index'
-  get 'admin/import_licenses', to: 'admin#import_licenses'
-  post 'admin/import_licenses', to: 'admin#import_licenses'
-  get 'admin/distributions', to: 'admin#distributions'
+  resources :reminders, only: [:new, :create]
+
+  resources :licenses do
+    collection do
+      post :assign
+      get :import_modal
+      post :import
+      get :users
+      get :reassign_modal
+      post :reassign
+      get :revoke_modal
+      post :revoke
+      get :user_stats
+    end
+  end
 
   resources :notifications, only: [:index] do
     member do

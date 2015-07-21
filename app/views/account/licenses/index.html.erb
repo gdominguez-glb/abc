@@ -1,0 +1,62 @@
+<%= render 'stats' %>
+
+<%= render 'tabs' %>
+
+<div class="container">
+  <%= form_for @assign_licenses_form, url: assign_account_licenses_path do |f| %>
+    <div class="text-center">
+      <h3>Ready to assign some licenses ..</h3>
+      <p>Assign one or more licenses to anyone you want</p>
+    </div>
+    <% if @assign_licenses_form.errors.count > 0 %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@assign_licenses_form.errors.count, "error") %> prohibited this user from being saved:</h2>
+        <ul>
+          <% @assign_licenses_form.errors.full_messages.each do |msg| %>
+            <li> <%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="form-group">
+      <label for="">Licenses Recipient(s)</label>
+      <%= f.text_field :licenses_recipients, class: 'form-control', placeholder: 'separate emails with comma' %>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="">Product to License</label>
+          <%= f.collection_select :product_id, @products, :id, :name, {}, class: 'form-control' %>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="">Number of Licenses</label>
+          <%= f.select :licenses_number, options_for_select(AssignLicensesForm::LICENSES_NUMBER_OPTIONS, @assign_licenses_form.licenses_number), {}, class: 'form-control' %>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="">Total License(s) Assigned</label>
+          <%= f.text_field :total, class: 'form-control', readonly: true %>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 col-md-offset-4 text-center">
+        <%= link_to 'Upload Users From File +', import_modal_account_licenses_path, class: 'btn btn-default', remote: true %>
+      </div>
+    </div>
+    <div class="row text-center" style="margin-top: 40px;">
+      <div>
+        <%= f.submit 'Assign License(s)', class: 'btn btn-primary' %>
+      </div>
+      <div>
+        <%= link_to 'Cancel', '', class: '' %>
+      </div>
+    </div>
+  <% end %>
+</div>
+<%= content_for :javascripts do %>
+  <%= render 'assign_form_js' %>
+<% end %>

@@ -1,0 +1,6 @@
+<% if @success %>
+  alert("Sent reminder");
+  $('#reminder-modal').modal('hide');
+<% else %>
+  alert("<%= raw @full_error_message %>");
+<% end %>

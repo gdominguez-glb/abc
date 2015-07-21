@@ -1,0 +1,5 @@
+$("body").append("<%= escape_javascript(render 'revoke_modal') %>");
+$("#licenses-revoke-modal").modal('show');
+$('#licenses-revoke-modal').on('hidden.bs.modal', function (e) {
+  $('#licenses-revoke-modal').remove();
+})

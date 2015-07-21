@@ -15,55 +15,59 @@ RSpec.describe Spree::ProductDistribution, type: :model do
 
   let(:product) { create(:product, license_length: 365) }
   let(:licensed_product) { create(:spree_licensed_product, user: from_user, product: product, quantity: 10) }
-  let(:distribution) { create(:spree_product_distribution, from_user: from_user, to_user: to_user, product: product, quantity: 1, licensed_product: licensed_product) }
+  let(:distribution) { create(:spree_product_distribution, from_user: from_user, to_user: to_user, product: product, quantity: 2, licensed_product: licensed_product) }
 
   describe "licensed product creation" do
     before(:each) { distribution }
 
     it "create licensed product to distribution user" do
       licensed_product = to_user.licensed_products.first
-      expect(licensed_product.quantity).to eq(1)
+      expect(licensed_product.quantity).to eq(2)
       expect(licensed_product.product_distribution).to eq(distribution)
     end
 
     it "reduce license quantity from user" do
-      expect(licensed_product.reload.quantity).to eq(9)
+      expect(licensed_product.reload.quantity).to eq(8)
     end
   end
 
   describe "#revoke" do
-    before(:each) do
-      distribution
-      distribution.revoke
+    it "reduce the quantity on distribution and licenses" do
+      distribution.revoke(1)
+      expect(distribution.reload.quantity).to eq(1)
+      expect(distribution.distributed_licensed_product.quantity).to eq(1)
     end
 
-    it "destroy licensed product" do
-      expect(to_user.licensed_products.count).to eq(0)
+    it "give back quantity to original user" do
+      distribution.revoke(1)
+      expect(licensed_product.reload.quantity).to eq(11)
     end
 
-    it "destroy production distribution" do
-      expect(Spree::ProductDistribution.find_by(id: distribution.id)).to eq(nil)
-    end
-
-    it "increase original licensed products quantity" do
-      expect(licensed_product.reload.quantity).to eq(10)
+    it "destroy distribution if all licenses are revoked" do
+      distribution.revoke(2)
+      expect(Spree::ProductDistribution.find_by(id: distribution)).to eq(nil)
     end
   end
 
   describe "#reassign_to" do
-    before(:each) do
-      distribution
-      distribution.reassign_to(reassign_user)
+    it "return false if quantity is invalid" do
+      expect(distribution.reassign_to(reassign_user, 3)).to eq(false)
     end
 
-    it "revoke license from original user" do
-      expect(to_user.licensed_products.count).to eq(0)
+    it "add new distribution to user" do
+      distribution.reassign_to(reassign_user, 1)
+      new_distribution = Spree::ProductDistribution.find_by(to_user_id: reassign_user.id)
+      expect(new_distribution.quantity).to eq(1)
     end
 
-    it "assign license to reassign user" do
-      licensed_product = reassign_user.licensed_products.first
-      expect(licensed_product).not_to be_nil
-      expect(licensed_product.product_distribution).to eq(distribution)
+    it "reduce distribution on user" do
+      distribution.reassign_to(reassign_user, 1)
+      expect(distribution.reload.quantity).to eq(1)
+    end
+
+    it "destroy distribution if quantity become zero" do
+      distribution.reassign_to(reassign_user, 2)
+      expect(Spree::ProductDistribution.find_by(id: distribution.id)).to be_nil
     end
   end
 end
