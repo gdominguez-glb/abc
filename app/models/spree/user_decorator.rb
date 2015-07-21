@@ -87,4 +87,16 @@ Spree::User.class_eval do
   def require_shool_district?
     ['Educator', 'Administrator'].include?(self.title)
   end
+
+  def purchased_licenses_count
+    distributed_licenses_count + licensed_products.sum(:quantity)
+  end
+
+  def distributed_licenses_count
+    product_distributions.sum(:quantity)
+  end
+
+  def remaining_licenses_count
+    purchased_licenses_count - distributed_licenses_count
+  end
 end
