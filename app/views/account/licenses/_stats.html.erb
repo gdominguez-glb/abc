@@ -2,8 +2,8 @@
   <div class="alert alert-info text-center">
     <span class="glyphicon glyphicon-exclamation-sign"></span>
     <strong>YOUR LICENSES:</strong>
-    <span>50 Purchased</span>
-    <span>32 Distributed</span>
-    <span>18 Remaining</span>
+    <span><%= current_spree_user.purchased_licenses_count %> Purchased</span>
+    <span><%= current_spree_user.distributed_licenses_count %> Distributed</span>
+    <span><%= current_spree_user.remaining_licenses_count %> Remaining</span>
   </div>
 </div>
