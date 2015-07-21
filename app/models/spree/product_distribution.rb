@@ -34,9 +34,9 @@ class Spree::ProductDistribution < ActiveRecord::Base
       }.merge(user_or_email.is_a?(Spree::User) ? { to_user: user_or_email } : { email: user_or_email } ))
       if _quantity < self.quantity
         self.update(quantity: (self.quantity - _quantity))
-        self.licensed_product.update(quantity: (self.quantity - _quantity))
+        self.distributed_licensed_product.update(quantity: (self.quantity - _quantity))
       else
-        self.licensed_product.destroy
+        self.distributed_licensed_product.destroy
         self.destroy
       end
     end
