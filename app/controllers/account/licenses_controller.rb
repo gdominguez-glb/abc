@@ -47,12 +47,7 @@ class Account::LicensesController < Account::BaseController
     @from_user = find_from_user
     if @from_user
       @reassign_licenses_form = ReassignLicensesForm.new(assign_licenses_params.merge(user: @from_user))
-      if @reassign_licenses_form.valid?
-        @reassign_licenses_form.perform
-        @success = true
-      else
-        @error_full_messages = @reassign_licenses_form.errors.full_messages.join(', ')
-      end
+      perform_form(@reassign_licenses_form)
     else
       @error_full_messages = "Invalid user"
     end
@@ -70,12 +65,7 @@ class Account::LicensesController < Account::BaseController
     @revoke_user = find_revoke_user
     if @revoke_user
       @revoke_licenses_form = RevokeLicensesForm.new(revoke_licenses_params.merge(user: @revoke_user))
-      if @revoke_licenses_form.valid?
-        @revoke_licenses_form.perform
-        @success = true
-      else
-        @error_full_messages = @revoke_licenses_form.errors.full_messages.join(', ')
-      end
+      perform_form(@revoke_licenses_form)
     end
   end
 
@@ -103,5 +93,14 @@ class Account::LicensesController < Account::BaseController
 
   def find_revoke_user
     current_spree_user.to_users.find(params[:revoke_user_id])
+  end
+
+  def perform_form(form)
+    if form.valid?
+      form.perform
+      @success = true
+    else
+      @error_full_messages = form.errors.full_messages.join(', ')
+    end
   end
 end
