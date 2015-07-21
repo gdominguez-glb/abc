@@ -6,6 +6,8 @@ RSpec.describe Spree::ProductDistribution, type: :model do
   it { should belong_to(:to_user).class_name('Spree::User') }
   it { should belong_to(:product).class_name('Spree::Product') }
 
+  it { should have_one(:distributed_licensed_product).class_name('Spree::LicensedProduct').dependent(:destroy) }
+
   it { should validate_presence_of(:from_user) }
   it { should validate_presence_of(:product) }
 

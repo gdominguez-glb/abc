@@ -4,7 +4,7 @@ class Spree::ProductDistribution < ActiveRecord::Base
   belongs_to :to_user, class_name: 'Spree::User'
   belongs_to :product, class_name: 'Spree::Product'
 
-  has_one :distributed_licensed_product, class_name: 'Spree::LicensedProduct'
+  has_one :distributed_licensed_product, class_name: 'Spree::LicensedProduct', dependent: :destroy
 
   validates_presence_of :from_user, :product
 
@@ -12,13 +12,10 @@ class Spree::ProductDistribution < ActiveRecord::Base
 
   def revoke(_quantity)
     self.class.transaction do
+      self.licensed_product.increase_quantity!(_quantity)
       if _quantity < self.quantity
-        self.licensed_product.update(quantity: self.licensed_product.quantity + _quantity)
-        self.update(quantity: (self.quantity - _quantity))
-        self.distributed_licensed_product.update(quantity: (self.distributed_licensed_product.quantity - _quantity))
+        decrease_quantity!(_quantity)
       else
-        self.licensed_product.update(quantity: self.licensed_product.quantity + self.quantity)
-        self.distributed_licensed_product.destroy
         self.destroy
       end
     end
@@ -33,13 +30,16 @@ class Spree::ProductDistribution < ActiveRecord::Base
         quantity: _quantity
       }.merge(user_or_email.is_a?(Spree::User) ? { to_user: user_or_email } : { email: user_or_email } ))
       if _quantity < self.quantity
-        self.update(quantity: (self.quantity - _quantity))
-        self.distributed_licensed_product.update(quantity: (self.quantity - _quantity))
+        self.decrease_quantity!(_quantity)
       else
-        self.distributed_licensed_product.destroy
         self.destroy
       end
     end
+  end
+
+  def decrease_quantity!(_quantity)
+    self.update(quantity: (quantity - _quantity))
+    self.distributed_licensed_product.decrease_quantity!(_quantity)
   end
 
   private

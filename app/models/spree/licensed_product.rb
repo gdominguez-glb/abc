@@ -20,13 +20,16 @@ class Spree::LicensedProduct < ActiveRecord::Base
       from_user:        self.user,
       product:          self.product,
       quantity:         quantity
-    }
-    if user_or_email.is_a?(Spree::User)
-      distribution_attrs[:to_user] = user_or_email
-    else
-      distribution_attrs[:email] = user_or_email
-    end
+    }.merge(user_or_email.is_a?(Spree::User) ? { to_user: user_or_email } : { email: user_or_email} )
     Spree::ProductDistribution.create(distribution_attrs)
+  end
+
+  def increase_quantity!(_quantity)
+    update(quantity: self.quantity + _quantity)
+  end
+
+  def decrease_quantity!(_quantity)
+    update(quantity: self.quantity - _quantity)
   end
 
   def self.assign_license_to(user)
