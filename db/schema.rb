@@ -523,6 +523,16 @@ ActiveRecord::Schema.define(version: 20150728112112) do
 
   add_index "spree_log_entries", ["source_id", "source_type"], name: "index_spree_log_entries_on_source_id_and_source_type", using: :btree
 
+  create_table "spree_material_files", force: :cascade do |t|
+    t.integer  "material_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
+  end
+
   create_table "spree_materials", force: :cascade do |t|
     t.string   "name"
     t.integer  "product_id"
@@ -1338,6 +1348,7 @@ ActiveRecord::Schema.define(version: 20150728112112) do
     t.string   "preference_video_player"
     t.string   "title"
     t.string   "phone"
+    t.integer  "ee_id"
   end
 
   add_index "spree_users", ["deleted_at"], name: "index_spree_users_on_deleted_at", using: :btree
