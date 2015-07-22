@@ -8,8 +8,7 @@ Spree::Order.class_eval do
         order: self,
         user: self.user,
         product: product,
-        quantity: line_item.quantity,
-        expire_at: product.license_length.days.since(self.updated_at)
+        quantity: line_item.quantity
       )
     end
   end
