@@ -22,6 +22,7 @@ class Account::LicensesController < Account::BaseController
     result = Spree::LicenseDistributer.new(current_spree_user, params[:file]).distribute
     if !result[:success]
       flash[:error] = result[:error]
+      redirect_to account_licenses_path
     else
       redirect_to account_licenses_path, notice: 'Assigned licenses successfully'
     end
