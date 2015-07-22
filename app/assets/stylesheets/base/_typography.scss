@@ -36,7 +36,6 @@ p {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: "Source Sans Pro";
-  font-weight: bold;
 }
 
 h1, h2, h3, h4, h5, h6, p {
@@ -45,7 +44,6 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 a {
-
   &:hover {
     text-decoration: none;
   }
@@ -59,4 +57,8 @@ ol {
   li {
     list-style-type: none;
   }
+}
+
+hr {
+  margin: 30px 0;
 }

@@ -1,0 +1,20 @@
+// _buttons.scss
+
+.btn {
+  font-family: "Source Sans Pro";
+  border-radius: 0;
+
+  @include transition(all, .3s);
+
+  &.btn-default {
+    background: #fff;
+
+    &:hover {
+      background: darken(#eee, 10%);
+    }
+  }
+}
+
+.upload-user-btn {
+  border: 1px dashed;
+}
