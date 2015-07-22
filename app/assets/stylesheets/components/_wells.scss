@@ -22,4 +22,20 @@
       color: #fff;
     }
   }
+
+  &.license-well {
+    background: transparent;
+    border: 2px solid #eee;
+    border-radius: 0;
+    box-shadow: none;
+
+    h5 {
+      margin: 0;
+      text-align: left;
+
+      span {
+        font-weight: bold;
+      }
+    }
+  }
 }

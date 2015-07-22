@@ -1,9 +1,17 @@
 <div class="container">
-  <div class="alert alert-info text-center">
-    <span class="glyphicon glyphicon-exclamation-sign"></span>
-    <strong>YOUR LICENSES:</strong>
-    <span><%= current_spree_user.purchased_licenses_count %> Purchased</span>
-    <span><%= current_spree_user.distributed_licenses_count %> Distributed</span>
-    <span><%= current_spree_user.remaining_licenses_count %> Remaining</span>
+  <h6>YOUR LICENSES:</h6>
+  <div class="well license-well">
+    <div class="row">
+      <div class="col-sm-4">
+        <h5>Purchased: <span><%= current_spree_user.purchased_licenses_count %></span></h5>
+      </div>
+      <div class="col-sm-4">
+        <h5>Distributed: <span><%= current_spree_user.distributed_licenses_count %></span></h5>
+      </div>
+      <div class="col-sm-4">
+        <h5>Remaining: <span><%= current_spree_user.remaining_licenses_count %></span></h5>
+      </div>
+    </div>
   </div>
+  <hr></hr>
 </div>
