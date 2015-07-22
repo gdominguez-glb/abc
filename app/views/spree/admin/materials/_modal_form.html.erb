@@ -1,0 +1,22 @@
+<div class="modal fade" id="new-material-modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Add Material for <%= @product.name %></h4>
+      </div>
+      <%= form_for([:admin, @material.product, @material]) do |f| %>
+        <%= f.hidden_field :parent_id %>
+        <div class="modal-body">
+            <div class="form-group">
+              <%= f.label :name %>
+              <%= f.text_field :name, class: 'form-control' %>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <%= f.submit 'Save', class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

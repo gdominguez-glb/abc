@@ -1,0 +1,13 @@
+<li class="list-group-item">
+  <%= material.name %>
+  <%= link_to 'Add Material', new_object_url(parent_id: material.id), class: 'btn btn-default btn-sm', remote: true %>
+  <%= link_to 'Edit', edit_admin_product_material_path(material.product, material), class: 'btn btn-default btn-sm', remote: true %>
+  <%= link_to 'Delete', admin_product_material_path(material.product, material), class: 'btn btn-default btn-sm', data: { confirm: 'Are you sure?', method: :delete } %>
+  <% if material.children.count > 0 %>
+    <ul class="list-group" style="margint-top: 10px;">
+      <% material.children.each do |sub_material| %>
+        <%= render partial: 'material_item', locals: { material: sub_material } %>
+      <% end %>
+    </ul>
+  <% end %>
+</li>

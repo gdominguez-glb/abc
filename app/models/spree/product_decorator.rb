@@ -12,6 +12,7 @@ Spree::Product.class_eval do
   belongs_to :grade_unit, class_name: 'Spree::GradeUnit'
 
   has_many :favorite_products, class_name: 'Spree::FavoriteProduct', dependent: :destroy
+  has_many :materials
 
   attr_accessor :new_image, :new_digital
 

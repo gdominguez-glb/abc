@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150728112112) do
+ActiveRecord::Schema.define(version: 20150729110608) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -543,6 +543,7 @@ ActiveRecord::Schema.define(version: 20150728112112) do
     t.integer  "children_count", default: 0
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+    t.integer  "position",       default: 0
   end
 
   create_table "spree_option_types", force: :cascade do |t|
