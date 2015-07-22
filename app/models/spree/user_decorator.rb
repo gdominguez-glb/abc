@@ -30,7 +30,7 @@ Spree::User.class_eval do
   has_many :licensed_products, -> { available }, class_name: 'Spree::LicensedProduct'
   has_many :products, through: :licensed_products, class_name: 'Spree::Product'
   has_many :product_distributions, foreign_key: :from_user_id, class_name: 'Spree::ProductDistribution'
-  has_many :to_users, through: :product_distributions, class_name: 'Spree::User'
+  has_many :to_users, -> { uniq }, through: :product_distributions, class_name: 'Spree::User'
   has_many :notifications
   has_many :activities
 
