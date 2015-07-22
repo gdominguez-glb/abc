@@ -52,6 +52,7 @@ class Spree::ProductDistribution < ActiveRecord::Base
       email: self.email,
       quantity: self.quantity,
       product: self.product,
+      expire_at: self.expire_at,
       product_distribution: self
     )
   end

@@ -19,6 +19,7 @@ class Spree::LicensedProduct < ActiveRecord::Base
       licensed_product: self,
       from_user:        self.user,
       product:          self.product,
+      expire_at:        self.expire_at,
       quantity:         quantity
     }.merge(user_or_email.is_a?(Spree::User) ? { to_user: user_or_email } : { email: user_or_email} )
     Spree::ProductDistribution.create(distribution_attrs)
