@@ -523,6 +523,18 @@ ActiveRecord::Schema.define(version: 20150728112112) do
 
   add_index "spree_log_entries", ["source_id", "source_type"], name: "index_spree_log_entries_on_source_id_and_source_type", using: :btree
 
+  create_table "spree_materials", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "product_id"
+    t.integer  "parent_id"
+    t.integer  "lft"
+    t.integer  "rgt"
+    t.integer  "depth",          default: 0
+    t.integer  "children_count", default: 0
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
   create_table "spree_option_types", force: :cascade do |t|
     t.string   "name",         limit: 100
     t.string   "presentation", limit: 100
