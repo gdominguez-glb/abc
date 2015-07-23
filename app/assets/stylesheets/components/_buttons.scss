@@ -8,9 +8,10 @@
 
   &.btn-default {
     background: #fff;
+    border: 2px solid #eee;
 
     &:hover {
-      background: darken(#eee, 10%);
+      background: #eee;
     }
   }
 }
