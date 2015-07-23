@@ -10,10 +10,10 @@
       <tr>
         <th><input type="checkbox" /></th>
         <th>User</th>
-        <th>District</th>
-        <th>Product</th>
+        <th>School/District</th>
+        <th>Product License(s)</th>
         <th>Last Active</th>
-        <th colspan='4'></th>
+        <th colspan='2'></th>
       </tr>
     </thead>
     <tbody>
@@ -22,25 +22,24 @@
           <td><input type="checkbox" /></td>
           <td><%= user.full_name %></td>
           <td><%= user.school_district.try(:name) %></td>
-          <td><%= user.products.map(&:name).join(', ') %></td>
+          <td>
+            <% user.licensed_products.each do |licensed_product| %>
+              <p><%= licensed_product.product.name %>(x<%= licensed_product.quantity %>)</p>
+            <% end %>
+          </td>
           <td><%= user.last_sign_in_at.strftime("%b %-d, %Y") %></td>
           <td>
-            <%= link_to 'Remind', new_account_reminder_path(email: user.email), class: 'btn btn-primary btn-sm', remote: true %>
-          </td>
-          <td>
-            <%= link_to 'Reassign', reassign_modal_account_licenses_path(from_user_id: user.id), class: 'btn btn-primary btn-sm', remote: true %>
+            <%= link_to 'Edit Licenses', edit_user_licenses_account_licenses_path(user_id: user.id), class: 'btn btn-default btn-sm', remote: true %>
           </td>
           <td>
             <a href="<%= user_stats_account_licenses_path(user_id: user.id)  %>" class="btn btn-primary btn-sm user-details-btn">Details</a>
-          </td>
-          <td>
-            <%= link_to 'Revoke', revoke_modal_account_licenses_path(revoke_user_id: user.id), class: 'btn btn-default btn-sm', remote: true %>
           </td>
         </tr>
       <% end %>
     </tbody>
   </table>
   <%= paginate @users %>
+  <%= link_to "Remind", new_account_reminder_path, remote: true, class: 'btn btn-primary pull-right' %>
 </div>
 <%= content_for :javascripts do %>
   <%= javascript_tag do %>

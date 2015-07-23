@@ -6,7 +6,7 @@
         <%= form_for @reminder, url: account_reminders_path, remote: true do |f| %>
           <div class="form-group">
             <label>Send Reminder To</label>
-            <%= f.text_field :recipient, class: 'form-control' %>
+            <%= f.select :recipient, ReminderForm::RECIPIENT_OPTIONS, {}, class: 'form-control' %>
           </div>
           <div class="form-group">
             <label>Content</label>

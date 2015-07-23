@@ -21,12 +21,10 @@ namespace :account do
       get :import_modal
       post :import
       get :users
-      get :reassign_modal
-      post :reassign
-      get :revoke_modal
-      post :revoke
       get :user_stats
       get :product_stats
+      get :edit_user_licenses
+      post :update_user_licenses
     end
   end
 

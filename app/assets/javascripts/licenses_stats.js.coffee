@@ -6,6 +6,6 @@ $(()->
       url: url
       data: { product_id: $(this).val() }
       success: (response)->
-        $el.closest('.container').find('.product-stats').replaceWith(response)
+        $el.closest('.product-stats-wrapper').find('.product-stats').replaceWith(response)
   )
 )

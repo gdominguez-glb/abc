@@ -1,5 +1,7 @@
 <%= render 'tabs' %>
-<%= render 'stats' %>
+<div class="container">
+  <%= render 'stats' %>
+</div>
 
 <div class="container">
   <%= form_for @assign_licenses_form, url: assign_account_licenses_path do |f| %>
