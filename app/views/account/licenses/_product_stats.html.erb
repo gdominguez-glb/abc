@@ -1,0 +1,13 @@
+<div class="well license-well product-stats">
+  <div class="row">
+    <div class="col-sm-4">
+      <h5>Purchased: <span><%= current_spree_user.purchased_licenses_count(product) %></span></h5>
+    </div>
+    <div class="col-sm-4">
+      <h5>Distributed: <span><%= current_spree_user.distributed_licenses_count(product) %></span></h5>
+    </div>
+    <div class="col-sm-4">
+      <h5>Remaining: <span><%= current_spree_user.remaining_licenses_count(product) %></span></h5>
+    </div>
+  </div>
+</div>

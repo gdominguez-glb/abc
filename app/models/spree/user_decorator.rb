@@ -88,16 +88,23 @@ Spree::User.class_eval do
     ['Educator', 'Administrator'].include?(self.title)
   end
 
-  def purchased_licenses_count
-    distributed_licenses_count + licensed_products.sum(:quantity)
+  def managed_products
+    @managed_products ||= begin
+      product_ids = licensed_products.pluck(:product_id) + product_distributions.pluck(:product_id)
+      Spree::Product.where(id: product_ids).order("name asc")
+    end
   end
 
-  def distributed_licenses_count
-    product_distributions.sum(:quantity)
+  def purchased_licenses_count(product)
+    distributed_licenses_count(product) + licensed_products.where(product_id: product.id).sum(:quantity)
   end
 
-  def remaining_licenses_count
-    purchased_licenses_count - distributed_licenses_count
+  def distributed_licenses_count(product)
+    product_distributions.where(product_id: product.id).sum(:quantity)
+  end
+
+  def remaining_licenses_count(product)
+    purchased_licenses_count(product) - distributed_licenses_count(product)
   end
 
   def logins_in_last_days(days)
