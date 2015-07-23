@@ -36,6 +36,7 @@ class Spree::LicensedProduct < ActiveRecord::Base
   def self.assign_license_to(user)
     Spree::LicensedProduct.where(email: user.email).find_each do |licensed_product|
       licensed_product.update(user: user)
+      licensed_product.product_distribution.update(to_user: user) if licensed_product.product_distribution
     end
   end
 
