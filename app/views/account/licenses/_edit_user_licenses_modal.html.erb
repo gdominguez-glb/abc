@@ -1,0 +1,35 @@
+<div class="modal fade" id="edit-user-licenses-modal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <%= render partial: 'stats' %>
+      </div>
+      <div class="modal-body">
+        <h2 class='text-center'>Edit <b><%= @user.full_name %></b> licenses...</h2>
+        <p class='text-center'>Add or remove licenses for <%= @user.full_name %></p>
+        <%= form_tag update_user_licenses_account_licenses_path(user_id: @user.id), remote: true do %>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Product Licensed</th>
+                <th>Number of Licenses</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @product_distributions.each do |distribution| %>
+                <tr class="distribution-row">
+                  <td><%= distribution.product.name %></td>
+                  <td><%= text_field_tag "product_distributions[#{distribution.id}][quantity]", distribution.quantity, class: 'distribution-quantity' %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+          <div class="modal-actions text-center">
+            <%= submit_tag 'Save Updates', class: 'btn btn-primary' %>
+            <a href="" data-dismiss="modal">Cancel</a>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

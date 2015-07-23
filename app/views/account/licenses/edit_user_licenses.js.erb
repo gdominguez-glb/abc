@@ -1,0 +1,5 @@
+$("body").append("<%= escape_javascript(render 'edit_user_licenses_modal') %>");
+$("#edit-user-licenses-modal").modal('show');
+$('#edit-user-licenses-modal').on('hidden.bs.modal', function (e) {
+  $('#edit-user-licenses-modal').remove();
+})

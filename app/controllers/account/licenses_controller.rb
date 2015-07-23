@@ -83,6 +83,21 @@ class Account::LicensesController < Account::BaseController
     render layout: false
   end
 
+  def edit_user_licenses
+    @user = current_spree_user.to_users.find_by(id: params[:user_id])
+    @product_distributions = Spree::ProductDistribution.where(to_user_id: @user.id).includes(:product)
+  end
+
+  def update_user_licenses
+    updater = LicensesUpdater.new(product_distributions: params[:product_distributions], user: current_spree_user)
+    if updater.valid?
+      updater.perform
+      @success = true
+    else
+      @error_full_messages = updater.errors.full_messages.join(' ')
+    end
+  end
+
   private
 
   def assign_licenses_params
