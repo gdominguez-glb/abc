@@ -11,7 +11,7 @@
         <th><input type="checkbox" /></th>
         <th>User</th>
         <th>School/District</th>
-        <th>Product</th>
+        <th>Product License(s)</th>
         <th>Last Active</th>
         <th colspan='2'></th>
       </tr>
@@ -22,7 +22,11 @@
           <td><input type="checkbox" /></td>
           <td><%= user.full_name %></td>
           <td><%= user.school_district.try(:name) %></td>
-          <td><%= user.products.map(&:name).join(', ') %></td>
+          <td>
+            <% user.licensed_products.each do |licensed_product| %>
+              <p><%= licensed_product.product.name %>(x<%= licensed_product.quantity %>)</p>
+            <% end %>
+          </td>
           <td><%= user.last_sign_in_at.strftime("%b %-d, %Y") %></td>
           <td>
             <%= link_to 'Edit Licenses', edit_user_licenses_account_licenses_path(user_id: user.id), class: 'btn btn-default btn-sm', remote: true %>

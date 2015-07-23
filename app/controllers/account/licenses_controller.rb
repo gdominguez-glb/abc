@@ -33,7 +33,7 @@ class Account::LicensesController < Account::BaseController
   end
 
   def users
-    @users = current_spree_user.to_users.includes(:school_district, :products).page(params[:page])
+    @users = current_spree_user.to_users.includes(:school_district, licensed_products: [:product]).page(params[:page])
   end
 
   def user_stats
