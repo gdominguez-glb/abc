@@ -1,5 +1,11 @@
 // _license-mgmt.scss
 
+.licenses {
+  .drawer-toggle {
+    display: none;
+  }
+}
+
 #error_explanation {
   margin: 30px 0;
 }

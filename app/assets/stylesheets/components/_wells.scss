@@ -4,7 +4,7 @@
   background: #ddd;
   margin-bottom: 20px;
   text-align: center;
-  padding: 20px;
+  padding: 15px;
   position: relative;
 
   .banner {
@@ -28,6 +28,17 @@
     border: 2px solid #eee;
     border-radius: 0;
     box-shadow: none;
+
+    .stat-container {
+
+      @media screen and (max-width: 768px) {
+        margin: 0 0 10px;
+
+        &:last-child {
+          margin: 0;
+        }
+      }
+    }
 
     h5 {
       margin: 0;

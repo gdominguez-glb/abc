@@ -4,15 +4,27 @@ input, label, .form-control, .form-group {
   font-family: "Source Sans Pro";
   font-weight: normal;
   font-size: 16px;
+  @include transition(all, .3s);
 }
 
 .form-control {
+  border: 0;
   border-radius: 0;
-  border-bottom-left-radius: 0px;
-  border-bottom-right-radius: 0px;
-  border-top-left-radius: 0px;
-  border-top-right-radius: 0px;
-  -webkit-appearance: none;
+  outline: 2px solid #eee;
+  @include box-shadow(none);
+
+  &:focus {
+    border: 0;
+    outline: 2px solid #66afe9;
+    outline-offset: 0;
+    @include box-shadow(none);
+  }
+}
+
+.inline-input {
+  display: inline-block;
+  width: auto;
+  margin: 0 5px;
 }
 
 // New User Form
