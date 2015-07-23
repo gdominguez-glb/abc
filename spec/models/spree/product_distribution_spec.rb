@@ -33,44 +33,4 @@ RSpec.describe Spree::ProductDistribution, type: :model do
       expect(licensed_product.reload.quantity).to eq(8)
     end
   end
-
-  describe "#revoke" do
-    it "reduce the quantity on distribution and licenses" do
-      distribution.revoke(1)
-      expect(distribution.reload.quantity).to eq(1)
-      expect(distribution.distributed_licensed_product.quantity).to eq(1)
-    end
-
-    it "give back quantity to original user" do
-      distribution.revoke(1)
-      expect(licensed_product.reload.quantity).to eq(9)
-    end
-
-    it "destroy distribution if all licenses are revoked" do
-      distribution.revoke(2)
-      expect(Spree::ProductDistribution.find_by(id: distribution)).to eq(nil)
-    end
-  end
-
-  describe "#reassign_to" do
-    it "return false if quantity is invalid" do
-      expect(distribution.reassign_to(reassign_user, 3)).to eq(false)
-    end
-
-    it "add new distribution to user" do
-      distribution.reassign_to(reassign_user, 1)
-      new_distribution = Spree::ProductDistribution.find_by(to_user_id: reassign_user.id)
-      expect(new_distribution.quantity).to eq(1)
-    end
-
-    it "reduce distribution on user" do
-      distribution.reassign_to(reassign_user, 1)
-      expect(distribution.reload.quantity).to eq(1)
-    end
-
-    it "destroy distribution if quantity become zero" do
-      distribution.reassign_to(reassign_user, 2)
-      expect(Spree::ProductDistribution.find_by(id: distribution.id)).to be_nil
-    end
-  end
 end

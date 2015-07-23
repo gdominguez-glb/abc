@@ -1,9 +1,0 @@
-<% if @from_user %>
-  $("body").append("<%= escape_javascript(render 'reassign_modal') %>");
-  $("#licenses-reassign-modal").modal('show');
-  $('#licenses-reassign-modal').on('hidden.bs.modal', function (e) {
-    $('#licenses-reassign-modal').remove();
-  })
-<% else %>
-  alert("Invalid user to reassign!");
-<% end %>
