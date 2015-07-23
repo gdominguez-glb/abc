@@ -18,8 +18,12 @@ class Account::LicensesController < Account::BaseController
     end
   end
 
+  def import_modal
+    @products = current_spree_user.products
+  end
+
   def import
-    result = Spree::LicenseDistributer.new(current_spree_user, params[:file]).distribute
+    result = Spree::LicenseDistributer.new({ user: current_spree_user, file: params[:file], product_id: params[:product_id] }).distribute
     if !result[:success]
       flash[:error] = result[:error]
       redirect_to account_licenses_path
