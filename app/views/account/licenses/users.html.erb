@@ -39,6 +39,7 @@
     </tbody>
   </table>
   <%= paginate @users %>
+  <%= link_to "Remind", new_account_reminder_path, remote: true, class: 'btn btn-primary pull-right' %>
 </div>
 <%= content_for :javascripts do %>
   <%= javascript_tag do %>

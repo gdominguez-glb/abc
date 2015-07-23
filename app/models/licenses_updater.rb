@@ -6,19 +6,33 @@ class LicensesUpdater
   validate :must_have_enough_quantity
 
   def perform
-    distributions_iterator do |distribution, quantity|
-      add_quantity = quantity - distribution.quantity
-      if quantity == 0
-        distribution.licensed_product.increase_quantity!(distribution.quantity)
-        distribution.destroy
-      elsif add_quantity > 0
-        distribution.increase_quantity!(add_quantity)
-        distribution.licensed_product.decrease_quantity!(add_quantity)
-      elsif add_quantity < 0
-        distribution.decrease_quantity!(add_quantity.abs)
-        distribution.licensed_product.increase_quantity!(add_quantity.abs)
+    Spree::ProductDistribution.transaction do
+      distributions_iterator do |distribution, quantity|
+        add_quantity = quantity - distribution.quantity
+        if quantity == 0
+          revoke_licenses(distribution)
+        elsif add_quantity > 0
+          increase_licenses_quantity(distribution, add_quantity)
+        elsif add_quantity < 0
+          decrease_licenses_quantity(distribution, add_quantity.abs)
+        end
       end
     end
+  end
+
+  def revoke_licenses(distribution)
+    distribution.licensed_product.increase_quantity!(distribution.quantity)
+    distribution.destroy
+  end
+
+  def increase_licenses_quantity(distribution, quantity)
+    distribution.increase_quantity!(quantity)
+    distribution.licensed_product.decrease_quantity!(quantity)
+  end
+
+  def decrease_licenses_quantity(distribution, quantity)
+    distribution.decrease_quantity!(quantity)
+    distribution.licensed_product.increase_quantity!(quantity)
   end
 
   def must_have_enough_quantity
