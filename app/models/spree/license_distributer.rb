@@ -1,10 +1,12 @@
 class Spree::LicenseDistributer
-  def initialize(user, file)
-    @user = user
-    @file = file
+  def initialize(attrs={})
+    @user       = attrs[:user]
+    @file       = attrs[:file]
+    @product_id = attrs[:product_id]
   end
 
   def distribute
+    return { success: false, error: "Product can't be blank" } if @product_id.blank?
     return { success: false, error: "File can't be blank" } if @file.blank?
     license_rows = case file_format
     when '.xlsx'
@@ -32,7 +34,7 @@ class Spree::LicenseDistributer
   end
 
   def parse_csv_rows
-    rows = CSV.read(@file.path)
+    rows   = CSV.read(@file.path)
     header = rows[0]
     (1..(rows.length-1)).to_a.map do |i|
       Hash[[header, rows[i]].transpose]
@@ -49,12 +51,12 @@ class Spree::LicenseDistributer
   end
 
   def construct_distribution(row)
-    to_user          = Spree::User.find_by(email: row['email'])
-    email            = to_user ? nil : row['email']
-    licensed_product = @user.licensed_products.available.find_by(product_id: row['product_id'])
+    to_user = Spree::User.find_by(email: row['email'])
+    email   = to_user ? nil : row['email']
+    licensed_product = @user.licensed_products.available.find_by(product_id: @product_id)
     Spree::ProductDistribution.new(
       from_user: @user,
-      product_id: row['product_id'],
+      product_id: @product_id,
       quantity: row['quantity'],
       to_user: to_user,
       email: email,
@@ -63,10 +65,8 @@ class Spree::LicenseDistributer
   end
 
   def validate_license_quantity(license_rows)
-    products_quantity = license_rows.inject({}) {|result, row| result[row['product_id']] = (result[row['product_id']] || 0) + row['quantity'].to_i; result }
-    products_quantity.each do |product_id, quantity|
-      return false if quantity > @user.licensed_products.available.where(product_id: product_id).sum(:quantity)
-    end
+    total_quantity = license_rows.map{|row| row['quantity'].to_i || 0 }.sum
+    return false if total_quantity > @user.licensed_products.available.where(product_id: @product_id).sum(:quantity)
     true
   end
 
