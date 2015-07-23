@@ -74,6 +74,11 @@ class Account::LicensesController < Account::BaseController
     @user = current_spree_user.to_users.find_by(id: params[:user_id])
   end
 
+  def product_stats
+    @product = current_spree_user.managed_products.find_by(id: params[:product_id])
+    render layout: false
+  end
+
   private
 
   def assign_licenses_params

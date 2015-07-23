@@ -1,17 +1,13 @@
 <div class="container">
-  <h6>YOUR LICENSES:</h6>
-  <div class="well license-well">
-    <div class="row">
-      <div class="col-sm-4">
-        <h5>Purchased: <span><%= current_spree_user.purchased_licenses_count %></span></h5>
-      </div>
-      <div class="col-sm-4">
-        <h5>Distributed: <span><%= current_spree_user.distributed_licenses_count %></span></h5>
-      </div>
-      <div class="col-sm-4">
-        <h5>Remaining: <span><%= current_spree_user.remaining_licenses_count %></span></h5>
-      </div>
-    </div>
-  </div>
+  <h6>
+    Your Licenses for: 
+    <% product = current_spree_user.managed_products.first %>
+    <% if current_spree_user.managed_products.count > 1 %>
+      <%= select_tag :product_id, options_from_collection_for_select(current_spree_user.managed_products, :id, :name), class: 'licenses-select' %>
+    <% else %>
+      <%= product.name %>
+    <% end %>
+  </h6>
+  <%= render partial: 'product_stats', locals: { product: product } %>
   <hr></hr>
 </div>

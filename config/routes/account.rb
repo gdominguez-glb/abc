@@ -26,6 +26,7 @@ namespace :account do
       get :revoke_modal
       post :revoke
       get :user_stats
+      get :product_stats
     end
   end
 
