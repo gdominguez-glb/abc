@@ -1,0 +1,61 @@
+<div class="modal fade" id="productContactForm" tabindex="-1" role="dialog" aria-labelledby="productContactFormTitle">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title" id="productContactFormTitle">Contact Us</h4>
+      </div>
+      <div class="modal-body">
+        <form class="label-test">
+          <div class="row">
+            <div class="form-group col-sm-6">
+              <label>First Name</label>
+              <input type="text" class="form-control" placeholder="First Name">
+            </div>
+            <div class="form-group col-sm-6">
+              <label>Last Name</label>
+              <input type="text" class="form-control" placeholder="Last Name">
+            </div>
+            <div class="form-group col-sm-6">
+              <label>Email</label>
+              <input type="email" class="form-control" placeholder="Email">
+            </div>
+            <div class="form-group col-sm-6">
+              <label>Cirriculum</label>
+              <select type="text" class="form-control">
+                <option>Math</option>
+                <option>Science</option>
+                <option>English</option>
+                <option>Art</option>
+              </select>
+            </div>
+            <div class="form-group col-xs-12">
+              <p>Which item(s) are you interested in purchasing?</p>
+              <div class="col-sm-4">
+                <label>
+                  <input type="checkbox" name="print">
+                  Print Products
+                </label>
+              </div>
+              <div class="col-sm-4">
+                <label>
+                  <input type="checkbox" name="bulk">
+                  Bulk Digital Products
+                </label>
+              </div>
+              <div class="col-sm-4">
+                <label>
+                  <input type="checkbox" name="mixed">
+                  Mixed(Both Print &amp; Digital Products
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="modal-actions text-center">
+            <%= submit_tag 'Submit', class: 'btn btn-primary' %>
+            <a href="" data-dismiss="modal">Cancel</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
