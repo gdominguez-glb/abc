@@ -37,7 +37,7 @@
       <div class="col-md-4">
         <div class="form-group">
           <label for="">Number of Licenses</label>
-          <%= f.select :licenses_number, options_for_select(AssignLicensesForm::LICENSES_NUMBER_OPTIONS, @assign_licenses_form.licenses_number), {}, class: 'form-control' %>
+          <%= f.text_field :licenses_number, class: 'form-control', placeholder: 'licenses number' %>
         </div>
       </div>
       <div class="col-md-4">

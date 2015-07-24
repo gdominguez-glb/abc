@@ -21,6 +21,12 @@ RSpec.describe AssignLicensesForm, type: :model do
       expect(assign_licenses_form.valid?).to eq(false)
       expect(assign_licenses_form.errors[:licenses_number]).not_to be_blank
     end
+
+    it "invalid with wrong quanity" do
+      assign_licenses_form.licenses_number = 'abc'
+      expect(assign_licenses_form.valid?).to eq(false)
+      expect(assign_licenses_form.errors[:licenses_number]).not_to be_blank
+    end
   end
 
   describe "#perform" do
