@@ -23,6 +23,12 @@ RSpec.describe Spree::LicensedProduct, type: :model do
       distribution = licensed_product.distribute_license('john@doe.com')
       expect(distribution.email).to eq('john@doe.com')
     end
+
+    it "increase quantity on exist distribution if exist same license distribution" do
+      distribution = licensed_product.distribute_license('john@doe.com', 2)
+      licensed_product.distribute_license('john@doe.com', 2)
+      expect(distribution.reload.quantity).to eq(4)
+    end
   end
 
   describe "set user from email" do
