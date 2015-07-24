@@ -15,14 +15,21 @@ class Spree::LicensedProduct < ActiveRecord::Base
   after_create :send_notification, :assign_user_admin_role
 
   def distribute_license(user_or_email, quantity=1)
+    user_attrs = user_or_email.is_a?(Spree::User) ? { to_user: user_or_email } : { email: user_or_email }
     distribution_attrs = {
       licensed_product: self,
       from_user:        self.user,
       product:          self.product,
       expire_at:        self.expire_at,
-      quantity:         quantity
-    }.merge(user_or_email.is_a?(Spree::User) ? { to_user: user_or_email } : { email: user_or_email} )
-    Spree::ProductDistribution.create(distribution_attrs)
+    }.merge(user_attrs)
+    distribution = Spree::ProductDistribution.find_or_initialize_by(distribution_attrs)
+    if distribution.new_record?
+      distribution.quantity = quantity
+      distribution.save
+    else
+      distribution.increase_quantity!(quantity)
+    end
+    distribution
   end
 
   def increase_quantity!(_quantity)
