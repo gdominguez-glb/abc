@@ -1,12 +1,6 @@
 class AssignLicensesForm
   include ActiveModel::Model
 
-  LICENSES_NUMBER_OPTIONS = [
-    ['1 License each user', 1],
-    ['2 Licenses each user', 2],
-    ['3 Licenses each user', 3],
-  ]
-
   EMAIL_REGEX = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
 
   attr_accessor :user, :licenses_recipients, :product_id, :licenses_number, :total
@@ -14,8 +8,9 @@ class AssignLicensesForm
   validate :emails_must_be_correct
   validate :must_have_enough_licenses_quantity
 
-  validates_presence_of :licenses_recipients, :product_id, :licenses_number
-  
+  validates_presence_of :licenses_recipients, :product_id
+  validates :licenses_number, presence: true, numericality: { greater_than: 0 }
+
   def perform
     licensed_product = @user.licensed_products.find_by(product_id: @product_id)
     if licensed_product
