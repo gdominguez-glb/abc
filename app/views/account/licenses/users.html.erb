@@ -25,8 +25,8 @@
           <td><%= user.full_name %></td>
           <td><%= user.school_district.try(:name) %></td>
           <td>
-            <% user.licensed_products.each do |licensed_product| %>
-              <p><%= licensed_product.product.name %>(x<%= licensed_product.quantity %>)</p>
+            <% user.licensed_products.group_by(&:product).each do |product, licenses| %>
+              <p><%= product.name %>(x<%= licenses.map(&:quantity).sum %>)</p>
             <% end %>
           </td>
           <td><%= user.last_sign_in_at.strftime("%b %-d, %Y") %></td>
