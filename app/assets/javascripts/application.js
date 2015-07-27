@@ -14,6 +14,7 @@
 //= require bootstrap-sprockets
 //= require jquery_ujs
 //= require jquery.validate
+//= require jquery.infinitescroll.min
 //= require moment
 //= require bootstrap-datetimepicker
 //= require select2

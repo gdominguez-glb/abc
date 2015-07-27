@@ -1,0 +1,17 @@
+<div class="container event-detail">
+  <h2><%= raw @event.title %></h2>
+  <div class="event-date">
+    <%= date_range(@event.start_date, @event.end_date, format: :short) if @event.start_date.present? && @event.end_date.present? %>
+  </div>
+  <h3>ABOUT THE SESSIONS</h3>
+  <hr />
+
+  <%= raw @event.description %>
+
+  <% if params[:page_slug].present? %>
+    <%= link_to 'Back', page_events_path(page_slug: params[:page_slug]), class: 'btn btn-primary' %>
+  <% else %>
+    <%= link_to 'Back', events_path, class: 'btn btn-primary' %>
+  <% end %>
+  <%= link_to "View More Details in Regonline", "http://regonline.com/#{@event.regonline_id}", class: 'btn btn-primary', target: '_blank' %>
+</div>

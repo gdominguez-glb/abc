@@ -1,15 +1,17 @@
 <div class="events-list">
-  <% if @events.length > 0 %>
-    <% @events.each do |event| %>
-      <div class="event">
-        <div class="event-date">
-          <%= date_range(event.start_date, event.end_date, format: :short) if event.start_date.present? && event.end_date.present? %>
-        </div>
-        <h4><%= strip_tags(event.title) %></h4>
-      </div>
-    <% end %>
-  <% else %>
-    <a href="#" class="btn btn-primary">Schedule New Event</a>
-  <% end %>
+  <%= render @events %>
+</div>
+<div class="hidden">
   <%= paginate @events %>
 </div>
+<%= content_for :javascripts do %>
+  <%= javascript_tag do %>
+    $(function(){
+      $(".events-list").infinitescroll({
+        navSelector: "ul.pagination",
+        nextSelector: "ul.pagination a[rel=next]",
+        itemSelector: ".events-list .event"
+      })
+    });
+  <% end %>
+<% end %>
