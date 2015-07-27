@@ -29,7 +29,7 @@
               <p><%= product.name %>(x<%= licenses.map(&:quantity).sum %>)</p>
             <% end %>
           </td>
-          <td><%= user.last_sign_in_at.strftime("%b %-d, %Y") %></td>
+          <td><%= user.last_active_date.strftime("%b %-d, %Y") rescue nil %></td>
           <td>
             <%= link_to 'Edit Licenses', edit_user_licenses_account_licenses_path(user_id: user.id), class: 'btn btn-default btn-sm', remote: true %>
           </td>

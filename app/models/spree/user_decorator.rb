@@ -110,4 +110,8 @@ Spree::User.class_eval do
   def logins_in_last_days(days)
     activities.login.in_last_days(days).count
   end
+
+  def last_active_date
+    activities.recent.first.try(:created_at) || self.created_at
+  end
 end
