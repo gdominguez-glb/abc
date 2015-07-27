@@ -1,15 +1,4 @@
 <div class="events-list">
-  <% if @events.length > 0 %>
-    <% @events.each do |event| %>
-      <div class="event">
-        <div class="event-date">
-          <%= date_range(event.start_date, event.end_date, format: :short) if event.start_date.present? && event.end_date.present? %>
-        </div>
-        <h4><%= strip_tags(event.title) %></h4>
-      </div>
-    <% end %>
-  <% else %>
-    <a href="#" class="btn btn-primary">Schedule New Event</a>
-  <% end %>
-  <%= paginate @events %>
+  <%= render @events %>
+  <%= render 'load_more' %>
 </div>

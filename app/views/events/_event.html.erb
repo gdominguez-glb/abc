@@ -1,0 +1,6 @@
+<div class="event">
+  <div class="event-date">
+    <%= date_range(event.start_date, event.end_date, format: :short) if event.start_date.present? && event.end_date.present? %>
+  </div>
+  <h4><%= strip_tags(event.title) %></h4>
+</div>
