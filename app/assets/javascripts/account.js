@@ -54,7 +54,7 @@ $(function(){
     if ($(".recent-history").outerHeight() > $(".account .content").outerHeight()) {
       $(".account-page").css("background", "#fff");
     } else {
-      $(".account-page").css("background", "#aaa");
+      $(".account-page").css("background", "#777");
     }
   }, 250);
 
