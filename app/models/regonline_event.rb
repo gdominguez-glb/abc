@@ -1,12 +1,16 @@
 class RegonlineEvent < ActiveRecord::Base
 
   geocoded_by :full_address
-  after_validation :geocode
+  after_validation :geocode, if: ->(obj){ obj.full_address_changed? }
 
   scope :with_filter, ->(filter) { where('client_event_id like ?', "%#{filter}%") }
 
   def full_address
     [location_name, city, state, country].reject(&:blank?).join(',')
+  end
+
+  def full_address_changed?
+    [:location_name, :city, :state, :country].map {|f| self.send("#{f}_changed?") }.any?
   end
 
   class << self
