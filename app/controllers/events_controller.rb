@@ -13,4 +13,8 @@ class EventsController < ApplicationController
     @event_page = @group_page.event_page
     @events = @event_page.events.page(params[:page])
   end
+
+  def show
+    @event = RegonlineEvent.find(params[:id])
+  end
 end
