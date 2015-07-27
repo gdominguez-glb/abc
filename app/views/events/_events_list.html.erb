@@ -1,4 +1,17 @@
 <div class="events-list">
   <%= render @events %>
-  <%= render 'load_more' %>
 </div>
+<div class="hidden">
+  <%= paginate @events %>
+</div>
+<%= content_for :javascripts do %>
+  <%= javascript_tag do %>
+    $(function(){
+      $(".events-list").infinitescroll({
+        navSelector: "ul.pagination",
+        nextSelector: "ul.pagination a[rel=next]",
+        itemSelector: ".events-list .event"
+      })
+    });
+  <% end %>
+<% end %>
