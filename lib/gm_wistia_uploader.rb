@@ -7,7 +7,7 @@ class GmWistiaUploader
 
   def upload_digital(digital)
     upload({
-      url:         digital.attachment.expiring_url(60*60),
+      url:         digital.attachment.expiring_url(60*60*24*7),
       name:        digital.variant.product.name,
       description: digital.variant.product.description
     })
