@@ -67,6 +67,6 @@ class Account::LicensesController < Account::BaseController
   end
 
   def load_products(user=current_spree_user)
-    @products = user.products
+    @products = user.products.distinct
   end
 end
