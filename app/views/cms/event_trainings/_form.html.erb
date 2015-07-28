@@ -1,0 +1,29 @@
+<%= form_for([:cms, @event_training], class: 'form') do |f| %>
+  <% if @event_training.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@event_training.errors.count, "error") %> prohibited this event_training from being saved:</h2>
+
+      <ul>
+      <% @event_training.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label "Training Type (this field mapping to ClientEventID in regonline events, for example: regonline filter,your training type, the words after first comma is training type)" %>
+    <%= f.text_field :training_type, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :content %>
+    <%= f.text_area :content, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.submit class: 'btn btn-primary' %>
+  </div>
+<% end %>

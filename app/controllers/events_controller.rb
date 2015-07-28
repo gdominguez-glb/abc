@@ -17,4 +17,8 @@ class EventsController < ApplicationController
   def show
     @event = RegonlineEvent.find(params[:id])
   end
+
+  def trainings
+    @event_trainings = EventTraining.all
+  end
 end
