@@ -57,7 +57,7 @@ class Spree::LicenseDistributer
     Spree::ProductDistribution.new(
       from_user: @user,
       product_id: @product_id,
-      quantity: row['quantity'],
+      quantity: row['quantity'].to_i,
       to_user: to_user,
       email: email,
       licensed_product: licensed_product
@@ -66,6 +66,7 @@ class Spree::LicenseDistributer
 
   def validate_license_quantity(license_rows)
     total_quantity = license_rows.map{|row| row['quantity'].to_i || 0 }.sum
+    return false if total_quantity == 0
     return false if total_quantity > @user.licensed_products.available.where(product_id: @product_id).sum(:quantity)
     true
   end
