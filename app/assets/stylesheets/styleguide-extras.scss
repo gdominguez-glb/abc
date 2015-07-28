@@ -1,0 +1,120 @@
+@import "application";
+
+.sg-example > h3 a {
+  border: none;
+}
+
+.sg-canvases {
+  border: 2px solid $gray-light;
+  background: #fff;
+}
+
+.sg-canvas {
+  border: none;
+  overflow: visible;
+
+  &.bg-light {
+    background: #fff;
+  }
+
+  > div {
+    > .margin {
+      margin: 5px 0 !important;
+    }
+  }
+}
+
+// Colors
+//
+// Easily make use of two color schemes: grayscale and semantic. Grayscale colors provide quick access to commonly used shades of black while semantic include various colors assigned to meaningful contextual values such as brand primary color, success, info, warning, and danger.
+
+/* ----------------------------------------------------------------------------
+ * Gray Scale:
+ *
+ * Styleguide 1.0
+ */
+
+.color-swatch {
+  float: left;
+  width: 100px;
+  height: 100px;
+
+  &.gray-darker {
+    background-color: $gray-darker;
+  }
+  &.gray-dark {
+    background-color: $gray-dark;
+  }
+  &.gray {
+    background-color: $gray;
+  }
+  &.gray-light {
+    background-color: $gray-light;
+  }
+  &.gray-lighter {
+    background-color: $gray-lighter;
+  }
+}
+
+/* ----------------------------------------------------------------------------
+ * Color Palette:
+ *
+ * Styleguide 1.0.1
+ */
+
+.color-swatch {
+  &.brand-primary {
+    background-color: $brand-primary;
+  }
+  &.brand-success {
+    background-color: $brand-success;
+  }
+  &.brand-info {
+    background-color: $brand-info;
+  }
+  &.brand-warning {
+    background-color: $brand-warning;
+  }
+  &.brand-danger {
+    background-color: $brand-danger;
+  }
+}
+
+/* ----------------------------------------------------------------------------
+ * Example grid:
+ *
+ * Styleguide 1.1
+ */
+
+ .show-grid {
+    div {
+      border: 1px solid $brand-primary;
+      background: rgba($brand-primary, .3);
+    }
+ }
+
+
+/* ----------------------------------------------------------------------------
+ * Icons
+ * Glyphicons
+ *
+ *Includes over 250 glyphs in font format from the Glyphicon Halflings set. Glyphicons Halflings are normally not available for free, but their creator has made them available for Bootstrap free of cost. As a thank you, we only ask that you include a link back to Glyphicons whenever possible.
+ *
+ * Styleguide 1.3
+ */
+
+.bs-glyphicons li {
+  float: left;
+  width: 12.5%;
+  padding: 10px;
+  line-height: 1.4;
+  text-align: center;
+  background-color: transparent;
+  border: 0;
+  font-size: 28px;
+
+  .glyphicon-class {
+    display: none;
+  }
+ }
+
