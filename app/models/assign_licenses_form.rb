@@ -16,7 +16,7 @@ class AssignLicensesForm
     if licensed_product
       emails.each do |email|
         user_or_email = Spree::User.find_by(email: email) || email
-        licensed_product.distribute_license(user_or_email, @licenses_number)
+        licensed_product.distribute_license(user_or_email, @licenses_number.to_i)
       end
     end
   end
