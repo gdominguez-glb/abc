@@ -29,10 +29,6 @@ Rails.application.configure do
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
 
-  # Compile assets for stlyguides in production
-  config.assets.precompile += %w( styleguide.css )
-  config.assets.precompile += %w( styleguide-extras.css )
-
   # Generate digests for assets URLs.
   config.assets.digest = true
 
