@@ -5,6 +5,7 @@ class ActionDispatch::Routing::Mapper
 end
 
 Rails.application.routes.draw do
+  mount Nkss::Engine => '/styleguides' if Rails.env.development?
   use_doorkeeper
   mount Spree::Core::Engine, at: '/store'
 
