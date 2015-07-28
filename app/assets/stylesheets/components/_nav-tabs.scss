@@ -1,4 +1,8 @@
-// _nav-tabs.scss
+/* ----------------------------------------------------------------------------
+* Nav Tabs
+*
+* Styleguide 1.8.1
+*/
 
 .nav-tabs {
   margin: 30px 0;
@@ -13,7 +17,7 @@
         font-weight: bold;
         color: #337ab7;
 
-        &:hover {
+        &:hover, &:focus {
           border: none;
           border-bottom: 4px solid #337ab7;
           background: transparent;
@@ -26,7 +30,7 @@
       border-radius: 0;
       border: none;
 
-      &:hover {
+      &:hover, &:focus {
         border: none;
         border-bottom: 4px solid #337ab7;
         background: transparent;

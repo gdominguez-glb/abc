@@ -1,0 +1,22 @@
+<!-- This is an example markup for a KSS section.
+The definition for `1.1` can be found in your app/assets/stylesheets/ folder. -->
+
+<%= kss_block '1.0' do %>
+  <div class="gray-scale">
+    <div class="color-swatch gray-darker"></div>
+    <div class="color-swatch gray-dark"></div>
+    <div class="color-swatch gray"></div>
+    <div class="color-swatch gray-light"></div>
+    <div class="color-swatch gray-lighter"></div>
+  </div>
+<% end %>
+
+<%= kss_block '1.0.1' do %>
+  <div class="colors">
+    <div class="color-swatch brand-primary"></div>
+    <div class="color-swatch brand-success"></div>
+    <div class="color-swatch brand-info"></div>
+    <div class="color-swatch brand-warning"></div>
+    <div class="color-swatch brand-danger"></div>
+  </div>
+<% end %>

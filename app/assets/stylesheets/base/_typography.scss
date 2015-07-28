@@ -1,9 +1,21 @@
 // _typography.scss
+
+/* ----------------------------------------------------------------------------
+* Font families
+*
+* Styleguide 1.2
+*/
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,700|Roboto+Slab);
 
-html, body {
-  font-family: "Roboto Slab";
-  font: 100%/1.5
+
+/* ----------------------------------------------------------------------------
+* Headlines
+*
+* Styleguide 1.2.1
+*/
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Source Sans Pro";
 }
 
 h1 {
@@ -30,18 +42,67 @@ h6 {
   font-size: 1.25em
 }
 
-p {
-  font-size: 1em;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: "Source Sans Pro";
-}
-
 h1, h2, h3, h4, h5, h6, p {
   margin: 0 0 15px;
   color: #333;
 }
+
+
+/* ----------------------------------------------------------------------------
+* Body Copy
+*
+* Styleguide 1.2.2
+*/
+
+html, body {
+  font-family: "Roboto Slab";
+  font: 100%/1.5
+}
+
+p {
+  font-size: 1em;
+}
+
+/* ----------------------------------------------------------------------------
+* Lead Copy
+*Default Bootstrap Lead
+*
+* Styleguide 1.2.3
+*/
+
+
+/* ----------------------------------------------------------------------------
+* Contextual Copy
+* Uses Bootstraps $brand-{context} coloring. Will update if "$brand" color variables are updated
+*
+* Styleguide 1.2.4
+*/
+
+/* ----------------------------------------------------------------------------
+* Blockquote
+* Uses Bootstraps standard block quote styling
+*
+* Styleguide 1.2.5
+*/
+blockquote {
+  footer {
+    background: transparent;
+  }
+}
+
+/* ----------------------------------------------------------------------------
+* Blockquote w/ Attribution
+* Uses Bootstraps standard block quote styling
+*
+* Styleguide 1.2.5.1
+*/
+
+/* ----------------------------------------------------------------------------
+* Blockquote w/ Attribution Reversed
+* Uses Bootstraps standard block quote styling
+*
+* Styleguide 1.2.5.2
+*/
 
 a {
   &:hover {
@@ -61,4 +122,12 @@ ol {
 
 hr {
   margin: 30px 0;
+}
+
+.serif {
+  font-family: "Roboto Slab";
+}
+
+.sans-serif {
+  font-family: "Source Sans Pro"
 }

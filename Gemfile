@@ -64,6 +64,8 @@ gem 'geocoder'
 
 gem 'time_will_tell'
 
+gem 'nkss-rails', github: 'nadarei/nkss-rails'
+
 group :development do
   gem 'quiet_assets'
   gem 'letter_opener'
