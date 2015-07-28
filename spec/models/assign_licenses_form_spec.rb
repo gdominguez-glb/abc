@@ -27,6 +27,12 @@ RSpec.describe AssignLicensesForm, type: :model do
       expect(assign_licenses_form.valid?).to eq(false)
       expect(assign_licenses_form.errors[:licenses_number]).not_to be_blank
     end
+
+    it "valid if more than licensed products of users match the quantity" do
+      create(:spree_licensed_product, user: school_admin_user, product: product, quantity: 12)
+      assign_licenses_form.licenses_number = '21'
+      expect(assign_licenses_form.valid?).to eq(true)
+    end
   end
 
   describe "#perform" do
@@ -39,6 +45,18 @@ RSpec.describe AssignLicensesForm, type: :model do
     it "reduce licenses quantity on school admin user" do
       assign_licenses_form.perform
       expect(licensed_product.reload.quantity).to eq(9)
+    end
+
+    context "quantity in multiple licenses" do
+      let!(:another_licensed_product) { create(:spree_licensed_product, user: school_admin_user, product: product, quantity: 5) }
+
+      it "able to assign licenses from two licenses" do
+        assign_licenses_form.licenses_number = 13
+        assign_licenses_form.perform
+
+        expect(licensed_product.reload.quantity).to eq(0)
+        expect(another_licensed_product.reload.quantity).to eq(2)
+      end
     end
   end
 end

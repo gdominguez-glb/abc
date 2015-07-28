@@ -4,11 +4,11 @@ class Spree::LicensedProduct < ActiveRecord::Base
   belongs_to :user, class_name: 'Spree::User'
   belongs_to :product_distribution, class_name: 'Spree::ProductDistribution'
 
-  scope :available, -> { where("spree_licensed_products.expire_at is null or spree_licensed_products.expire_at > ?", Time.now) }
+  scope :available, -> { where("(spree_licensed_products.expire_at is null or spree_licensed_products.expire_at > ?) and (spree_licensed_products.quantity > 0)", Time.now).order("expire_at asc") }
 
   validates_presence_of :product
   validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, allow_blank: true
-  validates_numericality_of :quantity, :greater_than => 0
+  validates_numericality_of :quantity
 
   before_create :set_expire_at, :set_user
 
