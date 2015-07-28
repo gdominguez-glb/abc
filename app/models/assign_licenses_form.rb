@@ -12,17 +12,24 @@ class AssignLicensesForm
   validates :licenses_number, presence: true, numericality: { greater_than: 0 }
 
   def perform
-    licensed_product = @user.licensed_products.find_by(product_id: @product_id)
-    if licensed_product
-      emails.each do |email|
-        user_or_email = Spree::User.find_by(email: email) || email
-        licensed_product.distribute_license(user_or_email, @licenses_number.to_i)
+    licensed_products = @user.licensed_products.where(product_id: @product_id).to_a
+    emails.each do |email|
+      user_or_email = Spree::User.find_by(email: email) || email
+      current_licenses_number = @licenses_number.to_i
+      licensed_products.each do |licensed_product|
+        if licensed_product.quantity >= current_licenses_number
+          licensed_product.distribute_license(user_or_email, current_licenses_number)
+          break
+        else
+          current_licenses_number -= licensed_product.quantity
+          licensed_product.distribute_license(user_or_email, licensed_product.quantity)
+        end
       end
     end
   end
 
   def must_have_enough_licenses_quantity
-    licenses_quantity = @user.licensed_products.find_by(product_id: @product_id).try(:quantity) || 0
+    licenses_quantity = @user.licensed_products.where(product_id: @product_id).sum(:quantity)
     if licenses_quantity < emails.count * @licenses_number.to_i
       self.errors.add(:licenses_number, "exceed your licenses quantity")
     end

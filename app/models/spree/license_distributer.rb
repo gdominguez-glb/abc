@@ -3,6 +3,8 @@ class Spree::LicenseDistributer
     @user       = attrs[:user]
     @file       = attrs[:file]
     @product_id = attrs[:product_id]
+
+    @licensed_products = @user.licensed_products.available.where(product_id: @product_id).to_a
   end
 
   def distribute
@@ -44,30 +46,41 @@ class Spree::LicenseDistributer
   def distribute_licenses(license_rows)
     records = license_rows.map do |row|
       construct_distribution(row)
-    end
+    end.flatten
     Spree::ProductDistribution.transaction do
       records.each{|r| r.save }
     end
   end
 
   def construct_distribution(row)
-    to_user = Spree::User.find_by(email: row['email'])
-    email   = to_user ? nil : row['email']
-    licensed_product = @user.licensed_products.available.find_by(product_id: @product_id)
-    Spree::ProductDistribution.new(
-      from_user: @user,
-      product_id: @product_id,
-      quantity: row['quantity'].to_i,
-      to_user: to_user,
-      email: email,
-      licensed_product: licensed_product
-    )
+    to_user          = Spree::User.find_by(email: row['email'])
+    email            = to_user ? nil : row['email']
+    current_quantity = row['quantity'].to_i
+    records          = []
+    @licensed_products.each do |licensed_product|
+      next if licensed_product.quantity == 0
+      distribution_attrs = {
+        from_user:        @user,
+        product_id:       @product_id,
+        to_user:          to_user,
+        email:            email,
+        licensed_product: licensed_product
+      }
+      if licensed_product.quantity >= current_quantity
+        records << Spree::ProductDistribution.new(distribution_attrs.merge(quantity: current_quantity))
+        break
+      else
+        current_quantity -= licensed_product.quantity
+        records << Spree::ProductDistribution.new(distribution_attrs.merge(quantity: licensed_product.quantity))
+      end
+    end
+    records
   end
 
   def validate_license_quantity(license_rows)
     total_quantity = license_rows.map{|row| row['quantity'].to_i || 0 }.sum
     return false if total_quantity == 0
-    return false if total_quantity > @user.licensed_products.available.where(product_id: @product_id).sum(:quantity)
+    return false if total_quantity > @licensed_products.sum(&:quantity)
     true
   end
 
