@@ -26,7 +26,6 @@ Rails.application.routes.draw do
   get 'search', to: 'search#index'
 
   get 'events', to: 'events#index'
-  get 'events/:id', to: 'events#show', as: :event
 
   resources :video_gallery, only: [:index, :show] do
     member do

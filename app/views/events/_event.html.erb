@@ -2,5 +2,5 @@
   <div class="event-date">
     <%= date_range(event.start_date, event.end_date, format: :short) if event.start_date.present? && event.end_date.present? %>
   </div>
-  <h4><%= link_to strip_tags(event.title), event_path(event, page_slug: params[:page_slug]) %></h4>
+  <h4><%= link_to strip_tags(event.title), "http://regonline.com/#{event.regonline_id}", target: '_blank' %></h4>
 </div>
