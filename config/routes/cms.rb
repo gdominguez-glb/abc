@@ -26,4 +26,5 @@ namespace :cms do
   end
   resources :notification_triggers
   resources :curriculums
+  resources :event_trainings
 end
