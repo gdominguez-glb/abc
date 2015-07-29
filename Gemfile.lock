@@ -719,3 +719,6 @@ DEPENDENCIES
   whenever
   wistia-api
   zeroclipboard-rails
+
+BUNDLED WITH
+   1.10.2

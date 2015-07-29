@@ -90,6 +90,7 @@ blockquote {
   }
 }
 
+
 /* ----------------------------------------------------------------------------
 * Blockquote w/ Attribution
 * Uses Bootstraps standard block quote styling
@@ -105,6 +106,8 @@ blockquote {
 */
 
 a {
+  @include transition(all, .3s);
+
   &:hover {
     text-decoration: none;
   }

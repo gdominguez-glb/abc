@@ -5,22 +5,13 @@
 */
 
 
-input, label, .form-control, .form-group {
-  font-family: "Source Sans Pro";
-  font-weight: normal;
-  font-size: 16px;
-  @include transition(all, .3s);
-}
-
 .form-control {
   border: 0;
   border-radius: 0;
-  outline: 2px solid #eee;
   @include box-shadow(none);
 
   &:focus {
     border: 0;
-    outline: 2px solid #66afe9;
     outline-offset: 0;
     @include box-shadow(none);
   }
