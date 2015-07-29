@@ -1,9 +1,6 @@
 <% content_for :body_class, "licenses" %>
 
 <%= render 'tabs' %>
-<div class="container">
-  <%= render 'stats' %>
-</div>
 
 <div class="container">
   <%= form_for @assign_licenses_form, url: assign_account_licenses_path do |f| %>
@@ -23,17 +20,12 @@
         </ul>
       </div>
     <% end %>
+    <%= render 'stats' %>
     <div class="form-group">
       <label for="">Licenses Recipient(s)</label>
       <%= f.text_field :licenses_recipients, class: 'form-control', placeholder: 'separate emails with comma' %>
     </div>
     <div class="row">
-      <div class="col-md-4">
-        <div class="form-group">
-          <label for="">Product to License</label>
-          <%= f.collection_select :product_id, @products, :id, :name, {}, class: 'form-control' %>
-        </div>
-      </div>
       <div class="col-md-4">
         <div class="form-group">
           <label for="">Number of Licenses</label>
@@ -46,11 +38,14 @@
           <%= f.text_field :total, class: 'form-control', readonly: true %>
         </div>
       </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for=""></label>
+          <%= link_to 'Upload Users From File +', import_modal_account_licenses_path, class: 'btn btn-default form-control upload-user-btn', remote: true %>
+        </div>
+      </div>
     </div>
     <div class="row text-center license-actions">
-      <div class="text-center">
-        <%= link_to 'Upload Users From File +', import_modal_account_licenses_path, class: 'btn btn-default upload-user-btn', remote: true %>
-      </div>
       <div>
         <%= f.submit 'Assign License(s)', class: 'btn btn-primary' %>
       </div>
