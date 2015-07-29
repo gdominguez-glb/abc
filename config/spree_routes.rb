@@ -32,6 +32,10 @@ spree_routes_overrides = Proc.new do
         post :import
       end
     end
+
+    resources :products do
+      resources :materials
+    end
   end
   patch '/simple_cart', :to => 'orders#update_simple_cart', :as => :update_simple_cart
   post '/products/:id/favorite', to: 'products#favorite', as: :favorite_product

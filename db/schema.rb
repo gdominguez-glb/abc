@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150728112112) do
+ActiveRecord::Schema.define(version: 20150729110608) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -522,6 +522,29 @@ ActiveRecord::Schema.define(version: 20150728112112) do
   end
 
   add_index "spree_log_entries", ["source_id", "source_type"], name: "index_spree_log_entries_on_source_id_and_source_type", using: :btree
+
+  create_table "spree_material_files", force: :cascade do |t|
+    t.integer  "material_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
+  end
+
+  create_table "spree_materials", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "product_id"
+    t.integer  "parent_id"
+    t.integer  "lft"
+    t.integer  "rgt"
+    t.integer  "depth",          default: 0
+    t.integer  "children_count", default: 0
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.integer  "position",       default: 0
+  end
 
   create_table "spree_option_types", force: :cascade do |t|
     t.string   "name",         limit: 100
@@ -1326,6 +1349,7 @@ ActiveRecord::Schema.define(version: 20150728112112) do
     t.string   "preference_video_player"
     t.string   "title"
     t.string   "phone"
+    t.integer  "ee_id"
   end
 
   add_index "spree_users", ["deleted_at"], name: "index_spree_users_on_deleted_at", using: :btree

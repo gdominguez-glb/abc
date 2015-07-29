@@ -1,0 +1,5 @@
+$("body").append("<%= escape_javascript(render 'modal_form') %>")
+$('#new-material-modal').modal('show')
+$('#new-material-modal').on('hidden.bs.modal', function (e) {
+  $('#new-material-modal').remove();
+})
