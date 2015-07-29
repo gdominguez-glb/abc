@@ -3,12 +3,10 @@ class Account::LicensesController < Account::BaseController
 
   def index
     @assign_licenses_form = AssignLicensesForm.new(total: 0)
-    load_products
   end
 
   def assign
-    @assign_licenses_form = AssignLicensesForm.new(assign_licenses_params.merge(user: current_spree_user))
-    load_products
+    @assign_licenses_form = AssignLicensesForm.new(assign_licenses_params.merge(user: current_spree_user, product_id: params[:product_id]))
     if @assign_licenses_form.valid?
       @assign_licenses_form.perform
       flash[:success] = "Successully assigned licenses to recipients"
@@ -63,10 +61,6 @@ class Account::LicensesController < Account::BaseController
   private
 
   def assign_licenses_params
-    params.require(:assign_licenses_form).permit(:licenses_recipients, :product_id, :licenses_number, :total)
-  end
-
-  def load_products(user=current_spree_user)
-    @products = user.products.distinct
+    params.require(:assign_licenses_form).permit(:licenses_recipients, :licenses_number, :total)
   end
 end
