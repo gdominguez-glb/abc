@@ -5,6 +5,10 @@
     <div class='row'>
       <h2>Curriculums</h2>
       <%= link_to 'Create new curriculum', new_cms_curriculum_path, class: 'btn btn-primary' %>
+
+      <div class="alert alert-info" role="alert" style="margin-top: 10px;">
+        To make a new curriculum show up in nav, you also need to create a new page in <%= link_to 'Page section', '/cms/pages' %> that belong to new curriculum and this page need to have 'Show in nav' and 'Group root' checked. (check Overview page for example.)
+      </div>
       <table class='table table-responsive table-striped table-hover'>
         <thead>
           <tr>
