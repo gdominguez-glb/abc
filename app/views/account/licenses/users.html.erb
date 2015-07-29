@@ -25,7 +25,7 @@
           <td><%= user.full_name %></td>
           <td><%= user.school_district.try(:name) %></td>
           <td>
-            <% user.licensed_products.group_by(&:product).each do |product, licenses| %>
+            <% user.licensed_products_from(current_spree_user).group_by(&:product).each do |product, licenses| %>
               <p><%= product.name %>(x<%= licenses.map(&:quantity).sum %>)</p>
             <% end %>
           </td>
