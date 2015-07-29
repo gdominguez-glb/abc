@@ -16,8 +16,9 @@
     <%= f.text_field :title, class: 'form-control' %>
   </div>
   <div class="form-group">
-    <%= f.label :url %>
+    <%= f.label "Medium publication url" %>
     <%= f.text_field :url, class: 'form-control' %>
+    <p class="help-block">This is url of medium publication, for example: https://medium.com/great-minds-reports</p>
   </div>
   <div class="form-group">
     <%= f.label :blog_type %>
@@ -28,8 +29,9 @@
     <%= f.collection_select :page_id, Page.show_in_top_navigation, :id, :group_name, { prompt: true }, class: 'form-control' %>
   </div>
   <div class="form-group">
-    <%= f.label :slug %>
+    <%= f.label "Blog Unique url" %>
     <%= f.text_field :slug, class: 'form-control' %>
+    <p class="help-block">For example: with 'report' enterred, if this is a global blog, the url of this blog will be /blog/global/report, if this is belong to math curriculum, the url will be /math/blog/report</p>
   </div>
   <div class="form-group">
     <%= f.label :position %>
