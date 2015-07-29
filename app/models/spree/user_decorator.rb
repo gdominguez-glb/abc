@@ -40,6 +40,10 @@ Spree::User.class_eval do
 
   after_create :assign_licenses
 
+  def licensed_products_from(school_district_admin)
+    licensed_products.joins(:product_distribution).where({spree_product_distributions: { from_user_id: school_district_admin.id }}).uniq
+  end
+
   def assign_user_role
     if spree_roles.empty?
       spree_roles << Spree::Role.user
