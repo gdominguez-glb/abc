@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :school_district do
-    name "MyString"
+    name 'MyString'
     state_id 1
-    place_type "MyString"
+    place_type SchoolDistrict.place_types[:school]
   end
 end
