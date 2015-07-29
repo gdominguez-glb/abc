@@ -6,17 +6,37 @@
 
 .btn {
   font-family: "Source Sans Pro";
+  padding: 15px;
   border-radius: 0;
+  border: 0;
 
   @include transition(all, .3s);
 
   &.btn-default {
     background: #fff;
-    border: 2px solid #eee;
+    outline: 2px solid #eee;
 
     &:hover {
       background: #eee;
     }
+
+    &.no-border {
+      border: 0;
+    }
+  }
+
+  &.btn-primary {
+    border: 0;
+    background-color: $brand-primary;
+
+    &:hover {
+      background-color: $primary-hover;
+    }
+  }
+
+  &.header-form-control {
+    height: 34px;
+    padding: 6px 12px;
   }
 }
 
@@ -40,7 +60,3 @@
 *
 * Styleguide 1.4.3
 */
-
-.upload-user-btn {
-  border: 1px dashed;
-}

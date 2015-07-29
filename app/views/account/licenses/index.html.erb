@@ -4,7 +4,7 @@
 
 <div class="container">
   <%= form_for @assign_licenses_form, url: assign_account_licenses_path do |f| %>
-    <div class="text-center">
+    <div class="text-center license-page-description">
       <h2>Ready to assign some licenses ..</h2>
       <h6>Assign one or more licenses to anyone you want</h6>
     </div>
@@ -39,10 +39,9 @@
         </div>
       </div>
       <div class="col-md-4">
-        <div class="form-group">
-          <label for=""></label>
-          <%= link_to 'Upload Users From File +', import_modal_account_licenses_path, class: 'btn btn-default form-control upload-user-btn', remote: true %>
-        </div>
+        <%= link_to import_modal_account_licenses_path, class: 'btn btn-default upload-user-btn no-border', remote: true do %>
+          Upload Users From File <span class="glyphicon glyphicon-plus"></span>
+        <% end %>
       </div>
     </div>
     <div class="row text-center license-actions">

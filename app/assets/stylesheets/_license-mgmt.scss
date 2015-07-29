@@ -6,16 +6,33 @@
   }
 }
 
+.license-page-description {
+  padding: 15px 0 30px;
+}
+
 #error_explanation {
   margin: 30px 0;
 }
 
+.upload-user-btn {
+  position: relative;
+  top: 27px;
+  width: 100%;
+  padding: 17px 15px 15px;
+  border: 0;
+  outline: 2px dashed #eee;
+
+  span {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    font-size: 18px;
+    @include translate(0, -50%);
+  }
+}
+
 .license-actions {
   padding: 60px 0;
-
-  .upload-user-btn {
-    margin: 0 0 60px;
-  }
 
   .btn {
     padding: 15px 30px;
@@ -23,7 +40,7 @@
   }
 
   input {
-    margin-bottom: 5px;
+    margin-bottom: 15px;
   }
 }
 
@@ -49,5 +66,28 @@
     .btn {
       font-size: 20px;
     }
+  }
+}
+
+.reminder-btn {
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+  width: 75px;
+  height: 75px;
+  padding-top: 16px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
+
+  span {
+    display: block;
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .upload-user-btn {
+    top: 10px;
   }
 }

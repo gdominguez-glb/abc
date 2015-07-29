@@ -20,6 +20,10 @@
 
 .nav-search {
   float: right;
+
+  .btn {
+    margin-left: 5px;
+  }
 }
 
 .navbar-header {
@@ -44,22 +48,33 @@
       }
     }
 
-    .navbar-nav>li {
+    .navbar-nav {
       float: none;
-    }
 
-    .navbar-nav>li>a {
-      padding: 15px;
+      >li {
+        float: none;
+
+        > a {
+          padding: 15px;
+        }
+      }
     }
 
     .nav-search {
       float: none;
       margin: 0;
-      padding: 15px 0;
+      padding: 15px;
       border-bottom: 2px solid #eee;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .nav-search {
+      padding: 15px 0;
 
       .btn {
         width: 100%;
+        margin: 10px 0 0;
       }
     }
   }

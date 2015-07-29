@@ -3,38 +3,12 @@
 
 // Buttons
 .btn {
-  &.btn-primary {
-    background-color: $brand-primary;
 
-    &:hover {
-      background-color: darken($brand-primary, 10%);
-    }
-  }
 }
 
 // Links
 a {
-  color: $brand-info;
 
-  &:hover {
-    color: darken($brand-info, 10%);
-  }
-}
-
-// Forms
-input, label, .form-control, .form-group {
-  font-family: "Source Sans Pro";
-  font-weight: normal;
-  font-size: 16px;
-  @include transition(all, .3s);
-}
-
-.form-control {
-  outline: 2px solid $gray-lighter;
-
-  &:focus {
-    outline: 2px solid $brand-info;
-  }
 }
 
 // Account-page
