@@ -1,8 +1,8 @@
 <% @body_id = 'login' %>
-<div class="col-md-6 <%= request.path == spree.login_path ? "col-md-offset-3" : "" %>">
+<div class="col-md-6 login-container <%= request.path == spree.login_path ? "col-md-offset-3" : "" %>">
   <div id="sign-in-wrapper">
       <h3>Sign in</h3>
-      <div id="existing-customer" class="panel-body" data-hook="login">
+      <div id="existing-customer" data-hook="login">
           <% if flash[:alert] %>
             <div class="alert alert-danger"><%= flash[:alert] %></div>
           <% end %>
@@ -11,10 +11,9 @@
       </div>
   </div>
   <div class="text-center signup-link-wrapper">
-    Don't have an account?
-    <%= link_to 'Sign Up', spree.signup_path %>
+    <p>Don't have an account? <%= link_to 'Sign Up', spree.signup_path %></p>
   </div>
-  <div class="sign-in-forgot-password-wrapper">
-    <%= link_to Spree.t(:forgot_password), spree.recover_password_path %>
+  <div class=" text-center sign-in-forgot-password-wrapper">
+    <p><%= link_to Spree.t(:forgot_password), spree.recover_password_path %></p>
   </div>
 </div>

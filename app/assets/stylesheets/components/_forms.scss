@@ -16,14 +16,11 @@ input, label, .form-control, .form-group {
   padding: 15px;
   border: 0;
   border-radius: 0;
-  outline: 2px solid $gray-lighter;
-  @include box-shadow(none);
+  box-shadow: inset 0 0 0 2px $gray-lighter;
 
   &:focus {
     border: 0;
-    outline-offset: 0;
-    outline: 2px solid $brand-info;
-    @include box-shadow(none);
+    box-shadow: inset 0 0 0 2px $brand-info;
   }
 
   &.header-form-control {
@@ -36,6 +33,32 @@ input, label, .form-control, .form-group {
   display: inline-block;
   width: auto;
   margin: 0 5px;
+}
+
+.has-icon-addon {
+  position: relative;
+
+  input {
+    padding-left: 50px;
+
+    &:focus {
+
+      + .glyphicon {
+          color: $brand-info;
+          border-right: 2px solid $brand-info;
+      }
+    }
+  }
+
+  .glyphicon {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    padding: 5px 10px;
+    border-right: 2px solid $gray-light;
+    @include translate(0, -50%);
+    @include transition(all, .3s);
+  }
 }
 
 // New User Form
