@@ -1,0 +1,5 @@
+$("body").append("<%= escape_javascript(render 'file_list_modal') %>");
+$('#material-files-modal').modal('show')
+$('#material-files-modal').on('hidden.bs.modal', function (e) {
+  $('#material-files-modal').remove();
+})
