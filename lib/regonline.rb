@@ -25,10 +25,10 @@ class Regonline
     process_response(response)
   end
 
-  EVENTS_API = 'https://www.regonline.com/api/default.asmx/GetEventWebsite'
+  EVENT_WEBSITE_API = 'https://www.regonline.com/api/default.asmx/GetEventWebsite'
   def get_event_description(event_id)
     params = { eventID: event_id }
-    response = HTTParty.get(EVENTS_API, query: params, headers: default_headers)
+    response = HTTParty.get(EVENT_WEBSITE_API, query: params, headers: default_headers)
     response.parsed_response['ResultsOfListOfEventWebsite']['Data']['APIEventWebsite']['SummaryTab']['CustomContent'] rescue nil
   end
 
