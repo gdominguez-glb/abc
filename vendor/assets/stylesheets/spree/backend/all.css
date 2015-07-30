@@ -7,7 +7,11 @@
 
  *= require_self
  *= require_tree .
- *= require application
  *= require spree/backend/spree_digital
  *= require spree/backend/spree_better_terms_and_conditions
+ *= require application
 */
+
+input.form-control:focus {
+  box-shadow: inset 0 0 0 2px #5bc0de;
+}

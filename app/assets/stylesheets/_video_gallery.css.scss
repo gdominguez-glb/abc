@@ -24,7 +24,7 @@
 
 .video-product-wrapper {
   position: relative;
-  height: 425px;
+  height: 450px;
   padding: 15px;
   margin: 0 0 15px;
   @include transition(all, $transitionTiming);
@@ -201,8 +201,12 @@
   }
 }
 
-.video-product-name a {
-  color: #000;
+.video-product-name {
+  margin-top: 15px;
+
+  a {
+    color: #333;
+  }
 }
 
 .video-product-categories {
