@@ -1,0 +1,5 @@
+$("body").append("<%= escape_javascript(render 'modal_form') %>")
+$("#download-product-modal").modal('show');
+$('#download-product-modal').on('hidden.bs.modal', function (e) {
+  $("#download-product-modal").remove();
+})
