@@ -17,9 +17,9 @@
   <div class="collapse navbar-collapse pull-left" id="main-nav">
     <%= form_tag '/search', class: 'navbar-form nav-search', method: :get do %>
       <div class="form-group">
-        <%= text_field_tag :query, nil, class: 'form-control', placeholder: 'Search' %>
+        <%= text_field_tag :query, nil, class: 'form-control header-form-control', placeholder: 'Search' %>
       </div>
-      <%= submit_tag 'Submit', class: 'btn btn-default' %>
+      <%= submit_tag 'Submit', class: 'btn btn-default header-form-control' %>
     <% end %>
     <ul class="nav navbar-nav">
       <% Page.curriculum_nav.each do |page| %>

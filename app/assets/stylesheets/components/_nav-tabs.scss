@@ -13,15 +13,15 @@
     &.active {
       a {
         border: none;
-        border-bottom: 4px solid #337ab7;
+        border-bottom: 4px solid $brand-primary;
         font-weight: bold;
-        color: #337ab7;
+        color: $brand-primary;
 
         &:hover, &:focus {
           border: none;
-          border-bottom: 4px solid #337ab7;
+          border-bottom: 4px solid $brand-primary;
           background: transparent;
-          color: #23527c;
+          color: $brand-primary;
         }
       }
     }
@@ -29,10 +29,11 @@
     a {
       border-radius: 0;
       border: none;
+      border-bottom: 4px solid transparent;
 
       &:hover, &:focus {
         border: none;
-        border-bottom: 4px solid #337ab7;
+        border-bottom: 4px solid $primary-hover;
         background: transparent;
       }
     }

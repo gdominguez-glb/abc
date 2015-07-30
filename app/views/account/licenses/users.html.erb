@@ -3,7 +3,7 @@
 <%= render partial: 'tabs', locals: { tab: 'users' } %>
 
 <div class="container">
-  <div class="text-center">
+  <div class="text-center license-page-description">
     <h2>Need to transfer a license, or just checking in ...</h2>
     <h6>Here is where you can remind, reassign, and revoke user licenses</h6>
   </div>
@@ -41,8 +41,11 @@
     </tbody>
   </table>
   <%= paginate @users %>
-  <%= link_to "Remind", new_account_reminder_path, remote: true, class: 'btn btn-primary pull-right' %>
 </div>
+<%= link_to new_account_reminder_path, remote: true, class: 'btn btn-primary reminder-btn' do %>
+  <span class="glyphicon glyphicon-comment"></span>
+  Remind
+<% end %>
 <%= content_for :javascripts do %>
   <%= javascript_tag do %>
     $(function() {
