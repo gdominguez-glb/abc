@@ -1,0 +1,32 @@
+<%= render 'cms_nav' %>
+
+<div class="col-md-9">
+  <section>
+    <div class='row'>
+      <h2>Download Page Lists</h2>
+      <%= link_to 'Create new download page', new_cms_download_page_path, class: 'btn btn-primary' %>
+      <table class='table table-responsive table-striped table-hover'>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Slug</th>
+            <th colspan="2"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @download_pages.each do |download_page| %>
+            <tr>
+              <td><%= download_page.title %></td>
+              <td><%= download_page.slug %></td>
+              <td><%= link_to 'Edit', edit_cms_download_page_path(download_page) %></td>
+              <td><%= link_to 'Destroy', [:cms, download_page], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <%= paginate @download_pages %>
+    </div>
+  </section>
+</div>
