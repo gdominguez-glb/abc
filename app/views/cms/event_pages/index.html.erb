@@ -12,7 +12,6 @@
         <thead>
           <tr>
             <th>Title</th>
-            <th>Slug</th>
             <th>Regonline filter</th>
             <th>Page</th>
             <th>Visible</th>
@@ -24,7 +23,6 @@
           <% @event_pages.each do |event_page| %>
             <tr>
               <td><%= event_page.title %></td>
-              <td><%= event_page.slug %></td>
               <td><%= event_page.regonline_filter %></td>
               <td><%= event_page.page.try(:title) %></td>
               <td><%= event_page.display ? 'Yes' : 'No' %></td>
