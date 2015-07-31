@@ -31,6 +31,10 @@ class Cms::EventPagesController < Cms::BaseController
     redirect_to cms_event_pages_path, notice: 'Destroy event page successfully'
   end
 
+  def import_events
+    RegonlineWorker.perform_async
+  end
+
   private
 
   def event_page_params

@@ -9,7 +9,11 @@ namespace :cms do
   get 'users/search', to: 'users#search'
 
   resources :pages
-  resources :event_pages
+  resources :event_pages do
+    collection do
+      post :import_events
+    end
+  end
   resources :documents
   resources :questions
   resources :contacts, only: [:index, :destroy, :edit, :update]
