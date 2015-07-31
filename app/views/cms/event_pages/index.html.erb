@@ -35,5 +35,6 @@
 
       <%= paginate @event_pages %>
     </div>
+    <%= link_to 'Import Events Now', import_events_cms_event_pages_path, class: 'btn btn-primary', remote: true, data: { confirm: 'Are you sure to import events?', method: :post } %>
   </section>
 </div>
