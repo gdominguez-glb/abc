@@ -6,31 +6,42 @@
 
   <div class="products">
     <% @products.each do |product| %>
-      <div class="product" style="margin-bottom: 10px;">
+      <div class="product <%= 'locked' if locked_product?(product) %>" style="margin-bottom: 10px;">
         <div class="product-head" style="background-color: #eee; padding: 10px;">
           <p><%= product.free? ? 'Free' : 'Paid' %></p>
           <h3><%= product.name %></h3>
-        </div>
-        <div class="materials" style="background-color: #ddd; padding: 5px;">
-          <% product.materials.roots.each do |material| %>
-            <div class="material" style="margin: 5px; background-color: #f1f1f1;padding: 10px;">
-              <%= material.name %>
-              <% if material.children.present? %>
-                <div class="materials">
-                  <% material.children.each do |sub_material| %>
-                    <div class="material clearfix" style="margin-left: 10px;">
-                      <%= sub_material.name %>
-                      <% if sub_material.material_files.present? %>
-                        <%= link_to 'Download', download_material_path(slug: @download_page.slug, material_id: sub_material.id), class: 'btn btn-default btn-sm pull-right' %>
-                      <% end %>
-                    </div>
-                  <% end %>
-                </div>
-              <% end %>
-            </div>
+          <% if locked_product?(product) %>
+            <%= link_to 'Unlock Content', spree.product_path(product), class: 'btn btn-primary' %>
           <% end %>
+          <a href="<%= open_materials_path(slug: @download_page.slug, product_id: product.id) %>" class='open-product'>
+            <span class="glyphicon glyphicon-chevron-up"></span>
+          </a>
         </div>
       </div>
     <% end %>
   </div>
 </div>
+<%= content_for :javascripts do %>
+  <%= javascript_tag do %>
+    $(function() {
+      $('.open-product').click(function(e){
+        e.preventDefault();
+        $link = $(e.target).closest('a');
+        $product_wrapper = $link.closest('.product');
+        if ($link.find('span').hasClass('glyphicon-chevron-down')) {
+          $product_wrapper.find('.materials').remove()
+          $link.find('span').removeClass('glyphicon-chevron-down')
+        } else {
+          url = $link.attr('href');
+          $.ajax({
+            url: url,
+            success: function(response) {
+              $product_wrapper.append(response);
+              $link.find('span').addClass('glyphicon-chevron-down')
+            }
+          })
+        }
+      })
+    })
+  <% end %>
+<% end %>

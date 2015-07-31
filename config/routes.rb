@@ -61,6 +61,7 @@ Rails.application.routes.draw do
 
   get '/download_pages/:slug', to: 'download_pages#show', as: :download_page
   get '/download_pages/:slug/download', to: 'download_pages#download', as: :download_material
+  get '/download_pages/:slug/materials', to: 'download_pages#materials', as: :open_materials
 
   get '*slug', to: 'pages#show', constraints: lambda { |request| !(request.path =~ /\/(assets|store).*/) }
 end
