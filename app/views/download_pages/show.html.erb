@@ -1,0 +1,24 @@
+<div class="container">
+  <h2><%= @download_page.title %></h2>
+  <p><%= @download_page.description.html_safe %></p>
+
+  <hr />
+
+  <div class="products">
+    <% @products.each do |product| %>
+      <div class="product" style="margin-bottom: 10px;">
+        <div class="product-head" style="background-color: #eee; padding: 10px;">
+          <p><%= product.free? ? 'Free' : 'Paid' %></p>
+          <h3><%= product.name %></h3>
+        </div>
+        <div class="materials" style="background-color: #ddd; padding: 5px;">
+          <% product.materials.roots.each do |material| %>
+            <div class="material" style="margin: 5px; background-color: #f1f1f1;padding: 10px;">
+              <%= material.name %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

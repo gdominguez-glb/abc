@@ -13,6 +13,8 @@ Spree::Product.class_eval do
 
   has_many :favorite_products, class_name: 'Spree::FavoriteProduct', dependent: :destroy
   has_many :materials
+  has_many :download_products
+  has_many :download_pages, through: :download_products
 
   attr_accessor :new_image, :new_digital
 
