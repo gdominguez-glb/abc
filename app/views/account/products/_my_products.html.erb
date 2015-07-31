@@ -8,8 +8,9 @@
           <% product.taxons.group_by(&:taxonomy).each do |taxonomy, taxons| %>
             <p><%= taxonomy.name %>: <%= taxons.map(&:name).join(', ') %></p>
           <% end %>
-          <p class="grades-dropdown">Select grades ...<span class="caret"></span></p>
-          <a class="btn btn-default">See Modules</a>
+          <% if product.downloadable? && product.download_pages.present? %>
+            <%= link_to 'Launch App', download_page_path(product.download_pages.first.slug), class: 'btn btn-primary' %>
+          <% end %>
         </div>
       </div>
     <% end %>
