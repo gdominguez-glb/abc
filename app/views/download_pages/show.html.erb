@@ -15,6 +15,18 @@
           <% product.materials.roots.each do |material| %>
             <div class="material" style="margin: 5px; background-color: #f1f1f1;padding: 10px;">
               <%= material.name %>
+              <% if material.children.present? %>
+                <div class="materials">
+                  <% material.children.each do |sub_material| %>
+                    <div class="material clearfix" style="margin-left: 10px;">
+                      <%= sub_material.name %>
+                      <% if sub_material.material_files.present? %>
+                        <%= link_to 'Download', download_material_path(slug: @download_page.slug, material_id: sub_material.id), class: 'btn btn-default btn-sm pull-right' %>
+                      <% end %>
+                    </div>
+                  <% end %>
+                </div>
+              <% end %>
             </div>
           <% end %>
         </div>
