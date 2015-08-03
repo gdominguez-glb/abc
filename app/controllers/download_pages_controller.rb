@@ -10,16 +10,6 @@ class DownloadPagesController < ApplicationController
     @boughted_products = current_spree_user.products.where(id: @products.map(&:id))
   end
 
-  def download
-    material = Spree::Material.find(params[:material_id])
-    redirect_to material.material_files.first.file.url
-  end
-
-  def materials
-    @product = @download_page.products.find(params[:product_id])
-    render layout: false
-  end
-
   private
 
   def find_download_page

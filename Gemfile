@@ -67,6 +67,8 @@ gem 'time_will_tell'
 gem 'haml'
 gem 'nkss-rails', github: 'nadarei/nkss-rails'
 
+gem 'rubyzip', '>= 1.0.0'
+
 group :development do
   gem 'quiet_assets'
   gem 'letter_opener'

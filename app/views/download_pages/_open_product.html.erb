@@ -1,0 +1,22 @@
+<div class="product" style="margin-bottom: 10px;">
+  <div class="product-head" style="background-color: #eee; padding: 10px;">
+    <p><%= product.free? ? 'Free' : 'Paid' %></p>
+    <h3><%= product.name %></h3>
+    <span class="glyphicon glyphicon-chevron-up open-product"></span>
+  </div>
+  <div class="materials hidden" style="background-color: #ddd; padding: 5px;">
+    <% product.materials.roots.each do |material| %>
+      <div class="material" style="margin: 5px; background-color: #f1f1f1;padding: 10px;" data-material-id="<%= material.id %>">
+        <input type="checkbox" />
+        <%= material.name %>
+        <%= link_to sub_material_path(material), remote: true, class: 'sub-link' do %>
+          <span class="glyphicon glyphicon-eye-open"></span>
+        <% end %>
+      </div>
+    <% end %>
+    <div class="actions">
+      <a href="" class="btn btn-primary btn-sm">Download All</a>
+      <a href="" class="btn btn-primary btn-sm">Download Selected</a>
+    </div>
+  </div>
+</div>

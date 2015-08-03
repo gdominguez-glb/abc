@@ -6,18 +6,11 @@
 
   <div class="products">
     <% @products.each do |product| %>
-      <div class="product <%= 'locked' if locked_product?(product) %>" style="margin-bottom: 10px;">
-        <div class="product-head" style="background-color: #eee; padding: 10px;">
-          <p><%= product.free? ? 'Free' : 'Paid' %></p>
-          <h3><%= product.name %></h3>
-          <% if locked_product?(product) %>
-            <%= link_to 'Unlock Content', spree.product_path(product), class: 'btn btn-primary' %>
-          <% end %>
-          <a href="<%= open_materials_path(slug: @download_page.slug, product_id: product.id) %>" class='open-product'>
-            <span class="glyphicon glyphicon-chevron-up"></span>
-          </a>
-        </div>
-      </div>
+      <% if locked_product?(product) %>
+        <%= render partial: 'locked_proudct', locals: { product: product } %>
+      <% else %>
+        <%= render partial: 'open_product', locals: { product: product } %>
+      <% end %>
     <% end %>
   </div>
 </div>
@@ -26,21 +19,10 @@
     $(function() {
       $('.open-product').click(function(e){
         e.preventDefault();
-        $link = $(e.target).closest('a');
-        $product_wrapper = $link.closest('.product');
-        if ($link.find('span').hasClass('glyphicon-chevron-down')) {
-          $product_wrapper.find('.materials').remove()
-          $link.find('span').removeClass('glyphicon-chevron-down')
-        } else {
-          url = $link.attr('href');
-          $.ajax({
-            url: url,
-            success: function(response) {
-              $product_wrapper.append(response);
-              $link.find('span').addClass('glyphicon-chevron-down')
-            }
-          })
-        }
+        $this = $(e.target);
+        $product_wrapper = $this.closest('.product');
+        $this.toggleClass('glyphicon-chevron-down');
+        $product_wrapper.find('.materials').toggleClass('hidden')
       })
     })
   <% end %>
