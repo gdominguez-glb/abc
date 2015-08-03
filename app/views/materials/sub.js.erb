@@ -1,2 +1,13 @@
 $("[data-material-id='<%= @material.id %>']").find('.sub-link').remove();
-$("[data-material-id='<%= @material.id %>']").append("<%= escape_javascript(render 'sub') %>");
+$("<div class='sub-container odd' style='display: none;'><%= escape_javascript(render 'sub') %></div>").appendTo("[data-material-id='<%= @material.id %>']").slideDown(300);
+
+var parentContainer = $(".sub-container").last().parents(".sub-container").first();
+var lastContainer = $(".sub-container").last()
+
+if (parentContainer.hasClass("odd")) {
+  lastContainer.removeClass("odd").addClass("even");
+}
+
+if (parentContainer.hasClass("even")) {
+  lastContainer.removeClass("even").addClass("odd");
+}

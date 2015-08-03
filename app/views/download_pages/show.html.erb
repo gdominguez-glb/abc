@@ -1,29 +1,31 @@
-<div class="container">
-  <h2><%= @download_page.title %></h2>
-  <p><%= @download_page.description.html_safe %></p>
+<div class="downloads-container">
+  <div class="container">
+    <h2><%= @download_page.title %></h2>
+    <p><%= @download_page.description.html_safe %></p>
 
-  <hr />
+    <hr />
 
-  <div class="products">
-    <% @products.each do |product| %>
-      <% if locked_product?(product) %>
-        <%= render partial: 'locked_proudct', locals: { product: product } %>
-      <% else %>
-        <%= render partial: 'open_product', locals: { product: product } %>
+    <div class="products">
+      <% @products.each do |product| %>
+        <% if locked_product?(product) %>
+          <%= render partial: 'locked_proudct', locals: { product: product } %>
+        <% else %>
+          <%= render partial: 'open_product', locals: { product: product } %>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
-</div>
-<%= content_for :javascripts do %>
-  <%= javascript_tag do %>
-    $(function() {
-      $('.open-product').click(function(e){
-        e.preventDefault();
-        $this = $(e.target);
-        $product_wrapper = $this.closest('.product');
-        $this.toggleClass('glyphicon-chevron-down');
-        $product_wrapper.find('.materials').toggleClass('hidden')
+  <%= content_for :javascripts do %>
+    <%= javascript_tag do %>
+      $(function() {
+        $('.open-product').click(function(e){
+          e.preventDefault();
+          $this = $(e.target);
+          $product_wrapper = $this.closest('.product');
+          $this.toggleClass('rotate-icon');
+          $product_wrapper.find('.materials').toggleClass('show-materials')
+        })
       })
-    })
+    <% end %>
   <% end %>
-<% end %>
+</div>
