@@ -6,6 +6,7 @@
         <div class="materials">
           <% material.children.each do |sub_material| %>
             <div class="material clearfix" style="margin-left: 10px;">
+              <input type="checkbox" />
               <%= sub_material.name %>
               <% if sub_material.material_files.present? %>
                 <%= link_to 'Download', download_material_path(slug: @download_page.slug, material_id: sub_material.id), class: 'btn btn-default btn-sm pull-right' %>

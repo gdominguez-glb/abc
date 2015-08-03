@@ -1,0 +1,15 @@
+<div class="product" style="margin-bottom: 10px;">
+  <div class="product-head" style="background-color: #eee; padding: 10px;">
+    <p><%= product.free? ? 'Free' : 'Paid' %></p>
+    <h3><%= product.name %></h3>
+    <span class="glyphicon glyphicon-chevron-up open-product"></span>
+  </div>
+  <div class="materials hidden" style="background-color: #ddd; padding: 5px;">
+    <% product.materials.roots.each do |material| %>
+      <div class="material" style="margin: 5px; background-color: #f1f1f1;padding: 10px;">
+        <%= material.name %>
+        <span class="glyphicon glyphicon-eye-open"></span>
+      </div>
+    <% end %>
+  </div>
+</div>
