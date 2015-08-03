@@ -29,6 +29,16 @@ input, label, .form-control, .form-group {
   }
 }
 
+select.form-control {
+  outline: 2px solid $gray-lighter;
+  @include box-shadow(none);
+
+  &:focus {
+    outline: 2px solid $brand-info;
+    @include box-shadow(none);
+  }
+}
+
 .inline-input {
   display: inline-block;
   width: auto;
