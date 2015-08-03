@@ -1,0 +1,2 @@
+console.log($("[data-material-id='<%= @material.id %>']").length)
+$("[data-material-id='<%= @material.id %>']").append("<%= escape_javascript(render 'sub') %>");
