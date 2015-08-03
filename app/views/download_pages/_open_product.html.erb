@@ -9,7 +9,7 @@
       <div class="material" style="margin: 5px; background-color: #f1f1f1;padding: 10px;" data-material-id="<%= material.id %>">
         <input type="checkbox" />
         <%= material.name %>
-        <%= link_to sub_material_path(material), remote: true do %>
+        <%= link_to sub_material_path(material), remote: true, class: 'sub-link' do %>
           <span class="glyphicon glyphicon-eye-open"></span>
         <% end %>
       </div>

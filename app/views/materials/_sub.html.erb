@@ -4,7 +4,7 @@
       <input type="checkbox" />
       <%= material.name %>
       <% if material.children.count > 0 %>
-        <%= link_to sub_material_path(material), remote: true do %>
+        <%= link_to sub_material_path(material), remote: true, class: 'sub-link' do %>
           <span class="glyphicon glyphicon-eye-open"></span>
         <% end %>
       <% end %>
