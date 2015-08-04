@@ -6,8 +6,8 @@
         <h4 class="pull-left">My Products</h4>
         <% if @grade_taxons.count > 0 %>
           <div class="pull-right">
-            Grade:
-            <%= select_tag 'grade_taxon_id', options_from_collection_for_select(@grade_taxons, "id", "name", current_spree_user.settings[:grade_option]), include_blank: 'All', class: 'form-control'  %>
+              <h6>Grade:
+              <%= select_tag 'grade_taxon_id', options_from_collection_for_select(@grade_taxons, "id", "name", current_spree_user.settings[:grade_option]), include_blank: 'All', class: 'form-control inline-input'  %></h6>
           </div>
         <% end %>
       </div>
@@ -43,7 +43,7 @@
           type: 'POST',
           data: { grade_taxon_id: $(this).val() }
         });
-      }); 
+      });
     });
   <% end %>
 <% end %>
