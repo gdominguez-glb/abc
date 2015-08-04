@@ -40,5 +40,8 @@ class DownloadJobWorker
     end
 
     download_job.update(file: File.new(zipfile_name), status: 'done')
+
+    FileUtils.remove_dir tmp_directory_path
+    FileUtils.rm [zipfile_name]
   end
 end
