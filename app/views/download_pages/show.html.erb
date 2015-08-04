@@ -32,6 +32,25 @@
             $(el).prop('checked', checked);
           })
         });
+
+        $('body').on('click', '.download-selected-btn', function(e) {
+          e.preventDefault();
+          $product_wrapper = $this.closest('.product');
+          $url = $(e.target).attr('href');
+          var material_ids = [];
+          $.each($product_wrapper.find("input[type='checkbox']:checked"), function(index, el){
+            material_ids.push($(el).val());
+          });
+          if (material_ids.length == 0) {
+            alert('Please select first!');
+            return;
+          }
+          $.ajax({
+            url: $url,
+            type: 'POST',
+            data: { material_ids: material_ids }
+          })
+        });
       })
     <% end %>
   <% end %>

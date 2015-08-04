@@ -63,7 +63,8 @@ Rails.application.routes.draw do
 
   resources :materials do
     collection do
-      get :download_all
+      post :download_all
+      post :multi_download
     end
     member do
       get :sub
