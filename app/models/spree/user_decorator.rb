@@ -17,6 +17,10 @@ Spree::User.class_eval do
     settings[:email_notifications] || self.class.defaults_email_notifications
   end
 
+  def grade_option
+    settings[:grade_option]
+  end
+
   validates :school_district, presence: true, if: :require_shool_district?
 
   # add any other characters you'd like to disallow inside the [ brackets ]

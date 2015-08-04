@@ -1,0 +1,4 @@
+$(".my-products").html("<%= escape_javascript(render 'my_products') %>");
+$(".my-products").removeClass("slick-initialized");
+$(".my-products").removeClass("slick-slider");
+window.initMyProductsSlick();

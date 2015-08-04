@@ -1,6 +1,8 @@
 namespace :account do
   root 'products#index'
 
+  post 'products/update', to: "products#update", as: :update_products
+
   resources :favorites, only: [:index]
 
   get 'help', to: 'help#index'

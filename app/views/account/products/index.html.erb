@@ -2,7 +2,20 @@
   <div class="content sidebar-right">
     <%= render partial: 'notifications', locals: { notifications: @notifications } %>
     <div class="products">
-      <%= render 'my_products' %>
+      <div class="head clearfix">
+        <h4 class="pull-left">My Products</h4>
+        <% if @grade_taxons.count > 0 %>
+          <div class="pull-right">
+            Grade:
+            <%= select_tag 'grade_taxon_id', options_from_collection_for_select(@grade_taxons, "id", "name", current_spree_user.settings[:grade_option]), include_blank: 'All', class: 'form-control'  %>
+          </div>
+        <% end %>
+      </div>
+      <div class="row">
+        <div class="my-products">
+          <%= render 'my_products' %>
+        </div>
+      </div>
     </div>
     <div class="row">
       <div class="recommends col-md-6">
@@ -19,3 +32,18 @@
     </div>
   </div>
 </div>
+
+<%= content_for :javascripts do %>
+  <%= javascript_tag do %>
+    $(function(){
+      var url = "/account/products/update";
+      $("#grade_taxon_id").change(function(e){
+        $.ajax({
+          url: url,
+          type: 'POST',
+          data: { grade_taxon_id: $(this).val() }
+        });
+      }); 
+    });
+  <% end %>
+<% end %>
