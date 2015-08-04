@@ -1,5 +1,4 @@
-$(function(){
-
+window.initMyProductsSlick = function() {
   // Products slider
   $(".my-products").slick({
     dots: true,
@@ -30,6 +29,11 @@ $(function(){
       // instead of a settings object
     ]
   });
+}
+
+$(function(){
+
+  window.initMyProductsSlick();
 
   function debounce(func, wait, immediate) {
     var timeout;
