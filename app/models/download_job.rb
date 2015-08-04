@@ -5,4 +5,6 @@ class DownloadJob < ActiveRecord::Base
 
   has_attached_file :file
   validates_attachment_content_type :file, :content_type => /\A.*\Z/
+
+  after_create -> { DownloadJobWorker.perform_async(self.id) }
 end

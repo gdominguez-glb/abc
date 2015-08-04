@@ -1,0 +1,24 @@
+$("body").append("<%= escape_javascript(render 'download_modal') %>")
+$("#download-modal").modal('show');
+
+var download_job_url = "<%= download_job_path(@download_job) %>";
+var download_download_job_url = "<%= download_download_job_path(@download_job) %>";
+
+var interval = setInterval(function(){
+  $.ajax({
+    url: download_job_url,
+    dataType: 'json',
+    success: function(response){
+      if(response.status == 'done') {
+        window.clearInterval(interval);
+        $("#download-modal").modal('hide');
+        window.location.href = download_download_job_url;
+      }
+    }
+  })
+}, 2000);
+
+$('#download-modal').on('hidden.bs.modal', function (e) {
+  $("#download-modal").remove();
+  window.clearInterval(interval);
+});

@@ -15,7 +15,7 @@
       </div>
     <% end %>
     <div class="actions">
-      <a href="" class="btn btn-primary btn-sm">Download All</a>
+      <%= link_to 'Download All', download_all_materials_path(product_id: product.id), class: 'btn btn-primary btn-sm', remote: true %>
       <a href="" class="btn btn-primary btn-sm">Download Selected</a>
     </div>
   </div>
