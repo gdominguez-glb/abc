@@ -24,7 +24,14 @@
           $product_wrapper = $this.closest('.product');
           $this.toggleClass('rotate-icon');
           $product_wrapper.find('.materials').toggleClass('show-materials')
-        })
+        });
+
+        $('body').on('change', "input[type=checkbox]", function(e){
+          var checked = $(this).is(':checked');
+          $.each($(this).parent().find('.sub-materials').find("input[type='checkbox']"), function(index, el){
+            $(el).prop('checked', checked);
+          })
+        });
       })
     <% end %>
   <% end %>

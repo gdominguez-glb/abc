@@ -1,7 +1,7 @@
 <div class="sub-materials clearfix">
   <% @material.children.each do |material| %>
     <div class="sub-material clearfix" data-material-id="<%= material.id %>">
-      <input type="checkbox" />
+      <%= check_box_tag 'material_ids[]', material.id, false, 'data-checkbox-id' => material.id %>
       <%= material.name %>
       <% if material.material_files.present? %>
         <%= link_to download_material_path(material), class: 'pull-right' do %>

@@ -7,7 +7,7 @@
   <div class="materials">
     <% product.materials.roots.each do |material| %>
       <div class="material clearfix" data-material-id="<%= material.id %>">
-        <input type="checkbox" />
+        <%= check_box_tag 'material_ids[]', material.id, false, 'data-checkbox-id' => material.id %>
         <%= material.name %>
         <%= link_to sub_material_path(material), remote: true, class: 'sub-link' do %>
           <span class="glyphicon glyphicon-chevron-down pull-right"></span>
