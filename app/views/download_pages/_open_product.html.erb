@@ -7,7 +7,7 @@
   <div class="materials">
     <% product.materials.roots.each do |material| %>
       <div class="material clearfix" data-material-id="<%= material.id %>">
-        <input type="checkbox" />
+        <%= check_box_tag 'material_ids[]', material.id, false, 'data-checkbox-id' => material.id %>
         <%= material.name %>
         <%= link_to sub_material_path(material), remote: true, class: 'sub-link' do %>
           <span class="glyphicon glyphicon-chevron-down pull-right"></span>
@@ -15,8 +15,8 @@
       </div>
     <% end %>
     <div class="actions">
-      <a href="" class="btn btn-primary btn-sm">Download All</a>
-      <a href="" class="btn btn-primary btn-sm">Download Selected</a>
+      <%= link_to 'Download All', download_all_materials_path(product_id: product.id), class: 'btn btn-primary btn-sm', remote: true, data: { method: :post } %>
+      <%= link_to "Download Selected", multi_download_materials_path(product_id: product.id), class: 'btn btn-primary btn-sm download-selected-btn' %>
     </div>
   </div>
 </div>

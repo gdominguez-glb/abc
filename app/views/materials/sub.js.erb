@@ -1,5 +1,10 @@
 $("[data-material-id='<%= @material.id %>']").find('.sub-link').remove();
-$("<div class='sub-container odd' style='display: none;'><%= escape_javascript(render 'sub') %></div>").appendTo("[data-material-id='<%= @material.id %>']").slideDown(300);
+var $newDiv = $("<div class='sub-container odd' style='display: none;'><%= escape_javascript(render 'sub') %></div>");
+$newDiv.appendTo("[data-material-id='<%= @material.id %>']").slideDown(300);
+
+if($("[data-checkbox-id='<%= @material.id %>']").is(':checked')) {
+  $newDiv.find("input[type='checkbox']").attr('checked', true);
+}
 
 var parentContainer = $(".sub-container").last().parents(".sub-container").first();
 var lastContainer = $(".sub-container").last()

@@ -20,9 +20,11 @@ class DownloadJobWorker
 
     files_to_zip = []
     materials.each do |material|
-      material.material_files.each do |material_file|
-        material_file.file.copy_to_local_file(:original, File.join(tmp_directory_path, material_file.file.original_filename))
-        files_to_zip << material_file.file.original_filename
+      material.self_and_descendants.each do |_material|
+        _material.material_files.each do |material_file|
+          material_file.file.copy_to_local_file(:original, File.join(tmp_directory_path, material_file.file.original_filename))
+          files_to_zip << material_file.file.original_filename
+        end
       end
     end
 
@@ -38,5 +40,8 @@ class DownloadJobWorker
     end
 
     download_job.update(file: File.new(zipfile_name), status: 'done')
+
+    FileUtils.remove_dir tmp_directory_path
+    FileUtils.rm [zipfile_name]
   end
 end

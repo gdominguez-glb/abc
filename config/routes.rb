@@ -62,10 +62,20 @@ Rails.application.routes.draw do
   get '/download_pages/:slug', to: 'download_pages#show', as: :download_page
 
   resources :materials do
+    collection do
+      post :download_all
+      post :multi_download
+    end
     member do
       get :sub
       get :download
       get :download_all
+    end
+  end
+
+  resources :download_jobs, only: [:show] do
+    member do
+      get :download
     end
   end
 
