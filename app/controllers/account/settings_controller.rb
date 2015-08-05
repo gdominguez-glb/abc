@@ -22,6 +22,11 @@ class Account::SettingsController < Account::BaseController
     redirect_to '/account/settings', notice: "Updated email notification successfully"
   end
 
+  def save_grade_option
+    current_spree_user.settings[:grade_option] = params[:grade_option]
+    render nothing: true
+  end
+
   private
 
   def user_params

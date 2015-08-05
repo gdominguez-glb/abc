@@ -5,7 +5,7 @@
     <span class="glyphicon glyphicon-chevron-down open-product"></span>
   </div>
   <div class="materials">
-    <% product.materials.roots.each do |material| %>
+    <% filter_grades_option(product, product.materials.roots).each do |material| %>
       <div class="material clearfix" data-material-id="<%= material.id %>">
         <%= check_box_tag 'material_ids[]', material.id, false, 'data-checkbox-id' => material.id %>
         <%= material.name %>

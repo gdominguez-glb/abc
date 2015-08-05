@@ -11,12 +11,6 @@ class Account::ProductsController < Account::BaseController
     @grade_taxons = Spree::Taxonomy.find_by(name: 'Grade').root.children rescue []
   end
 
-  def update
-    current_spree_user.settings[:grade_option] = params[:grade_taxon_id]
-
-    @my_products = filter_by_grade_taxon(current_spree_user.products).to_a.uniq(&:id)
-  end
-
   private
 
   def filter_by_grade_taxon(products)

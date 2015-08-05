@@ -1,0 +1,6 @@
+<% if @download_url %>
+  window.location.href = "<%= @download_url %>";
+<% end %>
+<% if @download_job %>
+  <%= render 'download_js' %>
+<% end %>

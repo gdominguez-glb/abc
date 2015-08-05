@@ -38,6 +38,7 @@ Spree::User.class_eval do
   has_many :to_users, -> { uniq }, through: :product_distributions, class_name: 'Spree::User'
   has_many :notifications
   has_many :activities
+  has_many :download_jobs
 
   accepts_nested_attributes_for :school_district, reject_if: proc { |attributes| attributes['name'].blank? }
 
