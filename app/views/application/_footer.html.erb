@@ -1,39 +1,42 @@
 <footer>
-  <section class="footer-jumbo">
-    <div class="container">
-      <div class="row clear-top">
-        <% Page.show_in_footer_as_top_links.each do |page| %>
-          <div class="col-sm-2 footer-section">
-            <h6>
-              <%= active_link_to page.group_name.capitalize, "/#{page.slug}" %>
-            </h6>
-            <% if (@sub_items = Page.show_in_footer_as_subgroup_links(page.group_name)).length > 1 %>
-              <ul>
-                <% @sub_items.each do |page| %>
-                  <%= active_link_to page.title, "/#{page.slug}", wrap_tag: :li  %>
-                <% end %>
-              </ul>
-            <% end %>
+  <div class="container">
+    <div class="row clear-top">
+      <div class="col-sm-2 footer-section">
+        <div class="row">
+          <div class="col-sm-4">
+            <i class="fa fa-facebook"></i>
           </div>
-        <% end %>
-        <div class="col-sm-2 footer-section">
-          <h6>Updates</h6>
-          <ul>
-            <% MediumPublication.global.each do |publication| %>
-              <li><%= link_to publication.title, global_blog_path(slug: publication.slug) %></li>
-            <% end %>
-          </ul>
-        </div>
-        <div class="col-sm-2 footer-section">
-          <h6>Social</h6>
-          <ul>
-            <li><a href="">Twitter</a></li>
-            <li><a href="">Facebook</a></li>
-            <li><a href="">Pinterest</a></li>
-          </ul>
+          <div class="col-sm-4">
+            <i class="fa fa-twitter"></i>
+          </div>
+          <div class="col-sm-4">
+            <i class="fa fa-pinterest-p"></i>
+          </div>
         </div>
       </div>
+      <% Page.show_in_footer_as_top_links.each do |page| %>
+        <div class="col-sm-2 footer-section">
+          <h6>
+            <%= active_link_to page.group_name.capitalize, "/#{page.slug}" %>
+          </h6>
+          <% if (@sub_items = Page.show_in_footer_as_subgroup_links(page.group_name)).length > 1 %>
+            <ul>
+              <% @sub_items.each do |page| %>
+                <%= active_link_to page.title, "/#{page.slug}", wrap_tag: :li  %>
+              <% end %>
+            </ul>
+          <% end %>
+        </div>
+      <% end %>
+      <div class="col-sm-2 footer-section">
+        <h6>Updates</h6>
+        <ul>
+          <% MediumPublication.global.each do |publication| %>
+            <li><%= link_to publication.title, global_blog_path(slug: publication.slug) %></li>
+          <% end %>
+        </ul>
+      </div>
     </div>
-  </section>
-  <p class="text-muted copyright">© Copyright 2015 Great Minds</p>
+    <p class="copyright">© Copyright 2015 Great Minds</p>
+  </div>
 </footer>

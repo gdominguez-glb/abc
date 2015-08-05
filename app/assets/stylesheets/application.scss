@@ -2,8 +2,10 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "spinner";
-
 @import 'bootstrap-datetimepicker';
+
+@import "font-awesome";
+
 
 // base application style
 @import "base/config";
@@ -18,6 +20,7 @@
 @import "components/footer";
 @import "components/forms";
 @import "components/header";
+@import "components/mastheads";
 @import "components/modals";
 @import "components/nav-tabs";
 @import "components/posts";

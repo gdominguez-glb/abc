@@ -1,34 +1,24 @@
 // _footer.scss
 
 footer {
-
-  a {
-    color: #333;
-  }
-
-  .copyright {
-    padding: 10px 0;
-    margin: 0;
-  }
-
-  h6 {
-    color: #fff;
-
-    a {
-      color: #fff;
-    }
-  }
-}
-
-.footer-jumbo {
   padding: 60px 0;
+  background: $dark-blue;
+  color: $brand-green;
 
   @media screen and (max-width: 767px) {
     padding: 0;
   }
+
+  .copyright {
+    margin-top: 60px;
+  }
 }
 
 .footer-section {
+
+  i {
+    font-size: 36px;
+  }
 
   @media screen and (max-width: 767px) {
     text-align: center;
