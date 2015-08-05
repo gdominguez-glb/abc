@@ -7,10 +7,6 @@
 .navbar {
   height: auto;
   min-height: 0;
-
-  a {
-    padding: 20px 30px;
-  }
 }
 
 .navbar-default {
@@ -20,26 +16,58 @@
   @include clearfix;
 
   .navbar-brand {
+    height: auto;
+    padding: 20px 30px;
     background: $brand-green;
     color: $dark-blue;
-    height: auto;
 
-    &:hover {
+    &:hover, &:focus {
       background: $brand-green;
+    }
+
+    @media screen and (max-width: 1340px) {
+      padding: 20px 15px;
     }
   }
 
   .navbar-nav {
-
-    >li {
-
+    > li {
       > a {
-        padding: 20px 30px;
+        padding: 20px 15px;
         color: #fff;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 12px;
+        font-family: "Source Sans Pro";
 
-        &:hover {
+        &:hover, &:focus {
           color: $brand-green;
         }
+      }
+    }
+
+    .active {
+
+      a, a:hover {
+        background: $steel-gray;
+        color: $brand-green;
+      }
+    }
+  }
+
+  .navbar-toggle {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 8px 10px;
+    color: $brand-green;
+    border: 1px solid $brand-green;
+
+    &:hover, &:focus {
+      background: $brand-green;
+      color: $dark-blue;
+
+      .glyphicon {
+        color: $dark-blue;
       }
     }
   }
@@ -49,13 +77,22 @@
       .active {
         a {
           background: transparent;
-          color: white;
+          color: $dark-blue;
         }
       }
     }
 
-    @media screen and (max-width: 900px) {
+    @media screen and (max-width: 957px) {
+      .navbar-nav {
+
+        li {
+          float: none;
+        }
+      }
+
       .navbar-collapse {
+        border-top: 2px solid #fff;
+
         &.collapse {
           display: none !important;
 
@@ -69,11 +106,13 @@
 }
 
 .navbar-fixed-top .navbar-collapse {
-  max-height: 400px;
+  max-height: 600px;
 }
 
 .navbar-form {
   margin-top: 12px;
+  padding: 0 5px;
+  border: 0;
 }
 
 .nav-search {
@@ -95,11 +134,17 @@
 
 #main-nav {
   max-height: 600px;
-  width: calc(100% - 315px);
+  width: calc(100% - 360px);
+  margin: 0;
+
+  @media screen and (max-width: 1340px) {
+    width: calc(100% - 345px);
+  }
 
   @media screen and (max-width: $largeBP) {
     width: 100%;
     border-top: 1px solid transparent;
+    background: $coral;
     box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
 
     &.collapse {
@@ -119,6 +164,8 @@
         > a {
           padding: 15px;
           color: #fff;
+          border-top: 2px solid #fff;
+          text-align: center;
         }
       }
     }
@@ -127,11 +174,20 @@
       float: none;
       margin: 0;
       padding: 15px;
-      border-bottom: 2px solid #eee;
+
+      input:not(.btn) {
+        color: #fff;
+        box-shadow: inset 0 0 0 1px #fff;
+      }
+
+      .btn {
+        background: transparent;
+        box-shadow: inset 0 0 0 1px #fff;
+      }
     }
   }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 767px) {
     .nav-search {
       padding: 15px 0;
 
@@ -144,13 +200,10 @@
 }
 
 .navbar-toggle {
-  top: 6px;
-  margin-top: 0;
-  margin-bottom: 0;
-  padding: 8px 10px;
 
   &.main-nav {
     float: left;
+    top: 10px;
     padding-right: 24px;
 
     @media screen and (max-width: $largeBP) {
@@ -161,6 +214,7 @@
       position: absolute;
       right: 6px;
       top: 12px;
+      color: $brand-green;
       @include transition(all, $transitionTiming);
     }
 
@@ -187,7 +241,7 @@
   }
 
 
-  @media screen and (max-width: 900px) {
+  @media screen and (max-width: 957px) {
     &.subnav-toggle {
       display: block;
 
@@ -226,7 +280,9 @@
 
 #link-to-cart {
   .cart-info {
-    padding: 15px;
+    position: relative;
+    top: 4px;
+    padding: 15px 15px 15px 0;
   }
 
   &:hover {
@@ -265,24 +321,21 @@
 }
 
 .subnav {
-  top: 50px;
+  top: 60px;
   z-index: 1020;
-  background-color: #C0C0C0;
+  background: $steel-gray;
   border-bottom: none;
 
-  .navbar-collapse {
-    background-color: #C0C0C0;
-  }
-
-  @media (max-width: 900px) {
+  @media (max-width: 957px) {
     .navbar-header {
       posiiton: relative;
       float: none;
+      padding: 10px 0;
     }
   }
 
   @media screen and (max-width: 500px) {
-    top: 105px;
+    top: 110px;
   }
 }
 
