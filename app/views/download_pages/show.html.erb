@@ -5,6 +5,12 @@
 
     <hr />
 
+    <div class="clearfix">
+      <div class="pull-right">
+        <h6>Grade:
+        <%= select_tag 'grade_option', options_for_select(GRADE_LEVELS, current_spree_user.settings[:grade_option]), include_blank: 'All', class: 'form-control inline-input'  %></h6>
+      </div>
+    </div>
     <div class="products">
       <% @products.each do |product| %>
         <% if locked_product?(product) %>
@@ -50,6 +56,18 @@
             type: 'POST',
             data: { material_ids: material_ids }
           })
+        });
+
+        var url = "/account/save_grade_option";
+        $("#grade_option").change(function(e){
+          $.ajax({
+            url: url,
+            type: 'POST',
+            data: { grade_option: $(this).val() },
+            success: function() {
+              window.location.reload(true);
+            }
+          });
         });
       })
     <% end %>
