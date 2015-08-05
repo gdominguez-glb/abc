@@ -7,7 +7,7 @@
         <% if @grade_taxons.count > 0 %>
           <div class="pull-right">
               <h6>Grade:
-              <%= select_tag 'grade_taxon_id', options_from_collection_for_select(@grade_taxons, "id", "name", current_spree_user.settings[:grade_option]), include_blank: 'All', class: 'form-control inline-input'  %></h6>
+              <%= select_tag 'grade_option', options_for_select(GRADE_LEVELS, current_spree_user.settings[:grade_option]), include_blank: 'All', class: 'form-control inline-input'  %></h6>
           </div>
         <% end %>
       </div>
@@ -36,12 +36,12 @@
 <%= content_for :javascripts do %>
   <%= javascript_tag do %>
     $(function(){
-      var url = "/account/products/update";
-      $("#grade_taxon_id").change(function(e){
+      var url = "/account/save_grade_option";
+      $("#grade_option").change(function(e){
         $.ajax({
           url: url,
           type: 'POST',
-          data: { grade_taxon_id: $(this).val() }
+          data: { grade_option: $(this).val() }
         });
       });
     });

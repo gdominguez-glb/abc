@@ -1,8 +1,6 @@
 namespace :account do
   root 'products#index'
 
-  post 'products/update', to: "products#update", as: :update_products
-
   resources :favorites, only: [:index]
 
   get 'help', to: 'help#index'
@@ -14,6 +12,7 @@ namespace :account do
   get 'settings', to: 'settings#index'
   patch 'save_profile', to: 'settings#save_profile'
   patch 'save_email_notifications', to: 'settings#save_email_notifications'
+  post 'save_grade_option', to: 'settings#save_grade_option'
 
   resources :reminders, only: [:new, :create]
 
