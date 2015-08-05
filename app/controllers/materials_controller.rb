@@ -3,7 +3,11 @@ class MaterialsController < ApplicationController
   before_action :set_material, only: [:download, :sub]
 
   def download
-    redirect_to @material.material_files.first.file.url
+    if @material.material_files.count == 1 && @material.children.count == 0
+      @download_url = @material.material_files.first.file.expiring_url(60*60*60)
+    else
+      @download_job = DownloadJob.create(user: current_spree_user, material_ids: [@material.id], status: 'pending')
+    end
   end
 
   def download_all

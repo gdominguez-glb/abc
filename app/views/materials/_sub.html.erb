@@ -4,7 +4,7 @@
       <%= check_box_tag 'material_ids[]', material.id, false, 'data-checkbox-id' => material.id %>
       <%= material.name %>
       <% if material.material_files.present? %>
-        <%= link_to download_material_path(material), class: 'pull-right' do %>
+        <%= link_to download_material_path(material), class: 'pull-right', remote: true do %>
           <span class="glyphicon glyphicon-download-alt"></span>
         <% end %>
       <% end %>
