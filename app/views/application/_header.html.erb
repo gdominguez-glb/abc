@@ -7,7 +7,7 @@
   </div>
   <div class="nav-right-options clearfix pull-right">
     <%= render partial: 'spree/shared/main_nav_bar' if store_menu? %>
-    <button type="button" class="main-nav navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav">
+    <button type="button" class="main-nav navbar-toggle collapsed btn" data-toggle="collapse" data-target="#main-nav">
        Menu
       <span class="sr-only">Toggle navigation</span>
       <span class="glyphicon glyphicon-menu-hamburger"></span>
@@ -15,11 +15,11 @@
     </button>
   </div>
   <div class="collapse navbar-collapse pull-left" id="main-nav">
-    <%= form_tag '/search', class: 'navbar-form nav-search', method: :get do %>
+    <%= form_tag '/search', class: 'navbar-form nav-search clearfix', method: :get do %>
       <div class="form-group">
         <%= text_field_tag :query, nil, class: 'form-control header-form-control', placeholder: 'Search' %>
+        <%= submit_tag 'Submit', class: 'btn btn-primary header-form-control' %>
       </div>
-      <%= submit_tag 'Submit', class: 'btn btn-primary header-form-control' %>
     <% end %>
     <ul class="nav navbar-nav">
       <% Page.curriculum_nav.each do |page| %>

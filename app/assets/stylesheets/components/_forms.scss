@@ -9,6 +9,8 @@ input, label, .form-control, .form-group {
   font-weight: normal;
   font-size: 16px;
   @include transition(all, .3s);
+
+  @include placeholder(inherit);
 }
 
 .form-control {

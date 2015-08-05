@@ -7,12 +7,12 @@ html, body, .container {
 }
 
 body {
-  padding: 50px 0 0;
-  background: $cream;
+  padding: 60px 0 0;
+  background: #fff;
   color: $dark-blue;
 
   &.account, &.video_gallery, &.pages.with-subnav, &.blog.with-subnav , &.events.with-subnav{
-    padding: 100px 0 0;
+    padding: 120px 0 0;
 
     @media screen and (max-width: 500px) {
       padding: 149px 0 0;
@@ -91,6 +91,10 @@ section {
         color: $dark-blue;
       }
     }
+  }
+
+  &.cream-bg {
+    background: $cream;
   }
 
   &.coral-text {
