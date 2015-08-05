@@ -677,6 +677,7 @@ DEPENDENCIES
   exception_notification
   factory_girl_rails (~> 4.5.0)
   figaro
+  font-awesome-rails
   geocoder
   guard
   guard-rspec
@@ -720,3 +721,6 @@ DEPENDENCIES
   whenever
   wistia-api
   zeroclipboard-rails
+
+BUNDLED WITH
+   1.10.2
