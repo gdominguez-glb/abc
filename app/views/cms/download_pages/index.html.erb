@@ -9,7 +9,7 @@
         <thead>
           <tr>
             <th>Title</th>
-            <th>Slug</th>
+            <th>Url</th>
             <th colspan="3"></th>
           </tr>
         </thead>
@@ -18,7 +18,7 @@
           <% @download_pages.each do |download_page| %>
             <tr>
               <td><%= download_page.title %></td>
-              <td><%= download_page.slug %></td>
+              <td><%= "/download_pages/#{download_page.slug}" %></td>
               <td><%= link_to 'Manage Products', cms_download_page_download_products_path(download_page) %></td>
               <td><%= link_to 'Edit', edit_cms_download_page_path(download_page) %></td>
               <td><%= link_to 'Destroy', [:cms, download_page], method: :delete, data: { confirm: 'Are you sure?' } %></td>
