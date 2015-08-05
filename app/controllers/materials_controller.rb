@@ -1,4 +1,5 @@
 class MaterialsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_material, only: [:download, :sub]
 
   def download
@@ -6,12 +7,13 @@ class MaterialsController < ApplicationController
   end
 
   def download_all
-    @product = Spree::Product.find(params[:product_id])
+    @product      = current_spree_user.products.find(params[:product_id])
     @download_job = DownloadJob.create(user: current_spree_user, material_ids: @product.materials.roots.map(&:id), status: 'pending')
   end
 
   def multi_download
-    @download_job = DownloadJob.create(user: current_spree_user, material_ids: params[:material_ids], status: 'pending')
+    material_ids  = current_spree_user.materials.where(id: params[:material_ids]).pluck(:id)
+    @download_job = DownloadJob.create(user: current_spree_user, material_ids: material_ids, status: 'pending')
   end
 
   def sub
@@ -21,6 +23,6 @@ class MaterialsController < ApplicationController
   private
 
   def set_material
-    @material = Spree::Material.find(params[:id])
+    @material = current_spree_user.materials.find(params[:id])
   end
 end
