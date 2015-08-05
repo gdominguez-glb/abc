@@ -23,6 +23,6 @@ class MaterialsController < ApplicationController
   private
 
   def set_material
-    @material = current_spree_user.materials.find(params[:id])
+    @material = current_spree_user.materials.reorder('spree_materials.id asc').find(params[:id])
   end
 end
