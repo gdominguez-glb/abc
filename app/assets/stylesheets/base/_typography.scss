@@ -14,6 +14,10 @@
 * Styleguide 1.2.1
 */
 
+body {
+  font-size: 16px;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: "Source Sans Pro";
 }
@@ -23,28 +27,28 @@ h1 {
 }
 
 h2 {
-  font-size: 2.75em
+  font-size: 2.75em;
 }
 
 h3 {
-  font-size: 2.25em
+  font-size: 2.25em;
 }
 
 h4 {
-  font-size: 2em
+  font-size: 2em;
 }
 
 h5 {
-  font-size: 1.5em
+  font-size: 1.5em;
 }
 
 h6 {
-  font-size: 1.25em
+  font-size: 1.25em;
 }
 
 h1, h2, h3, h4, h5, h6, p {
   margin: 0 0 15px;
-  color: #333;
+  color: inherit;
 }
 
 
@@ -105,13 +109,25 @@ blockquote {
 * Styleguide 1.2.5.2
 */
 
+ // Links
 a {
-  color: $brand-primary;
+  color: inherit;
   @include transition(all, .3s);
 
   &:hover {
     color: $primary-hover;
     text-decoration: none;
+  }
+
+  &.link-has-underline {
+    padding: 2px 0;
+    border-bottom: 2px solid;
+    border-top: 2px solid transparent;
+
+    &:hover {
+      padding: 5px 0;
+      border-top: 2px solid;
+    }
   }
 }
 
@@ -135,4 +151,8 @@ hr {
 
 .sans-serif {
   font-family: "Source Sans Pro"
+}
+
+.light-text {
+  color: #fff;
 }

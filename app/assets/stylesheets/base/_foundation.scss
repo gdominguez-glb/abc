@@ -8,6 +8,8 @@ html, body, .container {
 
 body {
   padding: 50px 0 0;
+  background: $cream;
+  color: $dark-blue;
 
   &.account, &.video_gallery, &.pages.with-subnav, &.blog.with-subnav , &.events.with-subnav{
     padding: 100px 0 0;
@@ -74,6 +76,30 @@ body {
   &.responsive-sidebar {
     @media screen and (max-width: $largeBP) {
       width: 75%;
+    }
+  }
+}
+
+section {
+  padding: 120px 0;
+
+  &.green-bg {
+    background: $brand-green;
+
+    .link-has-underline {
+      &:hover {
+        color: $dark-blue;
+      }
+    }
+  }
+
+  &.coral-text {
+    color: $coral;
+
+    .link-has-underline {
+      &:hover {
+        color: $coral;
+      }
     }
   }
 }

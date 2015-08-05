@@ -1,0 +1,17 @@
+// _mastheads.scss
+
+.masthead {
+  position: relative;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  .btn-default {
+    background: transparent;
+  }
+}
+
+.masthead-content {
+  padding: 10% 30px;
+  background: rgba(#000, .6);
+}

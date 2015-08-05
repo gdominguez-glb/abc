@@ -2,6 +2,14 @@ $transitionTiming: .3s;
 
 $largeBP: 1200px;
 
+// Digo Color palette
+$coral: #FF4F29;
+$cream: #FFFAE5;
+$dark-blue: #081D26;
+$brand-green: #CDFD6D;
+$steel-gray: #46565C;
+
+// Bootstrap Colors
 $brand-primary: #286598;
 $brand-primary-dark: #1d4a70;
 $primary-hover: lighten($brand-primary, 10%);
@@ -14,6 +22,7 @@ $brand-danger: #d9534f;
 // Gray Scale
 $gray-darker: #222;
 $gray-dark: #333;
-$gray: #555;
+$gray: $steel-gray;
 $gray-light: #999;
 $gray-lighter: #eee;
+

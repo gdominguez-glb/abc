@@ -67,6 +67,9 @@ gem 'time_will_tell'
 gem 'haml'
 gem 'nkss-rails', github: 'nadarei/nkss-rails'
 
+# font awesome
+gem "font-awesome-rails"
+
 gem 'rubyzip', '>= 1.0.0'
 
 group :development do

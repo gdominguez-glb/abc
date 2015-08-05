@@ -4,21 +4,88 @@
 *
 * Styleguide 1.8
 */
+.navbar {
+  height: auto;
+  min-height: 0;
+
+  a {
+    padding: 20px 30px;
+  }
+}
 
 .navbar-default {
   height: auto;
   border: none;
+  background: $dark-blue;
+  @include clearfix;
+
+  .navbar-brand {
+    background: $brand-green;
+    color: $dark-blue;
+    height: auto;
+
+    &:hover {
+      background: $brand-green;
+    }
+  }
+
+  .navbar-nav {
+
+    >li {
+
+      > a {
+        padding: 20px 30px;
+        color: #fff;
+
+        &:hover {
+          color: $brand-green;
+        }
+      }
+    }
+  }
+
+  &.subnav {
+    .navbar-nav {
+      .active {
+        a {
+          background: transparent;
+          color: white;
+        }
+      }
+    }
+
+    @media screen and (max-width: 900px) {
+      .navbar-collapse {
+        &.collapse {
+          display: none !important;
+
+          &.in {
+            display: block !important;
+          }
+        }
+      }
+    }
+  }
 }
 
 .navbar-fixed-top .navbar-collapse {
   max-height: 400px;
 }
 
+.navbar-form {
+  margin-top: 12px;
+}
+
 .nav-search {
   float: right;
 
+  input:not(.btn) {
+    box-shadow: inset 0 0 0 1px $gray;
+  }
+
   .btn {
     margin-left: 5px;
+    background: $gray;
   }
 }
 
@@ -28,7 +95,6 @@
 
 #main-nav {
   max-height: 600px;
-  background: #f8f8f8;
   width: calc(100% - 315px);
 
   @media screen and (max-width: $largeBP) {
@@ -52,6 +118,7 @@
 
         > a {
           padding: 15px;
+          color: #fff;
         }
       }
     }
@@ -71,31 +138,6 @@
       .btn {
         width: 100%;
         margin: 10px 0 0;
-      }
-    }
-  }
-}
-
-.navbar-default {
-  &.subnav {
-    .navbar-nav {
-      .active {
-        a {
-          background: transparent;
-          color: white;
-        }
-      }
-    }
-
-    @media screen and (max-width: 900px) {
-      .navbar-collapse {
-        &.collapse {
-          display: none !important;
-
-          &.in {
-            display: block !important;
-          }
-        }
       }
     }
   }
