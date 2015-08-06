@@ -1,0 +1,5 @@
+$("body").append("<%= escape_javascript(render 'bulk_modal_form') %>")
+$('#bulk-material-modal').modal('show')
+$('#bulk-material-modal').on('hidden.bs.modal', function (e) {
+  $('#bulk-material-modal').remove();
+})

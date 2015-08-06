@@ -1,0 +1,10 @@
+<% if @material.valid? %>
+  <% if @material.parent.blank? %>
+    $("#materials").append("<%= escape_javascript(render partial: 'material_item', locals: { material: @material }) %>")
+  <% elsif @material.parent.present? %>
+    $("[data-material-id='<%= @material.parent.id %>']").replaceWith("<%= escape_javascript(render partial: 'material_item', locals: { material: @material.parent }) %>")
+  <% end %>
+  $("#new-material-modal").modal('hide');
+<% else %>
+  alert('Must enter name!')
+<% end %>

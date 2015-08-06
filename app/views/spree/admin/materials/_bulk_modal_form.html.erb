@@ -1,20 +1,19 @@
-<div class="modal fade" id="new-material-modal">
+<div class="modal fade" id="bulk-material-modal">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Add Material for <%= @product.name %></h4>
+        <h4 class="modal-title">Add Materials for <%= @product.name %></h4>
       </div>
-      <%= form_for([:admin, @material.product, @material], remote: true) do |f| %>
-        <%= f.hidden_field :parent_id %>
+      <%= form_tag(bulk_create_admin_product_materials_path(@product, parent_id: params[:parent_id]), remote: true) do %>
         <div class="modal-body">
             <div class="form-group">
-              <%= f.label :name %>
-              <%= f.text_field :name, class: 'form-control' %>
+              <%= label_tag "Seperate names by comma" %>
+              <%= text_field_tag :names, nil, class: 'form-control' %>
             </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <%= f.submit 'Save', class: 'btn btn-primary' %>
+          <%= submit_tag 'Save', class: 'btn btn-primary' %>
         </div>
       <% end %>
     </div><!-- /.modal-content -->

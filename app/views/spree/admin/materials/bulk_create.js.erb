@@ -1,0 +1,8 @@
+<% if @parent %>
+  $("[data-material-id='<%= @parent.id %>']").replaceWith("<%= escape_javascript(render partial: 'material_item', locals: { material: @parent }) %>")
+<% else %>
+  <% @materials.each do |material| %>
+    $("#materials").append("<%= escape_javascript(render partial: 'material_item', locals: { material: material }) %>")
+  <% end %>
+<% end %>
+$("#bulk-material-modal").modal('hide');

@@ -1,0 +1,6 @@
+<% if @material.valid? %>
+  $("[data-material-id='<%= @material.id %>']").replaceWith("<%= escape_javascript(render partial: 'material_item', locals: { material: @material }) %>")
+  $("#new-material-modal").modal('hide');
+<% else %>
+  alert('Must enter name!')
+<% end %>
