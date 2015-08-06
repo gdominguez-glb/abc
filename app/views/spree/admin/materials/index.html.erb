@@ -6,7 +6,7 @@
 
 <%= button_link_to Spree.t(:new_material), new_object_url, { :class => "btn-success", :icon => 'add', :id => 'admin_new_product_material', remote: true } %>
 
-<ul class="list-group" style="margin-top: 10px;">
+<ul class="list-group" style="margin-top: 10px;" id="materials">
   <% @materials.each do |material| %>
     <%= render partial: 'material_item', locals: { material: material } %>
   <% end %>

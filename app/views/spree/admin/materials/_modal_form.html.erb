@@ -4,7 +4,7 @@
       <div class="modal-header">
         <h4 class="modal-title">Add Material for <%= @product.name %></h4>
       </div>
-      <%= form_for([:admin, @material.product, @material]) do |f| %>
+      <%= form_for([:admin, @material.product, @material], remote: true) do |f| %>
         <%= f.hidden_field :parent_id %>
         <div class="modal-body">
             <div class="form-group">

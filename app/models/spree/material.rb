@@ -3,4 +3,6 @@ class Spree::Material < ActiveRecord::Base
 
   belongs_to :product, class_name: 'Spree::Product'
   has_many :material_files, class_name: 'Spree::MaterialFile'
+
+  validates_presence_of :name
 end
