@@ -3,7 +3,6 @@ Spree::Order.class_eval do
   def create_licensed_products!
     self.line_items.each do |line_item|
       product = line_item.variant.product
-      next if product.license_length.blank?
       Spree::LicensedProduct.create!(
         order: self,
         user: self.user,
