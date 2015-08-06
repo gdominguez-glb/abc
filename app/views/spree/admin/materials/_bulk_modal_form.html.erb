@@ -1,0 +1,21 @@
+<div class="modal fade" id="bulk-material-modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Add Materials for <%= @product.name %></h4>
+      </div>
+      <%= form_tag(bulk_create_admin_product_materials_path(@product, parent_id: params[:parent_id]), remote: true) do %>
+        <div class="modal-body">
+            <div class="form-group">
+              <%= label_tag "Seperate names by comma" %>
+              <%= text_field_tag :names, nil, class: 'form-control' %>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <%= submit_tag 'Save', class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

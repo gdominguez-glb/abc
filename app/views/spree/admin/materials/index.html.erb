@@ -5,6 +5,7 @@
 <% end %>
 
 <%= button_link_to Spree.t(:new_material), new_object_url, { :class => "btn-success", :icon => 'add', :id => 'admin_new_product_material', remote: true } %>
+<%= link_to 'Bulk Add', bulk_modal_admin_product_materials_path(@product), class: 'btn btn-default btn-sm', remote: true %>
 
 <ul class="list-group" style="margin-top: 10px;" id="materials">
   <% @materials.each do |material| %>
