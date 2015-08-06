@@ -22,7 +22,7 @@ input, label, .form-control, .form-group {
 
   &:focus {
     border: 0;
-    box-shadow: inset 0 0 0 1px $brand-info;
+    box-shadow: inset 0 0 0 1px $gray;
   }
 
   &.header-form-control {
@@ -36,7 +36,7 @@ select.form-control {
   @include box-shadow(none);
 
   &:focus {
-    outline: 1px solid $brand-info;
+    outline: 1px solid $gray;
     @include box-shadow(none);
   }
 }

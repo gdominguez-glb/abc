@@ -36,4 +36,10 @@
 
 .slick-dots {
   bottom: -35px;
+
+  li, li.slick-active {
+    button:before {
+      color: $dark-blue;
+    }
+  }
 }
