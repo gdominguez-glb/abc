@@ -82,28 +82,29 @@ body {
 
 section {
   padding: 120px 0;
+  @include clearfix;
+}
 
-  &.green-bg {
-    background: $brand-green;
+.green-bg {
+  background: $brand-green;
 
-    .link-has-underline {
-      &:hover {
-        color: $dark-blue;
-      }
+  .link-has-underline {
+    :hover {
+      color: $dark-blue;
     }
   }
+}
 
-  &.cream-bg {
-    background: $cream;
-  }
+.cream-bg {
+  background: $cream;
+}
 
-  &.coral-text {
-    color: $coral;
+.coral-text {
+  color: $coral;
 
-    .link-has-underline {
-      &:hover {
-        color: $coral;
-      }
+  .link-has-underline {
+    &:hover {
+      color: $coral;
     }
   }
 }

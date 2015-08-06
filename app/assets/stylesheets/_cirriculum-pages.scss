@@ -1,0 +1,63 @@
+// _cirriculum-pages.scss
+
+.split-content {
+  position: relative;
+
+  &.text-left {
+
+    .text-container {
+      float: left;
+    }
+
+    .cirriculum-image-container {
+      right: 0;
+    }
+  }
+
+  &.text-right {
+
+    .text-container {
+      float: right;
+    }
+
+    .cirriculum-image-container {
+      left: 0;
+    }
+  }
+
+  &.full-bleed-bg {
+    .text-container {
+      width: 100%;
+      background: rgba($dark-blue, .6);
+    }
+
+    .text {
+      width: 50%;
+    }
+  }
+
+  .text-container {
+    padding: 210px 60px;
+    width: 50%;
+
+    a + a {
+      margin-left: 15px;
+    }
+  }
+
+  .cirriculum-image-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50%;
+  }
+}
+
+.cirriculum-image-container, .full-bleed-bg {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50%;
+}
