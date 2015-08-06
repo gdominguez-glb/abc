@@ -1,3 +1,4 @@
+<%= content_for :body_class, 'without-subnav' if current_spree_user.blank? %>
 <div class="wrapper">
   <div class="fixed-sidebar left responsive-sidebar video-gallery-sidenav">
     <%= form_tag '', method: :get, class: 'side-search-form' do %>
