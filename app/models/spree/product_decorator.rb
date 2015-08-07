@@ -18,7 +18,7 @@ Spree::Product.class_eval do
 
   attr_accessor :new_image, :new_digital
 
-  after_create :assign_image_to_master, :assign_digital_to_master
+  after_create :assign_image_to_master, :assign_digital_to_master, :init_grades_materials
 
   scope :free, -> {
     joins("join spree_variants on spree_variants.product_id = spree_products.id").
@@ -85,5 +85,13 @@ Spree::Product.class_eval do
 
   def assign_digital_to_master
     self.master.digitals << Spree::Digital.new(attachment: self.new_digital) if self.new_digital.present?
+  end
+
+  def init_grades_materials
+    if self.is_grades_product?
+      GRADE_LEVELS.each do |grade_level|
+        self.materials.create(name: grade_level)
+      end
+    end
   end
 end
