@@ -42,6 +42,13 @@
   }
 }
 
+.cream-bg {
+  .btn-primary {
+    @include button-bg($coral);
+  }
+
+}
+
 /* ----------------------------------------------------------------------------
 * Button Sizes
 * Default Bootstrap

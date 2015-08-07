@@ -60,4 +60,3 @@ Gm = {
   }
 };
 window.Gm = Gm;
-
