@@ -7,5 +7,7 @@
 #sign-in-wrapper {
   margin: 0 0 15px;
   padding: 30px;
-  background: #eee;
+  border: 1px solid;
+  border-radius: $border-radius-value;
+  color: $coral;
 }

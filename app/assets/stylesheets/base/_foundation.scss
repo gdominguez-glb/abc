@@ -9,6 +9,7 @@ html, body, .container {
 body {
   padding: 60px 0 0;
   color: $dark-blue;
+  background: $cream;
 
   &.account, &.video_gallery, &.pages.with-subnav, &.blog.with-subnav , &.events.with-subnav{
     padding: 120px 0 0;
