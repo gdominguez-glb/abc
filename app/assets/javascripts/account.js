@@ -58,9 +58,22 @@ $(function(){
     if ($(".recent-history").outerHeight() > $(".account .content").outerHeight()) {
       $(".account-page").css("background", "#fff");
     } else {
-      $(".account-page").css("background", "#777");
+      $(".account-page").css("background", "#46565C");
     }
   }, 250);
+
+  var setProductHeadlineFont = debounce(function(){
+    var $headline = $(".product-wrapper h4");
+
+    $headline.each(function(){
+      if ($(this).outerHeight() > 40) {
+        $(this).css("font-size", 22 + "px");
+      }
+    });
+  }, 250);
+
+  setProductHeadlineFont();
+  $(window).on("resize", setProductHeadlineFont);
 
   updateAccountBackground();
   $(window).on("resize", updateAccountBackground);

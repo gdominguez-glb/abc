@@ -6,28 +6,27 @@
     }
   }
 }
-.product-wrapper {
-  text-align: center;
-  background: #eee;
-  padding: 20px;
 
-  .grades-dropdown {
-    padding: 10px 0;
-    border-top: 1px dashed #eee;
-    border-bottom: 1px dashed #eee;
-  }
+.product-wrapper {
+  padding: 20px;
+  height: 164px;
 }
 
 .products {
   margin-bottom: 60px;
 }
 
+.product-wrapper, .recommended-product-wrapper {
+  text-align: center;
+  background: $dark-blue;
+  color: #fff;
+  border-radius: 4px;
+}
+
 .recommended-product-wrapper {
   position: relative;
   padding: 40px;
   margin: 0 0 15px;
-  background: #ddd;
-  text-align: center;
 
   &:last-child {
     margin: 0;
@@ -56,46 +55,52 @@
 
 .recent-history {
   padding: 10px;
+  background: $gray;
+  color: $dark-blue;
 
   .view-all-link {
     display: block;
-    margin: 10px auto;
+    margin: 0 0 15px;
     text-align: center;
   }
 
   .history-list {
     position: relative;
-    padding-left: 20px;
+    padding-left: 27px;
+    color: #fff;
 
     &:before {
       content: '';
       position: absolute;
       top: 0;
-      left: 10px;
+      left: 0;
       bottom: 0;
       width: 1px;
       background: #eee;
     }
-    .history-item {
-      position: relative;
-
-      h4 {
-        font-size: 13px;
-      }
-
-      p {
-        font-style: italic;
-        font-size: 12px;
-      }
-
-      span.glyphicon {
-        position: absolute;
-        top: 10px;
-        left: -16px;
-      }
-    }
   }
 }
+
+.history-item {
+  position: relative;
+
+  h4 {
+    font-size: 13px;
+  }
+
+  p {
+    font-style: italic;
+    font-size: 12px;
+  }
+
+  .glyphicon {
+    position: absolute;
+    top: 10px;
+    left: -30px;
+    color: $brand-green;
+  }
+}
+
 .favorites-products {
   .favorites-products-head {
     margin: 10px 0;

@@ -1,12 +1,12 @@
 <% @my_products.each do |product| %>
   <div class="col-md-4">
     <div class="product-wrapper">
-      <h4><%= product.name %></h4>
+      <h4 class="green-text"><%= product.name %></h4>
       <% product.taxons.group_by(&:taxonomy).each do |taxonomy, taxons| %>
         <p><%= taxonomy.name %>: <%= taxons.map(&:name).join(', ') %></p>
       <% end %>
       <% if product.downloadable? && product.access_url.present? %>
-        <%= link_to 'Launch App', product.access_url, class: 'btn btn-primary' %>
+        <%= link_to 'Launch App', product.access_url, class: 'btn btn-default btn-brand-green' %>
       <% end %>
     </div>
   </div>
