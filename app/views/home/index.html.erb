@@ -3,8 +3,14 @@
     <div class="container">
       <h3 class="light-text">All children are capable of</h3>
       <h1 class="sub-head light-text">Greatness</h1>
-      <%= select_tag :role, options_for_select(USER_TITLES), prompt: 'I am a...', class: 'form-control inline-input' %>
-      <%= select_tag :curriculum, options_from_collection_for_select(@curriculums, :id, :name), prompt: 'Looking for help in...', class: 'form-control inline-input' %>
+      <div class="select-container red-select light-text">
+        <span>I am a...</span>
+        <%= select_tag :role, options_for_select(USER_TITLES), prompt: 'I am a...', class: 'form-control inline-input masthead-select' %>
+      </div>
+      <div class="select-container red-select light-text">
+        <span>Looking for help with...</span>
+        <%= select_tag :curriculum, options_from_collection_for_select(@curriculums, :id, :name), prompt: 'Looking for help in...', class: 'form-control inline-input masthead-select' %>
+      </div>
     </div>
   </div>
   <!-- <hr class="container-secondary"> -->

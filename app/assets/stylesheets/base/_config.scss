@@ -26,3 +26,15 @@ $gray: $steel-gray;
 $gray-light: #999;
 $gray-lighter: #eee;
 
+// Mixins
+@mixin button-bg($bg) {
+  background: $bg;
+
+  &:hover {
+    background:lighten($bg, 8%);
+  }
+
+  &:active {
+    background:darken($bg, 10%);
+  }
+}

@@ -1,3 +1,13 @@
+// Custom selects
+
+$(document).on("change", ".select-container select", function(){
+  var $selectContainerText = $(this).prev("span");
+  var newText = $(this).find("option:selected").text();
+  $selectContainerText.text(newText);
+});
+
+// __________________________________________________________________
+
 $(document).on("change", "#spree_user_title", function(){
   var userRole = $("#spree_user_title").val();
   var showDistrictDetails = false;
