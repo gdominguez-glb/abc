@@ -39,6 +39,9 @@ spree_routes_overrides = Proc.new do
           get :bulk_modal
           post :bulk_create
         end
+        member do
+          get :delete_confirm
+        end
       end
     end
 

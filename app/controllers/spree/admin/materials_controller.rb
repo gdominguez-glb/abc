@@ -3,7 +3,7 @@ module Spree
     class MaterialsController < ResourceController
       belongs_to "spree/product", :find_by => :slug
 
-      before_action :find_product, only: [:bulk_modal, :bulk_create]
+      before_action :find_product, only: [:bulk_modal, :bulk_create, :delete_confirm]
 
       def index
         @materials = @product.materials.roots
@@ -20,11 +20,19 @@ module Spree
       def bulk_modal
       end
 
+      def destroy
+        @object.destroy
+      end
+
       def bulk_create
         @parent = @product.materials.find_by(id: params[:parent_id])
         @materials = params[:names].split(',').map do |name|
           Material.create(parent: @parent, name: name, product: @product)
         end
+      end
+
+      def delete_confirm
+        @material = @product.materials.find(params[:id])
       end
 
       private
