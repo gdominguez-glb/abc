@@ -22,8 +22,6 @@ Rails.application.routes.draw do
 
   get 'contact', to: 'contact#index'
 
-  get 'video_demo', to: 'video_demo#index'
-
   get 'search', to: 'search#index'
 
   get 'events', to: 'events#index'
