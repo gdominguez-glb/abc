@@ -1,0 +1,20 @@
+<div class="modal fade" id="delete-material-modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Delete Material <%= @material.name %>?</h4>
+      </div>
+      <div class="modal-body">
+        <% if @material.children.count > 0 %>
+          If you delete this material you will delete all the materials belonging to it. If you'd rather replace the material, click cancel and choose to rename it instead.
+        <% else %>
+          Are you sure to delete this material?
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <%= link_to 'Delete', admin_product_material_path(@material.product, @material), class: 'btn btn-primary btn-sm', remote: true, data: { method: :delete } %>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
