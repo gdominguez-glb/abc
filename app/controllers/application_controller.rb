@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
 
   def authenticate_user!
     if spree_current_user.blank?
-      redirect_to root_path, notice: "Please log in first."
+      redirect_to spree.login_path, notice: "Please log in first."
     end
   end
 

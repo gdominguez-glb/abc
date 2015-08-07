@@ -1,4 +1,5 @@
 class VideoGalleryController < ApplicationController
+  before_action :authenticate_user!
   before_action :find_video_product, only: [:show, :show_description]
   before_action :load_taxonomies, only: [:index]
 
@@ -30,6 +31,10 @@ class VideoGalleryController < ApplicationController
   end
 
   private
+
+  def authenticate_user!
+    redirect_to spree.login_path, notice: "You must be logged in to view the video gallery." if spree_current_user.blank?
+  end
 
   def find_video_product
     @video_product = Spree::Product.videos.find_by(slug: params[:id])
