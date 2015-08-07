@@ -3,36 +3,8 @@
     <div class="container">
       <h3 class="light-text">All children are capable of</h3>
       <h1 class="sub-head light-text">Greatness</h1>
-      <div class="btn-group">
-        <button type="button" class="btn btn-default dropdown-toggle light-text" data-toggle="dropdown" aria-expanded="false">
-          I am a… <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" role="menu">
-          <li><a href="#">I am an Admin</a></li>
-          <li><a href="#">I am a Teacher</a></li>
-          <li><a href="#">I am a Parent</a></li>
-        </ul>
-      </div>
-      <div class="btn-group">
-        <button type="button" class="btn btn-default dropdown-toggle light-text" data-toggle="dropdown" aria-expanded="false">
-          Looking for help in… <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" role="menu">
-          <li><a href="#">Looking for help in Math</a></li>
-          <li><a href="#">Looking for help in English</a></li>
-          <li><a href="#">Looking for help in History</a></li>
-        </ul>
-      </div>
-      <!-- <div class="btn-group">
-              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                For grades… <span class="caret"></span>
-              </button>
-              <ul class="dropdown-menu" role="menu">
-                <li><a href="#">For grades K-5</a></li>
-                <li><a href="#">For grades 6-8</a></li>
-                <li><a href="#">For grades 9-12</a></li>
-              </ul>
-            </div>  -->
+      <%= select_tag :role, options_for_select(USER_TITLES), prompt: 'I am a...', class: 'form-control inline-input' %>
+      <%= select_tag :curriculum, options_from_collection_for_select(@curriculums, :id, :name), prompt: 'Looking for help in...', class: 'form-control inline-input' %>
     </div>
   </div>
   <!-- <hr class="container-secondary"> -->
@@ -89,3 +61,24 @@
     </div>
   </div>
 </section>
+<%= content_for :javascripts do %>
+  <%= javascript_tag do %>
+    $(function() {
+      $('select#role').change(function(e){
+        goToPage();
+      });
+      $('select#curriculum').change(function(e){
+        goToPage();
+      });
+
+      function goToPage(){
+        var role = $('select#role').val();
+        var curriculumId = $('select#curriculum').val();
+        if ( role && curriculumId ) {
+          var url = "/decide_page_to_go?" + $.param({role: role, curriculum_id: curriculumId});
+          window.location.href = url;
+        };
+      }
+    });
+  <% end %>
+<% end %>

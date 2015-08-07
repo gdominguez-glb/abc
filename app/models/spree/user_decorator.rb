@@ -78,10 +78,10 @@ Spree::User.class_eval do
     !!favorite_products.where(product_id: product.id).first
   end
 
-  if !defined?(TITLES)
-    TITLES = ['Educator', 'Administrator', 'Purchaser', 'Parent']
+  if !defined?(USER_TITLES)
+    USER_TITLES = ['Teacher', 'Administrator', 'Parent', 'Administrative Assistant', 'Homeschooler'].freeze
 
-    TITLES.each do |title|
+    USER_TITLES.each do |title|
       scope "with_#{title.downcase}_title", -> { where(title: title) }
     end
   end

@@ -28,7 +28,7 @@
         </div>
         <div class="form-group col-md-6">
           <label>Select your Role</label>
-          <%= f.select :title, options_for_select(Spree::User::TITLES, f.object.title), { prompt: 'Please select your role' }, { class: 'form-control', tabindex: 5 } %>
+          <%= f.select :title, options_for_select(USER_TITLES, f.object.title), { prompt: 'Please select your role' }, { class: 'form-control', tabindex: 5 } %>
         </div>
         <div class="form-group col-md-6">
           <label>Select School District</label>
