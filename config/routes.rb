@@ -46,6 +46,8 @@ Rails.application.routes.draw do
   get '/:page_slug/blog/:slug',          to: 'blog#curriculum',      as: :curriculum_blog
   get '/:page_slug/blog/:slug/post/:id', to: 'blog#curriculum_post', as: :curriculum_post
 
+  get '/decide_page_to_go', to: 'home#decide_page_to_go'
+
   root 'home#index'
 
   resources :documents, only: [:show]
