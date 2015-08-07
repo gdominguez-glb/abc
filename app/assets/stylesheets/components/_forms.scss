@@ -8,6 +8,7 @@ input, label, .form-control, .form-group {
   font-family: "Source Sans Pro";
   font-weight: normal;
   font-size: 16px;
+  color: inherit;
   @include transition(all, .3s);
 
   @include placeholder(inherit);
@@ -31,16 +32,6 @@ input, label, .form-control, .form-group {
     height: 34px;
   }
 }
-
-// select.form-control {
-//   box-shadow: inset 0 0 0 1px;
-//   @include box-shadow(none);
-
-//   &:focus {
-//     : 2px solid;
-//     @include box-shadow(none);
-//   }
-// }
 
 .select-container {
   display: inline-block;
@@ -101,8 +92,7 @@ input, label, .form-control, .form-group {
     &:focus {
 
       + .glyphicon {
-          color: $brand-info;
-          border-right: 2px solid $brand-info;
+          opacity: 1;
       }
     }
   }
@@ -112,7 +102,8 @@ input, label, .form-control, .form-group {
     top: 50%;
     left: 5px;
     padding: 5px 10px;
-    border-right: 2px solid $gray-light;
+    border-right: 2px solid;
+    opacity: .5;
     @include translate(0, -50%);
     @include transition(all, .3s);
   }
