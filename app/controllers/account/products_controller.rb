@@ -4,7 +4,10 @@ class Account::ProductsController < Account::BaseController
 
     @my_products = filter_by_grade_taxon(current_spree_user.products).to_a.uniq(&:id)
     @recent_activities = current_spree_user.activities.recent
-    @recommendations   = Recommendation.where(subject: current_spree_user.interested_subject).limit(3)
+    @recommendations   = Recommendation.limit(3)
+    if current_spree_user.interested_subject.present?
+      @recommendations = @recommendations.where(subject: current_spree_user.interested_subject)
+    end
 
     @notifications = current_spree_user.notifications.unread.limit(5)
 
