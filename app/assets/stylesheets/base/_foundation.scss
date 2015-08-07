@@ -89,7 +89,7 @@ section {
   background: $brand-green;
 
   .link-has-underline {
-    :hover {
+    &:hover {
       color: $dark-blue;
     }
   }
