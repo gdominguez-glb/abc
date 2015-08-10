@@ -1,4 +1,5 @@
 Spree::User.class_eval do
+  include SalesforceAccess
 
   include RailsSettings::Extend
   include ActivityLogger

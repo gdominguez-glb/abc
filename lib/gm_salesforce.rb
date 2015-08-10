@@ -28,4 +28,8 @@ class GmSalesforce
 
     Restforce.new sf_params
   end
+
+  def columns(sobject_name)
+    client.describe(sobject_name).fields.map(&:name)
+  end
 end
