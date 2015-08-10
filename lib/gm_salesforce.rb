@@ -1,30 +1,31 @@
-require 'databasedotcom'
-
+# GmSalesforce
 class GmSalesforce
+  include Singleton
+
+  attr_reader :client
 
   def initialize
     @client = init_client
   end
 
-  def init_client
-    client = Databasedotcom::Client.new(
+  def salesforce_params
+    {
+      username: ENV['salesforce_username'],
+      password: ENV['salesforce_password'],
+      security_token: ENV['salesforce_security_token'],
       client_id: ENV['salesforce_client_id'],
-      client_secret: ENV['salesforce_client_secret']
-    )
-    if !Rails.env.production?
-      client.host = 'test.salesforce.com'
-      client.debugging = true
+      client_secret: ENV['salesforce_client_secret'],
+      api_version: '32.0'
+    }
+  end
+
+  def init_client
+    sf_params = salesforce_params
+    unless Rails.env.production?
+      sf_params[:host] = 'test.salesforce.com'
+      Restforce.log = true
     end
-    client.authenticate :username => ENV['salesforce_username'], :password => "#{ENV['salesforce_password']}#{ENV['salesforce_security_token']}"
-    client
-  end
 
-  def list_sobjects
-    @client.list_sobjects
-  end
-
-  def list_contacts
-    contact_class = @client.materialize("Contact")
-    contact_class.all
+    Restforce.new sf_params
   end
 end

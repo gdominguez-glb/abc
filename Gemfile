@@ -43,7 +43,7 @@ gem "mediaelement_rails"
 
 gem 'httparty', require: false
 
-gem 'databasedotcom'
+gem 'restforce'
 
 gem 'wistia-api'
 gem 'whenever', :require => false
