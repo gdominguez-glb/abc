@@ -1,0 +1,5 @@
+$("body").append("<%= escape_javascript(render 'modal_form') %>")
+$('#new-material-import-job-modal').modal('show')
+$('#new-material-import-job-modal').on('hidden.bs.modal', function (e) {
+  $('#new-material-import-job-modal').remove();
+})
