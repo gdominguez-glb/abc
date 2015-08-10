@@ -27,6 +27,11 @@ class MaterialsController < ApplicationController
   private
 
   def set_material
-    @material = current_spree_user.materials.reorder('spree_materials.id asc').find(params[:id])
+    material = Spree::Material.find(params[:id])
+    if material.product.free?
+      @material = material
+    else
+      @material = current_spree_user.materials.reorder('spree_materials.id asc').find(material.id)
+    end
   end
 end
