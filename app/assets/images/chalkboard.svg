@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 18.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xl="http://www.w3.org/1999/xlink"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="-353 232 517 329"
+	 enable-background="new -353 232 517 329" xml:space="preserve">
+<g>
+	<title>404</title>
+	<g>
+		<title>chalk</title>
+		<rect id="path" x="-345" y="239" fill="none" width="499" height="311"/>
+		<g>
+			<defs>
+				<rect id="SVGID_1_" x="-345" y="239" width="499" height="311"/>
+			</defs>
+			<clipPath id="SVGID_2_">
+				<use xlink:href="#SVGID_1_"  overflow="visible"/>
+			</clipPath>
+			<g clip-path="url(#SVGID_2_)">
+				<g xl:href="image982.pdf" enable-background="new    ">
+					<g>
+						<defs>
+							<rect id="SVGID_3_" x="-345.1" y="239.1" width="499.1" height="310.8"/>
+						</defs>
+						<clipPath id="SVGID_4_">
+							<use xlink:href="#SVGID_3_"  overflow="visible"/>
+						</clipPath>
+						<g clip-path="url(#SVGID_4_)">
+							<defs>
+								<rect id="SVGID_5_" x="-345.1" y="239.1" width="499.1" height="310.8"/>
+							</defs>
+							<clipPath id="SVGID_6_">
+								<use xlink:href="#SVGID_5_"  overflow="visible"/>
+							</clipPath>
+							<path clip-path="url(#SVGID_6_)" fill="#CECECE" d="M149.1,546.9h-489.1c-2.8,0-5-2.3-5-5V244.1c0-2.8,2.3-5,5-5h489.1
+								c2.8,0,5,2.3,5,5v297.8C154.1,544.6,151.8,546.9,149.1,546.9"/>
+							<path clip-path="url(#SVGID_6_)" fill="#FFFFFF" d="M139.3,529.6h-470.8c-1.7,0-3-1.4-3-3V252c0-1.7,1.4-3,3-3h470.8
+								c1.7,0,3,1.4,3,3v274.6C142.3,528.2,140.9,529.6,139.3,529.6"/>
+							<path clip-path="url(#SVGID_6_)" fill="#FFFFFF" d="M83,539.2H31c-1.1,0-2-0.9-2-2v-15c0-1.1,0.9-2,2-2h52c1.1,0,2,0.9,2,2
+								v15C85.1,538.3,84.2,539.2,83,539.2"/>
+							<path clip-path="url(#SVGID_6_)" fill="none" stroke="#AFAFAF" stroke-width="6" stroke-miterlimit="10" d="M83,539.2H31
+								c-1.1,0-2-0.9-2-2v-15c0-1.1,0.9-2,2-2h52c1.1,0,2,0.9,2,2v15C85.1,538.3,84.2,539.2,83,539.2z"/>
+							<g clip-path="url(#SVGID_6_)">
+								
+									<text transform="matrix(1 0 0 1 -270.6675 459.2578)" fill="#AFAFAF" font-family="'DKCrayonCrumble'" font-size="246.2799">404</text>
+							</g>
+						</g>
+					</g>
+				</g>
+			</g>
+		</g>
+	</g>
+</g>
+</svg>
