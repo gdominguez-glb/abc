@@ -5,12 +5,14 @@
     <span class="glyphicon glyphicon-chevron-down open-product"></span>
   </div>
   <div class="materials">
-    <% filter_grades_option(product, product.materials.roots).each do |material| %>
+    <% nested_materials(product.materials.order('lft asc')).each do |item| %>
+      <% material = item.material %>
       <div class="material clearfix" data-material-id="<%= material.id %>">
         <%= check_box_tag 'material_ids[]', material.id, false, 'data-checkbox-id' => material.id %>
         <%= material.name %>
-        <%= link_to sub_material_path(material), remote: true, class: 'sub-link' do %>
+        <% if item.children.size > 0 %>
           <span class="glyphicon glyphicon-chevron-down pull-right"></span>
+          <%= render partial: 'materials', locals: { items: item.children, level: item.level } %>
         <% end %>
       </div>
     <% end %>
