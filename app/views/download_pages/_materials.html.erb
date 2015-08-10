@@ -1,4 +1,4 @@
-<div class="sub-container <%= level.odd? ? 'odd' : 'even' %>">
+<div class="sub-container <%= level.odd? ? 'odd' : 'even' %> hidden">
   <div class="sub-materials clearfix">
     <% items.each do |item| %>
       <% material = item.material %>
@@ -11,7 +11,7 @@
           <% end %>
         <% end %>
         <% if item.children.count > 0 %>
-          <span class="glyphicon glyphicon-chevron-down pull-right"></span>
+          <span class="glyphicon glyphicon-chevron-down pull-right toggler"></span>
           <%= render partial: 'materials', locals: { items: item.children, level: item.level } %>
         <% end %>
       </div>

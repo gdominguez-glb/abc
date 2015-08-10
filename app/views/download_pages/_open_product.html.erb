@@ -11,7 +11,7 @@
         <%= check_box_tag 'material_ids[]', material.id, false, 'data-checkbox-id' => material.id %>
         <%= material.name %>
         <% if item.children.size > 0 %>
-          <span class="glyphicon glyphicon-chevron-down pull-right"></span>
+          <span class="glyphicon glyphicon-chevron-down pull-right toggler"></span>
           <%= render partial: 'materials', locals: { items: item.children, level: item.level } %>
         <% end %>
       </div>
