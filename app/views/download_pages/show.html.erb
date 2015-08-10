@@ -69,6 +69,20 @@
             }
           });
         });
+
+        $(".toggler").click(function() {
+          $toggler = $(this)
+          $sub = $toggler.next('.sub-container');
+          if ($toggler.hasClass('glyphicon-chevron-up')) {
+            $toggler.removeClass('glyphicon-chevron-up');
+            $toggler.addClass('glyphicon-chevron-down');
+            $sub.addClass('hidden');
+          } else {
+            $toggler.addClass('glyphicon-chevron-up');
+            $toggler.removeClass('glyphicon-chevron-down');
+            $sub.removeClass('hidden');
+          }
+        });
       })
     <% end %>
   <% end %>

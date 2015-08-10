@@ -1,6 +1,6 @@
 class MaterialsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_material, only: [:download, :sub]
+  before_action :set_material, only: [:download]
 
   def download
     if @material.material_files.count == 1 && @material.children.count == 0
@@ -20,10 +20,6 @@ class MaterialsController < ApplicationController
     @download_job = DownloadJob.create(user: current_spree_user, material_ids: material_ids, status: 'pending')
   end
 
-  def sub
-    @product = @material.product
-  end
-  
   private
 
   def set_material

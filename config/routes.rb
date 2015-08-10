@@ -67,7 +67,6 @@ Rails.application.routes.draw do
       post :multi_download
     end
     member do
-      get :sub
       get :download
       get :download_all
     end

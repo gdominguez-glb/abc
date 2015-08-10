@@ -1,0 +1,20 @@
+<div class="sub-container <%= level.odd? ? 'odd' : 'even' %> hidden">
+  <div class="sub-materials clearfix">
+    <% items.each do |item| %>
+      <% material = item.material %>
+      <div class="sub-material clearfix" data-material-id="<%= material.id %>">
+        <%= check_box_tag 'material_ids[]', material.id, false, 'data-checkbox-id' => material.id %>
+        <%= material.name %>
+        <% if material.material_files_count > 0 %>
+          <%= link_to download_material_path(material), class: 'pull-right', remote: true do %>
+            <span class="glyphicon glyphicon-download-alt"></span>
+          <% end %>
+        <% end %>
+        <% if item.children.count > 0 %>
+          <span class="glyphicon glyphicon-chevron-down pull-right toggler"></span>
+          <%= render partial: 'materials', locals: { items: item.children, level: item.level } %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
