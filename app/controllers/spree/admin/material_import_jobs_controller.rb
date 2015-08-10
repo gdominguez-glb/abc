@@ -7,7 +7,7 @@ module Spree
         @object.attributes = permitted_resource_params
         path = admin_product_materials_path
         if @object.save
-          redirect_to path, notice: 'Queued import job'
+          redirect_to path, notice: 'Queued import job, please come back or refresh this page in a while to check the result.'
         else
           flash[:error] = 'Please upload correct file to import'
           redirect_to path

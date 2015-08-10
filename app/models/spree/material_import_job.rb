@@ -5,6 +5,8 @@ class Spree::MaterialImportJob < ActiveRecord::Base
   has_attached_file :file, s3_permissions: :private
   validates_attachment_content_type :file, content_type: %w(application/zip)
 
+  scope :processing, -> { where(status: 'processing') }
+
   before_validation(on: :create) do
     self.status = 'pending'
   end

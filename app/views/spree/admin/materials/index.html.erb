@@ -1,5 +1,9 @@
 <%= render :partial => 'spree/admin/shared/product_tabs', :locals => {:current => "Materials"} %>
 
+<% if @product.material_import_jobs.processing.count > 0 %>
+  <div class="alert alert-info">There's import jobs running to import materials.</div>
+<% end %>
+
 <% content_for :page_title do %>
   <%= plural_resource_name(Spree::Material) %>
 <% end %>

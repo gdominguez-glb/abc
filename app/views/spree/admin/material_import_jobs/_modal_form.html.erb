@@ -8,6 +8,7 @@
       <%= form_for([:admin, @material_import_job.product, @material_import_job]) do |f| %>
         <div class="modal-body">
           <%= f.file_field :file %>
+          <p class="help-block">The zip file must contain a directory named with the product's name which include nested contents.</p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
