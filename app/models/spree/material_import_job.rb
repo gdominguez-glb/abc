@@ -8,4 +8,6 @@ class Spree::MaterialImportJob < ActiveRecord::Base
   before_validation(on: :create) do
     self.status = 'pending'
   end
+
+  after_commit -> { MaterialImportJobWorker.perform_async(self.id) }
 end
