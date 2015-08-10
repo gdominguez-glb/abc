@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150805114108) do
+ActiveRecord::Schema.define(version: 20150810011331) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -554,6 +554,18 @@ ActiveRecord::Schema.define(version: 20150805114108) do
 
   create_table "spree_material_files", force: :cascade do |t|
     t.integer  "material_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
+  end
+
+  create_table "spree_material_import_jobs", force: :cascade do |t|
+    t.integer  "product_id"
+    t.integer  "user_id"
+    t.string   "status"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
     t.string   "file_file_name"
