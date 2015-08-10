@@ -1,0 +1,19 @@
+<div class="modal fade" id="new-material-import-job-modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Upload Zip file to create materials</h4>
+      </div>
+      <%= form_for([:admin, @material_import_job.product, @material_import_job]) do |f| %>
+        <div class="modal-body">
+          <%= f.file_field :file %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <%= f.submit 'Upload', class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

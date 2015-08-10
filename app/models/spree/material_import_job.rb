@@ -3,5 +3,9 @@ class Spree::MaterialImportJob < ActiveRecord::Base
   belongs_to :product, class_name: 'Spree::Product'
 
   has_attached_file :file, s3_permissions: :private
-  validates_attachment :file, presence: true, content_type: %w(application/zip)
+  validates_attachment_content_type :file, content_type: %w(application/zip)
+
+  before_validation(on: :create) do
+    self.status = 'pending'
+  end
 end

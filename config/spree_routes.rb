@@ -43,6 +43,8 @@ spree_routes_overrides = Proc.new do
           get :delete_confirm
         end
       end
+
+      resources :material_import_jobs
     end
 
     resources :materials do
