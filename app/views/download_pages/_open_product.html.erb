@@ -8,7 +8,7 @@
   <div class="materials <%= 'show-materials' if open_product %>">
     <% nested_materials(product.materials.order('lft asc')).each do |item| %>
       <% material = item.material %>
-      <% next if !filter_grade_material?(product, material) %>
+      <% next if !show_grade_material?(product, material) %>
       <div class="material clearfix">
         <%= render partial: 'material_item', locals: { material: material, item: item } %>
       </div>

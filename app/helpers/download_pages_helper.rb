@@ -29,7 +29,9 @@ module DownloadPagesHelper
     root.children
   end
 
-  def filter_grade_material?(product, material)
-    product.is_grades_product && !current_spree_user.grade_option.blank? && current_spree_user.grade_option == material.name
+  def show_grade_material?(product, material)
+    return true if !product.is_grades_product
+    return true if current_spree_user.grade_option.blank?
+    current_spree_user.grade_option == material.name
   end
 end
