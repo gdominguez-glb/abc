@@ -93,11 +93,13 @@
         });
 
         $(".toggler").click(function() {
-          $toggler = $(this)
-          $sub = $toggler.next('.sub-container');
-          $product_wrapper = $this.closest('.product');
+          $toggler         = $(this)
+          $sub             = $toggler.next('.sub-container');
+          $product_wrapper = $toggler.closest('.product');
+
           product_id = $product_wrapper.attr('data-product-id');
           material_id = $toggler.attr('data-material-id');
+
           if ($toggler.hasClass('glyphicon-chevron-up')) {
             $toggler.removeClass('glyphicon-chevron-up');
             $toggler.addClass('glyphicon-chevron-down');
