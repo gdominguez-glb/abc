@@ -1,7 +1,7 @@
 class DownloadPagesController < ApplicationController
   before_action :find_download_page
 
-  helper_method :locked_product?, :filter_grades_option
+  helper_method :locked_product?
 
   def show
     redirect_to root_path if @download_page.blank?
@@ -23,12 +23,5 @@ class DownloadPagesController < ApplicationController
 
   def locked_product?(product)
     !product.free? && !@boughted_products.include?(product)
-  end
-
-  def filter_grades_option(product, root_materials)
-    if product.is_grades_product? && current_spree_user.grade_option.present?
-      root_materials = root_materials.where(name: current_spree_user.grade_option)
-    end
-    root_materials
   end
 end
