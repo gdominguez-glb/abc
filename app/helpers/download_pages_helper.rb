@@ -30,6 +30,6 @@ module DownloadPagesHelper
   end
 
   def filter_grade_material?(product, material)
-    product.is_grades_product && current_spree_user.grade_option.present? && current_spree_user.grade_option == material.name
+    product.is_grades_product && !current_spree_user.grade_option.blank? && current_spree_user.grade_option == material.name
   end
 end
