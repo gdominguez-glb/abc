@@ -2,7 +2,6 @@ $("body").append("<%= escape_javascript(render 'download_modal') %>")
 $("#download-modal").modal('show');
 
 var download_job_url = "<%= download_job_path(@download_job) %>";
-var download_download_job_url = "<%= download_download_job_path(@download_job) %>";
 
 var interval = setInterval(function(){
   $.ajax({
@@ -12,7 +11,7 @@ var interval = setInterval(function(){
       if(response.status == 'done') {
         window.clearInterval(interval);
         $("#download-modal").modal('hide');
-        window.location.href = download_download_job_url;
+        window.location.href = response.url;
       } else if (response.status == 'failed') {
         window.clearInterval(interval);
         $("#download-modal").modal('hide');

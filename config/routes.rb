@@ -74,11 +74,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :download_jobs, only: [:show] do
-    member do
-      get :download
-    end
-  end
+  resources :download_jobs, only: [:show]
 
   get '*slug', to: 'pages#show', constraints: lambda { |request| !(request.path =~ /\/(assets|store).*/) }
 end

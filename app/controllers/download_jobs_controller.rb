@@ -5,11 +5,8 @@ class DownloadJobsController < ApplicationController
   def show
     render json: {
       status: @download_job.status
+      url: (@download_job.status == 'done' ? @download_job.file.expiring_url(60*60*60) : '')
     }
-  end
-
-  def download
-    redirect_to @download_job.file.url
   end
 
   private
