@@ -80,7 +80,7 @@ body {
 }
 
 section {
-  padding: 120px 0;
+  padding: 180px 0;
   @include clearfix;
 }
 
@@ -100,10 +100,4 @@ section {
 
 .coral-text {
   color: $coral;
-
-  .link-has-underline {
-    &:hover {
-      color: $coral;
-    }
-  }
 }

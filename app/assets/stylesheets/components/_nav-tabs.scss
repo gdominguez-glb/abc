@@ -12,6 +12,7 @@
 
     &.active {
       a {
+        opacity: 1;
         border: none;
         border-bottom: 4px solid $brand-primary;
         font-weight: bold;
@@ -27,13 +28,16 @@
     }
 
     a {
+      opacity: .5;
       border-radius: 0;
       border: none;
       border-bottom: 4px solid transparent;
 
       &:hover, &:focus {
+        color: $brand-primary;
+        opacity: 1;
         border: none;
-        border-bottom: 4px solid $primary-hover;
+        border-bottom: 4px solid $brand-primary;
         background: transparent;
       }
     }

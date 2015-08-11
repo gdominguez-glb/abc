@@ -13,9 +13,9 @@ $brand-green: #CCFF63;
 $steel-gray: #46565C;
 
 // Bootstrap Colors
-$brand-primary: #286598;
+$brand-primary: $dark-blue;
 $brand-primary-dark: #1d4a70;
-$primary-hover: lighten($brand-primary, 10%);
+$primary-hover: lighten($brand-primary, 20%);
 
 $brand-info: #5bc0de;
 $brand-success: #5cb85c;

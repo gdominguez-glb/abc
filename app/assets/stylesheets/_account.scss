@@ -9,24 +9,30 @@
 
 .product-wrapper {
   padding: 20px;
-  height: 164px;
 }
 
 .products {
   margin-bottom: 60px;
 }
 
-.product-wrapper, .recommended-product-wrapper {
+.product-wrapper {
   text-align: center;
   background: $dark-blue;
   color: #fff;
   border-radius: 4px;
+
+  p {
+    opacity: .5;
+  }
 }
 
 .recommended-product-wrapper {
   position: relative;
   padding: 40px;
   margin: 0 0 15px;
+  color: #fff;
+  background: $steel-gray;
+  text-align: center;
 
   &:last-child {
     margin: 0;
