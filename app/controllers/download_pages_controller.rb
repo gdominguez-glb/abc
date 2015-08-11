@@ -9,6 +9,8 @@ class DownloadPagesController < ApplicationController
     @products            = @download_page.products
     @boughted_products   = current_spree_user.products.where(id: @products.map(&:id))
 
+    current_spree_user.product_tracks.find_or_create_by(product_id: params[:opened_product_id]) if params[:opened_product_id].present?
+
     product_tracks       = current_spree_user.product_tracks.where(product_id: @products.map(&:id))
 
     @opened_product_ids  = product_tracks.map(&:product_id)
