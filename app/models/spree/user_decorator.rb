@@ -1,8 +1,43 @@
 Spree::User.class_eval do
-  include SalesforceAccess
-
   include RailsSettings::Extend
   include ActivityLogger
+  include SalesforceAccess
+
+  def self.sobject_name
+    'Contact'
+  end
+
+  def self.attributes_from_salesforce_object(sfo)
+    sfo_data = super(sfo)
+    if defined?(sfo.Email) && defined?(sfo.FirstName) && defined?(sfo.LastName)
+      sfo_data.merge!(first_name: sfo.FirstName,
+                      last_name: sfo.LastName,
+                      email: sfo.Email)
+    end
+    if defined? sfo.AccountId
+      school_district_record = SchoolDistrict.joins(:salesforce_reference)
+        .where('salesforce_references.id_in_salesforce' => sfo.AccountId).first
+    end
+    if school_district_record
+      sfo_data.merge! school_district_id: school_district_record.id
+    end
+    # TODO: handle the case where the district is not found
+    # TODO: Also update address information
+    sfo_data
+  end
+
+  def self.matches_salesforce_object(sfo)
+    matches = super(sfo)
+    return matches if matches.present?
+    return none if !defined?(sfo.Email) || sfo.Email.blank?
+    where email: sfo.Email
+  end
+
+  # Do not create from salesforce, only try to find a match
+  def self.find_or_create_by_salesforce_object(sfo, &block)
+    return nil if sfo.blank?
+    matches_salesforce_object(sfo).first
+  end
 
   def self.defaults_email_notifications
     {
