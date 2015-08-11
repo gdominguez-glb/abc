@@ -13,6 +13,10 @@ var interval = setInterval(function(){
         window.clearInterval(interval);
         $("#download-modal").modal('hide');
         window.location.href = download_download_job_url;
+      } else if (response.status == 'failed') {
+        window.clearInterval(interval);
+        $("#download-modal").modal('hide');
+        alert('Failed to process files.');
       }
     }
   })
