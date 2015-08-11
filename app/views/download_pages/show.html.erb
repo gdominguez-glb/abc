@@ -14,7 +14,7 @@
     <div class="products">
       <% @products.each do |product| %>
         <% if locked_product?(product) %>
-          <%= render partial: 'locked_proudct', locals: { product: product } %>
+          <%= render partial: 'locked_product', locals: { product: product } %>
         <% else %>
           <%= render partial: 'open_product', locals: { product: product } %>
         <% end %>
