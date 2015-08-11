@@ -55,7 +55,8 @@
 
 .modal-backdrop {
   &.in {
-    opacity: .75;
+    background: $coral;
+    opacity: .95;
   }
 }
 

@@ -123,17 +123,6 @@ a {
     color: $primary-hover;
     text-decoration: none;
   }
-
-  &.link-has-underline {
-    padding: 2px 0;
-    border-bottom: 2px solid;
-    border-top: 2px solid transparent;
-
-    &:hover {
-      padding: 5px 0;
-      border-top: 2px solid;
-    }
-  }
 }
 
 ul,
@@ -168,4 +157,8 @@ hr {
 
 .green-text {
   color: $brand-green;
+}
+
+.blue-text {
+  color: $dark-blue;
 }

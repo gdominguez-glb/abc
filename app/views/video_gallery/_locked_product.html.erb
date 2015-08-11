@@ -4,9 +4,7 @@
       <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
     </div>
   </div>
-  <span class="video-product-name">
-    <h3><%= truncate(video_product.name, length: 50) %></h2>
-  </span>
+  <h6 class="video-product-name"><%= truncate(video_product.name, length: 50) %></h6>
   <div class="video-product-categories"><%= video_product.categories.join(", ") %></div>
   <div class="video-product-taxons"><%= video_product.taxons.map(&:name).join(", ") %></div>
   <div class="video-product-drawer hide">

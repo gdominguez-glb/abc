@@ -3,7 +3,7 @@
 .fixed-sidebar {
   width: 18%;
   height: 100%;
-  background: #eee;
+  background: $steel-gray;
   overflow: scroll;
 
   &.responsive-sidebar {
@@ -51,7 +51,12 @@
 .taxonomies-filters {
   .taxonomy-header {
     padding: 10px;
-    border-bottom: 1px solid #555;
+    color: #fff;
+    border-bottom: 1px solid #fff;
+
+    &:hover {
+      color: $brand-green;
+    }
 
     .selected-taxons-wrapper {
       margin-top: 5px;
@@ -69,17 +74,19 @@
   .list-group {
     max-height: 0;
     margin: 0;
+    color: #fff;
     overflow: hidden;
 
     @include transition(all, $transitionTiming);
 
     &.show-menu {
       max-height: 1000px;
-      border-bottom: 1px solid #555;
+      border-bottom: 1px solid;
       overflow: auto;
     }
 
     .list-group-item {
+      color: #fff;
       border: none;
       border-radius: 0;
       text-align: center;
@@ -87,7 +94,8 @@
       @include transition(all, $transitionTiming);
 
       &.active, &:hover {
-        background-color: #aaa;
+        color: $brand-green;
+        background: lighten($steel-gray, 5%);
       }
     }
   }
