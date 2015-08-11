@@ -3,7 +3,7 @@ class DownloadJob < ActiveRecord::Base
 
   serialize :material_ids, Array
 
-  has_attached_file :file
+  has_attached_file :file, s3_permissions: :private
   validates_attachment_content_type :file, :content_type => /\A.*\Z/
 
   after_create -> { DownloadJobWorker.perform_async(self.id) }

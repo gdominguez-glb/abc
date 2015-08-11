@@ -63,7 +63,7 @@
 
         $('body').on('click', '.download-selected-btn', function(e) {
           e.preventDefault();
-          $product_wrapper = $this.closest('.product');
+          $product_wrapper = $(this).closest('.product');
           $url = $(e.target).attr('href');
           var material_ids = [];
           $.each($product_wrapper.find("input[type='checkbox']:checked"), function(index, el){
