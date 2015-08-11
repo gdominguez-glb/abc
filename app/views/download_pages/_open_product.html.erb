@@ -9,13 +9,7 @@
     <% nested_materials(product.materials.order('lft asc')).each do |item| %>
       <% material = item.material %>
       <div class="material clearfix">
-        <%= check_box_tag 'material_ids[]', material.id, false, 'data-checkbox-id' => material.id %>
-        <%= material.name %>
-        <% if item.children.size > 0 %>
-          <% open_material = @opened_material_ids.include?(material.id) %>
-          <span class="glyphicon glyphicon-chevron-<%= open_material ? 'up' : 'down' %> pull-right toggler" data-material-id="<%= material.id %>"></span>
-          <%= render partial: 'materials', locals: { items: item.children, level: item.level, open: open_material } %>
-        <% end %>
+        <%= render partial: 'material_item', locals: { material: material, item: item } %>
       </div>
     <% end %>
     <div class="actions">
