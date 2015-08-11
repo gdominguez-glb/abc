@@ -20,6 +20,25 @@ class MaterialsController < ApplicationController
     @download_job = DownloadJob.create(user: current_spree_user, material_ids: material_ids, status: 'pending')
   end
 
+  def track
+    product_track = current_spree_user.product_tracks.find_or_create_by(product_id: params[:product_id])
+    product_track.update(material_id: params[:material_id])
+    render nothing: true
+  end
+
+  def untrack
+    product_track = current_spree_user.product_tracks.find_or_create_by(product_id: params[:product_id])
+    material = Spree::Material.find_by(id: params[:material_id])
+    if material.blank?
+      product_track.destroy
+    elsif material.parent.blank?
+      product_track.update(material_id: nil)
+    else
+      product_track.update(material_id: material.parent.id)
+    end
+    render nothing: true
+  end
+
   private
 
   def set_material

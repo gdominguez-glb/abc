@@ -1,18 +1,20 @@
-<div class="product clearfix">
+<div class="product clearfix" data-product-id="<%= product.id %>">
   <div class="product-head">
     <p><%= product.free? ? 'Free' : 'Paid' %></p>
     <h3><%= product.name %></h3>
     <span class="glyphicon glyphicon-chevron-down open-product"></span>
   </div>
-  <div class="materials">
+  <% open_product = @opened_product_ids.include?(product.id) %>
+  <div class="materials <%= 'show-materials' if open_product %>">
     <% nested_materials(product.materials.order('lft asc')).each do |item| %>
       <% material = item.material %>
-      <div class="material clearfix" data-material-id="<%= material.id %>">
+      <div class="material clearfix">
         <%= check_box_tag 'material_ids[]', material.id, false, 'data-checkbox-id' => material.id %>
         <%= material.name %>
         <% if item.children.size > 0 %>
-          <span class="glyphicon glyphicon-chevron-down pull-right toggler"></span>
-          <%= render partial: 'materials', locals: { items: item.children, level: item.level } %>
+          <% open_material = @opened_material_ids.include?(material.id) %>
+          <span class="glyphicon glyphicon-chevron-<%= open_material ? 'up' : 'down' %> pull-right toggler" data-material-id="<%= material.id %>"></span>
+          <%= render partial: 'materials', locals: { items: item.children, level: item.level, open: open_material } %>
         <% end %>
       </div>
     <% end %>
