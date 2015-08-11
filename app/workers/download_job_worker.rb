@@ -60,6 +60,8 @@ class DownloadJobWorker
 
       download_job.update(file: File.new(zipfile_name), status: 'done')
 
+      DownloadJobMailer.notify(download_job).deliver
+
       FileUtils.remove_dir tmp_directory_path
       FileUtils.rm [zipfile_name]
     rescue => exception
