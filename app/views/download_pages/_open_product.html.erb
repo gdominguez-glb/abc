@@ -1,4 +1,4 @@
-<div class="product clearfix">
+<div class="product clearfix" data-product-id="<%= product.id %>">
   <div class="product-head">
     <p><%= product.free? ? 'Free' : 'Paid' %></p>
     <h3><%= product.name %></h3>
@@ -7,11 +7,11 @@
   <div class="materials">
     <% nested_materials(product.materials.order('lft asc')).each do |item| %>
       <% material = item.material %>
-      <div class="material clearfix" data-material-id="<%= material.id %>">
+      <div class="material clearfix">
         <%= check_box_tag 'material_ids[]', material.id, false, 'data-checkbox-id' => material.id %>
         <%= material.name %>
         <% if item.children.size > 0 %>
-          <span class="glyphicon glyphicon-chevron-down pull-right toggler"></span>
+          <span class="glyphicon glyphicon-chevron-down pull-right toggler" data-material-id="<%= material.id %>"></span>
           <%= render partial: 'materials', locals: { items: item.children, level: item.level } %>
         <% end %>
       </div>

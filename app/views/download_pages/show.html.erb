@@ -24,12 +24,34 @@
   <%= content_for :javascripts do %>
     <%= javascript_tag do %>
       $(function() {
+        function trackProductMaterial(product_id, material_id) {
+          $.ajax({
+            url: '/materials/track',
+            type: 'POST',
+            data: { product_id: product_id, material_id: material_id }
+          });
+        }
+
+        function untrackProduct(product_id, material_id) {
+          $.ajax({
+            url: '/materials/untrack',
+            type: 'POST',
+            data: { product_id: product_id, material_id: material_id }
+          });
+        }
+
         $('.open-product').click(function(e){
           e.preventDefault();
           $this = $(e.target);
           $product_wrapper = $this.closest('.product');
           $this.toggleClass('rotate-icon');
           $product_wrapper.find('.materials').toggleClass('show-materials')
+          product_id = $product_wrapper.attr('data-product-id');
+          if ($product_wrapper.find('.materials').hasClass('show-materials')) {
+            trackProductMaterial(product_id);
+          } else {
+            untrackProduct(product_id);
+          }
         });
 
         $('body').on('change', "input[type=checkbox]", function(e){
@@ -73,14 +95,19 @@
         $(".toggler").click(function() {
           $toggler = $(this)
           $sub = $toggler.next('.sub-container');
+          $product_wrapper = $this.closest('.product');
+          product_id = $product_wrapper.attr('data-product-id');
+          material_id = $toggler.attr('data-material-id');
           if ($toggler.hasClass('glyphicon-chevron-up')) {
             $toggler.removeClass('glyphicon-chevron-up');
             $toggler.addClass('glyphicon-chevron-down');
             $sub.addClass('hidden');
+            untrackProduct(product_id, material_id);
           } else {
             $toggler.addClass('glyphicon-chevron-up');
             $toggler.removeClass('glyphicon-chevron-down');
             $sub.removeClass('hidden');
+            trackProductMaterial(product_id, material_id);
           }
         });
       })
