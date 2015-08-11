@@ -27,7 +27,7 @@ module SalesforceAccess
 
   def find_in_salesforce_by_salesforce_id(sid = id_in_salesforce)
     return nil unless sid
-    salesforce_api.client.find(salesforce_sobject_name, sid)
+    self.class.salesforce_api.client.find(salesforce_sobject_name, sid)
   end
 
   # this follows our convention where we store our pk in salesforce's MemberID
@@ -52,12 +52,17 @@ module SalesforceAccess
     if cached_salesforce_object
       cached_attributes = self.class.attributes_from_salesforce_object(
         cached_salesforce_object).except(:salesforce_reference_attributes,
-                                         :skip_next_salesforce_update)
-      compare_attributes = incoming_attributes
-        .except(:salesforce_reference_attributes, :skip_next_salesforce_update)
+                                         :skip_next_salesforce_update,
+                                         :skip_salesforce_create)
+      compare_attributes = incoming_attributes.except(
+        :salesforce_reference_attributes,
+        :skip_next_salesforce_update,
+        :skip_salesforce_create)
       return self if cached_attributes == compare_attributes
     end
-    update_attributes(incoming_attributes)
+    res = update_attributes(incoming_attributes)
+    salesforce_reference.reload
+    res
   end
 
   def changed_since_salesforce?
@@ -104,6 +109,21 @@ module SalesforceAccess
     attributes_to_update
   end
 
+  def update_record_in_salesforce(attributes_to_update = {})
+    upd_attributes = attributes_to_update.merge(Id: id_in_salesforce)
+    last_modified_in_salesforce_at = Time.zone.now
+    ok = self.class.salesforce_api.client.update(salesforce_sobject_name,
+                                                 upd_attributes)
+    return false unless ok
+    sfo_attributes = salesforce_reference.object_properties.merge(
+      LastModifiedDate: last_modified_in_salesforce_at
+    )
+    updated_sfo_attributes = sfo_attributes.merge(attributes_to_update)
+    sfo = salesforce_reference.object_from_properties(updated_sfo_attributes)
+    update_from_salesforce(sfo)
+    attributes_to_update
+  end
+
   # override to customize attributes for create
   def new_attributes_for_salesforce
     attributes_for_salesforce # .merge 'OwnerId' => self.class.salesforce_user_id
@@ -113,6 +133,7 @@ module SalesforceAccess
     !skip_salesforce_create
   end
 
+  # This will schedule the update to Salesforce using active_job
   def create_in_salesforce(fields = nil)
     return {} unless should_create_salesforce?
     # TODO: Handle both modified case
@@ -122,6 +143,19 @@ module SalesforceAccess
     ref = salesforce_reference || create_salesforce_reference
     SalesforceJob.perform_later(ref.id, attributes_to_create, 'create')
     attributes_to_create
+  end
+
+  # This will be called within the active_job
+  def create_new_record_in_salesforce(attributes_to_create = {})
+    created_in_salesforce_at = Time.zone.now
+    sf_id = self.class.salesforce_api.client.create(salesforce_sobject_name,
+                                                    attributes_to_create)
+    return false if sf_id.blank?
+    new_attrs = attributes_to_create.merge(
+      Id: sf_id, LastModifiedDate: created_in_salesforce_at)
+    sfo = salesforce_reference.object_from_properties(new_attrs)
+    update_from_salesforce(sfo)
+    sfo
   end
 
   class_methods do

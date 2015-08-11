@@ -19,9 +19,12 @@ class SchoolDistrict < ActiveRecord::Base
   # Looks for name + state, then looks for just name if not found
   def find_in_salesforce_by_name_and_state
     return nil if name.blank?
-    sfo = salesforce_class.find_by_Name_and_BillingState(name, state.abbr)
+    sfo = self.class.salesforce_api.client.query(
+      "select Id from #{salesforce_sobject_name} where Name = " \
+      "'#{name}' and BillingState = '#{state.try(:abbr)}'").first
     return sfo if sfo
-    salesforce_class.find_by_Name(name)
+    self.class.salesforce_api.client.query(
+      "select Id from #{salesforce_sobject_name} where Name = '#{name}'").first
   end
 
   def self.district_type_id
@@ -47,13 +50,13 @@ class SchoolDistrict < ActiveRecord::Base
   end
 
   def self.country_from_salesforce_object(sfo)
-    return nil unless defined? sfo.BillingCountry
+    return nil if sfo.BillingCountry.blank?
     Spree::Country.find_by(iso: sfo.BillingCountry).try(:iso3)
   end
 
   def self.state_from_salesforce_object(sfo)
     # TODO: Handle other countries
-    return nil unless defined? sfo.BillingState
+    return nil if sfo.BillingState.blank?
     us = Spree::Country.find_by(iso: 'US')
     sfo.BillingState.present? && us && us.states.find_by(abbr: sfo.BillingState)
   end
@@ -77,7 +80,7 @@ class SchoolDistrict < ActiveRecord::Base
   def self.matches_salesforce_object(sfo)
     matches = super(sfo)
     return matches if matches.present?
-    return none unless defined? sfo.Name
+    return none if sfo.Name.blank?
     state = state_from_salesforce_object(sfo)
     where(name: sfo.Name, state_id: state)
   end
