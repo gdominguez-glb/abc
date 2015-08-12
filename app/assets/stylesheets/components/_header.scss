@@ -119,12 +119,8 @@
   float: right;
 
   input:not(.btn) {
-    color: #fff;
-    box-shadow: inset 0 0 0 1px $gray;
-
-    &:focus {
-      box-shadow: inset 0 0 0 1px $brand-green;
-    }
+    color: $dark-blue;
+    box-shadow: inset 0 0 0 1px $steel-gray;
   }
 
   .btn {

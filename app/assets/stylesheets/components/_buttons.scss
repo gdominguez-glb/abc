@@ -39,10 +39,14 @@
 
   &.btn-primary {
     border: 0;
-    background-color: $brand-primary;
+    @include button-bg($dark-blue);
 
-    &:hover {
-      background-color: $primary-hover;
+    &.green-btn {
+      @include button-bg($brand-green);
+    }
+
+    &.red-btn {
+      @include button-bg($coral);
     }
   }
 
