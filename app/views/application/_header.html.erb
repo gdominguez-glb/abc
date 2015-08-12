@@ -2,10 +2,15 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="navbar-header pull-left">
     <a class="navbar-brand" href="/">
-      <%= image_tag 'branding.gif', height: 20, width: 123 %>
+      Great Minds
     </a>
   </div>
   <div class="nav-right-options clearfix pull-right">
+    <% if spree_current_user %>
+      <%= active_link_to '/account', class: "account-icon" do %>
+        <span class="fa fa-user"></span>
+      <% end %>
+    <% end %>
     <%= render partial: 'spree/shared/main_nav_bar' if store_menu? %>
     <button type="button" class="main-nav navbar-toggle collapsed btn" data-toggle="collapse" data-target="#main-nav">
        Menu
@@ -27,7 +32,6 @@
       <% end %>
       <%= active_link_to "Contact", main_app.contact_path, wrap_tag: :li %>
       <% if spree_current_user %>
-        <%= active_link_to "Account", '/account', wrap_tag: :li %>
         <%= active_link_to "Logout", '/store/logout', wrap_tag: :li %>
       <% else %>
         <%= active_link_to "Login", '/store/login', wrap_tag: :li %>

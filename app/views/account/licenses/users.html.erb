@@ -26,7 +26,7 @@
           <td><%= user.school_district.try(:name) %></td>
           <td>
             <% user.licensed_products_from(current_spree_user).group_by(&:product).each do |product, licenses| %>
-              <p><%= product.name %>(x<%= licenses.map(&:quantity).sum %>)</p>
+              <%= product.name %>(x<%= licenses.map(&:quantity).sum %>)
             <% end %>
           </td>
           <td><%= user.last_active_date.strftime("%b %-d, %Y") rescue nil %></td>
@@ -42,7 +42,7 @@
   </table>
   <%= paginate @users %>
 </div>
-<%= link_to new_account_reminder_path, remote: true, class: 'btn btn-primary reminder-btn' do %>
+<%= link_to new_account_reminder_path, remote: true, class: 'btn btn-primary red-btn reminder-btn' do %>
   <span class="glyphicon glyphicon-comment"></span>
   Remind
 <% end %>

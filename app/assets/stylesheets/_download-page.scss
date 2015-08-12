@@ -7,7 +7,8 @@
 .product-head {
   position: relative;
   padding: 30px;
-  background: $gray-light;
+  background: $brand-green;
+  color: $dark-blue;
 
   h3 {
     margin: 0;
@@ -60,11 +61,13 @@
   .sub-container {
 
     &.odd {
-      background: $gray-lighter;
+      background: $gray-light;
+      color: #fff;
     }
 
     &.even {
       background: #fff;
+      color: $dark-blue;
     }
   }
 }

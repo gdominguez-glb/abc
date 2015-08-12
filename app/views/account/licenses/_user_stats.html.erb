@@ -1,26 +1,25 @@
-<tr id="user-stats-tr-<%= @user.id %>">
+<tr class="user-details" id="user-stats-tr-<%= @user.id %>">
   <td></td>
   <td colspan='7'>
     <div class="user-stats-wrapper">
       <div class="row">
         <div class="col-md-3">
-          <h4><%= @user.full_name %></h4>
           <p>Joined: <%= @user.created_at.strftime("%b %-d, %Y") %></p>
           <%# <p>Exp: Auguest 20, 2015</p> %>
           <p><%= @user.email %></p>
           <p><%= @user.phone %></p>
         </div>
         <div class="col-md-3">
-          <h4><%= @user.logins_in_last_days(5) %>x</h4>
           <p>5 Day Log In</p>
+          <h6><%= @user.logins_in_last_days(5) %>x</h6>
         </div>
         <div class="col-md-3">
-          <h4><%= @user.logins_in_last_days(10) %>x</h4>
           <p>10 Day Log In</p>
+          <h6><%= @user.logins_in_last_days(10) %>x</h6>
         </div>
         <div class="col-md-3">
-          <h4><%= @user.logins_in_last_days(30) %>x</h4>
           <p>Monthly Log In</p>
+          <h6><%= @user.logins_in_last_days(30) %>x</h6>
         </div>
       </div>
     </div>
