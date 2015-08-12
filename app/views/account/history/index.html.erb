@@ -39,12 +39,15 @@
               <% if activity.action == "logout" %>
                 <span class="glyphicon glyphicon-log-out"></span>
               <% end %>
+              <% if activity.action == 'download' %>
+                <span class="glyphicon glyphicon-download"></span>
+              <% end %>
             </td>
             <td><%= activity.title %></td>
             <%# <td>Module 2, Grade 8, Lesson 3</td> %>
             <td><%= activity.created_at.strftime('%b %d, %Y') %></td>
             <td>
-              <% link =  activity_item_link(activity) %>
+              <% link = activity_item_link(activity) %>
               <% if link.present? %>
                 <a href="<%= link %>" class="btn btn-primary">View Item</a>
               <% end %>
