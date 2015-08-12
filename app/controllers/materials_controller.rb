@@ -14,7 +14,7 @@ class MaterialsController < ApplicationController
   end
 
   def download_all
-    log_activity(@product, "Download All Files in #{@product.name}", @product)
+    log_activity(@product, "Download All Files in #{@product.name}")
 
     @download_job = DownloadJob.create(user: current_spree_user, material_ids: @product.materials.roots.map(&:id), status: 'pending')
   end
