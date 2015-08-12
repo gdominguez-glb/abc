@@ -1,0 +1,9 @@
+<% if @material_file.save %>
+  <% 
+    @material_files = @material.material_files
+    @material_file = @material.material_files.new
+  %>
+  $('.modal.in').html("<%= escape_javascript(render 'dialog') %>");
+<% else %>
+  alert('Must upload file.')
+<% end %>

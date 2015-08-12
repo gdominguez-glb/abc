@@ -10,12 +10,17 @@ module Spree
 
       def create
         @object.attributes = permitted_resource_params
-        if @object.save
-          flash[:success] = flash_message_for(@object, :successfully_created)
-        else
-          flash[:error] = @object.errors.full_messages.join(", ")
+        respond_to do |format|
+          format.html {
+            if @object.save
+              flash[:success] = flash_message_for(@object, :successfully_created)
+            else
+              flash[:error] = @object.errors.full_messages.join(", ")
+            end
+            redirect_to admin_product_materials_path(@material.product)
+          }
+          format.js
         end
-        redirect_to admin_product_materials_path(@material.product)
       end
 
       def location_after_destroy
