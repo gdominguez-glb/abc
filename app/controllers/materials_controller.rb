@@ -1,7 +1,7 @@
 class MaterialsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_material, only: [:download]
-  before_action :set_product, only: [:download, :multi_download]
+  before_action :set_product, only: [:download, :download_all, :multi_download]
 
   def download
     if @material.material_files.count == 1 && @material.children.count == 0
