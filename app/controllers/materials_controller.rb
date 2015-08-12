@@ -1,9 +1,11 @@
 class MaterialsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_material, only: [:download]
-  before_action :set_product, only: [:download, :download_all, :multi_download]
+  before_action :set_product, only: [:download_all, :multi_download]
 
   def download
+    log_activity(@material, "Download #{@material.name}")
+
     if @material.material_files.count == 1 && @material.children.count == 0
       @download_url = @material.material_files.first.file.expiring_url(60*60*60)
     else
@@ -12,10 +14,14 @@ class MaterialsController < ApplicationController
   end
 
   def download_all
+    log_activity(@product, "Download All Files in #{@product.name}", @product)
+
     @download_job = DownloadJob.create(user: current_spree_user, material_ids: @product.materials.roots.map(&:id), status: 'pending')
   end
 
   def multi_download
+    log_activity(@product, "Download Multiple Files in #{@product.name}")
+
     material_ids  = @product.materials.where(id: params[:material_ids]).pluck(:id)
     @download_job = DownloadJob.create(user: current_spree_user, material_ids: material_ids, status: 'pending')
   end
@@ -48,6 +54,7 @@ class MaterialsController < ApplicationController
     else
       @material = current_spree_user.materials.reorder('spree_materials.id asc').find(material.id)
     end
+    @product = @material.product
   end
 
   def set_product
@@ -57,5 +64,9 @@ class MaterialsController < ApplicationController
     else
       @product = current_spree_user.products.find(product.id)
     end
+  end
+
+  def log_activity(item, title)
+    current_spree_user.log_activity(title: title, item: item, action: 'download')
   end
 end
