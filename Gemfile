@@ -72,6 +72,8 @@ gem "font-awesome-rails"
 
 gem 'rubyzip', '>= 1.0.0'
 
+gem 'remotipart', '~> 1.2'
+
 group :development do
   gem 'quiet_assets'
   gem 'letter_opener'
