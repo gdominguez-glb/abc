@@ -44,7 +44,7 @@ class DownloadJobWorker
       files_to_zip = []
       materials.each do |material|
         material.self_and_descendants.each do |_material|
-          parent_names             = _material.self_and_descendants.map(&:name)
+          parent_names             = _material.self_and_ancestors.map(&:name)
           full_file_directory_path = File.join(tmp_directory_path, parent_names.join('/'))
 
           FileUtils.mkdir_p(full_file_directory_path)
