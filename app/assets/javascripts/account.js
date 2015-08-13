@@ -56,7 +56,7 @@ $(function(){
 
   var updateAccountBackground = debounce(function() {
     if ($(".recent-history").outerHeight() > $(".account .content").outerHeight()) {
-      $(".account-page").css("background", "#fff");
+      $(".account-page").css("background", "#FFF");
     } else {
       $(".account-page").css("background", "#46565C");
     }

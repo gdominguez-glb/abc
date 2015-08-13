@@ -14,8 +14,8 @@
       </div>
     <% end %>
     <div class="actions">
-      <%= link_to 'Download All', download_all_materials_path(product_id: product.id), class: 'btn btn-primary btn-sm', remote: true, data: { method: :post } %>
-      <%= link_to "Download Selected", multi_download_materials_path(product_id: product.id), class: 'btn btn-primary btn-sm download-selected-btn' %>
+      <%= link_to 'Download All', download_all_materials_path(product_id: product.id), class: 'btn btn-primary', remote: true, data: { method: :post } %>
+      <%= link_to "Download Selected", multi_download_materials_path(product_id: product.id), class: 'btn btn-primary download-selected-btn' %>
     </div>
   </div>
 </div>

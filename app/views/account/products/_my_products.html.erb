@@ -1,7 +1,7 @@
 <% @my_products.each do |product| %>
   <div class="col-md-4">
     <div class="product-wrapper">
-      <h4><%= product.name %></h4>
+      <h4 class="title"><%= product.name %></h4>
       <% product.taxons.group_by(&:taxonomy).each do |taxonomy, taxons| %>
         <p><%= taxonomy.name %>: <%= taxons.map(&:name).join(', ') %></p>
       <% end %>

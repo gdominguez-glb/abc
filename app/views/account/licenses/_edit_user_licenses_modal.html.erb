@@ -19,7 +19,7 @@
               <% @product_distributions.each do |distribution| %>
                 <tr class="distribution-row">
                   <td><%= distribution.product.name %></td>
-                  <td><%= text_field_tag "product_distributions[#{distribution.id}][quantity]", distribution.quantity, class: 'distribution-quantity' %></td>
+                  <td><%= text_field_tag "product_distributions[#{distribution.id}][quantity]", distribution.quantity, class: 'distribution-quantity form-control' %></td>
                 </tr>
               <% end %>
             </tbody>

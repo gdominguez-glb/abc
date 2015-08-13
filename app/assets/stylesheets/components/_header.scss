@@ -33,7 +33,7 @@
   .navbar-nav {
     > li {
       > a {
-        padding: 20px 15px;
+        padding: 20px 30px;
         color: #fff;
         text-transform: uppercase;
         letter-spacing: 2px;
@@ -119,12 +119,8 @@
   float: right;
 
   input:not(.btn) {
-    color: #fff;
-    box-shadow: inset 0 0 0 1px $gray;
-
-    &:focus {
-      box-shadow: inset 0 0 0 1px $brand-green;
-    }
+    color: $dark-blue;
+    box-shadow: inset 0 0 0 1px $steel-gray;
   }
 
   .btn {
@@ -139,12 +135,8 @@
 
 #main-nav {
   max-height: 600px;
-  width: calc(100% - 360px);
+  width: calc(100% - 311px);
   margin: 0;
-
-  @media screen and (max-width: 1340px) {
-    width: calc(100% - 345px);
-  }
 
   @media screen and (max-width: $largeBP) {
     width: 100%;
@@ -172,6 +164,13 @@
           border-top: 2px solid #fff;
           text-align: center;
         }
+
+        &.active {
+          a {
+            background: transparent;
+            color: $brand-green;
+          }
+        }
       }
     }
 
@@ -181,13 +180,18 @@
       padding: 15px;
 
       input:not(.btn) {
-        color: #fff;
+        color: $coral;
         box-shadow: inset 0 0 0 1px #fff;
       }
 
       .btn {
         background: transparent;
         box-shadow: inset 0 0 0 1px #fff;
+
+        &:hover {
+          background: #fff;
+          color: $coral;
+        }
       }
     }
   }
@@ -278,6 +282,29 @@
   }
 }
 
+.account-icon {
+  float: left;
+  position: relative;
+  top: 15px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  background: #fff;
+  color: $dark-blue;
+  font-size: 18px;
+  border-radius: 50%;
+
+  &:hover {
+    background: $brand-green;
+  }
+
+  span {
+    position: relative;
+    left: 8px;
+    top: 3px;
+  }
+}
+
 .cart {
   float: left;
   margin: 0;
@@ -288,6 +315,7 @@
     position: relative;
     top: 4px;
     padding: 15px 15px 15px 0;
+    font-size: 14px;
   }
 
   &:hover {
@@ -307,7 +335,8 @@
   right: 0;
   width: 300px;
   display: none;
-  background: #ccc;
+  color: $dark-blue;
+  background: #fff;
 
   table tr {
     td {

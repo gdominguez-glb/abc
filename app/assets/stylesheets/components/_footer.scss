@@ -4,20 +4,40 @@ footer {
   padding: 60px 0;
   background: $dark-blue;
   color: $brand-green;
+  font-size: 7px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
 
   @media screen and (max-width: 767px) {
     padding: 0;
   }
 
+  .section-lead {
+    margin-bottom: 15px;
+    font-family: "Source Sans Pro";
+    font-size: 9px;
+    font-weight: bold;
+
+    a {
+      font-size: 9px;
+    }
+  }
+
   .copyright {
     margin-top: 60px;
+  }
+
+  a {
+    font-size: 7px;
   }
 }
 
 .footer-section {
 
-  i {
-    font-size: 36px;
+  .social-icon {
+    position: relative;
+    bottom: 4px;
+    font-size: 14px;
   }
 
   @media screen and (max-width: 767px) {
