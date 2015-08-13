@@ -32,4 +32,21 @@ class GmSalesforce
   def columns(sobject_name)
     client.describe(sobject_name).fields.map(&:name)
   end
+
+  def find(sobject_name, id)
+    client.find(sobject_name, id)
+  end
+
+  def find_all_in_salesforce(sobject_name,
+                             select_columns = columns(sobject_name).join(','))
+    client.query("select #{select_columns} from #{sobject_name}")
+  end
+
+  def create(salesforce_sobject_name, attributes_to_create)
+    client.create(salesforce_sobject_name, attributes_to_create)
+  end
+
+  def update(salesforce_sobject_name, attributes_to_update)
+    client.update(salesforce_sobject_name, attributes_to_update)
+  end
 end
