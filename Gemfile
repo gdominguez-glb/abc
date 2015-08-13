@@ -34,6 +34,9 @@ gem 'aws-sdk', '< 2.0'
 gem 'active_link_to'
 gem 'kaminari'
 gem 'acts-as-taggable-on', '~> 3.4'
+
+gem 'sinatra', :require => nil
+
 gem 'sidekiq'
 
 gem "mediaelement_rails"

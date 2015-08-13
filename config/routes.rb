@@ -5,6 +5,11 @@ class ActionDispatch::Routing::Mapper
 end
 
 Rails.application.routes.draw do
+  require 'sidekiq/web'
+  authenticate :spree_user, lambda { |u| u.has_admin_role? } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
+
   mount Nkss::Engine => '/styleguides'
   use_doorkeeper
   mount Spree::Core::Engine, at: '/store'
