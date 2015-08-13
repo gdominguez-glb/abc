@@ -11,5 +11,5 @@ class Spree::MaterialImportJob < ActiveRecord::Base
     self.status = 'pending'
   end
 
-  after_commit -> { MaterialImportJobWorker.perform_async(self.id) }
+  after_create -> { MaterialImportJobWorker.perform_async(self.id) }
 end
