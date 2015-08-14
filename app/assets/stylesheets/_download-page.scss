@@ -72,6 +72,14 @@
   }
 }
 
+.sub-material {
+  border-bottom: 1px solid;
+
+  &:last-child {
+    border: none;
+  }
+}
+
 .sub-link {
   font-size: 20px;
 }
