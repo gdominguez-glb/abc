@@ -28,7 +28,11 @@ body {
 }
 
 .container {
-  width: 85% !important;
+  width: 85%;
+
+  @media screen and (max-width: 769px) {
+    width: 98%;
+  }
 }
 
 .overlay {
@@ -63,7 +67,7 @@ body {
 .content {
   position: relative;
   height: 100%;
-  width: 82%;
+  width: 85%;
   padding: 20px;
   background: #fff;
   @include clearfix;
@@ -77,8 +81,12 @@ body {
   }
 
   &.responsive-sidebar {
-    @media screen and (max-width: $largeBP) {
+    @media screen and (max-width: 1200px) {
       width: 75%;
+    }
+
+    @media screen and (max-width: 1025px) {
+      width: 100%;
     }
   }
 }

@@ -18,22 +18,19 @@
   .navbar-brand {
     height: auto;
     padding: 20px 30px;
+    margin-right: 15px;
     background: $brand-green;
     color: $dark-blue;
 
     &:hover, &:focus {
       background: $brand-green;
     }
-
-    @media screen and (max-width: 1340px) {
-      padding: 20px 15px;
-    }
   }
 
   .navbar-nav {
     > li {
       > a {
-        padding: 20px 30px;
+        padding: 20px 15px;
         color: #fff;
         text-transform: uppercase;
         letter-spacing: 2px;
@@ -74,6 +71,11 @@
 
   &.subnav {
     .navbar-nav {
+
+      a {
+        padding:20px 15px;
+      }
+
       .active {
         a {
           background: transparent;
@@ -82,7 +84,7 @@
       }
     }
 
-    @media screen and (max-width: 957px) {
+    @media screen and (max-width: 1025px) {
       .navbar-nav {
 
         li {
@@ -135,10 +137,10 @@
 
 #main-nav {
   max-height: 600px;
-  width: calc(100% - 311px);
+  width: calc(100% - 325px);
   margin: 0;
 
-  @media screen and (max-width: $largeBP) {
+  @media screen and (max-width: 1092px) {
     width: 100%;
     border-top: 1px solid transparent;
     background: $coral;
@@ -215,7 +217,7 @@
     top: 10px;
     padding-right: 24px;
 
-    @media screen and (max-width: $largeBP) {
+    @media screen and (max-width: 1092px) {
       display: block;
     }
 
@@ -250,7 +252,7 @@
   }
 
 
-  @media screen and (max-width: 957px) {
+  @media screen and (max-width: 1025px) {
     &.subnav-toggle {
       display: block;
 
@@ -360,7 +362,7 @@
   background: $steel-gray;
   border-bottom: none;
 
-  @media (max-width: 957px) {
+  @media (max-width: 1025px) {
     .navbar-header {
       posiiton: relative;
       float: none;
@@ -382,7 +384,7 @@
   display: none;
   margin-left: 15px;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1025px) {
     display: block;
   }
 

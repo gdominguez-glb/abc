@@ -1,19 +1,19 @@
 // _sidebars.scss
 
 .fixed-sidebar {
-  width: 18%;
+  width: 15%;
   height: 100%;
   background: $steel-gray;
   overflow: scroll;
 
   &.responsive-sidebar {
-    @media screen and (max-width: $largeBP) {
+    @media screen and (max-width: 1200px) {
       width: 25%;
     }
   }
 
-  &.video-gallery-sidenav, &.account-fixed-sidebar {
-    @media screen and (max-width: 767px) {
+  &.video-gallery-sidenav {
+    @media screen and (max-width: 1025px) {
       width: 75%;
       position: absolute;
       left: 0;
@@ -28,6 +28,12 @@
 
     &.show-nav {
       @include translate(0, 0);
+    }
+  }
+
+  &.account-fixed-sidebar {
+    @media screen and (max-width: 1025px) {
+      display: none;
     }
   }
 
