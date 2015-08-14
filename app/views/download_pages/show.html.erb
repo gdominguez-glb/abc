@@ -116,6 +116,14 @@
             trackProductMaterial(product_id, material_id);
           }
         });
+
+        var material_ids_to_scroll = <%= raw @material_ids_to_scroll.to_json %>;
+        for(var i=0; i < material_ids_to_scroll.length; i ++) {
+          var material_id = material_ids_to_scroll[i];
+          var $material = $(".material-item[data-material-id='"+material_id+"']");
+          var $product = $material.parents('.materials');
+          $product.scrollTo($material);
+        }
       })
     <% end %>
   <% end %>
