@@ -9,6 +9,11 @@
 
 .products {
   margin-bottom: 60px;
+
+  .grade-select {
+    position: relative;
+    top: 6px;
+  }
 }
 
 .product-wrapper {
@@ -20,7 +25,7 @@
   border-radius: $border-radius-value;
 
   .title {
-    margin-bottom: 15px;
+    margin: 0 0 15px;
   }
 
   p {
@@ -82,8 +87,10 @@
 
   .view-all-link {
     display: block;
-    margin: 0 0 15px;
+    width: 87%;
+    margin: 0 auto 15px;
     text-align: center;
+    white-space: normal;
   }
 
   .history-list {
