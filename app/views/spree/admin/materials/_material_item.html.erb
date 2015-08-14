@@ -4,7 +4,7 @@
   <%= link_to 'Add Material', new_admin_product_material_path(material.product, parent_id: material.id), class: 'btn btn-default btn-sm', remote: true %>
   <%= link_to 'Edit', edit_admin_product_material_path(material.product, material), class: 'btn btn-default btn-sm', remote: true %>
   <%= link_to 'Delete', delete_confirm_admin_product_material_path(material.product, material), class: 'btn btn-default btn-sm', remote: true %>
-  <%= link_to 'Files', admin_material_material_files_path(material), class: 'btn btn-default btn-sm', remote: true %>
+  <%= link_to "Files (#{material.material_files_count})", admin_material_material_files_path(material), class: 'btn btn-default btn-sm', remote: true %>
   <% if material.children.count > 0 %>
     <ul class="list-group" style="margint-top: 10px;">
       <% material.children.each do |sub_material| %>
