@@ -13,3 +13,4 @@
 //= require spree/backend/spree_digital
 //= require spree/backend/spree_better_terms_and_conditions
 //= require jquery.remotipart
+//= require jquery-sortable-lists

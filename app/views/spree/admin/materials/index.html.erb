@@ -17,3 +17,28 @@
     <%= render partial: 'material_item', locals: { material: material } %>
   <% end %>
 </ul>
+
+<script type="text/javascript">
+  $(function(){
+    var productId = '<%= @product.slug %>';
+    $("#materials").sortableLists({
+      complete: function(el) {
+        $parent = $(el).parents('.list-group-item');
+        if($parent.length == 0) {
+          parentId = null;
+        } else {
+          parentId = $parent.attr('data-material-id');
+        }
+        var currentId = $(el).attr('data-material-id');
+        var $ulParent = $(el).parents('ul');
+        var position = $ulParent.children().index($(el))
+        var url = "/store/admin/products/" + productId + "/materials/" + currentId + "/update_position";
+        $.ajax({
+          url: url,
+          type: 'POST',
+          data: { position: position, parent_id: parentId }
+        })
+      }
+    })
+  });
+</script>

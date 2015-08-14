@@ -35,6 +35,17 @@ module Spree
         @material = @product.materials.find(params[:id])
       end
 
+      def update_position
+        @material.parent = Spree::Material.find_by(id: params[:parent_id])
+        if @material.parent
+          @material.child_index = params[:position]
+        else
+          @material.position = params[:position].to_i
+        end
+        @material.save
+        render nothing: true
+      end
+
       private
 
       def find_product
