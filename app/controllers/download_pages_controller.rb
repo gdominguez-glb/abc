@@ -15,6 +15,7 @@ class DownloadPagesController < ApplicationController
 
     @opened_product_ids  = product_tracks.map(&:product_id)
     @opened_material_ids = product_tracks.map(&:material).compact.map(&:self_and_ancestors).flatten.map(&:id).uniq
+    @material_ids_to_scroll = product_tracks.map(&:material_id).compact
   end
 
   private

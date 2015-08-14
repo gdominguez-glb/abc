@@ -1,12 +1,14 @@
-<%= check_box_tag 'material_ids[]', material.id, false, 'data-checkbox-id' => material.id %>
-<%= material.name %>
-<% if item.children.size > 0 || material.material_files_count > 0 %>
-  <%= link_to download_material_path(material), class: 'pull-right', remote: true do %>
-    <span class="glyphicon glyphicon-download-alt"></span>
+<div class="material-item" data-material-id="<%= material.id %>">
+  <%= check_box_tag 'material_ids[]', material.id, false, 'data-checkbox-id' => material.id %>
+  <%= material.name %>
+  <% if item.children.size > 0 || material.material_files_count > 0 %>
+    <%= link_to download_material_path(material), class: 'pull-right', remote: true do %>
+      <span class="glyphicon glyphicon-download-alt"></span>
+    <% end %>
   <% end %>
-<% end %>
-<% if item.children.size > 0 %>
-  <% open_material = @opened_material_ids.include?(material.id) %>
-  <span class="glyphicon glyphicon-chevron-<%= open_material ? 'up' : 'down' %> pull-right toggler" data-material-id="<%= material.id %>"></span>
-  <%= render partial: 'materials', locals: { items: item.children, level: item.level, open: open_material } %>
-<% end %>
+  <% if item.children.size > 0 %>
+    <% open_material = @opened_material_ids.include?(material.id) %>
+    <span class="glyphicon glyphicon-chevron-<%= open_material ? 'up' : 'down' %> pull-right toggler" data-material-id="<%= material.id %>"></span>
+    <%= render partial: 'materials', locals: { items: item.children, level: item.level, open: open_material } %>
+  <% end %>
+</div>
