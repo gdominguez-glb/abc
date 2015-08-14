@@ -23,7 +23,7 @@ class GmSalesforce
     sf_params = salesforce_params
     unless Rails.env.production?
       sf_params[:host] = 'test.salesforce.com'
-      Restforce.log = true
+      Restforce.log = !Rails.env.test?
     end
 
     Restforce.new sf_params
