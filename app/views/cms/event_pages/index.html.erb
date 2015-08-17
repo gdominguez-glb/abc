@@ -24,7 +24,7 @@
             <tr>
               <td><%= event_page.title %></td>
               <td><%= event_page.regonline_filter %></td>
-              <td><%= event_page.page.try(:title) %></td>
+              <td><%= event_page.page.try(:group_name) %></td>
               <td><%= event_page.display ? 'Yes' : 'No' %></td>
               <td><%= link_to 'Edit', edit_cms_event_page_path(event_page) %></td>
               <td><%= link_to 'Destroy', [:cms, event_page], method: :delete, data: { confirm: 'Are you sure?' } %></td>
