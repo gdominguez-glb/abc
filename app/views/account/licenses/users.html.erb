@@ -12,6 +12,7 @@
       <tr>
         <th><input type="checkbox" /></th>
         <th>User</th>
+        <th>Email</th>
         <th>School/District</th>
         <th>Product License(s)</th>
         <th>Last Active</th>
@@ -19,28 +20,37 @@
       </tr>
     </thead>
     <tbody>
-      <% @users.each do |user| %>
-        <tr data-user-id='<%= user.id %>'>
+      <% @product_distributions.each do |product_distribution| %>
+        <tr data-user-id='<%= product_distribution.to_user_id %>'>
           <td><input type="checkbox" /></td>
-          <td><%= user.full_name %></td>
-          <td><%= user.school_district.try(:name) %></td>
+          <td><%= product_distribution.to_user.full_name rescue nil %></td>
+          <td><%= product_distribution.to_user.try(:email) || product_distribution.email %></td>
+          <td><%= product_distribution.to_user.school_district.try(:name) rescue nil %></td>
           <td>
-            <% user.licensed_products_from(current_spree_user).group_by(&:product).each do |product, licenses| %>
-              <%= product.name %>(x<%= licenses.map(&:quantity).sum %>)
+            <% if product_distribution.to_user %>
+              <% product_distribution.to_user.licensed_products_from(current_spree_user).group_by(&:product).each do |product, licenses| %>
+                <%= product.name %>(x<%= licenses.map(&:quantity).sum %>) <br/>
+              <% end %>
+            <% else %>
+              <% Spree::ProductDistribution.from_user_to_email(current_spree_user, product_distribution.email).each do |_product_distribution| %>
+                <%= _product_distribution.product.name %>(x<%= _product_distribution.quantity %>)
+              <% end %>
             <% end %>
           </td>
-          <td><%= user.last_active_date.strftime("%b %-d, %Y") rescue nil %></td>
+          <td><%= product_distribution.to_user.last_active_date.strftime("%b %-d, %Y") rescue nil %></td>
           <td>
-            <%= link_to 'Edit Licenses', edit_user_licenses_account_licenses_path(user_id: user.id), class: 'btn btn-default btn-sm', remote: true %>
+            <%= link_to 'Edit Licenses', edit_user_licenses_account_licenses_path(user_id: product_distribution.to_user.id), class: 'btn btn-default btn-sm', remote: true if product_distribution.to_user %>
           </td>
           <td>
-            <a href="<%= user_stats_account_licenses_path(user_id: user.id)  %>" class="btn btn-primary btn-sm user-details-btn">Details</a>
+            <% if product_distribution.to_user %>
+              <a href="<%= user_stats_account_licenses_path(user_id: product_distribution.to_user.id)  %>" class="btn btn-primary btn-sm user-details-btn">Details</a>
+            <% end %>
           </td>
         </tr>
       <% end %>
     </tbody>
   </table>
-  <%= paginate @users %>
+  <%= paginate @product_distributions %>
 </div>
 <%= link_to new_account_reminder_path, remote: true, class: 'btn btn-primary red-btn reminder-btn' do %>
   <span class="glyphicon glyphicon-comment"></span>

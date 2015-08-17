@@ -8,6 +8,8 @@ class Spree::ProductDistribution < ActiveRecord::Base
 
   validates_presence_of :from_user, :product, :licensed_product
 
+  before_save :assign_email
+
   after_create :distribute_license
 
   def decrease_quantity!(_quantity)
@@ -20,7 +22,17 @@ class Spree::ProductDistribution < ActiveRecord::Base
     self.distributed_licensed_product.increase_quantity!(_quantity)
   end
 
+  def self.from_user_to_email(from_user, email)
+    Spree::ProductDistribution.where(from_user_id: from_user.id, email: email)
+  end
+
   private
+
+  def assign_email
+    if self.to_user
+      self.email = self.to_user.email
+    end
+  end
 
   def distribute_license
     licensed_product.decrease_quantity!(self.quantity)
