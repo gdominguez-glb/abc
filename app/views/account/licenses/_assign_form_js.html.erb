@@ -4,7 +4,11 @@
     var number = $('#assign_licenses_form_licenses_number').val();
     var userCount = emails.split(',').length;
     var number = parseInt(number);
-    var total = userCount*number;
+    if(isNaN(number)) {
+      var total = 0;
+    } else {
+      var total = userCount*number;
+    }
     $("#assign_licenses_form_total").val(total);
   });
 <% end %>
