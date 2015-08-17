@@ -36,11 +36,13 @@ module Spree
       end
 
       def update_position
-        @material.parent = Spree::Material.find_by(id: params[:parent_id])
-        if @material.parent
-          @material.child_index = params[:position]
-        else
-          @material.position = params[:position].to_i
+        if params[:left_id].present?
+          left_material = Spree::Material.find(params[:left_id])
+          @material.move_to_left_of(left_material)
+        end
+        if params[:right_id].present?
+          right_material = Spree::Material.find(params[:right_id])
+          @material.move_to_right_of(right_material)
         end
         @material.save
         render nothing: true

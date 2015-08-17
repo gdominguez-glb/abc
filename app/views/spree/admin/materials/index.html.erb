@@ -23,20 +23,22 @@
     var productId = '<%= @product.slug %>';
     $("#materials").sortableLists({
       complete: function(el) {
-        $parent = $(el).parents('.list-group-item');
-        if($parent.length == 0) {
-          parentId = null;
-        } else {
-          parentId = $parent.attr('data-material-id');
+        var $prev = $(el).prev('.list-group-item');
+        var $next = $(el).next('.list-group-item')
+        var left_id = null;
+        var right_id = null;
+
+        if ($prev.length > 0) {
+          right_id = $prev.attr('data-material-id');
+        } else if ($next.length > 0) {
+          left_id = $next.attr('data-material-id');
         }
         var currentId = $(el).attr('data-material-id');
-        var $ulParent = $(el).parents('ul');
-        var position = $ulParent.children().index($(el))
         var url = "/store/admin/products/" + productId + "/materials/" + currentId + "/update_position";
         $.ajax({
           url: url,
           type: 'POST',
-          data: { position: position, parent_id: parentId }
+          data: { left_id: left_id, right_id: right_id }
         })
       }
     })
