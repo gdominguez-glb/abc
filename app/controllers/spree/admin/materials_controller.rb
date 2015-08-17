@@ -35,6 +35,19 @@ module Spree
         @material = @product.materials.find(params[:id])
       end
 
+      def update_position
+        if params[:left_id].present?
+          left_material = Spree::Material.find(params[:left_id])
+          @material.move_to_left_of(left_material)
+        end
+        if params[:right_id].present?
+          right_material = Spree::Material.find(params[:right_id])
+          @material.move_to_right_of(right_material)
+        end
+        @material.save
+        render nothing: true
+      end
+
       private
 
       def find_product
