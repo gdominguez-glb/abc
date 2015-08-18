@@ -9,15 +9,11 @@ Spree::User.class_eval do
 
   def self.attributes_from_salesforce_object(sfo)
     sfo_data = super(sfo)
-    if defined?(sfo.Email) && defined?(sfo.FirstName) && defined?(sfo.LastName)
-      sfo_data.merge!(first_name: sfo.FirstName,
-                      last_name: sfo.LastName,
-                      email: sfo.Email)
-    end
-    if defined? sfo.AccountId
-      school_district_record = SchoolDistrict.joins(:salesforce_reference)
-        .where('salesforce_references.id_in_salesforce' => sfo.AccountId).first
-    end
+    sfo_data.merge!(first_name: sfo.FirstName,
+                    last_name: sfo.LastName,
+                    email: sfo.Email)
+    school_district_record = SchoolDistrict.joins(:salesforce_reference)
+      .where('salesforce_references.id_in_salesforce' => sfo.AccountId).first
     if school_district_record
       sfo_data.merge! school_district_id: school_district_record.id
     end
@@ -26,10 +22,20 @@ Spree::User.class_eval do
     sfo_data
   end
 
+  def attributes_for_salesforce
+    { 'FirstName' => first_name,
+      'LastName' => last_name,
+      'AccountId' => school_district.try(:salesforce_reference)
+                     .try(:id_in_salesforce),
+      'Web_Front_End_Email__c' => email,
+      'Web_Front_End_ID__c' => id,
+      'Email' => email }
+  end
+
   def self.matches_salesforce_object(sfo)
     matches = super(sfo)
     return matches if matches.present?
-    return none if !defined?(sfo.Email) || sfo.Email.blank?
+    return none if sfo.Email.blank?
     where email: sfo.Email
   end
 
@@ -65,7 +71,7 @@ Spree::User.class_eval do
 
   belongs_to :school_district
 
-  has_many :completed_orders, ->{ where.not(completed_at: nil) }, class_name: 'Spree::Order'
+  has_many :completed_orders, -> { where.not(completed_at: nil) }, class_name: 'Spree::Order'
   has_many :favorite_products, class_name: 'Spree::FavoriteProduct'
   has_many :licensed_products, -> { available }, class_name: 'Spree::LicensedProduct'
   has_many :products, through: :licensed_products, class_name: 'Spree::Product'

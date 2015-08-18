@@ -5,7 +5,7 @@ describe GmSalesforce do
   include_context 'mock_salesforce'
 
   describe 'columns' do
-    let(:gm_salesforce) { GmSalesforce.instance }
+    let(:gm_salesforce) { GmSalesforce::Client.instance }
     let(:sobject) { 'Account' }
     let(:sf_sobject_cols) do
       JSON.parse(sf_fixture('sf_account_columns'))
@@ -25,7 +25,7 @@ describe GmSalesforce do
   end
 
   describe 'find' do
-    let(:gm_salesforce) { GmSalesforce.instance }
+    let(:gm_salesforce) { GmSalesforce::Client.instance }
     let(:sobject) { 'Account' }
     let(:id_in_sf) { '001e000000en0LsAAI' }
     let(:sf_response) { sf_fixture('sf_account_response') }
@@ -44,7 +44,7 @@ describe GmSalesforce do
   end
 
   describe 'find_all_in_salesforce' do
-    let(:gm_salesforce) { GmSalesforce.instance }
+    let(:gm_salesforce) { GmSalesforce::Client.instance }
     let(:sobject) { 'Account' }
     let(:sobject_cols) { %w(Id Name BillingState BillingCountry).join(',') }
     let(:sf_response) { sf_fixture('sf_account_find_all_response') }
@@ -64,7 +64,7 @@ describe GmSalesforce do
   end
 
   describe 'create' do
-    let(:gm_salesforce) { GmSalesforce.instance }
+    let(:gm_salesforce) { GmSalesforce::Client.instance }
     let(:sobject) { 'Account' }
     let(:sobject_attrs) do
       { Name: 'Test School', RecordTypeId: '012i00000019vQaAAI',
@@ -83,7 +83,7 @@ describe GmSalesforce do
   end
 
   describe 'update' do
-    let(:gm_salesforce) { GmSalesforce.instance }
+    let(:gm_salesforce) { GmSalesforce::Client.instance }
     let(:sobject) { 'Account' }
     let(:sf_id) { '001e000000fhMnpAAE' }
     let(:update_attrs) { { Name: 'New Test School' } }

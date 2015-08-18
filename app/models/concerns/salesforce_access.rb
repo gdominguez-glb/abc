@@ -83,7 +83,7 @@ module SalesforceAccess
   # Gets the hash of attributes and values matching Salesforce attributes.
   #
   # Override this to build the update hash with attributes and values to update
-  # in Salesforce using the format `{ salesforceAttribute: 'value' }`
+  # in Salesforce using the format `{ 'salesforceAttribute' => 'value' }`
   def attributes_for_salesforce
     {}
   end
@@ -106,6 +106,7 @@ module SalesforceAccess
   # - Checks whether there is a corresponding (cached) record from Salesforce
   # - Checks whether there are any known differences from the cached record
   def should_update_salesforce?
+    return false if defined?(deleted_at) && !deleted_at.nil?
     if skip_next_salesforce_update
       self.skip_next_salesforce_update = nil
       return false
@@ -140,13 +141,13 @@ module SalesforceAccess
   #
   # This will be called from within ActiveJob
   def update_record_in_salesforce(attributes_to_update = {})
-    attributes_with_id = attributes_to_update.merge(Id: id_in_salesforce)
-    last_modified_in_salesforce_at = Time.zone.now
+    attributes_with_id = attributes_to_update.merge('Id' => id_in_salesforce)
+    last_modified_in_salesforce_at = self.class.date_to_salesforce
     ok = self.class.salesforce_api.update(salesforce_sobject_name,
                                           attributes_with_id)
     return false unless ok
     sfo_attributes = salesforce_reference.object_properties.merge(
-      LastModifiedDate: last_modified_in_salesforce_at
+      'LastModifiedDate' => last_modified_in_salesforce_at
     )
     updated_sfo_attributes = sfo_attributes.merge(attributes_to_update)
     sfo = salesforce_reference.object_from_properties(updated_sfo_attributes)
@@ -167,6 +168,7 @@ module SalesforceAccess
   # used to prevent the creation in Salesforce of a record created locally from
   # Salesforce
   def should_create_salesforce?
+    return false if defined?(deleted_at) && !deleted_at.nil?
     !skip_salesforce_create
   end
 
@@ -188,14 +190,26 @@ module SalesforceAccess
   #
   # This will be called from within ActiveJob
   def create_new_record_in_salesforce(attributes_to_create = {})
-    created_in_salesforce_at = Time.zone.now
-    sf_id = self.class.salesforce_api.create(salesforce_sobject_name,
-                                             attributes_to_create)
+    created_in_salesforce_at = self.class.date_to_salesforce
+
+    duplicate = false
+    begin
+      sf_id = self.class.salesforce_api.create!(salesforce_sobject_name,
+                                                attributes_to_create)
+    rescue GmSalesforce::DuplicateRecord => e
+      duplicate = true
+      sf_id = e.duplicate_id
+    end
+
     return false if sf_id.blank?
     new_attrs = attributes_to_create.merge(
-      Id: sf_id, LastModifiedDate: created_in_salesforce_at)
+      'Id' => sf_id, 'LastModifiedDate' => created_in_salesforce_at)
     sfo = salesforce_reference.object_from_properties(new_attrs)
     update_from_salesforce(sfo)
+    if duplicate
+      update_attrs = new_attrs.reject { |key| key.to_s == 'LastModifiedDate' }
+      update_record_in_salesforce(update_attrs)
+    end
     sfo
   end
 
@@ -206,6 +220,10 @@ module SalesforceAccess
     # Override this to set the object name in Salesforce (e.g. 'Contact')
     def sobject_name
       name
+    end
+
+    def date_to_salesforce(date = Time.zone.now)
+      GmSalesforce::Client.date_to_salesforce(date)
     end
 
     # Queries for local records that "match" a given Salesforce object
@@ -224,7 +242,7 @@ module SalesforceAccess
 
     # Gets/sets the library to interface with Salesforce
     def salesforce_api
-      @gm_salesforce ||= GmSalesforce.instance
+      @gm_salesforce ||= GmSalesforce::Client.instance
     end
 
     # Selects all of the columns from all of the records in Salesforce for the
@@ -239,7 +257,7 @@ module SalesforceAccess
       {
         id_in_salesforce: sfo.Id,
         last_modified_in_salesforce_at: sfo.LastModifiedDate,
-        last_imported_from_salesforce_at: Time.zone.now,
+        last_imported_from_salesforce_at: date_to_salesforce,
         object_properties: sfo.to_hash
       }
     end

@@ -71,10 +71,10 @@ class SchoolDistrict < ActiveRecord::Base
   end
 
   def attributes_for_salesforce
-    { Name: name,
-      RecordTypeId: salesforce_record_type_id,
-      BillingState: state.try(:abbr),
-      BillingCountry: state.try(:country).try(:iso3) }
+    { 'Name' => name,
+      'RecordTypeId' => salesforce_record_type_id,
+      'BillingState' => state.try(:abbr),
+      'BillingCountry' => state.try(:country).try(:iso3) }
   end
 
   def self.matches_salesforce_object(sfo)
