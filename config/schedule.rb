@@ -36,3 +36,7 @@ end
 every 1.day, at: '00:00 am' do
   command %Q{export PATH=/home/deploy/.rbenv/shims:/home/deploy/.rbenv/bin:/usr/bin:$PATH; eval "$(rbenv init -)"; backup perform -t db_backup}
 end
+
+every 1.day, at: '1:00 am' do
+  runner "LicenseReminderWorker.new.perform"
+end

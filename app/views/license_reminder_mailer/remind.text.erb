@@ -1,0 +1,7 @@
+<% if is_district_admin %>
+  The <%= @products.map(&:name).join(", ") %> licenses you assigned is expiring in <%= @days %> days.
+<% else %>
+  Your <%= @products.map(&:name).join(", ") %> access is expiring in <%= @days %> days.
+<% end %>
+
+greatminds.net
