@@ -13,10 +13,13 @@ $(document).on("change", "#spree_user_title", function(){
   var showDistrictDetails = false;
 
   switch(userRole) {
-    case "Educator":
+    case "Teacher":
       showDistrictDetails = true;
       break;
     case "Administrator":
+      showDistrictDetails = true;
+      break;
+    case "Administrative Assistant":
       showDistrictDetails = true;
       break;
     case "Parent":
