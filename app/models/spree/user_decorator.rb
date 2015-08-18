@@ -96,7 +96,7 @@ Spree::User.class_eval do
   end
 
   def require_shool_district?
-    ['Educator', 'Administrator'].include?(self.title)
+    ['Teacher', 'Administrative Assistant', 'Administrator'].include?(self.title)
   end
 
   def managed_products
