@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150811011531) do
+ActiveRecord::Schema.define(version: 20150818111305) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -1401,7 +1401,6 @@ ActiveRecord::Schema.define(version: 20150811011531) do
     t.string   "preference_video_player"
     t.string   "title"
     t.string   "phone"
-    t.integer  "ee_id"
   end
 
   add_index "spree_users", ["deleted_at"], name: "index_spree_users_on_deleted_at", using: :btree
@@ -1433,6 +1432,19 @@ ActiveRecord::Schema.define(version: 20150811011531) do
   add_index "spree_variants", ["sku"], name: "index_spree_variants_on_sku", using: :btree
   add_index "spree_variants", ["tax_category_id"], name: "index_spree_variants_on_tax_category_id", using: :btree
   add_index "spree_variants", ["track_inventory"], name: "index_spree_variants_on_track_inventory", using: :btree
+
+  create_table "spree_videos", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "product_id"
+    t.boolean  "is_free"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
+  end
 
   create_table "spree_zone_members", force: :cascade do |t|
     t.integer  "zoneable_id"
