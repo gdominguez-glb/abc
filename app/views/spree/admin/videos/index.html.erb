@@ -1,0 +1,25 @@
+<% content_for :page_title do %>
+  <%= Spree.t(:videos) %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <%= button_link_to Spree.t(:new_video), new_admin_video_url, :class => "btn-success", :icon => 'add', :id => 'admin_new_video_link' %>
+<% end %>
+
+<table class="table" id="listing_videos" data-hook>
+  <thead>
+  </thead>
+  <tbody>
+    <% @videos.each do |video|%>
+      <tr id="<%= spree_dom_id video %>" data-hook="admin_videos_index_rows">
+        <td class='video_title'><%=link_to video.title, edit_admin_video_url(video) %></td>
+        <td data-hook="admin_videos_index_row_actions" class="actions actions-2 text-right">
+          <%= link_to_edit video, :no_text => true %>
+          <%= link_to_delete video, :no_text => true %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @videos %>

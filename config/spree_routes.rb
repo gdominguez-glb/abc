@@ -1,5 +1,7 @@
 spree_routes_overrides = Proc.new do
   namespace :admin do
+    resources :videos
+
     resources :curriculums do
       collection do
         post :update_positions
