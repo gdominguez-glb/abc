@@ -18,7 +18,7 @@
 
 .product-wrapper {
   min-height: 134px;
-  padding: 20px;
+  padding: 45px 15px;
   text-align: center;
   background: $dark-blue;
   color: #fff;
@@ -40,19 +40,18 @@
 
 .recommended-product-wrapper {
   position: relative;
-  padding: 30px;
+  padding: 30px 30px 30px 120px;
   margin: 0 0 15px;
   background: $coral;
   border-radius: $border-radius-value;
-  text-align: center;
   color: #fff;
 
   &:last-child {
     margin: 0;
   }
 
-  h4 {
-    margin-bottom: 0;
+  h6 {
+    margin: 0 0 15px;
   }
 
   p {
@@ -60,7 +59,11 @@
   }
 
   img {
-    margin: 0 auto 15px;
+    position: absolute;
+    top: 30px;
+    left: 15px;
+    width: 90px;
+    height: 90px;
     border: 5px solid white;
   }
 
