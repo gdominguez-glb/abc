@@ -14,6 +14,12 @@
       <%= f.label :is_free, Spree.t(:is_free) %>
       <%= f.check_box :is_free, :class => 'form-control' %>
     <% end %>
+    <div data-hook="admin_product_form_taxons">
+      <%= f.field_container :taxons, class: ['form-group'] do %>
+        <%= f.label :taxon_ids, Spree.t(:taxons) %>
+        <%= f.hidden_field :taxon_ids, value: @video.taxon_ids.join(',') %>
+      <% end %>
+    </div>
     <%= f.field_container :description, class: ['form-group'] do %>
       <%= f.label :description, Spree.t(:description) %>
       <%= f.text_area :description, :class => 'form-control', rows: 3 %>
@@ -29,6 +35,9 @@
 <script type="text/javascript">
 //<![CDATA[
   (function($){
+    $(document).ready(function () {
+      set_taxon_select('#video_taxon_ids')
+    });
    $("#video_product_id").select2({
       placeholder: "Select product",
       multiple: false,
