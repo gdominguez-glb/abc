@@ -40,3 +40,7 @@ end
 every 1.day, at: '1:00 am' do
   runner "LicenseReminderWorker.new.perform"
 end
+
+every 1.hour do
+  rbenv_rake "salesforce:sync"
+end
