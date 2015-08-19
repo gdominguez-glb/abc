@@ -1,7 +1,9 @@
-<% if is_district_admin %>
+<% if @is_district_admin %>
   The <%= @products.map(&:name).join(", ") %> licenses you assigned is expiring in <%= @days %> days.
 <% else %>
   Your <%= @products.map(&:name).join(", ") %> access is expiring in <%= @days %> days.
 <% end %>
+
+<%= link_to 'Extend now', spree.add_products_to_cart_url(product_ids: @products.map(&:id)) %>
 
 greatminds.net
