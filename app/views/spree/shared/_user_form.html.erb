@@ -46,11 +46,11 @@
       <%= f.fields_for :school_district do |school_district_form| %>
         <label>
         <%= school_district_form.radio_button :place_type, 'school' %>
-        This is a school
+        This is a School
       </label>
       <label>
         <%= school_district_form.radio_button :place_type, 'district' %>
-        This is a district
+        This is Multiple Schools/District
       </label>
     <% end %>
     </div>
@@ -66,14 +66,11 @@
     </a>
   </div>
   <div class="form-group add-district-field">
-    <label>Add District Name</label>
+    <label>Add School/District Name</label>
     <% f.object.school_district ||= SchoolDistrict.new(place_type: 'school') %>
     <%= f.fields_for :school_district do |school_district_form| %>
-      <%= school_district_form.text_field :name, class: 'form-control school-district-control', placeholder: 'New District Name' %>
+      <%= school_district_form.text_field :name, class: 'form-control school-district-control', placeholder: 'New School/District Name' %>
     <% end %>
-    <div class="school-district-input-toggle">
-      District Name <span class="glyphicon glyphicon-plus pull-right"></span>
-    </div>
   </div>
 </div>
 <div data-hook="signup_below_password_fields"></div>
