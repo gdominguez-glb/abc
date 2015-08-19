@@ -22,8 +22,18 @@ class GmVimeo
   def process_videos(result)
     videos_data = result['data']
     videos_data.each do |video_data|
-      puts "#{video_data['uri']} - #{video_data['name']} "
-      # TODO download video files here
+      puts "import #{video_data['name']}"
+
+      source_url = video_data['download'].find{|j| j['quality']}.try(:[], 'link')
+      next if source_url.blank?
+
+      video = Spree::Video.find_or_create_by(vimeo_uri: video_data['uri'])
+
+      video.update(
+        title:       video_data['name']
+        description: video_data['description']
+        file:        open(source_url)
+      )
     end
   end
 

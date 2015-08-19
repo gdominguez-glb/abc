@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150818111305) do
+ActiveRecord::Schema.define(version: 20150819100007) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -1350,6 +1350,12 @@ ActiveRecord::Schema.define(version: 20150818111305) do
   add_index "spree_taxons_prototypes", ["prototype_id"], name: "index_spree_taxons_prototypes_on_prototype_id", using: :btree
   add_index "spree_taxons_prototypes", ["taxon_id"], name: "index_spree_taxons_prototypes_on_taxon_id", using: :btree
 
+  create_table "spree_taxons_videos", force: :cascade do |t|
+    t.integer "video_id"
+    t.integer "taxon_id"
+    t.integer "position"
+  end
+
   create_table "spree_trackers", force: :cascade do |t|
     t.string   "analytics_id"
     t.boolean  "active",       default: true
@@ -1444,6 +1450,7 @@ ActiveRecord::Schema.define(version: 20150818111305) do
     t.string   "file_content_type"
     t.integer  "file_file_size"
     t.datetime "file_updated_at"
+    t.string   "vimeo_uri"
   end
 
   create_table "spree_zone_members", force: :cascade do |t|
