@@ -5,6 +5,6 @@ class LicenseReminderMailer < ApplicationMailer
     @products          = attrs[:products]
     @days              = attrs[:days]
     @is_district_admin = attrs[:is_district_admin] || false
-    mail to: user.email, subject: "Your licenses are expiring"
+    mail to: @user.email, subject: "Your licenses are expiring"
   end
 end
