@@ -16,6 +16,7 @@ namespace :cms do
   end
   resources :documents
   resources :questions
+  resources :help_items
   resources :contacts, only: [:index, :destroy, :edit, :update]
   resources :recommendations
   resources :medium_publications do
