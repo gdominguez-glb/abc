@@ -17,14 +17,16 @@ if Spree::User.count == 0
   puts 'create admin user: web.admin@greatminds.net'
   school_district = SchoolDistrict.where(
     name: 'Test District', state_id: Spree::State.first.id).first_or_create(
-    place_type: SchoolDistrict.place_types[:district])
+    place_type: SchoolDistrict.place_types[:district],
+    skip_salesforce_create: true)
   admin = Spree::User.new(
     first_name: 'Web',
     last_name: 'Admin',
     email: 'web.admin@greatminds.net',
     password: 'intridea4gm',
     password_confirmation: 'intridea4gm',
-    school_district: school_district
+    school_district: school_district,
+    skip_salesforce_create: true
   )
   role = Spree::Role.find_or_create_by(name: 'admin')
   admin.spree_roles << role

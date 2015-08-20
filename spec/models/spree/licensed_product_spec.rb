@@ -12,7 +12,7 @@ RSpec.describe Spree::LicensedProduct, type: :model do
 
   describe "#distribute_license" do
     let(:licensed_product) { create(:spree_licensed_product) }
-    let(:to_user) { create(:user, email: 'john123@doe.com', first_name: 'John', last_name: 'Doe', school_district: create(:school_district) ) }
+    let(:to_user) { create(:user, skip_salesforce_create: true, email: 'john123@doe.com', first_name: 'John', last_name: 'Doe', school_district: create(:school_district) ) }
 
     it "distribute license to user" do
       distribution = licensed_product.distribute_license(to_user)

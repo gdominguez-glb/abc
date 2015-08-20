@@ -5,5 +5,6 @@ FactoryGirl.define do
     email
     school_district
     password '123456'
+    skip_salesforce_create true
   end
 end

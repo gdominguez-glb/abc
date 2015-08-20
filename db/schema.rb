@@ -291,6 +291,20 @@ ActiveRecord::Schema.define(version: 20150819100007) do
     t.text     "description"
   end
 
+  create_table "salesforce_references", force: :cascade do |t|
+    t.string   "id_in_salesforce",                 limit: 20
+    t.integer  "local_object_id",                             null: false
+    t.string   "local_object_type",                limit: 50, null: false
+    t.datetime "last_modified_in_salesforce_at"
+    t.datetime "last_imported_from_salesforce_at"
+    t.text     "object_properties"
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
+  end
+
+  add_index "salesforce_references", ["id_in_salesforce"], name: "index_salesforce_references_on_id_in_salesforce", using: :btree
+  add_index "salesforce_references", ["local_object_id", "local_object_type"], name: "index_salesforce_references_on_local_object_reference", using: :btree
+
   create_table "school_districts", force: :cascade do |t|
     t.string   "name"
     t.integer  "state_id"

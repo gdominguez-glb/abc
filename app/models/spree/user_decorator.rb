@@ -1,7 +1,49 @@
 Spree::User.class_eval do
-
   include RailsSettings::Extend
   include ActivityLogger
+  include SalesforceAccess
+
+  def self.sobject_name
+    'Contact'
+  end
+
+  def self.attributes_from_salesforce_object(sfo)
+    sfo_data = super(sfo)
+    sfo_data.merge!(first_name: sfo.FirstName,
+                    last_name: sfo.LastName,
+                    email: sfo.Email)
+    school_district_record = SchoolDistrict.joins(:salesforce_reference)
+      .where('salesforce_references.id_in_salesforce' => sfo.AccountId).first
+    if school_district_record
+      sfo_data.merge! school_district_id: school_district_record.id
+    end
+    # TODO: handle the case where the district is not found
+    # TODO: Also update address information
+    sfo_data
+  end
+
+  def attributes_for_salesforce
+    { 'FirstName' => first_name,
+      'LastName' => last_name,
+      'AccountId' => school_district.try(:salesforce_reference)
+                     .try(:id_in_salesforce),
+      'Web_Front_End_Email__c' => email,
+      'Web_Front_End_ID__c' => id,
+      'Email' => email }
+  end
+
+  def self.matches_salesforce_object(sfo)
+    matches = super(sfo)
+    return matches if matches.present?
+    return none if sfo.Email.blank?
+    where email: sfo.Email
+  end
+
+  # Do not create from salesforce, only try to find a match
+  def self.find_or_create_by_salesforce_object(sfo, &block)
+    return nil if sfo.blank?
+    matches_salesforce_object(sfo).first
+  end
 
   def self.defaults_email_notifications
     {
@@ -29,7 +71,7 @@ Spree::User.class_eval do
 
   belongs_to :school_district
 
-  has_many :completed_orders, ->{ where.not(completed_at: nil) }, class_name: 'Spree::Order'
+  has_many :completed_orders, -> { where.not(completed_at: nil) }, class_name: 'Spree::Order'
   has_many :favorite_products, class_name: 'Spree::FavoriteProduct'
   has_many :licensed_products, -> { available }, class_name: 'Spree::LicensedProduct'
   has_many :products, through: :licensed_products, class_name: 'Spree::Product'
