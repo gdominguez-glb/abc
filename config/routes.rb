@@ -51,6 +51,9 @@ Rails.application.routes.draw do
 
   get '/decide_page_to_go', to: 'home#decide_page_to_go'
 
+  get 'careers', to: 'jobs#index', as: :jobs
+  get 'careers/:id', to: 'jobs#show', as: :job
+
   root 'home#index'
 
   resources :documents, only: [:show]

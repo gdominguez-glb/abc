@@ -35,4 +35,5 @@ namespace :cms do
   resources :download_pages do
     resources :download_products
   end
+  resources :jobs
 end
