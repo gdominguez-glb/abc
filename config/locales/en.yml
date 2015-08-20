@@ -24,6 +24,38 @@ en:
   spree:
     purchase_from_partner: "Purchase From Partner"
     purchase_order: "Purchase Order"
+    bundles:
+      admin:
+        no_resource_found: No parts found
+        sidebar: Parts
+        no_variants: No variants
+        not:
+          variant: This product is a bundle. Variants cannot be added to bundles.
+          part: This product has variants. Bundle parts cannot be added.
+          stock: This product is a bundle. Stock is not track by the bundle, rather the stock of the individual products in the bundle.
+        templates:
+          not_found: "No records found for '{{ query }}'. Try another search." # This is part of a Javascript template. {{ query }} will be replaced by JS with the query value
+          not_found_note: Remember, products must be flagged as being able to be added to bundles before it can be searched.
+          error: "An error has occurred. The following is the error: {{ error }}" # This is part of a Javascript template. {{ error }} will be replaced by JS with the error message
+          length: "Search query must be at least {{ length }} characters long." # This is part of a Javascript template. {{ length }} will be replaced by JS with the length
+        button:
+          back: Back to product details
+          add: Add bundle part
+        label:
+          products:
+            can_be_part: Allow this product to be part of bundles
+            individual_sale: Allow this product to be sold outside of bundles
+        header:
+          image: Image
+          name: Name
+          variants: Variants
+        flash:
+          success:
+            create: 'Item was successfully added to the bundle!'
+            destroy: 'Bundled item has been successfully removed!'
+          error:
+            create: 'Item could not be added to bundle.'
+            destroy: 'Bundled item was not successfully removed.'
 
   activerecord:
     attributes:
