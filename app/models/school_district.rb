@@ -10,6 +10,13 @@ class SchoolDistrict < ActiveRecord::Base
     'Account'
   end
 
+  # We do not want any School/District updates going to Salesforce.  Instead
+  # of updating records, create new records and reassign `Spree:User` records
+  # to the new SchoolDistrict records.
+  def should_update_salesforce?
+    false
+  end
+
   def salesforce_record_type_id
     return self.class.school_type_id if school?
     return self.class.district_type_id if district?
