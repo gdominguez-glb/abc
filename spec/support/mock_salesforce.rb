@@ -6,14 +6,22 @@ shared_context 'mock_salesforce' do
   let(:base_sf_url) { 'https://test.salesforce.com/services' }
   let(:sf_accept_encoding) { 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3' }
   let(:sf_api_version) { '32.0' }
+
+  let(:salesforce_client_id) { 'client_id' }
+  let(:salesforce_client_secret) { 'client_secret' }
+
+  let(:salesforce_username) { 'username' }
+  let(:salesforce_password) { 'password' }
+  let(:salesforce_security_token) { 'token' }
+
   let(:sf_auth_params) do
-    pass = "#{ENV['salesforce_password']}#{ENV['salesforce_security_token']}"
+    pass = "#{salesforce_password}#{salesforce_security_token}"
     {
-      client_id: ENV['salesforce_client_id'],
-      client_secret: ENV['salesforce_client_secret'],
+      client_id: salesforce_client_id,
+      client_secret: salesforce_client_secret,
       grant_type: 'password',
       password: pass,
-      username: ENV['salesforce_username']
+      username: salesforce_username
     }
   end
 
@@ -97,7 +105,17 @@ shared_context 'mock_salesforce' do
       .to_return(status: 200, body: '', headers: response_headers({}, false))
   end
 
+  def set_env_variables
+    ENV['salesforce_client_id'] = salesforce_client_id
+    ENV['salesforce_client_secret'] = salesforce_client_secret
+
+    ENV['salesforce_username'] = salesforce_username
+    ENV['salesforce_password'] = salesforce_password
+    ENV['salesforce_security_token'] = salesforce_security_token
+  end
+
   before do
+    set_env_variables
     # Authenticate
     stub_request(:post, "#{base_sf_url}/oauth2/token")
       .with(body: sf_auth_params,
