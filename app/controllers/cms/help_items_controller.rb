@@ -12,7 +12,7 @@ class Cms::HelpItemsController < Cms::BaseController
   def create
     @help_item = HelpItem.new(help_item_params)
     if @help_item.save
-      redirect_to cms_help_items_path, notice: 'Created help_item successfully!'
+      redirect_to cms_help_items_path, notice: 'Created help item successfully!'
     else
       render :new
     end
@@ -23,7 +23,7 @@ class Cms::HelpItemsController < Cms::BaseController
 
   def update
     if @help_item.update(help_item_params)
-      redirect_to cms_help_items_path, notice: 'Updated help_item successfully!'
+      redirect_to cms_help_items_path, notice: 'Updated help item successfully!'
     else
       render :edit
     end
@@ -31,7 +31,7 @@ class Cms::HelpItemsController < Cms::BaseController
 
   def destroy
     @help_item.destroy
-    redirect_to cms_help_items_path, notice: 'Deleted help_item successfully!'
+    redirect_to cms_help_items_path, notice: 'Deleted help item successfully!'
   end
 
 

@@ -14,25 +14,11 @@
         <h2>Help Links</h2>
         <div class="col-xs-12">
           <ul>
-            <li>
-            <a href="help-page.html">Link to help</a>
-            </li>
-            <li><br></li>
-            <li>
-            <a href="help-page.html">Link to help</a>
-            </li>
-            <li><br></li>
-            <li>
-            <a href="help-page.html">Link to help</a>
-            </li>
-            <li><br></li>
-            <li>
-            <a href="help-page.html">Link to help</a>
-            </li>
-            <li><br></li>
-            <li>
-            <a href="help-page.html">Link to help</a>
-            </li>
+            <% @help_items.each do |help_item| %>
+              <li>
+                <%= link_to help_item.title, account_help_item_path(help_item) %>
+              </li>
+            <% end %>
           </ul>
         </div>
       </div>

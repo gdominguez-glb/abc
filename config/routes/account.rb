@@ -4,6 +4,7 @@ namespace :account do
   resources :favorites, only: [:index]
 
   get 'help', to: 'help#index'
+  get 'help/item/:id', to: 'help#item', as: :help_item
   get 'help/qa/:id', to: 'help#qa', as: :qa
 
   get 'history', to: 'history#index'
