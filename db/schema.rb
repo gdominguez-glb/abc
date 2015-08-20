@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150820012254) do
+ActiveRecord::Schema.define(version: 20150820073607) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -713,6 +713,16 @@ ActiveRecord::Schema.define(version: 20150820012254) do
 
   add_index "spree_orders_promotions", ["order_id", "promotion_id"], name: "index_spree_orders_promotions_on_order_id_and_promotion_id", using: :btree
 
+  create_table "spree_parts", force: :cascade do |t|
+    t.integer  "bundle_id",  null: false
+    t.integer  "product_id", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "spree_parts", ["bundle_id"], name: "index_spree_parts_on_bundle_id", using: :btree
+  add_index "spree_parts", ["product_id"], name: "index_spree_parts_on_product_id", using: :btree
+
   create_table "spree_payment_capture_events", force: :cascade do |t|
     t.decimal  "amount",     precision: 10, scale: 2, default: 0.0
     t.integer  "payment_id"
@@ -838,6 +848,8 @@ ActiveRecord::Schema.define(version: 20150820012254) do
     t.string   "access_url"
     t.string   "learn_more_url"
     t.boolean  "is_grades_product",    default: false
+    t.boolean  "can_be_part",          default: false, null: false
+    t.boolean  "individual_sale",      default: true,  null: false
   end
 
   add_index "spree_products", ["available_on"], name: "index_spree_products_on_available_on", using: :btree

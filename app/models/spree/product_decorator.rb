@@ -1,5 +1,48 @@
 Spree::Product.class_eval do
 
+  ## spree bundles
+  parts_habtm = select("#{Spree::Product.quoted_table_name}.*")
+                  .select("#{Spree::Part.quoted_table_name}.id AS part_id")
+
+  has_and_belongs_to_many :parts, -> { parts_habtm },
+                          class_name: 'Spree::Product',
+                          join_table: 'spree_parts',
+                          foreign_key: 'bundle_id'
+
+  scope :search_can_be_part, lambda { |query|
+    where = "LOWER(#{Spree::Product.quoted_table_name}.name) LIKE ?"
+    like  = "%#{query.downcase}%"
+    available.not_deleted
+      .joins(:master)
+      .where(can_be_part: true)
+      .where(where, like)
+      .group('spree_products.id')
+      .limit(10)
+  }
+
+  scope :excluding_parts, lambda { |parts|
+    where.not(id: parts) unless parts.empty?
+  }
+
+  def parts?
+    parts.any?
+  end
+
+  def variants?
+    variants.any?
+  end
+
+  def been_purchased?
+    if parts?
+      # TODO: Make this actually work
+      # parts.each { |part| return true if part.been_purchased? }
+      false
+    else
+      orders.where.not(completed_at: nil).any?
+    end
+  end
+  ## end of spree bundles
+
   unless Spree::Product.respond_to?(:searchkick_options)
     searchkick
   end
