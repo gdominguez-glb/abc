@@ -61,6 +61,10 @@ Spree::User.class_eval do
     settings[:email_notifications] || self.class.defaults_email_notifications
   end
 
+  def accept_email?
+    email_notifications[:email_communication] == true
+  end
+
   def grade_option
     settings[:grade_option]
   end

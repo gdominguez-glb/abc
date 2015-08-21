@@ -20,11 +20,16 @@ class NotificationWorker
 
   def delivery_notifications(notification_trigger, users)
     notify_proc = Proc.new do |user|
-      Notification.create(
-        user: user,
-        notification_trigger: notification_trigger,
-        content: notification_trigger.content
-      )
+      if notification_trigger.dashboard?
+        Notification.create(
+          user: user,
+          notification_trigger: notification_trigger,
+          content: notification_trigger.content
+        )
+      end
+      if notification_trigger.email? && user.accept_email?
+        NotificationMailer.notify(user, notification_trigger.content).deliver_later
+      end
     end
     if users.respond_to?(:find_each)
       users.find_each(&notify_proc)
