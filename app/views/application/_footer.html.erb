@@ -20,28 +20,24 @@
           </div>
         </div>
       </div>
-      <% Page.show_in_footer_as_top_links.each do |page| %>
+      <% FooterTitle.all.each do |footer_title| %>
         <div class="col-sm-2 footer-section">
           <h6 class="section-lead">
-            <%= active_link_to page.group_name.capitalize, "/#{page.slug}" %>
+            <% if footer_title.link.present? %>
+              <%= link_to footer_title.title, footer_title.link %>
+            <% else %>
+              <%= footer_title.title %>
+            <% end %>
           </h6>
-          <% if (@sub_items = Page.show_in_footer_as_subgroup_links(page.group_name)).length > 1 %>
-            <ul>
-              <% @sub_items.each do |page| %>
-                <%= active_link_to page.title, "/#{page.slug}", wrap_tag: :li  %>
-              <% end %>
-            </ul>
-          <% end %>
+          <ul>
+            <% footer_title.footer_links.each do |link| %>
+              <li>
+                <%= link_to link.name, link.link %>
+              </li>
+            <% end %>
+          </ul>
         </div>
       <% end %>
-      <div class="col-sm-2 footer-section">
-        <h6 class="section-lead">Updates</h6>
-        <ul>
-          <% MediumPublication.global.each do |publication| %>
-            <li><%= link_to publication.title, global_blog_path(slug: publication.slug) %></li>
-          <% end %>
-        </ul>
-      </div>
     </div>
     <p class="copyright pull-right sans-serif bold">© Copyright 2015 <br>Great Minds</p>
   </div>
