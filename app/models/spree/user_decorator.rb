@@ -11,7 +11,8 @@ Spree::User.class_eval do
     sfo_data = super(sfo)
     sfo_data.merge!(first_name: sfo.FirstName,
                     last_name: sfo.LastName,
-                    email: sfo.Email)
+                    email: sfo.Email,
+                    title: sfo.Contact_Type__c)
     school_district_record = SchoolDistrict.joins(:salesforce_reference)
       .where('salesforce_references.id_in_salesforce' => sfo.AccountId).first
     if school_district_record
@@ -27,6 +28,7 @@ Spree::User.class_eval do
       'LastName' => last_name,
       'AccountId' => school_district.try(:salesforce_reference)
                      .try(:id_in_salesforce),
+      'Contact_Type__c' => title,
       'Web_Front_End_Email__c' => email,
       'Web_Front_End_ID__c' => id,
       'Email' => email }

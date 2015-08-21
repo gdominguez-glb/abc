@@ -43,8 +43,11 @@ module GmSalesforce
     end
 
     def find_all_in_salesforce(sobject_name,
-                               select_columns = columns(sobject_name).join(','))
-      client.query("select #{select_columns} from #{sobject_name}")
+                               select_columns = columns(sobject_name).join(','),
+                               where = nil)
+      query_str = "select #{select_columns} from #{sobject_name}"
+      query_str += " where #{where}" if where.present?
+      client.query(query_str)
     end
 
     def create!(salesforce_sobject_name, attributes_to_create)
