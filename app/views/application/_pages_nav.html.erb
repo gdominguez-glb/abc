@@ -1,6 +1,6 @@
 <% if !@sub_nav_items.blank? %>
-  <nav class="navbar navbar-default navbar-fixed-top subnav">
-    <div class="navbar-header clearfix">
+  <div class="subnav">
+    <div class="clearfix">
       <span class="subnav-name pull-left hidden"><%= @page.title if @page %></span>
       <button type="button" class="subnav-toggle navbar-toggle collapsed" data-toggle="collapse" data-target="#sub-nav">
         <span class="sr-only">Toggle sub navigation</span>
@@ -8,12 +8,11 @@
       </button>
     </div>
     <div class="collapse navbar-collapse" id="sub-nav">
-      <ul class="nav navbar-nav">
+      <ul>
         <%= active_link_to @group_page.title, "/#{@group_page.slug}", active: (request.path == "/#{@group_page.slug}"), wrap_tag: :li if @group_page %>
         <% @sub_nav_items.each do |page| %>
           <%= active_link_to page.title, "/#{page.slug}", wrap_tag: :li %>
         <% end %>
-        <%= active_link_to "Video Gallery", '/video_gallery', wrap_tag: :li if current_spree_user %>
         <% if @group_page && publication = @group_page.medium_publications.sorted.first %>
           <%= active_link_to 'Blog', curriculum_blog_path(page_slug: @group_page.slug, slug: publication.slug), wrap_tag: :li, active: /#{@group_page.slug}\/blog/ %>
         <% end %>
@@ -22,5 +21,5 @@
         <% end %>
       </ul>
     </div>
-  </nav>
+  </div>
 <% end %>
