@@ -1,28 +1,30 @@
-<div class="subnav">
-  <div class="clearfix">
-    <span class="subnav-name pull-left hidden"><%= @nav_name || action_name.titleize %></span>
-    <button type="button" class="subnav-toggle navbar-toggle collapsed" data-toggle="collapse" data-target="#sub-nav">
-      <span class="sr-only">Toggle sub navigation</span>
-      <span class="glyphicon glyphicon-option-vertical"></span>
-    </button>
+<% if current_spree_user %>
+  <div class="subnav">
+    <div class="clearfix">
+      <span class="subnav-name pull-left hidden"><%= @nav_name || action_name.titleize %></span>
+      <button type="button" class="subnav-toggle navbar-toggle collapsed" data-toggle="collapse" data-target="#sub-nav">
+        <span class="sr-only">Toggle sub navigation</span>
+        <span class="glyphicon glyphicon-option-vertical"></span>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse" id="sub-nav">
+      <ul>
+        <%= active_link_to "My Products", '/account', wrap_tag: :li, active: :exact %>
+        <% if spree_current_user.has_admin_role? %>
+          <li>
+            <a href="/store/admin ">Store Admin<span class="sr-only">(current)</span></a>
+          </li>
+        <% end %>
+        <%= active_link_to "Favorites", '/account/favorites', wrap_tag: :li %>
+        <%= active_link_to "History", '/account/history', wrap_tag: :li %>
+        <%= active_link_to "Video Gallery", '/video_gallery', wrap_tag: :li %>
+        <%= active_link_to "CMS", '/cms', wrap_tag: :li if current_spree_user.admin? %>
+        <%= active_link_to "Settings", '/account/settings', wrap_tag: :li %>
+        <%= active_link_to "Help", '/account/help', wrap_tag: :li %>
+        <% if spree_current_user.has_school_admin_role? %>
+          <%= active_link_to "License Management", '/account/licenses', wrap_tag: :li %>
+        <% end %>
+      </ul>
+    </div>
   </div>
-  <div class="collapse navbar-collapse" id="sub-nav">
-    <ul>
-      <%= active_link_to "My Products", '/account', wrap_tag: :li, active: :exact %>
-      <% if spree_current_user.has_admin_role? %>
-        <li>
-          <a href="/store/admin ">Store Admin<span class="sr-only">(current)</span></a>
-        </li>
-      <% end %>
-      <%= active_link_to "Favorites", '/account/favorites', wrap_tag: :li %>
-      <%= active_link_to "History", '/account/history', wrap_tag: :li %>
-      <%= active_link_to "Video Gallery", '/video_gallery', wrap_tag: :li %>
-      <%= active_link_to "CMS", '/cms', wrap_tag: :li if current_spree_user.admin? %>
-      <%= active_link_to "Settings", '/account/settings', wrap_tag: :li %>
-      <%= active_link_to "Help", '/account/help', wrap_tag: :li %>
-      <% if spree_current_user.has_school_admin_role? %>
-        <%= active_link_to "License Management", '/account/licenses', wrap_tag: :li %>
-      <% end %>
-    </ul>
-  </div>
-</div>
+<% end %>
