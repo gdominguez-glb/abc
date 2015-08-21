@@ -47,11 +47,21 @@ module SalesforceAccess
     find_in_salesforce_by_salesforce_id
   end
 
+  # Updates the local record based on the salesforce object.  Note that this
+  # does not update the associated `salesforce_reference` object
+  def reset_from_salesforce(sfo = cached_salesforce_object)
+    return nil unless sfo
+    incoming_attributes = self.class.attributes_from_salesforce_object(sfo)
+    incoming_attributes.delete(:salesforce_reference_attributes)
+    update_attributes(incoming_attributes)
+    save
+  end
+
   # Updates the local record and cached Salesforce data with either the
   # specified Salesforce object, or by querying Salesforce.
   #
   # Override this as necessary
-  def update_from_salesforce(sfo = find_in_salesforce)
+  def update_from_salesforce(sfo = find_in_salesforce, force = false)
     # TODO: Check verified?  `@Verified__c`
     # TODO: Check deleted? `@IsDeleted`
     return false unless sfo
@@ -65,11 +75,19 @@ module SalesforceAccess
         :salesforce_reference_attributes,
         :skip_next_salesforce_update,
         :skip_salesforce_create)
-      return self if cached_attributes == compare_attributes
+      return self if !force && cached_attributes == compare_attributes
     end
     res = update_attributes(incoming_attributes)
     salesforce_reference.reload
     res
+  end
+
+  # Updates the local record and cached Salesforce data with either the
+  # specified Salesforce object, or by querying Salesforce.
+  #
+  # This calls `update_from_salesforce`, but with `force=true`
+  def update_from_salesforce!(sfo = find_in_salesforce)
+    update_from_salesforce(sfo, true)
   end
 
   # Indicates whether there are changes to be sent to Salesforce by checking
@@ -251,7 +269,7 @@ module SalesforceAccess
       salesforce_api.find_all_in_salesforce(sobject_name)
     end
 
-    # Extracts attributes from a Salesforce objec to be used to create/update
+    # Extracts attributes from a Salesforce object to be used to create/update
     # the related salesforce_reference record
     def salesforce_reference_attributes(sfo)
       {
