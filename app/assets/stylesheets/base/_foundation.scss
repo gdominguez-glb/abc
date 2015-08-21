@@ -72,6 +72,10 @@ body {
   background: #fff;
   @include clearfix;
 
+  @media screen and (max-width: 768px) {
+    padding: 30px 30px 60px;
+  }
+
   &.sidebar-left {
     float: right;
   }
