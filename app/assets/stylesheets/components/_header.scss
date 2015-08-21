@@ -17,10 +17,11 @@
 
   .navbar-brand {
     height: auto;
-    padding: 20px 30px;
-    margin-right: 15px;
+    padding: 45px;
     background: $brand-green;
     color: $dark-blue;
+    font-size: 16px;
+    line-height: 1;
 
     &:hover, &:focus {
       background: $brand-green;
@@ -29,16 +30,22 @@
 
   .navbar-nav {
     > li {
+
+      &:first-child {
+        a {
+          padding-left: 110px;
+        }
+      }
+
       > a {
-        padding: 20px 15px;
-        color: #fff;
+        padding: 45px 15px;
+        color: $cream;
         text-transform: uppercase;
-        letter-spacing: 2px;
-        font-size: 12px;
-        font-family: "Source Sans Pro";
+        font-size: 16px;
+        line-height: 1;
 
         &:hover, &:focus {
-          color: $brand-green;
+          color: $coral;
         }
       }
     }
@@ -46,8 +53,18 @@
     .active {
 
       a, a:hover {
-        background: $steel-gray;
-        color: $brand-green;
+        background: transparent;
+        color: $coral;
+      }
+    }
+
+    .subnav {
+      li {
+        &.active {
+          a {
+            color: $dark-blue;
+          }
+        }
       }
     }
   }
@@ -56,11 +73,11 @@
     margin-top: 0;
     margin-bottom: 0;
     padding: 8px 10px;
-    color: #fff;
-    border: 1px solid #fff;
+    color: $cream;
+    border: 1px solid $cream;
 
     &:hover, &:focus {
-      background: #fff;
+      background: $cream;
       color: $dark-blue;
 
       .glyphicon {
@@ -68,135 +85,80 @@
       }
     }
   }
-
-  &.subnav {
-    .navbar-nav {
-
-      a {
-        padding:20px 15px;
-      }
-
-      .active {
-        a {
-          background: transparent;
-          color: $brand-green;
-        }
-      }
-    }
-
-    @media screen and (max-width: 1025px) {
-      .navbar-nav {
-
-        li {
-          float: none;
-        }
-      }
-
-      .navbar-collapse {
-        border-top: 2px solid #fff;
-
-        &.collapse {
-          display: none !important;
-
-          &.in {
-            display: block !important;
-          }
-        }
-      }
-    }
-  }
-}
-
-.navbar-fixed-top .navbar-collapse {
-  max-height: 600px;
-}
-
-.navbar-form {
-  margin-top: 12px;
-  padding: 0 5px;
-  border: 0;
-}
-
-.nav-search {
-  float: right;
-
-  input:not(.btn) {
-    color: $dark-blue;
-    box-shadow: inset 0 0 0 1px $steel-gray;
-  }
-
-  .btn {
-    margin-left: 5px;
-    background: $gray;
-  }
 }
 
 .navbar-header {
-  float: left;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
 }
 
+
 #main-nav {
+  float: right;
+  position: relative;
+  width: calc(100% - 217px);
   max-height: 600px;
-  width: calc(100% - 325px);
-  margin: 0;
+  height: 106px !important;
 
-  @media screen and (max-width: 1092px) {
-    width: 100%;
-    border-top: 1px solid transparent;
-    background: $coral;
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+  // @media screen and (max-width: 1092px) {
+  //   width: 100%;
+  //   border-top: 1px solid transparent;
+  //   background: $coral;
+  //   box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
 
-    &.collapse {
-      display: none !important;
+  //   &.collapse {
+  //     display: none !important;
 
-      &.in {
-        display: block !important;
-      }
-    }
+  //     &.in {
+  //       display: block !important;
+  //     }
+  //   }
 
-    .navbar-nav {
-      float: none;
+  //   .navbar-nav {
+  //     float: none;
 
-      >li {
-        float: none;
+  //     >li {
+  //       float: none;
 
-        > a {
-          padding: 15px;
-          color: #fff;
-          border-top: 2px solid #fff;
-          text-align: center;
-        }
+  //       > a {
+  //         padding: 15px;
+  //         color: #fff;
+  //         border-top: 2px solid #fff;
+  //         text-align: center;
+  //       }
 
-        &.active {
-          a {
-            background: transparent;
-            color: $brand-green;
-          }
-        }
-      }
-    }
+  //       &.active {
+  //         a {
+  //           background: transparent;
+  //           color: $brand-green;
+  //         }
+  //       }
+  //     }
+  //   }
 
-    .nav-search {
-      float: none;
-      margin: 0;
-      padding: 15px;
+  //   .nav-search {
+  //     float: none;
+  //     margin: 0;
+  //     padding: 15px;
 
-      input:not(.btn) {
-        color: $coral;
-        box-shadow: inset 0 0 0 1px #fff;
-      }
+  //     input:not(.btn) {
+  //       color: $coral;
+  //       box-shadow: inset 0 0 0 1px #fff;
+  //     }
 
-      .btn {
-        background: transparent;
-        box-shadow: inset 0 0 0 1px #fff;
+  //     .btn {
+  //       background: transparent;
+  //       box-shadow: inset 0 0 0 1px #fff;
 
-        &:hover {
-          background: #fff;
-          color: $coral;
-        }
-      }
-    }
-  }
+  //       &:hover {
+  //         background: #fff;
+  //         color: $coral;
+  //       }
+  //     }
+  //   }
+  // }
 
   @media screen and (max-width: 767px) {
     .nav-search {
@@ -207,6 +169,64 @@
         margin: 10px 0 0;
       }
     }
+  }
+}
+
+.subnav {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: $coral;
+
+  li {
+    float: left;
+    padding: 10px;
+    font-size: 12px;
+
+    &:first-child {
+      padding-left: 110px;
+    }
+  }
+
+  @media (max-width: 1025px) {
+    .navbar-header {
+      posiiton: relative;
+      float: none;
+      padding: 10px 0;
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+    top: 110px;
+  }
+}
+
+.subnav-name {
+  padding: 15px;
+  font-size: 16px;
+}
+
+.sidenav-toggle {
+  display: none;
+  margin-left: 15px;
+
+  @media screen and (max-width: 1025px) {
+    display: block;
+  }
+
+  .glyphicon {
+    top: 2px;
+  }
+}
+
+.navbar-nav {
+
+  @media screen and (max-width: 900px) {
+    position: relative;
+    top: auto;
+    left: auto;
+    @include translate(0, 0);
   }
 }
 
@@ -252,72 +272,58 @@
   }
 
 
-  @media screen and (max-width: 1025px) {
-    &.subnav-toggle {
-      display: block;
+  // @media screen and (max-width: 1025px) {
+  //   &.subnav-toggle {
+  //     display: block;
 
-      .glyphicon {
-        @include transition(all, $transitionTiming);
-      }
+  //     .glyphicon {
+  //       @include transition(all, $transitionTiming);
+  //     }
 
-      &[aria-expanded="true"] {
+  //     &[aria-expanded="true"] {
 
-        .glyphicon {
-          @include rotate(90deg);
-        }
+  //       .glyphicon {
+  //         @include rotate(90deg);
+  //       }
 
-        + .sidenav-toggle {
-          display: none;
-        }
-      }
+  //       + .sidenav-toggle {
+  //         display: none;
+  //       }
+  //     }
 
-      &.sidenav-shown {
-        display: none;
-      }
-    }
-  }
+  //     &.sidenav-shown {
+  //       display: none;
+  //     }
+  //   }
+  // }
 }
 
 .nav-right-options {
+  position: absolute;
+  top: 0;
+  right: 0;
+
   @media screen and (max-width: 500px) {
     width: 100%;
   }
-}
 
-.account-icon {
-  float: left;
-  position: relative;
-  top: 15px;
-  right: 10px;
-  width: 30px;
-  height: 30px;
-  background: #fff;
-  color: $dark-blue;
-  font-size: 18px;
-  border-radius: 50%;
-
-  &:hover {
-    background: $brand-green;
-  }
-
-  span {
-    position: relative;
-    left: 8px;
-    top: 3px;
+  li {
+    float: left;
+    padding: 15px 10px;
+    color: $cream;
+    font-size: 12px;
   }
 }
 
-.cart {
-  float: left;
-  margin: 0;
+.search-icon {
+  color: $cream;
 }
 
 #link-to-cart {
   .cart-info {
     position: relative;
-    top: 4px;
-    padding: 15px 15px 15px 0;
     font-size: 14px;
+    color: $cream;
   }
 
   &:hover {
@@ -353,43 +359,6 @@
   .proceed-button {
     margin: 5px 10%;
     width: 80%;
-  }
-}
-
-.subnav {
-  top: 60px;
-  z-index: 1020;
-  background: $steel-gray;
-  border-bottom: none;
-
-  @media (max-width: 1025px) {
-    .navbar-header {
-      posiiton: relative;
-      float: none;
-      padding: 10px 0;
-    }
-  }
-
-  @media screen and (max-width: 500px) {
-    top: 110px;
-  }
-}
-
-.subnav-name {
-  padding: 15px;
-  font-size: 16px;
-}
-
-.sidenav-toggle {
-  display: none;
-  margin-left: 15px;
-
-  @media screen and (max-width: 1025px) {
-    display: block;
-  }
-
-  .glyphicon {
-    top: 2px;
   }
 }
 

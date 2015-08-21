@@ -8,11 +8,10 @@
     <%= javascript_include_tag 'application' %>
     <%= csrf_meta_tags %>
   </head>
-  <body class="account <%= yield :body_class %> <%= 'with-subnav' if @sub_nav_items.present? %>">
+  <body class="<%= controller_name %> <%= yield :body_class %> <%= 'with-subnav' if @sub_nav_items.present? %>">
 
     <div id="wrap" class="<%= 'empty-state' if @video_products.blank? %>">
       <%= render 'header' %>
-      <%= render 'account_nav' %>
       <%= render 'flashes' %>
       <%= yield %>
       <%= yield :javascripts %>

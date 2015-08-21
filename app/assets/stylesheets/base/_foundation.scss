@@ -7,16 +7,9 @@ html, body, .container {
 }
 
 body {
-  padding: 60px 0 0;
+  padding: 106px 0 0;
   color: $dark-blue;
-
-  &.account, &.video_gallery, &.pages.with-subnav, &.blog.with-subnav , &.events.with-subnav{
-    padding: 120px 0 0;
-
-    @media screen and (max-width: 500px) {
-      padding: 149px 0 0;
-    }
-  }
+  @include animation(fade 1s);
 
   &.nav-shown {
 
@@ -24,6 +17,12 @@ body {
       opacity: .75;
       z-index: 9;
     }
+  }
+}
+
+@include keyframes(fade) {
+  0% {
+    opacity: 0;
   }
 }
 
@@ -69,7 +68,7 @@ body {
   height: 100%;
   width: 85%;
   padding: 30px 60px 60px;
-  background: #fff;
+  background: $cream;
   @include clearfix;
 
   @media screen and (max-width: 768px) {

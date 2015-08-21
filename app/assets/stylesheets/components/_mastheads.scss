@@ -3,25 +3,9 @@
 .masthead {
   background-size: cover;
   background-repeat: no-repeat;
-
-  img {
-    width: 100%;
-  }
-
-  .btn-default {
-    background: transparent;
-  }
+  background-position: 0 20%;
 }
 
 .masthead-content {
-  padding: 160px 30px 210px 30px;
-}
-
-.home-mast-intro {
-  text-transform: none;
-}
-
-.greatness-image {
-  width: 65%;
-  margin: 30px auto 60px;
+  padding: 19% 30px 19% 30px;
 }
