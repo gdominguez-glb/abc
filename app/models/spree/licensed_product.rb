@@ -62,7 +62,7 @@ class Spree::LicensedProduct < ActiveRecord::Base
   end
 
   def send_notification
-    LicenseMailer.notify(self).deliver_now
+    LicenseMailer.notify(self).deliver_later
   end
 
   def assign_user_admin_role
