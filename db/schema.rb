@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150821014600) do
+ActiveRecord::Schema.define(version: 20150821064817) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -114,6 +114,23 @@ ActiveRecord::Schema.define(version: 20150821014600) do
     t.string   "training_type"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+  end
+
+  create_table "footer_links", force: :cascade do |t|
+    t.integer  "footer_title_id"
+    t.string   "name"
+    t.string   "link"
+    t.integer  "position",        default: 0
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  create_table "footer_titles", force: :cascade do |t|
+    t.string   "title"
+    t.string   "link"
+    t.integer  "position",   default: 0
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|

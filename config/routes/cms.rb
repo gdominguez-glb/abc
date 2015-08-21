@@ -36,4 +36,14 @@ namespace :cms do
     resources :download_products
   end
   resources :jobs
+  resources :footer_titles do
+    collection do
+      post :update_positions
+    end
+    resources :footer_links do
+      collection do
+        post :update_positions
+      end
+    end
+  end
 end

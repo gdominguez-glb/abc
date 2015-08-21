@@ -34,7 +34,6 @@ class Cms::HelpItemsController < Cms::BaseController
     redirect_to cms_help_items_path, notice: 'Deleted help item successfully!'
   end
 
-
   private
 
   def find_help_item

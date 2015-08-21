@@ -1,0 +1,25 @@
+<%= form_for([:cms, @footer_title, @footer_link], class: 'form') do |f| %>
+  <% if @footer_link.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@footer_link.errors.count, "error") %> prohibited this footer_link from being saved:</h2>
+
+      <ul>
+      <% @footer_link.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :link %>
+    <%= f.text_field :link, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.submit class: 'btn btn-primary' %>
+  </div>
+<% end %>
