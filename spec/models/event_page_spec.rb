@@ -16,11 +16,23 @@ RSpec.describe EventPage, type: :model do
   describe "#events" do
     let(:event_page) { create(:event_page, display: true, page: create(:page), regonline_filter: 'Math') }
 
-    it "return regonline events with match filter" do
-      stub_request(:get, "http://maps.googleapis.com/maps/api/geocode/json?address=A,B,C,D&language=en&sensor=false").
-        with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
-        to_return(:status => 200, :body => "", :headers => {})
+    before do
+      Geocoder.configure(lookup: :test)
+      address_mapping = { 'A,B,C,D' => [{
+        'latitude' => 36.4722803,
+        'longitude' => -87.3612205,
+        'address' => 'B',
+        'state' => 'C',
+        'state_code' => 'C',
+        'country' => 'D',
+        'country_code' => 'D'
+      }] }
+      address_mapping.each do |key, value|
+        Geocoder::Lookup::Test.add_stub(key, value)
+      end
+    end
 
+    it "return regonline events with match filter" do
       regonline_event = create(:regonline_event, client_event_id: 'Math', location_name: 'A', city: 'B', state: 'C', country: 'D')
       expect(event_page.events).to eq([regonline_event])
     end
