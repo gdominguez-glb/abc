@@ -22,6 +22,7 @@
   $(function(){
     var productId = '<%= @product.slug %>';
     $("#materials").sortableLists({
+      ignoreClass: 'btn',
       complete: function(el) {
         var $prev = $(el).prev('.list-group-item');
         var $next = $(el).next('.list-group-item')
