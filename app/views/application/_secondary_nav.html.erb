@@ -1,3 +1,5 @@
-<% if ['pages','account', 'video_gallery', 'blog', 'events', 'products'].include?(controller_name) %>
+<% if ['products', 'favorites', 'history', 'video_gallery', 'settings', 'help', 'licenses'].include?(controller_name) %>
+  <%= render 'products_nav' %>
+<% elsif ['pages', 'blog', 'events'].include?(controller_name) %>
   <%= render "#{controller_name}_nav"  %>
 <% end %>
