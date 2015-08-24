@@ -19,6 +19,8 @@ class MaterialImportJobWorker
       process_root_directory(material_import_job)
 
       material_import_job.update(status: 'done')
+
+      FileUtils.rm_rf(tmp_directory_path(material_import_job))
     rescue => exception
       material_import_job.update(status: 'failed')
       ExceptionNotifier.notify_exception(exception, :data => {:message => "Fail to process import job #{material_import_job_id}"})
