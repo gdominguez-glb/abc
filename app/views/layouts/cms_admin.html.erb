@@ -7,10 +7,9 @@
   <%= csrf_meta_tags %>
 </head>
 
-<body>
+<body class="<%= controller_name %>">
   <div id="wrap" class="cms-wrapper">
     <%= render 'header' %>
-    <%# <%= render 'products_nav' %1> %>
     <%= render 'flashes' %>
     <div class="container">
       <div id="viewport" class="row">

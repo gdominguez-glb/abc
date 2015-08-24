@@ -1,4 +1,4 @@
-<% if simple_current_order.item_count > 0 %>
+      <% if simple_current_order.item_count > 0 %>
   <%
       text = text ? h(text) : Spree.t('cart')
       css_class = nil
@@ -14,10 +14,10 @@
   <%= link_to spree.cart_path, :class => "cart-info #{css_class}" do %>
     <%= text.html_safe %>
   <% end %>
-  <div class="gm-order-info-popup">
+  <div class="gm-order-info-popup cream-bg">
     <%= render 'spree/orders/simple_order_form' %>
     <div>
-      <%= link_to "Proceed to checkout", spree.checkout_state_path(simple_current_order.checkout_steps.first), class: 'btn btn-primary proceed-button' %>
+      <%= link_to "Proceed to checkout", spree.checkout_state_path(simple_current_order.checkout_steps.first), class: 'btn btn-default proceed-button' %>
     </div>
   </div>
 <% end %>

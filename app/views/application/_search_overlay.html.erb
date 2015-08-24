@@ -1,0 +1,11 @@
+<div class="search-overlay blue-bg">
+  <button class="close">
+    <span class="fa fa-angle-double-up"></span>
+  </button>
+  <%= form_tag '/search', class: 'nav-search clearfix', method: :get do %>
+    <div class="form-group">
+      <%= text_field_tag :query, nil, class: 'form-control', placeholder: 'Search' %>
+      <%= submit_tag 'Submit', class: 'btn btn-default' %>
+    </div>
+  <% end %>
+</div>

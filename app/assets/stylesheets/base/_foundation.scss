@@ -9,6 +9,7 @@ html, body, .container {
 body {
   padding: 106px 0 0;
   color: $dark-blue;
+  background: $cream;
   @include animation(fade 1s);
 
   &.nav-shown {
@@ -44,6 +45,55 @@ body {
   opacity: 0;
   z-index: -1;
   @include transition(all, $transitionTiming);
+}
+
+.search-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba($dark-blue, .95);
+  color: $cream;
+  z-index: 9999;
+  @include translate(0, -100%);
+  @include transition(all, $transitionTiming);
+
+  &.show-search {
+    @include translate(0, 0);
+  }
+
+  .close {
+    position: relative;
+    top: 15px;
+    right: 15px;
+    color: inherit;
+    font-size: 40px;
+
+    @include transition(opacity, $transitionTiming);
+  }
+
+  form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 75%;
+    @include translate(-50%, -50%);
+  }
+
+  .form-control, .btn {
+    float: left;
+  }
+
+  .form-control {
+    width: 74%;
+    margin: 0 1% 0 0;
+  }
+
+  .btn {
+    padding: 16px 30px;
+    width: 25%;
+  }
 }
 
 #wrap {
@@ -102,7 +152,7 @@ body {
 }
 
 section {
-  padding: 180px 0;
+  padding: 60px 0;
   @include clearfix;
 
   h1, h2, h3, h4, h5, h6, p {
@@ -113,15 +163,6 @@ section {
     padding-bottom: 2px;
     border-bottom: 1px solid;
   }
-}
-
-.green-bg {
-  background: $brand-green;
-  color: $dark-blue;
-}
-
-.cream-bg {
-  background: $cream;
 }
 
 .coral-text {

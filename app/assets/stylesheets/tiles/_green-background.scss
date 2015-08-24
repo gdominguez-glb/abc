@@ -1,0 +1,18 @@
+// _green-background.scss
+// Styles for any tile with class="green-bg"
+
+.green-bg {
+  background: $brand-green;
+  color: $dark-blue;
+
+  .btn {
+    &.btn-default {
+      color: $dark-blue;
+
+      &:hover {
+        background: $dark-blue;
+        color: $cream;
+      }
+    }
+  }
+}

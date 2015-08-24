@@ -189,6 +189,11 @@
     }
   }
 
+  a {
+    @extend .serif;
+    text-transform: capitalize;
+  }
+
   @media (max-width: 1025px) {
     .navbar-header {
       posiiton: relative;
@@ -313,6 +318,12 @@
     color: $cream;
     font-size: 12px;
   }
+
+  a {
+    @extend .serif;
+    font-style: italic;
+    text-transform: lowercase;
+  }
 }
 
 .search-icon {
@@ -338,13 +349,14 @@
 }
 
 .gm-order-info-popup {
+  display: none;
   position: absolute;
-  top: 50px;
+  top: 46px;
   right: 0;
   width: 300px;
-  display: none;
-  color: $dark-blue;
-  background: #fff;
+  border: 3px solid $coral;
+  border-radius: $border-radius-value;
+  z-index: 3;
 
   table tr {
     td {
@@ -357,7 +369,8 @@
   }
 
   .proceed-button {
-    margin: 5px 10%;
+    display: block;
+    margin: 10px auto 10px;
     width: 80%;
   }
 }

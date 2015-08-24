@@ -81,10 +81,22 @@
   }
 }
 
+.blue-bg {
+  background: $dark-blue;
+  color: $cream;
+
+  .btn {
+    &.btn-default {
+      &:hover {
+        background: $cream;
+        color: $dark-blue;
+      }
+    }
+  }
+}
+
 .recent-history {
   padding: 10px;
-  background: $steel-gray;
-  color: #fff;
 
   .view-all-link {
     display: block;

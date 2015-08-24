@@ -13,6 +13,7 @@
     &.active {
       a {
         opacity: 1;
+        background: transparent;
         border: none;
         border-bottom: 4px solid $brand-primary;
         font-weight: bold;

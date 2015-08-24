@@ -13,67 +13,28 @@
 
   &.btn-default {
     background: transparent;
-    color: $dark-blue;
-    box-shadow: inset 0 0 0 1px $dark-blue;
+    color: inherit;
+    box-shadow: inset 0 0 0 1px;
 
     &:hover {
-      background: $dark-blue;
-      color: #fff;
+      color: $cream;
     }
 
     &.dashed-border {
       border: 1px dashed #eee;
       @include box-shadow(none);
     }
-
-    &.green-btn {
-      color: $brand-green;
-      box-shadow: inset 0 0 0 1px $brand-green;
-
-      &:hover {
-        background: $brand-green;
-        color: $dark-blue;
-      }
-    }
-
-    &.red-white-btn {
-      color: #fff;
-      box-shadow: inset 0 0 0 1px #fff;
-
-      &:hover {
-        background: #fff;
-        color: $coral;
-      }
-    }
   }
 
   &.btn-primary {
     border: 0;
+    color: $cream;
     @include button-bg($dark-blue);
-
-    &.green-btn {
-      @include button-bg($brand-green);
-    }
-
-    &.red-btn {
-      @include button-bg($coral);
-
-      &.inverse {
-        @include button-bg(#fff);
-        color: $coral;
-      }
-    }
   }
 
   &.header-form-control {
     height: 34px;
     padding: 6px 12px;
-  }
-}
-
-.cream-bg {
-  .btn-primary {
-    @include button-bg($coral);
   }
 }
 
