@@ -62,3 +62,8 @@ Gm = {
   }
 };
 window.Gm = Gm;
+
+$(document).on("click", ".search-icon, .search-overlay .close", function(){
+  var $searchOverlay = $(".search-overlay");
+  $searchOverlay.toggleClass("show-search");
+});

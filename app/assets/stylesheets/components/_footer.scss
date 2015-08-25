@@ -2,8 +2,7 @@
 
 footer {
   padding: 60px 0;
-  background: $dark-blue;
-  color: $brand-green;
+  background: $brand-green;
   font-size: 7px;
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -14,20 +13,22 @@ footer {
 
   .section-lead {
     margin: 0 0 15px;
-    font-family: "Source Sans Pro";
     font-size: 16px;
     font-weight: bold;
 
     a {
+      @extend .sans-serif;
       font-size: 16px;
     }
   }
 
   .copyright {
-    margin-top: 60px;
+    margin: 60px 0 0;
   }
 
   a {
+    @extend .serif;
+    font-style: italic;
     font-size: 14px;
   }
 }

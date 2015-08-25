@@ -5,6 +5,11 @@
       Great Minds
     </a>
   </div>
+  <button type="button" class="main-nav navbar-toggle collapsed btn pull-right" data-toggle="collapse" data-target="#main-nav">
+    <span class="sr-only">Toggle navigation</span>
+    <span class="glyphicon glyphicon-menu-hamburger"></span>
+    <span class="glyphicon glyphicon-remove"></span>
+  </button>
   <div class="collapse navbar-collapse clearfix" id="main-nav">
     <ul class="nav navbar-nav">
       <% Page.curriculum_nav.each do |page| %>
@@ -17,6 +22,6 @@
     <div class="nav-right-options clearfix">
       <%= render partial: 'spree/shared/main_nav_bar' if store_menu? %>
     </div>
-    <%= render 'secondary_nav' %>
   </div>
 </nav> <!-- /.navbar -->
+<%= render 'secondary_nav' %>

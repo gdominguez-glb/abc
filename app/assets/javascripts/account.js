@@ -56,9 +56,9 @@ $(function(){
 
   var updateAccountBackground = debounce(function() {
     if ($(".recent-history").outerHeight() > $(".account .content").outerHeight()) {
-      $(".account-page").css("background", "#FFF");
+      $(".account-page").css("background", "#071D26");
     } else {
-      $(".account-page").css("background", "#46565C");
+      $(".account-page").css("background", "#FFFAE5");
     }
   }, 250);
 

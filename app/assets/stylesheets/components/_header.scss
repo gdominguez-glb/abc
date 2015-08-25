@@ -4,6 +4,7 @@
 *
 * Styleguide 1.8
 */
+
 .navbar {
   height: auto;
   min-height: 0;
@@ -34,6 +35,10 @@
       &:first-child {
         a {
           padding-left: 110px;
+
+          @media screen and (max-width: 1200px) {
+            padding-left: 45px;
+          }
         }
       }
 
@@ -70,18 +75,17 @@
   }
 
   .navbar-toggle {
-    margin-top: 0;
-    margin-bottom: 0;
-    padding: 8px 10px;
-    color: $cream;
-    border: 1px solid $cream;
+    margin: 0;
 
     &:hover, &:focus {
-      background: $cream;
-      color: $dark-blue;
+      background: transparent;
+    }
 
-      .glyphicon {
-        color: $dark-blue;
+    &.subnav-toggle {
+
+      &:hover {
+        background: transparent;
+        color: $cream;
       }
     }
   }
@@ -100,65 +104,42 @@
   position: relative;
   width: calc(100% - 217px);
   max-height: 600px;
-  height: 106px !important;
 
-  // @media screen and (max-width: 1092px) {
-  //   width: 100%;
-  //   border-top: 1px solid transparent;
-  //   background: $coral;
-  //   box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+  @media screen and (max-width: 900px) {
+    width: 100%;
+    border-top: 1px solid transparent;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
 
-  //   &.collapse {
-  //     display: none !important;
+    &.collapse {
+      display: none !important;
 
-  //     &.in {
-  //       display: block !important;
-  //     }
-  //   }
+      &.in {
+        display: block !important;
+      }
+    }
 
-  //   .navbar-nav {
-  //     float: none;
+    .navbar-nav {
+      float: none;
 
-  //     >li {
-  //       float: none;
+      >li {
+        float: none;
 
-  //       > a {
-  //         padding: 15px;
-  //         color: #fff;
-  //         border-top: 2px solid #fff;
-  //         text-align: center;
-  //       }
+        > a {
+          padding: 15px;
+          color: #fff;
+          border-top: 2px solid #fff;
+          text-align: center;
+        }
 
-  //       &.active {
-  //         a {
-  //           background: transparent;
-  //           color: $brand-green;
-  //         }
-  //       }
-  //     }
-  //   }
-
-  //   .nav-search {
-  //     float: none;
-  //     margin: 0;
-  //     padding: 15px;
-
-  //     input:not(.btn) {
-  //       color: $coral;
-  //       box-shadow: inset 0 0 0 1px #fff;
-  //     }
-
-  //     .btn {
-  //       background: transparent;
-  //       box-shadow: inset 0 0 0 1px #fff;
-
-  //       &:hover {
-  //         background: #fff;
-  //         color: $coral;
-  //       }
-  //     }
-  //   }
-  // }
+        &.active {
+          a {
+            background: transparent;
+            color: $brand-green;
+          }
+        }
+      }
+    }
+  }
 
   @media screen and (max-width: 767px) {
     .nav-search {
@@ -172,28 +153,66 @@
   }
 }
 
+#sub-nav {
+  padding: 0;
+
+  @media screen and (max-width: 1135px) {
+
+    li {
+      float: none;
+    }
+
+    &.collapse {
+      display: none !important;
+
+      &.in {
+        display: block !important;
+      }
+    }
+  }
+}
+
 .subnav {
-  position: absolute;
-  left: 0;
+  position: fixed;
+  top: 69px;
+  left: 217px;
   right: 0;
-  bottom: 0;
   background: $coral;
+  z-index: 9999;
 
   li {
     float: left;
-    padding: 10px;
-    font-size: 12px;
 
     &:first-child {
-      padding-left: 110px;
+
+      a {
+        padding-left: 110px;
+
+        @media screen and (max-width: 1200px) {
+          padding-left: 45px;
+        }
+
+        @media screen and (max-width: 1135px) {
+          padding: 15px;
+        }
+      }
     }
   }
 
-  @media (max-width: 1025px) {
-    .navbar-header {
-      posiiton: relative;
-      float: none;
-      padding: 10px 0;
+  a {
+    @extend .serif;
+    display: block;
+    padding: 10px;
+    font-size: 12px;
+    text-transform: capitalize;
+
+    @media screen and (max-width: 1135px) {
+      padding: 15px;
+      text-align: center;
+
+      &:hover {
+        background: darken($coral, 5%);
+      }
     }
   }
 
@@ -211,7 +230,7 @@
   display: none;
   margin-left: 15px;
 
-  @media screen and (max-width: 1025px) {
+  @media screen and (max-width: 1125px) {
     display: block;
   }
 
@@ -220,32 +239,23 @@
   }
 }
 
-.navbar-nav {
-
-  @media screen and (max-width: 900px) {
-    position: relative;
-    top: auto;
-    left: auto;
-    @include translate(0, 0);
-  }
-}
-
 .navbar-toggle {
+  border: none;
 
   &.main-nav {
-    float: left;
-    top: 10px;
-    padding-right: 24px;
+    position: relative;
+    padding: 15px 45px 91px;
+    font-size: 40px;
+    color: $cream;
 
-    @media screen and (max-width: 1092px) {
+    @media screen and (max-width: 900px) {
       display: block;
     }
 
     .glyphicon {
       position: absolute;
-      right: 6px;
-      top: 12px;
-      color: $brand-green;
+      top: 15px;
+      right: 15px;
       @include transition(all, $transitionTiming);
     }
 
@@ -272,30 +282,36 @@
   }
 
 
-  // @media screen and (max-width: 1025px) {
-  //   &.subnav-toggle {
-  //     display: block;
+  @media screen and (max-width: 1135px) {
+    &.subnav-toggle {
+      display: block;
 
-  //     .glyphicon {
-  //       @include transition(all, $transitionTiming);
-  //     }
+      .glyphicon {
+        @include transition(all, $transitionTiming);
+      }
 
-  //     &[aria-expanded="true"] {
+      &[aria-expanded="true"] {
 
-  //       .glyphicon {
-  //         @include rotate(90deg);
-  //       }
+        .glyphicon {
+          @include rotate(90deg);
+        }
 
-  //       + .sidenav-toggle {
-  //         display: none;
-  //       }
-  //     }
+        + .sidenav-toggle {
+          display: none;
+        }
+      }
 
-  //     &.sidenav-shown {
-  //       display: none;
-  //     }
-  //   }
-  // }
+      &.sidenav-shown {
+        display: none;
+      }
+    }
+  }
+}
+
+.subnav-toggle {
+  margin: 8px 15px 7px 0;
+  padding: 0;
+  border: none;
 }
 
 .nav-right-options {
@@ -312,6 +328,12 @@
     padding: 15px 10px;
     color: $cream;
     font-size: 12px;
+  }
+
+  a {
+    @extend .serif;
+    font-style: italic;
+    text-transform: lowercase;
   }
 }
 
@@ -338,13 +360,14 @@
 }
 
 .gm-order-info-popup {
+  display: none;
   position: absolute;
-  top: 50px;
+  top: 46px;
   right: 0;
   width: 300px;
-  display: none;
-  color: $dark-blue;
-  background: #fff;
+  border: 3px solid $coral;
+  border-radius: $border-radius-value;
+  z-index: 3;
 
   table tr {
     td {
@@ -357,19 +380,8 @@
   }
 
   .proceed-button {
-    margin: 5px 10%;
+    display: block;
+    margin: 10px auto 10px;
     width: 80%;
   }
 }
-
-// #subnav {
-//   @media screen and (max-width: 900px) {
-//     &.collapse {
-//       display: none !important;
-
-//       &.in {
-//         display: block !important;
-//       }
-//     }
-//   }
-// }
