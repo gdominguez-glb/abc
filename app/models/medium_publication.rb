@@ -5,7 +5,7 @@ class MediumPublication < ActiveRecord::Base
 
   scope :sorted, ->{ order('position asc') }
 
-  has_many :posts
+  has_many :posts, dependent: :destroy
   belongs_to :page
 
   BLOG_TYPES.each do |blog_type|
