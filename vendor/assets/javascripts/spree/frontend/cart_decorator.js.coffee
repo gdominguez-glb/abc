@@ -1,6 +1,7 @@
 submitForm = ($form)->
   $.ajax(
     url: $form.attr('action')
+    dataType: 'script'
     type: 'POST'
     data: $form.serializeArray()
   )

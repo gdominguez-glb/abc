@@ -41,6 +41,7 @@ Gm = {
   submit_simple_cart_form: function($form) {
     $.ajax({
       url: $form.attr('action'),
+      dataType: 'script',
       type: 'POST',
       data: $form.serializeArray()
     });
