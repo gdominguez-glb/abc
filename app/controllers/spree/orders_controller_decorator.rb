@@ -2,6 +2,13 @@ Spree::OrdersController.class_eval do
   def update_simple_cart
     @order = current_order || Spree::Order.incomplete.find_or_initialize_by(guest_token: cookies.signed[:guest_token])
     @order.contents.update_cart(order_params)
+
+    respond_to do |format|
+      format.html {
+        redirect_to spree.checkout_state_path(@order.checkout_steps.first)
+      }
+      format.js {}
+    end
   end
 
   def add_products_to_cart
