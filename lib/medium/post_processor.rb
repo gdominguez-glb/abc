@@ -9,7 +9,7 @@ module Medium
       return {} if @data['success'] != true
       value = @data['payload']['value']
 
-      published_at    = Time.at(value['latestPublishedAt']/1000)
+      published_at    = Time.at(value['firstPublishedAt']/1000)
       body            = process_paragraphs(value['content']['bodyModel']['paragraphs'])
       preview_content = process_paragraphs(value['previewContent']['bodyModel']['paragraphs'])
 
