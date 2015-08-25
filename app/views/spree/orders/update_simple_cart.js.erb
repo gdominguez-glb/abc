@@ -13,5 +13,10 @@
 
   $("#simple-update-cart").replaceWith("<%= escape_javascript(render 'simple_order_form') %>");
 
-  Spree.bindSimpleCartEvents();
+  if (window.Spree) {
+    Spree.bindSimpleCartEvents();
+  }
+  if (window.Gm) {
+    Gm.bind_simple_cart();
+  }
 <% end %>
