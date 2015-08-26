@@ -36,9 +36,19 @@ footer {
 .footer-section {
 
   .social-icon {
-    position: relative;
-    bottom: 4px;
     font-size: 26px;
+  }
+
+  .icon-container {
+    @media screen and (max-width: 767px) {
+      &:first-child {
+        text-align: right;
+      }
+
+      &:last-child {
+        text-align: left;
+      }
+    }
   }
 
   @media screen and (max-width: 767px) {

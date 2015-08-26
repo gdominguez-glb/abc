@@ -1,16 +1,10 @@
 // _sidebars.scss
 
 .fixed-sidebar {
-  width: 15%;
+  width: 217px;
   height: 100%;
-  background: $steel-gray;
+  background: $dark-blue;
   overflow: scroll;
-
-  &.responsive-sidebar {
-    @media screen and (max-width: 1200px) {
-      width: 25%;
-    }
-  }
 
   &.video-gallery-sidenav {
     @media screen and (max-width: 1025px) {
@@ -47,6 +41,7 @@
 
   .side-search-form {
     padding: 10px;
+    color: $cream;
   }
 
   .form-group {
@@ -57,8 +52,8 @@
 .taxonomies-filters {
   .taxonomy-header {
     padding: 10px;
-    color: #fff;
-    border-bottom: 1px solid #fff;
+    color: $cream;
+    border-bottom: 1px solid;
 
     &:hover {
       color: $brand-green;
