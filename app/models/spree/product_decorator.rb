@@ -104,7 +104,7 @@ Spree::Product.class_eval do
   end
 
   def video_digital
-    digitals.where.not(wistia_hashed_id: nil).first
+    digitals.first
   end
 
   def wistia_ready?
