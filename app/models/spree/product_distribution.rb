@@ -23,7 +23,7 @@ class Spree::ProductDistribution < ActiveRecord::Base
   end
 
   def self.from_user_to_email(from_user, email)
-    Spree::ProductDistribution.where(from_user_id: from_user.id, email: email)
+    Spree::ProductDistribution.joins(:product).where(from_user_id: from_user.id, email: email).uniq
   end
 
   private
