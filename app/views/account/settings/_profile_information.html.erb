@@ -30,18 +30,18 @@
           <label>Select your Role</label>
           <%= f.select :title, options_for_select(USER_TITLES, f.object.title), { prompt: 'Please select your role' }, { class: 'form-control', tabindex: 5 } %>
         </div>
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-6 school-district-input">
           <label>Select School District</label>
           <%= f.collection_select :school_district_id, SchoolDistrict.all, :id, :name, { include_blank: 'District Not List', prompt: 'Please select your district' }, { class: 'form-control' } %>
         </div>
-        <div class="form-group col-md-6 school-district-control <%= 'hidden' if current_spree_user.school_district_id.present? %>">
+        <div class="form-group col-md-6 school-district-input school-district-control <%= 'hidden' if current_spree_user.school_district_id.present? %>">
           <label>District State</label>
           <% f.object.school_district ||= SchoolDistrict.new(place_type: 'school') %>
           <%= f.fields_for :school_district do |school_district_form| %>
             <%= school_district_form.collection_select :state_id, Spree::Country.find_by(iso: 'US').states, :id, :name, { prompt: true } , { class: 'form-control' } %>
           <% end %>
         </div>
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-6 school-district-input">
           <label>Add District Name</label>
           <% f.object.school_district ||= SchoolDistrict.new(place_type: 'school') %>
           <%= f.fields_for :school_district do |school_district_form| %>
@@ -51,7 +51,7 @@
             District Name <span class="glyphicon glyphicon-plus pull-right"></span>
           </div>
         </div>
-        <div class="form-group col-md-6 school-district-control <%= 'hidden' if current_spree_user.school_district_id.present? %>">
+        <div class="form-group col-md-6 school-district-input school-district-control <%= 'hidden' if current_spree_user.school_district_id.present? %>">
           <label>Is this a school or a district</label>
           <div class="">
             <%= f.fields_for :school_district do |school_district_form| %>
@@ -97,6 +97,19 @@
         $(".school-district-input-toggle").removeClass('hidden');
       }
     });
+    $("#user_title").change(function(e){
+      toggleSchoolDistrict();
+    });
+
+    function toggleSchoolDistrict() {
+      if(shouldShowDistrict($('#user_title').val())) {
+        $(".school-district-input").removeClass('hide');
+      } else {
+        $(".school-district-input").addClass('hide');
+      }
+    }
+
+    toggleSchoolDistrict();
   })(jQuery);
 //]]>
 </script>
