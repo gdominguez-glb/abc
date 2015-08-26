@@ -8,8 +8,7 @@ $(document).on("change", ".select-container select", function(){
 
 // __________________________________________________________________
 
-$(document).on("change", "#spree_user_title", function(){
-  var userRole = $("#spree_user_title").val();
+function shouldShowDistrict(userRole) {
   var showDistrictDetails = false;
 
   switch(userRole) {
@@ -26,6 +25,13 @@ $(document).on("change", "#spree_user_title", function(){
       console.log("Hi mom");
       break;
   }
+
+  return showDistrictDetails;
+}
+
+$(document).on("change", "#spree_user_title", function(){
+  var userRole = $("#spree_user_title").val();
+  var showDistrictDetails = shouldShowDistrict(userRole);
 
   if(showDistrictDetails) {
     $(".school-district-details").addClass("show-details");
