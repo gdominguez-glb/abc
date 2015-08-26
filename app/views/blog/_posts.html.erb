@@ -1,7 +1,7 @@
 <div class="posts">
   <% posts.each do |post| %>
     <div class="post">
-      <p><%= post.published_at.strftime('%b %d %Y') rescue nil %></p>
+      <%# <p><%= post.published_at.strftime('%b %d %Y') rescue nil %1></p> %>
       <h2>
         <% if blog_type == 'global' %>
           <%= link_to post.title, global_post_path(slug: publication.slug, id: post.id) %>
