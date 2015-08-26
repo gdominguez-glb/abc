@@ -1,8 +1,8 @@
 <h4>Recommended</h4>
 <div class="row">
-  <div class="recommended-products col-xs-12 green-bg">
+  <div class="recommended-products col-xs-12">
     <% @recommendations.each do |recommendation| %>
-      <div class="recommended-product-wrapper">
+      <div class="recommended-product-wrapper green-bg">
         <% if recommendation.photo.present? %>
           <%= image_tag recommendation.photo.url, class: 'recommended-thumb' %>
         <% else %>
