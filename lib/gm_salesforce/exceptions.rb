@@ -79,13 +79,18 @@ module GmSalesforce
   class RateLimit < Error
     register_exception(self)
 
-    def self.matches_exception(e)
+    def self.matches_exception?(e)
       e.is_a?(Faraday::Error::ClientError) && find_response_code(e) == 400 &&
         find_message(e) =~ /exceeded/
     end
+  end
 
-    def initialize(e = nil, message = nil)
-      return super(e, message) unless e
+  # ConnectionFailed
+  class ConnectionFailed < Error
+    register_exception(self)
+
+    def self.matches_exception?(e)
+      e.is_a?(Faraday::ConnectionFailed)
     end
   end
 end
