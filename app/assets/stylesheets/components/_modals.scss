@@ -1,7 +1,12 @@
 // _modals.scss
 
+.modal-backdrop {
+  z-index: 2001;
+}
 
 .modal {
+  z-index: 2002;
+
   &.video-product-play-modal {
     .modal-dialog {
       position: absolute;
