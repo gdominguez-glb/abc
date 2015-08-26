@@ -29,10 +29,12 @@ module Spree
 
       def import
         if request.post?
-          if Spree::LicenseImporter.new(params[:file]).import
+          result = Spree::LicenseImporter.new(params[:file]).import
+          if result.empty?
             redirect_to spree.admin_licensed_products_path, notice: 'Imported successfully'
           else
-            redirect_to spree.import_admin_licensed_products_path, error: 'Fail to import licenses'
+            flash[:error] = result[:error]
+            redirect_to spree.import_admin_licensed_products_path
           end
         end
       end

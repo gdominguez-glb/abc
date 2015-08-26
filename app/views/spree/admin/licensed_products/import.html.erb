@@ -5,10 +5,12 @@
 <% end %>
 
 <%= form_tag spree.import_admin_licensed_products_path, multipart: true do %>
-  <div class="alert alert-info">Excel must include three column in first row: email, product_id, quantity</div>
   <div class="form-group">
-    <label>Upload excel to import</label>
+    <label>Upload excel(xlsx) to import</label>
     <input type="file" class="form-control" name="file"/>
+    <div class="help-block">
+      Excel must include three column in first row: email, product, quantity ( product column must be product's name )
+    </div>
   </div>
   <div class="form-actions" data-hook="buttons">
     <button name="button" type="submit" class="btn btn-primary btn-success"><span class="icon icon-ok"></span> Upload</button>
