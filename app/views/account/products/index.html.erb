@@ -5,9 +5,9 @@
       <div class="head clearfix">
         <h4 class="pull-left">My Products</h4>
         <% if @grade_taxons.count > 0 %>
-          <div class="pull-right grade-select">
-              <h6>Grade:
-              <%= select_tag 'grade_option', options_for_select(GRADE_LEVELS, current_spree_user.settings[:grade_option]), include_blank: 'All', class: 'form-control inline-input'  %></h6>
+          <div class="pull-right grade-select select-container dark-select">
+            <span>Grade:</span>
+            <%= select_tag 'grade_option', options_for_select(GRADE_LEVELS, current_spree_user.settings[:grade_option]), include_blank: 'All', class: 'form-control inline-input'  %>
           </div>
         <% end %>
       </div>
@@ -26,11 +26,11 @@
       </div>
     </div>
   </div>
-  <div class="fixed-sidebar account-fixed-sidebar right page-has-subnav blue-bg">
+  <!-- <div class="fixed-sidebar account-fixed-sidebar right page-has-subnav blue-bg">
     <div class="recent-history">
-      <%= render 'recent_activities' %>
+      <%#= render 'recent_activities' %>
     </div>
-  </div>
+  </div> -->
 </div>
 
 <%= content_for :javascripts do %>
