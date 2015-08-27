@@ -10,6 +10,7 @@
           <tr>
             <th>Title</th>
             <th>Curriculum</th>
+            <th>Status</th>
             <th colspan="2"></th>
           </tr>
         </thead>
@@ -18,6 +19,7 @@
             <tr>
               <td><%= curriculum_mail.subject %></td>
               <td><%= curriculum_mail.curriculum %></td>
+              <td><%= curriculum_mail.status %></td>
               <td>
                 <%= link_to 'Edit', edit_cms_curriculum_mail_path(curriculum_mail), class: 'btn btn-default' %>
               </td>

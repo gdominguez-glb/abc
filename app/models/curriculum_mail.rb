@@ -7,5 +7,7 @@ class CurriculumMail < ActiveRecord::Base
     self.status = :pending
   end
 
+  after_create -> { CurriculumMailer.notify(self.id).deliver_later }
+
   CURRICULUMS = ['Math', 'English', 'History']
 end
