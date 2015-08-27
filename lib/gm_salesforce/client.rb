@@ -36,13 +36,15 @@ module GmSalesforce
 
     def columns(sobject_name)
       client.describe(sobject_name).fields.map(&:name)
-    rescue Faraday::ConnectionFailed, Faraday::Error::ClientError => e
+    rescue Faraday::ConnectionFailed, Faraday::Error::ClientError,
+           Faraday::ResourceNotFound, Faraday::ClientError => e
       raise GmSalesforce::Error.generate(e)
     end
 
     def find(sobject_name, id)
       client.find(sobject_name, id)
-    rescue Faraday::ConnectionFailed, Faraday::Error::ClientError => e
+    rescue Faraday::ConnectionFailed, Faraday::Error::ClientError,
+           Faraday::ResourceNotFound, Faraday::ClientError => e
       raise GmSalesforce::Error.generate(e)
     end
 
@@ -52,19 +54,23 @@ module GmSalesforce
       query_str = "select #{select_columns} from #{sobject_name}"
       query_str += " where #{where}" if where.present?
       client.query(query_str)
-    rescue Faraday::ConnectionFailed, Faraday::Error::ClientError => e
+    rescue Faraday::ConnectionFailed, Faraday::Error::ClientError,
+           Faraday::ClientError => e
       raise GmSalesforce::Error.generate(e)
     end
 
     def create(salesforce_sobject_name, attributes_to_create)
       client.create!(salesforce_sobject_name, attributes_to_create)
-    rescue Faraday::ConnectionFailed, Faraday::Error::ClientError => e
+    rescue Faraday::ConnectionFailed, Faraday::Error::ClientError,
+           Faraday::ClientError => e
       raise GmSalesforce::Error.generate(e)
     end
 
+    # `attributes_to_update` should include `Id`
     def update(salesforce_sobject_name, attributes_to_update)
       client.update!(salesforce_sobject_name, attributes_to_update)
-    rescue Faraday::ConnectionFailed, Faraday::Error::ClientError => e
+    rescue Faraday::ConnectionFailed, Faraday::Error::ClientError,
+           Faraday::ResourceNotFound, Faraday::ClientError => e
       raise GmSalesforce::Error.generate(e)
     end
   end

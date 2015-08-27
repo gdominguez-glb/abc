@@ -32,6 +32,24 @@ module GmSalesforce
       @message || @default_message
     end
 
+    # Gets and parses the rate info string.  E.g. "api-usage=11/72000"
+    def self.rate_limit_info(e)
+      headers = e.try(:response) && e.response[:headers]
+      usage_string = headers && headers['sforce-limit-info']
+      use_values = ((usage_string || '').split('=').last || '').split('/')
+      { usage: use_values.first.to_i, limit: use_values.last.to_i }
+    end
+
+    def rate_usage
+      e = original_exception
+      e && self.class.rate_limit_info(e)[:usage]
+    end
+
+    def rate_limit
+      e = original_exception
+      e && self.class.rate_limit_info(e)[:limit]
+    end
+
     def self.find_response_code(e)
       r = e.response
       r && r[:status]

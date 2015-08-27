@@ -1,8 +1,12 @@
 <p>Dear Great Minds Super Admin,</p>
-<% if @exception.is_a? GmSalesforce::Error %>
-<p>This email is to serve as a notification to you that some Salesforce requests could not be processed.  This is usually due to the site's inability to communicate with the Salesforce server, possibly due to downtime.  Please check <%= link_to 'http://greatminds.net/sidekiq' %> to check the status of those jobs.  Please contact Intridea Inc and/or Mobomo LLC for assistance if necessary.</p>
-<% else %>
+<% if @exception.is_a? GmSalesforce::Error -%>
+<p>This email is to serve as a notification to you that some Salesforce requests could not be processed.  This is usually due to the site's inability to communicate with the Salesforce server, possibly due to downtime.  Please check <%= link_to 'http://greatminds.net/sidekiq' %> to check the status of those jobs.
+  <% if @exception.is_a?(GmSalesforce::RateLimit) && @exception.rate_attempt > 0 -%>
+  The limit of <%= @exception.rate_limit %> has been exceeded by <%= @exception.rate_attempt - @exception.rate_limit %>.
+  <% end -%>
+  Please contact Intridea Inc and/or Mobomo LLC for assistance if necessary.</p>
+<% else -%>
 <p>This email is to serve as a notification to you that some errors have occured.  Please contact Intridea Inc and/or Mobomo LLC for assistance if necessary.</p>
-<% end %>
+<% end -%>
 <p>Thanks,<br />
 Great Minds Website Robot</p>
