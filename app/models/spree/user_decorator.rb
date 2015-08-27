@@ -53,7 +53,10 @@ Spree::User.class_eval do
       special_offers_and_products: true,
       revision_updates: true,
       phone_communication: true,
-      email_communication: true
+      email_communication: true,
+      receive_math: true,
+      receive_english: true,
+      receive_history: true
     }
   end
 
