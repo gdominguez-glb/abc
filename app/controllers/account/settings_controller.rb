@@ -57,7 +57,10 @@ class Account::SettingsController < Account::BaseController
       :special_offers_and_products,
       :revision_updates,
       :phone_communication,
-      :email_communication
+      :email_communication,
+      :receive_math,
+      :receive_english,
+      :receive_history
     )
     _params.each do |key, value|
       _params[key] = (value == 'true' ? true : false)

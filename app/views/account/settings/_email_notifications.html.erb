@@ -36,6 +36,27 @@
           <label><%= radio_button_tag :email_communication, false, @email_notifications[:email_communication] == false %>No</label>
         </div>
       </div>
+      <div class="form-group">
+        <p>I am interested in receiving updates about Math.</p>
+        <div class="radio">
+          <label><%= radio_button_tag :receive_math, true, !!@email_notifications[:receive_math] == true %> Yes</label>
+          <label><%= radio_button_tag :receive_math, false, !!@email_notifications[:receive_math] == false %>No</label>
+        </div>
+      </div>
+      <div class="form-group">
+        <p>I am interested in receiving updates about English/Language Arts</p>
+        <div class="radio">
+          <label><%= radio_button_tag :receive_english, true, !!@email_notifications[:receive_english] == true %> Yes</label>
+          <label><%= radio_button_tag :receive_english, false, !!@email_notifications[:receive_english] == false %>No</label>
+        </div>
+      </div>
+      <div class="form-group">
+        <p>I am interested in receiving updates about History</p>
+        <div class="radio">
+          <label><%= radio_button_tag :receive_history, true, !!@email_notifications[:receive_history] == true %> Yes</label>
+          <label><%= radio_button_tag :receive_history, false, !!@email_notifications[:receive_history] == false %>No</label>
+        </div>
+      </div>
     </div>
   </div>
   <div class="row">
