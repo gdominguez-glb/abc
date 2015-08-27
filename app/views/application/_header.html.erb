@@ -19,9 +19,9 @@
         <%= link_to "Shop", '/store', class: store_active_class %>
       </li>
     </ul>
+    <%= render 'secondary_nav' %>
     <div class="nav-right-options clearfix">
       <%= render partial: 'spree/shared/main_nav_bar' if store_menu? %>
     </div>
   </div>
 </nav> <!-- /.navbar -->
-<%= render 'secondary_nav' %>
