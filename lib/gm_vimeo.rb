@@ -30,8 +30,8 @@ class GmVimeo
       video = Spree::Video.find_or_create_by(vimeo_uri: video_data['uri'])
 
       video.update(
-        title:       video_data['name']
-        description: video_data['description']
+        title:       video_data['name'],
+        description: video_data['description'],
         file:        open(source_url)
       )
     end
