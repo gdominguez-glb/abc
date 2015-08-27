@@ -8,6 +8,8 @@ class Spree::ProductDistribution < ActiveRecord::Base
 
   validates_presence_of :from_user, :product, :licensed_product
 
+  attr_accessor :can_be_distributed
+
   before_save :assign_email
 
   after_create :distribute_license
@@ -42,7 +44,8 @@ class Spree::ProductDistribution < ActiveRecord::Base
       quantity: self.quantity,
       product: self.product,
       expire_at: self.expire_at,
-      product_distribution: self
+      product_distribution: self,
+      can_be_distributed: (self.can_be_distributed || false)
     )
   end
 end
