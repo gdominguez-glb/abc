@@ -4,6 +4,14 @@
   padding-top: 30px;
 }
 
+.product {
+  margin: 0 0 30px;
+
+  &:last-child {
+    margin: 0;
+  }
+}
+
 .product-head {
   position: relative;
   padding: 30px;

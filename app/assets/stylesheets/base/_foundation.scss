@@ -9,7 +9,7 @@ html, body, .container {
 body {
   padding: 106px 0 0;
   color: $dark-blue;
-  background: $cream;
+  background: $light-blue;
   @include animation(fade 1s);
 
   &.nav-shown {
@@ -117,7 +117,7 @@ body {
   position: relative;
   height: 100%;
   padding: 30px 60px 60px;
-  background: #E2E7E9;
+  background: $light-blue;
   @include clearfix;
 
   @media screen and (max-width: 768px) {

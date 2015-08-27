@@ -34,7 +34,7 @@
       border: none;
       border-bottom: 4px solid transparent;
 
-      &:hover, &:focus {
+      &:hover, &:focus, &.active {
         color: $brand-primary;
         opacity: 1;
         border: none;
