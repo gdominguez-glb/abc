@@ -30,6 +30,9 @@ class Spree::LicensedProduct < ActiveRecord::Base
     else
       distribution.increase_quantity!(quantity)
     end
+    if distribution.quantity > 1
+      distribution.distribute_to_self
+    end
     distribution
   end
 

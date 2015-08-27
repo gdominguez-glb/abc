@@ -28,6 +28,20 @@ class Spree::ProductDistribution < ActiveRecord::Base
     Spree::ProductDistribution.joins(:product).where(from_user_id: from_user.id, email: email).uniq
   end
 
+  def distribute_to_self
+    Spree::ProductDistribution.create(
+      from_user: to_user,
+      from_email: from_email,
+      to_user: to_user,
+      email: email,
+      product: product,
+      licensed_product: self.distributed_licensed_product,
+      quantity: 1,
+      can_be_distributed: false
+    )
+    self.update(quantity: (quantity - 1))
+  end
+
   private
 
   def assign_email
