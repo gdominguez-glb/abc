@@ -46,4 +46,5 @@ namespace :cms do
       end
     end
   end
+  resources :curriculum_mails
 end

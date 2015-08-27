@@ -2,15 +2,15 @@
 <div class="row">
   <div class="recommended-products col-xs-12">
     <% @recommendations.each do |recommendation| %>
-      <div class="recommended-product-wrapper">
+      <div class="recommended-product-wrapper green-bg">
         <% if recommendation.photo.present? %>
-          <%= image_tag recommendation.photo.url, class: 'img-circle' %>
+          <%= image_tag recommendation.photo.url, class: 'recommended-thumb' %>
         <% else %>
           <img src="http://placehold.it/100x100" class="img-circle">
         <% end %>
         <h6><%= recommendation.title %></h6>
-        <p><%= recommendation.sub_header %></p>
-        <%= link_to recommendation.call_to_action_button_text, recommendation.call_to_action_button_link, class: 'btn btn-default red-white-btn' %>
+        <p><%= truncate(recommendation.sub_header, length: 120) %></p>
+        <%= link_to recommendation.call_to_action_button_text, recommendation.call_to_action_button_link, class: 'btn btn-primary' %>
       </div>
     <% end %>
   </div>

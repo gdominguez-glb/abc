@@ -9,19 +9,13 @@
 
 .products {
   margin-bottom: 60px;
-
-  .grade-select {
-    position: relative;
-    top: 6px;
-  }
 }
 
 .product-wrapper {
   min-height: 134px;
   padding: 45px 15px;
+  height: 240px;
   text-align: center;
-  background: $dark-blue;
-  color: #fff;
   border-radius: $border-radius-value;
 
   .title {
@@ -34,7 +28,7 @@
   }
 
   .btn {
-    margin-top: 30px;
+    margin-top: 15px;
   }
 }
 
@@ -62,8 +56,8 @@
     position: absolute;
     top: 30px;
     left: 15px;
-    width: 90px;
-    height: 90px;
+    width: 60px;
+    height: 60px;
     border: 5px solid white;
   }
 

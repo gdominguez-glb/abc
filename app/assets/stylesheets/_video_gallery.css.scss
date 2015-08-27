@@ -18,14 +18,14 @@
 }
 
 .videos-wrapper {
-  background: $steel-gray;
+  background: $dark-blue;
   height: 100%;
 }
 
 .video-product-wrapper {
   position: relative;
   padding: 15px;
-  height: 310px;
+  height: 330px;
   margin: 0 0 15px;
   box-shadow: inset 0 0 1px transparent;
   @include transition(all, $transitionTiming);
@@ -49,7 +49,7 @@
   // Hover State
   &:hover {
     box-shadow: inset 0 0 1px $dark-blue;
-    background: rgba($dark-blue, .2);
+    background: rgba($dark-blue, .4);
 
     &:nth-child(3n+3) {
       .video-product-drawer {

@@ -1,0 +1,29 @@
+<%= form_for([:cms, @curriculum_mail], class: 'form') do |f| %>
+  <% if @curriculum_mail.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@curriculum_mail.errors.count, "error") %> prohibited this curriculum_mail from being saved:</h2>
+
+      <ul>
+      <% @curriculum_mail.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :curriculum %>
+    <%= f.select :curriculum, options_for_select(CurriculumMail::CURRICULUMS, @curriculum_mail.curriculum), {}, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :subject %>
+    <%= f.text_field :subject, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :content %>
+    <%= f.text_area :content, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.submit class: 'btn btn-primary' %>
+  </div>
+<% end %>
