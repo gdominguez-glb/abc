@@ -4,7 +4,7 @@ Deface::Override.new(
     insert_before: "div#products",
     text: '
     <div class="call-banner green-bg">
-      <h4>Bulk Order? Mixed Order?</h4>
+      <h5>Bulk Order? Mixed Order?</h5>
       <h6>Our experienced representatives are standing by to help you with your special order.
         <a href="" data-toggle="modal" data-target="#productContactForm">Contact us</a> today
       <h6>
