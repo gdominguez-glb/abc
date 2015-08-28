@@ -4,13 +4,18 @@ class MarketingEditorApp.Views.TileRowView extends Backbone.View
 
   events:
     'click .remove-row-btn': 'removeRow'
+    'change': 'valueChanged'
 
   initialize: (options={})->
+    @listenTo(@model, 'destroy', this.remove)
 
   render: ()->
-    @$el.html(@template(this.model.attributes))
+    @$el.html(@template(@model.attributes))
     @
 
   removeRow: ->
-    @$el.remove()
+    @model.destroy()
 
+  valueChanged: ->
+    @model.set('title', @$('.title-input').val())
+    @model.set('content', @$('.content-input').val())
