@@ -21,6 +21,8 @@
 //= require select2
 //= require zeroclipboard
 //= require jquery-sortable
+//= require underscore-min
+//= require backbone-min
 //= require mediaelement_rails
 //= require slick.min
 //= require user_form

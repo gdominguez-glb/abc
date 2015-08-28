@@ -38,6 +38,9 @@ class Cms::PagesController < Cms::BaseController
     redirect_to cms_pages_url, notice: 'Page was successfully destroyed.'
   end
 
+  def product_marketing_editor
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_page

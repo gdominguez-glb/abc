@@ -1,0 +1,66 @@
+<%= content_for :javascripts do %>
+  <script type="text/javascript">
+    window.PageEditor = { views: {} };
+
+    window.PageEditor.views.EditorView = Backbone.View.extend({
+
+      template: _.template($("#editor-template").html()),
+
+      render: function() {
+        this.$el.html(this.template());
+        return this;
+      },
+
+      events: {
+        "click .add-tile-row-btn": "addNewTileRow"
+      },
+
+      addNewTileRow: function(e) {
+        e.preventDefault();
+        var tileView = new PageEditor.views.TileRowView();
+        this.$el.find('.rows').append(tileView.render().$el);
+      }
+
+    });
+
+    window.PageEditor.views.TileRowView = Backbone.View.extend({
+
+      template: _.template($("#tile-row-template").html()),
+
+      render: function() {
+        this.$el.html(this.template());
+        return this;
+      },
+
+      events: {
+        "click .add-tile-btn": "addNewTile"
+      },
+
+      addNewTile: function(e) {
+        e.preventDefault();
+        var rowType = this.$('.row-type-select').val()
+        console.log(rowType);
+        console.log('add new title');
+      }
+
+    });
+
+    window.PageEditor.views.TileView = Backbone.View.extend({
+
+      template: _.template($("#tile-template").html()),
+
+      constructor: function(options) {
+        this.rowType = options.rowType;
+      },
+
+      render: function() {
+        this.$el.html(this.template());
+        return this;
+      },
+
+      events: {
+      }
+
+    });
+  </script>
+<% end %>

@@ -1,0 +1,52 @@
+<%= render 'cms_nav' %>
+<div class="col-md-9">
+  <section>
+    <div class='row'>
+      <h2>Editing Page</h2>
+
+      <div id="editor" style="margin: 20px 0;">
+      </div>
+
+      <%# <%= link_to 'Show', [:cms, @page], class: 'btn btn-default' %1> %>
+      <%= link_to 'Back', cms_pages_path, class: 'btn btn-default' %>
+    </div>
+  </section>
+</div>
+
+<script type="text/template" id="editor-template">
+  <div>
+    <a class="btn btn-primary add-tile-row-btn">Add New Tile Row</a>
+  </div>
+  <div class="rows">
+  </div>
+</script>
+
+<script type="text/template" id="tile-row-template">
+  <div class="tile-row" style="margin: 10px 0; border: 1px solid #eee; padding: 5px;">
+    <div class="head">
+      <label>Select Tile Type</label>
+      <select class="row-type-select" name="">
+        <option value='A1'>A1</option>
+        <option value='B1'>B1</option>
+        <option value='B2'>B2</option>
+      </select>
+      <a class="btn btn-primary add-tile-btn">Add New Tile</a>
+    </div>
+  </div>
+</script>
+
+<script type="text/template" id="tile-template">
+  <div class="tile" style="margin: 10px 0; border: 1px solid #e5e5e5; padding: 5px;">
+  </div>
+</script>
+
+<%= render 'editor_js' %>
+
+<%= content_for :javascripts do %>
+  <script type="text/javascript">
+    $(function(){
+      var editorView = new PageEditor.views.EditorView({el: '#editor'});
+      editorView.render();
+    });
+  </script>
+<% end %>
