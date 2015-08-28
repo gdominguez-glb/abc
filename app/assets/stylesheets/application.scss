@@ -11,7 +11,6 @@
 @import "base/config";
 @import "base/foundation";
 @import "base/typography";
-@import "base/theme";
 
 
 // Components
@@ -29,11 +28,9 @@
 @import "components/wells";
 
 // Tiles
-@import "tiles/blue-background";
-@import "tiles/cream-background";
-@import "tiles/green-background";
+@import "tiles/foundation";
 
-
+// Page specific styling
 @import "404-page";
 @import "account";
 @import "cirriculum-pages";
@@ -41,8 +38,7 @@
 @import "events";
 @import "license-mgmt";
 @import "login";
-@import "mediaelement";
-@import "pages";
+@import "careers_page";
 @import "search";
 @import "select2_import";
 @import "slick";
@@ -51,121 +47,3 @@
 @import "spree_store_overrides";
 @import "video_gallery";
 @import "slick-overrides";
-
-.callout {
-  margin-top: 60px;
-}
-
-.hp-callout-section {
-  background-color: #FFF;
-  padding-bottom: 300px;
-  max-width: 100%;
-}
-
-// #dashboard {
-//   margin-top: 0px;
-//   background-color: #eee;
-//   height: 300px;
-//   position: relative;
-// }
-// #reco {
-//   background-color: #ccc;
-//   height: 300px;
-//   position: relative;
-// }
-// #reco-item {
-//   color: #fff;
-//   width: 75%;
-//   height: 50%;
-//   background-color: #333;
-//   margin: 0 auto;
-// }
-// #reco-item h4 {
-//   text-align: center;
-//   padding-top: 60px;
-// }
-// .video-gallery-side {
-//   background: #ccc;
-// }
-// .video-gallery-side .side-search-form {
-//   padding: 5px;
-//   background: #bbb;
-// }
-// .video-filter {
-// }
-// .video-filter ul {
-//   list-style: none;
-//   padding: 0 0;
-// }
-// .video-filter ul li {
-//   display: block;
-// }
-// .video-filter ul li a {
-//   text-align: center;
-//   display: block;
-//   padding: 5px 0;
-// }
-// .video-filter ul li a.active {
-//   background: #bbb;
-// }
-// .video-sub-filter .filter-header {
-//   padding: 4px 5px;
-//   border-bottom: 1px solid #444;
-// }
-// .contact-header {
-// }
-// tr.dragged {
-//   background: #eee;
-// }
-// tr.placeholder {
-//   background: #ddd;
-//   height: 5px;
-// }
-body.dragging, body.dragging * {
-  cursor: move !important;
-}
-
-.dragged {
-  position: absolute;
-  opacity: 0.5;
-  z-index: 2000;
-}
-
-// table.contact-topics-list tr.placeholder {
-//   position: relative;
-//   /** More li styles **/
-// }
-// table.contact-topics-list tr.placeholder:before {
-//   position: absolute;
-//   /** Define arrowhead **/
-// }
-
-// body.pages {
-//   padding-top: 50px;
-// }
-// .documents-header {
-//   margin: 20px 0;
-// }
-// .documents-header h2 {
-//   margin: 0;
-// }
-*.unselectable {
-   -moz-user-select: none;
-   -khtml-user-select: none;
-   -webkit-user-select: none;
-
-   /*
-     Introduced in IE 10.
-     See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
-   */
-   -ms-user-select: none;
-   user-select: none;
-}
-
-// #twitter-widget-0 {
-//   width: 100%;
-// }
-
-// .without-subnav {
-//   padding-top: 60px !important;
-// }

@@ -1,0 +1,83 @@
+// _foundation.scss
+// Tile styling _foundation
+
+// Styles applied to class="blue-bg"
+
+.blue-bg {
+  background: $dark-blue;
+  color: $cream;
+
+  .btn {
+    &.btn-default {
+      color: $cream;
+
+      &:hover {
+        background: $cream;
+        color: $dark-blue;
+      }
+    }
+
+    &.btn-primary {
+      color: $dark-blue;
+      @include button-bg($cream);
+    }
+  }
+}
+
+// Styles for tiles with class="cream-bg"
+
+.cream-bg {
+  background: $cream;
+  color: $dark-blue;
+
+  .btn {
+    &.btn-default {
+      color: $dark-blue;
+
+      &:hover {
+        background: $dark-blue;
+        color: $cream;
+      }
+    }
+
+    &.btn-primary {
+      @include button-bg($dark-blue);
+    }
+  }
+}
+
+// Styles for any tile with class="green-bg"
+
+.green-bg {
+  background: $brand-green;
+  color: $dark-blue;
+
+  .btn {
+    &.btn-default {
+      color: $dark-blue;
+
+      &:hover {
+        background: $dark-blue;
+        color: $cream;
+      }
+    }
+  }
+}
+
+// Styles for any tile with class="coral-bg"
+
+.coral-bg {
+  background: $coral;
+  color: $cream;
+
+  .btn {
+    &.btn-default {
+      color: $cream;
+
+      &:hover {
+        background: $cream;
+        color: $coral;
+      }
+    }
+  }
+}
