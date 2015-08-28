@@ -14,7 +14,6 @@
       <form action="https://cs15.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8" method="POST" class="form contact-form">
         <input type=hidden name="orgid" value="00De0000005Vrkq">
         <input type=hidden name="retURL" value="<%= contact_url(success: true) %>">
-
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
@@ -32,7 +31,7 @@
         <div class="row">
           <div class="col-md-6">
             <label for="topic">Topic</label>
-            <div class="select-container dark-select topic-select">
+            <div class="select-container dark-select block">
               <span>Select a Topic</span>
               <%= select_tag :topic, options_for_select(@topics), prompt: "Select a Topic", class: 'form-control' %>
             </div>

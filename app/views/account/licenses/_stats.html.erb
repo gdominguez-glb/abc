@@ -3,7 +3,10 @@
     Your Licenses for:
     <% product = current_spree_user.managed_products.first %>
     <% if current_spree_user.managed_products.count > 1 %>
-      <%= select_tag :product_id, options_from_collection_for_select(current_spree_user.managed_products, :id, :name, params[:product_id]), class: 'licenses-select form-control inline-input' %>
+      <div class="select-container dark-select">
+        <span><%= product.name %></span>
+        <%= select_tag :product_id, options_from_collection_for_select(current_spree_user.managed_products, :id, :name, params[:product_id]), class: 'licenses-select form-control inline-input' %>
+      </div>
     <% else %>
       <%= product.name %>
       <%= hidden_field_tag :product_id, product.id  %>

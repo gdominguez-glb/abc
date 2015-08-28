@@ -28,7 +28,10 @@
         </div>
         <div class="form-group col-md-6">
           <label>Select your Role</label>
-          <%= f.select :title, options_for_select(USER_TITLES, f.object.title), { prompt: 'Please select your role' }, { class: 'form-control', tabindex: 5 } %>
+          <div class="select-container dark-select block">
+            <span>Please select your role</span>
+            <%= f.select :title, options_for_select(USER_TITLES, f.object.title), { prompt: 'Please select your role' }, { class: 'form-control', tabindex: 5 } %>
+          </div>
         </div>
         <div class="form-group col-md-6 school-district-input">
           <label>Select School District</label>

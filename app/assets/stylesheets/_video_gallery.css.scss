@@ -50,6 +50,7 @@
   &:hover {
     box-shadow: inset 0 0 1px $dark-blue;
     background: rgba($dark-blue, .4);
+    z-index: 1000;
 
     &:nth-child(3n+3) {
       .video-product-drawer {
@@ -167,7 +168,6 @@
   width: 65%;
   height: 100%;
   padding: 10px;
-  background: $coral;
   box-shadow: inset 0 0 1px $dark-blue;
   opacity: 0;
   z-index: 2;
