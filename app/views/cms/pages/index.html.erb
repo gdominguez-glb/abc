@@ -32,6 +32,7 @@
               <td><%= page.visible %></td>
               <td><%= link_to 'Show', [:cms, page] %></td>
               <td><%= link_to 'Edit', edit_cms_page_path(page) %></td>
+              <td><%= link_to 'Editor', product_marketing_editor_cms_page_path(page) %></td>
               <td><%= link_to 'Destroy', [:cms, page], method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </tr>
           <% end %>

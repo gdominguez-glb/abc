@@ -1,0 +1,16 @@
+<div class="tile-row clearfix" style="margin: 10px 0; border: 1px solid #eee; padding: 5px;">
+  <div class="head">
+    <%= rowType %>
+    <a class="btn btn-default pull-right remove-row-btn">X</a>
+  </div>
+  <div class="form">
+    <div class="form-group">
+      <label>Title</label>
+      <input type="text" class="form-control title-input" value="<%= title %>"/>
+    </div>
+    <div class="form-group">
+      <label>Content</label>
+      <textarea class="form-control content-input" rows='3'><%= content %></textarea>
+    </div>
+  </div>
+</div>

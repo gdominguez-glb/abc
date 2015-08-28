@@ -8,7 +8,12 @@ namespace :cms do
   get 'products/search', to: 'products#search'
   get 'users/search', to: 'users#search'
 
-  resources :pages
+  resources :pages do
+    member do
+      get :product_marketing_editor
+      post :update_tiles
+    end
+  end
   resources :event_pages do
     collection do
       post :import_events

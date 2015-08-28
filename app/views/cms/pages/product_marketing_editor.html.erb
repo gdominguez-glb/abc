@@ -1,0 +1,40 @@
+<%= render 'cms_nav' %>
+<div class="col-md-9">
+  <section>
+    <div class='row'>
+      <h2>Editing Page</h2>
+
+      <div id="editor" style="margin: 20px 0;">
+        <div>
+          <label>Select Tile Type</label>
+          <select class="row-type-select" name="">
+            <option value='A'>A</option>
+            <option value='B'>B</option>
+            <option value='C'>C</option>
+            <option value='D'>D</option>
+          </select>
+          <a class="btn btn-primary add-tile-row-btn">Add New Tile Row</a>
+        </div>
+        <div class="rows">
+        </div>
+        <button class="btn btn-primary save-btn">Save</button>
+      </div>
+
+      <%# <%= link_to 'Show', [:cms, @page], class: 'btn btn-default' %1> %>
+      <%= link_to 'Back', cms_pages_path, class: 'btn btn-default' %>
+    </div>
+  </section>
+</div>
+
+<%= content_for :javascripts do %>
+  <script type="text/javascript">
+    $(function(){
+      var editor = new MarketingEditorApp.Views.Editor({
+        el: '#editor',
+        updateUrl: '<%= update_tiles_cms_page_path(@page) %>',
+        tilesData: <%= raw @page.tiles.to_json %>
+      });
+      editor.render();
+    });
+  </script>
+<% end %>

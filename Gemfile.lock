@@ -128,6 +128,11 @@ GEM
     aws-sdk-v1 (1.64.0)
       json (~> 1.4)
       nokogiri (>= 1.4.4)
+    backbone-on-rails (1.2.0.0)
+      eco
+      ejs
+      jquery-rails
+      railties
     bcrypt (3.1.10)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
@@ -233,6 +238,12 @@ GEM
     docile (1.1.5)
     doorkeeper (2.2.1)
       railties (>= 3.2)
+    eco (1.0.0)
+      coffee-script
+      eco-source
+      execjs
+    eco-source (1.1.0.rc.1)
+    ejs (1.1.1)
     elasticsearch (1.0.9)
       elasticsearch-api (= 1.0.9)
       elasticsearch-transport (= 1.0.9)
@@ -662,6 +673,7 @@ DEPENDENCIES
   active_link_to
   acts-as-taggable-on (~> 3.4)
   aws-sdk (< 2.0)
+  backbone-on-rails
   better_errors
   binding_of_caller
   bootstrap-sass (~> 3.3.4)

@@ -1,5 +1,5 @@
 class Cms::PagesController < Cms::BaseController
-  before_action :set_page, only: [:show, :edit, :update, :destroy]
+  before_action :set_page, only: [:show, :edit, :update, :destroy, :product_marketing_editor, :update_tiles]
 
   def index
     @pages = Page.order('group_name ASC, position ASC').page(params[:page]).per(10)
@@ -38,6 +38,14 @@ class Cms::PagesController < Cms::BaseController
     redirect_to cms_pages_url, notice: 'Page was successfully destroyed.'
   end
 
+  def product_marketing_editor
+  end
+
+  def update_tiles
+    tiles = { rows: params[:page][:tiles][:rows].values }
+    @page.update(tiles: tiles)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_page
@@ -46,6 +54,6 @@ class Cms::PagesController < Cms::BaseController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def page_params
-      params.require(:page).permit(:title, :seo_content, :slug, :group_name, :sub_group_name, :position, :layout, :body, :visible, :curriculum_id, :group_root, :show_in_nav, :show_in_footer)
+      params.require(:page).permit(:title, :seo_content, :slug, :group_name, :sub_group_name, :position, :layout, :body, :visible, :curriculum_id, :group_root, :show_in_nav, :show_in_footer, :tiles)
     end
 end

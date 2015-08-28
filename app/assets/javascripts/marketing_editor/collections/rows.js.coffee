@@ -1,0 +1,1 @@
+class MarketingEditorApp.Collections.RowsCollection extends Backbone.Collection
