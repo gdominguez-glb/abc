@@ -1,14 +1,14 @@
 <div class="careers-page">
-  <div class="careers-masthead">
+  <div class="careers-masthead coral-bg">
     <div class="container">
       <div class="inner">
         <h2>Join the Great Minds team!</h2>
         <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
-        <a href="#" class="btn btn-primary all-button">See All Openings</a>
+        <a href="#" class="btn btn-default all-button">See All Openings</a>
       </div>
     </div>
   </div>
-  <div class="greatminds-intro">
+  <section class="greatminds-intro">
     <div class="greatminds-intro-head">
       <h3>Why work with us?</h3>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue. Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Maecenas faucibus mollis interdum.</p>
@@ -65,21 +65,24 @@
         </div>
       </div>
     </div>
-  </div>
-  <div class="careers-open-positions">
+  </section>
+  <section class="positions blue-bg">
     <div class="container">
-      <div class="careers-open-positions-head">
-        <h3>Open Positions</h3>
-        <p>Maecenas faucibus mollis interdum. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Maecenas sed diam eget risus varius blandit sit amet non magna. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+      <div class="positions-head">
+        <% if @jobs.blank? %>
+          <h3>Sorry, we don't currently have any open positions</h3>
+        <% else %>
+          <h3>Open Positions</h3>
+          <p>Maecenas faucibus mollis interdum. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Maecenas sed diam eget risus varius blandit sit amet non magna. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+        <% end %>
       </div>
-      <div class="careers-jobs-list">
-        <%# <h4>Section</h4> %>
+      <div class="jobs-list">
         <% @jobs.each do |job| %>
-          <div class="careers-job-item clearfix">
+          <div class="job-item clearfix">
             <span class="title"><%= link_to job.title, job_path(job) %></span>
           </div>
         <% end %>
       </div>
     </div>
-  </div>
+  </section>
 </div>
