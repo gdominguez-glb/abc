@@ -29,7 +29,11 @@
 <%= content_for :javascripts do %>
   <script type="text/javascript">
     $(function(){
-      var editor = new MarketingEditorApp.Views.Editor({el: '#editor'});
+      var editor = new MarketingEditorApp.Views.Editor({
+        el: '#editor',
+        updateUrl: '<%= update_tiles_cms_page_path(@page) %>',
+        tilesData: <%= raw @page.tiles.to_json %>
+      });
       editor.render();
     });
   </script>

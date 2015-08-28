@@ -10,6 +10,8 @@ class Page < ActiveRecord::Base
   validates :slug, presence: true, uniqueness: true
   validates_presence_of :title, :group_name
 
+  serialize :tiles
+
   scope :visibles, -> { where(visible: true).order('position ASC') }
   scope :curriculum_nav, -> { show_in_top_navigation.joins(:curriculum).where({curriculums: { visible: true }}) }
   scope :group_roots, -> { where(group_root: true) }

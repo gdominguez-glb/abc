@@ -11,6 +11,7 @@ namespace :cms do
   resources :pages do
     member do
       get :product_marketing_editor
+      post :update_tiles
     end
   end
   resources :event_pages do
