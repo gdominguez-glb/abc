@@ -65,8 +65,9 @@ Visit QA http://gm-qa.intridea.com/store/admin
 Visit Staging http://gm-staging.intridea.com/store/admin
 
 Login with
-    web.admin@greatminds.net
-    intridea4gm
+
+    un: greatminds
+    pw: intridea4gm
 
 ### Run tests with guard
 
