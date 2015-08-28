@@ -77,6 +77,8 @@ gem 'rubyzip', '>= 1.0.0'
 
 gem 'remotipart', '~> 1.2'
 
+gem 'backbone-on-rails'
+
 group :development do
   gem 'quiet_assets'
   gem 'letter_opener'
