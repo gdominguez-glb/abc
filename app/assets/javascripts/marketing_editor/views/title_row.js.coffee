@@ -6,10 +6,9 @@ class MarketingEditorApp.Views.TileRowView extends Backbone.View
     'click .remove-row-btn': 'removeRow'
 
   initialize: (options={})->
-    @rowType = options.rowType
 
   render: ()->
-    @$el.html(@template({rowType: @rowType}))
+    @$el.html(@template(this.model.attributes))
     @
 
   removeRow: ->

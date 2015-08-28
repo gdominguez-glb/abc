@@ -2,8 +2,17 @@ class MarketingEditorApp.Views.Editor extends Backbone.View
 
   template: JST['marketing_editor/templates/editor']
 
+  initialize: (opts={})->
+    @rows = new MarketingEditorApp.Collections.RowsCollection([
+      {  rowType: 'A' }
+      {  rowType: 'B' }
+    ])
+
   render: ->
-    @$el.html(@template())
+    @rows.each((row)->
+      rowView = new MarketingEditorApp.Views.TileRowView(model: row)
+      @$('.rows').append(rowView.render().el)
+    )
     @
 
   events:
@@ -11,5 +20,6 @@ class MarketingEditorApp.Views.Editor extends Backbone.View
 
   addNewTileRow: (e)->
     e.preventDefault()
-    tileView = new MarketingEditorApp.Views.TileRowView({ rowType: @$('.row-type-select').val() })
-    this.$el.find('.rows').append(tileView.render().$el)
+    row = new MarketingEditorApp.Models.RowModel({ rowType: @$('.row-type-select').val() })
+    rowView = new MarketingEditorApp.Views.TileRowView(model: row)
+    @$('.rows').append(rowView.render().el)
