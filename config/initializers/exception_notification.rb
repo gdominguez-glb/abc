@@ -18,11 +18,15 @@ ExceptionNotification.configure do |config|
   # Notifiers =================================================================
 
   # Email notifier sends notifications by email.
-  config.add_notifier :email, {
-    :email_prefix => "[GM #{Rails.env}]",
-    :sender_address => %{"gm-admin" <#{ENV['from_email']}>},
-    :exception_recipients => %w{roc@intridea.com}
-  }
+  config.add_notifier(
+    :email,
+    email_prefix: "[GM #{Rails.env}]",
+    sender_address: %("gm-admin" <#{ENV['from_email']}>),
+    exception_recipients: %w(
+      web.admin@greatminds.net aaron.schifrin@greatminds.net maggie@intridea.com
+      roc@intridea.com adam@mobomo.com),
+    sections: %w(intro request session environment backtrace),
+    background_sections: %w(intro backtrace data))
 
   # Campfire notifier sends notifications to your Campfire room. Requires 'tinder' gem.
   # config.add_notifier :campfire, {

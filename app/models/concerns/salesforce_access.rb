@@ -212,8 +212,8 @@ module SalesforceAccess
 
     duplicate = false
     begin
-      sf_id = self.class.salesforce_api.create!(salesforce_sobject_name,
-                                                attributes_to_create)
+      sf_id = self.class.salesforce_api.create(salesforce_sobject_name,
+                                               attributes_to_create)
     rescue GmSalesforce::DuplicateRecord => e
       duplicate = true
       sf_id = e.duplicate_id

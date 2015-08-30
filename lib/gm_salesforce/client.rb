@@ -35,35 +35,37 @@ module GmSalesforce
     end
 
     def columns(sobject_name)
-      client.describe(sobject_name).fields.map(&:name)
+      capture_net_errors { client.describe(sobject_name).fields.map(&:name) }
     end
 
     def find(sobject_name, id)
-      client.find(sobject_name, id)
+      capture_net_errors { client.find(sobject_name, id) }
     end
 
     def find_all_in_salesforce(sobject_name,
                                select_columns = columns(sobject_name).join(','),
                                where = nil)
-      query_str = "select #{select_columns} from #{sobject_name}"
-      query_str += " where #{where}" if where.present?
-      client.query(query_str)
-    end
-
-    def create!(salesforce_sobject_name, attributes_to_create)
-      client.create!(salesforce_sobject_name, attributes_to_create)
-    rescue Faraday::Error::ClientError => e
-      raise GmSalesforce::Error.generate(e)
+      capture_net_errors do
+        query_str = "select #{select_columns} from #{sobject_name}"
+        query_str += " where #{where}" if where.present?
+        client.query(query_str)
+      end
     end
 
     def create(salesforce_sobject_name, attributes_to_create)
-      create!(salesforce_sobject_name, attributes_to_create)
-    rescue GmSalesforce::Error
-      false
+      capture_net_errors { client.create!(salesforce_sobject_name, attributes_to_create) }
     end
 
+    # `attributes_to_update` should include `Id`
     def update(salesforce_sobject_name, attributes_to_update)
-      client.update(salesforce_sobject_name, attributes_to_update)
+      capture_net_errors { client.update!(salesforce_sobject_name, attributes_to_update) }
+    end
+
+    def capture_net_errors(&block)
+      block.call
+    rescue Faraday::ConnectionFailed, Faraday::Error::ClientError,
+           Faraday::ResourceNotFound, Faraday::ClientError => e
+      raise GmSalesforce::Error.generate(e)
     end
   end
 end
