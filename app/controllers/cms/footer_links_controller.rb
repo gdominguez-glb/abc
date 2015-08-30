@@ -36,9 +36,7 @@ class Cms::FooterLinksController < Cms::BaseController
   end
 
   def update_positions
-    params[:positions].each do |id, position|
-      FooterLink.find(id).set_list_position(position.to_i + 1)
-    end
+    update_positions_with_klass(FooterLink)
     render nothing: true
   end
 
