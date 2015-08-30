@@ -35,9 +35,7 @@ class Cms::ContactTopicsController < Cms::BaseController
   end
 
   def update_positions
-    params[:positions].each do |id, position|
-      ContactTopic.find(id).set_list_position(position.to_i + 1)
-    end
+    update_positions_with_klass(ContactTopic)
     render nothing: true
   end
 

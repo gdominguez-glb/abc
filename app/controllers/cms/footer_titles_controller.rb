@@ -35,9 +35,7 @@ class Cms::FooterTitlesController < Cms::BaseController
   end
 
   def update_positions
-    params[:positions].each do |id, position|
-      FooterTitle.find(id).set_list_position(position.to_i + 1)
-    end
+    update_positions_with_klass(FooterTitle)
     render nothing: true
   end
 
