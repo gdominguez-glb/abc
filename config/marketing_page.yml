@@ -1,0 +1,45 @@
+marketing_templates:
+  -
+    name: 'Masthead'
+    content: !xml |
+      <div class="masthead">
+        <h1><%= title %></h1>
+        <div><%= background_image %></div>
+      </div>
+
+  -
+    name: '50/50 Small Image'
+    content: !xml |
+      <div>
+        <h1><%= title %></h1>
+        <div><%= description %></div>
+        <div><%= image %></div>
+        <div><%= learn_more_url %></div>
+      </div>
+
+  -
+    name: 'Three Columns'
+    content: !xml |
+      <div>
+        <h1><%= title_1 %></h1>
+        <div><%= description_1 %></div>
+        <div><%= learn_more_url_1 %></div>
+        <h1><%= title_2 %></h1>
+        <div><%= description_2 %></div>
+        <div><%= learn_more_url_2 %></div>
+        <h1><%= title_3 %></h1>
+        <div><%= description_3 %></div>
+        <div><%= learn_more_url_3 %></div>
+      </div>
+
+  -
+    name: '50/50 Large Image'
+    content: !xml |
+      <div>
+        <h1><%= title %></h1>
+        <div><%= description %></div>
+        <div><%= image %></div>
+        <div><%= learn_more_url %></div>
+        <div><%= download_url %></div>
+      </div>
+
