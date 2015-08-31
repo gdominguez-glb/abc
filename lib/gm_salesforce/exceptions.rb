@@ -88,7 +88,7 @@ module GmSalesforce
 
     def duplicate_id
       message = self.class.find_message(original_exception)
-      matches = message.match(/duplicates value on record with id: (.+),|\Z/)
+      matches = message.match(/duplicates value on record with id: (.+)(,|\Z)/)
       matches[1] if matches.present?
     end
   end
