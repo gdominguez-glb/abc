@@ -8,14 +8,19 @@ class MarketingEditorApp.Views.TileRowView extends Backbone.View
 
   initialize: (options={})->
     @listenTo(@model, 'destroy', this.remove)
+    @fields = @fieldsOfRowType(@model.get('rowType'))
 
   render: ()->
-    @$el.html(@template(@model.attributes))
+    @$el.html(@template(data: @model.attributes, fields: @fields))
     @
 
   removeRow: ->
     @model.destroy()
 
   valueChanged: ->
-    @model.set('title', @$('.title-input').val())
-    @model.set('content', @$('.content-input').val())
+    $.each(@$('[data-name]'), (index, el)=>
+      @model.set($(el).attr('data-name'), $(el).val())
+    )
+
+  fieldsOfRowType: (rowType)->
+    _.find(MarketingEditorApp.tilesDefinitions, (tileData)-> tileData.name == rowType).fields
