@@ -25,40 +25,40 @@ class Page < ActiveRecord::Base
     {
       name: 'Masthead',
       fields: [
-        { label: 'Title', input_type: 'text' },
-        { label: 'Background Image', input_type: 'text' }
+        { name: 'title', label: 'Title', input_type: 'text' },
+        { name: 'background_image', label: 'Background Image', input_type: 'text' }
       ]
     },
     {
       name: '50/50 Small Image',
       fields: [
-        { label: 'Title', input_type: 'text' },
-        { label: 'Description', input_type: 'text_area' },
-        { label: 'Lean More Url', input_type: 'text' },
-        { label: 'Image', input_type: 'text' }
+        { name: 'title', label: 'Title', input_type: 'text' },
+        { name: 'description', label: 'Description', input_type: 'text_area' },
+        { name: 'learn_more_url', label: 'Learn More Url', input_type: 'text' },
+        { name: 'image', label: 'Image', input_type: 'text' }
       ] },
     {
       name: 'Three Columns',
       fields: [
-        { label: 'Title 1', input_type: 'text' },
-        { label: 'Description 1', input_type: 'text_area' },
-        { label: 'Lean More Url 1', input_type: 'text' },
-        { label: 'Title 2', input_type: 'text' },
-        { label: 'Description 2', input_type: 'text_area' },
-        { label: 'Lean More Url 2', input_type: 'text' },
-        { label: 'Title 3', input_type: 'text' },
-        { label: 'Description 3', input_type: 'text_area' },
-        { label: 'Lean More Url 3', input_type: 'text' }
+        { name: 'title_1', label: 'Title 1', input_type: 'text' },
+        { name: 'description_1', label: 'Description 1', input_type: 'text_area' },
+        { name: 'learn_more_url_1', label: 'Learn More Url 1', input_type: 'text' },
+        { name: 'title_2', label: 'Title 2', input_type: 'text' },
+        { name: 'description_2', label: 'Description 2', input_type: 'text_area' },
+        { name: 'learn_more_url_2', label: 'Learn More Url 2', input_type: 'text' },
+        { name: 'title_3', label: 'Title 3', input_type: 'text' },
+        { name: 'description_3', label: 'Description 3', input_type: 'text_area' },
+        { name: 'learn_more_url_3', label: 'Learn More Url 3', input_type: 'text' }
       ]
     },
     {
       name: '50/50 Large Image',
       fields: [
-        { label: 'Title', input_type: 'text' },
-        { label: 'Description', input_type: 'text_area' },
-        { label: 'Lean More Url', input_type: 'text' },
-        { label: 'Download Url', input_type: 'text' },
-        { label: 'Image', input_type: 'text' }
+        { name: 'title', label: 'Title', input_type: 'text' },
+        { name: 'description', label: 'Description', input_type: 'text_area' },
+        { name: 'learn_more_url', label: 'Learn More Url', input_type: 'text' },
+        { name: 'download_url', label: 'Download Url', input_type: 'text' },
+        { name: 'image', label: 'Image', input_type: 'text' }
       ]
     }
   ]
