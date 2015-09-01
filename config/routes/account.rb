@@ -1,7 +1,7 @@
 namespace :account do
   root 'products#index'
 
-  resources :favorites, only: [:index]
+  resources :favorites, only: [:index, :destroy]
 
   get 'help', to: 'help#index'
   get 'help/item/:id', to: 'help#item', as: :help_item

@@ -26,9 +26,9 @@
               <p class="grades-dropdown"><%= favorite_product.product.taxons.map(&:name).join(', ') %></p>
               <% url = spree.product_url(favorite_product.product) %>
               <%= link_to 'See Modules', url, class: 'btn btn-default' %>
-              <div class="favorite-star">
+              <%= link_to account_favorite_path(favorite_product), class: 'favorite-star', data: { confirm: 'Are you to unfavorite?', method: :delete } do %>
                 <span class="glyphicon glyphicon-star"></span>
-              </div>
+              <% end %>
             </div>
           </div>
         <% end %>
