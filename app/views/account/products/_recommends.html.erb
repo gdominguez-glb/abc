@@ -3,8 +3,8 @@
   <div class="recommended-products col-xs-12">
     <% @recommendations.each do |recommendation| %>
       <div class="recommended-product-wrapper green-bg">
-        <h6><%= recommendation.title %></h6>
-        <p><%= truncate(recommendation.sub_header, length: 120) %></p>
+        <h5><%= recommendation.title %></h5>
+        <h6><%= truncate(recommendation.sub_header, length: 120) %></h6>
         <%= link_to recommendation.call_to_action_button_text, recommendation.call_to_action_button_link, class: 'btn btn-primary' %>
       </div>
     <% end %>
