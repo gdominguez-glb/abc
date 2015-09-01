@@ -15,6 +15,8 @@ namespace :account do
   patch 'save_email_notifications', to: 'settings#save_email_notifications'
   post 'save_grade_option', to: 'settings#save_grade_option'
 
+  get 'become/:id' => 'base#become'
+
   resources :reminders, only: [:new, :create]
 
   resources :licenses do
