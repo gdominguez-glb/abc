@@ -26,6 +26,7 @@ module AccountHelper
 
   def generate_material_activity_url(activity)
     product = activity.item.product
+    return '' if product.blank?
     "#{product.access_url}?#{{opened_product_id: product.id, opened_material_id: activity.item.id}.to_param}"
   end
 end

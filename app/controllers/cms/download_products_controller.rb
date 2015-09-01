@@ -3,7 +3,7 @@ class Cms::DownloadProductsController < Cms::BaseController
   before_action :set_download_product, only: [:show, :destroy]
 
   def index
-    @download_products = @download_page.download_products
+    @download_products = @download_page.download_products.joins(:product)
   end
 
   def new
