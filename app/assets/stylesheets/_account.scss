@@ -38,6 +38,7 @@
   margin: 0 0 15px;
   background: $brand-green;
   border-radius: $border-radius-value;
+  text-align: center;
   color: $dark-blue;
 
   &:last-child {
@@ -52,8 +53,8 @@
     opacity: .7;
   }
 
-  @media screen and (max-width: 768px) {
-    // text-align: center;
+  @media screen and (min-width: $screen-sm-min) {
+    text-align: left;
   }
 }
 
