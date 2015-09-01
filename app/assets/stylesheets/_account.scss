@@ -34,7 +34,7 @@
 
 .recommended-product-wrapper {
   position: relative;
-  padding: 30px 30px 30px 90px;
+  padding: 30px;
   margin: 0 0 15px;
   background: $brand-green;
   border-radius: $border-radius-value;
@@ -52,26 +52,8 @@
     opacity: .7;
   }
 
-  img {
-    position: absolute;
-    top: 30px;
-    left: 15px;
-    width: 60px;
-    height: 60px;
-    border: 5px solid white;
-  }
-
-// recommended-product-wrapper
   @media screen and (max-width: 768px) {
-    padding: 30px;
-    text-align: center;
-
-    img {
-      position: relative;
-      top: auto;
-      left: auto;
-      margin: 0 auto 15px;
-    }
+    // text-align: center;
   }
 }
 
