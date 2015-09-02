@@ -35,20 +35,22 @@
 </fieldset>
 <div class="school-district-details collapse">
   <h2>Let's get some specifics about your school</h2>
-  <p>Is this a school or a district?</p>
-  <div class="form-group">
-    <div class="radio">
-      <% f.object.school_district ||= SchoolDistrict.new(place_type: 'school') %>
-      <%= f.fields_for :school_district do |school_district_form| %>
+  <div id="schoolDistrictSelect" class="collapse">
+    <p>Is this a school or a district?</p>
+    <div class="form-group">
+      <div class="radio">
+        <% f.object.school_district ||= SchoolDistrict.new(place_type: 'school') %>
+        <%= f.fields_for :school_district do |school_district_form| %>
+          <label>
+          <%= school_district_form.radio_button :place_type, 'school' %>
+          This is a School
+        </label>
         <label>
-        <%= school_district_form.radio_button :place_type, 'school' %>
-        This is a School
-      </label>
-      <label>
-        <%= school_district_form.radio_button :place_type, 'district' %>
-        This is Multiple Schools/District
-      </label>
-    <% end %>
+          <%= school_district_form.radio_button :place_type, 'district' %>
+          This is Multiple Schools/District
+        </label>
+      <% end %>
+      </div>
     </div>
   </div>
   <div class="row">

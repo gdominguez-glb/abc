@@ -9,34 +9,44 @@ $(document).on("change", ".select-container select", function(){
 // __________________________________________________________________
 
 function shouldShowDistrict(userRole) {
-  var showDistrictDetails = false;
+  var visibleFields = {};
+  visibleFields.showDistrictDetails = false;
+  visibleFields.showRadio = false;
 
   switch(userRole) {
     case "Teacher":
-      showDistrictDetails = true;
+      visibleFields.showDistrictDetails = true;
       break;
     case "Administrator":
-      showDistrictDetails = true;
+      visibleFields.showDistrictDetails = true;
+      visibleFields.showRadio = true;
       break;
     case "Administrative Assistant":
-      showDistrictDetails = true;
+      visibleFields.showDistrictDetails = true;
+      visibleFields.showRadio = true;
       break;
     case "Parent":
       console.log("Hi mom");
       break;
   }
 
-  return showDistrictDetails;
+  return visibleFields;
 }
 
 $(document).on("change", "#spree_user_title", function(){
   var userRole = $("#spree_user_title").val();
-  var showDistrictDetails = shouldShowDistrict(userRole);
+  var showVisibleFields = shouldShowDistrict(userRole);
 
-  if(showDistrictDetails) {
-    $(".school-district-details").collapse('show');
+  if(showVisibleFields.showDistrictDetails) {
+    $('.school-district-details').collapse('show');
   } else {
-    $(".school-district-details").collapse('hide');
+    $('.school-district-details').collapse('hide');
+  }
+
+  if(showVisibleFields.showRadio) {
+    $('#schoolDistrictSelect').collapse('show');
+  } else {
+    $('#schoolDistrictSelect').collapse('hide')
   }
 });
 
