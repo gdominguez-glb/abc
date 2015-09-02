@@ -3,7 +3,6 @@
 .fixed-sidebar {
   width: 217px;
   height: 100%;
-  background: $dark-blue;
   overflow: scroll;
 
   &.video-gallery-sidenav {
@@ -41,7 +40,10 @@
 
   .side-search-form {
     padding: 10px;
-    color: $cream;
+    color: $dark-blue;
+    .form-control {
+      box-shadow: inset 0 0 0 1px, inset 0 0 0 2px transparent;
+    }
   }
 
   .form-group {
@@ -52,11 +54,11 @@
 .taxonomies-filters {
   .taxonomy-header {
     padding: 10px;
-    color: $cream;
+    color: $dark-blue;
     border-bottom: 1px solid;
 
     &:hover {
-      color: $brand-green;
+      color: $steel-gray;
     }
 
     .selected-taxons-wrapper {
