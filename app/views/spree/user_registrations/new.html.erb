@@ -10,7 +10,13 @@
       <%= form_for resource, :as => :spree_user, :url => spree.registration_path(@user) do |f| %>
         <div data-hook="signup_inside_form">
           <%= render :partial => 'spree/shared/user_form', :locals => { :f => f } %>
-          <p><%= f.submit Spree.t(:create), :class => 'btn btn-lg btn-success btn-block' %></p>
+            <%= f.submit Spree.t(:create), :class => 'btn btn-lg btn-success btn-block margin-bottom-s' %>
+            <div class="checkbox text-center margin-bottom-l">
+              <label>
+                <input type="checkbox" value="" checked>
+                I agree to the terms of service
+              </label>
+            </div>
         </div>
       <% end %>
       <div class="text-center">
