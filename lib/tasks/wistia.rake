@@ -1,10 +1,10 @@
 namespace :wistia do
   desc "refresh wistia media status"
   task :refresh_media_status => :environment do
-    Spree::Digital.where.not(wistia_status: 'ready', wistia_hashed_id: nil).find_each do |digital|
+    Spree::Video.where.not(wistia_status: 'ready', wistia_hashed_id: nil).find_each do |video|
       begin
-        media = Wistia::Media.find(digital.wistia_hashed_id)
-        digital.update(wistia_status: media.status)
+        media = Wistia::Media.find(video.wistia_hashed_id)
+        video.update(wistia_status: media.status)
       rescue
       end
     end
