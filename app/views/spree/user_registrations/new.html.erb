@@ -5,7 +5,7 @@
       <h2>Let's start with the basics...</h2>
       <p>You can always change this later.</p>
     </div>
-    <div id="new-customer" class="panel-body" data-hook="login">
+    <div id="new-customer" data-hook="login">
       <%= render :partial => 'spree/shared/error_messages', :locals => { :target => @user } %>
       <%= form_for resource, :as => :spree_user, :url => spree.registration_path(@user) do |f| %>
         <div data-hook="signup_inside_form">
@@ -14,7 +14,7 @@
         </div>
       <% end %>
       <div class="text-center">
-        <%= Spree.t(:or) %> 
+        <%= Spree.t(:or) %>
         <%= link_to Spree.t(:login_as_existing), spree.login_path %>
       </div>
       <div data-hook="login_extras"></div>

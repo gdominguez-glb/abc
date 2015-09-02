@@ -33,16 +33,10 @@
 </fieldset>
 <div class="school-district-details">
   <h2>Let's get some specifics about your school</h2>
-  <div class="form-group school-district select-container dark-select block">
-    <label>District State</label>
-    <% f.object.school_district ||= SchoolDistrict.new(place_type: 'school') %>
-    <%= f.fields_for :school_district do |school_district_form| %>
-      <%= school_district_form.collection_select :state_id, Spree::Country.find_by(iso: 'US').states, :id, :name, { prompt: true } , { class: 'form-control' } %>
-    <% end %>
-  </div>
+  <p>Is this a school or a district?</p>
   <div class="form-group">
-    <label>Is this a school or a district</label>
     <div class="radio">
+      <% f.object.school_district ||= SchoolDistrict.new(place_type: 'school') %>
       <%= f.fields_for :school_district do |school_district_form| %>
         <label>
         <%= school_district_form.radio_button :place_type, 'school' %>
@@ -55,9 +49,21 @@
     <% end %>
     </div>
   </div>
-  <div class="form-group school-district select-container dark-select block">
-    <label>Select School District</label>
-    <%= f.collection_select :school_district_id, SchoolDistrict.school, :id, :name, { prompt: 'Please select your school' }, { class: 'form-control', tabindex: 7 } %>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group school-district select-container dark-select block">
+        <label>District State</label>
+        <%= f.fields_for :school_district do |school_district_form| %>
+          <%= school_district_form.collection_select :state_id, Spree::Country.find_by(iso: 'US').states, :id, :name, { prompt: true } , { class: 'form-control' } %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group school-district select-container dark-select block">
+        <label>Select School District</label>
+        <%= f.collection_select :school_district_id, SchoolDistrict.school, :id, :name, { prompt: 'Please select your school' }, { class: 'form-control', tabindex: 7 } %>
+      </div>
+    </div>
   </div>
   <div class="add-district">
     <a class="btn btn-primary add-district-button">
