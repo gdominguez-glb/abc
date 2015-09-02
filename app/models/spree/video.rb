@@ -47,4 +47,16 @@ class Spree::Video < ActiveRecord::Base
       wistia_status:    media_data['status']
     )
   end
+
+  def categories
+    taxons.map(&:taxonomy).uniq.map(&:name)
+  end
+
+  def wistia_ready?
+    wistia_status == 'ready'
+  end
+
+  def s3_url
+    self.file.expiring_url(60*60*60)
+  end
 end

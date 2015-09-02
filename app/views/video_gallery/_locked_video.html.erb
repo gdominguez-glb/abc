@@ -1,0 +1,22 @@
+<div class="video-wrapper col-lg-4 locked-video">
+  <div class="clearfix">
+    <div class="video-image-wrapper">
+      <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+    </div>
+  </div>
+  <h6 class="video-title"><%= truncate(video.title, length: 50) %></h6>
+  <div class="video-categories"><%= video.categories.join(", ") %></div>
+  <div class="video-taxons"><%= video.taxons.map(&:name).join(", ") %></div>
+  <div class="video-drawer">
+    <button class="btn btn-default disabled" style="display: block;">Subscription Required</button>
+    <div class="product-description">
+      <%= truncate video.description, length: 100 %>
+      <% if video.description && video.description.length > 100 %>
+        <%= link_to 'MORE INFO', show_description_video_gallery_path(video), remote: true, class: 'more-info' %>
+      <% end %>
+    </div>
+    <%= link_to spree.product_path(video.product), class: 'btn btn-primary unblock-button', style: 'display: block;' do %>
+      Unlock Content
+    <% end %>
+  </div>
+</div>

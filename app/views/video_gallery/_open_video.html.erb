@@ -1,0 +1,32 @@
+<div class="video-wrapper col-lg-4">
+  <div class="image-drawer-wrapper clearfix">
+    <div class="video-image-wrapper">
+      <%= link_to "", video_gallery_path(video), itemprop: 'url', class: 'open-video', style: "" %>
+      <%= link_to play_video_gallery_path(video), remote: true, class: 'play-video-button' do %>
+        <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span>
+      <% end %>
+    </div>
+    <div class="video-drawer blue-bg">
+      <button class="btn btn-default disabled" style="display: block;"><%= video.categories.join(' ') %></button>
+      <div class="product-description">
+        <%= truncate video.description, length: 300 %>
+        <% if video.description && video.description.length > 100 %>
+          <%= link_to 'MORE INFO', show_description_video_gallery_path(video), remote: true, class: 'more-info' %>
+        <% end %>
+      </div>
+      <%= link_to spree.favorite_product_path(video.product, ref_id: "#fav-button-#{video.id}"), remote: true, class: "btn favorite-button btn-default #{'disabled' if favorited_product?(video.product)}", style: 'display: block;', id: "fav-button-#{video.id}", data: { method: :post } do %>
+          Add to Favorites
+      <% end %>
+    </div>
+  </div>
+  <%=  %>
+  <h6 class="video-name">
+    <%= link_to truncate(video.title, length: 50), video_gallery_path(video), class: 'info', itemprop: "title", title: video.title %>
+  </h6>
+  <div class="video-categories">
+    <p><%= video.categories.join(", ") %></p>
+  </div>
+  <div class="video-taxons">
+    <p><%= video.taxons.map(&:name).join(", ") %></p>
+  </div>
+</div>
