@@ -16,6 +16,7 @@ function shouldShowDistrict(userRole) {
   switch(userRole) {
     case "Teacher":
       visibleFields.showDistrictDetails = true;
+      visibleFields.showRadio = true;
       break;
     case "Administrator":
       visibleFields.showDistrictDetails = true;
@@ -69,9 +70,11 @@ $(document).on('change', '#schoolDistrictSelect input', function(e) {
   if(schoolIsSelected) {
     $('#rowSchoolSelect').collapse('show');
     $('#rowDistrictSelect').collapse('hide');
+    $('#rowAddDistrict').collapse('hide');
   } else {
     $('#rowSchoolSelect').collapse('hide');
     $('#rowDistrictSelect').collapse('show');
+    $('#rowAddSchool').collapse('hide');
   }
 
 });
