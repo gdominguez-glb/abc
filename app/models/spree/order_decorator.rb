@@ -3,12 +3,15 @@ Spree::Order.class_eval do
   def create_licensed_products!
     self.line_items.each do |line_item|
       product = line_item.variant.product
-      Spree::LicensedProduct.create!(
-        order: self,
-        user: self.user,
-        product: product,
-        quantity: line_item.quantity
-      )
+      products_to_license = product.parts.empty? ? [product] : product.parts
+      products_to_license.each do |product|
+        Spree::LicensedProduct.create!(
+          order: self,
+          user: self.user,
+          product: product,
+          quantity: line_item.quantity
+        )
+      end
     end
   end
 
