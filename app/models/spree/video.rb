@@ -9,6 +9,11 @@ class Spree::Video < ActiveRecord::Base
   has_many :video_classifications, dependent: :delete_all, inverse_of: :video
   has_many :taxons, through: :video_classifications
 
+  scope :with_taxons, ->(taxons) {
+    ids = taxons.map { |taxon| taxon.self_and_descendants.pluck(:id) }.flatten.uniq
+    joins(:taxons).where("spree_taxons.id" => ids)
+  }
+
   # after_save :analyze_taxons
 
   def analyze_taxons

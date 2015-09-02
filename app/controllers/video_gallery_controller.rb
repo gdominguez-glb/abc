@@ -9,7 +9,7 @@ class VideoGalleryController < ApplicationController
     params[:taxon_ids] ||= []
 
     @videos        = Spree::Video.includes([:product, taxons: [:taxonomy]]).page(params[:page])
-    # @videos        = filter_videos(@videos)
+    @videos        = filter_videos(@videos)
 
     @bought_product_ids    = fetch_bought_ids(@videos.map(&:product).compact)
     @favorited_product_ids = fetch_favorite_ids(@videos.map(&:product).compact)
@@ -43,7 +43,7 @@ class VideoGalleryController < ApplicationController
     end
     if params[:taxon_ids].present?
       taxons = Spree::Taxon.where(id: params[:taxon_ids])
-      videos = videos.in_taxons(taxons) if !taxons.empty?
+      videos = videos.with_taxons(taxons) if !taxons.empty?
     end
     videos
   end
