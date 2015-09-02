@@ -33,6 +33,18 @@ function shouldShowDistrict(userRole) {
   return visibleFields;
 }
 
+function schoolSelected(id) {
+  var schoolIsSelected = true;
+
+  switch(id) {
+    case 'spree_user_school_district_attributes_place_type_district':
+      schoolIsSelected = false;
+      break;
+  }
+
+  return schoolIsSelected;
+}
+
 $(document).on("change", "#spree_user_title", function(){
   var userRole = $("#spree_user_title").val();
   var showVisibleFields = shouldShowDistrict(userRole);
@@ -48,6 +60,20 @@ $(document).on("change", "#spree_user_title", function(){
   } else {
     $('#schoolDistrictSelect').collapse('hide')
   }
+});
+
+$(document).on('change', '#schoolDistrictSelect input', function(e) {
+  var schoolIsSelected = schoolSelected(e.currentTarget.id);
+  console.log(e.currentTarget.id);
+
+  if(schoolIsSelected) {
+    $('#rowSchoolSelect').collapse('show');
+    $('#rowDistrictSelect').collapse('hide');
+  } else {
+    $('#rowSchoolSelect').collapse('hide');
+    $('#rowDistrictSelect').collapse('show');
+  }
+
 });
 
 $(function(){

@@ -63,7 +63,7 @@
       </div>
     </div>
   </div>
-  <div class="row">
+  <div class="row collapse" id="rowDistrictSelect">
     <div class="col-md-6">
       <div class="form-group school-district select-container dark-select block">
         <label>Select District</label>
@@ -75,10 +75,10 @@
       </div>
     </div>
     <div class="col-md-3">
-      <button type="button" class="btn btn-primary btn-block">District Not Listed</button>
+      <button type="button" class="btn btn-primary btn-block" id="btnDistrictNotListed">District Not Listed</button>
     </div>
   </div>
-  <div class="row">
+  <div class="row collapse in" id="rowSchoolSelect">
     <div class="col-md-6">
       <div class="form-group school-district select-container dark-select block">
         <label>Select School</label>
@@ -86,20 +86,17 @@
       </div>
     </div>
     <div class="col-md-3">
-      <button type="button" class="btn btn-primary btn-block">Multiple Schools</button>
-    </div>
-    <div class="col-md-3">
-      <button type="button" class="btn btn-primary btn-block">School Not Listed</button>
+      <button type="button" class="btn btn-primary btn-block" id="btnSchoolNotLosted">School Not Listed</button>
     </div>
   </div>
-  <div class="form-group add-district-field">
+  <div class="form-group add-district-field collapse">
     <label>Add District Name</label>
     <% f.object.school_district ||= SchoolDistrict.new(place_type: 'school') %>
     <%= f.fields_for :school_district do |school_district_form| %>
       <%= school_district_form.text_field :name, class: 'form-control school-district-control', placeholder: 'New District Name' %>
     <% end %>
   </div>
-  <div class="form-group add-school-field">
+  <div class="form-group add-school-field collapse">
     <label>Add School Name</label>
     <% f.object.school_district ||= SchoolDistrict.new(place_type: 'school') %>
     <%= f.fields_for :school_district do |school_district_form| %>
