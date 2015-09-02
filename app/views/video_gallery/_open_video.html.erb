@@ -1,7 +1,7 @@
 <div class="video-wrapper col-lg-4">
   <div class="image-drawer-wrapper clearfix">
     <div class="video-image-wrapper">
-      <%= link_to "", video_gallery_path(video), itemprop: 'url', class: 'open-video', style: "" %>
+      <%= link_to "", video_gallery_path(video), itemprop: 'url', class: 'open-video', style: "background-image: url(#{video.wistia_thumbnail_url})" %>
       <%= link_to play_video_gallery_path(video), remote: true, class: 'play-video-button' do %>
         <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span>
       <% end %>
