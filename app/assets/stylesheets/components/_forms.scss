@@ -80,6 +80,10 @@ input, label, .form-control, .form-group {
     color: $dark-blue;
   }
 
+  label {
+    margin: 0;
+  }
+
   select {
     position: absolute;
     top: 0;

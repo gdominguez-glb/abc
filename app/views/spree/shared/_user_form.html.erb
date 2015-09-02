@@ -9,7 +9,7 @@
         <label>Email Address</label>
         <%= f.email_field :email, :class => 'form-control', :placeholder => Spree.t(:email), tabindex: 3 %>
       </div>
-      <div class="form-group">
+      <div class="form-group select-container dark-select block">
         <label>Subject you are interested in</label>
         <%= f.select :interested_subject, options_for_select(Spree::User::SUBJECTS, f.object.interested_subject), { prompt: 'Please select interested subject' }, { class: 'form-control', tabindex: 5 } %>
       </div>
@@ -23,7 +23,7 @@
         <label>Password</label>
         <%= f.password_field :password, :class => 'form-control', :placeholder => Spree.t(:password), tabindex: 4 %>
       </div>
-      <div class="form-group">
+      <div class="form-group select-container dark-select block">
         <label>Select your Role</label>
         <%= f.select :title, options_for_select(USER_TITLES, f.object.title), { prompt: 'Please select your role' }, { class: 'form-control', tabindex: 6 } %>
       </div>
@@ -33,7 +33,7 @@
 </fieldset>
 <div class="school-district-details">
   <h2>Let's get some specifics about your school</h2>
-  <div class="form-group school-district">
+  <div class="form-group school-district select-container dark-select block">
     <label>District State</label>
     <% f.object.school_district ||= SchoolDistrict.new(place_type: 'school') %>
     <%= f.fields_for :school_district do |school_district_form| %>
@@ -55,7 +55,7 @@
     <% end %>
     </div>
   </div>
-  <div class="form-group school-district">
+  <div class="form-group school-district select-container dark-select block">
     <label>Select School District</label>
     <%= f.collection_select :school_district_id, SchoolDistrict.school, :id, :name, { prompt: 'Please select your school' }, { class: 'form-control', tabindex: 7 } %>
   </div>
