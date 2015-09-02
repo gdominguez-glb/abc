@@ -9,8 +9,9 @@
         <label>Email Address</label>
         <%= f.email_field :email, :class => 'form-control', :placeholder => Spree.t(:email), tabindex: 3 %>
       </div>
+      <label>Subject</label>
       <div class="form-group select-container dark-select block">
-        <label>Subject you are interested in</label>
+        <span>Subject you are interested in</span>
         <%= f.select :interested_subject, options_for_select(Spree::User::SUBJECTS, f.object.interested_subject), { prompt: 'Please select interested subject' }, { class: 'form-control', tabindex: 5 } %>
       </div>
     </div>
@@ -23,8 +24,9 @@
         <label>Password</label>
         <%= f.password_field :password, :class => 'form-control', :placeholder => Spree.t(:password), tabindex: 4 %>
       </div>
+      <label>Role</label>
       <div class="form-group select-container dark-select block">
-        <label>Select your Role</label>
+        <span>Select your Role</span>
         <%= f.select :title, options_for_select(USER_TITLES, f.object.title), { prompt: 'Please select your role' }, { class: 'form-control', tabindex: 6 } %>
       </div>
     </div>
@@ -58,24 +60,48 @@
         <% end %>
       </div>
     </div>
+  </div>
+  <div class="row">
     <div class="col-md-6">
       <div class="form-group school-district select-container dark-select block">
-        <label>Select School District</label>
+        <label>Select District</label>
+        <select class="form-control">
+          <option>District 1</option>
+          <option>District 2</option>
+          <option>District 3</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <button type="button" class="btn btn-primary btn-block">District Not Listed</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group school-district select-container dark-select block">
+        <label>Select School</label>
         <%= f.collection_select :school_district_id, SchoolDistrict.school, :id, :name, { prompt: 'Please select your school' }, { class: 'form-control', tabindex: 7 } %>
       </div>
     </div>
-  </div>
-  <div class="add-district">
-    <a class="btn btn-primary add-district-button">
-      <span class="text show-prompt">I don't see my school district</span>
-      <span class="close">X</span>
-    </a>
+    <div class="col-md-3">
+      <button type="button" class="btn btn-primary btn-block">Multiple Schools</button>
+    </div>
+    <div class="col-md-3">
+      <button type="button" class="btn btn-primary btn-block">School Not Listed</button>
+    </div>
   </div>
   <div class="form-group add-district-field">
-    <label>Add School/District Name</label>
+    <label>Add District Name</label>
     <% f.object.school_district ||= SchoolDistrict.new(place_type: 'school') %>
     <%= f.fields_for :school_district do |school_district_form| %>
-      <%= school_district_form.text_field :name, class: 'form-control school-district-control', placeholder: 'New School/District Name' %>
+      <%= school_district_form.text_field :name, class: 'form-control school-district-control', placeholder: 'New District Name' %>
+    <% end %>
+  </div>
+  <div class="form-group add-school-field">
+    <label>Add School Name</label>
+    <% f.object.school_district ||= SchoolDistrict.new(place_type: 'school') %>
+    <%= f.fields_for :school_district do |school_district_form| %>
+      <%= school_district_form.text_field :name, class: 'form-control school-district-control', placeholder: 'New School Name' %>
     <% end %>
   </div>
 </div>
