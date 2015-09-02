@@ -141,10 +141,6 @@ body.dragging, body.dragging * {
 .wrapper {
   position: relative;
   @include clearfix;
-
-  &.account-page {
-    background: #aaa;
-  }
 }
 
 .content {
