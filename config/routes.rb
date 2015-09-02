@@ -37,10 +37,6 @@ Rails.application.routes.draw do
       get :show_description
       get :play
     end
-    collection do
-      get :s3_videos
-      get :hosting_videos
-    end
   end
 
   get '/blog/global/:slug',          to: 'blog#global',          as: :global_blog

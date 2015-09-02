@@ -1,5 +1,0 @@
-<% if bought_product?(video_product) || video_product.free? %>
-  <%= render partial: 'open_product', locals: { video_product: video_product } %>
-<% else %>
-  <%= render partial: 'locked_product', locals: { video_product: video_product } %>
-<% end %>

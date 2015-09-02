@@ -3,13 +3,18 @@ class Spree::Video < ActiveRecord::Base
 
   validates_presence_of :title
 
-  has_attached_file :file, s3_permissions: :private, s3_headers: { "Content-Disposition" => "attachment" }
+  has_attached_file :file, s3_permissions: :private
   validates_attachment :file, content_type: { content_type: /\A*\Z/ }
 
   has_many :video_classifications, dependent: :delete_all, inverse_of: :video
   has_many :taxons, through: :video_classifications
 
-  after_save :analyze_taxons
+  scope :with_taxons, ->(taxons) {
+    ids = taxons.map { |taxon| taxon.self_and_descendants.pluck(:id) }.flatten.uniq
+    joins(:taxons).where("spree_taxons.id" => ids)
+  }
+
+  # after_save :analyze_taxons
 
   def analyze_taxons
     title = self.title.gsub('_', ' ')
@@ -34,5 +39,29 @@ class Spree::Video < ActiveRecord::Base
     if (taxonomy = Spree::Taxonomy.find_by(name: taxonomy_name)) && (taxon = taxonomy.taxons.find_by(name: taxon_name))
       self.taxons << taxon
     end
+  end
+
+  def post_flush_writes
+    WistiaWorker.perform_async(self.id) if self.wistia_id.blank?
+  end
+
+  def update_wistia_data(media_data)
+    update(
+      wistia_id:        media_data['id'],
+      wistia_hashed_id: media_data['hashed_id'],
+      wistia_status:    media_data['status']
+    )
+  end
+
+  def categories
+    taxons.map(&:taxonomy).uniq.map(&:name)
+  end
+
+  def wistia_ready?
+    wistia_status == 'ready'
+  end
+
+  def s3_url
+    self.file.expiring_url(60*60*60)
   end
 end

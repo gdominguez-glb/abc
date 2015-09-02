@@ -3,11 +3,11 @@
   <div class="row">
     <div class="col-md-6">
       <div class="video-player-wrapper">
-        <% if can_play_video?(@video_product) %>
-          <% if @video_product.wistia_ready? %>
-            <iframe src="http://fast.wistia.net/embed/iframe/<%= @video_product.video_id %>" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" id="wistia-iframe" name="wistia_embed" width="560" height="400"></iframe>
+        <% if can_play_video?(@video) %>
+          <% if @video.wistia_ready? %>
+            <iframe src="http://fast.wistia.net/embed/iframe/<%= @video.wistia_hashed_id %>" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" id="wistia-iframe" name="wistia_embed" width="560" height="400"></iframe>
           <% else %>
-              <video class="mejs-player" src="<%= @video_product.video_s3_url %>" width="560" height="400"></video>
+              <video class="mejs-player" src="<%= @video.s3_url %>" width="560" height="400"></video>
           <% end %>
         <% else %>
           <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
@@ -16,16 +16,14 @@
     </div>
     <div class="col-md-6">
       <div class="video-page-title">
-        <h2 class="video-product-name">
-          <%= @video_product.name %>
+        <h2 class="video-name">
+          <%= @video.title %>
         </h2>
-        <div class="video-product-categories"><%= @video_product.grade.try(:name) %></div>
-        <div class="video-product-taxons"><%= @video_product.curriculum.try(:name) %></div>
       </div>
       <p>
-        <%= @video_product.description %>
+        <%= @video.description %>
       </p>
-      <%= link_to spree.favorite_product_path(@video_product, ref_id: "#fav-button-#{@video_product.id}"), remote: true, class: "btn btn-primary favorite-button #{'disabled' if !can_favorite_product?(@video_product)}", id: "fav-button-#{@video_product.id}", data: { method: :post } do %>
+      <%= link_to spree.favorite_product_path(@video, ref_id: "#fav-button-#{@video.id}"), remote: true, class: "btn btn-primary favorite-button #{'disabled' if !can_favorite_product?(@video)}", id: "fav-button-#{@video.id}", data: { method: :post } do %>
         Add to Favorites
       <% end %>
     </div>
