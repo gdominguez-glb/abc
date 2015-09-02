@@ -34,19 +34,10 @@ $(document).on("change", "#spree_user_title", function(){
   var showDistrictDetails = shouldShowDistrict(userRole);
 
   if(showDistrictDetails) {
-    $(".school-district-details").addClass("show-details");
+    $(".school-district-details").collapse('show');
   } else {
-    $(".school-district-details").removeClass("show-details");
+    $(".school-district-details").collapse('hide');
   }
-});
-
-$(document).on("click", ".add-district-button", function(){
-  var buttonText = $(".add-district-button .text");
-  var close = $(".add-district-button .close");
-
-  $(".add-district-field").toggleClass("show-details");
-  buttonText.toggleClass("show-prompt");
-  close.toggleClass("show-prompt");
 });
 
 $(function(){
