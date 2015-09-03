@@ -4,6 +4,8 @@ class SchoolDistrict < ActiveRecord::Base
 
   belongs_to :state, class_name: 'Spree::State'
 
+  validates :name, :state_id, presence: true
+
   enum place_type: { school: 'school', district: 'district' }
 
   def self.sobject_name

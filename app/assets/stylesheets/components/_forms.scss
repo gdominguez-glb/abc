@@ -14,8 +14,9 @@ input, label, .form-control, .form-group {
   @include placeholder(inherit);
 }
 
-.form-group {
-  margin-bottom: 30px;
+.form-group,
+.input-group {
+  margin-bottom: $b-space-m * 2;
 }
 
 .form-control {
@@ -39,6 +40,21 @@ input, label, .form-control, .form-group {
 
 .form-control[readonly] {
   background: $gray-light;
+}
+
+.input-group {
+    &.collapse {
+      display: none;
+      &.in {
+        display: table;
+      }
+    }
+}
+
+.input-group-btn {
+  .btn {
+    border: 1px solid $dark-blue;
+  }
 }
 
 .error {
@@ -78,6 +94,10 @@ input, label, .form-control, .form-group {
   &:hover {
     background: $cream;
     color: $dark-blue;
+  }
+
+  label {
+    margin: 0;
   }
 
   select {
@@ -148,46 +168,5 @@ input, label, .form-control, .form-group {
     opacity: .5;
     @include translate(0, -50%);
     @include transition(all, .3s);
-  }
-}
-
-// New User Form
-.school-district-details, .add-district-field {
-  max-height: 0;
-  overflow: hidden;
-  @include transition(all, .5s);
-
-  &.show-details {
-    max-height: 1000px;
-    overflow: auto;
-  }
-}
-
-.add-district-field {
-  margin-bottom: 0;
-
-  &.show-details {
-   margin-bottom: 15px;
-  }
-}
-
-.add-district {
-  position: relative;
-  height: 35px;
-  margin-bottom: 15px;
-}
-
-.add-district-button {
-  float: right;
-
-  .text, .close {
-    max-width: 0;
-    float: left;
-    overflow: hidden;
-    @include transition(all, .5s);
-
-    &.show-prompt {
-      max-width: 200px;
-    }
   }
 }

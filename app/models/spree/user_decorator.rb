@@ -36,6 +36,11 @@ Spree::User.class_eval do
       'Email' => email }
   end
 
+  def new_attributes_for_salesforce
+    school_district.try(:salesforce_reference).try(:reload)
+    super
+  end
+
   def self.matches_salesforce_object(sfo)
     matches = super(sfo)
     return matches if matches.present?
@@ -78,7 +83,9 @@ Spree::User.class_eval do
 
   # add any other characters you'd like to disallow inside the [ brackets ]
   # metacharacters [, \, ^, $, ., |, ?, *, +, (, and ) need to be escaped with a \
-  validates :first_name, :last_name, presence: true, format: { with: /\A[^0-9`!@#\$%\^&*+_=]+\z/ }
+  validates :first_name, :last_name, presence: true, format: {
+    with: /\A[^0-9`!@#\$%\^&*+_=]+\z/, allow_blank: true
+  }
 
   belongs_to :school_district
 
