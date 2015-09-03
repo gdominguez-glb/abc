@@ -21,7 +21,7 @@ Spree::UserRegistrationsController.class_eval do
       _params = params.require(:spree_user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :interested_subject, :title, :school_district_id, school_district_attributes: [:name, :state_id, :place_type])
       if _params[:school_district_id].blank?
         _params.delete(:school_district_id)
-      else
+      elsif _params[:school_district_attributes][:name].blank?
         _params.delete(:school_district_attributes)
       end
       _params
