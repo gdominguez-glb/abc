@@ -2,20 +2,13 @@
   <div class="row">
     <div class="col-md-10 col-md-offset-1 favorites-products">
       <div class="favorites-products-head clearfix">
-        <span class="title pull-left">Favorites</span>
-        <div class="dropdown pull-right">
-          Sort by:
-          <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-            All
-            <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
-          </ul>
-        </div>
+        <%= form_tag '', method: :get, id: 'favorites-filter-form' do %>
+          <span class="title pull-left">Favorites</span>
+          <div class="dropdown pull-right">
+            Sort by:
+            <%= select_tag :taxonomy_id, options_from_collection_for_select(@taxonomies, :id, :name, params[:taxonomy_id]), include_blank: 'All', class: 'form-control' %>
+          </div>
+        <% end %>
       </div>
       <div class="row">
         <% @favorite_products.each do |favorite_product| %>
@@ -37,3 +30,12 @@
   </div>
 </div>
 
+<%= content_for :javascripts do %>
+  <script type="text/javascript">
+    $(function(){
+      $("#taxonomy_id").change(function(e){
+        $('form#favorites-filter-form').submit();
+      });
+    });
+  </script>
+<% end %>
