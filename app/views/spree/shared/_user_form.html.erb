@@ -123,32 +123,3 @@
   </div>
 </div>
 <div data-hook="signup_below_password_fields"></div>
-<script type="text/javascript">
-//<![CDATA[
-  (function($){
-    var schoolOptions = "<%= escape_javascript('<option>Please select your school</option>'.html_safe + options_from_collection_for_select(SchoolDistrict.school, :id, :name)) %>";
-    var districtOptions = "<%= escape_javascript('<option>Please select your district</option>'.html_safe + options_from_collection_for_select(SchoolDistrict.district, :id, :name)) %>";
-
-    $(".school-district-input-toggle").click(function(){
-      $('.school-district-control').show();
-      $(".school-district-input-toggle").hide();
-      $("select[name='spree_user[school_district_id]']").val(null);
-    });
-    $("select[name='spree_user[school_district_id]']").change(function(){
-      var value = $(this).val();
-      if(value) {
-        $('.school-district-control').hide();
-        $(".school-district-input-toggle").show();
-      }
-    });
-    $("input[name='spree_user[school_district_attributes][place_type]'").change(function(){
-      var selection = $(this).val();
-      if (selection == 'school') {
-        $("select[name='spree_user[school_district_id]']").html(schoolOptions);
-      } else if (selection == 'district') {
-        $("select[name='spree_user[school_district_id]']").html(districtOptions);
-      }
-    });
-  })(jQuery);
-//]]>
-</script>
