@@ -1,6 +1,6 @@
 class MaterialsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_material, only: [:download]
+  before_action :set_material, only: [:download, :preview]
   before_action :set_product, only: [:download_all, :multi_download]
 
   def download
@@ -43,6 +43,10 @@ class MaterialsController < ApplicationController
       product_track.update(material_id: material.parent.id)
     end
     render nothing: true
+  end
+
+  def preview
+    @files_url = @material.material_files.map {|mf| mf.file.preview_expiring_url(60*60*60) }
   end
 
   private
