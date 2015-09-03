@@ -36,6 +36,11 @@ Spree::User.class_eval do
       'Email' => email }
   end
 
+  def new_attributes_for_salesforce
+    school_district.try(:salesforce_reference).try(:reload)
+    super
+  end
+
   def self.matches_salesforce_object(sfo)
     matches = super(sfo)
     return matches if matches.present?
