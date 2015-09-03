@@ -14,8 +14,9 @@ input, label, .form-control, .form-group {
   @include placeholder(inherit);
 }
 
-.form-group {
-  margin-bottom: 30px;
+.form-group,
+.input-group {
+  margin-bottom: $b-space-m * 2;
 }
 
 .form-control {
@@ -39,6 +40,21 @@ input, label, .form-control, .form-group {
 
 .form-control[readonly] {
   background: $gray-light;
+}
+
+.input-group {
+    &.collapse {
+      display: none;
+      &.in {
+        display: table;
+      }
+    }
+}
+
+.input-group-btn {
+  .btn {
+    border: 1px solid $dark-blue;
+  }
 }
 
 .error {

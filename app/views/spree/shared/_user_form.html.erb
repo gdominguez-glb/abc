@@ -64,7 +64,7 @@
       </div>
     </div>
   </div>
-  <div class="row collapse" id="rowDistrictSelect">
+  <div class="row collapse fade" id="rowDistrictSelect">
     <div class="col-md-6">
       <div class="form-group school-district select-container dark-select block">
         <span>Select a District</span>
@@ -98,19 +98,32 @@
         data-target="#rowAddSchool">School Not Listed</button>
     </div>
   </div>
-  <div class="form-group add-district-field collapse" id="rowAddDistrict">
-    <label>Add District Name</label>
+  <div class="input-group add-district-field collapse fade" id="rowAddDistrict">
     <% f.object.school_district ||= SchoolDistrict.new(place_type: 'school') %>
     <%= f.fields_for :school_district do |school_district_form| %>
       <%= school_district_form.text_field :name, class: 'form-control school-district-control', placeholder: 'New District Name' %>
     <% end %>
+    <span class="input-group-btn">
+      <button
+        type="button"
+        class="btn btn-primary btn-block"
+        data-toggle="collapse"
+        data-target="#rowAddDistrict">X</button>
+      </div>
+    </span>
   </div>
-  <div class="form-group add-school-field collapse" id="rowAddSchool">
-    <label>Add School Name</label>
+  <div class="input-group add-school-field collapse fade" id="rowAddSchool">
     <% f.object.school_district ||= SchoolDistrict.new(place_type: 'school') %>
     <%= f.fields_for :school_district do |school_district_form| %>
       <%= school_district_form.text_field :name, class: 'form-control school-district-control', placeholder: 'New School Name' %>
     <% end %>
+    <span class="input-group-btn">
+      <button
+        type="button"
+        class="btn btn-primary"
+        data-toggle="collapse"
+        data-target="#rowAddSchool">X</button>
+    </span>
   </div>
 </div>
 <div data-hook="signup_below_password_fields"></div>
