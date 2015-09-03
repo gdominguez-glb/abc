@@ -6,6 +6,11 @@
       <span class="glyphicon glyphicon-download-alt"></span>
     <% end %>
   <% end %>
+  <% if material.material_files_count > 0 %>
+    <%= link_to preview_material_path(material), class: 'pull-right', remote: true do %>
+      <span class="glyphicon glyphicon-eye-open"></span>
+    <% end %>
+  <% end %>
   <% if item.children.size > 0 %>
     <% open_material = @opened_material_ids.include?(material.id) %>
     <span class="glyphicon glyphicon-chevron-<%= open_material ? 'up' : 'down' %> pull-right toggler" data-material-id="<%= material.id %>"></span>
