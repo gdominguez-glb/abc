@@ -68,7 +68,7 @@
     <div class="col-md-6">
       <div class="form-group school-district select-container dark-select block">
         <span>Select a District</span>
-        <%= f.collection_select :school_district_id, SchoolDistrict.district, :id, :name, { prompt: 'Please select your district' }, { class: 'form-control', tabindex: 7 } %>
+        <%= f.collection_select :school_district_id, SchoolDistrict.district, :id, :name, { prompt: 'Select a District' }, { class: 'form-control', tabindex: 7 } %>
       </div>
     </div>
     <div class="col-md-3">
@@ -79,7 +79,7 @@
     <div class="col-md-6">
       <div class="form-group school-district select-container dark-select block">
         <span>Select a School</span>
-        <%= f.collection_select :school_district_id, SchoolDistrict.school, :id, :name, { prompt: 'Please select your school' }, { class: 'form-control', tabindex: 7 } %>
+        <%= f.collection_select :school_district_id, SchoolDistrict.school, :id, :name, { prompt: 'Select a School' }, { class: 'form-control', tabindex: 7 } %>
       </div>
     </div>
     <div class="col-md-3">
