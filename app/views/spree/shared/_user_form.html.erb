@@ -68,11 +68,7 @@
     <div class="col-md-6">
       <div class="form-group school-district select-container dark-select block">
         <span>Select a District</span>
-        <select class="form-control">
-          <option>District 1</option>
-          <option>District 2</option>
-          <option>District 3</option>
-        </select>
+        <%= f.collection_select :school_district_id, SchoolDistrict.district, :id, :name, { prompt: 'Please select your district' }, { class: 'form-control', tabindex: 7 } %>
       </div>
     </div>
     <div class="col-md-3">
