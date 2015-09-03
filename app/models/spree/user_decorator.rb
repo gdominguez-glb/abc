@@ -83,7 +83,9 @@ Spree::User.class_eval do
 
   # add any other characters you'd like to disallow inside the [ brackets ]
   # metacharacters [, \, ^, $, ., |, ?, *, +, (, and ) need to be escaped with a \
-  validates :first_name, :last_name, presence: true, format: { with: /\A[^0-9`!@#\$%\^&*+_=]+\z/ }
+  validates :first_name, :last_name, presence: true, format: {
+    with: /\A[^0-9`!@#\$%\^&*+_=]+\z/, allow_blank: true
+  }
 
   belongs_to :school_district
 
