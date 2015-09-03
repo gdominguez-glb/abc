@@ -69,6 +69,28 @@ $(document).on('change', '#schoolDistrictSelect input', function(e) {
 
 });
 
+$(document).on('click', '#schoolNotListed', function(e) {
+  $('#rowSchoolSelect select').prop('selectedIndex',0).prev().text('Select a School');
+  $('#rowAddSchool').collapse('show');
+  $('#rowSchoolSelect').collapse('hide');
+});
+
+$(document).on('click', '#districtNotListed', function(e) {
+  $('#rowDistrictSelect select').prop('selectedIndex',0).prev().text('Select a District');
+  $('#rowAddDistrict').collapse('show');
+  $('#rowDistrictSelect').collapse('hide');
+});
+
+$(document).on('click', '#closeAddSchool', function(e) {
+  $('#rowAddSchool').collapse('hide');
+  $('#rowSchoolSelect').collapse('show');
+});
+
+$(document).on('click', '#closeAddDistrict', function(e) {
+  $('#rowAddDistrict').collapse('hide');
+  $('#rowDistrictSelect').collapse('show');
+});
+
 $(function(){
   $("#spree_user_title").trigger('change');
 });
