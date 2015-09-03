@@ -21,6 +21,12 @@
 
 en:
   hello: "Hello world"
+  error_messages:
+    permission_denied: Permission denied
+    could_not_find_user: Could not find user
+    could_not_change_to_admin: Cannot change to admin
+    could_not_change_to_self: "Already logged in as %{email}"
+  logged_in_as_user: "Now logged in as %{email}"
   spree:
     purchase_from_partner: "Purchase From Partner"
     purchase_order: "Purchase Order"
