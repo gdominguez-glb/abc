@@ -18,7 +18,6 @@ Spree::Order.class_eval do
 
   def check_distributable_licenses(licensed_product)
     return if licensed_product.quantity == 1
-    licensed_product.update(can_be_distributed: true)
     licensed_product.distribute_one_license_to_self
   end
 

@@ -38,6 +38,7 @@ class Spree::LicensedProduct < ActiveRecord::Base
   end
 
   def distribute_one_license_to_self
+    update(can_be_distributed: true)
     distribute_license(self)
   end
 
