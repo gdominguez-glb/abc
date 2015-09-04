@@ -105,7 +105,7 @@ Spree::User.class_eval do
 
   before_create :assign_user_role
 
-  after_create :assign_licenses
+  after_create :assign_licenses, :assign_distributions
 
   def licensed_products_from(school_district_admin)
     licensed_products.joins(:product).joins(:product_distribution).where({spree_product_distributions: { from_user_id: school_district_admin.id }}).uniq
@@ -155,19 +155,23 @@ Spree::User.class_eval do
     Spree::LicensedProduct.assign_license_to(self)
   end
 
+  def assign_distributions
+    Spree::ProductDistribution.assign_distributions(self)
+  end
+
   def require_shool_district?
     ['Teacher', 'Administrative Assistant', 'Administrator'].include?(self.title)
   end
 
   def managed_products
     @managed_products ||= begin
-      product_ids = licensed_products.pluck(:product_id) + product_distributions.pluck(:product_id)
+      product_ids = licensed_products.distributable.pluck(:product_id) + product_distributions.pluck(:product_id)
       Spree::Product.where(id: product_ids).order("name asc")
     end
   end
 
   def purchased_licenses_count(product)
-    distributed_licenses_count(product) + licensed_products.where(product_id: product.id).sum(:quantity)
+    distributed_licenses_count(product) + licensed_products.distributable.where(product_id: product.id).sum(:quantity)
   end
 
   def distributed_licenses_count(product)

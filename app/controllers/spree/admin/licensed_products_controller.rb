@@ -30,7 +30,7 @@ module Spree
       def import
         if request.post?
           result = Spree::LicenseImporter.new(params[:file]).import
-          if result.empty?
+          if result[:success]
             redirect_to spree.admin_licensed_products_path, notice: 'Imported successfully'
           else
             flash[:error] = result[:error]

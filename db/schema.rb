@@ -587,6 +587,7 @@ ActiveRecord::Schema.define(version: 20150903112051) do
     t.integer  "quantity",                default: 0
     t.string   "email"
     t.integer  "product_distribution_id"
+    t.boolean  "can_be_distributed",      default: false
   end
 
   create_table "spree_line_items", force: :cascade do |t|
@@ -833,6 +834,7 @@ ActiveRecord::Schema.define(version: 20150903112051) do
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
     t.datetime "expire_at"
+    t.string   "from_email"
   end
 
   create_table "spree_product_option_types", force: :cascade do |t|
