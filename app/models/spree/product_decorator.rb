@@ -1,5 +1,7 @@
 Spree::Product.class_eval do
 
+  belongs_to :video_group, class_name: 'Spree::VideoGroup'
+
   ## spree bundles
   parts_habtm = select("#{Spree::Product.quoted_table_name}.*")
                   .select("#{Spree::Part.quoted_table_name}.id AS part_id")

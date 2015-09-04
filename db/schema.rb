@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150902093542) do
+ActiveRecord::Schema.define(version: 20150903112051) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -887,6 +887,7 @@ ActiveRecord::Schema.define(version: 20150902093542) do
     t.boolean  "is_grades_product",    default: false
     t.boolean  "can_be_part",          default: false, null: false
     t.boolean  "individual_sale",      default: true,  null: false
+    t.integer  "video_group_id"
   end
 
   add_index "spree_products", ["available_on"], name: "index_spree_products_on_available_on", using: :btree
@@ -1511,6 +1512,12 @@ ActiveRecord::Schema.define(version: 20150902093542) do
   add_index "spree_variants", ["tax_category_id"], name: "index_spree_variants_on_tax_category_id", using: :btree
   add_index "spree_variants", ["track_inventory"], name: "index_spree_variants_on_track_inventory", using: :btree
 
+  create_table "spree_video_groups", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "spree_videos", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
@@ -1527,6 +1534,7 @@ ActiveRecord::Schema.define(version: 20150902093542) do
     t.string   "wistia_hashed_id"
     t.string   "wistia_status"
     t.string   "wistia_thumbnail_url"
+    t.integer  "video_group_id"
   end
 
   create_table "spree_zone_members", force: :cascade do |t|

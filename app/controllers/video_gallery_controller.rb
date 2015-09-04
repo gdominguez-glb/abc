@@ -1,18 +1,18 @@
 class VideoGalleryController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_video, only: [:show, :show_description, :play]
+  before_action :find_video, only: [:show, :show_description, :play, :unlock]
   before_action :load_taxonomies, only: [:index]
 
-  helper_method :bought_product?, :can_play_video?, :favorited_product?, :can_favorite_product?
+  helper_method :bought_products?, :can_play_video?, :favorited_product?, :can_favorite_product?
 
   def index
     params[:taxon_ids] ||= []
 
-    @videos        = Spree::Video.includes([:product, taxons: [:taxonomy]]).page(params[:page])
+    @videos        = Spree::Video.includes([video_group: [:products], taxons: [:taxonomy]]).page(params[:page])
     @videos        = filter_videos(@videos)
 
-    @bought_product_ids    = fetch_bought_ids(@videos.map(&:product).compact)
-    @favorited_product_ids = fetch_favorite_ids(@videos.map(&:product).compact)
+    @bought_product_ids    = fetch_bought_ids(@videos.map(&:products).flatten.compact)
+    @favorited_product_ids = fetch_favorite_ids(@videos.map(&:products).flatten.compact)
   end
 
   def show
@@ -23,8 +23,10 @@ class VideoGalleryController < ApplicationController
   end
 
   def play
-    @video = Spree::Video.find(params[:id])
     log_activity(@video)
+  end
+
+  def unlock
   end
 
   private
@@ -48,8 +50,8 @@ class VideoGalleryController < ApplicationController
     videos
   end
 
-  def bought_product?(product)
-    @bought_product_ids.include?(product.id)
+  def bought_products?(products)
+    (@bought_product_ids & products.map(&:id)).present?
   end
 
   def can_play_video?(video)
