@@ -31,7 +31,18 @@ class RecordType < ActiveRecord::Base
   # Looks for the RecordType by name and object type
   def self.find_in_salesforce_by_name_and_object_type(name, object_type)
     return nil if name.blank? || object_type.blank?
-    salesforce_api.client.query("select Id from #{sobject_name} where Name = " \
-      "'#{name}' and SobjectType = '#{object_type}'").first
+    hash = Rails.cache.fetch(
+      "#{sobject_name}/#{object_type}/#{name}", expires_in: 1.day) do
+      query_salesforce_by_name_and_object_type(name, object_type)
+    end
+    hash && Hashie::Mash.new(hash)
+  end
+
+  def self.query_salesforce_by_name_and_object_type(name, object_type)
+    salesforce_api.capture_net_errors do
+      salesforce_api.client.query("select Id from #{sobject_name} where " \
+        "Name = '#{name}' and SobjectType = '#{object_type}'").try(:first)
+        .try(:to_hash)
+    end
   end
 end
