@@ -37,6 +37,10 @@ class Spree::LicensedProduct < ActiveRecord::Base
     distribution
   end
 
+  def distribute_one_license_to_self
+    distribute_license(self)
+  end
+
   def increase_quantity!(_quantity)
     update(quantity: self.quantity + _quantity)
   end
