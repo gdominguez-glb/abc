@@ -28,6 +28,7 @@ en:
     could_not_change_to_self: "Already logged in as %{email}"
   logged_in_as_user: "Now logged in as %{email}"
   spree:
+    available_on: For Sale Date
     purchase_from_partner: "Purchase From Partner"
     purchase_order: "Purchase Order"
     bundles:
@@ -67,3 +68,5 @@ en:
     attributes:
       spree/purchase_order:
         po_number: "PO #"
+      spree/product:
+        available_on: 'For Sale Date'
