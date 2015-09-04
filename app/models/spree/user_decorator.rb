@@ -161,13 +161,13 @@ Spree::User.class_eval do
 
   def managed_products
     @managed_products ||= begin
-      product_ids = licensed_products.pluck(:product_id) + product_distributions.pluck(:product_id)
+      product_ids = licensed_products.distributable.pluck(:product_id) + product_distributions.pluck(:product_id)
       Spree::Product.where(id: product_ids).order("name asc")
     end
   end
 
   def purchased_licenses_count(product)
-    distributed_licenses_count(product) + licensed_products.where(product_id: product.id).sum(:quantity)
+    distributed_licenses_count(product) + licensed_products.distributable.where(product_id: product.id).sum(:quantity)
   end
 
   def distributed_licenses_count(product)

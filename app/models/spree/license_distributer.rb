@@ -4,7 +4,7 @@ class Spree::LicenseDistributer
     @file       = attrs[:file]
     @product_id = attrs[:product_id]
 
-    @licensed_products = @user.licensed_products.available.where(product_id: @product_id).to_a
+    @licensed_products = @user.licensed_products.distributable.available.where(product_id: @product_id).to_a
   end
 
   def distribute

@@ -12,7 +12,7 @@ class AssignLicensesForm
   validates :licenses_number, presence: true, numericality: { greater_than: 0 }
 
   def perform
-    licensed_products = @user.licensed_products.where(product_id: @product_id).to_a
+    licensed_products = @user.licensed_products.distributable.where(product_id: @product_id).to_a
     emails.each do |email|
       user_or_email = Spree::User.find_by(email: email) || email
       current_licenses_number = @licenses_number.to_i
