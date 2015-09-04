@@ -42,6 +42,10 @@ class Spree::ProductDistribution < ActiveRecord::Base
     self.update(quantity: (quantity - 1))
   end
 
+  def self.assign_distributions(user)
+    Spree::ProductDistribution.where(from_email: user.email).update_all(from_user_id: user.id)
+  end
+
   private
 
   def assign_email

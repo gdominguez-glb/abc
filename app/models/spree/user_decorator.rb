@@ -105,7 +105,7 @@ Spree::User.class_eval do
 
   before_create :assign_user_role
 
-  after_create :assign_licenses
+  after_create :assign_licenses, :assign_distributions
 
   def licensed_products_from(school_district_admin)
     licensed_products.joins(:product).joins(:product_distribution).where({spree_product_distributions: { from_user_id: school_district_admin.id }}).uniq
@@ -153,6 +153,10 @@ Spree::User.class_eval do
 
   def assign_licenses
     Spree::LicensedProduct.assign_license_to(self)
+  end
+
+  def assign_distributions
+    Spree::ProductDistribution.assign_distributions(self)
   end
 
   def require_shool_district?
