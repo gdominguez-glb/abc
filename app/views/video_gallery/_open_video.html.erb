@@ -14,9 +14,9 @@
           <%= link_to 'MORE INFO', show_description_video_gallery_path(video), remote: true, class: 'more-info' %>
         <% end %>
       </div>
-      <%= link_to spree.favorite_product_path(video.product, ref_id: "#fav-button-#{video.id}"), remote: true, class: "btn favorite-button btn-default #{'disabled' if favorited_product?(video.product)}", style: 'display: block;', id: "fav-button-#{video.id}", data: { method: :post } do %>
-          Add to Favorites
-      <% end %>
+      <%# <%= link_to spree.favorite_product_path(video.product, ref_id: "#fav-button-#{video.id}"), remote: true, class: "btn favorite-button btn-default #{'disabled' if favorited_product?(video.product)}", style: 'display: block;', id: "fav-button-#{video.id}", data: { method: :post } do %1> %>
+      <%#     Add to Favorites %>
+      <%# <% end %1> %>
     </div>
   </div>
   <%=  %>

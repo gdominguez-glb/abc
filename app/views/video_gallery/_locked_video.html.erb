@@ -15,7 +15,7 @@
         <%= link_to 'MORE INFO', show_description_video_gallery_path(video), remote: true, class: 'more-info' %>
       <% end %>
     </div>
-    <%= link_to spree.product_path(video.product), class: 'btn btn-primary unblock-button', style: 'display: block;' do %>
+    <%= link_to unlock_video_gallery_path(video), class: 'btn btn-primary unblock-button', style: 'display: block;', remote: true do %>
       Unlock Content
     <% end %>
   </div>

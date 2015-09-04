@@ -36,7 +36,7 @@
 //<![CDATA[
   (function($){
     $(document).ready(function () {
-      set_taxon_select('#video_taxon_ids')
+      set_taxon_select('#video_taxon_ids');
     });
    $("#video_video_group_name").select2({
       placeholder: "Select video group name",
@@ -58,9 +58,7 @@
             per_page: 50,
             page: page,
             without_children: true,
-            q: {
-              name_cont: term
-            },
+            q: term,
             token: Spree.api_key
           };
         },

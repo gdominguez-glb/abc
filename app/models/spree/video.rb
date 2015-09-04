@@ -1,5 +1,4 @@
 class Spree::Video < ActiveRecord::Base
-  belongs_to :product, class_name: 'Spree::Product'
   belongs_to :video_group, class_name: 'Spree::VideoGroup'
 
   validates_presence_of :title
@@ -19,7 +18,15 @@ class Spree::Video < ActiveRecord::Base
 
   before_save :set_video_group
 
+  after_initialize do
+    self.video_group_name = self.video_group.try(:name)
+  end
+
   # after_save :analyze_taxons
+
+  def products
+    video_group.try(:products) || []
+  end
 
   def analyze_taxons
     title = self.title.gsub('_', ' ')

@@ -41,6 +41,7 @@ Rails.application.routes.draw do
     member do
       get :show_description
       get :play
+      get :unlock
     end
   end
 
