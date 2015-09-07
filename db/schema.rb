@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150907074412) do
+ActiveRecord::Schema.define(version: 20150907124718) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -526,13 +526,6 @@ ActiveRecord::Schema.define(version: 20150907074412) do
   end
 
   add_index "spree_digitals", ["variant_id"], name: "index_spree_digitals_on_variant_id", using: :btree
-
-  create_table "spree_favorite_products", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "product_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "spree_gateways", force: :cascade do |t|
     t.string   "type"

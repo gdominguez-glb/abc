@@ -139,33 +139,6 @@
   }
 }
 
-.favorites-products {
-  .favorites-products-head {
-    margin: 10px 0;
-    .title {
-      font-size: 16px;
-    }
-  }
-
-  .product-wrapper {
-    position: relative;
-    .favorite-star {
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 0;
-      height: 0;
-      border-left: 40px solid transparent;
-      border-top: 40px solid #000;
-      .glyphicon {
-        color: #fff;
-        top: -35px;
-        right: 15px;
-      }
-    }
-  }
-}
-
 .history-list-wrapper {
   .history-list-head {
     margin: 20px 0;

@@ -90,7 +90,6 @@ Spree::User.class_eval do
   belongs_to :school_district
 
   has_many :completed_orders, -> { where.not(completed_at: nil) }, class_name: 'Spree::Order'
-  has_many :favorite_products, class_name: 'Spree::FavoriteProduct'
   has_many :licensed_products, -> { available }, class_name: 'Spree::LicensedProduct'
   has_many :products, through: :licensed_products, class_name: 'Spree::Product'
   has_many :materials, -> { uniq }, through: :products, class_name: 'Spree::Material'
@@ -134,10 +133,6 @@ Spree::User.class_eval do
 
   def full_name
     [first_name, last_name].compact.join(' ')
-  end
-
-  def favorited_product?(product)
-    !!favorite_products.where(product_id: product.id).first
   end
 
   if !defined?(USER_TITLES)
