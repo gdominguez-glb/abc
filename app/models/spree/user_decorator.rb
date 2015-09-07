@@ -100,6 +100,7 @@ Spree::User.class_eval do
   has_many :activities
   has_many :download_jobs
   has_many :product_tracks
+  has_many :bookmarks
 
   accepts_nested_attributes_for :school_district, reject_if: proc { |attributes| attributes['name'].blank? }
 

@@ -35,4 +35,6 @@ namespace :account do
       post :read
     end
   end
+
+  resources :bookmarks
 end
