@@ -195,3 +195,12 @@ section {
 @media (min-width: $screen-xs-min) {
   @include make-grid(xsl);
 }
+
+.col-xsl-4,
+.col-xsl-6 {
+  padding: 0 30px;
+
+  @media screen and (min-width: $screen-xs-min) {
+    padding: 0;
+  }
+}
