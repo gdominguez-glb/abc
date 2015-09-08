@@ -61,14 +61,6 @@ body.dragging, body.dragging * {
   user-select: none;
 }
 
-.container {
-  width: 85%;
-
-  @media screen and (max-width: 769px) {
-    width: 98%;
-  }
-}
-
 .overlay {
   position: absolute;
   top: 0;
@@ -202,11 +194,6 @@ section {
 
 .coral-text {
   color: $coral;
-}
-
-.container {
-  width: 100%;
-  margin: 0;
 }
 
 // Custom grid breakpoint for devices between xs and sm
