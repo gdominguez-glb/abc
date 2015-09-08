@@ -177,6 +177,19 @@ section {
   padding: 60px 0;
   @include clearfix;
 
+  &.with-img-full {
+    padding-bottom: 0;
+
+    @media screen and (min-width: $screen-xs-min) {
+      padding-bottom: 60px;
+    }
+
+  }
+
+  .img-full {
+    min-width: 100%;
+  }
+
   h1, h2, h3, h4, h5, h6, p {
     margin: 0 0 30px;
   }
@@ -191,6 +204,11 @@ section {
   color: $coral;
 }
 
+.container {
+  width: 100%;
+  margin: 0;
+}
+
 // Custom grid breakpoint for devices between xs and sm
 @media (min-width: $screen-xs-min) {
   @include make-grid(xsl);
@@ -199,8 +217,19 @@ section {
 .col-xsl-4,
 .col-xsl-6 {
   padding: 0 30px;
+  text-align: center;
 
   @media screen and (min-width: $screen-xs-min) {
     padding: 0;
+    text-align: left;
   }
+
+  &.with-img-full {
+    padding: 0;
+
+    @media screen and (min-width: $screen-xs-min) {
+      padding: 0 30px;
+    }
+  }
+
 }
