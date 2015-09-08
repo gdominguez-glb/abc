@@ -19,7 +19,10 @@ module Spree
           render :new and return
         end
         if licensed_products.all?{|lp| lp.valid? }
-          licensed_products.each{|lp| lp.save}
+          licensed_products.each do |lp|
+            lp.save
+            lp.distribute_one_license_to_self if lp.quantity > 1
+          end
           redirect_to spree.admin_licensed_products_path
         else
           @licensed_product = licensed_products.first
@@ -30,7 +33,7 @@ module Spree
       def import
         if request.post?
           result = Spree::LicenseImporter.new(params[:file]).import
-          if result.empty?
+          if result[:success]
             redirect_to spree.admin_licensed_products_path, notice: 'Imported successfully'
           else
             flash[:error] = result[:error]

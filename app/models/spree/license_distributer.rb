@@ -4,7 +4,7 @@ class Spree::LicenseDistributer
     @file       = attrs[:file]
     @product_id = attrs[:product_id]
 
-    @licensed_products = @user.licensed_products.available.where(product_id: @product_id).to_a
+    @licensed_products = @user.licensed_products.distributable.available.where(product_id: @product_id).to_a
   end
 
   def distribute
@@ -18,7 +18,8 @@ class Spree::LicenseDistributer
     end
     return { success: false, error: "Invalid rows" } if license_rows.empty?
     return { success: false, error: "Invalid licenses number " } if !validate_license_quantity(license_rows)
-    distribute_licenses(license_rows)
+    distributions = distribute_licenses(license_rows)
+    distribute_license_to_self(distributions)
     { success: true }
   end
 
@@ -50,6 +51,7 @@ class Spree::LicenseDistributer
     Spree::ProductDistribution.transaction do
       records.each{|r| r.save }
     end
+    records
   end
 
   def construct_distribution(row)
@@ -86,5 +88,11 @@ class Spree::LicenseDistributer
 
   def valid_header?(header)
     header.map(&:downcase) == ['email', 'product_id', 'quantity']
+  end
+
+  def distribute_license_to_self(distributions)
+    distributions.select{|d| d.quantity > 1}.each do |distribution|
+      distribution.distribute_license_to_self
+    end
   end
 end

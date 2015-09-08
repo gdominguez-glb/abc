@@ -36,6 +36,11 @@ Spree::User.class_eval do
       'Email' => email }
   end
 
+  def new_attributes_for_salesforce
+    school_district.try(:salesforce_reference).try(:reload)
+    super
+  end
+
   def self.matches_salesforce_object(sfo)
     matches = super(sfo)
     return matches if matches.present?
@@ -78,14 +83,15 @@ Spree::User.class_eval do
 
   # add any other characters you'd like to disallow inside the [ brackets ]
   # metacharacters [, \, ^, $, ., |, ?, *, +, (, and ) need to be escaped with a \
-  validates :first_name, :last_name, presence: true, format: { with: /\A[^0-9`!@#\$%\^&*+_=]+\z/ }
+  validates :first_name, :last_name, presence: true, format: {
+    with: /\A[^0-9`!@#\$%\^&*+_=]+\z/, allow_blank: true
+  }
 
   belongs_to :school_district
 
   has_many :completed_orders, -> { where.not(completed_at: nil) }, class_name: 'Spree::Order'
-  has_many :favorite_products, class_name: 'Spree::FavoriteProduct'
   has_many :licensed_products, -> { available }, class_name: 'Spree::LicensedProduct'
-  has_many :products, through: :licensed_products, class_name: 'Spree::Product'
+  has_many :products, -> { fulfillmentable }, through: :licensed_products, class_name: 'Spree::Product'
   has_many :materials, -> { uniq }, through: :products, class_name: 'Spree::Material'
   has_many :product_distributions, foreign_key: :from_user_id, class_name: 'Spree::ProductDistribution'
   has_many :to_users, -> { uniq }, through: :product_distributions, class_name: 'Spree::User'
@@ -93,12 +99,13 @@ Spree::User.class_eval do
   has_many :activities
   has_many :download_jobs
   has_many :product_tracks
+  has_many :bookmarks
 
   accepts_nested_attributes_for :school_district, reject_if: proc { |attributes| attributes['name'].blank? }
 
   before_create :assign_user_role
 
-  after_create :assign_licenses
+  after_create :assign_licenses, :assign_distributions
 
   def licensed_products_from(school_district_admin)
     licensed_products.joins(:product).joins(:product_distribution).where({spree_product_distributions: { from_user_id: school_district_admin.id }}).uniq
@@ -128,10 +135,6 @@ Spree::User.class_eval do
     [first_name, last_name].compact.join(' ')
   end
 
-  def favorited_product?(product)
-    !!favorite_products.where(product_id: product.id).first
-  end
-
   if !defined?(USER_TITLES)
     USER_TITLES = ['Teacher', 'Administrator', 'Parent', 'Administrative Assistant', 'Homeschooler'].freeze
 
@@ -148,19 +151,23 @@ Spree::User.class_eval do
     Spree::LicensedProduct.assign_license_to(self)
   end
 
+  def assign_distributions
+    Spree::ProductDistribution.assign_distributions(self)
+  end
+
   def require_shool_district?
     ['Teacher', 'Administrative Assistant', 'Administrator'].include?(self.title)
   end
 
   def managed_products
     @managed_products ||= begin
-      product_ids = licensed_products.pluck(:product_id) + product_distributions.pluck(:product_id)
+      product_ids = licensed_products.distributable.pluck(:product_id) + product_distributions.pluck(:product_id)
       Spree::Product.where(id: product_ids).order("name asc")
     end
   end
 
   def purchased_licenses_count(product)
-    distributed_licenses_count(product) + licensed_products.where(product_id: product.id).sum(:quantity)
+    distributed_licenses_count(product) + licensed_products.distributable.where(product_id: product.id).sum(:quantity)
   end
 
   def distributed_licenses_count(product)

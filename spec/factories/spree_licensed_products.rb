@@ -7,5 +7,6 @@ FactoryGirl.define do
     user { create(:gm_user) }
     product
     quantity 1
+    can_be_distributed true
   end
 end

@@ -15,15 +15,15 @@
   </div>
   <div class="videos-wrapper clearfix">
     <div class="content sidebar-left responsive-sidebar">
-      <% if @video_products.blank? %>
+      <% if @videos.blank? %>
         <div class="video-empty-state">
           <h1>Uh Oh!</h1>
           <h3>We couldn't find any videos for you</h3>
           <h3>Please search again</h3>
         </div>
       <% else %>
-        <% @video_products.each do |video_product| %>
-          <%= render partial: 'video_product', locals: { video_product: video_product } %>
+        <% @videos.each do |video| %>
+          <%= render partial: 'video', locals: { video: video } %>
         <% end %>
       <% end %>
     </div>

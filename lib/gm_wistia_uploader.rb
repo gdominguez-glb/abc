@@ -13,6 +13,14 @@ class GmWistiaUploader
     })
   end
 
+  def upload_video(video)
+    upload({
+      url:         video.file.expiring_url(60*60*24*7),
+      name:        video.title,
+      description: video.description
+    })
+  end
+
   def upload(options={})
     raise "Must specify url to upload" if options[:url].blank?
     params = {

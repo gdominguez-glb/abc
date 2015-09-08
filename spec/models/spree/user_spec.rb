@@ -8,7 +8,6 @@ RSpec.describe Spree::User do
   it { should belong_to(:school_district) }
   it { should have_many(:completed_orders).class_name('Spree::Order') }
   it { should have_many(:products).class_name('Spree::Product') }
-  it { should have_many(:favorite_products).class_name('Spree::FavoriteProduct') }
   it { should have_many(:licensed_products).class_name('Spree::LicensedProduct') }
   it { should have_many(:notifications) }
   it { should have_many(:activities) }
@@ -48,19 +47,6 @@ RSpec.describe Spree::User do
   describe "#full_name" do
     it "combind first and last name" do
       expect(user.full_name).to eq("John Doe")
-    end
-  end
-
-  describe "#favorited_product?" do
-    let(:product) { create(:product) }
-
-    it "return true if user favorited product" do
-      create(:spree_favorite_product, product: product, user: user)
-      expect(user.favorited_product?(product)).to eq(true)
-    end
-
-    it "return false if user hasn't favorited the product" do
-      expect(user.favorited_product?(product)).to eq(false)
     end
   end
 end

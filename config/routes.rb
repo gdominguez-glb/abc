@@ -25,6 +25,11 @@ Rails.application.routes.draw do
                            sign_out: 'logout'
                          }
 
+  devise_scope :user do
+    get 'become/:id', action: 'become',
+                      controller: 'spree/user_sessions', as: 'become'
+  end
+
   get 'contact', to: 'contact#index'
 
   get 'search', to: 'search#index'
@@ -36,10 +41,8 @@ Rails.application.routes.draw do
     member do
       get :show_description
       get :play
-    end
-    collection do
-      get :s3_videos
-      get :hosting_videos
+      get :unlock
+      post :bookmark
     end
   end
 
@@ -79,6 +82,7 @@ Rails.application.routes.draw do
     member do
       get :download
       get :download_all
+      get :preview
     end
   end
 

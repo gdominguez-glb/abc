@@ -1,9 +1,9 @@
-<% if @video_product %>
+<% if @video %>
   $("body").append("<%= escape_javascript(render 'video_modal') %>");
-  $(".video-product-play-modal-<%= @video_product.id %>").on("hidden.bs.modal", function() {
-    $(".video-product-play-modal-<%= @video_product.id %>").remove();
+  $(".video-play-modal-<%= @video.id %>").on("hidden.bs.modal", function() {
+    $(".video-play-modal-<%= @video.id %>").remove();
   })
-  $(".video-product-play-modal-<%= @video_product.id %>").modal('show');
+  $(".video-play-modal-<%= @video.id %>").modal('show');
   $('.mejs-player').mediaelementplayer();
 <% else %>
   alert('Please buy the video first!')

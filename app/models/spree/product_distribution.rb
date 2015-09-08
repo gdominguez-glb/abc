@@ -8,6 +8,8 @@ class Spree::ProductDistribution < ActiveRecord::Base
 
   validates_presence_of :from_user, :product, :licensed_product
 
+  attr_accessor :can_be_distributed
+
   before_save :assign_email
 
   after_create :distribute_license
@@ -26,6 +28,24 @@ class Spree::ProductDistribution < ActiveRecord::Base
     Spree::ProductDistribution.joins(:product).where(from_user_id: from_user.id, email: email).uniq
   end
 
+  def distribute_to_self
+    Spree::ProductDistribution.create(
+      from_user: to_user,
+      from_email: from_email,
+      to_user: to_user,
+      email: email,
+      product: product,
+      licensed_product: self.distributed_licensed_product,
+      quantity: 1,
+      can_be_distributed: false
+    )
+    self.update(quantity: (quantity - 1))
+  end
+
+  def self.assign_distributions(user)
+    Spree::ProductDistribution.where(from_email: user.email).update_all(from_user_id: user.id)
+  end
+
   private
 
   def assign_email
@@ -42,7 +62,8 @@ class Spree::ProductDistribution < ActiveRecord::Base
       quantity: self.quantity,
       product: self.product,
       expire_at: self.expire_at,
-      product_distribution: self
+      product_distribution: self,
+      can_be_distributed: (self.can_be_distributed || false)
     )
   end
 end

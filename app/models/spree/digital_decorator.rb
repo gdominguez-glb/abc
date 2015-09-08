@@ -31,9 +31,9 @@ Paperclip::Attachment.class_eval do
 end
 
 Spree::Digital.class_eval do
-  def post_flush_writes
-    WistiaWorker.perform_async(self.id) if self.wistia_id.blank?
-  end
+  # def post_flush_writes
+  #   WistiaWorker.perform_async(self.id) if self.wistia_id.blank?
+  # end
 
   def wistia_ready?
     wistia_status == 'ready'

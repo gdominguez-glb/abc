@@ -1,14 +1,14 @@
-<div class="modal fade video-product-play-modal video-product-play-modal-<%= @video_product.id %>" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+<div class="modal fade video-play-modal video-play-modal-<%= @video.id %>" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
       </div>
       <div class="modal-body">
-        <% if @video_product.wistia_ready? %>
-          <iframe src="http://fast.wistia.net/embed/iframe/<%= @video_product.video_id %>" width="850" height="478" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+        <% if @video.wistia_ready? %>
+          <iframe src="http://fast.wistia.net/embed/iframe/<%= @video.wistia_hashed_id %>" width="850" height="478" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
         <% else %>
-          <video class="mejs-player" src="<%= raw @video_product.video_s3_url %>" width="100%" max-width="850" height="478"></video>
+          <video class="mejs-player" src="<%= @video.s3_url.html_safe %>" width="100%" max-width="850" height="478"></video>
         <% end %>
       </div>
     </div>

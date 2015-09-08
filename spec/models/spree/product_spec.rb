@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Spree::Product, type: :model do
+  it { should belong_to(:video_group).class_name('Spree::VideoGroup') }
+
   describe "#free?" do
     let(:free_product) { create(:product, price: 0) }
     let(:paid_product) { create(:product, price: 123.0)}

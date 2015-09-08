@@ -1,0 +1,9 @@
+<% if @video.products.length == 1 %>
+  window.location.href = "<%= spree.product_path(@video.products.first) %>";
+<% else %>
+  $('body').append("<%= escape_javascript(render 'choose_products_modal') %>");
+  $('#choose-products-modal').modal('show');
+  $('#choose-products-modal').on('hidden.bs.modal', function (e) {
+    $('#choose-products-modal').remove();
+  });
+<% end %>

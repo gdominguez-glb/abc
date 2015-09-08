@@ -1,6 +1,7 @@
 spree_routes_overrides = Proc.new do
   namespace :admin do
     resources :videos
+    resources :video_groups, only: [:index, :create]
 
     resources :curriculums do
       collection do
@@ -57,7 +58,6 @@ spree_routes_overrides = Proc.new do
     end
   end
   patch '/simple_cart', :to => 'orders#update_simple_cart', :as => :update_simple_cart
-  post '/products/:id/favorite', to: 'products#favorite', as: :favorite_product
   get '/add_products_to_cart', to: 'orders#add_products_to_cart', as: :add_products_to_cart
 end
 if Rails.env.development?

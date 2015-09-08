@@ -3,13 +3,22 @@ Spree::Order.class_eval do
   def create_licensed_products!
     self.line_items.each do |line_item|
       product = line_item.variant.product
-      Spree::LicensedProduct.create!(
-        order: self,
-        user: self.user,
-        product: product,
-        quantity: line_item.quantity
-      )
+      products_to_license = product.parts.empty? ? [product] : product.parts
+      products_to_license.each do |product|
+        licensed_product = Spree::LicensedProduct.create!(
+          order: self,
+          user: self.user,
+          product: product,
+          quantity: line_item.quantity
+        )
+        check_distributable_licenses(licensed_product)
+      end
     end
+  end
+
+  def check_distributable_licenses(licensed_product)
+    return if licensed_product.quantity == 1
+    licensed_product.distribute_one_license_to_self
   end
 
   def log_purchase_activity!

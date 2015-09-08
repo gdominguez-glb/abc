@@ -9,8 +9,9 @@
         <label>Email Address</label>
         <%= f.email_field :email, :class => 'form-control', :placeholder => Spree.t(:email), tabindex: 3 %>
       </div>
-      <div class="form-group">
-        <label>Subject you are interested in</label>
+      <label>Subject</label>
+      <div class="form-group select-container dark-select block">
+        <span>Subject you are interested in</span>
         <%= f.select :interested_subject, options_for_select(Spree::User::SUBJECTS, f.object.interested_subject), { prompt: 'Please select interested subject' }, { class: 'form-control', tabindex: 5 } %>
       </div>
     </div>
@@ -23,83 +24,92 @@
         <label>Password</label>
         <%= f.password_field :password, :class => 'form-control', :placeholder => Spree.t(:password), tabindex: 4 %>
       </div>
-      <div class="form-group">
-        <label>Select your Role</label>
+      <label>Role</label>
+      <div class="form-group select-container dark-select block">
+        <span>Select your Role</span>
         <%= f.select :title, options_for_select(USER_TITLES, f.object.title), { prompt: 'Please select your role' }, { class: 'form-control', tabindex: 6 } %>
       </div>
     </div>
   </div>
   <hr />
 </fieldset>
-<div class="school-district-details">
+<div class="school-district-details collapse">
   <h2>Let's get some specifics about your school</h2>
-  <div class="form-group school-district">
-    <label>District State</label>
-    <% f.object.school_district ||= SchoolDistrict.new(place_type: 'school') %>
-    <%= f.fields_for :school_district do |school_district_form| %>
-      <%= school_district_form.collection_select :state_id, Spree::Country.find_by(iso: 'US').states, :id, :name, { prompt: true } , { class: 'form-control' } %>
-    <% end %>
-  </div>
-  <div class="form-group">
-    <label>Is this a school or a district</label>
-    <div class="radio">
-      <%= f.fields_for :school_district do |school_district_form| %>
+  <div id="schoolDistrictSelect">
+    <p>Is this a school or a district?</p>
+    <div class="form-group">
+      <div class="radio">
+        <% f.object.school_district ||= SchoolDistrict.new(place_type: 'school') %>
+        <%= f.fields_for :school_district do |school_district_form| %>
+          <label>
+          <%= school_district_form.radio_button :place_type, 'school' %>
+          This is a School
+        </label>
         <label>
-        <%= school_district_form.radio_button :place_type, 'school' %>
-        This is a School
-      </label>
-      <label>
-        <%= school_district_form.radio_button :place_type, 'district' %>
-        This is Multiple Schools/District
-      </label>
-    <% end %>
+          <%= school_district_form.radio_button :place_type, 'district' %>
+          This is Multiple Schools/District
+        </label>
+      <% end %>
+      </div>
     </div>
   </div>
-  <div class="form-group school-district">
-    <label>Select School District</label>
-    <%= f.collection_select :school_district_id, SchoolDistrict.school, :id, :name, { prompt: 'Please select your school' }, { class: 'form-control', tabindex: 7 } %>
+  <div class="row">
+    <div class="col-md-6">
+      <label>State</label>
+      <div class="form-group school-district select-container dark-select block">
+        <span>Select a State</span>
+        <%= f.fields_for :school_district do |school_district_form| %>
+          <%= school_district_form.collection_select :state_id, Spree::Country.find_by(iso: 'US').states, :id, :name, { prompt: true } , { class: 'form-control' } %>
+        <% end %>
+      </div>
+    </div>
   </div>
-  <div class="add-district">
-    <a class="btn btn-primary add-district-button">
-      <span class="text show-prompt">I don't see my school district</span>
-      <span class="close">X</span>
-    </a>
+  <div class="row collapse fade" id="rowDistrictSelect">
+    <div class="col-md-6">
+      <div class="form-group school-district select-container dark-select block">
+        <span>Select a District</span>
+        <%= f.collection_select :school_district_id, SchoolDistrict.district, :id, :name, { prompt: 'Select a District' }, { class: 'form-control', tabindex: 7 } %>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <button type="button" class="btn btn-primary btn-block" id="districtNotListed">District Not Listed</button>
+    </div>
   </div>
-  <div class="form-group add-district-field">
-    <label>Add School/District Name</label>
+  <div class="row collapse in fade" id="rowSchoolSelect">
+    <div class="col-md-6">
+      <div class="form-group school-district select-container dark-select block">
+        <span>Select a School</span>
+        <%= f.collection_select :school_district_id, SchoolDistrict.school, :id, :name, { prompt: 'Select a School' }, { class: 'form-control', tabindex: 7 } %>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <button type="button" class="btn btn-primary btn-block" id="schoolNotListed">School Not Listed</button>
+    </div>
+  </div>
+  <div class="input-group add-district-field collapse fade" id="rowAddDistrict">
+    <% f.object.school_district ||= SchoolDistrict.new(place_type: 'district') %>
+    <%= f.fields_for :school_district do |school_district_form| %>
+      <%= school_district_form.text_field :name, class: 'form-control school-district-control', placeholder: 'New District Name' %>
+    <% end %>
+    <span class="input-group-btn">
+      <button
+        type="button"
+        class="btn btn-primary btn-block"
+        id="closeAddDistrict">X</button>
+      </div>
+    </span>
+  </div>
+  <div class="input-group add-school-field collapse fade" id="rowAddSchool">
     <% f.object.school_district ||= SchoolDistrict.new(place_type: 'school') %>
     <%= f.fields_for :school_district do |school_district_form| %>
-      <%= school_district_form.text_field :name, class: 'form-control school-district-control', placeholder: 'New School/District Name' %>
+      <%= school_district_form.text_field :name, class: 'form-control school-district-control', placeholder: 'New School Name' %>
     <% end %>
+    <span class="input-group-btn">
+      <button
+        type="button"
+        class="btn btn-primary"
+        id="closeAddSchool">X</button>
+    </span>
   </div>
 </div>
 <div data-hook="signup_below_password_fields"></div>
-<script type="text/javascript">
-//<![CDATA[
-  (function($){
-    var schoolOptions = "<%= escape_javascript('<option>Please select your school</option>'.html_safe + options_from_collection_for_select(SchoolDistrict.school, :id, :name)) %>";
-    var districtOptions = "<%= escape_javascript('<option>Please select your district</option>'.html_safe + options_from_collection_for_select(SchoolDistrict.district, :id, :name)) %>";
-
-    $(".school-district-input-toggle").click(function(){
-      $('.school-district-control').show();
-      $(".school-district-input-toggle").hide();
-      $("select[name='spree_user[school_district_id]']").val(null);
-    });
-    $("select[name='spree_user[school_district_id]']").change(function(){
-      var value = $(this).val();
-      if(value) {
-        $('.school-district-control').hide();
-        $(".school-district-input-toggle").show();
-      }
-    });
-    $("input[name='spree_user[school_district_attributes][place_type]'").change(function(){
-      var selection = $(this).val();
-      if (selection == 'school') {
-        $("select[name='spree_user[school_district_id]']").html(schoolOptions);
-      } else if (selection == 'district') {
-        $("select[name='spree_user[school_district_id]']").html(districtOptions);
-      }
-    });
-  })(jQuery);
-//]]>
-</script>

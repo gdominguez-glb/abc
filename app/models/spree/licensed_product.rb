@@ -6,6 +6,7 @@ class Spree::LicensedProduct < ActiveRecord::Base
 
   scope :available, -> { where("(spree_licensed_products.expire_at is null or spree_licensed_products.expire_at > ?) and (spree_licensed_products.quantity > 0)", Time.now).order("expire_at asc") }
   scope :expire_in_days, ->(days) { where("date(expire_at) = ?", days.days.since.to_date) }
+  scope :distributable, ->{ where(can_be_distributed: true) }
 
   validates_presence_of :product
   validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, allow_blank: true
@@ -30,7 +31,15 @@ class Spree::LicensedProduct < ActiveRecord::Base
     else
       distribution.increase_quantity!(quantity)
     end
+    if distribution.quantity > 1
+      distribution.distribute_to_self
+    end
     distribution
+  end
+
+  def distribute_one_license_to_self
+    update(can_be_distributed: true)
+    distribute_license(self)
   end
 
   def increase_quantity!(_quantity)

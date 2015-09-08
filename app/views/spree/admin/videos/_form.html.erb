@@ -1,9 +1,9 @@
 <div data-hook="admin_video_form_fields" class="row">
   <div class="col-md-6">
-    <%= f.field_container :product, class: ['form-group'] do %>
-      <%= f.label :product, Spree.t(:product) %>
-      <%= f.text_field :product_id, :class => 'form-control' %>
-      <%= error_message_on :video, :product %>
+    <%= f.field_container :video_group, class: ['form-group'] do %>
+      <%= f.label :video_group, Spree.t(:video_group) %>
+      <%= f.text_field :video_group_name, :class => 'form-control' %>
+      <%= error_message_on :video, :video_group_name %>
     <% end %>
     <%= f.field_container :title, class: ['form-group'] do %>
       <%= f.label :title, Spree.t(:title) %>
@@ -36,47 +36,52 @@
 //<![CDATA[
   (function($){
     $(document).ready(function () {
-      set_taxon_select('#video_taxon_ids')
+      set_taxon_select('#video_taxon_ids');
     });
-   $("#video_product_id").select2({
-      placeholder: "Select product",
+   $("#video_video_group_name").select2({
+      placeholder: "Select video group name",
       multiple: false,
       initSelection: function (element, callback) {
-        var url = Spree.url('/storeapi/products', {
+        var url = Spree.url('/store/admin/video_groups', {
           ids: element.val(),
           token: Spree.api_key
         });
         return $.getJSON(url, null, function (data) {
-          return callback(data['products'][0]);
+          return callback(data['video_groups'][0]);
         });
       },
       ajax: {
-        url: '/storeapi/products',
+        url: '/store/admin/video_groups',
         datatype: 'json',
         data: function (term, page) {
           return {
             per_page: 50,
             page: page,
             without_children: true,
-            q: {
-              name_cont: term
-            },
+            q: term,
             token: Spree.api_key
           };
         },
         results: function (data, page) {
           var more = page < data.pages;
           return {
-            results: data['products'],
+            results: data['video_groups'],
             more: more
           };
         }
       },
-      formatResult: function (product) {
-        return product.name;
+      formatResult: function (video_group) {
+        return video_group.name;
       },
-      formatSelection: function (product) {
-        return product.name;
+      formatSelection: function (video_group) {
+        return video_group.name;
+      },
+      createSearchChoice:function(term, data) {
+        if ( $(data).filter( function() {
+          return this.text.localeCompare(term)===0;
+        }).length===0) {
+          return {id:term, name:term};
+        }
       }
    });
   })(jQuery);

@@ -9,44 +9,86 @@ $(document).on("change", ".select-container select", function(){
 // __________________________________________________________________
 
 function shouldShowDistrict(userRole) {
-  var showDistrictDetails = false;
+  var visibleFields = {};
+  visibleFields.showDistrictDetails = false;
 
   switch(userRole) {
     case "Teacher":
-      showDistrictDetails = true;
+      visibleFields.showDistrictDetails = true;
       break;
     case "Administrator":
-      showDistrictDetails = true;
+      visibleFields.showDistrictDetails = true;
       break;
     case "Administrative Assistant":
-      showDistrictDetails = true;
+      visibleFields.showDistrictDetails = true;
       break;
     case "Parent":
       console.log("Hi mom");
       break;
   }
 
-  return showDistrictDetails;
+  return visibleFields;
+}
+
+function schoolSelected(id) {
+  var schoolIsSelected = true;
+
+  switch(id) {
+    case 'spree_user_school_district_attributes_place_type_district':
+      schoolIsSelected = false;
+      break;
+  }
+
+  return schoolIsSelected;
 }
 
 $(document).on("change", "#spree_user_title", function(){
   var userRole = $("#spree_user_title").val();
-  var showDistrictDetails = shouldShowDistrict(userRole);
+  var showVisibleFields = shouldShowDistrict(userRole);
 
-  if(showDistrictDetails) {
-    $(".school-district-details").addClass("show-details");
+  if(showVisibleFields.showDistrictDetails) {
+    $('.school-district-details').collapse('show');
   } else {
-    $(".school-district-details").removeClass("show-details");
+    $('.school-district-details').collapse('hide');
   }
 });
 
-$(document).on("click", ".add-district-button", function(){
-  var buttonText = $(".add-district-button .text");
-  var close = $(".add-district-button .close");
+$(document).on('change', '#schoolDistrictSelect input', function(e) {
+  var schoolIsSelected = schoolSelected(e.currentTarget.id);
+  console.log(e.currentTarget.id);
 
-  $(".add-district-field").toggleClass("show-details");
-  buttonText.toggleClass("show-prompt");
-  close.toggleClass("show-prompt");
+  if(schoolIsSelected) {
+    $('#rowSchoolSelect').collapse('show');
+    $('#rowDistrictSelect').collapse('hide');
+    $('#rowAddDistrict').collapse('hide');
+  } else {
+    $('#rowSchoolSelect').collapse('hide');
+    $('#rowDistrictSelect').collapse('show');
+    $('#rowAddSchool').collapse('hide');
+  }
+
+});
+
+$(document).on('click', '#schoolNotListed', function(e) {
+  $('#rowSchoolSelect select').prop('selectedIndex',0).prev().text('Select a School');
+  $('#rowAddSchool').collapse('show');
+  $('#rowSchoolSelect').collapse('hide');
+});
+
+$(document).on('click', '#districtNotListed', function(e) {
+  $('#rowDistrictSelect select').prop('selectedIndex',0).prev().text('Select a District');
+  $('#rowAddDistrict').collapse('show');
+  $('#rowDistrictSelect').collapse('hide');
+});
+
+$(document).on('click', '#closeAddSchool', function(e) {
+  $('#rowAddSchool').collapse('hide');
+  $('#rowSchoolSelect').collapse('show');
+});
+
+$(document).on('click', '#closeAddDistrict', function(e) {
+  $('#rowAddDistrict').collapse('hide');
+  $('#rowDistrictSelect').collapse('show');
 });
 
 $(function(){

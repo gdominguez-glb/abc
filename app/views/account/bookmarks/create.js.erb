@@ -1,0 +1,5 @@
+<% if current_spree_user %>
+  $("<%= params[:ref_id] %>").addClass('disabled');
+<% else %>
+  alert('please login first.')
+<% end %>
