@@ -26,6 +26,8 @@ Spree::Product.class_eval do
     where.not(id: parts) unless parts.empty?
   }
 
+  scope :saleable, -> { where(for_sale: true) }
+
   def parts?
     parts.any?
   end
