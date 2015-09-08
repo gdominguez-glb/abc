@@ -180,6 +180,11 @@ section {
 
   .img-full {
     min-width: 100%;
+
+    @media screen and (min-width: $screen-xs-min) {
+      float: right;
+      min-width: 50%;
+    }
   }
 
   h1, h2, h3, h4, h5, h6, p {
@@ -207,7 +212,7 @@ section {
   text-align: center;
 
   @media screen and (min-width: $screen-xs-min) {
-    padding: 0;
+    padding: 0 15px;
     text-align: left;
   }
 
