@@ -27,6 +27,7 @@ Spree::Product.class_eval do
   }
 
   scope :saleable, -> { where(for_sale: true) }
+  scope :fulfillmentable, -> { where("fulfillment_date < ? or fulfillment_date is null", Time.now) }
 
   def parts?
     parts.any?
