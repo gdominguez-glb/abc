@@ -190,3 +190,8 @@ section {
 .coral-text {
   color: $coral;
 }
+
+// Custom grid breakpoint for devices between xs and sm
+@media (min-width: $screen-xs-min) {
+  @include make-grid(xsl);
+}
