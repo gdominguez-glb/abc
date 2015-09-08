@@ -23,8 +23,8 @@
       <p>
         <%= @video.description %>
       </p>
-      <%= link_to spree.favorite_product_path(@video, ref_id: "#fav-button-#{@video.id}"), remote: true, class: "btn btn-primary favorite-button #{'disabled' if !can_favorite_product?(@video)}", id: "fav-button-#{@video.id}", data: { method: :post } do %>
-        Add to Favorites
+      <%= link_to bookmark_video_gallery_path(@video, ref_id: "#fav-button-#{@video.id}"), remote: true, class: "btn favorite-button btn-default #{'disabled' if bookmarked_video?(@video) }", style: 'display: block;', id: "fav-button-#{@video.id}", data: { method: :post } do %>
+        Add to Bookmarks
       <% end %>
     </div>
   </div>
