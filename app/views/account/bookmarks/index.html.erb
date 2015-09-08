@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="clearfix">
+        <%= form_tag '', method: :get, id: 'bookmarks-filter-form' do %>
+          <span class="title pull-left">Bookmarks</span>
+          <%# <div class="dropdown pull-right"> %>
+          <%#   Sort by: %>
+          <%#   <%= select_tag :taxonomy_id, options_from_collection_for_select(@taxonomies, :id, :name, params[:taxonomy_id]), include_blank: 'All', class: 'form-control' %1> %>
+          <%# </div> %>
+        <% end %>
+      </div>
+      <div class="row">
+        <% @bookmarks.each do |bookmark| %>
+          <div class="col-md-4">
+            <div>
+              <h4><%= bookmark.bookmarkable.title %></h4>
+              <p><%= bookmark.bookmarkable.categories.join(', ') %></p>
+              <%= link_to 'View Video', video_gallery_path(bookmark.bookmarkable), class: 'btn btn-default'%>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

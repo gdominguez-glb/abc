@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150903112051) do
+ActiveRecord::Schema.define(version: 20150908002539) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -433,6 +433,14 @@ ActiveRecord::Schema.define(version: 20150903112051) do
   add_index "spree_assets", ["viewable_id"], name: "index_assets_on_viewable_id", using: :btree
   add_index "spree_assets", ["viewable_type", "type"], name: "index_assets_on_viewable_type_and_type", using: :btree
 
+  create_table "spree_bookmarks", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "bookmarkable_id"
+    t.string   "bookmarkable_type"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
   create_table "spree_calculators", force: :cascade do |t|
     t.string   "type"
     t.integer  "calculable_id"
@@ -519,13 +527,6 @@ ActiveRecord::Schema.define(version: 20150903112051) do
 
   add_index "spree_digitals", ["variant_id"], name: "index_spree_digitals_on_variant_id", using: :btree
 
-  create_table "spree_favorite_products", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "product_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "spree_gateways", force: :cascade do |t|
     t.string   "type"
     t.string   "name"
@@ -588,6 +589,7 @@ ActiveRecord::Schema.define(version: 20150903112051) do
     t.string   "email"
     t.integer  "product_distribution_id"
     t.boolean  "can_be_distributed",      default: false
+    t.datetime "fulfillment_at"
   end
 
   create_table "spree_line_items", force: :cascade do |t|
@@ -890,6 +892,8 @@ ActiveRecord::Schema.define(version: 20150903112051) do
     t.boolean  "can_be_part",          default: false, null: false
     t.boolean  "individual_sale",      default: true,  null: false
     t.integer  "video_group_id"
+    t.datetime "fulfillment_date"
+    t.boolean  "for_sale",             default: false
   end
 
   add_index "spree_products", ["available_on"], name: "index_spree_products_on_available_on", using: :btree

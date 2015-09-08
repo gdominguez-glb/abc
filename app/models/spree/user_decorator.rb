@@ -90,9 +90,8 @@ Spree::User.class_eval do
   belongs_to :school_district
 
   has_many :completed_orders, -> { where.not(completed_at: nil) }, class_name: 'Spree::Order'
-  has_many :favorite_products, class_name: 'Spree::FavoriteProduct'
   has_many :licensed_products, -> { available }, class_name: 'Spree::LicensedProduct'
-  has_many :products, through: :licensed_products, class_name: 'Spree::Product'
+  has_many :products, -> { fulfillmentable }, through: :licensed_products, class_name: 'Spree::Product'
   has_many :materials, -> { uniq }, through: :products, class_name: 'Spree::Material'
   has_many :product_distributions, foreign_key: :from_user_id, class_name: 'Spree::ProductDistribution'
   has_many :to_users, -> { uniq }, through: :product_distributions, class_name: 'Spree::User'
@@ -100,6 +99,7 @@ Spree::User.class_eval do
   has_many :activities
   has_many :download_jobs
   has_many :product_tracks
+  has_many :bookmarks
 
   accepts_nested_attributes_for :school_district, reject_if: proc { |attributes| attributes['name'].blank? }
 
@@ -133,10 +133,6 @@ Spree::User.class_eval do
 
   def full_name
     [first_name, last_name].compact.join(' ')
-  end
-
-  def favorited_product?(product)
-    !!favorite_products.where(product_id: product.id).first
   end
 
   if !defined?(USER_TITLES)

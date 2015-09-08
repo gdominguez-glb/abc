@@ -3,7 +3,7 @@ class VideoGalleryController < ApplicationController
   before_action :find_video, only: [:show, :show_description, :play, :unlock]
   before_action :load_taxonomies, only: [:index]
 
-  helper_method :bought_products?, :can_play_video?, :favorited_product?, :can_favorite_product?
+  helper_method :bought_products?, :can_play_video?, :bookmarked_video?
 
   def index
     params[:taxon_ids] ||= []
@@ -12,7 +12,6 @@ class VideoGalleryController < ApplicationController
     @videos        = filter_videos(@videos)
 
     @bought_product_ids    = fetch_bought_ids(@videos.map(&:products).flatten.compact)
-    @favorited_product_ids = fetch_favorite_ids(@videos.map(&:products).flatten.compact)
   end
 
   def show
@@ -27,6 +26,11 @@ class VideoGalleryController < ApplicationController
   end
 
   def unlock
+  end
+
+  def bookmark
+    video = Spree::Video.find(params[:id])
+    current_spree_user.bookmarks.create(bookmarkable: video)
   end
 
   private
@@ -58,20 +62,12 @@ class VideoGalleryController < ApplicationController
     video.is_free? || (current_spree_user && current_spree_user.products.find_by(id: video.product.id).present?)
   end
 
-  def favorited_product?(product)
-    @favorited_product_ids.include?(product.id)
-  end
-
-  def can_favorite_product?(product)
-    current_spree_user.blank? ? true : (!current_spree_user.favorite_products.where(product_id: product.id).present?)
+  def bookmarked_video?(video)
+    current_spree_user.bookmarks.where(bookmarkable: video).present?
   end
 
   def fetch_bought_ids(products)
     current_spree_user ? current_spree_user.products.where(id: products.map(&:id)).pluck(:id) : []
-  end
-
-  def fetch_favorite_ids(products)
-    current_spree_user ? current_spree_user.favorite_products.where(product_id: products.map(&:id)).pluck(:product_id) : []
   end
 
   def load_taxonomies

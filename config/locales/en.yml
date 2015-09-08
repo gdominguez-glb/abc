@@ -65,8 +65,12 @@ en:
             destroy: 'Bundled item was not successfully removed.'
 
   activerecord:
+    models:
+      school_district: School/District
     attributes:
       spree/purchase_order:
         po_number: "PO #"
       spree/product:
         available_on: 'For Sale Date'
+      spree/user:
+        school_district: School/District

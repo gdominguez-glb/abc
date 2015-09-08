@@ -2,15 +2,11 @@
   <div class="account-settings">
     <ul class="nav nav-tabs" id="settings-tabs">
       <li role="presentation" class="active"><a href="#profile-information">Profile Information</a></li>
-      <li role="presentation"><a href="#emails-notifications">Emails/Notifications</a></li>
       <li role="presentation"><a href="#payments-details">Payments details</a></li>
     </ul>
     <div class="tab-content">
       <div class="tab-pane active" id="profile-information">
         <%= render 'profile_information' %>
-      </div>
-      <div class="tab-pane" id="emails-notifications">
-        <%= render 'email_notifications' %>
       </div>
       <div class="tab-pane" id="payments-details">
         <%= render 'credit_card' %>
