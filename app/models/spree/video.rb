@@ -18,11 +18,11 @@ class Spree::Video < ActiveRecord::Base
 
   before_save :set_video_group
 
+  after_save :assign_free_taxons
+
   after_initialize do
     self.video_group_name = self.video_group.try(:name)
   end
-
-  # after_save :analyze_taxons
 
   def products
     video_group.try(:products) || []
@@ -82,6 +82,19 @@ class Spree::Video < ActiveRecord::Base
   def set_video_group
     if self.video_group_name.present?
       self.video_group = Spree::VideoGroup.find_or_create_by(name: self.video_group_name)
+    end
+  end
+
+  def assign_free_taxons
+    free_taxon    = Spree::Taxon.find_by(name: 'Free')
+    premium_taxon = Spree::Taxon.find_by(name: 'Premium')
+    return if free_taxon.nil? && premium_taxon.nil?
+    if self.is_free?
+      self.taxons << free_taxon
+      self.taxons.destroy(premium_taxon)
+    else
+      self.taxons << premium_taxon
+      self.taxons.destroy(free_taxon)
     end
   end
 end

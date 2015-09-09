@@ -104,3 +104,10 @@ if Curriculum.count == 0
                       visible: true)
   end
 end
+
+free_taxonomy = Spree::Taxonomy.find_or_create_by(name: 'Free?')
+if free_taxonomy.taxons.count == 1
+  root_free_taxon = free_taxonomy.taxons.first
+  free_taxonomy.taxons.create(parent: root_free_taxon, name: 'Free')
+  free_taxonomy.taxons.create(parent: root_free_taxon, name: 'Premium')
+end
