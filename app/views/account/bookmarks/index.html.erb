@@ -13,11 +13,11 @@
       <div class="row">
         <% @bookmarks.each do |bookmark| %>
           <div class="col-md-4">
-            <div>
-              <h4><%= bookmark.bookmarkable.title %></h4>
-              <p><%= bookmark.bookmarkable.categories.join(', ') %></p>
-              <%= link_to 'View Video', video_gallery_path(bookmark.bookmarkable), class: 'btn btn-default'%>
-            </div>
+            <% if bookmark.bookmarkable.is_a?(Spree::Video) %>
+              <%= render partial: 'video', locals: { video: bookmark.bookmarkable } %>
+            <% elsif bookmark.bookmarkable.is_a?(Spree::Material) %>
+              <%= render partial: 'material', locals: { material: bookmark.bookmarkable } %>
+            <% end %>
           </div>
         <% end %>
       </div>

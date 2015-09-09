@@ -83,6 +83,7 @@ Rails.application.routes.draw do
       get :download
       get :download_all
       get :preview
+      post :bookmark
     end
   end
 

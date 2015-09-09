@@ -1,6 +1,6 @@
 class MaterialsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_material, only: [:download, :preview]
+  before_action :set_material, only: [:download, :preview, :bookmark]
   before_action :set_product, only: [:download_all, :multi_download]
 
   def download
@@ -47,6 +47,10 @@ class MaterialsController < ApplicationController
 
   def preview
     @files_url = @material.material_files.map {|mf| mf.file.preview_expiring_url(60*60*60) }
+  end
+
+  def bookmark
+    current_spree_user.bookmarks.find_or_create_by(bookmarkable: @material)
   end
 
   private
