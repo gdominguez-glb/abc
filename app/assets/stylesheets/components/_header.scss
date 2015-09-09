@@ -11,21 +11,32 @@
 }
 
 .navbar-default {
-  height: auto;
+  height: 50px;
   border: none;
+  margin-bottom: 0;
   background: $dark-blue;
   @include clearfix;
 
-  .navbar-brand {
+  @media screen and (min-width: $screen-md-min) {
     height: auto;
-    padding: 45px;
+  }
+
+  .navbar-brand {
+    height: 50px;
+    padding: 20px 40px;
     background: $brand-green;
     color: $dark-blue;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 1;
 
     &:hover, &:focus {
       background: $brand-green;
+    }
+
+    @media screen and (min-width: $screen-md-min) {
+      height: auto;
+      padding: 45px;
+      font-size: 16px;
     }
   }
 
@@ -103,6 +114,11 @@
   position: relative;
   width: calc(100% - 217px);
   max-height: 600px;
+  background-color: $coral;
+
+  @media screen and (min-width: $screen-md-min) {
+    background-color: $dark-blue;
+  }
 
   @media screen and (max-width: 900px) {
     width: 100%;
@@ -119,6 +135,7 @@
 
     .navbar-nav {
       float: none;
+      margin: 0 -15px;
 
       >li {
         float: none;
@@ -126,7 +143,7 @@
         > a {
           padding: 15px;
           color: #fff;
-          border-top: 2px solid #fff;
+          border-bottom: 2px solid #fff;
           text-align: center;
         }
 
@@ -238,13 +255,13 @@
   border: none;
 
   &.main-nav {
+    display: block;
     position: relative;
-    padding: 15px 45px 91px;
-    font-size: 40px;
+    margin: 4px 15px 16px 0;
     color: $cream;
 
-    @media screen and (max-width: 900px) {
-      display: block;
+    @media screen and (min-width: $screen-md-min) {
+      display: none;
     }
 
     .glyphicon {
@@ -313,19 +330,32 @@
 }
 
 .nav-right-options {
-  position: absolute;
-  top: 0;
-  right: 0;
+  width: 100%;
 
-  @media screen and (max-width: 500px) {
-    width: 100%;
+  @media screen and (min-width: $screen-md-min) {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: auto;
+  }
+
+  .cart {
+    text-align: center;
+
+    @media screen and (min-width: $screen-md-min) {
+      text-align: left;
+    }
   }
 
   li {
-    float: left;
+    display: inline-block;
     padding: 15px 10px;
     color: $cream;
     font-size: 12px;
+
+    @media screen and (min-width: $screen-md-min) {
+      float: left;
+    }
   }
 
   a {

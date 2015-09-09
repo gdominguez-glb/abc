@@ -7,10 +7,14 @@ html, body, .container {
 }
 
 body {
-  padding: 106px 0 0;
+  padding: 50px 0 0;
   color: $dark-blue;
   background: $light-blue;
   @include animation(fade 1s);
+
+  @media screen and (min-width: $screen-md-min) {
+    padding: 106px 0 0;
+  }
 
   &.nav-shown {
 
