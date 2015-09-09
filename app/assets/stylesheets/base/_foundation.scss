@@ -169,22 +169,36 @@ section {
   padding: 60px 0;
   @include clearfix;
 
-  &.with-img-full {
-    padding-bottom: 0;
+  &.container-img-full {
+    padding: 0;
 
-    @media screen and (min-width: $screen-xs-min) {
-      padding-bottom: 60px;
+    .row-img-full {
+      @media screen and (min-width: $screen-xs-min) {
+        display: flex;
+      }
     }
 
-  }
+    .col-no-img {
+      padding: 60px 15px 0;
 
-  .img-full {
-    min-width: 100%;
-
-    @media screen and (min-width: $screen-xs-min) {
-      float: right;
-      min-width: 50%;
+      @media screen and (min-width: $screen-xs-min) {
+        padding: 60px 15px;
+      }
     }
+
+    .col-img-full {
+      flex: 1;
+      min-height: 400px;
+      padding: 0;
+
+      background-position: 0 20%;
+      background-size: cover;
+
+      @media screen and (min-width: $screen-xs-min) {
+        padding: 0 30px;
+      }
+    }
+
   }
 
   h1, h2, h3, h4, h5, h6, p {
@@ -214,14 +228,6 @@ section {
   @media screen and (min-width: $screen-xs-min) {
     padding: 0 15px;
     text-align: left;
-  }
-
-  &.with-img-full {
-    padding: 0;
-
-    @media screen and (min-width: $screen-xs-min) {
-      padding: 0 30px;
-    }
   }
 
 }
