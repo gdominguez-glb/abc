@@ -173,6 +173,11 @@ body.dragging, body.dragging * {
   }
 }
 
+.container-img-full {
+  width: 100%;
+  padding: 0;
+}
+
 section {
   padding: 60px 0;
   @include clearfix;
