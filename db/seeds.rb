@@ -111,3 +111,5 @@ if free_taxonomy.taxons.count == 1
   free_taxonomy.taxons.create(parent: root_free_taxon, name: 'Free')
   free_taxonomy.taxons.create(parent: root_free_taxon, name: 'Premium')
 end
+
+Spree::Taxonomy.find_or_create_by(name: 'Group')
