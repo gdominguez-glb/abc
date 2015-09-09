@@ -14,6 +14,12 @@ input, label, .form-control, .form-group {
   @include placeholder(inherit);
 }
 
+label {
+  font-weight: bold;
+  font-size: .85em;
+  text-transform: uppercase;
+}
+
 .form-group,
 .input-group {
   margin-bottom: $b-space-m * 2;
@@ -58,7 +64,7 @@ input, label, .form-control, .form-group {
 }
 
 .error {
-  color: $coral;
+  color: $brand-danger;
 }
 
 .radio {
