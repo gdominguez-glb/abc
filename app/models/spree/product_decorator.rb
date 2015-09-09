@@ -29,6 +29,8 @@ Spree::Product.class_eval do
   scope :saleable, -> { where(for_sale: true) }
   scope :fulfillmentable, -> { where("fulfillment_date < ? or fulfillment_date is null", Time.now) }
 
+  after_save :add_video_group_taxon
+
   def parts?
     parts.any?
   end
@@ -140,6 +142,13 @@ Spree::Product.class_eval do
       GRADE_LEVELS.each do |grade_level|
         self.materials.create(name: grade_level)
       end
+    end
+  end
+
+  def add_video_group_taxon
+    if self.video_group
+      taxon = Spree::Taxon.find_by(name: self.video_group.name)
+      self.taxons << taxon if taxon
     end
   end
 end

@@ -28,4 +28,12 @@ RSpec.describe Spree::Product, type: :model do
       expect(video_product.downloadable?).to eq(false)
     end
   end
+
+  describe "assign video group taxon" do
+    it "assign taxon with video group name" do
+      video_group = create(:spree_video_group, name: 'Teach Eureka')
+      product = create(:product, video_group: video_group)
+      expect(product.taxons.find_by(name: 'Teach Eureka')).not_to be_nil
+    end
+  end
 end
