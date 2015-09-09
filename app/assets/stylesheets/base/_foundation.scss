@@ -12,7 +12,7 @@ body {
   background: $light-blue;
   @include animation(fade 1s);
 
-  @media screen and (min-width: $screen-md-min) {
+  @media screen and (min-width: $screen-sm-min) {
     padding: 106px 0 0;
   }
 
