@@ -1,0 +1,5 @@
+<div>
+  <h4><%= video.title %></h4>
+  <p><%= video.categories.join(', ') %></p>
+  <%= link_to 'View Video', video_gallery_path(video), class: 'btn btn-default'%>
+</div>
