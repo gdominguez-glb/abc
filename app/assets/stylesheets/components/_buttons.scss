@@ -38,6 +38,15 @@
   margin-bottom: 30px;
 }
 
+.btn-block-xs {
+  display: block;
+  margin-bottom: 60px;
+
+  @media screen and (min-width: $screen-xs-min) {
+    display: inline-block;
+    margin-bottom: 0;
+  }
+}
 
 /* ----------------------------------------------------------------------------
 * Button Sizes

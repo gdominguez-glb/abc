@@ -35,25 +35,28 @@ footer {
 }
 
 .footer-section {
+  text-align: center;
+  margin: 30px 0;
+
+  @media screen and (min-width: $screen-sm-min) {
+    text-align: left;
+  }
 
   .social-icon {
     font-size: 26px;
   }
 
   .icon-container {
-    @media screen and (max-width: 767px) {
-      &:first-child {
-        text-align: right;
-      }
-
-      &:last-child {
-        text-align: left;
-      }
+    &:first-child {
+      text-align: right;
     }
-  }
 
-  @media screen and (max-width: 767px) {
-    text-align: center;
-    margin: 30px 0;
+    &:last-child {
+      text-align: left;
+    }
+
+    @media screen and (min-width: $screen-sm-min) {
+      text-align: left;
+    }
   }
 }
