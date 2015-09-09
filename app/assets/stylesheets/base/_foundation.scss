@@ -32,7 +32,7 @@ body {
   &.settings,
   &.help,
   &.contact {
-    background: $cream;
+    background: $light-plum;
   }
 }
 
@@ -163,10 +163,19 @@ body.dragging, body.dragging * {
 }
 
 .page-header {
-  margin: 60px 0 30px;
+  margin: 30px 0 0;
   padding: 0;
   border: none;
   text-align: center;
+
+  @media screen and (min-width: $screen-xs-min) {
+    margin: 60px 0 30px;
+  }
+}
+
+.container-img-full {
+  width: 100%;
+  padding: 0;
 }
 
 section {
@@ -225,7 +234,9 @@ section {
 }
 
 .col-xsl-4,
-.col-xsl-6 {
+.col-xsl-6,
+.col-xsl-8,
+.col-xsl-12 {
   padding: 0 30px;
   text-align: center;
 
