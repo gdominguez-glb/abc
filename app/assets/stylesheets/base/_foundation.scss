@@ -6,6 +6,12 @@ html, body {
   @include clearfix;
 }
 
+.container {
+  @media screen and (max-width: $screen-lg-min) {
+    width: auto;
+  }
+}
+
 body {
   padding: 50px 0 0;
   color: $dark-blue;
@@ -177,8 +183,6 @@ section {
   padding: 60px 0;
   @include clearfix;
 
-  }
-
   h1, h2, h3, h4, h5, h6, p {
     margin: 0 0 30px;
   }
@@ -191,4 +195,16 @@ section {
 
 .coral-text {
   color: $coral;
+}
+
+.col-img-full {
+  height: 400px;
+  margin: 0 0 -60px;
+  background-position: 20%;
+  background-size: cover;
+
+  @media screen and (min-width: $screen-sm-min) {
+    min-height: 500px;
+    margin: -60px 0;
+  }
 }
