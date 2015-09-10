@@ -10,6 +10,13 @@
     <%= link_to preview_material_path(material), class: 'pull-right', remote: true do %>
       <span class="glyphicon glyphicon-eye-open"></span>
     <% end %>
+    <% if bookmarked_material?(material) %>
+      <span class="glyphicon glyphicon-star pull-right"></span>
+    <% else %>
+      <%= link_to bookmark_material_path(material, ref_id: "#bookmark-#{material.id}"), id: "bookmark-#{material.id}", class: 'pull-right', remote: true, data: { method: :post } do %>
+        <span class="glyphicon glyphicon-star-empty"></span>
+      <% end %>
+    <% end %>
   <% end %>
   <% if item.children.size > 0 %>
     <% open_material = @opened_material_ids.include?(material.id) %>

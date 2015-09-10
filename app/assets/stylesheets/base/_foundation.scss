@@ -7,10 +7,14 @@ html, body, .container {
 }
 
 body {
-  padding: 106px 0 0;
+  padding: 50px 0 0;
   color: $dark-blue;
   background: $light-blue;
   @include animation(fade 1s);
+
+  @media screen and (min-width: $screen-sm-min) {
+    padding: 106px 0 0;
+  }
 
   &.nav-shown {
 
@@ -28,7 +32,7 @@ body {
   &.settings,
   &.help,
   &.contact {
-    background: $cream;
+    background: $light-plum;
   }
 }
 
@@ -59,14 +63,6 @@ body.dragging, body.dragging * {
   */
   -ms-user-select: none;
   user-select: none;
-}
-
-.container {
-  width: 85%;
-
-  @media screen and (max-width: 769px) {
-    width: 98%;
-  }
 }
 
 .overlay {
@@ -167,15 +163,56 @@ body.dragging, body.dragging * {
 }
 
 .page-header {
-  margin: 60px 0 30px;
+  margin: 30px 0 0;
   padding: 0;
   border: none;
   text-align: center;
+
+  @media screen and (min-width: $screen-xs-min) {
+    margin: 60px 0 30px;
+  }
+}
+
+.container-img-full {
+  width: 100%;
+  padding: 0;
 }
 
 section {
   padding: 60px 0;
   @include clearfix;
+
+  &.container-img-full {
+    padding: 0;
+
+    .row-img-full {
+      @media screen and (min-width: $screen-xs-min) {
+        display: flex;
+      }
+    }
+
+    .col-no-img {
+      padding: 60px 30px 0;
+
+      @media screen and (min-width: $screen-xs-min) {
+        padding: 60px 15px;
+      }
+    }
+
+    .col-img-full {
+      flex: 1;
+      min-height: 400px;
+      padding: 0;
+
+      background-position: 0 20%;
+      background-size: cover;
+
+      @media screen and (min-width: $screen-xs-min) {
+        padding: 0 30px;
+      }
+    }
+
+  }
 
   h1, h2, h3, h4, h5, h6, p {
     margin: 0 0 30px;
@@ -189,4 +226,23 @@ section {
 
 .coral-text {
   color: $coral;
+}
+
+// Custom grid breakpoint for devices between xs and sm
+@media (min-width: $screen-xs-min) {
+  @include make-grid(xsl);
+}
+
+.col-xsl-4,
+.col-xsl-6,
+.col-xsl-8,
+.col-xsl-12 {
+  padding: 0 30px;
+  text-align: center;
+
+  @media screen and (min-width: $screen-xs-min) {
+    padding: 0 15px;
+    text-align: left;
+  }
+
 }

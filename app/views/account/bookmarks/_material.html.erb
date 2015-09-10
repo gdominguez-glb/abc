@@ -1,0 +1,7 @@
+<div>
+  <h4><%= material.name %></h4>
+  <% product = material.product %>
+  <% if product.access_url.present? %>
+    <%= link_to 'View Product', "#{product.access_url}?#{{opened_product_id: product.id, opened_material_id: material.id}.to_param}", class: 'btn btn-default' %>
+  <% end %>
+</div>

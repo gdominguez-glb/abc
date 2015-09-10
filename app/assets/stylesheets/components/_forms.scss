@@ -14,6 +14,12 @@ input, label, .form-control, .form-group {
   @include placeholder(inherit);
 }
 
+label {
+  font-weight: bold;
+  font-size: .85em;
+  text-transform: uppercase;
+}
+
 .form-group,
 .input-group {
   margin-bottom: $b-space-m * 2;
@@ -58,7 +64,7 @@ input, label, .form-control, .form-group {
 }
 
 .error {
-  color: $coral;
+  color: $brand-danger;
 }
 
 .radio {
@@ -69,8 +75,9 @@ input, label, .form-control, .form-group {
 }
 
 .select-container {
-  display: inline-block;
+  display: block;
   position: relative;
+  margin-bottom: 30px;
   padding: 10px 36px 10px 15px;
   background: transparent;
   font-size: 14px;
@@ -82,6 +89,10 @@ input, label, .form-control, .form-group {
   box-shadow: inset 0 0 0 1px $cream;
 
   @include transition(background, .3s);
+
+  @media screen and (min-width: $screen-xs-min) {
+    display: inline-block;
+  }
 
   &:after {
     content: "\f107";
@@ -131,7 +142,9 @@ input, label, .form-control, .form-group {
   }
 
   + .select-container {
-    margin-left: 10px;
+    @media screen and (min-width: $screen-xs-min) {
+      margin-left: 10px;
+    }
   }
 }
 
