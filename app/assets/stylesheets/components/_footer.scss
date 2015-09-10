@@ -56,13 +56,13 @@ footer {
   .icon-container {
     &:first-child {
       text-align: right;
+
+      @media screen and (min-width: $screen-sm-min) {
+        text-align: left;
+      }
     }
 
     &:last-child {
-      text-align: left;
-    }
-
-    @media screen and (min-width: $screen-sm-min) {
       text-align: left;
     }
   }
