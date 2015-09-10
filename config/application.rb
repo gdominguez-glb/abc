@@ -61,5 +61,7 @@ module GreatMinds
     initializer "spree.purchase_order.payment_methods", :after => "spree.register.payment_methods" do |app|
       app.config.spree.payment_methods << Spree::PaymentMethod::PurchaseOrder
     end
+
+    config.active_job.queue_adapter = :sidekiq
   end
 end
