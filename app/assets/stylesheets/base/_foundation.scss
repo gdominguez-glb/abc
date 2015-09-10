@@ -181,7 +181,12 @@ body.dragging, body.dragging * {
 
 section {
   padding: 60px 0;
+  text-align: center;
   @include clearfix;
+
+  @media screen and (min-width: $screen-xs-min) {
+    text-align: left;
+  }
 
   h1, h2, h3, h4, h5, h6, p {
     margin: 0 0 30px;
