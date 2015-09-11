@@ -101,6 +101,8 @@ Spree::User.class_eval do
   has_many :product_tracks
   has_many :bookmarks
 
+  attr_accessor :school_id, :district_id
+
   accepts_nested_attributes_for :school_district, reject_if: proc { |attributes| attributes['name'].blank? }
 
   before_create :assign_user_role
