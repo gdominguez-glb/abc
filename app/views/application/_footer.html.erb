@@ -1,44 +1,46 @@
-<footer>
-  <div class="container">
-    <div class="row clear-top">
-      <div class="col-sm-2 footer-section">
-        <div class="row">
-          <div class="col-xs-4 icon-container">
-            <a href="">
-              <i class="fa fa-facebook social-icon"></i>
-            </a>
-          </div>
-          <div class="col-xs-4 icon-container">
-            <a href="">
-              <i class="fa fa-twitter social-icon"></i>
-            </a>
-          </div>
-          <div class="col-xs-4 icon-container">
-            <a href="">
-              <i class="fa fa-pinterest-p social-icon"></i>
-            </a>
-          </div>
+<footer class="container">
+  <div class="row clear-top">
+    <div class="col-sm-2 footer-section">
+      <div class="row">
+        <div class="col-xs-4 icon-container">
+          <a href="">
+            <i class="fa fa-facebook social-icon"></i>
+          </a>
+        </div>
+        <div class="col-xs-4 icon-container">
+          <a href="">
+            <i class="fa fa-twitter social-icon"></i>
+          </a>
+        </div>
+        <div class="col-xs-4 icon-container">
+          <a href="">
+            <i class="fa fa-pinterest-p social-icon"></i>
+          </a>
         </div>
       </div>
-      <% FooterTitle.all.each do |footer_title| %>
-        <div class="col-sm-2 footer-section">
-          <h6 class="section-lead">
-            <% if footer_title.link.present? %>
-              <%= link_to footer_title.title, footer_title.link %>
-            <% else %>
-              <%= footer_title.title %>
-            <% end %>
-          </h6>
-          <ul>
-            <% footer_title.footer_links.each do |link| %>
-              <li>
-                <%= link_to link.name, link.link %>
-              </li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
     </div>
-    <p class="copyright bold">© Copyright 2015 Great Minds</p>
+    <% FooterTitle.all.each do |footer_title| %>
+      <div class="col-sm-2 footer-section">
+        <h6 class="section-lead">
+          <% if footer_title.link.present? %>
+            <%= link_to footer_title.title, footer_title.link %>
+          <% else %>
+            <%= footer_title.title %>
+          <% end %>
+        </h6>
+        <ul>
+          <% footer_title.footer_links.each do |link| %>
+            <li>
+              <%= link_to link.name, link.link %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <p class="copyright bold">© Copyright 2015 Great Minds</p>
+    </div>
   </div>
 </footer>

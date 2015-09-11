@@ -1,101 +1,98 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12">
-      <div class="page-header">
-        <h2>Have questions? Just want to say Hi...</h2>
-        <p>Feel free to reach out to us with anything you need help with.</p>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="page-header">
+      <h2>Have questions? Just want to say Hi...</h2>
+      <p>Feel free to reach out to us with anything you need help with.</p>
+    </div>
+  </div>
+</div>
+<hr />
+<% if params[:success] %>
+  <div class="alert alert-success">
+    Submitted your contact!
+  </div>
+<% end %>
+<div class="row">
+  <div class="col-sm-8">
+    <form action="https://cs15.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8" method="POST" class="form contact-form">
+      <input type=hidden name="orgid" value="00De0000005Vrkq">
+      <input type=hidden name="retURL" value="<%= contact_url(success: true) %>">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input id="name" maxlength="80" name="name" size="20" type="text" class="form-control" placeholder="First Last" required/>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input id="email" maxlength="80" name="email" size="20" type="email" class="form-control" placeholder="example@example.com" required/>
+          </div>
+        </div>
       </div>
-    </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <label for="topic">Topic</label>
+          <div class="select-container dark-select block">
+            <span>Select a Topic</span>
+            <%= select_tag :topic, options_for_select(@topics), prompt: "Select a Topic", class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input id="phone" maxlength="40" name="subject" size="20" type="text" class="form-control" placeholder="Message Subject"/>
+          </div>
+        </div>
+      </div>
+      <%# <input type="hidden" name="debug" value=1> %>
+      <%# <input type="hidden" name="debugEmail" value="liz.sweet@greatminds.net"> %>
+      <div class="form-group">
+        <label for="description">Message</label>
+        <textarea name="description" class="form-control" placeholder="Write your message here..."></textarea>
+      </div>
+      <input type="hidden" id="external" name="external" value="1" />
+      <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+          <input type="submit" name="submit" class="btn btn-primary btn-block" value="Submit">
+        </div>
+      </div>
+    </form>
   </div>
-  <hr />
-  <% if params[:success] %>
-    <div class="alert alert-success">
-      Submitted your contact!
-    </div>
-  <% end %>
-  <div class="row">
-    <div class="col-sm-8">
-      <form action="https://cs15.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8" method="POST" class="form contact-form">
-        <input type=hidden name="orgid" value="00De0000005Vrkq">
-        <input type=hidden name="retURL" value="<%= contact_url(success: true) %>">
-        <div class="row">
-          <div class="col-sm-6">
-            <div class="form-group">
-              <label for="name">Name</label>
-              <input id="name" maxlength="80" name="name" size="20" type="text" class="form-control" placeholder="First Last" required/>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input id="email" maxlength="80" name="email" size="20" type="email" class="form-control" placeholder="example@example.com" required/>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-6">
-            <label for="topic">Topic</label>
-            <div class="select-container dark-select block">
-              <span>Select a Topic</span>
-              <%= select_tag :topic, options_for_select(@topics), prompt: "Select a Topic", class: 'form-control' %>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="form-group">
-              <label for="subject">Subject</label>
-              <input id="phone" maxlength="40" name="subject" size="20" type="text" class="form-control" placeholder="Message Subject"/>
-            </div>
-          </div>
-        </div>
-        <%# <input type="hidden" name="debug" value=1> %>
-        <%# <input type="hidden" name="debugEmail" value="liz.sweet@greatminds.net"> %>
-        <div class="form-group">
-          <label for="description">Message</label>
-          <textarea name="description" class="form-control" placeholder="Write your message here..."></textarea>
-        </div>
-        <input type="hidden" id="external" name="external" value="1" />
-        <div class="row">
-          <div class="col-md-4 col-md-offset-4">
-            <input type="submit" name="submit" class="btn btn-primary btn-block" value="Submit">
-          </div>
-        </div>
-      </form>
-    </div>
-    <div class="col-sm-4">
-      <ul class="margin-bottom-xl">
-        <li><h6>Contact Name</h6>
-        <ul>
-          <li>p: 123-456-7890</li>
-          <li>e: contact@greatminds.net</li>
-        </ul>
-        </li>
+  <div class="col-sm-4">
+    <ul class="margin-bottom-xl">
+      <li><h6>Contact Name</h6>
+      <ul>
+        <li>p: 123-456-7890</li>
+        <li>e: contact@greatminds.net</li>
       </ul>
-      <ul class="margin-bottom-xl">
-        <li><h6>Contact Name</h6>
-        <ul>
-          <li>p: 123-456-7890</li>
-          <li>e: contact@greatminds.net</li>
-        </ul>
-        </li>
+      </li>
+    </ul>
+    <ul class="margin-bottom-xl">
+      <li><h6>Contact Name</h6>
+      <ul>
+        <li>p: 123-456-7890</li>
+        <li>e: contact@greatminds.net</li>
       </ul>
-      <ul class="margin-bottom-xl">
-        <li><h6>Contact Name</h6>
-        <ul>
-          <li>p: 123-456-7890</li>
-          <li>e: contact@greatminds.net</li>
-        </ul>
-        </li>
+      </li>
+    </ul>
+    <ul class="margin-bottom-xl">
+      <li><h6>Contact Name</h6>
+      <ul>
+        <li>p: 123-456-7890</li>
+        <li>e: contact@greatminds.net</li>
       </ul>
-    </div>
+      </li>
+    </ul>
   </div>
 </div>
-<div class="container container-img-full">
-  <div class="row">
-    <div class="col-xs-12">
-      <%= image_tag "contactpage-fullwidth.jpg", class: "img-responsive center-block" %>
-    </div>
+<div class="row no-gutter">
+  <div class="col-xs-12">
+    <%= image_tag "contactpage-fullwidth.jpg", class: "img-responsive center-block" %>
   </div>
 </div>
+
 <%= content_for :javascripts do %>
   <%= javascript_tag do %>
     $(function(){
