@@ -71,7 +71,7 @@ class VideoGalleryController < ApplicationController
   end
 
   def load_taxonomies
-    @taxonomies = Spree::Taxonomy.includes(root: :children)
+    @taxonomies = Spree::Taxonomy.show_in_store.includes(root: :children)
   end
 
   def log_activity(video)
