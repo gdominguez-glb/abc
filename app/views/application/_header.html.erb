@@ -1,16 +1,17 @@
 <!-- Begin Navbar -->
-<nav class="container navbar navbar-default navbar-fixed-top">
+<nav class="container navbar navbar-default navbar-fixed-top navbar-primary">
   <div class="navbar-header">
     <a class="navbar-brand" href="/">
       Great Minds
     </a>
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mainNav">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="glyphicon glyphicon-menu-hamburger"></span>
+      <span class="glyphicon glyphicon-remove"></span>
+    </button>
   </div>
-  <button type="button" class="main-nav navbar-toggle collapsed btn pull-right" data-toggle="collapse" data-target="#main-nav">
-    <span class="sr-only">Toggle navigation</span>
-    <span class="glyphicon glyphicon-menu-hamburger"></span>
-    <span class="glyphicon glyphicon-remove"></span>
-  </button>
-  <div class="collapse navbar-collapse clearfix" id="main-nav">
+
+  <div class="collapse navbar-collapse" id="mainNav">
     <ul class="nav navbar-nav">
       <% Page.curriculum_nav.each do |page| %>
         <%= active_link_to page.group_name.capitalize, "/#{page.slug}", wrap_tag: :li %>
@@ -20,7 +21,7 @@
       </li>
     </ul>
     <%= render 'secondary_nav' %>
-    <div class="nav-right-options clearfix">
+    <div class="nav navbar-nav navbar-right">
       <%= render partial: 'spree/shared/main_nav_bar' if store_menu? %>
     </div>
   </div>

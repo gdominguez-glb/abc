@@ -5,273 +5,123 @@
 * Styleguide 1.8
 */
 
-.navbar {
-  height: auto;
-  min-height: 0;
-}
-
-.navbar-default {
+.navbar-primary {
   height: 50px;
-  border: none;
   margin-bottom: 0;
+  border: 0;
   background: $dark-blue;
-  @include clearfix;
 
   @media screen and (min-width: $screen-sm-min) {
-    height: auto;
+    // height: auto;
   }
 
-  .navbar-brand {
-    height: 50px;
-    padding: 20px 40px;
-    background: $brand-green;
-    color: $dark-blue;
-    font-size: 14px;
-    line-height: 1;
+  // ----- Brand ----- //
 
-    &:hover, &:focus {
+  .navbar-brand {
+    padding: 20px 40px;
+    color: $dark-blue;
+    background: $brand-green;
+    font-size: 1em;
+    line-height: 1em;
+
+    &:hover,
+    &:focus {
       background: $brand-green;
     }
 
     @media screen and (min-width: $screen-sm-min) {
       height: auto;
       padding: 45px;
-      font-size: 16px;
+      font-size: 1.2em;
     }
+  }
+
+  // ----- Main Navigation Items ----- //
+
+  .navbar-collapse {
+    border: 0;
+    max-height: none;
   }
 
   .navbar-nav {
+    margin: 0 -15px;
+    background-color: $coral;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+
     > li {
-
-      &:first-child {
-        a {
-          padding-left: 110px;
-
-          @media screen and (max-width: 1200px) {
-            padding-left: 45px;
-          }
-        }
-      }
-
       > a {
-        padding: 45px 15px;
         color: $cream;
-        text-transform: uppercase;
-        font-size: 16px;
-        line-height: 1;
-
-        &:hover, &:focus {
-          color: $coral;
+        &:hover {
+          color: darken($cream, 15%);
         }
       }
     }
 
-    .active {
+  }
 
-      a, a:hover {
-        background: transparent;
-        color: $coral;
+  // ----- Sub Navigation Items ----- //
+
+  .subnav {
+    margin: 0 -15px;
+    color: $cream;
+
+    .navbar-collapse-toggle {
+      padding: 0 15px;
+      background-color: $coral;
+
+      .glyphicon {
+        top: -2px;
+        right: -16px;
       }
     }
 
-    .subnav {
-      li {
-        &.active {
-          a {
-            color: $dark-blue;
-          }
+    .navbar-collapse {
+      padding: 10px 0 10px 25px;
+      background-color: $coral;
+    }
+  }
+
+  .subnav-name {
+    padding: 5px 0;
+    font-family: 'Karla', sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  // ----- Cart Navigation Items ----- //
+
+  .cart {
+    .search-icon {
+      display: block;
+      padding: 10px 15px;
+      color: $cream;
+      &:hover {
+        color: darken($cream, 15%);
+      }
+    }
+
+    > li {
+      a {
+        display: block;
+        padding: 10px 15px;
+        color: $cream;
+        &:hover {
+          color: darken($cream, 15%);
         }
       }
     }
   }
+
+  // ----- Main Toggle Button ----- //
 
   .navbar-toggle {
-
-    &:hover, &:focus {
-      background: transparent;
-    }
-
-    &.subnav-toggle {
-
-      &:hover {
-        background: transparent;
-        color: $cream;
-      }
-    }
-  }
-}
-
-.navbar-header {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 100;
-}
-
-
-#main-nav {
-  width: 100%;
-  background-color: $coral;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
-
-  @media screen and (min-width: $screen-sm-min) {
-    float: right;
-    position: relative;
-    width: calc(100% - 217px);
-      max-height: 600px;
-    background-color: $dark-blue;
-  }
-
-  &.collapse {
-    display: none !important;
-
-    @media screen and (min-width: $screen-sm-min) {
-      display: block !important;
-    }
-
-    &.in {
-      display: block !important;
-    }
-  }
-
-  .navbar-nav {
-    float: none;
-    margin: 0 -15px;
-
-    @media screen and (min-width: $screen-sm-min) {
-      margin: 0;
-    }
-
-    >li {
-      float: none;
-
-      @media screen and (min-width: $screen-sm-min) {
-        float: left;
-
-        &:first-child a {
-          padding-left: 45px;
-        }
-      }
-
-      > a {
-        padding: 15px;
-        color: #fff;
-        border-bottom: 2px solid #fff;
-        text-align: center;
-
-        @media screen and (min-width: $screen-sm-min) {
-          padding: 45px 15px;
-          border: none;
-        }
-      }
-
-      &.active {
-        a {
-          background: transparent;
-          color: $brand-green;
-        }
-      }
-    }
-  }
-
-  .nav-search {
-    padding: 15px 0;
-
-    .btn {
-      width: 100%;
-      margin: 10px 0 0;
-    }
-  }
-
-}
-
-#sub-nav {
-  padding: 0;
-
-  li {
-    float: none;
-  }
-
-  &.collapse {
-    display: none !important;
-
-    &.in {
-      display: block !important;
-    }
-  }
-}
-
-.subnav {
-  position: fixed;
-  top: 69px;
-  left: 217px;
-  right: 0;
-  background: $coral;
-  z-index: 2000;
-
-  li {
-    float: left;
-
-    &:first-child {
-
-      a {
-        padding-left: 110px;
-
-        @media screen and (max-width: 1200px) {
-          padding-left: 45px;
-        }
-
-        @media screen and (max-width: 1135px) {
-          padding: 15px;
-        }
-      }
-    }
-  }
-
-  a {
-    @extend .serif;
-    display: block;
-    padding: 10px;
-    font-size: 12px;
-    text-transform: capitalize;
-
-    @media screen and (max-width: 1135px) {
-      padding: 15px;
-      text-align: center;
-
-      &:hover {
-        background: darken($coral, 5%);
-      }
-    }
-  }
-
-  @media screen and (max-width: 500px) {
-    top: 110px;
-  }
-}
-
-.subnav-name {
-  padding: 15px;
-  font-size: 16px;
-}
-
-.sidenav-toggle {
-  display: none;
-  margin: 8px 0 7px 15px;
-
-  @media screen and (max-width: 1025px) {
-    display: block;
-  }
-}
-
-.navbar-toggle {
-  border: none;
-
-  &.main-nav {
-    display: block;
-    position: relative;
-    margin: 4px 15px 16px 0;
+    border: 0;
     color: $cream;
+
+    &:hover,
+    &:focus {
+      background-color: transparent;
+    }
 
     @media screen and (min-width: $screen-sm-min) {
       display: none;
@@ -279,8 +129,8 @@
 
     .glyphicon {
       position: absolute;
-      top: 15px;
-      right: 15px;
+      top: 10px;
+      right: 0;
       @include transition(all, $transitionTiming);
     }
 
@@ -306,124 +156,4 @@
     }
   }
 
-
-  @media screen and (max-width: 1135px) {
-    &.subnav-toggle {
-      display: block;
-
-      .glyphicon {
-        @include transition(all, $transitionTiming);
-      }
-
-      &[aria-expanded="true"] {
-
-        .glyphicon {
-          @include rotate(90deg);
-        }
-
-        + .sidenav-toggle {
-          display: none;
-        }
-      }
-
-      &.sidenav-shown {
-        display: none;
-      }
-    }
-  }
-}
-
-.subnav-toggle, .sidenav-toggle {
-  padding: 0;
-  border: none;
-}
-
-.subnav-toggle {
-  margin: 8px 15px 7px 0;
-}
-
-.nav-right-options {
-  width: 100%;
-
-  @media screen and (min-width: $screen-sm-min) {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: auto;
-  }
-
-  .cart {
-    text-align: center;
-
-    @media screen and (min-width: $screen-sm-min) {
-      text-align: left;
-    }
-  }
-
-  li {
-    display: inline-block;
-    padding: 15px 10px;
-    color: $cream;
-    font-size: 12px;
-
-    @media screen and (min-width: $screen-sm-min) {
-      float: left;
-    }
-  }
-
-  a {
-    @extend .serif;
-    font-style: italic;
-    text-transform: lowercase;
-  }
-}
-
-.search-icon {
-  color: $cream;
-}
-
-#link-to-cart {
-  .cart-info {
-    position: relative;
-    font-size: 14px;
-    color: $cream;
-  }
-
-  &:hover {
-    > .gm-order-info-popup {
-      display: block;
-
-      @media screen and (max-width: 1024px) {
-        display: none;
-      }
-    }
-  }
-}
-
-.gm-order-info-popup {
-  display: none;
-  position: absolute;
-  top: 46px;
-  right: 0;
-  width: 300px;
-  border: 3px solid $coral;
-  border-radius: $border-radius-value;
-  z-index: 3000;
-
-  table tr {
-    td {
-      padding: 5px 10px;
-    }
-  }
-
-  .total-row {
-    background: $dark-blue;
-    color: $cream;
-  }
-
-  .proceed-button {
-    display: block;
-    margin: 10px auto 10px;
-    width: 80%;
-  }
 }
