@@ -22,6 +22,13 @@ section.row {
   }
 }
 
+.no-gutter {
+  > [class*='col-'] {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
 footer > .row {
   @media screen and (min-width: $screen-xs-min) {
     padding: 0 60px;
