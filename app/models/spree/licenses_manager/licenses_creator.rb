@@ -16,6 +16,8 @@ module Spree
       def create_license(row)
         licensed_product = Spree::LicensedProduct.create(email: row[:email], product: row[:product], quantity: row[:quantity])
         if licensed_product.quantity > 1
+          licensed_product.update(can_be_distributed: true)
+          # should i mark the license as distributable if same license product exist and not expire?? and the quantity is 1
           assign_one_as_non_distributable(licensed_product)
         end
       end
