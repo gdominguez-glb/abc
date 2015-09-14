@@ -42,7 +42,7 @@ body {
   @include animation(fade 1s);
 
   @media screen and (min-width: $screen-sm-min) {
-    padding: 106px 0 0;
+    padding: 0;
   }
 
   &.nav-shown {

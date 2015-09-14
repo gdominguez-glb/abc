@@ -1,14 +1,11 @@
 <% if current_spree_user %>
   <div class="video-subnav">
     <nav class="subnav">
-      <div class="clearfix">
-        <span class="subnav-name pull-left hidden"><%= @nav_name || action_name.titleize %></span>
+      <div class="clearfix navbar-collapse-toggle">
+        <span class="subnav-name pull-left"><%= @nav_name || action_name.titleize %></span>
         <button type="button" class="subnav-toggle navbar-toggle collapsed" data-toggle="collapse" data-target="#sub-nav">
           <span class="sr-only">Toggle sub navigation</span>
           <span class="glyphicon glyphicon-option-vertical"></span>
-        </button>
-        <button class="sidenav-toggle navbar-toggle pull-left">
-          <span class="glyphicon glyphicon-tasks"></span>
         </button>
       </div>
       <div class="collapse navbar-collapse" id="sub-nav">
