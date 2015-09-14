@@ -9,6 +9,7 @@
         <thead>
           <tr>
             <th>Title</th>
+            <th>Category</th>
             <th>Display</th>
             <th colspan="2"></th>
           </tr>
@@ -17,6 +18,7 @@
           <% @questions.each do |question| %>
             <tr>
               <td><%= question.title %></td>
+              <td><%= question.faq_category.try(:name) %></td>
               <td><%= question.display %></td>
               <td>
                 <%= link_to 'Edit', edit_cms_question_path(question), class: 'btn btn-default' %>

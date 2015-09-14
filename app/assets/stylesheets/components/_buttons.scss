@@ -43,7 +43,7 @@
   display: block;
   margin-bottom: 60px;
 
-  @media screen and (min-width: $screen-xs-min) {
+  @media screen and (min-width: $screen-sm-min) {
     display: inline-block;
     margin-bottom: 0;
   }

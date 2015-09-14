@@ -2,6 +2,7 @@ require 'gm_wistia_uploader'
 
 class WistiaWorker
   include Sidekiq::Worker
+  sidekiq_options :retry => 5
 
   def perform(video_id)
     logger.info "** running wistia worker with video id: #{video_id} **"

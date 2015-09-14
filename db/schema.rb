@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150908002539) do
+ActiveRecord::Schema.define(version: 20150914123631) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -123,6 +123,14 @@ ActiveRecord::Schema.define(version: 20150908002539) do
     t.string   "training_type"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+  end
+
+  create_table "faq_categories", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "position"
+    t.boolean  "display",    default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "footer_links", force: :cascade do |t|
@@ -295,9 +303,10 @@ ActiveRecord::Schema.define(version: 20150908002539) do
   create_table "questions", force: :cascade do |t|
     t.string   "title"
     t.integer  "position"
-    t.boolean  "display",    default: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.boolean  "display",         default: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.integer  "faq_category_id"
   end
 
   create_table "recommendations", force: :cascade do |t|
@@ -1383,6 +1392,8 @@ ActiveRecord::Schema.define(version: 20150908002539) do
     t.datetime "updated_at",                                    null: false
     t.integer  "position",                       default: 0
     t.boolean  "allow_multiple_taxons_selected", default: true
+    t.boolean  "show_in_store",                  default: true
+    t.boolean  "show_in_video",                  default: true
   end
 
   add_index "spree_taxonomies", ["position"], name: "index_spree_taxonomies_on_position", using: :btree

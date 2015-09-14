@@ -77,7 +77,7 @@ label {
 .select-container {
   display: block;
   position: relative;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
   padding: 10px 36px 10px 15px;
   background: transparent;
   font-size: 14px;
@@ -92,6 +92,7 @@ label {
 
   @media screen and (min-width: $screen-xs-min) {
     display: inline-block;
+    margin-bottom: 30px;
   }
 
   &:after {

@@ -60,10 +60,12 @@ $(document).on('change', '#schoolDistrictSelect input', function(e) {
   if(schoolIsSelected) {
     $('#rowSchoolSelect').collapse('show');
     $('#rowDistrictSelect').collapse('hide');
+    $('#rowDistrictSelect #spree_user_district_id').val(null);
     $('#rowAddDistrict').collapse('hide');
   } else {
     $('#rowSchoolSelect').collapse('hide');
     $('#rowDistrictSelect').collapse('show');
+    $('#rowDistrictSelect #spree_user_school_id').val(null);
     $('#rowAddSchool').collapse('hide');
   }
 

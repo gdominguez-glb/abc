@@ -13,7 +13,9 @@
     <div id="wrap" class="<%= 'empty-state' if @video_products.blank? %>">
       <%= render 'header' %>
       <%= render 'flashes' %>
-      <%= yield %>
+      <div class="container">
+        <%= yield %>
+      </div>
     </div>
     <%= render 'footer' %>
     <div class="overlay"></div>

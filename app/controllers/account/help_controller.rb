@@ -1,6 +1,7 @@
 class Account::HelpController < Account::BaseController
   def index
-    @qa = Question.displayable
+    @faq_categories = FaqCategory.displayable.includes(:questions)
+
     @help_items = HelpItem.displayable
   end
 
