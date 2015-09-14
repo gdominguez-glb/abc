@@ -20,6 +20,11 @@ namespace :cms do
     end
   end
   resources :documents
+  resources :faq_categories do
+    collection do
+      post :update_positions
+    end
+  end
   resources :questions
   resources :help_items
   resources :contacts, only: [:index, :destroy, :edit, :update]
