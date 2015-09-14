@@ -67,3 +67,12 @@ $(document).on("click", ".search-icon, .search-overlay .close", function(){
   var $searchOverlay = $(".search-overlay");
   $searchOverlay.toggleClass("show-search");
 });
+
+$(document).ready(function() {
+  var nav = $('.navbar-primary');
+  var subnav = nav.find('.subnav')[0];
+
+  if(subnav === undefined) {
+    nav.addClass('nav-border-bottom');
+  }
+});

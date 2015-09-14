@@ -4,4 +4,13 @@
   </div>
 </div>
 
+<script>
+$(document).ready(function() {
+  var nav = $('.navbar-primary');
+  var subnav = nav.find('.subnav')[0];
 
+  if(subnav === undefined) {
+    nav.addClass('nav-border-bottom');
+  }
+});
+</script>
