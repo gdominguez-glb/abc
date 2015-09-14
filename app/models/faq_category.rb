@@ -3,5 +3,7 @@ class FaqCategory < ActiveRecord::Base
 
   has_many :questions
 
+  scope :displayable, -> { where(display: true) }
+
   acts_as_list
 end

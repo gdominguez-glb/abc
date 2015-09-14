@@ -12,7 +12,7 @@ class Cms::FaqCategoriesController < Cms::BaseController
   def create
     @faq_category = FaqCategory.new(faq_category_params)
     if @faq_category.save
-      redirect_to cms_faq_categories_path, notice: 'Created contact topic successfully!'
+      redirect_to cms_faq_categories_path, notice: 'Created faq category successfully!'
     else
       render :edit
     end
@@ -23,7 +23,7 @@ class Cms::FaqCategoriesController < Cms::BaseController
 
   def update
     if @faq_category.update(faq_category_params)
-      redirect_to cms_faq_categories_path, notice: 'Updated contact topic successfully!'
+      redirect_to cms_faq_categories_path, notice: 'Updated faq category successfully!'
     else
       render :edit
     end
@@ -31,7 +31,7 @@ class Cms::FaqCategoriesController < Cms::BaseController
 
   def destroy
     @faq_category.destroy
-    redirect_to cms_faq_categories_path, notice: 'Deleted contact topic successfully!'
+    redirect_to cms_faq_categories_path, notice: 'Deleted faq category successfully!'
   end
 
   def update_positions
