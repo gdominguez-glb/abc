@@ -2,7 +2,7 @@ class Cms::QuestionsController < Cms::BaseController
   before_action :find_question, except: [:index, :new, :create]
 
   def index
-    @questions = Question.page(params[:page]).per(params[:per_page])
+    @questions = Question.includes(:faq_category).page(params[:page]).per(params[:per_page])
   end
 
   def new
@@ -37,7 +37,7 @@ class Cms::QuestionsController < Cms::BaseController
   private
 
   def question_params
-    params.require(:question).permit(:title, :display, answer_attributes: [:content])
+    params.require(:question).permit(:title, :display, :faq_category_id, answer_attributes: [:content])
   end
 
   def find_question
