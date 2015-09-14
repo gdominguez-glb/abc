@@ -23,6 +23,12 @@
     border-radius: 0;
   }
 
+  &.nav-border-bottom {
+    @media screen and (min-width: $screen-sm-min) {
+      border-bottom: 5px solid $coral;
+    }
+  }
+
   // ----- Brand ----- //
 
   .navbar-brand {
@@ -88,7 +94,7 @@
         }
 
         @media screen and (min-width: $screen-sm-min) {
-          padding: 45px 15px;
+          padding: 45px 15px 44px;
           &:hover {
             color: $coral;
           }
