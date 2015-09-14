@@ -8,7 +8,7 @@ module Spree
       def execute
         return if exist_product_license_not_expire?
         Spree::LicensedProduct.transaction do
-          create_new_license(construct_distribution)
+          create_new_license(create_distribution)
           update_original_license
         end
       end
@@ -22,12 +22,12 @@ module Spree
           exists?
       end
 
-      def construct_new_license(distribution)
+      def create_new_license(distribution)
         single_licensed_product = @licensed_product.dup
-        single_licensed_product.update(quanity: 1, product_distribution_id: distribution.id)
+        single_licensed_product.update(quantity: 1, product_distribution_id: distribution.id, can_be_distributed: false)
       end
 
-      def construct_distribution
+      def create_distribution
         user_id    = @licensed_product.user.try(:id)
         user_email = @licensed_product.email
 
@@ -37,14 +37,14 @@ module Spree
           from_email:          user_email,
           to_user_id:          user_id,
           email:               user_email,
-          quanity:             1,
-          product_id:          @licensed_product.product_id
+          quantity:             1,
+          product_id:          @licensed_product.product_id,
           skip_create_license: true
         )
       end
 
       def update_original_license
-        @licensed_product.update(quanity: @licensed_product - 1)
+        @licensed_product.update(quantity: @licensed_product.quantity - 1)
       end
     end
   end
