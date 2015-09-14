@@ -10,10 +10,13 @@ pages:
     show_in_footer: false
     group_root: true
     body: !xml |
-      <div class="row intro masthead" style="background-image: url('http://localhost:3000/assets/mathpage-mast.jpg')">
-        <div class="col-xs-12 masthead-content masthead-content-video text-center">
-          <h5 class="home-mast-intro bold"><span class="green-text">Eureka Math</span></h5>
-          <p>A new curriculum for a new day.</p>
+      <div class="row no-gutter">
+        <div class="col-xs-12">
+          <div class="embed-responsive embed-responsive-16by9">
+            <video src="../assets/eureka-math-hd.mp4" controls poster="../assets/mathpage-placeholder.jpg">
+              No support.
+            </video>
+          </div>
         </div>
       </div>
       <section class="row green-bg row-img-full">
