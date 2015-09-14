@@ -6,14 +6,21 @@
 */
 
 .navbar-primary {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1030;
   height: 50px;
   margin-bottom: 0;
   border: 0;
   background: $dark-blue;
 
   @media screen and (min-width: $screen-sm-min) {
+    position: relative;
     height: auto;
     padding: 0;
+    border-radius: 0;
   }
 
   // ----- Brand ----- //
@@ -117,7 +124,6 @@
       background-color: $coral;
 
       @media screen and (min-width: $screen-sm-min) {
-        margin: 0 15px;
         padding: 0 15px;
       }
 
@@ -129,6 +135,11 @@
       }
 
       a {
+        &:focus {
+          color: #fff;
+          text-decoration: none;
+        }
+
         @media screen and (min-width: $screen-sm-min) {
           padding: 0;
           font-family: 'Lora' serif;
