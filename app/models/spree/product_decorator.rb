@@ -1,4 +1,29 @@
 Spree::Product.class_eval do
+  include SalesforceAccess
+
+  def self.sobject_name
+    'PricebookEntry'
+  end
+
+  def self.attributes_from_salesforce_object(sfo)
+    sfo_data = super(sfo)
+    sfo_data.merge!(sf_id_pricebook: sfo.Pricebook2Id,
+                    sf_id_product: sfo.Product2Id)
+    sfo_data
+  end
+
+  def self.matches_salesforce_object(sfo)
+    matches = super(sfo)
+    return matches if matches.present?
+    return none if sfo.Pricebook2Id.blank? || sfo.Product2Id.blank?
+    where sf_id_pricebook: sfo.Pricebook2Id, sf_id_product: sfo.Product2Id
+  end
+
+  # Do not create from salesforce, only try to find a match
+  def self.find_or_create_by_salesforce_object(sfo, &block)
+    return nil if sfo.blank?
+    matches_salesforce_object(sfo).first
+  end
 
   belongs_to :video_group, class_name: 'Spree::VideoGroup'
 
