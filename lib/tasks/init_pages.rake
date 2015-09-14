@@ -18,9 +18,6 @@ namespace 'pages' do
     (pages_array + pages_from_yaml).each do |params|
       params.symbolize_keys!
       page = Page.where(slug: params[:slug]).first_or_create
-      if !params[:body].include?('container')
-        params[:body] = "<div class='container'>#{params[:body]}</div>"
-      end
       if params[:group_name].present? &&  curriculum = Curriculum.find_by(name: params[:group_name].titleize)
         params[:curriculum_id] = curriculum.id
       end
