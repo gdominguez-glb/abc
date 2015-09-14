@@ -33,7 +33,7 @@ Spree::UserSessionsController.class_eval do
   end
 
   def can_switch_user
-    @user = Spree::User.where(id: params[:id]).first
+    @user = Spree::User.find_by(id: params[:id])
 
     unless @user
       redirect_to account_path, notice: t('error_messages.could_not_find_user')
