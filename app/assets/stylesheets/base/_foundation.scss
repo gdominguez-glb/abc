@@ -232,9 +232,15 @@ section {
 }
 
 .row-img-full {
+  padding: 0;
   color: #fff;
   background-position: 0;
   background-size: cover;
+}
+
+.row-img-full-content {
+  padding: 60px 0;
+  background: rgba($dark-blue, .6);
 
   @media screen and (min-width: $screen-sm-min) {
     min-height: 500px;
