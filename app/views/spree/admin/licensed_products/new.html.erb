@@ -1,10 +1,10 @@
-<%= render :partial => 'spree/admin/shared/error_messages', :locals => { :target => @licensed_product } %>
+<%= render :partial => 'spree/admin/shared/error_messages', :locals => { :target => @new_licenses_form } %>
 
 <% content_for :page_title do %>
   <%= Spree.t(:new_license) %>
 <% end %>
 
-<%= form_for [:admin, @licensed_product], :html => { :multipart => true } do |f| %>
+<%= form_for @new_licenses_form, url: spree.admin_licensed_products_path, :html => { :multipart => true } do |f| %>
   <fieldset data-hook="new_license">
     <div data-hook="admin_licensed_product_form_user_id" class="form-group">
       <label>Select school district admin</label>
@@ -16,7 +16,12 @@
     </div>
     <div data-hook="admin_licensed_product_form_product_id" class="form-group">
       <label>Select products</label>
-      <%= hidden_field_tag 'licensed_product_product_ids' %>
+      <%= f.hidden_field :product_ids %>
+    </div>
+    <div data-hook="admin_licensed_product_form_fulfillment_at" class="form-group">
+      <label>Fulfillment At</label>
+      <%= f.text_field :fulfillment_at, value: datepicker_field_value(@new_licenses_form.fulfillment_at), class: 'datepicker form-control' %>
+      <p class="help-block">License will be fulfillment immediately if leave blank</p>
     </div>
     <div data-hook="admin_licensed_product_form_quantity" class="form-group">
       <label>Quanity</label>

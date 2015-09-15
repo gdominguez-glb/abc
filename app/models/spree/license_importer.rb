@@ -1,55 +1,47 @@
 class Spree::LicenseImporter
-  def initialize(file)
-    @file = file
+  def initialize(file, fulfillment_at)
+    @file           = file
+    @fulfillment_at = fulfillment_at
   end
 
   def import
     xlsx   = Roo::Excelx.new(@file.path)
     sheet  = xlsx.sheet(0)
-    header = sheet.row(1)
+    header = sheet.row(1).map(&:downcase)
+
     return { success: false, error: 'Invalid excel header' } if !valid_header?(header)
 
-    licensed_products = construct_records(header, sheet)
-    return { success: false, error: 'Invalid product/quantity' } if !licensed_products.all?{|lp| lp.valid? }
+    rows = build_rows(sheet, header)
 
-    licensed_products.each{|lp| lp.save }
+    return { success: false, error: 'Invalid product/quantity' } if !valid_product_quantity?(rows)
 
-    distribute_licenses_to_school_admin(licensed_products)
+    Spree::LicensesManager::LicensesCreator.new(rows).execute
 
     return { success: true }
   end
 
   def valid_header?(header)
-    header.map(&:downcase) == ['email', 'product', 'quantity']
+    header == ['email', 'product', 'quantity']
   end
 
-  def construct_records(header, sheet)
+  def valid_product_quantity?(rows)
+    !rows.select{ |row| row[:product].blank? || (row[:quantity] == 0)  }.any?
+  end
+
+  def build_rows(sheet, header)
     (2..sheet.last_row).map do |i|
-      row      = Hash[[header.map(&:downcase), sheet.row(i)].transpose]
-      product  = Spree::Product.find_by(name: row['product'])
-      quantity = row['quantity'].to_i
+      row = generate_row_hash(header, sheet.row(i))
 
-      licensed_product = Spree::LicensedProduct.new(
-        email: row['email'],
-        product: product,
-        quantity: quantity,
-        can_be_distributed: (quantity > 1 ? true : false)
-      )
+      {
+        email:    row['email'],
+        product:  Spree::Product.find_by(name: row['product']),
+        quantity: row['quantity'].to_i,
+        fulfillment_at: @fulfillment_at
+      }
     end
   end
 
-  def distribute_licenses_to_school_admin(licensed_products)
-    licensed_products.select{|lp| lp.quantity > 1 }.each do |licensed_product|
-      Spree::ProductDistribution.create(
-        from_user:           licensed_product.user,
-        from_email:          licensed_product.email,
-        product_id:          licensed_product.product.id,
-        to_user:             licensed_product.user,
-        email:               licensed_product.email,
-        licensed_product_id: licensed_product.product.id,
-        quantity:            1,
-        can_be_distributed:  false
-      )
-    end
+  def generate_row_hash(header, raw_row)
+    Hash[[header, raw_row].transpose]
   end
 end

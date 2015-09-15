@@ -10,91 +10,63 @@ pages:
     show_in_footer: false
     group_root: true
     body: !xml |
-      <section id="background-grey" class="intro jumbo-text">
-        <div class="page-header container">
-          <h1>Math Overview Page</h1>
-          <h3 class="sub-head">Welcome to the Eureka Math Page</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sed sapien quam. Sed dapibus est id enim facilisis, at posuere turpis adipiscing. Quisque sit amet dui dui.</p>
-          <a class="btn btn-primary" href="../marketing/product.html" role="button">Learn More</a>
+      <div class="row no-gutter">
+        <div class="col-xs-12">
+          <div class="embed-responsive embed-responsive-16by9">
+            <video src="../assets/eureka-math-hd.mp4" controls poster="../assets/mathpage-placeholder.jpg">
+              No support.
+            </video>
+          </div>
+        </div>
+      </div>
+      <section class="row green-bg">
+        <div class="col-sm-12">
+          <h6 class="bold">This is about Great Minds.</h6>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+            irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <a class="btn btn-default btn-block-xs" href="footer_nav/about.html">Learn More</a>
         </div>
       </section>
-      <section class="callout">
-       <div class="container">
-        <div id="viewport" class="row">
-          <div class="col-xs-6">
-           <h2>Intro into Curriculum</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat.</p>
-           <a class="btn btn-primary" href="../marketing/product.html" role="button">Learn More</a>
-           <a class="btn btn-default" href="#" role="button">Secondary CTA</a>
+      <section class="row row-img-full" style="background-image: url('../assets/mathpage-content1.jpg')">
+        <div class="row-img-full-content">
+          <div class="col-sm-6">
+            <h6 class="bold">This is about Great Minds.</h6>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <a class="btn btn-default btn-block-xs margin-bottom-s" href="footer_nav/about.html">Learn More</a>
           </div>
-          <div class="col-xs-1"></div>
-          <div class="col-xs-5">
-            <img src="../assets/img/fpo-image.jpg" class="img-thumbnail" alt="Responsive image">
-          </div>
-        </div>
-        <hr>
+          <div class="col-sm-6"></div>
         </div>
       </section>
-      <section class="callout">
-       <div class="container">
-        <div id="viewport" class="row">
-          <div class="col-xs-6">
-           <h2>Intro into Curriculum</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat.</p>
-           <a class="btn btn-primary" href="../marketing/product.html" role="button">Learn More</a>
-           <a class="btn btn-default" href="#" role="button">Secondary CTA</a>
-          </div>
-          <div class="col-xs-1"></div>
-          <div class="col-xs-5">
-            <img src="../assets/img/fpo-image.jpg" class="img-thumbnail" alt="Responsive image">
-          </div>
+      <section class="row cream-bg">
+        <div class="col-sm-4">
+          <h6 class="bold">This is an important callout</h6>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          </p>
+          <a class="btn btn-default btn-block-xs" href="main_nav/contact.html">Learn More</a>
         </div>
-        <hr>
+        <div class="col-sm-4">
+          <h6 class="bold">This is an important callout</h6>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          </p>
+          <a class="btn btn-default btn-block-xs" href="main_nav/contact.html">Learn More</a>
         </div>
-      </section>
-      <section>
-        <div class="container">
-          <div id="viewport" class="row">
-            <div class="col-xs-6">
-             <h2>Training Section</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat.</p>
-             <a class="btn btn-primary" href="../marketing/product.html" role="button">Learn More</a>
-             <a class="btn btn-default" href="#" role="button">Secondary CTA</a>
-            </div>
-            <div class="col-xs-1"></div>
-            <div class="col-xs-5">
-              <img src="../assets/img/fpo-image.jpg" class="img-thumbnail" alt="Responsive image">
-            </div>
-          </div>
-          <hr>
+        <div class="col-sm-4">
+          <h6 class="bold">This is an important callout</h6>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          </p>
+          <a class="btn btn-default btn-block-xs" href="main_nav/contact.html">Learn More</a>
         </div>
       </section>
-      <section class="bottom-space">
-        <div class="container">
-          <div id="viewport" class="row callout">
-            <div class="col-xs-5 bottom-space">
-              <img src="../assets/img/fpo-image.jpg" class="img-thumbnail" alt="Responsive image">
-            </div>
-            <div class="col-xs-1"></div>
-            <div class="col-xs-6">
-             <h2>Resources</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat.</p>
-             <a class="btn btn-primary" href="../marketing/product.html" role="button">Learn More</a>
-             <a class="btn btn-default" href="#" role="button">Secondary CTA</a>
-            </div>
+      <section class="row row-img-full" style="background-image: url('../assets/mathpage-content2.jpg')">
+        <div class="row-img-full-content">
+          <div class="col-sm-6">
+            <h6 class="bold">Training Section</h6>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </p>
+            <a class="btn btn-default btn-block-xs margin-bottom-m" href="main_nav/contact.html">Learn More</a>
+            <a class="btn btn-default btn-block-xs margin-bottom-m" href="main_nav/contact.html">Overview</a>
           </div>
+          <div class="col-sm-6"></div>
         </div>
       </section>
 

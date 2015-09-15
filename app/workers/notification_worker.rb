@@ -27,7 +27,7 @@ class NotificationWorker
           content: notification_trigger.content
         )
       end
-      if notification_trigger.email? && user.accept_email?
+      if notification_trigger.email? && user.allow_communication?
         NotificationMailer.notify(user, notification_trigger.content).deliver_later
       end
     end

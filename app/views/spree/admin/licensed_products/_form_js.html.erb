@@ -1,7 +1,7 @@
 <script type="text/javascript">
 //<![CDATA[
   (function($){
-   $("#licensed_product_user_id").select2({
+   $("#admin_new_licenses_form_user_id").select2({
       placeholder: "Select school district admin",
       ajax: {
         url: '/storeapi/users',
@@ -32,7 +32,7 @@
         return user.email;
       }
    });
-   $("#licensed_product_product_ids").select2({
+   $("#admin_new_licenses_form_product_ids").select2({
       placeholder: "Select product",
       multiple: true,
       ajax: {

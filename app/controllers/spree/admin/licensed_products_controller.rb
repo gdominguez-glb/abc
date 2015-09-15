@@ -6,33 +6,23 @@ module Spree
       end
 
       def new
-        @licensed_product = Spree::LicensedProduct.new
+        @new_licenses_form = AdminNewLicensesForm.new
       end
 
       def create
-        product_ids = params[:licensed_product_product_ids].split(',')
-        licensed_products = product_ids.map do |product_id|
-          Spree::LicensedProduct.new(permitted_resource_params.merge(product_id: product_id))
-        end
-        if licensed_products.blank?
-          flash[:error] = 'Must select products'
-          render :new and return
-        end
-        if licensed_products.all?{|lp| lp.valid? }
-          licensed_products.each do |lp|
-            lp.save
-            lp.distribute_one_license_to_self if lp.quantity > 1
-          end
+        @new_licenses_form = AdminNewLicensesForm.new(new_licenses_form_params)
+
+        if @new_licenses_form.valid?
+          @new_licenses_form.perform
           redirect_to spree.admin_licensed_products_path
         else
-          @licensed_product = licensed_products.first
           render :new
         end
       end
 
       def import
         if request.post?
-          result = Spree::LicenseImporter.new(params[:file]).import
+          result = Spree::LicenseImporter.new(params[:file], params[:fulfillment_at]).import
           if result[:success]
             redirect_to spree.admin_licensed_products_path, notice: 'Imported successfully'
           else
@@ -40,6 +30,12 @@ module Spree
             redirect_to spree.import_admin_licensed_products_path
           end
         end
+      end
+
+      private
+
+      def new_licenses_form_params
+        params.require(:admin_new_licenses_form).permit(:user_id, :email, :product_ids, :quantity)
       end
     end
   end
