@@ -13,7 +13,7 @@ pages:
       <div class="row no-gutter">
         <div class="col-xs-12">
           <div class="embed-responsive embed-responsive-16by9">
-            <video src="../assets/eureka-math-hd.mp4" controls poster="../assets/mathpage-placeholder.jpg">
+            <video src="http://gm-s3-qa.intridea.com/documents/attachments/000/000/011/original/eureka-math-hd.mp4?1442330466" controls poster="http://gm-s3-qa.intridea.com/documents/attachments/000/000/012/original/mathpage-placeholder.jpg?1442330622">
               No support.
             </video>
           </div>
@@ -27,7 +27,7 @@ pages:
           <a class="btn btn-default btn-block-xs" href="footer_nav/about.html">Learn More</a>
         </div>
       </section>
-      <section class="row row-img-full" style="background-image: url('../assets/mathpage-content1.jpg')">
+      <section class="row row-img-full" style="background-image: url('http://gm-s3-qa.intridea.com/documents/attachments/000/000/008/original/mathpage-content1.jpg?1442330362')">
         <div class="row-img-full-content">
           <div class="col-sm-6">
             <h6 class="bold">This is about Great Minds.</h6>
@@ -57,7 +57,7 @@ pages:
           <a class="btn btn-default btn-block-xs" href="main_nav/contact.html">Learn More</a>
         </div>
       </section>
-      <section class="row row-img-full" style="background-image: url('../assets/mathpage-content2.jpg')">
+      <section class="row row-img-full" style="background-image: url('http://gm-s3-qa.intridea.com/documents/attachments/000/000/010/original/mathpage-content2.jpg?1442330393')">
         <div class="row-img-full-content">
           <div class="col-sm-6">
             <h6 class="bold">Training Section</h6>
