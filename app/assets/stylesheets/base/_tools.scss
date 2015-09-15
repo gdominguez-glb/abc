@@ -9,6 +9,12 @@
   width: 100%;
 }
 
+.pull-right-sm {
+  @media screen and (min-width: $screen-sm-min) {
+    float: right;
+  }
+}
+
 // -------------------------------------
 //   Padding
 // -------------------------------------
