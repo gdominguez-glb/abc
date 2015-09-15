@@ -44,7 +44,7 @@ footer > .row {
 body {
   padding: 50px 0 0;
   color: $dark-blue;
-  background: darken($dark-blue, 2%);
+  background: $cream;
   @include animation(fade 1s);
 
   @media screen and (min-width: $screen-sm-min) {
