@@ -22,7 +22,7 @@ module Spree
 
       def import
         if request.post?
-          result = Spree::LicenseImporter.new(params[:file]).import
+          result = Spree::LicenseImporter.new(params[:file], params[:fulfillment_at]).import
           if result[:success]
             redirect_to spree.admin_licensed_products_path, notice: 'Imported successfully'
           else

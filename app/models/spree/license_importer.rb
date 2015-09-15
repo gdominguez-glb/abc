@@ -1,6 +1,7 @@
 class Spree::LicenseImporter
-  def initialize(file)
-    @file = file
+  def initialize(file, fulfillment_at)
+    @file           = file
+    @fulfillment_at = fulfillment_at
   end
 
   def import
@@ -34,7 +35,8 @@ class Spree::LicenseImporter
       {
         email:    row['email'],
         product:  Spree::Product.find_by(name: row['product']),
-        quantity: row['quantity'].to_i
+        quantity: row['quantity'].to_i,
+        fulfillment_at: @fulfillment_at
       }
     end
   end

@@ -12,6 +12,11 @@
       Excel must include three column in first row: email, product, quantity ( product column must be product's name )
     </div>
   </div>
+  <div class="form-group">
+    <label>Fulfillment At</label>
+    <%= text_field_tag :fulfillment_at, datepicker_field_value(params[:fulfillment_at]), class: 'datepicker form-control' %>
+    <p class="help-block">License will be fulfillment immediately if leave blank</p>
+  </div>
   <div class="form-actions" data-hook="buttons">
     <button name="button" type="submit" class="btn btn-primary btn-success"><span class="icon icon-ok"></span> Upload</button>
     <span class="or">or</span>
