@@ -19,12 +19,6 @@ RSpec.describe Spree::User do
   it { should allow_value('1231asfsdf@#@#').for(:password) }
   it { should_not allow_value('  1231asfsdf@#@#').for(:password) }
 
-  describe "#email_notifications" do
-    it "return default email notifications" do
-      expect(user.email_notifications).to eq(Spree::User.defaults_email_notifications)
-    end
-  end
-
   it "has default user role" do
     expect(user.spree_roles.first).to eq(Spree::Role.user)
   end
