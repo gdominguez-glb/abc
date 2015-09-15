@@ -19,53 +19,51 @@ pages:
           </div>
         </div>
       </div>
-      <section class="row green-bg row-img-full">
-        <div class="col-xsl-6">
+      <section class="row green-bg">
+        <div class="col-sm-12">
           <h6 class="bold">This is about Great Minds.</h6>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
             irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          <a class="btn btn-default btn-block-xs" href="footer_nav/about.html">Learn More</a>
+          <a class="btn btn-default btn-block-xs margin-bottom-s" href="footer_nav/about.html">Learn More</a>
         </div>
-        <div class="col-xsl-6 col-img-full" style="background-image: url('http://localhost:3000/assets/mathpage-content1.jpg')">
+      </section>
+      <section class="row row-img-full" style="background-image: url('../assets/mathpage-content1.jpg')">
+        <div class="col-sm-6">
+          <h6 class="bold">This is about Great Minds.</h6>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <a class="btn btn-default btn-block-xs margin-bottom-s" href="footer_nav/about.html">Learn More</a>
         </div>
+        <div class="col-sm-6"></div>
       </section>
       <section class="row cream-bg">
-        <div class="col-xsl-4">
+        <div class="col-sm-4">
           <h6 class="bold">This is an important callout</h6>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
           </p>
           <a class="btn btn-default btn-block-xs" href="main_nav/contact.html">Learn More</a>
         </div>
-        <div class="col-xsl-4">
+        <div class="col-sm-4">
           <h6 class="bold">This is an important callout</h6>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
           </p>
           <a class="btn btn-default btn-block-xs" href="main_nav/contact.html">Learn More</a>
         </div>
-        <div class="col-xsl-4">
+        <div class="col-sm-4">
           <h6 class="bold">This is an important callout</h6>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
           </p>
           <a class="btn btn-default btn-block-xs margin-bottom-s" href="main_nav/contact.html">Learn More</a>
         </div>
       </section>
-      <section class="row green-bg">
-        <div class="col-xsl-12">
-          <h6 class="bold">Intro Into Curriculum</h6>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-          </p>
-          <a class="btn btn-default btn-block-xs margin-bottom-s" href="main_nav/contact.html">Learn More</a>
-        </div>
-      </section>
-      <section class="row" style="background-image: url('http://localhost:3000/assets/mathpage-mast.jpg')">
-        <div class="col-xsl-6">
+      <section class="row row-img-full" style="background-image: url('../assets/mathpage-content2.jpg')">
+        <div class="col-sm-6">
           <h6 class="bold">Training Section</h6>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
           </p>
           <a class="btn btn-default btn-block-xs margin-bottom-s" href="main_nav/contact.html">Learn More</a>
           <a class="btn btn-default btn-block-xs margin-bottom-s" href="main_nav/contact.html">Overview</a>
         </div>
-        <div class="col-xsl-6"></div>
+        <div class="col-sm-6"></div>
       </section>
 
   -

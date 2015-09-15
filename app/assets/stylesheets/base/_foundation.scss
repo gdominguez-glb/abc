@@ -38,7 +38,7 @@ footer > .row {
 body {
   padding: 50px 0 0;
   color: $dark-blue;
-  background: $light-blue;
+  background: darken($dark-blue, 2%);
   @include animation(fade 1s);
 
   @media screen and (min-width: $screen-sm-min) {
@@ -223,6 +223,16 @@ section {
 
 .coral-text {
   color: $coral;
+}
+
+.row-img-full {
+  color: #fff;
+  background-position: 0;
+  background-size: cover;
+
+  @media screen and (min-width: $screen-sm-min) {
+    min-height: 500px;
+  }
 }
 
 .col-img-full {
