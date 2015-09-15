@@ -12,24 +12,32 @@
 }
 
 .product-wrapper {
-  min-height: 134px;
-  padding: 45px 15px;
   height: 240px;
+  padding: 15px;
+  border: 1px solid darken($gray-lighter, 10%);
   text-align: center;
-  border-radius: $border-radius-value;
+  background-color: #fff;
 
   .title {
     margin: 0 0 15px;
+    color: $coral;
+    font-size: 1.5em;
+    line-height: 1em;
   }
 
   p {
     margin: 0;
-    opacity: .5;
   }
 
   .btn {
     margin-top: 15px;
   }
+}
+
+.product-wrapper-inner {
+  min-height: 130px;
+  padding: 15px;
+  background-color: $gray-lighter;
 }
 
 .recommended-product-wrapper {
@@ -68,20 +76,6 @@
       top: 30px;
       right: 30px;
       min-width: 185px;
-    }
-  }
-}
-
-.blue-bg {
-  background: $dark-blue;
-  color: $cream;
-
-  .btn {
-    &.btn-default {
-      &:hover {
-        background: $cream;
-        color: $dark-blue;
-      }
     }
   }
 }
