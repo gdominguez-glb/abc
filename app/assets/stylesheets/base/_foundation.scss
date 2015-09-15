@@ -7,8 +7,10 @@ html, body {
 }
 
 .container {
-  @media screen and (max-width: $screen-lg-min) {
-    width: auto;
+  width: auto;
+  
+  @media screen and (min-width: 1440px) {
+    width: 1440px;
   }
 }
 
