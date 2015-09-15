@@ -7,12 +7,13 @@ class Spree::LicensedProduct < ActiveRecord::Base
   scope :available, -> { where("(spree_licensed_products.expire_at is null or spree_licensed_products.expire_at > ?) and (spree_licensed_products.quantity > 0)", Time.now).order("expire_at asc") }
   scope :expire_in_days, ->(days) { where("date(expire_at) = ?", days.days.since.to_date) }
   scope :distributable, ->{ where(can_be_distributed: true) }
+  scope :undistributable, ->{ where(can_be_distributed: false) }
 
   validates_presence_of :product
   validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, allow_blank: true
   validates_numericality_of :quantity
 
-  before_create :set_expire_at, :set_user
+  before_create :set_licenses_date_range, :set_user
 
   after_create :send_notification, :assign_user_admin_role
 
@@ -39,7 +40,7 @@ class Spree::LicensedProduct < ActiveRecord::Base
 
   def distribute_one_license_to_self
     update(can_be_distributed: true)
-    distribute_license(self)
+    distribute_license(self.user)
   end
 
   def increase_quantity!(_quantity)
@@ -59,8 +60,9 @@ class Spree::LicensedProduct < ActiveRecord::Base
 
   private
 
-  def set_expire_at
+  def set_licenses_date_range
     if self.product.license_length.present? && self.expire_at.blank?
+      self.fulfillment_at = Time.now
       self.expire_at = product.license_length.days.since(Time.now)
     end
   end

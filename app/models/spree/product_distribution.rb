@@ -8,7 +8,7 @@ class Spree::ProductDistribution < ActiveRecord::Base
 
   validates_presence_of :from_user, :product, :licensed_product
 
-  attr_accessor :can_be_distributed
+  attr_accessor :can_be_distributed, :skip_create_license
 
   before_save :assign_email
 
@@ -55,6 +55,7 @@ class Spree::ProductDistribution < ActiveRecord::Base
   end
 
   def distribute_license
+    return if self.skip_create_license
     licensed_product.decrease_quantity!(self.quantity)
     Spree::LicensedProduct.create(
       user: self.to_user,
