@@ -12,6 +12,10 @@
 
   @include transition(all, .3s);
 
+  @media screen and (min-width: $screen-sm-min) {
+    margin-right: 5px;
+  }
+
   &.btn-default {
     background: transparent;
     color: inherit;
