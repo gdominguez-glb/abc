@@ -61,9 +61,16 @@ class Spree::LicensedProduct < ActiveRecord::Base
   private
 
   def set_licenses_date_range
-    if self.product.license_length.present? && self.expire_at.blank?
-      self.fulfillment_at = Time.now
-      self.expire_at = product.license_length.days.since(Time.now)
+    self.fulfillment_at ||= (self.product.fulfillment_date || Time.now)
+    set_expire_at
+  end
+
+  def set_expire_at
+    if self.product.expiration_date.present?
+      self.expire_at = self.product.expiration_date
+    end
+    if self.product.license_length.present?
+      self.expire_at ||= product.license_length.days.since(self.fulfillment_at)
     end
   end
 
