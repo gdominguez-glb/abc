@@ -36,6 +36,7 @@ class Account::SettingsController < Account::BaseController
       :last_name,
       :email,
       :password,
+      :allow_communication,
       :title,
       :school_district_id,
       :heard_from,
