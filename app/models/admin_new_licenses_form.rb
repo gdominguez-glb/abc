@@ -1,7 +1,7 @@
 class AdminNewLicensesForm
   include ActiveModel::Model
 
-  attr_accessor :user_id, :email, :product_ids, :quantity
+  attr_accessor :user_id, :email, :product_ids, :quantity, :fulfillment_at
 
   validates_presence_of :product_ids
   validates_numericality_of :quantity, greater_than: 0, only_integer: true
@@ -11,7 +11,7 @@ class AdminNewLicensesForm
   def perform
     products = Spree::Product.where(id: self.product_ids.split(','))
     rows = products.map {|product|
-      { product: product, email: self.email, user_id: self.user_id, quantity: self.quantity }
+      { product: product, email: self.email, user_id: self.user_id, quantity: self.quantity, fulfillment_at: self.fulfillment_at }
     }
     Spree::LicensesManager::LicensesCreator.new(rows).execute
   end

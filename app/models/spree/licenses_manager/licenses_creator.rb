@@ -15,7 +15,13 @@ module Spree
 
       def create_license(row)
         # it should support create from user_id/email
-        licensed_product = Spree::LicensedProduct.create(user_id: row[:user_id], email: row[:email], product: row[:product], quantity: row[:quantity])
+        licensed_product = Spree::LicensedProduct.create(
+          user_id:        row[:user_id],
+          email:          row[:email],
+          product:        row[:product],
+          quantity:       row[:quantity],
+          fulfillment_at: row[:fulfillment_at]
+        )
         if licensed_product.quantity > 1
           licensed_product.update(can_be_distributed: true)
           # should i mark the license as distributable if same license product exist and not expire?? and the quantity is 1
