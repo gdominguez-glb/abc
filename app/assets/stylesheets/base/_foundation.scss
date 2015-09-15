@@ -19,6 +19,12 @@ section.row {
     @media screen and (min-width: $screen-xs-min) {
       padding: 0 60px;
     }
+
+    &:last-child {
+      .btn:last-child {
+        margin-bottom: 0;
+      }
+    }
   }
 }
 
