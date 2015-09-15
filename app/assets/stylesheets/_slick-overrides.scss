@@ -21,16 +21,33 @@
 .slick-prev {
   left: 20px;
 
+  @media screen and (min-width: $screen-sm-min) {
+    left: -30px;
+  }
+
   &:before {
     content: "\e079";
+
+    @media screen and (min-width: $screen-sm-min) {
+      color: #000;
+    }
+
   }
 }
 
 .slick-next {
   right: 20px;
 
+  @media screen and (min-width: $screen-sm-min) {
+    right: -30px;
+  }
+
   &:before {
     content: "\e080";
+
+    @media screen and (min-width: $screen-sm-min) {
+      color: #000;
+    }
   }
 }
 
