@@ -27,6 +27,10 @@
           <%= f.password_field :password, class: 'form-control', tabindex: 4 %>
         </div>
         <div class="form-group col-md-6">
+          <label>You may contact me about products and resources from Great Minds.</label>
+          <%= f.check_box :allow_communication, class: 'form-control' %>
+        </div>
+        <div class="form-group col-md-6">
           <label>Select your Role</label>
           <div class="select-container dark-select block">
             <span>Please select your role</span>

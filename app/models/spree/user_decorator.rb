@@ -54,27 +54,6 @@ Spree::User.class_eval do
     matches_salesforce_object(sfo).first
   end
 
-  def self.defaults_email_notifications
-    {
-      professional_development: true,
-      special_offers_and_products: true,
-      revision_updates: true,
-      phone_communication: true,
-      email_communication: true,
-      receive_math: true,
-      receive_english: true,
-      receive_history: true
-    }
-  end
-
-  def email_notifications
-    settings[:email_notifications] || self.class.defaults_email_notifications
-  end
-
-  def accept_email?
-    email_notifications[:email_communication] == true
-  end
-
   def grade_option
     settings[:grade_option]
   end

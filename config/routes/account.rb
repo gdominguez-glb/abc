@@ -10,7 +10,6 @@ namespace :account do
 
   get 'settings', to: 'settings#index'
   patch 'save_profile', to: 'settings#save_profile'
-  patch 'save_email_notifications', to: 'settings#save_email_notifications'
   post 'save_grade_option', to: 'settings#save_grade_option'
 
   resources :reminders, only: [:new, :create]
