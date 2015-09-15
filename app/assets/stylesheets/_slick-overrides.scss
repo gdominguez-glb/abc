@@ -1,7 +1,7 @@
 // _slick-overrides.scss
 
 .slick-slider {
-  margin-bottom: 0;
+  margin-bottom: 60px;
 }
 
 .slick-prev, .slick-next {
@@ -35,7 +35,11 @@
 }
 
 .slick-dots {
-  bottom: -42px;
+  bottom: -55px;
+
+  @media screen and (min-width: $screen-sm-min) {
+    bottom: -30px;
+  }
 
   li, li.slick-active {
     button:before {
