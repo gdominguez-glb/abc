@@ -1,4 +1,5 @@
-var urls = <%= @files_url.to_json.html_safe %>;
-for(var i = 0; i < urls.length; i ++) {
-  window.open(urls[i], '_blank');
-}
+$('body').append("<%= escape_javascript(render 'preview_modal') %>");
+$("#preview_files_modal").modal('show');
+$('#preview_files_modal').on('hidden.bs.modal', function (e) {
+  $("#preview_files_modal").remove();
+});
