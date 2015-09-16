@@ -23,6 +23,7 @@
     color: $coral;
     font-size: 1.5em;
     line-height: 1em;
+    letter-spacing: 0;
   }
 
   p {
@@ -47,7 +48,7 @@
 
 .product-wrapper-inner {
   min-height: 130px;
-  padding: 15px;
+  padding: 20px 15px 15px;
   background-color: $gray-lighter;
 }
 
@@ -66,6 +67,7 @@
   h5 {
     margin: 0 0 15px;
     line-height: 1.2em;
+    letter-spacing: 0;
   }
 
   .btn-link {

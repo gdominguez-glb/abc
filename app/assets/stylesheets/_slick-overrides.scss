@@ -45,12 +45,8 @@
 }
 
 .slick-dots {
-  bottom: -55px;
-
-  @media screen and (min-width: $screen-sm-min) {
-    bottom: -30px;
-  }
-
+  bottom: -30px;
+  
   li, li.slick-active {
     button:before {
       color: $dark-blue;
