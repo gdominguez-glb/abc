@@ -70,7 +70,7 @@ Spree::User.class_eval do
 
   has_many :completed_orders, -> { where.not(completed_at: nil) }, class_name: 'Spree::Order'
   has_many :licensed_products, -> { available }, class_name: 'Spree::LicensedProduct'
-  has_many :products, -> { fulfillmentable }, through: :licensed_products, class_name: 'Spree::Product'
+  has_many :products, -> { unexpire }, through: :licensed_products, class_name: 'Spree::Product'
   has_many :materials, -> { uniq }, through: :products, class_name: 'Spree::Material'
   has_many :product_distributions, foreign_key: :from_user_id, class_name: 'Spree::ProductDistribution'
   has_many :to_users, -> { uniq }, through: :product_distributions, class_name: 'Spree::User'
