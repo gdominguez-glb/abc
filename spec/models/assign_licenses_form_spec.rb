@@ -39,11 +39,13 @@ RSpec.describe AssignLicensesForm, type: :model do
     it "create distributions to user" do
       assign_licenses_form.perform
       distribution = Spree::ProductDistribution.find_by(email: 'john@doe.com')
+
       expect(distribution.quantity).to eq(1)
     end
 
     it "reduce licenses quantity on school admin user" do
       assign_licenses_form.perform
+
       expect(licensed_product.reload.quantity).to eq(9)
     end
 
