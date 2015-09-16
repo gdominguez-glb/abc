@@ -1,36 +1,36 @@
 <div class="container container-content wrapper account-page">
-  <div class="content sidebar-right">
-    <%= render partial: 'notifications', locals: { notifications: @notifications } %>
-    <div class="products">
-      <div class="head clearfix">
-        <h4 class="pull-left">My Products</h4>
-        <% if @grade_taxons.count > 0 %>
-          <div class="pull-right grade-select select-container dark-select">
-            <span>Grade:</span>
-            <%= select_tag 'grade_option', options_for_select(GRADE_LEVELS, current_spree_user.settings[:grade_option]), include_blank: 'All', class: 'form-control inline-input'  %>
-          </div>
-        <% end %>
-      </div>
-      <div class="row">
-        <div class="my-products">
-          <%= render 'my_products' %>
-        </div>
-      </div>
+
+  <%= render partial: 'notifications', locals: { notifications: @notifications } %>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <h4>My Products</h4>
     </div>
-    <div class="row">
-      <div class="recommends col-md-7">
-        <%= render 'recommends' %>
-      </div>
-      <div class="twitter-feed-container col-md-5">
-        <%= render 'account/twitter' %>
-      </div>
+    <div class="col-sm-6">
+      <% if @grade_taxons.count > 0 %>
+        <div class="pull-right-sm grade-select select-container dark-select">
+          <span>Grade:</span>
+          <%= select_tag 'grade_option', options_for_select(GRADE_LEVELS, current_spree_user.settings[:grade_option]), include_blank: 'All', class: 'form-control inline-input'  %>
+        </div>
+      <% end %>
     </div>
   </div>
-  <!-- <div class="fixed-sidebar account-fixed-sidebar right page-has-subnav blue-bg">
-    <div class="recent-history">
-      <%#= render 'recent_activities' %>
+
+  <div class="row">
+    <div class="my-products">
+      <%= render 'my_products' %>
     </div>
-  </div> -->
+  </div>
+
+  <div class="row">
+    <div class="recommends col-md-7">
+      <%= render 'recommends' %>
+    </div>
+    <div class="twitter-feed-container col-md-5">
+      <%= render 'account/twitter' %>
+    </div>
+  </div>
+
 </div>
 
 <%= content_for :javascripts do %>

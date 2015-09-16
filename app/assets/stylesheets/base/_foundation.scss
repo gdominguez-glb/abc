@@ -166,29 +166,11 @@ body.dragging, body.dragging * {
 
 .wrapper {
   position: relative;
-  @include clearfix;
-}
-
-.content {
-  position: relative;
-  height: 100%;
-  padding: 30px 60px 60px;
+  padding: 30px 15px;
   @include clearfix;
 
-  @media screen and (max-width: 768px) {
-    padding: 30px 30px 60px;
-  }
-
-  &.sidebar-left {
-    float: right;
-    width: calc(100% - 217px);
-  }
-
-  &.responsive-sidebar {
-
-    @media screen and (max-width: 1025px) {
-      width: 100%;
-    }
+  @media screen and (min-width: $screen-sm-min) {
+    padding: 30px 60px;
   }
 }
 

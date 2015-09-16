@@ -12,80 +12,98 @@
 }
 
 .product-wrapper {
-  min-height: 134px;
-  padding: 45px 15px;
   height: 240px;
+  padding: 15px;
+  border: 1px solid darken($gray-lighter, 10%);
   text-align: center;
-  border-radius: $border-radius-value;
+  background-color: #fff;
 
   .title {
     margin: 0 0 15px;
+    color: $coral;
+    font-size: 1.5em;
+    line-height: 1em;
+    letter-spacing: 0;
   }
 
   p {
     margin: 0;
-    opacity: .5;
   }
 
   .btn {
     margin-top: 15px;
   }
+
+  .btn-link {
+    font-weight: bold;
+    text-decoration: underline;
+    color: #000;
+
+    &:hover {
+      color: lighten($dark-blue, 15%);
+    }
+
+  }
+}
+
+.product-wrapper-inner {
+  min-height: 130px;
+  padding: 20px 15px 15px;
+  background-color: $gray-lighter;
 }
 
 .recommended-product-wrapper {
   position: relative;
-  padding: 30px;
   margin: 0 0 15px;
-  background: $brand-green;
-  border-radius: $border-radius-value;
+  padding: 15px;
+  border: 1px solid darken($gray-lighter, 10%);
   text-align: center;
-  color: $dark-blue;
+  background: #fff;
 
-  &:last-child {
-    margin: 0;
-  }
-
-  h5, h6 {
+  @media screen and (min-width: $screen-sm-min) {
     margin: 0 0 15px;
+    text-align: left;
   }
 
-  h6 {
-    font-size: 16px;
-    text-transform: none;
+  .img-thumbnail {
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 0;
+
+    @media screen and (min-width: $screen-sm-min) {
+      float: left;
+      margin: 0 15px 0 0;
+    }
+  }
+
+  h5 {
+    margin: 0 0 5px;
+    line-height: 1.2em;
+    letter-spacing: 0;
+
+    @media screen and (min-width: $screen-sm-min) {
+      margin: 15px 0 10px;
+    }
   }
 
   p {
-    opacity: .7;
-  }
-
-  @media screen and (min-width: $screen-sm-min) {
-    padding-right: 230px;
-    text-align: left;
-
-    h6 {
-      margin-bottom: 0;
-    }
-
-    .btn {
-      display: block;
-      position: absolute;
-      top: 30px;
-      right: 30px;
-      min-width: 185px;
+    @media screen and (min-width: $screen-sm-min) {
+      margin: 0 0 10px;
     }
   }
-}
 
-.blue-bg {
-  background: $dark-blue;
-  color: $cream;
+  .btn-link {
+    padding: 6px 12px;
+    font-weight: bold;
+    text-decoration: underline;
+    color: #000;
 
-  .btn {
-    &.btn-default {
-      &:hover {
-        background: $cream;
-        color: $dark-blue;
-      }
+    &:hover {
+      color: lighten($dark-blue, 15%);
+    }
+
+    @media screen and (min-width: $screen-sm-min) {
+      padding: 6px 0;
     }
   }
 }
