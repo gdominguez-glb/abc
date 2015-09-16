@@ -14,12 +14,11 @@ module Spree
 
       def create_license(attrs={})
         licensed_product = Spree::LicensedProduct.create!({ order: @order, user: @order.user }.merge(attrs))
-        distribute_license_to_self(licensed_product) if licensed_product.quantity > 1 
+        if licensed_product.quantity > 1
+          licensed_product.update(can_be_distributed: true)
+          SingleLicenseExtractor.new(licensed_product).execute
+        end
         licensed_product
-      end
-
-      def distribute_license_to_self(licensed_product)
-        SingleLicenseExtractor.new(licensed_product).execute
       end
 
     end
