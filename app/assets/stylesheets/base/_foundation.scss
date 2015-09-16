@@ -14,6 +14,10 @@ html, body {
   }
 }
 
+.container-content {
+  background-color: $light-plum;
+}
+
 section.row {
   [class*='col-'] {
     padding: 0 30px;
@@ -46,7 +50,7 @@ footer > .row {
 body {
   padding: 50px 0 0;
   color: $dark-blue;
-  background: $cream;
+  background: darken($dark-blue, 2%);
   @include animation(fade 1s);
 
   @media screen and (min-width: $screen-sm-min) {
@@ -59,17 +63,6 @@ body {
       opacity: .75;
       z-index: 3000;
     }
-  }
-
-  &.products,
-  &.favorites,
-  &.history,
-  &.video_gallery,
-  &.dashboard,
-  &.settings,
-  &.help,
-  &.contact {
-    background: $light-plum;
   }
 }
 

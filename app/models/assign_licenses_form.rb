@@ -12,19 +12,13 @@ class AssignLicensesForm
   validates :licenses_number, presence: true, numericality: { greater_than: 0 }
 
   def perform
-    licensed_products = @user.licensed_products.distributable.where(product_id: @product_id).to_a
-    emails.each do |email|
-      user_or_email = Spree::User.find_by(email: email) || email
-      current_licenses_number = @licenses_number.to_i
-      licensed_products.each do |licensed_product|
-        if licensed_product.quantity >= current_licenses_number
-          licensed_product.distribute_license(user_or_email, current_licenses_number)
-          break
-        else
-          current_licenses_number -= licensed_product.quantity
-          licensed_product.distribute_license(user_or_email, licensed_product.quantity)
-        end
-      end
+    product = Spree::Product.find(@product_id)
+    Spree::LicensesManager::LicensesDistributer.new(user: @user, product: product, rows: build_rows).execute
+  end
+
+  def build_rows
+    emails.map do |email|
+      { email: email, quantity: @licenses_number.to_i }
     end
   end
 

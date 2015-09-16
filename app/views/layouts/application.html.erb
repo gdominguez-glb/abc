@@ -13,7 +13,7 @@
     <div id="wrap" class="<%= 'empty-state' if @video_products.blank? %>">
       <%= render 'header' %>
       <%= render 'flashes' %>
-      <div class="container">
+      <div class="container container-content">
         <%= yield %>
       </div>
     </div>
