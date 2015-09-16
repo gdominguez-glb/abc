@@ -4,7 +4,11 @@ class Spree::LicensedProduct < ActiveRecord::Base
   belongs_to :user, class_name: 'Spree::User'
   belongs_to :product_distribution, class_name: 'Spree::ProductDistribution'
 
-  scope :available, -> { where("(spree_licensed_products.expire_at is null or spree_licensed_products.expire_at > ?) and (spree_licensed_products.quantity > 0)", Time.now).order("expire_at asc") }
+  scope :available, -> {
+    where("spree_licensed_products.expire_at is null or spree_licensed_products.expire_at > ?", Time.now).
+    where("spree_licensed_products.quantity > 0").
+    where("spree_licensed_products.fulfillment_at < ?", Time.now)
+  }
   scope :expire_in_days, ->(days) { where("date(expire_at) = ?", days.days.since.to_date) }
   scope :distributable, ->{ where(can_be_distributed: true) }
   scope :undistributable, ->{ where(can_be_distributed: false) }

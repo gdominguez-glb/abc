@@ -27,7 +27,8 @@ Spree::Product.class_eval do
   }
 
   scope :saleable, -> { where(for_sale: true) }
-  scope :fulfillmentable, -> { where("fulfillment_date < ? or fulfillment_date is null", Time.now) }
+  scope :fulfillmentable, -> { where("spree_products.fulfillment_date < ? or spree_products.fulfillment_date is null", Time.now) }
+  scope :unexpire, -> { where("spree_products.expiration_date > ? or spree_products.expiration_date is null", Time.now) }
 
   after_save :add_video_group_taxon
 
