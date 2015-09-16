@@ -48,12 +48,11 @@ module Spree
       end
 
       def create_distribution(attrs={})
-        distribution_attrs = {
+        Spree::ProductDistribution.create({
           from_user:  @user,
           product: @product,
-        }.merge(attrs)
-
-        Spree::ProductDistribution.create(attrs)
+          skip_create_license: true
+        }.merge(attrs))
       end
 
       def create_license(attrs={})
