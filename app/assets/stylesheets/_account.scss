@@ -55,19 +55,41 @@
 .recommended-product-wrapper {
   position: relative;
   margin: 0 0 15px;
-  padding: 30px 0;
+  padding: 15px;
   border: 1px solid darken($gray-lighter, 10%);
   text-align: center;
   background: #fff;
 
   @media screen and (min-width: $screen-sm-min) {
+    margin: 0 0 15px;
     text-align: left;
   }
 
+  .img-thumbnail {
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 0;
+
+    @media screen and (min-width: $screen-sm-min) {
+      float: left;
+      margin: 0 15px 0 0;
+    }
+  }
+
   h5 {
-    margin: 0 0 15px;
+    margin: 0 0 5px;
     line-height: 1.2em;
     letter-spacing: 0;
+
+    @media screen and (min-width: $screen-sm-min) {
+      margin: 15px 0 10px;
+    }
+  }
+
+  p {
+    @media screen and (min-width: $screen-sm-min) {
+      margin: 0 0 10px;
+    }
   }
 
   .btn-link {
