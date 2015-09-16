@@ -33,6 +33,6 @@
     </label>
   </div>
   <div class="form-group">
-    <%= f.submit class: 'btn btn-primary' %>
+    <%= f.submit (@question.new_record? ? 'Create FAQ' : 'Update FAQ') , class: 'btn btn-primary' %>
   </div>
 <% end %>
