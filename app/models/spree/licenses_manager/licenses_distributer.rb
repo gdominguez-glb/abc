@@ -3,11 +3,11 @@ module Spree
     class LicensesDistributer
 
       def initialize(attrs={})
-        @user    = attrs[:user]
-        @product = attrs[:product]
-        @rows    = attrs[:rows]
+        @user              = attrs[:user]
+        @rows              = attrs[:rows]
+        @licensed_products = attrs[:licensed_products]
 
-        @licensed_products = @user.licensed_products.distributable.available.where(product_id: @product.id).to_a
+        @product = @licensed_products.first.product
       end
 
       # validate license quantity

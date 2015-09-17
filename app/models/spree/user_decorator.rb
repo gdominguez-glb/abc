@@ -147,16 +147,22 @@ Spree::User.class_eval do
     end
   end
 
-  def purchased_licenses_count(product)
-    distributed_licenses_count(product) + licensed_products.distributable.where(product_id: product.id).sum(:quantity)
+  def managed_products_options
+    licensed_products.fulfillmentable.distributable.includes(:product).group_by { |lp| "#{lp.product.name} expiring #{lp.expire_at.strftime("%B %Y")}" }.map do |key, licenses|
+      [key, licenses.map(&:id).join(',')]
+    end
   end
 
-  def distributed_licenses_count(product)
-    product_distributions.where(product_id: product.id).sum(:quantity)
+  def purchased_licenses_count(licenses_ids)
+    distributed_licenses_count(licenses_ids) + remaining_licenses_count(licenses_ids)
   end
 
-  def remaining_licenses_count(product)
-    purchased_licenses_count(product) - distributed_licenses_count(product)
+  def distributed_licenses_count(licenses_ids)
+    product_distributions.where(licensed_product_id: licenses_ids).sum(:quantity)
+  end
+
+  def remaining_licenses_count(licenses_ids)
+    licensed_products.where(id: licenses_ids).sum(:quantity)
   end
 
   def logins_in_last_days(days)
