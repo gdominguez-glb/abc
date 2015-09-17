@@ -235,55 +235,13 @@
     }
   }
 
-  // ----- Cart Popup ----- //
+  // ----- Cart  ----- //
 
   #link-to-cart {
     .cart-info {
       position: relative;
       font-size: 14px;
       color: $cream;
-    }
-
-    &:hover {
-      > .gm-order-info-popup {
-        display: none;
-
-        @media screen and (min-width: $screen-sm-min) {
-          display: block;
-        }
-      }
-    }
-  }
-
-  .gm-order-info-popup {
-    display: none;
-    position: absolute;
-    top: 46px;
-    right: 0;
-    width: 300px;
-    border: 3px solid $coral;
-    z-index: 3000;
-
-    table tr {
-      td {
-        padding: 5px 10px;
-      }
-
-      a {
-        color: #000;
-      }
-    }
-
-    .total-row {
-      color: $cream;
-      background: $dark-blue;
-    }
-
-    .proceed-button {
-      display: block;
-      padding: 15px 30px;
-      margin: 10px auto;
-      width: 80%;
     }
   }
 
