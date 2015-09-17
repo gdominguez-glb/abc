@@ -1,16 +1,15 @@
 <div class="product-stats-wrapper">
   <h6>
     Your Licenses for:
-    <% product = current_spree_user.managed_products.first %>
-    <% if current_spree_user.managed_products.count > 1 %>
+    <% if current_spree_user.managed_products_options.count > 1 %>
       <div class="select-container dark-select">
-        <span><%= product.name %></span>
-        <%= select_tag :product_id, options_from_collection_for_select(current_spree_user.managed_products, :id, :name, params[:product_id]), class: 'licenses-select form-control inline-input' %>
+        <%= select_tag :license_ids, options_for_select(current_spree_user.managed_products_options), class: 'licenses-select form-control inline-input' %>
       </div>
-    <% else %>
-      <%= product.name %>
-      <%= hidden_field_tag :product_id, product.id  %>
+    <% elsif current_spree_user.managed_products_options.count == 1 %>
+      <% option = current_spree_user.managed_products_options.first %>
+      <%= option[0] %>
+      <%= hidden_field_tag :license_ids, option[1]  %>
     <% end %>
   </h6>
-  <%= render partial: 'product_stats', locals: { product: product } %>
+  <%# <%= render partial: 'product_stats', locals: { product: product } %1> %>
 </div>
