@@ -246,6 +246,16 @@ section {
   }
 
   @media screen and (min-width: $screen-sm-min) {
-    min-height: 500px;
+    height: 700px;
+  }
+}
+
+.col-centered-content {
+
+  @media screen and (min-width: $screen-sm-min) {
+    height: 580px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 }
