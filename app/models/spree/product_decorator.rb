@@ -86,6 +86,7 @@ Spree::Product.class_eval do
 
   if !defined?(PRODUCT_TYPES)
     PRODUCT_TYPES = [
+      'Digital',
       'Curriculum',
       'Video',
       'Pdf',
@@ -99,6 +100,10 @@ Spree::Product.class_eval do
 
   def free?
     price == 0
+  end
+
+  def digital?
+    product_type == 'Digital'
   end
 
   def downloadable?
