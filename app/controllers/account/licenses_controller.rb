@@ -38,8 +38,8 @@ class Account::LicensesController < Account::BaseController
     @user = current_spree_user.to_users.find_by(id: params[:user_id])
   end
 
-  def product_stats
-    @product = current_spree_user.managed_products.find_by(id: params[:product_id])
+  def licenses_stats
+    @licenses_ids = params[:licenses_ids].split(',')
     render layout: false
   end
 

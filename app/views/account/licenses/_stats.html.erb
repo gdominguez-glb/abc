@@ -1,4 +1,5 @@
 <div class="product-stats-wrapper">
+  <% option = current_spree_user.managed_products_options.first %>
   <h6>
     Your Licenses for:
     <% if current_spree_user.managed_products_options.count > 1 %>
@@ -11,5 +12,5 @@
       <%= hidden_field_tag :license_ids, option[1]  %>
     <% end %>
   </h6>
-  <%# <%= render partial: 'product_stats', locals: { product: product } %1> %>
+  <%= render partial: 'licenses_stats', locals: { licenses_ids: option[1].split(',') } if option %>
 </div>
