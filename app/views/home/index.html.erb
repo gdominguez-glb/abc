@@ -1,13 +1,29 @@
 <div class="row intro masthead" style="background-image: url('<%= image_url "homepage-mast.jpg" %>')">
   <div class="col-xs-12 masthead-content text-center">
     <h5 class="home-mast-intro bold">All children are capable of <span class="green-text">greatness</span></h5>
-    <div class="select-container light-text">
-      <span>I am a</span>
-      <%= select_tag :role, options_for_select(USER_TITLES), prompt: 'I am a...', class: 'form-control inline-input masthead-select' %>
+    <div class="dropdown">
+      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownRole" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        I am a
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownRole">
+        <li><a href="#">Teacher</a></li>
+        <li><a href="#">Administrator</a></li>
+        <li><a href="#">Parent</a></li>
+        <li><a href="#">Administrative Assistant</a></li>
+        <li><a href="#">Homeschooler</a></li>
+      </ul>
     </div>
-    <div class="select-container light-text">
-      <span>Looking into</span>
-      <%= select_tag :curriculum, options_from_collection_for_select(@curriculums, :id, :name), prompt: 'Looking for help in...', class: 'form-control inline-input masthead-select' %>
+    <div class="dropdown">
+      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownCurriculum" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        Looking into
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownCurriculum">
+        <li><a href="#">Math</a></li>
+        <li><a href="#">English</a></li>
+        <li><a href="#">History</a></li>
+      </ul>
     </div>
     <a href="" class="btn btn-default" disabled="disabled">Go</a>
   </div>
