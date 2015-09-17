@@ -147,6 +147,12 @@ label {
       margin-left: 10px;
     }
   }
+
+  + .btn {
+    @media screen and (min-width: $screen-xs-min) {
+      margin-left: 10px;
+    }
+  }
 }
 
 .inline-input {
