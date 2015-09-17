@@ -7,9 +7,15 @@ html, body {
 }
 
 .container {
-  @media screen and (max-width: $screen-lg-min) {
-    width: auto;
+  width: auto;
+
+  @media screen and (min-width: 1440px) {
+    width: 1440px;
   }
+}
+
+.container-content {
+  background-color: $light-plum;
 }
 
 section.row {
@@ -44,7 +50,7 @@ footer > .row {
 body {
   padding: 50px 0 0;
   color: $dark-blue;
-  background: $cream;
+  background: darken($dark-blue, 2%);
   @include animation(fade 1s);
 
   @media screen and (min-width: $screen-sm-min) {
@@ -57,17 +63,6 @@ body {
       opacity: .75;
       z-index: 3000;
     }
-  }
-
-  &.products,
-  &.favorites,
-  &.history,
-  &.video_gallery,
-  &.dashboard,
-  &.settings,
-  &.help,
-  &.contact {
-    background: $light-plum;
   }
 }
 
@@ -171,29 +166,11 @@ body.dragging, body.dragging * {
 
 .wrapper {
   position: relative;
-  @include clearfix;
-}
-
-.content {
-  position: relative;
-  height: 100%;
-  padding: 30px 60px 60px;
+  padding: 30px 15px;
   @include clearfix;
 
-  @media screen and (max-width: 768px) {
-    padding: 30px 30px 60px;
-  }
-
-  &.sidebar-left {
-    float: right;
-    width: calc(100% - 217px);
-  }
-
-  &.responsive-sidebar {
-
-    @media screen and (max-width: 1025px) {
-      width: 100%;
-    }
+  @media screen and (min-width: $screen-sm-min) {
+    padding: 30px 60px;
   }
 }
 
@@ -239,11 +216,12 @@ section {
 }
 
 .row-img-full-content {
+  min-height: 300px;
   padding: 60px 0;
   background: rgba($dark-blue, .6);
 
   @media screen and (min-width: $screen-sm-min) {
-    min-height: 500px;
+    min-height: 700px;
   }
 }
 
@@ -269,6 +247,16 @@ section {
   }
 
   @media screen and (min-width: $screen-sm-min) {
-    min-height: 500px;
+    height: 700px;
+  }
+}
+
+.col-centered-content {
+
+  @media screen and (min-width: $screen-sm-min) {
+    height: 580px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 }

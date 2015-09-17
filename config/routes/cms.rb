@@ -1,6 +1,5 @@
 namespace :cms do
-  root 'dashboard#index'
-  get '/dashboard', to: 'dashboard#index', as: :dashboard
+  root 'pages#index'
 
   get '/user_profile_settings', to: 'user_profile_settings#index'
   post '/user_profile_settings', to: 'user_profile_settings#save'

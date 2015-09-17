@@ -3,11 +3,11 @@ module Spree
     class LicensesDistributer
 
       def initialize(attrs={})
-        @user    = attrs[:user]
-        @product = attrs[:product]
-        @rows    = attrs[:rows]
+        @user              = attrs[:user]
+        @rows              = attrs[:rows]
+        @licensed_products = attrs[:licensed_products]
 
-        @licensed_products = @user.licensed_products.distributable.available.where(product_id: @product.id).to_a
+        @product = @licensed_products.first.product
       end
 
       # validate license quantity
@@ -48,12 +48,11 @@ module Spree
       end
 
       def create_distribution(attrs={})
-        distribution_attrs = {
+        Spree::ProductDistribution.create({
           from_user:  @user,
           product: @product,
-        }.merge(attrs)
-
-        Spree::ProductDistribution.create(attrs)
+          skip_create_license: true
+        }.merge(attrs))
       end
 
       def create_license(attrs={})

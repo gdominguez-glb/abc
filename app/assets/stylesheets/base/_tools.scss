@@ -5,8 +5,34 @@
 //
 // *************************************
 
+// -------------------------------------
+//   Responsive
+// -------------------------------------
+
 .img-responsive {
   width: 100%;
+}
+
+.pull-right-sm {
+  @media screen and (min-width: $screen-sm-min) {
+    float: right;
+  }
+}
+
+.margin-sm-bottom-m {
+  margin-bottom: $b-space-m !important;
+
+  @media screen and (min-width: $screen-sm-min) {
+    margin-bottom: 0 !important;
+  }
+}
+
+.margin-sm-bottom-xl {
+  margin-bottom: $b-space-xl;
+
+  @media screen and (min-width: $screen-sm-min) {
+    margin-bottom: 0;
+  }
 }
 
 // -------------------------------------

@@ -130,7 +130,15 @@
       background-color: $coral;
 
       @media screen and (min-width: $screen-sm-min) {
+        height: 41px !important;  //Override !important specified by Bootstrap
         padding: 0 15px;
+        text-align: center;
+      }
+
+      ul {
+        @media screen and  (min-width: $screen-sm-min) {
+          display: inline-block;
+        }
       }
 
       li {
@@ -191,7 +199,7 @@
           @extend .serif;
           font-family: 'Lora' serif;
           font-style: italic;
-          text-transform: lowercase;
+          text-transform: capitalize;
         }
       }
     }

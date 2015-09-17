@@ -1,10 +1,10 @@
 $(()->
   $('body').on('change', '.licenses-select', ()->
-    url = '/account/licenses/product_stats'
+    url = '/account/licenses/licenses_stats'
     $el = $(this)
     $.ajax
       url: url
-      data: { product_id: $(this).val() }
+      data: { licenses_ids: $(this).val() }
       success: (response)->
         $el.closest('.product-stats-wrapper').find('.product-stats').replaceWith(response)
   )

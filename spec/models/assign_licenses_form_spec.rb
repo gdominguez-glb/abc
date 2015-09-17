@@ -6,7 +6,7 @@ RSpec.describe AssignLicensesForm, type: :model do
   let!(:licensed_product) { create(:spree_licensed_product, user: school_admin_user, product: product, quantity: 10) }
 
   let(:assign_licenses_form) do
-    AssignLicensesForm.new(licenses_recipients: 'john@doe.com', product_id: product.id, licenses_number: '1', user: school_admin_user)
+    AssignLicensesForm.new(licenses_recipients: 'john@doe.com', licenses_ids: [licensed_product.id], licenses_number: '1', user: school_admin_user)
   end
 
   describe "validations" do
@@ -29,8 +29,8 @@ RSpec.describe AssignLicensesForm, type: :model do
     end
 
     it "valid if more than licensed products of users match the quantity" do
-      create(:spree_licensed_product, user: school_admin_user, product: product, quantity: 12)
-      assign_licenses_form.licenses_number = '21'
+      licensed_product = create(:spree_licensed_product, user: school_admin_user, product: product, quantity: 10)
+      assign_licenses_form = AssignLicensesForm.new(licenses_recipients: 'john@doe.com', licenses_ids: [licensed_product.id], licenses_number: '9', user: school_admin_user)
       expect(assign_licenses_form.valid?).to eq(true)
     end
   end
@@ -39,11 +39,13 @@ RSpec.describe AssignLicensesForm, type: :model do
     it "create distributions to user" do
       assign_licenses_form.perform
       distribution = Spree::ProductDistribution.find_by(email: 'john@doe.com')
+
       expect(distribution.quantity).to eq(1)
     end
 
     it "reduce licenses quantity on school admin user" do
       assign_licenses_form.perform
+
       expect(licensed_product.reload.quantity).to eq(9)
     end
 
@@ -51,7 +53,7 @@ RSpec.describe AssignLicensesForm, type: :model do
       let!(:another_licensed_product) { create(:spree_licensed_product, user: school_admin_user, product: product, quantity: 5) }
 
       it "able to assign licenses from two licenses" do
-        assign_licenses_form.licenses_number = 13
+        assign_licenses_form = AssignLicensesForm.new(licenses_recipients: 'john@doe.com', licenses_ids: [licensed_product.id, another_licensed_product.id], licenses_number: '13', user: school_admin_user)
         assign_licenses_form.perform
 
         expect(licensed_product.reload.quantity).to eq(0)

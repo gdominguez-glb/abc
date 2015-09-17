@@ -1,11 +1,17 @@
-<h4>Recommended</h4>
+<h4>My Recommendations</h4>
 <div class="row">
   <div class="recommended-products col-xs-12">
     <% @recommendations.each do |recommendation| %>
-      <div class="recommended-product-wrapper green-bg">
+      <div class="recommended-product-wrapper clearfix">
+        <% if recommendation.photo.present? %>
+          <%= image_tag recommendation.photo.url, class: 'recommended-thumb img-thumbnail' %>
+        <% else %>
+          <img src="http://placehold.it/100x100" class="img-thumbnail">
+        <% end %>
+
         <h5><%= recommendation.title %></h5>
-        <h6><%= truncate(recommendation.sub_header, length: 120) %></h6>
-        <%= link_to recommendation.call_to_action_button_text, recommendation.call_to_action_button_link, class: 'btn btn-primary' %>
+        <p><%= truncate(recommendation.sub_header, length: 120) %></p>
+        <%= link_to recommendation.call_to_action_button_text, recommendation.call_to_action_button_link, class: 'btn btn-link' %>
       </div>
     <% end %>
   </div>

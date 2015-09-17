@@ -23,7 +23,7 @@ ExceptionNotification.configure do |config|
     email_prefix: "[GM #{Rails.env}]",
     sender_address: %("gm-admin" <#{ENV['from_email']}>),
     exception_recipients: %w(
-      web.admin@greatminds.net aaron.schifrin@greatminds.net maggie@intridea.com
+      maggie@intridea.com
       roc@intridea.com adam@mobomo.com),
     sections: %w(intro request session environment backtrace),
     background_sections: %w(intro backtrace data))

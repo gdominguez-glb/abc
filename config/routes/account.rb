@@ -21,7 +21,7 @@ namespace :account do
       post :import
       get :users
       get :user_stats
-      get :product_stats
+      get :licenses_stats
       get :edit_user_licenses
       post :update_user_licenses
     end
