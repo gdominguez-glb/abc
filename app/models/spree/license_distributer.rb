@@ -2,13 +2,13 @@ class Spree::LicenseDistributer
   def initialize(attrs={})
     @user       = attrs[:user]
     @file       = attrs[:file]
-    @product_id = attrs[:product_id]
+    @licenses_ids = attrs[:licenses_ids]
 
-    @licensed_products = @user.licensed_products.distributable.available.where(product_id: @product_id).to_a
+    @licensed_products = @user.licensed_products.distributable.available.where(id: @licenses_ids).to_a
   end
 
   def distribute
-    return { success: false, error: "Product can't be blank" } if @product_id.blank?
+    return { success: false, error: "Product can't be blank" } if @licenses_ids.blank?
     return { success: false, error: "File can't be blank" } if @file.blank?
     license_rows = case file_format
     when '.xlsx'
@@ -19,8 +19,7 @@ class Spree::LicenseDistributer
     return { success: false, error: "Invalid rows" } if license_rows.empty?
     return { success: false, error: "Invalid licenses number " } if !validate_license_quantity(license_rows)
 
-    product = Spree::Product.find(@product_id)
-    Spree::LicensesManager::LicensesDistributer.new(user: @user, product: product, rows: license_rows.map(&:symbolize_keys)).execute
+    Spree::LicensesManager::LicensesDistributer.new(user: @user, licensed_products: licensed_products, rows: license_rows.map(&:symbolize_keys)).execute
 
     { success: true }
   end

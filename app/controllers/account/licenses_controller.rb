@@ -6,7 +6,7 @@ class Account::LicensesController < Account::BaseController
   end
 
   def assign
-    @assign_licenses_form = AssignLicensesForm.new(assign_licenses_params.merge(user: current_spree_user, product_id: params[:product_id]))
+    @assign_licenses_form = AssignLicensesForm.new(assign_licenses_params.merge(user: current_spree_user, licenses_ids: params[:licenses_ids].split(',')))
     if @assign_licenses_form.valid?
       @assign_licenses_form.perform
       flash[:success] = "Successully assigned licenses to recipients"
@@ -21,7 +21,7 @@ class Account::LicensesController < Account::BaseController
   end
 
   def import
-    result = Spree::LicenseDistributer.new({ user: current_spree_user, file: params[:file], product_id: params[:product_id] }).distribute
+    result = Spree::LicenseDistributer.new({ user: current_spree_user, file: params[:file], licenses_ids: params[:licenses_ids].split(',') }).distribute
     if !result[:success]
       flash[:error] = result[:error]
       redirect_to account_licenses_path

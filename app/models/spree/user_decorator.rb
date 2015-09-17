@@ -148,8 +148,8 @@ Spree::User.class_eval do
   end
 
   def managed_products_options
-    licensed_products.fulfillmentable.distributable.includes(:product).group_by { |lp| [lp.product, lp.expire_at] }.map do |key, licenses|
-      ["#{key[0].name} expiring #{key[1].strftime("%B %Y")}", licenses.map(&:id).join(',')]
+    licensed_products.fulfillmentable.distributable.includes(:product).group_by { |lp| "#{lp.product.name} expiring #{lp.expire_at.strftime("%B %Y")}" }.map do |key, licenses|
+      [key, licenses.map(&:id).join(',')]
     end
   end
 

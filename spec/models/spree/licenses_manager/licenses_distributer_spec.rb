@@ -13,7 +13,7 @@ RSpec.describe Spree::LicensesManager::LicensesDistributer do
     ]
     Spree::LicensesManager::LicensesDistributer.new(
       user: user,
-      product: product,
+      licensed_products: [licensed_product],
       rows: rows
     ).execute
   end

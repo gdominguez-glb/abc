@@ -8,7 +8,7 @@
       <div class="modal-body">
         <%= form_tag import_account_licenses_path, multipart: true do %>
           <p>1. <%= link_to 'Download (xlsx)', '/import_template.xlsx', class: 'btn btn-default' %> <%= link_to 'Download (csv)', '/import_template.csv', class: 'btn btn-default' %> our User Template and fill it in</p>
-          <p>2. <%= select_tag :license_ids, options_for_select(current_spree_user.managed_products_options), class: 'licenses-select form-control inline-input' %> &amp; upload the completed file</p>
+          <p>2. <%= select_tag :licenses_ids, options_for_select(current_spree_user.managed_products_options), class: 'licenses-select form-control inline-input' %> &amp; upload the completed file</p>
           <div class="form-group inline-input">
             <%= file_field_tag :file %>
           </div>

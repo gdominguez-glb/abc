@@ -4,12 +4,12 @@
     Your Licenses for:
     <% if current_spree_user.managed_products_options.count > 1 %>
       <div class="select-container dark-select">
-        <%= select_tag :license_ids, options_for_select(current_spree_user.managed_products_options), class: 'licenses-select form-control inline-input' %>
+        <%= select_tag :licenses_ids, options_for_select(current_spree_user.managed_products_options), class: 'licenses-select form-control inline-input' %>
       </div>
     <% elsif current_spree_user.managed_products_options.count == 1 %>
       <% option = current_spree_user.managed_products_options.first %>
       <%= option[0] %>
-      <%= hidden_field_tag :license_ids, option[1]  %>
+      <%= hidden_field_tag :licenses_ids, option[1]  %>
     <% end %>
   </h6>
   <%= render partial: 'licenses_stats', locals: { licenses_ids: option[1].split(',') } if option %>
