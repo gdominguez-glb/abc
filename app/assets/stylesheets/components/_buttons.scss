@@ -6,9 +6,10 @@
 
 .btn {
   font-family: 'Karla', sans-serif;
-  padding: 15px 30px;
+  padding: 10px 30px;
   border: 0;
   text-transform: uppercase;
+  letter-spacing: 0.15em;
 
   @include transition(all, .3s);
 
@@ -25,6 +26,12 @@
       border: 1px dashed;
       @include box-shadow(none);
     }
+
+    &.dropdown-toggle {
+      background: transparent;
+      color: inherit;
+      box-shadow: inset 0 0 0 1px;
+    }
   }
 
   &.btn-primary {
@@ -36,6 +43,55 @@
   &.header-form-control {
     height: 34px;
     padding: 6px 12px;
+  }
+}
+
+.btn-group {
+  display: block;
+
+  @media screen and (min-width: $screen-sm-min) {
+    display: inline-block;
+  }
+
+  .btn {
+    float: none;
+    width: 100%;
+
+    @media screen and (min-width: $screen-sm-min) {
+      float: left;
+      width: auto;
+    }
+  }
+
+  .caret {
+    position: absolute;
+    right: 10px;
+    top: 18px;
+  }
+}
+
+.dropdown-menu {
+  width: 100%;
+  margin: -2px 0 0;
+  padding: 0;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: inset 0 0 0 1px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+
+  @media screen and (min-width: $screen-sm-min) {
+    width: auto;
+    background: transparent;
+  }
+
+  > li > a {
+    padding: 10px 20px;
+    white-space: normal;
+
+    @media screen and (min-width: $screen-sm-min) {
+      white-space: nowrap;
+      color: #fff;
+    }
   }
 }
 
