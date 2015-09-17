@@ -19,6 +19,14 @@
   }
 }
 
+.margin-sm-bottom-m {
+  margin-bottom: $b-space-m !important;
+
+  @media screen and (min-width: $screen-sm-min) {
+    margin-bottom: 0 !important;
+  }
+}
+
 .margin-sm-bottom-xl {
   margin-bottom: $b-space-xl;
 
