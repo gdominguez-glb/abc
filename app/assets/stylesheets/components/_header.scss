@@ -77,8 +77,9 @@
 
       &.active {
         a,
-        a:hover {
-          color: $cream;
+        a:hover,
+        a:focus {
+          color: #fff;
           background-color: darken($coral, 5%);
           @media screen and (min-width: $screen-sm-min) {
             color: $brand-green;
@@ -88,15 +89,16 @@
       }
 
       > a {
-        color: $cream;
-        &:hover {
-          color: darken($cream, 15%);
+        color: #fff;
+        &:hover,
+        &:focus {
+          color: darken(#fff, 15%);
         }
 
         @media screen and (min-width: $screen-sm-min) {
           padding: 45px 15px 44px;
           &:hover {
-            color: $coral;
+            color: $brand-green;
           }
         }
       }
@@ -108,7 +110,7 @@
 
   .subnav {
     margin: 0 -15px;
-    color: $cream;
+    color: #fff;
 
     .navbar-collapse-toggle {
       padding: 0 15px;
@@ -189,7 +191,7 @@
           float: left;
           display: inline-block;
           padding: 15px 10px;
-          color: $cream;
+          color: #fff;
           font-size: 12px;
         }
       }
@@ -209,9 +211,9 @@
     .search-icon {
       display: block;
       padding: 10px 15px;
-      color: $cream;
+      color: #fff;
       &:hover {
-        color: darken($cream, 15%);
+        color: darken(#fff, 15%);
       }
 
       @media screen and (min-width: $screen-sm-min) {
@@ -223,9 +225,9 @@
       a {
         display: block;
         padding: 10px 15px;
-        color: $cream;
+        color: #fff;
         &:hover {
-          color: darken($cream, 15%);
+          color: darken(#fff, 15%);
         }
 
         @media screen and (min-width: $screen-sm-min) {
@@ -241,7 +243,7 @@
     .cart-info {
       position: relative;
       font-size: 14px;
-      color: $cream;
+      color: #fff;
     }
   }
 
@@ -249,7 +251,7 @@
 
   .navbar-toggle {
     border: 0;
-    color: $cream;
+    color: #fff;
 
     &:hover,
     &:focus {

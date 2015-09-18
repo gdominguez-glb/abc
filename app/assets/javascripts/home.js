@@ -14,7 +14,7 @@ $(document).ready(function() {
 		e.preventDefault();
 
 		if (dropdownRole.next().find('.selected')[0] && dropdownCurriculum.next().find('.selected')[0]) {
-			btnGo.removeAttr('disabled');
+			btnGo.removeAttr('disabled').removeClass('btn-default').addClass('btn-success');
 		}
 	});
 
