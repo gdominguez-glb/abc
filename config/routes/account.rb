@@ -20,6 +20,8 @@ namespace :account do
       get :import_modal
       post :import
       get :users
+      get :export_users
+      get :select_users
       get :user_stats
       get :licenses_stats
       get :edit_user_licenses

@@ -34,6 +34,10 @@ class Account::LicensesController < Account::BaseController
     @product_distributions = current_spree_user.product_distributions.select('to_user_id, email').group('to_user_id, email').page(params[:page])
   end
 
+  def export_users
+    @emails = current_spree_user.product_distributions.pluck(:email).uniq
+  end
+
   def user_stats
     @user = current_spree_user.to_users.find_by(id: params[:user_id])
   end
@@ -56,6 +60,10 @@ class Account::LicensesController < Account::BaseController
     else
       @error_full_messages = updater.errors.full_messages.join(' ')
     end
+  end
+
+  def select_users
+    @emails = current_spree_user.product_distributions.pluck(:email).uniq
   end
 
   private

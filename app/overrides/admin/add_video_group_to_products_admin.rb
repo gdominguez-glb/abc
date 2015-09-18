@@ -11,3 +11,17 @@ Deface::Override.new(
           </div>
 "
 )
+
+Deface::Override.new(
+    virtual_path: "spree/admin/products/new",
+    name: "add_video_group_to_product_new",
+    insert_after: "[data-hook='new_product_available_on']",
+    text: "
+          <div data-hook='new_product_video_group_id' class='col-md-4'>
+            <div class='form-group field' id='product_video_group'>
+              <%= f.label :video_group %>
+              <%= f.collection_select :video_group_id, Spree::VideoGroup.all, :id, :name, { prompt: 'select video group' }, class: 'form-control' %>
+            </div>
+          </div>
+"
+)
