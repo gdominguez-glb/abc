@@ -56,7 +56,9 @@ gem 'select2-rails'
 
 gem 'doorkeeper'
 
-gem 'roo', '~> 2.0.0'
+gem 'roo', '1.13.2'
+
+gem 'axlsx_rails'
 
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.14.30'
@@ -73,7 +75,7 @@ gem 'nkss-rails', github: 'nadarei/nkss-rails'
 # font awesome
 gem "font-awesome-rails"
 
-gem 'rubyzip', '>= 1.0.0'
+gem 'rubyzip', '0.9.9', require: 'zip/zip'
 
 gem 'remotipart', '~> 1.2'
 
