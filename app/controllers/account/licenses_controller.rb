@@ -62,6 +62,10 @@ class Account::LicensesController < Account::BaseController
     end
   end
 
+  def select_users
+    @emails = current_spree_user.product_distributions.pluck(:email).uniq
+  end
+
   private
 
   def assign_licenses_params
