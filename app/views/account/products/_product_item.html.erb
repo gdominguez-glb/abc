@@ -7,7 +7,7 @@
       <% end %>
     </div>
     <% if product.access_url.present? %>
-      <%= link_to 'Access', "#{product.access_url}?#{{opened_product_id: product.id}.to_param}", class: 'btn btn-link' %>
+      <%= link_to 'Launch', "#{product.access_url}?#{{opened_product_id: product.id}.to_param}", class: 'btn btn-link' %>
     <% end %>
   </div>
 </div>
