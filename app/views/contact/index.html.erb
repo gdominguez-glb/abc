@@ -1,19 +1,18 @@
 <div class="row">
-  <div class="col-xs-12">
+  <div class="col-xs-12 col-lg-10 col-lg-offset-1">
     <div class="page-header">
       <h2>Have questions? Get in touch about...</h2>
       <p>Feel free to reach out to us with anything you need help with.</p>
     </div>
   </div>
 </div>
-<hr />
 <% if params[:success] %>
   <div class="alert alert-success">
     Submitted your contact!
   </div>
 <% end %>
 <div class="row">
-  <div class="col-sm-8">
+  <div class="col-sm-8 col-lg-7 col-lg-offset-1">
     <form action="https://cs15.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8" method="POST" class="form contact-form">
       <input type=hidden name="orgid" value="00De0000005Vrkq">
       <input type=hidden name="retURL" value="<%= contact_url(success: true) %>">
@@ -60,8 +59,8 @@
       </div>
     </form>
   </div>
-  <div class="col-sm-4">
-    <ul class="margin-bottom-xl">
+  <div class="col-sm-4 col-lg-3">
+    <ul class="margin-bottom-xl margin-left-xl">
       <li><h6>Great Minds</h6>
       <ul>
         <li>55 M Street SE</li>
@@ -72,7 +71,7 @@
       </ul>
       </li>
     </ul>
-    <ul class="margin-bottom-xl">
+    <ul class="margin-bottom-xl margin-left-xl">
       <li><h6>Sales Inquiries</h6>
       <ul>
         <li>P: 1-844-853-1010</li>
