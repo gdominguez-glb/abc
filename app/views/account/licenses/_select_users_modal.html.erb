@@ -1,0 +1,28 @@
+<div class="modal fade" id="select-users-modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title">Select From Exists Users</h4>
+      </div>
+      <div class="modal-body">
+        <a class="btn btn-primary select-all-users">
+          Select All
+        </a>
+        <div class="row">
+          <% @emails.each do |email| %>
+            <div class="col-md-6">
+              <label style="text-transform: none;">
+                <%= check_box_tag 'emails[]', email, false, class: 'user-checkbox' %>
+                <%= email %>
+              </label>
+            </div>
+          <% end %>
+        </div>
+        <div class="modal-actions text-center">
+          <button class="btn btn-primary done-btn">Done</button>
+          <a href="" data-dismiss="modal" class="btn btn-default">Cancel</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
