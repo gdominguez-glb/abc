@@ -1,6 +1,6 @@
 class Account::ProductsController < Account::BaseController
   def index
-    @nav_name = 'My Products'
+    @nav_name = 'My Resources'
 
     @my_products = filter_by_grade_taxon(current_spree_user.products).to_a.uniq(&:id)
 

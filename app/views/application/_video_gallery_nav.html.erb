@@ -10,7 +10,7 @@
       </div>
       <div class="collapse navbar-collapse" id="sub-nav">
         <ul>
-          <%= active_link_to "My Products", '/account', wrap_tag: :li, active: :exact %>
+          <%= active_link_to "My Resources", '/account', wrap_tag: :li, active: :exact %>
           <% if spree_current_user.has_admin_role? %>
             <li>
               <a href="/store/admin ">Store Admin<span class="sr-only">(current)</span></a>
