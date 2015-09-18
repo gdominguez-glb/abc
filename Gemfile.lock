@@ -128,12 +128,12 @@ GEM
     aws-sdk-v1 (1.64.0)
       json (~> 1.4)
       nokogiri (>= 1.4.4)
-    axlsx (1.3.6)
+    axlsx (2.0.1)
       htmlentities (~> 4.3.1)
       nokogiri (>= 1.4.1)
-      rubyzip (>= 0.9.5)
-    axlsx_rails (0.1.5)
-      axlsx
+      rubyzip (~> 1.0.0)
+    axlsx_rails (0.4.0)
+      axlsx (>= 2.0.1)
       rails (>= 3.1)
     backbone-on-rails (1.2.0.0)
       eco
@@ -512,7 +512,7 @@ GEM
       rspec (>= 2, < 4)
       rspec-core (!= 2.12.0)
     ruby-ole (1.2.11.8)
-    rubyzip (0.9.9)
+    rubyzip (1.0.0)
     safe_yaml (1.0.4)
     sass (3.2.19)
     sass-rails (4.0.5)
@@ -676,6 +676,8 @@ GEM
     wmi-lite (1.0.0)
     zeroclipboard-rails (0.1.0)
       railties (>= 3.1)
+    zip-zip (0.3)
+      rubyzip (>= 1.0.0)
 
 PLATFORMS
   ruby
@@ -684,7 +686,7 @@ DEPENDENCIES
   active_link_to
   acts-as-taggable-on (~> 3.4)
   aws-sdk (< 2.0)
-  axlsx_rails
+  axlsx_rails (~> 0.4)
   backbone-on-rails
   better_errors
   binding_of_caller
@@ -726,7 +728,6 @@ DEPENDENCIES
   restforce
   roo (= 1.13.2)
   rspec-rails (~> 3.2.1)
-  rubyzip (= 0.9.9)
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
   searchkick
@@ -748,3 +749,4 @@ DEPENDENCIES
   whenever
   wistia-api
   zeroclipboard-rails
+  zip-zip
