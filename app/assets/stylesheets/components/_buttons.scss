@@ -81,6 +81,19 @@
     right: 10px;
     top: 18px;
   }
+
+  &.fixed-width {
+    .btn {
+      min-width: 200px;
+    }
+
+    .dropdown-menu {
+      min-width: 200px;
+      border: 1px solid #fff;
+      border-top: 0;
+      box-shadow: none;
+    }
+  }
 }
 
 .dropdown-menu {
