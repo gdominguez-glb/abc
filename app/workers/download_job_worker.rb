@@ -1,13 +1,12 @@
 require 'fileutils'
 require 'net/http'
-require 'zip'
-require 'zip/file'
+require 'zip/zip'
 require 'find'
 
 class Zipper
 
   def self.zip(dir, zip_dir, remove_after = false)
-    Zip::File.open(zip_dir, Zip::File::CREATE)do |zipfile|
+    Zip::ZipFile.open(zip_dir, Zip::File::CREATE)do |zipfile|
       Find.find(dir) do |path|
         Find.prune if File.basename(path)[0] == ?.
         dest = /#{dir}\/(\w.*)/.match(path)

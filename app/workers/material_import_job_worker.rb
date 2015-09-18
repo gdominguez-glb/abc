@@ -1,7 +1,6 @@
 require 'fileutils'
 require 'net/http'
-require 'zip'
-require 'zip/file'
+require 'zip/zip'
 require 'find'
 
 class MaterialImportJobWorker
@@ -40,7 +39,7 @@ class MaterialImportJobWorker
   end
 
   def extract_zip_file(zip_file_path, dest_directory)
-    Zip::File.open(zip_file_path) do |zip_file|
+    Zip::ZipFile.open(zip_file_path) do |zip_file|
       zip_file.each do |entry|
         file_path= File.join(dest_directory, entry.name)
         FileUtils.mkdir_p(File.dirname(file_path))

@@ -1,0 +1,7 @@
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "Buttons") do |sheet|
+  sheet.add_row ['Email', 'Quantity']
+  @emails.each do |email|
+    sheet.add_row [email, 1]
+  end
+end
