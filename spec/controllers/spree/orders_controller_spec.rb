@@ -13,4 +13,23 @@ RSpec.describe Spree::OrdersController, type: :controller do
       expect(response).to be_success
     end
   end
+
+  describe "bulk add products to carts" do
+    let!(:user) { create(:gm_user) }
+    let!(:product_a) { create(:product) }
+    let!(:product_b) { create(:product) }
+
+    before do
+      allow(controller).to receive_messages(:try_spree_current_user => user)
+      get :add_products_to_cart, product_ids: [product_a.id, product_b.id]
+    end
+
+    it "add products to carts" do
+      order = user.orders.last
+
+      expect(order.line_items.size).to eq(2)
+      expect(response).to be_redirect
+    end
+    
+  end
 end
