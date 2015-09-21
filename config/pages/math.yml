@@ -21,7 +21,7 @@ pages:
       </div>
       <section class="row green-bg">
         <div class="col-sm-12 col-lg-10 col-lg-offset-1">
-          <h6 class="bold">This is about Great Minds.</h6>
+          <h6 class="bold">Lorem ipsum dolor sit amet</h6>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
             irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
           <a class="btn btn-default btn-block-xs" href="footer_nav/about.html">Learn More</a>
@@ -31,7 +31,7 @@ pages:
         <div class="row-img-full-content">
           <div class="col-sm-6 col-centered-content">
             <div class="vertical-center">
-              <h6 class="bold">This is about Great Minds.</h6>
+              <h6 class="bold">Lorem ipsum dolor sit amet</h6>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
               <a class="btn btn-default btn-block-xs margin-bottom-s" href="`footer_nav/about.html">Learn More</a>
             </div>
@@ -41,19 +41,19 @@ pages:
       </section>
       <section class="row cream-bg">
         <div class="col-sm-4">
-          <h6 class="bold">This is an important callout</h6>
+          <h6 class="bold">Lorem ipsum dolor sit amet</h6>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
           </p>
           <a class="btn btn-default btn-block-xs" href="main_nav/contact.html">Learn More</a>
         </div>
         <div class="col-sm-4">
-          <h6 class="bold">This is an important callout</h6>
+          <h6 class="bold">Lorem ipsum dolor sit amet</h6>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
           </p>
           <a class="btn btn-default btn-block-xs" href="main_nav/contact.html">Learn More</a>
         </div>
         <div class="col-sm-4">
-          <h6 class="bold">This is an important callout</h6>
+          <h6 class="bold">Lorem ipsum dolor sit amet</h6>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
           </p>
           <a class="btn btn-default btn-block-xs" href="main_nav/contact.html">Learn More</a>
@@ -63,7 +63,7 @@ pages:
         <div class="row-img-full-content">
           <div class="col-sm-6 col-centered-content">
             <div class="vertical-center">
-              <h6 class="bold">Training Section</h6>
+              <h6 class="bold">Lorem ipsum dolor sit amet</h6>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
               </p>
               <a class="btn btn-default btn-block-xs margin-bottom-m" href="main_nav/contact.html">Learn More</a>
