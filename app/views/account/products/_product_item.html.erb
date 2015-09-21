@@ -2,9 +2,7 @@
   <div class="product-wrapper">
     <div class="product-wrapper-inner">
       <h5 class="title"><%= product.name %></h5>
-      <% product.taxons.group_by(&:taxonomy).each do |taxonomy, taxons| %>
-        <p><%= taxonomy.name %>: <%= taxons.map(&:name).join(', ') %></p>
-      <% end %>
+      <p><%= product.description %></p>
     </div>
     <% if product.access_url.present? %>
       <%= link_to 'Launch', "#{product.access_url}?#{{opened_product_id: product.id}.to_param}", class: 'btn btn-link' %>
