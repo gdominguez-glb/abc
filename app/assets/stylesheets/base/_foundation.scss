@@ -18,6 +18,14 @@ html, body {
   background-color: $light-plum;
 }
 
+.row {
+  text-align: center;
+
+  @media screen and (min-width: $screen-sm-min) {
+    text-align: left;
+  }
+}
+
 section.row {
   [class*='col-'] {
     padding: 0 30px;
