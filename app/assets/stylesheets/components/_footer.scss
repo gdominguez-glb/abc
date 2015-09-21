@@ -1,67 +1,50 @@
 // _footer.scss
 
-footer {
-  padding: 0;
+.footer {
+  padding: 40px 20px;
   background: $brand-green;
-  font-size: 7px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-
-  .section-lead {
-    margin: 0 0 15px;
-    font-size: 16px;
-    font-weight: bold;
-
-    a {
-      @extend .sans-serif;
-      font-size: 16px;
-      font-style: normal;
-    }
-  }
-
-  .copyright {
-    margin: 0 0 40px;
-    text-align: center;
-    font-size: 1.2em;
-    text-transform: uppercase;
-
-    @media screen and (min-width: $screen-sm-min) {
-      margin: 10px 0;
-      text-align: left;
-    }
-  }
+  font-size: 1em;
 
   a {
-    @extend .serif;
-    font-style: italic;
-    font-size: 14px;
+    font-weight: normal;
   }
+
+  h6 {
+    margin-bottom: 0;
+    font-size: 1em;
+    a {
+      font-weight: bold;
+    }
+  }
+
+  hr {
+    margin-top: 15px;
+    color: $gray-light;
+    opacity: 0.4;
+  }
+
 }
 
 .footer-section {
-  margin: 30px 0;
-  text-align: center;
+  margin: 0 0 30px;
 
+  &:last-child {
+    @media screen and (min-width: $screen-sm-min) {
+      margin-left: 20px;
+    }
+  }
+}
+
+.attribution {
   @media screen and (min-width: $screen-sm-min) {
-    margin: 20px 0;
-    text-align: left;
+    text-align: center;
+    font-size: .85em;
   }
+}
 
-  .social-icon {
-    font-size: 26px;
-  }
-
-  .icon-container {
-    &:first-child {
-      text-align: right;
-
-      @media screen and (min-width: $screen-sm-min) {
-        text-align: left;
-      }
-    }
-
-    &:last-child {
-      text-align: left;
-    }
-  }
+.copyright {
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  @extend .sans-serif;
 }
