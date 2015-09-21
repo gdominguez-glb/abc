@@ -1,7 +1,13 @@
-<ul class="cart" data-hook>
-  <li class="search-icon">
-    <i class="fa fa-search"></i>
+
+  <li>
+    <div class="input-group search">
+      <input type="text" class="form-control" placeholder="Search for...">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+      </span>
+    </div>
   </li>
+
   <% if spree_current_user %>
     <li>
       <%= active_link_to "account", '/account' %>
@@ -20,4 +26,3 @@
       Gm.fetch_cart()
     }
   </script>
-</ul>
