@@ -17,6 +17,19 @@ RSpec.describe RegonlineEvent, type: :model do
     end
   end
 
+  describe "#to_partial_path" do
+    it "set default partial path" do
+      expect(RegonlineEvent.new.to_partial_path).to eq('events/event')
+    end
+  end
+
+  describe "#training_type" do
+    it "extract traning type from client event id" do
+      event = RegonlineEvent.new(client_event_id: 'ABc,EFG')
+      expect(event.training_type).to eq('EFG')
+    end
+  end
+
   describe ".with_filter" do
     let!(:event) { create(:regonline_event, client_event_id: 'aaron', location_name: 'A', city: 'B', state: 'C', country: 'D') }
 
