@@ -185,6 +185,7 @@
       top: 0;
       right: 30px;
       width: auto;
+      text-transform: uppercase;
 
       li {
         @media screen and (min-width: $screen-sm-min) {
@@ -196,14 +197,15 @@
         }
       }
 
-      a {
+      > li > a {
         @media screen and (min-width: $screen-sm-min) {
-          @extend .serif;
-          font-family: 'Lora' serif;
-          font-style: italic;
-          text-transform: capitalize;
+          padding: 0;
         }
       }
+    }
+
+    .form-inline {
+      padding: 0;
     }
   }
 
@@ -229,6 +231,10 @@
       position: relative;
       font-size: 14px;
       color: #fff;
+
+      &:hover {
+        color: $brand-green;
+      }
     }
   }
 
@@ -245,6 +251,12 @@
       box-shadow: inset 0 0 0 1px;
       line-height: 20px;
 
+      @media screen and (min-width: $screen-sm-min) {
+        border-radius: 0;
+        color: lighten($gray-light, 10%);
+        background-color: lighten($dark-blue, 5%);
+      }
+
       &:hover {
         background-color: rgba(255, 255, 255, 0.3);
       }
@@ -257,6 +269,12 @@
     .form-control {
       padding: 6px 12px;
       line-height: 20px;
+
+      @media screen and (min-width: $screen-sm-min) {
+        border-radius: 0;
+        color: lighten($gray-light, 10%);
+        background-color: lighten($dark-blue, 5%);
+      }
 
       &:focus {
         box-shadow: inset 0 0 0 1px;
