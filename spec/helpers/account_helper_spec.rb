@@ -19,5 +19,15 @@ RSpec.describe AccountHelper, type: :helper do
         expect(helper.activity_item_link(activity)).to eq("/store/products/hello-one")
       end
     end
+
+    describe "material activity" do
+      let!(:product) { create(:product, access_url: '/this_is_product') }
+      let!(:material) { create(:spree_material, product: product, parent: nil) }
+      let!(:activity) { create(:activity, item: material) }
+
+      it "return product access url" do
+        expect(helper.activity_item_link(activity)).to eq("/this_is_product?opened_material_id=#{material.id}&opened_product_id=#{product.id}")
+      end
+    end
   end
 end
