@@ -11,6 +11,11 @@
 
 .img-responsive {
   width: 100%;
+
+  @media screen and (min-width: $screen-xs-min) {
+    width: auto;
+    margin: 0 auto;
+  }
 }
 
 .embed-responsive {
