@@ -93,9 +93,9 @@ Spree::Product.class_eval do
   has_many :download_products
   has_many :download_pages, through: :download_products
 
-  attr_accessor :new_image, :new_digital
+  attr_accessor :new_image
 
-  after_create :assign_image_to_master, :assign_digital_to_master, :init_grades_materials
+  after_create :assign_image_to_master, :init_grades_materials
 
   scope :free, -> {
     joins("join spree_variants on spree_variants.product_id = spree_products.id").
@@ -132,41 +132,8 @@ Spree::Product.class_eval do
     product_type == 'Digital'
   end
 
-  def downloadable?
-    product_type == 'Pdf'
-  end
-
-  def downloadable_url
-    digital = digitals.first
-    digital.attachment.expiring_url(3600) if digital
-  end
-
-  def video_digital
-    digitals.first
-  end
-
-  def wistia_ready?
-    video_digital.try(:wistia_ready?)
-  end
-
-  def video_id
-    video_digital.try(:wistia_hashed_id)
-  end
-
-  def video_s3_url
-    video_digital.try(:s3_url)
-  end
-
-  def categories
-    taxons.map(&:taxonomy).uniq.map(&:name)
-  end
-
   def assign_image_to_master
     self.master.images << Spree::Image.new(attachment: self.new_image) if self.new_image.present?
-  end
-
-  def assign_digital_to_master
-    self.master.digitals << Spree::Digital.new(attachment: self.new_digital) if self.new_digital.present?
   end
 
   def init_grades_materials

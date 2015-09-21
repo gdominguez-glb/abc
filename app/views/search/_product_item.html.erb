@@ -15,10 +15,6 @@
     <div class="col-md-2">
       <div class="result-item-links">
         <%= link_to 'View Item', spree.product_url(item), class: 'btn btn-primary' %>
-        <% if item.free? && item.downloadable? %>
-          <span>Or</span>
-          <%= link_to 'Download Now', item.downloadable_url, class: 'btn btn-default' %>
-        <% end %>
       </div>
     </div>
   </div>
