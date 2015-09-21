@@ -18,6 +18,15 @@
       <input type=hidden name="retURL" value="<%= contact_url(success: true) %>">
       <div class="row">
         <div class="col-sm-6">
+          <label for="topic">Topic</label>
+          <div class="select-container dark-select block">
+            <span>Select a Topic</span>
+            <%= select_tag :topic, options_for_select(@topics), prompt: "Select a Topic", class: 'form-control' %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
           <div class="form-group">
             <label for="name">Name</label>
             <input id="name" maxlength="80" name="name" size="20" type="text" class="form-control" placeholder="First Last" required/>
@@ -31,14 +40,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-sm-6">
-          <label for="topic">Topic</label>
-          <div class="select-container dark-select block">
-            <span>Select a Topic</span>
-            <%= select_tag :topic, options_for_select(@topics), prompt: "Select a Topic", class: 'form-control' %>
-          </div>
-        </div>
-        <div class="col-sm-6">
+        <div class="col-sm-9">
           <div class="form-group">
             <label for="subject">Subject</label>
             <input id="phone" maxlength="40" name="subject" size="20" type="text" class="form-control" placeholder="Message Subject"/>
@@ -60,7 +62,7 @@
     </form>
   </div>
   <div class="col-sm-4 col-lg-3">
-    <ul class="margin-bottom-xl margin-left-xl">
+    <ul class="margin-bottom-xl margin-xs-left-xl">
       <li><h6>Great Minds</h6>
       <ul>
         <li>55 M Street SE</li>
@@ -71,7 +73,7 @@
       </ul>
       </li>
     </ul>
-    <ul class="margin-bottom-xl margin-left-xl">
+    <ul class="margin-bottom-xl margin-xs-left-xl">
       <li><h6>Sales Inquiries</h6>
       <ul>
         <li>P: 1-844-853-1010</li>
