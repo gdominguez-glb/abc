@@ -9,7 +9,7 @@ Spree::Product.class_eval do
     sfo_data = super(sfo)
     sfo_data.merge!(sf_id_pricebook: sfo.Pricebook2Id,
                     sf_id_product: sfo.Product2Id,
-                    cost_price: sfo.UnitPrice)
+                    price: sfo.UnitPrice)
     sfo_data
   end
 
