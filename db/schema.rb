@@ -903,6 +903,8 @@ ActiveRecord::Schema.define(version: 20150915003616) do
     t.integer  "video_group_id"
     t.datetime "fulfillment_date"
     t.boolean  "for_sale",             default: false
+    t.string   "sf_id_product"
+    t.string   "sf_id_pricebook"
   end
 
   add_index "spree_products", ["available_on"], name: "index_spree_products_on_available_on", using: :btree

@@ -18,6 +18,10 @@ label {
   font-weight: bold;
   font-size: .85em;
   text-transform: uppercase;
+
+  @media screen and (min-width: $screen-sm-min) {
+    font-size: 1em;
+  }
 }
 
 .form-group,

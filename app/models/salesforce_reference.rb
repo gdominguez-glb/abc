@@ -12,6 +12,6 @@ class SalesforceReference < ActiveRecord::Base
 
   # Updates the cached Salesforce properties from a given Salesforce object
   def update_properties_from_object(sfo)
-    update(:object_properties, sfo.to_hash)
+    update(object_properties: sfo.to_hash)
   end
 end

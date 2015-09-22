@@ -128,6 +128,13 @@ GEM
     aws-sdk-v1 (1.64.0)
       json (~> 1.4)
       nokogiri (>= 1.4.4)
+    axlsx (2.0.1)
+      htmlentities (~> 4.3.1)
+      nokogiri (>= 1.4.1)
+      rubyzip (~> 1.0.0)
+    axlsx_rails (0.4.0)
+      axlsx (>= 2.0.1)
+      rails (>= 3.1)
     backbone-on-rails (1.2.0.0)
       eco
       ejs
@@ -472,9 +479,10 @@ GEM
       faraday_middleware (>= 0.8.8)
       hashie (>= 1.2.0, < 4.0)
       json (>= 1.7.5, < 1.9.0)
-    roo (2.0.1)
-      nokogiri (~> 1)
-      rubyzip (~> 1.1, < 2.0.0)
+    roo (1.13.2)
+      nokogiri
+      rubyzip
+      spreadsheet (> 0.6.4)
     rspec (3.2.0)
       rspec-core (~> 3.2.0)
       rspec-expectations (~> 3.2.0)
@@ -503,7 +511,8 @@ GEM
       builder (< 4)
       rspec (>= 2, < 4)
       rspec-core (!= 2.12.0)
-    rubyzip (1.1.7)
+    ruby-ole (1.2.11.8)
+    rubyzip (1.0.0)
     safe_yaml (1.0.4)
     sass (3.2.19)
     sass-rails (4.0.5)
@@ -547,6 +556,8 @@ GEM
     specinfra (2.29.0)
       net-scp
       net-ssh
+    spreadsheet (1.0.6)
+      ruby-ole (>= 1.0)
     spree (3.0.0)
       spree_api (= 3.0.0)
       spree_backend (= 3.0.0)
@@ -665,6 +676,8 @@ GEM
     wmi-lite (1.0.0)
     zeroclipboard-rails (0.1.0)
       railties (>= 3.1)
+    zip-zip (0.3)
+      rubyzip (>= 1.0.0)
 
 PLATFORMS
   ruby
@@ -673,6 +686,7 @@ DEPENDENCIES
   active_link_to
   acts-as-taggable-on (~> 3.4)
   aws-sdk (< 2.0)
+  axlsx_rails (~> 0.4)
   backbone-on-rails
   better_errors
   binding_of_caller
@@ -712,9 +726,8 @@ DEPENDENCIES
   rails-settings-cached (= 0.4.1)
   remotipart (~> 1.2)
   restforce
-  roo (~> 2.0.0)
+  roo (= 1.13.2)
   rspec-rails (~> 3.2.1)
-  rubyzip (>= 1.0.0)
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
   searchkick
@@ -736,3 +749,4 @@ DEPENDENCIES
   whenever
   wistia-api
   zeroclipboard-rails
+  zip-zip

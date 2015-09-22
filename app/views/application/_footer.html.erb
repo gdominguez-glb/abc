@@ -1,24 +1,6 @@
-<footer class="container">
-  <div class="row clear-top">
-    <div class="col-sm-2 footer-section">
-      <div class="row">
-        <div class="col-xs-4 icon-container">
-          <a href="">
-            <i class="fa fa-facebook social-icon"></i>
-          </a>
-        </div>
-        <div class="col-xs-4 icon-container">
-          <a href="">
-            <i class="fa fa-twitter social-icon"></i>
-          </a>
-        </div>
-        <div class="col-xs-4 icon-container">
-          <a href="">
-            <i class="fa fa-pinterest-p social-icon"></i>
-          </a>
-        </div>
-      </div>
-    </div>
+<footer class="container footer">
+  <div class="row">
+    <div class="col-sm-2"></div>
     <% FooterTitle.all.each do |footer_title| %>
       <div class="col-sm-2 footer-section">
         <h6 class="section-lead">
@@ -37,10 +19,37 @@
         </ul>
       </div>
     <% end %>
+    <div class="col-sm-2 footer-section margin-xs-left-l">
+      <h6 class="section-lead">Connect</h6>
+      <ul>
+        <li>
+          <a href="">
+            <i class="fa fa-facebook social-icon"></i> Facebook
+          </a>
+        </li>
+        <li>
+          <a href="">
+            <i class="fa fa-twitter social-icon"></i> Twitter
+          </a>
+        </li>
+        <li>
+          <a href="">
+            <i class="fa fa-pinterest-p social-icon"></i> Pinterest
+          </a>
+        </li>
+      </ul>
+    </div>
   </div>
+
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+      <hr />
+    </div>
+  </div>
+
   <div class="row">
     <div class="col-sm-12">
-      <p class="copyright bold">© Copyright 2015 Great Minds</p>
+      <p class="attribution"><span class="copyright">© Copyright 2015 Great Minds</span> | <a href="/terms-of-service">TOS</a> | <a href="">Privacy Policy</a></p>
     </div>
   </div>
 </footer>

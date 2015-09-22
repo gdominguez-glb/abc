@@ -16,24 +16,27 @@ RSpec.describe Spree::Product, type: :model do
     end
   end
 
-  describe "#downloadable?" do
-    let(:pdf_product) { create(:product, product_type: 'Pdf') }
-    let(:video_product) { create(:product, product_type: 'Video') }
-
-    it "return true for pdf product" do
-      expect(pdf_product.downloadable?).to eq(true)
-    end
-
-    it "return false for video product" do
-      expect(video_product.downloadable?).to eq(false)
-    end
-  end
-
   describe "assign video group taxon" do
     it "assign taxon with video group name" do
       video_group = create(:spree_video_group, name: 'Teach Eureka')
       product = create(:product, video_group: video_group)
       expect(product.taxons.find_by(name: 'Teach Eureka')).not_to be_nil
+    end
+  end
+
+  describe "#digital_delivery?" do
+    let(:shipping_category) { create(:shipping_category, name: 'Digital Delivery') }
+
+    it "return true if shipping with digital" do
+      product = create(:product, shipping_category: shipping_category)
+
+      expect(product.digital_delivery?).to eq(true)
+    end
+
+    it "return false if not shipping with digital" do
+      product = create(:product)
+      
+      expect(product.digital_delivery?).to eq(false)
     end
   end
 end

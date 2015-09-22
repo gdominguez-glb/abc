@@ -5,8 +5,11 @@ module ApplicationHelper
     'active'
   end
 
-  def product_image_url(product, style = 'large')
-    image = product.variant_images.first
-    image ? image.attachment.url(style) : "/assets/noimage/#{style}.png"
+  def store_generate_taxon_ids_param(taxon_ids, sibling_ids, taxon)
+    selected_taxon_id = (taxon_ids & sibling_ids).first
+    if selected_taxon_id
+      taxon_ids.delete(selected_taxon_id)
+    end
+    taxon_ids << taxon.id
   end
 end

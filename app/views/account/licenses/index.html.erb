@@ -22,7 +22,7 @@
     <% end %>
     <%= render 'stats' %>
     <div class="form-group">
-      <label for="">Licenses Recipient(s)</label>
+      <label for="">Licenses Recipient(s)  <%= link_to 'Select From Exists Users', select_users_account_licenses_path, class: 'btn btn-primary', remote: true %></label>
       <%= f.text_field :licenses_recipients, class: 'form-control', placeholder: 'separate emails with comma' %>
     </div>
     <div class="row">

@@ -1,19 +1,16 @@
-<ul class="cart" data-hook>
-  <li class="search-icon">
-    <i class="fa fa-search"></i>
+
+  <li class="form-inline">
+    <div class="input-group search">
+      <input type="text" class="form-control" placeholder="Search">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+      </span>
+    </div>
   </li>
+
   <% if spree_current_user %>
     <li>
-      <%= active_link_to "account", '/account' %>
-    </li>
-  <% end %>
-  <% if spree_current_user %>
-    <li>
-      <%= active_link_to "Logout", '/store/logout' %>
-    </li>
-  <% else %>
-    <li>
-      <%= active_link_to "Login", '/store/login' %>
+      <%= active_link_to spree_current_user.full_name, '/account' %>
     </li>
   <% end %>
   <li id="link-to-cart" data-hook>
@@ -29,4 +26,3 @@
       Gm.fetch_cart()
     }
   </script>
-</ul>

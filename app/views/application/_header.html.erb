@@ -19,10 +19,19 @@
       <li class="<%= store_active_class %>">
         <%= link_to "Shop", '/store', class: store_active_class %>
       </li>
+      <% if spree_current_user %>
+        <li>
+          <%= active_link_to "Logout", '/store/logout' %>
+        </li>
+      <% else %>
+        <li>
+          <%= active_link_to "Login", '/store/login' %>
+        </li>
+      <% end %>
     </ul>
     <%= render 'secondary_nav' %>
-    <div class="nav navbar-nav navbar-right">
+    <ul class="nav navbar-nav navbar-right">
       <%= render partial: 'spree/shared/main_nav_bar' if store_menu? %>
-    </div>
+    </ul>
   </div>
 </nav> <!-- /.navbar -->

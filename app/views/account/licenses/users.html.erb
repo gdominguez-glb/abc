@@ -7,6 +7,9 @@
     <h2>Need to transfer a license, or just checking in ...</h2>
     <h6>Here is where you can remind, reassign, and revoke user licenses</h6>
   </div>
+  <div class="row">
+    <%= link_to 'Export Users List', export_users_account_licenses_path(format: 'xlsx'), class: 'btn btn-primary' %>
+  </div>
   <table class="table">
     <thead>
       <tr>

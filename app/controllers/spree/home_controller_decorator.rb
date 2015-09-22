@@ -1,9 +1,7 @@
 Spree::HomeController.class_eval do
-  def index
-    @searcher   = build_searcher(params.merge(include_images: true))
-    @products   = @searcher.retrieve_products
-    @taxonomies = Spree::Taxonomy.show_in_store.includes(root: :children)
+  include TaxonsFilter
 
-    @products   = @products.where(individual_sale: true).saleable
+  def index
+    products_list_with_taxons_filter
   end
 end
