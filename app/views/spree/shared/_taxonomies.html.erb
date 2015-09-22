@@ -1,23 +1,25 @@
 <nav id="taxonomies" class="sidebar-item" data-hook>
   <% @taxonomies.each do |taxonomy| %>
-    <h4 class='taxonomy-root'><%= Spree.t(:shop_by_taxonomy, :taxonomy => taxonomy.name) %></h4>
-    <div class="btn-group">
-      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <% selected_taxon = taxonomy.root.children.find{|taxon| params[:taxon_ids].include?(taxon.id) } %>
-        <% if selected_taxon %>
-          <%= selected_taxon.name %>
-        <% else %>
-          Select <%= taxonomy.name %>
-        <% end %>
-        <span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu">
-        <% sibling_ids = taxonomy.root.children.map(&:id) %>
-        <% taxonomy.root.children.each do |taxon| %>
-          <% taxon_ids = store_generate_taxon_ids_param(params[:taxon_ids].dup, sibling_ids, taxon) %>
-          <li><%= link_to taxon.name, params.merge(taxon_ids: taxon_ids) %></li>
-        <% end %>
-      </ul>
+    <div class="taxonomy">
+      <h4 class='taxonomy-root'><%= Spree.t(:shop_by_taxonomy, :taxonomy => taxonomy.name) %></h4>
+      <div class="btn-group">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <% selected_taxon = taxonomy.root.children.find{|taxon| params[:taxon_ids].include?(taxon.id) } %>
+          <% if selected_taxon %>
+            <%= selected_taxon.name %>
+          <% else %>
+            Select <%= taxonomy.name %>
+          <% end %>
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+          <% sibling_ids = taxonomy.root.children.map(&:id) %>
+          <% taxonomy.root.children.each do |taxon| %>
+            <% taxon_ids = store_generate_taxon_ids_param(params[:taxon_ids].dup, sibling_ids, taxon) %>
+            <li><%= link_to taxon.name, params.merge(taxon_ids: taxon_ids) %></li>
+          <% end %>
+        </ul>
+      </div>
     </div>
   <% end %>
 </nav>
