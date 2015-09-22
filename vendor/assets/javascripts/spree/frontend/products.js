@@ -1,7 +1,7 @@
 //Products JavaScript
 
 $(document).ready(function() {
-	var prices = $('.price');
+	var prices = $('.price a');
 
 	prices.each(function() {
 		if($(this).text() === "$0.00") {

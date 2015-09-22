@@ -48,12 +48,14 @@
 
   .product-type {
     color: $gray-light;
-    text-decoration: underline;
   }
 
   .price {
-    color: $coral;
-    text-decoration: underline;
+    a {
+      color: $coral;
+      text-decoration: underline;
+      letter-spacing: normal;
+    }
   }
 
   .taxonomy {
