@@ -46,4 +46,14 @@
     text-transform: uppercase;
   }
 
+  .product-type {
+    color: $gray-light;
+    text-decoration: underline;
+  }
+
+  .price {
+    color: $coral;
+    text-decoration: underline;
+  }
+
 }
