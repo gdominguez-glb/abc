@@ -112,7 +112,6 @@ Spree::Product.class_eval do
 
   if !defined?(PRODUCT_TYPES)
     PRODUCT_TYPES = [
-      'Digital',
       'Curriculum',
       'Video',
       'Pdf',
@@ -128,8 +127,8 @@ Spree::Product.class_eval do
     price == 0
   end
 
-  def digital?
-    product_type == 'Digital'
+  def digital_delivery?
+    shipping_category.name == 'Digital Delivery'
   end
 
   def assign_image_to_master
