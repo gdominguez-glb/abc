@@ -2,13 +2,13 @@
   <% @taxonomies.each do |taxonomy| %>
     <div class="taxonomy">
       <h4 class='taxonomy-root'><%= Spree.t(:shop_by_taxonomy, :taxonomy => taxonomy.name) %></h4>
-      <div class="btn-group">
+      <div class="btn-group fixed-width">
         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <% selected_taxon = taxonomy.root.children.find{|taxon| params[:taxon_ids].include?(taxon.id) } %>
           <% if selected_taxon %>
             <%= selected_taxon.name %>
           <% else %>
-            Select <%= taxonomy.name %>
+            <%= taxonomy.name %>
           <% end %>
           <span class="caret"></span>
         </button>
