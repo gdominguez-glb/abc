@@ -10,7 +10,7 @@
 
   <% if spree_current_user %>
     <li>
-      <%= active_link_to "account", '/account' %>
+      <%= active_link_to spree_current_user.full_name, '/account' %>
     </li>
   <% end %>
   <li id="link-to-cart" data-hook>
