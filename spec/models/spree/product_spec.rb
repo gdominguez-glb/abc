@@ -24,19 +24,19 @@ RSpec.describe Spree::Product, type: :model do
     end
   end
 
-  describe "#digital?" do
-    let(:product) { create(:product) }
+  describe "#digital_delivery?" do
+    let(:shipping_category) { create(:shipping_category, name: 'Digital Delivery') }
 
-    it "return true if product type is digital" do
-      product.product_type = 'Digital'
+    it "return true if shipping with digital" do
+      product = create(:product, shipping_category: shipping_category)
 
-      expect(product.digital?).to eq(true)
+      expect(product.digital_delivery?).to eq(true)
     end
 
-    it "return false if product type is not digital" do
-      product.product_type = 'Pdf'
+    it "return false if not shipping with digital" do
+      product = create(:product)
       
-      expect(product.digital?).to eq(false)
+      expect(product.digital_delivery?).to eq(false)
     end
   end
 end

@@ -21,17 +21,13 @@ Spree::Order.class_eval do
   end
 
   def all_digitals?
-    self.products.all? { |product| digital_product?(product) }
+    self.products.all? { |product| product.digital_delivery? }
   end
 
   def free_digital_order?
     self.products.all? do |product|
-      digital_product?(product) && product.free?
+      product.digital_delivery? && product.free?
     end
-  end
-
-  def digital_product?(product)
-    product.shipping_category.name == 'Digital Delivery' && product.digital?
   end
 
   def valid_terms_and_conditions?
