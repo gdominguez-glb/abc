@@ -1,4 +1,4 @@
-Spree::HomeController.class_eval do
+Spree::ProductsController.class_eval do
   include TaxonsFilter
 
   def index
