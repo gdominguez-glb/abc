@@ -1,18 +1,11 @@
-<div class="row">
-  <div class="col-xs-12 col-lg-10 col-lg-offset-1">
-    <div class="page-header">
-      <h2>Have questions? Get in touch about...</h2>
-      <p>Feel free to reach out to us with anything you need help with.</p>
-    </div>
-  </div>
-</div>
 <% if params[:success] %>
   <div class="alert alert-success">
     Submitted your contact!
   </div>
 <% end %>
-<div class="row">
+<div class="row margin-top-xxl margin-bottom-xl">
   <div class="col-sm-8 col-lg-7 col-lg-offset-1">
+    <h2>Get in Touch About...</h2>
     <form action="https://cs15.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8" method="POST" class="form contact-form">
       <input type=hidden name="orgid" value="00De0000005Vrkq">
       <input type=hidden name="retURL" value="<%= contact_url(success: true) %>">
@@ -27,8 +20,9 @@
       </div>
       <div class="row">
         <div class="col-sm-6 dependent-field hidden" data-name='Support Type'>
-          <div class="form-group">
-            <label>Support Type</label>
+          <label>Support Type</label>
+          <div class="select-container dark-select block">
+            <span>Support Type</span>
             <%= select_tag :support_type, options_for_select(@supports), prompt: "Select a support type", class: 'form-control' %>
           </div>
         </div>
@@ -71,9 +65,15 @@
         <div class="col-sm-6">
           <div class="form-group">
             <label>School or District Type</label>
-            <div>
-              <label>School <input type="radio" name='School or District Type'/></label>
-              <label>District <input type="radio" name='School or District Type' /></label>
+            <div class="radio">
+              <label>
+                <input type="radio" name='School or District Type'/> School
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name='School or District Type' /> District
+              </label>
             </div>
           </div>
         </div>
@@ -118,8 +118,9 @@
         </div>
 
         <div class="col-sm-6 dependent-field hidden" data-name="School or District Size">
-          <div class="form-group">
-            <label>School or District Size</label>
+          <label>Size</label>
+          <div class="select-container dark-select block">
+            <span>School or District Size</span>
             <select id="" name="School or District Size" class="form-control">
               <option value="">10+</option>
             </select>
