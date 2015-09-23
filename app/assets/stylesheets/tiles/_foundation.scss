@@ -81,3 +81,18 @@
     }
   }
 }
+
+// Styles for any tile with class="image-bg"
+
+.image-bg {
+  .btn {
+    &.btn-default {
+      color: $cream;
+
+      &:hover {
+        background: $cream;
+        color: $dark-blue;
+      }
+    }
+  }
+}

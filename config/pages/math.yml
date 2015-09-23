@@ -27,7 +27,7 @@ pages:
           <a class="btn btn-default btn-block-xs" href="footer_nav/about.html">Learn More</a>
         </div>
       </section>
-      <section class="row row-img-full" style="background-image: url('http://gm-s3-qa.intridea.com/documents/attachments/000/000/008/original/mathpage-content1.jpg?1442330362')">
+      <section class="row row-img-full image-bg" style="background-image: url('http://gm-s3-qa.intridea.com/documents/attachments/000/000/008/original/mathpage-content1.jpg?1442330362')">
         <div class="row-img-full-content">
           <div class="col-sm-6 col-centered-content">
             <div class="vertical-center">
@@ -59,7 +59,7 @@ pages:
           <a class="btn btn-default btn-block-xs" href="main_nav/contact.html">Learn More</a>
         </div>
       </section>
-      <section class="row row-img-full" style="background-image: url('http://gm-s3-qa.intridea.com/documents/attachments/000/000/010/original/mathpage-content2.jpg?1442330393')">
+      <section class="row row-img-full image-bg" style="background-image: url('http://gm-s3-qa.intridea.com/documents/attachments/000/000/010/original/mathpage-content2.jpg?1442330393')">
         <div class="row-img-full-content">
           <div class="col-sm-6 col-centered-content">
             <div class="vertical-center">
