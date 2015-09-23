@@ -120,47 +120,33 @@ body.dragging, body.dragging * {
   top: 0;
   left: 0;
   right: 0;
-  bottom: 0;
+  height: 150px;
   background: rgba($dark-blue, .95);
   color: $cream;
   z-index: 9999;
   @include translate(0, -100%);
   @include transition(all, $transitionTiming);
 
+  @media screen and (min-width: $screen-sm-min) {
+    height: 109px;
+  }
+
   &.show-search {
     @include translate(0, 0);
   }
 
   .close {
-    position: relative;
-    top: 15px;
-    right: 15px;
-    color: inherit;
-    font-size: 40px;
+    margin: 10px 0;
+    color: #fff;
 
     @include transition(opacity, $transitionTiming);
   }
 
-  form {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 75%;
-    @include translate(-50%, -50%);
-  }
-
-  .form-control, .btn {
-    float: left;
-  }
-
   .form-control {
-    width: 74%;
-    margin: 0 1% 0 0;
-  }
-
-  .btn {
-    padding: 16px 30px;
-    width: 25%;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px 15px;
+    line-height: 20px;
   }
 }
 

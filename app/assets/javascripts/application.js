@@ -63,6 +63,11 @@ Gm = {
 };
 window.Gm = Gm;
 
+$(document).on('click', '.search-button, .search-overlay .close', function(){
+  var $searchOverlay = $('.search-overlay');
+  $searchOverlay.toggleClass('show-search');
+});
+
 $(document).ready(function() {
   var nav = $('.navbar-primary');
   var subnav = nav.find('.subnav')[0];

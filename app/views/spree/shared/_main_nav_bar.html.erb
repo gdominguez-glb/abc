@@ -1,18 +1,19 @@
-
-  <li class="form-inline">
-    <div class="input-group search">
-      <input type="text" class="form-control" placeholder="Search">
-      <span class="input-group-btn">
-        <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
-      </span>
-    </div>
-  </li>
+  <% if spree_current_user %>
+    <li>
+      <span class="hello-text">Hello,</span> <%= active_link_to spree_current_user.full_name, '/account' %>
+    </li>
+  <% end %>
 
   <% if spree_current_user %>
     <li>
-      <%= active_link_to spree_current_user.full_name, '/account' %>
+      <%= active_link_to "Logout", '/store/logout' %>
+    </li>
+  <% else %>
+    <li>
+      <%= active_link_to "Login", '/store/login' %>
     </li>
   <% end %>
+
   <li id="link-to-cart" data-hook>
     <noscript>
       <%= link_to Spree.t(:cart), '/cart' %>

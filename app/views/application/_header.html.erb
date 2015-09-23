@@ -19,15 +19,9 @@
       <li class="<%= store_active_class %>">
         <%= link_to "Shop", '/store', class: store_active_class %>
       </li>
-      <% if spree_current_user %>
-        <li>
-          <%= active_link_to "Logout", '/store/logout' %>
-        </li>
-      <% else %>
-        <li>
-          <%= active_link_to "Login", '/store/login' %>
-        </li>
-      <% end %>
+      <li class="search-button">
+        <a class="fa fa-search"></a>
+      </li>
     </ul>
     <%= render 'secondary_nav' %>
     <ul class="nav navbar-nav navbar-right">
