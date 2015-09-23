@@ -10,9 +10,20 @@
 
   <% if spree_current_user %>
     <li>
-      <%= active_link_to spree_current_user.full_name, '/account' %>
+      Hello, <%= active_link_to spree_current_user.full_name, '/account' %>
     </li>
   <% end %>
+
+  <% if spree_current_user %>
+    <li>
+      <%= active_link_to "Logout", '/store/logout' %>
+    </li>
+  <% else %>
+    <li>
+      <%= active_link_to "Login", '/store/login' %>
+    </li>
+  <% end %>
+
   <li id="link-to-cart" data-hook>
     <noscript>
       <%= link_to Spree.t(:cart), '/cart' %>

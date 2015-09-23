@@ -180,6 +180,11 @@
   // ----- Cart Navigation Items ----- //
 
   .navbar-right {
+    font-family: Karla, sans-serif;
+    font-weight: bold;
+    font-size: 12px;
+    letter-spacing: 2px;
+
     @media screen and (min-width: $screen-sm-min) {
       position: absolute;
       top: 0;
