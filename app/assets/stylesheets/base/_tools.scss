@@ -241,3 +241,21 @@
 .margin-left-xl {
   margin-left: $b-space-xl;
 }
+
+// ----- Extra Extra Large ----- //
+
+.margin-top-xxl {
+  margin-top: $b-space-xl + $b-space-l;
+}
+
+.margin-right-xxl {
+  margin-right: $b-space-xl + $b-space-l;
+}
+
+.margin-bottom-xxl {
+  margin-bottom: $b-space-xl + $b-space-l;
+}
+
+.margin-left-xxl {
+  margin-left: $b-space-xl + $b-space-l;
+}
