@@ -9,6 +9,13 @@
 //   Responsive
 // -------------------------------------
 
+.col-lg-offset-halfone {
+  @media screen and (min-width: $screen-lg-min) {
+    width: 62.3333%;
+    margin-left: 4.3333%;
+  }
+}
+
 .img-responsive {
   width: 100%;
 
