@@ -13,8 +13,13 @@
 
   <div class="collapse navbar-collapse" id="mainNav">
     <ul class="nav navbar-nav">
-      <% Page.curriculum_nav.each do |page| %>
-        <%= active_link_to page.group_name.capitalize, "/#{page.slug}", wrap_tag: :li %>
+      <% Page.curriculum_nav[0..1].each do |page| %>
+        <li>
+          <a href="<%= "/#{page.slug}" %>" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= page.group_name %> <span class="caret"></span></a>
+          <% if page.sub_pages.present? %>
+            <%= render partial: 'curriculum_dropdown', locals: { page: page } %>
+          <% end %>
+        </li>
       <% end %>
       <li class="<%= store_active_class %>">
         <%= link_to "Shop", '/store', class: store_active_class %>
