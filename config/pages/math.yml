@@ -12,10 +12,12 @@ pages:
     body: !xml |
       <section class="row img-full image-bg" style="background-image: url('http://gm-s3-qa.intridea.com/documents/attachments/000/000/018/original/mathpage-videobackground1.jpg?1443029702')">
         <div class="col-xs-12 col-lg-10 col-lg-offset-1">
-          <div class="embed-responsive embed-responsive-16by9">
-            <video src="http://gm-s3-qa.intridea.com/documents/attachments/000/000/011/original/eureka-math-hd.mp4?1442330466" controls poster="http://gm-s3-qa.intridea.com/documents/attachments/000/000/012/original/mathpage-placeholder.jpg?1442330622">
+          <div>
+          <!--div class="embed-responsive embed-responsive-16by9"-->
+            <img src="http://gm-s3-qa.intridea.com/documents/attachments/000/000/019/original/mathpage-videostatic.jpg?1443030513" class="img-responsive">
+            <!--video src="http://gm-s3-qa.intridea.com/documents/attachments/000/000/011/original/eureka-math-hd.mp4?1442330466" controls poster="http://gm-s3-qa.intridea.com/documents/attachments/000/000/012/original/mathpage-placeholder.jpg?1442330622">
               No support.
-            </video>
+            </video-->
           </div>
         </div>
       </section>
