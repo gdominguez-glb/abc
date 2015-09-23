@@ -1,6 +1,6 @@
   <% if spree_current_user %>
     <li>
-      Hello, <%= active_link_to spree_current_user.full_name, '/account' %>
+      <span class="hello-text">Hello,</span> <%= active_link_to spree_current_user.full_name, '/account' %>
     </li>
   <% end %>
 
