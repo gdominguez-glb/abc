@@ -26,6 +26,8 @@
 }
 
 .embed-responsive {
+  border: 1px solid #fff;
+  
   @media screen and (min-width: $screen-lg-min) {
     margin: 4% 0;
   }
