@@ -77,8 +77,10 @@ $(document).ready(function() {
   }
 
   var width = $(window).width();
-
   if (width >= 768) {
     nav.find('.navbar-nav > li > a').removeAttr('data-toggle');
   }
+
+  var currentPage = $('body').data('page');
+  nav.find('[data-primary-nav-item="'+ currentPage +'"]').addClass('active');
 });
