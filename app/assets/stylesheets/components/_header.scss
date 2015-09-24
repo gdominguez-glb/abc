@@ -50,7 +50,7 @@
     }
   }
 
-  // ----- Main Navigation Items ----- //
+  // ----- Main Navigation Items & Dropdowns ----- //
 
   .navbar-collapse {
     border: 0;
@@ -75,6 +75,7 @@
         }
       }
 
+      &.open,
       &.active {
         a,
         a:hover,
@@ -84,6 +85,20 @@
           @media screen and (min-width: $screen-sm-min) {
             color: $brand-green;
             background: transparent;
+          }
+        }
+
+        .dropdown-menu {
+          > li {
+            > a {
+              padding: 10px 15px 10px 25px;
+              color: #fff;
+
+              &:hover,
+              &:focus {
+                color: #fff;
+              }
+            }
           }
         }
       }
@@ -109,8 +124,13 @@
   // ----- Sub Navigation Items ----- //
 
   .subnav {
+    display: none;
     margin: 0 -15px;
     color: #fff;
+
+    @media screen and (min-width: $screen-sm-min) {
+      display: block;
+    }
 
     .navbar-collapse-toggle {
       padding: 0 15px;
@@ -182,7 +202,6 @@
   .navbar-right {
     font-family: Karla, sans-serif;
     font-weight: bold;
-    font-size: 12px;
     letter-spacing: 2px;
 
     @media screen and (min-width: $screen-sm-min) {
@@ -190,6 +209,7 @@
       top: 0;
       right: 30px;
       width: auto;
+      font-size: 12px;
       text-transform: uppercase;
 
       li {
