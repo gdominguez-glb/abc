@@ -9,6 +9,7 @@
 //= require spree/frontend
 
 //= require slick.min
+//= require select2
 //= require user_form
 //= require_tree .
 //= require spree/frontend/spree_digital

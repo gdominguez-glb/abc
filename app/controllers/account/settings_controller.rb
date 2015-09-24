@@ -35,9 +35,9 @@ class Account::SettingsController < Account::BaseController
       :title,
       :school_district_id,
       :heard_from,
-      :interested_subject,
       :interested_grade_level,
-      school_district_attributes: [:name, :state_id, :place_type]
+      school_district_attributes: [:name, :state_id, :place_type],
+      interested_subjects: [],
     )
     if _params[:school_district_id].blank?
       _params.delete(:school_district_id)

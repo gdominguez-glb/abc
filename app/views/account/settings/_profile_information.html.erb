@@ -27,6 +27,10 @@
           <%= f.password_field :password, class: 'form-control', tabindex: 4 %>
         </div>
         <div class="form-group col-md-6">
+          <label>Subjects you are interested in</label>
+          <%= f.select :interested_subjects, options_for_select(Spree::User::SUBJECTS, f.object.interested_subjects), { include_hidden: false }, { class: 'form-control', tabindex: 5, multiple: true } %>
+        </div>
+        <div class="form-group col-md-6">
           <label>You may contact me about products and resources from Great Minds.</label>
           <%= f.check_box :allow_communication, class: 'form-control' %>
         </div>
@@ -116,6 +120,7 @@
       }
     }
 
+    $('#user_interested_subjects').select2();
     toggleSchoolDistrict();
   })(jQuery);
 //]]>
