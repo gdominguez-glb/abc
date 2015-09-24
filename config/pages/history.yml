@@ -173,12 +173,68 @@ pages:
       </section>
 
   -
+    title: "Parents "
+    seo_content: "History Parents, Update this area"
+    slug: "history/parents"
+    group_name: "history"
+    sub_group_name: "parents"
+    position: 3
+    body: !xml |
+      <section id="background-grey" class="intro jumbo-text">
+        <div class="page-header container">
+          <h1>History Parents Page</h1>
+          <h3 class="sub-head">Intro to Parents Page</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sed sapien quam. Sed dapibus est id enim facilisis, at posuere turpis adipiscing. Quisque sit amet dui dui.</p>
+          <a class="btn btn-primary" href="../../marketing/product.html" role="button">Learn More</a>
+        </div>
+      </section>
+      <section>
+       <div class="container callout">
+        <div id="viewport" class="row">
+          <div class="col-xs-6">
+           <h2>Child Help Section Parent Specific</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat.</p>
+           <a class="btn btn-primary" href="../../marketing/product.html" role="button">Learn More</a>
+           <a class="btn btn-default" href="#" role="button">Secondary CTA</a>
+          </div>
+          <div class="col-xs-1"></div>
+          <div class="col-xs-5">
+            <img src="../../assets/img/fpo-image.jpg" class="img-thumbnail" alt="Responsive image">
+          </div>
+        </div>
+        <hr>
+        </div>
+      </section>
+      <section class="bottom-space">
+      <div class="container">
+        <div id="viewport" class="row callout">
+          <div class="col-xs-5 bottom-space">
+            <img src="../../assets/img/fpo-image.jpg" class="img-thumbnail" alt="Responsive image">
+          </div>
+          <div class="col-xs-1"></div>
+          <div class="col-xs-6">
+           <h2>Resource Section Parent Specific</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat.</p>
+           <a class="btn btn-primary" href="../../marketing/product.html" role="button">Learn More</a>
+           <a class="btn btn-default" href="#" role="button">Secondary CTA</a>
+          </div>
+        </div>
+        </div>
+      </section>
+
+  -
     title: "Admins"
     seo_content: "History Admins, Update this area"
     slug: "history/admins"
     group_name: "history"
     sub_group_name: "admins"
-    position: 3
+    position: 4
     body: !xml |
       <section id="background-grey" class="intro jumbo-text">
         <div class="page-header container">
@@ -243,62 +299,6 @@ pages:
           <div class="col-xs-1"></div>
           <div class="col-xs-5">
             <img src="../../assets/img/fpo-image.jpg" class="img-thumbnail" alt="Responsive image">
-          </div>
-        </div>
-        </div>
-      </section>
-
-  -
-    title: "Parents "
-    seo_content: "History Parents, Update this area"
-    slug: "history/parents"
-    group_name: "history"
-    sub_group_name: "parents"
-    position: 4
-    body: !xml |
-      <section id="background-grey" class="intro jumbo-text">
-        <div class="page-header container">
-          <h1>History Parents Page</h1>
-          <h3 class="sub-head">Intro to Parents Page</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sed sapien quam. Sed dapibus est id enim facilisis, at posuere turpis adipiscing. Quisque sit amet dui dui.</p>
-          <a class="btn btn-primary" href="../../marketing/product.html" role="button">Learn More</a>
-        </div>
-      </section>
-      <section>
-       <div class="container callout">
-        <div id="viewport" class="row">
-          <div class="col-xs-6">
-           <h2>Child Help Section Parent Specific</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat.</p>
-           <a class="btn btn-primary" href="../../marketing/product.html" role="button">Learn More</a>
-           <a class="btn btn-default" href="#" role="button">Secondary CTA</a>
-          </div>
-          <div class="col-xs-1"></div>
-          <div class="col-xs-5">
-            <img src="../../assets/img/fpo-image.jpg" class="img-thumbnail" alt="Responsive image">
-          </div>
-        </div>
-        <hr>
-        </div>
-      </section>
-      <section class="bottom-space">
-      <div class="container">
-        <div id="viewport" class="row callout">
-          <div class="col-xs-5 bottom-space">
-            <img src="../../assets/img/fpo-image.jpg" class="img-thumbnail" alt="Responsive image">
-          </div>
-          <div class="col-xs-1"></div>
-          <div class="col-xs-6">
-           <h2>Resource Section Parent Specific</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat.</p>
-           <a class="btn btn-primary" href="../../marketing/product.html" role="button">Learn More</a>
-           <a class="btn btn-default" href="#" role="button">Secondary CTA</a>
           </div>
         </div>
         </div>
