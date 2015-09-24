@@ -3,6 +3,8 @@ Spree::User.class_eval do
   include ActivityLogger
   include SalesforceAccess
 
+  serialize :interested_subjects, Array
+
   validates_format_of :password, with: /\A\S*\z/, message: "can't include spaces", if: :password_required?
 
   def self.sobject_name

@@ -24,6 +24,6 @@ class Cms::UserProfileSettingsController < Cms::BaseController
 
   def load_fields
     @basic_fields   = [:first_name, :last_name, :email, :password, :phone, :school_district]
-    @profile_fields = [:heard_from, :interested_subject, :interested_grade_level, :title]
+    @profile_fields = [:heard_from, :interested_grade_level, :title]
   end
 end

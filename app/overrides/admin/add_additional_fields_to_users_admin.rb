@@ -39,10 +39,10 @@ Deface::Override.new(
         </div>
 
         <div data-hook="admin_user_additional_fields_part2" class="col-md-6">
-          <%= f.field_container :interested_subject, class: ['form-group'] do %>
-            <%= f.label :interested_subject, Spree.t(:interested_subject) %>
-            <%= f.text_field :interested_subject, :class => 'form-control' %>
-            <%= f.error_message_on :interested_subject %>
+          <%= f.field_container :interested_subjects, class: ['form-group'] do %>
+            <%= f.label :interested_subjects, Spree.t(:interested_subjects) %>
+            <%= f.select :interested_subjects, options_for_select(Spree::User::SUBJECTS, f.object.interested_subjects), { include_hidden: false }, :class => 'form-control' %>
+            <%= f.error_message_on :interested_subjects %>
           <% end %>
 
           <%= f.field_container :interested_grade_level, class: ['form-group'] do %>
