@@ -67,6 +67,10 @@ class Page < ActiveRecord::Base
     }
   ]
 
+  def sub_pages
+    Page.show_in_sub_navigation(self.group_name)
+  end
+
   private
 
   def generate_page_from_tiles
