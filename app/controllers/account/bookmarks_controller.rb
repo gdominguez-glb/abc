@@ -4,5 +4,8 @@ class Account::BookmarksController < Account::BaseController
   end
 
   def destroy
+    bookmark = current_spree_user.bookmarks.find(params[:id])
+    bookmark.destroy
+    redirect_to account_bookmarks_path
   end
 end
