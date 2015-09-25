@@ -13,5 +13,11 @@ RSpec.describe SearchHelper, type: :helper do
 
       expect(helper.search_result_partial(product)).to eq('product_item')
     end
+
+    it "return video_item for Video record" do
+      video = create(:spree_video)
+
+      expect(helper.search_result_partial(video)).to eq('video_item')
+    end
   end
 end

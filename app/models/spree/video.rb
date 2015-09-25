@@ -1,4 +1,7 @@
 class Spree::Video < ActiveRecord::Base
+
+  searchkick
+
   belongs_to :video_group, class_name: 'Spree::VideoGroup'
 
   validates_presence_of :title

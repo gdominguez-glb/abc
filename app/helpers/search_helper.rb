@@ -4,6 +4,8 @@ module SearchHelper
       'page_item'
     elsif item.is_a?(Spree::Product)
       'product_item'
+    elsif item.is_a?(Spree::Video)
+      'video_item'
     end
   end
 end
