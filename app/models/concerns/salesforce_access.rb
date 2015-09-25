@@ -197,7 +197,7 @@ module SalesforceAccess
     attributes_to_create = new_attributes_for_salesforce
     attributes_to_create.slice! fields if fields.present?
     return {} if attributes_to_create.blank?
-    ref = salesforce_reference || create_salesforce_reference
+    ref = salesforce_reference || create_salesforce_reference(object_properties: {})
     SalesforceJob.perform_later(ref.id, attributes_to_create, 'create')
     attributes_to_create
   end
@@ -228,7 +228,19 @@ module SalesforceAccess
       update_attrs = new_attrs.reject { |key| key.to_s == 'LastModifiedDate' }
       update_record_in_salesforce(update_attrs)
     end
+    after_create_salesforce(duplicate)
     sfo
+  end
+
+  # Performs additional tasks after creating a record in Salesforce.  This will
+  # be called from within ActiveJob
+  # Params:
+  # +_duplicate+:: indicates if the "new" record matched an existing one
+  #
+  # Override this to perform additional tasks after creating a record in
+  # Salesforce
+  def after_create_salesforce(_duplicate = false)
+    true
   end
 
   class_methods do
