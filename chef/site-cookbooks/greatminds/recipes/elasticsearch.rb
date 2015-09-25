@@ -1,4 +1,4 @@
-package 'openjdk-6-jre'
+package 'openjdk-7-jre'
 
 remote_file "/home/#{node['user']['name']}/elasticsearch-#{node['elasticsearch']['version']}.deb" do
   source "https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-#{node['elasticsearch']['version']}.deb"
