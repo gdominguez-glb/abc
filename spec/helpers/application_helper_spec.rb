@@ -20,4 +20,15 @@ RSpec.describe ApplicationHelper, type: :helper do
       expect(helper.store_active_class).to eq('')
     end
   end
+
+  describe "#store_generate_taxon_ids_param" do
+    let!(:taxon) { create(:taxon) }
+    let!(:other_taxon) { create(:taxon) }
+    let!(:sibling_ids) { [taxon.id, other_taxon.id] }
+    let!(:taxon_ids) { [other_taxon.id] }
+
+    it "add current taxon id and remove sibling id" do
+      expect(helper.store_generate_taxon_ids_param(taxon_ids, sibling_ids, taxon)).to eq([taxon.id])
+    end
+  end
 end

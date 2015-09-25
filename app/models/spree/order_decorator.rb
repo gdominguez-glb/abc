@@ -20,18 +20,14 @@ Spree::Order.class_eval do
     end
   end
 
-  def skip_delivery?
-    self.products.all? { |product| digital_product?(product) }
+  def all_digitals?
+    self.products.all? { |product| product.digital_delivery? }
   end
 
   def free_digital_order?
     self.products.all? do |product|
-      digital_product?(product) && product.free?
+      product.digital_delivery? && product.free?
     end
-  end
-
-  def digital_product?(product)
-    product.shipping_category.name == 'Digital Delivery' && product.digital?
   end
 
   def valid_terms_and_conditions?
@@ -44,7 +40,7 @@ Spree::Order.class_eval do
   checkout_flow do
     go_to_state :address, if: -> (order) { !order.free_digital_order? }
     go_to_state :terms_and_conditions, if: -> (order) { order.has_license_products?  }
-    go_to_state :delivery, if: -> (order) { !order.skip_delivery? }
+    go_to_state :delivery, if: -> (order) { !order.all_digitals? }
     go_to_state :payment, if: ->(order) { order.payment_required? }
     go_to_state :confirm, if: ->(order) { order.confirmation_required? }
     go_to_state :complete

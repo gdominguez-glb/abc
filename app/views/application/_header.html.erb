@@ -14,24 +14,23 @@
   <div class="collapse navbar-collapse" id="mainNav">
     <ul class="nav navbar-nav">
       <% Page.curriculum_nav.each do |page| %>
-        <%= active_link_to page.group_name.capitalize, "/#{page.slug}", wrap_tag: :li %>
+        <li data-primary-nav-item="<%= "#{page.group_name}" %>">
+          <a href="<%= "/#{page.slug}" %>" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= page.group_name %> <span class="caret"></span></a>
+          <% if page.sub_pages.present? %>
+            <%= render partial: 'curriculum_dropdown', locals: { page: page } %>
+          <% end %>
+        </li>
       <% end %>
       <li class="<%= store_active_class %>">
         <%= link_to "Shop", '/store', class: store_active_class %>
       </li>
-      <% if spree_current_user %>
-        <li>
-          <%= active_link_to "Logout", '/store/logout' %>
-        </li>
-      <% else %>
-        <li>
-          <%= active_link_to "Login", '/store/login' %>
-        </li>
-      <% end %>
+      <li class="search-button">
+        <a class="fa fa-search"></a>
+      </li>
     </ul>
     <%= render 'secondary_nav' %>
-    <div class="nav navbar-nav navbar-right">
+    <ul class="nav navbar-nav navbar-right">
       <%= render partial: 'spree/shared/main_nav_bar' if store_menu? %>
-    </div>
+    </ul>
   </div>
 </nav> <!-- /.navbar -->

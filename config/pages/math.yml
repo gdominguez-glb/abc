@@ -10,28 +10,31 @@ pages:
     show_in_footer: false
     group_root: true
     body: !xml |
-      <div class="row no-gutter">
+      <section class="row img-full image-bg" style="background-image: url('http://gm-s3-qa.intridea.com/documents/attachments/000/000/018/original/mathpage-videobackground1.jpg?1443029702')">
         <div class="col-xs-12 col-lg-10 col-lg-offset-1">
-          <div class="embed-responsive embed-responsive-16by9">
-            <video src="http://gm-s3-qa.intridea.com/documents/attachments/000/000/011/original/eureka-math-hd.mp4?1442330466" controls poster="http://gm-s3-qa.intridea.com/documents/attachments/000/000/012/original/mathpage-placeholder.jpg?1442330622">
+          <div>
+            <h3 class="video-title">Lorem ipsum dolor sit amet</h3>
+          <!--div class="embed-responsive embed-responsive-16by9"-->
+            <img src="http://gm-s3-qa.intridea.com/documents/attachments/000/000/019/original/mathpage-videostatic.jpg?1443030513" class="img-responsive">
+            <!--video src="http://gm-s3-qa.intridea.com/documents/attachments/000/000/011/original/eureka-math-hd.mp4?1442330466" controls poster="http://gm-s3-qa.intridea.com/documents/attachments/000/000/012/original/mathpage-placeholder.jpg?1442330622">
               No support.
-            </video>
+            </video-->
           </div>
         </div>
-      </div>
+      </section>
       <section class="row green-bg">
-        <div class="col-sm-12 col-lg-10 col-lg-offset-1">
-          <h6 class="bold">This is about Great Minds.</h6>
+        <div class="col-sm-12 col-lg-6 col-lg-offset-3">
+          <h6 class="bold">Lorem ipsum dolor sit amet</h6>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
             irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
           <a class="btn btn-default btn-block-xs" href="footer_nav/about.html">Learn More</a>
         </div>
       </section>
-      <section class="row row-img-full" style="background-image: url('http://gm-s3-qa.intridea.com/documents/attachments/000/000/008/original/mathpage-content1.jpg?1442330362')">
+      <section class="row row-img-full image-bg" style="background-image: url('http://gm-s3-qa.intridea.com/documents/attachments/000/000/008/original/mathpage-content1.jpg?1442330362')">
         <div class="row-img-full-content">
           <div class="col-sm-6 col-centered-content">
             <div class="vertical-center">
-              <h6 class="bold">This is about Great Minds.</h6>
+              <h6 class="bold">Lorem ipsum dolor sit amet</h6>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
               <a class="btn btn-default btn-block-xs margin-bottom-s" href="`footer_nav/about.html">Learn More</a>
             </div>
@@ -41,29 +44,29 @@ pages:
       </section>
       <section class="row cream-bg">
         <div class="col-sm-4">
-          <h6 class="bold">This is an important callout</h6>
+          <h6 class="bold">Lorem ipsum dolor sit amet</h6>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
           </p>
           <a class="btn btn-default btn-block-xs" href="main_nav/contact.html">Learn More</a>
         </div>
         <div class="col-sm-4">
-          <h6 class="bold">This is an important callout</h6>
+          <h6 class="bold">Lorem ipsum dolor sit amet</h6>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
           </p>
           <a class="btn btn-default btn-block-xs" href="main_nav/contact.html">Learn More</a>
         </div>
         <div class="col-sm-4">
-          <h6 class="bold">This is an important callout</h6>
+          <h6 class="bold">Lorem ipsum dolor sit amet</h6>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
           </p>
           <a class="btn btn-default btn-block-xs" href="main_nav/contact.html">Learn More</a>
         </div>
       </section>
-      <section class="row row-img-full" style="background-image: url('http://gm-s3-qa.intridea.com/documents/attachments/000/000/010/original/mathpage-content2.jpg?1442330393')">
+      <section class="row row-img-full image-bg" style="background-image: url('http://gm-s3-qa.intridea.com/documents/attachments/000/000/010/original/mathpage-content2.jpg?1442330393')">
         <div class="row-img-full-content">
           <div class="col-sm-6 col-centered-content">
             <div class="vertical-center">
-              <h6 class="bold">Training Section</h6>
+              <h6 class="bold">Lorem ipsum dolor sit amet</h6>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
               </p>
               <a class="btn btn-default btn-block-xs margin-bottom-m" href="main_nav/contact.html">Learn More</a>
@@ -75,91 +78,12 @@ pages:
       </section>
 
   -
-    title: 'Admins'
-    seo_content: 'Math Admins, Update this area'
-    slug: 'math/admins'
-    group_name: "math"
-    sub_group_name: "admins"
-    position: 2
-    show_in_nav: true
-    show_in_footer: false
-    group_root: false
-    body: !xml |
-      <section id="background-grey" class="intro jumbo-text">
-        <div class="page-header container">
-          <h1>Math Admin Page</h1>
-          <h3 class="sub-head">Intro to Admin Page</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sed sapien quam. Sed dapibus est id enim facilisis, at posuere turpis adipiscing. Quisque sit amet dui dui.</p>
-          <a class="btn btn-primary" href="../../marketing/product.html" role="button">Learn More</a>
-        </div>
-      </section>
-      <section class="callout">
-       <div class="container">
-        <div id="viewport" class="row">
-          <div class="col-xs-6">
-           <h2>Curriculum Section Admin Specific</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat.</p>
-           <a class="btn btn-primary" href="../../marketing/product.html" role="button">Learn More</a>
-           <a class="btn btn-default" href="#" role="button">Secondary CTA</a>
-          </div>
-          <div class="col-xs-1"></div>
-          <div class="col-xs-5">
-            <img src="../../assets/img/fpo-image.jpg" class="img-thumbnail" alt="Responsive image">
-          </div>
-        </div>
-        <hr>
-        </div>
-      </section>
-      <section>
-        <div class="container">
-          <div id="viewport" class="row callout">
-            <div class="col-xs-5">
-              <img src="../../assets/img/fpo-image.jpg" class="img-thumbnail" alt="Responsive image">
-            </div>
-            <div class="col-xs-1"></div>
-            <div class="col-xs-6">
-             <h2>Training Section Admin Specific</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat.</p>
-             <a class="btn btn-primary" href="../../marketing/product.html" role="button">Learn More</a>
-             <a class="btn btn-default" href="#" role="button">Secondary CTA</a>
-            </div>
-          </div>
-          <hr>
-        </div>
-      </section>
-      <section class="bottom-space">
-        <div class="container">
-          <div id="viewport" class="row">
-            <div class="col-xs-6 bottom-space">
-             <h2>Resource Section Admin Specific</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat.</p>
-             <a class="btn btn-primary" href="../../marketing/product.html" role="button">Learn More</a>
-             <a class="btn btn-default" href="#" role="button">Secondary CTA</a>
-            </div>
-            <div class="col-xs-1"></div>
-            <div class="col-xs-5">
-              <img src="../../assets/img/fpo-image.jpg" class="img-thumbnail" alt="Responsive image">
-            </div>
-          </div>
-        </div>
-      </section>
-
-  -
     title: 'Teachers'
     seo_content: 'Math Teachers, Update this area'
     slug: 'math/teachers'
     group_name: "math"
     sub_group_name: "teachers"
-    position: 3
+    position: 2
     show_in_nav: true
     show_in_footer: false
     group_root: false
@@ -238,7 +162,7 @@ pages:
     slug: "math/parents"
     group_name: "math"
     sub_group_name: "parents"
-    position: 4
+    position: 3
     body: !xml |
       <section id="background-grey" class="intro jumbo-text">
         <div class="page-header container">
@@ -286,6 +210,85 @@ pages:
             </div>
           </div>
           <hr>
+        </div>
+      </section>
+
+  -
+    title: 'Admins'
+    seo_content: 'Math Admins, Update this area'
+    slug: 'math/admins'
+    group_name: "math"
+    sub_group_name: "admins"
+    position: 4
+    show_in_nav: true
+    show_in_footer: false
+    group_root: false
+    body: !xml |
+      <section id="background-grey" class="intro jumbo-text">
+        <div class="page-header container">
+          <h1>Math Admin Page</h1>
+          <h3 class="sub-head">Intro to Admin Page</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sed sapien quam. Sed dapibus est id enim facilisis, at posuere turpis adipiscing. Quisque sit amet dui dui.</p>
+          <a class="btn btn-primary" href="../../marketing/product.html" role="button">Learn More</a>
+        </div>
+      </section>
+      <section class="callout">
+       <div class="container">
+        <div id="viewport" class="row">
+          <div class="col-xs-6">
+           <h2>Curriculum Section Admin Specific</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat.</p>
+           <a class="btn btn-primary" href="../../marketing/product.html" role="button">Learn More</a>
+           <a class="btn btn-default" href="#" role="button">Secondary CTA</a>
+          </div>
+          <div class="col-xs-1"></div>
+          <div class="col-xs-5">
+            <img src="../../assets/img/fpo-image.jpg" class="img-thumbnail" alt="Responsive image">
+          </div>
+        </div>
+        <hr>
+        </div>
+      </section>
+      <section>
+        <div class="container">
+          <div id="viewport" class="row callout">
+            <div class="col-xs-5">
+              <img src="../../assets/img/fpo-image.jpg" class="img-thumbnail" alt="Responsive image">
+            </div>
+            <div class="col-xs-1"></div>
+            <div class="col-xs-6">
+             <h2>Training Section Admin Specific</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+              consequat.</p>
+             <a class="btn btn-primary" href="../../marketing/product.html" role="button">Learn More</a>
+             <a class="btn btn-default" href="#" role="button">Secondary CTA</a>
+            </div>
+          </div>
+          <hr>
+        </div>
+      </section>
+      <section class="bottom-space">
+        <div class="container">
+          <div id="viewport" class="row">
+            <div class="col-xs-6 bottom-space">
+             <h2>Resource Section Admin Specific</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+              consequat.</p>
+             <a class="btn btn-primary" href="../../marketing/product.html" role="button">Learn More</a>
+             <a class="btn btn-default" href="#" role="button">Secondary CTA</a>
+            </div>
+            <div class="col-xs-1"></div>
+            <div class="col-xs-5">
+              <img src="../../assets/img/fpo-image.jpg" class="img-thumbnail" alt="Responsive image">
+            </div>
+          </div>
         </div>
       </section>
 

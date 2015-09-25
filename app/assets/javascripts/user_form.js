@@ -51,6 +51,8 @@ $(document).on("change", "#spree_user_title", function(){
   } else {
     $('.school-district-details').collapse('hide');
   }
+
+  $('#spree_user_interested_subjects').select2();
 });
 
 $(document).on('change', '#schoolDistrictSelect input', function(e) {

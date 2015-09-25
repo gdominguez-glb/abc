@@ -50,7 +50,7 @@
     }
   }
 
-  // ----- Main Navigation Items ----- //
+  // ----- Main Navigation Items & Dropdowns ----- //
 
   .navbar-collapse {
     border: 0;
@@ -66,6 +66,14 @@
       background-color: transparent;
     }
 
+    .dropdown-toggle {
+      .caret {
+        @media screen and (min-width: $screen-sm-min) {
+          display: none;
+        }
+      }
+    }
+
     > li {
       &:first-child {
         a {
@@ -75,6 +83,7 @@
         }
       }
 
+      &.open,
       &.active {
         a,
         a:hover,
@@ -84,6 +93,25 @@
           @media screen and (min-width: $screen-sm-min) {
             color: $brand-green;
             background: transparent;
+          }
+        }
+
+        .dropdown-menu {
+
+          @media screen and (min-width: $screen-sm-min) {
+            display: none;
+          }
+
+          > li {
+            > a {
+              padding: 10px 15px 10px 25px;
+              color: #fff;
+
+              &:hover,
+              &:focus {
+                color: #fff;
+              }
+            }
           }
         }
       }
@@ -109,8 +137,13 @@
   // ----- Sub Navigation Items ----- //
 
   .subnav {
+    display: none;
     margin: 0 -15px;
     color: #fff;
+
+    @media screen and (min-width: $screen-sm-min) {
+      display: block;
+    }
 
     .navbar-collapse-toggle {
       padding: 0 15px;
@@ -180,47 +213,54 @@
   // ----- Cart Navigation Items ----- //
 
   .navbar-right {
+    font-family: Karla, sans-serif;
+    font-weight: bold;
+    letter-spacing: 2px;
+
     @media screen and (min-width: $screen-sm-min) {
       position: absolute;
       top: 0;
       right: 30px;
       width: auto;
+      text-transform: uppercase;
 
       li {
+        &:first-child {
+          a {
+            padding: 0;
+          }
+        }
+
         @media screen and (min-width: $screen-sm-min) {
           float: left;
           display: inline-block;
           padding: 15px 10px;
           color: #fff;
-          font-size: 12px;
+          font-size: .75em;
         }
       }
 
-      a {
+      > li > a {
         @media screen and (min-width: $screen-sm-min) {
-          @extend .serif;
-          font-family: 'Lora' serif;
-          font-style: italic;
-          text-transform: capitalize;
+          display: inline-block;
+          padding: 0;
         }
+      }
+    }
+
+    .form-inline {
+      padding: 0;
+    }
+
+    .hello-text {
+      display: none;
+      @media screen and (min-width: $screen-sm-min) {
+        display: inline-block;
       }
     }
   }
 
   .cart {
-    .search-icon {
-      display: block;
-      padding: 10px 15px;
-      color: #fff;
-      &:hover {
-        color: darken(#fff, 15%);
-      }
-
-      @media screen and (min-width: $screen-sm-min) {
-        padding: 15px 10px;
-      }
-    }
-
     > li {
       a {
         display: block;
@@ -237,13 +277,59 @@
     }
   }
 
-  // ----- Cart  ----- //
-
   #link-to-cart {
     .cart-info {
       position: relative;
       font-size: 14px;
       color: #fff;
+
+      &:hover {
+        color: $brand-green;
+      }
+    }
+  }
+
+  // ----- Search ----- //
+
+  .search {
+    margin-bottom: 0;
+    padding: 10px;
+    color: #fff;
+
+    .btn {
+      padding: 6px 12px;
+      border: 0;
+      box-shadow: inset 0 0 0 1px;
+      line-height: 20px;
+
+      @media screen and (min-width: $screen-sm-min) {
+        border-radius: 0;
+        color: lighten($gray-light, 10%);
+        background-color: lighten($dark-blue, 5%);
+      }
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.3);
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    .form-control {
+      padding: 6px 12px;
+      line-height: 20px;
+
+      @media screen and (min-width: $screen-sm-min) {
+        border-radius: 0;
+        color: lighten($gray-light, 10%);
+        background-color: lighten($dark-blue, 5%);
+      }
+
+      &:focus {
+        box-shadow: inset 0 0 0 1px;
+      }
     }
   }
 

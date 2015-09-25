@@ -1,29 +1,70 @@
 // _spree_store_overrides.scss
 
-#default {
+.spree-store {
 
-  #sidebar, #content {
-    margin-top: 30px;
+  .call-banner {
+    padding: 15px;
+    margin: 0 0 30px;
+    text-align: center;
+
+    h5 {
+      font-weight: 700;
+      margin: 0 0 10px;
+    }
+
+    h6 {
+      margin: 0;
+    }
   }
-}
 
-.call-banner {
-  padding: 15px;
-  margin: 0 0 30px;
-  text-align: center;
-
-  h5 {
-    font-weight: 700;
-    margin: 0 0 10px;
+  #productContactForm {
+    .modal-header, .modal-body {
+      padding: 30px;
+    }
   }
 
-  h6 {
-    margin: 0;
+  .product-wrapper {
+    margin-bottom: 30px;
+    text-align: left;
   }
-}
 
-#productContactForm {
-  .modal-header, .modal-body {
-    padding: 30px;
+  .product-body {
+    min-height: 130px;
+    padding: 20px 15px 15px;
+    background-color: $gray-lighter;
+    text-align: center;
   }
+
+  .product-title {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .product-footer {
+    padding: 15px 0;
+    font-family: 'Karla', sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  .product-type {
+    color: $gray-light;
+  }
+
+  .price {
+    a {
+      color: $coral;
+      text-decoration: underline;
+      letter-spacing: normal;
+    }
+  }
+
+  .taxonomy {
+    margin-bottom: $b-space-xl;
+  }
+
+  .taxonomy-root {
+    font-size: 1em;
+  }
+
 }

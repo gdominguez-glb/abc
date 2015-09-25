@@ -27,7 +27,7 @@
 // Styles for tiles with class="cream-bg"
 
 .cream-bg {
-  background: $cream;
+  background: #FFFAE5;
   color: $dark-blue;
 
   .btn {
@@ -77,6 +77,21 @@
       &:hover {
         background: $cream;
         color: $coral;
+      }
+    }
+  }
+}
+
+// Styles for any tile with class="image-bg"
+
+.image-bg {
+  .btn {
+    &.btn-default {
+      color: $cream;
+
+      &:hover {
+        background: $cream;
+        color: $dark-blue;
       }
     }
   }

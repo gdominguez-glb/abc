@@ -1,11 +1,25 @@
 <div class="search-overlay blue-bg">
-  <button class="close">
-    <span class="fa fa-angle-double-up"></span>
-  </button>
-  <%= form_tag '/search', class: 'nav-search clearfix', method: :get do %>
-    <div class="form-group">
-      <%= text_field_tag :query, nil, class: 'form-control', placeholder: 'Search' %>
-      <%= submit_tag 'Submit', class: 'btn btn-default' %>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <button class="close">
+          <span class="fa fa-angle-double-up"></span>
+        </button>
+      </div>
     </div>
-  <% end %>
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3">
+        <%= form_tag '/search', class: 'nav-search form-inline', method: :get do %>
+          <div class="row">
+            <div class="col-sm-8">
+              <%= text_field_tag :query, nil, class: 'form-control', placeholder: 'Search' %>
+            </div>
+            <div class="col-sm-4">
+          <%= submit_tag 'Submit', class: 'btn btn-default btn-block' %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>

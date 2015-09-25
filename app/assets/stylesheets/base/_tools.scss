@@ -9,11 +9,25 @@
 //   Responsive
 // -------------------------------------
 
+.col-lg-offset-halfone {
+  @media screen and (min-width: $screen-lg-min) {
+    width: 62.3333%;
+    margin-left: 4.3333%;
+  }
+}
+
 .img-responsive {
   width: 100%;
+
+  @media screen and (min-width: $screen-xs-min) {
+    width: auto;
+    margin: 0 auto;
+  }
 }
 
 .embed-responsive {
+  //border: 1px solid #fff; return this when we remove fake placeholder images from the site
+
   @media screen and (min-width: $screen-lg-min) {
     margin: 4% 0;
   }
@@ -38,6 +52,14 @@
 
   @media screen and (min-width: $screen-sm-min) {
     margin-bottom: 0;
+  }
+}
+
+.margin-xs-left-xl {
+  margin-left: 0;
+
+  @media screen and (min-width: $screen-sm-min) {
+    margin-left: $b-space-xl;
   }
 }
 
@@ -227,4 +249,22 @@
 
 .margin-left-xl {
   margin-left: $b-space-xl;
+}
+
+// ----- Extra Extra Large ----- //
+
+.margin-top-xxl {
+  margin-top: $b-space-xl + $b-space-l;
+}
+
+.margin-right-xxl {
+  margin-right: $b-space-xl + $b-space-l;
+}
+
+.margin-bottom-xxl {
+  margin-bottom: $b-space-xl + $b-space-l;
+}
+
+.margin-left-xxl {
+  margin-left: $b-space-xl + $b-space-l;
 }

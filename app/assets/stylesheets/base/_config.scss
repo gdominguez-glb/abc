@@ -7,7 +7,7 @@ $border-radius-value: 4px;
 
 // Digo Color palette
 $coral: #950066;
-$cream: #FFFAE5;
+$cream: #fff;
 $dark-blue: #071D26;
 $light-blue: #E2E7E9;
 $light-plum: #F4F4F4;
@@ -28,7 +28,7 @@ $brand-danger: #d9534f;
 $gray-darker: #222;
 $gray-dark: #333;
 $gray: $steel-gray;
-$gray-light: lighten($gray, 10%);
+$gray-light: #aaa;
 $gray-lighter: #eee;
 
 // Mixins

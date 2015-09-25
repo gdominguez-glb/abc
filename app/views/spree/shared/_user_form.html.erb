@@ -9,10 +9,9 @@
         <label>Email Address</label>
         <%= f.email_field :email, :class => 'form-control', :placeholder => Spree.t(:email), tabindex: 3 %>
       </div>
-      <label>Subject</label>
-      <div class="form-group select-container dark-select block">
-        <span>Subject you are interested in</span>
-        <%= f.select :interested_subject, options_for_select(Spree::User::SUBJECTS, f.object.interested_subject), { prompt: 'Please select interested subject' }, { class: 'form-control', tabindex: 5 } %>
+      <div class="form-group">
+        <label>Subjects you are interested in</label>
+        <%= f.select :interested_subjects, options_for_select(Spree::User::SUBJECTS, f.object.interested_subjects), { include_hidden: false }, { class: 'form-control', tabindex: 5, multiple: 'multiple' } %>
       </div>
     </div>
     <div class="col-md-6">

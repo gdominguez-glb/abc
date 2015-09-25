@@ -24,8 +24,8 @@ class Account::ProductsController < Account::BaseController
 
   def load_recommendations
     @recommendations = Recommendation.limit(3)
-    if current_spree_user.interested_subject.present?
-      @recommendations = @recommendations.where(subject: current_spree_user.interested_subject)
+    if current_spree_user.interested_subjects.present?
+      @recommendations = @recommendations.where(subject: current_spree_user.interested_subjects)
     end
   end
 

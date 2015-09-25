@@ -8,7 +8,7 @@
     <%= javascript_include_tag 'application' %>
     <%= csrf_meta_tags %>
   </head>
-  <body class="<%= controller_name %> <%= 'with-subnav' if @sub_nav_items.present? %> <%= yield :body_class %> ">
+  <body class="<%= controller_name %> <%= 'with-subnav' if @sub_nav_items.present? %> <%= yield :body_class %>" data-page="<%= @page.group_name if @page.present? %>">
 
     <div id="wrap" class="<%= 'empty-state' if @video_products.blank? %>">
       <%= render 'header' %>
@@ -18,8 +18,8 @@
       </div>
     </div>
     <%= render 'footer' %>
-    <div class="overlay"></div>
     <%= render 'search_overlay' %>
+    <div class="overlay"></div>
     <%= yield :javascripts %>
   </body>
 </html>
