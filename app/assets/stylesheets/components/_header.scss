@@ -302,18 +302,18 @@
     .form-control {
       width: 30px;
       padding: 9px 15px;
-      background: transparent url(icon-search-white.png) no-repeat 50% 50%;
+      background: transparent url('icon-search-white.png') no-repeat 50% 50%;
       background-size: 15px 15px;
       box-shadow: none;
 
       &:focus {
         width: 100%;
         padding: 9px 15px 9px 30px;
-        background: #fff url(icon-search-gray.png) no-repeat 2% 50%;
+        background: #fff url('icon-search-gray.png') no-repeat 2% 50%;
         background-size: 15px 15px;
 
         @media screen and (min-width: $screen-sm-min) {
-          background: #fff url(icon-search-gray.png) no-repeat 5% 50%;
+          background: #fff url('icon-search-gray.png') no-repeat 5% 50%;
           background-size: 15px 15px;
         }
       }
