@@ -1,8 +1,9 @@
 <% content_for :body_class, "licenses" %>
 
-<%= render 'tabs' %>
+<div class="container container-content">
 
-<div class="container">
+  <%= render 'tabs' %>
+
   <%= form_for @assign_licenses_form, url: assign_account_licenses_path do |f| %>
     <div class="text-center license-page-description">
       <h2>Ready to assign some licenses ...</h2>
