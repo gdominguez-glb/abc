@@ -29,3 +29,7 @@ check process sidekiq with pidfile /var/www/<%= node['app'] %>/current/tmp/pids/
 
   stop program = "/bin/su - <%= node['user']['name'] %> -c 'cd /var/www/<%= node['app'] %>/current && ( RBENV_ROOT=~/.rbenv RBENV_VERSION=2.1.6 ~/.rbenv/bin/rbenv exec bundle exec sidekiqctl stop /var/www/<%= node['app'] %>/shared/tmp/pids/sidekiq.pid 10 )'" with timeout 30 seconds
   group sidekiq
+
+check process elasticsearch with pidfile /var/run/elasticsearch.pid
+    start program = "/etc/init.d/elasticsearch start"
+    stop program = "/etc/init.d/elasticsearch stop"
