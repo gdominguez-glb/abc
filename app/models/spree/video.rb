@@ -2,6 +2,14 @@ class Spree::Video < ActiveRecord::Base
 
   searchkick
 
+  def search_data
+    {
+      title: title,
+      description: description,
+      user_ids: [-1]
+    }
+  end
+
   belongs_to :video_group, class_name: 'Spree::VideoGroup'
 
   validates_presence_of :title

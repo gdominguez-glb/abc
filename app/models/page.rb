@@ -4,6 +4,18 @@ class Page < ActiveRecord::Base
 
   searchkick
 
+  def should_index?
+    self.visible?
+  end
+
+  def search_data
+    {
+      title: title,
+      body: body,
+      user_ids: [-1]
+    }
+  end
+
   belongs_to :curriculum
 
   has_many :medium_publications

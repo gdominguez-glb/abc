@@ -77,11 +77,7 @@ Spree::Product.class_eval do
   end
   ## end of spree bundles
 
-  unless Spree::Product.respond_to?(:searchkick_options)
-    searchkick
-  end
 
-  validates :license_length, numericality: { only_integer: true }, allow_blank: true
   validates :redirect_url, format: { with: URI.regexp }, allow_blank: true
 
   belongs_to :curriculum, class_name: 'Spree::Curriculum'
@@ -148,5 +144,30 @@ Spree::Product.class_eval do
       taxon = Spree::Taxon.find_by(name: self.video_group.name)
       self.taxons << taxon if taxon
     end
+  end
+
+  ### search indexes
+  unless Spree::Product.respond_to?(:searchkick_options)
+    searchkick
+  end
+
+  def fulfillmentable?
+     fulfillment_date.nil? || fulfillment_date < Time.now
+  end
+
+  def expired?
+    expiration_date && expiration_date < Time.now
+  end
+
+  def should_index?
+    fulfillmentable? && !!expired?
+  end
+
+  def search_data
+    {
+      name: name,
+      description: description,
+      user_ids: [-1]
+    }
   end
 end
