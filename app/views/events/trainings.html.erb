@@ -3,7 +3,7 @@
     <div class="event-training">
       <h3><%= event_training.title %></h3>
       <p>
-        <%= raw event_training.content %>
+	 <%= event_training.content.html_safe rescue nil %>
       </p>
     </div>
   <% end %>
