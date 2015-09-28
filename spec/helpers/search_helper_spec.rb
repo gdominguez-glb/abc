@@ -19,5 +19,11 @@ RSpec.describe SearchHelper, type: :helper do
 
       expect(helper.search_result_partial(video)).to eq('video_item')
     end
+
+    it "return material_item for Material record" do
+      material = create(:spree_material, parent: nil)
+
+      expect(helper.search_result_partial(material)).to eq('material_item')
+    end
   end
 end
