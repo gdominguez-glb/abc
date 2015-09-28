@@ -1,3 +1,4 @@
+# https://www.linode.com/docs/security/securing-your-server#creating-a-firewall
 bash "setup iptables" do
   code <<-EOH
     iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
