@@ -2,7 +2,19 @@ require 'marketing_page_renderrer'
 
 class Page < ActiveRecord::Base
 
-  searchkick
+  searchkick callbacks: :async
+
+  def should_index?
+    self.visible?
+  end
+
+  def search_data
+    {
+      title: title,
+      body: body,
+      user_ids: [-1]
+    }
+  end
 
   belongs_to :curriculum
 
