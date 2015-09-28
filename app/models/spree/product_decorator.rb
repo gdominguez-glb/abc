@@ -62,22 +62,6 @@ Spree::Product.class_eval do
     parts.any?
   end
 
-  def variants?
-    variants.any?
-  end
-
-  def been_purchased?
-    if parts?
-      # TODO: Make this actually work
-      # parts.each { |part| return true if part.been_purchased? }
-      false
-    else
-      orders.where.not(completed_at: nil).any?
-    end
-  end
-  ## end of spree bundles
-
-
   validates :redirect_url, format: { with: URI.regexp }, allow_blank: true
 
   belongs_to :curriculum, class_name: 'Spree::Curriculum'
@@ -152,15 +136,15 @@ Spree::Product.class_eval do
   end
 
   def fulfillmentable?
-     fulfillment_date.nil? || fulfillment_date < Time.now
+     fulfillment_date.nil? || (fulfillment_date < Time.now)
   end
 
   def expired?
-    expiration_date && expiration_date < Time.now
+    !!(expiration_date && expiration_date < Time.now)
   end
 
   def should_index?
-    fulfillmentable? && !!expired?
+    fulfillmentable? && !expired?
   end
 
   def search_data
