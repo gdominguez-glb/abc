@@ -6,7 +6,7 @@ class Spree::Material < ActiveRecord::Base
 
   validates_presence_of :name
 
-  searchkick personalize: "user_ids"
+  searchkick callbacks: :async, personalize: "user_ids"
 
   def search_data
     {

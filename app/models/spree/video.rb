@@ -1,6 +1,6 @@
 class Spree::Video < ActiveRecord::Base
 
-  searchkick
+  searchkick callbacks: :async
 
   def search_data
     {

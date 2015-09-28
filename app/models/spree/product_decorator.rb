@@ -148,7 +148,7 @@ Spree::Product.class_eval do
 
   ### search indexes
   unless Spree::Product.respond_to?(:searchkick_options)
-    searchkick
+    searchkick callbacks: :async
   end
 
   def fulfillmentable?
