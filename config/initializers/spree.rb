@@ -28,6 +28,16 @@ Paperclip::Attachment.default_options.merge!({
   }
 })
 
+Paperclip::Attachment.class_eval do
+  # monkey patch this method to add callback on file upload
+  def after_flush_writes
+    unlink_files(@queued_for_write.values)
+    if @instance && @instance.respond_to?(:post_flush_writes)
+      @instance.post_flush_writes
+    end
+  end
+end
+
 attachment_config = {
 
   s3_credentials: {
