@@ -2,7 +2,8 @@ module Spree
   module Admin
     class VideosController < ResourceController
       def index
-        @videos = Spree::Video.page(params[:page])
+        @search = Spree::Video.ransack(params[:q])
+        @videos = @search.result.includes(:video_group).page(params[:page])
       end
 
       protected
@@ -17,4 +18,3 @@ module Spree
     end
   end
 end
-
