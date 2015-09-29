@@ -56,6 +56,8 @@ spree_routes_overrides = Proc.new do
     resources :materials do
       resources :material_files
     end
+
+    post '/sync_salesforce', to: 'salesforce#sync'
   end
   patch '/simple_cart', :to => 'orders#update_simple_cart', :as => :update_simple_cart
   get '/add_products_to_cart', to: 'orders#add_products_to_cart', as: :add_products_to_cart
