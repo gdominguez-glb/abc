@@ -59,7 +59,7 @@ attachment_config.each do |key, value|
 end
 
 Spree::PermittedAttributes.user_attributes.concat([
-  :first_name, :last_name, :address, :interested_subject, :interested_grade_level,
+  :first_name, :last_name, :address, :interested_subjects, :interested_grade_level,
   :school_name, :heard_from, :receive_newsletter, :school_district_id
 ])
 
