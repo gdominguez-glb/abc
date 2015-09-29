@@ -21,7 +21,7 @@ namespace 'pages' do
       if params[:group_name].present? &&  curriculum = Curriculum.find_by(name: params[:group_name].titleize)
         params[:curriculum_id] = curriculum.id
       end
-      page.update_attributes(params.merge(visible: true))
+      page.update_attributes(params.merge(visible: true, tiles: nil))
 
       puts "Page: slug='#{page.slug}'' was updated."
     end
