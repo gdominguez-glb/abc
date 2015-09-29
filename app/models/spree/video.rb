@@ -35,6 +35,8 @@ class Spree::Video < ActiveRecord::Base
     self.video_group_name = self.video_group.try(:name)
   end
 
+  after_commit :run_wistia_worker, on: :create
+
   def products
     video_group.try(:products) || []
   end
@@ -64,7 +66,7 @@ class Spree::Video < ActiveRecord::Base
     end
   end
 
-  def post_flush_writes
+  def run_wistia_worker
     WistiaWorker.perform_async(self.id) if self.wistia_id.blank?
   end
 
