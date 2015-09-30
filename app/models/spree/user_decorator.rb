@@ -176,4 +176,8 @@ Spree::User.class_eval do
   def last_active_date
     activities.recent.first.try(:created_at) || self.created_at
   end
+
+  def has_active_license_on?(product)
+    licensed_products.where(product_id: product.id).exists?
+  end
 end

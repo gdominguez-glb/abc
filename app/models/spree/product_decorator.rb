@@ -143,15 +143,16 @@ Spree::Product.class_eval do
     !!(expiration_date && expiration_date < Time.now)
   end
 
-  def should_index?
-    fulfillmentable? && !expired?
-  end
-
   def search_data
+    user_ids = for_sale? ?  [-1] : active_license_user_ids
     {
       name: name,
       description: description,
-      user_ids: [-1]
+      user_ids: user_ids
     }
+  end
+
+  def active_license_user_ids
+    Spree::LicensedProduct.available.where(product_id: self.id).pluck(:user_id)
   end
 end

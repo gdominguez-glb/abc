@@ -11,4 +11,13 @@ class SearchController < ApplicationController
     end
     options
   end
+
+  def product
+    product = Spree::Product.find(params[:id])
+    if product.access_url && current_spree_user && current_spree_user.has_active_license_on?(product)
+      redirect_to product.access_url
+    else
+      redirect_to spree.product_path(product)
+    end
+  end
 end

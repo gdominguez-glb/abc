@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   get 'contact', to: 'contact#index'
 
   get 'search', to: 'search#index'
+  get 'search/:id/product', to: 'search#product', as: :search_product
 
   get 'events', to: 'events#index'
   get 'events/trainings', to: 'events#trainings', as: :events_trainings
