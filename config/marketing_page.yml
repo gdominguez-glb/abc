@@ -15,12 +15,22 @@ marketing_templates:
       </section>
 
   -
-    name: 'Masthead'
+    name: '50/50 Content Image Left'
     content: !xml |
-      <div class="masthead">
-        <h1><%= title %></h1>
-        <div><%= background_image %></div>
-      </div>
+      <section class="row background-color-bg">
+        <div class="col-sm-6 col-centered-content">
+          <div class="vertical-center">
+            <img src="image-url" class="img-responsive img-book margin-sm-bottom-xl">
+          </div>
+        </div>
+        <div class="col-sm-6 col-centered-content">
+          <div class="vertical-center">
+            <h6>title</h6>
+            <p>body-text</p>
+            <a class="btn btn-default btn-block-xs" href="button-link">button-title</a>
+          </div>
+        </div>
+      </section>
 
   -
     name: '50/50 Small Image'
