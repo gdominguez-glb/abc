@@ -1,73 +1,97 @@
-#search-result {
+.search-result-head {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #666;
+
+  .title {
+    display: block;
+
+    @media screen and (min-width: $screen-sm-min) {
+      margin-top: 10px;
+    }
+  }
+
+  .dropdown {
+
+    > .btn {
+      margin-left: $b-space;
+    }
+
+    .dropdown-menu {
+      left: inherit;
+      right: 0;
+    }
+  }
+}
+
+.flex-center {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-result-item {
+  background-color: #eee;
   margin: 15px 0;
+  border: 1px solid #ddd;
 
-  .search-result-head {
-    padding-bottom: 10px;
-    border-bottom: 1px solid #666;
-  }
-
-  .flex-center {
+  @media screen and (min-width: $screen-sm-min) {
     display: flex;
-    flex: 1;
-    justify-content: center;
-    align-items: center;
   }
 
-  .search-result-item {
-    background-color: #eee;
-    margin: 15px 0;
-    border: 1px solid #ddd;
+  .result-item-icon {
+    font-size: 90px;
+    background-color: #bbb;
+    text-align: center;
+    padding: 10px 0;
 
     @media screen and (min-width: $screen-sm-min) {
       display: flex;
+      flex: 0.4;
+    }
+  }
+
+  .result-item-center {
+    padding: 10px 30px;
+
+    @media screen and (min-width: $screen-sm-min) {
+      flex: 1;
     }
 
-    .result-item-icon {
-      font-size: 90px;
-      background-color: #bbb;
-      text-align: center;
-      padding: 10px 0;
-
-      @media screen and (min-width: $screen-sm-min) {
-        display: flex;
-        flex: 0.4;
-      }
+    .title {
+      font-weight: bold;
+      font-size: 30px;
+      display: block;
     }
 
-    .result-item-center {
-      padding: 10px 30px;
+    .sub-title {
+      display: block;
+    }
+  }
 
-      @media screen and (min-width: $screen-sm-min) {
-        flex: 1;
-      }
+  .result-item-links {
+    background-color: #fff;
+    padding: 10px;
 
-      .title {
-        font-weight: bold;
-        font-size: 30px;
-        display: block;
-      }
-
-      .sub-title {
-        display: block;
-      }
+    @media screen and (min-width: $screen-sm-min) {
+      display: flex;
+      flex: 0.4;
     }
 
-    .result-item-links {
+    .btn-block {
+      margin: 0;
+    }
 
-      background-color: #fff;
-      padding: 10px;
+    .btn + .btn {
+      margin-top: 5px;
+    }
 
-      @media screen and (min-width: $screen-sm-min) {
-        display: flex;
-        flex: 0.4;
-      }
-
-      a, span {
-        display: block;
-      }
-      span {
-        margin: 10px 0;
-      }
+    a, span {
+      display: block;
+    }
+    span {
+      margin: 10px 0;
     }
   }
 }
