@@ -73,13 +73,13 @@ class Page < ActiveRecord::Base
       ]
     },
     {
-      name: '50/50 Large Image',
+      name: 'Full Width Text',
       fields: [
         { name: 'title', label: 'Title', input_type: 'text' },
-        { name: 'description', label: 'Description', input_type: 'text_area' },
-        { name: 'learn_more_url', label: 'Learn More Url', input_type: 'text' },
-        { name: 'download_url', label: 'Download Url', input_type: 'text' },
-        { name: 'image', label: 'Image', input_type: 'text' }
+        { name: 'body_text', label: 'Body Text', input_type: 'text_area' },
+        { name: 'background_color', label: 'Background Color', input_type: 'text' },
+        { name: 'button_title', label: 'Button Title', input_type: 'text' },
+        { name: 'button_link', label: 'Button Link', input_type: 'text' },
       ]
     }
   ]

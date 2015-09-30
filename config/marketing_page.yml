@@ -49,19 +49,15 @@ marketing_templates:
       </section>
 
   -
-    name: 'Three Columns'
+    name: 'Full Width Text'
     content: !xml |
-      <div>
-        <h1><%= title_1 %></h1>
-        <div><%= description_1 %></div>
-        <div><%= learn_more_url_1 %></div>
-        <h1><%= title_2 %></h1>
-        <div><%= description_2 %></div>
-        <div><%= learn_more_url_2 %></div>
-        <h1><%= title_3 %></h1>
-        <div><%= description_3 %></div>
-        <div><%= learn_more_url_3 %></div>
-      </div>
+      <section class="row <%= background_color %>-bg">
+        <div class="col-sm-12 col-lg-6 col-lg-offset-3">
+          <h6><%= title %></h6>
+          <p><%= body_text %></p>
+          <a class="btn btn-default btn-block-xs" href="<%= button_link %>"><%= button_title %></a>
+        </div>
+      </section>
 
   -
     name: '50/50 Large Image'
