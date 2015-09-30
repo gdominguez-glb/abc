@@ -73,3 +73,24 @@ marketing_templates:
           </div>
         </div>
       </section>
+
+  -
+    name: '3-Column Text'
+    content: !xml |
+      <section class="row <%= background_color %>-bg">
+        <div class="col-sm-4">
+          <h6><%= title_1 %></h6>
+          <p><%= body_text_1 %></p>
+          <a class="btn btn-default btn-block-xs" href="<%= button_link_1 %>"><%= button_title_1 %></a>
+        </div>
+        <div class="col-sm-4">
+          <h6><%= title_2 %></h6>
+          <p><%= body_text_2 %></p>
+          <a class="btn btn-default btn-block-xs" href="<%= button_link_2 %>"><%= button_title_2 %></a>
+        </div>
+        <div class="col-sm-4">
+          <h6><%= title_3 %></h6>
+          <p><%= body_text_3 %></p>
+          <a class="btn btn-default btn-block-xs" href="<%= button_link_3 %>"><%= button_title_3 %></a>
+        </div>
+      </section>

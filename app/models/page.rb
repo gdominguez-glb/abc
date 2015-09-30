@@ -92,6 +92,24 @@ class Page < ActiveRecord::Base
         { name: 'image_url', label: 'Image Url', input_type: 'text' },
       ]
     },
+    {
+      name: '3-Column Text',
+      fields: [
+        { name: 'background_color', label: 'Background Color', input_type: 'text' },
+        { name: 'title_1', label: 'Title 1', input_type: 'text' },
+        { name: 'body_text_1', label: 'Body Text 1', input_type: 'text_area' },
+        { name: 'button_title_1', label: 'Button Title 1', input_type: 'text' },
+        { name: 'button_link_1', label: 'Button Link 1', input_type: 'text' },
+        { name: 'title_2', label: 'Title 2', input_type: 'text' },
+        { name: 'body_text_2', label: 'Body Text 2', input_type: 'text_area' },
+        { name: 'button_title_2', label: 'Button Title 2', input_type: 'text' },
+        { name: 'button_link_2', label: 'Button Link 2', input_type: 'text' },
+        { name: 'title_3', label: 'Title 3', input_type: 'text' },
+        { name: 'body_text_3', label: 'Body Text 3', input_type: 'text_area' },
+        { name: 'button_title_3', label: 'Button Title 3', input_type: 'text' },
+        { name: 'button_link_3', label: 'Button Link 3', input_type: 'text' }
+      ]
+    }
   ]
 
   def sub_pages
