@@ -60,17 +60,16 @@ class Page < ActiveRecord::Base
         { name: 'image_url', label: 'Image Url', input_type: 'text' }
       ] },
     {
-      name: 'Three Columns',
+      name: '50/50 Full-Bleed Image Left',
       fields: [
-        { name: 'title_1', label: 'Title 1', input_type: 'text' },
-        { name: 'description_1', label: 'Description 1', input_type: 'text_area' },
-        { name: 'learn_more_url_1', label: 'Learn More Url 1', input_type: 'text' },
-        { name: 'title_2', label: 'Title 2', input_type: 'text' },
-        { name: 'description_2', label: 'Description 2', input_type: 'text_area' },
-        { name: 'learn_more_url_2', label: 'Learn More Url 2', input_type: 'text' },
-        { name: 'title_3', label: 'Title 3', input_type: 'text' },
-        { name: 'description_3', label: 'Description 3', input_type: 'text_area' },
-        { name: 'learn_more_url_3', label: 'Learn More Url 3', input_type: 'text' }
+        { name: 'title', label: 'Title', input_type: 'text' },
+        { name: 'body_text', label: 'Body Text', input_type: 'text_area' },
+        { name: 'background_color', label: 'Background Color', input_type: 'text' },
+        { name: 'button_1_title', label: 'Button 1 Title', input_type: 'text' },
+        { name: 'button_1_link', label: 'Button 1 Link', input_type: 'text' },
+        { name: 'button_2_title', label: 'Button 2 Title', input_type: 'text' },
+        { name: 'button_1_link', label: 'Button 2 Link', input_type: 'text' },
+        { name: 'image_url', label: 'Image Url', input_type: 'text' }
       ]
     },
     {

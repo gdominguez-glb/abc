@@ -33,14 +33,20 @@ marketing_templates:
       </section>
 
   -
-    name: '50/50 Small Image'
+    name: '50/50 Full-Bleed Image Left'
     content: !xml |
-      <div>
-        <h1><%= title %></h1>
-        <div><%= description %></div>
-        <div><%= image %></div>
-        <div><%= learn_more_url %></div>
-      </div>
+      <section class="row <%= background_color %>-bg">
+        <div class="col-sm-6 col-img-full" style="background-image: url('<%= image_url %>')">
+        </div>
+        <div class="col-sm-6 col-centered-content">
+          <div class="vertical-center">
+            <h6><%= title %></h6>
+            <p><%= body %></p>
+            <a class="btn btn-default btn-block-xs margin-bottom-m" href="<%= button_1_link %>"><%= button_1_title %></a>
+            <a class="btn btn-default btn-block-xs margin-bottom-m" href="<%= button_2_link %>"><%= button_2_title %></a>
+          </div>
+        </div>
+      </section>
 
   -
     name: 'Three Columns'
