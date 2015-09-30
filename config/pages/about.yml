@@ -17,4 +17,72 @@ pages:
     sub_group_name: "staff"
     position: 1
     body: !xml |
-      <h1>Staff</h1>
+      <div class="row no-gutter">
+        <div class="col-sm-10 col-sm-offset-1">
+          <img src="http://gm-s3-qa.intridea.com/documents/attachments/000/000/005/original/staff-hero.png?1443624976" class="img-responsive">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-10 col-sm-offset-1">
+          <ul class="nav nav-tabs" id="staff-tabs">
+            <li role="presentation" class="active"><a href="/about/staff">Staff</a></li>
+            <li role="presentation" class=""><a href="/about/trustees">Trustees</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-10 col-sm-offset-1">
+          <h5 class="margin-top margin-bottom-xl">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-10 col-sm-offset-1">
+          <div class="row">
+            <div class="col-sm-6 col-md-3">
+              <div class="thumbnail">
+                <img src="http://greatminds.net/maps/images/staff/munson.jpg" alt="" class="img-circle">
+                <div class="caption">
+                  <h3>Lynne Munson</h3>
+                  <p><em>President and Executive Director</em></p>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+              <div class="thumbnail">
+                <img src="http://greatminds.net/maps/images/staff/kevin_shane.jpg" alt="" class="img-circle">
+                <div class="caption">
+                  <h3>Kevin Shane</h3>
+                  <p><em>Director of Human Capital</em></p>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+              <div class="thumbnail">
+                <img src="http://greatminds.net/maps/images/staff/jill.jpg" alt="" class="img-circle">
+                <div class="caption">
+                  <h3>Jill Diniz</h3>
+                  <p><em>Director of Eureka Math</em></p>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+              <div class="thumbnail">
+                <img src="http://greatminds.net/maps/images/staff/natanya-staff.jpg" alt="" class="img-circle">
+                <div class="caption">
+                  <h3>Natanya Levioff</h3>
+                  <p><em>Director of Program Operations and Support</em></p>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+              <div class="thumbnail">
+                <img src="http://greatminds.net/maps/images/staff/sarah-1.jpg" alt="" class="img-circle">
+                <div class="caption">
+                  <h3>Sarah Woodard</h3>
+                  <p><em>Associate Director, English &amp; History<em></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
