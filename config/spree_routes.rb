@@ -26,7 +26,7 @@ spree_routes_overrides = Proc.new do
 
     resources :users do
       member do
-        get :products
+        get :licenses
       end
     end
 
