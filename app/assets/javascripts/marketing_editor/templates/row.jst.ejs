@@ -4,6 +4,10 @@
     <a class="btn btn-default pull-right remove-row-btn">X</a>
   </div>
   <div class="form">
+    <div class="form-group">
+      <label>Position</label>
+      <input type="text" class="form-control input-small" data-name="position" value="<%= data['position'] || 0 %>"/>
+    </div>
     <% for(var i=0; i<fields.length; i++) {%>
       <div class="form-group">
         <label><%= fields[i].label %></label>
