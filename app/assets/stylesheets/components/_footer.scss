@@ -27,6 +27,7 @@
 
 .footer-section {
   margin: 0 0 30px;
+  font-size: .90em;
 
   &:last-child {
     @media screen and (min-width: $screen-sm-min) {
@@ -43,14 +44,20 @@
 
 
   a {
+    margin: 0 10px;
     text-transform: uppercase;
     @extend .sans-serif;
   }
 }
 
 .copyright {
+  margin: 0 10px;
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 2px;
   @extend .sans-serif;
+}
+
+.social-icon {
+  min-width: 15px;
 }
