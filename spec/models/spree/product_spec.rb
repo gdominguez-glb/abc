@@ -93,27 +93,4 @@ RSpec.describe Spree::Product, type: :model do
       expect(product.expired?).to eq(true)
     end
   end
-
-  describe "#should_index?" do
-    before(:each) do
-      product.fulfillment_date = nil
-      product.expiration_date = nil
-    end
-
-    it "return true if product is available" do
-      expect(product.should_index?).to eq(true)
-    end
-
-    it "return false if product is not fulfillment" do
-      product.fulfillment_date = 2.days.since
-
-      expect(product.should_index?).to eq(false)
-    end
-
-    it "return false if product is expired" do
-      product.expiration_date = 1.days.ago
-
-      expect(product.should_index?).to eq(false)
-    end
-  end
 end
