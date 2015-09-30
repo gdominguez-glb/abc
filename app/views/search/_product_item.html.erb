@@ -1,21 +1,12 @@
 <div class="search-result-item">
-  <div class="row">
-    <div class="col-md-2">
-      <div class="result-itme-icon">
-        <span class="glyphicon glyphicon-download-alt"></span>
-      </div>
-    </div>
-    <div class="col-md-8">
-      <div class="result-item-center">
-        <span class="title"><%= item.name %></span>
-        <%# <span class="sub-title">Favorite</span> %>
-        <p><%= truncate item.description, length: 300 %></p>
-      </div>
-    </div>
-    <div class="col-md-2">
-      <div class="result-item-links">
-        <%= link_to 'View Item', search_product_path(item.id), class: 'btn btn-primary' %>
-      </div>
-    </div>
+  <div class="result-item-icon">
+    <span class="glyphicon glyphicon-download-alt"></span>
+  </div>
+  <div class="result-item-center">
+    <span class="title"><%= item.name %></span>
+    <p><%= truncate item.description, length: 300 %></p>
+  </div>
+  <div class="result-item-links">
+    <%= link_to 'View Item', search_product_path(item.id), class: 'btn btn-primary btn-block' %>
   </div>
 </div>

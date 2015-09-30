@@ -1,19 +1,25 @@
-<div class="container">
-  <div id="search-result">
-    <div class="search-result-head clearfix">
-      <span class="title pull-left">Search results for <strong><%= params[:query] %></strong></span>
-      <div class="dropdown pull-right">
-        Sort by:
-        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-          All
-          <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
-        </ul>
+<div class="row padding-top-xl padding-bottom-xl">
+  <div class="col-sm-10 col-sm-offset-1">
+    <div class="search-result-head">
+      <div class="row">
+        <div class="col-sm-6">
+          <span class="title">Search results for <strong><%= params[:query] %></strong></span>
+        </div>
+        <div class="col-sm-6">
+          <div class="dropdown pull-right-sm">
+            Sort by:
+            <button class="btn btn-default dropdown-toggle margin-right-reset" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+              All
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
     <div class="search-result-list">
