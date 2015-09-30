@@ -11,28 +11,31 @@
     margin: 15px 0;
     border: 1px solid #ddd;
 
-    .result-itme-icon {
+    .result-item-icon {
       font-size: 90px;
       background-color: #bbb;
       text-align: center;
       padding-top: 10px;
     }
+
     .result-item-center {
       padding: 10px 30px;
+
       .title {
         font-weight: bold;
         font-size: 30px;
         display: block;
       }
+
       .sub-title {
         display: block;
       }
-      p {
-      }
     }
+
     .result-item-links {
       background-color: #fff;
       padding: 10px;
+
       a, span {
         display: block;
       }
