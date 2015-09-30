@@ -1,0 +1,20 @@
+pages:
+  -
+    title: "About"
+    seo_content: "About, Update this area"
+    slug: "about"
+    group_name: "about"
+    sub_group_name: "overview"
+    position: 2
+    group_root: true
+    body: !xml |
+      <h1>About</h1>
+  -
+    title: "Staff"
+    seo_content: "Staff, Update this area"
+    slug: "about/staff"
+    group_name: "about"
+    sub_group_name: "staff"
+    position: 1
+    body: !xml |
+      <h1>Staff</h1>
