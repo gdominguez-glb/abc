@@ -60,13 +60,16 @@ marketing_templates:
       </section>
 
   -
-    name: '50/50 Large Image'
+    name: 'Image Background, Text Left'
     content: !xml |
-      <div>
-        <h1><%= title %></h1>
-        <div><%= description %></div>
-        <div><%= image %></div>
-        <div><%= learn_more_url %></div>
-        <div><%= download_url %></div>
-      </div>
-
+      <section class="row row-img-full image-bg" style="background-image: url('<%= image_url %>')">
+        <div class="row-img-full-content">
+          <div class="col-sm-6 col-centered-content">
+            <div class="vertical-center">
+              <h6><%= title %></h6>
+              <p><%= body_text %></p>
+              <a class="btn btn-default btn-block-xs margin-bottom-s" href="<%= button_link %>"><%= button_title %></a>
+            </div>
+          </div>
+        </div>
+      </section>

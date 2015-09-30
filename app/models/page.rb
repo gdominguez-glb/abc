@@ -81,7 +81,17 @@ class Page < ActiveRecord::Base
         { name: 'button_title', label: 'Button Title', input_type: 'text' },
         { name: 'button_link', label: 'Button Link', input_type: 'text' },
       ]
-    }
+    },
+    {
+      name: 'Image Background, Text Left',
+      fields: [
+        { name: 'title', label: 'Title', input_type: 'text' },
+        { name: 'body_text', label: 'Body Text', input_type: 'text_area' },
+        { name: 'button_title', label: 'Button Title', input_type: 'text' },
+        { name: 'button_link', label: 'Button Link', input_type: 'text' },
+        { name: 'image_url', label: 'Image Url', input_type: 'text' },
+      ]
+    },
   ]
 
   def sub_pages
