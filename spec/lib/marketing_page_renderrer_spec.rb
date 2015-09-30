@@ -8,10 +8,13 @@ RSpec.describe MarketingPageRenderrer do
         rows: 
         [
           {
-            'rowType' => 'Masthead',
+            'rowType' => '50/50 Content Image Left',
             'title' => 'Hello',
-            'background_image' => 'http://img.com/123'
-
+            'body_text' => 'hello body',
+            'background_color' => 'green',
+            'button_title' => 'hello btn',
+            'button_link' => 'http://aa.com',
+            'image_url' => 'http://img.com/123'
           }
         ]
       }
@@ -20,6 +23,6 @@ RSpec.describe MarketingPageRenderrer do
   end
 
   it "render generate html from rows" do
-    expect(@result).to eq("<div class=\"masthead\">\n  <h1>Hello</h1>\n  <div>http://img.com/123</div>\n</div>\n")
+    expect(@result).to eq("<section class=\"row background-color-bg\">\n  <div class=\"col-sm-6 col-centered-content\">\n    <div class=\"vertical-center\">\n      <img src=\"image-url\" class=\"img-responsive img-book margin-sm-bottom-xl\">\n    </div>\n  </div>\n  <div class=\"col-sm-6 col-centered-content\">\n    <div class=\"vertical-center\">\n      <h6>title</h6>\n      <p>body-text</p>\n      <a class=\"btn btn-default btn-block-xs\" href=\"button-link\">button-title</a>\n    </div>\n  </div>\n</section>\n")
   end
 end

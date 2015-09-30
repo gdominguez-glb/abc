@@ -1,45 +1,96 @@
 marketing_templates:
   -
-    name: 'Masthead'
+    name: '50/50 Full-Bleed Image Right'
     content: !xml |
-      <div class="masthead">
-        <h1><%= title %></h1>
-        <div><%= background_image %></div>
-      </div>
+      <section class="row <%= background_color %>-bg">
+        <div class="col-sm-6 col-centered-content">
+          <div class="vertical-center">
+            <h6><%= title %></h6>
+            <p><%= body_text %></p>
+            <a class="btn btn-default btn-block-xs" href="<%= button_link %>"><%= button_title %></a>
+          </div>
+        </div>
+        <div class="col-sm-6 col-img-full" style="background-image: url('<%= image_url %>')">
+        </div>
+      </section>
 
   -
-    name: '50/50 Small Image'
+    name: '50/50 Content Image Left'
     content: !xml |
-      <div>
-        <h1><%= title %></h1>
-        <div><%= description %></div>
-        <div><%= image %></div>
-        <div><%= learn_more_url %></div>
-      </div>
+      <section class="row background-color-bg">
+        <div class="col-sm-6 col-centered-content">
+          <div class="vertical-center">
+            <img src="image-url" class="img-responsive img-book margin-sm-bottom-xl">
+          </div>
+        </div>
+        <div class="col-sm-6 col-centered-content">
+          <div class="vertical-center">
+            <h6>title</h6>
+            <p>body-text</p>
+            <a class="btn btn-default btn-block-xs" href="button-link">button-title</a>
+          </div>
+        </div>
+      </section>
 
   -
-    name: 'Three Columns'
+    name: '50/50 Full-Bleed Image Left'
     content: !xml |
-      <div>
-        <h1><%= title_1 %></h1>
-        <div><%= description_1 %></div>
-        <div><%= learn_more_url_1 %></div>
-        <h1><%= title_2 %></h1>
-        <div><%= description_2 %></div>
-        <div><%= learn_more_url_2 %></div>
-        <h1><%= title_3 %></h1>
-        <div><%= description_3 %></div>
-        <div><%= learn_more_url_3 %></div>
-      </div>
+      <section class="row <%= background_color %>-bg">
+        <div class="col-sm-6 col-img-full" style="background-image: url('<%= image_url %>')">
+        </div>
+        <div class="col-sm-6 col-centered-content">
+          <div class="vertical-center">
+            <h6><%= title %></h6>
+            <p><%= body %></p>
+            <a class="btn btn-default btn-block-xs margin-bottom-m" href="<%= button_1_link %>"><%= button_1_title %></a>
+            <a class="btn btn-default btn-block-xs margin-bottom-m" href="<%= button_2_link %>"><%= button_2_title %></a>
+          </div>
+        </div>
+      </section>
 
   -
-    name: '50/50 Large Image'
+    name: 'Full Width Text'
     content: !xml |
-      <div>
-        <h1><%= title %></h1>
-        <div><%= description %></div>
-        <div><%= image %></div>
-        <div><%= learn_more_url %></div>
-        <div><%= download_url %></div>
-      </div>
+      <section class="row <%= background_color %>-bg">
+        <div class="col-sm-12 col-lg-6 col-lg-offset-3">
+          <h6><%= title %></h6>
+          <p><%= body_text %></p>
+          <a class="btn btn-default btn-block-xs" href="<%= button_link %>"><%= button_title %></a>
+        </div>
+      </section>
 
+  -
+    name: 'Image Background, Text Left'
+    content: !xml |
+      <section class="row row-img-full image-bg" style="background-image: url('<%= image_url %>')">
+        <div class="row-img-full-content">
+          <div class="col-sm-6 col-centered-content">
+            <div class="vertical-center">
+              <h6><%= title %></h6>
+              <p><%= body_text %></p>
+              <a class="btn btn-default btn-block-xs margin-bottom-s" href="<%= button_link %>"><%= button_title %></a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+  -
+    name: '3-Column Text'
+    content: !xml |
+      <section class="row <%= background_color %>-bg">
+        <div class="col-sm-4">
+          <h6><%= title_1 %></h6>
+          <p><%= body_text_1 %></p>
+          <a class="btn btn-default btn-block-xs" href="<%= button_link_1 %>"><%= button_title_1 %></a>
+        </div>
+        <div class="col-sm-4">
+          <h6><%= title_2 %></h6>
+          <p><%= body_text_2 %></p>
+          <a class="btn btn-default btn-block-xs" href="<%= button_link_2 %>"><%= button_title_2 %></a>
+        </div>
+        <div class="col-sm-4">
+          <h6><%= title_3 %></h6>
+          <p><%= body_text_3 %></p>
+          <a class="btn btn-default btn-block-xs" href="<%= button_link_3 %>"><%= button_title_3 %></a>
+        </div>
+      </section>
