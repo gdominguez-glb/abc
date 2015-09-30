@@ -39,10 +39,14 @@ class Page < ActiveRecord::Base
 
   TILES = [
     {
-      name: 'Masthead',
+      name: '50/50 Full-Bleed Image Right',
       fields: [
         { name: 'title', label: 'Title', input_type: 'text' },
-        { name: 'background_image', label: 'Background Image', input_type: 'text' }
+        { name: 'body_text', label: 'Body Text', input_type: 'text_area' },
+        { name: 'background_color', label: 'Background Color', input_type: 'text' },
+        { name: 'button_title', label: 'Button Title', input_type: 'text' },
+        { name: 'button_link', label: 'Button Link', input_type: 'text' },
+        { name: 'image_url', label: 'Image Url', input_type: 'text' }
       ]
     },
     {

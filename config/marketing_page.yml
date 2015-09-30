@@ -1,5 +1,20 @@
 marketing_templates:
   -
+    name: '50/50 Full-Bleed Image Right'
+    content: !xml |
+      <section class="row <%= background_color %>-bg">
+        <div class="col-sm-6 col-centered-content">
+          <div class="vertical-center">
+            <h6><%= title %></h6>
+            <p><%= body_text %></p>
+            <a class="btn btn-default btn-block-xs" href="<%= button_link %>"><%= button_title %></a>
+          </div>
+        </div>
+        <div class="col-sm-6 col-img-full" style="background-image: url('<%= image_url %>')">
+        </div>
+      </section>
+
+  -
     name: 'Masthead'
     content: !xml |
       <div class="masthead">
