@@ -1,12 +1,16 @@
 <div class="search-result-item">
   <div class="result-item-icon">
-    <span class="glyphicon glyphicon-download-alt"></span>
+    <div class="flex-center">
+      <span class="glyphicon glyphicon-download-alt"></span>
+    </div>
   </div>
   <div class="result-item-center">
     <span class="title"><%= item.title %></span>
     <p><%= truncate strip_tags(item.body), length: 300 %></p>
   </div>
   <div class="result-item-links">
-    <%= link_to 'View Item', item.slug , class: 'btn btn-primary' %>
+    <div class="flex-center">
+      <%= link_to 'View Item', item.slug , class: 'btn btn-primary' %>
+    </div>
   </div>
 </div>
