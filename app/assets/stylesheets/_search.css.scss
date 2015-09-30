@@ -11,15 +11,27 @@
     margin: 15px 0;
     border: 1px solid #ddd;
 
+    @media screen and (min-width: $screen-sm-min) {
+      display: flex;
+    }
+
     .result-item-icon {
       font-size: 90px;
       background-color: #bbb;
       text-align: center;
       padding-top: 10px;
+
+      @media screen and (min-width: $screen-sm-min) {
+        flex: 0.4;
+      }
     }
 
     .result-item-center {
       padding: 10px 30px;
+
+      @media screen and (min-width: $screen-sm-min) {
+        flex: 1;
+      }
 
       .title {
         font-weight: bold;
@@ -33,8 +45,13 @@
     }
 
     .result-item-links {
+
       background-color: #fff;
       padding: 10px;
+
+      @media screen and (min-width: $screen-sm-min) {
+        flex: 0.4;
+      }
 
       a, span {
         display: block;
