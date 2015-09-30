@@ -1,0 +1,38 @@
+<% content_for :page_title do %>
+  <%= link_to "#{@user.email}", edit_admin_user_url(@user) %> / Current Product Licenses
+<% end %>
+
+<%= render :partial => 'spree/admin/users/sidebar', :locals => { :current => :licenses } %>
+<% content_for :page_actions do %>
+  <%= button_link_to Spree.t(:back_to_users_list), spree.admin_users_path, class: 'btn-primary', icon: 'chevron-left' %>
+<% end %>
+
+<fieldset data-hook="admin_user_items_purchased">
+  <%= paginate @licensed_products %>
+
+  <% if @licensed_products.any? %>
+    <table class="table table-condensed table-bordered">
+      <thead>
+        <th>Name</th>
+        <th>License Length</th>
+        <th>Fulfillment Date</th>
+        <th>Expiration Date</th>
+      </thead>
+      <tbody>
+        <% @licensed_products.each do |license| %>
+          <tr>
+            <td><%= license.product.try(:name) %></td>
+            <td><%= license.quantity %></td>
+            <td><%= license.fulfillment_at %></td>
+            <td><%= license.expire_at %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <div class="alert alert-info no-objects-found">
+      <%= Spree.t(:no_resource_found, resource: 'Licenses') %>
+    </div>
+  <% end %>
+  <%= paginate @licensed_products %>
+</fieldset>

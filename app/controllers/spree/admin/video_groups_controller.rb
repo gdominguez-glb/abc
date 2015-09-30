@@ -1,21 +1,10 @@
 module Spree
   module Admin
     class VideoGroupsController < Spree::Admin::BaseController
+      include AutocompleteByName
+
       def index
-        @video_groups = Spree::VideoGroup.page(params[:page])
-
-        if params[:q]
-          @video_groups = @video_groups.where("name like ?", "%#{params[:q]}%")
-        end
-
-        render json: {
-          count: @video_groups.count,
-          total_count: @video_groups.total_count,
-          current_page: (params[:page] ? params[:page].to_i : 1),
-          per_page: (params[:per_page] || Kaminari.config.default_per_page),
-          pages: @video_groups.num_pages,
-          video_groups: @video_groups.map{|vg| { id: vg.name, name: vg.name }}
-        }
+        autocomplate_by_name(Spree::VideoGroup, :name)
       end
 
       def create

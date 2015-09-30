@@ -24,14 +24,8 @@ Deface::Override.new(
             <%= error_message_on :user, :address %>
           <% end %>
 
-          <%= f.field_container :school_name, class: ['form-group'] do %>
-            <%= f.label :school_name, Spree.t(:school_name) %>
-            <%= f.text_field :school_name, :class => 'form-control' %>
-            <%= error_message_on :user, :school_name %>
-          <% end %>
-
           <%= f.field_container :school_district_id, class: ['form-group'] do %>
-            <%= f.label :school_district, Spree.t(:school_district) %>
+            <%= f.label :school_district, 'School/District' %>
             <%= f.collection_select :school_district_id, SchoolDistrict.all, :id, :name, { prompt: true }, { class: 'form-control' } %>
             <%= error_message_on :user, :school_name %>
           <% end %>
@@ -41,7 +35,7 @@ Deface::Override.new(
         <div data-hook="admin_user_additional_fields_part2" class="col-md-6">
           <%= f.field_container :interested_subjects, class: ['form-group'] do %>
             <%= f.label :interested_subjects, Spree.t(:interested_subjects) %>
-            <%= f.select :interested_subjects, options_for_select(Spree::User::SUBJECTS, f.object.interested_subjects), { include_hidden: false }, :class => 'form-control' %>
+            <%= f.select :interested_subjects, options_for_select(Spree::User::SUBJECTS, f.object.interested_subjects), { include_hidden: false }, :class => 'form-control', multiple: true %>
             <%= f.error_message_on :interested_subjects %>
           <% end %>
 
@@ -51,15 +45,9 @@ Deface::Override.new(
             <%= f.error_message_on :interested_grade_level %>
           <% end %>
 
-          <%= f.field_container :heard_from, class: ['form-group'] do %>
-            <%= f.label :heard_from, Spree.t(:heard_from) %>
-            <%= f.text_field :heard_from, :class => 'form-control' %>
-            <%= f.error_message_on :heard_from %>
-          <% end %>
-
-          <%= f.field_container :receive_newsletter, class: ['form-group'] do %>
-            <%= f.label :receive_newsletter, Spree.t(:receive_newsletter) %>
-            <%= f.check_box :receive_newsletter, :class => 'form-control' %>
+          <%= f.field_container :allow_communication, class: ['form-group'] do %>
+            <%= f.label :allow_communication, Spree.t(:allow_communication) %>
+            <%= f.check_box :allow_communication, :class => 'form-control' %>
           <% end %>
         </div>
       </div>
