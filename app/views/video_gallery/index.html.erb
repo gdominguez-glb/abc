@@ -17,7 +17,7 @@
           <% end %>
           <%= text_field_tag :query, params[:query], class: 'form-control header-form-control', placeholder: 'Search' %>
         <% end %>
-        <div class="taxonomies-filters">
+        <div class="panel-group" id="categories" role="tablist" aria-multiselectable="true">
           <%= render 'taxonomies' %>
         </div>
       </div>
