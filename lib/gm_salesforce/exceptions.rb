@@ -93,6 +93,22 @@ module GmSalesforce
     end
   end
 
+  # FailedActivation
+  class FailedActivation < Error
+    register_exception(self)
+
+    def self.matches_exception?(e)
+      e.is_a?(Faraday::Error::ClientError) && find_response_code(e) == 400 &&
+        find_error_code(e) == 'FAILED_ACTIVATION'
+    end
+
+    def initialize(e = nil, message = nil)
+      super(e, message)
+      return if !e || !e.is_a?(Faraday::Error::ClientError)
+      @message = self.class.find_message(e) unless message
+    end
+  end
+
   # RateLimit
   class RateLimit < Error
     register_exception(self)
