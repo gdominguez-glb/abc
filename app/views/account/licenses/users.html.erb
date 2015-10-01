@@ -11,10 +11,11 @@
         <h2 class="margin-bottom-m">Need to transfer a license, or just checking in...</h2>
         <h6 class="margin-bottom-m">Here is where you can remind, reassign, and revoke user licenses</h6>
       </div>
-      <div class="row">
-        <%= link_to 'Export Users List', export_users_account_licenses_path(format: 'xlsx'), class: 'btn btn-primary' %>
-      </div>
-      <table class="table">
+
+      <%= link_to 'Export Users List', export_users_account_licenses_path(format: 'xlsx'), class: 'btn btn-primary btn-block-xs margin-bottom' %>
+
+      <div class="table-responsive">
+        <table class="table table-striped">
         <thead>
           <tr>
             <th><input type="checkbox" /></th>
@@ -57,6 +58,7 @@
           <% end %>
         </tbody>
       </table>
+      </div>
       <%= paginate @product_distributions %>
 
       <%= link_to new_account_reminder_path, remote: true, class: 'btn btn-primary red-btn reminder-btn' do %>

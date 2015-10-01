@@ -31,3 +31,11 @@ _license-mgmt.scss
     font-size: 20px;
   }
 }
+
+.user-stats-wrapper {
+  text-align: right;
+
+  @media screen and (min-width: $screen-sm-min) {
+    text-align: left;
+  }
+}
