@@ -8,22 +8,24 @@
       <div class="modal-body">
         <p class='text-center'>Add or remove licenses for <%= @user.full_name %></p>
         <%= form_tag update_user_licenses_account_licenses_path(user_id: @user.id), remote: true do %>
-          <div class="row">
-            <div class="col-sm-6">
-              <p><strong>Product Licensed</strong></p>
-            </div>
-            <div class="col-sm-6">
-              <p><strong>Number of Licenses</strong></p>
-            </div>
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Product Licensed</th>
+                <th>Number of Licenses</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @product_distributions.each do |distribution| %>
+                <tr class="distribution-row">
+                  <td><%= distribution.product.name %></td>
+                  <td><%= text_field_tag "product_distributions[#{distribution.id}][quantity]", distribution.quantity, class: 'distribution-quantity form-control' %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
           </div>
-
-          <% @product_distributions.each do |distribution| %>
-            <div class="row margin-bottom-l">
-              <div class="col-sm-6"><%= distribution.product.name %></div>
-              <div class="col-sm-6"><%= text_field_tag "product_distributions[#{distribution.id}][quantity]", distribution.quantity, class: 'distribution-quantity form-control' %></div>
-            </div>
-          <% end %>
-
           <div class="row">
             <div class="col-md-3 col-md-offset-3">
               <button class="btn btn-success btn-block margin-bottom-s">
