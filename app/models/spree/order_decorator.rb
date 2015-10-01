@@ -85,10 +85,6 @@ Spree::Order.class_eval do
     super
   end
 
-  def create_order_in_salesforce
-    create_in_salesforce
-  end
-
   # Performs additional tasks after creating a record in Salesforce.  This will
   # be called from within ActiveJob
   # Params:
@@ -145,7 +141,7 @@ Spree::Order.class_eval do
   end
 
   def finalize_order
-    create_order_in_salesforce
+    create_in_salesforce
     create_licensed_products!
     log_purchase_activity!
   end
