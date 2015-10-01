@@ -35,7 +35,7 @@
 
 .pull-right-sm {
   @media screen and (min-width: $screen-sm-min) {
-    float: right;
+    float: right !important;
   }
 }
 
@@ -218,7 +218,7 @@
 }
 
 .margin-bottom {
-  margin-bottom: $b-space;
+  margin-bottom: $b-space !important;
 }
 
 .margin-left {

@@ -3,12 +3,13 @@
     <div class="modal-content">
       <div class="modal-header">
         <%= render partial: 'stats' %>
+        <h2 class='text-center'>Edit <b><%= @user.full_name %></b> licenses...</h2>
       </div>
       <div class="modal-body">
-        <h2 class='text-center'>Edit <b><%= @user.full_name %></b> licenses...</h2>
         <p class='text-center'>Add or remove licenses for <%= @user.full_name %></p>
         <%= form_tag update_user_licenses_account_licenses_path(user_id: @user.id), remote: true do %>
-          <table class="table">
+        <div class="table-responsive">
+          <table class="table table-striped">
             <thead>
               <tr>
                 <th>Product Licensed</th>
@@ -24,9 +25,18 @@
               <% end %>
             </tbody>
           </table>
-          <div class="modal-actions text-center">
-            <%= submit_tag 'Save Updates', class: 'btn btn-primary' %>
-            <a href="" data-dismiss="modal">Cancel</a>
+          </div>
+          <div class="row">
+            <div class="col-md-3 col-md-offset-3">
+              <button class="btn btn-success btn-block margin-bottom-s">
+                Save Updates
+              </button>
+            </div>
+            <div class="col-md-3">
+              <button class="btn btn-danger btn-block margin-bottom">
+                Cancel
+              </button>
+            </div>
           </div>
         <% end %>
       </div>
