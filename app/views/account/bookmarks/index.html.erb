@@ -14,7 +14,7 @@
         <% @bookmarks.each do |bookmark| %>
           <div class="col-md-4">
             <%= link_to account_bookmark_path(bookmark), data: { method: :delete } do %>
-              <span class="glyphicon glyphicon-star-empty"></span>
+              <span class="fa fa-bookmark-o"></span>
             <% end %>
             <% if bookmark.bookmarkable.is_a?(Spree::Video) %>
               <%= render partial: 'video', locals: { video: bookmark.bookmarkable } %>

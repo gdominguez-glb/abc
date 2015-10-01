@@ -9,7 +9,9 @@ class MarketingPageRenderrer
   end
 
   def render
-    @page.tiles[:rows].map do |tile_row|
+    rows = @page.tiles[:rows]
+    rows = rows.sort_by{|r| r['position'].to_i }
+    rows.map do |tile_row|
       render_tile_row(tile_row)
     end.join('')
   end

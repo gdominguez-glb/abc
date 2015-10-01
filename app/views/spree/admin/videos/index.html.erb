@@ -6,13 +6,37 @@
   <%= button_link_to Spree.t(:new_video), new_admin_video_url, :class => "btn-success", :icon => 'add', :id => 'admin_new_video_link' %>
 <% end %>
 
+<% content_for :table_filter do %>
+  <div data-hook="admin_users_index_search">
+    <%= search_form_for [:admin, @search], url: spree.admin_videos_url do |f| %>
+      <div class="form-group">
+        <%= f.label "Title" %>
+        <%= f.text_field :title_or_video_group_name_or_taxons_name_cont, class: "form-control js-quick-search-target" %>
+      </div>
+      <div data-hook="admin_users_index_search_buttons" class="form-actions">
+        <%= button Spree.t(:search), 'search' %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
 <table class="table" id="listing_videos" data-hook>
   <thead>
+    <tr data-hook="admin_videos_index_headers">
+      <th>
+        Title
+      </th>
+      <th>
+        Video Group
+      </th>
+      <th data-hook="admin_videos_index_header_actions" class="actions"></th>
+    </tr>
   </thead>
   <tbody>
     <% @videos.each do |video|%>
       <tr id="<%= spree_dom_id video %>" data-hook="admin_videos_index_rows">
         <td class='video_title'><%=link_to video.title, edit_admin_video_url(video) %></td>
+        <td><%= video.video_group.try(:name) %></td>
         <td data-hook="admin_videos_index_row_actions" class="actions actions-2 text-right">
           <%= link_to_edit video, :no_text => true %>
           <%= link_to_delete video, :no_text => true %>

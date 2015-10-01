@@ -12,7 +12,7 @@ namespace 'pages' do
 
   desc "[Don't do this if you don't know what this is!] Reset all default pages."
   task :reset => :environment do
-    pages_from_yaml = ['careers', 'math', 'english', 'history', 'tos'].map do |pages_name|
+    pages_from_yaml = ['careers', 'math', 'english', 'history', 'tos', 'about'].map do |pages_name|
       YAML.load_file(Rails.root.join("config/pages/#{pages_name}.yml"))['pages']
     end.flatten
     (pages_array + pages_from_yaml).each do |params|
@@ -21,7 +21,7 @@ namespace 'pages' do
       if params[:group_name].present? &&  curriculum = Curriculum.find_by(name: params[:group_name].titleize)
         params[:curriculum_id] = curriculum.id
       end
-      page.update_attributes(params.merge(visible: true))
+      page.update_attributes(params.merge(visible: true, tiles: nil))
 
       puts "Page: slug='#{page.slug}'' was updated."
     end

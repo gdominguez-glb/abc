@@ -5,4 +5,13 @@ class Spree::Material < ActiveRecord::Base
   has_many :material_files, class_name: 'Spree::MaterialFile'
 
   validates_presence_of :name
+
+  searchkick callbacks: :async, personalize: "user_ids"
+
+  def search_data
+    {
+      name: name,
+      user_ids: (product.orders.pluck(:user_id) rescue [])
+    }
+  end
 end

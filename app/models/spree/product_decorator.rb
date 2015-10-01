@@ -62,26 +62,6 @@ Spree::Product.class_eval do
     parts.any?
   end
 
-  def variants?
-    variants.any?
-  end
-
-  def been_purchased?
-    if parts?
-      # TODO: Make this actually work
-      # parts.each { |part| return true if part.been_purchased? }
-      false
-    else
-      orders.where.not(completed_at: nil).any?
-    end
-  end
-  ## end of spree bundles
-
-  unless Spree::Product.respond_to?(:searchkick_options)
-    searchkick
-  end
-
-  validates :license_length, numericality: { only_integer: true }, allow_blank: true
   validates :redirect_url, format: { with: URI.regexp }, allow_blank: true
 
   belongs_to :curriculum, class_name: 'Spree::Curriculum'
@@ -148,5 +128,31 @@ Spree::Product.class_eval do
       taxon = Spree::Taxon.find_by(name: self.video_group.name)
       self.taxons << taxon if taxon
     end
+  end
+
+  ### search indexes
+  unless Spree::Product.respond_to?(:searchkick_options)
+    searchkick callbacks: :async
+  end
+
+  def fulfillmentable?
+     fulfillment_date.nil? || (fulfillment_date < Time.now)
+  end
+
+  def expired?
+    !!(expiration_date && expiration_date < Time.now)
+  end
+
+  def search_data
+    user_ids = for_sale? ?  [-1] : active_license_user_ids
+    {
+      name: name,
+      description: description,
+      user_ids: user_ids
+    }
+  end
+
+  def active_license_user_ids
+    Spree::LicensedProduct.available.where(product_id: self.id).pluck(:user_id)
   end
 end

@@ -25,7 +25,9 @@
         <%= link_to "Shop", '/store', class: store_active_class %>
       </li>
       <li class="search-button">
-        <a class="fa fa-search"></a>
+        <%= form_tag '/search', class: 'nav-search form-inline', method: :get do %>
+          <%= text_field_tag :query, nil, class: 'form-control', placeholder: 'Search'  %>
+        <% end %>
       </li>
     </ul>
     <%= render 'secondary_nav' %>

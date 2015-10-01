@@ -1,6 +1,6 @@
 Spree::Admin::UsersController.class_eval do
-  def products
+  def licenses
     @user = Spree::User.find(params[:id])
-    @products = @user.products.page(params[:page]).per(Spree::Config[:admin_products_per_page])
+    @licensed_products = @user.licensed_products.includes(:product).page(params[:page])
   end
 end

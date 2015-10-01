@@ -35,7 +35,19 @@
 
 .pull-right-sm {
   @media screen and (min-width: $screen-sm-min) {
-    float: right;
+    float: right !important;
+  }
+}
+
+.text-left-sm {
+  @media screen and (min-width: $screen-sm-min) {
+    text-align: left;
+  }
+}
+
+.text-right-sm {
+  @media screen and (min-width: $screen-sm-min) {
+    text-align: right;
   }
 }
 
@@ -161,6 +173,22 @@
 //   Margins
 // -------------------------------------
 
+.margin-top-reset {
+  margin-top: 0 !important;
+}
+
+.margin-right-reset {
+  margin-right: 0 !important;
+}
+
+.margin-bottom-reset {
+  margin-bottom: 0 !important;
+}
+
+.margin-left-reset {
+  margin-left: 0 !important;
+}
+
 // ----- Small ----- //
 
 .margin-top-s {
@@ -190,7 +218,7 @@
 }
 
 .margin-bottom {
-  margin-bottom: $b-space;
+  margin-bottom: $b-space !important;
 }
 
 .margin-left {

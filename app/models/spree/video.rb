@@ -1,4 +1,15 @@
 class Spree::Video < ActiveRecord::Base
+
+  searchkick callbacks: :async
+
+  def search_data
+    {
+      title: title,
+      description: description,
+      user_ids: [-1]
+    }
+  end
+
   belongs_to :video_group, class_name: 'Spree::VideoGroup'
 
   validates_presence_of :title
@@ -23,6 +34,8 @@ class Spree::Video < ActiveRecord::Base
   after_initialize do
     self.video_group_name = self.video_group.try(:name)
   end
+
+  after_commit :run_wistia_worker, on: :create
 
   def products
     video_group.try(:products) || []
@@ -53,7 +66,7 @@ class Spree::Video < ActiveRecord::Base
     end
   end
 
-  def post_flush_writes
+  def run_wistia_worker
     WistiaWorker.perform_async(self.id) if self.wistia_id.blank?
   end
 
