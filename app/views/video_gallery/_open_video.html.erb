@@ -1,4 +1,4 @@
-<div class="video-wrapper col-md-6 col-lg-4">
+<div class="video-wrapper col-lg-4">
   <div class="image-drawer-wrapper clearfix">
     <div class="video-image-wrapper">
       <%= link_to "", video_gallery_path(video), itemprop: 'url', class: 'open-video', style: "background-image: url(#{video.wistia_thumbnail_url})" %>
@@ -15,7 +15,7 @@
         <% end %>
       </div>
       <%= link_to bookmark_video_gallery_path(video, ref_id: "#fav-button-#{video.id}"), remote: true, class: "btn favorite-button btn-default #{'disabled' if bookmarked_video?(video) }", style: 'display: block;', id: "fav-button-#{video.id}", data: { method: :post } do %>
-          Add to Bookmarks
+          <i class="fa fa-bookmark-o"></i> Bookmark
       <% end %>
     </div>
   </div>
