@@ -59,7 +59,7 @@
   - :name: button_2_title
     :label: Button 2 Title
     :input_type: text
-  - :name: button_1_link
+  - :name: button_2_link
     :label: Button 2 Link
     :input_type: text
   - :name: image_url
