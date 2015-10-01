@@ -93,6 +93,15 @@ module GmSalesforce
     end
   end
 
+  # DeletedRecord
+  class DeletedRecord < Error
+    register_exception(self)
+
+    def self.matches_exception?(e)
+      e.is_a?(Faraday::ResourceNotFound) && e.message =~ /\AENTITY_IS_DELETED/
+    end
+  end
+
   # RateLimit
   class RateLimit < Error
     register_exception(self)
