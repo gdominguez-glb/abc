@@ -23,6 +23,6 @@ RSpec.describe MarketingPageRenderrer do
   end
 
   it "render generate html from rows" do
-    expect(@result).to eq("<section class=\"row background-color-bg\">\n  <div class=\"col-sm-6 col-centered-content\">\n    <div class=\"vertical-center\">\n      <img src=\"image-url\" class=\"img-responsive img-book margin-sm-bottom-xl\">\n    </div>\n  </div>\n  <div class=\"col-sm-6 col-centered-content\">\n    <div class=\"vertical-center\">\n      <h6>title</h6>\n      <p>body-text</p>\n      <a class=\"btn btn-default btn-block-xs\" href=\"button-link\">button-title</a>\n    </div>\n  </div>\n</section>\n")
+    expect(@result).to eq("<section class=\"row green-bg\">\n  <div class=\"col-sm-6 col-centered-content\">\n    <div class=\"vertical-center\">\n      <img src=\"http://img.com/123\" class=\"img-responsive img-book margin-sm-bottom-xl\">\n    </div>\n  </div>\n  <div class=\"col-sm-6 col-centered-content\">\n    <div class=\"vertical-center\">\n      <h6>Hello</h6>\n      <p>hello body</p>\n      <a class=\"btn btn-default btn-block-xs\" href=\"http://aa.com\">hello btn</a>\n    </div>\n  </div>\n</section>\n")
   end
 end
