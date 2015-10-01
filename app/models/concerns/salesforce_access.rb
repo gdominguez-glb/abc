@@ -140,7 +140,7 @@ module SalesforceAccess
   #
   # Note: This only updates if there is a corresponding cached record from
   # Salesforce
-  def update_salesforce(fields = nil)
+  def update_salesforce(fields = nil, background = true)
     return {} unless should_update_salesforce?
     # TODO: Handle both modified case
     sfo = cached_salesforce_object
@@ -148,8 +148,12 @@ module SalesforceAccess
     attributes_to_update = changed_attributes_for_salesforce(sfo)
     attributes_to_update.slice! fields if fields.present?
     return {} if attributes_to_update.blank?
-    SalesforceJob.perform_later(salesforce_reference.id,
-                                attributes_to_update)
+    if background
+      SalesforceJob.perform_later(salesforce_reference.id,
+                                  attributes_to_update)
+    else
+      update_record_in_salesforce(attributes_to_update)
+    end
     attributes_to_update
   end
 
@@ -191,14 +195,18 @@ module SalesforceAccess
   end
 
   # Schedules the create of a new record in Salesforce into ActiveJob
-  def create_in_salesforce(fields = nil)
+  def create_in_salesforce(fields = nil, background = true)
     return {} unless should_create_salesforce?
     # TODO: Handle both modified case
     attributes_to_create = new_attributes_for_salesforce
     attributes_to_create.slice! fields if fields.present?
     return {} if attributes_to_create.blank?
     ref = salesforce_reference || create_salesforce_reference(object_properties: {})
-    SalesforceJob.perform_later(ref.id, attributes_to_create, 'create')
+    if background
+      SalesforceJob.perform_later(ref.id, attributes_to_create, 'create')
+    else
+      create_new_record_in_salesforce(attributes_to_create)
+    end
     attributes_to_create
   end
 
