@@ -8,9 +8,9 @@
       <%= render 'tabs' %>
 
       <%= form_for @assign_licenses_form, url: assign_account_licenses_path do |f| %>
-        <div class="text-center license-page-description">
-          <h2>Ready to assign some licenses ...</h2>
-          <h6>Assign one or more licenses to anyone you want</h6>
+        <div class="page-header margin-top-xl">
+          <h2 class="margin-bottom-m">Ready to assign some licenses...</h2>
+          <h6 class="margin-bottom-m">Assign one or more licenses to anyone you want</h6>
         </div>
         <% if @assign_licenses_form.errors.count > 0 %>
           <div id="error_explanation">
@@ -25,13 +25,26 @@
           </div>
         <% end %>
         <%= render 'stats' %>
-        <div class="form-group">
-          <label for="">Licenses Recipient(s)  <%= link_to 'Select From Exists Users', select_users_account_licenses_path, class: 'btn btn-primary', remote: true %></label>
-          <%= f.text_field :licenses_recipients, class: 'form-control', placeholder: 'separate emails with comma' %>
+        <div class="row">
+          <div class="col-sm-6 col-md-4">
+            <label for="">Select from Existing Users</label>
+            <%= link_to 'Choose Users', select_users_account_licenses_path, class: 'btn btn-primary btn-block margin-bottom', remote: true %>
+          </div>
+          <div class="col-sm-6 col-md-4 col-md-offset-2">
+            <label for="">Upload from File</label>
+            <%= link_to import_modal_account_licenses_path, class: 'btn btn-default btn-block upload-user-btn dashed-border margin-bottom', remote: true do %>
+              Choose File <span class="glyphicon glyphicon-plus"></span>
+            <% end %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <%= f.text_field :licenses_recipients, class: 'form-control margin-bottom-xl', placeholder: 'separate emails with comma' %>
+          </div>
         </div>
         <div class="row">
           <div class="col-md-4">
-            <div class="form-group">
+            <div class="form-group margin-bottom-s">
               <label for="">Number of Licenses</label>
               <%= f.text_field :licenses_number, class: 'form-control', placeholder: 'licenses number' %>
             </div>
@@ -42,18 +55,13 @@
               <%= f.text_field :total, class: 'form-control', readonly: true %>
             </div>
           </div>
-          <div class="col-md-4">
-            <%= link_to import_modal_account_licenses_path, class: 'btn btn-default upload-user-btn dashed-border', remote: true do %>
-              Upload Users From File <span class="glyphicon glyphicon-plus"></span>
-            <% end %>
-          </div>
         </div>
         <div class="row text-center license-actions">
-          <div>
-            <%= f.submit 'Assign License(s)', class: 'btn btn-primary' %>
+          <div class="col-sm-6 col-md-4">
+            <button type="submit" class="btn btn-success btn-block margin-bottom-s">Assign License(s)</button>
           </div>
-          <div>
-            <%= link_to 'Cancel', '', class: '' %>
+          <div class="col-sm-6 col-md-2">
+            <button class="btn btn-danger btn-block">Cancel</button>
           </div>
         </div>
       <% end %>
