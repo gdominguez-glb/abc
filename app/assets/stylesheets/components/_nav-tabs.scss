@@ -50,6 +50,30 @@
   }
 
   .form-group {
-    margin-bottom: 0;
+    margin: 10px 0;
+
+    @media screen and (min-width: $screen-sm-min) {
+      margin: 0;
+    }
+  }
+
+  .form-control {
+    @media screen and (min-width: $screen-sm-min) {
+      padding: 9px 15px;
+    }
+  }
+
+  .select-container {
+
+    @media screen and (min-width: $screen-sm-min) {
+      margin-bottom: 0;
+      padding: 10px 36px 10px 15px;
+
+      &.block {
+        &:after {
+          top: 10px;
+        }
+      }
+    }
   }
 }
