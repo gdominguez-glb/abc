@@ -78,4 +78,10 @@ $(document).ready(function() {
 
   var currentPage = $('body').data('page');
   nav.find('[data-primary-nav-item="'+ currentPage +'"]').addClass('active');
+
+  var flipBtn = $('.flip-btn');
+  flipBtn.on('click', function() {
+    $(this).closest('.flip-container').toggleClass('flip');
+  });
+
 });

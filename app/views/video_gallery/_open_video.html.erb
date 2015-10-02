@@ -6,6 +6,7 @@
         <%= link_to play_video_gallery_path(video), remote: true, class: 'play-video-button' do %>
           <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span>
         <% end %>
+        <button class="btn btn-info flip-btn"><i class="fa fa-refresh flip-icon"></i></button>
       </div>
       <div class="video-drawer blue-bg flip-back">
         <button class="btn btn-default disabled"><%= video.categories.join(' ') %></button>
@@ -18,6 +19,7 @@
         <%= link_to bookmark_video_gallery_path(video, ref_id: "#fav-button-#{video.id}"), remote: true, class: "btn favorite-button btn-default #{'disabled' if bookmarked_video?(video) }", style: 'display: block;', id: "fav-button-#{video.id}", data: { method: :post } do %>
           <i class="fa fa-bookmark-o"></i> Bookmark
         <% end %>
+        <button class="btn btn-info flip-btn"><i class="fa fa-refresh flip-icon"></i></button>
       </div>
     </div>
   </div>

@@ -3,6 +3,7 @@
     <div class="flipper">
       <div class="video-image-wrapper flip-front">
         <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+        <button class="btn btn-info flip-btn"><i class="fa fa-refresh flip-icon"></i></button>
       </div>
       <div class="video-drawer flip-back">
         <button class="btn btn-default disabled">Subscription Required</button>
@@ -11,6 +12,7 @@
           <% if video.description && video.description.length > 100 %>
             <%= link_to 'MORE INFO', show_description_video_gallery_path(video), remote: true, class: 'more-info' %>
           <% end %>
+          <button class="btn btn-info flip-btn"><i class="fa fa-refresh flip-icon"></i></button>
         </div>
         <%= link_to unlock_video_gallery_path(video), class: 'btn btn-primary unblock-button', remote: true do %>
           Unlock Content
