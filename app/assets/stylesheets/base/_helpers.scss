@@ -21,8 +21,11 @@
 
     .flip-back {
       transform: rotateY(180deg);
+      z-index: 3;
     }
   }
+
+
 }
 
 .flip-container,
@@ -64,7 +67,7 @@
 }
 
 .flip-front {
-  z-index: -2;
+  z-index: 2;
   transform: rotateY(0deg);
 }
 
