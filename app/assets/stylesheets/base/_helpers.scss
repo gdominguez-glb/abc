@@ -11,13 +11,14 @@
 
 .flip-container {
   perspective: 1000;
+  margin: 0 auto;
 
   &.flip {
     .flipper,
     .flip-front {
       transform: rotateY(180deg);
     }
-    
+
     .flip-back {
       transform: rotateY(180deg);
     }
