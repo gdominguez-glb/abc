@@ -10,7 +10,7 @@
   position: relative;
   margin-bottom: 15px;
   padding: 15px 5px;
-  box-shadow: 0 0 7px 0 #ccc;
+  border: 1px solid darken($gray-lighter, 10%);
   background-color: #fff;
   @include transition(all, $transitionTiming);
 
@@ -88,6 +88,8 @@
   p {
     margin: 0;
     font-size: .85em;
+    text-transform: uppercase;
+    @extend .sans-serif;
   }
 }
 
