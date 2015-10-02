@@ -11,9 +11,13 @@ module GmSalesforce
       @@exceptions << klass
     end
 
+    def self.client_error?(e)
+      e.is_a?(Faraday::Error::ClientError)
+    end
+
     # Returns true if class is a match for the exception
-    def self.matches_exception?(e)
-      false && e
+    def self.matches_exception?(_e)
+      false
     end
 
     # Returns an appropriate exception class for the given exception
@@ -34,8 +38,8 @@ module GmSalesforce
 
     # Gets and parses the rate info string.  E.g. "api-usage=11/72000"
     def self.rate_limit_info(e)
-      headers = e.try(:response) && e.response[:headers]
-      usage_string = headers && headers['sforce-limit-info']
+      headers = e.try(:response).try('[]', :headers)
+      usage_string = headers.try('[]', 'sforce-limit-info')
       use_values = ((usage_string || '').split('=').last || '').split('/')
       { usage: use_values.first.to_i, limit: use_values.last.to_i }
     end
@@ -49,41 +53,71 @@ module GmSalesforce
       e = original_exception
       e && self.class.rate_limit_info(e)[:limit]
     end
-
-    def self.find_response_code(e)
-      r = e.response
-      r && r[:status]
-    end
-
-    def self.find_first_error(e)
-      r = e.response
-      r && r[:body] && (json = JSON.parse(r[:body])) && json.first
-    end
-
-    def self.find_error_code(e)
-      error = find_first_error(e)
-      error && error['errorCode']
-    end
-
-    def self.find_message(e)
-      error = find_first_error(e)
-      error && error['message']
-    end
   end
 
-  # DuplicateRecord
-  class DuplicateRecord < Error
+  # ConnectionFailed
+  class ConnectionFailed < Error
     register_exception(self)
 
     def self.matches_exception?(e)
-      e.is_a?(Faraday::Error::ClientError) && find_response_code(e) == 400 &&
-        find_error_code(e) == 'DUPLICATE_VALUE'
+      e.is_a?(Faraday::ConnectionFailed)
+    end
+  end
+
+  # ClientError
+  class ClientError < Error
+    def self.error_code
+      nil
+    end
+
+    def self.error_400?(e)
+      find_response_code(e) == 400
+    end
+
+    def self.matches_exception?(e)
+      client_error?(e) && error_400?(e) && (error_code.blank? ||
+        find_error_code(e) == error_code)
     end
 
     def initialize(e = nil, message = nil)
       super(e, message)
-      return if !e || !e.is_a?(Faraday::Error::ClientError)
+      return if !e || !client_error?(e)
       @message = self.class.find_message(e) unless message
+    end
+
+    def self.find_response_section(e, section_id)
+      r = e.response
+      r && r[section_id]
+    end
+
+    def self.find_response_code(e)
+      find_response_section(e, :status)
+    end
+
+    def self.find_first_error(e)
+      body = find_response_section(e, :body)
+      body && JSON.parse(body).try(:first)
+    end
+
+    def self.find_error_property(e, property_name)
+      find_first_error(e).try('[]', property_name)
+    end
+
+    def self.find_error_code(e)
+      find_error_property(e, 'errorCode')
+    end
+
+    def self.find_message(e)
+      find_error_property(e, 'message')
+    end
+  end
+
+  # DuplicateRecord
+  class DuplicateRecord < ClientError
+    register_exception(self)
+
+    def self.error_code
+      'DUPLICATE_VALUE'
     end
 
     def duplicate_id
@@ -94,37 +128,20 @@ module GmSalesforce
   end
 
   # FailedActivation
-  class FailedActivation < Error
+  class FailedActivation < ClientError
     register_exception(self)
 
-    def self.matches_exception?(e)
-      e.is_a?(Faraday::Error::ClientError) && find_response_code(e) == 400 &&
-        find_error_code(e) == 'FAILED_ACTIVATION'
-    end
-
-    def initialize(e = nil, message = nil)
-      super(e, message)
-      return if !e || !e.is_a?(Faraday::Error::ClientError)
-      @message = self.class.find_message(e) unless message
+    def self.error_code
+      'FAILED_ACTIVATION'
     end
   end
 
   # RateLimit
-  class RateLimit < Error
+  class RateLimit < ClientError
     register_exception(self)
 
     def self.matches_exception?(e)
-      e.is_a?(Faraday::Error::ClientError) && find_response_code(e) == 400 &&
-        find_message(e) =~ /exceeded/
-    end
-  end
-
-  # ConnectionFailed
-  class ConnectionFailed < Error
-    register_exception(self)
-
-    def self.matches_exception?(e)
-      e.is_a?(Faraday::ConnectionFailed)
+      client_error?(e) && error_400?(e) && find_message(e) =~ /exceeded/
     end
   end
 end
