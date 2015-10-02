@@ -93,13 +93,11 @@
   @include perspective(1000);
 
   &.flip {
-    .flipper,
-    .flip-front {
+    .flipper {
       @include rotateY(180deg);
     }
 
     .flip-back {
-      @include rotateY(180deg);
       z-index: 3;
     }
   }
@@ -169,6 +167,5 @@
 
   .flip-icon {
     font-size: 29px;
-
   }
 }
