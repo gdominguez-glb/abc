@@ -14,11 +14,10 @@ pages:
         <div class="col-xs-12 col-lg-10 col-lg-offset-1">
           <div>
             <h3 class="video-title">Lorem ipsum dolor sit amet</h3>
-          <!--div class="embed-responsive embed-responsive-16by9"-->
-            <img src="http://gm-s3-qa.intridea.com/documents/attachments/000/000/019/original/mathpage-videostatic.jpg?1443030513" class="img-responsive">
-            <!--video src="http://gm-s3-qa.intridea.com/documents/attachments/000/000/011/original/eureka-math-hd.mp4?1442330466" controls poster="http://gm-s3-qa.intridea.com/documents/attachments/000/000/012/original/mathpage-placeholder.jpg?1442330622">
+            <div class="embed-responsive embed-responsive-16by9">
+            <video src="http://gm-s3-qa.intridea.com/documents/attachments/000/000/011/original/eureka-math-hd.mp4?1442330466" controls poster="http://gm-s3-qa.intridea.com/documents/attachments/000/000/012/original/mathpage-placeholder.jpg?1442330622">
               No support.
-            </video-->
+            </video>
           </div>
         </div>
       </section>
