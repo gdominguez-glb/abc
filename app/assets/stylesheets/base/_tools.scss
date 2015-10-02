@@ -26,7 +26,7 @@
 }
 
 .embed-responsive {
-  //border: 1px solid #fff; return this when we remove fake placeholder images from the site
+  border: 1px solid #fff;
 
   @media screen and (min-width: $screen-lg-min) {
     margin: 4% 0;

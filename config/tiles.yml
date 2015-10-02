@@ -1,4 +1,18 @@
 ---
+- :name: Video Hero
+  :fields:
+  - :name: title
+    :label: Title
+    :input_type: text
+  - :name: video_url
+    :label: Video Url
+    :input_type: text
+  - :name: background_image_url
+    :label: Background Image Url
+    :input_type: text
+  - :name: thumbnail_image_url
+    :label: Thumbnail Image Url
+    :input_type: text
 - :name: 50/50 Full-Bleed Image Right
   :fields:
   - :name: title
