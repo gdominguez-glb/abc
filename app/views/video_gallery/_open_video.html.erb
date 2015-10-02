@@ -1,22 +1,24 @@
 <div class="video-wrapper col-lg-4">
-  <div class="image-drawer-wrapper">
-    <div class="video-image-wrapper">
-      <%= link_to "", video_gallery_path(video), itemprop: 'url', class: 'open-video', style: "background-image: url(#{video.wistia_thumbnail_url})" %>
-      <%= link_to play_video_gallery_path(video), remote: true, class: 'play-video-button' do %>
-        <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span>
-      <% end %>
-    </div>
-    <div class="video-drawer blue-bg">
-      <button class="btn btn-default disabled"><%= video.categories.join(' ') %></button>
-      <div class="product-description">
-        <%= truncate video.description, length: 300 %>
-        <% if video.description && video.description.length > 100 %>
-          <%= link_to 'MORE INFO', show_description_video_gallery_path(video), remote: true, class: 'more-info' %>
+  <div class="image-drawer-wrapper flip-container">
+    <div class="flipper">
+      <div class="video-image-wrapper flip-front">
+        <%= link_to "", video_gallery_path(video), itemprop: 'url', class: 'open-video', style: "background-image: url(#{video.wistia_thumbnail_url})" %>
+        <%= link_to play_video_gallery_path(video), remote: true, class: 'play-video-button' do %>
+          <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span>
         <% end %>
       </div>
-      <%= link_to bookmark_video_gallery_path(video, ref_id: "#fav-button-#{video.id}"), remote: true, class: "btn favorite-button btn-default #{'disabled' if bookmarked_video?(video) }", style: 'display: block;', id: "fav-button-#{video.id}", data: { method: :post } do %>
-        <i class="fa fa-bookmark-o"></i> Bookmark
-      <% end %>
+      <div class="video-drawer blue-bg flip-back">
+        <button class="btn btn-default disabled"><%= video.categories.join(' ') %></button>
+        <div class="product-description">
+          <%= truncate video.description, length: 300 %>
+          <% if video.description && video.description.length > 100 %>
+            <%= link_to 'MORE INFO', show_description_video_gallery_path(video), remote: true, class: 'more-info' %>
+          <% end %>
+        </div>
+        <%= link_to bookmark_video_gallery_path(video, ref_id: "#fav-button-#{video.id}"), remote: true, class: "btn favorite-button btn-default #{'disabled' if bookmarked_video?(video) }", style: 'display: block;', id: "fav-button-#{video.id}", data: { method: :post } do %>
+          <i class="fa fa-bookmark-o"></i> Bookmark
+        <% end %>
+      </div>
     </div>
   </div>
   <%=  %>

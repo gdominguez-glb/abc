@@ -31,10 +31,6 @@
 
 .video-image-wrapper {
   position: relative;
-  height: 200px;
-}
-
-.image-drawer-wrapper {
   border: 1px solid $dark-blue;
 }
 
@@ -64,6 +60,7 @@
   padding: 10px;
   box-shadow: inset 0 0 1px $dark-blue;
   z-index: 2;
+  border: 1px solid $dark-blue;
   @include transition(all, $transitionTiming);
 
   .product-description {
