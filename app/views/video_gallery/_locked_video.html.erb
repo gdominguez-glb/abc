@@ -6,7 +6,7 @@
         <button class="btn btn-info flip-btn"><i class="fa fa-refresh flip-icon"></i></button>
       </div>
       <div class="video-drawer flip-back">
-        <button class="btn btn-default disabled">Subscription Required</button>
+        <button class="btn btn-default btn-block disabled">Subscription Required</button>
         <div class="product-description">
           <%= truncate video.description, length: 100 %>
           <% if video.description && video.description.length > 100 %>
@@ -14,7 +14,7 @@
           <% end %>
           <button class="btn btn-info flip-btn"><i class="fa fa-refresh flip-icon"></i></button>
         </div>
-        <%= link_to unlock_video_gallery_path(video), class: 'btn btn-primary unblock-button', remote: true do %>
+        <%= link_to unlock_video_gallery_path(video), class: 'btn btn-primary unblock-button btn-block', remote: true do %>
           Unlock Content
         <% end %>
       </div>
