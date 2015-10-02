@@ -25,9 +25,26 @@
   }
 }
 
-.flip-container, .flip-front, .flip-back {
-  width: 320px;
-  height: 320px;
+.flip-container,
+.flip-front,
+.flip-back {
+  width: 290px;
+  height: 200px;
+
+  @media screen and (min-width: $screen-sm-min) {
+    width: 350px;
+    height: 220px;
+  }
+
+  @media screen and (min-width: $screen-md-min) {
+    width: 290px;
+    height: 200px;
+  }
+
+  @media screen and (min-width: $screen-lg-min) {
+    width: 350px;
+    height: 220px;
+  }
 }
 
 .flipper {
@@ -46,7 +63,7 @@
 }
 
 .flip-front {
-  z-index: 2;
+  z-index: -2;
   transform: rotateY(0deg);
 }
 
