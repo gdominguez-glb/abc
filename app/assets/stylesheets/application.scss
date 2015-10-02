@@ -9,6 +9,7 @@
 
 // base application style
 @import "base/config";
+@import "base/helpers";
 @import "base/foundation";
 @import "base/typography";
 @import "base/tools";
@@ -23,6 +24,7 @@
 @import "components/media-objects";
 @import "components/modals";
 @import "components/nav-tabs";
+@import "components/panels";
 @import "components/posts";
 @import "components/sidebars";
 @import "components/tables";

@@ -1,0 +1,171 @@
+// *************************************
+//
+//   Helpers
+//   -> Functions, mixins, extends and animations
+//
+// *************************************
+
+// -------------------------------------
+//   Vendor Prefixes
+// -------------------------------------
+
+@mixin display-flex() {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@mixin flex($val) {
+  -webkit-box-flex: $val;
+  -webkit-flex: $val;
+  -ms-flex: $val;
+  flex: $val;
+}
+
+@mixin flex-direction($val) {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: $val;
+  -ms-flex-direction: $val;
+  flex-direction: $val;
+}
+
+@mixin justify-content($val) {
+  -webkit-box-pack: $val;
+  -webkit-justify-content: $val;
+  -ms-flex-pack: $val;
+  justify-content: $val;
+}
+
+@mixin align-items($val) {
+  -webkit-align-items: $val;
+  -ms-align-items: $val;
+  align-items: $val;
+}
+
+@mixin perspective($val) {
+  -webkit-perspective: $val;
+	-moz-perspective: $val;
+	perspective: $val;
+}
+
+@mixin rotateY($val) {
+  -webkit-transform: rotateY($val);
+	-moz-transform: rotateY($val);
+	transform: rotateY($val);
+	filter: FlipH;
+	-ms-filter: "FlipH";
+}
+
+@mixin rotateX($val) {
+  -webkit-transform: rotateX($val);
+	-moz-transform: rotateX($val);
+	transform: rotateX($val);
+	filter: FlipV;
+	-ms-filter: "FlipV";
+}
+
+@mixin my-transition($val) {
+  -webkit-transition: $val;
+	-moz-transition: $val;
+	transition: $val;
+}
+
+@mixin transform-style($val) {
+  -webkit-transform-style: $val;
+	-moz-transform-style: $val;
+	transform-style: $val;
+}
+
+@mixin backface-visibility($val) {
+  -webkit-backface-visibility: $val;
+	-moz-backface-visibility: $val;
+	backface-visibility: $val;
+}
+
+// -------------------------------------
+//   Flip Animation
+// -------------------------------------
+
+.flip-container {
+  margin: 0 auto;
+  @include perspective(1000);
+
+  &.flip {
+    .flipper {
+      @include rotateY(180deg);
+    }
+
+    .flip-back {
+      z-index: 3;
+    }
+  }
+}
+
+.flip-container,
+.flip-front,
+.flip-back {
+  width: 280px;
+  height: 200px;
+
+  @media screen and (min-width: $screen-sm-min) {
+    width: 350px;
+    height: 220px;
+    text-align: center;
+  }
+
+  @media screen and (min-width: $screen-md-min) {
+    width: 250px;
+    height: 200px;
+  }
+
+  @media screen and (min-width: $screen-lg-min) {
+    width: 330px;
+    height: 220px;
+  }
+}
+
+.flipper {
+  position: relative;
+  @include my-transition(0.6s);
+  @include transform-style(preserve-3d);
+}
+
+.flip-front, .flip-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  @include backface-visibility(hidden);
+  @include transition(0.6s);
+  @include transform-style(preserve-3d);
+}
+
+.flip-front {
+  z-index: 2;
+  @include rotateY(0deg);
+}
+
+.flip-back {
+  @include rotateY(180deg);
+}
+
+.flip-btn {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  width: 40px;
+  height: 40px;
+  margin: 0;
+  padding: 6px 10px 10px 8px !important;
+  border-radius: 50%;
+
+  &:focus,
+  &:active:focus {
+    outline: 0;
+  }
+
+  .flip-icon {
+    font-size: 29px;
+  }
+}
