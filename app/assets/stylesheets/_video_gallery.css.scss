@@ -1,67 +1,13 @@
 .video-wrapper {
   position: relative;
-  padding: 15px;
-  height: 330px;
   margin: 0 0 15px;
   box-shadow: inset 0 0 1px transparent;
   @include transition(all, $transitionTiming);
-
-  @media screen and (max-width: 1200px) {
-    height: auto;
-  }
 
   &:nth-child(3n+3) {
     .video-drawer {
       right: auto;
       left: 0;
-
-      @media screen and (max-width: $largeBP) {
-        right: 0;
-        left: auto;
-      }
-    }
-  }
-
-  // Hover State
-  &:hover {
-    box-shadow: inset 0 0 1px $dark-blue;
-    background: rgba($dark-blue, .4);
-    z-index: 1000;
-
-    &:nth-child(3n+3) {
-      .video-drawer {
-        left: -65%;
-
-        @media screen and (max-width: $largeBP) {
-          right: 0;
-          left: auto;
-        }
-      }
-    }
-
-    .open-video {
-      opacity: 0.5;
-    }
-
-    .video-info {
-      background: #eee;
-    }
-
-    .video-drawer {
-      right: -65%;
-      z-index: 2;
-      opacity: 1;
-
-      @media screen and (max-width: $largeBP) {
-        right: 0;
-      }
-    }
-
-    .play-video-button {
-      span {
-        opacity: 1;
-        z-index: 4;
-      }
     }
   }
 }
@@ -71,10 +17,6 @@
     background-color: $steel-gray;
     position: relative;
     @include transition(all, $transitionTiming);
-
-    @media screen and (max-width: $largeBP) {
-      width: 100%;
-    }
 
     .glyphicon-lock {
       position: absolute;
@@ -90,20 +32,6 @@
 .video-image-wrapper {
   position: relative;
   height: 200px;
-
-  @media screen and (max-width: $largeBP) {
-    position: relative;
-    float: left;
-    width: 50%;
-    height: 300px;
-    border: none;
-  }
-
-  @media screen and (max-width: 575px) {
-    float: none;
-    width: 100%;
-    height: 250px;
-  }
 }
 
 .image-drawer-wrapper {
@@ -126,43 +54,17 @@
     left: 50%;
     z-index: 9;
     font-size: 100px;
-    opacity: 0;
 
     @include transition(all, $transitionTiming);
     @include translate(-50%, -50%);
-
-    @media screen and (max-width: 1024px) {
-      opacity: 1;
-    }
   }
 }
 
 .video-drawer {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 65%;
-  height: 100%;
   padding: 10px;
   box-shadow: inset 0 0 1px $dark-blue;
-  opacity: 0;
   z-index: 2;
   @include transition(all, $transitionTiming);
-
-  @media screen and (max-width: 1200px) {
-    position: relative;
-    float: right;
-    width: 50%;
-    height: 300px;
-    box-shadow: none;
-    opacity: 1;
-  }
-
-  @media screen and (max-width: 575px) {
-    float: none;
-    width: 100%;
-    height: 250px;
-  }
 
   .product-description {
     padding: 10px 0;
@@ -173,16 +75,7 @@
   }
 
   .favorite-button, .unblock-button {
-    position: absolute;
-    bottom: 10px;
-    margin: 0 auto;
-    width: 90%;
 
-    @media screen and (max-width: $largeBP) {
-      left: 10px;
-      right: 10px;
-      width: auto;
-    }
   }
 }
 
