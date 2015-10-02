@@ -28,7 +28,7 @@
 .flip-container,
 .flip-front,
 .flip-back {
-  width: 290px;
+  width: 280px;
   height: 200px;
 
   @media screen and (min-width: $screen-sm-min) {
@@ -38,12 +38,12 @@
   }
 
   @media screen and (min-width: $screen-md-min) {
-    width: 290px;
+    width: 250px;
     height: 200px;
   }
 
   @media screen and (min-width: $screen-lg-min) {
-    width: 350px;
+    width: 330px;
     height: 220px;
   }
 }

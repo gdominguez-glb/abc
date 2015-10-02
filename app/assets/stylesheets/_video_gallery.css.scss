@@ -1,15 +1,18 @@
-.video-wrapper {
-  position: relative;
-  margin: 0 0 15px;
-  box-shadow: inset 0 0 1px transparent;
-  @include transition(all, $transitionTiming);
-
-  &:nth-child(3n+3) {
-    .video-drawer {
-      right: auto;
-      left: 0;
+.video-grid {
+  @media screen and (min-width: $screen-md-min) {
+    &:nth-child(odd) {
+      clear: both;
     }
   }
+}
+
+.video-wrapper {
+  position: relative;
+  margin-bottom: 15px;
+  padding: 15px 5px;
+  box-shadow: 0 0 7px 0 #ccc;
+  background-color: #fff;
+  @include transition(all, $transitionTiming);
 
   @media screen and (min-width: $screen-sm-min) {
     text-align: center;
