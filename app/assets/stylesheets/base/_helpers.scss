@@ -6,6 +6,45 @@
 // *************************************
 
 // -------------------------------------
+//   Vendor Prefixes
+// -------------------------------------
+
+@mixin display-flex() {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@mixin flex($val) {
+  -webkit-box-flex: $val;
+  -webkit-flex: $val;
+  -ms-flex: $val;
+  flex: $val;
+}
+
+@mixin flex-direction($val) {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: $val;
+  -ms-flex-direction: $val;
+  flex-direction: $val;
+}
+
+@mixin justify-content($val) {
+  -webkit-box-pack: $val;
+  -webkit-justify-content: $val;
+  -ms-flex-pack: $val;
+  justify-content: $val;
+}
+
+@mixin align-items($val) {
+  -webkit-align-items: $val;
+  -ms-align-items: $val;
+  align-items: $val;
+}
+
+// -------------------------------------
 //   Flip Animation
 // -------------------------------------
 
