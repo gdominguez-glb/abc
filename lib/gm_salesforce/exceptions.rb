@@ -81,7 +81,7 @@ module GmSalesforce
 
     def initialize(e = nil, message = nil)
       super(e, message)
-      return if !e || !client_error?(e)
+      return if !e || !self.class.client_error?(e)
       @message = self.class.find_message(e) unless message
     end
 
