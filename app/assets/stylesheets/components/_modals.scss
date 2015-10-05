@@ -21,14 +21,20 @@
       @include transition(transform, .5s);
 
       &.modal-lg {
-        width: 850px;
+        width: 100%;
+        padding: 0 10px;
 
-        @media screen and (max-width: 875px) {
+        @media screen and (min-width: $screen-md-min) {
+          width: 850px;
+          padding: 0;
+        }
+
+        .embed-responsive {
+          margin: 0;
+        }
+
+        iframe, .mejs-player {
           width: 100%;
-
-          iframe, .mejs-player {
-            width: 100%;
-          }
         }
       }
     }
