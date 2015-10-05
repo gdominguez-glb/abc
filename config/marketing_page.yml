@@ -7,9 +7,7 @@ marketing_templates:
       		<div>
       			<h3 class="video-title"><%= title %></h3>
       			<div class="embed-responsive embed-responsive-16by9">
-      				<video src="<%= video_url %>" controls poster="<%= thumbnail_image_url %>">
-      					No support.
-      				</video>
+      				<video class="mejs-player" src="<%= video_url %>" width="100%" max-width="850" height="100%""></video>
       			</div>
       		</div>
       	</div>
