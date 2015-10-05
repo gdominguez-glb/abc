@@ -14,7 +14,7 @@
             <% if @video.wistia_ready? %>
               <iframe src="http://fast.wistia.net/embed/iframe/<%= @video.wistia_hashed_id %>" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" id="wistia-iframe" name="wistia_embed" width="560" height="400"></iframe>
             <% else %>
-                <video class="mejs-player" src="<%= @video.s3_url %>" width="100%" height="100%"></video>
+              <video class="mejs-player" src="<%= @video.s3_url %>" width="100%" height="100%"></video>
             <% end %>
           <% else %>
             <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
