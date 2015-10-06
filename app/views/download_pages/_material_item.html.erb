@@ -1,33 +1,39 @@
 <div id="material<%= material.id %>" class="panel panel-default">
   <div class="panel-heading">
-    <%= check_box_tag 'material_ids[]', material.id, false, 'data-checkbox-id' => material.id %>
-    <%= material.name %>
-    <% if item.children.size > 0 || material.material_files_count > 0 %>
-      <%= link_to download_material_path(material), remote: true do %>
-        <span class="glyphicon glyphicon-download-alt"></span>
-      <% end %>
-    <% end %>
-    <% if material.material_files_count > 0 %>
-      <%= link_to preview_material_path(material), remote: true do %>
-        <span class="glyphicon glyphicon-eye-open"></span>
-      <% end %>
-      <% if bookmarked_material?(material) %>
-        <span class="fa fa-bookmark"></span>
-      <% else %>
-        <%= link_to bookmark_material_path(material, ref_id: "#bookmark-#{material.id}"), id: "bookmark-#{material.id}", remote: true, data: { method: :post } do %>
-          <span class="fa fa-bookmark-o"></span>
+    <div class="row">
+      <div class="col-xs-7 text-left">
+        <%= check_box_tag 'material_ids[]', material.id, false, 'data-checkbox-id' => material.id %>
+        <%= material.name %>
+      </div>
+      <div class="col-xs-5 text-right">
+        <% if item.children.size > 0 || material.material_files_count > 0 %>
+          <%= link_to download_material_path(material), remote: true do %>
+            <span class="glyphicon glyphicon-download-alt"></span>
+          <% end %>
         <% end %>
-      <% end %>
-    <% end %>
-    <% if item.children.size > 0 %>
-      <% open_material = @opened_material_ids.include?(material.id) %>
-      <span
-        class="glyphicon glyphicon-chevron-down"
-        data-material-id="<%= material.id %>"
-        data-toggle="collapse"
-        data-parent="#material<%= material.id %>"
-        href="#collapse<%= material.id %>"></span>
-    <% end %>
+        <% if material.material_files_count > 0 %>
+          <%= link_to preview_material_path(material), remote: true do %>
+            <span class="glyphicon glyphicon-eye-open"></span>
+          <% end %>
+          <% if bookmarked_material?(material) %>
+            <span class="fa fa-bookmark"></span>
+          <% else %>
+            <%= link_to bookmark_material_path(material, ref_id: "#bookmark-#{material.id}"), id: "bookmark-#{material.id}", remote: true, data: { method: :post } do %>
+              <span class="fa fa-bookmark-o"></span>
+            <% end %>
+          <% end %>
+        <% end %>
+        <% if item.children.size > 0 %>
+          <% open_material = @opened_material_ids.include?(material.id) %>
+          <span
+            class="glyphicon glyphicon-chevron-down"
+            data-material-id="<%= material.id %>"
+            data-toggle="collapse"
+            data-parent="#material<%= material.id %>"
+            href="#collapse<%= material.id %>"></span>
+        <% end %>
+      </div>
+    </div>
   </div>
   <% if item.children.size > 0 %>
     <div id="collapse<%= material.id%>" class="list-group collapse">
