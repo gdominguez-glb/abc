@@ -20,6 +20,10 @@ module Spree
         end
       end
 
+      def edit
+        @licensed_product = Spree::LicensedProduct.find(params[:id])
+      end
+
       def import
         if request.post?
           result = Spree::LicenseImporter.new(params[:file], params[:fulfillment_at]).import
