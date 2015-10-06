@@ -67,7 +67,7 @@
         </div>
       </div>
 
-      <div data-hook='new_product_is_grades_product' class='col-md-4'>
+      <div data-hook='new_product_is_grades_product' class='col-md-4 <%= 'hidden' if f.object.product_type != 'multiple download' %>'>
         <div class='form-group field' id='product_is_grades_product_field'>
           <%= f.label :is_grades_product %>
           <%= f.check_box :is_grades_product, class: 'form-control' %>
@@ -75,7 +75,7 @@
         </div>
       </div>
 
-      <div data-hook='new_product_video_group_id' class='col-md-4'>
+      <div data-hook='new_product_video_group_id' class='col-md-4 <%= 'hidden' if f.object.product_type != 'video' %>'>
         <div class='form-group field' id='product_video_group'>
           <%= f.label :video_group %>
           <%= f.collection_select :video_group_id, Spree::VideoGroup.all, :id, :name, { prompt: 'select video group' }, class: 'form-control' %>
@@ -88,7 +88,7 @@
           <%= f.text_field :access_url, class: 'form-control' %>
         </div>
       </div>
-      <div data-hook='new_product_learn_more_url' class='col-md-4'>
+      <div data-hook='new_product_learn_more_url' class='col-md-4 <%= 'hidden' if f.object.product_type != 'partner' %>'>
         <div class='form-group field' id='product_learn_more_url_field'>
           <%= f.label :learn_more_url %>
           <%= f.text_field :learn_more_url, class: 'form-control' %>
@@ -131,6 +131,37 @@
 <script type="text/javascript">
 //<![CDATA[
   (function($){
+    function toggleIsGradesProduct(productType) {
+      if (productType == 'multiple download') {
+        $('[data-hook="new_product_is_grades_product"]').removeClass('hidden');
+      } else {
+        $('[data-hook="new_product_is_grades_product"]').addClass('hidden');
+      }
+    }
+
+    function toggleVideoGroup(productType) {
+      if (productType == 'video') {
+        $('[data-hook="new_product_video_group_id"]').removeClass('hidden');
+      } else {
+        $('[data-hook="new_product_video_group_id"]').addClass('hidden');
+      }
+    }
+
+    function toggleLeanMoreUrl(productType) {
+      if (productType == 'partner') {
+        $('[data-hook="new_product_learn_more_url"]').removeClass('hidden');
+      } else {
+        $('[data-hook="new_product_learn_more_url"]').addClass('hidden');
+      }
+    }
+
+    $('#product_product_type').change(function(e){
+      var productType = $(this).val();
+
+      toggleIsGradesProduct(productType);
+      toggleVideoGroup(productType);
+      toggleLeanMoreUrl(productType);
+    });
   })(jQuery);
 //]]>
 </script>
