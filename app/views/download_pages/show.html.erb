@@ -19,14 +19,16 @@
         </div>
       </div>
     </div>
-    <div class="products">
-      <% @products.each do |product| %>
-        <% if locked_product?(product) %>
-          <%= render partial: 'locked_product', locals: { product: product } %>
-        <% else %>
-          <%= render partial: 'open_product', locals: { product: product } %>
+    <div class="row">
+      <div class="col-xs-12">
+        <% @products.each do |product| %>
+          <% if locked_product?(product) %>
+            <%= render partial: 'locked_product', locals: { product: product } %>
+          <% else %>
+            <%= render partial: 'open_product', locals: { product: product } %>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
     </div>
   </div>
   <%= content_for :javascripts do %>

@@ -1,31 +1,36 @@
-<div class="panel panel-default material-item" data-material-id="<%= material.id %>" id="material<%= material.id %>">
+<div id="material<%= material.id %>" class="panel panel-default">
   <div class="panel-heading">
     <%= check_box_tag 'material_ids[]', material.id, false, 'data-checkbox-id' => material.id %>
     <%= material.name %>
     <% if item.children.size > 0 || material.material_files_count > 0 %>
-      <%= link_to download_material_path(material), class: 'pull-right', remote: true do %>
+      <%= link_to download_material_path(material), remote: true do %>
         <span class="glyphicon glyphicon-download-alt"></span>
       <% end %>
     <% end %>
     <% if material.material_files_count > 0 %>
-      <%= link_to preview_material_path(material), class: 'pull-right', remote: true do %>
+      <%= link_to preview_material_path(material), remote: true do %>
         <span class="glyphicon glyphicon-eye-open"></span>
       <% end %>
       <% if bookmarked_material?(material) %>
-        <span class="fa fa-bookmark pull-right"></span>
+        <span class="fa fa-bookmark"></span>
       <% else %>
-        <%= link_to bookmark_material_path(material, ref_id: "#bookmark-#{material.id}"), id: "bookmark-#{material.id}", class: 'pull-right', remote: true, data: { method: :post } do %>
+        <%= link_to bookmark_material_path(material, ref_id: "#bookmark-#{material.id}"), id: "bookmark-#{material.id}", remote: true, data: { method: :post } do %>
           <span class="fa fa-bookmark-o"></span>
         <% end %>
       <% end %>
     <% end %>
     <% if item.children.size > 0 %>
       <% open_material = @opened_material_ids.include?(material.id) %>
-      <span class="glyphicon glyphicon-chevron-<%= open_material ? 'up' : 'down' %> pull-right toggler" data-material-id="<%= material.id %>" data-toggle="collapse" data-parent="#material<%= material.id %>" href="#collapse<%= material.id %>"></span>
+      <span
+        class="glyphicon glyphicon-chevron-down"
+        data-material-id="<%= material.id %>"
+        data-toggle="collapse"
+        data-parent="#material<%= material.id %>"
+        href="#collapse<%= material.id %>"></span>
     <% end %>
   </div>
   <% if item.children.size > 0 %>
-    <div class="list-group collapse" id="collapse<%= material.id%>">
+    <div id="collapse<%= material.id%>" class="list-group collapse">
       <%= render partial: 'materials', locals: { items: item.children, level: item.level, open: open_material } %>
     </div>
   <% end %>
