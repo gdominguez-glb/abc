@@ -19,13 +19,15 @@
     <% nested_materials(product.materials.order('lft asc')).each do |item| %>
       <% material = item.material %>
       <% next if !show_grade_material?(product, material) %>
-      <div class="">
         <%= render partial: 'material_item', locals: { material: material, item: item } %>
-      </div>
     <% end %>
-    <div class="actions">
-      <%= link_to 'Download All', download_all_materials_path(product_id: product.id), class: 'btn btn-primary', remote: true, data: { method: :post } %>
-      <%= link_to "Download Selected", multi_download_materials_path(product_id: product.id), class: 'btn btn-primary download-selected-btn' %>
+    <div class="row">
+      <div class="col-sm-3">
+        <%= link_to 'Download All', download_all_materials_path(product_id: product.id), class: 'btn btn-success btn-block margin-bottom', remote: true, data: { method: :post } %>
+      </div>
+      <div class="col-sm-3">
+        <%= link_to "Download Selected", multi_download_materials_path(product_id: product.id), class: 'btn btn-success btn-block margin-bottom download-selected-btn' %>
+      </div>
     </div>
   </div>
 </div>
