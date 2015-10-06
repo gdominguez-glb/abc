@@ -20,5 +20,11 @@
         <%= link_to_with_icon 'cloud', 'Materials', admin_product_materials_path(@product) %>
       <% end %>
     <% end %>
+
+    <% if @product.product_type == 'single download (legacy)' %>
+      <li<%= ' class=\"active\"' if current == 'Digital Versions' %>>
+         <%= link_to_with_icon 'cloud', Spree.t(:digital_versions, scope: 'digitals'), admin_product_digitals_path(@product) %>
+      </li>
+    <% end %>
   </ul>
 <% end %>
