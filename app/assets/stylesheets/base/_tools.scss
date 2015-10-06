@@ -71,6 +71,14 @@
   }
 }
 
+.margin-xs-left-m {
+  margin-left: 0;
+
+  @media screen and (min-width: $screen-sm-min) {
+    margin-left: $b-space-m;
+  }
+}
+
 // -------------------------------------
 //   Padding
 // -------------------------------------

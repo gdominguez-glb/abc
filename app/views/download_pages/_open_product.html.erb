@@ -1,21 +1,33 @@
-<div class="product clearfix" data-product-id="<%= product.id %>">
-  <div class="product-head">
-    <p><%= product.free? ? 'Free' : 'Paid' %></p>
-    <h3><%= product.name %></h3>
-    <span class="glyphicon glyphicon-chevron-down open-product"></span>
+<div id="product<%= product.id %>" class="panel panel-primary" data-product-id="<%= product.id %>">
+  <div class="panel-heading">
+    <div class="row">
+      <div class="col-sm-10">
+        <p><%= product.free? ? 'Free' : 'Paid' %></p>
+        <h3><%= product.name %></h3>
+      </div>
+      <div class="col-sm-2 text-right-sm">
+        <span
+          class="fa fa-chevron-up collapsed"
+          data-toggle="collapse"
+          data-parent="#product<%= product.id %>"
+          href="#collapse<%= product.id %>"></span>
+      </div>
+    </div>
   </div>
   <% open_product = @opened_product_ids.include?(product.id) %>
-  <div class="materials <%= 'show-materials' if open_product %>">
+  <div id="collapse<%= product.id %>" class="panel-body collapse">
     <% nested_materials(product.materials.order('lft asc')).each do |item| %>
       <% material = item.material %>
       <% next if !show_grade_material?(product, material) %>
-      <div class="material clearfix">
         <%= render partial: 'material_item', locals: { material: material, item: item } %>
-      </div>
     <% end %>
-    <div class="actions">
-      <%= link_to 'Download All', download_all_materials_path(product_id: product.id), class: 'btn btn-primary', remote: true, data: { method: :post } %>
-      <%= link_to "Download Selected", multi_download_materials_path(product_id: product.id), class: 'btn btn-primary download-selected-btn' %>
+    <div class="row">
+      <div class="col-sm-3">
+        <%= link_to 'Download All', download_all_materials_path(product_id: product.id), class: 'btn btn-success btn-block margin-bottom', remote: true, data: { method: :post } %>
+      </div>
+      <div class="col-sm-3">
+        <%= link_to "Download Selected", multi_download_materials_path(product_id: product.id), class: 'btn btn-success btn-block margin-bottom download-selected-btn' %>
+      </div>
     </div>
   </div>
 </div>
