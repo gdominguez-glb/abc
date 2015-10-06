@@ -20,7 +20,11 @@
     :input_type: text_area
   - :name: background_color
     :label: Background Color
-    :input_type: text
+    :input_type: select
+    :input_options:
+      - green
+      - blue
+      - cream
   - :name: button_title
     :label: Button Title
     :input_type: text
@@ -40,7 +44,11 @@
     :input_type: text_area
   - :name: background_color
     :label: Background Color
-    :input_type: text
+    :input_type: select
+    :input_options:
+      - green
+      - blue
+      - cream
   - :name: button_title
     :label: Button Title
     :input_type: text
@@ -60,7 +68,11 @@
     :input_type: text_area
   - :name: background_color
     :label: Background Color
-    :input_type: text
+    :input_type: select
+    :input_options:
+      - green
+      - blue
+      - cream
   - :name: button_1_title
     :label: Button 1 Title
     :input_type: text
@@ -86,7 +98,11 @@
     :input_type: text_area
   - :name: background_color
     :label: Background Color
-    :input_type: text
+    :input_type: select
+    :input_options:
+      - green
+      - blue
+      - cream
   - :name: button_title
     :label: Button Title
     :input_type: text
@@ -114,7 +130,11 @@
   :fields:
   - :name: background_color
     :label: Background Color
-    :input_type: text
+    :input_type: select
+    :input_options:
+      - green
+      - blue
+      - cream
   - :name: title_1
     :label: Title 1
     :input_type: text
