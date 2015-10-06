@@ -1,20 +1,4 @@
 Spree::UserRegistrationsController.class_eval do
-  def after_sign_in_path_for(resource)
-    if resource
-      if !resource.admin?
-        return_to = session["spree_user_return_to"]
-        session["spree_user_return_to"] = nil
-
-        return_to || '/store'
-      else
-        '/store/admin'
-      end
-    end
-  end
-
-  def after_sign_up_path_for(resource)
-    '/account'
-  end
 
   private
 

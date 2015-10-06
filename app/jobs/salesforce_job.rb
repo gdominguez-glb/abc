@@ -18,9 +18,10 @@ class SalesforceJob < ActiveJob::Base
       " #{salesforce_reference_id} **"
     salesforce_reference = SalesforceReference.find(salesforce_reference_id)
     return false unless salesforce_reference
-    if mode == 'update'
+    if mode == 'update' && salesforce_reference.id_in_salesforce.present?
       update(salesforce_reference, attributes_for_salesforce)
-    elsif mode == 'create'
+    elsif mode == 'create' ||
+          (mode == 'update' && salesforce_reference.id_in_salesforce.blank?)
       create(salesforce_reference, attributes_for_salesforce)
     end
   end

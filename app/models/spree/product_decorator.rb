@@ -73,9 +73,7 @@ Spree::Product.class_eval do
   has_many :download_products
   has_many :download_pages, through: :download_products
 
-  attr_accessor :new_image
-
-  after_create :assign_image_to_master, :init_grades_materials
+  after_create :init_grades_materials
 
   scope :free, -> {
     joins("join spree_variants on spree_variants.product_id = spree_products.id").
@@ -92,15 +90,13 @@ Spree::Product.class_eval do
 
   if !defined?(PRODUCT_TYPES)
     PRODUCT_TYPES = [
-      'Curriculum',
-      'Video',
-      'Pdf',
-      'Other'
+      'single download (legacy)',
+      'video',
+      'multiple download',
+      'bundle',
+      'partner',
+      'other'
     ]
-  end
-
-  PRODUCT_TYPES.each do |product_type|
-    scope product_type.underscore.pluralize, ->{ where(product_type: product_type) }
   end
 
   def free?
@@ -109,10 +105,6 @@ Spree::Product.class_eval do
 
   def digital_delivery?
     shipping_category.name == 'Digital Delivery'
-  end
-
-  def assign_image_to_master
-    self.master.images << Spree::Image.new(attachment: self.new_image) if self.new_image.present?
   end
 
   def init_grades_materials

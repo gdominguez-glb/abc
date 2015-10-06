@@ -1,21 +1,13 @@
 <% @taxonomies.each do |taxonomy| %>
-  <div class="taxonomy-wrapper">
-  <div class="taxonomy-header clearfix">
-    <h5 class='taxonomy-root unselectable pull-left'><%= taxonomy.name %></h5>
-    <% selected_taxons = taxonomy.root.children.where(id: params[:taxon_ids]) %>
-    <% if selected_taxons.count > 0 %>
-      <div class="selected-taxons-wrapper pull-right">
-      <% selected_taxons.each do |selected_taxon| %>
-        <span class="selected-taxon">
-        <%= selected_taxon.name %>
-        <%= link_to params.merge(taxon_ids: (params[:taxon_ids] - [selected_taxon.id.to_s])) do %>
-          <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-      <% end %>
-      </span>
-    <% end %>
-    </div>
-  <% end %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">
+      <a data-toggle="collapse" data-parent="#categories" href="#collapse<%= taxonomy.name %>"><%= taxonomy.name %></a>
+    </h4>
   </div>
-  <%= video_gallery_taxons_tree(taxonomy.root, @taxon, taxonomy.allow_multiple_taxons_selected) %>
+  <%# <% selected_taxons = taxonomy.root.children.where(id: params[:taxon_ids]) %1> %>
+  <div id="collapse<%= taxonomy.name %>" class="panel-collapse collapse">
+    <%= video_gallery_taxons_tree(taxonomy.root, @taxon, taxonomy.allow_multiple_taxons_selected) %>
+  </div>
 </div>
 <% end %>

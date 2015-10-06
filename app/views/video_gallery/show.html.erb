@@ -1,48 +1,62 @@
-<div class="container" id="video-page">
-  <%= link_to "< Back", video_gallery_index_path, class: 'btn btn-default' %>
-  <div class="row">
-    <div class="col-md-6">
-      <div class="video-player-wrapper">
-        <% if can_play_video?(@video) %>
-          <% if @video.wistia_ready? %>
-            <iframe src="http://fast.wistia.net/embed/iframe/<%= @video.wistia_hashed_id %>" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" id="wistia-iframe" name="wistia_embed" width="560" height="400"></iframe>
-          <% else %>
-              <video class="mejs-player" src="<%= @video.s3_url %>" width="560" height="400"></video>
-          <% end %>
-        <% else %>
-          <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+<div class="row">
+  <div class="col-sm-10 col-sm-offset-1 margin-top-xxl margin-bottom-xl">
+    <div class="row">
+      <div class="col-xs-12">
+        <%= link_to video_gallery_index_path, class: 'btn btn-default btn-block-xs margin-bottom-m' do %>
+          <i class="fa fa-chevron-left"></i> Back
         <% end %>
       </div>
     </div>
-    <div class="col-md-6">
-      <div class="video-page-title">
-        <h2 class="video-name">
-          <%= @video.title %>
-        </h2>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="embed-responsive embed-responsive-16by9 margin-bottom-l">
+          <% if can_play_video?(@video) %>
+            <% if @video.wistia_ready? %>
+              <iframe src="http://fast.wistia.net/embed/iframe/<%= @video.wistia_hashed_id %>" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" id="wistia-iframe" name="wistia_embed" width="560" height="400"></iframe>
+            <% else %>
+              <video class="mejs-player" src="<%= @video.s3_url %>" width="100%" height="100%"></video>
+            <% end %>
+          <% else %>
+            <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+          <% end %>
+        </div>
       </div>
-      <p>
-        <%= @video.description %>
-      </p>
-      <%= link_to bookmark_video_gallery_path(@video, ref_id: "#fav-button-#{@video.id}"), remote: true, class: "btn favorite-button btn-default #{'disabled' if bookmarked_video?(@video) }", style: 'display: block;', id: "fav-button-#{@video.id}", data: { method: :post } do %>
-        Add to Bookmarks
-      <% end %>
+      <div class="col-sm-6">
+        <div class="video-page-title">
+          <h2 class="video-name">
+            <%= @video.title %>
+          </h2>
+        </div>
+        <div class="video-categories">
+          <p><%= @video.categories.join(", ") %></p>
+        </div>
+        <div class="video-taxons">
+          <p><%= @video.taxons.map(&:name).join(", ") %></p>
+        </div>
+        <p class="padding-top-m padding-bottom">
+          <%= @video.description %>
+        </p>
+        <%= link_to bookmark_video_gallery_path(@video, ref_id: "#fav-button-#{@video.id}"), remote: true, class: "btn favorite-button btn-default #{'disabled' if bookmarked_video?(@video) }", style: 'display: block;', id: "fav-button-#{@video.id}", data: { method: :post } do %>
+          <i class="fa fa-bookmark-o"></i> Add to Bookmarks
+        <% end %>
+      </div>
     </div>
+    <script src="//fast.wistia.net/assets/external/iframe-api-v1.js"></script>
+    <%= content_for :javascripts do %>
+      <%= javascript_tag do %>
+        $(function(){
+          var wistia_iframe = $('#wistia-iframe').get(0);
+          if(wistia_iframe && wistia_iframe.wistiaApi) {
+            var wistiaEmbed = document.getElementById("wistia-iframe").wistiaApi;
+            wistiaEmbed.bind('play', function(){
+              $("#wistia-iframe").attr('width', 1120);
+            });
+            wistiaEmbed.bind('pause', function(){
+              $("#wistia-iframe").attr('width', 560);
+            });
+          }
+        });
+      <% end %>
+    <% end %>
   </div>
 </div>
-<script src="//fast.wistia.net/assets/external/iframe-api-v1.js"></script>
-<%= content_for :javascripts do %>
-  <%= javascript_tag do %>
-    $(function(){
-      var wistia_iframe = $('#wistia-iframe').get(0);
-      if(wistia_iframe && wistia_iframe.wistiaApi) {
-        var wistiaEmbed = document.getElementById("wistia-iframe").wistiaApi;
-        wistiaEmbed.bind('play', function(){
-          $("#wistia-iframe").attr('width', 1120);
-        });
-        wistiaEmbed.bind('pause', function(){
-          $("#wistia-iframe").attr('width', 560);
-        });
-      }
-    });
-  <% end %>
-<% end %>

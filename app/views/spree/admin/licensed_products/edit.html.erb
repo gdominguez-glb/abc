@@ -1,0 +1,43 @@
+<% content_for :page_title do %>
+  License
+<% end %>
+
+<div data-hook="admin_licensed_product_edit_form">
+  <div class="panel panel-default" data-hook="tax_rates">
+    <div class="panel-body">
+      <div class="col-md-6">
+        <%= form_for([:admin, @licensed_product]) do |f| %>
+          <div class="form-group">
+            <%= f.label :email %>
+            <%= f.text_field :email, value: (f.object.user.try(:email) || f.object.email), readonly: true, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <label>User's Name</label>
+            <%= text_field_tag :name, f.object.user.try(:full_name), class: 'form-control', readonly: true %>
+          </div>
+          <div class="form-group">
+            <label>Order #</label>
+            <%= text_field_tag :order_no, f.object.order.try(:number), class: 'form-control', readonly: true %>
+          </div>
+          <div class="form-group">
+            <label>Date the order was processed</label>
+            <%= text_field_tag :processed_date, f.object.created_at.strftime("%F %H:%M"), class: 'form-control', readonly: true %>
+          </div>
+          <div class="form-group">
+            <label>Fulfillment Date</label>
+            <%= text_field_tag :fulfillment_date, f.object.fulfillment_at.try(:strftime, '%F %H:%M'), class: 'form-control', readonly: true %>
+          </div>
+          <div class="form-group">
+            <label>Expiration Date</label>
+            <%= text_field_tag :expire_at, f.object.expire_at.try(:strftime, '%F %H:%M'), class: 'form-control', readonly: true %>
+          </div>
+          <div class="form-group">
+            <label>Product</label>
+            <%= text_field_tag :product, f.object.product.try(:name), class: 'form-control', readonly: true %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+</div>
