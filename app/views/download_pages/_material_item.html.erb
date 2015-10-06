@@ -1,4 +1,4 @@
-<div class="panel panel-default material-item" data-material-id="<%= material.id %>">
+<div class="panel panel-default material-item" data-material-id="<%= material.id %>" id="material<%= material.id %>">
   <div class="panel-heading">
     <%= check_box_tag 'material_ids[]', material.id, false, 'data-checkbox-id' => material.id %>
     <%= material.name %>
@@ -21,10 +21,12 @@
     <% end %>
     <% if item.children.size > 0 %>
       <% open_material = @opened_material_ids.include?(material.id) %>
-      <span class="glyphicon glyphicon-chevron-<%= open_material ? 'up' : 'down' %> pull-right toggler" data-material-id="<%= material.id %>"></span>
+      <span class="glyphicon glyphicon-chevron-<%= open_material ? 'up' : 'down' %> pull-right toggler" data-material-id="<%= material.id %>" data-toggle="collapse" data-parent="#material<%= material.id %>" href="#collapse<%= material.id %>"></span>
     <% end %>
   </div>
   <% if item.children.size > 0 %>
-    <%= render partial: 'materials', locals: { items: item.children, level: item.level, open: open_material } %>
+    <div class="list-group collapse" id="collapse<%= material.id%>">
+      <%= render partial: 'materials', locals: { items: item.children, level: item.level, open: open_material } %>
+    </div>
   <% end %>
 </div>

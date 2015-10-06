@@ -1,8 +1,6 @@
-<div class="list-group">
-  <% items.each do |item| %>
-    <% material = item.material %>
-    <div class="list-group-item">
-      <%= render partial: 'material_item', locals: { material: material, item: item } %>
-    </div>
-  <% end %>
-</div>
+<% items.each do |item| %>
+  <% material = item.material %>
+  <div class="list-group-item">
+    <%= render partial: 'material_item', locals: { material: material, item: item } %>
+  </div>
+<% end %>
