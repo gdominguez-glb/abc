@@ -60,6 +60,13 @@
         <% end %>
       </div>
 
+      <div data-hook='admin_product_form_video_group'>
+        <div class='form-group field' id='product_video_group'>
+          <%= f.label :video_group %>
+          <%= f.collection_select :video_group_id, Spree::VideoGroup.all, :id, :name, { prompt: 'select video group' }, class: 'form-control' %>
+        </div>
+      </div>
+
       <div data-hook="admin_product_form_shipping_categories">
         <%= f.field_container :shipping_categories, class: ['form-group'] do %>
           <%= f.label :shipping_category_id, Spree.t(:shipping_categories) %>
@@ -75,6 +82,15 @@
           <%= f.error_message_on :tax_category %>
         <% end %>
       </div>
+
+      <div data-hook="admin_product_form_product_type">
+        <%= f.field_container :product_type, class: ['form-group'] do %>
+          <%= f.label :product_type, Spree.t(:product_type) %>
+          <%= f.select(:product_type, Spree::Product::PRODUCT_TYPES, { :include_blank => Spree.t('match_choices.none') }, { :class => 'select2' }) %>
+          <%= f.error_message_on :product_type %>
+        <% end %>
+      </div>
+
     </div>
 
   </div>
@@ -158,7 +174,51 @@
     <% end %>
   </div>
 
-  <div data-hook="admin_product_form_additional_fields"></div>
+  <div data-hook='admin_product_form_access_url'>
+    <div class='form-group field' id='product_access_url_field'>
+      <%= f.label :access_url %>
+      <%= f.text_field :access_url, class: 'form-control' %>
+    </div>
+  </div>
+  <div data-hook='admin_product_form_learn_more_url'>
+    <div class='form-group field' id='product_access_url_field'>
+      <%= f.label :learn_more_url %>
+      <%= f.text_field :learn_more_url, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div data-hook="admin_product_form_additional_fields">
+    <% unless @product.parts? %>
+      <div data-hook="admin_product_form_can_be_part">
+        <%= f.field_container :can_be_part do %>
+          <%= f.check_box :can_be_part %>
+          <%= f.label :can_be_part, Spree.t('bundles.admin.label.products.can_be_part') %>
+        <% end %>
+      </div>
+
+      <div data-hook="admin_product_form_individual_sale">
+        <%= f.field_container :individual_sale do %>
+          <%= f.check_box :individual_sale %>
+          <%= f.label :individual_sale, Spree.t('bundles.admin.label.products.individual_sale') %>
+        <% end %>
+      </div>
+    <% else %>
+      <%= f.hidden_field :can_be_part, value: 0 %>
+      <%= f.hidden_field :individual_sale, value: 1 %>
+    <% end %>
+    <div data-hook='admin_product_form_license_text'>
+      <div class='form-group field' id='product_license_text_field'>
+        <%= f.label :license_text %>
+        <%= f.text_area :license_text, class: 'form-control' %>
+      </div>
+    </div>
+    <div data-hook='admin_product_form_license_length'>
+      <div class='form-group field' id='product_license_length_field'>
+        <%= f.label :license_length_in_days %>
+        <%= f.number_field :license_length, class: 'form-control' %>
+      </div>
+    </div>
+  </div>
 
 </div>
 
