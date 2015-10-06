@@ -16,6 +16,13 @@
 .panel-heading {
 	border-bottom-right-radius: 3px;
 	border-bottom-left-radius: 3px;
+
+	.fa-chevron-up {
+		@include transition(transform, .3s);
+	  &.collapsed {
+	    @include rotate(180deg);
+	  }
+	}
 }
 
 // Contextual Variations
