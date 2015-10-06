@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   use_doorkeeper
   mount Spree::Core::Engine, at: '/store'
 
-  devise_for :user,
+  devise_for :spree_user,
              class_name: 'Spree::User',
              controllers: {
                             sessions: 'spree/admin/user_sessions',
@@ -25,7 +25,7 @@ Rails.application.routes.draw do
                            sign_out: 'logout'
                          }
 
-  devise_scope :user do
+  devise_scope :spree_user do
     get 'become/:id', action: 'become',
                       controller: 'spree/user_sessions', as: 'become'
   end

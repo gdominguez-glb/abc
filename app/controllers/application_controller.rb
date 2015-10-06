@@ -15,6 +15,22 @@ class ApplicationController < ActionController::Base
     http_basic_authenticate_with name: ENV['auth_username'], password: ENV['auth_password']
   end
 
+  def signed_in_root_path(resource_or_scope)
+    if resource_or_scope.is_a?(Spree::User)
+      path_for_spree_user(resource_or_scope)
+    else
+      '/'
+    end
+  end
+
+  def after_sign_out_path_for(_resource_or_scope)
+    '/'
+  end
+
+  def path_for_spree_user(user)
+    user.admin? ? '/store/admin' : '/account'
+  end
+
   protected
 
   def authenticate_user!
