@@ -13,30 +13,16 @@
 	}
 }
 
-.panel-group {
-	.panel-heading + .panel-collapse {
-
-		> .list-group {
-			border-top: 1px solid $dark-blue;
-		}
-	}
-}
-
 .panel-heading {
 	border-bottom-right-radius: 3px;
 	border-bottom-left-radius: 3px;
 }
 
-.panel-default {
-	border: 1px solid $dark-blue;
-
-	.list-group-item {
-		border: 1px solid $dark-blue;
-		@extend .sans-serif;
-	}
-}
-
 // Contextual Variations
+
+.panel-default {
+  @include panel-variant($panel-default-border, $panel-default-text, $panel-default-heading-bg, $panel-default-border);
+}
 
 .panel-primary {
   @include panel-variant($panel-primary-border, $panel-primary-text, $panel-primary-heading-bg, $panel-primary-border);

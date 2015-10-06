@@ -32,6 +32,10 @@ $gray-light: #aaa;
 $gray-lighter: #eee;
 
 // Panels
+$panel-default-text:          $brand-primary;
+$panel-default-border:        $brand-primary;
+$panel-default-heading-bg:    $light-plum;
+
 $panel-primary-text:          #fff;
 $panel-primary-border:        $brand-primary;
 $panel-primary-heading-bg:    $brand-primary;
