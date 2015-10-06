@@ -25,6 +25,18 @@
 	}
 }
 
+.panel-primary {
+	> .panel-heading {
+		.fa-chevron-up {
+			font-size: 35px;
+
+			@media screen and (min-width: $screen-sm-min) {
+				margin: 27px 10px 0 0;
+			}
+		}
+	}
+}
+
 // Contextual Variations
 
 .panel-default {
