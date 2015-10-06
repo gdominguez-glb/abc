@@ -1,11 +1,17 @@
 <div class="panel panel-default" data-product-id="<%= product.id %>" id="product<%= product.id %>">
   <div class="panel-heading">
-    <p><%= product.free? ? 'Free' : 'Paid' %></p>
-    <h3><%= product.name %></h3>
-    <span class="glyphicon glyphicon-chevron-down open-product" data-toggle="collapse" data-parent="#product<%= product.id %>" href="#collapse<%= product.id %>"></span>
+    <div class="row">
+      <div class="col-sm-10">
+        <p><%= product.free? ? 'Free' : 'Paid' %></p>
+        <h3><%= product.name %></h3>
+      </div>
+      <div class="col-sm-2 text-right-sm">
+        <span class="glyphicon glyphicon-chevron-down open-product" data-toggle="collapse" data-parent="#product<%= product.id %>" href="#collapse<%= product.id %>"></span>
+      </div>
+    </div>
   </div>
   <% open_product = @opened_product_ids.include?(product.id) %>
-  <div id="collapse<%= product.id %>" class="panel-body materials <%= 'show-materials' if open_product %>">
+  <div id="collapse<%= product.id %>" class="panel-body collapse">
     <% nested_materials(product.materials.order('lft asc')).each do |item| %>
       <% material = item.material %>
       <% next if !show_grade_material?(product, material) %>
