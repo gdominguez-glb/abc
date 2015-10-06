@@ -38,6 +38,7 @@
           var pos = $("[data-product-id='<%= params[:opened_product_id] %>']").offset().top;
           $('body, html').animate({scrollTop: pos});
         <% end %>
+
         function trackProductMaterial(product_id, material_id) {
           $.ajax({
             url: '/materials/track',
@@ -54,14 +55,12 @@
           });
         }
 
-        $('.open-product').click(function(e){
+        $('.fa-chevron-up').click(function(e){
           e.preventDefault();
           $this = $(e.target);
           $product_wrapper = $this.closest('.product');
-          $this.toggleClass('rotate-icon');
-          $product_wrapper.find('.materials').toggleClass('show-materials')
           product_id = $product_wrapper.attr('data-product-id');
-          if ($product_wrapper.find('.materials').hasClass('show-materials')) {
+          if ($product_wrapper.find('.panel-body').hasClass('in')) {
             trackProductMaterial(product_id);
           } else {
             untrackProduct(product_id);
@@ -70,14 +69,14 @@
 
         $('body').on('change', "input[type=checkbox]", function(e){
           var checked = $(this).is(':checked');
-          $.each($(this).parent().find('.sub-materials').find("input[type='checkbox']"), function(index, el){
+          $.each($(this).closest('.panel-heading').next('.list-group').find("input[type='checkbox']"), function(index, el){
             $(el).prop('checked', checked);
           })
         });
 
         $('body').on('click', '.download-selected-btn', function(e) {
           e.preventDefault();
-          $product_wrapper = $(this).closest('.product');
+          $product_wrapper = $(this).closest('.panel');
           $url = $(e.target).attr('href');
           var material_ids = [];
           $.each($product_wrapper.find("input[type='checkbox']:checked"), function(index, el){
@@ -106,23 +105,17 @@
           });
         });
 
-        $(".toggler").click(function() {
+        $('.fa-chevron-up').click(function() {
           $toggler         = $(this)
-          $sub             = $toggler.next('.sub-container');
-          $product_wrapper = $toggler.closest('.product');
+          $sub             = $toggler.closest('.panel-heading').next('.collapse');
+          $product_wrapper = $toggler.closest('.panel');
 
           product_id = $product_wrapper.attr('data-product-id');
           material_id = $toggler.attr('data-material-id');
 
-          if ($toggler.hasClass('glyphicon-chevron-up')) {
-            $toggler.removeClass('glyphicon-chevron-up');
-            $toggler.addClass('glyphicon-chevron-down');
-            $sub.addClass('hidden');
+          if ($toggler.hasClass('collapsed')) {
             untrackProduct(product_id, material_id);
           } else {
-            $toggler.addClass('glyphicon-chevron-up');
-            $toggler.removeClass('glyphicon-chevron-down');
-            $sub.removeClass('hidden');
             trackProductMaterial(product_id, material_id);
           }
         });
