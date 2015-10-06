@@ -1,11 +1,11 @@
-<div class="product clearfix" data-product-id="<%= product.id %>">
-  <div class="product-head">
+<div class="panel panel-default" data-product-id="<%= product.id %>">
+  <div class="panel-heading">
     <p><%= product.free? ? 'Free' : 'Paid' %></p>
     <h3><%= product.name %></h3>
     <span class="glyphicon glyphicon-chevron-down open-product"></span>
   </div>
   <% open_product = @opened_product_ids.include?(product.id) %>
-  <div class="materials <%= 'show-materials' if open_product %>">
+  <div class="materials <%= 'show-materials' if open_product %> panel-body">
     <% nested_materials(product.materials.order('lft asc')).each do |item| %>
       <% material = item.material %>
       <% next if !show_grade_material?(product, material) %>

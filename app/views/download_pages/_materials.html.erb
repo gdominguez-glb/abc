@@ -1,10 +1,8 @@
-<div class="sub-container <%= level.odd? ? 'odd' : 'even' %> <%= open ? '' : 'hidden' %>">
-  <div class="sub-materials clearfix">
-    <% items.each do |item| %>
-      <% material = item.material %>
-      <div class="sub-material clearfix">
-        <%= render partial: 'material_item', locals: { material: material, item: item } %>
-      </div>
-    <% end %>
-  </div>
+<div class="list-group">
+  <% items.each do |item| %>
+    <% material = item.material %>
+    <div class="list-group-item">
+      <%= render partial: 'material_item', locals: { material: material, item: item } %>
+    </div>
+  <% end %>
 </div>
