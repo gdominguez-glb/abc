@@ -21,7 +21,9 @@ marketing_templates:
           <div class="vertical-center">
             <h6><%= title %></h6>
             <p><%= body_text %></p>
-            <a class="btn btn-default btn-block-xs" href="<%= button_link %>"><%= button_title %></a>
+            <% if button_title.present? && button_link.present? %>
+              <a class="btn btn-default btn-block-xs" href="<%= button_link %>"><%= button_title %></a>
+            <% end %>
           </div>
         </div>
         <div class="col-sm-6 col-img-full" style="background-image: url('<%= image_url %>')">
@@ -41,7 +43,9 @@ marketing_templates:
           <div class="vertical-center">
             <h6><%= title %></h6>
             <p><%= body_text %></p>
-            <a class="btn btn-default btn-block-xs" href="<%= button_link %>"><%= button_title %></a>
+            <% if button_title.present? && button_link.present? %>
+              <a class="btn btn-default btn-block-xs" href="<%= button_link %>"><%= button_title %></a>
+            <% end %>
           </div>
         </div>
       </section>
@@ -56,8 +60,12 @@ marketing_templates:
           <div class="vertical-center">
             <h6><%= title %></h6>
             <p><%= body_text %></p>
-            <a class="btn btn-default btn-block-xs margin-bottom-m" href="<%= button_1_link %>"><%= button_1_title %></a>
-            <a class="btn btn-default btn-block-xs margin-bottom-m" href="<%= button_2_link %>"><%= button_2_title %></a>
+            <% if button_1_title.present? && button_1_link.present? %>
+              <a class="btn btn-default btn-block-xs margin-bottom-m" href="<%= button_1_link %>"><%= button_1_title %></a>
+            <% end %>
+            <% if button_2_title.present? && button_2_link.present? %>
+              <a class="btn btn-default btn-block-xs margin-bottom-m" href="<%= button_2_link %>"><%= button_2_title %></a>
+            <% end %>
           </div>
         </div>
       </section>
@@ -69,7 +77,9 @@ marketing_templates:
         <div class="col-sm-12 col-lg-6 col-lg-offset-3">
           <h6><%= title %></h6>
           <p><%= body_text %></p>
-          <a class="btn btn-default btn-block-xs" href="<%= button_link %>"><%= button_title %></a>
+          <% if button_title.present? && button_link.present? %>
+            <a class="btn btn-default btn-block-xs" href="<%= button_link %>"><%= button_title %></a>
+          <% end %>
         </div>
       </section>
 
@@ -82,7 +92,9 @@ marketing_templates:
             <div class="vertical-center">
               <h6><%= title %></h6>
               <p><%= body_text %></p>
-              <a class="btn btn-default btn-block-xs margin-bottom-s" href="<%= button_link %>"><%= button_title %></a>
+              <% if button_title.present? && button_link.present? %>
+                <a class="btn btn-default btn-block-xs margin-bottom-s" href="<%= button_link %>"><%= button_title %></a>
+              <% end %>
             </div>
           </div>
         </div>
@@ -95,16 +107,22 @@ marketing_templates:
         <div class="col-sm-4">
           <h6><%= title_1 %></h6>
           <p><%= body_text_1 %></p>
-          <a class="btn btn-default btn-block-xs" href="<%= button_link_1 %>"><%= button_title_1 %></a>
+          <% if button_title_1.present? && button_link_1.present? %>
+            <a class="btn btn-default btn-block-xs" href="<%= button_link_1 %>"><%= button_title_1 %></a>
+          <% end %>
         </div>
         <div class="col-sm-4">
           <h6><%= title_2 %></h6>
           <p><%= body_text_2 %></p>
-          <a class="btn btn-default btn-block-xs" href="<%= button_link_2 %>"><%= button_title_2 %></a>
+          <% if button_title_2.present? && button_link_2.present? %>
+            <a class="btn btn-default btn-block-xs" href="<%= button_link_2 %>"><%= button_title_2 %></a>
+          <% end %>
         </div>
         <div class="col-sm-4">
           <h6><%= title_3 %></h6>
           <p><%= body_text_3 %></p>
-          <a class="btn btn-default btn-block-xs" href="<%= button_link_3 %>"><%= button_title_3 %></a>
+          <% if button_title_3.present? && button_link_3.present? %>
+            <a class="btn btn-default btn-block-xs" href="<%= button_link_3 %>"><%= button_title_3 %></a>
+          <% end %>
         </div>
       </section>
