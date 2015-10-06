@@ -5,30 +5,9 @@
       <a data-toggle="collapse" data-parent="#categories" href="#collapse<%= taxonomy.name %>"><%= taxonomy.name %></a>
     </h4>
   </div>
-  <% selected_taxons = taxonomy.root.children.where(id: params[:taxon_ids]) %>
-  <!--uncomment next line-->
-  <%# if selected_taxons.count > 0 %>
+  <%# <% selected_taxons = taxonomy.root.children.where(id: params[:taxon_ids]) %1> %>
   <div id="collapse<%= taxonomy.name %>" class="panel-collapse collapse">
-    <ul class="list-group">
-
-      <li class="list-group-item">Lorem</li>
-      <li class="list-group-item">Lorem</li>
-      <li class="list-group-item">Lorem</li>
-      <li class="list-group-item">Lorem</li>
-      <li class="list-group-item">Lorem</li>
-
-      <% selected_taxons.each do |selected_taxon| %>
-        <span class="selected-taxon">
-        <%= selected_taxon.name %>
-        <%= link_to params.merge(taxon_ids: (params[:taxon_ids] - [selected_taxon.id.to_s])) do %>
-          <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-        <% end %>
-        </span>
-      <% end %>
-    </ul>
+    <%= video_gallery_taxons_tree(taxonomy.root, @taxon, taxonomy.allow_multiple_taxons_selected) %>
   </div>
-  <!--uncomment next two lines-->
-  <%# end %>
-  <%#= video_gallery_taxons_tree(taxonomy.root, @taxon, taxonomy.allow_multiple_taxons_selected) %>
 </div>
 <% end %>
