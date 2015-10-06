@@ -31,6 +31,15 @@ $gray: $steel-gray;
 $gray-light: #aaa;
 $gray-lighter: #eee;
 
+// Panels
+$panel-primary-text:          #fff;
+$panel-primary-border:        $brand-primary;
+$panel-primary-heading-bg:    $brand-primary;
+
+$panel-info-text:             #000;
+$panel-info-border:           darken($gray-lighter, 1%);
+$panel-info-heading-bg:       darken($gray-lighter, 1%);
+
 // Mixins
 @mixin button-bg($bg) {
   background: $bg;

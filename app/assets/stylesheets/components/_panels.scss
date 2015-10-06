@@ -5,17 +5,15 @@
 //
 // *************************************
 
-.panel-default {
-	border: 1px solid $dark-blue;
-
-	.list-group-item {
-		border: 1px solid $dark-blue;
-		@extend .sans-serif;
+.panel {
+  .panel {
+		.panel {
+			margin-bottom: 0;
+		}
 	}
 }
 
 .panel-group {
-
 	.panel-heading + .panel-collapse {
 
 		> .list-group {
@@ -29,10 +27,21 @@
 	border-bottom-left-radius: 3px;
 }
 
-.panel {
-  .panel {
-		.panel {
-			margin-bottom: 0;
-		}
+.panel-default {
+	border: 1px solid $dark-blue;
+
+	.list-group-item {
+		border: 1px solid $dark-blue;
+		@extend .sans-serif;
 	}
+}
+
+// Contextual Variations
+
+.panel-primary {
+  @include panel-variant($panel-primary-border, $panel-primary-text, $panel-primary-heading-bg, $panel-primary-border);
+}
+
+.panel-info {
+  @include panel-variant($panel-info-border, $panel-info-text, $panel-info-heading-bg, $panel-info-border);
 }
