@@ -17,6 +17,13 @@
         <% if(fields[i].input_type == 'text_area') { %>
           <textarea data-name="<%= fields[i].name %>" rows="3" class="form-control"><%= data[fields[i].name]%></textarea>
         <% } %>
+        <% if(fields[i].input_type == 'select') { %>
+          <select name="" data-name="<%= fields[i].name %>" class="form-control">
+            <% for(var j=0; j < fields[i].input_options.length; j ++) { %>
+              <option value="<%= fields[i].input_options[j] %>"  <% if(data[ fields[i].name ] == fields[i].input_options[j]) { %> selected <% } %>  ><%= fields[i].input_options[j] %></option>
+            <% } %>
+          </select>
+        <% } %>
       </div>
     <% } %>
   </div>
