@@ -8,11 +8,17 @@
     <%= content_tag :li, :class => ('active' if current == 'Product Details') do %>
       <%= link_to_with_icon 'edit', Spree.t(:details), edit_admin_product_url(@product) %>
     <% end if can?(:admin, Spree::Product) %>
-    <%= content_tag :li, class: ('active' if current == Spree.t('bundles.admin.sidebar')) do %>
-      <%= link_to_with_icon 'puzzle-piece', Spree.t('bundles.admin.sidebar'), admin_product_parts_path(@product) %>
+
+    <% if @product.product_type == 'bundle' %>
+      <%= content_tag :li, class: ('active' if current == Spree.t('bundles.admin.sidebar')) do %>
+        <%= link_to_with_icon 'puzzle-piece', Spree.t('bundles.admin.sidebar'), admin_product_parts_path(@product) %>
+      <% end %>
     <% end %>
-    <%= content_tag :li, class: ('active' if current == 'Materials') do %>
-      <%= link_to_with_icon 'cloud', 'Materials', admin_product_materials_path(@product) %>
+
+    <% if @product.product_type == 'multiple download' %>
+      <%= content_tag :li, class: ('active' if current == 'Materials') do %>
+        <%= link_to_with_icon 'cloud', 'Materials', admin_product_materials_path(@product) %>
+      <% end %>
     <% end %>
   </ul>
 <% end %>
