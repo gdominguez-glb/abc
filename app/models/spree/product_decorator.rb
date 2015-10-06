@@ -90,15 +90,13 @@ Spree::Product.class_eval do
 
   if !defined?(PRODUCT_TYPES)
     PRODUCT_TYPES = [
-      'Curriculum',
-      'Video',
-      'Pdf',
-      'Other'
+      'single download (legacy)',
+      'video',
+      'multiple download',
+      'bundle',
+      'partner',
+      'other'
     ]
-  end
-
-  PRODUCT_TYPES.each do |product_type|
-    scope product_type.underscore.pluralize, ->{ where(product_type: product_type) }
   end
 
   def free?
