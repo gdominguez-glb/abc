@@ -160,8 +160,19 @@ a {
   }
 
   p & {
-    font-family: 'Lora', serif;
     text-transform: none;
+    @extend .sans-serif;
+  }
+
+  &.text-normal {
+    font-weight: normal;
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: $dark-blue;
+      text-decoration: underline;
+    }
   }
 }
 
