@@ -14,6 +14,26 @@ marketing_templates:
       </section>
 
   -
+    name: '50/50 Full-Bleed Image Left'
+    content: !xml |
+      <section class="row <%= background_color %>-bg">
+        <div class="col-sm-6 col-img-full" style="background-image: url('<%= image_url %>')">
+        </div>
+        <div class="col-sm-6 col-centered-content">
+          <div class="vertical-center">
+            <h6><%= title %></h6>
+            <p><%= body_text %></p>
+            <% if button_1_title.present? && button_1_link.present? %>
+              <a class="btn btn-default btn-block-xs margin-bottom-m" href="<%= button_1_link %>"><%= button_1_title %></a>
+            <% end %>
+            <% if button_2_title.present? && button_2_link.present? %>
+              <a class="btn btn-default btn-block-xs margin-bottom-m" href="<%= button_2_link %>"><%= button_2_title %></a>
+            <% end %>
+          </div>
+        </div>
+      </section>
+
+  -
     name: '50/50 Full-Bleed Image Right'
     content: !xml |
       <section class="row <%= background_color %>-bg">
@@ -51,21 +71,18 @@ marketing_templates:
       </section>
 
   -
-    name: '50/50 Full-Bleed Image Left'
+    name: 'Image Background, Text Left'
     content: !xml |
-      <section class="row <%= background_color %>-bg">
-        <div class="col-sm-6 col-img-full" style="background-image: url('<%= image_url %>')">
-        </div>
-        <div class="col-sm-6 col-centered-content">
-          <div class="vertical-center">
-            <h6><%= title %></h6>
-            <p><%= body_text %></p>
-            <% if button_1_title.present? && button_1_link.present? %>
-              <a class="btn btn-default btn-block-xs margin-bottom-m" href="<%= button_1_link %>"><%= button_1_title %></a>
-            <% end %>
-            <% if button_2_title.present? && button_2_link.present? %>
-              <a class="btn btn-default btn-block-xs margin-bottom-m" href="<%= button_2_link %>"><%= button_2_title %></a>
-            <% end %>
+      <section class="row row-img-full image-bg" style="background-image: url('<%= image_url %>')">
+        <div class="row-img-full-content">
+          <div class="col-sm-6 col-centered-content">
+            <div class="vertical-center">
+              <h6><%= title %></h6>
+              <p><%= body_text %></p>
+              <% if button_title.present? && button_link.present? %>
+                <a class="btn btn-default btn-block-xs margin-bottom-s" href="<%= button_link %>"><%= button_title %></a>
+              <% end %>
+            </div>
           </div>
         </div>
       </section>
@@ -80,23 +97,6 @@ marketing_templates:
           <% if button_title.present? && button_link.present? %>
             <a class="btn btn-default btn-block-xs" href="<%= button_link %>"><%= button_title %></a>
           <% end %>
-        </div>
-      </section>
-
-  -
-    name: 'Image Background, Text Left'
-    content: !xml |
-      <section class="row row-img-full image-bg" style="background-image: url('<%= image_url %>')">
-        <div class="row-img-full-content">
-          <div class="col-sm-6 col-centered-content">
-            <div class="vertical-center">
-              <h6><%= title %></h6>
-              <p><%= body_text %></p>
-              <% if button_title.present? && button_link.present? %>
-                <a class="btn btn-default btn-block-xs margin-bottom-s" href="<%= button_link %>"><%= button_title %></a>
-              <% end %>
-            </div>
-          </div>
         </div>
       </section>
 

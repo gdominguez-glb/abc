@@ -10,6 +10,36 @@
   - :name: background_image_url
     :label: Background Image Url
     :input_type: text
+- :name: 50/50 Full-Bleed Image Left
+  :fields:
+  - :name: title
+    :label: Title
+    :input_type: text
+  - :name: body_text
+    :label: Body Text
+    :input_type: text_area
+  - :name: background_color
+    :label: Background Color
+    :input_type: select
+    :input_options:
+      - green
+      - blue
+      - cream
+  - :name: button_1_title
+    :label: Button 1 Title
+    :input_type: text
+  - :name: button_1_link
+    :label: Button 1 Link
+    :input_type: text
+  - :name: button_2_title
+    :label: Button 2 Title
+    :input_type: text
+  - :name: button_2_link
+    :label: Button 2 Link
+    :input_type: text
+  - :name: image_url
+    :label: Image Url
+    :input_type: text
 - :name: 50/50 Full-Bleed Image Right
   :fields:
   - :name: title
@@ -58,7 +88,7 @@
   - :name: image_url
     :label: Image Url
     :input_type: text
-- :name: 50/50 Full-Bleed Image Left
+- :name: Image Background, Text Left
   :fields:
   - :name: title
     :label: Title
@@ -66,24 +96,11 @@
   - :name: body_text
     :label: Body Text
     :input_type: text_area
-  - :name: background_color
-    :label: Background Color
-    :input_type: select
-    :input_options:
-      - green
-      - blue
-      - cream
-  - :name: button_1_title
-    :label: Button 1 Title
+  - :name: button_title
+    :label: Button Title
     :input_type: text
-  - :name: button_1_link
-    :label: Button 1 Link
-    :input_type: text
-  - :name: button_2_title
-    :label: Button 2 Title
-    :input_type: text
-  - :name: button_2_link
-    :label: Button 2 Link
+  - :name: button_link
+    :label: Button Link
     :input_type: text
   - :name: image_url
     :label: Image Url
@@ -108,23 +125,6 @@
     :input_type: text
   - :name: button_link
     :label: Button Link
-    :input_type: text
-- :name: Image Background, Text Left
-  :fields:
-  - :name: title
-    :label: Title
-    :input_type: text
-  - :name: body_text
-    :label: Body Text
-    :input_type: text_area
-  - :name: button_title
-    :label: Button Title
-    :input_type: text
-  - :name: button_link
-    :label: Button Link
-    :input_type: text
-  - :name: image_url
-    :label: Image Url
     :input_type: text
 - :name: 3-Column Text
   :fields:
