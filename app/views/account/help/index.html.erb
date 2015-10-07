@@ -1,16 +1,14 @@
 <div class="container container-content">
-  <section>
-    <div id="welcome" class="row">
-      <div class="col-xs-12">
-        <h1>Account Help Page</h1>
+  <div class="row">
+    <div class="col-sm-10 col-sm-offset-1">
+      <div class="row">
+        <div class="col-xs-12 page-header">
+          <h1>Account Help Page</h1>
+        </div>
       </div>
-    </div>
-  </section>
-  <section class="callout bottom-space">
-    <div class="row">
-      <div id="dashboard" class="col-xs-4 col-xs-offset-1">
-        <h2>FAQ Section</h2>
-        <div class="col-xs-12">
+      <div class="row">
+        <div class="col-sm-6">
+          <h2>FAQ Section</h2>
           <ul>
             <li>
               <% @faq_categories.each do |faq_category| %>
@@ -26,11 +24,8 @@
             </li>
           </ul>
         </div>
-      </div>
-
-      <div id="dashboard" class="col-xs-4 col-xs-offset-1">
-        <h2>Contact Section</h2>
-        <div class="col-xs-12 bottom-space">
+        <div class="col-sm-6">
+          <h2>Contact Section</h2>
           <ul>
             <li><h4>Contact Name</h4>
             <ul>
@@ -39,9 +34,9 @@
             </ul>
             </li>
           </ul>
-          <a class="btn btn-primary callout" href="../contact.html" role="button">Learn More</a>
+          <a class="btn btn-primary" href="../contact.html" role="button">Learn More</a>
         </div>
       </div>
     </div>
-  </section>
+  </div>
 </div>
