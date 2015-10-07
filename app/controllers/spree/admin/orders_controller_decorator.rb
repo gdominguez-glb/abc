@@ -42,4 +42,7 @@ Spree::Admin::OrdersController.class_eval do
     params[:q][:created_at_gt] = created_at_gt
     params[:q][:created_at_lt] = created_at_lt
   end
+
+  def edit
+  end
 end
