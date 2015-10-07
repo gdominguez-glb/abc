@@ -56,7 +56,7 @@ marketing_templates:
       <section class="row <%= background_color %>-bg">
         <div class="col-sm-6 col-centered-content">
           <div class="vertical-center">
-            <img src="<%= image_url %>" class="img-responsive img-book margin-sm-bottom-xl">
+            <img src="<%= image_url %>" class="img-responsive margin-sm-bottom-xl">
           </div>
         </div>
         <div class="col-sm-6 col-centered-content">
@@ -76,16 +76,16 @@ marketing_templates:
       <section class="row <%= background_color %>-bg">
         <div class="col-sm-6 col-centered-content">
           <div class="vertical-center">
-            <img src="<%= image_url %>" class="img-responsive img-book margin-sm-bottom-xl">
-          </div>
-        </div>
-        <div class="col-sm-6 col-centered-content">
-          <div class="vertical-center">
             <h6><%= title %></h6>
             <p><%= body_text %></p>
             <% if button_title.present? && button_link.present? %>
               <a class="btn btn-default btn-block-xs" href="<%= button_link %>"><%= button_title %></a>
             <% end %>
+          </div>
+        </div>
+        <div class="col-sm-6 col-centered-content">
+          <div class="vertical-center">
+            <img src="<%= image_url %>" class="img-responsive">
           </div>
         </div>
       </section>
@@ -96,7 +96,7 @@ marketing_templates:
       <section class="row <%= background_color %>-bg">
         <div class="col-sm-6 col-centered-content">
           <div class="vertical-center">
-            <img src="<%= image_url %>" class="img-responsive img-book margin-sm-bottom-xl">
+            <img src="<%= image_url %>" class="img-responsive img-shadow margin-sm-bottom-xl">
           </div>
         </div>
         <div class="col-sm-6 col-centered-content">
@@ -116,16 +116,16 @@ marketing_templates:
       <section class="row <%= background_color %>-bg">
         <div class="col-sm-6 col-centered-content">
           <div class="vertical-center">
-            <img src="<%= image_url %>" class="img-responsive img-book margin-sm-bottom-xl">
-          </div>
-        </div>
-        <div class="col-sm-6 col-centered-content">
-          <div class="vertical-center">
             <h6><%= title %></h6>
             <p><%= body_text %></p>
             <% if button_title.present? && button_link.present? %>
               <a class="btn btn-default btn-block-xs" href="<%= button_link %>"><%= button_title %></a>
             <% end %>
+          </div>
+        </div>
+        <div class="col-sm-6 col-centered-content">
+          <div class="vertical-center">
+            <img src="<%= image_url %>" class="img-responsive img-shadow">
           </div>
         </div>
       </section>
@@ -156,16 +156,16 @@ marketing_templates:
       <section class="row <%= background_color %>-bg">
         <div class="col-sm-6 col-centered-content">
           <div class="vertical-center">
-            <img src="<%= image_url %>" class="img-responsive img-book margin-sm-bottom-xl">
-          </div>
-        </div>
-        <div class="col-sm-6 col-centered-content">
-          <div class="vertical-center">
             <h6><%= title %></h6>
             <p><%= body_text %></p>
             <% if button_title.present? && button_link.present? %>
               <a class="btn btn-default btn-block-xs" href="<%= button_link %>"><%= button_title %></a>
             <% end %>
+          </div>
+        </div>
+        <div class="col-sm-6 col-centered-content">
+          <div class="vertical-center">
+            <img src="<%= image_url %>" class="img-responsive img-book">
           </div>
         </div>
       </section>
@@ -187,25 +187,25 @@ marketing_templates:
         </div>
       </section>
 
-    -
-      name: 'Image Background, Text Right'
-      content: !xml |
-        <section class="row <%= background_color %>-bg">
-          <div class="col-sm-6 col-centered-content">
-            <div class="vertical-center">
-              <img src="<%= image_url %>" class="img-responsive img-book margin-sm-bottom-xl">
-            </div>
+  -
+    name: 'Image Background, Text Right'
+    content: !xml |
+      <section class="row <%= background_color %>-bg">
+        <div class="col-sm-6 col-centered-content">
+          <div class="vertical-center">
+            <img src="<%= image_url %>" class="img-responsive img-book margin-sm-bottom-xl">
           </div>
-          <div class="col-sm-6 col-centered-content">
-            <div class="vertical-center">
-              <h6><%= title %></h6>
-              <p><%= body_text %></p>
-              <% if button_title.present? && button_link.present? %>
-                <a class="btn btn-default btn-block-xs" href="<%= button_link %>"><%= button_title %></a>
-              <% end %>
-            </div>
+        </div>
+        <div class="col-sm-6 col-centered-content">
+          <div class="vertical-center">
+            <h6><%= title %></h6>
+            <p><%= body_text %></p>
+            <% if button_title.present? && button_link.present? %>
+              <a class="btn btn-default btn-block-xs" href="<%= button_link %>"><%= button_title %></a>
+            <% end %>
           </div>
-        </section>
+        </div>
+      </section>
 
   -
     name: 'Full Width Text'
