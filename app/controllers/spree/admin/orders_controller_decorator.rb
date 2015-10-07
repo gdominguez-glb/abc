@@ -29,7 +29,7 @@ Spree::Admin::OrdersController.class_eval do
       params[:q][:completed_at_lt] = params[:q].delete(:created_at_lt)
     end
 
-    @search = Spree::Order.accessible_by(current_ability, :index).ransack(params[:q])
+    @search = Spree::Order.includes(user: [:school_district]).accessible_by(current_ability, :index).ransack(params[:q])
 
     # lazyoading other models here (via includes) may result in an invalid query
     # e.g. SELECT  DISTINCT DISTINCT "spree_orders".id, "spree_orders"."created_at" AS alias_0 FROM "spree_orders"
