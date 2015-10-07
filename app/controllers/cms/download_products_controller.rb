@@ -8,7 +8,7 @@ class Cms::DownloadProductsController < Cms::BaseController
 
   def new
     @download_product = @download_page.download_products.build
-    @products = Spree::Product.pdfs
+    @products = Spree::Product.where(product_type: 'multiple download')
   end
 
   def create
