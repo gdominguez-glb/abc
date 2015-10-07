@@ -71,6 +71,106 @@ marketing_templates:
       </section>
 
   -
+    name: '50/50 Content Image Right'
+    content: !xml |
+      <section class="row <%= background_color %>-bg">
+        <div class="col-sm-6 col-centered-content">
+          <div class="vertical-center">
+            <img src="<%= image_url %>" class="img-responsive img-book margin-sm-bottom-xl">
+          </div>
+        </div>
+        <div class="col-sm-6 col-centered-content">
+          <div class="vertical-center">
+            <h6><%= title %></h6>
+            <p><%= body_text %></p>
+            <% if button_title.present? && button_link.present? %>
+              <a class="btn btn-default btn-block-xs" href="<%= button_link %>"><%= button_title %></a>
+            <% end %>
+          </div>
+        </div>
+      </section>
+
+  -
+    name: '50/50 Content Image Shadow Left'
+    content: !xml |
+      <section class="row <%= background_color %>-bg">
+        <div class="col-sm-6 col-centered-content">
+          <div class="vertical-center">
+            <img src="<%= image_url %>" class="img-responsive img-book margin-sm-bottom-xl">
+          </div>
+        </div>
+        <div class="col-sm-6 col-centered-content">
+          <div class="vertical-center">
+            <h6><%= title %></h6>
+            <p><%= body_text %></p>
+            <% if button_title.present? && button_link.present? %>
+              <a class="btn btn-default btn-block-xs" href="<%= button_link %>"><%= button_title %></a>
+            <% end %>
+          </div>
+        </div>
+      </section>
+
+  -
+    name: '50/50 Content Image Shadow Right'
+    content: !xml |
+      <section class="row <%= background_color %>-bg">
+        <div class="col-sm-6 col-centered-content">
+          <div class="vertical-center">
+            <img src="<%= image_url %>" class="img-responsive img-book margin-sm-bottom-xl">
+          </div>
+        </div>
+        <div class="col-sm-6 col-centered-content">
+          <div class="vertical-center">
+            <h6><%= title %></h6>
+            <p><%= body_text %></p>
+            <% if button_title.present? && button_link.present? %>
+              <a class="btn btn-default btn-block-xs" href="<%= button_link %>"><%= button_title %></a>
+            <% end %>
+          </div>
+        </div>
+      </section>
+
+  -
+    name: '50/50 Content Image Book Left'
+    content: !xml |
+      <section class="row <%= background_color %>-bg">
+        <div class="col-sm-6 col-centered-content">
+          <div class="vertical-center">
+            <img src="<%= image_url %>" class="img-responsive img-book margin-sm-bottom-xl">
+          </div>
+        </div>
+        <div class="col-sm-6 col-centered-content">
+          <div class="vertical-center">
+            <h6><%= title %></h6>
+            <p><%= body_text %></p>
+            <% if button_title.present? && button_link.present? %>
+              <a class="btn btn-default btn-block-xs" href="<%= button_link %>"><%= button_title %></a>
+            <% end %>
+          </div>
+        </div>
+      </section>
+
+  -
+    name: '50/50 Content Image Book Right'
+    content: !xml |
+      <section class="row <%= background_color %>-bg">
+        <div class="col-sm-6 col-centered-content">
+          <div class="vertical-center">
+            <img src="<%= image_url %>" class="img-responsive img-book margin-sm-bottom-xl">
+          </div>
+        </div>
+        <div class="col-sm-6 col-centered-content">
+          <div class="vertical-center">
+            <h6><%= title %></h6>
+            <p><%= body_text %></p>
+            <% if button_title.present? && button_link.present? %>
+              <a class="btn btn-default btn-block-xs" href="<%= button_link %>"><%= button_title %></a>
+            <% end %>
+          </div>
+        </div>
+      </section>
+
+  -
     name: 'Image Background, Text Left'
     content: !xml |
       <section class="row row-img-full image-bg" style="background-image: url('<%= image_url %>')">
@@ -86,6 +186,26 @@ marketing_templates:
           </div>
         </div>
       </section>
+
+    -
+      name: 'Image Background, Text Right'
+      content: !xml |
+        <section class="row <%= background_color %>-bg">
+          <div class="col-sm-6 col-centered-content">
+            <div class="vertical-center">
+              <img src="<%= image_url %>" class="img-responsive img-book margin-sm-bottom-xl">
+            </div>
+          </div>
+          <div class="col-sm-6 col-centered-content">
+            <div class="vertical-center">
+              <h6><%= title %></h6>
+              <p><%= body_text %></p>
+              <% if button_title.present? && button_link.present? %>
+                <a class="btn btn-default btn-block-xs" href="<%= button_link %>"><%= button_title %></a>
+              <% end %>
+            </div>
+          </div>
+        </section>
 
   -
     name: 'Full Width Text'
