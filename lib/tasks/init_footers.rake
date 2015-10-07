@@ -9,8 +9,8 @@ namespace :footers do
         sub_links: [
           { name: 'Contact', link: '/contact'},
           { name: 'Mission', link: '/about/mission' },
-          { name: 'Staff', link: '/about/staff' },
-          { name: 'Trustees', link: '/about/trustees' }
+          { name: 'Staff', link: '/staffs' },
+          { name: 'Trustees', link: '/staffs/trustees' }
         ]
       },
       {
