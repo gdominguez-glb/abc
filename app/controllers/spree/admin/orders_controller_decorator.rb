@@ -6,6 +6,8 @@ Spree::Admin::OrdersController.class_eval do
     params[:q][:s] ||= @show_only_completed ? 'completed_at desc' : 'created_at desc'
     params[:q][:completed_at_not_null] = '' unless @show_only_completed
 
+    params[:q][:state_eq] ||= 'complete'
+
     # As date params are deleted if @show_only_completed, store
     # the original date so we can restore them into the params
     # after the search
