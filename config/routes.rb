@@ -58,6 +58,8 @@ Rails.application.routes.draw do
   get 'careers', to: 'jobs#index', as: :jobs
   get 'careers/:id', to: 'jobs#show', as: :job
 
+  resources :staffs, only: [:index, :show]
+
   root 'home#index'
 
   resources :documents, only: [:show]

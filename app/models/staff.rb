@@ -1,4 +1,7 @@
 class Staff < ActiveRecord::Base
+
+  include Displayable
+
   has_attached_file :picture, {
     path:           "/:class/:attachment/:id_partition/:style/:filename",
     url:            ":s3_alias_url",
