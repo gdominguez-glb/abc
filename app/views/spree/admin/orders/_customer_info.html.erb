@@ -1,0 +1,26 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Customer Info</h3>
+  </div>
+
+  <table class="table table-condensed table-bordered" id="order_tab_summary" data-hook>
+    <tbody class="additional-info">
+      <tr>
+        <td width="35%" data-hook>
+          <strong>Name</strong>
+        </td>
+        <td>
+          <span class="label">
+            <%= @order.user.try(:full_name) %>
+          </span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <strong>Email</strong>
+        </td>
+        <td><%= @order.user.try(:email) %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
