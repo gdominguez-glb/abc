@@ -4,6 +4,39 @@ class Spree::LicensedProduct < ActiveRecord::Base
   belongs_to :user, class_name: 'Spree::User'
   belongs_to :product_distribution, class_name: 'Spree::ProductDistribution'
 
+  include SalesforceAccess
+
+  def self.sobject_name
+    'Asset'
+  end
+
+  def self.attributes_from_salesforce_object(sfo)
+    sfo_data = super(sfo)
+    sfo_data.merge!(fulfillment_at: sfo.InstallDate,
+                    expire_at: sfo.UsageEndDate,
+                    quantity: sfo.Quantity)
+    sfo_data
+  end
+
+  def attributes_for_salesforce
+    { 'Product2Id' => product.try(:sf_id_product),
+      'ContactId' => user.try(:id_in_salesforce),
+      'AccountId' => order.try(:user).try(:school_district)
+                     .try(:id_in_salesforce),
+      'Name' => product.try(:name),
+      'SerialNumber' => id,
+      'InstallDate' => self.class.date_to_salesforce(fulfillment_at),
+      'UsageEndDate' => self.class.date_to_salesforce(expire_at),
+      'Quantity' => quantity,
+      'Status' => expire_at.blank? ? 'Lifetime' : nil }
+  end
+
+  # Do not create from salesforce, only try to find a match
+  def self.find_or_create_by_salesforce_object(sfo, &_block)
+    return nil if sfo.blank?
+    matches_salesforce_object(sfo).first
+  end
+
   scope :available, -> {
     where("spree_licensed_products.expire_at is null or spree_licensed_products.expire_at > ?", Time.now).
     where("spree_licensed_products.quantity > 0").
