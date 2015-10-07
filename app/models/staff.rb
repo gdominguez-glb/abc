@@ -6,5 +6,7 @@ class Staff < ActiveRecord::Base
     s3_host_alias:  ENV['s3_bucket_name']
   }
 
+  validates_attachment :picture, presence: true, content_type: { content_type: /\A*\Z/ }
+
   acts_as_list
 end

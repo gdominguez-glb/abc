@@ -24,6 +24,11 @@ namespace :cms do
       post :update_positions
     end
   end
+  resources :staffs do
+    collection do
+      post :update_positions
+    end
+  end
   resources :questions
   resources :help_items
   resources :contacts, only: [:index, :destroy, :edit, :update]
