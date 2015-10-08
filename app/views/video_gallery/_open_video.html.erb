@@ -6,14 +6,14 @@
           <%= link_to play_video_gallery_path(video), remote: true, class: 'play-video-button' do %>
             <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span>
           <% end %>
-          <button class="btn btn-info flip-btn"><i class="fa fa-refresh flip-icon"></i></button>
+          <button class="btn btn-info flip-btn"><i class="fa fa-plus flip-icon"></i></button>
         </div>
         <div class="video-drawer blue-bg flip-back">
           <div class="product-description">
             <%= truncate video.description, length: 300 %>
             <%= link_to 'MORE INFO', video_gallery_path(video), itemprop: 'url', class: 'btn btn-default btn-block margin-top' %>
           </div>
-          <button class="btn btn-info flip-btn"><i class="fa fa-refresh flip-icon"></i></button>
+          <button class="btn btn-info flip-btn"><i class="fa fa-minus flip-icon"></i></button>
         </div>
       </div>
     </div>
