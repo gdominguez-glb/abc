@@ -53,12 +53,17 @@ label {
 }
 
 .input-group {
-    &.collapse {
-      display: none;
-      &.in {
-        display: table;
-      }
+
+  input {
+    padding: 10px;
+  }
+
+  &.collapse {
+    display: none;
+    &.in {
+      display: table;
     }
+  }
 }
 
 .input-group-btn {
