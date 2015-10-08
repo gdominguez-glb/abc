@@ -45,15 +45,17 @@
                   <div class="product-body flip-container">
                     <div class="flipper">
                       <div class="flip-front">
-                        <%= link_to truncate(product.name, length: 50), url, class: 'product-title', itemprop: "name", title: product.name %>
+                        <h5 class="title">
+                          <%= link_to truncate(product.name, length: 50), url, itemprop: "name", title: product.name %>
+                        </h5>
                         <button class="btn btn-info flip-btn">
                           <i class="fa fa-plus flip-icon"></i>
                         </button>
                       </div>
-                      <div class="flip-back blue-bg">
+                      <div class="flip-back">
                         <p><%= product.description %></p>
                         <button class="btn btn-info flip-btn">
-                          <i class="fa fa-plus flip-icon"></i>
+                          <i class="fa fa-minus flip-icon"></i>
                         </button>
                       </div>
                     </div>
