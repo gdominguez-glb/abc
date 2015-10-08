@@ -30,8 +30,17 @@
 
   .product-body {
     min-height: 130px;
-    background-color: $gray-lighter;
     text-align: center;
+
+    .flip-front {
+      padding: 10px;
+      background-color: $gray-lighter;
+    }
+
+    .flip-back {
+      padding: 10px;
+    }
+
   }
 
   .product-title {
