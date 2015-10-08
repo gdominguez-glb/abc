@@ -14,3 +14,12 @@
 //= require_tree .
 //= require spree/frontend/spree_digital
 //= require spree/frontend/spree_better_terms_and_conditions
+
+$(document).ready(function() {
+  var nav = $('.navbar-primary');
+  var subnav = nav.find('.subnav')[0];
+
+  if(subnav === undefined) {
+    nav.addClass('nav-border-bottom');
+  }
+});
