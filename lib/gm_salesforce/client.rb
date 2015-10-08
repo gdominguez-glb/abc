@@ -31,6 +31,7 @@ module GmSalesforce
     end
 
     def self.date_to_salesforce(date)
+      return nil if date.blank?
       date.as_json.gsub(/Z\Z/, '+0000')
     end
 
