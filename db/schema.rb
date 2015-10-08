@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151007004014) do
+ActiveRecord::Schema.define(version: 20151008004848) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -666,6 +666,7 @@ ActiveRecord::Schema.define(version: 20151007004014) do
     t.datetime "updated_at",                       null: false
     t.integer  "position",             default: 0
     t.integer  "material_files_count", default: 0
+    t.string   "link"
   end
 
   create_table "spree_option_types", force: :cascade do |t|

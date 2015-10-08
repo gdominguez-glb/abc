@@ -5,6 +5,11 @@
         <%= material.name %>
       </div>
       <div class="col-xs-5 text-right">
+        <% if material.link.present? %>
+          <%= link_to material.link, target: '_blank' do %>
+            <span class="fa fa-link"></span>
+          <% end %>
+        <% end %>
         <% if item.children.size > 0 || material.material_files_count > 0 %>
           <%= link_to download_material_path(material), remote: true do %>
             <span class="fa fa-download"></span>
