@@ -1,8 +1,20 @@
 <div class="col-md-4">
   <div class="product-wrapper">
-    <div class="product-wrapper-inner">
-      <h5 class="title"><%= product.name %></h5>
-      <p><%= product.description %></p>
+    <div class="product-wrapper-inner flip-container">
+      <div class="flipper">
+        <div class="flip-front">
+          <h5 class="title"><%= product.name %></h5>
+          <button class="btn btn-info flip-btn">
+            <i class="fa fa-plus flip-icon"></i>
+          </button>
+        </div>
+        <div class="flip-back">
+          <p><%= product.description %></p>
+          <button class="btn btn-info flip-btn">
+            <i class="fa fa-minus flip-icon"></i>
+          </button>
+        </div>
+      </div>
     </div>
     <% if product.access_url.present? %>
       <%= link_to 'Launch', "#{product.access_url}?#{{opened_product_id: product.id}.to_param}", class: 'btn btn-link' %>
