@@ -76,6 +76,23 @@
   }
 }
 
+.video-footer {
+  width: 280px;
+  margin: 0 auto;
+
+  @media screen and (min-width: $screen-sm-min) {
+    width: 350px;
+  }
+
+  @media screen and (min-width: $screen-md-min) {
+    width: 250px;
+  }
+
+  @media screen and (min-width: $screen-lg-min) {
+    width: 330px;
+  }
+}
+
 .video-name {
   line-height: 0.8em;
 

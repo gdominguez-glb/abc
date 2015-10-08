@@ -17,15 +17,16 @@
         </div>
       </div>
     </div>
-    <%=  %>
-    <h6 class="video-name">
-      <%= link_to truncate(video.title, length: 50), video_gallery_path(video), class: 'info', itemprop: "title", title: video.title %>
-    </h6>
-    <div class="video-categories">
-      <p><%= video.categories.join(", ") %></p>
-    </div>
-    <div class="video-taxons">
-      <p><%= video.taxons.map(&:name).join(", ") %></p>
+    <div class="video-footer">
+      <h6 class="video-name">
+        <%= link_to truncate(video.title, length: 50), video_gallery_path(video), class: 'info', itemprop: "title", title: video.title %>
+      </h6>
+      <div class="video-categories">
+        <p><%= video.categories.join(", ") %></p>
+      </div>
+      <div class="video-taxons">
+        <p><%= video.taxons.map(&:name).join(", ") %></p>
+      </div>
     </div>
   </div>
 </div>
