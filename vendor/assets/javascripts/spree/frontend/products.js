@@ -8,4 +8,9 @@ $(document).ready(function() {
 			$(this).text('Free');
 		}
 	});
+
+	var flipBtn = $('.flip-btn');
+  flipBtn.on('click', function() {
+    $(this).closest('.flip-container').toggleClass('flip');
+  });
 });
