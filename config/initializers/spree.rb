@@ -66,3 +66,5 @@ Spree::PermittedAttributes.user_attributes.concat([
 Spree::PermittedAttributes.source_attributes.concat([
   :po_number, :person_to_receive_license
 ])
+
+Spree::PermittedAttributes.checkout_attributes.concat([ :license_admin_email, :distribute_option ])
