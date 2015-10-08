@@ -51,6 +51,15 @@
 .product-wrapper-inner {
   min-height: 130px;
 
+  &.flip-container,
+  .flip-front,
+  .flip-back {
+    @media screen and (min-width: 600px) {
+      width: 250px;
+      height: 200px;
+    }
+  }
+
   .flip-front {
     padding: 20px 15px 15px 15px;
     background-color: $gray-lighter;
