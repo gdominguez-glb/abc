@@ -1,6 +1,10 @@
 Spree::Order.class_eval do
   include SalesforceAccess
 
+  attr_accessor :distribute_option
+
+  validates_format_of :license_admin_email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, if: ->(o) { o.distribute_option == 'someone' }
+
   def self.sobject_name
     'Order'
   end

@@ -50,6 +50,20 @@
 
 <hr />
 
+<% if @order.multi_license? %>
+
+  <p class="alert alert-info">You are checking out with multiple licenses for a single product. Would you like to distribute these licenses yourself, or would you like to assign someone else distribute them? </p>
+  <div class="form-group">
+    <label><%= form.radio_button :distribute_option, 'self' %>  I will distribute these licenses </label>
+    <label><%= form.radio_button :distribute_option, 'someone' %>  Someone else will distribute these licenses </label>
+    <p id="distribute_to_self_tip" class="help-block <%= 'hidden' if form.object.distribute_option != 'self' %>">Great! After you complete your purchase you can access "License Management" from your account dashboard in order to distribute access to this product.</p>
+  </div>
+  <div class="form-group <%= 'hidden' if form.object.distribute_option != 'someone' %>" id="distribute_to_someone_input">
+    <label>License Admin Email Address</label>
+    <%= form.text_field :license_admin_email, class: 'form-control' %>
+  </div>
+<% end %>
+
 <table id='line-items' class="table" data-hook="order_details">
   <col width="15%" valign="middle" halign="center">
   <col width="70%" valign="middle">
@@ -144,3 +158,20 @@
     <% end %>
   </tfoot>
 </table>
+
+<script type="text/javascript">
+  $(function(){
+    $('input[name="order[distribute_option]"]').change(function(e){
+      var value = $('input[name="order[distribute_option]"]:checked').val();
+
+      $('#distribute_to_self_tip').addClass('hidden');
+      $('#distribute_to_someone_input').addClass('hidden');
+
+      if(value == 'self') {
+        $('#distribute_to_self_tip').removeClass('hidden');
+      } else if (value == 'someone') {
+        $('#distribute_to_someone_input').removeClass('hidden');
+      }
+    });
+  });
+</script>
