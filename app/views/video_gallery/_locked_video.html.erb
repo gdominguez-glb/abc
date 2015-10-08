@@ -4,7 +4,7 @@
       <div class="flipper">
         <div class="video-image-wrapper flip-front">
           <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
-          <button class="btn btn-info flip-btn"><i class="fa fa-refresh flip-icon"></i></button>
+          <button class="btn btn-info flip-btn"><i class="fa fa-plus flip-icon"></i></button>
         </div>
         <div class="video-drawer blue-bg flip-back">
           <div class="product-description">
@@ -15,12 +15,14 @@
           <%= link_to unlock_video_gallery_path(video), class: 'btn btn-default btn-block', remote: true do %>
             Unlock Content
           <% end %>
-          <button class="btn btn-info flip-btn"><i class="fa fa-refresh flip-icon"></i></button>
+          <button class="btn btn-info flip-btn"><i class="fa fa-minus flip-icon"></i></button>
         </div>
       </div>
     </div>
-    <h6 class="video-name"><%= truncate(video.title, length: 50) %></h6>
-    <div class="video-categories"><%= video.categories.join(", ") %></div>
-    <div class="video-taxons"><%= video.taxons.map(&:name).join(", ") %></div>
+    <div class="video-footer">
+      <h6 class="video-name"><%= truncate(video.title, length: 50) %></h6>
+      <div class="video-categories"><%= video.categories.join(", ") %></div>
+      <div class="video-taxons"><%= video.taxons.map(&:name).join(", ") %></div>
+    </div>
   </div>
 </div>

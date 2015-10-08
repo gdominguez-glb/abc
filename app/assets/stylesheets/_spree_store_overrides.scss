@@ -30,9 +30,17 @@
 
   .product-body {
     min-height: 130px;
-    padding: 20px 15px 15px;
-    background-color: $gray-lighter;
     text-align: center;
+
+    .flip-front {
+      padding: 20px 15px 15px 15px;
+      background-color: $gray-lighter;
+    }
+
+    .flip-back {
+      padding: 20px 15px 15px 15px;
+    }
+
   }
 
   .product-title {
@@ -41,10 +49,24 @@
   }
 
   .product-footer {
+    width: 280px;
+    margin: 0 auto;
     padding: 15px 0;
     font-family: 'Karla', sans-serif;
     font-weight: bold;
     text-transform: uppercase;
+
+    @media screen and (min-width: $screen-sm-min) {
+      width: 350px;
+    }
+
+    @media screen and (min-width: $screen-md-min) {
+      width: 250px;
+    }
+
+    @media screen and (min-width: $screen-lg-min) {
+      width: 330px;
+    }
   }
 
   .product-type {
