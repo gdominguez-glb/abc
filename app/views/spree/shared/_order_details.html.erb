@@ -1,4 +1,8 @@
-<% if !order.payment_required? %>
+<% if order.payment_required? %>
+  <div class="row">
+    <p class="alert alert-info">Please confirm that the information listed below is accurate before clicking "place order".</p>
+  </div>
+<% else %>
   <div class="row">
     <p class="alert alert-info">Once you confirm below you will be taken to your dashboard where you can access all your online products.</p>
   </div>
