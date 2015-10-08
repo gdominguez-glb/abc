@@ -72,7 +72,7 @@
   @include transition(all, $transitionTiming);
 
   .product-description {
-    padding: 10px 0;
+    padding: 10px 0 0;
   }
 }
 
@@ -94,7 +94,11 @@
 }
 
 .video-name {
-  line-height: 0.8em;
+  line-height: 1em;
+
+  #product-details & {
+    line-height: 0.8em;
+  }
 
   a {
     color: #333;
@@ -102,6 +106,7 @@
 }
 
 .video-categories, .video-taxons {
+  display: inline-block;
   opacity: .6;
 
   p {
