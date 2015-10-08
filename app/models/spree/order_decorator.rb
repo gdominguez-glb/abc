@@ -1,4 +1,6 @@
 Spree::Order.class_eval do
+  has_many :licensed_products, class: 'Spree::LicensedProduct'
+
   include SalesforceAccess
 
   attr_accessor :distribute_option
@@ -99,6 +101,9 @@ Spree::Order.class_eval do
       line_item.create_in_salesforce(nil, false)
     end
     mark_order_complete_in_salesforce
+    licensed_products.each do |license|
+      license.update_salesforce(nil, true, true)
+    end
   end
 
   # Do not create from salesforce, only try to find a match
