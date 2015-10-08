@@ -70,6 +70,17 @@
     }
   }
 
+  .product-images {
+    .fa-shopping-cart {
+      color: $coral;
+      font-size: 150px;
+
+      @media screen and (min-width: $screen-sm-min) {
+        font-size: 250px;
+      }
+    }
+  }
+
   .product-type {
     color: $gray-light;
   }
