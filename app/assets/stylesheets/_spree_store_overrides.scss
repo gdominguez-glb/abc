@@ -46,6 +46,7 @@
   .product-title {
     display: block;
     margin-bottom: 10px;
+    line-height: 0.8em;
   }
 
   .product-footer {
@@ -73,12 +74,19 @@
     color: $gray-light;
   }
 
-  .price {
-    a {
-      color: $coral;
-      text-decoration: underline;
-      letter-spacing: normal;
-    }
+  .product-section-title {
+    margin-bottom: 0;
+  }
+
+  .price,
+  .price a {
+    color: $coral;
+    font-weight: bold;
+    letter-spacing: normal;
+    text-decoration: underline;
+    text-transform: uppercase;
+
+    @extend .sans-serif;
   }
 
   .taxonomy {
