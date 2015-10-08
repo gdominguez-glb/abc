@@ -15,6 +15,11 @@ _license-mgmt.scss
   color: #fff;
 }
 
+// Override Bootstrap style
+.table-striped > tbody > tr:nth-of-type(odd).user-details {
+  background: $dark-blue;
+}
+
 .reminder-btn {
   position: fixed;
   right: 30px;
