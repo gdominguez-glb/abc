@@ -18,7 +18,7 @@ body {
   font-size: 16px;
 }
 
-h1, h2, h3, h4, h5, h6, a {
+h1, h2, h3, h4, h5, h6 {
   font-family: 'Karla', sans-serif;
   letter-spacing: 2px;
 }
@@ -152,27 +152,23 @@ a {
   font-weight: bold;
   text-transform: uppercase;
 
+  @extend .sans-serif;
   @include transition(all, .3s);
 
-  &:hover {
-    color: inherit;
-    text-decoration: none;
+  &:hover,
+  &:active,
+  &:focus {
+    color: lighten($dark-blue, 10%);
+    text-decoration: underline;
   }
 
   p & {
     text-transform: none;
-    @extend .sans-serif;
+    @extend .serif;
   }
 
   &.text-normal {
     font-weight: normal;
-
-    &:hover,
-    &:active,
-    &:focus {
-      color: $dark-blue;
-      text-decoration: underline;
-    }
   }
 }
 

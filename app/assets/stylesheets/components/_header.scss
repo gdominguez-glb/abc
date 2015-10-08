@@ -16,6 +16,10 @@
   border: 0;
   background: $dark-blue;
 
+  a {
+    letter-spacing: 2px;
+  }
+
   @media screen and (min-width: $screen-sm-min) {
     position: relative;
     height: auto;
@@ -184,9 +188,10 @@
       }
 
       a {
+        &:hover,
+        &:active,
         &:focus {
           color: #fff;
-          text-decoration: none;
         }
 
         @media screen and (min-width: $screen-sm-min) {
