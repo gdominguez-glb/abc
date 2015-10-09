@@ -64,7 +64,7 @@ Visit QA http://gm-qa.intridea.com/store/admin
 
 Visit Staging http://gm-staging.intridea.com/store/admin
 
-Login with 
+Login with
 
     un: greatminds
     pw: intridea4gm
