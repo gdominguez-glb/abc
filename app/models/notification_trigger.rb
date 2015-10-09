@@ -7,6 +7,7 @@ class NotificationTrigger < ActiveRecord::Base
 
   belongs_to :single_user, class_name: 'Spree::User'
   belongs_to :school_district_admin_user, class_name: 'Spree::User'
+  belongs_to :curriculum
 
   after_create :send_notifications
 
@@ -15,7 +16,8 @@ class NotificationTrigger < ActiveRecord::Base
     :group_users,
     :school_district,
     :user_type,
-    :every
+    :every,
+    :curriculum_users
   ]
 
   TARGET_TYPES.each do |target_type|

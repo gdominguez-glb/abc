@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151008112324) do
+ActiveRecord::Schema.define(version: 20151009084010) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -205,6 +205,7 @@ ActiveRecord::Schema.define(version: 20151008112324) do
     t.string   "status",                        default: "pending"
     t.boolean  "email",                         default: false
     t.boolean  "dashboard",                     default: false
+    t.integer  "curriculum_id"
   end
 
   create_table "notifications", force: :cascade do |t|
