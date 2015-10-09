@@ -140,8 +140,8 @@ module SalesforceAccess
   #
   # Note: This only updates if there is a corresponding cached record from
   # Salesforce
-  def update_salesforce(fields = nil, background = true)
-    return {} unless should_update_salesforce?
+  def update_salesforce(fields = nil, background = true, force = false)
+    return {} if !force && !should_update_salesforce?
     # TODO: Handle both modified case
     sfo = cached_salesforce_object
     # TODO: Handle case where sfo is nil

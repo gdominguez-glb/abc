@@ -18,17 +18,26 @@ class Spree::LicensedProduct < ActiveRecord::Base
     sfo_data
   end
 
+  def line_item
+    order && order.line_items.find { |li| li.product.id == product.id }
+  end
+
+  def account_id_in_salesforce
+    (order.try(:user) || user).try(:school_district).try(:id_in_salesforce)
+  end
+
   def attributes_for_salesforce
     { 'Product2Id' => product.try(:sf_id_product),
       'ContactId' => user.try(:id_in_salesforce),
-      'AccountId' => order.try(:user).try(:school_district)
-                     .try(:id_in_salesforce),
+      'AccountId' => account_id_in_salesforce,
       'Name' => product.try(:name),
       'SerialNumber' => id,
       'InstallDate' => self.class.date_to_salesforce(fulfillment_at),
       'UsageEndDate' => self.class.date_to_salesforce(expire_at),
       'Quantity' => quantity,
-      'Status' => expire_at.blank? ? 'Lifetime' : nil }
+      'Status' => expire_at.blank? ? 'Lifetime' : nil,
+      'Order__c' => order.try(:id_in_salesforce),
+      'Order_Product__c' => line_item.try(:id_in_salesforce) }
   end
 
   # Do not create from salesforce, only try to find a match
