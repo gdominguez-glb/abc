@@ -1,5 +1,5 @@
 Spree::Order.class_eval do
-  has_many :licensed_products, class: 'Spree::LicensedProduct'
+  has_many :licensed_products, class_name: 'Spree::LicensedProduct'
 
   include SalesforceAccess
 
