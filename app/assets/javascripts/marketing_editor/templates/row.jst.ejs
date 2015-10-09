@@ -15,7 +15,7 @@
           <input type="text" class="form-control title-input" data-name="<%= fields[i].name %>" value="<%= data[fields[i].name] %>"/>
         <% } %>
         <% if(fields[i].input_type == 'text_area') { %>
-          <textarea data-name="<%= fields[i].name %>" rows="3" class="form-control"><%= data[fields[i].name]%></textarea>
+          <textarea data-name="<%= fields[i].name %>" rows="3" class="form-control cleditor"><%= data[fields[i].name]%></textarea>
         <% } %>
         <% if(fields[i].input_type == 'select') { %>
           <select name="" data-name="<%= fields[i].name %>" class="form-control">

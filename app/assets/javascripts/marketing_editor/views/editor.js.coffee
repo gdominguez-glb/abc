@@ -12,6 +12,7 @@ class MarketingEditorApp.Views.Editor extends Backbone.View
       rowView = new MarketingEditorApp.Views.TileRowView(model: row)
       @$('.rows').append(rowView.render().el)
     )
+    @initCleditor()
     @
 
   events:
@@ -24,10 +25,16 @@ class MarketingEditorApp.Views.Editor extends Backbone.View
     @rows.add(row)
     rowView = new MarketingEditorApp.Views.TileRowView(model: row)
     @$('.rows').append(rowView.render().el)
+    @initCleditor()
 
   saveRows: (e)->
     $.ajax(
       url: @updateUrl,
       type: 'POST',
       data: { page: { tiles: { rows: @rows.toJSON() } } }
+    )
+
+  initCleditor: ->
+    @$('.cleditor').cleditor({ controls: "bold italic underline | style | bullets numbering | undo redo | link " }).change((e)->
+      e.target.$area.trigger('change')
     )
