@@ -19,6 +19,7 @@
 //= require moment
 //= require bootstrap-datetimepicker
 //= require select2
+//= require jquery.cleditor
 //= require zeroclipboard
 //= require jquery-sortable
 //= require mediaelement_rails
@@ -63,6 +64,12 @@ Gm = {
 };
 window.Gm = Gm;
 
+function initCleditor() {
+  $('.cleditor').cleditor({
+    controls: "bold italic underline | style | bullets numbering | undo redo | link "
+  });
+}
+
 $(document).ready(function() {
   var nav = $('.navbar-primary');
   var subnav = nav.find('.subnav')[0];
@@ -84,4 +91,5 @@ $(document).ready(function() {
     $(this).closest('.flip-container').toggleClass('flip');
   });
 
+  initCleditor();
 });

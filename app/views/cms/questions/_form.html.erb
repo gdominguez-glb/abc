@@ -23,7 +23,7 @@
     <% f.object.answer ||= Answer.new(question: f.object) %>
     <%= f.fields_for :answer do |answer_form| %>
       <label>Answer</label>
-      <%= answer_form.text_area :content, class: 'form-control' %>
+      <%= answer_form.text_area :content, class: 'form-control cleditor' %>
     <% end %>
   </div>
   <div class="form-group">
