@@ -12,6 +12,7 @@ class MarketingEditorApp.Views.TileRowView extends Backbone.View
 
   render: ()->
     @$el.html(@template(data: @model.attributes, fields: @fields))
+    @valueChanged()
     @
 
   removeRow: ->
