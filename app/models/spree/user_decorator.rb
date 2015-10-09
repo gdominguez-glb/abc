@@ -3,6 +3,8 @@ Spree::User.class_eval do
   include ActivityLogger
   include SalesforceAccess
 
+  scope :with_curriculum, ->(curriculum) { where("interested_subjects like '%?%'", curriculum.id) }
+
   serialize :interested_subjects, Array
 
   validates_format_of :password, with: /\A\S*\z/, message: "can't include spaces", if: :password_required?
