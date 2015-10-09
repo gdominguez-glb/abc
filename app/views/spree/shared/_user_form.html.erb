@@ -11,7 +11,7 @@
       </div>
       <div class="form-group">
         <label>Subjects you are interested in</label>
-        <%= f.select :interested_subjects, options_for_select(Spree::User::SUBJECTS, f.object.interested_subjects), { include_hidden: false }, { class: 'form-control', tabindex: 5, multiple: 'multiple' } %>
+        <%= f.collection_select :interested_subjects, Curriculum.visibles, :id, :name, { include_hidden: false, multiple: true }, { class: 'form-control', tabindex: 5, multiple: 'multiple' } %>
       </div>
     </div>
     <div class="col-md-6">
