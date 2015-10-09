@@ -44,3 +44,7 @@ end
 every 1.hour do
   rbenv_rake "salesforce:sync"
 end
+
+every 1.hour do
+  rbenv_rake "searchkick:reindex:all"
+end
