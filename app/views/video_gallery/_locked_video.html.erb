@@ -11,8 +11,12 @@
             <%= truncate video.description, length: 100 %>
             <p class="text-danger">Subscription Required</p>
           </div>
-          <div class="video-categories"><%= video.categories.join(", ") %></div>
-          <div class="video-taxons"><%= video.taxons.map(&:name).join(", ") %></div>
+          <div class="video-categories">
+            <p><%= truncate video.categories.join(", "), length: 25 %></p>
+          </div>
+          <div class="video-taxons">
+            <p><%= truncate video.taxons.map(&:name).join(", "), length: 25 %></p>
+          </div>
 
           <%= link_to unlock_video_gallery_path(video), class: 'btn btn-default btn-block', remote: true do %>
             Unlock Content
