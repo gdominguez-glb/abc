@@ -190,4 +190,20 @@ Spree::User.class_eval do
   def twitter_list_code
     TWITTER_LISTS[interested_curriculums_names.join('_')]
   end
+
+  def has_more_than_3_products?
+    sql = <<-SQL
+      select 1 from
+        (
+        select sum(quantity) as quantity_count from
+          (
+            ( select product_id, quantity from spree_licensed_products where user_id = #{self.id} )
+            UNION
+            ( select product_id, quantity from spree_product_distributions where from_user_id = #{self.id})
+          ) a group by a.product_id
+        ) b where b.quantity_count > 3
+    SQL
+    result = ActiveRecord::Base.connection.execute(sql)
+    result.count > 0
+  end
 end

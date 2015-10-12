@@ -9,7 +9,7 @@
     </div>
     <div class="collapse navbar-collapse" id="sub-nav">
       <ul>
-        <%= active_link_to "My Resources", '/account', wrap_tag: :li, active: :exact %>
+        <%= active_link_to "My Resources", account_products_path, wrap_tag: :li, active: false %>
         <% if spree_current_user.has_admin_role? %>
           <li>
             <a href="/store/admin ">Store Admin<span class="sr-only">(current)</span></a>
@@ -22,7 +22,7 @@
         <%= active_link_to "Settings", '/account/settings', wrap_tag: :li %>
         <%= active_link_to "Help", '/account/help', wrap_tag: :li %>
         <% if spree_current_user.has_school_admin_role? %>
-          <%= active_link_to "License Management", '/account/licenses', wrap_tag: :li %>
+          <%= active_link_to "License Management", account_licenses_path, wrap_tag: :li %>
         <% end %>
       </ul>
     </div>
