@@ -97,6 +97,7 @@ Spree::Product.class_eval do
       'multiple download',
       'bundle',
       'partner',
+      'inkling',
       'other'
     ]
   end

@@ -52,6 +52,7 @@ spree_routes_overrides = Proc.new do
       end
 
       resources :material_import_jobs
+      resource :inkling_code
     end
 
     resources :materials do
