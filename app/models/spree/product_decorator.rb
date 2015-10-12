@@ -28,6 +28,8 @@ Spree::Product.class_eval do
 
   belongs_to :video_group, class_name: 'Spree::VideoGroup'
 
+  has_one :inkling_code, class_name: 'Spree::InklingCode'
+
   ## spree bundles
   parts_habtm = select("#{Spree::Product.quoted_table_name}.*")
                   .select("#{Spree::Part.quoted_table_name}.id AS part_id")
@@ -95,6 +97,7 @@ Spree::Product.class_eval do
       'multiple download',
       'bundle',
       'partner',
+      'inkling',
       'other'
     ]
   end

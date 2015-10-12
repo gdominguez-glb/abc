@@ -1,0 +1,17 @@
+<%= render :partial => 'spree/admin/shared/product_tabs', :locals => {:current => "Inkling Code"} %>
+
+<% content_for :page_title do %>
+  Inkling Code
+<% end %>
+
+<%= form_for @inkling_code, url: admin_product_inkling_code_path(@product) do |f| %>
+  <fieldset>
+    <%= f.field_container :code, :class => ['form-group'] do %>
+      <%= f.label :code, Spree.t(:code) %> <span class="required">*</span>
+      <%= f.text_area :code, :class => 'form-control title' %>
+      <%= f.error_message_on :code %>
+    <% end %>
+    <div class="form-actions" data-hook="buttons">
+      <%= f.submit 'Save', class: 'btn btn-primary' %>
+    </div>
+<% end %>

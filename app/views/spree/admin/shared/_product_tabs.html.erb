@@ -26,5 +26,11 @@
          <%= link_to_with_icon 'cloud', Spree.t(:digital_versions, scope: 'digitals'), admin_product_digitals_path(@product) %>
       </li>
     <% end %>
+
+    <% if @product.product_type == 'inkling' %>
+      <li class="<%= 'active' if current == 'Inkling Code' %>">
+         <%= link_to_with_icon 'cloud', 'Inkling Code', admin_product_inkling_code_path(@product) %>
+      </li>
+    <% end %>
   </ul>
 <% end %>

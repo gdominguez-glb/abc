@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Spree::Product, type: :model do
   it { should belong_to(:video_group).class_name('Spree::VideoGroup') }
+  it { should have_one(:inkling_code).class_name('Spree::InklingCode') }
 
   let(:product) { create(:product) }
 
