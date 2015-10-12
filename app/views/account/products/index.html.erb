@@ -26,9 +26,11 @@
     <div class="recommends col-md-7">
       <%= render 'recommends' %>
     </div>
-    <div class="twitter-feed-container col-md-5">
-      <%= render 'account/twitter' %>
-    </div>
+    <% if code = current_spree_user.twitter_list_code %>
+      <div class="twitter-feed-container col-md-5">
+        <%= render partial: 'twitter', locals: { code: code } %>
+      </div>
+    <% end %>
   </div>
 
 </div>

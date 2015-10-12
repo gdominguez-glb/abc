@@ -182,4 +182,12 @@ Spree::User.class_eval do
   def has_active_license_on?(product)
     licensed_products.where(product_id: product.id).exists?
   end
+
+  def interested_curriculums_names
+    Curriculum.where(id: self.interested_subjects).order('name asc').pluck(:name)
+  end
+
+  def twitter_list_code
+    TWITTER_LISTS[interested_curriculums_names.join('_')]
+  end
 end
