@@ -79,6 +79,8 @@ Rails.application.routes.draw do
 
   get '/download_pages/:slug', to: 'download_pages#show', as: :download_page
 
+  resources :inkling_codes, only: [:show]
+
   resources :materials do
     collection do
       post :download_all

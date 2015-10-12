@@ -4,7 +4,6 @@
   Inkling Code
 <% end %>
 
-
 <%= form_for @inkling_code, url: admin_product_inkling_code_path(@product) do |f| %>
   <fieldset>
     <%= f.field_container :code, :class => ['form-group'] do %>
@@ -15,5 +14,4 @@
     <div class="form-actions" data-hook="buttons">
       <%= f.submit 'Save', class: 'btn btn-primary' %>
     </div>
-    
 <% end %>
