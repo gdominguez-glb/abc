@@ -1,6 +1,8 @@
 Spree::Order.class_eval do
   has_many :licensed_products, class: 'Spree::LicensedProduct'
 
+  belongs_to :school_district
+
   include SalesforceAccess
 
   attr_accessor :distribute_option

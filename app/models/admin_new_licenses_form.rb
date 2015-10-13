@@ -1,9 +1,9 @@
 class AdminNewLicensesForm
   include ActiveModel::Model
 
-  attr_accessor :user_id, :email, :product_ids, :quantity, :fulfillment_at, :payment_method_id, :payment_source_params
+  attr_accessor :user_id, :email, :product_ids, :quantity, :fulfillment_at, :payment_method_id, :payment_source_params, :salesforce_order_id, :salesforce_account_id
 
-  # validates_presence_of :product_ids
+  validates_presence_of :salesforce_order_id, :salesforce_account_id
   validates_numericality_of :quantity, greater_than_or_equal_to: 0, only_integer: true, allow_blank: true
   validates_presence_of :user_id, if: -> { self.email.blank? }
   validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }, presence: true, if: -> { self.user_id.blank? }
@@ -27,6 +27,18 @@ class AdminNewLicensesForm
     end
     order.payments << build_payment
     order.save
+
+    create_order_salesforce_reference(order)
+    associate_school_district(order)
+  end
+
+  def create_order_salesforce_reference(order)
+    SalesforceReference.create(id_in_salesforce: self.salesforce_order_id, local_object: order)
+  end
+
+  def associate_school_district(order)
+    school_district = SalesforceReference.find_by(id_in_salesforce: salesforce_account_id, local_object_type: 'SchoolDistrict').try(:local_object)
+    order.update(school_district: school_district)
   end
 
   def build_payment
