@@ -64,6 +64,21 @@
         return product.name;
       }
    });
+
+   $('#admin_new_licenses_form_payment_method_id').change(function(){
+     var paymentMethodId = $(this).val();
+     togglePaymentMethod(paymentMethodId);
+   });
+
+   function togglePaymentMethod(paymentMethodId) {
+      $('.payment-method').hide();
+      $('#payment-methods :input').prop('disabled', true);
+      $("#payment_method_" + paymentMethodId).show();
+      $("#payment_method_" + paymentMethodId + ' :input').prop('disabled', false);
+   }
+
+   togglePaymentMethod($('#admin_new_licenses_form_payment_method_id').val());
+
   })(jQuery);
 //]]>
 </script>

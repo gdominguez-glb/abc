@@ -7,10 +7,12 @@ module Spree
 
       def new
         @new_licenses_form = AdminNewLicensesForm.new
+        @order = Spree::Order.new
       end
 
       def create
         @new_licenses_form = AdminNewLicensesForm.new(new_licenses_form_params)
+        @order = Spree::Order.new
 
         if @new_licenses_form.valid?
           @new_licenses_form.perform
@@ -39,7 +41,7 @@ module Spree
       private
 
       def new_licenses_form_params
-        params.require(:admin_new_licenses_form).permit(:user_id, :email, :product_ids, :quantity)
+        params.require(:admin_new_licenses_form).permit(:user_id, :email, :product_ids, :quantity, :payment_method_id, :fulfillment_at)
       end
     end
   end
