@@ -272,7 +272,7 @@
 }
 
 .margin-bottom-l {
-  margin-bottom: $b-space-l;
+  margin-bottom: $b-space-l !important;
 }
 
 .margin-left-l {
@@ -290,7 +290,7 @@
 }
 
 .margin-bottom-xl {
-  margin-bottom: $b-space-xl;
+  margin-bottom: $b-space-xl !important;
 }
 
 .margin-left-xl {
@@ -308,7 +308,7 @@
 }
 
 .margin-bottom-xxl {
-  margin-bottom: $b-space-xl + $b-space-l;
+  margin-bottom: $b-space-xl + $b-space-l !important;
 }
 
 .margin-left-xxl {

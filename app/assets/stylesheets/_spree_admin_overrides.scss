@@ -3,18 +3,6 @@
 // header
 body[data-hook="body"] {
 
-  @media screen and (max-width: 500px) {
-    padding: 120px 0 0;
-
-    &.spree-store {
-      padding: 50px 0 0;
-    }
-  }
-
-  #content {
-    padding-bottom: 30px;
-  }
-
   .navbar-toggle {
     margin-left: 15px;
   }

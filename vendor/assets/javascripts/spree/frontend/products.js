@@ -3,6 +3,8 @@
 $(document).ready(function() {
 	var storePrices = $('#products .price a');
 	var individualProductPrice = $('#product-details .price');
+	var placeOrderBtn = $('#checkout_form_confirm #placeOrderBtn');
+	var orderTotal = $('#checkout_form_confirm #order_total');
 
 	function setFree(prices) {
 		prices.each(function() {
@@ -16,6 +18,10 @@ $(document).ready(function() {
 		setFree(storePrices);
 	} else if (individualProductPrice[0]) {
 		setFree(individualProductPrice);
+	}
+
+	if (orderTotal.text().trim() === "$0.00") {
+		placeOrderBtn.text('Get Acccess');
 	}
 
 	var flipBtn = $('.flip-btn');

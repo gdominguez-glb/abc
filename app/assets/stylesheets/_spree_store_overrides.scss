@@ -81,6 +81,24 @@
     }
   }
 
+  .cart-item-image {
+    .fa-shopping-cart {
+      color: $coral;
+      font-size: 75px;
+    }
+  }
+
+  .cart-total {
+    h5 {
+      margin-bottom: 0;
+    }
+  }
+
+  .navbar-form {
+    margin: 0;
+    padding: 0;
+  }
+
   .product-type {
     color: $gray-light;
   }
@@ -106,6 +124,10 @@
 
   .taxonomy-root {
     font-size: 1em;
+  }
+
+  .terms_and_conditions_box {
+    padding: 0;
   }
 
 }
