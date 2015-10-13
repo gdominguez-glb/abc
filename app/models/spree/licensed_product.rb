@@ -22,13 +22,36 @@ class Spree::LicensedProduct < ActiveRecord::Base
     order && order.line_items.find { |li| li.product.id == product.id }
   end
 
+  def assign_to_user_id_in_salesforce
+    assign_user = user || product_distribution.try(:from_user)
+    return nil unless assign_user
+
+    if assign_user.id_in_salesforce.blank? && !skip_salesforce_create
+      assign_user.create_in_salesforce(nil, false)
+      assign_user.reload
+    end
+
+    assign_user.id_in_salesforce
+  end
+
   def account_id_in_salesforce
-    (order.try(:user) || user).try(:school_district).try(:id_in_salesforce)
+    account_user = order.try(:user) || user ||
+      product_distribution.try(:from_user)
+    school_district = account_user.try(:school_district)
+    return nil unless school_district
+
+    if school_district.id_in_salesforce.blank? && !skip_salesforce_create
+      school_district.create_in_salesforce(nil, false)
+      school_district.reload
+    end
+
+    school_district.id_in_salesforce
   end
 
   def attributes_for_salesforce
+    # TODO: Add a comment with email if assigning to "from_user"
     { 'Product2Id' => product.try(:sf_id_product),
-      'ContactId' => user.try(:id_in_salesforce),
+      'ContactId' => assign_to_user_id_in_salesforce,
       'AccountId' => account_id_in_salesforce,
       'Name' => product.try(:name),
       'SerialNumber' => id,
