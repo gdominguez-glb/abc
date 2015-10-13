@@ -1,7 +1,7 @@
 class AdminNewLicensesForm
   include ActiveModel::Model
 
-  attr_accessor :user_id, :email, :product_ids, :quantity, :fulfillment_at, :payment_method_id, :payment_source_params, :salesforce_order_id, :salesforce_account_id
+  attr_accessor :user_id, :email, :product_ids, :quantity, :fulfillment_at, :payment_method_id, :payment_source_params, :salesforce_order_id, :salesforce_account_id, :amount
 
   validates_presence_of :salesforce_order_id, :salesforce_account_id
   validates_numericality_of :quantity, greater_than_or_equal_to: 0, only_integer: true, allow_blank: true
@@ -28,8 +28,21 @@ class AdminNewLicensesForm
     order.payments << build_payment
     order.save
 
+    process_order(order)
     create_order_salesforce_reference(order)
     associate_school_district(order)
+  end
+
+  def process_order(order)
+    while order.state != 'complete'
+      order.next
+    end
+    process_payment(order)
+  end
+
+  def process_payment(order)
+    payment = order.payments.last
+    payment.process! if payment
   end
 
   def create_order_salesforce_reference(order)
@@ -43,7 +56,7 @@ class AdminNewLicensesForm
 
   def build_payment
     payment_attributes = {
-      amount: 0,
+      amount: (self.amount || 0),
       payment_method_id: self.payment_method_id,
       source_attributes: payment_source_params[self.payment_method_id].permit!
     }

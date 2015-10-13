@@ -41,7 +41,17 @@ module Spree
       private
 
       def new_licenses_form_params
-        params.require(:admin_new_licenses_form).permit(:user_id, :email, :product_ids, :quantity, :payment_method_id, :fulfillment_at, :salesforce_order_id, :salesforce_account_id)
+        params.require(:admin_new_licenses_form).permit(
+          :user_id,
+          :email,
+          :product_ids,
+          :quantity,
+          :payment_method_id,
+          :fulfillment_at,
+          :salesforce_order_id,
+          :salesforce_account_id,
+          :amount
+        )
       end
     end
   end

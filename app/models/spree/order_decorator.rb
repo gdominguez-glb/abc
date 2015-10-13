@@ -119,6 +119,7 @@ Spree::Order.class_eval do
   end
 
   def log_purchase_activity!
+    return unless self.user
     self.products.each do |product|
       self.user.log_activity(
         item: product,
