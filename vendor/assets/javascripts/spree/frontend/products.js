@@ -21,7 +21,7 @@ $(document).ready(function() {
 	}
 
 	if (orderTotal.text().trim() === "$0.00") {
-		placeOrderBtn.text('Get Acccess');
+		placeOrderBtn.text('Get Access');
 	}
 
 	var flipBtn = $('.flip-btn');
