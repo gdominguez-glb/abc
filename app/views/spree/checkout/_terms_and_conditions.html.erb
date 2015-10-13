@@ -10,11 +10,11 @@
     <% end %>
   </div>
 
-  <div style="margin-top: 5px;">
+  <div class="margin-top-s">
     <%= form.check_box :terms_and_conditions %> <%= label_tag(:terms_and_conditions, Spree.t('terms_and_conditions.checkbox')) %>
   </div>
 </div>
-<%= button_tag Spree.t(:save_and_continue), :class => 'continue btn btn-success btn-block-xs disabled term-continue-button' %>
+<%= button_tag Spree.t(:save_and_continue), :class => 'continue btn btn-success btn-block-xs disabled term-continue-button margin-bottom-xl' %>
 
 <script type="text/javascript">
   $(function(){
