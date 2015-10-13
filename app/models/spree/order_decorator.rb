@@ -1,6 +1,8 @@
 Spree::Order.class_eval do
   has_many :licensed_products, class: 'Spree::LicensedProduct'
 
+  belongs_to :school_district
+
   include SalesforceAccess
 
   attr_accessor :distribute_option
@@ -117,6 +119,7 @@ Spree::Order.class_eval do
   end
 
   def log_purchase_activity!
+    return unless self.user
     self.products.each do |product|
       self.user.log_activity(
         item: product,
