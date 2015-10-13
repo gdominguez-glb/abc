@@ -165,10 +165,12 @@
 
 .btn-block-xs {
   display: block;
+  width: 100%;
   margin-bottom: 60px;
 
   @media screen and (min-width: $screen-sm-min) {
     display: inline-block;
+    width: auto;
     margin-bottom: 0;
   }
 }

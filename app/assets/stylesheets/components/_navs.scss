@@ -1,3 +1,33 @@
+// *************************************
+//
+//   Navs
+//   -> Overrides for Bootstrap Nav Components
+//
+// *************************************
+
+.progress-steps {
+  margin-top: 10px;
+}
+
+// -------------------------------------
+//   Nav Pills
+// -------------------------------------
+
+.nav-pills {
+  > li.active {
+    > a {
+      color: #fff;
+      background-color: $brand-primary;
+
+      &:hover,
+      &:focus {
+        background-color: lighten($brand-primary, 5%);
+      }
+    }
+  }
+}
+
+
 /* ----------------------------------------------------------------------------
 * Nav Tabs
 *
