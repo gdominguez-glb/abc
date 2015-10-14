@@ -10,16 +10,16 @@
       <%= form_for @assign_licenses_form, url: assign_account_licenses_path do |f| %>
         <div class="page-header margin-top-xl">
           <h2 class="margin-bottom-m">Ready to assign some licenses...</h2>
-          <h6 class="margin-bottom-m">Assign one or more licenses to anyone you want</h6>
+          <p class="lead margin-bottom-m">Assign one or more licenses to anyone you want</p>
         </div>
         <% if @assign_licenses_form.errors.count > 0 %>
-          <div id="error_explanation">
-            <h4 class="text-danger">
+          <div id="error_explanation" class="alert alert-danger">
+            <p>
               OH NO, <%= pluralize(@assign_licenses_form.errors.count, "error") %> prohibited this user from being saved:
-            </h4>
+            </p>
             <ul>
               <% @assign_licenses_form.errors.full_messages.each do |msg| %>
-                <li class="text-danger"> <%= msg %></li>
+                <li> <%= msg %></li>
               <% end %>
             </ul>
           </div>
