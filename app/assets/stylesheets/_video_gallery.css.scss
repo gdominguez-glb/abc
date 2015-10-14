@@ -38,7 +38,7 @@
 
 .video-image-wrapper {
   position: relative;
-  border: 1px solid $dark-blue;
+  background-color: $gray-lighter;
 }
 
 .image-drawer-wrapper {
@@ -67,8 +67,6 @@
 
 .video-drawer {
   padding: 10px;
-  box-shadow: inset 0 0 1px $dark-blue;
-  border: 1px solid $dark-blue;
   @include transition(all, $transitionTiming);
 
   .product-description {
