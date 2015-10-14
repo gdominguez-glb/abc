@@ -207,4 +207,8 @@ Spree::User.class_eval do
     result = ActiveRecord::Base.connection.execute(sql)
     result.count > 0
   end
+
+  def agree_term_of_product?(product)
+    self.product_agreements.where(product: product).exists?
+  end
 end
