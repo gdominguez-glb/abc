@@ -11,23 +11,29 @@
           <h4>Upcoming training</h4>
         </div>
         <div class="col-sm-6">
-          <div class="dropdown">
-            <label>Sort by:</label>
-            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-              All
-              <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
-            </ul>
+          <div class="form-inline">
+            <div class="form-group">
+              <div class="dropdown">
+                <label>Sort by:</label>
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                  All
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="form-group">
+              <%= form_tag '', method: :get do %>
+                <label>Seach by ZIP <span class="fa fa-map-marker" id="geocode-button" title="click to auto enter your address"></span></label>
+                <%= text_field_tag :zipcode, params[:zipcode], class: 'form-control', placeholder: 'Search by ZIP' %>
+              <% end %>
+            </div>
           </div>
-          <%= form_tag '', method: :get do %>
-            <label>Seach by ZIP <span class="fa fa-map-marker" id="geocode-button" title="click to auto enter your address"></span></label>
-            <%= text_field_tag :zipcode, params[:zipcode], class: 'form-control', placeholder: 'Search by ZIP' %>
-          <% end %>
         </div>
       </div>
       <%= render 'events_list' %>
