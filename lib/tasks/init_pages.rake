@@ -26,6 +26,18 @@ namespace 'pages' do
       puts "Page: slug='#{page.slug}'' was updated."
     end
   end
+
+  # rake pages:reset_page section=about title=About
+  desc "reset single page"
+  task :reset_page => :environment do
+    page_section = ENV['section']
+    page_title   = ENV['title']
+    pages_yaml = YAML.load_file(Rails.root.join("config/pages/#{page_section}.yml"))['pages']
+    page_yaml = pages_yaml.find{|p| p['title'] == page_title }
+    page_yaml.symbolize_keys!
+    page = Page.where(slug: page_yaml[:slug]).first_or_create
+    page.update_attributes(page_yaml.merge(visible: true, tiles: nil))
+  end
 end
 
 def pages_array
