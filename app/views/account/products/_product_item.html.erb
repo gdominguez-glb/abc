@@ -16,10 +16,6 @@
         </div>
       </div>
     </div>
-    <% if product.product_type == 'inkling' %>
-      <%= link_to 'Launch', inkling_code_path(product), class: 'btn btn-link' %>
-    <% elsif product.access_url.present? %>
-      <%= link_to 'Launch', "#{product.access_url}?#{{opened_product_id: product.id}.to_param}", class: 'btn btn-link' %>
-    <% end %>
+    <%= link_to 'Launch', spree.launch_product_path(product), class: 'btn btn-link' %>
   </div>
 </div>

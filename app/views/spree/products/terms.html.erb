@@ -1,0 +1,7 @@
+<div class="container container-content wrapper account-page">
+  <p><%= @product.license_text %></p>
+
+  <%= form_tag agree_terms_product_path(@product) do %>
+    <%= submit_tag 'Agree And Continue', class: 'btn btn-primary' %>
+  <% end %>
+</div>
