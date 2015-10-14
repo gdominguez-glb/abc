@@ -12,7 +12,7 @@
         </div>
         <div class="col-sm-6">
           <div class="dropdown">
-            Sort by:
+            <label>Sort by:</label>
             <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
               All
               <span class="caret"></span>
@@ -25,9 +25,8 @@
             </ul>
           </div>
           <%= form_tag '', method: :get do %>
+            <label>Seach by ZIP <span class="fa fa-map-marker" id="geocode-button" title="click to auto enter your address"></span></label>
             <%= text_field_tag :zipcode, params[:zipcode], class: 'form-control', placeholder: 'Search by ZIP' %>
-            <label>Seach by ZIP</label>
-            <span class="glyphicon glyphicon-map-marker" id="geocode-button" title="click to auto enter your address"></span>
           <% end %>
         </div>
       </div>
