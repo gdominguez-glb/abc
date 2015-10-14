@@ -10,36 +10,38 @@
       <%= form_for @assign_licenses_form, url: assign_account_licenses_path do |f| %>
         <div class="page-header margin-top-xl">
           <h2 class="margin-bottom-m">Ready to assign some licenses...</h2>
-          <h6 class="margin-bottom-m">Assign one or more licenses to anyone you want</h6>
+          <p class="lead margin-bottom-m">Assign one or more licenses to anyone you want</p>
         </div>
         <% if @assign_licenses_form.errors.count > 0 %>
-          <div id="error_explanation">
-            <h4 class="text-danger">
+          <div id="error_explanation" class="alert alert-danger">
+            <p>
               OH NO, <%= pluralize(@assign_licenses_form.errors.count, "error") %> prohibited this user from being saved:
-            </h4>
+            </p>
             <ul>
               <% @assign_licenses_form.errors.full_messages.each do |msg| %>
-                <li class="text-danger"> <%= msg %></li>
+                <li> <%= msg %></li>
               <% end %>
             </ul>
           </div>
         <% end %>
         <%= render 'stats' %>
-        <div class="row">
-          <div class="col-sm-6 col-md-4">
-            <label for="">Select from Existing Users</label>
-            <%= link_to 'Choose Users', select_users_account_licenses_path, class: 'btn btn-primary btn-block margin-bottom', remote: true %>
+        <div class="well">
+          <div class="row">
+            <div class="col-sm-6 col-md-4">
+              <label for="">Select from Existing Users</label>
+              <%= link_to 'Choose Users', select_users_account_licenses_path, class: 'btn btn-primary btn-block margin-bottom', remote: true %>
+            </div>
+            <div class="col-sm-6 col-md-4 col-md-offset-2">
+              <label for="">Upload from File</label>
+              <%= link_to import_modal_account_licenses_path, class: 'btn btn-default btn-block upload-user-btn dashed-border margin-bottom', remote: true do %>
+                Choose File <span class="glyphicon glyphicon-plus"></span>
+              <% end %>
+            </div>
           </div>
-          <div class="col-sm-6 col-md-4 col-md-offset-2">
-            <label for="">Upload from File</label>
-            <%= link_to import_modal_account_licenses_path, class: 'btn btn-default btn-block upload-user-btn dashed-border margin-bottom', remote: true do %>
-              Choose File <span class="glyphicon glyphicon-plus"></span>
-            <% end %>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-xs-12">
-            <%= f.text_field :licenses_recipients, class: 'form-control margin-bottom-xl', placeholder: 'separate emails with comma' %>
+          <div class="row">
+            <div class="col-xs-12">
+              <%= f.text_field :licenses_recipients, class: 'form-control', placeholder: 'separate emails with comma' %>
+            </div>
           </div>
         </div>
         <div class="row">

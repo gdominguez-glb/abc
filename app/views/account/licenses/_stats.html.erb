@@ -1,15 +1,15 @@
 <% option = current_spree_user.managed_products_options.first %>
-<h6>
-  <% if current_spree_user.managed_products_options.count > 1 %>
-    Your Licenses for:
-    <div class="select-container dark-select">
-      <%= select_tag :licenses_ids, options_for_select(current_spree_user.managed_products_options), class: 'licenses-select form-control inline-input' %>
-    </div>
-  <% elsif current_spree_user.managed_products_options.count == 1 %>
-    Your Licenses for:
-    <% option = current_spree_user.managed_products_options.first %>
-    <%= option[0] %>
-    <%= hidden_field_tag :licenses_ids, option[1]  %>
-  <% end %>
-</h6>
+<%  if current_spree_user.managed_products_options.count > 1 %>
+  <p class="small inline"><em>Your Licenses for:</em></p>
+  <div class="select-container dark-select margin-xs-left-m">
+    <span>Select Product</span>
+    <%= select_tag :licenses_ids, options_for_select(current_spree_user.managed_products_options), class: 'licenses-select form-control inline-input' %>
+  </div>
+<%  elsif current_spree_user.managed_products_options.count == 1 %>
+  <p class="small"><em>Your Licenses for:
+  <%  option = current_spree_user.managed_products_options.first %>
+  <%= option[0] %>
+  <%= hidden_field_tag :licenses_ids, option[1]  %>
+  </em></p>
+<%  end %>
 <%= render partial: 'licenses_stats', locals: { licenses_ids: option[1].split(',') } if option %>
