@@ -1,5 +1,58 @@
 marketing_templates:
   -
+    name: 'Role/Curriculum Selector Hero'
+    content: !xml |
+      <div class="row intro masthead" style="background-image: url('<%= background_image_url %>')">
+        <div class="col-xs-12 masthead-content text-center">
+          <h5 class="home-mast-intro bold"><%= title %></h5>
+          <div id="pageSelection">
+            <div class="btn-group fixed-width image-background">
+              <button class="btn btn-default btn-block-xs margin-sm-bottom-m dropdown-toggle" type="button" id="dropdownRole" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                I am a
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownRole">
+                <li><a href="#">Teacher</a></li>
+                <li><a href="#">Parent</a></li>
+                <li><a href="#">Administrator</a></li>
+              </ul>
+            </div>
+            <div class="btn-group fixed-width image-background">
+              <button class="btn btn-default btn-block-xs margin-sm-bottom-m dropdown-toggle" type="button" id="dropdownCurriculum" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                Looking into
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownCurriculum">
+                <li><a href="#">Math</a></li>
+                <li><a href="#">English</a></li>
+                <li><a href="#">History</a></li>
+              </ul>
+            </div>
+            <a href="#" id="btnGo" class="btn btn-default btn-transparent btn-block-xs margin-sm-bottom-m" disabled="disabled">Go</a>
+          </div>
+        </div>
+      </div>
+      <script type="text/javascript">
+        $(function() {
+          $('select#role').change(function(e){
+            goToPage();
+          });
+          $('select#curriculum').change(function(e){
+            goToPage();
+          });
+
+          function goToPage(){
+            var role = $('select#role').val();
+            var curriculumId = $('select#curriculum').val();
+            if ( role && curriculumId ) {
+              var url = "/decide_page_to_go?" + $.param({role: role, curriculum_id: curriculumId});
+              window.location.href = url;
+            };
+          }
+        });
+      </script>
+
+  -
     name: 'Video Hero'
     content: !xml |
       <section class="row img-full image-bg" style="background-image: url('<%= background_image_url %>')">
