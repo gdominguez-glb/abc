@@ -1,13 +1,8 @@
 // _posts.scss
 
-.posts {
-  width: 80%;
-  margin: auto;
-}
-
 .post {
   padding: 0 0 15px 0;
-  margin: 0 0 15px 0;
+  margin: 0 0 $b-space-xl 0;
   border-bottom: 1px solid;
 
   .read-more {
@@ -17,14 +12,33 @@
   &:last-child {
     border: none;
   }
+
+  figure {
+    display: none;
+  }
 }
 
 .post-view {
-  margin: 30px 0;
-}
+  li {
+    margin-bottom: $b-space-m;
+  }
 
-.previous-page {
-  display: block;
-  margin-top: 30px;
-}
+  figure {
+    margin-bottom: $b-space-l;
+    padding: $b-space;
+    border: 1px solid $brand-primary;
 
+    @media screen and (min-width: $screen-sm-min) {
+      max-width: 600px;
+      margin: 0 auto $b-space-l;
+      padding: $b-space-l;
+      text-align: center;
+    }
+  }
+
+  figcaption {
+    margin-top: $b-space;
+    font-size: 0.85em;
+    font-style: italic;
+  }
+}
