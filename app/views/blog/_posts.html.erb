@@ -12,13 +12,15 @@
       <p>
         <%= raw post.preview_content %>
       </p>
-      <h4 class="read-more">
-        <% if blog_type == 'global' %>
-          <%= link_to "READ", global_post_path(slug: publication.slug, id: post.id) %>
-        <% else %>
-          <%= link_to "READ", curriculum_post_path(page_slug: group_page.slug, slug: publication.slug, id: post.id) %>
+      <% if blog_type == 'global' %>
+        <%= link_to global_post_path(slug: publication.slug, id: post.id), class: "btn btn-default btn-block-xs margin-bottom-xl" do %>
+          Read More <i class="fa fa-chevron-right"></i>
         <% end %>
-      </h4>
+      <% else %>
+        <%= link_to curriculum_post_path(page_slug: group_page.slug, slug: publication.slug, id: post.id), class: "btn btn-default btn-block-xs margin-bottom-xl" do %>
+          Read More <i class="fa fa-chevron-right"></i>
+        <% end %>
+      <% end %>
     </div>
   <% end %>
   <% if posts.count == 0 %>
