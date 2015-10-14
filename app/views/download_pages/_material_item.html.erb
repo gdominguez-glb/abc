@@ -29,12 +29,14 @@
         <% end %>
         <% if item.children.size > 0 %>
           <% open_material = @opened_material_ids.include?(material.id) %>
-          <span
-            class="fa fa-chevron-up collapsed"
+          <button
+            class="btn btn-default btn-icon margin-left margin-right-reset collapsed"
             data-material-id="<%= material.id %>"
             data-toggle="collapse"
             data-parent="#material<%= material.id %>"
-            href="#collapse<%= material.id %>"></span>
+            href="#collapse<%= material.id %>">
+            <span class="fa fa-chevron-up"></span>
+          </button>
         <% end %>
       </div>
     </div>

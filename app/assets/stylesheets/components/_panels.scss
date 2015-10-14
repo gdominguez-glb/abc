@@ -17,12 +17,30 @@
 	border-bottom-right-radius: 3px;
 	border-bottom-left-radius: 3px;
 
-	.fa-chevron-up {
+	.fa-chevron-up,
+  .btn-icon {
 		@include transition(transform, .3s);
-	  &.collapsed {
+
+    &.collapsed {
 	    @include rotate(180deg);
 	  }
+
+    &:focus {
+      outline: 0;
+    }
+
+    .fa {
+      width: 16px;
+      height: 16px;
+      letter-spacing: 0;
+    }
 	}
+
+  a {
+    &:hover {
+      text-decoration: none;
+    }
+  }
 }
 
 .panel-primary {
