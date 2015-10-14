@@ -46,6 +46,6 @@ class Cms::StaffsController < Cms::BaseController
   end
 
   def staff_params
-    params.require(:staff).permit(:name, :title, :description, :display, :picture)
+    params.require(:staff).permit(:name, :title, :description, :display, :picture, :staff_type)
   end
 end
