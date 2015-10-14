@@ -7,14 +7,16 @@ Spree::OrdersController.class_eval do
     quantity = params[:quantity].to_i
     options  = params[:options] || {}
 
-    if quantity.between?(1, 15)
+    if quantity.between?(1, 2_147_483_647)
       begin
-        order.contents.add(variant, quantity, options)
+        if variant.free? || quantity.between?(1, 15)
+          order.contents.add(variant, quantity, options)
+        else
+          error = "To place an order for more than 15 licenses of this product you must <a href='/contact'>contact us</a>.".html_safe
+        end
       rescue ActiveRecord::RecordInvalid => e
         error = e.record.errors.full_messages.join(", ")
       end
-    elsif quantity > 15
-      error = "To place an order for more than 15 licenses of this product you must <a href='/contact'>contact us</a>.".html_safe
     else
       error = Spree.t(:please_enter_reasonable_quantity)
     end
