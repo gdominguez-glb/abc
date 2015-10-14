@@ -25,21 +25,23 @@
           </div>
         <% end %>
         <%= render 'stats' %>
-        <div class="row">
-          <div class="col-sm-6 col-md-4">
-            <label for="">Select from Existing Users</label>
-            <%= link_to 'Choose Users', select_users_account_licenses_path, class: 'btn btn-primary btn-block margin-bottom', remote: true %>
+        <div class="well">
+          <div class="row">
+            <div class="col-sm-6 col-md-4">
+              <label for="">Select from Existing Users</label>
+              <%= link_to 'Choose Users', select_users_account_licenses_path, class: 'btn btn-primary btn-block margin-bottom', remote: true %>
+            </div>
+            <div class="col-sm-6 col-md-4 col-md-offset-2">
+              <label for="">Upload from File</label>
+              <%= link_to import_modal_account_licenses_path, class: 'btn btn-default btn-block upload-user-btn dashed-border margin-bottom', remote: true do %>
+                Choose File <span class="glyphicon glyphicon-plus"></span>
+              <% end %>
+            </div>
           </div>
-          <div class="col-sm-6 col-md-4 col-md-offset-2">
-            <label for="">Upload from File</label>
-            <%= link_to import_modal_account_licenses_path, class: 'btn btn-default btn-block upload-user-btn dashed-border margin-bottom', remote: true do %>
-              Choose File <span class="glyphicon glyphicon-plus"></span>
-            <% end %>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-xs-12">
-            <%= f.text_field :licenses_recipients, class: 'form-control margin-bottom-xl', placeholder: 'separate emails with comma' %>
+          <div class="row">
+            <div class="col-xs-12">
+              <%= f.text_field :licenses_recipients, class: 'form-control', placeholder: 'separate emails with comma' %>
+            </div>
           </div>
         </div>
         <div class="row">
