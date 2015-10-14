@@ -45,11 +45,11 @@
 
     <div class="form-group">
       <label>Payment Method</label>
-      <%= f.collection_select :payment_method_id, Spree::PaymentMethod.available(:back_end), :id, :name, { include_blank: 'Select Payment Method' }, class: 'form-control' %>
+      <%= f.collection_select :payment_method_id, @payment_methods, :id, :name, { include_blank: 'Select Payment Method' }, class: 'form-control' %>
     </div>
     
     <ul class="nav" id="payment-methods" data-hook>
-      <% Spree::PaymentMethod.available(:back_end).each do |method| %>
+      <% @payment_methods.each do |method| %>
         <li id="payment_method_<%= method.id %>" class="payment-method" style="display: none;">
           <fieldset>
             <%= render :partial => "spree/checkout/payment/#{method.method_type}", :locals => { :payment_method => method } %>

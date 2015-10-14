@@ -1,6 +1,8 @@
 module Spree
   module Admin
     class LicensedProductsController < ResourceController
+      before_action :set_payment_methods, only: [:new, :create]
+
       def index
         @licensed_products = Spree::LicensedProduct.joins(:product).includes([:user, :product]).page(params[:page])
       end
@@ -39,6 +41,10 @@ module Spree
       end
 
       private
+
+      def set_payment_methods
+        @payment_methods = Spree::PaymentMethod.where(name: ['Purchase Order', 'Credit Card']).available(:back_end)
+      end
 
       def new_licenses_form_params
         params.require(:admin_new_licenses_form).permit(

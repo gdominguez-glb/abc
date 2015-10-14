@@ -4,7 +4,6 @@
 
 <% content_for :page_actions do %>
   <%= button_link_to "Fulfill an Order", spree.new_admin_licensed_product_url, :class => "btn-success", :icon => 'add', :id => 'admin_new_licensed_product' %>
-  <%= button_link_to "Bulk License File Upload", spree.import_admin_licensed_products_path, class: 'btn-success', icon: 'add' %>
 <% end if can? :create, Spree::Order %>
 
 <% if @licensed_products.any? %>
