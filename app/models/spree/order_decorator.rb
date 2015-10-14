@@ -9,6 +9,16 @@ Spree::Order.class_eval do
 
   validates_format_of :license_admin_email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, if: ->(o) { o.distribute_option == 'someone' }
 
+  before_save :check_terms_and_conditions
+
+  def check_terms_and_conditions
+    if self.user && self.terms_and_conditions_changed? && self.terms_and_conditions?
+      self.products.each do |product|
+        self.user.product_agreements.find_or_create_by(product: product)
+      end
+    end
+  end
+
   def self.sobject_name
     'Order'
   end

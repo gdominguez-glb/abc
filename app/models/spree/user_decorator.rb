@@ -85,6 +85,7 @@ Spree::User.class_eval do
   has_many :download_jobs
   has_many :product_tracks
   has_many :bookmarks
+  has_many :product_agreements, class_name: 'Spree::ProductAgreement'
 
   attr_accessor :school_id, :district_id
 
