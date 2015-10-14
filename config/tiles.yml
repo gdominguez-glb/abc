@@ -1,4 +1,12 @@
 ---
+- :name: Role/Curriculum Selector Hero
+  :fields:
+  - :name: title
+    :label: Title
+    :input_type: text_area
+  - :name: background_image_url
+    :label: Background Image Url
+    :input_type: text
 - :name: Video Hero
   :fields:
   - :name: title

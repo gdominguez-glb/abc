@@ -12,7 +12,7 @@ namespace 'pages' do
 
   desc "[Don't do this if you don't know what this is!] Reset all default pages."
   task :reset => :environment do
-    pages_from_yaml = ['careers', 'math', 'english', 'history', 'tos', 'about'].map do |pages_name|
+    pages_from_yaml = ['home', 'careers', 'math', 'english', 'history', 'tos', 'about'].map do |pages_name|
       YAML.load_file(Rails.root.join("config/pages/#{pages_name}.yml"))['pages']
     end.flatten
     (pages_array + pages_from_yaml).each do |params|
@@ -25,6 +25,18 @@ namespace 'pages' do
 
       puts "Page: slug='#{page.slug}'' was updated."
     end
+  end
+
+  # rake pages:reset_page section=about title=About
+  desc "reset single page"
+  task :reset_page => :environment do
+    page_section = ENV['section']
+    page_title   = ENV['title']
+    pages_yaml = YAML.load_file(Rails.root.join("config/pages/#{page_section}.yml"))['pages']
+    page_yaml = pages_yaml.find{|p| p['title'] == page_title }
+    page_yaml.symbolize_keys!
+    page = Page.where(slug: page_yaml[:slug]).first_or_create
+    page.update_attributes(page_yaml.merge(visible: true, tiles: nil))
   end
 end
 
