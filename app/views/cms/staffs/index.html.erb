@@ -9,6 +9,7 @@
           <th></th>
           <th>Name</th>
           <th>Titlte</th>
+          <th>Staff Type</th>
           <th>Display</th>
           <th></th>
         </tr>
@@ -19,6 +20,7 @@
             <td><span class="glyphicon glyphicon-resize-vertical" aria-hidden="true"></span></td>
             <td><%= staff.name %></td>
             <td><%= staff.title %></td>
+            <td><%= staff.staff_type %></td>
             <td><%= staff.display? ? 'Yes' : 'No' %></td>
             <td>
               <%= link_to 'Edit', edit_cms_staff_path(staff), class: 'btn btn-default' %>

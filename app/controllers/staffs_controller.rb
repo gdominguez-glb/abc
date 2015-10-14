@@ -1,10 +1,10 @@
 class StaffsController < ApplicationController
   def index
-    @staffs = Staff.displayable.order('position asc')
+    @staffs = Staff.displayable.staff.order('position asc')
   end
 
   def trustees
-    @staffs = Staff.displayable.order('position asc')
+    @trustees = Staff.displayable.trustee.order('position asc')
   end
 
   def show

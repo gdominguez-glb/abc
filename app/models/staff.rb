@@ -1,5 +1,7 @@
 class Staff < ActiveRecord::Base
 
+  enum staff_type: { staff: 0, trustee: 1 }
+
   include Displayable
 
   has_attached_file :picture, {
