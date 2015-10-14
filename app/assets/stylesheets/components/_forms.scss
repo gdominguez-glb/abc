@@ -24,6 +24,12 @@ label {
   }
 }
 
+.form-inline {
+  .form-control {
+    padding: $b-space $b-space-m;
+  }
+}
+
 .form-group,
 .input-group {
   margin-bottom: $b-space-m * 2;

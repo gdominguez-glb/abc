@@ -159,6 +159,16 @@
   }
 }
 
+.dropdown-toggle {
+  position: relative;
+
+  .caret {
+    position: absolute;
+    right: 10px;
+    top: 18px;
+  }
+}
+
 .btn-block {
   margin-bottom: 30px;
 }
