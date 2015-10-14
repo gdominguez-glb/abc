@@ -63,6 +63,7 @@ spree_routes_overrides = Proc.new do
   end
   patch '/simple_cart', :to => 'orders#update_simple_cart', :as => :update_simple_cart
   get '/add_products_to_cart', to: 'orders#add_products_to_cart', as: :add_products_to_cart
+  get '/products/:id/launch', to: 'products#launch', as: :launch_product
 end
 if Rails.env.development?
   Spree::Core::Engine.add_routes(&spree_routes_overrides)
