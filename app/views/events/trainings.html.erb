@@ -1,10 +1,8 @@
-<div class="container">
-  <% @event_trainings.each do |event_training| %>
-    <div class="event-training">
-      <h3><%= event_training.title %></h3>
-      <p>
-	 <%= event_training.content.html_safe rescue nil %>
-      </p>
-    </div>
-  <% end %>
-</div>
+<% @event_trainings.each do |event_training| %>
+  <div class="event-training">
+    <h3><%= event_training.title %></h3>
+    <p>
+ <%= event_training.content.html_safe rescue nil %>
+    </p>
+  </div>
+<% end %>
