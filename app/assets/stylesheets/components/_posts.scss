@@ -13,3 +13,28 @@
     border: none;
   }
 }
+
+.post-view {
+  li {
+    margin-bottom: $b-space-m;
+  }
+
+  figure {
+    margin-bottom: $b-space-l;
+    padding: $b-space;
+    border: 1px solid $brand-primary;
+
+    @media screen and (min-width: $screen-sm-min) {
+      max-width: 600px;
+      margin: 0 auto $b-space-l;
+      padding: $b-space-l;
+      text-align: center;
+    }
+  }
+
+  figcaption {
+    margin-top: $b-space;
+    font-size: 0.85em;
+    font-style: italic;
+  }
+}
