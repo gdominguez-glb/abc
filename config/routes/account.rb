@@ -2,9 +2,6 @@ namespace :account do
   root to: 'root#index'
 
   get 'products', to: 'products#index'
-  get 'help', to: 'help#index'
-  get 'help/item/:id', to: 'help#item', as: :help_item
-  get 'help/qa/:id', to: 'help#qa', as: :qa
 
   get 'history', to: 'history#index'
   delete 'history/:id/remove', to: 'history#remove', as: :remove_history
