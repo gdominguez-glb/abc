@@ -19,7 +19,7 @@ class Page < ActiveRecord::Base
   belongs_to :curriculum
 
   has_many :medium_publications
-  has_one :event_page, ->{ where(display: true) }
+  has_many :event_pages, ->{ where(display: true) }
 
   validates :slug, presence: true, uniqueness: true
   validates_presence_of :title, :group_name

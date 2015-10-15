@@ -8,7 +8,7 @@ RSpec.describe Page, type: :model do
 
   it { should belong_to(:curriculum) }
   it { should have_many(:medium_publications) }
-  it { should have_one(:event_page) }
+  it { should have_many(:event_pages) }
 
   describe ".visibles" do
     let!(:visible_page) { create(:page, visible: true) }
