@@ -43,6 +43,10 @@ class Page < ActiveRecord::Base
     Page.show_in_sub_navigation(self.group_name)
   end
 
+  def available_event_pages
+    event_pages.select{|event_page| event_page.events.exists? }
+  end
+
   private
 
   def generate_page_from_tiles

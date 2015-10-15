@@ -16,7 +16,7 @@
         <% if @group_page && publication = @group_page.medium_publications.sorted.first %>
           <%= active_link_to 'Blog', curriculum_blog_path(page_slug: @group_page.slug, slug: publication.slug), wrap_tag: :li, active: /#{@group_page.slug}\/blog/ %>
         <% end %>
-        <% if @group_page && event_page = @group_page.event_pages.first %>
+        <% if @group_page && event_page = @group_page.available_event_pages.first %>
           <%= active_link_to 'Events', curriculum_events_path(page_slug: @group_page.slug, slug: event_page.slug), wrap_tag: :li, active: /#{@group_page.slug}\/events\/#{event_page.slug}/ %>
         <% end %>
       </ul>
