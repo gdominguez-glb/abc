@@ -10,7 +10,7 @@ namespace :footers do
           { name: 'Contact', link: '/contact'},
           { name: 'Mission', link: '/about/mission' },
           { name: 'Staff', link: '/team' },
-          { name: 'Trustees', link: '/tesm/trustees' }
+          { name: 'Trustees', link: '/team/trustees' }
         ]
       },
       {
