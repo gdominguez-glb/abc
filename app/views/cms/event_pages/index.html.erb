@@ -13,7 +13,9 @@
           <tr>
             <th>Title</th>
             <th>Regonline filter</th>
-            <th>Page</th>
+            <th>Curriculum</th>
+            <th>Unique Url</th>
+            <th>Event Page Type</th>
             <th>Visible</th>
             <th colspan="2"></th>
           </tr>
@@ -25,6 +27,8 @@
               <td><%= event_page.title %></td>
               <td><%= event_page.regonline_filter %></td>
               <td><%= event_page.page.try(:group_name) %></td>
+              <td><%= event_page.slug %></td>
+              <td><%= event_page.event_page_type %></td>
               <td><%= event_page.display ? 'Yes' : 'No' %></td>
               <td><%= link_to 'Edit', edit_cms_event_page_path(event_page) %></td>
               <td><%= link_to 'Destroy', [:cms, event_page], method: :delete, data: { confirm: 'Are you sure?' } %></td>
