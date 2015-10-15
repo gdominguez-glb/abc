@@ -21,8 +21,8 @@ namespace :footers do
         title: 'Updates',
         link: '',
         sub_links: [
-          { name: 'Press', link: '/blog/global/press' },
-          { name: 'Reports', link: '/blog/global/reports' }
+          { name: 'Press', link: '/updates/global/press' },
+          { name: 'Reports', link: '/updates/global/reports' }
         ]
       },
       {
