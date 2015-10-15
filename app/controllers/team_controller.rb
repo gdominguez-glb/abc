@@ -1,4 +1,4 @@
-class StaffsController < ApplicationController
+class TeamController < ApplicationController
   def index
     @staffs = Staff.displayable.staff.order('position asc')
   end
