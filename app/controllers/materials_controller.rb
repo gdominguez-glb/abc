@@ -1,6 +1,6 @@
 class MaterialsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_material, only: [:download, :preview, :bookmark]
+  before_action :set_material, only: [:download, :preview, :bookmark, :remove_bookmark]
   before_action :set_product, only: [:download_all, :multi_download]
 
   def download
@@ -51,6 +51,10 @@ class MaterialsController < ApplicationController
 
   def bookmark
     current_spree_user.bookmarks.find_or_create_by(bookmarkable: @material)
+  end
+
+  def remove_bookmark
+    current_spree_user.bookmarks.find_by(bookmarkable: @material).try(:destroy)
   end
 
   private

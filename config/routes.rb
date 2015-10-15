@@ -96,6 +96,7 @@ Rails.application.routes.draw do
       get :download_all
       get :preview
       post :bookmark
+      post :remove_bookmark
     end
   end
 
