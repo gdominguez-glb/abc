@@ -20,7 +20,9 @@
             <span class="fa fa-eye"></span>
           <% end %>
           <% if bookmarked_material?(material) %>
-            <span class="fa fa-bookmark"></span>
+            <%= link_to remove_bookmark_material_path(material, ref_id: "#bookmark-#{material.id}"), id: "bookmark-#{material.id}", remote: true, data: { method: :post } do %>
+              <span class="fa fa-bookmark"></span>
+            <% end %>
           <% else %>
             <%= link_to bookmark_material_path(material, ref_id: "#bookmark-#{material.id}"), id: "bookmark-#{material.id}", remote: true, data: { method: :post } do %>
               <span class="fa fa-bookmark-o"></span>
