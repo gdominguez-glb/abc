@@ -1,0 +1,56 @@
+<div class="row">
+  <div class="col-sm-10 col-sm-offset-1">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="page-header">
+          <h2>Account Help</h2>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-9">
+        <h3>FAQ</h3>
+        <ul>
+          <li>
+            <% @faq_categories.each do |faq_category| %>
+              <div class="margin-bottom-l">
+                <h4><%= faq_category.name %></h4>
+                <ul>
+                  <% faq_category.questions.each do |question| %>
+                    <li>
+                      <p>
+                        <%= link_to question.title, account_qa_path(question.id), class: 'text-normal' %>
+                      </p>
+                    </li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+      <div class="col-sm-3">
+        <ul class="margin-bottom-xl">
+          <li><h6>Great Minds</h6>
+          <ul>
+            <li>55 M Street SE</li>
+            <li>Suite 340</li>
+            <li>Washington D.C. 20003</li>
+            <li>Phone: 202-223-1854</li>
+            <li>Fax: 202-449-9504</li>
+          </ul>
+          </li>
+        </ul>
+        <ul class="margin-bottom-xl">
+          <li><h6>Sales Inquiries</h6>
+          <ul>
+            <li>Phone: 1-844-853-1010</li>
+            <li>E-mail: sales@greatminds.net</li>
+          </ul>
+          </li>
+        </ul>
+        <a class="btn btn-primary btn-block" href="../contact.html" role="button">Learn More</a>
+      </div>
+    </div>
+  </div>
+</div>
