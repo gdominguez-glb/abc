@@ -1,9 +1,7 @@
 class EventsController < ApplicationController
   def index
     @events = RegonlineEvent.page(params[:page])
-    if params[:zipcode].present?
-      @events = @events.near(params[:zipcode], 100)
-    end
+    filter_by_zipcode
   end
 
   def page
@@ -25,12 +23,25 @@ class EventsController < ApplicationController
     @event_page    = @group_page.event_pages.find_by(slug: params[:slug])
     @events        = @event_page.events.page(params[:page])
 
-    if params[:zipcode].present?
-      @events = @events.near(params[:zipcode], 100)
-    end
+    filter_by_zipcode
+  end
+
+  def list
+    @event_page = EventPage.find_by(slug: params[:slug])
+    @events     = @event_page.events.page(params[:page])
+
+    filter_by_zipcode
   end
 
   def trainings
     @event_trainings = EventTraining.all
+  end
+
+  private
+
+  def filter_by_zipcode
+    if params[:zipcode].present?
+      @events = @events.near(params[:zipcode], 100)
+    end
   end
 end
