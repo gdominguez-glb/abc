@@ -12,8 +12,10 @@
 
     <div id="wrap" class="<%= 'empty-state' if @video_products.blank? %>">
       <%= render 'header' %>
-      <%= render 'flashes' %>
-      <%= yield %>
+      <div class="container container-content">
+        <%= render 'flashes' %>
+        <%= yield %>
+      </div>
       <%= yield :javascripts %>
     </div>
     <%= render 'footer' %>
