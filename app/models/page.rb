@@ -19,7 +19,7 @@ class Page < ActiveRecord::Base
   belongs_to :curriculum
 
   has_many :medium_publications
-  has_one :event_page, ->{ where(display: true) }
+  has_many :event_pages, ->{ where(display: true) }
 
   validates :slug, presence: true, uniqueness: true
   validates_presence_of :title, :group_name
@@ -41,6 +41,10 @@ class Page < ActiveRecord::Base
 
   def sub_pages
     Page.show_in_sub_navigation(self.group_name)
+  end
+
+  def available_event_pages
+    event_pages.select{|event_page| event_page.events.exists? }
   end
 
   private

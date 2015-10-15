@@ -1,0 +1,61 @@
+<div class="row">
+  <div class="col-sm-10 col-sm-offset-1 margin-bottom-xl">
+
+    <%= render partial: 'curriculum_events_nav', locals: { page: @group_page, event_pages: @group_page.available_event_pages } %>
+
+    <div class="events-page">
+      <div class="page-header">
+        <h2>Professional Development</h2>
+        <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
+      </div>
+      <div class="row">
+        <div class="col-lg-6">
+          <h4>Upcoming training</h4>
+        </div>
+        <div class="col-lg-6 text-right-lg">
+          <div class="form-inline">
+            <div class="form-group">
+              <div class="dropdown">
+                <label>Sort by</label>
+                <button class="btn btn-default dropdown-toggle btn-block-xs margin-bottom-reset" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                  All
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="form-group margin-xs-left-m">
+              <%= form_tag '', method: :get do %>
+                <label>Seach by ZIP <span class="fa fa-map-marker" id="geocode-button" title="click to auto enter your address"></span></label>
+                <%= text_field_tag :zipcode, params[:zipcode], class: 'form-control', placeholder: 'Search by ZIP' %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr />
+      <%= render 'events_list' %>
+    </div>
+
+  </div>
+</div>
+
+<%= content_for :javascripts do %>
+  <script src="https://maps.googleapis.com/maps/api/js"></script>
+  <%= javascript_tag do %>
+    $(function(){
+      $('#geocode-button').click(function(){
+        GmGeocoder.findPosition(function(point){
+          GmGeocoder.findAddress({ point: point, callback: function(address){
+            $("#zipcode").val(address);
+          }})
+        })
+      });
+    });
+  <% end %>
+<% end %>

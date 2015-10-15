@@ -1,9 +1,11 @@
 class EventPage < ActiveRecord::Base
+  include Displayable
+
   belongs_to :page
 
-  validates_presence_of :page
+  enum event_page_type: { global: 0, curriculum: 1 }
 
-  scope :displayable, ->{ where(display: true) }
+  validates_presence_of :title, :slug
 
   def events
     RegonlineEvent.with_filter(self.regonline_filter)

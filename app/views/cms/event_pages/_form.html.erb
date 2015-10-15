@@ -15,20 +15,23 @@
     <%= f.label :title %>
     <%= f.text_field :title, class: 'form-control' %>
   </div>
-  <%# <div class="form-group"> %>
-  <%#   <%= f.label 'Unique url' %1> %>
-  <%#   <%= f.text_field :slug, class: 'form-control' %1> %>
-  <%#   <p class="help-block">For example: if enter 'math-events' and this event page belong to math curriculum, it will be visited under /math/events </p> %>
-  <%# </div> %>
+  <div class="form-group">
+    <%= f.label :event_page_type %>
+    <%= f.select :event_page_type, EventPage.event_page_types.keys, {}, class: 'form-control' %>
+  </div>
+  <div id="curriculum-input" class="form-group <%= 'hidden' if f.object.event_page_type == 'global' %>">
+    <%= f.label "Curriculum" %>
+    <%= f.collection_select :page_id, Page.show_in_top_navigation, :id, :group_name, { }, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label 'Unique url' %>
+    <%= f.text_field :slug, class: 'form-control' %>
+    <p class="help-block">For example: if enter 'math-events' and this event page belong to math curriculum, it will be visited under /math/events </p>
+  </div>
   <div class="form-group">
     <%= f.label :regonline_filter %>
     <%= f.text_field :regonline_filter, class: 'form-control' %>
     <p class="help-block">This field is mapping to Internal Code(open event edit, under Registration Rules section, click Advanced Setting) in regonline event to assocaite events with related curriculum. if this field is entered as 'Math' and in regonline event Internal Code has value 'Math,..', this event will be displayed in this events list</p>
-  </div>
-  <div class="form-group">
-    <%= f.label "Curriculum Page" %>
-    <%= f.collection_select :page_id, Page.show_in_top_navigation, :id, :group_name, { prompt: true }, class: 'form-control' %>
-    <p class="help-block">For example: if enter 'math-events' and this event page belong to math curriculum, it will be visited under /math/events </p>
   </div>
   <div class="form-group">
     <%= f.label :display %>
@@ -37,4 +40,19 @@
   <div class="form-group">
     <%= f.submit class: 'btn btn-primary' %>
   </div>
+<% end %>
+
+<%= content_for :javascripts do %>
+  <script type="text/javascript">
+    $(function(){
+      $('select[name="event_page[event_page_type]"]').change(function(){
+        var eventPageType = $(this).val();
+        if (eventPageType == 'global') {
+          $('#curriculum-input').addClass('hidden');
+        } else {
+          $('#curriculum-input').removeClass('hidden');
+        }
+      });
+    });
+  </script>
 <% end %>

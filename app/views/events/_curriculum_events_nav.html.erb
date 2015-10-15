@@ -1,0 +1,7 @@
+<ul class="nav nav-tabs">
+  <% event_pages.each do |event_page| %>
+    <li role="presentation">
+      <%= active_link_to event_page.title, curriculum_events_path(page_slug: page.slug, slug: event_page.slug) %>
+    </li>
+  <% end %>
+</ul>
