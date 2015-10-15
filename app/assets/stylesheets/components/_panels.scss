@@ -36,8 +36,15 @@
     }
 	}
 
+  .btn-icon {
+    position: relative;
+    top: -2px;
+  }
+
   a {
-    &:hover {
+    &:hover,
+    &:focus,
+    &:active {
       text-decoration: none;
     }
   }
