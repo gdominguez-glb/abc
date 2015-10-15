@@ -61,7 +61,7 @@ Rails.application.routes.draw do
   get 'careers', to: 'jobs#index', as: :jobs
   get 'careers/:id', to: 'jobs#show', as: :job
 
-  resources :staffs, only: [:index, :show] do
+  resources :team, only: [:index, :show] do
     collection do
       get :trustees
     end
