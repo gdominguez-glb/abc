@@ -13,7 +13,7 @@ class NotificationWorker
               Spree::User.send("with_#{nt.user_type.downcase}_title")
             elsif nt.every_target?
               Spree::User.where("1 = 1")
-            elsif nt.curriculum_users?
+            elsif nt.curriculum_users_target?
               Spree::User.with_curriculum(nt.curriculum)
             end
     delivery_notifications(nt, users) if users.present?
