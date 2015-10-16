@@ -6,6 +6,6 @@ $(()->
       url: url
       data: { licenses_ids: $(this).val() }
       success: (response)->
-        $el.closest('.product-stats-wrapper').find('.product-stats').replaceWith(response)
+        $el.closest('form').find('.product-stats').replaceWith(response)
   )
 )

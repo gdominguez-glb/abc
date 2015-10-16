@@ -25,7 +25,7 @@ class AdminNewLicensesForm
     products.each do |product|
       order.line_items << Spree::LineItem.new(variant: product.master, quantity: self.quantity)
     end
-    order.payments << build_payment
+    order.payments << build_payment if self.payment_method_id.present?
     order.save
 
     process_order(order)

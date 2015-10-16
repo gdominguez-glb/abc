@@ -2,7 +2,7 @@
 <%  if current_spree_user.managed_products_options.count > 1 %>
   <p class="small inline"><em>Your Licenses for:</em></p>
   <div class="select-container dark-select margin-xs-left-m">
-    <span>Select Product</span>
+    <span><%= current_spree_user.managed_products_options.first[0] %></span>
     <%= select_tag :licenses_ids, options_for_select(current_spree_user.managed_products_options), class: 'licenses-select form-control inline-input' %>
   </div>
 <%  elsif current_spree_user.managed_products_options.count == 1 %>
