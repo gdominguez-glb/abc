@@ -9,7 +9,7 @@
   <% if event.session_types.present? %>
     <span>Session types: </span>
     <% event.event_trainings.each do |event_traning| %>
-      <%= link_to event_traning.title, events_trainings_path(anchor: event_traning.id) %>
+      <%= link_to event_traning.title, events_trainings_path(anchor: "session-#{event_traning.id}") %>
     <% end %>
   <% end %>
   <% if event.download_url.present? %>
