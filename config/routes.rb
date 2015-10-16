@@ -71,6 +71,7 @@ Rails.application.routes.draw do
 
   resources :documents, only: [:show]
 
+  draw :about
   draw :account
   draw :cms
 

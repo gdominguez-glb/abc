@@ -21,7 +21,6 @@
           <%= active_link_to "Video Gallery", '/video_gallery', wrap_tag: :li %>
           <%= active_link_to "CMS", '/cms', wrap_tag: :li if current_spree_user.admin? %>
           <%= active_link_to "Settings", '/account/settings', wrap_tag: :li %>
-          <%= active_link_to "Help", '/account/help', wrap_tag: :li %>
           <% if spree_current_user.has_school_admin_role? %>
             <%= active_link_to "License Management", '/account/licenses', wrap_tag: :li %>
           <% end %>

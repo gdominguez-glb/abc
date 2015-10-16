@@ -1,4 +1,4 @@
-class Account::HelpController < Account::BaseController
+class About::FaqController < About::BaseController
   def index
     @faq_categories = FaqCategory.displayable.includes(:questions)
   end
