@@ -40,7 +40,6 @@
 @import "account";
 @import "events";
 @import "license-mgmt";
-@import "login";
 @import "careers_page";
 @import "search";
 @import "select2_import";
@@ -60,7 +59,7 @@
 // _spree_admin_overrides.scss isn't available to store/admin/login, so...
 div[data-hook="login"] {
 	margin-top: 50px;
-	
+
 	@media screen and (min-width: $screen-sm-min) {
 		margin-top: 100px;
 	}
