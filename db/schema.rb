@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151015014251) do
+ActiveRecord::Schema.define(version: 20151016094559) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -342,10 +342,14 @@ ActiveRecord::Schema.define(version: 20151015014251) do
     t.string   "location_address2"
     t.decimal  "latitude",          precision: 10, scale: 6
     t.decimal  "longitude",         precision: 10, scale: 6
-    t.datetime "created_at",                                 null: false
-    t.datetime "updated_at",                                 null: false
+    t.datetime "created_at",                                                 null: false
+    t.datetime "updated_at",                                                 null: false
     t.string   "client_event_id"
     t.text     "description"
+    t.string   "download_url"
+    t.string   "grade_bands"
+    t.text     "session_types"
+    t.boolean  "display",                                    default: false
   end
 
   create_table "salesforce_references", force: :cascade do |t|

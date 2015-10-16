@@ -9,6 +9,7 @@
           <tr>
             <th>Title</th>
             <th>Date</th>
+            <th>Visible</th>
             <th></th>
           </tr>
         </thead>
@@ -17,6 +18,7 @@
             <tr>
               <td><%= event.title.html_safe %></td>
               <td><%= date_range(event.start_date, event.end_date, format: :short) if event.start_date.present? && event.end_date.present? %></td>
+              <td><%= event.display? ? 'Yes' : 'No' %></td>
               <td><%= link_to 'Edit', edit_cms_event_page_regonline_event_path(@event_page, event) %></td>
             </tr>
           <% end %>

@@ -10,6 +10,22 @@
           <label>Title</label>
           <%= f.text_field :title, class: 'form-control' %>
         </div>
+        <div class="form-group">
+          <label>Download Url</label>
+          <%= f.text_field :download_url, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <label>Grade Bands</label>
+          <%= f.text_field :grade_bands, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <label>Session Types</label>
+          <%= f.collection_select :session_types, EventTraining.all, :id, :title, { include_hidden: false }, class: 'form-control', multiple: true %>
+        </div>
+        <div class="form-group">
+          <label>Visible</label>
+          <%= f.check_box :display, class: 'form-control' %>
+        </div>
         <%= f.submit "Save", class: 'btn btn-primary' %>
       <% end %>
     </div>

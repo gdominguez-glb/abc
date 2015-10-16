@@ -28,6 +28,6 @@ class Cms::RegonlineEventsController < Cms::BaseController
   end
 
   def event_params
-    params.require(:regonline_event).permit(:title)
+    params.require(:regonline_event).permit(:title, :display, :download_url, :grade_bands, session_types: [])
   end
 end

@@ -1,7 +1,11 @@
 class RegonlineEvent < ActiveRecord::Base
 
+  include Displayable
+
   geocoded_by :full_address
   after_validation :geocode, if: ->(obj){ obj.full_address_changed? }
+
+  serialize :session_types, Array
 
   scope :with_filter, ->(filter) { where('client_event_id ilike ?', "%#{filter}%") }
 
