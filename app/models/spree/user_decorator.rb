@@ -47,6 +47,15 @@ Spree::User.class_eval do
     super
   end
 
+  # Provides a means to bypass creation in Salesforce.  For example, this is
+  # used to prevent the creation in Salesforce of a record created locally from
+  # Salesforce
+  def should_create_salesforce?
+    return false if !super ||
+      school_district.try(:salesforce_reference).try(:id_in_salesforce).blank?
+    !skip_salesforce_create
+  end
+
   def self.matches_salesforce_object(sfo)
     matches = super(sfo)
     return matches if matches.present?

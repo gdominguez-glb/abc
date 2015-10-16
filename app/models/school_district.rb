@@ -3,6 +3,7 @@ class SchoolDistrict < ActiveRecord::Base
   include SalesforceAccess
 
   belongs_to :state, class_name: 'Spree::State'
+  has_many :users, class_name: 'Spree::User'
 
   validates :name, :state_id, presence: true
 
@@ -93,5 +94,19 @@ class SchoolDistrict < ActiveRecord::Base
     return none if sfo.Name.blank?
     state = state_from_salesforce_object(sfo)
     where(name: sfo.Name, state_id: state)
+  end
+
+  # Performs additional tasks after creating a record in Salesforce.  This will
+  # be called from within ActiveJob
+  # Params:
+  # +_duplicate+:: indicates if the "new" record matched an existing one
+  def after_create_salesforce(_duplicate = false)
+    salesforce_reference.reload
+    users.reload
+    users.each do |user|
+      next if user.try(:salesforce_reference).present? ||
+        !user.should_create_salesforce?
+      user.create_in_salesforce(nil, false)
+    end
   end
 end
