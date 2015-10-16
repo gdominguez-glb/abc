@@ -9,7 +9,7 @@ pages:
     body: !xml |
       <div class="row intro masthead" style="background-image: url('http://gm-s3-qa.intridea.com/documents/attachments/000/000/020/original/homepage-masthead.jpg?1443038050')">
         <div class="col-xs-12 masthead-content text-center">
-          <h5 class="home-mast-intro bold">All children are capable of <span class="green-text">greatness</span></h5>
+          <h5 class="home-mast-intro bold"><span class="green-text">Every</span> child is capable of <span class="green-text">greatness</span></h5>
           <div id="pageSelection">
             <div class="btn-group fixed-width image-background">
               <button class="btn btn-default btn-block-xs margin-sm-bottom-m dropdown-toggle" type="button" id="dropdownRole" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
