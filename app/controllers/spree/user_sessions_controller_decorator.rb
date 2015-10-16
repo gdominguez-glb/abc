@@ -3,6 +3,34 @@ Spree::UserSessionsController.class_eval do
   before_filter :require_admin, only: [:become]
   before_filter :can_switch_user, only: [:become]
 
+  # override this action to remove login flash message
+  def create
+    authenticate_spree_user!
+
+    if spree_user_signed_in?
+      respond_to do |format|
+        format.html {
+          redirect_back_or_default(after_sign_in_path_for(spree_current_user))
+        }
+        format.js {
+          render :json => {:user => spree_current_user,
+                           :ship_address => spree_current_user.ship_address,
+                           :bill_address => spree_current_user.bill_address}.to_json
+        }
+      end
+    else
+      respond_to do |format|
+        format.html {
+          flash.now[:error] = t('devise.failure.invalid')
+          render :new
+        }
+        format.js {
+          render :json => { error: t('devise.failure.invalid') }, status: :unprocessable_entity
+        }
+      end
+    end
+  end
+
   # Admins can switch to become another user
   def become
     sign_in(:spree_user, @user, bypass: true)
