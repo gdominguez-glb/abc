@@ -5,24 +5,36 @@
         <label>First Name</label>
         <%= f.text_field :first_name, :class => 'form-control', :placeholder => Spree.t(:first_name), tabindex: 1 %>
       </div>
-      <div class="form-group">
-        <label>Email Address</label>
-        <%= f.email_field :email, :class => 'form-control', :placeholder => Spree.t(:email), tabindex: 3 %>
-      </div>
-      <div class="form-group">
-        <label>Subjects you are interested in</label>
-        <%= f.collection_select :interested_subjects, Curriculum.visibles, :id, :name, { include_hidden: false, multiple: true }, { class: 'form-control', tabindex: 5, multiple: 'multiple' } %>
-      </div>
     </div>
     <div class="col-md-6">
       <div class="form-group">
         <label>Last Name</label>
         <%= f.text_field :last_name, :class => 'form-control', :placeholder => Spree.t(:last_name), tabindex: 2 %>
       </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Email Address</label>
+        <%= f.email_field :email, :class => 'form-control', :placeholder => Spree.t(:email), tabindex: 3 %>
+      </div>
+    </div>
+    <div class="col-md-6">
       <div class="form-group">
         <label>Password</label>
         <%= f.password_field :password, :class => 'form-control', :placeholder => Spree.t(:password), tabindex: 4 %>
       </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Subjects you are interested in</label>
+        <%= f.collection_select :interested_subjects, Curriculum.visibles, :id, :name, { include_hidden: false, multiple: true }, { class: 'form-control', tabindex: 5, multiple: 'multiple' } %>
+      </div>
+    </div>
+    <div class="col-md-6">
       <label>Role</label>
       <div class="form-group select-container dark-select block">
         <span>Select your Role</span>
