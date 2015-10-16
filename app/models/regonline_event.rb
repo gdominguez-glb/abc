@@ -1,7 +1,11 @@
 class RegonlineEvent < ActiveRecord::Base
 
+  include Displayable
+
   geocoded_by :full_address
   after_validation :geocode, if: ->(obj){ obj.full_address_changed? }
+
+  serialize :session_types, Array
 
   scope :with_filter, ->(filter) { where('client_event_id ilike ?', "%#{filter}%") }
 
@@ -21,6 +25,10 @@ class RegonlineEvent < ActiveRecord::Base
     @training_type ||= begin
       self.client_event_id.split(',')[1] rescue nil
     end
+  end
+
+  def event_trainings
+    EventTraining.where(id: self.session_types)
   end
 
   class << self

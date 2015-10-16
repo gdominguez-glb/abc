@@ -1,8 +1,8 @@
 <% @event_trainings.each do |event_training| %>
-  <div class="event-training">
+  <div class="event-training" id="session-<%= event_training.id %>">
     <h3><%= event_training.title %></h3>
     <p>
- <%= event_training.content.html_safe rescue nil %>
+       <%= event_training.content.html_safe rescue nil %>
     </p>
   </div>
 <% end %>

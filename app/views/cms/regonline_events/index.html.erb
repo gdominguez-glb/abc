@@ -1,0 +1,29 @@
+<%= render 'cms_nav' %>
+
+<div class="col-md-9">
+  <section>
+    <div class='row'>
+      <h2>Events</h2>
+      <table class='table table-responsive table-striped table-hover'>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Date</th>
+            <th>Visible</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @events.each do |event| %>
+            <tr>
+              <td><%= event.title.html_safe %></td>
+              <td><%= date_range(event.start_date, event.end_date, format: :short) if event.start_date.present? && event.end_date.present? %></td>
+              <td><%= event.display? ? 'Yes' : 'No' %></td>
+              <td><%= link_to 'Edit', edit_cms_event_page_regonline_event_path(@event_page, event) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</div>
