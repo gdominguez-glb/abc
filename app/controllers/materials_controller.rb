@@ -46,7 +46,6 @@ class MaterialsController < ApplicationController
   end
 
   def preview
-    @files_url = @material.material_files.map {|mf| mf.file.preview_expiring_url(60*60*60) }
   end
 
   def bookmark

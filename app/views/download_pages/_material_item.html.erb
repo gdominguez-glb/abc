@@ -16,9 +16,17 @@
           <% end %>
         <% end %>
         <% if material.material_files_count > 0 %>
-          <%= link_to preview_material_path(material), remote: true do %>
-            <span class="fa fa-eye"></span>
+
+          <% if material.material_files_count == 1 %>
+            <%= link_to material.material_files.first.file.preview_expiring_url(60*60*60), target: '_blank' do %>
+              <span class="fa fa-eye"></span>
+            <% end %>
+          <% else %>
+            <%= link_to preview_material_path(material), remote: true do %>
+              <span class="fa fa-eye"></span>
+            <% end %>
           <% end %>
+
           <% if bookmarked_material?(material) %>
             <%= link_to remove_bookmark_material_path(material, ref_id: "#bookmark-#{material.id}"), id: "bookmark-#{material.id}", remote: true, data: { method: :post } do %>
               <span class="fa fa-bookmark"></span>
