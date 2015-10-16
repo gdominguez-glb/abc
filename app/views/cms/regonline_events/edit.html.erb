@@ -1,0 +1,17 @@
+<%= render 'cms_nav' %>
+
+<div class="col-md-9">
+  <section>
+    <div class='row'>
+      <%= link_to 'Back', cms_event_page_regonline_events_path(@event_page), class: 'btn btn-primary' %>
+      <h2>Edit Event</h2>
+      <%= form_for [:cms, @event_page, @event] do |f| %>
+        <div class="form-group">
+          <label>Title</label>
+          <%= f.text_field :title, class: 'form-control' %>
+        </div>
+        <%= f.submit "Save", class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  </section>
+</div>

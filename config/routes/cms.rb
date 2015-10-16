@@ -17,6 +17,7 @@ namespace :cms do
     collection do
       post :import_events
     end
+    resources :regonline_events, only: [:index, :edit, :update]
   end
   resources :documents
   resources :faq_categories do
