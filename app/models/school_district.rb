@@ -80,6 +80,12 @@ class SchoolDistrict < ActiveRecord::Base
     sfo_data
   end
 
+  # Provides the hash of attibutes and values for creating a new Salesforce
+  # record.
+  def new_attributes_for_salesforce
+    attributes_for_salesforce.merge!('Verified__c' => false)
+  end
+
   def attributes_for_salesforce
     { 'Name' => name,
       'RecordTypeId' => salesforce_record_type_id,
@@ -100,7 +106,8 @@ class SchoolDistrict < ActiveRecord::Base
   # be called from within ActiveJob
   # Params:
   # +_duplicate+:: indicates if the "new" record matched an existing one
-  def after_create_salesforce(_duplicate = false)
+  def after_create_salesforce(duplicate = false)
+    super(duplicate)
     salesforce_reference.reload
     users.reload
     users.each do |user|
@@ -109,4 +116,16 @@ class SchoolDistrict < ActiveRecord::Base
       user.create_in_salesforce(nil, false)
     end
   end
+
+  # The dropdown should be restricted to verified checkbox, last 48 hours, and
+  # is not “is deleted"
+  scope :for_selection, -> {
+    ids = includes(:salesforce_reference).all.select do |sd|
+      next false if sd.cached_salesforce_object.try(:IsDeleted) == true
+      next true if sd.cached_salesforce_object.try(:Verified__c) != false
+      date = sd.cached_salesforce_object.try(:CreatedDate)
+      date && Date.parse(date) > 2.days.ago
+    end
+    where(id: ids)
+  }
 end

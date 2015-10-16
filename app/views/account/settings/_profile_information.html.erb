@@ -43,7 +43,7 @@
         </div>
         <div class="form-group col-md-6 school-district-input">
           <label>Select School District</label>
-          <%= f.collection_select :school_district_id, SchoolDistrict.all, :id, :name, { include_blank: 'District Not List', prompt: 'Please select your district' }, { class: 'form-control' } %>
+          <%= f.collection_select :school_district_id, SchoolDistrict.for_selection.all, :id, :name, { include_blank: 'District Not List', prompt: 'Please select your district' }, { class: 'form-control' } %>
         </div>
         <div class="form-group col-md-6 school-district-input school-district-control <%= 'hidden' if current_spree_user.school_district_id.present? %>">
           <label>District State</label>

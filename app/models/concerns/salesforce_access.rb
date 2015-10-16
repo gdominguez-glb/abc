@@ -248,7 +248,7 @@ module SalesforceAccess
   # Override this to perform additional tasks after creating a record in
   # Salesforce
   def after_create_salesforce(_duplicate = false)
-    true
+    update_from_salesforce!
   end
 
   class_methods do
