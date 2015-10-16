@@ -31,7 +31,15 @@
         <% else %>
           <div class="row">
             <% @videos.each do |video| %>
-              <%= render partial: 'video', locals: { video: video } %>
+              <% if video.is_free? || bought_products?(video.products) %>
+                <%= render partial: 'open_video', locals: { video: video } %>
+              <% end %>
+            <% end %>
+
+            <% @videos.each do |video| %>
+              <% if !video.is_free? %>
+                <%= render partial: 'locked_video', locals: { video: video } %>
+              <% end %>
             <% end %>
           </row>
         <% end %>
