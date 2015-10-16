@@ -37,6 +37,11 @@
   border: 1px solid #fff;
 }
 
+.embed-responsive-4by4 {
+  padding-bottom: 100%;
+  border: 0;
+}
+
 .pull-right-sm {
   @media screen and (min-width: $screen-sm-min) {
     float: right !important;
