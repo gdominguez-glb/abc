@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
   end
 
   def path_for_spree_user(user)
-    user.admin? ? '/store/admin' : account_root_path
+    user.admin? ? '/store/admin' : main_app.account_root_path
   end
 
   protected
