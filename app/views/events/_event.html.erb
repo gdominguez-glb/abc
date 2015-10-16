@@ -3,5 +3,16 @@
     <%= date_range(event.start_date, event.end_date, format: :short) if event.start_date.present? && event.end_date.present? %>
   </div>
   <h4><%= link_to strip_tags(event.title), "http://regonline.com/#{event.regonline_id}", target: '_blank' %></h4>
-  <%= link_to event.training_type, events_trainings_path if event.training_type.present? %>
+  <% if event.grade_bands.present? %>
+    <span>Grade Bands: </span> <%= event.grade_bands %>
+  <% end %>
+  <% if event.session_types.present? %>
+    <span>Session types: </span>
+    <% event.event_trainings.each do |event_traning| %>
+      <%= link_to event_traning.title, events_trainings_path(anchor: event_traning.id) %>
+    <% end %>
+  <% end %>
+  <% if event.download_url.present? %>
+    <%= link_to 'Download', event.download_url, class: 'btn btn-primary', target: '_blank' %>
+  <% end %>
 </div>

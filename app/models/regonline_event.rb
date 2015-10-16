@@ -27,6 +27,10 @@ class RegonlineEvent < ActiveRecord::Base
     end
   end
 
+  def event_trainings
+    EventTraining.where(id: self.session_types)
+  end
+
   class << self
     ATTRIBUTES_TO_IMPORT = ["ID", "Title", "StartDate", "EndDate", "ActiveDate", "City", "State", "Country", "PostalCode", "LocationName", "LocationRoom", "LocationBuilding", "LocationAddress1", "LocationAddress2", "Latitude", "Longitude", "ClientEventID"]
     def import(data)
