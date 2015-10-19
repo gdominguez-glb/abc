@@ -56,94 +56,47 @@ pages:
     group_name: "english"
     sub_group_name: "teachers"
     position: 2
-    body: !xml |
-      <section id="background-grey" class="intro jumbo-text">
-        <div class="page-header container">
-          <h1>English Teacher Page</h1>
-          <h3 class="sub-head">Intro to Teacher Page</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sed sapien quam. Sed dapibus est id enim facilisis, at posuere turpis adipiscing. Quisque sit amet dui dui.</p>
-          <a class="btn btn-primary" href="../../marketing/product.html" role="button">Learn More</a>
-        </div>
-      </section>
-      <section>
-       <div class="container callout">
-        <div id="viewport" class="row">
-          <div class="col-xs-6">
-           <h2>Curriculum Section Teacher Specific</h2>
+    tiles:
+      :rows:
+        -
+          rowType: 'Full Width Text'
+          title: 'English Teacher Page'
+          body_text: !xml |
+            <h3 class="sub-head">Intro to teacher Page</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sed sapien quam. Sed dapibus est id enim facilisis, at posuere turpis adipiscing. Quisque sit amet dui dui.</p>
+          background_color: 'cream'
+          button_title: 'Learn More'
+          button_link: '/english'
+          position: 0
+
+        -
+          rowType: '50/50 Full-Bleed Image Left'
+          title: 'Intro into Curriculum'
+          body_text: !xml |
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
             tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
             quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
             consequat.</p>
-           <a class="btn btn-primary" href="../../marketing/product.html" role="button">Learn More</a>
-           <a class="btn btn-default" href="#" role="button">Secondary CTA</a>
-          </div>
-          <div class="col-xs-1"></div>
-          <div class="col-xs-5">
-            <img src="../../assets/img/fpo-image.jpg" class="img-thumbnail" alt="Responsive image">
-          </div>
-        </div>
-        <hr>
-        </div>
-      </section>
-      <section>
-      <div class="container">
-        <div id="viewport" class="row callout">
-          <div class="col-xs-5">
-            <img src="../../assets/img/fpo-image.jpg" class="img-thumbnail" alt="Responsive image">
-          </div>
-          <div class="col-xs-1"></div>
-          <div class="col-xs-6">
-           <h2>Maps Section Teacher Specific</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat.</p>
-           <a class="btn btn-primary" href="../../marketing/product.html" role="button">Learn More</a>
-           <a class="btn btn-default" href="#" role="button">Secondary CTA</a>
-          </div>
-        </div>
-        <hr>
-        </div>
-      </section>
-      <section>
-      <div class="container">
-        <div id="viewport" class="row">
-          <div class="col-xs-6">
-           <h2>Training Section Teacher Specific</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat.</p>
-           <a class="btn btn-primary" href="../../marketing/product.html" role="button">Learn More</a>
-           <a class="btn btn-default" href="#" role="button">Secondary CTA</a>
-          </div>
-          <div class="col-xs-1"></div>
-          <div class="col-xs-5">
-            <img src="../../assets/img/fpo-image.jpg" class="img-thumbnail" alt="Responsive image">
-          </div>
-        </div>
-        <hr>
-        </div>
-      </section>
-      <section>
-      <div class="container bottom-space">
-        <div id="viewport" class="row callout">
-          <div class="col-xs-5 bottom-space">
-            <img src="../../assets/img/fpo-image.jpg" class="img-thumbnail" alt="Responsive image">
-          </div>
-          <div class="col-xs-1"></div>
-          <div class="col-xs-6">
-           <h2>Resource Section Teacher Specific</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat.</p>
-          <a class="btn btn-primary" href="../../marketing/product.html" role="button">Learn More</a>
-           <a class="btn btn-default" href="#" role="button">Secondary CTA</a>
-          </div>
-        </div>
-        </div>
-      </section>
+          image_url: ''
+          background_color: 'green'
+          button_1_title: 'Learn More'
+          button_1_link: '/english'
+          button_2_title: 'Secondary CTA'
+          button_2_link: '/english'
+          position: 1
+
+        -
+          rowType: '50/50 Full-Bleed Image Right'
+          title: 'Curriculum Section'
+          body_text: !xml |
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </p>
+          image_url: ''
+          background_color: 'cream'
+          button_title: 'Learn More'
+          button_link: '/english'
+          position: 2
 
   -
     title: "Parents "
@@ -152,54 +105,48 @@ pages:
     group_name: "english"
     sub_group_name: "parents"
     position: 3
-    body: !xml |
-      <section id="background-grey" class="intro jumbo-text">
-        <div class="page-header container">
-          <h1>English Parents Page</h1>
-          <h3 class="sub-head">Intro to Parents Page</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sed sapien quam. Sed dapibus est id enim facilisis, at posuere turpis adipiscing. Quisque sit amet dui dui.</p>
-          <a class="btn btn-primary" href="../../marketing/product.html" role="button">Learn More</a>
-        </div>
-      </section>
-      <section>
-       <div class="container callout">
-        <div id="viewport" class="row">
-          <div class="col-xs-6">
-           <h2>Child Help Section Parent Specific</h2>
+    tiles:
+      :rows:
+        -
+          rowType: 'Full Width Text'
+          title: 'English Parent Page'
+          body_text: !xml |
+            <h3 class="sub-head">Intro to parent Page</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sed sapien quam. Sed dapibus est id enim facilisis, at posuere turpis adipiscing. Quisque sit amet dui dui.</p>
+          background_color: 'cream'
+          button_title: 'Learn More'
+          button_link: '/english'
+          position: 0
+
+        -
+          rowType: '50/50 Full-Bleed Image Left'
+          title: 'Intro into Curriculum'
+          body_text: !xml |
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
             tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
             quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
             consequat.</p>
-           <a class="btn btn-primary" href="../../marketing/product.html" role="button">Learn More</a>
-           <a class="btn btn-default" href="#" role="button">Secondary CTA</a>
-          </div>
-          <div class="col-xs-1"></div>
-          <div class="col-xs-5">
-            <img src="../../assets/img/fpo-image.jpg" class="img-thumbnail" alt="Responsive image">
-          </div>
-        </div>
-        <hr>
-        </div>
-      </section>
-      <section>
-      <div class="container bottom-space">
-        <div id="viewport" class="row callout">
-          <div class="col-xs-5 bottom-space">
-            <img src="../../assets/img/fpo-image.jpg" class="img-thumbnail" alt="Responsive image">
-          </div>
-          <div class="col-xs-1"></div>
-          <div class="col-xs-6">
-           <h2>Resource Section Parent Specific</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat.</p>
-           <a class="btn btn-primary" href="../../marketing/product.html" role="button">Learn More</a>
-           <a class="btn btn-default" href="#" role="button">Secondary CTA</a>
-          </div>
-        </div>
-        </div>
-      </section>
+          image_url: ''
+          background_color: 'green'
+          button_1_title: 'Learn More'
+          button_1_link: '/english'
+          button_2_title: 'Secondary CTA'
+          button_2_link: '/english'
+          position: 1
+
+        -
+          rowType: '50/50 Full-Bleed Image Right'
+          title: 'Curriculum Section'
+          body_text: !xml |
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </p>
+          image_url: ''
+          background_color: 'cream'
+          button_title: 'Learn More'
+          button_link: '/english'
+          position: 3
+
 
   -
     title: "Admins"
@@ -208,75 +155,47 @@ pages:
     group_name: "english"
     sub_group_name: "admins"
     position: 4
-    body: !xml |
-      <section id="background-grey" class="intro jumbo-text">
-        <div class="page-header container">
-          <h1>English Admin Page</h1>
-          <h3 class="sub-head">Intro to Admin Page</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sed sapien quam. Sed dapibus est id enim facilisis, at posuere turpis adipiscing. Quisque sit amet dui dui.</p>
-          <a class="btn btn-primary" href="../../marketing/product.html" role="button">Learn More</a>
-        </div>
-      </section>
-      <section>
-       <div class="container callout">
-        <div id="viewport" class="row">
-          <div class="col-xs-6">
-           <h2>Curriculum Section Admin Specific</h2>
+    tiles:
+      :rows:
+        -
+          rowType: 'Full Width Text'
+          title: 'English Admins Page'
+          body_text: !xml |
+            <h3 class="sub-head">Intro to admins Page</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sed sapien quam. Sed dapibus est id enim facilisis, at posuere turpis adipiscing. Quisque sit amet dui dui.</p>
+          background_color: 'cream'
+          button_title: 'Learn More'
+          button_link: '/english'
+          position: 0
+
+        -
+          rowType: '50/50 Full-Bleed Image Left'
+          title: 'Intro into Curriculum'
+          body_text: !xml |
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
             tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
             quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
             consequat.</p>
-           <a class="btn btn-primary" href="../../marketing/product.html" role="button">Learn More</a>
-           <a class="btn btn-default" href="#" role="button">Secondary CTA</a>
-          </div>
-          <div class="col-xs-1"></div>
-          <div class="col-xs-5">
-            <img src="../../assets/img/fpo-image.jpg" class="img-thumbnail" alt="Responsive image">
-          </div>
-        </div>
-        <hr>
-        </div>
-      </section>
-      <section>
-        <div class="container">
-          <div id="viewport" class="row callout">
-            <div class="col-xs-5">
-              <img src="../../assets/img/fpo-image.jpg" class="img-thumbnail" alt="Responsive image">
-            </div>
-            <div class="col-xs-1"></div>
-            <div class="col-xs-6">
-             <h2>Maps Section Admin Specific</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat.</p>
-             <a class="btn btn-primary" href="../../marketing/product.html" role="button">Learn More</a>
-             <a class="btn btn-default" href="#" role="button">Secondary CTA</a>
-            </div>
-          </div>
-          <hr>
-        </div>
-      </section>
-      <section>
-      <div class="container">
-        <div id="viewport" class="row">
-          <div class="col-xs-6">
-           <h2>Training Section Admin Specific</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat.</p>
-           <a class="btn btn-primary" href="../../marketing/product.html" role="button">Learn More</a>
-           <a class="btn btn-default" href="#" role="button">Secondary CTA</a>
-          </div>
-          <div class="col-xs-1"></div>
-          <div class="col-xs-5">
-            <img src="../../assets/img/fpo-image.jpg" class="img-thumbnail" alt="Responsive image">
-          </div>
-        </div>
-        <hr>
-        </div>
-      </section>
+          image_url: ''
+          background_color: 'green'
+          button_1_title: 'Learn More'
+          button_1_link: '/english'
+          button_2_title: 'Secondary CTA'
+          button_2_link: '/english'
+          position: 1
+
+        -
+          rowType: '50/50 Full-Bleed Image Right'
+          title: 'Curriculum Section'
+          body_text: !xml |
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </p>
+          image_url: ''
+          background_color: 'cream'
+          button_title: 'Learn More'
+          button_link: '/english'
+          position: 3
 
   -
     title: "Wheatley Shop"
