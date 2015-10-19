@@ -62,6 +62,11 @@ class Account::LicensesController < Account::BaseController
     end
   end
 
+  def cancel_invitation
+    current_spree_user.product_distributions.where(to_user_id: nil, email: params[:email]).map{|pd| pd.revoke }
+    redirect_to users_account_licenses_path
+  end
+
   def select_users
     @emails = current_spree_user.product_distributions.pluck(:email).uniq
   end
