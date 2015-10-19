@@ -1,0 +1,3 @@
+<% if posts.next_page %>
+  <%= link_to 'Load More', { page: posts.next_page }, remote: true, class: 'btn btn-primary' %>
+<% end %>

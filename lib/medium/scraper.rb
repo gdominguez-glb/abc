@@ -1,15 +1,21 @@
 module Medium
   class Scraper
     def scrape_publications
+      puts 'start importing posts from medium'
       MediumPublication.find_each do |publication|
         begin
           publication_data = request_data_from_medium(publication.url + '/latest')
           publication_data['payload']['posts'].each do |post|
+            print '.'
             import_post_from_medium(publication, post)
           end
         rescue
+          puts
+          puts 'failed to import posts from medium'
         end
       end
+      puts
+      puts 'finished'
     end
 
     def import_post_from_medium(publication, post_json)

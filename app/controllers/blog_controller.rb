@@ -4,6 +4,8 @@ class BlogController < ApplicationController
   before_action :load_curriculum_publications, only: [:curriculum, :curriculum_post]
 
   def global
+    @blog_type = 'global'
+
     load_global_publication
     load_posts
   end
@@ -13,6 +15,8 @@ class BlogController < ApplicationController
   end
 
   def curriculum
+    @blog_type = 'curriculum'
+
     load_curriculum_publication
     load_posts
   end
