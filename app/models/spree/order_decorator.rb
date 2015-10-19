@@ -108,6 +108,7 @@ Spree::Order.class_eval do
   # Params:
   # +_duplicate+:: indicates if the "new" record matched an existing one
   def after_create_salesforce(duplicate = false)
+    super
     return true if duplicate
     line_items.each do |line_item|
       line_item.create_in_salesforce(nil, false)
