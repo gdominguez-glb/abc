@@ -46,6 +46,11 @@ class Spree::ProductDistribution < ActiveRecord::Base
     Spree::ProductDistribution.where(from_email: user.email).update_all(from_user_id: user.id)
   end
 
+  def revoke
+    self.licensed_product.increase_quantity!(self.quantity)
+    self.destroy
+  end
+
   private
 
   def assign_email
