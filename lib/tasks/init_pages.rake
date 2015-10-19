@@ -21,7 +21,7 @@ namespace 'pages' do
       if params[:group_name].present? &&  curriculum = Curriculum.find_by(name: params[:group_name].titleize)
         params[:curriculum_id] = curriculum.id
       end
-      page.update_attributes(params.merge(visible: true, tiles: nil))
+      page.update_attributes(page_yaml.merge(visible: true).merge((page_yaml[:tiles].blank? ? { tiles: nil } : {} )))
 
       puts "Page: slug='#{page.slug}'' was updated."
     end
@@ -36,7 +36,7 @@ namespace 'pages' do
     page_yaml = pages_yaml.find{|p| p['title'] == page_title }
     page_yaml.symbolize_keys!
     page = Page.where(slug: page_yaml[:slug]).first_or_create
-    page.update_attributes(page_yaml.merge(visible: true, tiles: nil))
+    page.update_attributes(page_yaml.merge(visible: true).merge((page_yaml[:tiles].blank? ? { tiles: nil } : {} )))
   end
 end
 
