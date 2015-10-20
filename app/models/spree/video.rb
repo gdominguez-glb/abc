@@ -21,8 +21,7 @@ class Spree::Video < ActiveRecord::Base
   has_many :taxons, through: :video_classifications
 
   scope :with_taxons, ->(taxons) {
-    ids = taxons.map { |taxon| taxon.self_and_descendants.pluck(:id) }.flatten.uniq
-    joins(:taxons).where("spree_taxons.id" => ids)
+    joins(:taxons).where("spree_taxons.id" => taxons.map(&:id))
   }
 
   attr_accessor :video_group_name
@@ -32,7 +31,7 @@ class Spree::Video < ActiveRecord::Base
   after_save :assign_free_taxons
 
   after_initialize do
-    self.video_group_name = self.video_group.try(:name)
+    self.video_group_name = self.video_group.try(:name) if self.respond_to?(:video_group_id)
   end
 
   after_commit :run_wistia_worker, on: :create

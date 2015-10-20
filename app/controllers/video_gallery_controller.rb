@@ -8,10 +8,11 @@ class VideoGalleryController < ApplicationController
   def index
     params[:taxon_ids] ||= []
 
-    @videos        = Spree::Video.includes([video_group: [:products], taxons: [:taxonomy]]).uniq.page(params[:page])
-    @videos        = filter_videos(@videos)
+    @videos             = Spree::Video.where(nil)
+    @videos             = filter_videos(@videos)
+    @videos             = @videos.includes([video_group: [:products], taxons: [:taxonomy]]).page(params[:page])
 
-    @bought_product_ids    = fetch_bought_ids(@videos.map(&:products).flatten.compact)
+    @bought_product_ids = fetch_bought_ids(@videos.map(&:products).flatten.compact)
   end
 
   def show
@@ -47,11 +48,20 @@ class VideoGalleryController < ApplicationController
     if params[:query].present?
       videos = videos.where("title like ?", "%#{params[:query]}%")
     end
-    if params[:taxon_ids].present?
-      taxons = Spree::Taxon.where(id: params[:taxon_ids])
-      videos = videos.with_taxons(taxons) if !taxons.empty?
-    end
-    videos
+    filter_by_taxons(videos)
+  end
+
+  def filter_by_taxons(videos)
+    return videos if params[:taxon_ids].blank?
+    taxons = Spree::Taxon.where(id: params[:taxon_ids])
+    video_ids = Spree::Video.find_by_sql(generate_union_sql(videos, taxons)).map(&:id)
+    videos.where(id: video_ids)
+  end
+
+  def generate_union_sql(videos, taxons)
+    taxons.group_by(&:taxonomy).values.map do |t_taxons|
+      videos.with_taxons(t_taxons).to_sql
+    end.join(' UNION ')
   end
 
   def bought_products?(products)
