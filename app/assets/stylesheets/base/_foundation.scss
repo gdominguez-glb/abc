@@ -193,7 +193,7 @@ section {
   }
 
   h1, h2, h3, h4, h5, h6 {
-    margin: 0 0 15px;
+    margin: 0 0 12px;
   }
 
   p {
@@ -217,6 +217,24 @@ section.row-content-full {
       }
     }
   }
+}
+
+section.row-video-hero {
+
+  @media screen and (min-width: $screen-sm-min) {
+    .video-title {
+      margin-bottom: 25px;
+      color: $brand-green;
+    }
+
+    [class*='col-'] {
+      &:first-child,
+      &:last-child {
+        padding: 0 168px;
+      }
+    }
+  }
+
 }
 
 section.row-content-3col {

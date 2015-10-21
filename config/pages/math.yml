@@ -21,8 +21,7 @@ pages:
         -
           rowType: 'Full Width Text'
           title: 'Lorem ipsum dolor sit amet'
-          body_text: !xml |
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sed sapien quam. Sed dapibus est id enim facilisis, at posuere turpis adipiscing. Quisque sit amet dui dui.</p>
+          body_text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sed sapien quam. Sed dapibus est id enim facilisis, at posuere turpis adipiscing. Quisque sit amet dui dui.'
           background_color: 'green'
           button_title: 'Learn More'
           button_link: '/Math'
