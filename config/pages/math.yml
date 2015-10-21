@@ -22,7 +22,6 @@ pages:
           rowType: 'Full Width Text'
           title: 'Lorem ipsum dolor sit amet'
           body_text: !xml |
-            <h3 class="sub-head">Intro to admins Page</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sed sapien quam. Sed dapibus est id enim facilisis, at posuere turpis adipiscing. Quisque sit amet dui dui.</p>
           background_color: 'green'
           button_title: 'Learn More'
@@ -53,6 +52,8 @@ pages:
           body_text_3: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
           button_title_3: 'Learn More'
           button_link_3: '/math'
+          position: 3
+
         -
           rowType: 'Image Background, Text Left'
           title: 'Lorem ipsum dolor sit amet'
@@ -60,7 +61,7 @@ pages:
           button_title: 'Learn More'
           button_link: '/math'
           image_url: 'http://gm-s3-qa.intridea.com/documents/attachments/000/000/010/original/mathpage-content2.jpg?1442330393'
-          position: 2
+          position: 4
 
   -
     title: 'Teachers'
