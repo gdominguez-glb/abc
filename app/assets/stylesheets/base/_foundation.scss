@@ -237,6 +237,28 @@ section.row-video-hero {
 
 }
 
+section.row-content-2col {
+  padding: 0;
+
+  [class*='col-'] {
+
+    &:first-child,
+    &:last-child {
+      padding-top: 60px;
+      padding-bottom: 60px;
+
+      @media screen and (min-width: $screen-sm-min) {
+        padding-top: 84px;
+        padding-bottom: 84px;
+      }
+
+      .btn {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
 section.row-content-3col {
 
   @media screen and (min-width: $screen-sm-min) {
