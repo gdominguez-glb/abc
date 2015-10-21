@@ -224,7 +224,7 @@ marketing_templates:
   -
     name: 'Image Background, Full Width Text'
     content: !xml |
-      <section class="row row-img-full row-content-full" style="background-image: url('<%= image_url %>')">
+      <section class="row row-img-full row-content-full image-bg" style="background-image: url('<%= image_url %>')">
         <div class="row-img-full-content">
           <div class="col-sm-12 col-centered-content">
             <div class="vertical-center">
@@ -241,7 +241,7 @@ marketing_templates:
   -
     name: 'Image Background, Text Left'
     content: !xml |
-      <section class="row row-img-full" style="background-image: url('<%= image_url %>')">
+      <section class="row row-img-full image-bg" style="background-image: url('<%= image_url %>')">
         <div class="row-img-full-content">
           <div class="col-sm-6 col-centered-content">
             <div class="vertical-center">
@@ -259,7 +259,7 @@ marketing_templates:
   -
     name: 'Image Background, Text Right'
     content: !xml |
-      <section class="row row-img-full" style="background-image: url('<%= image_url %>')">
+      <section class="row row-img-full image-bg" style="background-image: url('<%= image_url %>')">
         <div class="row-img-full-content">
           <div class="col-sm-6"></div>
           <div class="col-sm-6 col-centered-content">
@@ -314,7 +314,7 @@ marketing_templates:
   -
     name: '2-Column Video Left, Text Right'
     content: !xml |
-      <section class="row row-img-full row-video-left" style="background-image: url('<%= background_image_url %>')">
+      <section class="row row-img-full row-video-left image-bg" style="background-image: url('<%= background_image_url %>')">
         <div class="row-img-full-content">
           <div class="col-sm-6 col-centered-content margin-sm-bottom-xl">
             <div class="vertical-center">
