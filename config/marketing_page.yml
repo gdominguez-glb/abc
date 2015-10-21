@@ -239,6 +239,25 @@ marketing_templates:
       </section>
 
   -
+    name: 'Image Background, Full Width Text, Half Height'
+    content: !xml |
+      <section class="row row-img-full row-content-full image-bg half-height" style="background-image: url('<%= image_url %>')">
+        <div class="row-img-full-content">
+          <div class="col-sm-12 col-centered-content">
+            <div class="vertical-center">
+              <h6><%= title %></h6>
+              <% if body_text.present? %>
+                <p><%= body_text %></p>
+              <% end %>
+              <% if button_title.present? && button_link.present? %>
+                <a class="btn btn-default btn-block-xs margin-bottom-s" href="<%= button_link %>"><%= button_title %></a>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </section>
+
+  -
     name: 'Image Background, Text Left'
     content: !xml |
       <section class="row row-img-full image-bg" style="background-image: url('<%= image_url %>')">

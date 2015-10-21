@@ -292,6 +292,14 @@ section.row-content-3col {
   }
 }
 
+.half-height {
+
+  @media screen and (min-width: $screen-sm-min) {
+    min-height: 300px;
+  }
+
+}
+
 .row-img-full {
   padding: 0;
   color: #fff;
@@ -300,12 +308,16 @@ section.row-content-3col {
 }
 
 .row-img-full-content {
-  min-height: 300px;
   padding: 60px 0;
 
   @media screen and (min-width: $screen-sm-min) {
     min-height: 600px;
     padding: 84px 0;
+
+    .half-height & {
+      min-height: 300px;
+      padding: 64px 0;
+    }
   }
 }
 
@@ -338,10 +350,18 @@ section.row-content-3col {
 .col-centered-content {
 
   @media screen and (min-width: $screen-sm-min) {
-    height: 432px;
+    min-height: 432px;
 
     @include display-flex;
     @include flex-direction(column);
     @include justify-content(center);
+
+    .half-height & {
+      min-height: 172px;
+    }
+
+    .row-content-full & {
+      float: none;
+    }
   }
 }
