@@ -10,7 +10,7 @@ RSpec.describe MarketingPageRenderrer do
           {
             'rowType' => '50/50 Content Image Left',
             'title' => 'Hello',
-            'body_text' => 'hello body',
+            'body_text' => '<span class="test-class">hello body</span>',
             'background_color' => 'green',
             'button_title' => 'hello btn',
             'button_link' => 'http://aa.com',
@@ -23,6 +23,6 @@ RSpec.describe MarketingPageRenderrer do
   end
 
   it "render generate html from rows" do
-    expect(@result).to eq("<section class=\"row green-bg\">\n  <div class=\"col-sm-6 col-centered-content\">\n    <div class=\"vertical-center\">\n      <img src=\"http://img.com/123\" class=\"img-responsive margin-sm-bottom-xl\">\n    </div>\n  </div>\n  <div class=\"col-sm-6 col-centered-content\">\n    <div class=\"vertical-center\">\n      <h6>Hello</h6>\n      <p>hello body</p>\n      \n        <a class=\"btn btn-default btn-block-xs\" href=\"http://aa.com\">hello btn</a>\n      \n    </div>\n  </div>\n</section>\n")
+    expect(@result).to eq("<section class=\"row green-bg\">\n  <div class=\"col-sm-6 col-centered-content\">\n    <div class=\"vertical-center\">\n      <img src=\"http://img.com/123\" class=\"img-responsive margin-sm-bottom-xl\">\n    </div>\n  </div>\n  <div class=\"col-sm-6 col-centered-content\">\n    <div class=\"vertical-center\">\n      <h6>Hello</h6>\n      <p><span>hello body</span></p>\n      \n        <a class=\"btn btn-default btn-block-xs\" href=\"http://aa.com\">hello btn</a>\n      \n    </div>\n  </div>\n</section>\n")
   end
 end
