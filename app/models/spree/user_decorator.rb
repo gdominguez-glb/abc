@@ -33,8 +33,7 @@ Spree::User.class_eval do
   def attributes_for_salesforce
     { 'FirstName' => first_name,
       'LastName' => last_name,
-      'AccountId' => school_district.try(:salesforce_reference)
-                     .try(:id_in_salesforce),
+      'AccountId' => school_district.try(:id_in_salesforce),
       'Contact_Type__c' => title,
       'Web_Front_End_Email__c' => email,
       'Web_Front_End_ID__c' => id,
@@ -51,9 +50,8 @@ Spree::User.class_eval do
   # used to prevent the creation in Salesforce of a record created locally from
   # Salesforce
   def should_create_salesforce?
-    return false if !super ||
-      school_district.try(:salesforce_reference).try(:id_in_salesforce).blank?
-    !skip_salesforce_create
+    return false if !super || school_district.try(:id_in_salesforce).blank?
+    true
   end
 
   def self.matches_salesforce_object(sfo)
