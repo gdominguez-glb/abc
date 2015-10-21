@@ -205,16 +205,33 @@ section {
   color: $coral;
 }
 
-section.row-content-3col {
-  [class*='col-'] {
-    padding: 0 24px;
+section.row-content-full {
 
-    &:first-child {
-      padding-right: 24px;
+  @media screen and (min-width: $screen-sm-min) {
+    text-align: center;
+
+    [class*='col-'] {
+      &:first-child,
+      &:last-child {
+        padding: 0 168px;
+      }
     }
+  }
+}
 
-    &:last-child {
-      padding-left: 24px;
+section.row-content-3col {
+
+  @media screen and (min-width: $screen-sm-min) {
+    [class*='col-'] {
+      padding: 0 24px;
+
+      &:first-child {
+        padding-right: 24px;
+      }
+
+      &:last-child {
+        padding-left: 24px;
+      }
     }
   }
 }

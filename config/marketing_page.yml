@@ -260,8 +260,8 @@ marketing_templates:
   -
     name: 'Full Width Text'
     content: !xml |
-      <section class="row <%= background_color %>-bg">
-        <div class="col-sm-12 col-lg-6 col-lg-offset-3">
+      <section class="row row-content-full <%= background_color %>-bg">
+        <div class="col-sm-12">
           <h6><%= title %></h6>
           <p><%= body_text %></p>
           <% if button_title.present? && button_link.present? %>
