@@ -18,13 +18,9 @@ body {
   font-size: 16px;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Karla', sans-serif;
-  letter-spacing: 2px;
-}
-
 h1 {
   font-size: 2.0em;
+  line-height: 1.7em;
   @media screen and (min-width: $screen-sm-min) {
     font-size: 2.25em;
   }
@@ -32,6 +28,7 @@ h1 {
 
 h2 {
   font-size: 1.5em;
+  line-height: 1.7em;
   @media screen and (min-width: $screen-sm-min) {
     font-size: 1.75em;
   }
@@ -39,6 +36,7 @@ h2 {
 
 h3 {
   font-size: 1.25em;
+  line-height: 1.7em;
   @media screen and (min-width: $screen-sm-min) {
     font-size: 1.37em;
   }
@@ -46,6 +44,7 @@ h3 {
 
 h4 {
   font-size: 1.12em;
+  line-height: 1.6em;
   @media screen and (min-width: $screen-sm-min) {
     font-size: 1.25em;
   }
@@ -53,6 +52,7 @@ h4 {
 
 h5 {
   font-size: 1.0em;
+  line-height: 1.6em;
   @media screen and (min-width: $screen-sm-min) {
     font-size: 1.5em;
   }
@@ -61,6 +61,7 @@ h5 {
 h6 {
   margin-bottom: 5px;
   font-size: .95em;
+  line-height: 1.6em;
   @media screen and (min-width: $screen-sm-min) {
     font-size: 1.25em;
   }
@@ -70,8 +71,9 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0 0 10px;
   font-weight: bold;
   text-transform: uppercase;
-  line-height: 1.7em;
   letter-spacing: 0.2em;
+
+  @extend .sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6, p {

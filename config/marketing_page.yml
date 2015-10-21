@@ -55,15 +55,13 @@ marketing_templates:
   -
     name: 'Video Hero'
     content: !xml |
-      <section class="row img-full image-bg" style="background-image: url('<%= background_image_url %>')">
-      	<div class="col-xs-12 col-lg-10 col-lg-offset-1">
-      		<div>
-      			<h3 class="video-title"><%= title %></h3>
-      			<div class="embed-responsive embed-responsive-16by9">
-      				<video class="mejs-player" src="<%= video_url %>" width="100%" max-width="850" height="100%""></video>
-      			</div>
-      		</div>
-      	</div>
+      <section class="row row-video-hero" style="background-image: url('<%= background_image_url %>')">
+        <div class="col-xs-12">
+          <h3 class="video-title"><%= title %></h3>
+          <div class="embed-responsive embed-responsive-16by9">
+            <video class="mejs-player" src="<%= video_url %>" width="100%" max-width="850" height="100%"></video>
+          </div>
+        </div>
       </section>
 
   -
@@ -237,6 +235,7 @@ marketing_templates:
               <% end %>
             </div>
           </div>
+          <div class="col-sm-6"></div>
         </div>
       </section>
 
@@ -245,7 +244,8 @@ marketing_templates:
     content: !xml |
       <section class="row row-img-full image-bg" style="background-image: url('<%= image_url %>')">
         <div class="row-img-full-content">
-          <div class="col-sm-6 col-sm-offset-6 col-centered-content">
+          <div class="col-sm-6"></div>
+          <div class="col-sm-6 col-centered-content">
             <div class="vertical-center">
               <h6><%= title %></h6>
               <p><%= body_text %></p>
@@ -260,8 +260,8 @@ marketing_templates:
   -
     name: 'Full Width Text'
     content: !xml |
-      <section class="row <%= background_color %>-bg">
-        <div class="col-sm-12 col-lg-6 col-lg-offset-3">
+      <section class="row row-content-full <%= background_color %>-bg">
+        <div class="col-sm-12">
           <h6><%= title %></h6>
           <p><%= body_text %></p>
           <% if button_title.present? && button_link.present? %>
@@ -273,7 +273,7 @@ marketing_templates:
   -
     name: '3-Column Text'
     content: !xml |
-      <section class="row <%= background_color %>-bg">
+      <section class="row row-content-3col <%= background_color %>-bg">
         <div class="col-sm-4">
           <h6><%= title_1 %></h6>
           <p><%= body_text_1 %></p>

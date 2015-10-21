@@ -30,8 +30,16 @@ section.row {
   [class*='col-'] {
     padding: 0 30px;
 
-    @media screen and (min-width: $screen-xs-min) {
-      padding: 0 80px;
+    @media screen and (min-width: $screen-sm-min) {
+      padding: 0 64px;
+
+      &:first-child {
+        padding: 0 64px 0 84px;
+      }
+
+      &:last-child {
+        padding: 0 84px 0 64px;
+      }
     }
 
     &:last-child {
@@ -180,13 +188,70 @@ section {
     text-align: left;
   }
 
-  h1, h2, h3, h4, h5, h6, p {
-    margin: 0 0 30px;
+  @media screen and (min-width: $screen-sm-min) {
+    padding: 84px 0;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    margin: 0 0 12px;
+  }
+
+  p {
+    margin: 0 0 25px;
   }
 }
 
 .coral-text {
   color: $coral;
+}
+
+section.row-content-full {
+
+  @media screen and (min-width: $screen-sm-min) {
+    text-align: center;
+
+    [class*='col-'] {
+      &:first-child,
+      &:last-child {
+        padding: 0 168px;
+      }
+    }
+  }
+}
+
+section.row-video-hero {
+
+  @media screen and (min-width: $screen-sm-min) {
+    .video-title {
+      margin-bottom: 25px;
+      color: $brand-green;
+    }
+
+    [class*='col-'] {
+      &:first-child,
+      &:last-child {
+        padding: 0 168px;
+      }
+    }
+  }
+
+}
+
+section.row-content-3col {
+
+  @media screen and (min-width: $screen-sm-min) {
+    [class*='col-'] {
+      padding: 0 24px;
+
+      &:first-child {
+        padding-right: 24px;
+      }
+
+      &:last-child {
+        padding-left: 24px;
+      }
+    }
+  }
 }
 
 .row-img-full {
@@ -201,7 +266,8 @@ section {
   padding: 60px 0;
 
   @media screen and (min-width: $screen-sm-min) {
-    min-height: 700px;
+    min-height: 600px;
+    padding: 84px 0;
   }
 }
 
@@ -214,7 +280,7 @@ section {
     margin: -60px 0 60px;
 
     @media screen and (min-width: $screen-sm-min) {
-      margin: -60px 0;
+      margin: -84px 0;
     }
   }
 
@@ -222,21 +288,22 @@ section {
     margin: 0 0 -60px;
 
     @media screen and (min-width: $screen-sm-min) {
-      margin: -60px 0;
+      margin: -84px 0;
     }
   }
 
   @media screen and (min-width: $screen-sm-min) {
-    height: 700px;
+    height: 600px;
   }
 }
 
 .col-centered-content {
 
   @media screen and (min-width: $screen-sm-min) {
-    height: 580px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    height: 432px;
+
+    @include display-flex;
+    @include flex-direction(column);
+    @include justify-content(center);
   }
 }
