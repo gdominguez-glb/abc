@@ -237,6 +237,22 @@ section.row-video-hero {
 
 }
 
+section.row-video-left {
+
+  @media screen and (min-width: $screen-sm-min) {
+    [class*='col-'] {
+      &:first-child {
+        padding-right: 32px;
+      }
+
+      &:last-child {
+        padding-left: 32px;
+      }
+    }
+  }
+
+}
+
 section.row-content-2col {
   padding: 0;
 

@@ -224,7 +224,7 @@ marketing_templates:
   -
     name: 'Image Background, Full Width Text'
     content: !xml |
-      <section class="row row-img-full row-content-full" style="background-image: url('<%= image_url %>')">
+      <section class="row row-img-full row-content-full image-bg" style="background-image: url('<%= image_url %>')">
         <div class="row-img-full-content">
           <div class="col-sm-12 col-centered-content">
             <div class="vertical-center">
@@ -241,7 +241,7 @@ marketing_templates:
   -
     name: 'Image Background, Text Left'
     content: !xml |
-      <section class="row row-img-full" style="background-image: url('<%= image_url %>')">
+      <section class="row row-img-full image-bg" style="background-image: url('<%= image_url %>')">
         <div class="row-img-full-content">
           <div class="col-sm-6 col-centered-content">
             <div class="vertical-center">
@@ -259,7 +259,7 @@ marketing_templates:
   -
     name: 'Image Background, Text Right'
     content: !xml |
-      <section class="row row-img-full" style="background-image: url('<%= image_url %>')">
+      <section class="row row-img-full image-bg" style="background-image: url('<%= image_url %>')">
         <div class="row-img-full-content">
           <div class="col-sm-6"></div>
           <div class="col-sm-6 col-centered-content">
@@ -291,19 +291,47 @@ marketing_templates:
     name: '2-Column Text'
     content: !xml |
       <section class="row row-content-2col">
-        <div class="col-sm-6 <%= background_color_1 %>-bg">
-          <h6><%= title_1 %></h6>
-          <p><%= body_text_1 %></p>
-          <% if button_title_1.present? && button_link_1.present? %>
-            <a class="btn btn-default btn-block-xs" href="<%= button_link_1 %>"><%= button_title_1 %></a>
-          <% end %>
+        <div class="col-sm-6 col-centered-content <%= background_color_1 %>-bg">
+          <div class="vertical-center">
+            <h6><%= title_1 %></h6>
+            <p><%= body_text_1 %></p>
+            <% if button_title_1.present? && button_link_1.present? %>
+              <a class="btn btn-default btn-block-xs" href="<%= button_link_1 %>"><%= button_title_1 %></a>
+            <% end %>
+          </div>
         </div>
-        <div class="col-sm-6 <%= background_color_2 %>-bg">
-          <h6><%= title_2 %></h6>
-          <p><%= body_text_2 %></p>
-          <% if button_title_2.present? && button_link_2.present? %>
-            <a class="btn btn-default btn-block-xs" href="<%= button_link_2 %>"><%= button_title_2 %></a>
-          <% end %>
+        <div class="col-sm-6 col-centered-content <%= background_color_2 %>-bg">
+          <div class="vertical-center">
+            <h6><%= title_2 %></h6>
+            <p><%= body_text_2 %></p>
+            <% if button_title_2.present? && button_link_2.present? %>
+              <a class="btn btn-default btn-block-xs" href="<%= button_link_2 %>"><%= button_title_2 %></a>
+            <% end %>
+          </div>
+        </div>
+      </section>
+
+  -
+    name: '2-Column Video Left, Text Right'
+    content: !xml |
+      <section class="row row-img-full row-video-left image-bg" style="background-image: url('<%= background_image_url %>')">
+        <div class="row-img-full-content">
+          <div class="col-sm-6 col-centered-content margin-sm-bottom-xl">
+            <div class="vertical-center">
+              <div class="embed-responsive embed-responsive-16by9">
+                <video class="mejs-player" src="<%= video_url %>" width="100%" max-width="850" height="100%"></video>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-centered-content">
+            <div class="vertical-center">
+              <h6><%= title %></h6>
+              <p><%= body_text %></p>
+              <% if button_title.present? && button_link.present? %>
+                <a class="btn btn-default btn-block-xs" href="<%= button_link %>"><%= button_title %></a>
+              <% end %>
+            </div>
+          </div>
         </div>
       </section>
 
