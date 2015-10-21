@@ -3,6 +3,7 @@
     @material_files = @material.material_files
     @material_file = @material.material_files.new
   %>
+  $("#material-files-count-<%= @material.id %>").html("Files (<%= @material.reload.material_files_count %>)")
   $('.modal.in').html("<%= escape_javascript(render 'dialog') %>");
 <% else %>
   alert('Must upload file.')
