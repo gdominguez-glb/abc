@@ -328,6 +328,26 @@
   - :name: button_link_2
     :label: Button Link 2
     :input_type: text
+- :name: 2-Column Video Left, Text Right
+  :fields:
+  - :name: background_image_url
+    :label: Background Image Url
+    :input_type: text
+  - :name: video_url
+    :label: Video Url
+    :input_type: text
+  - :name: title
+    :label: Title
+    :input_type: text
+  - :name: body_text
+    :label: Body Text
+    :input_type: text_area
+  - :name: button_title
+    :label: Button Title
+    :input_type: text
+  - :name: button_link
+    :label: Button Link
+    :input_type: text
 - :name: 3-Column Text
   :fields:
   - :name: background_color
