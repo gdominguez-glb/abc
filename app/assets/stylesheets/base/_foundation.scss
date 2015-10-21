@@ -30,8 +30,16 @@ section.row {
   [class*='col-'] {
     padding: 0 30px;
 
-    @media screen and (min-width: $screen-xs-min) {
-      padding: 0 80px;
+    @media screen and (min-width: $screen-sm-min) {
+      padding: 0 64px;
+
+      &:first-child {
+        padding: 0 64px 0 84px;
+      }
+
+      &:last-child {
+        padding: 0 84px 0 64px;
+      }
     }
 
     &:last-child {
@@ -195,6 +203,20 @@ section {
 
 .coral-text {
   color: $coral;
+}
+
+section.row-content-3col {
+  [class*='col-'] {
+    padding: 0 24px;
+
+    &:first-child {
+      padding-right: 24px;
+    }
+
+    &:last-child {
+      padding-left: 24px;
+    }
+  }
 }
 
 .row-img-full {
