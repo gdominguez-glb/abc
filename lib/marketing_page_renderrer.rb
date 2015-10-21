@@ -2,8 +2,6 @@ require 'erb'
 
 class MarketingPageRenderrer
 
-  include ActionView::Helpers::SanitizeHelper
-
   MARKETING_TEMPLATES = YAML.load_file(Rails.root.join('config/marketing_page.yml'))['marketing_templates']
 
   def initialize(page)
@@ -26,13 +24,8 @@ class MarketingPageRenderrer
   def generate_binding(tile_row)
     b = binding
     tile_row.each do |k, v|
-      b.local_variable_set(k, sanitize_tile_value(v))
+      b.local_variable_set(k, v)
     end
     b
-  end
-
-  def sanitize_tile_value(value)
-    return value if value.blank?
-    sanitize(value.strip, attributes: [])
   end
 end

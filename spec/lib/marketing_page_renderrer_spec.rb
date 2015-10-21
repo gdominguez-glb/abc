@@ -10,7 +10,7 @@ RSpec.describe MarketingPageRenderrer do
           {
             'rowType' => '50/50 Content Image Left',
             'title' => 'Hello',
-            'body_text' => '<span class="test-class">hello body</span>',
+            'body_text' => '<span>hello body</span>',
             'background_color' => 'green',
             'button_title' => 'hello btn',
             'button_link' => 'http://aa.com',
