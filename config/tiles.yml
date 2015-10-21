@@ -288,6 +288,46 @@
   - :name: button_link
     :label: Button Link
     :input_type: text
+- :name: 2-Column Text
+  :fields:
+  - :name: background_color_1
+    :label: Background Color 1
+    :input_type: select
+    :input_options:
+      - green
+      - blue
+      - cream
+  - :name: title_1
+    :label: Title 1
+    :input_type: text
+  - :name: body_text_1
+    :label: Body Text 1
+    :input_type: text_area
+  - :name: button_title_1
+    :label: Button Title 1
+    :input_type: text
+  - :name: button_link_1
+    :label: Button Link 1
+    :input_type: text
+  - :name: background_color_2
+    :label: Background Color 2
+    :input_type: select
+    :input_options:
+      - green
+      - blue
+      - cream
+  - :name: title_2
+    :label: Title 2
+    :input_type: text
+  - :name: body_text_2
+    :label: Body Text 2
+    :input_type: text_area
+  - :name: button_title_2
+    :label: Button Title 2
+    :input_type: text
+  - :name: button_link_2
+    :label: Button Link 2
+    :input_type: text
 - :name: 3-Column Text
   :fields:
   - :name: background_color
