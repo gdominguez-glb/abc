@@ -237,6 +237,7 @@ marketing_templates:
               <% end %>
             </div>
           </div>
+          <div class="col-sm-6"></div>
         </div>
       </section>
 
@@ -245,7 +246,8 @@ marketing_templates:
     content: !xml |
       <section class="row row-img-full image-bg" style="background-image: url('<%= image_url %>')">
         <div class="row-img-full-content">
-          <div class="col-sm-6 col-sm-offset-6 col-centered-content">
+          <div class="col-sm-6"></div>
+          <div class="col-sm-6 col-centered-content">
             <div class="vertical-center">
               <h6><%= title %></h6>
               <p><%= body_text %></p>
