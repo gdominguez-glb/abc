@@ -5,6 +5,7 @@ class PagesController < ApplicationController
     @group_page    = Page.find_by(group_name: @page.group_name, group_root: true)
     @sub_nav_items = Page.show_in_sub_navigation(@page.group_name)
 
+    set_page_meta_tags(@page)
     log_activity(@page)
     if @page.layout.present?
       render layout: @page.layout
@@ -20,6 +21,12 @@ class PagesController < ApplicationController
         action: 'view',
         title: page.title
       )
+    end
+  end
+
+  def set_page_meta_tags(page)
+    if page.keywords.present? || page.description.present?
+      set_meta_tags keywords: page.keywords, description: page.description
     end
   end
 end

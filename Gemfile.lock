@@ -349,6 +349,8 @@ GEM
     mediaelement_rails (0.8.0)
       jquery-rails (>= 1.0)
       railties (>= 3.1)
+    meta-tags (2.1.0)
+      actionpack (>= 3.0.0)
     method_source (0.8.2)
     mime-types (2.4.3)
     mini_portile (0.6.2)
@@ -716,6 +718,7 @@ DEPENDENCIES
   knife-solo (~> 0.4.2)
   letter_opener
   mediaelement_rails
+  meta-tags
   momentjs-rails (>= 2.9.0)
   nkss-rails!
   pg
