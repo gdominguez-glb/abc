@@ -88,6 +88,10 @@ label {
   label + label {
     margin-left: 5px;
   }
+
+  .form-inline & {
+    margin: 0 10px 10px 0;
+  }
 }
 
 .select-container {
