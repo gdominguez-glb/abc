@@ -109,12 +109,19 @@ Spree::Order.class_eval do
   # +_duplicate+:: indicates if the "new" record matched an existing one
   def after_create_salesforce(duplicate = false)
     super
-    return true if duplicate
     line_items.each do |line_item|
+      # Skip this line item if it has already been created.  This can happen
+      # if there is an error trying to create the order and it is retried
+      next if line_item.id_in_salesforce.present?
       line_item.create_in_salesforce(nil, false)
     end
     mark_order_complete_in_salesforce
     licensed_products.each do |license|
+      # Update is used instead of create because the licenses should have
+      # already been created in Salesforce at the time the license was created.
+      # They need to be updated to set the Order (in Salesforce).
+      # Skip the update if the create has not been run yet.
+      next if license.id_in_salesforce.blank?
       license.update_salesforce(nil, true, true)
     end
   end
