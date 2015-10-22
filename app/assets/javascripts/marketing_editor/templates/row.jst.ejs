@@ -1,30 +1,53 @@
-<div class="tile-row clearfix" style="margin: 10px 0; border: 1px solid #eee; padding: 5px;">
-  <div class="head">
-    <%= data.rowType %>
-    <a class="btn btn-default pull-right remove-row-btn">X</a>
+<div class="panel panel-default">
+  <div class="panel-heading clearfix">
+    <h3 class="panel-title">
+      <%= data.rowType %>
+    </h3>
   </div>
-  <div class="form">
-    <div class="form-group">
-      <label>Position</label>
-      <input type="text" class="form-control input-small" data-name="position" value="<%= data['position'] || 0 %>"/>
-    </div>
-    <% for(var i=0; i<fields.length; i++) {%>
-      <div class="form-group">
-        <label><%= fields[i].label %></label>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label>Position</label>
+          <input type="text" class="form-control input-small" data-name="position" value="<%= data['position'] || 0 %>"/>
+        </div>
+      </div>
+      <% for(var i=0; i<fields.length; i++) {%>
         <% if(fields[i].input_type == 'text') { %>
-          <input type="text" class="form-control title-input" data-name="<%= fields[i].name %>" value="<%= data[fields[i].name] %>"/>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label><%= fields[i].label %></label>
+              <input type="text" class="form-control title-input" data-name="<%= fields[i].name %>" value="<%= data[fields[i].name] %>"/>
+            </div>
+          </div>
         <% } %>
         <% if(fields[i].input_type == 'text_area') { %>
-          <textarea data-name="<%= fields[i].name %>" rows="3" class="form-control cleditor"><%= data[fields[i].name]%></textarea>
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label><%= fields[i].label %></label>
+              <textarea data-name="<%= fields[i].name %>" rows="3" class="form-control cleditor"><%= data[fields[i].name]%></textarea>
+            </div>
+          </div>
         <% } %>
         <% if(fields[i].input_type == 'select') { %>
-          <select name="" data-name="<%= fields[i].name %>" class="form-control">
-            <% for(var j=0; j < fields[i].input_options.length; j ++) { %>
-              <option value="<%= fields[i].input_options[j] %>"  <% if(data[ fields[i].name ] == fields[i].input_options[j]) { %> selected <% } %>  ><%= fields[i].input_options[j] %></option>
-            <% } %>
-          </select>
+          <div class="col-sm-6">
+            <label><%= fields[i].label %></label>
+            <div class="select-container dark-select block">
+              <span><%= fields[i].label %></span>
+              <select name="" data-name="<%= fields[i].name %>" class="form-control">
+                <% for(var j=0; j < fields[i].input_options.length; j ++) { %>
+                  <option value="<%= fields[i].input_options[j] %>"  <% if(data[ fields[i].name ] == fields[i].input_options[j]) { %> selected <% } %>  ><%= fields[i].input_options[j] %></option>
+                <% } %>
+              </select>
+            </div>
+          </div>
         <% } %>
+      <% } %>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <button class="btn btn-danger pull-right remove-row-btn">Remove Tile <i class="fa fa-close"></i></button>
       </div>
-    <% } %>
+    </div>
   </div>
 </div>
