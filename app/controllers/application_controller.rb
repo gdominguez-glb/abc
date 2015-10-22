@@ -11,9 +11,7 @@ class ApplicationController < ActionController::Base
     redirect_to :root, alert: exception.message
   end
 
-  if Rails.env.qa? || Rails.env.staging?
-    http_basic_authenticate_with name: ENV['auth_username'], password: ENV['auth_password']
-  end
+  http_basic_authenticate_with name: ENV['auth_username'], password: ENV['auth_password'], if: :require_http_basic_auth
 
   def signed_in_root_path(resource_or_scope)
     if resource_or_scope.is_a?(Spree::User)
@@ -43,5 +41,10 @@ class ApplicationController < ActionController::Base
     unless (spree_current_user && spree_current_user.has_school_admin_role?)
       redirect_to root_path, notice: "Please log in as school admin."
     end
+  end
+
+  def require_http_basic_auth
+    return false if self.class.ancestors.include?(Api::BaseController)
+    Rails.env.qa? || Rails.env.staging?
   end
 end

@@ -81,6 +81,8 @@ gem 'remotipart', '~> 1.2'
 
 gem 'backbone-on-rails'
 
+gem 'meta-tags'
+
 group :development do
   gem 'quiet_assets'
   gem 'letter_opener'

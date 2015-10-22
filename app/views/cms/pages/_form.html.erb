@@ -21,8 +21,13 @@
     <%= f.text_field :title, class: 'form-control' %>
   </div>
   <div class="form-group">
-    <%= f.label :seo_content %>
-    <%= f.text_area :seo_content, class: 'form-control' %>
+    <%= f.label :meta_keywords %>
+    <%= f.text_field :keywords, class: 'form-control' %>
+    <p class="help-block">Separate by commas.</p>
+  </div>
+  <div class="form-group">
+    <%= f.label :meta_description %>
+    <%= f.text_field :description, class: 'form-control' %>
   </div>
   <div class="form-group">
     <%= f.label 'Unique Url' %>

@@ -3,10 +3,13 @@ class SchoolDistrict < ActiveRecord::Base
   include SalesforceAccess
 
   belongs_to :state, class_name: 'Spree::State'
+  has_many :users, class_name: 'Spree::User'
 
-  validates :name, :state_id, presence: true
+  validates :name, presence: true
+  validates :state_id, presence: true, unless: :unaffiliated?
 
-  enum place_type: { school: 'school', district: 'district' }
+  enum place_type: { school: 'school', district: 'district',
+                     unaffiliated: 'unaffiliated' }
 
   def self.sobject_name
     'Account'
@@ -22,6 +25,7 @@ class SchoolDistrict < ActiveRecord::Base
   def salesforce_record_type_id
     return self.class.school_type_id if school?
     return self.class.district_type_id if district?
+    return self.class.unaffiliated_type_id if unaffiliated?
     nil
   end
 
@@ -36,26 +40,35 @@ class SchoolDistrict < ActiveRecord::Base
       "select Id from #{salesforce_sobject_name} where Name = '#{name}'").first
   end
 
-  def self.district_type_id
-    @district_type_id ||= RecordType
-      .find_in_salesforce_by_name_and_object_type('District', 'Account')
+  def self.record_type_id(name = place_type.humanize, object_type = 'Account')
+    RecordType.find_in_salesforce_by_name_and_object_type(name, object_type)
       .try('Id')
+  end
+
+  def self.district_type_id
+    @district_type_id ||= record_type_id('District')
   end
 
   def self.school_type_id
-    @school_type_id ||= RecordType
-      .find_in_salesforce_by_name_and_object_type('School', 'Account')
-      .try('Id')
+    @school_type_id ||= record_type_id('School')
+  end
+
+  def self.unaffiliated_type_id
+    @unaffiliated_type_id ||= record_type_id('Unaffiliated')
   end
 
   def self.place_type_from_salesforce_object(sfo)
-    # If the Salesforce RecordType is `School`, it is a school
-    return place_types[:school] if sfo.RecordTypeId == school_type_id
-    # If the Salesforce RecordType is `District`, it is a district
-    return place_types[:district] if sfo.RecordTypeId == district_type_id
-
-    # Otherwise, if the Salesforce Account has children, assume it is a district
-    sfo.ParentId.blank? ? place_types[:district] : place_types[:school]
+    # Base type on the Salesforce RecordType
+    case sfo.RecordTypeId
+    when school_type_id # RecordType is `School`
+      place_types[:school]
+    when district_type_id # RecordType is `District`
+      place_types[:district]
+    when unaffiliated_type_id
+      place_types[:unaffiliated] # RecordType is `Unaffiliated`
+    else
+      sfo.ParentId.blank? ? place_types[:district] : place_types[:school]
+    end
   end
 
   def self.country_from_salesforce_object(sfo)
@@ -79,6 +92,12 @@ class SchoolDistrict < ActiveRecord::Base
     sfo_data
   end
 
+  # Provides the hash of attibutes and values for creating a new Salesforce
+  # record.
+  def new_attributes_for_salesforce
+    attributes_for_salesforce.merge!('Verified__c' => false)
+  end
+
   def attributes_for_salesforce
     { 'Name' => name,
       'RecordTypeId' => salesforce_record_type_id,
@@ -94,4 +113,32 @@ class SchoolDistrict < ActiveRecord::Base
     state = state_from_salesforce_object(sfo)
     where(name: sfo.Name, state_id: state)
   end
+
+  # Performs additional tasks after creating a record in Salesforce.  This will
+  # be called from within ActiveJob
+  # Params:
+  # +_duplicate+:: indicates if the "new" record matched an existing one
+  def after_create_salesforce(duplicate = false)
+    super(duplicate)
+    salesforce_reference.reload
+    users.reload
+    users.each do |user|
+      next if user.try(:salesforce_reference).present? ||
+        !user.should_create_salesforce?
+      user.create_in_salesforce(nil, false)
+    end
+    self.class.import_salesforce
+  end
+
+  # The dropdown should be restricted to verified checkbox, last 48 hours, and
+  # is not “is deleted"
+  scope :for_selection, -> {
+    ids = includes(:salesforce_reference).all.select do |sd|
+      next false if sd.cached_salesforce_object.try(:IsDeleted) == true
+      next true if sd.cached_salesforce_object.try(:Verified__c) != false
+      date = sd.cached_salesforce_object.try(:CreatedDate)
+      date && Date.parse(date) > 2.days.ago
+    end
+    where(id: ids)
+  }
 end

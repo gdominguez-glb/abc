@@ -33,8 +33,7 @@ Spree::User.class_eval do
   def attributes_for_salesforce
     { 'FirstName' => first_name,
       'LastName' => last_name,
-      'AccountId' => school_district.try(:salesforce_reference)
-                     .try(:id_in_salesforce),
+      'AccountId' => school_district.try(:id_in_salesforce),
       'Contact_Type__c' => title,
       'Web_Front_End_Email__c' => email,
       'Web_Front_End_ID__c' => id,
@@ -45,6 +44,14 @@ Spree::User.class_eval do
   def new_attributes_for_salesforce
     school_district.try(:salesforce_reference).try(:reload)
     super
+  end
+
+  # Provides a means to bypass creation in Salesforce.  For example, this is
+  # used to prevent the creation in Salesforce of a record created locally from
+  # Salesforce
+  def should_create_salesforce?
+    return false if !super || school_district.try(:id_in_salesforce).blank?
+    true
   end
 
   def self.matches_salesforce_object(sfo)
@@ -156,7 +163,7 @@ Spree::User.class_eval do
 
   def managed_products_options
     licensed_products.fulfillmentable.distributable.includes(:product).group_by { |lp| "#{lp.product.name} expiring #{lp.expire_at.strftime("%B %Y") rescue nil}" }.map do |key, licenses|
-      [key, licenses.map(&:id).join(',')]
+      [key, licenses.map(&:id).sort.join(',')]
     end
   end
 

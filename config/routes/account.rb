@@ -24,6 +24,7 @@ namespace :account do
       get :licenses_stats
       get :edit_user_licenses
       post :update_user_licenses
+      post :cancel_invitation
     end
   end
 

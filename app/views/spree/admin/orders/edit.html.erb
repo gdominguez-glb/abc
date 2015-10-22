@@ -2,6 +2,8 @@
 
 <%= render 'customer_info' %>
 
+<%= render 'line_items' %>
+
 <%= render 'billing_address' if @order.billing_address %>
 
 <% if @order.line_items.empty? %>

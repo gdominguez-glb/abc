@@ -9,71 +9,81 @@ pages:
     show_in_nav: true
     show_in_footer: false
     group_root: true
-    body: !xml |
-      <section class="row img-full image-bg" style="background-image: url('http://gm-s3-qa.intridea.com/documents/attachments/000/000/018/original/mathpage-videobackground1.jpg?1443029702')">
-        <div class="col-xs-12 col-lg-10 col-lg-offset-1">
-          <div>
-            <h3 class="video-title">Lorem ipsum dolor sit amet</h3>
-            <div class="embed-responsive embed-responsive-16by9">
-              <video class="mejs-player" src="http://gm-s3-qa.intridea.com/documents/attachments/000/000/011/original/eureka-math-hd.mp4?1442330466" width="100%" max-width="850" height="100%""></video>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section class="row green-bg">
-        <div class="col-sm-12 col-lg-6 col-lg-offset-3">
-          <h6 class="bold">Lorem ipsum dolor sit amet</h6>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-            irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          <a class="btn btn-default btn-block-xs" href="footer_nav/about.html">Learn More</a>
-        </div>
-      </section>
-      <section class="row row-img-full image-bg" style="background-image: url('http://gm-s3-qa.intridea.com/documents/attachments/000/000/008/original/mathpage-content1.jpg?1442330362')">
-        <div class="row-img-full-content">
-          <div class="col-sm-6 col-centered-content">
-            <div class="vertical-center">
-              <h6 class="bold">Lorem ipsum dolor sit amet</h6>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-              <a class="btn btn-default btn-block-xs margin-bottom-s" href="`footer_nav/about.html">Learn More</a>
-            </div>
-          </div>
-          <div class="col-sm-6"></div>
-        </div>
-      </section>
-      <section class="row cream-bg">
-        <div class="col-sm-4">
-          <h6 class="bold">Lorem ipsum dolor sit amet</h6>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-          </p>
-          <a class="btn btn-default btn-block-xs" href="main_nav/contact.html">Learn More</a>
-        </div>
-        <div class="col-sm-4">
-          <h6 class="bold">Lorem ipsum dolor sit amet</h6>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-          </p>
-          <a class="btn btn-default btn-block-xs" href="main_nav/contact.html">Learn More</a>
-        </div>
-        <div class="col-sm-4">
-          <h6 class="bold">Lorem ipsum dolor sit amet</h6>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-          </p>
-          <a class="btn btn-default btn-block-xs" href="main_nav/contact.html">Learn More</a>
-        </div>
-      </section>
-      <section class="row row-img-full image-bg" style="background-image: url('http://gm-s3-qa.intridea.com/documents/attachments/000/000/010/original/mathpage-content2.jpg?1442330393')">
-        <div class="row-img-full-content">
-          <div class="col-sm-6 col-centered-content">
-            <div class="vertical-center">
-              <h6 class="bold">Lorem ipsum dolor sit amet</h6>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-              </p>
-              <a class="btn btn-default btn-block-xs margin-bottom-m" href="main_nav/contact.html">Learn More</a>
-              <a class="btn btn-default btn-block-xs margin-bottom-m" href="main_nav/contact.html">Overview</a>
-            </div>
-          </div>
-          <div class="col-sm-6"></div>
-        </div>
-      </section>
+    tiles:
+      :rows:
+        -
+          rowType: 'Video Hero'
+          title: 'Lorem ipsum dolor sit amet'
+          video_url: 'http://gm-s3-qa.intridea.com/documents/attachments/000/000/011/original/eureka-math-hd.mp4?1442330466'
+          background_image_url: 'http://gm-s3-qa.intridea.com/documents/attachments/000/000/018/original/mathpage-videobackground1.jpg?1443029702'
+          position: 0
+
+        -
+          rowType: 'Full Width Text'
+          title: 'Lorem ipsum dolor sit amet'
+          body_text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sed sapien quam. Sed dapibus est id enim facilisis, at posuere turpis adipiscing. Quisque sit amet dui dui.'
+          background_color: 'green'
+          button_title: 'Learn More'
+          button_link: '/Math'
+          position: 1
+
+        -
+          rowType: 'Image Background, Text Left'
+          title: 'Lorem ipsum dolor sit amet'
+          body_text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+          button_title: 'Learn More'
+          button_link: '/math'
+          image_url: 'http://gm-s3-qa.intridea.com/documents/attachments/000/000/008/original/mathpage-content1.jpg?1442330362'
+          position: 2
+
+        -
+          rowType: '3-Column Text'
+          background_color: 'cream'
+          title_1: 'Lorem ipsum dolor sit amet'
+          body_text_1: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+          button_title_1: 'Learn More'
+          button_link_1: '/math'
+          title_2: 'Lorem ipsum dolor sit amet'
+          body_text_2: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+          button_title_2: 'Learn More'
+          button_link_2: '/math'
+          title_3: 'Lorem ipsum dolor sit amet'
+          body_text_3: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+          button_title_3: 'Learn More'
+          button_link_3: '/math'
+          position: 3
+
+        -
+          rowType: 'Image Background, Text Left'
+          title: 'Lorem ipsum dolor sit amet'
+          body_text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+          button_title: 'Learn More'
+          button_link: '/math'
+          image_url: 'http://gm-s3-qa.intridea.com/documents/attachments/000/000/010/original/mathpage-content2.jpg?1442330393'
+          position: 4
+
+        -
+          rowType: '2-Column Text'
+          background_color_1: 'cream'
+          title_1: 'Lorem ipsum dolor sit amet'
+          body_text_1: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+          button_title_1: 'Learn More'
+          button_link_1: '/math'
+          background_color_2: 'blue'
+          title_2: 'Lorem ipsum dolor sit amet'
+          body_text_2: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+          button_title_2: 'Learn More'
+          button_link_2: '/math'
+          position: 5
+
+        -
+          rowType: 'Image Background, Full Width Text'
+          title: 'Lorem ipsum dolor sit amet'
+          body_text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+          button_title: 'Learn More'
+          button_link: '/math'
+          image_url: 'http://gm-s3-qa.intridea.com/documents/attachments/000/000/010/original/mathpage-content2.jpg?1442330393'
+          position: 6
 
   -
     title: 'Teachers'
@@ -85,74 +95,47 @@ pages:
     show_in_nav: true
     show_in_footer: false
     group_root: false
-    body: !xml |
-      <section id="background-grey" class="intro jumbo-text">
-        <div class="page-header container">
-          <h1>Math Teacher Page</h1>
-          <h3 class="sub-head">Intro to Teachers Page</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sed sapien quam. Sed dapibus est id enim facilisis, at posuere turpis adipiscing. Quisque sit amet dui dui.</p>
-          <a class="btn btn-primary" href="../../marketing/product.html" role="button">Learn More</a>
-        </div>
-      </section>
-      <section class="callout">
-       <div class="container">
-        <div id="viewport" class="row">
-          <div class="col-xs-6">
-           <h2>Curriculum Section Teacher Specific</h2>
+    tiles:
+      :rows:
+        -
+          rowType: 'Full Width Text'
+          title: 'Math Admins Page'
+          body_text: !xml |
+            <h3 class="sub-head">Intro to admins Page</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sed sapien quam. Sed dapibus est id enim facilisis, at posuere turpis adipiscing. Quisque sit amet dui dui.</p>
+          background_color: 'cream'
+          button_title: 'Learn More'
+          button_link: '/english'
+          position: 0
+
+        -
+          rowType: '50/50 Full-Bleed Image Left'
+          title: 'Intro into Curriculum'
+          body_text: !xml |
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
             tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
             quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
             consequat.</p>
-           <a class="btn btn-primary" href="../../marketing/product.html" role="button">Learn More</a>
-           <a class="btn btn-default" href="#" role="button">Secondary CTA</a>
-          </div>
-          <div class="col-xs-1"></div>
-          <div class="col-xs-5">
-            <img src="../../assets/img/fpo-image.jpg" class="img-thumbnail" alt="Responsive image">
-          </div>
-        </div>
-        <hr>
-        </div>
-      </section>
-      <section>
-        <div class="container">
-          <div id="viewport" class="row callout">
-            <div class="col-xs-5">
-              <img src="../../assets/img/fpo-image.jpg" class="img-thumbnail" alt="Responsive image">
-            </div>
-            <div class="col-xs-1"></div>
-            <div class="col-xs-6">
-             <h2>Training Section Teacher Specific</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat.</p>
-             <a class="btn btn-primary" href="../../marketing/product.html" role="button">Learn More</a>
-             <a class="btn btn-default" href="#" role="button">Secondary CTA</a>
-            </div>
-          </div>
-          <hr>
-        </div>
-      </section>
-      <section class="bottom-space">
-        <div class="container">
-          <div id="viewport" class="row">
-            <div class="col-xs-6 bottom-space">
-             <h2>Resource Section Teacher Specific</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat.</p>
-             <a class="btn btn-primary" href="../../marketing/product.html" role="button">Learn More</a>
-             <a class="btn btn-default" href="#" role="button">Secondary CTA</a>
-            </div>
-            <div class="col-xs-1"></div>
-            <div class="col-xs-5">
-              <img src="../../assets/img/fpo-image.jpg" class="img-thumbnail" alt="Responsive image">
-            </div>
-          </div>
-        </div>
-      </section>
+          image_url: ''
+          background_color: 'green'
+          button_1_title: 'Learn More'
+          button_1_link: '/english'
+          button_2_title: 'Secondary CTA'
+          button_2_link: '/english'
+          position: 1
+
+        -
+          rowType: '50/50 Full-Bleed Image Right'
+          title: 'Curriculum Section'
+          body_text: !xml |
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </p>
+          image_url: ''
+          background_color: 'cream'
+          button_title: 'Learn More'
+          button_link: '/english'
+          position: 3
 
   -
     title: "Parents "
@@ -161,55 +144,47 @@ pages:
     group_name: "math"
     sub_group_name: "parents"
     position: 3
-    body: !xml |
-      <section id="background-grey" class="intro jumbo-text">
-        <div class="page-header container">
-          <h1>Math Parents Page</h1>
-          <h3 class="sub-head">Intro to Parents Page</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sed sapien quam. Sed dapibus est id enim facilisis, at posuere turpis adipiscing. Quisque sit amet dui dui.</p>
-          <a class="btn btn-primary" href="../../marketing/product.html" role="button">Learn More</a>
-        </div>
-      </section>
-      <section class="callout">
-       <div class="container">
-        <div id="viewport" class="row">
-          <div class="col-xs-6">
-           <h2>Child Help Section Parent Specific</h2>
+    tiles:
+      :rows:
+        -
+          rowType: 'Full Width Text'
+          title: 'Math Parent Page'
+          body_text: !xml |
+            <h3 class="sub-head">Intro to parent Page</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sed sapien quam. Sed dapibus est id enim facilisis, at posuere turpis adipiscing. Quisque sit amet dui dui.</p>
+          background_color: 'cream'
+          button_title: 'Learn More'
+          button_link: '/english'
+          position: 0
+
+        -
+          rowType: '50/50 Full-Bleed Image Left'
+          title: 'Intro into Curriculum'
+          body_text: !xml |
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
             tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
             quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
             consequat.</p>
-           <a class="btn btn-primary" href="../../marketing/product.html" role="button">Learn More</a>
-           <a class="btn btn-default" href="#" role="button">Secondary CTA</a>
-          </div>
-          <div class="col-xs-1"></div>
-          <div class="col-xs-5">
-            <img src="../../assets/img/fpo-image.jpg" class="img-thumbnail" alt="Responsive image">
-          </div>
-        </div>
-        <hr>
-        </div>
-      </section>
-      <section>
-        <div class="container bottom-space">
-          <div id="viewport" class="row callout bottom-space">
-            <div class="col-xs-5">
-              <img src="../../assets/img/fpo-image.jpg" class="img-thumbnail" alt="Responsive image">
-            </div>
-            <div class="col-xs-1"></div>
-            <div class="col-xs-6">
-             <h2>Resource Section Parent Specific</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat.</p>
-             <a class="btn btn-primary" href="../../marketing/product.html" role="button">Learn More</a>
-             <a class="btn btn-default" href="#" role="button">Secondary CTA</a>
-            </div>
-          </div>
-          <hr>
-        </div>
-      </section>
+          image_url: ''
+          background_color: 'green'
+          button_1_title: 'Learn More'
+          button_1_link: '/english'
+          button_2_title: 'Secondary CTA'
+          button_2_link: '/english'
+          position: 1
+
+        -
+          rowType: '50/50 Full-Bleed Image Right'
+          title: 'Curriculum Section'
+          body_text: !xml |
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </p>
+          image_url: ''
+          background_color: 'cream'
+          button_title: 'Learn More'
+          button_link: '/english'
+          position: 3
 
   -
     title: 'Admins'
@@ -221,74 +196,47 @@ pages:
     show_in_nav: true
     show_in_footer: false
     group_root: false
-    body: !xml |
-      <section id="background-grey" class="intro jumbo-text">
-        <div class="page-header container">
-          <h1>Math Admin Page</h1>
-          <h3 class="sub-head">Intro to Admin Page</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sed sapien quam. Sed dapibus est id enim facilisis, at posuere turpis adipiscing. Quisque sit amet dui dui.</p>
-          <a class="btn btn-primary" href="../../marketing/product.html" role="button">Learn More</a>
-        </div>
-      </section>
-      <section class="callout">
-       <div class="container">
-        <div id="viewport" class="row">
-          <div class="col-xs-6">
-           <h2>Curriculum Section Admin Specific</h2>
+    tiles:
+      :rows:
+        -
+          rowType: 'Full Width Text'
+          title: 'History Admins Page'
+          body_text: !xml |
+            <h3 class="sub-head">Intro to admins Page</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sed sapien quam. Sed dapibus est id enim facilisis, at posuere turpis adipiscing. Quisque sit amet dui dui.</p>
+          background_color: 'cream'
+          button_title: 'Learn More'
+          button_link: '/english'
+          position: 0
+
+        -
+          rowType: '50/50 Full-Bleed Image Left'
+          title: 'Intro into Curriculum'
+          body_text: !xml |
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
             tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
             quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
             consequat.</p>
-           <a class="btn btn-primary" href="../../marketing/product.html" role="button">Learn More</a>
-           <a class="btn btn-default" href="#" role="button">Secondary CTA</a>
-          </div>
-          <div class="col-xs-1"></div>
-          <div class="col-xs-5">
-            <img src="../../assets/img/fpo-image.jpg" class="img-thumbnail" alt="Responsive image">
-          </div>
-        </div>
-        <hr>
-        </div>
-      </section>
-      <section>
-        <div class="container">
-          <div id="viewport" class="row callout">
-            <div class="col-xs-5">
-              <img src="../../assets/img/fpo-image.jpg" class="img-thumbnail" alt="Responsive image">
-            </div>
-            <div class="col-xs-1"></div>
-            <div class="col-xs-6">
-             <h2>Training Section Admin Specific</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat.</p>
-             <a class="btn btn-primary" href="../../marketing/product.html" role="button">Learn More</a>
-             <a class="btn btn-default" href="#" role="button">Secondary CTA</a>
-            </div>
-          </div>
-          <hr>
-        </div>
-      </section>
-      <section class="bottom-space">
-        <div class="container">
-          <div id="viewport" class="row">
-            <div class="col-xs-6 bottom-space">
-             <h2>Resource Section Admin Specific</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat.</p>
-             <a class="btn btn-primary" href="../../marketing/product.html" role="button">Learn More</a>
-             <a class="btn btn-default" href="#" role="button">Secondary CTA</a>
-            </div>
-            <div class="col-xs-1"></div>
-            <div class="col-xs-5">
-              <img src="../../assets/img/fpo-image.jpg" class="img-thumbnail" alt="Responsive image">
-            </div>
-          </div>
-        </div>
-      </section>
+          image_url: ''
+          background_color: 'green'
+          button_1_title: 'Learn More'
+          button_1_link: '/english'
+          button_2_title: 'Secondary CTA'
+          button_2_link: '/english'
+          position: 1
+
+        -
+          rowType: '50/50 Full-Bleed Image Right'
+          title: 'Curriculum Section'
+          body_text: !xml |
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </p>
+          image_url: ''
+          background_color: 'cream'
+          button_title: 'Learn More'
+          button_link: '/english'
+          position: 3
 
   -
     title: "Eureka Shop"

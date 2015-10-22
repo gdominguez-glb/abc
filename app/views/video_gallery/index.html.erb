@@ -41,7 +41,8 @@
                 <%= render partial: 'locked_video', locals: { video: video } %>
               <% end %>
             <% end %>
-          </row>
+          </div>
+          <%= paginate @videos %>
         <% end %>
       </div>
     </div>

@@ -10,7 +10,7 @@ class Account::LicensesController < Account::BaseController
     if @assign_licenses_form.valid?
       @assign_licenses_form.perform
       flash[:success] = "Successully assigned licenses to recipients"
-      redirect_to account_licenses_path
+      redirect_to account_licenses_path(licenses_ids: params[:licenses_ids])
     else
       render :index
     end
@@ -60,6 +60,11 @@ class Account::LicensesController < Account::BaseController
     else
       @error_full_messages = updater.errors.full_messages.join(' ')
     end
+  end
+
+  def cancel_invitation
+    current_spree_user.product_distributions.where(to_user_id: nil, email: params[:email]).map{|pd| pd.revoke }
+    redirect_to users_account_licenses_path
   end
 
   def select_users

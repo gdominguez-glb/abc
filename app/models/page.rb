@@ -51,7 +51,19 @@ class Page < ActiveRecord::Base
 
   def generate_page_from_tiles
     if self.tiles.present?
+      sanitize_tiles
       self.body = MarketingPageRenderrer.new(self).render
+    end
+  end
+
+  include ActionView::Helpers::SanitizeHelper
+
+  def sanitize_tiles
+    self.tiles[:rows].each do |tile|
+      tile.each do |k, v|
+        next unless v.is_a?(String)
+        tile[k] = sanitize(v.strip, attributes: [])
+      end
     end
   end
 end
