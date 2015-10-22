@@ -218,16 +218,21 @@ module SalesforceAccess
   def create_new_record_in_salesforce(attributes_to_create = {})
     created_in_salesforce_at = self.class.date_to_salesforce
 
-    duplicate = false
-    begin
-      sf_id = self.class.salesforce_api.create(salesforce_sobject_name,
-                                               attributes_to_create)
-    rescue GmSalesforce::DuplicateRecord => e
-      duplicate = true
-      sf_id = e.duplicate_id
+    sf_id = id_in_salesforce
+    duplicate = sf_id.present?
+
+    unless duplicate
+      begin
+        sf_id = self.class.salesforce_api.create(salesforce_sobject_name,
+                                                 attributes_to_create)
+      rescue GmSalesforce::DuplicateRecord => e
+        duplicate = true
+        sf_id = e.duplicate_id
+      end
+
+      return false if sf_id.blank?
     end
 
-    return false if sf_id.blank?
     new_attrs = attributes_to_create.merge(
       'Id' => sf_id, 'LastModifiedDate' => created_in_salesforce_at)
     sfo = salesforce_reference.object_from_properties(new_attrs)
