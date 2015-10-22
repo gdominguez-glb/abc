@@ -1,13 +1,9 @@
 <%= render 'cms_nav' %>
 <div class="col-md-9">
-  <section>
-    <div class='row'>
-      <h2>Editing FAQ</h2>
+  <h2>Editing FAQ</h2>
 
-      <%= render 'form' %>
+  <%= render 'form' %>
 
-      <%= link_to 'Show', [:cms, @question], class: 'btn btn-default' %>
-      <%= link_to 'Back', cms_questions_path, class: 'btn btn-default' %>
-    </div>
-  </section>
+  <%= link_to 'Show', [:cms, @question], class: 'btn btn-default' %>
+  <%= link_to 'Back', cms_questions_path, class: 'btn btn-default' %>
 </div>

@@ -1,29 +1,27 @@
 <%= render 'cms_nav' %>
 
 <div class="col-md-9">
-  <section>
-    <ul class="nav nav-tabs" id="profile-settings-tabs">
-      <li role="presentation" class="active"><a href="#admin">Admin</a></li>
-      <li role="presentation"><a href="#school-district-admin">School District Admin</a></li>
-      <li role="presentation"><a href="#user">User</a></li>
-    </ul>
-    <%= form_tag '', method: :post do %>
-      <div class="container">
-        <div class="tab-content">
-          <div class="tab-pane active" id="admin">
-            <%= render partial: 'profile_fields', locals: { role: 'admin' } %>
-          </div>
-          <div class="tab-pane" id="school-district-admin">
-            <%= render partial: 'profile_fields', locals: { role: 'school_district_admin' } %>
-          </div>
-          <div class="tab-pane" id="user">
-            <%= render partial: 'profile_fields', locals: { role: 'user' } %>
-          </div>
+  <ul class="nav nav-tabs" id="profile-settings-tabs">
+    <li role="presentation" class="active"><a href="#admin">Admin</a></li>
+    <li role="presentation"><a href="#school-district-admin">School District Admin</a></li>
+    <li role="presentation"><a href="#user">User</a></li>
+  </ul>
+  <%= form_tag '', method: :post do %>
+    <div class="container">
+      <div class="tab-content">
+        <div class="tab-pane active" id="admin">
+          <%= render partial: 'profile_fields', locals: { role: 'admin' } %>
         </div>
-        <button class="btn btn-primary">Save Settings</button>
+        <div class="tab-pane" id="school-district-admin">
+          <%= render partial: 'profile_fields', locals: { role: 'school_district_admin' } %>
+        </div>
+        <div class="tab-pane" id="user">
+          <%= render partial: 'profile_fields', locals: { role: 'user' } %>
+        </div>
       </div>
-    <% end %>
-  </section>
+      <button class="btn btn-primary">Save Settings</button>
+    </div>
+  <% end %>
 </div>
 
 <%= content_for :javascripts do %>

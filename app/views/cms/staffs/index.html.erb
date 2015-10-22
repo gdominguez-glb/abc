@@ -1,36 +1,34 @@
 <%= render 'cms_nav' %>
 <div class="col-md-9">
-  <section>
-    <h3>Staffs</h3>
-    <%= link_to "New Staff", new_cms_staff_path, class: 'btn btn-primary' %>
-    <table class="table contact-topics-list">
-      <thead>
-        <tr>
-          <th></th>
-          <th>Name</th>
-          <th>Titlte</th>
-          <th>Staff Type</th>
-          <th>Display</th>
-          <th></th>
+  <h3>Staffs</h3>
+  <%= link_to "New Staff", new_cms_staff_path, class: 'btn btn-primary' %>
+  <table class="table contact-topics-list">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Name</th>
+        <th>Titlte</th>
+        <th>Staff Type</th>
+        <th>Display</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @staffs.each do |staff| %>
+        <tr data-id="<%= staff.id %>">
+          <td><span class="glyphicon glyphicon-resize-vertical" aria-hidden="true"></span></td>
+          <td><%= staff.name %></td>
+          <td><%= staff.title %></td>
+          <td><%= staff.staff_type %></td>
+          <td><%= staff.display? ? 'Yes' : 'No' %></td>
+          <td>
+            <%= link_to 'Edit', edit_cms_staff_path(staff), class: 'btn btn-default' %>
+            <%= link_to 'Delete', cms_staff_path(staff), class: 'btn btn-default', data: { confirm: 'Are you sure?', method: :delete } %>
+          </td>
         </tr>
-      </thead>
-      <tbody>
-        <% @staffs.each do |staff| %>
-          <tr data-id="<%= staff.id %>">
-            <td><span class="glyphicon glyphicon-resize-vertical" aria-hidden="true"></span></td>
-            <td><%= staff.name %></td>
-            <td><%= staff.title %></td>
-            <td><%= staff.staff_type %></td>
-            <td><%= staff.display? ? 'Yes' : 'No' %></td>
-            <td>
-              <%= link_to 'Edit', edit_cms_staff_path(staff), class: 'btn btn-default' %>
-              <%= link_to 'Delete', cms_staff_path(staff), class: 'btn btn-default', data: { confirm: 'Are you sure?', method: :delete } %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </section>
+      <% end %>
+    </tbody>
+  </table>
 </div>
 <%= content_for :javascripts do %>
   <%= javascript_tag do %>

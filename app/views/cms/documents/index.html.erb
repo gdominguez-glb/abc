@@ -1,64 +1,60 @@
 <%= render 'cms_nav' %>
 <div class="col-md-9">
-  <section>
-    <div>
-      <div class="clearfix documents-header">
-        <h2 class="pull-left">Documents</h2>
-        <a href="/cms/documents/new" class="btn btn-primary pull-right">Add New Document</a>
-      </div>
-      <%= form_tag '', method: :get, class: 'form-inline' do %>
-        <div class="form-group">
-          <label>Name</label>
-          <%= text_field_tag :name, params[:name], class: 'form-control' %>
-        </div>
-        <div class="form-group">
-          <label>Category</label>
-          <%= text_field_tag :category, params[:category], class: 'form-control' %>
-        </div>
-        <div class="form-group">
-          <label>Tags</label>
-          <%= text_field_tag :tags, params[:tags], class: 'form-control', placeholder: 'seperate by comma' %>
-        </div>
-        <button type="submit" class="btn btn-default">Search</button>
-      <% end %>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Category</th>
-            <th>Tags</th>
-            <th>File</th>
-            <th colspan="4"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @documents.each do |document| %>
-            <tr>
-              <td><%= document.name %></td>
-              <td><%= document.category %></td>
-              <td><%= document.tags.map(&:name).join(',') %></td>
-              <td>
-                <%= document.attachment_file_name %>
-              </td>
-              <td>
-                <%= link_to 'Edit', edit_cms_document_path(document), class: 'btn btn-default btn-sm' %>
-              </td>
-              <td>
-                <%= link_to 'Download', document.attachment.url, class: 'btn btn-default btn-sm', target: '_blank' %>
-              </td>
-              <td>
-                <%= link_to 'Delete', cms_document_path(document), class: 'btn btn-default btn-sm', data: { method: :delete, confirm: "Are you sure?" } %>
-              </td>
-              <td>
-                <a class="btn btn-default copy-download-url-button btn-sm" data-clipboard-text="<%= document.attachment.url %>">Copy Url</a>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-      <%= paginate @documents %>
+  <div class="clearfix documents-header">
+    <h2 class="pull-left">Documents</h2>
+    <a href="/cms/documents/new" class="btn btn-primary pull-right">Add New Document</a>
+  </div>
+  <%= form_tag '', method: :get, class: 'form-inline' do %>
+    <div class="form-group">
+      <label>Name</label>
+      <%= text_field_tag :name, params[:name], class: 'form-control' %>
     </div>
-  </section>
+    <div class="form-group">
+      <label>Category</label>
+      <%= text_field_tag :category, params[:category], class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <label>Tags</label>
+      <%= text_field_tag :tags, params[:tags], class: 'form-control', placeholder: 'seperate by comma' %>
+    </div>
+    <button type="submit" class="btn btn-default">Search</button>
+  <% end %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Tags</th>
+        <th>File</th>
+        <th colspan="4"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @documents.each do |document| %>
+        <tr>
+          <td><%= document.name %></td>
+          <td><%= document.category %></td>
+          <td><%= document.tags.map(&:name).join(',') %></td>
+          <td>
+            <%= document.attachment_file_name %>
+          </td>
+          <td>
+            <%= link_to 'Edit', edit_cms_document_path(document), class: 'btn btn-default btn-sm' %>
+          </td>
+          <td>
+            <%= link_to 'Download', document.attachment.url, class: 'btn btn-default btn-sm', target: '_blank' %>
+          </td>
+          <td>
+            <%= link_to 'Delete', cms_document_path(document), class: 'btn btn-default btn-sm', data: { method: :delete, confirm: "Are you sure?" } %>
+          </td>
+          <td>
+            <a class="btn btn-default copy-download-url-button btn-sm" data-clipboard-text="<%= document.attachment.url %>">Copy Url</a>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= paginate @documents %>
   <%= content_for :javascripts do %>
     <%= javascript_tag do %>
       $(function() {

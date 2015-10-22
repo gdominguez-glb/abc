@@ -1,24 +1,20 @@
 <%= render 'cms_nav' %>
 <div class="col-md-9">
-  <section>
-    <div class='row'>
-      <h2>Editing Page</h2>
+  <h2>Editing Page</h2>
 
-      <div id="editor" style="margin: 20px 0;">
-        <div>
-          <label>Select Tile Type</label>
-          <%= select_tag :row_type, options_for_select(Page::TILES.map{|t| t[:name] }), class: 'row-type-select' %>
-          <a class="btn btn-primary add-tile-row-btn">Add New Tile Row</a>
-        </div>
-        <div class="rows">
-        </div>
-        <button class="btn btn-primary save-btn">Save</button>
-      </div>
-
-      <%# <%= link_to 'Show', [:cms, @page], class: 'btn btn-default' %1> %>
-      <%= link_to 'Back', cms_pages_path, class: 'btn btn-default' %>
+  <div id="editor" style="margin: 20px 0;">
+    <div>
+      <label>Select Tile Type</label>
+      <%= select_tag :row_type, options_for_select(Page::TILES.map{|t| t[:name] }), class: 'row-type-select' %>
+      <a class="btn btn-primary add-tile-row-btn">Add New Tile Row</a>
     </div>
-  </section>
+    <div class="rows">
+    </div>
+    <button class="btn btn-primary save-btn">Save</button>
+  </div>
+
+  <%# <%= link_to 'Show', [:cms, @page], class: 'btn btn-default' %1> %>
+  <%= link_to 'Back', cms_pages_path, class: 'btn btn-default' %>
 </div>
 
 <%= content_for :javascripts do %>

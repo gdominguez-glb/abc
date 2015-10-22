@@ -1,36 +1,32 @@
 <%= render 'cms_nav' %>
 
 <div class="col-md-9">
-  <section>
-    <div class="row">
-      <h2>Recommendation</h2>
-      <%= link_to 'New Recommendation', new_cms_recommendation_path, class: 'btn btn-primary' %>
-      <table class='table table-responsive table-striped table-hover'>
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Sub-header</th>
-            <th>Subject</th>
-            <th>Call to action button text</th>
-            <th>Call to action button link</th>
-            <th colspan="2"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @recommendations.each do |recommendation| %>
-            <tr>
-              <td><%= recommendation.title %></td>
-              <td><%= recommendation.sub_header %></td>
-              <td><%= recommendation.subject %></td>
-              <td><%= recommendation.call_to_action_button_text %></td>
-              <td><%= recommendation.call_to_action_button_link %></td>
-              <td><%= link_to 'Edit', edit_cms_recommendation_path(recommendation), class: 'btn btn-default' %></td>
-              <td><%= link_to 'Delete', cms_recommendation_path(recommendation), data: { method: :delete, confirm: 'Are you sure?' }, class: 'btn btn-default' %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-      <%= paginate @recommendations %>
-    </div>
-  </section>
+  <h2>Recommendation</h2>
+  <%= link_to 'New Recommendation', new_cms_recommendation_path, class: 'btn btn-primary' %>
+  <table class='table table-responsive table-striped table-hover'>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Sub-header</th>
+        <th>Subject</th>
+        <th>Call to action button text</th>
+        <th>Call to action button link</th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @recommendations.each do |recommendation| %>
+        <tr>
+          <td><%= recommendation.title %></td>
+          <td><%= recommendation.sub_header %></td>
+          <td><%= recommendation.subject %></td>
+          <td><%= recommendation.call_to_action_button_text %></td>
+          <td><%= recommendation.call_to_action_button_link %></td>
+          <td><%= link_to 'Edit', edit_cms_recommendation_path(recommendation), class: 'btn btn-default' %></td>
+          <td><%= link_to 'Delete', cms_recommendation_path(recommendation), data: { method: :delete, confirm: 'Are you sure?' }, class: 'btn btn-default' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= paginate @recommendations %>
 </div>

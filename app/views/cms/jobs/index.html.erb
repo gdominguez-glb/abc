@@ -1,33 +1,29 @@
 <%= render 'cms_nav' %>
 
 <div class="col-md-9">
-  <section>
-    <div class="row">
-      <h2>Careers</h2>
-      <%= link_to 'New Career', new_cms_job_path, class: 'btn btn-primary' %>
-      <table class='table table-responsive table-striped table-hover'>
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Display</th>
-            <th colspan="2"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @jobs.each do |job| %>
-            <tr>
-              <td><%= job.title %></td>
-              <td><%= job.display %></td>
-              <td>
-                <%= link_to 'Edit', edit_cms_job_path(job), class: 'btn btn-default' %>
-              </td>
-              <td>
-                <%= link_to 'Delete', cms_job_path(job), class: 'btn btn-default', data: { confirm: 'Are you sure?', method: :delete } %>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-  </section>
+  <h2>Careers</h2>
+  <%= link_to 'New Career', new_cms_job_path, class: 'btn btn-primary' %>
+  <table class='table table-responsive table-striped table-hover'>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Display</th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @jobs.each do |job| %>
+        <tr>
+          <td><%= job.title %></td>
+          <td><%= job.display %></td>
+          <td>
+            <%= link_to 'Edit', edit_cms_job_path(job), class: 'btn btn-default' %>
+          </td>
+          <td>
+            <%= link_to 'Delete', cms_job_path(job), class: 'btn btn-default', data: { confirm: 'Are you sure?', method: :delete } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>

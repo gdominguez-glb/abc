@@ -1,10 +1,8 @@
 <%= render 'cms_nav' %>
 
 <div class="col-md-9">
-  <section>
-    <h3>Products of <%= @download_page.title %></h3>
-    <%= link_to 'Add Product to download', new_cms_download_page_download_product_path(@download_page), class: 'btn btn-primary', remote: true %>
-  </section>
+  <h3>Products of <%= @download_page.title %></h3>
+  <%= link_to 'Add Product to download', new_cms_download_page_download_product_path(@download_page), class: 'btn btn-primary', remote: true %>
   <table class="table">
     <thead>
       <tr>

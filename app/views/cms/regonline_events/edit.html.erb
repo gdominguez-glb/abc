@@ -1,33 +1,29 @@
 <%= render 'cms_nav' %>
 
 <div class="col-md-9">
-  <section>
-    <div class='row'>
-      <%= link_to 'Back', cms_event_page_regonline_events_path(@event_page), class: 'btn btn-primary' %>
-      <h2>Edit Event</h2>
-      <%= form_for [:cms, @event_page, @event] do |f| %>
-        <div class="form-group">
-          <label>Title</label>
-          <%= f.text_field :title, class: 'form-control' %>
-        </div>
-        <div class="form-group">
-          <label>Download Url</label>
-          <%= f.text_field :download_url, class: 'form-control' %>
-        </div>
-        <div class="form-group">
-          <label>Grade Bands</label>
-          <%= f.text_field :grade_bands, class: 'form-control' %>
-        </div>
-        <div class="form-group">
-          <label>Session Types</label>
-          <%= f.collection_select :session_types, EventTraining.all, :id, :title, { include_hidden: false }, class: 'form-control', multiple: true %>
-        </div>
-        <div class="form-group">
-          <label>Visible</label>
-          <%= f.check_box :display, class: 'form-control' %>
-        </div>
-        <%= f.submit "Save", class: 'btn btn-primary' %>
-      <% end %>
+  <%= link_to 'Back', cms_event_page_regonline_events_path(@event_page), class: 'btn btn-primary' %>
+  <h2>Edit Event</h2>
+  <%= form_for [:cms, @event_page, @event] do |f| %>
+    <div class="form-group">
+      <label>Title</label>
+      <%= f.text_field :title, class: 'form-control' %>
     </div>
-  </section>
+    <div class="form-group">
+      <label>Download Url</label>
+      <%= f.text_field :download_url, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <label>Grade Bands</label>
+      <%= f.text_field :grade_bands, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <label>Session Types</label>
+      <%= f.collection_select :session_types, EventTraining.all, :id, :title, { include_hidden: false }, class: 'form-control', multiple: true %>
+    </div>
+    <div class="form-group">
+      <label>Visible</label>
+      <%= f.check_box :display, class: 'form-control' %>
+    </div>
+    <%= f.submit "Save", class: 'btn btn-primary' %>
+  <% end %>
 </div>

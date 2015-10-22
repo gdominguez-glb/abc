@@ -1,38 +1,34 @@
 <%= render 'cms_nav' %>
 
 <div class="col-md-9">
-  <section>
-    <div class='row'>
-      <h2>Curriculums</h2>
-      <%= link_to 'Create new curriculum', new_cms_curriculum_path, class: 'btn btn-primary' %>
+  <h2>Curriculums</h2>
+  <%= link_to 'Create new curriculum', new_cms_curriculum_path, class: 'btn btn-primary' %>
 
-      <div class="alert alert-info" role="alert" style="margin-top: 10px;">
-        To make a new curriculum show up in nav, you also need to create a new page in <%= link_to 'Page section', '/cms/pages' %> that belong to new curriculum and this page need to have 'Show in nav' and 'Group root' checked. (check Overview page for example.)
-      </div>
-      <table class='table table-responsive table-striped table-hover'>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Position</th>
-            <th>Visible</th>
-            <th colspan="2"></th>
-          </tr>
-        </thead>
+  <div class="alert alert-info" role="alert" style="margin-top: 10px;">
+    To make a new curriculum show up in nav, you also need to create a new page in <%= link_to 'Page section', '/cms/pages' %> that belong to new curriculum and this page need to have 'Show in nav' and 'Group root' checked. (check Overview page for example.)
+  </div>
+  <table class='table table-responsive table-striped table-hover'>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Position</th>
+        <th>Visible</th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
 
-        <tbody>
-          <% @curriculums.each do |curriculum| %>
-            <tr>
-              <td><%= curriculum.name %></td>
-              <td><%= curriculum.position %></td>
-              <td><%= curriculum.visible ? 'Yes' : 'No' %></td>
-              <td><%= link_to 'Edit', edit_cms_curriculum_path(curriculum) %></td>
-              <td><%= link_to 'Destroy', [:cms, curriculum], method: :delete, data: { confirm: 'Are you sure?' } %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+    <tbody>
+      <% @curriculums.each do |curriculum| %>
+        <tr>
+          <td><%= curriculum.name %></td>
+          <td><%= curriculum.position %></td>
+          <td><%= curriculum.visible ? 'Yes' : 'No' %></td>
+          <td><%= link_to 'Edit', edit_cms_curriculum_path(curriculum) %></td>
+          <td><%= link_to 'Destroy', [:cms, curriculum], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-      <%= paginate @curriculums %>
-    </div>
-  </section>
+  <%= paginate @curriculums %>
 </div>
