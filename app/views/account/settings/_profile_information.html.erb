@@ -16,28 +16,28 @@
     </div>
     <div class="form-group col-md-6">
       <label>Phone Number</label>
-      <%= f.text_field :phone, class: 'form-control' %>
+      <%= f.text_field :phone, class: 'form-control', tabindex: 4 %>
     </div>
   </div>
   <div class="row">
     <div class="form-group col-md-6">
       <label>Current Password</label>
-      <%= password_field_tag :current_password, nil, class: 'form-control', tabindex: 4 %>
+      <%= password_field_tag :current_password, nil, class: 'form-control', tabindex: 5 %>
     </div>
     <div class="form-group col-md-6">
       <label>Password</label>
-      <%= f.password_field :password, class: 'form-control', tabindex: 4 %>
+      <%= f.password_field :password, class: 'form-control', tabindex: 6 %>
     </div>
   </div>
   <div class="row">
     <div class="form-group col-md-6">
       <label>Subjects you are interested in</label>
-      <%= f.collection_select :interested_subjects, Curriculum.visibles, :id, :name, { include_hidden: false, multiple: true }, { class: 'form-control', tabindex: 5, multiple: 'multiple' } %>
+      <%= f.collection_select :interested_subjects, Curriculum.visibles, :id, :name, { include_hidden: false, multiple: true }, { class: 'form-control', tabindex: 7, multiple: 'multiple' } %>
     </div>
     <div class="form-group col-md-6">
       <div class="checkbox">
         <label>
-          <%= f.check_box :allow_communication %> You may contact me about products and resources from Great Minds.
+          <%= f.check_box :allow_communication, tabindex: 8 %> You may contact me about products and resources from Great Minds.
         </label>
       </div>
     </div>
@@ -47,14 +47,14 @@
       <label>Select your Role</label>
       <div class="select-container dark-select block margin-bottom-reset">
         <span>Please select your role</span>
-        <%= f.select :title, options_for_select(USER_TITLES, f.object.title), { prompt: 'Please select your role' }, { class: 'form-control', tabindex: 5 } %>
+        <%= f.select :title, options_for_select(USER_TITLES, f.object.title), { prompt: 'Please select your role' }, { class: 'form-control', tabindex: 9 } %>
       </div>
     </div>
     <div class="form-group col-md-6 school-district-input">
       <label>Select School District</label>
       <div class="select-container dark-select block margin-bottom-reset">
         <span>Select your district</span>
-        <%= f.collection_select :school_district_id, SchoolDistrict.for_selection.all, :id, :name, { include_blank: 'District Not List', prompt: 'Please select your district' }, { class: 'form-control' } %>
+        <%= f.collection_select :school_district_id, SchoolDistrict.for_selection.all, :id, :name, { include_blank: 'District Not List', prompt: 'Please select your district' }, { class: 'form-control', tabindex: 10 } %>
       </div>
     </div>
   </div>
@@ -65,7 +65,7 @@
         Select your district state
         <% f.object.school_district ||= SchoolDistrict.new(place_type: 'school') %>
         <%= f.fields_for :school_district do |school_district_form| %>
-          <%= school_district_form.collection_select :state_id, Spree::Country.find_by(iso: 'US').states, :id, :name, { prompt: true } , { class: 'form-control' } %>
+          <%= school_district_form.collection_select :state_id, Spree::Country.find_by(iso: 'US').states, :id, :name, { prompt: true } , { class: 'form-control', tabindex: 11 } %>
         <% end %>
       </div>
     </div>
@@ -73,7 +73,7 @@
       <label>Add District Name</label>
       <% f.object.school_district ||= SchoolDistrict.new(place_type: 'school') %>
       <%= f.fields_for :school_district do |school_district_form| %>
-        <%= school_district_form.text_field :name, class: "form-control school-district-control #{'hidden' if current_spree_user.school_district_id.present?}", placeholder: 'New District Name' %>
+        <%= school_district_form.text_field :name, class: "form-control school-district-control #{'hidden' if current_spree_user.school_district_id.present?}", placeholder: 'New District Name', tabindex: 12 %>
       <% end %>
       <div class="school-district-input-toggle">
         District Name <span class="glyphicon glyphicon-plus pull-right"></span>
@@ -87,7 +87,7 @@
         <%= f.fields_for :school_district do |school_district_form| %>
           <div class="radio">
             <label>
-              <%= school_district_form.radio_button :place_type, 'school' %>
+              <%= school_district_form.radio_button :place_type, 'school', tabindex: 13 %>
               School
             </label>
           </div>
@@ -109,7 +109,7 @@
   </div>
   <div class="row">
     <div class="col-md-2 col-md-offset-5">
-      <button class="btn btn-primary btn-lg btn-block">Save</button>
+      <button class="btn btn-primary btn-lg btn-block" tabindex="14">Save</button>
       <a href="#" class="center-block text-center" style="margin-top:10px;">Cancel</a>
     </div>
   </div>
