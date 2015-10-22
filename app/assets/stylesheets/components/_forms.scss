@@ -88,6 +88,10 @@ label {
   label + label {
     margin-left: 5px;
   }
+
+  .form-inline & {
+    margin: 0 10px 10px 0;
+  }
 }
 
 .select-container {
@@ -216,6 +220,8 @@ label {
     }
 
     &.select2-container-active {
+      box-shadow: inset 0 0 0 1px transparent, inset 0 0 0 2px $coral;
+
       .select2-choices {
         box-shadow: none;
       }
