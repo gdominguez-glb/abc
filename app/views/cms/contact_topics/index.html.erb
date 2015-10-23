@@ -1,30 +1,28 @@
 <%= render 'cms_nav' %>
 <div class="col-md-9">
-  <section>
-    <h3>Contact Topics</h3>
-    <%= link_to "New Contact Topic", new_cms_contact_topic_path, class: 'btn btn-primary' %>
-    <table class="table contact-topics-list">
-      <thead>
-        <tr>
-          <th></th>
-          <th>Name</th>
-          <th></th>
+  <h2>Contact Topics</h2>
+  <%= link_to "New Contact Topic", new_cms_contact_topic_path, class: 'btn btn-primary margin-bottom-xl' %>
+  <table class="table contact-topics-list">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Name</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @contact_topics.each do |contact_topic| %>
+        <tr data-id="<%= contact_topic.id %>">
+          <td><span class="glyphicon glyphicon-resize-vertical" aria-hidden="true"></span></td>
+          <td><%= contact_topic.name %></td>
+          <td>
+            <%= link_to 'Edit', edit_cms_contact_topic_path(contact_topic), class: 'btn btn-default' %>
+            <%= link_to 'Delete', cms_contact_topic_path(contact_topic), class: 'btn btn-danger', data: { confirm: 'Are you sure?', method: :delete } %>
+          </td>
         </tr>
-      </thead>
-      <tbody>
-        <% @contact_topics.each do |contact_topic| %>
-          <tr data-id="<%= contact_topic.id %>">
-            <td><span class="glyphicon glyphicon-resize-vertical" aria-hidden="true"></span></td>
-            <td><%= contact_topic.name %></td>
-            <td>
-              <%= link_to 'Edit', edit_cms_contact_topic_path(contact_topic), class: 'btn btn-default' %>
-              <%= link_to 'Delete', cms_contact_topic_path(contact_topic), class: 'btn btn-default', data: { confirm: 'Are you sure?', method: :delete } %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </section>
+      <% end %>
+    </tbody>
+  </table>
 </div>
 <%= content_for :javascripts do %>
   <%= javascript_tag do %>

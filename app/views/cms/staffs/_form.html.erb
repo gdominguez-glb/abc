@@ -1,16 +1,28 @@
 <%= form_for [:cms, @staff], class: 'form' do |f| %>
-  <div class="form-group">
-    <label for="name">Name</label>
-    <%= f.text_field :name, class: 'form-control' %>
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="form-group">
+        <label>Title</label>
+        <%= f.text_field :title, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="form-group">
+        <label>Staff Type</label>
+        <div class="select-container dark-select block">
+          <span>Staff Type</span>
+          <%= f.select :staff_type, Staff.staff_types.keys, {}, class: 'form-control' %>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="form-group">
-    <label>Title</label>
-    <%= f.text_field :title, class: 'form-control' %>
-  </div>
-  <div class="form-group">
-    <label>Staff Type</label>
-    <%= f.select :staff_type, Staff.staff_types.keys, {}, class: 'form-control' %>
-  </div>
+
   <div class="form-group">
     <label>Picture</label>
     <%= f.file_field :picture %>
@@ -20,8 +32,11 @@
     <%= f.text_area :description, class: 'form-control cleditor', rows: 3 %>
   </div>
   <div class="form-group">
-    <label for="name">Display</label>
-    <%= f.check_box :display, class: 'form-control' %>
+    <div class="checkbox">
+      <label for="name">
+        <%= f.check_box :display %> Display
+      </label>
+    </div>
   </div>
-  <%= f.submit class: 'btn btn-primary' %>
+  <%= f.submit class: 'btn btn-success' %>
 <% end %>

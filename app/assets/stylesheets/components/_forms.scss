@@ -154,7 +154,7 @@ label {
 
   &.block {
     display: block;
-    padding: 10px 30px 10px 15px;
+    padding: 12px 30px 10px 15px;
   }
 
   + .select-container {
@@ -200,7 +200,9 @@ label {
 .select2-container {
   &.form-control {
 
-    .select2-choices {
+    .select2-choices,
+    .select2-choice {
+      height: 42px;
       padding: 9px 15px 8px;
       background: transparent;
       background-image: none;
@@ -229,9 +231,27 @@ label {
 
     &.select2-dropdown-open {
       border-radius: 3px;
+
+      .select2-choice {
+        box-shadow: none;
+      }
+    }
+
+    .select2-choice {
+      .select2-chosen {
+        font-weight: normal;
+        text-align: left;
+        text-transform: initial;
+      }
+
+      .select2-arrow {
+        display: none;
+      }
     }
   }
 }
+
+
 
 .select2-drop {
   margin-top: 2px;

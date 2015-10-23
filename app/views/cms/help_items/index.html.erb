@@ -1,35 +1,33 @@
 <%= render 'cms_nav' %>
 
 <div class="col-md-9">
-  <section>
-    <div class="row">
-      <h2>Help</h2>
-      <%= link_to 'New Help', new_cms_help_item_path, class: 'btn btn-primary' %>
-      <table class='table table-responsive table-striped table-hover'>
-        <thead>
+  <h2>Help</h2>
+  <%= link_to 'New Help', new_cms_help_item_path, class: 'btn btn-primary margin-bottom-xl' %>
+  <div class="table-responsive">
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Display</th>
+          <th colspan="2"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @help_items.each do |help_item| %>
           <tr>
-            <th>Title</th>
-            <th>Display</th>
-            <th colspan="2"></th>
+            <td><%= help_item.title %></td>
+            <td><%= help_item.display ? 'Yes' : 'No' %></td>
+            <td>
+              <%= link_to 'Edit', edit_cms_help_item_path(help_item), class: 'btn btn-default' %>
+            </td>
+            <td>
+              <%= link_to 'Delete', cms_help_item_path(help_item), class: 'btn btn-default', data: { confirm: 'Are you sure?', method: :delete } %>
+            </td>
           </tr>
-        </thead>
-        <tbody>
-          <% @help_items.each do |help_item| %>
-            <tr>
-              <td><%= help_item.title %></td>
-              <td><%= help_item.display ? 'Yes' : 'No' %></td>
-              <td>
-                <%= link_to 'Edit', edit_cms_help_item_path(help_item), class: 'btn btn-default' %>
-              </td>
-              <td>
-                <%= link_to 'Delete', cms_help_item_path(help_item), class: 'btn btn-default', data: { confirm: 'Are you sure?', method: :delete } %>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-  </section>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
 
 <%= paginate @help_items %>

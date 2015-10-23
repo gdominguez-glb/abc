@@ -1,8 +1,8 @@
 <%= render 'cms_nav' %>
 <div class="col-md-9">
-  <section>
-    <h3>Staffs</h3>
-    <%= link_to "New Staff", new_cms_staff_path, class: 'btn btn-primary' %>
+  <h2>Staff</h2>
+  <%= link_to "New Staff", new_cms_staff_path, class: 'btn btn-primary margin-bottom-xl' %>
+  <div class="table-responsive">
     <table class="table contact-topics-list">
       <thead>
         <tr>
@@ -11,7 +11,7 @@
           <th>Titlte</th>
           <th>Staff Type</th>
           <th>Display</th>
-          <th></th>
+          <th colspan="2"></th>
         </tr>
       </thead>
       <tbody>
@@ -24,13 +24,15 @@
             <td><%= staff.display? ? 'Yes' : 'No' %></td>
             <td>
               <%= link_to 'Edit', edit_cms_staff_path(staff), class: 'btn btn-default' %>
-              <%= link_to 'Delete', cms_staff_path(staff), class: 'btn btn-default', data: { confirm: 'Are you sure?', method: :delete } %>
+            </td>
+            <td>
+              <%= link_to 'Delete', cms_staff_path(staff), class: 'btn btn-danger', data: { confirm: 'Are you sure?', method: :delete } %>
             </td>
           </tr>
         <% end %>
       </tbody>
     </table>
-  </section>
+  </div>
 </div>
 <%= content_for :javascripts do %>
   <%= javascript_tag do %>

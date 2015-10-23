@@ -1,37 +1,33 @@
 <%= render 'cms_nav' %>
 
 <div class="col-md-9">
-  <section>
-    <div class="row">
-      <h2>CurriculumMails</h2>
-      <%= link_to 'New CurriculumMail', new_cms_curriculum_mail_path, class: 'btn btn-primary' %>
-      <table class='table table-responsive table-striped table-hover'>
-        <thead>
+  <h2>Curriculum Mail</h2>
+  <%= link_to 'New Curriculum Mail', new_cms_curriculum_mail_path, class: 'btn btn-primary margin-bottom-xl' %>
+  <div class="table-responsive">
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Curriculum</th>
+          <th>Status</th>
+          <th colspan="2"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @curriculum_mails.each do |curriculum_mail| %>
           <tr>
-            <th>Title</th>
-            <th>Curriculum</th>
-            <th>Status</th>
-            <th colspan="2"></th>
+            <td><%= curriculum_mail.subject %></td>
+            <td><%= curriculum_mail.curriculum %></td>
+            <td><%= curriculum_mail.status %></td>
+            <td class="text-right">
+              <%= link_to 'Edit', edit_cms_curriculum_mail_path(curriculum_mail), class: 'btn btn-default' %>
+              <%= link_to 'Delete', cms_curriculum_mail_path(curriculum_mail), class: 'btn btn-danger', data: { confirm: 'Are you sure?', method: :delete } %>
+            </td>
           </tr>
-        </thead>
-        <tbody>
-          <% @curriculum_mails.each do |curriculum_mail| %>
-            <tr>
-              <td><%= curriculum_mail.subject %></td>
-              <td><%= curriculum_mail.curriculum %></td>
-              <td><%= curriculum_mail.status %></td>
-              <td>
-                <%= link_to 'Edit', edit_cms_curriculum_mail_path(curriculum_mail), class: 'btn btn-default' %>
-              </td>
-              <td>
-                <%= link_to 'Delete', cms_curriculum_mail_path(curriculum_mail), class: 'btn btn-default', data: { confirm: 'Are you sure?', method: :delete } %>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-  </section>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
 
 <%= paginate @curriculum_mails %>
