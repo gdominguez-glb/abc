@@ -10,15 +10,29 @@
       <input type=hidden name="orgid" value="00De0000005Vrkq">
       <input type=hidden name="retURL" value="<%= contact_url(success: true) %>">
       <div class="row">
+        <% if @contact_form.errors.any? %>
+          <ul>
+            <% @contact_form.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
+      <div class="row">
         <div class="col-sm-6">
+          <%= f.hidden_field :topic %>
           <div class="btn-group fixed-width margin-bottom-xl" id="topicDropdown">
             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-              Select a Topic
+              <% if @contact_form.topic.present? %>
+                <%= @contact_form.topic %>
+              <% else %>
+                Select a Topic
+              <% end %>
               <span class="caret"></span>
             </button>
             <ul class="dropdown-menu">
               <li><a href="">Select a Topic</a></li>
-              <% @topics.each do |topic| %>
+              <% ContactForm::TOPICS.each do |topic| %>
                 <li><a href="#"><%= topic %></a></li>
               <% end %>
             </ul>
@@ -30,49 +44,49 @@
           <label>Support Type</label>
           <div class="select-container dark-select block">
             <span>Support Type</span>
-            <%= f.select :support_type, options_for_select(@supports), prompt: "Select a support type", class: 'form-control' %>
+            <%= f.select :support_type, options_for_select(ContactForm::SUPPORT_TYPES), prompt: "Select a support type", class: 'form-control' %>
           </div>
         </div>
 
         <div class="col-sm-6">
           <div class="form-group">
             <label>First Name</label>
-            <%= f.text_field :first_name, size: 20, class: 'form-control', maxlength: 80, placeholder: 'First Name', required: true %>
+            <%= f.text_field :first_name, size: 20, class: 'form-control', maxlength: 80, placeholder: 'First Name' %>
           </div>
         </div>
 
         <div class="col-sm-6">
           <div class="form-group">
             <label>Last Name</label>
-            <%= f.text_field :last_name, size: 20, class: 'form-control', maxlength: 80, placeholder: 'Last Name', required: true %>
+            <%= f.text_field :last_name, size: 20, class: 'form-control', maxlength: 80, placeholder: 'Last Name'  %>
           </div>
         </div>
 
         <div class="col-sm-6">
           <div class="form-group">
             <label>Email</label>
-            <%= f.text_field :email, size: 20, class: 'form-control', maxlength: 80, placeholder: 'Email', required: true %>
+            <%= f.text_field :email, size: 20, class: 'form-control', maxlength: 80, placeholder: 'Email' %>
           </div>
         </div>
 
         <div class="col-sm-6">
           <div class="form-group">
             <label>Phone</label>
-            <%= f.text_field :phone, size: 20, class: 'form-control', maxlength: 80, placeholder: 'Phone', required: true %>
+            <%= f.text_field :phone, size: 20, class: 'form-control', maxlength: 80, placeholder: 'Phone' %>
           </div>
         </div>
 
         <div class="col-sm-6">
           <div class="form-group">
             <label>Role</label>
-            <%= f.text_field :role, size: 20, class: 'form-control', maxlength: 80, placeholder: 'Role', required: true %>
+            <%= f.text_field :role, size: 20, class: 'form-control', maxlength: 80, placeholder: 'Role'  %>
           </div>
         </div>
 
         <div class="col-sm-6">
           <div class="form-group">
             <label>School/District</label>
-            <%= f.text_field :school_district, size: 20, class: 'form-control', maxlength: 80, placeholder: 'School/District', required: true %>
+            <%= f.text_field :school_district, size: 20, class: 'form-control', maxlength: 80, placeholder: 'School/District' %>
           </div>
         </div>
 
@@ -318,6 +332,8 @@
 
         var topic = $(this).text();
         var mapping = topicFieldMapping[topic];
+
+        $('#contact_form_topic').val(topic);
 
         $('.dependent-field').addClass('hidden');
         $(this).addClass('selected');
