@@ -6,7 +6,7 @@
 <div class="row margin-top-xxl margin-bottom-xl">
   <div class="col-sm-8 col-lg-7 col-lg-offset-1">
     <h2>Get in Touch About...</h2>
-    <%= form_for @contact_form, url: :create_contact, html: { class: 'form contact-form' } do |f| %>
+    <%= form_for @contact_form, url: :create_contact, html: { class: 'form contact-form', novalidate: true } do |f| %>
       <input type=hidden name="orgid" value="00De0000005Vrkq">
       <input type=hidden name="retURL" value="<%= contact_url(success: true) %>">
       <div class="row">
@@ -258,7 +258,50 @@
 <%= content_for :javascripts do %>
   <%= javascript_tag do %>
     $(function(){
-      <%# $(".contact-form").validate(); %>
+      var supports = ['Order Support', 'Parent Support', 'Content/Implementation Support', 'Technical Support'];
+
+      function requireDescription() {
+        var topic = $('input[name="contact_form[topic]"]').val();
+        var supportType = $('select[name="contact_form[support_type]"]').val()
+        if (topic == 'General' || topic == 'Professional Development') {
+          return true;
+        }
+
+        if (topic == 'Support' && (supports.indexOf(supportType) != -1) ) {
+          return true;
+        }
+        return false;
+      }
+
+      function requireFormat() {
+        console.log('require format')
+        var topic = $('input[name="contact_form[topic]"]').val();
+        var supportType = $('select[name="contact_form[support_type]"]').val()
+
+        if (topic == 'Support' && supportType == 'Content Error') {
+          return true;
+        }
+        return false;
+      }
+
+      $(".contact-form").validate({
+        rules: {
+          'contact_form[first_name]': 'required',
+          'contact_form[last_name]': 'required',
+          'contact_form[email]': 'required',
+          'contact_form[phone]': 'required',
+          'contact_form[description]': {
+            required: function() {
+              return requireDescription();
+            }
+          },
+          'contact_form[format]': {
+            required: function() {
+              return requireFormat();
+            }
+          }
+        }
+      });
 
       var dependentFields = [
         "Items purchased  (optional)",
@@ -350,7 +393,7 @@
         }
       });
 
-      $('select#support_type').change(function(e){
+      $('select[name="contact_form[support_type]"]').change(function(e){
         $('.dependent-field').not('[data-name="Support Type"]').addClass('hidden');
         var value = $(this).val();
         if(value) {
