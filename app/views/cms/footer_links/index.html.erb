@@ -2,30 +2,30 @@
 
 <div class="col-md-9">
   <h2>Footer Links of <%= @footer_title.title %></h2>
-  <%= link_to 'New Footer Link', new_cms_footer_title_footer_link_path, class: 'btn btn-primary' %>
-  <table class='table table-responsive table-striped table-hover' id="footer-links-list">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Link</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @footer_links.each do |footer_link| %>
-        <tr data-id="<%= footer_link.id %>">
-          <td><%= footer_link.name %></td>
-          <td><%= footer_link.link %></td>
-          <td>
-            <%= link_to 'Edit', edit_cms_footer_title_footer_link_path(@footer_title, footer_link), class: 'btn btn-default btn-sm' %>
-          </td>
-          <td>
-            <%= link_to 'Delete', cms_footer_title_footer_link_path(@footer_title, footer_link), class: 'btn btn-default btn-sm', data: { confirm: 'Are you sure?', method: :delete } %>
-          </td>
+  <%= link_to 'New Footer Link', new_cms_footer_title_footer_link_path, class: 'btn btn-success margin-bottom-xl' %>
+  <div class="table-responsive">
+    <table class="table table-striped table-hover" id="footer-links-list">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Link</th>
+          <th colspan="3"></th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        <% @footer_links.each do |footer_link| %>
+          <tr data-id="<%= footer_link.id %>">
+            <td><%= footer_link.name %></td>
+            <td><%= footer_link.link %></td>
+            <td class="text-right">
+              <%= link_to 'Edit', edit_cms_footer_title_footer_link_path(@footer_title, footer_link), class: 'btn btn-default btn-sm' %>
+              <%= link_to 'Delete', cms_footer_title_footer_link_path(@footer_title, footer_link), class: 'btn btn-danger btn-sm', data: { confirm: 'Are you sure?', method: :delete } %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
 
 <%= content_for :javascripts do %>
