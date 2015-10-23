@@ -5,8 +5,12 @@ Spree::LineItem.class_eval do
     'OrderItem'
   end
 
+  def local_only?
+    product.try(:id_in_salesforce).blank?
+  end
+
   def should_create_salesforce?
-    return false if order.state != 'complete'
+    return false if order.state != 'complete' || local_only?
     super
   end
 
