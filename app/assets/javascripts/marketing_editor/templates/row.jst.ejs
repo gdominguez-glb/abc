@@ -1,10 +1,10 @@
 <div class="panel panel-default">
   <div class="panel-heading clearfix">
     <h3 class="panel-title">
-      <%= data.rowType %>
+      <%= data.rowType %> <i data-toggle="collapse" data-target="#<%= data['position'] %>" class="fa fa-chevron-up pull-right margin-top-s"></i>
     </h3>
   </div>
-  <div class="panel-body">
+  <div id="<%= data['position'] %>" class="panel-body panel-collapse collapse in">
     <div class="row">
       <div class="col-sm-6">
         <div class="form-group">
@@ -48,7 +48,7 @@
   <div class="panel-footer">
     <div class="row">
       <div class="col-sm-12">
-        <button class="btn btn-danger pull-right remove-row-btn">Remove Tile <i class="fa fa-close"></i></button>
+        <button class="btn btn-danger pull-right remove-row-btn">Remove Tile</button>
       </div>
     </div>
   </div>
