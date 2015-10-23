@@ -11,9 +11,10 @@
     border-color: $dark-blue;
     background-color: $dark-blue;
 
-    &:hover {
+    &:hover,
+    &:focus {
       border-color: lighten($dark-blue, 5%);
-      background-color: lighten($dark-blue, 5%);      
+      background-color: lighten($dark-blue, 5%);
     }
   }
 }
