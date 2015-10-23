@@ -2,27 +2,29 @@
 
 <div class="col-md-9">
   <h2>Training Session Types</h2>
-  <%= link_to 'Create new training session type', new_cms_event_training_path, class: 'btn btn-primary' %>
-  <table class='table table-responsive table-striped table-hover'>
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Training Session Type</th>
-        <th colspan="2"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @event_trainings.each do |event_training| %>
+  <%= link_to 'Create new training session type', new_cms_event_training_path, class: 'btn btn-success margin-bottom-xl' %>
+  <div class="table-responsive">
+    <table class='table table-striped table-hover'>
+      <thead>
         <tr>
-          <td><%= event_training.title %></td>
-          <td><%= event_training.training_type %></td>
-          <td><%= link_to 'Edit', edit_cms_event_training_path(event_training) %></td>
-          <td><%= link_to 'Destroy', [:cms, event_training], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <th>Title</th>
+          <th>Training Session Type</th>
+          <th colspan="2"></th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
+
+      <tbody>
+        <% @event_trainings.each do |event_training| %>
+          <tr>
+            <td><%= event_training.title %></td>
+            <td><%= event_training.training_type %></td>
+            <td><%= link_to 'Edit', edit_cms_event_training_path(event_training) %></td>
+            <td><%= link_to 'Destroy', [:cms, event_training], method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-danger' %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 
   <%= paginate @event_trainings %>
 </div>

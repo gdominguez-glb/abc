@@ -11,19 +11,24 @@
     </div>
   <% end %>
 
-  <div class="form-group">
-    <%= f.label :title %>
-    <%= f.text_field :title, class: 'form-control' %>
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="form-group">
+        <%= f.label :title %>
+        <%= f.text_field :title, class: 'form-control' %>
+      </div>
+    </div>
   </div>
   <div class="form-group">
-    <%= f.label "Training Type (this field mapping to ClientEventID in regonline events, for example: regonline filter,your training type, the words after first comma is training type)" %>
+    <%= f.label "Training Type" %>
     <%= f.text_field :training_type, class: 'form-control' %>
+    <small class="help-text">This field mapping to ClientEventID in regonline events, for example: regonline filter,your training type, the words after first comma is training type</small>
   </div>
   <div class="form-group">
     <%= f.label :content %>
     <%= f.text_area :content, class: 'form-control cleditor' %>
   </div>
   <div class="form-group">
-    <%= f.submit class: 'btn btn-primary' %>
+    <%= f.submit class: 'btn btn-success' %>
   </div>
 <% end %>
