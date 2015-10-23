@@ -10,50 +10,81 @@
       </ul>
     </div>
   <% end %>
-  <div class="form-group">
-    <%= f.label :target_type %>
-    <%= f.select :target_type, NotificationTrigger::TARGET_TYPES, {}, class: 'form-control' %>
-  </div>
-  <div class="form-group target-input" data-input="single_user">
-    <%= f.label :single_user %>
-    <div>
-      <%= f.hidden_field :single_user_id, style: 'width: 300px' %>
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="form-group">
+        <%= f.label :target_type %>
+        <div class="select-container dark-select block">
+          <span>Select Target</span>
+          <%= f.select :target_type, NotificationTrigger::TARGET_TYPES, {}, class: 'form-control' %>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="form-group hidden target-input" data-input="group_users">
-    <%= f.label :group_users %>
-    <div>
-      <%= f.hidden_field :user_ids, style: 'width: 300px' %>
+    <div class="col-sm-6">
+      <div class="form-group target-input" data-input="single_user">
+        <%= f.label :single_user %>
+        <div>
+          <%= f.hidden_field :single_user_id, style: 'width: 100%', class: 'form-control' %>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="form-group hidden target-input" data-input="school_district">
-    <%= f.label :school_district_admin %>
-    <div>
-      <%= f.hidden_field :school_district_admin_user_id, style: 'width: 300px'  %>
+    <div class="col-sm-6">
+      <div class="form-group hidden target-input" data-input="group_users">
+        <%= f.label :group_users %>
+        <div>
+          <%= f.hidden_field :user_ids, style: 'width: 100%', class: 'form-control' %>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="form-group hidden target-input" data-input="user_type">
-    <%= f.label :user_type %>
-    <%= f.select :user_type, USER_TITLES, {}, class: 'form-control' %>
-  </div>
-  <div class="form-group hidden target-input" data-input="curriculum_users">
-    <%= f.label :curriculum %>
-    <%= f.collection_select :curriculum_id, Curriculum.visibles, :id, :name, {}, class: 'form-control' %>
-  </div>
-  <div class="form-group" style="position: relative;">
-    <%= f.label :notify_at %>
-    <%= f.text_field :notify_at, class: 'form-control datetime-picker' %>
-  </div>
-  <div class="form-group">
-    <%= f.label 'Send to dashboard notification' %>
-    <div>
-      <%= f.check_box :dashboard %>
+    <div class="col-sm-6">
+      <div class="form-group hidden target-input" data-input="school_district">
+        <%= f.label :school_district_admin %>
+        <div>
+          <%= f.hidden_field :school_district_admin_user_id, style: 'width: 100%', class: 'form-control'  %>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="form-group">
-    <%= f.label 'Send via email' %>
-    <div>
-      <%= f.check_box :email %>
+    <div class="col-sm-6">
+      <div class="form-group hidden target-input" data-input="user_type">
+        <%= f.label :user_type %>
+        <div class="select-container dark-select block">
+          <span>User Type</span>
+          <%= f.select :user_type, USER_TITLES, {}, class: 'form-control' %>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="form-group hidden target-input" data-input="curriculum_users">
+        <%= f.label :curriculum %>
+        <div class="select-container dark-select block">
+          <span>Curriculum</span>
+          <%= f.collection_select :curriculum_id, Curriculum.visibles, :id, :name, {}, class: 'form-control' %>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="form-group" style="position: relative;">
+        <%= f.label :notify_at %>
+        <%= f.text_field :notify_at, class: 'form-control datetime-picker' %>
+      </div>
+    </div>
+    <div class="col-sm-12">
+      <div class="form-group">
+        <div class="checkbox">
+          <%= f.label 'Send to dashboard notification' do %>
+            <%= f.check_box :dashboard %> Send to dashboard notification
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12">
+      <div class="form-group">
+        <div class="checkbox">
+          <%= f.label 'Send via email' do %>
+            <%= f.check_box :email %> Send via email
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
   <div class="alert alert-warning">
@@ -64,7 +95,7 @@
     <%= f.text_area :content, class: 'form-control' %>
   </div>
   <div class="form-group">
-    <%= f.submit class: 'btn btn-primary' %>
+    <%= f.submit class: 'btn btn-success' %>
   </div>
 <% end %>
 <%= render 'form_js' %>
