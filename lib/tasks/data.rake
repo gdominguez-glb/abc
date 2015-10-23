@@ -41,5 +41,27 @@ namespace :data do
     SalesforceReference.delete_all
 
     Activity.delete_all
+
+    create_web_admin_account
+  end
+
+  def create_web_admin_account
+    school_district = SchoolDistrict.where(
+      name: 'Web Admin', state_id: Spree::State.first.id).first_or_create(
+        place_type: SchoolDistrict.place_types[:unaffiliated],
+        skip_salesforce_create: true)
+      admin = Spree::User.new(
+        first_name: 'Web',
+        last_name: 'Admin',
+        email: 'web.admin@greatminds.net',
+        password: 'intridea4gm',
+        password_confirmation: 'intridea4gm',
+        school_district: school_district,
+        skip_salesforce_create: true
+      )
+      role = Spree::Role.find_or_create_by(name: 'admin')
+      admin.spree_roles << role
+      admin.save
+      admin.generate_spree_api_key!
   end
 end
