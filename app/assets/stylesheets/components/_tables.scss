@@ -19,6 +19,20 @@
 */
 
 .table {
+  border: 1px solid $dark-blue;
+
+  .table-responsive & {
+    border: 0;
+  }
+
+  thead {
+    tr {
+      th {
+        border-bottom: 1px solid $dark-blue;
+      }
+    }
+  }
+
   tbody {
     tr {
       td {
@@ -32,4 +46,8 @@
       }
     }
   }
+}
+
+.table-responsive {
+  border: 1px solid $dark-blue;
 }
