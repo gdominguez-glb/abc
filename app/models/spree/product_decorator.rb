@@ -73,6 +73,9 @@ Spree::Product.class_eval do
 
   validates :redirect_url, format: { with: URI.regexp }, allow_blank: true
   validates :sf_id_product, :sf_id_pricebook, presence: true, unless: :free?
+  validates :sf_id_product, :sf_id_pricebook,
+            allow_blank: true, format: { with: /\A[0-9a-zA-Z]{18}\Z/ },
+            unless: :free?
 
   belongs_to :curriculum, class_name: 'Spree::Curriculum'
   belongs_to :grade, class_name: 'Spree::Grade'
