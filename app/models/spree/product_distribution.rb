@@ -48,7 +48,8 @@ class Spree::ProductDistribution < ActiveRecord::Base
 
   def revoke
     self.licensed_product.increase_quantity!(self.quantity)
-    self.destroy
+    self.distributed_licensed_product.update(quantity: 0)
+    self.update(quantity: 0)
   end
 
   private

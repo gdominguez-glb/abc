@@ -44,8 +44,9 @@ RSpec.describe Spree::ProductDistribution, type: :model do
       expect(licensed_product.reload.quantity).to eq(10)
     end
 
-    it "destroy distribution" do
-      expect(Spree::ProductDistribution.find_by(id: distribution.id)).to eq(nil)
+    it "set quantity to 0" do
+      expect(distribution.reload.quantity).to eq(0)
+      expect(distribution.distributed_licensed_product.reload.quantity).to eq(0)
     end
   end
 end
