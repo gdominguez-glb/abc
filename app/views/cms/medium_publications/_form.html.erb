@@ -11,38 +11,63 @@
     </div>
   <% end %>
 
-  <div class="form-group">
-    <%= f.label :title %>
-    <%= f.text_field :title, class: 'form-control' %>
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="form-group">
+        <%= f.label :title %>
+        <%= f.text_field :title, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="form-group">
+        <%= f.label :position %>
+        <%= f.number_field :position, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="col-sm-12">
+      <div class="form-group">
+        <%= f.label "Medium publication url" %>
+        <%= f.text_field :url, class: 'form-control' %>
+        <p class="help-block">This is url of medium publication, for example: https://medium.com/great-minds-reports</p>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="form-group">
+        <%= f.label :blog_type %>
+        <div class="select-container dark-select block">
+          <span>Select Blog Type</span>
+          <%= f.select :blog_type, MediumPublication::BLOG_TYPES, {}, class: 'form-control' %>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="form-group curriculum-input <%= 'hidden' if @medium_publication.blog_type != 'curriculum' %>">
+        <%= f.label "Curriculum Page" %>
+        <div class="select-container dark-select block">
+          <span>Select Curriculum</span>
+          <%= f.collection_select :page_id, Page.show_in_top_navigation, :id, :group_name, { prompt: true }, class: 'form-control' %>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12">
+      <div class="form-group">
+        <%= f.label "Blog Unique url" %>
+        <%= f.text_field :slug, class: 'form-control' %>
+        <p class="help-block">For example: with 'report' enterred, if this is a global blog, the url of this blog will be /blog/global/report, if this is belong to math curriculum, the url will be /math/blog/report</p>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="form-group">
+        <div class="checkbox">
+        <%= f.label :display do %>
+          <%= f.check_box :display %> Display
+        <% end %>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="form-group">
-    <%= f.label "Medium publication url" %>
-    <%= f.text_field :url, class: 'form-control' %>
-    <p class="help-block">This is url of medium publication, for example: https://medium.com/great-minds-reports</p>
-  </div>
-  <div class="form-group">
-    <%= f.label :blog_type %>
-    <%= f.select :blog_type, MediumPublication::BLOG_TYPES, {}, class: 'form-control' %>
-  </div>
-  <div class="form-group curriculum-input <%= 'hidden' if @medium_publication.blog_type != 'curriculum' %>">
-    <%= f.label "Curriculum Page" %>
-    <%= f.collection_select :page_id, Page.show_in_top_navigation, :id, :group_name, { prompt: true }, class: 'form-control' %>
-  </div>
-  <div class="form-group">
-    <%= f.label "Blog Unique url" %>
-    <%= f.text_field :slug, class: 'form-control' %>
-    <p class="help-block">For example: with 'report' enterred, if this is a global blog, the url of this blog will be /blog/global/report, if this is belong to math curriculum, the url will be /math/blog/report</p>
-  </div>
-  <div class="form-group">
-    <%= f.label :position %>
-    <%= f.number_field :position, class: 'form-control' %>
-  </div>
-  <div class="form-group">
-    <%= f.label :display %>
-    <%= f.check_box :display, class: 'form-control' %>
-  </div>
-  <div class="form-group">
-    <%= f.submit class: 'btn btn-primary' %>
+    <%= f.submit class: 'btn btn-success' %>
   </div>
 <% end %>
 <%= content_for :javascripts do %>
