@@ -47,7 +47,7 @@ namespace :data do
 
   def create_web_admin_account
     school_district = SchoolDistrict.where(
-      name: 'Web Admin', state_id: Spree::State.first.id).first_or_create(
+      name: 'Web Admin').first_or_create(
         place_type: SchoolDistrict.place_types[:unaffiliated],
         skip_salesforce_create: true)
       admin = Spree::User.new(
