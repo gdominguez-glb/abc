@@ -169,33 +169,29 @@
       background-color: $coral;
 
       @media screen and (min-width: $screen-sm-min) {
-        height: 41px !important;  //Override !important specified by Bootstrap
         padding: 0 15px;
         text-align: center;
       }
 
-      ul {
-        @media screen and  (min-width: $screen-sm-min) {
+      li {
+        @media screen and (min-width: $screen-sm-min) {
           display: inline-block;
         }
       }
 
-      li {
-        @media screen and (min-width: $screen-sm-min) {
-          float: left;
-          padding: 10px 15px;
-        }
-      }
-
       a {
+        display: block;
+        padding: 10px 15px;
+
         &:hover,
         &:active,
         &:focus {
           color: #fff;
+          background-color: lighten($coral, 5%);
+          text-decoration: none;
         }
 
         @media screen and (min-width: $screen-sm-min) {
-          padding: 0;
           font-family: 'Lora' serif;
           font-weight: normal;
           font-size: 0.8em;
