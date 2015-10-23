@@ -73,7 +73,7 @@
         <label>Select School District</label>
         <div class="select-container dark-select block margin-bottom-reset">
           <span>Select your district</span>
-          <%= f.collection_select :school_district_id, SchoolDistrict.for_selection.all, :id, :name, { include_blank: 'District Not List', prompt: 'Please select your district' }, { class: 'form-control', tabindex: 10 } %>
+          <%= f.collection_select :school_district_id, SchoolDistrict.for_selection.all, :id, :name, { include_blank: 'District Not List', prompt: 'Please select your district' }, { class: 'form-control', tabindex: 10, disabled: (f.object.school_district_id.present? ? true : false) } %>
         </div>
       </div>
     </div>
