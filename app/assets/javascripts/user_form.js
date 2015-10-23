@@ -64,11 +64,17 @@ $(document).on('change', '#schoolDistrictSelect input', function(e) {
     $('#rowDistrictSelect').collapse('hide');
     $('#rowDistrictSelect #spree_user_district_id').val(null);
     $('#rowAddDistrict').collapse('hide');
+    $('#rowAddDistrict input').prop('disabled', true);
+
+    $('#rowAddSchool input').prop('disabled', false);
   } else {
     $('#rowSchoolSelect').collapse('hide');
     $('#rowDistrictSelect').collapse('show');
     $('#rowDistrictSelect #spree_user_school_id').val(null);
     $('#rowAddSchool').collapse('hide');
+    $('#rowAddSchool input').prop('disabled', true);
+
+    $('#rowAddDistrict input').prop('disabled', false);
   }
 
 });
