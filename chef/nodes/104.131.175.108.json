@@ -26,11 +26,11 @@
     }
   },
   "salesforce": {
-    "client_id": "3MVG9Nc1qcZ7BbZ1XpVUs3UlnsFbsp3ztG_SEe7plG26z5xvBs94HFoNiYyocFiLC1eRH.PLc249S1YbHIrxB",
-    "client_secret": "3250542473237550008",
-    "username": "maggie@greatminds.net.intridea",
-    "password": "intridea5gm",
-    "security_token": "rZj49NL9ZjublFkGjCr06tOl"
+    "client_id": "3MVG9Gmy2zmPB01rtJq0VQT2rIcL6SuW1dhfIE9FMUC7sS2Chsm2DaDRTBDWGQQlAgXnlYjLaUJdGhSz8poDf",
+    "client_secret": "5367128864234724451",
+    "username": "maggie@greatminds.net.intstaging",
+    "password": "intridea4gm",
+    "security_token": "hWMHXt70393No8mVSvLPArJhu"
   },
   "rails_env": "staging",
   "rails_secrets": "64550adc426749daffc881dc6c90c541d3896be12efb1a9c789bdbaf9b5f34368ffc5411966bb245f544f8f296e5b38255e5cd6208ba5ffb04805e86eede3d84",
