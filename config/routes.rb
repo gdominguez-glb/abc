@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   end
 
   get 'contact', to: 'contact#index'
+  post 'contact', to: 'contact#create', as: :create_contact
 
   get 'search', to: 'search#index'
   get 'search/:id/product', to: 'search#product', as: :search_product
