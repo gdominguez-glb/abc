@@ -28,6 +28,8 @@ en:
     could_not_change_to_self: "Already logged in as %{email}"
   logged_in_as_user: "Now logged in as %{email}"
   salesforce_field_note: (To be used in conjunction with the "For Sale" checkbox)
+  district_not_listed: District Not Listed
+  school_not_listed: School Not Listed
   spree:
     available_on: For Sale Date
     purchase_from_partner: "Purchase From Partner"

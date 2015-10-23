@@ -82,8 +82,8 @@
         <%= f.collection_select :district_id, SchoolDistrict.for_selection.district, :id, :name, { prompt: 'Select a District' }, { class: 'form-control', tabindex: 7 } %>
       </div>
     </div>
-    <div class="col-md-3">
-      <button type="button" class="btn btn-primary btn-block" id="districtNotListed">District Not Listed</button>
+    <div class="col-md-6">
+      <button type="button" class="btn btn-primary btn-block" id="districtNotListed"><%= t(:district_not_listed) %></button>
     </div>
   </div>
   <div class="row collapse in fade" id="rowSchoolSelect">
@@ -93,8 +93,8 @@
         <%= f.collection_select :school_id, SchoolDistrict.for_selection.school, :id, :name, { prompt: 'Select a School' }, { class: 'form-control', tabindex: 7 } %>
       </div>
     </div>
-    <div class="col-md-3">
-      <button type="button" class="btn btn-primary btn-block" id="schoolNotListed">School Not Listed</button>
+    <div class="col-md-6">
+      <button type="button" class="btn btn-primary btn-block" id="schoolNotListed"><%= t(:school_not_listed) %></button>
     </div>
   </div>
   <div class="input-group add-district-field collapse fade" id="rowAddDistrict">
