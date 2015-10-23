@@ -1,7 +1,7 @@
 <%= render 'cms_nav' %>
 <div class="col-md-9">
   <h2>Faq Categories</h2>
-  <%= link_to "New Faq Category", new_cms_faq_category_path, class: 'btn btn-primary' %>
+  <%= link_to "New Faq Category", new_cms_faq_category_path, class: 'btn btn-success margin-bottom-xl' %>
   <table class="table contact-topics-list">
     <thead>
       <tr>
@@ -19,7 +19,7 @@
           <td><%= faq_category.display? ? 'Yes' : 'No' %></td>
           <td>
             <%= link_to 'Edit', edit_cms_faq_category_path(faq_category), class: 'btn btn-default' %>
-            <%= link_to 'Delete', cms_faq_category_path(faq_category), class: 'btn btn-default', data: { confirm: 'Are you sure?', method: :delete } %>
+            <%= link_to 'Delete', cms_faq_category_path(faq_category), class: 'btn btn-danger', data: { confirm: 'Are you sure?', method: :delete } %>
           </td>
         </tr>
       <% end %>
