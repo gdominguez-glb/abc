@@ -26,6 +26,13 @@ Spree::Product.class_eval do
     matches_salesforce_object(sfo).first
   end
 
+  # Provides a means to bypass creation in Salesforce.  For example, this is
+  # used to prevent the creation in Salesforce of a record created locally from
+  # Salesforce
+  def should_create_salesforce?
+    false
+  end
+
   belongs_to :video_group, class_name: 'Spree::VideoGroup'
 
   has_one :inkling_code, class_name: 'Spree::InklingCode'
@@ -65,6 +72,7 @@ Spree::Product.class_eval do
   end
 
   validates :redirect_url, format: { with: URI.regexp }, allow_blank: true
+  validates :sf_id_product, :sf_id_pricebook, presence: true, unless: :free?
 
   belongs_to :curriculum, class_name: 'Spree::Curriculum'
   belongs_to :grade, class_name: 'Spree::Grade'
