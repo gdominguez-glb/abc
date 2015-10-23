@@ -97,12 +97,12 @@
             <label>School or District Type</label>
             <div class="radio">
               <label>
-                <%= f.radio_button :school_district_type, :school %> School
+                <%= f.radio_button :school_district_type, 'School' %> School
               </label>
             </div>
             <div class="radio">
               <label>
-                <%= f.radio_button :school_district_type, :district %> District
+                <%= f.radio_button :school_district_type, 'District' %> District
               </label>
             </div>
           </div>
@@ -149,7 +149,7 @@
         <div class="col-sm-6 dependent-field hidden" data-name="Title 1">
           <div class="form-group">
             <label>Title 1</label>
-            <%= f.text_field :title_1, size: 20, maxlength: 80, class: 'form-control', placeholder: 'Title 1' %>
+            <%= f.check_box :title_1, {}, 'true' %>
           </div>
         </div>
 
@@ -286,6 +286,7 @@
 
       $(".contact-form").validate({
         rules: {
+          'contact_form[topic]': 'required',
           'contact_form[first_name]': 'required',
           'contact_form[last_name]': 'required',
           'contact_form[email]': 'required',
@@ -408,6 +409,14 @@
         });
       }
 
+      $('input[type="submit"]').click(function(e){
+        var topic = $("input[name='contact_form[topic]'").val();
+        if (!topic) {
+          e.preventDefault();
+          alert('Please select topic first!');
+          return false;
+        }
+      });
     });
   <% end %>
 <% end %>
