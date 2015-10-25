@@ -31,7 +31,7 @@ class Account::LicensesController < Account::BaseController
   end
 
   def users
-    @product_distributions = current_spree_user.product_distributions.select('to_user_id, email').group('to_user_id, email').page(params[:page])
+    @product_distributions = current_spree_user.product_distributions.where('quantity > 0').select('to_user_id, email').group('to_user_id, email').page(params[:page])
   end
 
   def export_users
@@ -49,7 +49,7 @@ class Account::LicensesController < Account::BaseController
 
   def edit_user_licenses
     @user = current_spree_user.to_users.find_by(id: params[:user_id])
-    @product_distributions = Spree::ProductDistribution.where(to_user_id: @user.id).includes(:product)
+    @product_distributions = Spree::ProductDistribution.where(from_user_id: current_spree_user.id, to_user_id: @user.id).where('quantity > 0').includes(:product)
   end
 
   def update_user_licenses

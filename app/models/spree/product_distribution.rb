@@ -44,6 +44,7 @@ class Spree::ProductDistribution < ActiveRecord::Base
 
   def self.assign_distributions(user)
     Spree::ProductDistribution.where(from_email: user.email).update_all(from_user_id: user.id)
+    Spree::ProductDistribution.where(email: user.email).update_all(to_user_id: user.id)
   end
 
   def revoke
@@ -55,9 +56,8 @@ class Spree::ProductDistribution < ActiveRecord::Base
   private
 
   def assign_email
-    if self.to_user
-      self.email = self.to_user.email
-    end
+    self.email = self.to_user.email if self.to_user
+    self.from_email = self.from_user.email if self.from_user
   end
 
   def distribute_license
