@@ -21,8 +21,7 @@ class LicensesUpdater
   end
 
   def revoke_licenses(distribution)
-    distribution.licensed_product.increase_quantity!(distribution.quantity)
-    distribution.destroy
+    distribution.revoke
   end
 
   def increase_licenses_quantity(distribution, quantity)
