@@ -58,7 +58,7 @@
       </div>
       <div class="row text-center license-actions">
         <div class="col-sm-6 col-md-4">
-          <button type="submit" class="btn btn-success btn-block margin-bottom-s">Assign License(s)</button>
+          <%= f.submit 'Assign License(s)', class: 'btn btn-success btn-block margin-bottom-s', data: { disable_with: 'Saving' } %>
         </div>
         <div class="col-sm-6 col-md-2">
           <button class="btn btn-danger btn-block">Cancel</button>

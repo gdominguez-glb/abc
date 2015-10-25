@@ -28,9 +28,7 @@
           </div>
           <div class="row">
             <div class="col-md-3 col-md-offset-3">
-              <button class="btn btn-success btn-block margin-bottom-s">
-                Save Updates
-              </button>
+              <%= submit_tag 'Save Updates', class: 'btn btn-success btn-block margin-bottom-s', data: { disable_with: 'Saving...' } %>
             </div>
             <div class="col-md-3">
               <button type="button" class="btn btn-danger btn-block margin-bottom" data-dismiss="modal">Close</button>

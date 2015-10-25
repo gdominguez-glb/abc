@@ -1,5 +1,6 @@
 <% if @success %>
   alert('Updated licenses successully!');
+  $('#edit-user-licenses-modal').modal('hide');
   window.location.reload(true)
 <% else %>
   alert("<%= raw @error_full_messages %>")
