@@ -168,6 +168,14 @@
       padding: 10px 0 10px 25px;
       background-color: $coral;
 
+      [data-page='english'] & {
+        background-color: $english;
+      }
+
+      [data-page='history'] & {
+        background-color: $history;
+      }
+
       @media screen and (min-width: $screen-sm-min) {
         padding: 0 15px;
         text-align: center;
