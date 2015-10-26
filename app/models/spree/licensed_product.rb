@@ -88,7 +88,8 @@ class Spree::LicensedProduct < ActiveRecord::Base
   include EmailAssignment
   assign_user_from_email :user, :email
 
-  after_create :send_notification, :assign_user_admin_role
+  after_create :assign_user_admin_role
+  after_commit :send_notification
 
   def distribute_license(user_or_email, quantity=1)
     user_attrs = user_or_email.is_a?(Spree::User) ? { to_user: user_or_email } : { email: user_or_email }
