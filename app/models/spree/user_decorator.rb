@@ -98,18 +98,14 @@ Spree::User.class_eval do
 
   accepts_nested_attributes_for :school_district, reject_if: proc { |attributes| attributes['name'].blank? }
 
-  before_create :assign_user_role
-
-  after_create :assign_licenses, :assign_distributions
+  after_create :assign_user_role, :assign_to_exist_assets
 
   def licensed_products_from(school_district_admin)
     licensed_products.joins(:product).joins(:product_distribution).where({spree_product_distributions: { from_user_id: school_district_admin.id }}).uniq
   end
 
   def assign_user_role
-    if spree_roles.empty?
-      spree_roles << Spree::Role.user
-    end
+    spree_roles << Spree::Role.user
   end
 
   def assign_school_admin_role
@@ -140,6 +136,17 @@ Spree::User.class_eval do
 
   if !defined?(SUBJECTS)
     SUBJECTS = ['Math', 'English & Language Arts', 'History', 'Other']
+  end
+
+  def assign_to_exist_assets
+    assign_licenses
+    assign_distributions
+
+    if licensed_products.where('quantity > 1').exists?
+      assign_school_admin_role
+    end
+
+    reload
   end
 
   def assign_licenses
