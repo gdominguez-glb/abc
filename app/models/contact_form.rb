@@ -21,24 +21,11 @@ class ContactForm
   end
 
   def create_lead_object
-    GmSalesforce::Client.instance.create('Lead', {
-      'FirstName' => self.first_name,
-      'LastName'  => self.last_name,
-      'Title'     => self.role,
-      'Email'     => self.email,
-      'Phone'     => self.phone,
-      'Title_1__c' => self.title_1,
-      'What_curriculum_are_you_interested_in__c' => self.curriculum,
-      # 'Type__c'   => 'PD Request',
-      'Country'   => self.country,
-      'State'     => self.state,
-      'Description'  => self.description,
-
-      'School_or_District__c' => self.school_district_type,
-      'Company' => self.school_district_name,
-      'Returning_Customer__c' => self.returning_customer
-      # 'Lead_Source' => 'Web-Sales'
-    })
+    attrs = common_attributes
+    if self.topic == 'Sales and Purchasing'
+      attrs.merge!(sales_attributes)
+    end
+    GmSalesforce::Client.instance.create('Lead', attrs)
   end
 
   def create_case_object(topic)
@@ -68,6 +55,18 @@ class ContactForm
       'Priority' => 'Medium',
       'Subject' => 'General',
       'Origin' => 'web'
+    }
+  end
+
+  def sales_attributes
+    {
+      'Country' => 'US',
+      'State' => self.state,
+      'What_curriculum_are_you_interested_in__c' => self.curriculum,
+      'Title_1__c' => self.title_1,
+      'Returning_Customer__c' => self.returning_customer,
+      'Description' => self.description,
+      'Lead_Source' => "Web-Sales"
     }
   end
 
