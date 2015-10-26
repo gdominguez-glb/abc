@@ -10,7 +10,12 @@ class Spree::ProductDistribution < ActiveRecord::Base
 
   attr_accessor :can_be_distributed, :skip_create_license
 
-  before_save :assign_email
+  include EmailAssignment
+  assign_user_from_email :to_user, :email
+  assign_user_from_email :from_user, :from_email
+
+  assign_email_from_user :email, :to_user
+  assign_email_from_user :from_email, :from_user
 
   after_create :distribute_license
 
@@ -54,11 +59,6 @@ class Spree::ProductDistribution < ActiveRecord::Base
   end
 
   private
-
-  def assign_email
-    self.email = self.to_user.email if self.to_user
-    self.from_email = self.from_user.email if self.from_user
-  end
 
   def distribute_license
     return if self.skip_create_license
