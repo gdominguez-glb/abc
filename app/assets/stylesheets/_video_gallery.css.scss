@@ -85,6 +85,14 @@
   }
 }
 
+.video-preview-image {
+  .play-video-button {
+    span {
+      display: none;
+    }
+  }
+}
+
 .video-footer {
   width: 280px;
   margin: 0 auto;
