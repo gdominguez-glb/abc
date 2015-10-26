@@ -8,7 +8,6 @@ RSpec.describe Spree::ProductDistribution, type: :model do
 
   it { should have_one(:distributed_licensed_product).class_name('Spree::LicensedProduct').dependent(:destroy) }
 
-  it { should validate_presence_of(:from_user) }
   it { should validate_presence_of(:product) }
   it { should validate_presence_of(:licensed_product) }
 
