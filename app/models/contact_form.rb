@@ -21,7 +21,7 @@ class ContactForm
   end
 
   def create_lead_object
-    attrs = common_attributes
+    attrs = lead_common_attributes
     if self.topic == 'Sales and Purchasing'
       attrs.merge!(sales_attributes)
     end
@@ -29,7 +29,7 @@ class ContactForm
   end
 
   def create_case_object(topic)
-    attrs = common_attributes
+    attrs = case_common_attributes
     if topic == 'General'
       attrs.merge!(general_attributes)
     elsif topic == 'Support'
@@ -38,7 +38,19 @@ class ContactForm
     GmSalesforce::Client.instance.create('Case', attrs)
   end
 
-  def common_attributes
+  def lead_common_attributes
+    {
+      'FirstName' => self.first_name,
+      'LastName' => self.last_name,
+      'Title' => self.role,
+      'Email' => self.email,
+      'Phone' => self.phone,
+      'Type__c' => self.school_district_type,
+      'Company' => self.school_district
+    }
+  end
+
+  def case_common_attributes
     {
       'First_Name__c' => self.first_name,
       'Last_Name__c'  => self.last_name,
@@ -68,7 +80,7 @@ class ContactForm
       'Title_1__c' => self.title_1,
       'Returning_Customer__c' => self.returning_customer,
       'Description' => self.description,
-      'Lead_Source' => "Web-Sales"
+      'LeadSource' => "Web-Sales"
     }
   end
 

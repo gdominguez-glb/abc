@@ -149,14 +149,14 @@
         <div class="col-sm-6 dependent-field hidden" data-name="Title 1">
           <div class="form-group">
             <label>Title 1</label>
-            <%= f.check_box :title_1, {}, 'true' %>
+            <%= f.check_box :title_1, {}, 'true', 'false' %>
           </div>
         </div>
 
         <div class="col-sm-6 dependent-field hidden" data-name="Returning Customer">
           <div class="form-group">
             <label>Returning Customer</label>
-            <%= f.text_field :returning_customer, size: 20, maxlength: 80, class: 'form-control', placeholder: 'Returning Customer' %>
+            <%= f.check_box :returning_customer, {}, 'true', 'false' %>
           </div>
         </div>
 
@@ -219,7 +219,7 @@
         <div class="col-sm-6 dependent-field hidden" data-name="Interested in hosting events">
           <div class="form-group">
             <label>Are you interested in participating in or hosting collaborative training events with other Eureka users in your region?</label>
-            <%= f.check_box :interested_in_hosting_events %>
+            <%= f.check_box :interested_in_hosting_events, {}, 'Yes' %>
           </div>
         </div>
       </div>
@@ -361,6 +361,14 @@
         ],
         'General': [
           { name: 'Description', required: true }
+        ],
+        'Sales and Purchasing': [
+          { name: 'Country' },
+          { name: 'State' },
+          { name: 'Curriculum' },
+          { name: 'Title 1' },
+          { name: 'Returning Customer' },
+          { name: 'Description' },
         ],
         'Professional Development': [
           { name: 'Desired Dates' },
