@@ -24,6 +24,8 @@ class ContactForm
     attrs = lead_common_attributes
     if self.topic == 'Sales and Purchasing'
       attrs.merge!(sales_attributes)
+    elsif self.topic == 'Professional Development'
+      attrs.merge!(pd_attributes)
     end
     GmSalesforce::Client.instance.create('Lead', attrs)
   end
@@ -89,14 +91,14 @@ class ContactForm
       'Country' => 'US',
       'State' => self.state,
       'What_curriculum_are_you_interested_in__c' => self.curriculum,
-      'Session_Preferences__c' => self.desired_training_topic,
+      # 'Session_Preferences__c' => self.desired_training_topic,
       'X1st_Date_Preference__c' => self.desired_dates,
       'Grade_Training_Request__c' => self.grade_bands,
-      'Lead.Size_of_Training_Groups__c' => self.training_groups_size,
+      'Size_of_Training_Groups__c' => self.training_groups_size,
       'Description' => self.description,
-      'Interested_in_hosting_an_open_enrollment__c' => self.interested_in_hosting_events,
+      # 'Interested_in_hosting_an_open_enrollment__c' => self.interested_in_hosting_events,
       'Request_Date__c'  => Date.today.to_s,
-      'RecordType' => lead_pd_request_record_type_id
+      'RecordTypeId' => lead_pd_request_record_type_id
     }
   end
 
@@ -104,7 +106,7 @@ class ContactForm
     Rails.cache.fetch(:lead_pd_request_record_type_id) do
       select_columns = 'Id, Name'
       condition      = "RecordType.Name = 'PD Request' and RecordType.SobjectType='Lead'"
-      result         = GmSalesforce::Client.instance.find_all_in_salesforce('RecordType', columns, condition)
+      result         = GmSalesforce::Client.instance.find_all_in_salesforce('RecordType', select_columns, condition)
       result.entries.first.Id
     end
   rescue
