@@ -8,3 +8,9 @@
 .flash {
   margin-bottom: 0;
 }
+
+.alert-info {
+  background-color: darken($light-blue, 15%);
+  border-color: $dark-blue;
+  color: $dark-blue;
+}
