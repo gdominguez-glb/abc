@@ -24,14 +24,14 @@ module Spree
 
       def create_new_license(distribution)
         single_licensed_product = @licensed_product.dup
-        single_licensed_product.update(quantity: 1, product_distribution_id: distribution.id, can_be_distributed: false)
+        single_licensed_product.update!(quantity: 1, product_distribution_id: distribution.id, can_be_distributed: false)
       end
 
       def create_distribution
         user_id    = @licensed_product.user.try(:id)
         user_email = @licensed_product.email
 
-        Spree::ProductDistribution.create(
+        Spree::ProductDistribution.create!(
           licensed_product:    @licensed_product,
           from_user_id:        user_id,
           from_email:          user_email,

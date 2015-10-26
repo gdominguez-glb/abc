@@ -6,7 +6,7 @@ class Spree::ProductDistribution < ActiveRecord::Base
 
   has_one :distributed_licensed_product, class_name: 'Spree::LicensedProduct', dependent: :destroy
 
-  validates_presence_of :from_user, :product, :licensed_product
+  validates_presence_of :product, :licensed_product
 
   attr_accessor :can_be_distributed, :skip_create_license
 

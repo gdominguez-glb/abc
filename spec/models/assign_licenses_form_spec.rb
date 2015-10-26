@@ -61,4 +61,35 @@ RSpec.describe AssignLicensesForm, type: :model do
       end
     end
   end
+
+  context "assign multiple license" do
+    let(:assign_licenses_form) do
+      AssignLicensesForm.new(licenses_recipients: 'john@foo.com', licenses_ids: [licensed_product.id], licenses_number: '3', user: school_admin_user)
+    end
+
+    before(:each) do
+      assign_licenses_form.perform
+    end
+
+
+    it "reduce quantity on original license" do
+      expect(licensed_product.reload.quantity).to eq(7)
+    end
+
+    it "create new license" do
+      expect(Spree::LicensedProduct.where(email: 'john@foo.com', quantity: 2).count).to eq(1)
+    end
+
+    it "create distribution" do
+      distribution = Spree::ProductDistribution.where(from_email: school_admin_user.email, email: 'john@foo.com').first
+      expect(distribution.quantity).to eq(3)
+    end
+
+    it "extract one license to user" do
+      self_distribution = Spree::ProductDistribution.where(from_email: 'john@foo.com', email: 'john@foo.com').first
+
+      expect(Spree::LicensedProduct.where(email: 'john@foo.com', quantity: 1).count).to eq(1)
+      expect(self_distribution.quantity).to eq(1)
+    end
+  end
 end
