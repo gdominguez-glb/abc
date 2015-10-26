@@ -103,14 +103,7 @@ class ContactForm
   end
 
   def lead_pd_request_record_type_id
-    Rails.cache.fetch(:lead_pd_request_record_type_id) do
-      select_columns = 'Id, Name'
-      condition      = "RecordType.Name = 'PD Request' and RecordType.SobjectType='Lead'"
-      result         = GmSalesforce::Client.instance.find_all_in_salesforce('RecordType', select_columns, condition)
-      result.entries.first.Id
-    end
-  rescue
-    nil
+    RecordType.find_in_salesforce_by_name_and_object_type('PD Request', 'Lead').try('Id')
   end
 
   def support_attributes
