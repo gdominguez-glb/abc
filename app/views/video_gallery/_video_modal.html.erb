@@ -6,11 +6,11 @@
       </div>
       <div class="modal-body">
         <div class="embed-responsive embed-responsive-16by9">
-          <% # if @video.wistia_ready? %>
+          <% if @video.wistia_ready? %>
             <iframe src="http://fast.wistia.net/embed/iframe/<%= @video.wistia_hashed_id %>" width="850" height="478" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-          <% # else %>
+          <% else %>
             <video class="mejs-player" src="<%= @video.s3_url.html_safe %>" width="100%" max-width="850" height="100%"></video>
-          <% # end %>
+          <% end %>
         </div>
       </div>
     </div>
