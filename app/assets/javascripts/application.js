@@ -91,5 +91,8 @@ $(document).ready(function() {
     $(this).closest('.flip-container').toggleClass('flip');
   });
 
+  var responsiveTables = $('.table-responsive');
+  responsiveTables.after('<span class="scroll-indicator">Scroll <i class="fa fa-chevron-right"></i></span>');
+
   initCleditor();
 });
