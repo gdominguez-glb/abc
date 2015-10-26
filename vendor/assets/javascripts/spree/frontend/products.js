@@ -30,6 +30,6 @@ $(document).ready(function() {
   });
 
 	var responsiveTables = $('.table-responsive');
-  responsiveTables.append('<span class="scroll-indicator">Scroll <i class="fa fa-chevron-right"></i></span>');
+  responsiveTables.after('<span class="scroll-indicator">Scroll <i class="fa fa-chevron-right"></i></span>');
 
 });
