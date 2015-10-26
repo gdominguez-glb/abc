@@ -23,7 +23,7 @@ class ReminderForm
       when RECIPIENT_OPTIONS[0]
         @from_user.to_users.pluck(:email)
       when RECIPIENT_OPTIONS[1]
-        @from_user.product_distributions.where(user_id: nil).pluck(:email)
+        @from_user.product_distributions.where(to_user_id: nil).pluck(:email)
       when RECIPIENT_OPTIONS[2]
         @from_user.to_users.where("last_sign_in_at < ?", 30.days.ago).pluck(:email)
       end
