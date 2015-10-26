@@ -16,7 +16,7 @@ class ContactForm
     if ['Print or Bulk Orders', 'Sales and Purchasing', 'Professional Development'].include?(self.topic)
       create_lead_object
     elsif ['General', 'Support'].include?(self.topic)
-      create_case_object
+      create_case_object(self.topic)
     end
   end
 
@@ -41,21 +41,34 @@ class ContactForm
     })
   end
 
-  def create_case_object
-    GmSalesforce::Client.instance.create('Case', {
+  def create_case_object(topic)
+    attrs = common_attributes
+    if topic == 'General'
+      attrs.merge!(general_attributes)
+    end
+    GmSalesforce::Client.instance.create('Case', attrs)
+  end
+
+  def common_attributes
+    {
       'First_Name__c' => self.first_name,
       'Last_Name__c'  => self.last_name,
       'Role__c'     => self.role,
       'Email__c'     => self.email,
       'Phone__c'     => self.phone,
-      'Description' => self.description,
       'School_District__c' => self.school_district_type,
       'School_District_Name__c' => self.school_district_name,
-      'Items_Purchased__c' => self.items_purchased,
-      'What_curriculum_are_you_interested_in__c' => self.curriculum,
-      'Format__c' => self.format,
-      'Origin' => 'Web'
-    })
+    }
+  end
+
+  def general_attributes
+    {
+      'Description' => self.description,
+      'status' => 'new',
+      'Priority' => 'Medium',
+      'Subject' => 'General',
+      'Origin' => 'web'
+    }
   end
 
   private
