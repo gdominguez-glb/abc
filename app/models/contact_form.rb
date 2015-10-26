@@ -6,7 +6,7 @@ class ContactForm
 
   attr_accessor :topic, :support_type, :first_name, :last_name, :email, :phone, :role, :school_district_name, :school_district_type,
     :country, :state, :curriculum, :grade, :school_district_size, :title_1, :returning_customer, :tax_exempt, :tax_exempt_id, :desired_dates,
-    :desired_training_topic, :items_purchased, :format, :description, :school_district
+    :desired_training_topic, :items_purchased, :format, :description, :school_district, :grade_bands, :training_groups_size, :interested_in_hosting_events
 
   validates_presence_of :first_name, :last_name, :email, :phone
   validates_presence_of :description, if: :require_description?
@@ -68,6 +68,33 @@ class ContactForm
       'Description' => self.description,
       'Lead_Source' => "Web-Sales"
     }
+  end
+
+  def pd_attributes
+    {
+      'Country' => 'US',
+      'State' => self.state,
+      'What_curriculum_are_you_interested_in__c' => self.curriculum,
+      'Session_Preferences__c' => self.desired_training_topic,
+      'X1st_Date_Preference__c' => self.desired_dates,
+      'Grade_Training_Request__c' => self.grade_bands,
+      'Lead.Size_of_Training_Groups__c' => self.training_groups_size,
+      'Description' => self.description,
+      'Interested_in_hosting_an_open_enrollment__c' => self.interested_in_hosting_events,
+      'Request_Date__c'  => Date.today.to_s,
+      'RecordType' => lead_pd_request_record_type_id
+    }
+  end
+
+  def lead_pd_request_record_type_id
+    Rails.cache.fetch(:lead_pd_request_record_type_id) do
+      select_columns = 'Id, Name'
+      condition      = "RecordType.Name = 'PD Request' and RecordType.SobjectType='Lead'"
+      result         = GmSalesforce::Client.instance.find_all_in_salesforce('RecordType', columns, condition)
+      result.entries.first.Id
+    end
+  rescue
+    nil
   end
 
   private
