@@ -18,6 +18,15 @@ class Spree::LicensedProduct < ActiveRecord::Base
     sfo_data
   end
 
+  def local_only?
+    product && product.try(:id_in_salesforce).blank?
+  end
+
+  def should_create_salesforce?
+    return false if local_only?
+    super
+  end
+
   def line_item
     order && order.line_items.find { |li| li.product.id == product.id }
   end
