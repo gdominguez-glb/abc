@@ -78,7 +78,7 @@ class Spree::Video < ActiveRecord::Base
   end
 
   def categories
-    taxons.map(&:taxonomy).uniq.map(&:name)
+    taxons.map(&:taxonomy).uniq.compact.map(&:name)
   end
 
   def wistia_ready?
