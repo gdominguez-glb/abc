@@ -86,6 +86,9 @@
 }
 
 .video-preview-image {
+  background-size: cover;
+  background-position: 50% 50%;
+
   .play-video-button {
     span {
       display: none;
