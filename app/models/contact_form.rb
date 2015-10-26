@@ -32,6 +32,8 @@ class ContactForm
     attrs = common_attributes
     if topic == 'General'
       attrs.merge!(general_attributes)
+    elsif topic == 'Support'
+      attrs.merge!(support_attributes)
     end
     GmSalesforce::Client.instance.create('Case', attrs)
   end
@@ -95,6 +97,37 @@ class ContactForm
     end
   rescue
     nil
+  end
+
+  def support_attributes
+    {
+      'Description' => self.description,
+      'Origin' => 'web',
+      'Status' => 'New',
+      'Priority' => 'Medium',
+      'Subject' => self.support_type
+    }.merge(support_type_attributes)
+  end
+
+  def support_type_attributes
+    case self.support_type
+    when 'Order Support'
+      {
+        'What_curriculum_are_you_interested_in__c' => self.curriculum,
+        'Items_Purchased__c' => self.items_purchased,
+      }
+    when 'Parent Support', 'Content/Implementation Support'
+      {
+        'What_curriculum_are_you_interested_in__c' => self.curriculum,
+      }
+    when 'Content Error'
+      {
+        'What_curriculum_are_you_interested_in__c' => self.curriculum,
+        'Format' => self.format
+      }
+    else
+      {}
+    end
   end
 
   private
