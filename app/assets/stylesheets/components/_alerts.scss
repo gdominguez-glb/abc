@@ -9,8 +9,22 @@
   margin-bottom: 0;
 }
 
+.alert {
+  @include alert-variant(darken($light-blue, 15%), $gray-lighter, $gray-lighter);
+}
+
+.alert-success {
+  @include alert-variant($brand-success, darken($brand-success, 25%), #fff);
+}
+
 .alert-info {
-  background-color: darken($light-blue, 15%);
-  border-color: $dark-blue;
-  color: $dark-blue;
+  @include alert-variant(darken($light-blue, 15%), $dark-blue, $dark-blue);
+}
+
+.alert-warning {
+  @include alert-variant($brand-warning, darken($brand-warning, 25%), #fff);
+}
+
+.alert-danger {
+  @include alert-variant($brand-danger, darken($brand-danger, 25%), #fff);
 }
