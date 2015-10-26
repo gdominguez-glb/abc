@@ -56,7 +56,22 @@
   }
 
   &.btn-success {
+    color: $dark-blue;
+    background-color: $brand-green;
+    box-shadow: 0 0 2px 0 $gray-light;
+
+    &:hover {
+      background-color: darken($brand-green, 5%);
+    }
+  }
+
+  &.btn-danger {
     color: #fff;
+    background-color: darken($coral, 5%);
+
+    &:hover {
+      background-color: darken($coral, 10%);
+    }
   }
 
   &.header-form-control {
