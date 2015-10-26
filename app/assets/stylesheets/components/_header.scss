@@ -70,6 +70,22 @@
       background-color: transparent;
     }
 
+    [data-page='english'] & {
+      background-color: $english;
+
+      @media screen and (min-width: $screen-sm-min) {
+        background-color: transparent;
+      }
+    }
+
+    [data-page='history'] & {
+      background-color: $history;
+
+      @media screen and (min-width: $screen-sm-min) {
+        background-color: transparent;
+      }
+    }
+
     .dropdown-toggle {
       .caret {
         @media screen and (min-width: $screen-sm-min) {
@@ -94,10 +110,28 @@
         a:focus {
           color: #fff;
           background-color: darken($coral, 5%);
+
           @media screen and (min-width: $screen-sm-min) {
             color: $brand-green;
             background: transparent;
           }
+
+          [data-page='english'] & {
+            background-color: darken($english, 5%);
+
+            @media screen and (min-width: $screen-sm-min) {
+              background: transparent;
+            }
+          }
+
+          [data-page='history'] & {
+            background-color: darken($history, 5%);
+
+            @media screen and (min-width: $screen-sm-min) {
+              background: transparent;
+            }
+          }
+
         }
 
         .dropdown-menu {
@@ -168,6 +202,14 @@
       padding: 10px 0 10px 25px;
       background-color: $coral;
 
+      [data-page='english'] & {
+        background-color: $english;
+      }
+
+      [data-page='history'] & {
+        background-color: $history;
+      }
+
       @media screen and (min-width: $screen-sm-min) {
         padding: 0 15px;
         text-align: center;
@@ -189,6 +231,14 @@
           color: #fff;
           background-color: lighten($coral, 5%);
           text-decoration: none;
+
+          [data-page='english'] & {
+            background-color: lighten($english, 5%);
+          }
+
+          [data-page='history'] & {
+            background-color: lighten($history, 5%);
+          }
         }
 
         @media screen and (min-width: $screen-sm-min) {
