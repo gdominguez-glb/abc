@@ -31,10 +31,23 @@
 
         .embed-responsive {
           margin: 0;
+
+          // embed has fixed size, because that's what me-js uses to determine me-js player size
+          @media screen and (min-width: $screen-md-min) {
+            width: 850px;
+            height: 476px;
+            padding: 0;
+          }
         }
 
         iframe, .mejs-player {
           width: 100%;
+
+          // important is required to override inline, js-generated me-js styles
+          @media screen and (min-width: $screen-md-min) {
+            width: 850px !important;
+            height: 476px !important;
+          }
         }
       }
     }
@@ -89,6 +102,10 @@
 
     &:hover {
       opacity: 1;
+    }
+
+    &:focus {
+      outline: none;
     }
   }
 }
