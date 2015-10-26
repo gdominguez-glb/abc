@@ -90,6 +90,10 @@
     &:hover {
       opacity: 1;
     }
+
+    &:focus {
+      outline: none;
+    }
   }
 }
 
