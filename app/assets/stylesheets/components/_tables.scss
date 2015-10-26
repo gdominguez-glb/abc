@@ -51,6 +51,21 @@
 }
 
 .table-responsive {
-  margin-bottom: $b-space;
   border: 1px solid $dark-blue;
+}
+
+.scroll-indicator {
+  display: block;
+  padding: 0 5px 0 0;
+  color: #fff;
+  background-color: $dark-blue;
+  font-size: 0.85em;
+  text-align: right;
+  text-transform: uppercase;
+
+  @extend .sans-serif;
+
+  .fa {
+    font-size: 0.85em;
+  }
 }
