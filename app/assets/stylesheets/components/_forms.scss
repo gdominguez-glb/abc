@@ -28,6 +28,13 @@ label {
   .form-control {
     padding: $b-space $b-space-m;
   }
+
+  label {
+    @media screen and (min-width: $screen-sm-min) {
+      margin-right: $b-space;
+    }
+  }
+
 }
 
 .form-group,
