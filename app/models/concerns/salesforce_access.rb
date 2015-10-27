@@ -9,8 +9,8 @@ module SalesforceAccess
     accepts_nested_attributes_for :salesforce_reference, update_only: true
     attr_accessor :skip_next_salesforce_update
     attr_accessor :skip_salesforce_create
-    after_update :update_salesforce
-    after_create :create_in_salesforce
+    after_commit :update_salesforce, on: :update, if: :persisted?
+    after_commit :create_in_salesforce, on: :create, if: :persisted?
   end
 
   # Gets the Salesforce object name for this instance
