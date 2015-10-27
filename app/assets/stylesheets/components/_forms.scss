@@ -41,6 +41,8 @@ label {
   border: 1px solid $dark-blue;
   box-shadow: none;
   background-color: $light-plum;
+  line-height: 1.4em;
+  font-size: 0.9em;
 
   &:focus {
     border: 1px solid $english;
@@ -109,6 +111,10 @@ label {
 
   @include transition(background, .3s);
 
+  .form-control {
+    border: 0;
+  }
+
   @media screen and (min-width: $screen-xs-min) {
     display: inline-block;
     margin-bottom: 30px;
@@ -148,7 +154,7 @@ label {
 
   &.block {
     display: block;
-    padding: 12px 30px 10px 15px;
+    padding: 10px 30px 10px 15px;
   }
 
   + .select-container {

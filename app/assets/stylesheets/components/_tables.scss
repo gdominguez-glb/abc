@@ -20,11 +20,9 @@
 
 .table {
   margin-bottom: $b-space;
-  border: 1px solid $dark-blue;
 
   .table-responsive & {
     margin-bottom: 0;
-    border: 0;
   }
 
   thead {
@@ -52,7 +50,6 @@
 
 .table-responsive {
   margin-bottom: 0;
-  border: 1px solid $dark-blue;
 }
 
 .scroll-indicator {

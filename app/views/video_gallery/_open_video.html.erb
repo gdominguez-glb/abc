@@ -6,7 +6,7 @@
           <%= link_to play_video_gallery_path(video), remote: true, class: 'play-video-button' do %>
             <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span>
           <% end %>
-          <button class="btn btn-info flip-btn"><i class="fa fa-plus flip-icon"></i></button>
+          <button class="btn btn-primary flip-btn"><i class="fa fa-plus flip-icon"></i></button>
         </div>
         <div class="video-drawer flip-back">
           <div class="product-description">
@@ -19,7 +19,7 @@
             <p><%= truncate video.taxons.map(&:name).join(", "), length: 25 %></p>
           </div>
           <%= link_to 'MORE INFO', video_gallery_path(video), itemprop: 'url', class: 'btn btn-default btn-block margin-top' %>
-          <button class="btn btn-info flip-btn"><i class="fa fa-minus flip-icon"></i></button>
+          <button class="btn btn-primary flip-btn"><i class="fa fa-minus flip-icon"></i></button>
         </div>
       </div>
     </div>
