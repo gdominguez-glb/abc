@@ -1,7 +1,7 @@
 <%= render 'cms_nav' %>
 
 <div class="col-md-9">
-  <%= link_to 'Back', cms_event_page_regonline_events_path(@event_page), class: 'btn btn-primary' %>
+  <%= link_to 'Back', cms_event_page_regonline_events_path(@event_page), class: 'btn btn-primary margin-bottom-xl' %>
   <h2>Edit Event</h2>
   <%= form_for [:cms, @event_page, @event] do |f| %>
     <div class="form-group">
@@ -24,6 +24,6 @@
       <label>Visible</label>
       <%= f.check_box :display, class: 'form-control' %>
     </div>
-    <%= f.submit "Save", class: 'btn btn-primary' %>
+    <%= f.submit "Save", class: 'btn btn-success' %>
   <% end %>
 </div>

@@ -54,7 +54,7 @@
 
 <% if @order.multi_license? %>
 
-  <p class="alert alert-info"><i class="fa fa-info"></i> You are checking out with multiple licenses for a single product. Would you like to distribute these licenses yourself, or would you like to assign someone else distribute them? </p>
+  <p class="alert alert-info"><i class="fa fa-info-circle"></i> You are checking out with multiple licenses for a single product. Would you like to distribute these licenses yourself, or would you like to assign someone else distribute them? </p>
   <div class="form-group">
     <label><%= form.radio_button :distribute_option, 'self' %>  I will distribute these licenses </label>
     <label><%= form.radio_button :distribute_option, 'someone' %>  Someone else will distribute these licenses </label>
