@@ -7,7 +7,6 @@
 .btn {
   font-family: 'Karla', sans-serif;
   padding: 10px 30px;
-  border: 0;
   text-transform: uppercase;
   letter-spacing: 0.15em;
 
@@ -18,21 +17,41 @@
   }
 
   &.btn-default {
-    background: transparent;
-    color: inherit;
-    box-shadow: inset 0 0 0 1px;
+    color: $dark-blue;
+    background-color: transparent;
+    border: 1px solid $dark-blue;
+
+    &:hover {
+      color: #fff;
+      background-color: $dark-blue;
+    }
+
+    .blue-bg &,
+    .image-bg & {
+      color: #fff;
+      border-color: #fff;
+
+      &:hover {
+        color: $dark-blue;
+        background-color: #fff;
+      }
+    }
 
     &.dashed-border {
       border: 1px dashed;
-      @include box-shadow(none);
     }
 
     &.dropdown-toggle {
       padding: 10px 30px 10px 15px;
+      border: 1px solid $dark-blue;
+      color: $dark-blue;
       background: transparent;
-      color: inherit;
-      box-shadow: inset 0 0 0 1px;
       text-align: left;
+
+      .image-background & {
+        color: #fff;
+        border: 1px solid #fff;
+      }
     }
 
     &[disabled] {
@@ -45,33 +64,19 @@
   }
 
   &.btn-primary {
-    border: 0;
-    color: $cream;
-    @include button-bg($dark-blue);
+    @include button-variant(#fff, $dark-blue, darken($dark-blue, 5%));
   }
 
   &.btn-info {
-    color: #fff;
-    @include button-bg($coral);
+    @include button-variant(#fff, $english, darken($english, 5%));
   }
 
   &.btn-success {
-    color: $dark-blue;
-    background-color: $brand-green;
-    box-shadow: 0 0 2px 0 $gray-light;
-
-    &:hover {
-      background-color: darken($brand-green, 5%);
-    }
+    @include button-variant($dark-blue, $brand-green, $dark-blue);
   }
 
   &.btn-danger {
-    color: #fff;
-    background-color: darken($coral, 5%);
-
-    &:hover {
-      background-color: darken($coral, 10%);
-    }
+    @include button-variant(#fff, darken($coral, 10%), darken($coral, 15%));
   }
 
   &.header-form-control {
