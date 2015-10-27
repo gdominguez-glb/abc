@@ -85,6 +85,11 @@ RSpec.describe AssignLicensesForm, type: :model do
       expect(distribution.quantity).to eq(3)
     end
 
+    it "mark new license as distributable" do
+      licensed_product = Spree::LicensedProduct.where(email: 'john@foo.com').first
+      expect(licensed_product.reload.can_be_distributed).to eq(true)
+    end
+
     it "extract one license to user" do
       self_distribution = Spree::ProductDistribution.where(from_email: 'john@foo.com', email: 'john@foo.com').first
 
