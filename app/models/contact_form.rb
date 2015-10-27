@@ -1,7 +1,7 @@
 class ContactForm
   include ActiveModel::Model
 
-  TOPICS = ["General", "Print or Bulk Orders", "Sales and Purchasing", "Professional Development", "Support"]
+  TOPICS = ["General" "Sales and Purchasing", "Professional Development", "Support"]
   SUPPORT_TYPES = ["Order Support", "Parent Support", "Content/Implementation Support", "Content Error", "Technical Support"]
 
   attr_accessor :topic, :support_type, :first_name, :last_name, :email, :phone, :role, :school_district_name, :school_district_type,
@@ -13,7 +13,7 @@ class ContactForm
   validates_presence_of :format, if: ->{ self.support_type == 'Content Error' }
 
   def perform
-    if ['Print or Bulk Orders', 'Sales and Purchasing', 'Professional Development'].include?(self.topic)
+    if ['Sales and Purchasing', 'Professional Development'].include?(self.topic)
       create_lead_object
     elsif ['General', 'Support'].include?(self.topic)
       create_case_object(self.topic)
