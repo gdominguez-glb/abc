@@ -210,31 +210,16 @@ module SalesforceAccess
     attributes_to_create
   end
 
-  # Does the work of creating a new record in Salesforce with the specified
-  # attributes for the SObject corresponding to this instance.  Also updates
-  # the related salesforce_reference record in the local database
-  #
-  # This will be called from within ActiveJob
-  def create_new_record_in_salesforce(attributes_to_create = {})
-    created_in_salesforce_at = self.class.date_to_salesforce
+  # This will be called from within ActiveJob (create_new_record_in_salesforce)
+  def salesforce_create_with_dup_check(attributes_to_create = {})
+    return self.class.salesforce_api.create(salesforce_sobject_name,
+                                            attributes_to_create), false
+  rescue GmSalesforce::DuplicateRecord => e
+    return e.duplicate_id, true
+  end
 
-    sf_id = id_in_salesforce
-    duplicate = sf_id.present?
-
-    unless duplicate
-      begin
-        sf_id = self.class.salesforce_api.create(salesforce_sobject_name,
-                                                 attributes_to_create)
-      rescue GmSalesforce::DuplicateRecord => e
-        duplicate = true
-        sf_id = e.duplicate_id
-      end
-
-      return false if sf_id.blank?
-    end
-
-    new_attrs = attributes_to_create.merge(
-      'Id' => sf_id, 'LastModifiedDate' => created_in_salesforce_at)
+  # This will be called from within ActiveJob (create_new_record_in_salesforce)
+  def update_from_and_to_new_salesforce_record(new_attrs, duplicate)
     sfo = salesforce_reference.object_from_properties(new_attrs)
     update_from_salesforce(sfo)
     if duplicate
@@ -243,6 +228,25 @@ module SalesforceAccess
     end
     after_create_salesforce(duplicate)
     sfo
+  end
+
+  # Does the work of creating a new record in Salesforce with the specified
+  # attributes for the SObject corresponding to this instance.  Also updates
+  # the related salesforce_reference record in the local database
+  #
+  # This will be called from within ActiveJob
+  def create_new_record_in_salesforce(attributes_to_create = {})
+    created_in_salesforce_at = self.class.date_to_salesforce
+
+    sf_id, duplicate = id_in_salesforce, id_in_salesforce.present?
+    unless duplicate
+      sf_id, duplicate = salesforce_create_with_dup_check(attributes_to_create)
+      return false if sf_id.blank?
+    end
+
+    new_attrs = attributes_to_create.merge(
+      'Id' => sf_id, 'LastModifiedDate' => created_in_salesforce_at)
+    update_from_and_to_new_salesforce_record(new_attrs, duplicate)
   end
 
   # Performs additional tasks after creating a record in Salesforce.  This will
