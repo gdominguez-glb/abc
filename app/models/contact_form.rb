@@ -91,19 +91,28 @@ class ContactForm
       'Country' => 'US',
       'State' => self.state,
       'What_curriculum_are_you_interested_in__c' => self.curriculum,
-      # 'Session_Preferences__c' => self.desired_training_topic,
+      'Session_Preference__c' => self.desired_training_topic,
       'X1st_Date_Preference__c' => self.desired_dates,
-      'Grade_Training_Request__c' => self.grade_bands,
+      'Grade_Training_Request__c' => (self.grade_bands || []).join(';'),
       'Size_of_Training_Groups__c' => self.training_groups_size,
       'Description' => self.description,
-      # 'Interested_in_hosting_an_open_enrollment__c' => self.interested_in_hosting_events,
+      'Intrested_in_hosting_an_open_enrollment__c' => self.interested_in_hosting_events,
       'Request_Date__c'  => Date.today.to_s,
-      'RecordTypeId' => lead_pd_request_record_type_id
+      'RecordTypeId' => lead_pd_request_record_type_id,
+      'OwnerId' => pd_lead_queue_id
     }
   end
 
   def lead_pd_request_record_type_id
     RecordType.find_in_salesforce_by_name_and_object_type('PD Request', 'Lead').try('Id')
+  end
+
+  def pd_lead_queue_id
+    Rails.cache.fetch(:pd_lead_queue_id) do
+      GmSalesforce::Client.instance.find_all_in_salesforce('Group', 'Id', "Name='PD Request Lead'").first.Id
+    end
+  rescue
+    nil
   end
 
   def support_attributes
