@@ -69,7 +69,8 @@ class Spree::LicensedProduct < ActiveRecord::Base
       'Quantity' => quantity,
       'Status' => expire_at.blank? ? 'Lifetime' : nil,
       'Order__c' => order.try(:id_in_salesforce),
-      'Order_Product__c' => line_item.try(:id_in_salesforce) }
+      'Order_Product__c' => line_item.try(:id_in_salesforce),
+      'Deactivated__c' => quantity && quantity < 1 }
   end
 
   # Do not create from salesforce, only try to find a match
