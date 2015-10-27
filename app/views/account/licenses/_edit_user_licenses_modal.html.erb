@@ -2,7 +2,7 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <%= render partial: 'stats' %>
+        <%# <%= render partial: 'stats' %1> %>
         <h2 class='text-center'>Edit <b><%= @user.full_name %></b> licenses...</h2>
       </div>
       <div class="modal-body">
@@ -13,14 +13,18 @@
             <thead>
               <tr>
                 <th>Product Licensed</th>
-                <th>Number of Licenses</th>
+                <th>Distributed</th>
+                <th>Remaining</th>
+                <%# <th></th> %>
               </tr>
             </thead>
             <tbody>
               <% @product_distributions.each do |distribution| %>
                 <tr class="distribution-row">
                   <td><%= distribution.product.name %></td>
-                  <td><%= text_field_tag "product_distributions[#{distribution.id}][quantity]", distribution.quantity, class: 'distribution-quantity form-control' %></td>
+                  <td><%= distribution.quantity %></td>
+                  <td><%= text_field_tag "product_distributions[#{distribution.id}][quantity]", distribution.distributed_licensed_product.quantity, class: 'distribution-quantity form-control' %></td>
+                  <%# <td><%= link_to 'Revoke All', '#', class: 'btn btn-primary' %1></td> %>
                 </tr>
               <% end %>
             </tbody>

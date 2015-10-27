@@ -17,8 +17,6 @@ class Spree::ProductDistribution < ActiveRecord::Base
   assign_email_from_user :email, :to_user
   assign_email_from_user :from_email, :from_user
 
-  after_create :distribute_license
-
   def decrease_quantity!(_quantity)
     self.update(quantity: (quantity - _quantity))
     self.distributed_licensed_product.decrease_quantity!(_quantity)
@@ -56,21 +54,5 @@ class Spree::ProductDistribution < ActiveRecord::Base
     self.licensed_product.increase_quantity!(self.quantity)
     self.distributed_licensed_product.update(quantity: 0)
     self.update(quantity: 0)
-  end
-
-  private
-
-  def distribute_license
-    return if self.skip_create_license
-    licensed_product.decrease_quantity!(self.quantity)
-    Spree::LicensedProduct.create(
-      user: self.to_user,
-      email: self.email,
-      quantity: self.quantity,
-      product: self.product,
-      expire_at: self.expire_at,
-      product_distribution: self,
-      can_be_distributed: (self.can_be_distributed || false)
-    )
   end
 end
