@@ -195,10 +195,10 @@
           </div>
         </div>
 
-        <div class="col-sm-6 dependent-field hidden" data-name="Grade Bands">
+        <div class="col-sm-6 dependent-field hidden" data-name="Grade bands">
           <div class="form-group">
             <label>Grade bands</label>
-            <%= f.text_field :grade_bands, size: 20, maxlength: 80, class: 'form-control', placeholder: 'Grade Bands' %>
+            <%= f.select :grade_bands, %w{K-2 3-5 6-8 9-12}, {}, class: 'form-control', placeholder: 'Grade Bands', multiple: true %>
           </div>
         </div>
 
@@ -219,7 +219,7 @@
         <div class="col-sm-6 dependent-field hidden" data-name="Interested in hosting events">
           <div class="form-group">
             <label>Are you interested in participating in or hosting collaborative training events with other Eureka users in your region?</label>
-            <%= f.check_box :interested_in_hosting_events, {}, 'Yes' %>
+            <%= f.check_box :interested_in_hosting_events, {}, 'Yes', 'No' %>
           </div>
         </div>
       </div>
