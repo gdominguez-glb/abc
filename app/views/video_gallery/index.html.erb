@@ -17,7 +17,7 @@
           <% end %>
           <%= text_field_tag :query, params[:query], class: 'form-control margin-bottom', placeholder: 'Search' %>
         <% end %>
-        <div class="panel-group" id="categories" role="tablist" aria-multiselectable="true">
+        <div class="panel-group" id="categoryFilters" role="tablist" aria-multiselectable="true">
           <%= render 'taxonomies' %>
         </div>
       </div>
@@ -52,10 +52,11 @@
 <%= content_for :javascripts do %>
   <%= javascript_tag do %>
     $(function() {
-      $(".taxonomy-wrapper .taxonomy-root").click(function() {
-        var filter_container = $(this).parents('.taxonomy-wrapper');
-        filter_container.find('.list-group').toggleClass("show-menu");
-      })
+      $('#categoryFilters .panel-collapse .list-group-item').each(function() {
+        if ( $(this).hasClass('active') ) {
+          $(this).closest('.panel-collapse').collapse('show');
+        }
+      });
     });
   <% end %>
 <% end %>
