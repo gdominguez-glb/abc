@@ -4,11 +4,7 @@
     <%= render partial: 'curriculum_events_nav', locals: { page: @group_page, event_pages: @group_page.available_event_pages } %>
 
     <div class="events-page">
-      <div class="page-header">
-        <h2>Professional Development</h2>
-        <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
-      </div>
-      <div class="row">
+      <div class="row margin-bottom">
         <div class="col-lg-6">
           <h4>Upcoming training</h4>
         </div>
@@ -38,7 +34,6 @@
           </div>
         </div>
       </div>
-      <hr />
       <%= render 'events_list' %>
     </div>
 
