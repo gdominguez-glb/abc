@@ -33,5 +33,11 @@ RSpec.describe Spree::LicensesManager::LicensesDistributer do
   end
 
   it "reduce quantity on original license" do
+    expect(licensed_product.reload.quantity).to eq(3)
+  end
+
+  it "set new license as distributable" do
+    licensed_product = user_to_receive_license.licensed_products.first
+    expect(licensed_product.can_be_distributed).to eq(true)
   end
 end
