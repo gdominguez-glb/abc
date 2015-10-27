@@ -15,7 +15,7 @@ class Spree::Video < ActiveRecord::Base
   validates_presence_of :title
 
   has_attached_file :file, s3_permissions: :private
-  validates_attachment :file, content_type: { content_type: /\A*\Z/ }
+  validates_attachment :file, content_type: { content_type: 'video/mp4' }
 
   has_many :video_classifications, dependent: :delete_all, inverse_of: :video
   has_many :taxons, through: :video_classifications
