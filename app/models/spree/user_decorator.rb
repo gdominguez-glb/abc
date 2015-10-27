@@ -8,6 +8,7 @@ Spree::User.class_eval do
   serialize :interested_subjects, Array
 
   validates_format_of :password, with: /\A\S*\z/, message: "can't include spaces", if: :password_required?
+  validates :school_district, presence: true
 
   def self.sobject_name
     'Contact'
