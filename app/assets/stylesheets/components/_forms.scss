@@ -216,10 +216,10 @@ label {
     }
 
     &.select2-container-active {
-      box-shadow: inset 0 0 0 1px transparent, inset 0 0 0 2px $coral;
+      border: 1px solid $english;
 
       .select2-choices {
-        box-shadow: none;
+        border: none;
       }
     }
 
@@ -227,7 +227,7 @@ label {
       border-radius: 3px;
 
       .select2-choice {
-        box-shadow: none;
+        border: none;
       }
     }
 
