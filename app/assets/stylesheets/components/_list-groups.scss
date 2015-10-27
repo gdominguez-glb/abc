@@ -17,4 +17,15 @@
       background-color: lighten($dark-blue, 5%);
     }
   }
+
+}
+
+a.list-group-item {
+  color: inherit;
+  font-weight: normal;
+  text-transform: none;
+
+  p {
+    @extend .serif;
+  }
 }
