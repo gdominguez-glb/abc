@@ -1,18 +1,43 @@
-<div class="event">
-  <div class="event-date">
-    <%= date_range(event.start_date, event.end_date, format: :short) if event.start_date.present? && event.end_date.present? %>
-  </div>
-  <h4><%= link_to strip_tags(event.title), "http://regonline.com/#{event.regonline_id}", target: '_blank' %></h4>
-  <% if event.grade_bands.present? %>
-    <span>Grade Bands: </span> <%= event.grade_bands %>
-  <% end %>
-  <% if event.session_types.present? %>
-    <span>Session types: </span>
-    <% event.event_trainings.each do |event_traning| %>
-      <%= link_to event_traning.title, events_trainings_path(anchor: "session-#{event_traning.id}") %>
+<div class="list-group-item">
+  <h4 class="margin-bottom-reset">
+    <%= link_to strip_tags(event.title), "http://regonline.com/#{event.regonline_id}", target: '_blank' %>
+  </h4>
+
+  <div class="row">
+
+    <% if event.start_date.present? && event.location_name.present? %>
+      <div class="col-md-6">
+        <small class="block text-info margin-bottom">
+          <% if event.start_date.present? && event.end_date.present? %>
+            <%= date_range(event.start_date, event.end_date, format: :short) %><br />
+          <% end %>
+
+          <% if event.location_name.present? && event.state.present? %>
+              <%= event.location_address1 if event.location_address1.present? %>
+              <%= event.location_name %>,
+              <%= event.state %>
+          <% end %>
+        </small>
+      </div>
     <% end %>
-  <% end %>
-  <% if event.download_url.present? %>
-    <%= link_to 'Download', event.download_url, class: 'btn btn-primary', target: '_blank' %>
-  <% end %>
+
+    <div class="col-md-6">
+      <% if event.grade_bands.present? %>
+        <small>Grade Bands: <%= event.grade_bands %></small>
+      <% end %>
+
+      <% if event.session_types.present? %>
+        <small class="block">Session types:
+          <% event.event_trainings.each do |event_traning| %>
+            <%= link_to event_traning.title, events_trainings_path(anchor: "session-#{event_traning.id}") %>
+          <% end %>
+        </small>
+      <% end %>
+
+      <% if event.download_url.present? %>
+        <small class="block">Download: <%= link_to event.download_url, event.download_url, class: '', target: '_blank' %></small>
+      <% end %>
+    </div>
+  </div>
+
 </div>

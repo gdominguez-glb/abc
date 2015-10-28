@@ -22,3 +22,13 @@
     margin-top: 3px;
   }
 }
+
+a.list-group-item {
+  color: inherit;
+  font-weight: normal;
+  text-transform: none;
+
+  p {
+    @extend .serif;
+  }
+}

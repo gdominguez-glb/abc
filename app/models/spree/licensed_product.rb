@@ -69,7 +69,8 @@ class Spree::LicensedProduct < ActiveRecord::Base
       'Quantity' => quantity,
       'Status' => expire_at.blank? ? 'Lifetime' : nil,
       'Order__c' => order.try(:id_in_salesforce),
-      'Order_Product__c' => line_item.try(:id_in_salesforce) }
+      'Order_Product__c' => line_item.try(:id_in_salesforce),
+      'Deactivated__c' => quantity && quantity < 1 }
   end
 
   # Do not create from salesforce, only try to find a match
@@ -96,9 +97,12 @@ class Spree::LicensedProduct < ActiveRecord::Base
 
   include EmailAssignment
   assign_user_from_email :user, :email
+  assign_email_from_user :email, :user
 
   after_create :assign_user_admin_role
-  after_commit :send_notification
+  after_commit :send_notification, on: :create
+
+  attr_accessor :skip_notification
 
   def distribute_license(user_or_email, quantity=1)
     user_attrs = user_or_email.is_a?(Spree::User) ? { to_user: user_or_email } : { email: user_or_email }
@@ -157,7 +161,7 @@ class Spree::LicensedProduct < ActiveRecord::Base
   end
 
   def send_notification
-    LicenseMailer.notify(self).deliver_later
+    LicenseMailer.notify(self).deliver_later unless self.skip_notification
   end
 
   def assign_user_admin_role

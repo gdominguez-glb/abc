@@ -16,6 +16,10 @@ RSpec.describe Spree::LicensesManager::SingleLicenseExtractor do
     expect(self_license.quantity).to eq(1)
   end
 
+  it "reduce quantity on original license" do
+    expect(licensed_product.reload.quantity).to eq(9)
+  end
+
   it "create distribution" do
     distribution = user.product_distributions.last
 

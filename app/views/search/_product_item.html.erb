@@ -1,12 +1,4 @@
-<div class="search-result-item">
-  <div class="result-item-icon">
-    <span class="glyphicon glyphicon-download-alt"></span>
-  </div>
-  <div class="result-item-center">
-    <span class="title"><%= item.name %></span>
-    <p><%= truncate item.description, length: 300 %></p>
-  </div>
-  <div class="result-item-links">
-    <%= link_to 'View Item', search_product_path(item.id), class: 'btn btn-primary btn-block' %>
-  </div>
-</div>
+<a href="<%= search_product_path(item.id) %>" class="list-group-item">
+  <h4 class="margin-bottom-reset"><%= item.name %></h4>
+  <p class="small margin-bottom-reset"><%= truncate item.description, length: 150 %></p>
+</a>
