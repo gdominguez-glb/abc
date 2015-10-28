@@ -2,11 +2,11 @@
 <div class="panel panel-default panel-collapsible max-300">
   <div class="panel-heading">
     <h4 class="panel-title">
-      <a data-toggle="collapse" data-parent="#categories" href="#collapse<%= taxonomy.name.delete(' ') %>"><%= taxonomy.name %></a>
+      <a data-toggle="collapse" data-parent="#categories" href="#collapse<%= taxonomy.name.gsub(/[^0-9A-Za-z]/, '') %>"><%= taxonomy.name %></a>
     </h4>
   </div>
   <%# <% selected_taxons = taxonomy.root.children.where(id: params[:taxon_ids]) %1> %>
-  <div id="collapse<%= taxonomy.name.delete(' ') %>" class="panel-collapse collapse">
+  <div id="collapse<%= taxonomy.name.gsub(/[^0-9A-Za-z]/, '') %>" class="panel-collapse collapse">
     <%= video_gallery_taxons_tree(taxonomy.root, @taxon, taxonomy.allow_multiple_taxons_selected) %>
   </div>
 </div>
