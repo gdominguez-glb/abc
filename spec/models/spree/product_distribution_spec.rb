@@ -18,20 +18,7 @@ RSpec.describe Spree::ProductDistribution, type: :model do
   let(:product) { create(:product, license_length: 365) }
   let(:licensed_product) { create(:spree_licensed_product, user: from_user, product: product, quantity: 10) }
   let(:distribution) { create(:spree_product_distribution, from_user: from_user, to_user: to_user, product: product, quantity: 2, licensed_product: licensed_product) }
-
-  describe "licensed product creation" do
-    before(:each) { distribution }
-
-    it "create licensed product to distribution user" do
-      licensed_product = to_user.licensed_products.first
-      expect(licensed_product.quantity).to eq(2)
-      expect(licensed_product.product_distribution).to eq(distribution)
-    end
-
-    it "reduce license quantity from user" do
-      expect(licensed_product.reload.quantity).to eq(8)
-    end
-  end
+  let!(:distribuetd_licensed_product) { create(:spree_licensed_product, user: to_user, product: product, product_distribution: distribution, quantity: 2) }
 
   describe "#revoke" do
     before(:each) do
@@ -40,7 +27,7 @@ RSpec.describe Spree::ProductDistribution, type: :model do
     end
 
     it "increase license quantity back to original license" do
-      expect(licensed_product.reload.quantity).to eq(10)
+      expect(licensed_product.reload.quantity).to eq(12)
     end
 
     it "set quantity to 0" do

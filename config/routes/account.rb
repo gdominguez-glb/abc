@@ -25,6 +25,7 @@ namespace :account do
       get :edit_user_licenses
       post :update_user_licenses
       post :cancel_invitation
+      post :revoke_all
     end
   end
 

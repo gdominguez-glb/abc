@@ -8,20 +8,14 @@ class LicensesUpdater
   def perform
     Spree::ProductDistribution.transaction do
       distributions_iterator do |distribution, quantity|
-        add_quantity = quantity - distribution.quantity
-        if quantity == 0
-          revoke_licenses(distribution)
-        elsif add_quantity > 0
+        add_quantity = quantity - distribution.distributed_licensed_product.quantity
+        if add_quantity > 0
           increase_licenses_quantity(distribution, add_quantity)
         elsif add_quantity < 0
           decrease_licenses_quantity(distribution, add_quantity.abs)
         end
       end
     end
-  end
-
-  def revoke_licenses(distribution)
-    distribution.revoke
   end
 
   def increase_licenses_quantity(distribution, quantity)
