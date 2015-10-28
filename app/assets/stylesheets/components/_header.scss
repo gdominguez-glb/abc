@@ -285,26 +285,32 @@
 
       a {
         display: block;
-        padding: 1px 0;
 
         &:hover,
         &:active,
         &:focus {
-          border-bottom: 2px solid $brand-green;
-          text-decoration: none;
+          @media screen and (min-width: $screen-sm-min) {
+            color: #fff;
+            border-bottom: 2px solid $brand-green;
+            text-decoration: none;
 
-          [data-page='english'] &,
-          [data-page='history'] &,
-          [data-page='math'] & {
-            border-bottom: 2px solid $dark-blue;
+            [data-page='english'] &,
+            [data-page='history'] &,
+            [data-page='math'] & {
+              color: $dark-blue;
+              border-bottom: 2px solid $dark-blue;
+            }
           }
         }
 
         @media screen and (min-width: $screen-sm-min) {
+          padding: 3px 0 1px;
+          border-bottom: 2px solid transparent;
           font-family: 'Lora' serif;
           font-weight: normal;
           font-size: 0.8em;
           text-transform: capitalize;
+
           &.active {
             border-bottom: 2px solid $brand-green;
 
