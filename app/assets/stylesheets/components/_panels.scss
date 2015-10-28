@@ -6,6 +6,20 @@
 // *************************************
 
 .panel {
+
+  .panel-collapse {
+    .list-group {
+      &:first-child {
+        .list-group-item {
+          &:first-child {
+            border-top-right-radius: 0;
+            border-top-left-radius: 0;
+          }
+        }
+      }
+    }
+  }
+
   .panel {
 		.panel {
 			margin-bottom: 0;
@@ -14,20 +28,14 @@
 
   &.panel-collapsible {
     .panel-heading {
-      border-bottom: 0;
-    }
+      padding: 0;
 
-    .nav-sidebar {
-      border-top: 1px solid $dark-blue;
-    }
+      a {
+        display: block;
+        padding: $b-space $b-space-m;
 
-    .list-group {
-      &:first-child {
-        .list-group-item {
-          &:first-child {
-            border-top-right-radius: 0;
-            border-top-left-radius: 0;
-          }
+        &:hover {
+          cursor: pointer;
         }
       }
     }

@@ -1,31 +1,33 @@
 <div class="col-md-3">
-  <div class="panel panel-default panel-collapsible">
-    <div class="panel-heading">
-      <h3 class="panel-title clearfix">
-        <a id="cmsNavToggle">Sections <i data-toggle="collapse" data-target="#cmsNav" class="fa fa-chevron-up pull-right margin-top-s"></i></a>
-      </h3>
-    </div>
-    <div id="cmsNav" class="panel-collapse collapse in">
-      <ul class="nav nav-sidebar list-group">
-        <%= active_link_to "Curriculums", '/cms/curriculums', class: 'list-group-item' %>
-        <%= active_link_to "Pages", '/cms/pages', class: 'list-group-item' %>
-        <%= active_link_to "Documents", '/cms/documents', class: 'list-group-item' %>
-        <%= active_link_to "FAQ Categories", '/cms/faq_categories', class: 'list-group-item' %>
-        <%= active_link_to "FAQ", '/cms/questions', class: 'list-group-item' %>
-        <%= active_link_to "Recommendations", '/cms/recommendations', class: 'list-group-item' %>
-        <%= active_link_to "Contact Topics", '/cms/contact_topics', class: 'list-group-item' %>
-        <%= active_link_to "User Profile Settings", '/cms/user_profile_settings', class: 'list-group-item' %>
-        <%= active_link_to "Store", '/store/admin', class: 'list-group-item' %>
-        <%= active_link_to "Medium Publications (Blog)", '/cms/medium_publications', class: 'list-group-item' %>
-        <%= active_link_to "Event Pages", '/cms/event_pages', class: 'list-group-item' %>
-        <%= active_link_to "Training Session Types", '/cms/event_trainings', class: 'list-group-item' %>
-        <%= active_link_to "Notifications", '/cms/notification_triggers', class: 'list-group-item' %>
-        <%= active_link_to "Download Pages", '/cms/download_pages', class: 'list-group-item' %>
-        <%= active_link_to "Careers", '/cms/jobs', class: 'list-group-item' %>
-        <%= active_link_to "Staff", '/cms/staffs', class: 'list-group-item' %>
-        <%= active_link_to "Footer", '/cms/footer_titles', class: 'list-group-item' %>
-        <%= active_link_to "Curriculum Mail", '/cms/curriculum_mails', class: 'list-group-item' %>
-      </ul>
+  <div class="panel-group">
+    <div class="panel panel-default panel-collapsible">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          <a id="cmsNavToggle" data-toggle="collapse" data-target="#cmsNav">Sections</a>
+        </h3>
+      </div>
+      <div id="cmsNav" class="panel-collapse collapse in">
+        <ul class="nav nav-sidebar list-group">
+          <%= active_link_to "Curriculums", '/cms/curriculums', class: 'list-group-item' %>
+          <%= active_link_to "Pages", '/cms/pages', class: 'list-group-item' %>
+          <%= active_link_to "Documents", '/cms/documents', class: 'list-group-item' %>
+          <%= active_link_to "FAQ Categories", '/cms/faq_categories', class: 'list-group-item' %>
+          <%= active_link_to "FAQ", '/cms/questions', class: 'list-group-item' %>
+          <%= active_link_to "Recommendations", '/cms/recommendations', class: 'list-group-item' %>
+          <%= active_link_to "Contact Topics", '/cms/contact_topics', class: 'list-group-item' %>
+          <%= active_link_to "User Profile Settings", '/cms/user_profile_settings', class: 'list-group-item' %>
+          <%= active_link_to "Store", '/store/admin', class: 'list-group-item' %>
+          <%= active_link_to "Medium Publications (Blog)", '/cms/medium_publications', class: 'list-group-item' %>
+          <%= active_link_to "Event Pages", '/cms/event_pages', class: 'list-group-item' %>
+          <%= active_link_to "Training Session Types", '/cms/event_trainings', class: 'list-group-item' %>
+          <%= active_link_to "Notifications", '/cms/notification_triggers', class: 'list-group-item' %>
+          <%= active_link_to "Download Pages", '/cms/download_pages', class: 'list-group-item' %>
+          <%= active_link_to "Careers", '/cms/jobs', class: 'list-group-item' %>
+          <%= active_link_to "Staff", '/cms/staffs', class: 'list-group-item' %>
+          <%= active_link_to "Footer", '/cms/footer_titles', class: 'list-group-item' %>
+          <%= active_link_to "Curriculum Mail", '/cms/curriculum_mails', class: 'list-group-item' %>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
