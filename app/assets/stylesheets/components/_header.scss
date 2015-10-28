@@ -23,34 +23,32 @@
   @media screen and (min-width: $screen-sm-min) {
     position: relative;
     height: auto;
-    padding: 0;
+    padding: 5px 0 0;
     border-radius: 0;
   }
 
   &.nav-border-bottom {
     @media screen and (min-width: $screen-sm-min) {
-      border-bottom: 5px solid $coral;
+      border-bottom: 3px solid $coral;
     }
   }
 
   // ----- Brand ----- //
 
   .navbar-brand {
-    padding: 20px 40px;
-    color: $dark-blue;
-    background: $brand-green;
-    font-size: 1em;
-    line-height: 1em;
-
-    &:hover,
-    &:focus {
-      background: $brand-green;
-    }
+    width: 165px;
+    padding: 0;
+    background: transparent asset-url('logo-half.png') no-repeat 50% 50%;
+    background-size: 150px 35px;
+    text-indent: -9999px;
 
     @media screen and (min-width: $screen-sm-min) {
-      height: auto;
-      padding: 45px;
-      font-size: 1.2em;
+      position: relative;
+      bottom: -3px;
+      left: 50px;
+      height: 109px;
+      background: transparent asset-url('logo-full.png') no-repeat 50% 50%;
+      background-size: 155px 109px;
     }
   }
 
@@ -64,7 +62,7 @@
   .navbar-nav {
     margin: 0 -15px;
     background-color: $coral;
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+    box-shadow: none;
 
     @media screen and (min-width: $screen-sm-min) {
       background-color: transparent;
@@ -106,7 +104,7 @@
       &:first-child {
         a {
           @media screen and (min-width: $screen-sm-min) {
-            padding-left: 60px;
+            padding-left: 120px;
           }
         }
       }
@@ -200,7 +198,7 @@
         }
 
         @media screen and (min-width: $screen-sm-min) {
-          padding: 45px 15px 44px;
+          padding: 73px 20px 16px;
 
           [data-page='english'] &,
           [data-page='history'] &,
@@ -418,7 +416,7 @@
     padding: 0 10px;
 
     @media screen and (min-width: $screen-sm-min) {
-      padding: 34px 0 0;
+      padding: 62px 0 0;
     }
 
     .form-control {
