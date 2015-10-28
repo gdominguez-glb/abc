@@ -128,6 +128,7 @@
             background-color: darken($english, 5%);
 
             @media screen and (min-width: $screen-sm-min) {
+              color: $brand-green;
               background: transparent;
             }
           }
@@ -136,6 +137,7 @@
             background-color: darken($history, 5%);
 
             @media screen and (min-width: $screen-sm-min) {
+              color: $brand-green;
               background: transparent;
             }
           }
@@ -144,6 +146,7 @@
             background-color: darken($math, 5%);
 
             @media screen and (min-width: $screen-sm-min) {
+              color: $brand-green;
               background: transparent;
             }
           }
@@ -161,6 +164,12 @@
               padding: 10px 15px 10px 25px;
               color: #fff;
 
+              [data-page='english'] &,
+              [data-page='history'] &,
+              [data-page='math'] & {
+                color: $dark-blue;
+              }
+
               &:hover,
               &:focus {
                 color: #fff;
@@ -172,13 +181,38 @@
 
       > a {
         color: #fff;
+
+        [data-page='english'] &,
+        [data-page='history'] &,
+        [data-page='math'] & {
+          color: $dark-blue;
+        }
+
         &:hover,
         &:focus {
           color: darken(#fff, 15%);
+
+          [data-page='english'] &,
+          [data-page='history'] &,
+          [data-page='math'] & {
+            color: $dark-blue;
+          }
         }
 
         @media screen and (min-width: $screen-sm-min) {
           padding: 45px 15px 44px;
+
+          [data-page='english'] &,
+          [data-page='history'] &,
+          [data-page='math'] & {
+            color: #fff;
+
+            &:hover,
+            &:focus {
+              color: $brand-green;
+            }
+          }
+
           &:hover {
             color: $brand-green;
           }
@@ -194,6 +228,13 @@
     display: none;
     margin: 0 -15px;
     color: #fff;
+
+    [data-page='english'] &,
+    [data-page='history'] &,
+    [data-page='math'] & {
+      color: $dark-blue;
+    }
+
 
     @media screen and (min-width: $screen-sm-min) {
       display: block;
@@ -253,14 +294,17 @@
           text-decoration: none;
 
           [data-page='english'] & {
+            color: $dark-blue;
             background-color: lighten($english, 5%);
           }
 
           [data-page='history'] & {
+            color: $dark-blue;
             background-color: lighten($history, 5%);
           }
 
           [data-page='math'] & {
+            color: $dark-blue;
             background-color: lighten($math, 5%);
           }
         }
