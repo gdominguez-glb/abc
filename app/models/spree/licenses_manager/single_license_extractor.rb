@@ -24,7 +24,7 @@ module Spree
 
       def create_new_license(distribution)
         single_licensed_product = @licensed_product.dup
-        single_licensed_product.update!(quantity: 1, product_distribution_id: distribution.id, can_be_distributed: false)
+        single_licensed_product.update!(quantity: 1, product_distribution_id: distribution.id, can_be_distributed: false, skip_notification: true)
       end
 
       def create_distribution
@@ -38,8 +38,7 @@ module Spree
           to_user_id:          user_id,
           email:               user_email,
           quantity:             1,
-          product_id:          @licensed_product.product_id,
-          skip_create_license: true
+          product_id:          @licensed_product.product_id
         )
       end
 
