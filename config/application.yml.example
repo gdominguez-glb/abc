@@ -24,3 +24,8 @@ auth_username: ''
 auth_password: ''
 
 regonline_api_token: ''
+
+hightail_api_url: ''
+hightail_api_key: ''
+hightail_username: ''
+hightail_password: ''
