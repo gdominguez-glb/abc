@@ -196,6 +196,26 @@ marketing_templates:
       </section>
 
   -
+    name: '50/50 Content Image Right, Half Height'
+    content: !xml |
+      <section class="row half-height <%= background_color %>-bg">
+        <div class="col-sm-6 col-centered-content">
+          <div class="vertical-center">
+            <h6><%= title %></h6>
+            <p><%= body_text %></p>
+            <% if button_title.present? && button_link.present? %>
+              <a class="btn btn-default btn-block-xs" href="<%= button_link %>"><%= button_title %></a>
+            <% end %>
+          </div>
+        </div>
+        <div class="col-sm-6 col-centered-content">
+          <div class="vertical-center">
+            <img src="<%= image_url %>" class="img-responsive">
+          </div>
+        </div>
+      </section>
+
+  -
     name: '50/50 Content Image Shadow Left'
     content: !xml |
       <section class="row <%= background_color %>-bg">
