@@ -15,7 +15,7 @@
                 <th>Product Licensed</th>
                 <th>Distributed</th>
                 <th>Remaining</th>
-                <%# <th></th> %>
+                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -24,7 +24,7 @@
                   <td><%= distribution.product.name %></td>
                   <td><%= distribution.quantity %></td>
                   <td><%= text_field_tag "product_distributions[#{distribution.id}][quantity]", distribution.distributed_licensed_product.quantity, class: 'distribution-quantity form-control' %></td>
-                  <%# <td><%= link_to 'Revoke All', '#', class: 'btn btn-primary' %1></td> %>
+                  <td><%= link_to 'Revoke All', revoke_all_account_licenses_path(distribution_id: distribution.id), class: 'btn btn-primary', remote: true, data: { method: :post, disable_with: 'Revoking', confirm: 'Are you sure to revoke all licenses? (This will also revoke licenses that already distributed by this user)' } %></td>
                 </tr>
               <% end %>
             </tbody>

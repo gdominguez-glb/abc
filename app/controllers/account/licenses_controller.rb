@@ -71,6 +71,11 @@ class Account::LicensesController < Account::BaseController
     @emails = current_spree_user.product_distributions.pluck(:email).uniq
   end
 
+  def revoke_all
+    distribution = current_spree_user.product_distributions.find(params[:distribution_id])
+    Spree::LicensesManager::DistributionRevoker.new(distribution).revoke
+  end
+
   private
 
   def assign_licenses_params
