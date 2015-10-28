@@ -27,6 +27,12 @@
 	}
 
   &.panel-collapsible {
+
+    &.max-300 {
+      max-height: 300px;
+      overflow-y: scroll;
+    }
+
     .panel-heading {
       padding: 0;
 
