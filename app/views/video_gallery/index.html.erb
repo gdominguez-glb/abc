@@ -17,9 +17,10 @@
           <% end %>
           <%= text_field_tag :query, params[:query], class: 'form-control margin-bottom', placeholder: 'Search' %>
         <% end %>
-        <div class="panel-group" id="categoryFilters" role="tablist" aria-multiselectable="true">
+        <div class="panel-group margin-bottom" id="categoryFilters" role="tablist" aria-multiselectable="true">
           <%= render 'taxonomies' %>
         </div>
+        <a id="removeAllFilters" href="/video_gallery?" class="btn btn-danger btn-block fade">Remove All</a>
       </div>
       <div class="col-sm-6 col-md-7 col-lg-8 col-lg-offset-halfone">
         <% if @videos.blank? %>
@@ -52,7 +53,14 @@
 <%= content_for :javascripts do %>
   <%= javascript_tag do %>
     $(function() {
-      $('#categoryFilters .panel-collapse .list-group-item').each(function() {
+      var filterItems = $('#categoryFilters .list-group-item');
+      var removeAllFilters = $('#removeAllFilters');
+
+      if( filterItems.hasClass('active') ) {
+        removeAllFilters.addClass('in');
+      }
+
+      filterItems.each(function() {
         if ( $(this).hasClass('active') ) {
           $(this).closest('.panel-collapse').collapse('show');
         }
