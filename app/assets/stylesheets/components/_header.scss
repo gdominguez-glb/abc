@@ -438,6 +438,28 @@
           background-size: 15px 15px;
         }
       }
+
+      [data-page='english'] &,
+      [data-page='history'] &,
+      [data-page='math'] & {
+        background: transparent asset-url('icon-search-blue.png') no-repeat 50% 50%;
+        background-size: 15px 15px;
+
+        @media screen and (min-width: $screen-sm-min) {
+          background: transparent asset-url('icon-search-white.png') no-repeat 50% 50%;
+          background-size: 15px 15px;
+        }
+
+        &:focus {
+          background-color: #fff;
+          background-position: 2% 50%;
+
+          @media screen and (min-width: $screen-sm-min) {
+            background: #fff asset-url('icon-search-gray.png') no-repeat 5% 50%;
+            background-size: 15px 15px;
+          }
+        }
+      }
     }
   }
 
