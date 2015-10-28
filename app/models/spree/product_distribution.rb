@@ -8,7 +8,7 @@ class Spree::ProductDistribution < ActiveRecord::Base
 
   validates_presence_of :product, :licensed_product
 
-  attr_accessor :can_be_distributed, :skip_create_license
+  attr_accessor :can_be_distributed
 
   include EmailAssignment
   assign_user_from_email :to_user, :email
