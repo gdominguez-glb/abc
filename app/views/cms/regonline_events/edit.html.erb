@@ -21,6 +21,10 @@
       <%= f.collection_select :session_types, EventTraining.all, :id, :title, { include_hidden: false }, class: 'form-control', multiple: true %>
     </div>
     <div class="form-group">
+      <label>Description</label>
+      <%= f.text_area :description, rows: 4, class: 'form-control' %>
+    </div>
+    <div class="form-group">
       <label>Visible</label>
       <%= f.check_box :display, class: 'form-control' %>
     </div>
