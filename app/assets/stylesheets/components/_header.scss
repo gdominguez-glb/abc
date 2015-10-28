@@ -279,33 +279,24 @@
       li {
         @media screen and (min-width: $screen-sm-min) {
           display: inline-block;
+          padding: $b-space $b-space-m;
         }
       }
 
       a {
         display: block;
-        padding: 10px 15px;
+        padding: 1px 0;
 
         &:hover,
         &:active,
         &:focus {
-          color: #fff;
-          background-color: lighten($coral, 5%);
+          border-bottom: 2px solid $brand-green;
           text-decoration: none;
 
-          [data-page='english'] & {
-            color: $dark-blue;
-            background-color: lighten($english, 5%);
-          }
-
-          [data-page='history'] & {
-            color: $dark-blue;
-            background-color: lighten($history, 5%);
-          }
-
+          [data-page='english'] &,
+          [data-page='history'] &,
           [data-page='math'] & {
-            color: $dark-blue;
-            background-color: lighten($math, 5%);
+            border-bottom: 2px solid $dark-blue;
           }
         }
 
@@ -316,6 +307,12 @@
           text-transform: capitalize;
           &.active {
             border-bottom: 2px solid $brand-green;
+
+            [data-page='english'] &,
+            [data-page='history'] &,
+            [data-page='math'] & {
+              border-bottom: 2px solid $dark-blue;
+            }
           }
         }
       }
@@ -421,6 +418,7 @@
     .form-control {
       width: 30px;
       padding: 9px 15px;
+      border: 0;
       background: transparent asset-url('icon-search-white.png') no-repeat 50% 50%;
       background-size: 15px 15px;
       box-shadow: none;
