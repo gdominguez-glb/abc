@@ -86,6 +86,14 @@
       }
     }
 
+    [data-page='math'] & {
+      background-color: $math;
+
+      @media screen and (min-width: $screen-sm-min) {
+        background-color: transparent;
+      }
+    }
+
     .dropdown-toggle {
       .caret {
         @media screen and (min-width: $screen-sm-min) {
@@ -126,6 +134,14 @@
 
           [data-page='history'] & {
             background-color: darken($history, 5%);
+
+            @media screen and (min-width: $screen-sm-min) {
+              background: transparent;
+            }
+          }
+
+          [data-page='math'] & {
+            background-color: darken($math, 5%);
 
             @media screen and (min-width: $screen-sm-min) {
               background: transparent;
@@ -210,6 +226,10 @@
         background-color: $history;
       }
 
+      [data-page='math'] & {
+        background-color: $math;
+      }
+
       @media screen and (min-width: $screen-sm-min) {
         padding: 0 15px;
         text-align: center;
@@ -238,6 +258,10 @@
 
           [data-page='history'] & {
             background-color: lighten($history, 5%);
+          }
+
+          [data-page='math'] & {
+            background-color: lighten($math, 5%);
           }
         }
 
