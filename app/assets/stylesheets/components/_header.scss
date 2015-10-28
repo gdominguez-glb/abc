@@ -86,6 +86,14 @@
       }
     }
 
+    [data-page='math'] & {
+      background-color: $math;
+
+      @media screen and (min-width: $screen-sm-min) {
+        background-color: transparent;
+      }
+    }
+
     .dropdown-toggle {
       .caret {
         @media screen and (min-width: $screen-sm-min) {
@@ -120,6 +128,7 @@
             background-color: darken($english, 5%);
 
             @media screen and (min-width: $screen-sm-min) {
+              color: $brand-green;
               background: transparent;
             }
           }
@@ -128,6 +137,16 @@
             background-color: darken($history, 5%);
 
             @media screen and (min-width: $screen-sm-min) {
+              color: $brand-green;
+              background: transparent;
+            }
+          }
+
+          [data-page='math'] & {
+            background-color: darken($math, 5%);
+
+            @media screen and (min-width: $screen-sm-min) {
+              color: $brand-green;
               background: transparent;
             }
           }
@@ -145,6 +164,12 @@
               padding: 10px 15px 10px 25px;
               color: #fff;
 
+              [data-page='english'] &,
+              [data-page='history'] &,
+              [data-page='math'] & {
+                color: $dark-blue;
+              }
+
               &:hover,
               &:focus {
                 color: #fff;
@@ -156,13 +181,38 @@
 
       > a {
         color: #fff;
+
+        [data-page='english'] &,
+        [data-page='history'] &,
+        [data-page='math'] & {
+          color: $dark-blue;
+        }
+
         &:hover,
         &:focus {
           color: darken(#fff, 15%);
+
+          [data-page='english'] &,
+          [data-page='history'] &,
+          [data-page='math'] & {
+            color: $dark-blue;
+          }
         }
 
         @media screen and (min-width: $screen-sm-min) {
           padding: 45px 15px 44px;
+
+          [data-page='english'] &,
+          [data-page='history'] &,
+          [data-page='math'] & {
+            color: #fff;
+
+            &:hover,
+            &:focus {
+              color: $brand-green;
+            }
+          }
+
           &:hover {
             color: $brand-green;
           }
@@ -178,6 +228,13 @@
     display: none;
     margin: 0 -15px;
     color: #fff;
+
+    [data-page='english'] &,
+    [data-page='history'] &,
+    [data-page='math'] & {
+      color: $dark-blue;
+    }
+
 
     @media screen and (min-width: $screen-sm-min) {
       display: block;
@@ -210,6 +267,10 @@
         background-color: $history;
       }
 
+      [data-page='math'] & {
+        background-color: $math;
+      }
+
       @media screen and (min-width: $screen-sm-min) {
         padding: 0 15px;
         text-align: center;
@@ -218,26 +279,24 @@
       li {
         @media screen and (min-width: $screen-sm-min) {
           display: inline-block;
+          padding: $b-space $b-space-m;
         }
       }
 
       a {
         display: block;
-        padding: 10px 15px;
+        padding: 1px 0;
 
         &:hover,
         &:active,
         &:focus {
-          color: #fff;
-          background-color: lighten($coral, 5%);
+          border-bottom: 2px solid $brand-green;
           text-decoration: none;
 
-          [data-page='english'] & {
-            background-color: lighten($english, 5%);
-          }
-
-          [data-page='history'] & {
-            background-color: lighten($history, 5%);
+          [data-page='english'] &,
+          [data-page='history'] &,
+          [data-page='math'] & {
+            border-bottom: 2px solid $dark-blue;
           }
         }
 
@@ -248,6 +307,12 @@
           text-transform: capitalize;
           &.active {
             border-bottom: 2px solid $brand-green;
+
+            [data-page='english'] &,
+            [data-page='history'] &,
+            [data-page='math'] & {
+              border-bottom: 2px solid $dark-blue;
+            }
           }
         }
       }
@@ -353,6 +418,7 @@
     .form-control {
       width: 30px;
       padding: 9px 15px;
+      border: 0;
       background: transparent asset-url('icon-search-white.png') no-repeat 50% 50%;
       background-size: 15px 15px;
       box-shadow: none;
