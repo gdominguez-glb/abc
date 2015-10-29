@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151028005005) do
+ActiveRecord::Schema.define(version: 20151029092959) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -1582,6 +1582,7 @@ ActiveRecord::Schema.define(version: 20151028005005) do
     t.string   "wistia_thumbnail_url"
     t.integer  "video_group_id"
     t.string   "preview_image_url"
+    t.string   "vimeo_id"
   end
 
   create_table "spree_zone_members", force: :cascade do |t|
