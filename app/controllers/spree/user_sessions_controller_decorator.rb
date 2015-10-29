@@ -31,6 +31,13 @@ Spree::UserSessionsController.class_eval do
     end
   end
 
+  # override to remove flash message
+  def destroy
+    signed_out = (Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name))
+    yield if block_given?
+    respond_to_on_destroy
+  end
+
   # Admins can switch to become another user
   def become
     sign_in(:spree_user, @user, bypass: true)
