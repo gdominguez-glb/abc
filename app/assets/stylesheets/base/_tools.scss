@@ -349,3 +349,9 @@
 .margin-left-xxl {
   margin-left: $b-space-xl + $b-space-l;
 }
+
+// ----- Incremental ----- //
+
+.margin-bottom-1_2 {
+  margin-bottom: $b-space * 1.2;
+}

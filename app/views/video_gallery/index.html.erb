@@ -15,9 +15,9 @@
           <% params[:taxon_ids].each do |taxon_id| %>
             <%= hidden_field_tag "taxon_ids[]", taxon_id %>
           <% end %>
-          <%= text_field_tag :query, params[:query], class: 'form-control margin-bottom', placeholder: 'Search' %>
+          <%= text_field_tag :query, params[:query], class: 'form-control margin-bottom-1_2', placeholder: 'Search' %>
         <% end %>
-        <div class="panel-group margin-bottom" id="categoryFilters" role="tablist" aria-multiselectable="true">
+        <div class="panel-group" id="categoryFilters" role="tablist" aria-multiselectable="true">
           <%= render 'taxonomies' %>
         </div>
         <a id="removeAllFilters" href="/video_gallery?" class="btn btn-danger btn-block fade">Remove All</a>
