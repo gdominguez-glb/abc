@@ -113,3 +113,7 @@ if free_taxonomy.taxons.count == 1
 end
 
 Spree::Taxonomy.find_or_create_by(name: 'Group')
+Spree::Taxonomy.find_or_create_by(name: 'Grade')
+Spree::Taxonomy.find_or_create_by(name: 'Grade Band')
+Spree::Taxonomy.find_or_create_by(name: 'Module')
+Spree::Taxonomy.find_or_create_by(name: 'Lesson')

@@ -37,7 +37,17 @@ class GmVimeo
     end
   end
 
-  def get_result_from_endpoint(endpoint, options)
+  def video_info(video_id)
+    endpoint = "https://api.vimeo.com/me/videos/#{video_id}"
+    get_result_from_endpoint(endpoint)
+  end
+
+  def download_url_of_video(video_id)
+    info = video_info(video_id)
+    source_url = info['download'].find{|j| j['quality'] == 'hd' }.try(:[], 'link')
+  end
+
+  def get_result_from_endpoint(endpoint, options={})
     headers = { 'Authorization' => "bearer #{ACCESS_TOKEN}" }
     JSON.parse(HTTParty.get(endpoint, options.merge(headers: headers)))
   end
