@@ -88,8 +88,8 @@
   </div>
   <div class="row collapse in fade" id="rowSchoolSelect">
     <div class="col-md-6">
-      <div class="form-group school-district select-container dark-select block">
-        <span>Select a School</span>
+      <div class="form-group">
+        <label>Select a School</label>
         <%= f.collection_select :school_id, SchoolDistrict.for_selection.school, :id, :name, { prompt: 'Select a School' }, { class: 'form-control', tabindex: 7 } %>
       </div>
     </div>

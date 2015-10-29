@@ -271,6 +271,14 @@ label {
   border: 1px solid #000;
 }
 
+.select2-search {
+  input {
+    padding: 10px 20px;
+    border: 0;
+    background-image: none !important;
+  }
+}
+
 .select2-results {
   margin: 0;
   padding: 0;

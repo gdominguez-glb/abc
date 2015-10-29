@@ -53,6 +53,7 @@ $(document).on("change", "#spree_user_title", function(){
   }
 
   $('#spree_user_interested_subjects').select2();
+  $('#spree_user_school_id').select2();
 });
 
 $(document).on('change', '#schoolDistrictSelect input', function(e) {
