@@ -1,29 +1,22 @@
 <div class="row">
   <div class="col-sm-10 col-sm-offset-1 margin-bottom-xxl">
-    <div class="row">
-      <div class="col-xs-12">
-        <div class="page-header">
-          <h2>Frequently Asked Questions</h2>
+
+    <div class="page-header">
+      <h2>Frequently Asked Questions</h2>
+    </div>
+
+    <% @faq_categories.each do |faq_category| %>
+      <div class="panel panel-default" id="faq<%= faq_category.name %>">
+        <div class="panel-heading">
+          <h4 class="panel-title"><%= faq_category.name %></h4>
+        </div>
+        <div class="list-group">
+          <% faq_category.questions.each do |question| %>
+            <%= link_to question.title, about_qa_path(question.id), class: 'list-group-item' %>
+          <% end %>
         </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-9">
-        <% @faq_categories.each do |faq_category| %>
-          <div class="margin-bottom-l" id="faq<%= faq_category.name %>">
-            <h4><%= faq_category.name %></h4>
-            <ul>
-              <% faq_category.questions.each do |question| %>
-                <li>
-                  <p>
-                    <%= link_to question.title, about_qa_path(question.id), class: 'text-normal' %>
-                  </p>
-                </li>
-              <% end %>
-            </ul>
-          </div>
-        <% end %>
-      </div>
-    </div>
+    <% end %>
+
   </div>
 </div>
