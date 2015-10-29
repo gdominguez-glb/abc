@@ -1,6 +1,4 @@
 .thumbnail {
-	border: 0;
-	background-color: transparent;
 	text-align: center;
 
 	@media screen and (min-width: $screen-sm-min) {
@@ -16,4 +14,24 @@
 		line-height: 1.2em;
 	}
 
+}
+
+.col-thumbnail {
+
+	@media screen and (min-width: $screen-sm-min) {
+		&:nth-child(odd) {
+			clear: left;
+		}
+	}
+
+	@media screen and (min-width: $screen-md-min) {
+		&:nth-child(odd) {
+			clear: none;
+		}
+		&:nth-child(5),
+		&:nth-child(9),
+		&:nth-child(13) {
+			clear: left;
+		}
+	}
 }
