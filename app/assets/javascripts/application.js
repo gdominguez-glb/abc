@@ -95,4 +95,8 @@ $(document).ready(function() {
   responsiveTables.after('<span class="scroll-indicator">Scroll <i class="fa fa-chevron-right"></i></span>');
 
   initCleditor();
+
+  var tiles = $('section.row');
+  tiles.find('div:empty, p:empty, br').remove();
+  tiles.find('span, font').contents().unwrap();
 });
