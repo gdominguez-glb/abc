@@ -27,7 +27,7 @@ class Page < ActiveRecord::Base
   serialize :tiles
 
   scope :visibles, -> { where(visible: true).order('position ASC') }
-  scope :curriculum_nav, -> { show_in_top_navigation.joins(:curriculum).where({curriculums: { visible: true }}) }
+  scope :curriculum_nav, -> { show_in_top_navigation.joins(:curriculum).where({curriculums: { visible: true }}).order('curriculums.position asc') }
   scope :group_roots, -> { where(group_root: true) }
   scope :not_group_roots, -> { where(group_root: false) }
   scope :show_in_top_navigation, -> { visibles.group_roots.where(show_in_nav: true) }
