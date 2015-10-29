@@ -1,7 +1,7 @@
 class ContactForm
   include ActiveModel::Model
 
-  TOPICS = ["General" "Sales and Purchasing", "Professional Development", "Support"]
+  TOPICS = ["General", "Sales and Purchasing", "Professional Development", "Support"]
   SUPPORT_TYPES = ["Order Support", "Parent Support", "Content/Implementation Support", "Content Error", "Technical Support"]
 
   attr_accessor :topic, :support_type, :first_name, :last_name, :email, :phone, :role, :school_district_name, :school_district_type,
@@ -149,7 +149,7 @@ class ContactForm
   private
 
   def require_description?
-    ['General', 'Professional Development'].include?(self.topic) || 
+    ['General', 'Professional Development'].include?(self.topic) ||
       ( self.topic == 'Support' && ['Order Support', 'Parent Support', 'Content/Implementation Support', 'Technical Support'].include?(self.support_type) )
   end
 end
