@@ -1,0 +1,76 @@
+require 'fileutils'
+require 'net/http'
+require 'zip/zip'
+require 'find'
+
+class MaterialZipImporter
+  attr_accessor :product, :zip_file_path, :dest_directory_path, :raw_file_directory_path
+
+  def initialize(attrs={})
+    @product                 = attrs[:product]
+    @zip_file_path           = attrs[:zip_file_path]
+    @dest_directory_path     = attrs[:dest_directory_path]
+    @raw_file_directory_path = File.join(@dest_directory_path, "#{@product.name}_#{Time.now.to_i}")
+  end
+
+  def import
+    extract_zip_file
+    @product.materials.destroy_all
+    process_root_directory
+  end
+
+  def extract_zip_file
+    Zip::ZipFile.open(zip_file_path) do |zip_file|
+      zip_file.each do |entry|
+        file_path= File.join(raw_file_directory_path, entry.name)
+        FileUtils.mkdir_p(File.dirname(file_path))
+        zip_file.extract(entry, file_path) unless File.exist?(file_path)
+        puts "Extracting #{entry.name}"
+      end
+    end
+  end
+
+  def find_root_directory
+    Dir.new(raw_file_directory_path).each do |file_name|
+      return File.join(raw_file_directory_path, file_name) if file_name.start_with?(@product.name)
+    end
+  end
+
+  def process_root_directory
+    root_directory_path = find_root_directory
+    return unless File.exists?(root_directory_path)
+    dir = Dir.new(root_directory_path)
+    dir.entries.sort.each do |sub_dir_name|
+      sub_dir_path = File.join(root_directory_path, sub_dir_name)
+      next if sub_dir_name.start_with?('.')
+      next if !File.directory?(sub_dir_path)
+      process_directory(product, nil, sub_dir_path)
+    end
+  end
+
+  def process_directory(product, parent, directory_path)
+    dir = Dir.new(directory_path)
+    material = Spree::Material.create(
+      name: File.basename(directory_path).gsub(/^\d+ /, ''),
+      parent: parent,
+      product: product
+    )
+    dir.entries.each do |file_name|
+      next if file_name.start_with?('.')
+      path = File.join(directory_path, file_name)
+      if File.directory?(path)
+        process_directory(product, material, path)
+      else
+        create_material_file(material, path)
+      end
+    end
+  end
+
+  def create_material_file(material, file_path)
+    file = File.new(file_path)
+    Spree::MaterialFile.create(
+      material: material,
+      file: file
+    )
+  end
+end
