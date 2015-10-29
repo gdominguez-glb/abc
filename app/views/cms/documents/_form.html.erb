@@ -28,7 +28,7 @@
         <label>File</label>
         <%= f.file_field :attachment %>
       </div>
-      <%= f.submit class: 'btn btn-success' %>
+      <%= f.submit (f.object.new_record? ? "Create File": "Update File"), class: 'btn btn-success' %>
     </div>
   </div>
 <% end %>

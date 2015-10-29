@@ -9,17 +9,6 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-xs-12 margin-bottom">
-        <div class="form-inline">
-          <label for="">Select Grade:</label>
-          <div class="form-group select-container dark-select margin-xs-left-m">
-            <span>Grade</span>
-            <%= select_tag 'grade_option', options_for_select(GRADE_LEVELS, current_spree_user.settings[:grade_option]), include_blank: 'All', class: 'form-control inline-input'  %>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
       <div class="col-xs-12">
         <% @products.each do |product| %>
           <% if locked_product?(product) %>
