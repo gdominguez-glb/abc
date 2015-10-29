@@ -15,6 +15,7 @@ class MaterialZipImporter
 
   def import
     extract_zip_file
+    @product.materials.destroy_all
     process_root_directory
   end
 
@@ -39,8 +40,7 @@ class MaterialZipImporter
     root_directory_path = find_root_directory
     return unless File.exists?(root_directory_path)
     dir = Dir.new(root_directory_path)
-    # update to sort by file names
-    dir.entries.each do |sub_dir_name|
+    dir.entries.sort.each do |sub_dir_name|
       sub_dir_path = File.join(root_directory_path, sub_dir_name)
       next if sub_dir_name.start_with?('.')
       next if !File.directory?(sub_dir_path)
@@ -51,7 +51,7 @@ class MaterialZipImporter
   def process_directory(product, parent, directory_path)
     dir = Dir.new(directory_path)
     material = Spree::Material.create(
-      name: File.basename(directory_path),
+      name: File.basename(directory_path).gsub(/^\d+ /, ''),
       parent: parent,
       product: product
     )
@@ -68,7 +68,6 @@ class MaterialZipImporter
 
   def create_material_file(material, file_path)
     file = File.new(file_path)
-    # remove numbers from material
     Spree::MaterialFile.create(
       material: material,
       file: file
