@@ -1,0 +1,23 @@
+// *************************************
+//
+//   Jumbotron
+//   -> Bootstrap Jumbotron Overrides
+//
+// *************************************
+
+.jumbotron {
+  text-align: center;
+
+  p {
+    font-size: 1em;
+  }
+}
+
+.jumbotron-info {
+  background-color: $english;
+}
+
+.jumbotron-success {
+  color: $dark-blue;
+  background-color: $brand-green;
+}
