@@ -14,6 +14,7 @@ class HightailImporter
     fetch_file_ids
     create_temp_directory
     download_zip_files
+    remove_temp_directory
   end
 
   def fetch_file_ids
@@ -29,6 +30,10 @@ class HightailImporter
     directory_name = "hightail_import_#{Time.now.to_i}"
     @tmp_directory = Rails.root.join('tmp', directory_name)
     FileUtils.mkdir_p(@tmp_directory)
+  end
+
+  def remove_temp_directory
+    FileUtils.rm_rf(tmp_directory)
   end
 
   def download_zip_files
