@@ -1,0 +1,5 @@
+<% if @newsletter.valid? %>
+  $('#newsletter-modal').modal('hide');
+<% else %>
+  alert("<%= @newsletter.errors.full_messages.join(', ').html_safe %>");
+<% end %>

@@ -104,5 +104,7 @@ Rails.application.routes.draw do
 
   resources :download_jobs, only: [:show]
 
+  resources :newsletters, only: [:index, :create]
+
   get '*slug', to: 'pages#show', constraints: lambda { |request| !(request.path =~ /\/(assets|store).*/) }
 end
