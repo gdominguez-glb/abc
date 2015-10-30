@@ -40,26 +40,27 @@ class MaterialZipImporter
     root_directory_path = find_root_directory
     return unless File.exists?(root_directory_path)
     dir = Dir.new(root_directory_path)
-    dir.entries.sort.each do |sub_dir_name|
+    dir.entries.sort.each_with_index do |sub_dir_name, index|
       sub_dir_path = File.join(root_directory_path, sub_dir_name)
       next if sub_dir_name.start_with?('.')
       next if !File.directory?(sub_dir_path)
-      process_directory(product, nil, sub_dir_path)
+      process_directory(product, nil, sub_dir_path, index)
     end
   end
 
-  def process_directory(product, parent, directory_path)
+  def process_directory(product, parent, directory_path, position)
     dir = Dir.new(directory_path)
     material = Spree::Material.create(
       name: File.basename(directory_path).gsub(/^\d+ /, ''),
       parent: parent,
-      product: product
+      product: product,
+      position: position
     )
-    dir.entries.each do |file_name|
+    dir.entries.each_with_index do |file_name, position|
       next if file_name.start_with?('.')
       path = File.join(directory_path, file_name)
       if File.directory?(path)
-        process_directory(product, material, path)
+        process_directory(product, material, path, position)
       else
         create_material_file(material, path)
       end
