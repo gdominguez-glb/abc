@@ -1,9 +1,9 @@
 <div class="row">
   <div class="col-md-10 col-md-offset-1 margin-top-xxl margin-bottom-xl">
     <h2>Bookmarks</h2>
-    <div class="row">
+    <div class="list-group">
       <% @bookmarks.each do |bookmark| %>
-        <div class="col-md-4">
+        <div class="list-group-item">
           <%= link_to account_bookmark_path(bookmark), data: { method: :delete } do %>
             <span class="fa fa-bookmark-o"></span>
           <% end %>
