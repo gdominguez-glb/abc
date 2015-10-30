@@ -1,5 +1,6 @@
 <% if current_spree_user %>
-  $("<%= params[:ref_id] %>").addClass('disabled');
+  $("<%= params[:ref_id] %>").empty().html('<i class="fa fa-bookmark"></i> Remove from Bookmarks');
+  console.log($("<%= params[:ref_id] %>"));
 <% else %>
   alert('please login first.')
 <% end %>
