@@ -33,9 +33,9 @@
           </a>
         </li>
         <li>
-          <a href="/" target="_blank">
+          <%= link_to main_app.newsletters_path, remote: true do %>
             <i class="fa fa-envelope-o social-icon"></i> Newsletter
-          </a>
+          <% end %>
         </li>
       </ul>
     </div>

@@ -1,3 +1,5 @@
+require 'mailchimp'
+
 Spree::User.class_eval do
   include RailsSettings::Extend
   include ActivityLogger
@@ -225,5 +227,21 @@ Spree::User.class_eval do
 
   def agree_term_of_product?(product)
     self.product_agreements.where(product: product).exists?
+  end
+
+  before_save :subscribe_list
+
+  def subscribe_list
+    if self.allow_communication_changed?
+      if self.allow_communication?
+        Mailchimp.delay.subscribe_for_user(self.id)
+      else
+        Mailchimp.delay.unsubscribe_user(self.id)
+      end
+    end
+  end
+
+  def interested_curriculums
+    Curriculum.where(id: self.interested_subjects).map(&:name)
   end
 end

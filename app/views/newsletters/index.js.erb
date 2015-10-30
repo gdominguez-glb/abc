@@ -1,0 +1,5 @@
+$('body').append("<%= escape_javascript(render 'newsletter_modal') %>");
+$('#newsletter-modal').modal('show');
+$('#newsletter-modal').on('hidden.bs.modal', function (e) {
+  $('#newsletter-modal').remove();
+})
