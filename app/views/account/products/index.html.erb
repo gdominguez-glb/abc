@@ -2,12 +2,25 @@
 
   <%= render partial: 'notifications', locals: { notifications: @notifications } %>
 
-  <h4>My Resources</h4>
+  <div class="row">
+    <div class="col-sm-12">
+      <h4>My Resources</h4>
+    </div>
+  </div>
 
   <div class="row">
-    <div class="my-products">
-      <%= render 'my_products' %>
-    </div>
+    <% if @my_products.length == 0 %>
+      <div class="col-sm-12">
+        <div class="jumbotron jumbotron-success">
+          <h2>You haven’t checked out any products yet!</h2>
+          <p>Please visit our shop.</p>
+        </div>
+      </div>
+    <% else %>
+      <div class="my-products">
+        <%= render 'my_products' %>
+      </div>
+    <% end %>
   </div>
 
   <div class="row">
