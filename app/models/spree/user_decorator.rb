@@ -240,4 +240,8 @@ Spree::User.class_eval do
       end
     end
   end
+
+  def interested_curriculums
+    Curriculum.where(id: self.interested_subjects).map(&:name)
+  end
 end

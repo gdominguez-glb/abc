@@ -13,20 +13,32 @@ class Mailchimp
     "Math Updates (Eureka Math)"=>"d8714f2c62"
   }
 
+  SUBJECT_LISTS = {
+    'Math' => 'd8714f2c62',
+    'History' => 'abb1b31c20',
+    'English' => 'c689119d94'
+  }
+
   def self.subscribe_for_user(user_id)
-    user    = Spree::User.find(user_id)
-    list_id = list_id_by_role(user)
-    subscribe(list_id, {
-      email: user.email,
-      first_name: user.first_name,
-      last_name: user.last_name
-    })
+    user     = Spree::User.find(user_id)
+    list_ids = list_ids_by_role(user)
+
+    list_ids.each do |list_id|
+      subscribe(list_id, {
+        email: user.email,
+        first_name: user.first_name,
+        last_name: user.last_name
+      })
+    end
   end
 
   def self.unsubscribe_user(user_id)
-    user    = Spree::User.find(user_id)
-    list_id = list_id_by_role(user)
-    unsubscribe(list_id, user.email)
+    user     = Spree::User.find(user_id)
+    list_ids = list_ids_by_role(user)
+
+    list_ids.each do |list_id|
+      unsubscribe(list_id, user.email)
+    end
   end
 
   def self.subscribe(list_id, info={})
@@ -56,10 +68,18 @@ class Mailchimp
     { username: 'bearer', password: ENV['mailchimp_api_key'] }
   end
 
-  def self.list_id_by_role(user)
-    'c963f03f21'
+  def self.list_ids_by_role(user)
+    case user.title
+    when 'Teacher', 'Parent'
+      [ LISTS["General Great Minds Updates"] ] + list_ids_by_subjects(user.interested_curriculums)
+    when 'Administrator', 'Administrative Assistant'
+      LISTS.values
+    else
+      [ LISTS["General Great Minds Updates"] ]
+    end
   end
 
-  def self.list_id_by_subject(subject)
+  def self.list_ids_by_subjects(subjects)
+    subjects.map{|s| SUBJECT_LISTS[s] }.compact
   end
 end
