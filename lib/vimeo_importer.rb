@@ -55,7 +55,10 @@ class VimeoImporter
     taxonomy = Spree::Taxonomy.find_by(name: taxonomy_name)
     taxon_names.each do |taxon_name|
       taxon = taxonomy.taxons.find_or_create_by(name: taxon_name)
-      video.taxons << taxon
+      begin
+        video.taxons << taxon
+      rescue
+      end
     end
   end
 end
