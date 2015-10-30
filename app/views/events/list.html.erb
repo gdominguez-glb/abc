@@ -6,34 +6,9 @@
         <div class="col-lg-6">
           <h4>Upcoming training</h4>
         </div>
-        <div class="col-lg-6 text-right-lg">
-          <div class="form-inline">
-            <div class="form-group margin-xs-left-m">
-              <%= form_tag '', method: :get do %>
-                <label>Seach by ZIP <span class="fa fa-map-marker" id="geocode-button" title="click to auto enter your address"></span></label>
-                <%= text_field_tag :zipcode, params[:zipcode], class: 'form-control', placeholder: 'Search by ZIP' %>
-              <% end %>
-            </div>
-          </div>
-        </div>
       </div>
       <%= render 'events_list' %>
     </div>
 
   </div>
 </div>
-
-<%= content_for :javascripts do %>
-  <script src="https://maps.googleapis.com/maps/api/js"></script>
-  <%= javascript_tag do %>
-    $(function(){
-      $('#geocode-button').click(function(){
-        GmGeocoder.findPosition(function(point){
-          GmGeocoder.findAddress({ point: point, callback: function(address){
-            $("#zipcode").val(address);
-          }})
-        })
-      });
-    });
-  <% end %>
-<% end %>
