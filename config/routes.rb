@@ -46,6 +46,7 @@ Rails.application.routes.draw do
       get :play
       get :unlock
       post :bookmark
+      post :remove_bookmark
     end
   end
 

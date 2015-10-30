@@ -1,6 +1,6 @@
 <% if current_spree_user %>
-  $("<%= params[:ref_id] %>").empty().html('<i class="fa fa-bookmark"></i> Remove from Bookmarks');
-  console.log($("<%= params[:ref_id] %>"));
+  $("<%= params[:ref_id] %>").attr('href', "<%= remove_bookmark_video_gallery_path(video, ref_id: "#bookmark-#{video.id}") %>");
+  $("<%= params[:ref_id] %>").find('.fa').removeClass('fa-bookmark-o').addClass('fa-bookmark');
 <% else %>
   alert('please login first.')
 <% end %>
