@@ -1,6 +1,7 @@
 <% if current_spree_user %>
-  $("<%= params[:ref_id] %>").attr('href', "<%= remove_bookmark_video_gallery_path(video, ref_id: "#bookmark-#{video.id}") %>");
+  $("<%= params[:ref_id] %>").attr('href', "<%= remove_bookmark_video_gallery_path(@video, ref_id: "#fav-button-#{@video.id}") %>");
   $("<%= params[:ref_id] %>").find('.fa').removeClass('fa-bookmark-o').addClass('fa-bookmark');
+  $("<%= params[:ref_id] %>").html("<%= escape_javascript("<i class='fa fa-bookmark'>Remove from bookmarks</i>".html_safe) %>")
 <% else %>
   alert('please login first.')
 <% end %>

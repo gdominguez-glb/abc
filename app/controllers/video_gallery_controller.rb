@@ -30,12 +30,12 @@ class VideoGalleryController < ApplicationController
   end
 
   def bookmark
-    video = Spree::Video.find(params[:id])
-    current_spree_user.bookmarks.create(bookmarkable: video)
+    @video = Spree::Video.find(params[:id])
+    current_spree_user.bookmarks.create(bookmarkable: @video)
   end
 
   def remove_bookmark
-    current_spree_user.bookmarks.find_by(bookmarkable: video).try(:destroy)
+    current_spree_user.bookmarks.find_by(bookmarkable: @video).try(:destroy)
   end
 
   private
