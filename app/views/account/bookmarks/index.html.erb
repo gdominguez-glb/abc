@@ -3,17 +3,16 @@
     <h2>Bookmarks</h2>
     <div class="list-group">
       <% @bookmarks.each do |bookmark| %>
-        <div class="list-group-item">
+        <%= link_to bookmark_item_url(bookmark.bookmarkable), class: 'list-group-item' do %>
           <% if bookmark.bookmarkable.is_a?(Spree::Video) %>
             <%= render partial: 'video', locals: { video: bookmark.bookmarkable } %>
           <% elsif bookmark.bookmarkable.is_a?(Spree::Material) %>
             <%= render partial: 'material', locals: { material: bookmark.bookmarkable } %>
           <% end %>
-
-          <%= link_to account_bookmark_path(bookmark), data: { method: :delete }, class: 'btn btn-danger' do %>
-            <span class="fa fa-bookmark"></span> Remove
-          <% end %>
-        </div>
+          <%# <%= link_to account_bookmark_path(bookmark), data: { method: :delete }, class: 'btn btn-danger' do %1> %>
+          <%#   <span class="fa fa-bookmark"></span> Remove %>
+          <%# <% end %1> %>
+        <% end %>
       <% end %>
     </div>
   </div>
