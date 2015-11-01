@@ -46,6 +46,11 @@ Spree::Product.class_eval do
                           join_table: 'spree_parts',
                           foreign_key: 'bundle_id'
 
+  has_and_belongs_to_many :group_items,
+                          class_name: 'Spree::Product',
+                          join_table: 'spree_group_items',
+                          foreign_key: 'group_id'
+
   scope :search_can_be_part, lambda { |query|
     where = "LOWER(#{Spree::Product.quoted_table_name}.name) LIKE ?"
     like  = "%#{query.downcase}%"
