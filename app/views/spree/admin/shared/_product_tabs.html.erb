@@ -15,6 +15,12 @@
       <% end %>
     <% end %>
 
+    <% if @product.product_type == 'group' %>
+      <%= content_tag :li, class: ('active' if current == 'Group Items') do %>
+        <%= link_to_with_icon 'puzzle-piece', 'Group Items', admin_product_group_items_path(@product) %>
+      <% end %>
+    <% end %>
+
     <% if @product.product_type == 'multiple download' %>
       <%= content_tag :li, class: ('active' if current == 'Materials') do %>
         <%= link_to_with_icon 'cloud', 'Materials', admin_product_materials_path(@product) %>

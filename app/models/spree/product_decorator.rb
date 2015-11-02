@@ -46,7 +46,10 @@ Spree::Product.class_eval do
                           join_table: 'spree_parts',
                           foreign_key: 'bundle_id'
 
-  has_and_belongs_to_many :group_items,
+  ## spree group_items
+  group_items_habtm = select("#{Spree::Product.quoted_table_name}.*")
+                  .select("#{Spree::GroupItem.quoted_table_name}.id AS group_item_id")
+  has_and_belongs_to_many :group_items, -> { group_items_habtm },
                           class_name: 'Spree::Product',
                           join_table: 'spree_group_items',
                           foreign_key: 'group_id'
@@ -114,6 +117,7 @@ Spree::Product.class_eval do
       'video',
       'multiple download',
       'bundle',
+      'group',
       'partner',
       'inkling',
       'other'
