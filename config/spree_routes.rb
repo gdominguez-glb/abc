@@ -39,6 +39,7 @@ spree_routes_overrides = Proc.new do
 
     resources :products do
       resources :parts, only: [:index, :create, :destroy]
+      resources :group_items, only: [:index, :create, :destroy]
 
       resources :materials do
         collection do
@@ -66,6 +67,7 @@ spree_routes_overrides = Proc.new do
   get '/products/:id/launch', to: 'products#launch', as: :launch_product
   get '/products/:id/terms', to: 'products#terms', as: :terms_product
   post '/products/:id/agree_terms', to: 'products#agree_terms', as: :agree_terms_product
+  get '/products/group/:id', to: 'products#group', as: :group_product
 end
 if Rails.env.development?
   Spree::Core::Engine.add_routes(&spree_routes_overrides)
