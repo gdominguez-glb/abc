@@ -72,11 +72,16 @@ Spree::Product.class_eval do
   scope :saleable, -> { where(for_sale: true) }
   scope :fulfillmentable, -> { where("spree_products.fulfillment_date < ? or spree_products.fulfillment_date is null", Time.now) }
   scope :unexpire, -> { where("spree_products.expiration_date > ? or spree_products.expiration_date is null", Time.now) }
+  scope :show_in_storefront, -> { where(show_in_storefront: true) }
 
   after_save :add_video_group_taxon
 
   def parts?
     parts.any?
+  end
+
+  def group_items?
+    group_items.any?
   end
 
   validates :redirect_url, format: { with: URI.regexp }, allow_blank: true
