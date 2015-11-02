@@ -137,6 +137,10 @@ Spree::Product.class_eval do
     price == 0
   end
 
+  def local_only?
+    free? && id_in_salesforce.blank?
+  end
+
   def digital_delivery?
     shipping_category.name == 'Digital Delivery'
   end
