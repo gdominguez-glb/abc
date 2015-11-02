@@ -10,6 +10,10 @@ module AutocompleteByName
       collection = collection.where("name like ?", "%#{params[:q]}%")
     end
 
+    if params[:name]
+      collection = collection.where(name: params[:name])
+    end
+
     render json: {
       count: collection.count,
       total_count: collection.total_count,
