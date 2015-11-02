@@ -39,14 +39,14 @@
 
         <%if bookmarked_video?(@video) %>
           <%= link_to remove_bookmark_video_gallery_path(@video, ref_id: "#fav-button-#{@video.id}"), remote: true, class: "btn favorite-button btn-default btn-block", id: "fav-button-#{@video.id}", data: { method: :post } do %>
-            <i class="fa fa-bookmark"></i> Remove from Bookmarks
+            <i class="fa fa-bookmark"></i> Remove Bookmark
           <% end %>
         <% else %>
           <%= link_to bookmark_video_gallery_path(@video, ref_id: "#fav-button-#{@video.id}"), remote: true, class: "btn favorite-button btn-default btn-block", id: "fav-button-#{@video.id}", data: { method: :post } do %>
-            <i class="fa fa-bookmark-o"></i> Add to Bookmarks
+            <i class="fa fa-bookmark-o"></i> Add Bookmark
           <% end %>
         <% end %>
-        
+
       </div>
     </div>
     <script src="//fast.wistia.net/assets/external/iframe-api-v1.js"></script>
