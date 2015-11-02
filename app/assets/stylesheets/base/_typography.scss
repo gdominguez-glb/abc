@@ -189,6 +189,13 @@ ol {
       line-height: 2em;
     }
   }
+
+  &.dropdown-menu,
+  &.list-style-none {
+    li {
+      list-style-type: none;
+    }
+  }
 }
 
 hr {

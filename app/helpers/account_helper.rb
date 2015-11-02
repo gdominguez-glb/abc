@@ -25,8 +25,20 @@ module AccountHelper
   end
 
   def generate_material_activity_url(activity)
-    product = activity.item.product
+    product_material_link(activity.item)
+  end
+
+  def product_material_link(material)
+    product = material.product
     return '' if product.blank?
-    "#{product.access_url}?#{{opened_product_id: product.id, opened_material_id: activity.item.id}.to_param}"
+    "#{product.access_url}?#{{opened_product_id: product.id, opened_material_id: material.id}.to_param}"
+  end
+
+  def bookmark_item_url(item)
+    if item.is_a?(Spree::Video)
+      video_gallery_path(item)
+    elsif item.is_a?(Spree::Material)
+      product_material_link(item)
+    end
   end
 end
