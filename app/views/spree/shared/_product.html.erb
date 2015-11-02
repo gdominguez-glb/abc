@@ -26,7 +26,9 @@
       </div>
       <div class="product-footer">
         <span class="product-type">Lorem</span>
-        <% unless product.group_product? %>
+        <% if product.group_product? %>
+          <%= link_to 'Explore', group_product_path(product), class: 'pull-right' %>
+        <% else %>
           <span itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product-price pull-right">
             <span class="price selling" itemprop="price"><%= link_to display_price(product), url %></span>
           </span>
