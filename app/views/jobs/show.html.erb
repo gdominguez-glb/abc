@@ -6,3 +6,11 @@
 
   <%= link_to 'Back to Careers', jobs_path %>
 </div>
+
+<script type="text/javascript">
+  $(function() {
+    var content = $('.container-content');
+    content.find('div:empty, p:empty, br').remove();
+    content.find('span, font').contents().unwrap();
+  });
+</script>
