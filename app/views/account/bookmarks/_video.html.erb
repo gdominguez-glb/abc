@@ -1,2 +1,6 @@
-<h4><%= video.title %></h4>
+<h4>
+  <%= link_to bookmark_item_url(video) do %>
+    <%= video.title %>
+  <% end %>
+</h4>
 <p><%= video.categories.join(', ') %></p>

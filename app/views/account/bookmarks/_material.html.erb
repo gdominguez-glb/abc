@@ -1,1 +1,5 @@
-<h4><%= material.name %></h4>
+<h4>
+  <%= link_to bookmark_item_url(material) do %>
+    <%= material.name %>
+  <% end %>
+</h4>
