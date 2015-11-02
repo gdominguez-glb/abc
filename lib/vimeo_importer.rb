@@ -45,6 +45,7 @@ class VimeoImporter
     modules     = ['A', 'B', 'C'].map{|c| row["Module #{c}"] }.reject(&:blank?)
     lessons     = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'].map{|c| row["Lesson #{c}"] }.reject(&:blank?)
 
+    assign_taxons(video, 'Group', [video.video_group.try(:name)])
     assign_taxons(video, 'Grade', grades)
     assign_taxons(video, 'Grade Band', grade_bands)
     assign_taxons(video, 'Module', modules)
