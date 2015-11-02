@@ -2,51 +2,55 @@
   <div class="panel-heading">
     <div class="row">
       <div class="col-xs-7 text-left">
-        <%= material.name %>
+        <h4 class="panel-title"><%= material.name %></h4>
       </div>
       <div class="col-xs-5 text-right">
+        <% if item.children.size > 0 %>
+          <% open_material = @opened_material_ids.include?(material.id) %>
+          <button
+            class="btn btn-primary btn-icon margin-left margin-right-reset collapsed"
+            data-material-id="<%= material.id %>"
+            data-toggle="collapse"
+            data-parent="#material<%= material.id %>"
+            href="#collapse<%= material.id %>">
+            <i class="fa fa-chevron-up"></i>
+          </button>
+        <% end %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 text-left">
         <% if material.link.present? %>
           <%= link_to material.link, target: '_blank' do %>
-            <span class="fa fa-link"></span>
+            <i class="fa fa-link margin-right-s text-info"></i>
           <% end %>
         <% end %>
         <% if item.children.size > 0 || material.material_files_count > 0 %>
           <%= link_to download_material_path(material), remote: true do %>
-            <span class="fa fa-download"></span>
+            <i class="fa fa-download margin-right-s text-info"></i>
           <% end %>
         <% end %>
         <% if material.material_files_count > 0 %>
 
           <% if material.material_files_count == 1 %>
             <%= link_to material.material_files.first.file.preview_expiring_url(60*60*60), target: '_blank' do %>
-              <span class="fa fa-eye"></span>
+              <i class="fa fa-eye margin-right-s text-info"></i>
             <% end %>
           <% else %>
             <%= link_to preview_material_path(material), remote: true do %>
-              <span class="fa fa-eye"></span>
+              <i class="fa fa-eye margin-right-s text-info"></i>
             <% end %>
           <% end %>
 
           <% if bookmarked_material?(material) %>
             <%= link_to remove_bookmark_material_path(material, ref_id: "#bookmark-#{material.id}"), id: "bookmark-#{material.id}", remote: true, data: { method: :post } do %>
-              <span class="fa fa-bookmark"></span>
+              <i class="fa fa-bookmark text-info"></i>
             <% end %>
           <% else %>
             <%= link_to bookmark_material_path(material, ref_id: "#bookmark-#{material.id}"), id: "bookmark-#{material.id}", remote: true, data: { method: :post } do %>
-              <span class="fa fa-bookmark-o"></span>
+              <i class="fa fa-bookmark-o text-info"></i>
             <% end %>
           <% end %>
-        <% end %>
-        <% if item.children.size > 0 %>
-          <% open_material = @opened_material_ids.include?(material.id) %>
-          <button
-            class="btn btn-default btn-icon margin-left margin-right-reset collapsed"
-            data-material-id="<%= material.id %>"
-            data-toggle="collapse"
-            data-parent="#material<%= material.id %>"
-            href="#collapse<%= material.id %>">
-            <span class="fa fa-chevron-up"></span>
-          </button>
         <% end %>
       </div>
     </div>

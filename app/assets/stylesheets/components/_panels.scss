@@ -129,3 +129,21 @@
 .panel-info {
   @include panel-variant($panel-info-border, $panel-info-text, $panel-info-heading-bg, $panel-info-border);
 }
+
+.panel-product {
+  .panel {
+    border-radius: 0;
+
+    .panel-heading {
+      border-radius: 0;
+    }
+
+    .list-group {
+      border-top: 1px solid #ddd;
+    }
+
+    .list-group-item {
+      padding: 0;
+    }
+  }
+}
