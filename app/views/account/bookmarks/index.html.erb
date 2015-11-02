@@ -10,6 +10,9 @@
             <% elsif bookmark.bookmarkable.is_a?(Spree::Material) %>
               <%= render partial: 'material', locals: { material: bookmark.bookmarkable } %>
             <% end %>
+            <%= link_to account_bookmark_path(bookmark), data: { method: :delete }, class: 'btn btn-danger' do %>
+              <span class="fa fa-bookmark"></span> Remove
+            <% end %>
           <% end %>
         <% end %>
       <% end %>
