@@ -1,7 +1,7 @@
 <div class="container">
   <div>
     <h3><%= @job.title %></h3>
-    <p><%= @job.content %></p>
+    <p><%= @job.content.html_safe %></p>
   </div>
 
   <%= link_to 'Back to Careers', jobs_path %>
