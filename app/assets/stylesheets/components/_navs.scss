@@ -6,14 +6,33 @@
 // *************************************
 
 .progress-steps {
-  margin-top: 10px;
+  margin-top: 0;
 }
 
 // -------------------------------------
 //   Nav Pills
 // -------------------------------------
 
-.nav-pills {
+ul.nav-pills {
+  li {
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 20px;
+    letter-spacing: 2px;
+
+    a {
+      margin-right: $b-space-s;
+      border: 1px solid $dark-blue;
+      font-weight: normal;
+    }
+
+    &.last {
+      a {
+        margin-right: 0;
+      }
+    }
+  }
+
   > li.active {
     > a {
       color: #fff;
