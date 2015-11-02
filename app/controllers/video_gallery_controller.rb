@@ -46,7 +46,7 @@ class VideoGalleryController < ApplicationController
 
   def filter_videos(videos)
     if params[:query].present?
-      videos = videos.where("title like ?", "%#{params[:query]}%")
+      videos = videos.where("title ilike ?", "%#{params[:query]}%")
     end
     filter_by_taxons(videos)
   end
