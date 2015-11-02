@@ -1,0 +1,6 @@
+<% if current_spree_user %>
+  $("<%= params[:ref_id] %>").attr('href', "<%= bookmark_video_gallery_path(@video, ref_id: "#fav-button-#{@video.id}") %>");
+  $("<%= params[:ref_id] %>").html("<%= escape_javascript("<i class='fa fa-bookmark-o'></i> Add Bookmark".html_safe) %>")
+<% else %>
+  alert('please login first.')
+<% end %>

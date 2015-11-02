@@ -1,5 +1,6 @@
 <% if current_spree_user %>
-  $("<%= params[:ref_id] %>").addClass('disabled');
+  $("<%= params[:ref_id] %>").attr('href', "<%= remove_bookmark_video_gallery_path(@video, ref_id: "#fav-button-#{@video.id}") %>");
+  $("<%= params[:ref_id] %>").html("<%= escape_javascript("<i class='fa fa-bookmark'></i> Remove Bookmark".html_safe) %>")
 <% else %>
   alert('please login first.')
 <% end %>
