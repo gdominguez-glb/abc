@@ -1,10 +1,9 @@
-<div class="container">
-  <div>
+<div class="row">
+  <div class="col-sm-10 col-sm-offset-1 margin-top-xxl margin-bottom-xl">
     <h3><%= @job.title %></h3>
     <p><%= @job.content.html_safe %></p>
+    <%= link_to 'Back to Careers', jobs_path, class: 'btn btn-default' %>
   </div>
-
-  <%= link_to 'Back to Careers', jobs_path %>
 </div>
 
 <script type="text/javascript">
