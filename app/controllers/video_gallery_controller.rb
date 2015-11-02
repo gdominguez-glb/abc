@@ -35,6 +35,7 @@ class VideoGalleryController < ApplicationController
   end
 
   def remove_bookmark
+    @video = Spree::Video.find(params[:id])
     current_spree_user.bookmarks.find_by(bookmarkable: @video).try(:destroy)
   end
 
