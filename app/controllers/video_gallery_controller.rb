@@ -1,6 +1,6 @@
 class VideoGalleryController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_video, only: [:show, :show_description, :play, :unlock]
+  before_action :find_video, only: [:show, :show_description, :play, :unlock, :remove_bookmark]
   before_action :load_taxonomies, only: [:index]
 
   helper_method :bought_products?, :can_play_video?, :bookmarked_video?
@@ -30,8 +30,13 @@ class VideoGalleryController < ApplicationController
   end
 
   def bookmark
-    video = Spree::Video.find(params[:id])
-    current_spree_user.bookmarks.create(bookmarkable: video)
+    @video = Spree::Video.find(params[:id])
+    current_spree_user.bookmarks.create(bookmarkable: @video)
+  end
+
+  def remove_bookmark
+    @video = Spree::Video.find(params[:id])
+    current_spree_user.bookmarks.find_by(bookmarkable: @video).try(:destroy)
   end
 
   private
@@ -46,7 +51,7 @@ class VideoGalleryController < ApplicationController
 
   def filter_videos(videos)
     if params[:query].present?
-      videos = videos.where("title like ?", "%#{params[:query]}%")
+      videos = videos.where("title ilike ?", "%#{params[:query]}%")
     end
     filter_by_taxons(videos)
   end

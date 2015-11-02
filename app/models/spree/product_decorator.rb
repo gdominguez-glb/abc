@@ -46,6 +46,14 @@ Spree::Product.class_eval do
                           join_table: 'spree_parts',
                           foreign_key: 'bundle_id'
 
+  ## spree group_items
+  group_items_habtm = select("#{Spree::Product.quoted_table_name}.*")
+                  .select("#{Spree::GroupItem.quoted_table_name}.id AS group_item_id")
+  has_and_belongs_to_many :group_items, -> { group_items_habtm },
+                          class_name: 'Spree::Product',
+                          join_table: 'spree_group_items',
+                          foreign_key: 'group_id'
+
   scope :search_can_be_part, lambda { |query|
     where = "LOWER(#{Spree::Product.quoted_table_name}.name) LIKE ?"
     like  = "%#{query.downcase}%"
@@ -64,11 +72,20 @@ Spree::Product.class_eval do
   scope :saleable, -> { where(for_sale: true) }
   scope :fulfillmentable, -> { where("spree_products.fulfillment_date < ? or spree_products.fulfillment_date is null", Time.now) }
   scope :unexpire, -> { where("spree_products.expiration_date > ? or spree_products.expiration_date is null", Time.now) }
+  scope :show_in_storefront, -> { where(show_in_storefront: true) }
 
   after_save :add_video_group_taxon
 
   def parts?
     parts.any?
+  end
+
+  def group_items?
+    group_items.any?
+  end
+
+  def group_product?
+    self.product_type == 'group'
   end
 
   validates :redirect_url, format: { with: URI.regexp }, allow_blank: true
@@ -109,6 +126,7 @@ Spree::Product.class_eval do
       'video',
       'multiple download',
       'bundle',
+      'group',
       'partner',
       'inkling',
       'other'

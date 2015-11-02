@@ -1,0 +1,72 @@
+<%# <%= render partial: 'spree/admin/shared/product_sub_menu' %1> %>
+
+<%= render partial: 'spree/admin/shared/product_tabs', locals: { current: 'Group Items' } %>
+
+<%= form_for [:admin, @product, Spree::GroupItem.new(group_id: @product.id)] do |f| %>
+  <%= f.hidden_field :group_id %>
+  <%= f.field_container :product, class: ['form-group'] do %>
+    <%= f.label :product, Spree.t(:product) %>
+    <%= f.hidden_field :product_id %>
+    <%= error_message_on :group_item, :product %>
+  <% end %>
+  <%= f.submit "Add", class: 'btn btn-primary' %>
+<% end %>
+
+<table class="table">
+  <tbody>
+    <% @product.group_items.each do |group_item| %>
+      <tr>
+        <td><%= link_to group_item.name, spree.admin_product_path(group_item) %></td>
+        <td><%= link_to 'Delete', admin_product_group_item_path(@product, group_item.group_item_id), class: 'btn btn-primary btn-sm', data: { confirm: 'Are you sure?', method: :delete } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<script type="text/javascript">
+//<![CDATA[
+  (function($){
+   $("#group_item_product_id").select2({
+      placeholder: "Select product",
+      multiple: false,
+      initSelection: function (element, callback) {
+        var url = Spree.url('/storeapi/products', {
+          ids: element.val(),
+          token: Spree.api_key
+        });
+        return $.getJSON(url, null, function (data) {
+          return callback(data['products'][0]);
+        });
+      },
+      ajax: {
+        url: '/storeapi/products',
+        datatype: 'json',
+        data: function (term, page) {
+          return {
+            per_page: 50,
+            page: page,
+            without_children: true,
+            q: {
+              name_cont: term
+            },
+            token: Spree.api_key
+          };
+        },
+        results: function (data, page) {
+          var more = page < data.pages;
+          return {
+            results: data['products'],
+            more: more
+          };
+        }
+      },
+      formatResult: function (product) {
+        return product.name;
+      },
+      formatSelection: function (product) {
+        return product.name;
+      }
+   });
+  })(jQuery);
+//]]>
+</script>

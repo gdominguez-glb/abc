@@ -206,6 +206,16 @@
       <%= f.hidden_field :can_be_part, value: 0 %>
       <%= f.hidden_field :individual_sale, value: 1 %>
     <% end %>
+    <% unless @product.group_items? %>
+      <div data-hook="admin_product_form_show_in_storefront">
+        <%= f.field_container :show_in_storefront do %>
+          <%= f.check_box :show_in_storefront %>
+          <%= f.label :show_in_storefront, Spree.t('bundles.admin.label.products.show_in_storefront') %>
+        <% end %>
+      </div>
+    <% else %>
+      <%= f.hidden_field :show_in_storefront, value: 1 %>
+    <% end %>
     <div data-hook='admin_product_form_license_text'>
       <div class='form-group field' id='product_license_text_field'>
         <%= f.label :license_text %>

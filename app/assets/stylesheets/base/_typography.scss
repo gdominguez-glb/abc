@@ -182,6 +182,12 @@ ol {
   li {
     list-style-type: none;
     font-size: .95em;
+
+    .container-content & {
+      list-style-type: circle;
+      text-align: left;
+      line-height: 2em;
+    }
   }
 }
 

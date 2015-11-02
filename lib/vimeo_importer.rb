@@ -45,6 +45,7 @@ class VimeoImporter
     modules     = ['A', 'B', 'C'].map{|c| row["Module #{c}"] }.reject(&:blank?)
     lessons     = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'].map{|c| row["Lesson #{c}"] }.reject(&:blank?)
 
+    assign_taxons(video, 'Group', [video.video_group.try(:name)])
     assign_taxons(video, 'Grade', grades)
     assign_taxons(video, 'Grade Band', grade_bands)
     assign_taxons(video, 'Module', modules)
@@ -54,7 +55,7 @@ class VimeoImporter
   def assign_taxons(video, taxonomy_name, taxon_names)
     taxonomy = Spree::Taxonomy.find_by(name: taxonomy_name)
     taxon_names.each do |taxon_name|
-      taxon = taxonomy.taxons.find_or_create_by(name: taxon_name)
+      taxon = taxonomy.taxons.find_or_create_by(name: taxon_name, parent: taxonomy.root)
       begin
         video.taxons << taxon
       rescue
