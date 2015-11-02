@@ -43,7 +43,7 @@
       multiple: false,
       initSelection: function (element, callback) {
         var url = Spree.url('/store/admin/video_groups', {
-          ids: element.val(),
+          name: element.val(),
           token: Spree.api_key
         });
         return $.getJSON(url, null, function (data) {
