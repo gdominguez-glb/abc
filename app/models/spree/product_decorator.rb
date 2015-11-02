@@ -84,6 +84,10 @@ Spree::Product.class_eval do
     group_items.any?
   end
 
+  def group_product?
+    self.product_type == 'group'
+  end
+
   validates :redirect_url, format: { with: URI.regexp }, allow_blank: true
   validates :sf_id_product, :sf_id_pricebook, presence: true, unless: :free?
   validates :sf_id_product, :sf_id_pricebook,

@@ -1,0 +1,19 @@
+<div class="group-products">
+  <div class="col-xs-12">
+    <div class="row">
+      <div class="col-sm-10 col-sm-offset-1">
+        <div class="page-header">
+          <h2><%= @product_group.name %></h2>
+          <p><%= @product_group.description %></p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-10 col-sm-offset-1">
+        <% @products.each do |product| %>
+          <%= render partial: 'spree/shared/product', locals: { product: product } %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

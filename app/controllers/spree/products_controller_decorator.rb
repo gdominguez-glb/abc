@@ -33,4 +33,9 @@ Spree::ProductsController.class_eval do
     @product = current_spree_user.products.find_by(slug: params[:id])
     redirect_to main_app.root_path and return if @product.blank?
   end
+
+  def group
+    @product_group = Spree::Product.find_by(slug: params[:id])
+    @products = @product_group.group_items
+  end
 end

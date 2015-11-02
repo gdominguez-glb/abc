@@ -38,37 +38,7 @@
       <div id="products" data-hook class="col-sm-6 col-md-7 col-lg-8 col-lg-offset-halfone">
         <div class="row">
           <% products.each do |product| %>
-            <% url = spree.product_url(product, taxon_id: @taxon.try(:id)) %>
-            <div id="product_<%= product.id %>" class="col-md-6 product-list-item" data-hook="products_list_item" itemscope itemtype="http://schema.org/Product">
-              <div class="product-wrapper">
-                <% cache(@taxon.present? ? [I18n.locale, current_currency, @taxon, product] : [I18n.locale, current_currency, product]) do %>
-                  <div class="product-body flip-container">
-                    <div class="flipper">
-                      <div class="flip-front">
-                        <h5 class="title">
-                          <%= link_to truncate(product.name, length: 50), url, itemprop: "name", title: product.name %>
-                        </h5>
-                        <button class="btn btn-primary flip-btn">
-                          <i class="fa fa-plus flip-icon"></i>
-                        </button>
-                      </div>
-                      <div class="flip-back">
-                        <p><%= product.description %></p>
-                        <button class="btn btn-primary flip-btn">
-                          <i class="fa fa-minus flip-icon"></i>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="product-footer">
-                    <span class="product-type">Lorem</span>
-                    <span itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product-price pull-right">
-                      <span class="price selling" itemprop="price"><%= link_to display_price(product), url %></span>
-                    </span>
-                  </div>
-                <% end %>
-              </div>
-            </div>
+            <%= render partial: 'spree/shared/product', locals: { product: product } %>
           <% end %>
         </div>
         <% reset_cycle("classes") %>
