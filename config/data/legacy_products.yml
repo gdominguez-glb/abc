@@ -1,0 +1,135 @@
+products:
+  -
+    :legacy_id: 10241
+    :legacy_title: 'Wheatley - Grades K-2'
+    :name: 'Wheatley English Maps (Grades K-5)'
+
+  -
+    :legacy_id: 10242
+    :legacy_title: 'Wheatley - Grades 3-5'
+    :name: 'Wheatley English Maps (Grades K-5)'
+
+  -
+    :legacy_id: 10243
+    :legacy_title: 'Wheatley - Grades 6-8'
+    :name: 'Wheatley English Maps (Grades 6-8)'
+
+  -
+    :legacy_id: 10244
+    :legacy_title: 'Wheatley - Grades 9-12'
+    :name: 'Wheatley English Maps (Grades 9-12)'
+
+  -
+    :legacy_id: 3754
+    :legacy_title: 'Wheatley - Grades K-12'
+    :name: 'Wheatley English Maps (Grades K-12)'
+
+  -
+    :legacy_id: 48864
+    :legacy_title: 'U.S. & World History - Lower Elementary'
+    :name: 'Alexandria Plan Lower Elementary'
+
+  -
+    :legacy_id: 49176
+    :legacy_title: 'U.S. & World History - Upper Elementary'
+    :name: 'Alexandria Plan Upper Elementary'
+
+  -
+    :legacy_id: 53339
+    :legacy_title: 'A Story of Units'
+    :name: 'Eureka Digital Suite'
+
+  -
+    :legacy_id: 55234
+    :legacy_title: 'A Story of Ratios & Functions'
+    :name: 'Eureka Digital Suite'
+
+  -
+    :legacy_id: 55319
+    :legacy_title: 'Complete (Pk-12)'
+    :name: 'Eureka Digital Suite'
+
+  -
+    :legacy_id: 156968
+    :legacy_title: 'Teach Eureka - Grade 8'
+    :name: 'Eureka Digital Suite'
+
+  -
+    :legacy_id: 156960
+    :legacy_title: 'Teach Eureka - Grade K'
+    :name: 'Eureka Digital Suite'
+
+  -
+    :legacy_id: 156961
+    :legacy_title: 'Teach Eureka - Grade 1'
+    :name: 'Eureka Digital Suite'
+
+  -
+    :legacy_id: 156962
+    :legacy_title: 'Teach Eureka - Grade 2'
+    :name: 'Eureka Digital Suite'
+
+  -
+    :legacy_id: 156963
+    :legacy_title: 'Teach Eureka - Grade 3'
+    :name: 'Eureka Digital Suite'
+
+  -
+    :legacy_id: 156964
+    :legacy_title: 'Teach Eureka - Grade 4'
+    :name: 'Eureka Digital Suite'
+
+  -
+    :legacy_id: 156965
+    :legacy_title: 'Teach Eureka - Grade 5'
+    :name: 'Eureka Digital Suite'
+
+  -
+    :legacy_id: 156966
+    :legacy_title: 'Teach Eureka - Grade 6'
+    :name: 'Eureka Digital Suite'
+
+  -
+    :legacy_id: 156967
+    :legacy_title: 'Teach Eureka - Grade 7'
+    :name: 'Eureka Digital Suite'
+
+  -
+    :legacy_id: 156971
+    :legacy_title: 'Teach Eureka - Grade 11'
+    :name: 'Eureka Digital Suite'
+
+  -
+    :legacy_id: 156970
+    :legacy_title: 'Teach Eureka - Grade 10'
+    :name: 'Eureka Digital Suite'
+
+  -
+    :legacy_id: 156969
+    :legacy_title: 'Teach Eureka - Grade 9'
+    :name: 'Eureka Digital Suite'
+
+  -
+    :legacy_id: 156959
+    :legacy_title: 'Teach Eureka - Grade P'
+    :name: 'Eureka Digital Suite'
+
+  -
+    :legacy_id: 157141
+    :legacy_title: 'Teach Eureka - High'
+    :name: 'Eureka Digital Suite'
+
+  -
+    :legacy_id: 157167
+    :legacy_title: 'Teach Eureka - Elementary'
+    :name: 'Eureka Digital Suite'
+
+  -
+    :legacy_id: 156972
+    :legacy_title: 'Teach Eureka - Grade 12'
+    :name: 'Eureka Digital Suite'
+
+  -
+    :legacy_id: 108045
+    :legacy_title: 'Eureka PDF Access'
+    :name: 'Eureka Basic Curriculum'

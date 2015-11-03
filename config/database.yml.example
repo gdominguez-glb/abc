@@ -83,3 +83,12 @@ production:
   database: GreatMinds_production
   username: GreatMinds
   password: <%= ENV['GREATMINDS_DATABASE_PASSWORD'] %>
+
+development_migrate:
+  adapter: mysql2
+  encoding: utf8
+  database: greatminds_ee
+  username: root
+  password:
+  host: localhost
+  pool: 5

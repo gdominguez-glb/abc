@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151102000758) do
+ActiveRecord::Schema.define(version: 20151103080350) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -180,6 +180,29 @@ ActiveRecord::Schema.define(version: 20151102000758) do
     t.boolean  "display"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "legacy_licenses", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "product_id"
+    t.datetime "expiration_date"
+    t.integer  "ee_id"
+    t.string   "mapped_name"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  create_table "legacy_users", force: :cascade do |t|
+    t.string   "email"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.boolean  "is_school_admin", default: false
+    t.boolean  "is_sub_admin",    default: false
+    t.integer  "parent_admin_id"
+    t.datetime "imported_at"
+    t.integer  "ee_id"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
 
   create_table "medium_publications", force: :cascade do |t|
@@ -1534,6 +1557,7 @@ ActiveRecord::Schema.define(version: 20151102000758) do
     t.string   "phone"
     t.boolean  "allow_communication",                 default: true
     t.text     "interested_subjects"
+    t.integer  "delegate_user_id"
   end
 
   add_index "spree_users", ["deleted_at"], name: "index_spree_users_on_deleted_at", using: :btree
