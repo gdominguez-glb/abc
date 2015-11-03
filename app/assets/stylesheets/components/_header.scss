@@ -115,37 +115,48 @@
         a,
         a:hover,
         a:focus {
+          border-bottom: 1px solid $coral;
           color: #fff;
           background-color: darken($coral, 5%);
 
           @media screen and (min-width: $screen-sm-min) {
+            border: 0;
             color: $brand-green;
             background: transparent;
           }
 
           [data-page='english'] & {
+            border-bottom: 1px solid $english;
             background-color: darken($english, 5%);
 
             @media screen and (min-width: $screen-sm-min) {
-              color: $brand-green;
-              background: transparent;
+              color: $english;
             }
           }
 
           [data-page='history'] & {
+            border-bottom: 1px solid $history;
             background-color: darken($history, 5%);
 
             @media screen and (min-width: $screen-sm-min) {
-              color: $brand-green;
-              background: transparent;
+              color: $history;
             }
           }
 
           [data-page='math'] & {
+            border-bottom: 1px solid darken($math, 25%);
             background-color: darken($math, 5%);
 
             @media screen and (min-width: $screen-sm-min) {
-              color: $brand-green;
+              color: $math;
+            }
+          }
+
+          @media screen and (min-width: $screen-sm-min) {
+            [data-page='english'] &,
+            [data-page='history'] &,
+            [data-page='math'] & {
+              border: 0;
               background: transparent;
             }
           }
@@ -161,12 +172,25 @@
           > li {
             > a {
               padding: 10px 15px 10px 25px;
+              border-bottom: 1px solid $coral;
               color: #fff;
 
               [data-page='english'] &,
               [data-page='history'] &,
               [data-page='math'] & {
                 color: $dark-blue;
+              }
+
+              [data-page='english'] & {
+                border-bottom: 1px solid $english;
+              }
+
+              [data-page='history'] & {
+                border-bottom: 1px solid $history;
+              }
+
+              [data-page='math'] & {
+                border-bottom: 1px solid darken($math, 25%);
               }
 
               &:hover,
@@ -179,12 +203,25 @@
       }
 
       > a {
+        border-bottom: 1px solid darken($coral, 5%);
         color: #fff;
 
         [data-page='english'] &,
         [data-page='history'] &,
         [data-page='math'] & {
           color: $dark-blue;
+        }
+
+        [data-page='english'] & {
+          border-bottom: 1px solid darken($english, 5%);
+        }
+
+        [data-page='history'] & {
+          border-bottom: 1px solid darken($history, 5%);
+        }
+
+        [data-page='math'] & {
+          border-bottom: 1px solid darken($math, 25%);
         }
 
         &:hover,
@@ -200,11 +237,13 @@
 
         @media screen and (min-width: $screen-sm-min) {
           padding: 73px 20px 16px;
+          border-bottom: 0;
 
           [data-page='english'] &,
           [data-page='history'] &,
           [data-page='math'] & {
             color: #fff;
+            border-bottom: 0;
 
             &:hover,
             &:focus {
@@ -216,6 +255,36 @@
             color: $brand-green;
           }
         }
+      }
+
+      &.search-button {
+        border-bottom: 1px solid darken($coral, 5%);
+
+        @media screen and (min-width: $screen-sm-min) {
+          border: 0;
+        }
+
+        [data-page='english'] & {
+          border-bottom: 1px solid darken($english, 5%);
+        }
+
+        [data-page='history'] & {
+          border-bottom: 1px solid darken($history, 5%);
+        }
+
+        [data-page='math'] & {
+          border-bottom: 1px solid darken($math, 25%);
+
+        }
+
+        @media screen and (min-width: $screen-sm-min) {
+          [data-page='english'] &,
+          [data-page='history'] &,
+          [data-page='math'] & {
+            border-bottom: 0;
+          }
+        }
+
       }
     }
 
@@ -405,7 +474,27 @@
       color: #fff;
 
       &:hover {
-        color: $brand-green;
+        @media screen and (min-width: $screen-sm-min) {
+          color: $brand-green;
+        }
+      }
+
+      [data-page='english'] &,
+      [data-page='history'] &,
+      [data-page='math'] & {
+        color: $dark-blue;
+
+        @media screen and (min-width: $screen-sm-min) {
+          color: #fff;
+        }
+
+        &:hover {
+          color: $dark-blue;
+
+          @media screen and (min-width: $screen-sm-min) {
+            color: $brand-green;
+          }
+        }
       }
     }
   }
