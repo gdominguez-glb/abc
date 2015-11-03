@@ -474,7 +474,27 @@
       color: #fff;
 
       &:hover {
-        color: $brand-green;
+        @media screen and (min-width: $screen-sm-min) {
+          color: $brand-green;
+        }
+      }
+
+      [data-page='english'] &,
+      [data-page='history'] &,
+      [data-page='math'] & {
+        color: $dark-blue;
+
+        @media screen and (min-width: $screen-sm-min) {
+          color: #fff;
+        }
+
+        &:hover {
+          color: $dark-blue;
+
+          @media screen and (min-width: $screen-sm-min) {
+            color: $brand-green;
+          }
+        }
       }
     }
   }
