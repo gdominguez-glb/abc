@@ -5,6 +5,7 @@
     // "recipe[greatminds::iptables]",
     "recipe[greatminds::monit]",
     "recipe[greatminds::nodejs]",
+    "recipe[greatminds::mysql]",
     "recipe[greatminds::postgres]",
     "recipe[greatminds::redis]",
     "recipe[greatminds::elasticsearch]",
