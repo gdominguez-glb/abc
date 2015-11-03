@@ -6,3 +6,12 @@
   host: localhost
   username: <%= node['db']['user']['name'] %>
   password: <%= node['db']['user']['password'] %>
+
+<%= node['rails_env'] %>_migrate:
+  adapter: mysql2
+  encoding: utf8
+  database: greatmin_ee
+  username: greatmin_intrid
+  password: wMJtxIj2T0zq
+  host: greatminds.net
+  pool: 5
