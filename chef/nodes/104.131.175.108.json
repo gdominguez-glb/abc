@@ -33,6 +33,12 @@
     "password": "intridea4gm",
     "security_token": "hWMHXt70393No8mVSvLPArJhu"
   },
+  "hightail": {
+    "api_url": "https://test2-api.yousendit.com/",
+    "api_key": "vpbwhn49fmbpyx8bxgexnws6",
+    "email": "roc@mobomo.com",
+    "password": "intridea4gm"
+  },
   "rails_env": "staging",
   "rails_secrets": "64550adc426749daffc881dc6c90c541d3896be12efb1a9c789bdbaf9b5f34368ffc5411966bb245f544f8f296e5b38255e5cd6208ba5ffb04805e86eede3d84",
   "domain": "gm-staging.intridea.com",
