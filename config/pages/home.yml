@@ -10,7 +10,7 @@ pages:
       :rows:
         -
           rowType: 'Role/Curriculum Selector Hero'
-          title: '<h5 class="home-mast-intro bold"><span class="green-text">Every</span> child is capable of <span class="green-text">greatness</span></h5>'
+          title: '<h5 class="home-mast-intro bold">Every child is capable of <span class="text-success">greatness</span></h5>'
           background_image_url: 'http://gm-s3-qa.intridea.com/documents/attachments/000/000/020/original/homepage-masthead.jpg?1443038050'
           position: 0
 
