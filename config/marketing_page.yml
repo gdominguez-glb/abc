@@ -4,7 +4,7 @@ marketing_templates:
     content: !xml |
       <div class="row intro masthead" style="background-image: url('<%= background_image_url %>')">
         <div class="col-xs-12 masthead-content text-center">
-          <h5 class="home-mast-intro bold"><%= title %></h5>
+          <h5 class="home-mast-intro bold"><%= title %> <span class="text-success"><% if title_highlight.present? %><%= title_highlight %><% end %></span></h5>
           <div id="pageSelection">
             <div class="btn-group fixed-width image-background">
               <button class="btn btn-default btn-block-xs margin-sm-bottom-m dropdown-toggle" type="button" id="dropdownRole" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
