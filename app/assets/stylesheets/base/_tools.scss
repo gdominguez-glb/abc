@@ -111,6 +111,26 @@
 }
 
 // -------------------------------------
+//   Text
+// -------------------------------------
+
+.text-success {
+  color: $brand-green;
+}
+
+.text-info {
+  color: $english;
+}
+
+.text-warning {
+  color: $history;
+}
+
+.text-danger {
+  color: darken($coral, 10%);
+}
+
+// -------------------------------------
 //   Images
 // -------------------------------------
 
