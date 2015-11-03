@@ -1,0 +1,44 @@
+{
+  "run_list": [
+    "recipe[greatminds]",
+    "recipe[greatminds::users]",
+    // "recipe[greatminds::iptables]",
+    "recipe[greatminds::monit]",
+    "recipe[greatminds::nodejs]",
+    "recipe[greatminds::mysql]",
+    "recipe[greatminds::postgres_lib]",
+    "recipe[greatminds::redis]",
+    "recipe[greatminds::imagemagick]",
+    "recipe[greatminds::rbenv]",
+    "recipe[greatminds::nginx]",
+    "recipe[greatminds::app]"
+  ],
+  "group": "deploy",
+  "user": {
+    "name": "deploy",
+    "password": "$1$GSGzIqIX$YjH2Yypf0Wiy3VKJDVP6D1"
+  },
+  "db": {
+    "root_password": "intridea4greatminds",
+    "user": {
+      "name": "greatminds",
+      "password": "intridea4greatminds"
+    }
+  },
+  "salesforce": {
+    "client_id": "3MVG90D5vR7UtjbrQmr8VbvTWzt2gzuEnKM7g1o8lrsl3FnJEp9uNfSSRh6O61v2ehZA7MMl3trxuwBMtCd6c",
+    "client_secret": "7698928844384121550",
+    "username": "maggie@greatminds.net.intridea",
+    "password": "intridea4gm",
+    "security_token": "u4xVcKb5XYw2ppzR25NJf6F1o"
+  },
+  "hightail": {
+    "api_url": "https://test2-api.yousendit.com/",
+    "api_key": "vpbwhn49fmbpyx8bxgexnws6",
+    "email": "roc@mobomo.com",
+    "password": "intridea4gm"
+  },
+  "rails_env": "qa",
+  "rails_secrets": "6c46153a8029c862afd9427f8059c98a04b741ed26411d0474d247531e1511ecc14250590075e8707445cdd502e1e8272c7ff7416cf03e84157ed4b00b75c87e",
+  "domain": "gm-prod.intridea.com"
+}
