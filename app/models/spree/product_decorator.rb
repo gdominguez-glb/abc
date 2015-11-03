@@ -179,7 +179,7 @@ Spree::Product.class_eval do
       name: name,
       description: description,
       bundle_names: parts.map(&:name).join(' '),
-      bundle_descriptions: parts.map(&:descriptions).join(' '),
+      bundle_descriptions: parts.map(&:description).join(' '),
       user_ids: user_ids
     }
   end
