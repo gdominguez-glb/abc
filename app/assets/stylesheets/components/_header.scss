@@ -126,28 +126,37 @@
           }
 
           [data-page='english'] & {
+            border-bottom: 1px solid $english;
             background-color: darken($english, 5%);
 
             @media screen and (min-width: $screen-sm-min) {
-              color: $brand-green;
-              background: transparent;
+              color: $english;
             }
           }
 
           [data-page='history'] & {
+            border-bottom: 1px solid $history;
             background-color: darken($history, 5%);
 
             @media screen and (min-width: $screen-sm-min) {
-              color: $brand-green;
-              background: transparent;
+              color: $history;
             }
           }
 
           [data-page='math'] & {
+            border-bottom: 1px solid darken($math, 25%);
             background-color: darken($math, 5%);
 
             @media screen and (min-width: $screen-sm-min) {
-              color: $brand-green;
+              color: $math;
+            }
+          }
+
+          @media screen and (min-width: $screen-sm-min) {
+            [data-page='english'] &,
+            [data-page='history'] &,
+            [data-page='math'] & {
+              border: 0;
               background: transparent;
             }
           }
@@ -172,6 +181,18 @@
                 color: $dark-blue;
               }
 
+              [data-page='english'] & {
+                border-bottom: 1px solid $english;
+              }
+
+              [data-page='history'] & {
+                border-bottom: 1px solid $history;
+              }
+
+              [data-page='math'] & {
+                border-bottom: 1px solid darken($math, 25%);
+              }
+
               &:hover,
               &:focus {
                 color: #fff;
@@ -189,6 +210,18 @@
         [data-page='history'] &,
         [data-page='math'] & {
           color: $dark-blue;
+        }
+
+        [data-page='english'] & {
+          border-bottom: 1px solid darken($english, 5%);
+        }
+
+        [data-page='history'] & {
+          border-bottom: 1px solid darken($history, 5%);
+        }
+
+        [data-page='math'] & {
+          border-bottom: 1px solid darken($math, 25%);
         }
 
         &:hover,
@@ -210,6 +243,7 @@
           [data-page='history'] &,
           [data-page='math'] & {
             color: #fff;
+            border-bottom: 0;
 
             &:hover,
             &:focus {
@@ -229,6 +263,28 @@
         @media screen and (min-width: $screen-sm-min) {
           border: 0;
         }
+
+        [data-page='english'] & {
+          border-bottom: 1px solid darken($english, 5%);
+        }
+
+        [data-page='history'] & {
+          border-bottom: 1px solid darken($history, 5%);
+        }
+
+        [data-page='math'] & {
+          border-bottom: 1px solid darken($math, 25%);
+
+        }
+
+        @media screen and (min-width: $screen-sm-min) {
+          [data-page='english'] &,
+          [data-page='history'] &,
+          [data-page='math'] & {
+            border-bottom: 0;
+          }
+        }
+
       }
     }
 
