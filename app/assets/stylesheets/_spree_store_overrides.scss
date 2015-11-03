@@ -71,8 +71,14 @@
   }
 
   .product-images {
+    .panel {
+      border: 0;
+      background-color: transparent;
+      box-shadow: none;
+    }
+
     .fa-shopping-cart {
-      color: $english;
+      color: $coral;
       font-size: 150px;
 
       @media screen and (min-width: $screen-sm-min) {
@@ -83,7 +89,7 @@
 
   .cart-item-image {
     .fa-shopping-cart {
-      color: $english;
+      color: $coral;
       font-size: 75px;
     }
   }
