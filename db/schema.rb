@@ -187,6 +187,7 @@ ActiveRecord::Schema.define(version: 20151103021834) do
     t.integer  "product_id"
     t.datetime "expiration_date"
     t.integer  "ee_id"
+    t.string   "mapped_name"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end

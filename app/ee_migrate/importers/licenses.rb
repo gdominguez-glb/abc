@@ -9,7 +9,8 @@ module Importers
           user_id: credit.member_id,
           product_id: credit.product_id,
           expiration_date: credit.expiration_date,
-          ee_id: credit.id
+          ee_id: credit.id,
+          mapped_name: PRODUCTS_MAPPINGS[credit.product_id]
         )
       end
     end

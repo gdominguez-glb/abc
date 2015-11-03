@@ -5,6 +5,7 @@ class CreateLegacyLicenses < ActiveRecord::Migration
       t.integer :product_id
       t.datetime :expiration_date
       t.integer :ee_id
+      t.string :mapped_name
 
       t.timestamps null: false
     end
