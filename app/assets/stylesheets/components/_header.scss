@@ -45,7 +45,7 @@
     @media screen and (min-width: $screen-sm-min) {
       position: relative;
       bottom: -3px;
-      left: 50px;
+      margin-left: 50px;
       height: 109px;
       background: transparent asset-url('logo-full.png') no-repeat 50% 50%;
       background-size: 155px 109px;
@@ -65,6 +65,7 @@
     box-shadow: none;
 
     @media screen and (min-width: $screen-sm-min) {
+      margin: 0 -15px 0 0;
       background-color: transparent;
     }
 
@@ -104,7 +105,7 @@
       &:first-child {
         a {
           @media screen and (min-width: $screen-sm-min) {
-            padding-left: 120px;
+            padding-left: 40px;
           }
         }
       }
