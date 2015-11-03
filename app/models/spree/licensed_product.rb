@@ -19,7 +19,7 @@ class Spree::LicensedProduct < ActiveRecord::Base
   end
 
   def local_only?
-    product && product.try(:id_in_salesforce).blank?
+    product && product.local_only?
   end
 
   def should_create_salesforce?
