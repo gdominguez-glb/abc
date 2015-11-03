@@ -115,10 +115,12 @@
         a,
         a:hover,
         a:focus {
+          border-bottom: 1px solid $coral;
           color: #fff;
           background-color: darken($coral, 5%);
 
           @media screen and (min-width: $screen-sm-min) {
+            border: 0;
             color: $brand-green;
             background: transparent;
           }
@@ -161,6 +163,7 @@
           > li {
             > a {
               padding: 10px 15px 10px 25px;
+              border-bottom: 1px solid $coral;
               color: #fff;
 
               [data-page='english'] &,
@@ -179,6 +182,7 @@
       }
 
       > a {
+        border-bottom: 1px solid darken($coral, 5%);
         color: #fff;
 
         [data-page='english'] &,
@@ -200,6 +204,7 @@
 
         @media screen and (min-width: $screen-sm-min) {
           padding: 73px 20px 16px;
+          border-bottom: 0;
 
           [data-page='english'] &,
           [data-page='history'] &,
@@ -215,6 +220,14 @@
           &:hover {
             color: $brand-green;
           }
+        }
+      }
+
+      &.search-button {
+        border-bottom: 1px solid darken($coral, 5%);
+
+        @media screen and (min-width: $screen-sm-min) {
+          border: 0;
         }
       }
     }
