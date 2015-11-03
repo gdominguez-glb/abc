@@ -2,14 +2,15 @@
   "run_list": [
     "recipe[greatminds]",
     "recipe[greatminds::users]",
+    // "recipe[greatminds::iptables]",
     "recipe[greatminds::monit]",
     "recipe[greatminds::nodejs]",
+    "recipe[greatminds::mysql]",
     "recipe[greatminds::postgres]",
     "recipe[greatminds::redis]",
     "recipe[greatminds::elasticsearch]",
     "recipe[greatminds::imagemagick]",
     "recipe[greatminds::rbenv]",
-    "recipe[greatminds::nginx]",
     "recipe[greatminds::app]",
     "recipe[greatminds::backup]"
   ],
@@ -26,13 +27,20 @@
     }
   },
   "salesforce": {
-    "client_id": "3MVG9Nc1qcZ7BbZ1XpVUs3UlnsFbsp3ztG_SEe7plG26z5xvBs94HFoNiYyocFiLC1eRH.PLc249S1YbHIrxB",
-    "client_secret": "3250542473237550008",
+    "client_id": "3MVG90D5vR7UtjbrQmr8VbvTWzt2gzuEnKM7g1o8lrsl3FnJEp9uNfSSRh6O61v2ehZA7MMl3trxuwBMtCd6c",
+    "client_secret": "7698928844384121550",
     "username": "maggie@greatminds.net.intridea",
-    "password": "intridea5gm",
-    "security_token": "rZj49NL9ZjublFkGjCr06tOl"
+    "password": "intridea4gm",
+    "security_token": "u4xVcKb5XYw2ppzR25NJf6F1o"
   },
-  "rails_env": "staging",
-  "rails_secrets": "64550adc426749daffc881dc6c90c541d3896be12efb1a9c789bdbaf9b5f34368ffc5411966bb245f544f8f296e5b38255e5cd6208ba5ffb04805e86eede3d84",
-  "domain": "gm-staging.intridea.com"
+  "hightail": {
+    "api_url": "https://test2-api.yousendit.com/",
+    "api_key": "vpbwhn49fmbpyx8bxgexnws6",
+    "email": "roc@mobomo.com",
+    "password": "intridea4gm"
+  },
+  "rails_env": "qa",
+  "rails_secrets": "6c46153a8029c862afd9427f8059c98a04b741ed26411d0474d247531e1511ecc14250590075e8707445cdd502e1e8272c7ff7416cf03e84157ed4b00b75c87e",
+  "domain": "gm-prod.intridea.com",
+  "db_server": "true"
 }

@@ -40,5 +40,6 @@
   },
   "rails_env": "qa",
   "rails_secrets": "6c46153a8029c862afd9427f8059c98a04b741ed26411d0474d247531e1511ecc14250590075e8707445cdd502e1e8272c7ff7416cf03e84157ed4b00b75c87e",
-  "domain": "gm-prod.intridea.com"
+  "domain": "gm-prod.intridea.com",
+  "app_server": "true"
 }
