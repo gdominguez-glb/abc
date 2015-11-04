@@ -10,6 +10,8 @@ namespace :account do
   patch 'save_profile', to: 'settings#save_profile'
   post 'save_grade_option', to: 'settings#save_grade_option'
 
+  get :shop_of_interest, to: 'products#shop_of_interest'
+
   resources :reminders, only: [:new, :create]
 
   resources :licenses do

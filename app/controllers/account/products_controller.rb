@@ -10,6 +10,11 @@ class Account::ProductsController < Account::BaseController
     load_taxons
   end
 
+  def shop_of_interest
+    shops = current_spree_user.interested_shops
+    redirect_to(shops.count == 1 ? shops.first.url : '/store')
+  end
+
   private
 
   def filter_by_grade_taxon(products)

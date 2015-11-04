@@ -244,4 +244,8 @@ Spree::User.class_eval do
   def interested_curriculums
     Curriculum.where(id: self.interested_subjects).map(&:name)
   end
+
+  def interested_shops
+    CurriculumShop.joins(:page).joins("join curriculums on curriculums.id = pages.curriculum_id").where("curriculums.name in (?)", self.interested_curriculums).uniq
+  end
 end
