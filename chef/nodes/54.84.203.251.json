@@ -42,6 +42,6 @@
   "rails_env": "production",
   "rails_secrets": "6c46153a8029c862afd9427f8059c98a04b741ed26411d0474d247531e1511ecc14250590075e8707445cdd502e1e8272c7ff7416cf03e84157ed4b00b75c87e",
   "domain": "gm-prod.intridea.com",
-  "redis_host": "54.175.166.51",
+  "redis_host": "172.31.54.57",
   "db_server": "true"
 }
