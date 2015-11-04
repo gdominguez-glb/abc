@@ -12,14 +12,14 @@
                 <%= link_to truncate(product.name, length: 50), url, itemprop: "name", title: product.name %>
               <% end %>
             </h5>
-            <button class="btn btn-primary flip-btn">
-              <i class="fa fa-plus flip-icon"></i>
+            <button class="btn btn-link flip-btn">
+              More info
             </button>
           </div>
           <div class="flip-back">
             <p><%= product.description %></p>
-            <button class="btn btn-primary flip-btn">
-              <i class="fa fa-minus flip-icon"></i>
+            <button class="btn btn-link flip-btn">
+              Back
             </button>
           </div>
         </div>
@@ -30,7 +30,7 @@
           <%= link_to 'Explore', group_product_path(product), class: 'pull-right' %>
         <% else %>
           <span itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product-price pull-right">
-            <span class="price selling" itemprop="price"><%= link_to display_price(product), url %></span>
+            <span class="price selling" itemprop="price"><%= link_to display_price(product), url, class: 'btn btn-sm btn-success' %></span>
           </span>
         <% end %>
       </div>
