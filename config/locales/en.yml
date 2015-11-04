@@ -79,3 +79,6 @@ en:
         sf_id_pricebook: Salesforce Pricebook2Id
       spree/user:
         school_district: School/District
+      medium_publication:
+        url: 'Medium Publication Url'
+        slug: 'Blog Unique Url'
