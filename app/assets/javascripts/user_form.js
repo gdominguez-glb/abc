@@ -81,16 +81,18 @@ $(document).on('change', '#schoolDistrictSelect input', function(e) {
 
 });
 
-$(document).on('click', '#schoolNotListed', function(e) {
-  $('#rowSchoolSelect select').prop('selectedIndex',0).prev().text('Select a School');
-  $('#rowAddSchool').collapse('show');
-  $('#rowSchoolSelect').collapse('hide');
+$(document).on('change', '#spree_user_school_id', function(e) {
+  if( $(this).find('option:selected').attr('id') === '#schoolNotListed' ) {
+    $('#rowAddSchool').collapse('show');
+    $('#rowSchoolSelect').collapse('hide');
+  }
 });
 
-$(document).on('click', '#districtNotListed', function(e) {
-  $('#rowDistrictSelect select').prop('selectedIndex',0).prev().text('Select a District');
-  $('#rowAddDistrict').collapse('show');
-  $('#rowDistrictSelect').collapse('hide');
+$(document).on('change', '#spree_user_district_id', function(e) {
+  if( $(this).find('option:selected').attr('id') === '#districtNotListed' ) {
+    $('#rowAddDistrict').collapse('show');
+    $('#rowDistrictSelect').collapse('hide');
+  }
 });
 
 $(document).on('click', '#closeAddSchool', function(e) {
@@ -105,4 +107,6 @@ $(document).on('click', '#closeAddDistrict', function(e) {
 
 $(function(){
   $("#spree_user_title").trigger('change');
+  $("#spree_user_school_id option:eq(0)").after('<option id="#schoolNotListed">School Not Listed</option>');
+  $("#spree_user_district_id option:eq(0)").after('<option id="#districtNotListed">District Not Listed</option>');
 });
