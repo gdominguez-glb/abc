@@ -1,0 +1,29 @@
+<%= form_for([:cms, @curriculum_shop], class: 'form') do |f| %>
+  <% if @curriculum_shop.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@curriculum_shop.errors.count, "error") %> prohibited this curriculum_shop from being saved:</h2>
+
+      <ul>
+      <% @curriculum_shop.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :url %>
+    <%= f.text_field :url, class: 'form-control' %>
+  </div>
+  <div class="form-group curriculum-input>">
+    <%= f.label "Curriculum Page" %>
+    <%= f.collection_select :page_id, Page.show_in_top_navigation, :id, :group_name, { prompt: true }, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.submit class: 'btn btn-success' %>
+  </div>
+<% end %>

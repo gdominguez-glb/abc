@@ -62,4 +62,5 @@ namespace :cms do
     end
   end
   resources :curriculum_mails
+  resources :curriculum_shops
 end
