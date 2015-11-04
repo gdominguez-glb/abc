@@ -168,4 +168,11 @@
   .flip-icon {
     font-size: 29px;
   }
+
+  &.btn-link {
+    width: auto;
+    height: auto;
+    padding: $b-space-s $b-space !important;
+    border-radius: 4px;
+  }
 }
