@@ -95,10 +95,14 @@ $(document).on('change', '#spree_user_district_id', function(e) {
 
 $(document).on('click', '#closeAddSchool', function(e) {
   $('#rowAddSchool').collapse('hide');
+  $('#rowSchoolSelect select').prop('selectedIndex',0).prev().text('Select a School');
+  $('#spree_user_school_id').select2();
 });
 
 $(document).on('click', '#closeAddDistrict', function(e) {
   $('#rowAddDistrict').collapse('hide');
+  $('#rowDistrictSelect select').prop('selectedIndex',0).prev().text('Select a District');
+  $('#spree_user_district_id').select2();
 });
 
 $(function(){
