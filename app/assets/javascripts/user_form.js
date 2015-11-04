@@ -105,6 +105,24 @@ $(document).on('click', '#closeAddDistrict', function(e) {
   $('#spree_user_district_id').select2();
 });
 
+$(document).on('click', '#btnAddSchool', function(e) {
+  var newSchool = $('#rowAddSchool input').val();
+  var newSchoolTrim = newSchool.replace(/ /g,'');
+
+  $('#rowAddSchool').collapse('hide');
+  $('#rowSchoolSelect select').append('<option value="' + newSchoolTrim + '">' + newSchool + '<option>');
+  $('#rowSchoolSelect select').select2('val', newSchoolTrim);
+});
+
+$(document).on('click', '#btnAddDistrict', function(e) {
+  var newDistrict = $('#rowAddDistrict input').val();
+  var newDistrictTrim = newDistrict.replace(/ /g,'');
+
+  $('#rowAddDistrict').collapse('hide');
+  $('#rowDistrictSelect select').append('<option value="' + newDistrictTrim + '">' + newDistrict + '<option>');
+  $('#rowDistrictSelect select').select2('val', newDistrictTrim);
+});
+
 $(function(){
   $("#spree_user_title").trigger('change');
   $("#spree_user_school_id option:eq(0)").after('<option id="#schoolNotListed">School Not Listed</option>');
