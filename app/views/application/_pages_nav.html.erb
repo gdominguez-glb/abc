@@ -13,6 +13,9 @@
         <% @sub_nav_items.each do |page| %>
           <%= active_link_to page.title, "/#{page.slug}", wrap_tag: :li %>
         <% end %>
+        <% if @group_page && @group_page.shop %>
+          <li><%= link_to @group_page.shop.title, @group_page.shop.url  %></li>
+        <% end %>
         <% if @group_page && publication = @group_page.medium_publications.sorted.first %>
           <%= active_link_to 'Blog', curriculum_blog_path(page_slug: @group_page.slug, slug: publication.slug), wrap_tag: :li, active: /#{@group_page.slug}\/blog/ %>
         <% end %>

@@ -21,6 +21,8 @@ class Page < ActiveRecord::Base
   has_many :medium_publications
   has_many :event_pages, ->{ where(display: true) }
 
+  has_one :shop, class_name: 'CurriculumShop', foreign_key: :page_id
+
   validates :slug, presence: true, uniqueness: true
   validates_presence_of :title, :group_name
 
