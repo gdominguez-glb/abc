@@ -20,6 +20,7 @@
   },
   "db": {
     "root_password": "intridea4greatminds",
+    "host": "54.84.203.251",
     "user": {
       "name": "greatminds",
       "password": "intridea4greatminds"
