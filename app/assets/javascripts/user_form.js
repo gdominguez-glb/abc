@@ -81,28 +81,50 @@ $(document).on('change', '#schoolDistrictSelect input', function(e) {
 
 });
 
-$(document).on('click', '#schoolNotListed', function(e) {
-  $('#rowSchoolSelect select').prop('selectedIndex',0).prev().text('Select a School');
-  $('#rowAddSchool').collapse('show');
-  $('#rowSchoolSelect').collapse('hide');
+$(document).on('change', '#spree_user_school_id', function(e) {
+  if( $(this).find('option:selected').attr('id') === '#schoolNotListed' ) {
+    $('#rowAddSchool').collapse('show');
+  }
 });
 
-$(document).on('click', '#districtNotListed', function(e) {
-  $('#rowDistrictSelect select').prop('selectedIndex',0).prev().text('Select a District');
-  $('#rowAddDistrict').collapse('show');
-  $('#rowDistrictSelect').collapse('hide');
+$(document).on('change', '#spree_user_district_id', function(e) {
+  if( $(this).find('option:selected').attr('id') === '#districtNotListed' ) {
+    $('#rowAddDistrict').collapse('show');
+  }
 });
 
 $(document).on('click', '#closeAddSchool', function(e) {
   $('#rowAddSchool').collapse('hide');
-  $('#rowSchoolSelect').collapse('show');
+  $('#rowSchoolSelect select').prop('selectedIndex',0).prev().text('Select a School');
+  $('#spree_user_school_id').select2();
 });
 
 $(document).on('click', '#closeAddDistrict', function(e) {
   $('#rowAddDistrict').collapse('hide');
-  $('#rowDistrictSelect').collapse('show');
+  $('#rowDistrictSelect select').prop('selectedIndex',0).prev().text('Select a District');
+  $('#spree_user_district_id').select2();
+});
+
+$(document).on('click', '#btnAddSchool', function(e) {
+  var newSchool = $('#rowAddSchool input').val();
+  var newSchoolTrim = newSchool.replace(/ /g,'');
+
+  $('#rowAddSchool').collapse('hide');
+  $('#rowSchoolSelect select').append('<option value="' + newSchoolTrim + '">' + newSchool + '<option>');
+  $('#rowSchoolSelect select').select2('val', newSchoolTrim);
+});
+
+$(document).on('click', '#btnAddDistrict', function(e) {
+  var newDistrict = $('#rowAddDistrict input').val();
+  var newDistrictTrim = newDistrict.replace(/ /g,'');
+
+  $('#rowAddDistrict').collapse('hide');
+  $('#rowDistrictSelect select').append('<option value="' + newDistrictTrim + '">' + newDistrict + '<option>');
+  $('#rowDistrictSelect select').select2('val', newDistrictTrim);
 });
 
 $(function(){
   $("#spree_user_title").trigger('change');
+  $("#spree_user_school_id option:eq(0)").after('<option id="#schoolNotListed">School Not Listed</option>');
+  $("#spree_user_district_id option:eq(0)").after('<option id="#districtNotListed">District Not Listed</option>');
 });

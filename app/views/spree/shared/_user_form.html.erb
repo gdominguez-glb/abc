@@ -98,5 +98,25 @@
       </div>
     </div>
   </div>
+  <div class="input-group add-district-field collapse fade" id="rowAddDistrict">
+    <% f.object.school_district ||= SchoolDistrict.new(place_type: 'district') %>
+    <%= f.fields_for :school_district do |school_district_form| %>
+      <%= school_district_form.text_field :name, class: 'form-control school-district-control', placeholder: 'New District Name' %>
+    <% end %>
+    <span class="input-group-btn">
+      <button type="button" class="btn btn-success margin-right-reset" id="btnAddDistrict"><i class="fa fa-lg fa-plus"></i></button>
+      <button type="button" class="btn btn-danger" id="closeAddDistrict"><i class="fa fa-lg fa-close"></i></button>
+    </span>
+  </div>
+  <div class="input-group add-school-field collapse fade" id="rowAddSchool">
+    <% f.object.school_district ||= SchoolDistrict.new(place_type: 'school') %>
+    <%= f.fields_for :school_district do |school_district_form| %>
+      <%= school_district_form.text_field :name, class: 'form-control school-district-control', placeholder: 'New School Name' %>
+    <% end %>
+    <span class="input-group-btn">
+      <button type="button" class="btn btn-success margin-right-reset" id="btnAddSchool"><i class="fa fa-lg fa-plus"></i></button>
+      <button type="button" class="btn btn-danger" id="closeAddSchool"><i class="fa fa-lg fa-close"></i></button>
+    </span>
+  </div>
 </div>
 <div data-hook="signup_below_password_fields"></div>

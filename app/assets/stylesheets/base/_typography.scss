@@ -191,9 +191,11 @@ ol {
   }
 
   &.dropdown-menu,
-  &.list-style-none {
+  &.list-style-none,
+  &.select2-choices {
     li {
       list-style-type: none;
+      line-height: 1.5em;
     }
   }
 }
