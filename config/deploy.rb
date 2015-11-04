@@ -38,11 +38,11 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', '
 # Default value for keep_releases is 5
 set :keep_releases, 5
 
-set :sidekiq_role, :web
+set :sidekiq_role, :db
 set :sidekiq_concurrency, 5
 
 set :whenever_identifier, ->{ "#{fetch(:application)}" }
-set :whenever_roles, [:web, :app]
+set :whenever_roles, [:db]
 
 namespace :deploy do
 

@@ -3,7 +3,7 @@
   encoding: unicode
   database: <%= node['app'] %>_<%= node['rails_env'] %>
   pool: 5
-  host: localhost
+  host: <%= node['db']['host'] || 'localhost' %>
   username: <%= node['db']['user']['name'] %>
   password: <%= node['db']['user']['password'] %>
 

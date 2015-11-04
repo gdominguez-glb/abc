@@ -1,13 +1,9 @@
 set daemon 60
 
+<% if node['app_server'] == 'true' %>
 check process nginx with pidfile /var/run/nginx.pid
     start program = "/etc/init.d/nginx start"
     stop program = "/etc/init.d/nginx stop"
-
-check process postgresql9.3 with pidfile /var/lib/postgresql/9.3/main/postmaster.pid
-    group database
-    start program = "/etc/init.d/postgresql start"
-    stop  program = "/etc/init.d/postgresql stop"
 
 check process unicorn with pidfile /var/www/<%= node['app'] %>/current/tmp/pids/unicorn.pid
   start program = "/etc/init.d/unicorn_<%= node['app'] %> start"
@@ -23,13 +19,20 @@ check process redis-server with pidfile "/var/run/redis_6379.pid"
   if cpu usage > 95% for 3 cycles then restart
   if failed host 127.0.0.1 port 6379 then restart
   if 5 restarts within 5 cycles then timeout
+<% end %>
+
+<% if node['db_server'] == 'true' %>
+check process postgresql9.3 with pidfile /var/lib/postgresql/9.3/main/postmaster.pid
+    group database
+    start program = "/etc/init.d/postgresql start"
+    stop  program = "/etc/init.d/postgresql stop"
 
 check process sidekiq with pidfile /var/www/<%= node['app'] %>/current/tmp/pids/sidekiq.pid
   start program = "/bin/su - <%= node['user']['name'] %> -c '~/.rbenv/bin/rbenv exec bundle exec sidekiq --index 0 --pidfile /var/www/<%= node['app'] %>/shared/tmp/pids/sidekiq.pid --environment <%= node['rails_env'] %> --logfile /var/www/<%= node['app'] %>/shared/log/sidekiq.log --daemon'" with timeout 30 seconds
-
   stop program = "/bin/su - <%= node['user']['name'] %> -c 'cd /var/www/<%= node['app'] %>/current && ( RBENV_ROOT=~/.rbenv RBENV_VERSION=2.1.6 ~/.rbenv/bin/rbenv exec bundle exec sidekiqctl stop /var/www/<%= node['app'] %>/shared/tmp/pids/sidekiq.pid 10 )'" with timeout 30 seconds
   group sidekiq
 
 check process elasticsearch with pidfile /var/run/elasticsearch.pid
     start program = "/etc/init.d/elasticsearch start"
     stop program = "/etc/init.d/elasticsearch stop"
+<% end %>
