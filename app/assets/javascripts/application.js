@@ -99,4 +99,9 @@ $(document).ready(function() {
   var tiles = $('section.row');
   tiles.find('div:empty, p:empty, br').remove();
   tiles.find('span, font').contents().unwrap();
+
+  $('#turn-off-browser-warning-btn').click(function(){
+    $('#browser-warning').remove();
+    $.ajax({ url: '/turn_off_browser_warning', type: 'GET'});
+  });
 });

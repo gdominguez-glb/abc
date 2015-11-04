@@ -58,6 +58,7 @@ Rails.application.routes.draw do
 
   get '/:page_slug/events/:slug',        to: 'events#curriculum',    as: :curriculum_events
 
+  get '/turn_off_browser_warning', to: 'home#turn_off_browser_warning'
   get '/decide_page_to_go', to: 'home#decide_page_to_go'
 
   get 'careers', to: 'jobs#index', as: :jobs

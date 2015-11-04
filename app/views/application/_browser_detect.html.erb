@@ -1,0 +1,6 @@
+<% if !browser.modern? && session[:turn_off_browser_warning].blank? %>
+  <div class="alert alert-warning" role="alert" id="browser-warning">
+    <button id="turn-off-browser-warning-btn" type="button" class="close"><span aria-hidden="true">&times;</span></button>
+    It look like you're visiting Greatminds.net from an outdated browser. Upgrade your browser for a better experience.
+  </div>
+<% end %>

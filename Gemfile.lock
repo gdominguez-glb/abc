@@ -153,6 +153,7 @@ GEM
       sass (>= 3.2.19)
     bootstrap3-datetimepicker-rails (4.14.30)
       momentjs-rails (>= 2.8.1)
+    browser (1.0.1)
     builder (3.2.2)
     camertron-eprun (1.1.0)
     cancancan (1.10.1)
@@ -695,6 +696,7 @@ DEPENDENCIES
   binding_of_caller
   bootstrap-sass (~> 3.3.4)
   bootstrap3-datetimepicker-rails (~> 4.14.30)
+  browser
   capistrano (~> 3.4.0)
   capistrano-bundler (~> 1.1.2)
   capistrano-rails (~> 1.1)
