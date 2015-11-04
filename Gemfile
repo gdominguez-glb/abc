@@ -85,6 +85,8 @@ gem 'backbone-on-rails'
 
 gem 'meta-tags'
 
+gem "browser"
+
 group :development do
   gem 'quiet_assets'
   gem 'letter_opener'
