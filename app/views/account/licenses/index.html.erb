@@ -38,9 +38,7 @@
         <div class="col-sm-4">
           <h4 class="margin-bottom-reset">Step 2.</h4>
           <small class="margin-bottom block"><em>Select users you'd like to assign</em></small>
-          <button type="button" class="btn btn-primary">
-            Add Users <i class="fa fa-plus"></i>
-          </button>
+          <%= link_to 'Add Users', select_users_account_licenses_path, class: 'btn btn-primary btn-block margin-bottom', remote: true %>
         </div>
         <div class="col-sm-4 border-left-primary">
           <h4 class="margin-bottom-reset">Step 3.</h4>
@@ -60,19 +58,6 @@
             </div>
           </div>
           <span class="label">Total Licenses = <span id="licenseTotal"></span></span>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-sm-6 col-md-4">
-          <label for="">Select from Existing Users</label>
-          <%= link_to 'Choose Users', select_users_account_licenses_path, class: 'btn btn-primary btn-block margin-bottom', remote: true %>
-        </div>
-        <div class="col-sm-6 col-md-4 col-md-offset-2">
-          <label for="">Upload from File</label>
-          <%= link_to import_modal_account_licenses_path, class: 'btn btn-default btn-block upload-user-btn dashed-border margin-bottom', remote: true do %>
-            Choose File <span class="glyphicon glyphicon-plus"></span>
-          <% end %>
         </div>
       </div>
       <div class="row">
