@@ -21,5 +21,16 @@ module Importers
       end
     end
 
+    def self.import_author_info
+      orders = Migrate::ChannelTitle.select('entry_id, author_id').where("entry_id in (select distinct(order_id) from exp_commoncore_credits  where exp_commoncore_credits.expiration_date > '2015-11-01 00:00:00' )").includes(:author)
+      orders.each do |order|
+        if order.author
+          Legacy::License.where(order_id: order.entry_id).update_all({
+            from_email: order.author.email,
+            from_user_id: order.author.ee_id
+          })
+        end
+      end
+    end
   end
 end
