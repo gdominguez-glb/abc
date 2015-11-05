@@ -45,6 +45,21 @@
         <div class="col-sm-4 border-left-primary">
           <h4 class="margin-bottom-reset">Step 3.</h4>
           <small class="margin-bottom block"><em>Select the quantity of licenses to assign</em></small>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group margin-bottom-s">
+                <label for="">License Quantity</label>
+                <%= f.text_field :licenses_number, class: 'form-control', placeholder: '# of licenses' %>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="">Number of Users</label>
+                <%= f.text_field :total, class: 'form-control', readonly: true %>
+              </div>
+            </div>
+          </div>
+          <span class="label">Total Licenses = <span id="licenseTotal"></span></span>
         </div>
       </div>
 
@@ -63,20 +78,6 @@
       <div class="row">
         <div class="col-xs-12">
           <%= f.text_field :licenses_recipients, class: 'form-control', placeholder: 'separate emails with comma' %>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4">
-          <div class="form-group margin-bottom-s">
-            <label for="">Number of Licenses</label>
-            <%= f.text_field :licenses_number, class: 'form-control', placeholder: 'licenses number' %>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <label for="">Total License(s) Assigned</label>
-            <%= f.text_field :total, class: 'form-control', readonly: true %>
-          </div>
         </div>
       </div>
       <div class="row text-center license-actions">
