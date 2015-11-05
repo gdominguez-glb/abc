@@ -82,3 +82,5 @@ en:
       medium_publication:
         url: 'Medium Publication Url'
         slug: 'Blog Unique Url'
+      curriculum_shop:
+        url: 'Store URL'
