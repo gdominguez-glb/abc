@@ -257,6 +257,32 @@
         }
       }
 
+      @media screen and (min-width: $screen-sm-min) {
+        &[data-primary-nav-item='english'] {
+          > a {
+            &:hover {
+              color: $english;
+            }
+          }
+        }
+
+        &[data-primary-nav-item='history'] {
+          > a {
+            &:hover {
+              color: $history;
+            }
+          }
+        }
+
+        &[data-primary-nav-item='math'] {
+          > a {
+            &:hover {
+              color: $math;
+            }
+          }
+        }
+      }
+
       &.search-button {
         border-bottom: 1px solid darken($coral, 5%);
 
