@@ -9,7 +9,7 @@ class Legacy::Migrater
     associate_school_admin
     assign_sub_admin
     associate_parent_admin
-    assign_licenses
+    # assign_licenses
   end
 
   def assign_sub_admin
