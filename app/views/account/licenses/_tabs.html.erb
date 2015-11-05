@@ -1,10 +1,13 @@
 <% tab ||= 'licenses' %>
-<ul class="nav nav-tabs" id="settings-tabs">
-  <li role="presentation" class="<%= 'active' if tab == 'licenses' %>"><a href="/account/licenses">Licenses</a></li>
-  <li role="presentation" class="<%= 'active' if tab == 'users' %>"><a href="/account/licenses/users">User Management</a></li>
-
+<div class="row">
+  <div class="col-sm-6">
+    <ul class="nav nav-tabs margin-bottom-l" id="settings-tabs">
+      <li role="presentation" class="<%= 'active' if tab == 'licenses' %>"><a href="/account/licenses">Licenses</a></li>
+      <li role="presentation" class="<%= 'active' if tab == 'users' %>"><a href="/account/licenses/users">User Management</a></li>
+    </ul>
+  </div>
   <% if tab == 'users' %>
-    <li class="pull-right-sm">
+    <div class="col-sm-6 text-right">
       <form action="" class="form">
         <div class="row">
           <div class="col-sm-6">
@@ -20,6 +23,7 @@
           </div>
         </div>
       </form>
-    </li>
+    </div>
   <% end %>
-</ul>
+</div>
+<hr class="margin-top-reset" />
