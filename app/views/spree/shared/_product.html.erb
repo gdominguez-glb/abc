@@ -30,7 +30,7 @@
           <%= link_to 'Explore', group_product_path(product), class: 'pull-right' %>
         <% else %>
           <span itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product-price pull-right">
-            <span class="price selling" itemprop="price"><%= link_to display_price(product), url, class: 'btn btn-sm btn-success' %></span>
+            <span class="price selling" itemprop="price"><%= link_to display_price(product), url, class: 'btn btn-sm btn-primary' %></span>
           </span>
         <% end %>
       </div>
