@@ -126,6 +126,14 @@
   }
 }
 
+.padding-xs-horiz-xl {
+  padding: 0;
+
+  @media screen and (min-width: $screen-sm-min) {
+    padding: 0 $b-space-xl;
+  }
+}
+
 // -------------------------------------
 //   Text
 // -------------------------------------
