@@ -20,11 +20,11 @@ RSpec.describe Legacy::Migrater do
       expect(user.reload.has_school_admin_role?).to eq(true)
     end
 
-    it "create license with latest expiration date" do
-      licensed_product = user.licensed_products.first
-      expect(licensed_product).not_to be_nil
-      expect(licensed_product.product).to eq(product)
-    end
+    # it "create license with latest expiration date" do
+    #   licensed_product = user.licensed_products.first
+    #   expect(licensed_product).not_to be_nil
+    #   expect(licensed_product.product).to eq(product)
+    # end
 
     it "associate sub admins" do
       expect(sub_admin_user.reload.delegate_user_id).to eq(user.id)
