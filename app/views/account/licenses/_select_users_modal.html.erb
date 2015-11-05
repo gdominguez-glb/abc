@@ -2,29 +2,92 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title">Select From Existing Users</h4>
+        <h4 class="modal-title">You can add users <strong>3</strong> ways</h4>
+        <em class="small">Please use the options below to add users</em>
       </div>
       <div class="modal-body">
-        <button class="btn btn-primary btn-block margin-bottom-m select-all-users">Select All
-        </button>
-        <div class="row margin-bottom-m">
-          <% @emails.each do |email| %>
+
+        <div id="userEmails" class="collapse fade in">
+          <div class="row">
+            <div class="col-sm-12">
+              <label>Add Users by Email</label>
+              <input type="text" class="form-control" placeholder="Semarate email addresses with comma...">
+            </div>
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="col-sm-12 text-center">
+            <h2><em>or</em></h2>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-6 border-right-primary">
+            <label>Select from Existing Users</label>
+            <button type="button" id="btnSelectUsers" class="btn btn-primary btn-block">
+              Choose Users
+            </button>
+          </div>
+          <div class="col-sm-6">
+            <label>Upload from File</label>
+            <button type="button" id="btnUploadUsers" class="btn btn-primary btn-block">
+              Choose File
+            </button>
+          </div>
+        </div>
+
+        <div id="chooseUsers" class="collapse fade">
+          <button class="btn btn-primary btn-block margin-bottom-m select-all-users">Select All
+          </button>
+          <div class="row margin-bottom-m">
+            <% @emails.each do |email| %>
+              <div class="col-md-6">
+                <label style="text-transform: none;">
+                  <%= check_box_tag 'emails[]', email, false, class: 'user-checkbox' %>
+                  <%= email %>
+                </label>
+              </div>
+            <% end %>
+          </div>
+          <div class="row">
             <div class="col-md-6">
-              <label style="text-transform: none;">
-                <%= check_box_tag 'emails[]', email, false, class: 'user-checkbox' %>
-                <%= email %>
-              </label>
+              <button class="btn btn-success btn-block margin-bottom-s done-btn">Done</button>
+            </div>
+            <div class="col-md-6">
+              <button data-dismiss="modal" class="btn btn-danger btn-block margin-bottom">Cancel</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="importUsers" class="collapse fade">
+          <%= form_tag import_account_licenses_path, multipart: true do %>
+            <p>1. Downolad our User Template and fill it in:</p>
+            <div class="row">
+              <div class="col-md-6">
+                <%= link_to 'Download (xlsx)', '/import_template.xlsx', class: 'btn btn-default btn-block' %>
+              </div>
+              <div class="col-md-6">
+                <%= link_to 'Download (csv)', '/import_template.csv', class: 'btn btn-default btn-block' %>
+              </div>
+            </div>
+            <p>2. Upload the completed file:</p>
+            <%= select_tag :licenses_ids, options_for_select(current_spree_user.managed_products_options), class: 'licenses-select form-control inline-input' %>
+            <div class="form-group inline-input margin-bottom-m">
+              <%= file_field_tag :file %>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <button type="button" name="button" class="btn btn-success btn-block margin-bottom-s">Add Users</button>
+              </div>
+              <div class="col-md-6">
+                <button data-dismiss="modal" class="btn btn-danger btn-block margin-bottom">Cancel</>
+              </div>
             </div>
           <% end %>
         </div>
-        <div class="row">
-          <div class="col-md-6">
-            <button class="btn btn-success btn-block margin-bottom-s done-btn">Done</button>
-          </div>
-          <div class="col-md-6">
-            <button data-dismiss="modal" class="btn btn-danger btn-block margin-bottom">Cancel</button>
-          </div>
-        </div>
+
       </div>
     </div>
   </div>

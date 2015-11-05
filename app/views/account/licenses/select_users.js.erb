@@ -18,3 +18,15 @@ $('#select-users-modal .done-btn').click(function(e){
   }
   $('#select-users-modal').modal('hide');
 });
+
+$(function() {
+  $('#btnSelectUsers').on('click', function() {
+    $('#chooseUsers').collapse('show');
+    $('#importUsers').collapse('hide');
+  });
+
+  $('#btnUploadUsers').on('click', function() {
+    $('#chooseUsers').collapse('hide');
+    $('#importUsers').collapse('show');
+  });
+});
