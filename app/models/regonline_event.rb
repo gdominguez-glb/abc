@@ -8,6 +8,7 @@ class RegonlineEvent < ActiveRecord::Base
   serialize :session_types, Array
 
   scope :with_filter, ->(filter) { where('client_event_id ilike ?', "%#{filter}%") }
+  scope :sorted, -> { order('start_date asc') }
 
   def full_address
     [location_name, city, state, country].reject(&:blank?).join(',')
