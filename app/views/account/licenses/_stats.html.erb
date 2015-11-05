@@ -1,6 +1,6 @@
 <% selected_option = current_spree_user.managed_products_options.find{|o| o[1] == params[:licenses_ids] } || current_spree_user.managed_products_options.first %>
-  <p class="small"><em>Your Licenses for
+  <p class="small"><em>Your Licenses for <span id="licenseDescription">
   <%= selected_option[0] %>
   <%= hidden_field_tag :licenses_ids, selected_option[1]  %>
-  </em></p>
+  </span></em></p>
 <%= render partial: 'licenses_stats', locals: { licenses_ids: selected_option[1].split(',') } if selected_option %>

@@ -11,4 +11,11 @@
     }
     $("#assign_licenses_form_total").val(total);
   });
+
+  $(function() {
+    $(document).on('change', '#licenses_ids', function(e) {
+      var selected = $(this).find(':selected').text();
+      $('#licenseDescription').text(selected);
+    });
+  });
 <% end %>
