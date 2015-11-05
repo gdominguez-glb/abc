@@ -179,6 +179,10 @@ ol {
   margin: 0;
   padding: 0;
 
+  .container-content & {
+    margin: 0 0 $b-space-m $b-space-l;
+  }
+
   li {
     list-style-type: none;
     font-size: .95em;
@@ -193,6 +197,8 @@ ol {
   &.dropdown-menu,
   &.list-style-none,
   &.select2-choices {
+    margin: 0;
+
     li {
       list-style-type: none;
       line-height: 1.5em;
