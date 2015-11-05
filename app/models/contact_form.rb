@@ -96,10 +96,11 @@ class ContactForm
       'Grade_Training_Request__c' => (self.grade_bands || []).join(';'),
       'Size_of_Training_Groups__c' => self.training_groups_size,
       'Description' => self.description,
-      'Intrested_in_hosting_an_open_enrollment__c' => self.interested_in_hosting_events,
+      'Interested_in_hosting_an_open_enrollment__c' => self.interested_in_hosting_events,
       'Request_Date__c'  => Date.today.to_s,
       'RecordTypeId' => lead_pd_request_record_type_id,
-      'OwnerId' => pd_lead_queue_id
+      'OwnerId' => pd_lead_queue_id,
+      'Comments__c' => self.description
     }
   end
 

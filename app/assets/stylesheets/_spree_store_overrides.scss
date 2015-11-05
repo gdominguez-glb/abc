@@ -123,8 +123,8 @@
 
     @extend .sans-serif;
 
-    &.btn-success {
-      color: $dark-blue;
+    &.btn {
+      color: #fff;
       text-decoration: none;
     }
   }

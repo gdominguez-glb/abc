@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   def index
-    @events = RegonlineEvent.displayable.page(params[:page])
+    @events = RegonlineEvent.displayable.sorted.page(params[:page])
     filter_by_zipcode
   end
 
@@ -13,7 +13,7 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = RegonlineEvent.displayable.find(params[:id])
+    @event = RegonlineEvent.displayable.sorted.find(params[:id])
   end
 
   def curriculum
@@ -21,14 +21,14 @@ class EventsController < ApplicationController
     @sub_nav_items = Page.show_in_sub_navigation(@group_page.group_name)
 
     @event_page    = @group_page.event_pages.find_by(slug: params[:slug])
-    @events        = @event_page.events.displayable.page(params[:page])
+    @events        = @event_page.events.displayable.sorted.page(params[:page])
 
     filter_by_zipcode
   end
 
   def list
     @event_page = EventPage.find_by(slug: params[:slug])
-    @events     = @event_page.events.displayable.page(params[:page])
+    @events     = @event_page.events.displayable.sorted.page(params[:page])
 
     filter_by_zipcode
   end
