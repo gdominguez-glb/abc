@@ -1,7 +1,7 @@
 <% content_for :body_class, "licenses" %>
 
 <div class="row">
-  <div class="col-sm-10 col-sm-offset-1">
+  <div class="col-sm-10 col-sm-offset-1 margin-top-xl margin-bottom-xl">
 
     <%= render 'tabs' %>
 
@@ -24,8 +24,8 @@
       <% end %>
       <%= render 'stats' %>
 
-      <div class="row margin-bottom-l">
-        <div class="col-sm-4 border-right-primary">
+      <div class="row margin-bottom-xxl">
+        <div class="col-sm-4 border-right-primary min-200">
           <h4 class="margin-bottom-reset">Step 1.</h4>
           <small class="margin-bottom block"><em>Select product you'd like to assign*</em></small>
           <% selected_option = current_spree_user.managed_products_options.find{|o| o[1] == params[:licenses_ids] } || current_spree_user.managed_products_options.first %>
@@ -35,12 +35,12 @@
           </div>
           <small><em>*This may affect your licenses above</em></small>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-4 min-200">
           <h4 class="margin-bottom-reset">Step 2.</h4>
           <small class="margin-bottom block"><em>Select users you'd like to assign</em></small>
           <%= link_to 'Add Users', select_users_account_licenses_path, class: 'btn btn-primary btn-block margin-bottom', remote: true %>
         </div>
-        <div class="col-sm-4 border-left-primary">
+        <div class="col-sm-4 border-left-primary min-200">
           <h4 class="margin-bottom-reset">Step 3.</h4>
           <small class="margin-bottom block"><em>Select the quantity of licenses to assign</em></small>
           <div class="row">
@@ -58,11 +58,6 @@
             </div>
           </div>
           <strong class="text-uppercase sans-serif">Total Licenses = <span id="licenseTotal"></span></span>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12">
-          <%= f.text_field :licenses_recipients, class: 'form-control', placeholder: 'separate emails with comma' %>
         </div>
       </div>
       <div class="row text-center license-actions">

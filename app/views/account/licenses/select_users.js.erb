@@ -21,12 +21,20 @@ $('#select-users-modal .done-btn').click(function(e){
 
 $(function() {
   $('#btnSelectUsers').on('click', function() {
+    $('#userEmails').collapse('hide');
     $('#chooseUsers').collapse('show');
     $('#importUsers').collapse('hide');
   });
 
   $('#btnUploadUsers').on('click', function() {
+    $('#userEmails').collapse('hide');
     $('#chooseUsers').collapse('hide');
     $('#importUsers').collapse('show');
+  });
+
+  $('#btnBack, #btnImportBack').on('click', function() {
+    $('#userEmails').collapse('show');
+    $('#chooseUsers').collapse('hide');
+    $('#importUsers').collapse('hide');
   });
 });
