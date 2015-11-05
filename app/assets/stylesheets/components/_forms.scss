@@ -78,6 +78,12 @@ label {
       display: table;
     }
   }
+
+  .form-control {
+    &:focus {
+      border-color: $dark-blue;
+    }
+  }
 }
 
 .input-group-btn {
