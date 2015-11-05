@@ -1,6 +1,4 @@
 Spree::Taxon.class_eval do
-  belongs_to :taxonomy, class_name: 'Spree::Taxonomy', inverse_of: :taxons, touch: true
-
   has_many :video_classifications, -> { order(:position) }, dependent: :delete_all, inverse_of: :taxon
   has_many :videos, through: :video_classifications
 
