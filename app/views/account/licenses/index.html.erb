@@ -24,7 +24,7 @@
       <% end %>
       <%= render 'stats' %>
 
-      <div class="row">
+      <div class="row margin-bottom-l">
         <div class="col-sm-4 border-right-primary">
           <h4 class="margin-bottom-reset">Step 1.</h4>
           <small class="margin-bottom block"><em>Select product you'd like to assign*</em></small>
@@ -57,7 +57,7 @@
               </div>
             </div>
           </div>
-          <span class="label">Total Licenses = <span id="licenseTotal"></span></span>
+          <strong class="text-uppercase sans-serif">Total Licenses = <span id="licenseTotal"></span></span>
         </div>
       </div>
       <div class="row">
@@ -66,10 +66,10 @@
         </div>
       </div>
       <div class="row text-center license-actions">
-        <div class="col-sm-6 col-md-4">
+        <div class="col-sm-3 col-sm-offset-3">
           <%= f.submit 'Assign License(s)', class: 'btn btn-success btn-block margin-bottom-s', data: { disable_with: 'Saving' } %>
         </div>
-        <div class="col-sm-6 col-md-2">
+        <div class="col-sm-3">
           <button class="btn btn-danger btn-block">Cancel</button>
         </div>
       </div>
