@@ -21,6 +21,18 @@
   white-space: normal;
 }
 
+.min-150 {
+  min-height: 150px;
+}
+
+.min-200 {
+  min-height: 200px;
+}
+
+.min-300 {
+  min-height: 300px;
+}
+
 // -------------------------------------
 //   Forms
 // -------------------------------------
@@ -114,6 +126,14 @@
   }
 }
 
+.padding-xs-horiz-xl {
+  padding: 0;
+
+  @media screen and (min-width: $screen-sm-min) {
+    padding: 0 $b-space-xl;
+  }
+}
+
 // -------------------------------------
 //   Text
 // -------------------------------------
@@ -150,6 +170,22 @@
 
 .post-image {
   max-width: 100%;
+}
+
+// -------------------------------------
+//   Borders
+// -------------------------------------
+
+.border-right-primary {
+  @media screen and (min-width: $screen-sm-min) {
+    border-right: 1px solid $brand-primary;
+  }
+}
+
+.border-left-primary {
+  @media screen and (min-width: $screen-sm-min) {
+    border-left: 1px solid $brand-primary;
+  }
 }
 
 // -------------------------------------

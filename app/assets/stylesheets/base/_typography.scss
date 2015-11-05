@@ -196,7 +196,9 @@ ol {
 
   &.dropdown-menu,
   &.list-style-none,
-  &.select2-choices {
+  &.select2-choices,
+  &.list-group,
+  &.nav-tabs {
     margin: 0;
 
     li {
