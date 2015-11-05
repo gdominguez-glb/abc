@@ -23,23 +23,37 @@
         </div>
       <% end %>
       <%= render 'stats' %>
-      <div class="well">
-        <div class="row">
-          <div class="col-sm-6 col-md-4">
-            <label for="">Select from Existing Users</label>
-            <%= link_to 'Choose Users', select_users_account_licenses_path, class: 'btn btn-primary btn-block margin-bottom', remote: true %>
-          </div>
-          <div class="col-sm-6 col-md-4 col-md-offset-2">
-            <label for="">Upload from File</label>
-            <%= link_to import_modal_account_licenses_path, class: 'btn btn-default btn-block upload-user-btn dashed-border margin-bottom', remote: true do %>
-              Choose File <span class="glyphicon glyphicon-plus"></span>
-            <% end %>
-          </div>
+
+      <div class="row">
+        <div class="col-sm-4 border-right-primary">
+          <h4 class="margin-bottom-reset">Step 1.</h4>
+          <small class="margin-bottom block"><em>Select product you'd like to assign*</em></small>
         </div>
-        <div class="row">
-          <div class="col-xs-12">
-            <%= f.text_field :licenses_recipients, class: 'form-control', placeholder: 'separate emails with comma' %>
-          </div>
+        <div class="col-sm-4">
+          <h4 class="margin-bottom-reset">Step 2.</h4>
+          <small class="margin-bottom block"><em>Select users you'd like to assign</em></small>
+        </div>
+        <div class="col-sm-4 border-left-primary">
+          <h4 class="margin-bottom-reset">Step 3.</h4>
+          <small class="margin-bottom block"><em>Select the quantity of licenses to assign</em></small>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-6 col-md-4">
+          <label for="">Select from Existing Users</label>
+          <%= link_to 'Choose Users', select_users_account_licenses_path, class: 'btn btn-primary btn-block margin-bottom', remote: true %>
+        </div>
+        <div class="col-sm-6 col-md-4 col-md-offset-2">
+          <label for="">Upload from File</label>
+          <%= link_to import_modal_account_licenses_path, class: 'btn btn-default btn-block upload-user-btn dashed-border margin-bottom', remote: true do %>
+            Choose File <span class="glyphicon glyphicon-plus"></span>
+          <% end %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <%= f.text_field :licenses_recipients, class: 'form-control', placeholder: 'separate emails with comma' %>
         </div>
       </div>
       <div class="row">

@@ -153,6 +153,22 @@
 }
 
 // -------------------------------------
+//   Borders
+// -------------------------------------
+
+.border-right-primary {
+  @media screen and (min-width: $screen-sm-min) {
+    border-right: 1px solid $brand-primary;
+  }
+}
+
+.border-left-primary {
+  @media screen and (min-width: $screen-sm-min) {
+    border-left: 1px solid $brand-primary;
+  }
+}
+
+// -------------------------------------
 //   Padding
 // -------------------------------------
 
