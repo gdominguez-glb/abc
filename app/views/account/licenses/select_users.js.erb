@@ -24,6 +24,9 @@ $('#select-users-modal #btnAddUsers').click(function(e){
   if (emails.length > 0) {
     $('#assign_licenses_form_licenses_recipients').val(emails.join(','));
     $('#assign_licenses_form_total').val(emails.length);
+
+    var licenseCount = $('#assign_licenses_form_licenses_number').val();
+    $('#licenseTotal').text(emails.length * licenseCount);
   }
   $('#select-users-modal').modal('hide');
 });
