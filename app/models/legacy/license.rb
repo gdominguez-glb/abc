@@ -1,5 +1,7 @@
 class Legacy::License < ActiveRecord::Base
 
+  belongs_to :user, class_name: 'Legacy::User', primary_key: :ee_id
+
   def self.import_to_new_licenses
     Legacy::License.find_each do |legacy_license|
       product = Spree::Product.find_by(name: legacy_license.mapped_name)
