@@ -30,7 +30,7 @@ Spree::ProductsController.class_eval do
   end
 
   def find_launch_product
-    @product = current_spree_user.products.find_by(slug: params[:id])
+    @product = current_spree_user.products.find_by(slug: params[:id]) || current_spree_user.part_products.find_by(slug: params[:id])
     redirect_to main_app.root_path and return if @product.blank?
   end
 
