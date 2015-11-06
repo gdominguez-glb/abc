@@ -59,14 +59,14 @@ class VideoGalleryController < ApplicationController
   def filter_by_taxons(videos)
     return videos if params[:taxon_ids].blank?
     taxons = Spree::Taxon.where(id: params[:taxon_ids])
-    video_ids = Spree::Video.find_by_sql(generate_union_sql(videos, taxons)).map(&:id)
+    video_ids = Spree::Video.find_by_sql(generate_intersect_sql(videos, taxons)).map(&:id)
     videos.where(id: video_ids)
   end
 
-  def generate_union_sql(videos, taxons)
+  def generate_intersect_sql(videos, taxons)
     taxons.group_by(&:taxonomy).values.map do |t_taxons|
-      videos.with_taxons(t_taxons).to_sql
-    end.join(' UNION ')
+      "( #{videos.with_taxons(t_taxons).to_sql} )"
+    end.join(' INTERSECT ')
   end
 
   def bought_products?(products)
