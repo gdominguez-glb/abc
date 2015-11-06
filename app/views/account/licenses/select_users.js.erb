@@ -9,12 +9,19 @@ $('.select-all-users').click(function(e){
 });
 
 $('#select-users-modal #btnAddUsers').click(function(e){
-  var emails = []
-  $.each($('.user-checkbox:checked'), function(i, el){
-    emails.push($(el).val());
-  });
+  var emails = [];
+  var manuallyEntered = $('#licenseRecipients').val();
+
+  if (manuallyEntered) {
+    emails = manuallyEntered.split(',');
+  }
+  else if ('.user-checkbox:checked') {
+    $.each($('.user-checkbox:checked'), function(i, el){
+      emails.push($(el).val());
+    });
+  }
+
   if (emails.length > 0) {
-    $("#licenseRecipients").val(emails.join(','));
     $('#assign_licenses_form_licenses_recipients').val(emails.join(','));
     $('#assign_licenses_form_total').val(emails.length);
   }
