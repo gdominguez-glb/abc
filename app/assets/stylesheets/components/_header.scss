@@ -250,11 +250,6 @@
           [data-page='math'] & {
             color: #fff;
             border-bottom: 0;
-
-            &:hover,
-            &:focus {
-              color: $brand-green;
-            }
           }
 
           &:hover {
@@ -266,7 +261,8 @@
       @media screen and (min-width: $screen-sm-min) {
         &[data-primary-nav-item='english'] {
           > a {
-            &:hover {
+            &:hover,
+            &:focus {
               color: $english;
             }
           }
@@ -274,7 +270,8 @@
 
         &[data-primary-nav-item='history'] {
           > a {
-            &:hover {
+            &:hover,
+            &:focus {
               color: $history;
             }
           }
@@ -282,7 +279,8 @@
 
         &[data-primary-nav-item='math'] {
           > a {
-            &:hover {
+            &:hover,
+            &:focus {
               color: $math;
             }
           }
@@ -290,7 +288,8 @@
 
         &[data-primary-nav-item='shop'] {
           > a {
-            &:hover {
+            &:hover,
+            &:focus {
               color: $coral;
             }
           }
@@ -399,7 +398,7 @@
         &:focus {
           @media screen and (min-width: $screen-sm-min) {
             color: #fff;
-            border-bottom: 2px solid $brand-green;
+            border-bottom: 2px solid #fff;
             text-decoration: none;
 
             [data-page='english'] &,
