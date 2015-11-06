@@ -103,6 +103,14 @@ Spree::User.class_eval do
 
   after_create :assign_user_role, :assign_to_exist_assets
 
+  def part_products
+    part_product_ids = licensed_products.
+      joins("join spree_parts on spree_parts.bundle_id = spree_licensed_products.product_id").
+      joins("join spree_products on spree_parts.product_id = spree_products.id").
+      select("distinct(spree_products.id)").map(&:id)
+    Spree::Product.where(id: part_product_ids)
+  end
+
   def licensed_products_from(school_district_admin)
     licensed_products.joins(:product).joins(:product_distribution).where({spree_product_distributions: { from_user_id: school_district_admin.id }}).uniq
   end
