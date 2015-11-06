@@ -1,12 +1,13 @@
 module Spree
   module LicensesManager
+    # SingleLicenseExtractor
     class SingleLicenseExtractor
       def initialize(licensed_product)
         @licensed_product = licensed_product
       end
 
       def execute
-        return if exist_product_license_not_expire?
+        return @licensed_product if exist_product_license_not_expire?
         Spree::LicensedProduct.transaction do
           create_new_license(create_distribution)
           update_original_license
@@ -14,12 +15,13 @@ module Spree
       end
 
       def exist_product_license_not_expire?
-        Spree::LicensedProduct.
-          where("email = ?", @licensed_product.email).
-          where(can_be_distributed: false, product_id: @licensed_product.product_id).
-          where("id != ?", @licensed_product.id).
-          where("expire_at > ?", Time.now).
-          exists?
+        Spree::LicensedProduct
+          .where('email = ?', @licensed_product.email)
+          .where(can_be_distributed: false,
+                 product_id: @licensed_product.product_id)
+          .where('id != ?', @licensed_product.id)
+          .where('(expire_at IS NULL OR expire_at > ?)', Time.now)
+          .exists?
       end
 
       def create_new_license(distribution)
@@ -29,7 +31,8 @@ module Spree
           quantity: 1,
           product_distribution_id: distribution.id,
           can_be_distributed: false,
-          skip_notification: true)
+          skip_notification: true,
+          skip_salesforce_create: false)
       end
 
       def create_distribution
@@ -43,12 +46,15 @@ module Spree
           to_user_id:          user_id,
           email:               user_email,
           quantity:            1,
-          product_id:          @licensed_product.product_id
+          product_id:          @licensed_product.product_id,
+          expire_at:           @licensed_product.expire_at
         )
       end
 
       def update_original_license
-        @licensed_product.update(quantity: @licensed_product.quantity - 1)
+        @licensed_product.tap do
+          @licensed_product.update(quantity: @licensed_product.quantity - 1)
+        end
       end
     end
   end
