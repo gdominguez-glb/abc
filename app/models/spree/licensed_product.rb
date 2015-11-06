@@ -58,7 +58,6 @@ class Spree::LicensedProduct < ActiveRecord::Base
   end
 
   def attributes_for_salesforce
-    # TODO: Add a comment with email if assigning to "from_user"
     { 'Product2Id' => product.try(:sf_id_product),
       'ContactId' => assign_to_user_id_in_salesforce,
       'AccountId' => account_id_in_salesforce,
@@ -69,7 +68,6 @@ class Spree::LicensedProduct < ActiveRecord::Base
       'Quantity' => quantity,
       'Status' => expire_at.blank? ? 'Lifetime' : nil,
       'Order__c' => order.try(:id_in_salesforce),
-      'Order_Product__c' => line_item.try(:id_in_salesforce),
       'Deactivated__c' => quantity && quantity < 1 }
   end
 
