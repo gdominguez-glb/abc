@@ -29,6 +29,7 @@ $('#select-users-modal #btnAddUsers').click(function(e){
     $('#licenseTotal').text(emails.length * licenseCount);
 
     $('#btnAssignLicenses').removeClass('disabled');
+    $('#assign_licenses_form_total').addClass('success');
   }
   $('#select-users-modal').modal('hide');
 });
