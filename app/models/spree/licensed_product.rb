@@ -102,13 +102,13 @@ class Spree::LicensedProduct < ActiveRecord::Base
 
   attr_accessor :skip_notification
 
-  def distribute_license(user_or_email, quantity=1)
+  def distribute_license(user_or_email, quantity = 1)
     user_attrs = user_or_email.is_a?(Spree::User) ? { to_user: user_or_email } : { email: user_or_email }
     distribution_attrs = {
       licensed_product: self,
-      from_user:        self.user,
-      product:          self.product,
-      expire_at:        self.expire_at,
+      from_user:        user,
+      product:          product,
+      expire_at:        expire_at
     }.merge(user_attrs)
     distribution = Spree::ProductDistribution.find_or_initialize_by(distribution_attrs)
     if distribution.new_record?
@@ -125,15 +125,15 @@ class Spree::LicensedProduct < ActiveRecord::Base
 
   def distribute_one_license_to_self
     update(can_be_distributed: true)
-    distribute_license(self.user)
+    distribute_license(user)
   end
 
-  def increase_quantity!(_quantity)
-    update(quantity: self.quantity + _quantity)
+  def increase_quantity!(add_quantity)
+    update(quantity: quantity + add_quantity)
   end
 
-  def decrease_quantity!(_quantity)
-    update(quantity: self.quantity - _quantity)
+  def decrease_quantity!(subtract_quantity)
+    update(quantity: quantity - subtract_quantity)
   end
 
   def self.assign_license_to(user)
