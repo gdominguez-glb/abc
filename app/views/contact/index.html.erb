@@ -33,7 +33,7 @@
             <ul class="dropdown-menu">
               <li><a href="">Select a Topic</a></li>
               <% ContactForm::TOPICS.each do |topic| %>
-                <li><a href="#"><%= topic %></a></li>
+                <li><a href="#" data-topic="<%= topic %>"><%= topic %></a></li>
               <% end %>
             </ul>
           </div>
@@ -399,6 +399,10 @@
           $("[data-name='Support Type']").addClass('hidden');
         }
       });
+
+      <% if @contact_form.topic.present? %>
+        $('[data-topic="<%= @contact_form.topic %>"]').trigger('click');
+      <% end %>
 
       $('select[name="contact_form[support_type]"]').change(function(e){
         $('.dependent-field').not('[data-name="Support Type"]').addClass('hidden');
