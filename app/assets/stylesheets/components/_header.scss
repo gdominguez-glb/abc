@@ -152,6 +152,12 @@
             }
           }
 
+          body.spree-store & {
+            @media screen and (min-width: $screen-sm-min) {
+              color: $coral;
+            }
+          }
+
           @media screen and (min-width: $screen-sm-min) {
             [data-page='english'] &,
             [data-page='history'] &,
@@ -278,6 +284,14 @@
           > a {
             &:hover {
               color: $math;
+            }
+          }
+        }
+
+        &[data-primary-nav-item='shop'] {
+          > a {
+            &:hover {
+              color: $coral;
             }
           }
         }
