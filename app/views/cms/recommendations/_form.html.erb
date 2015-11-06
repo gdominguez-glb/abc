@@ -23,7 +23,7 @@
         <label>Subject</label>
         <div class="select-container dark-select block">
           <span>Select Subject</span>
-          <%= f.select :subject, Spree::User::SUBJECTS, { prompt: 'Select subject' }, class: 'form-control' %>
+          <%= f.collection_select :subject, Curriculum.all, :name, :name, { prompt: 'Select subject' }, class: 'form-control' %>
         </div>
       </div>
     </div>
