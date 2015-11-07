@@ -11,7 +11,8 @@ class Legacy::License < ActiveRecord::Base
         product:        product,
         quantity:       1,
         fulfillment_at: Time.now,
-        skip_salesforce_create: true
+        skip_salesforce_create: true,
+        skip_notification: true
       )
       import_distribution(legacy_license, licensed_product)
     end
