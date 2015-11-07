@@ -17,6 +17,8 @@
 //= require jquery.scrollTo
 //= require jquery.infinitescroll.min
 //= require moment
+//= require tether
+//= require shepherd
 //= require trumbowyg
 //= require bootstrap-datetimepicker
 //= require select2

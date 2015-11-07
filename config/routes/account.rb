@@ -38,4 +38,6 @@ namespace :account do
   end
 
   resources :bookmarks
+
+  get 'tour/start', to: 'tour#start'
 end
