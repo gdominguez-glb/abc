@@ -4,9 +4,7 @@ module Importers
     PRODUCTS_MAPPINGS = YAML.load_file(Rails.root.join('config/data/legacy_products.yml'))['products']
 
     def self.import
-      Migrate::Credit.joins("join exp_commoncore_registration_tokens on exp_commoncore_registration_tokens.id = exp_commoncore_credits.token_id").
-        select('exp_commoncore_credits.*, exp_commoncore_registration_tokens.email, exp_commoncore_registration_tokens.first_name, exp_commoncore_registration_tokens.last_name').
-        where("expiration_date > '2015-11-01 00:00:00'").find_each do |credit|
+      Migrate::Credit.find_by_sql("select credits.id, credits.member_id, credits.product_id, credits.expiration_date, credits.order_id, tokens.first_name, tokens.last_name, tokens.email, orders.author_id as author_id, authors.email as author_email from exp_commoncore_credits credits join exp_commoncore_registration_tokens tokens on tokens.id = credits.token_id join exp_channel_titles orders on orders.entry_id = credits.order_id join exp_members authors on authors.member_id = orders.author_id where  credits.expiration_date > '2015-11-01 00:00:00'").each do |credit|
         Legacy::License.create(
           user_id: credit.member_id,
           product_id: credit.product_id,
@@ -15,21 +13,17 @@ module Importers
           first_name: credit.first_name,
           last_name: credit.last_name,
           email: credit.email,
+          from_user_id: credit.author_id,
+          from_email: credit.author_email,
           ee_id: credit.id,
-          mapped_name: PRODUCTS_MAPPINGS[credit.product_id]
+          mapped_name: PRODUCTS_MAPPINGS.find{|m| m[:legacy_id] == credit.product_id }.try(:[], :name)
         )
       end
     end
 
-    def self.import_author_info
-      orders = Migrate::ChannelTitle.select('entry_id, author_id').where("entry_id in (select distinct(order_id) from exp_commoncore_credits  where exp_commoncore_credits.expiration_date > '2015-11-01 00:00:00' )").includes(:author)
-      orders.each do |order|
-        if order.author
-          Legacy::License.where(order_id: order.entry_id).update_all({
-            from_email: order.author.email,
-            from_user_id: order.author.ee_id
-          })
-        end
+    def self.import_user_email
+      Legacy::License.where(email: nil).where.not(user_id: nil).includes(:user).find_each do |legacy_license|
+        legacy_license.update(email: legacy_license.user.try(:email)) if legacy_license.user.try(:email)
       end
     end
   end
