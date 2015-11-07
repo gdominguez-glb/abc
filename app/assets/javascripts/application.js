@@ -17,9 +17,9 @@
 //= require jquery.scrollTo
 //= require jquery.infinitescroll.min
 //= require moment
+//= require trumbowyg
 //= require bootstrap-datetimepicker
 //= require select2
-//= require jquery.cleditor
 //= require zeroclipboard
 //= require jquery-sortable
 //= require mediaelement_rails
@@ -64,9 +64,11 @@ Gm = {
 };
 window.Gm = Gm;
 
-function initCleditor() {
-  $('.cleditor').cleditor({
-    controls: "bold italic underline | style | bullets numbering | undo redo | link "
+function initEditor() {
+  $('.rich-editor').trumbowyg({
+    fullscreenable: false,
+    closable: false,
+    btns: ['bold', 'italic', 'underline', 'strikethrough', '|', 'formatting', '|', 'unorderedList', 'orderedList', '|', 'link']
   });
 }
 
@@ -94,7 +96,7 @@ $(document).ready(function() {
   var responsiveTables = $('.table-responsive');
   responsiveTables.after('<span class="scroll-indicator">Scroll <i class="fa fa-chevron-right"></i></span>');
 
-  initCleditor();
+  initEditor();
 
   var tiles = $('section.row');
   tiles.find('div:empty, p:empty, br').remove();

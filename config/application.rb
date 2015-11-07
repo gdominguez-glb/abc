@@ -63,5 +63,6 @@ module GreatMinds
     end
 
     config.active_job.queue_adapter = :sidekiq
+    config.action_view.sanitized_allowed_tags = ['strong', 'em', 'a', 'b']
   end
 end
