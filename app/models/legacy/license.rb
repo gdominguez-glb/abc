@@ -10,7 +10,8 @@ class Legacy::License < ActiveRecord::Base
         expire_at:      legacy_license.expiration_date,
         product:        product,
         quantity:       1,
-        fulfillment_at: Time.now
+        fulfillment_at: Time.now,
+        skip_salesforce_create: true
       )
       import_distribution(legacy_license, licensed_product)
     end
@@ -22,9 +23,10 @@ class Legacy::License < ActiveRecord::Base
       from_email: legacy_license.from_email,
       email:      legacy_license.email,
       product:    licensed_product.product,
-      expire_at:  licensed_product.expire_at
+      expire_at:  licensed_product.expire_at,
+      skip_salesforce_create: true
     )
-    licensed_product.update(distribution: distribution)
+    licensed_product.update(product_distribution: distribution, skip_next_salesforce_update: true)
   end
 
 
@@ -33,7 +35,7 @@ class Legacy::License < ActiveRecord::Base
       licensed_product = Spree::LicensedProduct.find_by(product: distribution.product, email: distribution.from_email)
       if licensed_product
         quantity = Legacy::License.where(from_email: distribution.from_email, mapped_name: distribution.product.name).count
-        distribution.update(quantity: quantity, licensed_product: licensed_product)
+        distribution.update(quantity: quantity, licensed_product: licensed_product, skip_next_salesforce_update: true)
       end
     end
   end
