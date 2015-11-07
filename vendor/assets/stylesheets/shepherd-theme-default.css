@@ -1,3 +1,4 @@
+.shepherd-step { z-index: 100000; width: 500px; }
 .shepherd-element, .shepherd-element:after, .shepherd-element:before, .shepherd-element *, .shepherd-element *:after, .shepherd-element *:before {
   box-sizing: border-box; }
 

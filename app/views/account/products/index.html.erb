@@ -47,6 +47,10 @@
           data: { grade_option: $(this).val() }
         });
       });
+
+      <% unless current_spree_user.tour_showed? %>
+        $.get('/account/tour/start');
+      <% end %>
     });
   <% end %>
 <% end %>
