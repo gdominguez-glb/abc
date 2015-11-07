@@ -12,7 +12,7 @@ class MarketingEditorApp.Views.Editor extends Backbone.View
       rowView = new MarketingEditorApp.Views.TileRowView(model: row)
       @$('.rows').append(rowView.render().el)
     )
-    @initCleditor()
+    @initEditor()
     @
 
   events:
@@ -25,7 +25,7 @@ class MarketingEditorApp.Views.Editor extends Backbone.View
     @rows.add(row)
     rowView = new MarketingEditorApp.Views.TileRowView(model: row)
     @$('.rows').append(rowView.render().el)
-    @initCleditor()
+    @initEditor()
 
   saveRows: (e)->
     $.ajax(
@@ -34,7 +34,11 @@ class MarketingEditorApp.Views.Editor extends Backbone.View
       data: { page: { tiles: { rows: @rows.toJSON() } } }
     )
 
-  initCleditor: ->
-    @$('.cleditor').cleditor({ controls: "bold italic underline | style | bullets numbering | undo redo | link " }).change((e)->
-      e.target.$area.trigger('change')
+  initEditor: ->
+    @$('.rich-editor').trumbowyg(
+      fullscreenable: false
+      closable: false
+      btns: ['bold', 'italic', 'underline', 'strikethrough', '|', 'formatting', '|', 'unorderedList', 'orderedList', '|', 'link']
+    ).on('tbwchange', (e)->
+      $(e.target).trigger('change')
     )

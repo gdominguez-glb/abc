@@ -31,7 +31,7 @@
     <% f.object.answer ||= Answer.new(question: f.object) %>
     <%= f.fields_for :answer do |answer_form| %>
       <label>Answer</label>
-      <%= answer_form.text_area :content, class: 'form-control cleditor' %>
+      <%= answer_form.text_area :content, class: 'form-control rich-editor' %>
     <% end %>
   </div>
   <div class="checkbox margin-bottom-xl">
