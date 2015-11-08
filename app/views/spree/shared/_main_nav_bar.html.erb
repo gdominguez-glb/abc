@@ -2,6 +2,12 @@
     <li>
       <span class="hello-text">Hello,</span> <%= active_link_to spree_current_user.full_name, main_app.account_products_path %>
     </li>
+
+    <% if spree_current_user.delegate_user_id? && !ghost_login? %>
+      <li>
+        <%= link_to 'Manage Licenses as Admin', main_app.account_ghost_login_path, class: 'btn btn-primary btn-sm', data: { method: :post } %>
+      </li>
+    <% end %>
   <% end %>
 
   <% if spree_current_user %>
