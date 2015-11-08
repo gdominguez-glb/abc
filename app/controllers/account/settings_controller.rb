@@ -22,6 +22,12 @@ class Account::SettingsController < Account::BaseController
     render nothing: true
   end
 
+  def ghost_login
+    session[:ghost_login_user_id] = current_spree_user.id
+    sign_in(:spree_user, current_spree_user.delegate_for_user, bypass: true)
+    redirect_to account_root_path
+  end
+
   private
 
   def user_params
