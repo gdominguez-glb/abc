@@ -2,7 +2,7 @@ class Cms::QuestionsController < Cms::BaseController
   before_action :find_question, except: [:index, :new, :create]
 
   def index
-    @questions = Question.includes(:faq_category).page(params[:page]).per(params[:per_page])
+    @questions = Question.includes(:faq_category).page(params[:page])
   end
 
   def new
