@@ -25,7 +25,7 @@
         </div>
       </div>
       <div class="product-footer">
-        <span class="product-type">Lorem</span>
+        <span class="product-type"><%= product.curriculum.try(:name) || 'General' %></span>
         <% if product.group_product? %>
           <%= link_to 'Explore', group_product_path(product), class: 'pull-right' %>
         <% else %>

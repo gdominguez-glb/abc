@@ -122,6 +122,12 @@
           <%= f.check_box :for_sale, class: 'form-control' %>
         </div>
       </div>
+      <div data-hook='admin_product_form_curriculum'>
+        <div class='form-group field' id='product_curriculum_field'>
+          <%= f.label :curriculum %>
+          <%= f.collection_select :curriculum_id, Curriculum.all, :id, :name, { include_blank: 'Select Curriculum' }, class: 'form-control' %>
+        </div>
+      </div>
       <div data-hook='admin_product_form_expiration_date'>
         <div class='form-group field' id='product_expiration_date_field'>
           <%= f.label :expiration_date %>
