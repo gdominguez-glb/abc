@@ -29,7 +29,7 @@
           <h4 class="margin-bottom-reset">Step 1.</h4>
           <small class="margin-bottom block"><em>Select product you'd like to assign*</em></small>
           <% selected_option = current_spree_user.managed_products_options.find{|o| o[1] == params[:licenses_ids] } || current_spree_user.managed_products_options.first %>
-          <div class="select-container dark-select margin-bottom-reset">
+          <div class="select-container dark-select margin-bottom-reset btn-block-xs">
             <span><%= selected_option[0] %></span>
             <%= select_tag :licenses_ids, options_for_select(current_spree_user.managed_products_options, selected_option[1]), class: 'licenses-select form-control inline-input' %>
           </div>
