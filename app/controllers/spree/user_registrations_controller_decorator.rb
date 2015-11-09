@@ -7,9 +7,8 @@ Spree::UserRegistrationsController.class_eval do
     yield resource if block_given?
     if resource_saved
       if resource.active_for_authentication?
-        if current_order
-          current_order.associate_user! @user
-        end
+        current_order.associate_user! @user if current_order
+
         sign_up(resource_name, resource)
         session[:spree_user_signup] = true
         respond_with resource, location: after_sign_up_path_for(resource)
@@ -20,6 +19,7 @@ Spree::UserRegistrationsController.class_eval do
       end
     else
       clean_up_passwords(resource)
+      resource.school_district = nil if resource.school_district_id.present?
       render :new
     end
   end
