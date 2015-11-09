@@ -181,7 +181,6 @@ Spree::Order.class_eval do
     go_to_state :terms_and_conditions, if: -> (order) { order.has_license_products? }
     go_to_state :delivery, if: -> (order) { !order.all_digitals? }
     go_to_state :payment, if: ->(order) { order.payment_required? }
-    go_to_state :confirm, if: ->(order) { order.confirmation_required? }
     go_to_state :complete
     remove_transition from: :delivery, to: :confirm
   end
