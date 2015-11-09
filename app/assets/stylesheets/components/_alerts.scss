@@ -10,13 +10,14 @@
 }
 
 .alert {
-  @include alert-variant(darken($light-blue, 15%), $gray-lighter, $gray-lighter);
+  margin-bottom: $b-space;
 }
 
 .alert-success {
   @include alert-variant($brand-success, darken($brand-success, 25%), #fff);
 }
 
+.alert,
 .alert-info {
   @include alert-variant(darken($light-blue, 15%), $dark-blue, $dark-blue);
 }
