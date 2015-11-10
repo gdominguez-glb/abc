@@ -1,27 +1,23 @@
-<div class="row">
-  <div class="col-md-10 col-md-offset-1 margin-top-xxl margin-bottom-xl">
-    <h2>Bookmarks</h2>
-    <div class="list-group">
-      <% @bookmarks.each do |bookmark| %>
-        <% if !bookmark.bookmarkable_type.blank? %>
-          <div class="list-group-item">
-            <div class="row">
-              <div class="col-sm-6">
-                <% if bookmark.bookmarkable.is_a?(Spree::Video) %>
-                  <%= render partial: 'video', locals: { video: bookmark.bookmarkable } %>
-                <% elsif bookmark.bookmarkable.is_a?(Spree::Material) %>
-                  <%= render partial: 'material', locals: { material: bookmark.bookmarkable } %>
-                <% end %>
-              </div>
-              <div class="col-sm-6 text-right-sm">
-                <%= link_to account_bookmark_path(bookmark), data: { method: :delete }, class: 'btn btn-default' do %>
-                  <span class="fa fa-bookmark"></span> Remove Bookmark
-                <% end %>
-              </div>
-            </div>
+<h2>Bookmarks</h2>
+<div class="list-group">
+  <% @bookmarks.each do |bookmark| %>
+    <% if !bookmark.bookmarkable_type.blank? %>
+      <div class="list-group-item">
+        <div class="row">
+          <div class="col-sm-6">
+            <% if bookmark.bookmarkable.is_a?(Spree::Video) %>
+              <%= render partial: 'video', locals: { video: bookmark.bookmarkable } %>
+            <% elsif bookmark.bookmarkable.is_a?(Spree::Material) %>
+              <%= render partial: 'material', locals: { material: bookmark.bookmarkable } %>
+            <% end %>
           </div>
-        <% end %>
-      <% end %>
-    </div>
-  </div>
+          <div class="col-sm-6 text-right-sm">
+            <%= link_to account_bookmark_path(bookmark), data: { method: :delete }, class: 'btn btn-default' do %>
+              <span class="fa fa-bookmark"></span> Remove Bookmark
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
 </div>
