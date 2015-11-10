@@ -17,5 +17,63 @@
       var selected = $(this).find(':selected').text();
       $('#licenseDescription').text(selected);
     });
+
+    $('#show-add-users-modal-btn').click(function(e){
+      e.preventDefault();
+      $('#select-users-modal').modal('show');
+    });
+  });
+  $(function() {
+    $('.select-all-users').click(function(e){
+      $('.user-checkbox').attr('checked', true);
+    });
+
+    $('#select-users-modal #btnAddUsers').click(function(e){
+      var emails = [];
+      var manuallyEntered = $('#assign_licenses_form_licenses_recipients').val();
+
+      if (manuallyEntered) {
+        emails = manuallyEntered.split(',');
+      }
+      else if ('.user-checkbox:checked') {
+        $.each($('.user-checkbox:checked'), function(i, el){
+          emails.push($(el).val());
+        });
+      }
+
+      $.each($(".user-checkbox:checked"), function(i, e){
+        emails.push($(e).val());
+      });
+
+      if (emails.length > 0) {
+        $('#assign_licenses_form_licenses_recipients').val(emails.join(','));
+        $('#assign_licenses_form_total').val(emails.length);
+
+        var licenseCount = $('#assign_licenses_form_licenses_number').val();
+        $('#licenseTotal').text(emails.length * licenseCount);
+
+        $('#btnAssignLicenses').removeClass('disabled');
+        $('#assign_licenses_form_total').addClass('success');
+      }
+      $('#select-users-modal').modal('hide');
+    });
+
+    $('#btnSelectUsers').on('click', function() {
+      $('#userEmails').collapse('hide');
+      $('#chooseUsers').collapse('show');
+      $('#importUsers').collapse('hide');
+    });
+
+    $('#btnUploadUsers').on('click', function() {
+      $('#userEmails').collapse('hide');
+      $('#chooseUsers').collapse('hide');
+      $('#importUsers').collapse('show');
+    });
+
+    $('#btnBack, #btnImportBack').on('click', function(e) {
+      $('#userEmails').collapse('show');
+      $('#chooseUsers').collapse('hide');
+      $('#importUsers').collapse('hide');
+    });
   });
 <% end %>

@@ -1,5 +1,6 @@
 class Account::LicensesController < Account::BaseController
   before_action :authenticate_school_admin!
+  before_action :set_emails_to_choose, only: [:index, :assign]
 
   def index
     @assign_licenses_form = AssignLicensesForm.new(total: 0)
@@ -79,6 +80,10 @@ class Account::LicensesController < Account::BaseController
   private
 
   def assign_licenses_params
-    params.require(:assign_licenses_form).permit(:licenses_recipients, :licenses_number, :total)
+    params.require(:assign_licenses_form).permit(:licenses_recipients, :licenses_number, :total, emails: [])
+  end
+
+  def set_emails_to_choose
+    @emails = current_spree_user.product_distributions.pluck(:email).uniq
   end
 end
