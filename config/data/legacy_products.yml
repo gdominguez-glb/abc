@@ -133,3 +133,8 @@ products:
     :legacy_id: 108045
     :legacy_title: 'Eureka PDF Access'
     :name: 'Eureka Basic Curriculum'
+
+  -
+    :legacy_id: 306162
+    :legacy_title: 'Eureka Digital Suite - 12 Month License'
+    :name: 'Eureka Digital Suite'
