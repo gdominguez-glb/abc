@@ -11,7 +11,7 @@
           <div class="row">
             <div class="col-sm-12">
               <label>Add Users by Email</label>
-              <input id="licenseRecipients" type="text" class="form-control" placeholder="Separate email addresses with comma...">
+              <%= f.text_field :licenses_recipients, class: 'form-control', placeholder: 'Separate email addresses with comma...'  %>
             </div>
           </div>
           <div class="row margin-top-l margin-bottom-m">
@@ -38,7 +38,7 @@
         <div id="chooseUsers" class="collapse fade">
           <div class="row">
             <div class="col-sm-3">
-              <button id="btnBack" class="btn btn-default btn-block margin-bottom-m">
+              <button id="btnBack" class="btn btn-default btn-block margin-bottom-m" type='button'>
                 <i class="fa fa-chevron-left"></i> Back
               </button>
             </div>
@@ -55,7 +55,7 @@
               <div class="col-md-6">
                 <div class="checkbox">
                   <label>
-                    <%= check_box_tag 'emails[]', email, false, class: 'user-checkbox' %>
+                    <%= f.check_box :emails, { multiple: true, class: 'user-checkbox' }, email, false %>
                     <%= email %>
                   </label>
                 </div>
@@ -68,7 +68,7 @@
         <div id="importUsers" class="collapse fade">
           <div class="row">
             <div class="col-sm-3">
-              <button id="btnImportBack" class="btn btn-default btn-block margin-bottom-m">
+              <button id="btnImportBack" class="btn btn-default btn-block margin-bottom-m" type='button'>
                 <i class="fa fa-chevron-left"></i> Back
               </button>
             </div>
