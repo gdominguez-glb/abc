@@ -30,7 +30,7 @@
 
     $('#select-users-modal #btnAddUsers').click(function(e){
       var emails = [];
-      var manuallyEntered = $('#assign_licenses_form_licenses_recipients').val();
+      var manuallyEntered = $('#select-users-modal #licenses_recipients').val();
 
       if (manuallyEntered) {
         emails = manuallyEntered.split(',');
@@ -44,6 +44,8 @@
       $.each($(".user-checkbox:checked"), function(i, e){
         emails.push($(e).val());
       });
+
+      $('#assign_licenses_form_licenses_recipients').val(emails.join(','));
 
       if (emails.length > 0) {
         $('#assign_licenses_form_total').val(emails.length);
