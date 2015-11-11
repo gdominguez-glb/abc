@@ -18,11 +18,9 @@ namespace :account do
   resources :licenses do
     collection do
       post :assign
-      get :import_modal
-      post :import
       get :users
       get :export_users
-      get :select_users
+      post :select_users
       get :user_stats
       get :licenses_stats
       get :edit_user_licenses

@@ -36,6 +36,7 @@
       <h4 class="margin-bottom-reset">Step 2.</h4>
       <small class="margin-bottom block"><em>Select users you'd like to assign</em></small>
       <a href="#" class="btn btn-primary btn-block margin-bottom" id="show-add-users-modal-btn">Add Users</a>
+      <%= f.hidden_field :licenses_recipients %>
     </div>
     <div class="col-sm-4 border-left-primary min-200 padding-xs-horiz-xl">
       <h4 class="margin-bottom-reset">Step 3.</h4>
@@ -54,16 +55,17 @@
           </div>
         </div>
       </div>
-      <strong class="text-uppercase sans-serif">Total Licenses = <span id="licenseTotal"></span></span>
+      <strong class="text-uppercase sans-serif">Total Licenses = <span id="licenseTotal"></span></strong>
     </div>
   </div>
-  <%= render partial: 'select_users_modal', locals: { f: f } %>
   <div class="row text-center license-actions">
     <div class="col-sm-4 col-sm-offset-4">
       <%= f.submit 'Assign License(s)', class: 'btn btn-success btn-block margin-bottom-s disabled', id: 'btnAssignLicenses', data: { disable_with: 'Saving' } %>
     </div>
   </div>
 <% end %>
+
+<%= render partial: 'select_users_modal' %>
 
 <%= content_for :javascripts do %>
   <%= render 'assign_form_js' %>
