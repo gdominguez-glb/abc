@@ -18,8 +18,6 @@ namespace :account do
   resources :licenses do
     collection do
       post :assign
-      get :import_modal
-      post :import
       get :users
       get :export_users
       post :select_users

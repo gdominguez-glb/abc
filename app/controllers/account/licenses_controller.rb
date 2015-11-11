@@ -17,20 +17,6 @@ class Account::LicensesController < Account::BaseController
     end
   end
 
-  def import_modal
-    @products = current_spree_user.products
-  end
-
-  def import
-    result = Spree::LicenseDistributer.new({ user: current_spree_user, file: params[:file], licenses_ids: params[:licenses_ids].split(',') }).distribute
-    if !result[:success]
-      flash[:error] = result[:error]
-      redirect_to account_licenses_path
-    else
-      redirect_to account_licenses_path, notice: 'Assigned licenses successfully'
-    end
-  end
-
   def users
     @product_distributions = current_spree_user.product_distributions.where('quantity > 0').select('to_user_id, email').group('to_user_id, email').page(params[:page])
   end
