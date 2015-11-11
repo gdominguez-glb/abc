@@ -138,3 +138,8 @@ products:
     :legacy_id: 306162
     :legacy_title: 'Eureka Digital Suite - 12 Month License'
     :name: 'Eureka Digital Suite'
+
+  -
+    :legacy_id: 306158
+    :legacy_title: 'Eureka Digital Suite - 9 Month License'
+    :name: 'Eureka Digital Suite'
