@@ -5,7 +5,7 @@
         <h4 class="modal-title">You can add users <strong>3</strong> ways</h4>
         <em class="small">Please use the options below to add users</em>
       </div>
-      <%= form_tag select_users_account_licenses_path do %>
+      <%= form_tag select_users_account_licenses_path, multipart: true, authenticity_token: true, remote: true do %>
         <div class="modal-body">
 
           <div id="userEmails" class="collapse fade in">
@@ -93,7 +93,7 @@
 
           <div class="row">
             <div class="col-md-6">
-              <button id="btnAddUsers" type="button" name="button" class="btn btn-success btn-block margin-bottom-s">Add Users</button>
+              <%= submit_tag 'Add Users', class: 'btn btn-success btn-block margin-bottom-s' %>
             </div>
             <div class="col-md-6">
               <button data-dismiss="modal" class="btn btn-danger btn-block margin-bottom">Cancel</>

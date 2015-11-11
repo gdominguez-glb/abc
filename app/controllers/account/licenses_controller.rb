@@ -69,7 +69,7 @@ class Account::LicensesController < Account::BaseController
   end
 
   def select_users
-    @emails = current_spree_user.product_distributions.pluck(:email).uniq
+    @emails = SelectUsersForm.new(licenses_recipients: params[:licenses_recipients], emails: params[:emails], users_file: params[:users_file]).perform
   end
 
   def revoke_all
