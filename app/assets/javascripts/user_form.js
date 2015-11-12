@@ -59,7 +59,6 @@ $(document).on("change", "#spree_user_title", function(){
 
 $(document).on('change', '#schoolDistrictSelect input', function(e) {
   var schoolIsSelected = schoolSelected(e.currentTarget.id);
-  console.log(e.currentTarget.id);
 
   if(schoolIsSelected) {
     $('#rowSchoolSelect').collapse('show');
@@ -81,31 +80,31 @@ $(document).on('change', '#schoolDistrictSelect input', function(e) {
 
 });
 
-$(document).on('change', '#spree_user_school_id', function(e) {
+$(document).on('change', '#spree_user_school_id', function() {
   if( $(this).find('option:selected').attr('id') === '#schoolNotListed' ) {
     $('#rowAddSchool').collapse('show');
   }
 });
 
-$(document).on('change', '#spree_user_district_id', function(e) {
+$(document).on('change', '#spree_user_district_id', function() {
   if( $(this).find('option:selected').attr('id') === '#districtNotListed' ) {
     $('#rowAddDistrict').collapse('show');
   }
 });
 
-$(document).on('click', '#closeAddSchool', function(e) {
+$(document).on('click', '#closeAddSchool', function() {
   $('#rowAddSchool').collapse('hide');
   $('#rowSchoolSelect select').prop('selectedIndex',0).prev().text('Select a School');
   $('#spree_user_school_id').select2();
 });
 
-$(document).on('click', '#closeAddDistrict', function(e) {
+$(document).on('click', '#closeAddDistrict', function() {
   $('#rowAddDistrict').collapse('hide');
   $('#rowDistrictSelect select').prop('selectedIndex',0).prev().text('Select a District');
   $('#spree_user_district_id').select2();
 });
 
-$(document).on('click', '#btnAddSchool', function(e) {
+$(document).on('click', '#btnAddSchool', function() {
   var newSchool = $('#rowAddSchool input').val();
   var newSchoolTrim = newSchool.replace(/ /g,'');
 
@@ -114,7 +113,7 @@ $(document).on('click', '#btnAddSchool', function(e) {
   $('#rowSchoolSelect select').select2('val', newSchoolTrim);
 });
 
-$(document).on('click', '#btnAddDistrict', function(e) {
+$(document).on('click', '#btnAddDistrict', function() {
   var newDistrict = $('#rowAddDistrict input').val();
   var newDistrictTrim = newDistrict.replace(/ /g,'');
 
