@@ -1,5 +1,5 @@
 class Activity < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :user, class_name: 'Spree::User'
   belongs_to :item, polymorphic: true
 
   scope :recent, -> { order('created_at desc').limit(10) }
