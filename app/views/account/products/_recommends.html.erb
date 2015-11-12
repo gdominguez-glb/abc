@@ -3,11 +3,7 @@
   <div class="recommended-products col-xs-12">
     <% @recommendations.each do |recommendation| %>
       <div class="recommended-product-wrapper clearfix">
-        <% if recommendation.photo.present? %>
-          <%= image_tag recommendation.photo.url, class: 'recommended-thumb img-thumbnail' %>
-        <% else %>
-          <img src="http://placehold.it/100x100" class="img-thumbnail">
-        <% end %>
+        <%= image_tag recommendation.icon_image, class: 'recommended-thumb img-thumbnail' %>
 
         <h5><%= recommendation.title %></h5>
         <p><%= truncate(recommendation.sub_header, length: 120) %></p>
