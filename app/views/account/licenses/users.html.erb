@@ -1,74 +1,68 @@
 <% content_for :body_class, "licenses" %>
 
-<div class="row">
-  <div class="col-sm-10 col-sm-offset-1 margin-top-xxl margin-bottom-xl">
+<%= render partial: 'tabs', locals: { tab: 'users' } %>
 
-    <%= render partial: 'tabs', locals: { tab: 'users' } %>
-
-    <div class="page-header margin-top-xl">
-      <h2 class="margin-bottom-m">Need to transfer a license, or just checking in...</h2>
-      <p class="lead margin-bottom-m">Here is where you can remind, reassign, and revoke user licenses</p>
-    </div>
-
-    <%= link_to 'Export Users List', export_users_account_licenses_path(format: 'xlsx'), class: 'btn btn-primary btn-block-xs margin-bottom' %>
-
-    <div class="table-responsive">
-      <table class="table table-striped">
-      <thead>
-        <tr>
-          <th><input type="checkbox" /></th>
-          <th>User</th>
-          <th>Email</th>
-          <th>School/District</th>
-          <th>Product License(s)</th>
-          <th>Last Active</th>
-          <th colspan='2'></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @product_distributions.each do |product_distribution| %>
-          <tr data-user-id='<%= product_distribution.to_user_id %>'>
-            <td><input type="checkbox" /></td>
-            <td><%= product_distribution.to_user.full_name rescue nil %></td>
-            <td><%= product_distribution.to_user.try(:email) || product_distribution.email %></td>
-            <td><%= product_distribution.to_user.school_district.try(:name) rescue nil %></td>
-            <td>
-              <% if product_distribution.to_user %>
-                <% product_distribution.to_user.licensed_products_from(current_spree_user).group_by(&:product).each do |product, licenses| %>
-                  <%= product.name %>(x<%= licenses.map(&:quantity).sum %>) <br/>
-                <% end %>
-              <% else %>
-                <% Spree::ProductDistribution.from_user_to_email(current_spree_user, product_distribution.email).each do |_product_distribution| %>
-                  <%= _product_distribution.product.name %>(x<%= _product_distribution.quantity %>)
-                <% end %>
-              <% end %>
-            </td>
-            <td><%= product_distribution.to_user.last_active_date.strftime("%b %-d, %Y") rescue nil %></td>
-            <td>
-              <% if product_distribution.to_user %>
-                <%= link_to 'Edit Licenses', edit_user_licenses_account_licenses_path(user_id: product_distribution.to_user.id), class: 'btn btn-default btn-sm', remote: true %>
-              <% else %>
-                <%= link_to 'Cancel Invitation', cancel_invitation_account_licenses_path(email: product_distribution.email), class: 'btn btn-default btn-sm', data: { confirm: 'Are you sure to cancel this license?', method: :post } %>
-              <% end %>
-            </td>
-            <td>
-              <% if product_distribution.to_user %>
-                <a href="<%= user_stats_account_licenses_path(user_id: product_distribution.to_user.id)  %>" class="btn btn-primary btn-sm user-details-btn">Details</a>
-              <% end %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-    </div>
-    <%= paginate @product_distributions %>
-
-    <%= link_to new_account_reminder_path, remote: true, class: 'btn btn-primary red-btn reminder-btn' do %>
-      <span class="glyphicon glyphicon-comment"></span>
-    <% end %>
-
-  </div>
+<div class="page-header margin-top-xl">
+  <h2 class="margin-bottom-m">Need to transfer a license, or just checking in...</h2>
+  <p class="lead margin-bottom-m">Here is where you can remind, reassign, and revoke user licenses</p>
 </div>
+
+<%= link_to 'Export Users List', export_users_account_licenses_path(format: 'xlsx'), class: 'btn btn-primary btn-block-xs margin-bottom' %>
+
+<div class="table-responsive">
+  <table class="table table-striped">
+  <thead>
+    <tr>
+      <th><input type="checkbox" /></th>
+      <th>User</th>
+      <th>Email</th>
+      <th>School/District</th>
+      <th>Product License(s)</th>
+      <th>Last Active</th>
+      <th colspan='2'></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @product_distributions.each do |product_distribution| %>
+      <tr data-user-id='<%= product_distribution.to_user_id %>'>
+        <td><input type="checkbox" /></td>
+        <td><%= product_distribution.to_user.full_name rescue nil %></td>
+        <td><%= product_distribution.to_user.try(:email) || product_distribution.email %></td>
+        <td><%= product_distribution.to_user.school_district.try(:name) rescue nil %></td>
+        <td>
+          <% if product_distribution.to_user %>
+            <% product_distribution.to_user.licensed_products_from(current_spree_user).group_by(&:product).each do |product, licenses| %>
+              <%= product.name %>(x<%= licenses.map(&:quantity).sum %>) <br/>
+            <% end %>
+          <% else %>
+            <% Spree::ProductDistribution.from_user_to_email(current_spree_user, product_distribution.email).each do |_product_distribution| %>
+              <%= _product_distribution.product.name %>(x<%= _product_distribution.quantity %>)
+            <% end %>
+          <% end %>
+        </td>
+        <td><%= product_distribution.to_user.last_active_date.strftime("%b %-d, %Y") rescue nil %></td>
+        <td>
+          <% if product_distribution.to_user %>
+            <%= link_to 'Edit Licenses', edit_user_licenses_account_licenses_path(user_id: product_distribution.to_user.id), class: 'btn btn-default btn-sm', remote: true %>
+          <% else %>
+            <%= link_to 'Cancel Invitation', cancel_invitation_account_licenses_path(email: product_distribution.email), class: 'btn btn-default btn-sm', data: { confirm: 'Are you sure to cancel this license?', method: :post } %>
+          <% end %>
+        </td>
+        <td>
+          <% if product_distribution.to_user %>
+            <a href="<%= user_stats_account_licenses_path(user_id: product_distribution.to_user.id)  %>" class="btn btn-primary btn-sm user-details-btn">Details</a>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<%= paginate @product_distributions %>
+
+<%= link_to new_account_reminder_path, remote: true, class: 'btn btn-primary red-btn reminder-btn' do %>
+  <span class="glyphicon glyphicon-comment"></span>
+<% end %>
 
 <%= content_for :javascripts do %>
   <%= javascript_tag do %>

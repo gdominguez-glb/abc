@@ -1,55 +1,14 @@
-$('body').append("<%= escape_javascript(render 'select_users_modal') %>");
-$('#select-users-modal').modal('show');
-$('#select-users-modal').on('hidden.bs.modal', function(e){
-  $('#select-users-modal').remove();
-});
+var emails = <%= raw @emails.to_json %>;
 
-$('.select-all-users').click(function(e){
-  $('.user-checkbox').attr('checked', true);
-});
+$('#assign_licenses_form_licenses_recipients').val(emails.join(','));
 
-$('#select-users-modal #btnAddUsers').click(function(e){
-  var emails = [];
-  var manuallyEntered = $('#licenseRecipients').val();
+if (emails.length > 0) {
+  $('#assign_licenses_form_total').val(emails.length);
 
-  if (manuallyEntered) {
-    emails = manuallyEntered.split(',');
-  }
-  else if ('.user-checkbox:checked') {
-    $.each($('.user-checkbox:checked'), function(i, el){
-      emails.push($(el).val());
-    });
-  }
+  var licenseCount = $('#assign_licenses_form_licenses_number').val();
+  $('#licenseTotal').text(emails.length * licenseCount);
 
-  if (emails.length > 0) {
-    $('#assign_licenses_form_licenses_recipients').val(emails.join(','));
-    $('#assign_licenses_form_total').val(emails.length);
-
-    var licenseCount = $('#assign_licenses_form_licenses_number').val();
-    $('#licenseTotal').text(emails.length * licenseCount);
-
-    $('#btnAssignLicenses').removeClass('disabled');
-    $('#assign_licenses_form_total').addClass('success');
-  }
-  $('#select-users-modal').modal('hide');
-});
-
-$(function() {
-  $('#btnSelectUsers').on('click', function() {
-    $('#userEmails').collapse('hide');
-    $('#chooseUsers').collapse('show');
-    $('#importUsers').collapse('hide');
-  });
-
-  $('#btnUploadUsers').on('click', function() {
-    $('#userEmails').collapse('hide');
-    $('#chooseUsers').collapse('hide');
-    $('#importUsers').collapse('show');
-  });
-
-  $('#btnBack, #btnImportBack').on('click', function() {
-    $('#userEmails').collapse('show');
-    $('#chooseUsers').collapse('hide');
-    $('#importUsers').collapse('hide');
-  });
-});
+  $('#btnAssignLicenses').removeClass('disabled');
+  $('#assign_licenses_form_total').addClass('success');
+}
+$('#select-users-modal').modal('hide');

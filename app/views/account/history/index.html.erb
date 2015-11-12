@@ -1,50 +1,48 @@
-<div class="col-sm-10 col-sm-offset-1 margin-top-xxl margin-bottom-xl">
-  <h2>History</h2>
-  <div class="table-responsive">
-    <table class="table table-striped">
-      <thead>
+<h2>History</h2>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Action</th>
+        <th>Title</th>
+        <%# <th>Item</th> %>
+        <th>Date</th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @activities.each do |activity| %>
         <tr>
-          <th>Action</th>
-          <th>Title</th>
-          <%# <th>Item</th> %>
-          <th>Date</th>
-          <th colspan="2"></th>
+          <td>
+            <% if activity.action == "view" %>
+              <span class="glyphicon glyphicon-eye-open"></span>
+            <% end %>
+            <% if activity.action == "login" %>
+              <span class="glyphicon glyphicon-log-in"></span>
+            <% end %>
+            <% if activity.action == "logout" %>
+              <span class="glyphicon glyphicon-log-out"></span>
+            <% end %>
+            <% if activity.action == 'download' %>
+              <span class="glyphicon glyphicon-download"></span>
+            <% end %>
+          </td>
+          <td><%= activity.title %></td>
+          <%# <td>Module 2, Grade 8, Lesson 3</td> %>
+          <td><%= activity.created_at.strftime('%b %d, %Y') %></td>
+          <td class="text-right">
+            <% link = activity_item_link(activity) %>
+            <% if link.present? %>
+              <a href="<%= link %>" class="btn btn-primary">View Item</a>
+            <% end %>
+            <%= link_to account_remove_history_path(activity.id), remote: true, data: { confirm: 'Are you sure?', method: :delete }, class: 'btn btn-danger' do %>
+              <i class="fa fa-lg fa-close"></i>
+            <% end %>
+          </td>
         </tr>
-      </thead>
-      <tbody>
-        <% @activities.each do |activity| %>
-          <tr>
-            <td>
-              <% if activity.action == "view" %>
-                <span class="glyphicon glyphicon-eye-open"></span>
-              <% end %>
-              <% if activity.action == "login" %>
-                <span class="glyphicon glyphicon-log-in"></span>
-              <% end %>
-              <% if activity.action == "logout" %>
-                <span class="glyphicon glyphicon-log-out"></span>
-              <% end %>
-              <% if activity.action == 'download' %>
-                <span class="glyphicon glyphicon-download"></span>
-              <% end %>
-            </td>
-            <td><%= activity.title %></td>
-            <%# <td>Module 2, Grade 8, Lesson 3</td> %>
-            <td><%= activity.created_at.strftime('%b %d, %Y') %></td>
-            <td class="text-right">
-              <% link = activity_item_link(activity) %>
-              <% if link.present? %>
-                <a href="<%= link %>" class="btn btn-primary">View Item</a>
-              <% end %>
-              <%= link_to account_remove_history_path(activity.id), remote: true, data: { confirm: 'Are you sure?', method: :delete }, class: 'btn btn-danger' do %>
-                <i class="fa fa-lg fa-close"></i>
-              <% end %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-
-  <%= paginate @activities %>
+      <% end %>
+    </tbody>
+  </table>
 </div>
+
+<%= paginate @activities %>

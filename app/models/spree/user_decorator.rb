@@ -154,6 +154,7 @@ Spree::User.class_eval do
   def assign_to_exist_assets
     assign_licenses
     assign_distributions
+    Legacy::Migrater.new(self).execute
 
     if licensed_products.where('quantity > 1').exists?
       assign_school_admin_role
