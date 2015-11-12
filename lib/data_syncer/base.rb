@@ -1,0 +1,23 @@
+module DataSyncer
+  class Base
+    def import_model_from_yaml(file)
+      klass = File.basename(file, '.yml').classify.constantize
+      YAML.load_file(file).each do |attrs|
+        klass.create(attrs)
+      end
+    end
+
+    def export_model_to_yaml(klass, file)
+      write_content_for_file(
+        file,
+        klass.all.map(&:attributes).to_yaml
+      )
+    end
+
+    def write_content_for_file(file_name, content)
+      file = File.new file_name, 'a'
+      file.puts content
+      file.close
+    end
+  end
+end
