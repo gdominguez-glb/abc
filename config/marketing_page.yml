@@ -441,7 +441,24 @@ marketing_templates:
   -
     name: '2-Column Video Left, Text Right'
     content: !xml |
-      <section class="row row-img-full row-video-left image-bg" style="background-image: url('<%= background_image_url %>')">
+      <style>
+        @media all and (max-width: 360px) {
+          #tileVideoLeft<%= position %> {
+            background-image: url("<%= background_image_url.gsub /original/, 'thumb' %>");
+          }
+        }
+        @media all and (min-width: 361px) and (max-width: 767px) {
+          #tileVideoLeft<%= position %> {
+            background-image: url("<%= background_image_url.gsub /original/, 'small' %>")
+          }
+        }
+        @media all and (min-width: 768px) {
+          #tileVideoLeft<%= position %> {
+            background-image: url("<%= background_image_url.gsub /original/, 'large' %>");
+          }
+        }
+      </style>
+      <section id="tileVideoLeft<%= position %>" class="row row-img-full row-video-left image-bg">
         <div class="row-img-full-content">
           <div class="col-sm-6 col-centered-content margin-sm-bottom-xl">
             <div class="vertical-center">
