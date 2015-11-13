@@ -84,3 +84,5 @@ en:
         slug: 'Blog Unique Url'
       curriculum_shop:
         url: 'Store URL'
+      staff:
+        description: 'Bio'
