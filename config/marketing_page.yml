@@ -101,8 +101,20 @@ marketing_templates:
   -
     name: '50/50 Full-Bleed Image Left'
     content: !xml |
+      <style>
+        @media all and (max-width: 360px) {
+          #tileImgLeft<%= position %> {
+            background-image: url("<%= image_url.gsub /original/, 'thumb' %>");
+          }
+        }
+        @media all and (min-width: 361px) {
+          #tileImgLeft<%= position %> {
+            background-image: url("<%= image_url.gsub /original/, 'small' %>");
+          }
+        }
+      </style>
       <section class="row <%= background_color %>-bg">
-        <div class="col-sm-6 col-img-full" style="background-image: url('<%= image_url %>')">
+        <div id="tileImgLeft<%= position %>" class="col-sm-6 col-img-full">
         </div>
         <div class="col-sm-6 col-centered-content">
           <div class="vertical-center">
