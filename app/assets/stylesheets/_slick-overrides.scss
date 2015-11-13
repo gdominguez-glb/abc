@@ -46,7 +46,8 @@
   }
 }
 
-.slick-dots {
+ul.slick-dots {
+  margin: 0;
   bottom: -30px;
 
   li, li.slick-active {
