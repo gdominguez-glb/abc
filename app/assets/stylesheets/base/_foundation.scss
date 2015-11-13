@@ -170,7 +170,13 @@ body.dragging, body.dragging * {
   @include clearfix;
 
   @media screen and (min-width: $screen-sm-min) {
+    margin-left: -8.333%;
+    margin-right: -8.333%;
     padding: 0 60px;
+  }
+
+  @media screen and (min-width: $screen-lg-min) {
+    margin: 0;
   }
 }
 
