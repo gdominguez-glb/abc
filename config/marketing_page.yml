@@ -248,7 +248,12 @@ marketing_templates:
       <section class="row half-height <%= background_color %>-bg">
         <div class="col-sm-6 col-centered-content">
           <div class="vertical-center">
-            <img src="<%= image_url %>" class="img-responsive margin-sm-bottom-xl">
+            <picture>
+              <!--[if IE 9]><video style="display: none;"><![endif]-->
+              <source srcset="<%= image_url.gsub /original/, 'small' %>" media="(min-width: 361px)">
+              <!--[if IE 9]></video><![endif]-->
+              <img srcset="<%= image_url.gsub /original/, 'thumb' %>" class="img-responsive margin-sm-bottom-xl">
+            </picture>
           </div>
         </div>
         <div class="col-sm-6 col-centered-content">
@@ -277,7 +282,12 @@ marketing_templates:
         </div>
         <div class="col-sm-6 col-centered-content">
           <div class="vertical-center">
-            <img src="<%= image_url %>" class="img-responsive">
+            <picture>
+              <!--[if IE 9]><video style="display: none;"><![endif]-->
+              <source srcset="<%= image_url.gsub /original/, 'small' %>" media="(min-width: 361px)">
+              <!--[if IE 9]></video><![endif]-->
+              <img srcset="<%= image_url.gsub /original/, 'thumb' %>" class="img-responsive">
+            </picture>
           </div>
         </div>
       </section>
@@ -297,7 +307,12 @@ marketing_templates:
         </div>
         <div class="col-sm-6 col-centered-content">
           <div class="vertical-center">
-            <img src="<%= image_url %>" class="img-responsive">
+            <picture>
+              <!--[if IE 9]><video style="display: none;"><![endif]-->
+              <source srcset="<%= image_url.gsub /original/, 'small' %>" media="(min-width: 361px)">
+              <!--[if IE 9]></video><![endif]-->
+              <img srcset="<%= image_url.gsub /original/, 'thumb' %>" class="img-responsive">
+            </picture>
           </div>
         </div>
       </section>
@@ -308,7 +323,12 @@ marketing_templates:
       <section class="row <%= background_color %>-bg">
         <div class="col-sm-6 col-centered-content">
           <div class="vertical-center">
-            <img src="<%= image_url %>" class="img-responsive img-shadow margin-sm-bottom-xl">
+            <picture>
+              <!--[if IE 9]><video style="display: none;"><![endif]-->
+              <source srcset="<%= image_url.gsub /original/, 'small' %>" media="(min-width: 361px)">
+              <!--[if IE 9]></video><![endif]-->
+              <img srcset="<%= image_url.gsub /original/, 'thumb' %>" class="img-responsive img-shadow margin-sm-bottom-xl">
+            </picture>
           </div>
         </div>
         <div class="col-sm-6 col-centered-content">
@@ -337,7 +357,12 @@ marketing_templates:
         </div>
         <div class="col-sm-6 col-centered-content">
           <div class="vertical-center">
-            <img src="<%= image_url %>" class="img-responsive img-shadow">
+            <picture>
+              <!--[if IE 9]><video style="display: none;"><![endif]-->
+              <source srcset="<%= image_url.gsub /original/, 'small' %>" media="(min-width: 361px)">
+              <!--[if IE 9]></video><![endif]-->
+              <img srcset="<%= image_url.gsub /original/, 'thumb' %>" class="img-responsive img-shadow">
+            </picture>
           </div>
         </div>
       </section>
@@ -348,7 +373,12 @@ marketing_templates:
       <section class="row <%= background_color %>-bg">
         <div class="col-sm-6 col-centered-content">
           <div class="vertical-center">
-            <img src="<%= image_url %>" class="img-responsive img-book margin-sm-bottom-xl">
+            <picture>
+              <!--[if IE 9]><video style="display: none;"><![endif]-->
+              <source srcset="<%= image_url.gsub /original/, 'small' %>" media="(min-width: 361px)">
+              <!--[if IE 9]></video><![endif]-->
+              <img srcset="<%= image_url.gsub /original/, 'thumb' %>" class="img-responsive img-book margin-sm-bottom-xl">
+            </picture>
           </div>
         </div>
         <div class="col-sm-6 col-centered-content">
@@ -377,7 +407,12 @@ marketing_templates:
         </div>
         <div class="col-sm-6 col-centered-content">
           <div class="vertical-center">
-            <img src="<%= image_url %>" class="img-responsive img-book">
+            <picture>
+              <!--[if IE 9]><video style="display: none;"><![endif]-->
+              <source srcset="<%= image_url.gsub /original/, 'small' %>" media="(min-width: 361px)">
+              <!--[if IE 9]></video><![endif]-->
+              <img srcset="<%= image_url.gsub /original/, 'thumb' %>" class="img-responsive img-book">
+            </picture>            
           </div>
         </div>
       </section>
