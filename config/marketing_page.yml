@@ -4,22 +4,22 @@ marketing_templates:
     content: !xml |
       <style>
         @media all and (max-width: 360px) {
-          #tileRoleSelectorHero {
+          #tileRoleSelectorHero<%= position %> {
             background-image: url("<%= background_image_url.gsub /original/, 'thumb' %>");
           }
         }
         @media all and (min-width: 361px) and (max-width: 767px) {
-          #tileRoleSelectorHero {
+          #tileRoleSelectorHero<%= position %> {
             background-image: url("<%= background_image_url.gsub /original/, 'small' %>")
           }
         }
         @media all and (min-width: 768px) {
-          #tileRoleSelectorHero {
+          #tileRoleSelectorHero<%= position %> {
             background-image: url("<%= background_image_url.gsub /original/, 'large' %>");
           }
         }
       </style>
-      <div id="tileRoleSelectorHero" class="row intro masthead">
+      <div id="tileRoleSelectorHero<%= position %>" class="row intro masthead">
         <div class="col-xs-12 masthead-content text-center">
           <h5 class="home-mast-intro bold"><%= title %> <span class="text-success"><% if title_highlight.present? %><%= title_highlight %><% end %></span></h5>
           <div id="pageSelection">
