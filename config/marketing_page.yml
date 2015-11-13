@@ -133,8 +133,20 @@ marketing_templates:
   -
     name: '50/50 Full-Bleed Image Left, Half Height'
     content: !xml |
+      <style>
+        @media all and (max-width: 360px) {
+          #tileImgLeftHalf<%= position %> {
+            background-image: url("<%= image_url.gsub /original/, 'thumb' %>");
+          }
+        }
+        @media all and (min-width: 361px) {
+          #tileImgLeftHalf<%= position %> {
+            background-image: url("<%= image_url.gsub /original/, 'small' %>");
+          }
+        }
+      </style>
       <section class="row half-height <%= background_color %>-bg">
-        <div class="col-sm-6 col-img-full" style="background-image: url('<%= image_url %>')">
+        <div id="tileImgLeftHalf<%= position %>" class="col-sm-6 col-img-full">
         </div>
         <div class="col-sm-6 col-centered-content">
           <div class="vertical-center">
