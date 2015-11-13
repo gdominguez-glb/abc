@@ -223,7 +223,10 @@ marketing_templates:
       <section class="row <%= background_color %>-bg">
         <div class="col-sm-6 col-centered-content">
           <div class="vertical-center">
-            <img src="<%= image_url %>" class="img-responsive margin-sm-bottom-xl">
+            <picture>
+              <source srcset="<%= image_url.gsub /original/, 'small' %>" media="(min-width: 361px)">
+              <img srcset="<%= image_url.gsub /original/, 'thumb' %>" class="img-responsive margin-sm-bottom-xl">
+            </picture>
           </div>
         </div>
         <div class="col-sm-6 col-centered-content">
