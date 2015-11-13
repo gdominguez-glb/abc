@@ -72,7 +72,24 @@ marketing_templates:
   -
     name: 'Video Hero'
     content: !xml |
-      <section class="row row-video-hero" style="background-image: url('<%= background_image_url %>')">
+      <style>
+        @media all and (max-width: 360px) {
+          #tileVideoHero<%= position %> {
+            background-image: url("<%= background_image_url.gsub /original/, 'thumb' %>");
+          }
+        }
+        @media all and (min-width: 361px) and (max-width: 767px) {
+          #tileVideoHero<%= position %> {
+            background-image: url("<%= background_image_url.gsub /original/, 'small' %>")
+          }
+        }
+        @media all and (min-width: 768px) {
+          #tileVideoHero<%= position %> {
+            background-image: url("<%= background_image_url.gsub /original/, 'large' %>");
+          }
+        }
+      </style>
+      <section id="tileVideoHero<%= position %>" class="row row-video-hero">
         <div class="col-xs-12">
           <h3 class="video-title"><%= title %></h3>
           <div class="embed-responsive embed-responsive-16by9">
