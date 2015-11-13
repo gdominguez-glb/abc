@@ -14,7 +14,7 @@ class Cms::StaffsController < Cms::BaseController
     if @staff.save
       redirect_to cms_staffs_path, notice: 'Created staff successfully!'
     else
-      render :edit
+      render :new
     end
   end
 
