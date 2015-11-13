@@ -18,7 +18,7 @@
     </div>
     <div class="form-group">
       <label>Session Types</label>
-      <%= f.collection_select :session_types, EventTraining.all, :id, :title, { include_hidden: false }, class: 'form-control', multiple: true %>
+      <%= f.collection_select :session_types, EventTraining.all, :id, :title, { include_hidden: false }, class: 'form-control', multiple: true, placeholder: 'Set session type' %>
     </div>
     <div class="form-group">
       <label>Visible</label>
@@ -27,3 +27,11 @@
     <%= f.submit "Save", class: 'btn btn-success' %>
   <% end %>
 </div>
+
+<%= content_for :javascripts do %>
+  <script type="text/javascript">
+    $(function(){
+      $('#regonline_event_session_types').select2();
+    });
+  </script>
+<% end %>
