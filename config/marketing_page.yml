@@ -2,7 +2,24 @@ marketing_templates:
   -
     name: 'Role/Curriculum Selector Hero'
     content: !xml |
-      <div class="row intro masthead" style="background-image: url('<%= background_image_url %>')">
+      <style>
+        @media all and (max-width: 360px) {
+          #tileRoleSelectorHero {
+            background-image: url("<%= background_image_url.gsub /original/, 'thumb' %>");
+          }
+        }
+        @media all and (min-width: 361px) and (max-width: 767px) {
+          #tileRoleSelectorHero {
+            background-image: url("<%= background_image_url.gsub /original/, 'small' %>")
+          }
+        }
+        @media all and (min-width: 768px) {
+          #tileRoleSelectorHero {
+            background-image: url("<%= background_image_url.gsub /original/, 'large' %>");
+          }
+        }
+      </style>
+      <div id="tileRoleSelectorHero" class="row intro masthead">
         <div class="col-xs-12 masthead-content text-center">
           <h5 class="home-mast-intro bold"><%= title %> <span class="text-success"><% if title_highlight.present? %><%= title_highlight %><% end %></span></h5>
           <div id="pageSelection">
