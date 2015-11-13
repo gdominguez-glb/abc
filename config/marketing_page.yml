@@ -162,6 +162,18 @@ marketing_templates:
   -
     name: '50/50 Full-Bleed Image Right'
     content: !xml |
+      <style>
+        @media all and (max-width: 360px) {
+          #tileImgRight<%= position %> {
+            background-image: url("<%= image_url.gsub /original/, 'thumb' %>");
+          }
+        }
+        @media all and (min-width: 361px) {
+          #tileImgRight<%= position %> {
+            background-image: url("<%= image_url.gsub /original/, 'small' %>");
+          }
+        }
+      </style>
       <section class="row <%= background_color %>-bg">
         <div class="col-sm-6 col-centered-content">
           <div class="vertical-center">
@@ -172,13 +184,25 @@ marketing_templates:
             <% end %>
           </div>
         </div>
-        <div class="col-sm-6 col-img-full" style="background-image: url('<%= image_url %>')">
+        <div id="tileImgRight<%= position %>" class="col-sm-6 col-img-full">
         </div>
       </section>
 
   -
     name: '50/50 Full-Bleed Image Right, Half Height'
     content: !xml |
+      <style>
+        @media all and (max-width: 360px) {
+          #tileImgRightHalf<%= position %> {
+            background-image: url("<%= image_url.gsub /original/, 'thumb' %>");
+          }
+        }
+        @media all and (min-width: 361px) {
+          #tileImgRightHalf<%= position %> {
+            background-image: url("<%= image_url.gsub /original/, 'small' %>");
+          }
+        }
+      </style>
       <section class="row half-height <%= background_color %>-bg">
         <div class="col-sm-6 col-centered-content">
           <div class="vertical-center">
@@ -189,7 +213,7 @@ marketing_templates:
             <% end %>
           </div>
         </div>
-        <div class="col-sm-6 col-img-full" style="background-image: url('<%= image_url %>')">
+        <div id="tileImgRightHalf<%= position %>" class="col-sm-6 col-img-full">
         </div>
       </section>
 
