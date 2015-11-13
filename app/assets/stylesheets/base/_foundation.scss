@@ -166,11 +166,11 @@ body.dragging, body.dragging * {
 
 .wrapper {
   position: relative;
-  padding: 30px 15px;
+  padding: 0 15px;
   @include clearfix;
 
   @media screen and (min-width: $screen-sm-min) {
-    padding: 30px 60px;
+    padding: 0 60px;
   }
 }
 
