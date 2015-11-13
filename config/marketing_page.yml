@@ -224,7 +224,9 @@ marketing_templates:
         <div class="col-sm-6 col-centered-content">
           <div class="vertical-center">
             <picture>
+              <!--[if IE 9]><video style="display: none;"><![endif]-->
               <source srcset="<%= image_url.gsub /original/, 'small' %>" media="(min-width: 361px)">
+              <!--[if IE 9]></video><![endif]-->
               <img srcset="<%= image_url.gsub /original/, 'thumb' %>" class="img-responsive margin-sm-bottom-xl">
             </picture>
           </div>
