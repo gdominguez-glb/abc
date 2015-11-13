@@ -1,5 +1,37 @@
 Spree::OrdersController.class_eval do
 
+  def update
+    unless validate_line_item_quantity!
+      redirect_to :back and return
+    end
+    if @order.contents.update_cart(order_params)
+      respond_with(@order) do |format|
+        format.html do
+          if params.has_key?(:checkout)
+            @order.next if @order.cart?
+            redirect_to checkout_state_path(@order.checkout_steps.first)
+          else
+            redirect_to cart_path
+          end
+        end
+      end
+    else
+      respond_with(@order)
+    end
+  end
+
+  def validate_line_item_quantity!
+    if params[:order] && params[:order][:line_items_attributes]
+      params[:order][:line_items_attributes].each do |key, line_item_params|
+        if line_item_params[:quantity].to_i > 15
+          flash[:error] = "To place an order for more than 15 licenses of this product you must <a href='/contact'>contact us</a>.".html_safe
+          return false
+        end
+      end
+    end
+    true
+  end
+
   # Adds a new item to the order (creating a new order if none already exists)
   def populate
     order    = current_order(create_order_if_necessary: true)
