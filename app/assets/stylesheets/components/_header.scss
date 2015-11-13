@@ -419,7 +419,7 @@
           text-transform: capitalize;
 
           &.active {
-            border-bottom: 2px solid $brand-green;
+            border-bottom: 2px solid #fff;
 
             [data-page='english'] &,
             [data-page='history'] &,
