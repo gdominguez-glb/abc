@@ -2,7 +2,24 @@ marketing_templates:
   -
     name: 'Role/Curriculum Selector Hero'
     content: !xml |
-      <div class="row intro masthead" style="background-image: url('<%= background_image_url %>')">
+      <style>
+        @media all and (max-width: 360px) {
+          #tileRoleSelectorHero<%= position %> {
+            background-image: url("<%= background_image_url.gsub /original/, 'thumb' %>");
+          }
+        }
+        @media all and (min-width: 361px) and (max-width: 767px) {
+          #tileRoleSelectorHero<%= position %> {
+            background-image: url("<%= background_image_url.gsub /original/, 'small' %>")
+          }
+        }
+        @media all and (min-width: 768px) {
+          #tileRoleSelectorHero<%= position %> {
+            background-image: url("<%= background_image_url.gsub /original/, 'large' %>");
+          }
+        }
+      </style>
+      <div id="tileRoleSelectorHero<%= position %>" class="row intro masthead">
         <div class="col-xs-12 masthead-content text-center">
           <h5 class="home-mast-intro bold"><%= title %> <span class="text-success"><% if title_highlight.present? %><%= title_highlight %><% end %></span></h5>
           <div id="pageSelection">
@@ -55,7 +72,24 @@ marketing_templates:
   -
     name: 'Video Hero'
     content: !xml |
-      <section class="row row-video-hero" style="background-image: url('<%= background_image_url %>')">
+      <style>
+        @media all and (max-width: 360px) {
+          #tileVideoHero<%= position %> {
+            background-image: url("<%= background_image_url.gsub /original/, 'thumb' %>");
+          }
+        }
+        @media all and (min-width: 361px) and (max-width: 767px) {
+          #tileVideoHero<%= position %> {
+            background-image: url("<%= background_image_url.gsub /original/, 'small' %>")
+          }
+        }
+        @media all and (min-width: 768px) {
+          #tileVideoHero<%= position %> {
+            background-image: url("<%= background_image_url.gsub /original/, 'large' %>");
+          }
+        }
+      </style>
+      <section id="tileVideoHero<%= position %>" class="row row-video-hero">
         <div class="col-xs-12">
           <h3 class="video-title"><%= title %></h3>
           <div class="embed-responsive embed-responsive-16by9">
@@ -67,8 +101,20 @@ marketing_templates:
   -
     name: '50/50 Full-Bleed Image Left'
     content: !xml |
+      <style>
+        @media all and (max-width: 360px) {
+          #tileImgLeft<%= position %> {
+            background-image: url("<%= image_url.gsub /original/, 'thumb' %>");
+          }
+        }
+        @media all and (min-width: 361px) {
+          #tileImgLeft<%= position %> {
+            background-image: url("<%= image_url.gsub /original/, 'small' %>");
+          }
+        }
+      </style>
       <section class="row <%= background_color %>-bg">
-        <div class="col-sm-6 col-img-full" style="background-image: url('<%= image_url %>')">
+        <div id="tileImgLeft<%= position %>" class="col-sm-6 col-img-full">
         </div>
         <div class="col-sm-6 col-centered-content">
           <div class="vertical-center">
@@ -87,8 +133,20 @@ marketing_templates:
   -
     name: '50/50 Full-Bleed Image Left, Half Height'
     content: !xml |
+      <style>
+        @media all and (max-width: 360px) {
+          #tileImgLeftHalf<%= position %> {
+            background-image: url("<%= image_url.gsub /original/, 'thumb' %>");
+          }
+        }
+        @media all and (min-width: 361px) {
+          #tileImgLeftHalf<%= position %> {
+            background-image: url("<%= image_url.gsub /original/, 'small' %>");
+          }
+        }
+      </style>
       <section class="row half-height <%= background_color %>-bg">
-        <div class="col-sm-6 col-img-full" style="background-image: url('<%= image_url %>')">
+        <div id="tileImgLeftHalf<%= position %>" class="col-sm-6 col-img-full">
         </div>
         <div class="col-sm-6 col-centered-content">
           <div class="vertical-center">
@@ -104,6 +162,18 @@ marketing_templates:
   -
     name: '50/50 Full-Bleed Image Right'
     content: !xml |
+      <style>
+        @media all and (max-width: 360px) {
+          #tileImgRight<%= position %> {
+            background-image: url("<%= image_url.gsub /original/, 'thumb' %>");
+          }
+        }
+        @media all and (min-width: 361px) {
+          #tileImgRight<%= position %> {
+            background-image: url("<%= image_url.gsub /original/, 'small' %>");
+          }
+        }
+      </style>
       <section class="row <%= background_color %>-bg">
         <div class="col-sm-6 col-centered-content">
           <div class="vertical-center">
@@ -114,13 +184,25 @@ marketing_templates:
             <% end %>
           </div>
         </div>
-        <div class="col-sm-6 col-img-full" style="background-image: url('<%= image_url %>')">
+        <div id="tileImgRight<%= position %>" class="col-sm-6 col-img-full">
         </div>
       </section>
 
   -
     name: '50/50 Full-Bleed Image Right, Half Height'
     content: !xml |
+      <style>
+        @media all and (max-width: 360px) {
+          #tileImgRightHalf<%= position %> {
+            background-image: url("<%= image_url.gsub /original/, 'thumb' %>");
+          }
+        }
+        @media all and (min-width: 361px) {
+          #tileImgRightHalf<%= position %> {
+            background-image: url("<%= image_url.gsub /original/, 'small' %>");
+          }
+        }
+      </style>
       <section class="row half-height <%= background_color %>-bg">
         <div class="col-sm-6 col-centered-content">
           <div class="vertical-center">
@@ -131,7 +213,7 @@ marketing_templates:
             <% end %>
           </div>
         </div>
-        <div class="col-sm-6 col-img-full" style="background-image: url('<%= image_url %>')">
+        <div id="tileImgRightHalf<%= position %>" class="col-sm-6 col-img-full">
         </div>
       </section>
 
@@ -141,7 +223,12 @@ marketing_templates:
       <section class="row <%= background_color %>-bg">
         <div class="col-sm-6 col-centered-content">
           <div class="vertical-center">
-            <img src="<%= image_url %>" class="img-responsive margin-sm-bottom-xl">
+            <picture>
+              <!--[if IE 9]><video style="display: none;"><![endif]-->
+              <source srcset="<%= image_url.gsub /original/, 'small' %>" media="(min-width: 361px)">
+              <!--[if IE 9]></video><![endif]-->
+              <img srcset="<%= image_url.gsub /original/, 'thumb' %>" class="img-responsive margin-sm-bottom-xl">
+            </picture>
           </div>
         </div>
         <div class="col-sm-6 col-centered-content">
@@ -161,7 +248,12 @@ marketing_templates:
       <section class="row half-height <%= background_color %>-bg">
         <div class="col-sm-6 col-centered-content">
           <div class="vertical-center">
-            <img src="<%= image_url %>" class="img-responsive margin-sm-bottom-xl">
+            <picture>
+              <!--[if IE 9]><video style="display: none;"><![endif]-->
+              <source srcset="<%= image_url.gsub /original/, 'small' %>" media="(min-width: 361px)">
+              <!--[if IE 9]></video><![endif]-->
+              <img srcset="<%= image_url.gsub /original/, 'thumb' %>" class="img-responsive margin-sm-bottom-xl">
+            </picture>
           </div>
         </div>
         <div class="col-sm-6 col-centered-content">
@@ -190,7 +282,12 @@ marketing_templates:
         </div>
         <div class="col-sm-6 col-centered-content">
           <div class="vertical-center">
-            <img src="<%= image_url %>" class="img-responsive">
+            <picture>
+              <!--[if IE 9]><video style="display: none;"><![endif]-->
+              <source srcset="<%= image_url.gsub /original/, 'small' %>" media="(min-width: 361px)">
+              <!--[if IE 9]></video><![endif]-->
+              <img srcset="<%= image_url.gsub /original/, 'thumb' %>" class="img-responsive">
+            </picture>
           </div>
         </div>
       </section>
@@ -210,7 +307,12 @@ marketing_templates:
         </div>
         <div class="col-sm-6 col-centered-content">
           <div class="vertical-center">
-            <img src="<%= image_url %>" class="img-responsive">
+            <picture>
+              <!--[if IE 9]><video style="display: none;"><![endif]-->
+              <source srcset="<%= image_url.gsub /original/, 'small' %>" media="(min-width: 361px)">
+              <!--[if IE 9]></video><![endif]-->
+              <img srcset="<%= image_url.gsub /original/, 'thumb' %>" class="img-responsive">
+            </picture>
           </div>
         </div>
       </section>
@@ -221,7 +323,12 @@ marketing_templates:
       <section class="row <%= background_color %>-bg">
         <div class="col-sm-6 col-centered-content">
           <div class="vertical-center">
-            <img src="<%= image_url %>" class="img-responsive img-shadow margin-sm-bottom-xl">
+            <picture>
+              <!--[if IE 9]><video style="display: none;"><![endif]-->
+              <source srcset="<%= image_url.gsub /original/, 'small' %>" media="(min-width: 361px)">
+              <!--[if IE 9]></video><![endif]-->
+              <img srcset="<%= image_url.gsub /original/, 'thumb' %>" class="img-responsive img-shadow margin-sm-bottom-xl">
+            </picture>
           </div>
         </div>
         <div class="col-sm-6 col-centered-content">
@@ -250,7 +357,12 @@ marketing_templates:
         </div>
         <div class="col-sm-6 col-centered-content">
           <div class="vertical-center">
-            <img src="<%= image_url %>" class="img-responsive img-shadow">
+            <picture>
+              <!--[if IE 9]><video style="display: none;"><![endif]-->
+              <source srcset="<%= image_url.gsub /original/, 'small' %>" media="(min-width: 361px)">
+              <!--[if IE 9]></video><![endif]-->
+              <img srcset="<%= image_url.gsub /original/, 'thumb' %>" class="img-responsive img-shadow">
+            </picture>
           </div>
         </div>
       </section>
@@ -261,7 +373,12 @@ marketing_templates:
       <section class="row <%= background_color %>-bg">
         <div class="col-sm-6 col-centered-content">
           <div class="vertical-center">
-            <img src="<%= image_url %>" class="img-responsive img-book margin-sm-bottom-xl">
+            <picture>
+              <!--[if IE 9]><video style="display: none;"><![endif]-->
+              <source srcset="<%= image_url.gsub /original/, 'small' %>" media="(min-width: 361px)">
+              <!--[if IE 9]></video><![endif]-->
+              <img srcset="<%= image_url.gsub /original/, 'thumb' %>" class="img-responsive img-book margin-sm-bottom-xl">
+            </picture>
           </div>
         </div>
         <div class="col-sm-6 col-centered-content">
@@ -290,7 +407,12 @@ marketing_templates:
         </div>
         <div class="col-sm-6 col-centered-content">
           <div class="vertical-center">
-            <img src="<%= image_url %>" class="img-responsive img-book">
+            <picture>
+              <!--[if IE 9]><video style="display: none;"><![endif]-->
+              <source srcset="<%= image_url.gsub /original/, 'small' %>" media="(min-width: 361px)">
+              <!--[if IE 9]></video><![endif]-->
+              <img srcset="<%= image_url.gsub /original/, 'thumb' %>" class="img-responsive img-book">
+            </picture>            
           </div>
         </div>
       </section>
@@ -298,7 +420,24 @@ marketing_templates:
   -
     name: 'Image Background, Full Width Text'
     content: !xml |
-      <section class="row row-img-full row-content-full image-bg" style="background-image: url('<%= image_url %>')">
+      <style>
+        @media all and (max-width: 360px) {
+          #tileImgBgTextFull<%= position %> {
+            background-image: url("<%= image_url.gsub /original/, 'thumb' %>");
+          }
+        }
+        @media all and (min-width: 361px) and (max-width: 767px) {
+          #tileImgBgTextFull<%= position %> {
+            background-image: url("<%= image_url.gsub /original/, 'small' %>")
+          }
+        }
+        @media all and (min-width: 768px) {
+          #tileImgBgTextFull<%= position %> {
+            background-image: url("<%= image_url.gsub /original/, 'large' %>");
+          }
+        }
+      </style>
+      <section id="tileImgBgTextFull<%= position %>" class="row row-img-full row-content-full image-bg">
         <div class="row-img-full-content">
           <div class="col-sm-12 col-centered-content">
             <div class="vertical-center">
@@ -315,7 +454,24 @@ marketing_templates:
   -
     name: 'Image Background, Full Width Text, Half Height'
     content: !xml |
-      <section class="row row-img-full row-content-full image-bg half-height" style="background-image: url('<%= image_url %>')">
+      <style>
+        @media all and (max-width: 360px) {
+          #tileImgBgTextFullHalf<%= position %> {
+            background-image: url("<%= image_url.gsub /original/, 'thumb' %>");
+          }
+        }
+        @media all and (min-width: 361px) and (max-width: 767px) {
+          #tileImgBgTextFullHalf<%= position %> {
+            background-image: url("<%= image_url.gsub /original/, 'small' %>")
+          }
+        }
+        @media all and (min-width: 768px) {
+          #tileImgBgTextFullHalf<%= position %> {
+            background-image: url("<%= image_url.gsub /original/, 'large' %>");
+          }
+        }
+      </style>
+      <section id="tileImgBgTextFullHalf<%= position %>" class="row row-img-full row-content-full image-bg half-height">
         <div class="row-img-full-content">
           <div class="col-sm-12 col-centered-content">
             <div class="vertical-center">
@@ -334,7 +490,24 @@ marketing_templates:
   -
     name: 'Image Background, Text Left'
     content: !xml |
-      <section class="row row-img-full image-bg" style="background-image: url('<%= image_url %>')">
+      <style>
+        @media all and (max-width: 360px) {
+          #tileImgBgTextLeft<%= position %> {
+            background-image: url("<%= image_url.gsub /original/, 'thumb' %>");
+          }
+        }
+        @media all and (min-width: 361px) and (max-width: 767px) {
+          #tileImgBgTextLeft<%= position %> {
+            background-image: url("<%= image_url.gsub /original/, 'small' %>")
+          }
+        }
+        @media all and (min-width: 768px) {
+          #tileImgBgTextLeft<%= position %> {
+            background-image: url("<%= image_url.gsub /original/, 'large' %>");
+          }
+        }
+      </style>
+      <section id="tileImgBgTextLeft<%= position %>" class="row row-img-full image-bg">
         <div class="row-img-full-content">
           <div class="col-sm-6 col-centered-content">
             <div class="vertical-center">
@@ -352,7 +525,24 @@ marketing_templates:
   -
     name: 'Image Background, Text Right'
     content: !xml |
-      <section class="row row-img-full image-bg" style="background-image: url('<%= image_url %>')">
+      <style>
+        @media all and (max-width: 360px) {
+          #tileImgBgTextRight<%= position %> {
+            background-image: url("<%= image_url.gsub /original/, 'thumb' %>");
+          }
+        }
+        @media all and (min-width: 361px) and (max-width: 767px) {
+          #tileImgBgTextRight<%= position %> {
+            background-image: url("<%= image_url.gsub /original/, 'small' %>")
+          }
+        }
+        @media all and (min-width: 768px) {
+          #tileImgBgTextRight<%= position %> {
+            background-image: url("<%= image_url.gsub /original/, 'large' %>");
+          }
+        }
+      </style>
+      <section id="tileImgBgTextRight<%= position %>" class="row row-img-full image-bg">
         <div class="row-img-full-content">
           <div class="col-sm-6"></div>
           <div class="col-sm-6 col-centered-content">
@@ -407,7 +597,24 @@ marketing_templates:
   -
     name: '2-Column Video Left, Text Right'
     content: !xml |
-      <section class="row row-img-full row-video-left image-bg" style="background-image: url('<%= background_image_url %>')">
+      <style>
+        @media all and (max-width: 360px) {
+          #tileVideoLeft<%= position %> {
+            background-image: url("<%= background_image_url.gsub /original/, 'thumb' %>");
+          }
+        }
+        @media all and (min-width: 361px) and (max-width: 767px) {
+          #tileVideoLeft<%= position %> {
+            background-image: url("<%= background_image_url.gsub /original/, 'small' %>")
+          }
+        }
+        @media all and (min-width: 768px) {
+          #tileVideoLeft<%= position %> {
+            background-image: url("<%= background_image_url.gsub /original/, 'large' %>");
+          }
+        }
+      </style>
+      <section id="tileVideoLeft<%= position %>" class="row row-img-full row-video-left image-bg">
         <div class="row-img-full-content">
           <div class="col-sm-6 col-centered-content margin-sm-bottom-xl">
             <div class="vertical-center">

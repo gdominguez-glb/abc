@@ -28,6 +28,7 @@
 //= require mediaelement_rails
 //= require slick.min
 //= require user_form
+//= require picturefill
 //= require_tree .
 
 var Gm;
