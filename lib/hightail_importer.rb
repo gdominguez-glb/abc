@@ -38,7 +38,7 @@ class HightailImporter
 
   def download_zip_files
     @zip_files_info.each do |file_info|
-      product_name = file_info['name'].gsub(/\(Version \d+\)\.zip/, '').gsub(/v\d+\.zip$/, '').strip
+      product_name = file_info['name'].gsub(/\.zip/, '').strip
       product = Spree::Product.find_by(name: product_name)
       download_zip_file(product, file_info) if product
     end
