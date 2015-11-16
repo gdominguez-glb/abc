@@ -40,6 +40,7 @@ Spree::UserSessionsController.class_eval do
 
   # Admins can switch to become another user
   def become
+    session[:ghost_login_admin_id] = current_spree_user.id
     sign_in(:spree_user, @user, bypass: true)
     redirect_to main_app.account_root_path, notice: t('logged_in_as_user', email: @user.email)
   end

@@ -8,6 +8,11 @@
         <%= link_to 'Manage Licenses as Admin', main_app.account_ghost_login_path, class: 'btn btn-primary btn-sm', data: { method: :post } %>
       </li>
     <% end %>
+    <% if ghost_login? || admin_ghost_login? %>
+      <li>
+        <%= link_to 'Return to My Account', main_app.account_ghost_back_path, class: 'btn btn-primary btn-sm', data: { method: :post } %>
+      </li>
+    <% end %>
   <% end %>
 
   <% if spree_current_user %>
