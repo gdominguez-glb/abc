@@ -55,7 +55,7 @@ class Account::LicensesController < Account::BaseController
   end
 
   def select_users
-    @emails = SelectUsersForm.new(licenses_recipients: params[:licenses_recipients], emails: params[:emails], users_file: params[:users_file]).perform
+    @emails = SelectUsersForm.new(licenses_recipients: params[:licenses_recipients], emails: params[:emails], users_file: params[:file]).perform
   end
 
   def revoke_all
