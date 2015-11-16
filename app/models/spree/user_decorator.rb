@@ -25,11 +25,13 @@ Spree::User.class_eval do
     state_criteria.merge!(country: country) if country.present?
     state = Spree::State.find_by(state_criteria)
     country = state.country if country.blank? && state.present?
+    phone = sfo.Phone
+    phone = '000-000-0000' if phone.blank?
 
     attrs = {
       first_name: sfo.FirstName,
       last_name: sfo.LastName,
-      phone: sfo.Phone,
+      phone: phone,
       address1: sfo.send("#{type}Street"),
       city: sfo.send("#{type}City"),
       state: state,
@@ -43,6 +45,7 @@ Spree::User.class_eval do
                  attrs[:country].blank? ||
                  attrs[:zipcode].blank? ||
                  attrs[:phone].blank?
+    attrs
   end
 
   def self.attributes_from_salesforce_object(sfo)
