@@ -18,13 +18,49 @@ Spree::User.class_eval do
     'Contact'
   end
 
+  def self.address_attributes(sfo, type = 'Mailing')
+    return nil unless %w(Mailing Other).member?(type)
+    country = Spree::Country.find_by(iso3: sfo.send("#{type}Country"))
+    state_criteria = { abbr: sfo.send("#{type}State") }
+    state_criteria.merge!(country: country) if country.present?
+    state = Spree::State.find_by(state_criteria)
+    country = state.country if country.blank? && state.present?
+    phone = sfo.Phone
+    phone = '000-000-0000' if phone.blank?
+
+    attrs = {
+      first_name: sfo.FirstName,
+      last_name: sfo.LastName,
+      phone: phone,
+      address1: sfo.send("#{type}Street"),
+      city: sfo.send("#{type}City"),
+      state: state,
+      zipcode: sfo.send("#{type}PostalCode"),
+      country: country
+    }
+    return {} if attrs[:first_name].blank? ||
+                 attrs[:last_name].blank? ||
+                 attrs[:address1].blank? ||
+                 attrs[:city].blank? ||
+                 attrs[:country].blank? ||
+                 attrs[:zipcode].blank? ||
+                 attrs[:phone].blank?
+    attrs
+  end
+
   def self.attributes_from_salesforce_object(sfo)
     sfo_data = super(sfo)
     sfo_data.merge!(first_name: sfo.FirstName,
                     last_name: sfo.LastName,
                     email: sfo.Email,
+                    phone: sfo.Phone,
                     title: sfo.Contact_Type__c,
                     allow_communication: !sfo.DoNotCall)
+    ship_addr = address_attributes(sfo, 'Mailing')
+    sfo_data.merge!(ship_address_attributes: ship_addr) if ship_addr.present?
+    bill_addr = address_attributes(sfo, 'Other')
+    sfo_data.merge!(bill_address_attributes: bill_addr) if bill_addr.present?
+
     school_district_record = SchoolDistrict.joins(:salesforce_reference)
       .where('salesforce_references.id_in_salesforce' => sfo.AccountId).first
     if school_district_record
@@ -35,15 +71,30 @@ Spree::User.class_eval do
     sfo_data
   end
 
+  def sf_address(addr, prefix = 'Mailing')
+    return nil if addr.blank? || !(%w(Mailing Other).member?(prefix))
+    # TODO: use this, when supported: [addr.address1, addr.address2].join("\n")
+    { "#{prefix}Street" => addr.address1,
+      "#{prefix}City" => addr.city,
+      "#{prefix}State" => addr.state.try(:abbr),
+      "#{prefix}PostalCode" => addr.zipcode,
+      "#{prefix}Country" => addr.country.try(:iso3)
+    }
+  end
+
   def attributes_for_salesforce
-    { 'FirstName' => first_name,
-      'LastName' => last_name,
-      'AccountId' => school_district.try(:id_in_salesforce),
-      'Contact_Type__c' => title,
-      'Web_Front_End_Email__c' => email,
-      'Web_Front_End_ID__c' => id,
-      'Email' => email,
-      'DoNotCall' => !allow_communication }
+    attrs = { 'FirstName' => first_name,
+              'LastName' => last_name,
+              'AccountId' => school_district.try(:id_in_salesforce),
+              'Contact_Type__c' => title,
+              'Web_Front_End_Email__c' => email,
+              'Web_Front_End_ID__c' => id,
+              'Email' => email,
+              'Phone' => phone,
+              'DoNotCall' => !allow_communication }
+    attrs.merge!(sf_address(ship_address, 'Mailing')) if ship_address.present?
+    attrs.merge!(sf_address(bill_address, 'Other')) if bill_address.present?
+    attrs
   end
 
   def new_attributes_for_salesforce
