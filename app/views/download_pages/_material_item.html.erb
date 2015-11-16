@@ -8,7 +8,7 @@
         <% if item.children.size > 0 %>
           <% open_material = @opened_material_ids.include?(material.id) %>
           <button
-            class="btn btn-primary btn-icon margin-left margin-right-reset collapsed"
+            class="btn btn-primary btn-toggle btn-icon margin-left margin-right-reset collapsed"
             data-material-id="<%= material.id %>"
             data-toggle="collapse"
             data-parent="#material<%= material.id %>"
