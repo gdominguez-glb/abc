@@ -40,6 +40,7 @@ class HightailImporter
     @zip_files_info.each do |file_info|
       product_name = file_info['name'].gsub(/\.zip/, '').strip
       product = Spree::Product.find_by(name: product_name)
+      Spree::Material.where(product_id: product).each{|m| m.destroy }
       download_zip_file(product, file_info) if product
     end
   end
