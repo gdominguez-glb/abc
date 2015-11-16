@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  helper_method :ghost_login?
+  helper_method :ghost_login?, :admin_ghost_login?
 
   def current_ability
     @current_ability ||= Spree::Ability.new(current_user)
@@ -33,6 +33,10 @@ class ApplicationController < ActionController::Base
 
   def ghost_login?
     session[:ghost_login_user_id].present?
+  end
+
+  def admin_ghost_login?
+    session[:ghost_login_admin_id].present?
   end
 
   protected

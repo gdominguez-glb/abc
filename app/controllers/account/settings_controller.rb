@@ -28,6 +28,17 @@ class Account::SettingsController < Account::BaseController
     redirect_to account_root_path
   end
 
+  def ghost_back
+    user = Spree::User.find_by(id: (session[:ghost_login_user_id] || session[:ghost_login_admin_id]))
+    if user
+      reset_session
+      sign_in(:spree_user, user, bypass: true)
+      redirect_to account_root_path
+    else
+      redirect_to root_path
+    end
+  end
+
   private
 
   def user_params

@@ -10,6 +10,7 @@ namespace :account do
   patch 'save_profile', to: 'settings#save_profile'
   post 'save_grade_option', to: 'settings#save_grade_option'
   post 'ghost_login', to: 'settings#ghost_login'
+  post 'ghost_back', to: 'settings#ghost_back'
 
   get :shop_of_interest, to: 'products#shop_of_interest'
 
