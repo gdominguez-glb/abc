@@ -39,7 +39,8 @@ module Spree
           create_license({
             email: row[:email],
             quantity: quantity,
-            product_distribution: distribution
+            product_distribution: distribution,
+            order_id: licensed_product.order_id
           })
 
           reduce_license_quantity(licensed_product, quantity)
