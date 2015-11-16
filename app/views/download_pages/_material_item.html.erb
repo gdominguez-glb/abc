@@ -21,34 +21,34 @@
     <div class="row">
       <div class="col-xs-12 text-left">
         <% if material.link.present? %>
-          <%= link_to material.link, target: '_blank' do %>
-            <i class="fa fa-link margin-right-s text-info"></i>
+          <%= link_to material.link, target: '_blank', class: 'btn btn-default btn-icon' do %>
+            <i class="fa fa-link"></i>
           <% end %>
         <% end %>
         <% if material.material_files_count == 1 && material.children == 0 %>
-          <%= link_to download_material_path(material), remote: true do %>
-            <i class="fa fa-download margin-right-s text-info"></i>
+          <%= link_to download_material_path(material), remote: true, class: 'btn btn-default btn-icon' do %>
+            <i class="fa fa-download"></i>
           <% end %>
         <% end %>
         <% if material.material_files_count > 0 %>
 
           <% if material.material_files_count == 1 %>
-            <%= link_to material.material_files.first.file.preview_expiring_url(60*60*60), target: '_blank' do %>
-              <i class="fa fa-eye margin-right-s text-info"></i>
+            <%= link_to material.material_files.first.file.preview_expiring_url(60*60*60), target: '_blank', class: 'btn btn-default btn-icon' do %>
+              <i class="fa fa-eye"></i>
             <% end %>
           <% else %>
-            <%= link_to preview_material_path(material), remote: true do %>
-              <i class="fa fa-eye margin-right-s text-info"></i>
+            <%= link_to preview_material_path(material), remote: true, class: 'btn btn-default btn-icon' do %>
+              <i class="fa fa-eye"></i>
             <% end %>
           <% end %>
 
           <% if bookmarked_material?(material) %>
-            <%= link_to remove_bookmark_material_path(material, ref_id: "#bookmark-#{material.id}"), id: "bookmark-#{material.id}", remote: true, data: { method: :post } do %>
-              <i class="fa fa-bookmark text-info"></i>
+            <%= link_to remove_bookmark_material_path(material, ref_id: "#bookmark-#{material.id}"), id: "bookmark-#{material.id}", remote: true, data: { method: :post }, class: 'btn btn-default btn-icon' do %>
+              <i class="fa fa-bookmark"></i>
             <% end %>
           <% else %>
-            <%= link_to bookmark_material_path(material, ref_id: "#bookmark-#{material.id}"), id: "bookmark-#{material.id}", remote: true, data: { method: :post } do %>
-              <i class="fa fa-bookmark-o text-info"></i>
+            <%= link_to bookmark_material_path(material, ref_id: "#bookmark-#{material.id}"), id: "bookmark-#{material.id}", remote: true, data: { method: :post }, class: 'btn btn-default btn-icon' do %>
+              <i class="fa fa-bookmark-o"></i>
             <% end %>
           <% end %>
         <% end %>
