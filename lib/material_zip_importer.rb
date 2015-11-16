@@ -56,7 +56,7 @@ class MaterialZipImporter
       product: product,
       position: position
     )
-    dir.entries.each_with_index do |file_name, position|
+    dir.entries.sort.each_with_index do |file_name, position|
       next if file_name.start_with?('.')
       path = File.join(directory_path, file_name)
       if File.directory?(path)
