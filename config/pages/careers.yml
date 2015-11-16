@@ -9,151 +9,71 @@ pages:
     show_in_nav: false
     show_in_footer: true
     group_root: true
-    body: !xml |
-      <div class="row coral-bg">
-        <div class="col-xs-12">
-          <div class="page-header">
-            <h2>Join the Great Minds team!</h2>
+    tiles:
+      :rows:
+        -
+          rowType: 'Full Width Text'
+          title: 'JOIN THE GREAT MINDS TEAM!'
+          body_text: !xml |
             <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
-            <a href="#" class="btn btn-default all-button margin-bottom-xl">See All Openings</a>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12 col-lg-6 col-lg-offset-3">
-          <div class="page-header margin-bottom-xxl">
-            <h3>Why work with us?</h3>
+            <a href="#openning-positions" class="btn btn-default all-button">See All Openings</a>
+          background_color: 'green'
+          position: 0
+          button_title: ''
+          button_link: ''
+
+        -
+          rowType: 'Full Width Text'
+          title: 'WHY WORK WITH US?'
+          body_text: !xml |
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue. Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Maecenas faucibus mollis interdum.</p>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-5 col-sm-offset-1">
-          <div class="media">
-            <div class="media-left">
-              <a href="#">
-                <img src="http://placehold.it/60x60" alt="" class="media-object" />
-              </a>
-            </div>
-            <div class="media-body">
-              <h4 class="media-heading">Dolor Mollis Tristique Vehicula Egestas</h4>
-              <p>Sed posuere consectetur est at lobortis. Etiam porta sem malesuada magna mollis euismod. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras mattis consectetur
-                purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec id elit non mi porta gravida at eget metus.</p>
-            </div>
-          </div>
-          <div class="media">
-            <div class="media-left">
-              <a href="#">
-                <img src="http://placehold.it/60x60" alt="" class="media-object" />
-              </a>
-            </div>
-            <div class="media-body">
-              <h4 class="media-heading">Dolor Mollis Tristique Vehicula Egestas</h4>
-              <p>Sed posuere consectetur est at lobortis. Etiam porta sem malesuada magna mollis euismod. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras mattis consectetur
-                purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec id elit non mi porta gravida at eget metus.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-5">
-          <div class="media">
-            <div class="media-left">
-              <a href="#">
-                <img src="http://placehold.it/60x60" alt="" class="media-object" />
-              </a>
-            </div>
-            <div class="media-body">
-              <h4 class="media-heading">Dolor Mollis Tristique Vehicula Egestas</h4>
-              <p>Sed posuere consectetur est at lobortis. Etiam porta sem malesuada magna mollis euismod. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras mattis consectetur
-                purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec id elit non mi porta gravida at eget metus.</p>
-            </div>
-          </div>
-          <div class="media">
-            <div class="media-left">
-              <a href="#">
-                <img src="http://placehold.it/60x60" alt="" class="media-object" />
-              </a>
-            </div>
-            <div class="media-body">
-              <h4 class="media-heading">Dolor Mollis Tristique Vehicula Egestas</h4>
-              <p>Sed posuere consectetur est at lobortis. Etiam porta sem malesuada magna mollis euismod. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras mattis consectetur
-                purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec id elit non mi porta gravida at eget metus.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row blue-bg">
-        <div class="col-xs-10 col-xs-offset-1">
-          <div class="page-header margin-top-xl margin-bottom-xl">
-            <h3>Open Positions</h3>
+          background_color: 'cream'
+          position: 1
+          button_title: ''
+          button_link: ''
+
+        -
+          rowType: '2-Column Text'
+          title_1: 'DOLOR MOLLIS TRISTIQUE VEHICULA EGESTAS'
+          body_text_1: !xml |
+            <p>Sed posuere consectetur est at lobortis. Etiam porta sem malesuada magna mollis euismod. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras mattis consectetur
+            purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec id elit non mi porta gravida at eget metus.</p>
+          background_color_1: 'cream'
+          title_2: 'DOLOR MOLLIS TRISTIQUE VEHICULA EGESTAS'
+          body_text_2: !xml |
+            <p>Sed posuere consectetur est at lobortis. Etiam porta sem malesuada magna mollis euismod. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras mattis consectetur
+            purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec id elit non mi porta gravida at eget metus.</p>
+          background_color_2: 'cream'
+          position: 2
+          button_title_1: ''
+          button_link_1: ''
+          button_title_2: ''
+          button_link_2: ''
+
+        -
+          rowType: '2-Column Text'
+          title_1: 'DOLOR MOLLIS TRISTIQUE VEHICULA EGESTAS'
+          body_text_1: !xml |
+            <p>Sed posuere consectetur est at lobortis. Etiam porta sem malesuada magna mollis euismod. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras mattis consectetur
+            purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec id elit non mi porta gravida at eget metus.</p>
+          background_color_1: 'cream'
+          title_2: 'DOLOR MOLLIS TRISTIQUE VEHICULA EGESTAS'
+          body_text_2: !xml |
+            <p>Sed posuere consectetur est at lobortis. Etiam porta sem malesuada magna mollis euismod. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras mattis consectetur
+            purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec id elit non mi porta gravida at eget metus.</p>
+          background_color_2: 'cream'
+          position: 3
+          button_title_1: ''
+          button_link_1: ''
+          button_title_2: ''
+          button_link_2: ''
+
+        -
+          rowType: 'Full Width Text'
+          title: 'OPEN POSITIONS'
+          body_text: !xml |
             <p>Maecenas faucibus mollis interdum. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Maecenas sed diam eget risus varius blandit sit amet non magna. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-10 col-xs-offset-1">
-          <span class="title">Vehicula Bibendum Position</span>
-          <div class="pull-right">
-            <div class="position-hq">
-              <strong>Great Minds HQ</strong>
-            </div>
-            <div class="position-location">
-              Washington D.C.
-            </div>
-          </div>
-        </div>
-        <div class="col-xs-10 col-xs-offset-1">
-          <span class="title">Vehicula Bibendum Position</span>
-          <div class="pull-right">
-            <div class="position-hq">
-              <strong>Great Minds HQ</strong>
-            </div>
-            <div class="position-location">
-              Washington D.C.
-            </div>
-          </div>
-        </div>
-        <div class="col-xs-10 col-xs-offset-1">
-          <span class="title">Vehicula Bibendum Position</span>
-          <div class="pull-right">
-            <div class="position-hq">
-              <strong>Great Minds HQ</strong>
-            </div>
-            <div class="position-location">
-              Washington D.C.
-            </div>
-          </div>
-        </div>
-        <div class="col-xs-10 col-xs-offset-1">
-          <span class="title">Vehicula Bibendum Position</span>
-          <div class="pull-right">
-            <div class="position-hq">
-              <strong>Great Minds HQ</strong>
-            </div>
-            <div class="position-location">
-              Washington D.C.
-            </div>
-          </div>
-        </div>
-        <div class="col-xs-10 col-xs-offset-1">
-          <span class="title">Vehicula Bibendum Position</span>
-          <div class="pull-right">
-            <div class="position-hq">
-              <strong>Great Minds HQ</strong>
-            </div>
-            <div class="position-location">
-              Washington D.C.
-            </div>
-          </div>
-        </div>
-        <div class="col-xs-10 col-xs-offset-1">
-          <span class="title">Vehicula Bibendum Position</span>
-          <div class="pull-right">
-            <div class="position-hq">
-              <strong>Great Minds HQ</strong>
-            </div>
-            <div class="position-location">
-              Washington D.C.
-            </div>
-          </div>
-        </div>
-      </div>
+          background_color: 'black'
+          position: 4
+          button_title: ''
+          button_link: ''
