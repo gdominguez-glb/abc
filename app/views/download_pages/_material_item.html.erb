@@ -25,7 +25,7 @@
             <i class="fa fa-link margin-right-s text-info"></i>
           <% end %>
         <% end %>
-        <% if item.children.size > 0 || material.material_files_count > 0 %>
+        <% if material.material_files_count == 1 && material.children == 0 %>
           <%= link_to download_material_path(material), remote: true do %>
             <i class="fa fa-download margin-right-s text-info"></i>
           <% end %>
