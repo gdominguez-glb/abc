@@ -28,6 +28,7 @@ class Legacy::License < ActiveRecord::Base
 
   def self.import_distrbutions_for_product(from_email, product)
     source_licensed_product = create_source_licensed_product(from_email, product)
+    return if source_licensed_product.nil?
     emails = Legacy::License.where(from_email: from_email, mapped_name: product.name).where.not(email: nil).pluck(:email)
     Spree::LicensedProduct.where(product: product, email: emails).where.not(id: source_licensed_product.id).each do |licensed_product|
       import_distribution(source_licensed_product, licensed_product)
