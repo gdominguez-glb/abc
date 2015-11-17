@@ -18,7 +18,7 @@ class Legacy::License < ActiveRecord::Base
   end
 
   def self.import_distributions
-    licenses = Legacy::License.find_by_sql("select from_email, mapped_name from (select from_email, mapped_name, count(*) as q_count from legacy_licenses group by mapped_name, from_email) a where a.q_count > 1")
+    licenses = Legacy::License.find_by_sql("select from_email, mapped_name from (select from_email, mapped_name, count(*) as q_count from legacy_licenses group by mapped_name, from_email) a where a.q_count > 0")
     licenses.each do |license|
       from_email, product = license.from_email, Spree::Product.find_by(name: license.mapped_name)
       next if product.nil?
