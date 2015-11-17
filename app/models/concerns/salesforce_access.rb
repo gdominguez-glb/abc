@@ -57,6 +57,18 @@ module SalesforceAccess
     save
   end
 
+  def incoming_changes?(incoming_attributes)
+    ignore_attributes = [:salesforce_reference_attributes,
+                         :skip_next_salesforce_update,
+                         :skip_salesforce_create]
+
+    cached_attributes = self.class.attributes_from_salesforce_object(
+      cached_salesforce_object).except(*ignore_attributes)
+    compare_attributes = incoming_attributes.except(*ignore_attributes)
+
+    cached_attributes != compare_attributes
+  end
+
   # Updates the local record and cached Salesforce data with either the
   # specified Salesforce object, or by querying Salesforce.
   #
@@ -65,21 +77,20 @@ module SalesforceAccess
     # TODO: Check verified?  `@Verified__c`
     # TODO: Check deleted? `@IsDeleted`
     return false unless sfo
-    incoming_attributes = self.class.attributes_from_salesforce_object(sfo)
-    if cached_salesforce_object
-      cached_attributes = self.class.attributes_from_salesforce_object(
-        cached_salesforce_object).except(:salesforce_reference_attributes,
-                                         :skip_next_salesforce_update,
-                                         :skip_salesforce_create)
-      compare_attributes = incoming_attributes.except(
-        :salesforce_reference_attributes,
-        :skip_next_salesforce_update,
-        :skip_salesforce_create)
-      return self if !force && cached_attributes == compare_attributes
+
+    sfo = sfo.except(:LastViewedDate, :LastReferencedDate)
+    sfo_attributes = self.class.attributes_from_salesforce_object(sfo)
+
+    if !cached_salesforce_object || force || incoming_changes?(sfo_attributes)
+      return update_attributes(sfo_attributes).tap do
+        salesforce_reference.reload
+      end
     end
-    res = update_attributes(incoming_attributes)
-    salesforce_reference.reload
-    res
+
+    attrs = self.class.salesforce_reference_attributes(sfo)
+    salesforce_reference.update_attributes(
+      attrs.except(:last_imported_from_salesforce_at))
+    self
   end
 
   # Updates the local record and cached Salesforce data with either the
