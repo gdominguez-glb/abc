@@ -37,11 +37,12 @@ class Legacy::License < ActiveRecord::Base
 
   def self.create_source_licensed_product(from_email, product)
     self_distributed_license = Spree::LicensedProduct.find_by(email: from_email, product: product)
-    return unless self_distributed_license
-    total_quantity = Legacy::License.where(from_email: from_email, mapped_name: product.name).where(email: nil).count
+    licenses_scope = Legacy::License.where(from_email: from_email, mapped_name: product.name)
+    total_quantity = licenses_scope.where(email: nil).count
+    expire_at = licenses_scope.first.expiration_date
     Spree::LicensedProduct.create(
       product:        product,
-      expire_at:      self_distributed_license.expire_at,
+      expire_at:      expire_at,
       email:          from_email,
       quantity:       total_quantity,
       fulfillment_at: Time.now,
