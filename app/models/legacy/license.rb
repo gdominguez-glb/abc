@@ -14,17 +14,49 @@ class Legacy::License < ActiveRecord::Base
         skip_salesforce_create: true,
         skip_notification: true
       )
-      import_distribution(legacy_license, licensed_product)
     end
   end
 
-  def self.import_distribution(legacy_license, licensed_product)
-    return if legacy_license.email == legacy_license.from_email
-    distribution = Spree::ProductDistribution.create(
-      from_email: legacy_license.from_email,
-      email:      legacy_license.email,
+  def self.import_distributions
+    licenses = Legacy::License.find_by_sql("select from_email, mapped_name from (select from_email, mapped_name, count(*) as q_count from legacy_licenses group by mapped_name, from_email) a where a.q_count > 1")
+    licenses.each do |license|
+      from_email, product = license.from_email, Spree::Product.find_by(name: license.mapped_name)
+      next if product.nil?
+      import_distrbutions_for_product(from_email, product)
+    end
+  end
+
+  def self.import_distrbutions_for_product(from_email, product)
+    source_licensed_product = create_source_licensed_product(from_email, product)
+    emails = Legacy::License.where(from_email: from_email, mapped_name: product.name).where.not(email: nil).pluck(:email)
+    Spree::LicensedProduct.where(product: product, email: emails).where.not(id: source_licensed_product.id).each do |licensed_product|
+      import_distribution(source_licensed_product, licensed_product)
+    end
+  end
+
+  def self.create_source_licensed_product(from_email, product)
+    self_distributed_license = Spree::LicensedProduct.find_by(email: from_email, product: product)
+    return unless self_distributed_license
+    total_quantity = Legacy::License.where(from_email: from_email, mapped_name: product.name).where(email: nil).count
+    Spree::LicensedProduct.create(
+      product:        product,
+      expire_at:      self_distributed_license.expire_at,
+      email:          from_email,
+      quantity:       total_quantity,
+      fulfillment_at: Time.now,
+      skip_salesforce_create: true,
+      skip_notification: true
+    )
+  end
+
+  def self.import_distribution(source_licensed_product, licensed_product)
+    distribution = Spree::ProductDistribution.create!(
+      from_email: source_licensed_product.email,
+      email:      licensed_product.email,
       product:    licensed_product.product,
-      expire_at:  licensed_product.expire_at
+      expire_at:  licensed_product.expire_at,
+      licensed_product: source_licensed_product,
+      quantity: 1
     )
     licensed_product.update(product_distribution: distribution, skip_next_salesforce_update: true)
   end
