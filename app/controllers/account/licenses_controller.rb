@@ -13,6 +13,7 @@ class Account::LicensesController < Account::BaseController
       flash[:success] = "Successully assigned licenses to recipients"
       redirect_to account_licenses_path(licenses_ids: params[:licenses_ids])
     else
+      @assign_licenses_form.total = 0
       render :index
     end
   end
