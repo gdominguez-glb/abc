@@ -94,6 +94,7 @@
         <div class='form-group field' id='product_access_url_field'>
           <%= f.label :access_url %>
           <%= f.text_field :access_url, class: 'form-control' %>
+          <p class="help-block">For example: http://greatminds.net/download_pages/123 </p>
         </div>
       </div>
       <div data-hook='new_product_learn_more_url' class='col-md-4 <%= 'hidden' if f.object.product_type != 'partner' %>'>
