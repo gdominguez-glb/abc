@@ -154,7 +154,7 @@ Spree::User.class_eval do
 
   accepts_nested_attributes_for :school_district, reject_if: proc { |attributes| attributes['name'].blank? }
 
-  after_commit :assign_user_role, :assign_to_exist_assets
+  after_commit :assign_user_role, :assign_to_exist_assets, on: :create
 
   def part_products
     part_product_ids = licensed_products.
