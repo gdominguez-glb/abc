@@ -31,8 +31,8 @@ module Spree
           quantity: 1,
           product_distribution_id: distribution.id,
           can_be_distributed: false,
-          skip_notification: true,
-          skip_salesforce_create: false)
+          skip_notification: true
+          )
       end
 
       def create_distribution
