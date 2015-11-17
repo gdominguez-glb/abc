@@ -46,6 +46,7 @@ class Legacy::License < ActiveRecord::Base
       email:          from_email,
       quantity:       total_quantity,
       fulfillment_at: Time.now,
+      can_be_distributed: true,
       skip_salesforce_create: true,
       skip_notification: true
     )
