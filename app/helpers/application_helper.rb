@@ -12,4 +12,15 @@ module ApplicationHelper
     end
     taxon_ids << taxon.id
   end
+
+  def school_district_selection_data(school_districts)
+    school_districts.map do |school_district|
+      {
+        id: school_district.id,
+        name: school_district.name,
+        state_id: school_district.state.try(:id),
+        state_name: school_district.state.try(:name)
+      }
+    end
+  end
 end

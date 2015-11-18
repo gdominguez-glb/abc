@@ -53,6 +53,7 @@
 </fieldset>
 <div class="school-district-details collapse">
   <h2>Let's get some specifics about your school</h2>
+
   <div id="schoolDistrictSelect">
     <p>Is this a school or a district?</p>
     <div class="form-group">
@@ -60,17 +61,18 @@
         <% f.object.school_district ||= SchoolDistrict.new(place_type: 'school') %>
         <%= f.fields_for :school_district do |school_district_form| %>
           <label>
-          <%= school_district_form.radio_button :place_type, 'school' %>
-          This is a School
-        </label>
-        <label>
-          <%= school_district_form.radio_button :place_type, 'district' %>
-          This is Multiple Schools/District
-        </label>
-      <% end %>
+            <%= school_district_form.radio_button :place_type, 'school' %>
+            This is a School
+          </label>
+          <label>
+            <%= school_district_form.radio_button :place_type, 'district' %>
+            This is Multiple Schools/District
+          </label>
+        <% end %>
       </div>
     </div>
   </div>
+
   <div class="row">
     <div class="col-md-6">
       <label>State</label>
@@ -82,6 +84,7 @@
       </div>
     </div>
   </div>
+
   <div class="row collapse fade" id="rowDistrictSelect">
     <div class="col-md-6">
       <div class="form-group">
@@ -90,6 +93,7 @@
       </div>
     </div>
   </div>
+
   <div class="row collapse in fade" id="rowSchoolSelect">
     <div class="col-md-6">
       <div class="form-group">
@@ -98,6 +102,7 @@
       </div>
     </div>
   </div>
+
   <div class="input-group add-district-field collapse fade" id="rowAddDistrict">
     <% f.object.school_district ||= SchoolDistrict.new(place_type: 'district') %>
     <%= f.fields_for :school_district do |school_district_form| %>
@@ -108,6 +113,7 @@
       <button type="button" class="btn btn-danger" id="closeAddDistrict"><i class="fa fa-lg fa-close"></i></button>
     </span>
   </div>
+
   <div class="input-group add-school-field collapse fade" id="rowAddSchool">
     <% f.object.school_district ||= SchoolDistrict.new(place_type: 'school') %>
     <%= f.fields_for :school_district do |school_district_form| %>
@@ -118,5 +124,11 @@
       <button type="button" class="btn btn-danger" id="closeAddSchool"><i class="fa fa-lg fa-close"></i></button>
     </span>
   </div>
+
 </div>
 <div data-hook="signup_below_password_fields"></div>
+
+<script type="text/javascript">
+  var schoolData = <%= raw school_district_selection_data(SchoolDistrict.for_selection.school).to_json %>;
+  var districtData = <%= raw school_district_selection_data(SchoolDistrict.for_selection.district).to_json %>;
+</script>
