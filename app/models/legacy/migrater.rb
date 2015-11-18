@@ -21,8 +21,8 @@ class Legacy::Migrater
 
   def associate_parent_admin
     if @legacy_user.is_sub_admin?
-      legacy_parent_admin = Legacy::User.find_by(id: @legacy_user.parent_id)
-      admin_user          = Spree::User.find_by(email: legacy_parent_adminemail)
+      legacy_parent_admin = Legacy::User.find_by(id: @legacy_user.parent_admin_id)
+      admin_user          = Spree::User.find_by(email: legacy_parent_admin.email)
       @user.update(delegate_user_id: admin_user.id) if admin_user
     end
   end
