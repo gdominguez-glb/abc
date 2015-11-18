@@ -1,2 +1,2 @@
 $("<%= params[:ref_id] %>").attr('href', "<%= remove_bookmark_material_path(@material, ref_id: "#bookmark-#{@material.id}") %>");
-$("<%= params[:ref_id] %>").find('.fa').removeClass('fa-bookmark-o').addClass('fa-bookmark');
+$("<%= params[:ref_id] %>").find('.mi').text('bookmark');

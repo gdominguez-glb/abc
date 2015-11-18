@@ -4,7 +4,7 @@
 @import "spinner";
 @import 'bootstrap-datetimepicker';
 
-@import "font-awesome";
+@import "material_icons";
 
 @import "trumbowyg";
 
@@ -66,5 +66,15 @@ div[data-hook="login"] {
 
 	@media screen and (min-width: $screen-sm-min) {
 		margin-top: 100px;
+	}
+}
+
+.mi {
+	font-size: 18px;
+	vertical-align: middle;
+
+	.btn & {
+		position: relative;
+		top: -1px;
 	}
 }

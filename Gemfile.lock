@@ -347,6 +347,8 @@ GEM
     lumberjack (1.0.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
+    material_icons (1.0.1)
+      railties (>= 3.2, <= 4.2)
     mediaelement_rails (0.8.0)
       jquery-rails (>= 1.0)
       railties (>= 3.1)
@@ -709,7 +711,6 @@ DEPENDENCIES
   exception_notification
   factory_girl_rails (~> 4.5.0)
   figaro
-  font-awesome-rails
   geocoder
   guard
   guard-rspec
@@ -720,6 +721,7 @@ DEPENDENCIES
   kaminari
   knife-solo (~> 0.4.2)
   letter_opener
+  material_icons
   mediaelement_rails
   meta-tags
   momentjs-rails (>= 2.9.0)
@@ -757,3 +759,6 @@ DEPENDENCIES
   wistia-api
   zeroclipboard-rails
   zip-zip
+
+BUNDLED WITH
+   1.10.6

@@ -15,7 +15,7 @@ module VideoGalleryHelper
     css_class = taxon_selected ? 'list-group-item active' : 'list-group-item'
     if taxon_selected
       content_tag :a, :href => remove_taxon_link(taxon), class: css_class do
-        (taxon.name + "<span class='badge badge-danger'><i class='fa fa-close'></i></span>").html_safe
+        (taxon.name + "<span class='badge badge-danger'><i class='mi'>close</i></span>").html_safe
       end
     else
       taxon_ids = generate_taxon_ids_param(taxon, params[:taxon_ids], sibling_ids, allow_multiple_taxons_selected)

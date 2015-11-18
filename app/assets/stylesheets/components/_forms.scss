@@ -140,11 +140,17 @@ label {
   }
 
   &:after {
-    content: "\f0d7";
+    content: " ";
     position: absolute;
-    top: 10px;
+    top: 19px;
     right: 10px;
-    font-family: FontAwesome;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    vertical-align: middle;
+    border-top: 4px dashed;
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent;
   }
 
   label {
