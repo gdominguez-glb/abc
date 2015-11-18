@@ -4,6 +4,7 @@ Spree::Order.class_eval do
   belongs_to :school_district
 
   include SalesforceAccess
+  include SalesforceAddress
 
   attr_accessor :distribute_option
 
@@ -29,6 +30,10 @@ Spree::Order.class_eval do
       'salesforce_references.id_in_salesforce' => sfo.Contact__c).first
     sfo_data.merge!(number: sfo.Vendor_Order_Num__c,
                     user_id: user.id)
+    ship_addr = address_attributes(sfo, 'Shipping')
+    sfo_data.merge!(ship_address_attributes: ship_addr) if ship_addr.present?
+    bill_addr = address_attributes(sfo, 'Billing')
+    sfo_data.merge!(bill_address_attributes: bill_addr) if bill_addr.present?
     sfo_data
   end
 
@@ -85,6 +90,8 @@ Spree::Order.class_eval do
       attrs.merge('Order_Status__c' => 'Full Payment Received')
     end
 
+    attrs.merge!(sf_address(ship_address, 'Shipping')) if ship_address.present?
+    attrs.merge!(sf_address(bill_address, 'Billing')) if bill_address.present?
     attrs
   end
 
