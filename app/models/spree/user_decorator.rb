@@ -4,6 +4,7 @@ Spree::User.class_eval do
   include RailsSettings::Extend
   include ActivityLogger
   include SalesforceAccess
+  include SalesforceAddress
 
   scope :with_curriculum, ->(curriculum) { where("interested_subjects like '%?%'", curriculum.id) }
 
@@ -16,36 +17,6 @@ Spree::User.class_eval do
 
   def self.sobject_name
     'Contact'
-  end
-
-  def self.address_attributes(sfo, type = 'Mailing')
-    return nil unless %w(Mailing Other).member?(type)
-    country = Spree::Country.find_by(iso3: sfo.send("#{type}Country"))
-    state_criteria = { abbr: sfo.send("#{type}State") }
-    state_criteria.merge!(country: country) if country.present?
-    state = Spree::State.find_by(state_criteria)
-    country = state.country if country.blank? && state.present?
-    phone = sfo.Phone
-    phone = '000-000-0000' if phone.blank?
-
-    attrs = {
-      first_name: sfo.FirstName,
-      last_name: sfo.LastName,
-      phone: phone,
-      address1: sfo.send("#{type}Street"),
-      city: sfo.send("#{type}City"),
-      state: state,
-      zipcode: sfo.send("#{type}PostalCode"),
-      country: country
-    }
-    return {} if attrs[:first_name].blank? ||
-                 attrs[:last_name].blank? ||
-                 attrs[:address1].blank? ||
-                 attrs[:city].blank? ||
-                 attrs[:country].blank? ||
-                 attrs[:zipcode].blank? ||
-                 attrs[:phone].blank?
-    attrs
   end
 
   def self.attributes_from_salesforce_object(sfo)
@@ -67,19 +38,7 @@ Spree::User.class_eval do
       sfo_data.merge! school_district_id: school_district_record.id
     end
     # TODO: handle the case where the district is not found
-    # TODO: Also update address information
     sfo_data
-  end
-
-  def sf_address(addr, prefix = 'Mailing')
-    return nil if addr.blank? || !(%w(Mailing Other).member?(prefix))
-    # TODO: use this, when supported: [addr.address1, addr.address2].join("\n")
-    { "#{prefix}Street" => addr.address1,
-      "#{prefix}City" => addr.city,
-      "#{prefix}State" => addr.state.try(:abbr),
-      "#{prefix}PostalCode" => addr.zipcode,
-      "#{prefix}Country" => addr.country.try(:iso3)
-    }
   end
 
   def attributes_for_salesforce
