@@ -1,6 +1,4 @@
 class Account::SettingsController < Account::BaseController
-  before_action :load_settings, only: [:index, :save_profile]
-
   def index
   end
 
@@ -62,16 +60,6 @@ class Account::SettingsController < Account::BaseController
       _params.delete(:school_district_attributes)
     end
     _params
-  end
-
-  def load_settings
-    @profile_fields = (if spree_current_user.has_spree_role?('admin')
-                        AppSettings.user_profile_settings[:admin]
-                      elsif spree_current_user.has_spree_role?('school admin')
-                        AppSettings.user_profile_settings[:school_district_admin]
-                      else
-                        AppSettings.user_profile_settings[:user]
-                      end || {}).keys
   end
 
   def valid_password?

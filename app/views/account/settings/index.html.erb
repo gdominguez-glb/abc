@@ -1,13 +1,2 @@
 <h2>Profile Information</h2>
 <%= render 'profile_information' %>
-
-<%= content_for :javascripts do %>
-  <%= javascript_tag do %>
-    $(function() {
-      $('#settings-tabs a').click(function (e) {
-        e.preventDefault()
-        $(this).tab('show')
-      })
-    });
-  <% end %>
-<% end %>
