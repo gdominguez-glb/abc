@@ -139,12 +139,6 @@
         </div>
       </div>
     </div>
-    <% @profile_fields.in_groups_of(2).each do |group_fields| %>
-      <%= render partial: 'profile_field', locals: { f: f, field: group_fields[0] } %>
-      <% if group_fields[1] %>
-        <%= render partial: 'profile_field', locals: { f: f, field: group_fields[1] } %>
-      <% end %>
-    <% end %>
   </div>
   <div class="row">
     <div class="col-sm-3 col-sm-offset-3">
