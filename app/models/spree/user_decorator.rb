@@ -139,6 +139,7 @@ Spree::User.class_eval do
 
   has_many :completed_orders, -> { where.not(completed_at: nil) }, class_name: 'Spree::Order'
   has_many :licensed_products, -> { available }, class_name: 'Spree::LicensedProduct'
+  has_many :managed_licensed_products, -> { unexpire.fulfillmentable }, class_name: 'Spree::LicensedProduct'
   has_many :products, -> { unexpire.order('spree_licensed_products.id desc') }, through: :licensed_products, class_name: 'Spree::Product'
   has_many :materials, -> { uniq }, through: :products, class_name: 'Spree::Material'
   has_many :product_distributions, foreign_key: :from_user_id, class_name: 'Spree::ProductDistribution'
@@ -228,13 +229,13 @@ Spree::User.class_eval do
 
   def managed_products
     @managed_products ||= begin
-      product_ids = licensed_products.distributable.pluck(:product_id) + product_distributions.pluck(:product_id)
+      product_ids = managed_licensed_products.distributable.pluck(:product_id) + product_distributions.pluck(:product_id)
       Spree::Product.where(id: product_ids).order("name asc")
     end
   end
 
   def managed_products_options
-    licensed_products.fulfillmentable.distributable.includes(:product).group_by { |lp| "#{lp.product.name} expiring #{lp.expire_at.strftime("%B %Y") rescue nil}" }.map do |key, licenses|
+    managed_licensed_products.fulfillmentable.distributable.includes(:product).group_by { |lp| "#{lp.product.name} expiring #{lp.expire_at.strftime("%B %Y") rescue nil}" }.map do |key, licenses|
       [key, licenses.map(&:id).sort.join(',')]
     end
   end
@@ -248,7 +249,7 @@ Spree::User.class_eval do
   end
 
   def remaining_licenses_count(licenses_ids)
-    licensed_products.where(id: licenses_ids).sum(:quantity)
+    managed_licensed_products.where(id: licenses_ids).sum(:quantity)
   end
 
   def logins_in_last_days(days)
