@@ -4,7 +4,7 @@
   <tr class="line-item">
     <td class="cart-item-image" data-hook="cart_item_image">
       <% if variant.images.length == 0 %>
-        <i class="fa fa-shopping-cart"></i>
+        <i class="mi md-18">shopping_cart</i>
       <% else %>
         <%= link_to image_tag(variant.images.first.attachment.url(:small)), variant.product %>
       <% end %>

@@ -4,10 +4,10 @@
       css_class = nil
 
       if simple_current_order.nil? or simple_current_order.item_count.zero?
-        text = "<span class='glyphicon glyphicon-shopping-cart'></span> #{text}: (#{Spree.t('empty')})"
+        text = "<i class='mi md-18'>shopping_cart</i> #{text}: (#{Spree.t('empty')})"
         css_class = 'empty'
       else
-        text = "<span class='glyphicon glyphicon-shopping-cart'></span> #{simple_current_order.item_count}"
+        text = "<i class='mi md-18'>shopping_cart</span> #{simple_current_order.item_count}"
         css_class = 'full'
       end
   %>

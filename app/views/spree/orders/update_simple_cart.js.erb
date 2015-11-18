@@ -5,7 +5,7 @@
       text = text ? h(text) : Spree.t('cart')
       css_class = nil
 
-      text = "<span class='glyphicon glyphicon-shopping-cart'></span> #{text}: (#{simple_current_order.item_count})  <span class='amount'>#{simple_current_order.display_total.to_html}</span>"
+      text = "<i class='mi md-18'></i> #{text}: (#{simple_current_order.item_count})  <span class='amount'>#{simple_current_order.display_total.to_html}</span>"
       css_class = 'full'
   %>
 
