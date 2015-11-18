@@ -124,6 +124,66 @@ $(document).on('click', '#btnAddDistrict', function() {
 
 $(function(){
   $("#spree_user_title").trigger('change');
-  $("#spree_user_school_id option:eq(0)").after('<option id="#schoolNotListed">School Not Listed</option>');
-  $("#spree_user_district_id option:eq(0)").after('<option id="#districtNotListed">District Not Listed</option>');
+  appendNotListed();
+
+  $("#spree_user_school_district_attributes_state_id").change(function(){
+    var stateId = $(this).val();
+    updateSchoolDistrictSelect(stateId);
+  });
+
+  function updateSchoolDistrictSelect(_stateId) {
+    var stateSchoolData, stateDistrictData;
+    if (_stateId) {
+      var stateId = parseInt(_stateId);
+      stateSchoolData = findStateData(window.schoolData, stateId);
+      stateDistrictData = findStateData(window.districtData, stateId);
+    } else {
+      stateSchoolData = window.schoolData;
+      stateDistrictData = window.districtData;
+    }
+
+    renderSchoolOptions(stateSchoolData);
+    renderDistrictOptions(stateDistrictData);
+  }
+
+  function renderSchoolOptions(data) {
+    var options = ['<option>Select a School </option>', '<option id="#schoolNotListed">School Not Listed</option>'];
+    options = options.concat(generateOptions(data));
+    updateSelectWithOption($('#spree_user_school_id'), options);
+  }
+
+  function renderDistrictOptions(data) {
+    var options = ['<option>Select a District </option>', '<option id="#districtNotListed">District Not Listed</option>'];
+    options = options.concat(generateOptions(data));
+    updateSelectWithOption($('#spree_user_district_id'), options);
+  }
+
+  function updateSelectWithOption($select, options) {
+    $select.html(options.join(''));
+    $select.select2('destroy');
+    $select.select2();
+  }
+
+  function generateOptions(data) {
+    var options = [];
+    for(var i = 0; i < data.length; i ++) {
+      options.push("<option value='"+data[i].id+"'>"+data[i].name+"</option>");
+    }
+    return options;
+  }
+
+  function findStateData(data, stateId) {
+    var matches = [];
+    for(var i = 0; i < data.length; i ++) {
+      if(data[i].state_id === stateId) {
+        matches.push(data[i]);
+      }
+    }
+    return matches;
+  }
+
+  function appendNotListed() {
+    $("#spree_user_school_id option:eq(0)").after('<option id="#schoolNotListed">School Not Listed</option>');
+    $("#spree_user_district_id option:eq(0)").after('<option id="#districtNotListed">District Not Listed</option>');
+  }
 });
