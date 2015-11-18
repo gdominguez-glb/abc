@@ -24,17 +24,17 @@
       <ul>
         <li>
           <a href="https://www.facebook.com/greatminds.net" target="_blank">
-            <i class="fa fa-facebook social-icon"></i> Facebook
+            <%= material_icon.share.css_class('social-icon') %> Facebook
           </a>
         </li>
         <li>
           <a href="/contact">
-            <i class="fa fa-user social-icon"></i> Contact
+            <%= material_icon.person.css_class('social-icon') %> Contact
           </a>
         </li>
         <li>
           <%= link_to main_app.newsletters_path, remote: true do %>
-            <i class="fa fa-envelope-o social-icon"></i> Newsletter
+            <%= material_icon.mail.css_class('social-icon') %> Newsletter
           <% end %>
         </li>
       </ul>
