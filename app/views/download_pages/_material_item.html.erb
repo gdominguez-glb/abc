@@ -13,7 +13,7 @@
             data-toggle="collapse"
             data-parent="#material<%= material.id %>"
             href="#collapse<%= material.id %>">
-            <i class="fa fa-chevron-up"></i>
+            <i class="mi md-18 panel-toggle">keyboard_arrow_up</i>
           </button>
         <% end %>
       </div>
@@ -22,33 +22,33 @@
       <div class="col-xs-12 text-left">
         <% if material.link.present? %>
           <%= link_to material.link, target: '_blank', class: 'btn btn-default btn-icon' do %>
-            <i class="fa fa-link"></i>
+            <i class="mi md-18">open_in_browser</i>
           <% end %>
         <% end %>
         <% if material.material_files_count == 1 && material.children == 0 %>
           <%= link_to download_material_path(material), remote: true, class: 'btn btn-default btn-icon' do %>
-            <i class="fa fa-download"></i>
+            <i class="mi md-18">cloud_download</i>
           <% end %>
         <% end %>
         <% if material.material_files_count > 0 %>
 
           <% if material.material_files_count == 1 %>
             <%= link_to material.material_files.first.file.preview_expiring_url(60*60*60), target: '_blank', class: 'btn btn-default btn-icon' do %>
-              <i class="fa fa-eye"></i>
+              <i class="mi md-18">remove_red_eye</i>
             <% end %>
           <% else %>
             <%= link_to preview_material_path(material), remote: true, class: 'btn btn-default btn-icon' do %>
-              <i class="fa fa-eye"></i>
+              <i class="mi md-18">remove_red_eye</i>
             <% end %>
           <% end %>
 
           <% if bookmarked_material?(material) %>
             <%= link_to remove_bookmark_material_path(material, ref_id: "#bookmark-#{material.id}"), id: "bookmark-#{material.id}", remote: true, data: { method: :post }, class: 'btn btn-default btn-icon' do %>
-              <i class="fa fa-bookmark"></i>
+              <i class="mi md-18">bookmark</i>
             <% end %>
           <% else %>
             <%= link_to bookmark_material_path(material, ref_id: "#bookmark-#{material.id}"), id: "bookmark-#{material.id}", remote: true, data: { method: :post }, class: 'btn btn-default btn-icon' do %>
-              <i class="fa fa-bookmark-o"></i>
+              <i class="mi md-18">bookmark_border</i>
             <% end %>
           <% end %>
         <% end %>

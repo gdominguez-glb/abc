@@ -71,7 +71,7 @@
 	border-bottom-right-radius: 0;
 	border-bottom-left-radius: 0;
 
-	.fa-chevron-up,
+	.panel-toggle,
   .btn-icon {
 		@include transition(transform, .3s);
 
@@ -83,16 +83,20 @@
       outline: 0;
     }
 
-    .fa {
-      width: 16px;
-      height: 16px;
-      letter-spacing: 0;
+    .mi {
+      padding-top: 3px;
+      font-size: 15px;
     }
 	}
 
   .btn-toggle {
     position: relative;
     top: -2px;
+
+    .mi {
+      padding-top: 0;
+      font-size: 20px;
+    }
   }
 
   a {
@@ -102,18 +106,6 @@
       text-decoration: none;
     }
   }
-}
-
-.panel-primary {
-	> .panel-heading {
-		.fa-chevron-up {
-			font-size: 35px;
-
-			@media screen and (min-width: $screen-sm-min) {
-				margin: 27px 10px 0 0;
-			}
-		}
-	}
 }
 
 // Contextual Variations

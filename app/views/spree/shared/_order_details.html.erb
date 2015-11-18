@@ -1,13 +1,13 @@
 <% if order.payment_required? %>
   <div class="row">
     <div class="col-xs-12">
-      <p class="alert alert-info"><i class="fa fa-info-circle"></i> Please confirm that the information listed below is accurate before clicking "place order".</p>
+      <p class="alert alert-info"><i class="mi">info_outline</i> Please confirm that the information listed below is accurate before clicking "place order".</p>
     </div>
   </div>
 <% else %>
   <div class="row">
     <div class="col-xs-12">
-      <p class="alert alert-info"><i class="fa fa-info-circle"></i> Once you confirm below you will be taken to your dashboard where you can access all your online products.</p>
+      <p class="alert alert-info"><i class="mi">info_outline</i> Once you confirm below you will be taken to your dashboard where you can access all your online products.</p>
     </div>
   </div>
 <% end %>
@@ -30,7 +30,7 @@
         <div class="delivery">
           <% order.shipments.each do |shipment| %>
             <div>
-              <i class='fa fa-truck'></i>
+              <i class="mi">local_shipping</i>
               <%= Spree.t(:shipment_details, stock_location: shipment.stock_location.name, shipping_method: shipment.selected_shipping_rate.name) %>
             </div>
           <% end %>
@@ -54,7 +54,7 @@
 
 <% if @order.multi_license? %>
 
-  <p class="alert alert-info"><i class="fa fa-info-circle"></i> You are checking out with multiple licenses for a single product. Would you like to distribute these licenses yourself, or would you like to assign someone else distribute them? </p>
+  <p class="alert alert-info"><i class="mi">info_outline</i> You are checking out with multiple licenses for a single product. Would you like to distribute these licenses yourself, or would you like to assign someone else distribute them? </p>
   <div class="form-group">
     <label><%= form.radio_button :distribute_option, 'self' %>  I will distribute these licenses </label>
     <label><%= form.radio_button :distribute_option, 'someone' %>  Someone else will distribute these licenses </label>

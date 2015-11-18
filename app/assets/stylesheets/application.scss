@@ -68,3 +68,13 @@ div[data-hook="login"] {
 		margin-top: 100px;
 	}
 }
+
+.mi {
+	font-size: 18px;
+	vertical-align: middle;
+
+	.btn & {
+		position: relative;
+		top: -1px;
+	}
+}

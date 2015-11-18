@@ -44,7 +44,7 @@
           });
         }
 
-        $('.fa-chevron-up').click(function(e){
+        $('.productToggle').click(function(e){
           e.preventDefault();
           $this = $(e.target);
           $product_wrapper = $this.closest('.product');
@@ -94,7 +94,7 @@
           });
         });
 
-        $('.fa-chevron-up').click(function() {
+        $('.productToggle').click(function() {
           $toggler         = $(this)
           $sub             = $toggler.closest('.panel-heading').next('.collapse');
           $product_wrapper = $toggler.closest('.panel');
