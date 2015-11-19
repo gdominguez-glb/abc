@@ -74,7 +74,7 @@ gem 'time_will_tell'
 gem 'haml'
 gem 'nkss-rails', github: 'nadarei/nkss-rails'
 
-gem "material_icons"
+gem "material_icons", github: 'rociiu/material_icons'
 
 gem 'zip-zip'
 
