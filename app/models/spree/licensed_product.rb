@@ -137,9 +137,9 @@ class Spree::LicensedProduct < ActiveRecord::Base
     update(quantity: quantity - subtract_quantity)
   end
 
-  def self.assign_license_to(user)
+  def self.assign_license_to(user, skip_salesforce_update = false)
     Spree::LicensedProduct.where('lower(email) = ?', user.email.downcase).find_each do |licensed_product|
-      licensed_product.update(user: user)
+      licensed_product.update(user: user, skip_next_salesforce_update: skip_salesforce_update)
     end
   end
 
