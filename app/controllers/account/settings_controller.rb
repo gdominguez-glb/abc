@@ -1,5 +1,14 @@
 class Account::SettingsController < Account::BaseController
+  include SchoolDistrictParamProcessor
+
   def index
+    if current_spree_user.school_district
+      if current_spree_user.school_district.school?
+        current_spree_user.school_id = current_spree_user.school_district.id
+      elsif current_spree_user.school_district.district?
+        current_spree_user.district_id = current_spree_user.school_district.id
+      end
+    end
   end
 
   def save_profile
@@ -40,7 +49,7 @@ class Account::SettingsController < Account::BaseController
   private
 
   def user_params
-    _params = params.require(:user).permit(
+    _params = params.require(:spree_user).permit(
       :phone,
       :first_name,
       :last_name,
@@ -51,14 +60,12 @@ class Account::SettingsController < Account::BaseController
       :school_district_id,
       :heard_from,
       :interested_grade_level,
+      :school_id,
+      :district_id,
       school_district_attributes: [:name, :state_id, :place_type],
       interested_subjects: [],
     )
-    if _params[:school_district_id].blank?
-      _params.delete(:school_district_id)
-    else
-      _params.delete(:school_district_attributes)
-    end
+    process_school_district_param(_params)
     _params
   end
 
