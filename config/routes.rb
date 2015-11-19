@@ -108,5 +108,6 @@ Rails.application.routes.draw do
 
   resources :newsletters, only: [:index, :create]
 
+  get 'not-found', to: 'pages#not_found', as: :not_found
   get '*slug', to: 'pages#show', constraints: lambda { |request| !(request.path =~ /\/(assets|store).*/) }
 end
