@@ -138,7 +138,7 @@ class Spree::LicensedProduct < ActiveRecord::Base
   end
 
   def self.assign_license_to(user)
-    Spree::LicensedProduct.where(email: user.email).find_each do |licensed_product|
+    Spree::LicensedProduct.where('lower(email) = ?', user.email.downcase).find_each do |licensed_product|
       licensed_product.update(user: user)
     end
   end

@@ -31,10 +31,11 @@ RSpec.describe Spree::User do
 
   describe "assign_licenses" do
     let!(:licensed_product) { create(:spree_licensed_product, email: 'john@doe.com') }
+    let!(:another_licensed_product) { create(:spree_licensed_product, email: 'John@doe.com') }
 
     it "assign license to register user for same email" do
       user = create(:user, user_attributes.merge(email: 'john@doe.com'))
-      expect(user.licensed_products.first).to eq(licensed_product)
+      expect(user.licensed_products.count).to eq(2)
     end
   end
 

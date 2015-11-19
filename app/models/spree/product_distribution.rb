@@ -46,8 +46,8 @@ class Spree::ProductDistribution < ActiveRecord::Base
   end
 
   def self.assign_distributions(user)
-    Spree::ProductDistribution.where(from_email: user.email).each { |d| d.update(from_user_id: user.id) }
-    Spree::ProductDistribution.where(email: user.email).each { |d| d.update(to_user_id: user.id) }
+    Spree::ProductDistribution.where('lower(from_email) = ?', user.email.downcase).each { |d| d.update(from_user_id: user.id) }
+    Spree::ProductDistribution.where('lower(email) = ?', user.email.downcase).each { |d| d.update(to_user_id: user.id) }
   end
 
   def revoke
