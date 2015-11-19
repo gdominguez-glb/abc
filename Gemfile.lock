@@ -17,6 +17,13 @@ GIT
       rails (>= 3.2.0)
 
 GIT
+  remote: git://github.com/rociiu/material_icons.git
+  revision: 1462541ca1971ee79b9bb188982332ac97c1f4d9
+  specs:
+    material_icons (1.0.1)
+      railties (>= 3.2)
+
+GIT
   remote: git://github.com/rociiu/spree_digital.git
   revision: ed8d5207859a2efb42d46e2c28eb8ef620cc935a
   branch: 3-0-stable
@@ -347,8 +354,6 @@ GEM
     lumberjack (1.0.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
-    material_icons (1.0.1)
-      railties (>= 3.2, <= 4.2)
     mediaelement_rails (0.8.0)
       jquery-rails (>= 1.0)
       railties (>= 3.1)
@@ -721,7 +726,7 @@ DEPENDENCIES
   kaminari
   knife-solo (~> 0.4.2)
   letter_opener
-  material_icons
+  material_icons!
   mediaelement_rails
   meta-tags
   momentjs-rails (>= 2.9.0)
@@ -759,6 +764,3 @@ DEPENDENCIES
   wistia-api
   zeroclipboard-rails
   zip-zip
-
-BUNDLED WITH
-   1.10.6
