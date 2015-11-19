@@ -1,5 +1,5 @@
 <h2>Profile Information</h2>
-<%= form_for(spree_current_user, url: '/account/save_profile') do |f| %>
+<%= form_for(spree_current_user, as: :spree_user, url: '/account/save_profile') do |f| %>
   <% if current_spree_user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(current_spree_user.errors.count, "error") %> prohibited this page from being saved:</h2>
@@ -80,66 +80,81 @@
         </div>
       </div>
     </div>
-    <div class="col-sm-6 school-district-input">
-      <div class="form-group">
-        <label>Select School District</label>
-        <div class="select-container dark-select block margin-bottom-reset">
-          <span>Select your district</span>
-          <%= f.collection_select :school_district_id, SchoolDistrict.for_selection.all, :id, :name, { include_blank: t(:district_not_listed), prompt: 'Please select your district' }, { class: 'form-control', tabindex: 10, disabled: (f.object.school_district_id.present? ? true : false) } %>
-        </div>
-      </div>
-    </div>
   </div>
-  <div class="row">
-    <div class="col-sm-6 school-district-input school-district-control <%= 'hidden' if current_spree_user.school_district_id.present? %>">
+  <div class="school-district-details collapse">
+    <h2>Let's get some specifics about your school</h2>
+
+    <div id="schoolDistrictSelect">
+      <p>Is this a school or a district?</p>
       <div class="form-group">
-        <label>District State</label>
-        <div class="select-container dark-select block margin-bottom-reset">
-          Select your district state
+        <div class="radio">
           <% f.object.school_district ||= SchoolDistrict.new(place_type: 'school') %>
           <%= f.fields_for :school_district do |school_district_form| %>
-            <%= school_district_form.collection_select :state_id, Spree::Country.find_by(iso: 'US').states, :id, :name, { prompt: true } , { class: 'form-control', tabindex: 11 } %>
+            <label>
+              <%= school_district_form.radio_button :place_type, 'school' %>
+              This is a School
+            </label>
+            <label>
+              <%= school_district_form.radio_button :place_type, 'district' %>
+              This is Multiple Schools/District
+            </label>
           <% end %>
         </div>
       </div>
     </div>
-    <div class="col-sm-6 school-district-input">
-      <label>Add District Name</label>
-      <div class="input-group">
-        <% f.object.school_district ||= SchoolDistrict.new(place_type: 'school') %>
-        <%= f.fields_for :school_district do |school_district_form| %>
-          <%= school_district_form.text_field :name, class: "form-control school-district-control #{'hidden' if current_spree_user.school_district_id.present?}", placeholder: 'New District Name', tabindex: 12 %>
-        <% end %>
-        <span class="input-group-btn">
-          <button class="btn btn-primary margin-right-reset">
-            <i class="fa fa-plus"></i>
-          </button>
-        </span>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-6 school-district-input school-district-control <%= 'hidden' if current_spree_user.school_district_id.present? %>">
-      <div class="form-group">
-        <label>Is this a school or a district?</label>
-        <div class="form-inline">
+
+    <div class="row">
+      <div class="col-md-6">
+        <label>State</label>
+        <div class="form-group school-district select-container dark-select block">
+          <span><%= current_spree_user.school_district.try(:state) ? current_spree_user.school_district.state.name : 'Select a State' %></span>
           <%= f.fields_for :school_district do |school_district_form| %>
-            <div class="radio">
-              <label>
-                <%= school_district_form.radio_button :place_type, 'school', tabindex: 13 %>
-                School
-              </label>
-            </div>
-            <div class="radio">
-              <label>
-                <%= school_district_form.radio_button :place_type, 'district' %>
-                District
-              </label>
-            </div>
+            <%= school_district_form.collection_select :state_id, Spree::Country.find_by(iso: 'US').states, :id, :name, { prompt: true } , { class: 'form-control' } %>
           <% end %>
         </div>
       </div>
     </div>
+
+    <div class="row collapse fade" id="rowDistrictSelect">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Select a District</label>
+          <%= f.collection_select :district_id, SchoolDistrict.for_selection.district, :id, :name, { prompt: 'Select a District' }, { class: 'form-control', tabindex: 7 } %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row collapse in fade" id="rowSchoolSelect">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Select a School</label>
+          <%= f.collection_select :school_id, SchoolDistrict.for_selection.school, :id, :name, { prompt: 'Select a School' }, { class: 'form-control', tabindex: 7 } %>
+        </div>
+      </div>
+    </div>
+
+    <div class="input-group add-district-field collapse fade" id="rowAddDistrict">
+      <% f.object.school_district ||= SchoolDistrict.new(place_type: 'district') %>
+      <%= f.fields_for :school_district do |school_district_form| %>
+        <%= school_district_form.text_field :name, class: 'form-control school-district-control', placeholder: 'New District Name' %>
+      <% end %>
+      <span class="input-group-btn">
+        <button type="button" class="btn btn-success margin-right-reset" id="btnAddDistrict"><i class="fa fa-lg fa-plus"></i></button>
+        <button type="button" class="btn btn-danger" id="closeAddDistrict"><i class="fa fa-lg fa-close"></i></button>
+      </span>
+    </div>
+
+    <div class="input-group add-school-field collapse fade" id="rowAddSchool">
+      <% f.object.school_district ||= SchoolDistrict.new(place_type: 'school') %>
+      <%= f.fields_for :school_district do |school_district_form| %>
+        <%= school_district_form.text_field :name, class: 'form-control school-district-control', placeholder: 'New School Name' %>
+      <% end %>
+      <span class="input-group-btn">
+        <button type="button" class="btn btn-success margin-right-reset" id="btnAddSchool"><i class="fa fa-lg fa-plus"></i></button>
+        <button type="button" class="btn btn-danger" id="closeAddSchool"><i class="fa fa-lg fa-close"></i></button>
+      </span>
+    </div>
+
   </div>
   <div class="row">
     <div class="col-sm-3 col-sm-offset-3">
