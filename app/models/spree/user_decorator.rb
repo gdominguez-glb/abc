@@ -82,6 +82,22 @@ Spree::User.class_eval do
     matches_salesforce_object(sfo).first
   end
 
+  # Performs additional tasks after creating a record in Salesforce.  This will
+  # be called from within ActiveJob
+  # Params:
+  # +_duplicate+:: indicates if the "new" record matched an existing one
+  def after_create_salesforce(duplicate = false)
+    super(duplicate)
+    licensed_products.each do |license|
+      # Update is used instead of create because the licenses should have
+      # already been created in Salesforce at the time the license was created.
+      # They need to be updated to set the Contact (in Salesforce).
+      # Skip the update if the create has not been run yet (e.g. "local_only").
+      next if license.id_in_salesforce.blank?
+      license.update_salesforce(nil, true)
+    end
+  end
+
   def grade_option
     settings[:grade_option]
   end
@@ -175,7 +191,7 @@ Spree::User.class_eval do
   end
 
   def assign_licenses
-    Spree::LicensedProduct.assign_license_to(self)
+    Spree::LicensedProduct.assign_license_to(self, true)
   end
 
   def assign_distributions
