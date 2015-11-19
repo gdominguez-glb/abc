@@ -1,6 +1,9 @@
 class PagesController < ApplicationController
   def show
-    @page          = Page.find_by(slug: params[:slug]) || Page.find_by(slug: 'not-found')
+    @page          = Page.find_by(slug: params[:slug])
+
+    redirect_to not_found_path and return if @page.nil?
+
     @page_title    = @page.title
     @group_page    = Page.find_by(group_name: @page.group_name, group_root: true)
     @sub_nav_items = Page.show_in_sub_navigation(@page.group_name)
@@ -10,6 +13,9 @@ class PagesController < ApplicationController
     if @page.layout.present?
       render layout: @page.layout
     end
+  end
+
+  def not_found
   end
 
   private
