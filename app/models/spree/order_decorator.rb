@@ -61,9 +61,11 @@ Spree::Order.class_eval do
   def pricebook_id
     # TODO: Need a better way to get this
     pbids = line_items.all.map { |li| li.try(:product).try(:sf_id_pricebook) }
-    pbid = pbids.compact.first
-    return pbid if pbid
-    Spree::Product.where('sf_id_pricebook IS NOT NULL').pluck(:sf_id_pricebook)
+    pbid = pbids.reject(&:blank?).first
+    return pbid if pbid.present?
+    Spree::Product.where(
+      "sf_id_pricebook <> '' AND sf_id_pricebook IS NOT NULL"
+    ).limit(1).pluck(:sf_id_pricebook).first
   end
 
   def attributes_for_salesforce
