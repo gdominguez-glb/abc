@@ -103,32 +103,6 @@ class Spree::LicensedProduct < ActiveRecord::Base
 
   attr_accessor :skip_notification
 
-  def distribute_license(user_or_email, quantity = 1)
-    user_attrs = user_or_email.is_a?(Spree::User) ? { to_user: user_or_email } : { email: user_or_email }
-    distribution_attrs = {
-      licensed_product: self,
-      from_user:        user,
-      product:          product,
-      expire_at:        expire_at
-    }.merge(user_attrs)
-    distribution = Spree::ProductDistribution.find_or_initialize_by(distribution_attrs)
-    if distribution.new_record?
-      distribution.quantity = quantity
-      distribution.save
-    else
-      distribution.increase_quantity!(quantity)
-    end
-    if distribution.quantity > 1
-      distribution.distribute_to_self
-    end
-    distribution
-  end
-
-  def distribute_one_license_to_self
-    update(can_be_distributed: true)
-    distribute_license(user)
-  end
-
   def increase_quantity!(add_quantity)
     update(quantity: quantity + add_quantity)
   end
