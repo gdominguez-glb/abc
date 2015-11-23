@@ -57,6 +57,7 @@ class Account::SettingsController < Account::BaseController
       :password,
       :allow_communication,
       :title,
+      :manual_title,
       :school_district_id,
       :heard_from,
       :interested_grade_level,
