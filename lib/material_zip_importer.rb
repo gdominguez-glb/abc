@@ -22,17 +22,17 @@ class MaterialZipImporter
   def extract_zip_file
     Zip::ZipFile.open(zip_file_path) do |zip_file|
       zip_file.each do |entry|
-        file_path= File.join(raw_file_directory_path, entry.name)
+        file_path= File.join(raw_file_directory_path, entry.name.downcase)
         FileUtils.mkdir_p(File.dirname(file_path))
         zip_file.extract(entry, file_path) unless File.exist?(file_path)
-        puts "Extracting #{entry.name}"
+        puts "Extracting #{entry.name.downcase}"
       end
     end
   end
 
   def find_root_directory
     Dir.new(raw_file_directory_path).each do |file_name|
-      return File.join(raw_file_directory_path, file_name) if file_name.start_with?(@product.name)
+      return File.join(raw_file_directory_path, file_name) if file_name == @product.name.downcase
     end
   end
 
@@ -51,7 +51,7 @@ class MaterialZipImporter
   def process_directory(product, parent, directory_path, position)
     dir = Dir.new(directory_path)
     material = Spree::Material.create(
-      name: File.basename(directory_path).gsub(/^\d+ /, ''),
+      name: File.basename(directory_path).gsub(/^\d+ /, '').titleize,
       parent: parent,
       product: product,
       position: position
