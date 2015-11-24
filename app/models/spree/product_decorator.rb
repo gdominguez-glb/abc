@@ -92,7 +92,7 @@ Spree::Product.class_eval do
   validates :redirect_url, format: { with: URI.regexp }, allow_blank: true
   validates :learn_more_url, format: { with: URI.regexp }, allow_blank: true
   validates :sf_id_product, :sf_id_pricebook, presence: true, unless: :free?
-  validates :sf_id_product, uniqueness: { scope: :sf_id_pricebook },
+  validates :sf_id_product, uniqueness: { scope: [:sf_id_pricebook, :deleted_at] },
                             allow_blank: true
   validates :sf_id_product, :sf_id_pricebook,
             allow_blank: true,
