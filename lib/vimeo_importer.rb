@@ -40,20 +40,17 @@ class VimeoImporter
   end
 
   def assign_taxons_to_video(video, row)
-    grades      = ['A', 'B', 'C'].map{|c| row["Grade #{c}"] }.reject(&:blank?)
-    grade_bands = ['A', 'B', 'C', 'D'].map{|c| row["Grade Band #{c}"] }.reject(&:blank?)
-    modules     = ['A', 'B', 'C'].map{|c| row["Module #{c}"] }.reject(&:blank?)
-    lessons     = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'].map{|c| row["Lesson #{c}"] }.reject(&:blank?)
-
     assign_taxons(video, 'Group', [video.video_group.try(:name)])
-    assign_taxons(video, 'Grade', grades)
-    assign_taxons(video, 'Grade Band', grade_bands)
-    assign_taxons(video, 'Module', modules)
-    assign_taxons(video, 'Lesson', lessons)
+
+    taxon_headers = row.headers - ['Video Title', 'Vimeo URL', 'Group']
+    taxon_headers.each do |taxon_header|
+      taxonomy_name = taxon_header.gsub(/(\ [A-Z]{1,2}$)/, '').strip
+      assign_taxons(video, taxonomy_name, [row[taxon_header]]) if [row[taxon_header]].compact.present?
+    end
   end
 
   def assign_taxons(video, taxonomy_name, taxon_names)
-    taxonomy = Spree::Taxonomy.find_by(name: taxonomy_name)
+    taxonomy = Spree::Taxonomy.find_or_create_by(name: taxonomy_name)
     taxon_names.each do |taxon_name|
       taxon = taxonomy.taxons.find_or_create_by(name: taxon_name, parent: taxonomy.root)
       begin
