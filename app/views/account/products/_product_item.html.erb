@@ -9,7 +9,7 @@
           </button>
         </div>
         <div class="flip-back">
-          <p><%= product.description %></p>
+          <p><%= truncate product.description, length: 200 %></p>
           <button class="btn btn-link flip-btn">
             Back
           </button>
