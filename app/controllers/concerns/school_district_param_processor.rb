@@ -13,7 +13,7 @@ module SchoolDistrictParamProcessor
   end
 
   def process_school_district_id(user_params)
-    user_params[:school_district_id] = user_params[:school_id].blank? ? user_params[:district_id] : user_params[:school_id]
+    user_params[:school_district_id] = user_params[:school_district_attributes][:place_type] == 'district' ? user_params[:district_id] : user_params[:school_id]
     if user_params[:school_district_id].include?('Not Listed')
       user_params.delete(:school_district_id)
     end
