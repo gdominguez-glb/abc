@@ -51,14 +51,17 @@
   </div>
   <hr />
 </fieldset>
+
 <div class="school-district-details collapse">
   <h2>Let's get some specifics about your school</h2>
+
+  <% selected_place_type = params[:spree_user].try(:[], :school_district_attributes).try(:[], :place_type) %>
+  <% f.object.school_district ||= SchoolDistrict.new(place_type: (selected_place_type || 'school')) %>
 
   <div id="schoolDistrictSelect">
     <p>Is this a school or a district?</p>
     <div class="form-group">
       <div class="radio">
-        <% f.object.school_district ||= SchoolDistrict.new(place_type: 'school') %>
         <%= f.fields_for :school_district do |school_district_form| %>
           <label>
             <%= school_district_form.radio_button :place_type, 'school' %>
@@ -87,19 +90,19 @@
     </div>
   </div>
 
-  <div class="row collapse fade" id="rowDistrictSelect">
+  <div class="row collapse <%= 'in' if f.object.school_district.place_type == 'district' %> fade" id="rowDistrictSelect">
     <div class="col-md-6">
       <div class="form-group">
         <% selected_district_id = params[:spree_user].try(:[], :district_id) %>
         <% selected_district_name = SchoolDistrict.for_selection.district.find_by(id: selected_district_id).try(:name) %>
 
         <label><%= selected_district_name ? selected_district_name : 'Select a District' %></label>
-        <%= f.collection_select :district_id, SchoolDistrict.for_selection.district.with_state(selected_state_id), :id, :name, { prompt: 'Select a District', selected: selected_district_id }, { class: 'form-control', tabindex: 7 } %>
+        <%= f.collection_select :district_id, SchoolDistrict.for_selection.district.with_state(selected_state_id), :id, :name, { include_blank: 'Select a District', selected: selected_district_id }, { class: 'form-control', tabindex: 7 } %>
       </div>
     </div>
   </div>
 
-  <div class="row collapse in fade" id="rowSchoolSelect">
+  <div class="row collapse <%= 'in' if f.object.school_district.place_type == 'school' %>  fade" id="rowSchoolSelect">
     <div class="col-md-6">
       <div class="form-group">
 
@@ -107,13 +110,12 @@
         <% selected_school_name = SchoolDistrict.for_selection.school.find_by(id: selected_school_id).try(:name) %>
 
         <label><%= selected_school_name ? selected_school_name : 'Select a School' %></label>
-        <%= f.collection_select :school_id, SchoolDistrict.for_selection.school.with_state(selected_state_id), :id, :name, { prompt: 'Select a School', selected: selected_school_id }, { class: 'form-control', tabindex: 7 } %>
+        <%= f.collection_select :school_id, SchoolDistrict.for_selection.school.with_state(selected_state_id), :id, :name, { include_blank: 'Select a School', selected: selected_school_id }, { class: 'form-control', tabindex: 7 } %>
       </div>
     </div>
   </div>
 
   <div class="input-group add-district-field collapse fade" id="rowAddDistrict">
-    <% f.object.school_district ||= SchoolDistrict.new(place_type: 'district') %>
     <%= f.fields_for :school_district do |school_district_form| %>
       <%= school_district_form.text_field :name, class: 'form-control school-district-control', placeholder: 'New District Name' %>
     <% end %>
