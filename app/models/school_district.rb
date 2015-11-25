@@ -141,4 +141,8 @@ class SchoolDistrict < ActiveRecord::Base
     end
     where(id: ids)
   }
+
+  scope :with_state, ->(state_id) {
+    where(state_id: state_id) if state_id
+  }
 end
