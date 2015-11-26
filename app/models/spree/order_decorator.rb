@@ -3,6 +3,8 @@ Spree::Order.class_eval do
 
   belongs_to :school_district
 
+  enum source: { web: 0, fulfillment: 1 }
+
   include SalesforceAccess
   include SalesforceAddress
 
@@ -110,6 +112,10 @@ Spree::Order.class_eval do
   def should_create_salesforce?
     return false if state != 'complete'
     super
+  end
+
+  def skip_salesforce_sync?
+    self.source == 'fulfillment' ? true : false
   end
 
   # Performs additional tasks after creating a record in Salesforce.  This will

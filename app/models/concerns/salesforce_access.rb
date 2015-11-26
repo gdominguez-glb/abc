@@ -34,6 +34,11 @@ module SalesforceAccess
     self.class.find_in_salesforce_by_salesforce_id(sid)
   end
 
+  # Add method to skip to custom skip on salesforce sync
+  def skip_salesforce_sync?
+    false
+  end
+
   # this follows our convention where we store our pk in salesforce's MemberID
   # def find_in_salesforce_by_member_id(mid = id)
   #   return nil unless mid
@@ -135,6 +140,7 @@ module SalesforceAccess
   # - Checks whether there is a corresponding (cached) record from Salesforce
   # - Checks whether there are any known differences from the cached record
   def should_update_salesforce?
+    return false if skip_salesforce_sync?
     return false if defined?(deleted_at) && !deleted_at.nil?
     if skip_next_salesforce_update
       self.skip_next_salesforce_update = nil
@@ -201,6 +207,7 @@ module SalesforceAccess
   # used to prevent the creation in Salesforce of a record created locally from
   # Salesforce
   def should_create_salesforce?
+    return false if skip_salesforce_sync?
     return false if defined?(deleted_at) && !deleted_at.nil?
     !skip_salesforce_create
   end

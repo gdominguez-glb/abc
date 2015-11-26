@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151123020051) do
+ActiveRecord::Schema.define(version: 20151126133338) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -800,6 +800,7 @@ ActiveRecord::Schema.define(version: 20151123020051) do
     t.boolean  "terms_and_conditions"
     t.string   "license_admin_email"
     t.integer  "school_district_id"
+    t.integer  "source",                                                     default: 0
   end
 
   add_index "spree_orders", ["approver_id"], name: "index_spree_orders_on_approver_id", using: :btree
