@@ -32,7 +32,7 @@ class AdminNewLicensesForm
   end
 
   def create_order
-    order = Spree::Order.new(email: email, user_id: user_id, source: :fulfillment)
+    order = Spree::Order.new(email: email, user_id: user_id, source: 'fulfillment')
     products.each do |product|
       order.line_items << Spree::LineItem.new(variant: product.master,
                                               quantity: quantity)

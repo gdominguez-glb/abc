@@ -114,6 +114,10 @@ Spree::Order.class_eval do
     super
   end
 
+  def skip_salesforce_sync?
+    self.source == 'fulfillment' ? true : false
+  end
+
   # Performs additional tasks after creating a record in Salesforce.  This will
   # be called from within ActiveJob
   # Params:
