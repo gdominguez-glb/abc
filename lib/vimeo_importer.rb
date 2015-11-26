@@ -1,4 +1,5 @@
 require "open-uri"
+require 'open_uri_redirections'
 require 'gm_vimeo'
 
 class VimeoImporter
