@@ -86,6 +86,8 @@ gem 'meta-tags'
 
 gem "browser"
 
+gem 'open_uri_redirections'
+
 group :development do
   gem 'quiet_assets'
   gem 'letter_opener'
