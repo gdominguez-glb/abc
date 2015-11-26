@@ -3,6 +3,8 @@ Spree::Order.class_eval do
 
   belongs_to :school_district
 
+  enum source: { web: 0, fulfillment: 1 }
+
   include SalesforceAccess
   include SalesforceAddress
 
