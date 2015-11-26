@@ -34,7 +34,7 @@ class VimeoImporter
     video.update(
       title: title,
       video_group_name: video_group_name,
-      file: open(download_url)
+      file: open(download_url, allow_redirections: true)
     )
 
     assign_taxons_to_video(video, row)

@@ -32,7 +32,7 @@ class GmVimeo
       video.update(
         title:       video_data['name'],
         description: video_data['description'],
-        file:        open(source_url)
+        file:        open(source_url, allow_redirections: :safe)
       )
     end
   end
