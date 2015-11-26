@@ -1614,11 +1614,11 @@ ActiveRecord::Schema.define(version: 20151123020051) do
     t.text     "description"
     t.integer  "product_id"
     t.boolean  "is_free"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.string   "file_file_name"
     t.string   "file_content_type"
-    t.integer  "file_file_size"
+    t.integer  "file_file_size",       limit: 8
     t.datetime "file_updated_at"
     t.string   "vimeo_uri"
     t.integer  "wistia_id"
