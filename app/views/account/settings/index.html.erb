@@ -125,7 +125,7 @@
       <div class="col-md-6">
         <div class="form-group">
           <label>Select a District</label>
-          <%= f.collection_select :district_id, SchoolDistrict.for_selection.district.with_state(current_spree_user.school_district.try(:state_id)), :id, :name, { prompt: 'Select a District' }, { class: 'form-control', tabindex: 7 } %>
+          <%= f.hidden_field :district_id, class: 'form-control' %>
         </div>
       </div>
     </div>
@@ -134,7 +134,7 @@
       <div class="col-md-6">
         <div class="form-group">
           <label>Select a School</label>
-          <%= f.collection_select :school_id, SchoolDistrict.for_selection.school.with_state(current_spree_user.school_district.try(:state_id)), :id, :name, { prompt: 'Select a School' }, { class: 'form-control', tabindex: 7 } %>
+          <%= f.hidden_field :school_id, class: 'form-control' %>
         </div>
       </div>
     </div>
@@ -170,8 +170,8 @@
 <script type="text/javascript">
 //<![CDATA[
   (function($){
-    window.schoolData = <%= raw school_district_selection_data(SchoolDistrict.for_selection.school).to_json %>;
-    window.districtData = <%= raw school_district_selection_data(SchoolDistrict.for_selection.district).to_json %>;
+    window.schoolData = [{id: '#schoolNotListed', text: 'School Not Listed'}].concat(<%= raw school_district_selection_data(SchoolDistrict.for_selection.school).to_json %>);
+    window.districtData = [{id: '#districtNotListed', text: 'District Not Listed'}].concat(<%= raw school_district_selection_data(SchoolDistrict.for_selection.district).to_json %>);
     $(".school-district-input-toggle").click(function(){
       $('.school-district-control').removeClass('hidden');
       $(".school-district-input-toggle").addClass('hidden');
