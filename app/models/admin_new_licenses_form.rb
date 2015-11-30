@@ -32,17 +32,25 @@ class AdminNewLicensesForm
   end
 
   def create_order
-    order = Spree::Order.new(email: email, user_id: user_id, source: 'fulfillment')
-    products.each do |product|
-      order.line_items << Spree::LineItem.new(variant: product.master,
-                                              quantity: quantity)
-    end
-    order.payments << build_payment if payment_method_id.present?
+    order = Spree::Order.new(email: email, user_id: user_id, source: 'fulfillment', total: self.amount, item_total: self.amount)
+    add_line_items(order)
+    add_payments(order)
     order.save
 
     process_order(order)
     create_order_salesforce_reference(order)
     order.tap { associate_school_district(order) }
+  end
+
+  def add_line_items(order)
+    products.each do |product|
+      order.line_items << Spree::LineItem.new(variant: product.master,
+                                              quantity: quantity)
+    end
+  end
+
+  def add_payments(order)
+    order.payments << build_payment if payment_method_id.present?
   end
 
   def process_order(order)
