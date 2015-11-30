@@ -93,11 +93,8 @@
   <div class="row collapse <%= 'in' if f.object.school_district.place_type == 'district' %> fade" id="rowDistrictSelect">
     <div class="col-md-6">
       <div class="form-group">
-        <% selected_district_id = params[:spree_user].try(:[], :district_id) %>
-        <% selected_district_name = SchoolDistrict.for_selection.district.find_by(id: selected_district_id).try(:name) %>
-
-        <label><%= selected_district_name ? selected_district_name : 'Select a District' %></label>
-        <%= f.collection_select :district_id, SchoolDistrict.for_selection.district.with_state(selected_state_id), :id, :name, { include_blank: 'Select a District', selected: selected_district_id }, { class: 'form-control', tabindex: 7 } %>
+        <label>Select a District</label>
+        <%= f.hidden_field :district_id, class: 'form-control' %>
       </div>
     </div>
   </div>
@@ -105,12 +102,8 @@
   <div class="row collapse <%= 'in' if f.object.school_district.place_type == 'school' %>  fade" id="rowSchoolSelect">
     <div class="col-md-6">
       <div class="form-group">
-
-        <% selected_school_id = params[:spree_user].try(:[], :school_id) %>
-        <% selected_school_name = SchoolDistrict.for_selection.school.find_by(id: selected_school_id).try(:name) %>
-
-        <label><%= selected_school_name ? selected_school_name : 'Select a School' %></label>
-        <%= f.collection_select :school_id, SchoolDistrict.for_selection.school.with_state(selected_state_id), :id, :name, { include_blank: 'Select a School', selected: selected_school_id }, { class: 'form-control', tabindex: 7 } %>
+        <label>Select a School</label>
+        <%= f.hidden_field :school_id, class: 'form-control' %>
       </div>
     </div>
   </div>
@@ -138,6 +131,6 @@
 <div data-hook="signup_below_password_fields"></div>
 
 <script type="text/javascript">
-  var schoolData = <%= raw school_district_selection_data(SchoolDistrict.for_selection.school).to_json %>;
-  var districtData = <%= raw school_district_selection_data(SchoolDistrict.for_selection.district).to_json %>;
+  var schoolData = [{id: '#schoolNotListed', text: 'School Not Listed'}].concat(<%= raw school_district_selection_data(SchoolDistrict.for_selection.school).to_json %>);
+  var districtData = [{id: '#districtNotListed', text: 'District Not Listed'}].concat(<%= raw school_district_selection_data(SchoolDistrict.for_selection.district).to_json %>);
 </script>

@@ -18,6 +18,7 @@ module ApplicationHelper
       {
         id: school_district.id,
         name: school_district.name,
+        text: school_district.name,
         state_id: school_district.state.try(:id),
         state_name: school_district.state.try(:name)
       }
