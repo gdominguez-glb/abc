@@ -14,7 +14,14 @@ class VimeoImporter
     count = 0
     CSV.foreach(csv_path, encoding: 'ISO-8859-1', headers: true) do |row|
       next if row['Vimeo URL'].blank?
-      import_video(row)
+      begin
+        import_video(row)
+      rescue => e
+        puts "Failed to import video:"
+        puts row.inspect
+        puts e.message.inspect
+        puts e.backtrace.join("\n").inspect
+      end
       count += 1
     end
     puts
