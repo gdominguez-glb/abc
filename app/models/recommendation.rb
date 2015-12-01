@@ -5,7 +5,7 @@ class Recommendation < ActiveRecord::Base
 
   scope :with_subject, ->(subject){ where(subject: subject) }
 
-  ICONS = ['BLOG', 'DIGITAL_SUITE', 'PDF', 'PROFESSIONAL', 'VIDEO']
+  ICONS = ['BLOG', 'DIGITAL_SUITE', 'PDF', 'PRINT', 'PROFESSIONAL', 'VIDEO']
 
   def icon_image
     "recommendations/#{self.icon}.png"

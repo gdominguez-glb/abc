@@ -3,8 +3,8 @@
   <div class="recommended-products col-xs-12">
     <% @recommendations.each do |recommendation| %>
       <div class="recommended-product-wrapper clearfix">
-        <%= image_tag recommendation.icon_image, class: 'recommended-thumb img-thumbnail' %>
-
+        <% recUrl = 'recommendations/' + recommendation.icon + '_' + recommendation.subject.upcase + '.png' %>
+        <%= image_tag recUrl, class: 'recommended-thumb img-thumbnail' %>
         <h5><%= recommendation.title %></h5>
         <p><%= truncate(recommendation.sub_header, length: 120) %></p>
         <%= link_to recommendation.call_to_action_button_text, recommendation.call_to_action_button_link, class: 'btn btn-link' %>
