@@ -43,8 +43,8 @@ class GmVimeo
   end
 
   def download_url_of_video(video_id)
-    info = video_info(video_id)
-    source_url = info['download'].find{|j| j['quality'] == 'source' }.try(:[], 'link')
+    info = GmVimeo.new.video_info(video_id)
+    info['download'].select{|j| ['hd', 'source'].include?(j['quality']) }.map{|j| j['link']}.compact.first
   end
 
   def get_result_from_endpoint(endpoint, options={})
