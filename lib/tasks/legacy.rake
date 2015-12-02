@@ -1,12 +1,12 @@
 namespace :legacy do
   desc "cleanup legacy users"
   task cleanup: :environment do
-    emails = ENV['emails'].split(',').map(&:strip)
+    emails = ENV['emails'].split(',').map(&:strip).map(&:downcase)
     raise 'please specify emails to cleanup' if emails.blank?
     Legacy::User.delete_all
     Legacy::License.delete_all
 
-    Spree::User.unscoped.where(email: emails.map(&:downcase)).delete_all
+    Spree::User.unscoped.where(email: emails).delete_all
     Spree::LicensedProduct.unscoped.where(email: emails).delete_all
     Spree::ProductDistribution.unscoped.where(from_email: emails).delete_all
     Spree::ProductDistribution.unscoped.where(email: emails).delete_all
