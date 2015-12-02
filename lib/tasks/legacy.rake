@@ -35,7 +35,7 @@ namespace :legacy do
     end
     Legacy::License.find_each do |license|
       license.email = license.email.split('@').first + 'example.com' if license.email
-      license.from_email = license.email.split('@').first + 'example.com' if license.from_email
+      license.from_email = license.from_email.split('@').first + 'example.com' if license.from_email
       license.save
     end
   end
