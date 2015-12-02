@@ -17,7 +17,7 @@ module Importers
       end
 
       members.find_each do |member|
-        user = Legacy::User.find_or_initialize_by(email: member.email)
+        user = Legacy::User.find_or_initialize_by(email: member.email.downcase)
         user.assign_attributes(
           ee_id: member.member_id,
           first_name: member.first_name,

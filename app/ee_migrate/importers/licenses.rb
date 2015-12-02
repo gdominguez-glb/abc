@@ -12,9 +12,9 @@ module Importers
           order_id: credit.order_id,
           first_name: credit.first_name,
           last_name: credit.last_name,
-          email: credit.email,
+          email: credit.email.try(:downcase),
           from_user_id: credit.author_id,
-          from_email: credit.author_email,
+          from_email: credit.author_email.try(:downcase),
           ee_id: credit.id,
           mapped_name: PRODUCTS_MAPPINGS.find{|m| m[:legacy_id] == credit.product_id }.try(:[], :name)
         )
@@ -23,7 +23,7 @@ module Importers
 
     def self.import_user_email
       Legacy::License.where(email: nil).where.not(user_id: nil).includes(:user).find_each do |legacy_license|
-        legacy_license.update(email: legacy_license.user.try(:email)) if legacy_license.user.try(:email)
+        legacy_license.update(email: legacy_license.user.try(:email).try(:downcase)) if legacy_license.user.try(:email)
       end
     end
   end
