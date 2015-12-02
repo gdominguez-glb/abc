@@ -11,6 +11,11 @@
 
 .alert {
   margin-bottom: $b-space;
+
+  a {
+    text-transform: none;
+    @extend .serif;
+  }
 }
 
 .alert-success {
