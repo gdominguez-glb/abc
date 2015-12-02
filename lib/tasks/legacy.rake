@@ -30,12 +30,12 @@ namespace :legacy do
   desc "change user emails to example.com"
   task change_email: :environment do
     Legacy::User.find_each do |user|
-      user.email = user.email.split('@').first + 'example.com'
+      user.email = user.email.split('@').first + '@example.com'
       user.save
     end
     Legacy::License.find_each do |license|
-      license.email = license.email.split('@').first + 'example.com' if license.email
-      license.from_email = license.from_email.split('@').first + 'example.com' if license.from_email
+      license.email = license.email.split('@').first + '@example.com' if license.email
+      license.from_email = license.from_email.split('@').first + '@example.com' if license.from_email
       license.save
     end
   end
