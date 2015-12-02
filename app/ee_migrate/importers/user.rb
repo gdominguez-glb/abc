@@ -13,7 +13,7 @@ module Importers
       .group("exp_members.member_id")
 
       if emails.present?
-        members = members.where('exp_members.emails in (?)', emails)
+        members = members.where('exp_members.email in (?)', emails)
       end
 
       members.find_each do |member|
