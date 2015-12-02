@@ -39,4 +39,10 @@ namespace :legacy do
       license.save
     end
   end
+
+  desc "import legacy licenses"
+  task import_licenses: :environment do
+    Legacy::License.import_to_new_licenses
+    Legacy::License.import_distributions
+  end
 end
