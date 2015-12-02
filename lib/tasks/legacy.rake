@@ -1,12 +1,42 @@
 namespace :legacy do
+  desc "cleanup legacy users"
+  task cleanup: :environment do
+    emails = ENV['emails'].split(',').map(&:strip)
+    raise 'please specify emails to cleanup' if emails.blank?
+    Legacy::User.delete_all
+    Legacy::License.delete_all
+
+    Spree::User.unscoped.where(email: emails.map(&:downcase)).delete_all
+    Spree::LicensedProduct.unscoped.where(email: emails).delete_all
+    Spree::ProductDistribution.unscoped.where(from_email: emails).delete_all
+    Spree::ProductDistribution.unscoped.where(email: emails).delete_all
+  end
+
   desc "import users/licenses from web 1.0"
   task import: :environment do
-    Importers::User.import
+    emails = ENV['emails'].split(',').map(&:strip)
+
+    puts 'importing all users' if emails.blank?
+
+    Importers::User.import(emails)
 
     Importers::SchoolAdmin.import
     Importers::SchoolAdmin.import_sub_admins
 
-    Importers::Licenses.import
+    Importers::Licenses.import(emails)
     Importers::Licenses.import_user_email
+  end
+
+  desc "change user emails to example.com"
+  task change_email: :environment do
+    Legacy::User.find_each do |user|
+      user.email = user.email.split('@').first + 'example.com'
+      user.save
+    end
+    Legacy::License.find_each do |license|
+      license.email = license.email.split('@').first + 'example.com'
+      license.from_email = license.email.split('@').first + 'example.com'
+      license.save
+    end
   end
 end
