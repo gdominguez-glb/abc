@@ -286,4 +286,12 @@ Spree::User.class_eval do
   def interested_shops
     CurriculumShop.joins(:page).joins("join curriculums on curriculums.id = pages.curriculum_id").where("curriculums.name in (?)", self.interested_curriculums).uniq
   end
+
+  def accessible_products
+    @accessible_products ||= begin
+                               _product_ids = products.pluck(:id)
+                               _part_ids = Spree::Part.where(bundle_id: _product_ids).pluck(:product_id)
+                               Spree::Product.where(id: _product_ids+_part_ids)
+                             end
+  end
 end

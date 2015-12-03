@@ -82,7 +82,7 @@ class VideoGalleryController < ApplicationController
   end
 
   def fetch_bought_ids(products)
-    current_spree_user ? current_spree_user.products.where(id: products.map(&:id)).pluck(:id) : []
+    current_spree_user ? current_spree_user.accessible_products.where(id: products.map(&:id)).pluck(:id) : []
   end
 
   def load_taxonomies
