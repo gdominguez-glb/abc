@@ -56,3 +56,20 @@
     </div>
   </div>
 </div>
+
+  <%= javascript_tag do %>
+    $(function() {
+      var filterItems = $('#categoryFilters .list-group-item');
+      var removeAllFilters = $('#removeAllFilters');
+
+      if( filterItems.hasClass('active') ) {
+        removeAllFilters.addClass('in');
+      }
+
+      filterItems.each(function() {
+        if ( $(this).hasClass('active') ) {
+          $(this).closest('.panel-collapse').collapse('show');
+        }
+      });
+    });
+  <% end %>
