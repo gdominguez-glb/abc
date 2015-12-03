@@ -4,22 +4,24 @@
   </div>
 <% end %>
 <div class="row margin-top-xxl margin-bottom-xl">
-  <div class="col-sm-8 col-lg-7 col-lg-offset-1">
-    <h2>Get in Touch About...</h2>
+  <div class="col-lg-10 col-lg-offset-1">
     <%= form_for @contact_form, url: :create_contact, html: { class: 'form contact-form', novalidate: true } do |f| %>
       <input type=hidden name="orgid" value="00De0000005Vrkq">
       <input type=hidden name="retURL" value="<%= contact_url(success: true) %>">
       <div class="row">
-        <% if @contact_form.errors.any? %>
-          <ul>
-            <% @contact_form.errors.full_messages.each do |msg| %>
-              <li><%= msg %></li>
-            <% end %>
-          </ul>
-        <% end %>
+        <div class="col-sm-12">
+          <% if @contact_form.errors.any? %>
+            <ul>
+              <% @contact_form.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
+          <% end %>
+        </div>
       </div>
       <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-12">
+          <h2>Get in Touch About...</h2>
           <%= f.hidden_field :topic %>
           <div class="btn-group fixed-width margin-bottom-xl" id="topicDropdown">
             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
@@ -39,219 +41,223 @@
           </div>
         </div>
       </div>
+
       <div class="row">
-        <div class="col-sm-6 dependent-field hidden" data-name='Support Type'>
-          <label>Support Type</label>
-          <div class="select-container dark-select block">
-            <span>Support Type</span>
-            <%= f.select :support_type, options_for_select(ContactForm::SUPPORT_TYPES), prompt: "Select a support type", class: 'form-control' %>
-          </div>
-        </div>
+        <div class="col-sm-8">
 
-        <div class="col-sm-6">
-          <div class="form-group">
-            <label>First Name</label>
-            <%= f.text_field :first_name, size: 20, class: 'form-control', maxlength: 80, placeholder: 'First Name' %>
-          </div>
-        </div>
-
-        <div class="col-sm-6">
-          <div class="form-group">
-            <label>Last Name</label>
-            <%= f.text_field :last_name, size: 20, class: 'form-control', maxlength: 80, placeholder: 'Last Name'  %>
-          </div>
-        </div>
-
-        <div class="col-sm-6">
-          <div class="form-group">
-            <label>Email</label>
-            <%= f.text_field :email, size: 20, class: 'form-control', maxlength: 80, placeholder: 'Email' %>
-          </div>
-        </div>
-
-        <div class="col-sm-6">
-          <div class="form-group">
-            <label>Phone</label>
-            <%= f.text_field :phone, size: 20, class: 'form-control', maxlength: 80, placeholder: 'Phone' %>
-          </div>
-        </div>
-
-        <div class="col-sm-6">
-          <div class="form-group">
-            <label>Role</label>
-            <%= f.text_field :role, size: 20, class: 'form-control', maxlength: 80, placeholder: 'Role'  %>
-          </div>
-        </div>
-
-        <div class="col-sm-6">
-          <div class="form-group">
-            <label>School/District</label>
-            <%= f.text_field :school_district, size: 20, class: 'form-control', maxlength: 80, placeholder: 'School/District' %>
-          </div>
-        </div>
-
-      </div>
-      <div class="row">
-        <div class="col-sm-6">
-          <div class="form-group">
-            <label>School or District Type</label>
-            <div class="radio">
-              <label>
-                <%= f.radio_button :school_district_type, 'School' %> School
-              </label>
+          <div class="row">
+            <div class="col-sm-6 dependent-field hidden" data-name='Support Type'>
+              <label>Support Type</label>
+              <div class="select-container dark-select block">
+                <span>Support Type</span>
+                <%= f.select :support_type, options_for_select(ContactForm::SUPPORT_TYPES), prompt: "Select a support type", class: 'form-control' %>
+              </div>
             </div>
-            <div class="radio">
-              <label>
-                <%= f.radio_button :school_district_type, 'District' %> District
-              </label>
+
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label>First Name</label>
+                <%= f.text_field :first_name, size: 20, class: 'form-control', maxlength: 80, placeholder: 'First Name' %>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label>Last Name</label>
+                <%= f.text_field :last_name, size: 20, class: 'form-control', maxlength: 80, placeholder: 'Last Name'  %>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label>Email</label>
+                <%= f.text_field :email, size: 20, class: 'form-control', maxlength: 80, placeholder: 'Email' %>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label>Phone</label>
+                <%= f.text_field :phone, size: 20, class: 'form-control', maxlength: 80, placeholder: 'Phone' %>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label>Role</label>
+                <%= f.text_field :role, size: 20, class: 'form-control', maxlength: 80, placeholder: 'Role'  %>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label>School/District</label>
+                <%= f.text_field :school_district, size: 20, class: 'form-control', maxlength: 80, placeholder: 'School/District' %>
+              </div>
+            </div>
+
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label>School or District Type</label>
+                <div class="radio">
+                  <label>
+                    <%= f.radio_button :school_district_type, 'School' %> School
+                  </label>
+                </div>
+                <div class="radio">
+                  <label>
+                    <%= f.radio_button :school_district_type, 'District' %> District
+                  </label>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
 
-      <div class="row">
-        <div class="col-sm-6 dependent-field hidden" data-name='Country'>
-          <div class="form-group">
-            <label>Country</label>
-            <%= f.text_field :country, size: 20, maxlength: 80, class: 'form-control', placeholder: 'Country' %>
+          <div class="row">
+            <div class="col-sm-6 dependent-field hidden" data-name='Country'>
+              <div class="form-group">
+                <label>Country</label>
+                <%= f.text_field :country, size: 20, maxlength: 80, class: 'form-control', placeholder: 'Country' %>
+              </div>
+            </div>
+
+            <div class="col-sm-6 dependent-field hidden" data-name="State">
+              <div class="form-group">
+                <label>State</label>
+                <%= f.text_field :state, size: 20, maxlength: 80, class: 'form-control', placeholder: 'State' %>
+              </div>
+            </div>
+
+            <div class="col-sm-6 dependent-field hidden" data-name="Curriculum">
+              <div class="form-group">
+                <label>Curriculum</label>
+                <%= f.text_field :curriculum, size: 20, maxlength: 80, class: 'form-control', placeholder: 'Curriculum' %>
+              </div>
+            </div>
+
+            <div class="col-sm-6 dependent-field hidden" data-name="Grade">
+              <div class="form-group">
+                <label>Grade</label>
+                <%= f.text_field :grade, size: 20, maxlength: 80, class: 'form-control', placeholder: 'Grade' %>
+              </div>
+            </div>
+
+            <div class="col-sm-6 dependent-field hidden" data-name="School or District Size">
+              <label>Size</label>
+              <div class="select-container dark-select block">
+                <span>School or District Size</span>
+                <%= f.select :school_district_size, ['10+'], {}, class: 'form-control' %>
+              </div>
+            </div>
+
+            <div class="col-sm-6 dependent-field hidden" data-name="Title 1">
+              <div class="form-group">
+                <label>Title 1</label>
+                <%= f.check_box :title_1, {}, 'true', 'false' %>
+              </div>
+            </div>
+
+            <div class="col-sm-6 dependent-field hidden" data-name="Returning Customer">
+              <div class="form-group">
+                <label>Returning Customer</label>
+                <%= f.check_box :returning_customer, {}, 'true', 'false' %>
+              </div>
+            </div>
+
+            <div class="col-sm-6 dependent-field hidden" data-name="Desired Dates">
+              <div class="form-group">
+                <label>Desired Dates</label>
+                <%= f.text_field :desired_dates, size: 20, maxlength: 80, class: 'form-control', placeholder: 'Desired Dates' %>
+              </div>
+            </div>
+
+            <div class="col-sm-6 dependent-field hidden" data-name="Desired Training topic">
+              <div class="form-group">
+                <label>Desired Training topic</label>
+                <%= f.text_field :desired_training_topic, size: 20, maxlength: 80, class: 'form-control', placeholder: 'Desired Training topic' %>
+              </div>
+            </div>
+
+            <div class="col-sm-6 dependent-field hidden" data-name="Items purchased">
+              <div class="form-group">
+                <label>Items purchased</label>
+                <%= f.text_field :items_purchased, size: 20, maxlength: 80, class: 'form-control', placeholder: 'Items purchased' %>
+              </div>
+            </div>
+
+            <div class="col-sm-6 dependent-field hidden" data-name="Grade bands">
+              <div class="form-group">
+                <label>Grade bands</label>
+                <%= f.select :grade_bands, %w{K-2 3-5 6-8 9-12}, { include_hidden: false }, class: 'form-control', placeholder: 'Grade Bands', multiple: true %>
+              </div>
+            </div>
+
+            <div class="col-sm-6 dependent-field hidden" data-name="Size of Training Groups">
+              <div class="form-group">
+                <label>Size of Training Groups</label>
+                <%= f.text_field :training_groups_size, size: 20, maxlength: 80, class: 'form-control', placeholder: 'Size of Training Groups' %>
+              </div>
+            </div>
+
+            <div class="col-sm-6 dependent-field hidden" data-name="Format">
+              <div class="form-group">
+                <label>Format</label>
+                <%= f.text_field :format, size: 20, maxlength: 80, class: 'form-control', placeholder: 'Format' %>
+              </div>
+            </div>
+
+            <div class="col-sm-6 dependent-field hidden" data-name="Interested in hosting events">
+              <div class="form-group">
+                <label>Are you interested in participating in or hosting collaborative training events with other Eureka users in your region?</label>
+                <%= f.check_box :interested_in_hosting_events, {}, 'Yes', 'No' %>
+              </div>
+            </div>
           </div>
-        </div>
 
-        <div class="col-sm-6 dependent-field hidden" data-name="State">
-          <div class="form-group">
-            <label>State</label>
-            <%= f.text_field :state, size: 20, maxlength: 80, class: 'form-control', placeholder: 'State' %>
+          <div class="row dependent-field hidden" data-name="Description">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <label>Description</label>
+                <%= f.text_area :description, class: 'form-control', rows: 5 %>
+              </div>
+            </div>
           </div>
-        </div>
 
-        <div class="col-sm-6 dependent-field hidden" data-name="Curriculum">
-          <div class="form-group">
-            <label>Curriculum</label>
-            <%= f.text_field :curriculum, size: 20, maxlength: 80, class: 'form-control', placeholder: 'Curriculum' %>
+          <input type="hidden" id="external" name="external" value="1" />
+          <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+              <%= f.submit 'Submit', class: 'btn btn-success btn-block' %>
+            </div>
           </div>
+
         </div>
 
-        <div class="col-sm-6 dependent-field hidden" data-name="Grade">
-          <div class="form-group">
-            <label>Grade</label>
-            <%= f.text_field :grade, size: 20, maxlength: 80, class: 'form-control', placeholder: 'Grade' %>
+        <div class="col-sm-4 col-lg-3">
+          <div class="margin-bottom-xl margin-xs-left-xl contact-info-margin-top-unique">
+            <h6>Great Minds</h6>
+            <ul class="list-style-none">
+              <li>55 M Street SE</li>
+              <li>Suite 340</li>
+              <li>Washington D.C. 20003</li>
+              <li>Phone: 202-223-1854</li>
+              <li>Fax: 202-449-9504</li>
+            </ul>
           </div>
-        </div>
-
-        <div class="col-sm-6 dependent-field hidden" data-name="School or District Size">
-          <label>Size</label>
-          <div class="select-container dark-select block">
-            <span>School or District Size</span>
-            <%= f.select :school_district_size, ['10+'], {}, class: 'form-control' %>
+          <div class="margin-bottom-xl margin-xs-left-xl">
+            <h6>Sales Inquiries</h6>
+            <ul class="list-style-none">
+              <li>Phone: 1-844-853-1010</li>
+              <li>E-mail: sales@greatminds.net</li>
+            </ul>
           </div>
-        </div>
-
-        <div class="col-sm-6 dependent-field hidden" data-name="Title 1">
-          <div class="form-group">
-            <label>Title 1</label>
-            <%= f.check_box :title_1, {}, 'true', 'false' %>
-          </div>
-        </div>
-
-        <div class="col-sm-6 dependent-field hidden" data-name="Returning Customer">
-          <div class="form-group">
-            <label>Returning Customer</label>
-            <%= f.check_box :returning_customer, {}, 'true', 'false' %>
-          </div>
-        </div>
-
-        <div class="col-sm-6 dependent-field hidden" data-name="Desired Dates">
-          <div class="form-group">
-            <label>Desired Dates</label>
-            <%= f.text_field :desired_dates, size: 20, maxlength: 80, class: 'form-control', placeholder: 'Desired Dates' %>
-          </div>
-        </div>
-
-        <div class="col-sm-6 dependent-field hidden" data-name="Desired Training topic">
-          <div class="form-group">
-            <label>Desired Training topic</label>
-            <%= f.text_field :desired_training_topic, size: 20, maxlength: 80, class: 'form-control', placeholder: 'Desired Training topic' %>
-          </div>
-        </div>
-
-        <div class="col-sm-6 dependent-field hidden" data-name="Items purchased">
-          <div class="form-group">
-            <label>Items purchased</label>
-            <%= f.text_field :items_purchased, size: 20, maxlength: 80, class: 'form-control', placeholder: 'Items purchased' %>
-          </div>
-        </div>
-
-        <div class="col-sm-6 dependent-field hidden" data-name="Grade bands">
-          <div class="form-group">
-            <label>Grade bands</label>
-            <%= f.select :grade_bands, %w{K-2 3-5 6-8 9-12}, { include_hidden: false }, class: 'form-control', placeholder: 'Grade Bands', multiple: true %>
-          </div>
-        </div>
-
-        <div class="col-sm-6 dependent-field hidden" data-name="Size of Training Groups">
-          <div class="form-group">
-            <label>Size of Training Groups</label>
-            <%= f.text_field :training_groups_size, size: 20, maxlength: 80, class: 'form-control', placeholder: 'Size of Training Groups' %>
-          </div>
-        </div>
-
-        <div class="col-sm-6 dependent-field hidden" data-name="Format">
-          <div class="form-group">
-            <label>Format</label>
-            <%= f.text_field :format, size: 20, maxlength: 80, class: 'form-control', placeholder: 'Format' %>
-          </div>
-        </div>
-
-        <div class="col-sm-6 dependent-field hidden" data-name="Interested in hosting events">
-          <div class="form-group">
-            <label>Are you interested in participating in or hosting collaborative training events with other Eureka users in your region?</label>
-            <%= f.check_box :interested_in_hosting_events, {}, 'Yes', 'No' %>
-          </div>
-        </div>
-      </div>
-
-      <div class="row dependent-field hidden" data-name="Description">
-        <div class="col-sm-12">
-          <div class="form-group">
-            <label>Description</label>
-            <%= f.text_area :description, class: 'form-control', rows: 5 %>
-          </div>
-        </div>
-      </div>
-
-      <%# <input type="hidden" name="debug" value=1> %>
-      <%# <input type="hidden" name="debugEmail" value="liz.sweet@greatminds.net"> %>
-      <%# <div class="form-group"> %>
-      <%#   <label for="description">Message</label> %>
-      <%#   <textarea name="description" class="form-control" placeholder="Write your message here..."></textarea> %>
-      <%# </div> %>
-      <input type="hidden" id="external" name="external" value="1" />
-      <div class="row">
-        <div class="col-md-4 col-md-offset-4">
-          <%= f.submit 'Submit', class: 'btn btn-success btn-block' %>
         </div>
       </div>
     <% end %>
+
   </div>
-  <div class="col-sm-4 col-lg-3">
-    <div class="margin-bottom-xl margin-xs-left-xl contact-info-margin-top-unique">
-      <h6>Great Minds</h6>
-      <ul class="list-style-none">
-        <li>55 M Street SE</li>
-        <li>Suite 340</li>
-        <li>Washington D.C. 20003</li>
-        <li>Phone: 202-223-1854</li>
-        <li>Fax: 202-449-9504</li>
-      </ul>
-    </div>
-    <div class="margin-bottom-xl margin-xs-left-xl">
-      <h6>Sales Inquiries</h6>
-      <ul class="list-style-none">
-        <li>Phone: 1-844-853-1010</li>
-        <li>E-mail: sales@greatminds.net</li>
-      </ul>
-    </div>
-  </div>
+
 </div>
 <div class="row row-img-full" style="background-image: url('http://gm-s3-qa.intridea.com/documents/attachments/000/000/016/original/contactpage-fullwidth.jpg?1442503695')">
   <div class="row-img-full-content">
