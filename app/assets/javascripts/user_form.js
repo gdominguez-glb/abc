@@ -192,7 +192,7 @@ $(function(){
 
   function findSelectedData(data, id) {
     for(var i = 0; i < data.length; i ++) {
-      if(data[i].id === parseInt(id)) {
+      if(data[i].id === id || data[i].id === parseInt(id)) {
         return data[i];
       }
     }
