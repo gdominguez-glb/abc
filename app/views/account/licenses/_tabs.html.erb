@@ -11,14 +11,10 @@
       <form action="" class="form">
         <div class="row">
           <div class="col-sm-6">
-            <div class="form-group">
-              <input type="text" class='form-control' placeholder='Search...'/>
-            </div>
           </div>
           <div class="col-sm-6">
-            <div class="select-container dark-select block">
-              <span>Sort by Topic</span>
-              <%= select_tag :topic, options_for_select("option1"), prompt: "Select a Topic", class: 'form-control' %>
+            <div class="form-group">
+              <%= text_field_tag :query, params[:query], class: 'form-control', placeholder: 'Search Users' %>
             </div>
           </div>
         </div>
