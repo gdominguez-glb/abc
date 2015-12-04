@@ -252,8 +252,15 @@
             border-bottom: 0;
           }
 
-          &:hover {
+          &:hover,
+          &:focus, {
             color: $brand-green;
+
+            [data-page='english'] &,
+            [data-page='history'] &,
+            [data-page='math'] & {
+              color: $brand-green
+            }
           }
         }
       }
