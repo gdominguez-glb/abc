@@ -9,7 +9,7 @@
         </h4>
       </div>
       <div id="collapse<%= taxonomy.name.gsub(/[^0-9A-Za-z]/, '') %>" class="panel-collapse collapse">
-        <%= store_filters_taxons_tree(taxonomy.root, @taxon, taxonomy.allow_multiple_taxons_selected) %>
+        <%= gm_taxons_tree(taxonomy.root, @taxon, taxonomy.allow_multiple_taxons_selected) %>
       </div>
     </div>
   <% end %>
