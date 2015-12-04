@@ -1,25 +1,17 @@
-<nav id="taxonomies" class="sidebar-item" data-hook>
+<nav id="categoryFilters" class="panel-group" data-hook>
   <% @taxonomies.each do |taxonomy| %>
-    <div class="taxonomy">
-      <h4 class='taxonomy-root'><%= Spree.t(:shop_by_taxonomy, :taxonomy => taxonomy.name) %></h4>
-      <div class="btn-group fixed-width">
-        <button type="button" class="btn btn-default dropdown-toggle margin-right-reset whitespace-reset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <% selected_taxon = taxonomy.root.children.find{|taxon| params[:taxon_ids].include?(taxon.id) } %>
-          <% if selected_taxon %>
-            <%= selected_taxon.name %>
-          <% else %>
-            <%= taxonomy.name %>
-          <% end %>
-          <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu">
-          <% sibling_ids = taxonomy.root.children.map(&:id) %>
-          <% taxonomy.root.children.each do |taxon| %>
-            <% taxon_ids = store_generate_taxon_ids_param(params[:taxon_ids].dup, sibling_ids, taxon) %>
-            <li><%= link_to taxon.name, params.merge(taxon_ids: taxon_ids) %></li>
-          <% end %>
-        </ul>
+    <div class="panel panel-default panel-collapsible max-300">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#categories" href="#collapse<%= taxonomy.name.gsub(/[^0-9A-Za-z]/, '') %>">
+            <%= Spree.t(:shop_by_taxonomy, :taxonomy => taxonomy.name) %>
+          </a>
+        </h4>
+      </div>
+      <div id="collapse<%= taxonomy.name.gsub(/[^0-9A-Za-z]/, '') %>" class="panel-collapse collapse">
+        <%= gm_taxons_tree(taxonomy.root, @taxon, taxonomy.allow_multiple_taxons_selected) %>
       </div>
     </div>
   <% end %>
 </nav>
+<a id="removeAllFilters" href="/store/?" class="btn btn-danger btn-block collapse">Remove All</a>
