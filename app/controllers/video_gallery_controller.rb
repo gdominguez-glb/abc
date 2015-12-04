@@ -74,7 +74,7 @@ class VideoGalleryController < ApplicationController
   end
 
   def can_play_video?(video)
-    video.is_free? || (current_spree_user && current_spree_user.products.where(id: video.products.map(&:id)).present?)
+    video.is_free? || (current_spree_user && current_spree_user.accessible_products.where(id: video.products.map(&:id)).present?)
   end
 
   def bookmarked_video?(video)
