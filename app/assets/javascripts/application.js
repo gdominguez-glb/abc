@@ -92,6 +92,11 @@ $(document).ready(function() {
   var currentPage = $('body').data('page');
   nav.find('[data-primary-nav-item="'+ currentPage +'"]').addClass('active');
 
+  if($('body.blog')) {
+    var firstSubNavLink = nav.find('#sub-nav li:first-child a').attr('href');
+    $('body').attr('data-page', firstSubNavLink.replace('/',''));
+  }
+
   var flipBtn = $('.flip-btn');
   flipBtn.on('click', function() {
     $(this).closest('.flip-container').toggleClass('flip');
