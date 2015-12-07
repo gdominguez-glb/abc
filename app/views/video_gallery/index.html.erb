@@ -26,11 +26,7 @@
             <% @videos.each do |video| %>
               <% if video.is_free? || bought_products?(video.products) %>
                 <%= render partial: 'open_video', locals: { video: video } %>
-              <% end %>
-            <% end %>
-
-            <% @videos.each do |video| %>
-              <% if !video.is_free? %>
+              <% else %>
                 <%= render partial: 'locked_video', locals: { video: video } %>
               <% end %>
             <% end %>
