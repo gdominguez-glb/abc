@@ -71,4 +71,10 @@ Spree::UserSessionsController.class_eval do
     redirect_to main_app.account_root_path,
                 notice: t('error_messages.could_not_change_to_admin')
   end
+
+  def verify_signed_out_user
+    if all_signed_out?
+      respond_to_on_destroy
+    end
+  end
 end
