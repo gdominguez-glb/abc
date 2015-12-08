@@ -21,9 +21,12 @@ ul.nav-pills {
     letter-spacing: 2px;
 
     a {
-      margin-right: $b-space-s;
       border: 1px solid $dark-blue;
       font-weight: normal;
+
+      @media screen and (min-width: $screen-sm-min) {
+        margin-right: $b-space-s;
+      }
     }
 
     &.last {
