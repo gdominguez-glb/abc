@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Legacy::License, type: :model do
   let!(:product) { create(:product, name: 'Sample Product') }
-  let!(:expiration_date) { 1.year.from_now.to_date }
+  let!(:expiration_date) { Date.new(2016, 6, 30) }
 
   before(:each) do
     create(:legacy_license, email: 'john@example.com', from_email: 'author@example.com', mapped_name: 'Sample Product', expiration_date: expiration_date)

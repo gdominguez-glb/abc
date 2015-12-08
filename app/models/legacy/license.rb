@@ -7,7 +7,7 @@ class Legacy::License < ActiveRecord::Base
       product = Spree::Product.find_by(name: legacy_license.mapped_name)
       licensed_product = Spree::LicensedProduct.create(
         email:          legacy_license.email,
-        expire_at:      legacy_license.expiration_date,
+        expire_at:      revise_expiration_date(product, legacy_license.expiration_date),
         product:        product,
         quantity:       1,
         fulfillment_at: Time.now,
@@ -74,5 +74,11 @@ class Legacy::License < ActiveRecord::Base
         distribution.update(quantity: quantity, licensed_product: licensed_product)
       end
     end
+  end
+
+  def self.revise_expiration_date(product, expiration_date)
+    return nil if expiration_date.nil?
+    june_30 = Date.new(2016, 6, 30)
+    (expiration_date <= june_30) ? expiration_date : product.expiration_date
   end
 end
