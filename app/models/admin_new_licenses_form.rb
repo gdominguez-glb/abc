@@ -27,13 +27,15 @@ class AdminNewLicensesForm
   end
 
   def create_order
-    order = Spree::Order.new(email: email, user_id: user_id, source: 'fulfillment', total: self.amount, item_total: self.amount)
+    order = Spree::Order.new(email: email, user_id: user_id, source: 'fulfillment', total: self.amount, item_total: self.amount, skip_salesforce_create: true)
     add_line_items(order)
     add_payments(order)
+
     order.save
 
-    process_order(order)
     create_order_salesforce_reference(order)
+
+    process_order(order)
     order.tap { associate_school_district(order) }
   end
 
