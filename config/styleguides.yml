@@ -9,3 +9,12 @@ sections:
   7: Tables
   8: Alerts
   9: Navigation
+  10: Pagination
+  11: Badges
+  12: Jumbotron
+  13: Thumbnails
+  14: Media object
+  15: List group
+  16: Panels
+  17: Wells
+  18: Modal
