@@ -18,32 +18,31 @@ class Legacy::License < ActiveRecord::Base
   end
 
   def self.import_distributions
-    licenses = Legacy::License.find_by_sql("select from_email, mapped_name from (select from_email, mapped_name, count(*) as q_count from legacy_licenses group by mapped_name, from_email) a where a.q_count > 0")
+    licenses = Legacy::License.find_by_sql("select from_email, mapped_name, expiration_date from (select from_email, mapped_name, expiration_date, count(*) as q_count from legacy_licenses group by mapped_name, from_email, expiration_date) a where a.q_count > 0")
     licenses.each do |license|
       from_email, product = license.from_email, Spree::Product.find_by(name: license.mapped_name)
       next if product.nil?
-      import_distrbutions_for_product(from_email, product)
+      import_distrbutions_for_product(from_email, product, license.expiration_date)
     end
   end
 
-  def self.import_distrbutions_for_product(from_email, product)
-    emails = Legacy::License.where(from_email: from_email, mapped_name: product.name).pluck(:email)
+  def self.import_distrbutions_for_product(from_email, product, expiration_date)
+    emails = Legacy::License.where(from_email: from_email, mapped_name: product.name, expiration_date: expiration_date).pluck(:email)
     return if emails.length == 1 && emails[0] == from_email
-    source_licensed_product = create_source_licensed_product(from_email, product)
+    source_licensed_product = create_source_licensed_product(from_email, product, expiration_date)
     return if source_licensed_product.nil?
-    Spree::LicensedProduct.where(product: product, email: emails.compact).where.not(id: source_licensed_product.id).each do |licensed_product|
+    Spree::LicensedProduct.where(product: product, email: emails.compact, expire_at: expiration_date).where.not(id: source_licensed_product.id).each do |licensed_product|
       import_distribution(source_licensed_product, licensed_product)
     end
   end
 
-  def self.create_source_licensed_product(from_email, product)
-    self_distributed_license = Spree::LicensedProduct.find_by(email: from_email, product: product)
-    licenses_scope = Legacy::License.where(from_email: from_email, mapped_name: product.name)
+  def self.create_source_licensed_product(from_email, product, expiration_date)
+    self_distributed_license = Spree::LicensedProduct.find_by(email: from_email, product: product, expire_at: expiration_date)
+    licenses_scope = Legacy::License.where(from_email: from_email, mapped_name: product.name, expiration_date: expiration_date)
     total_quantity = licenses_scope.where(email: nil).count
-    expire_at = licenses_scope.first.expiration_date
     Spree::LicensedProduct.create(
       product:        product,
-      expire_at:      expire_at,
+      expire_at:      expiration_date,
       email:          from_email,
       quantity:       total_quantity,
       fulfillment_at: Time.now,

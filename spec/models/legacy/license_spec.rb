@@ -44,7 +44,7 @@ RSpec.describe Legacy::License, type: :model do
   describe ".create_source_licensed_product" do
     before(:each) do
       Legacy::License.import_to_new_licenses
-      @source_licensed_product = Legacy::License.create_source_licensed_product('author@example.com', product)
+      @source_licensed_product = Legacy::License.create_source_licensed_product('author@example.com', product, expiration_date)
     end
 
     it "create source licensed product for distribution" do
