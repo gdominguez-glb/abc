@@ -23,12 +23,7 @@ class AdminNewLicensesForm
   end
 
   def perform
-    order = create_order
-    rows = products.map do |product|
-      { product: product, email: email, user_id: user_id, quantity: quantity,
-        fulfillment_at: safe_date_parse(fulfillment_at), order: order }
-    end
-    Spree::LicensesManager::LicensesCreator.new(rows).execute
+    create_order
   end
 
   def create_order
