@@ -126,7 +126,7 @@ class Spree::LicensedProduct < ActiveRecord::Base
 
   def set_expire_at
     if self.product.expiration_date.present?
-      self.expire_at = self.product.expiration_date
+      self.expire_at ||= self.product.expiration_date
     end
     if self.product.license_length.present?
       self.expire_at ||= product.license_length.days.since(self.fulfillment_at)
