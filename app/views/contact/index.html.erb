@@ -269,6 +269,8 @@
 <%= content_for :javascripts do %>
   <%= javascript_tag do %>
     $(function(){
+      $('#contact_form_grade_bands').select2({});
+
       var supports = ['Order Support', 'Parent Support', 'Content/Implementation Support', 'Technical Support'];
 
       function requireDescription() {
