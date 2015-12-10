@@ -50,7 +50,7 @@
               <label>Support Type</label>
               <div class="select-container dark-select block">
                 <span>Support Type</span>
-                <%= f.select :support_type, options_for_select(ContactForm::SUPPORT_TYPES), prompt: "Select a support type", class: 'form-control' %>
+                <%= f.select :support_type, options_for_select(ContactForm::SUPPORT_TYPES), { prompt: "Select a support type" }, class: 'form-control' %>
               </div>
             </div>
 
