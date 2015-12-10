@@ -92,7 +92,7 @@ Spree::Order.class_eval do
     #       of just 'Full Payment Received'
     if payment_received?
       attrs.merge('Order_Status__c' => 'Full Payment Received')
-    elsif order.complete?
+    elsif complete?
       attrs.merge('Order_Status__c' => 'License Activated')
     end
 
