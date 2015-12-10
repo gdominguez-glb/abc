@@ -1,18 +1,24 @@
-// _typography.scss
+// *************************************
+//
+//   Typography
+//   Baseline Typography Declarations
+//
+// *************************************
 
-/* ----------------------------------------------------------------------------
-* Font families
-*
-* Styleguide 1.2
-*/
+
+// -------------------------------------
+//   Font Families
+//
+//   Styleguide 3.1
+// -------------------------------------
+
 @import url(http://fonts.googleapis.com/css?family=Karla:400,700|Lora);
 
-
-/* ----------------------------------------------------------------------------
-* Headlines
-*
-* Styleguide 1.2.1
-*/
+// -------------------------------------
+//   Headlines
+//
+//   Styleguide 3.2
+// -------------------------------------
 
 body {
   font-size: 16px;
@@ -88,11 +94,11 @@ h1, h2, h3, h4, h5, h6, p {
   color: inherit;
 }
 
-/* ----------------------------------------------------------------------------
-* Body Copy
-*
-* Styleguide 1.2.2
-*/
+// -------------------------------------
+//   Body Copy
+//
+//   Styleguide 3.3
+// -------------------------------------
 
 html, body {
   font-family: 'Lora', serif;
@@ -114,49 +120,53 @@ table {
   text-align: left;
 }
 
-/* ----------------------------------------------------------------------------
-* Lead Copy
-*Default Bootstrap Lead
-*
-* Styleguide 1.2.3
-*/
+// -------------------------------------
+//   Lead Copy
+//
+//   Default Bootstrap Lead
+//
+//   Styleguide 3.4
+// -------------------------------------
 
+// -------------------------------------
+//   Contextual Copy
+//
+//   Uses Bootstrap's $brand-{context} coloring. Will update if "$brand" color variables are updated
+//
+//   Styleguide 3.5
+// -------------------------------------
 
-/* ----------------------------------------------------------------------------
-* Contextual Copy
-* Uses Bootstraps $brand-{context} coloring. Will update if "$brand" color variables are updated
-*
-* Styleguide 1.2.4
-*/
+// -------------------------------------
+//   Blockquote
+//
+//   Uses Bootstrap's standard block quote styling
+//
+//   Styleguide 3.6.1
+// -------------------------------------
 
-/* ----------------------------------------------------------------------------
-* Blockquote
-* Uses Bootstraps standard block quote styling
-*
-* Styleguide 1.2.5
-*/
 blockquote {
   footer {
     background: transparent;
   }
 }
 
+// -------------------------------------
+//   Blockquote with Attribution
+//
+//   Uses Bootstrap's standard block quote styling
+//
+//   Styleguide 3.6.2
+// -------------------------------------
 
-/* ----------------------------------------------------------------------------
-* Blockquote w/ Attribution
-* Uses Bootstraps standard block quote styling
-*
-* Styleguide 1.2.5.1
-*/
 
-/* ----------------------------------------------------------------------------
-* Blockquote w/ Attribution Reversed
-* Uses Bootstraps standard block quote styling
-*
-* Styleguide 1.2.5.2
-*/
+// -------------------------------------
+//   Blockquote with Attribution, Reversed
+//
+//   Uses Bootstrap's standard block quote styling
+//
+//   Styleguide 3.6.3
+// -------------------------------------
 
- // Links
 a {
   color: inherit;
   font-weight: bold;
