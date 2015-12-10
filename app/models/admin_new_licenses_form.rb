@@ -37,6 +37,8 @@ class AdminNewLicensesForm
 
     process_order(order)
     order.tap { associate_school_district(order) }
+
+    order.line_items.each { |line_item| line_item.create_in_salesforce if line_item.salesforce_reference.nil? }
   end
 
   def add_line_items(order)
@@ -62,7 +64,8 @@ class AdminNewLicensesForm
 
   def create_order_salesforce_reference(order)
     SalesforceReference.create(id_in_salesforce: salesforce_order_id,
-                               local_object: order)
+                               local_object: order,
+                               object_properties: { 'Id' => salesforce_order_id })
   end
 
   def associate_school_district(order)
