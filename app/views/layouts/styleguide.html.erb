@@ -12,6 +12,7 @@ You may customize this by adding your own scripts and styles. -->
       <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6/html5shiv.min.js"></script>
     -->
     <%= yield :head  if content_for?(:head) %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
   </head>
   <body>
