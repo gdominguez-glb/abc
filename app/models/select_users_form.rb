@@ -20,7 +20,7 @@ class SelectUsersForm
     else
       []
     end
-    rows.map {|row| row[0] }
+    rows.map {|row| row['email'] }
   end
 
   def file_format
