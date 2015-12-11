@@ -158,3 +158,8 @@ products:
     :legacy_id: 306152
     :legacy_title: 'Eureka Digital Suite - 60 Day Free Trial'
     :name: 'Eureka Digital Suite'
+
+  -
+    :legacy_id: 306151
+    :legacy_title: 'Eureka Digital Suite - 30 Day Free Trial'
+    :name: 'Eureka Digital Suite'
