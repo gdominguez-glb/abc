@@ -13,7 +13,7 @@ module Spree
       end
 
       def create
-        @new_licenses_form = AdminNewLicensesForm.new(new_licenses_form_params.merge(payment_source_params: params[:payment_source]))
+        @new_licenses_form = AdminNewLicensesForm.new(new_licenses_form_params.merge(payment_source_params: params[:payment_source], products_quantity: params[:products]))
         @order = Spree::Order.new
 
         if @new_licenses_form.valid?
