@@ -79,6 +79,30 @@
 
    togglePaymentMethod($('#admin_new_licenses_form_payment_method_id').val());
 
+   $('#product_id').select2();
+
+   var productHTML = "<div class='product-item'><span>PRODUCT_NAME</span>/QUANTITY<input type='hidden' name='products[PRODUCT_ID]' value='QUANTITY'><button class='btn btn-default remove-product'>Remove</button></div>";
+   $('#add-product-btn').click(function(e){
+     e.preventDefault();
+     var html = productHTML;
+     var productId = $('#product_id').val();
+     var productName = $('#product_id option:selected').text();
+     var quantity = $('#quantity').val();
+     if (!productId || !quantity) {
+       alert('Please choose product and enter quantity!');
+       return;
+     }
+     html = html.replace('PRODUCT_NAME', productName);
+     html = html.replace(/QUANTITY/g, quantity);
+     html = html.replace('PRODUCT_ID', productId);
+     $('#products-container').append(html);
+     $('#product_id').select2('val', null);
+     $('#quantity').val('');
+   });
+
+   $(document).on('click', '.remove-product', function(e){
+     $(this).closest('.product-item').remove();
+   });
   })(jQuery);
 //]]>
 </script>
