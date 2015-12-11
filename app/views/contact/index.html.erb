@@ -404,6 +404,11 @@
       });
 
       $('input[name="contact_form[desired_dates]"]').datetimepicker({format: 'YYYY-MM-DD'});
+
+      var hash = window.location.hash;
+      if(hash == '#sales') {
+        $('#topicDropdown').find('[data-topic="Sales/Purchasing"]').trigger('click');
+      }
     });
   <% end %>
 <% end %>
