@@ -46,14 +46,6 @@
         <div class="col-sm-8">
 
           <div class="row">
-            <div class="col-sm-6 dependent-field hidden" data-name='Support Type'>
-              <label>Support Type</label>
-              <div class="select-container dark-select block">
-                <span>Support Type</span>
-                <%= f.select :support_type, options_for_select(ContactForm::SUPPORT_TYPES), { prompt: "Select a support type" }, class: 'form-control' %>
-              </div>
-            </div>
-
             <div class="col-sm-6">
               <div class="form-group">
                 <label>First Name</label>
@@ -271,27 +263,19 @@
     $(function(){
       $('#contact_form_grade_bands').select2({});
 
-      var supports = ['Order Support', 'Parent Support', 'Content/Implementation Support', 'Technical Support'];
-
       function requireDescription() {
         var topic = $('input[name="contact_form[topic]"]').val();
-        var supportType = $('select[name="contact_form[support_type]"]').val()
-        if (topic == 'General' || topic == 'Professional Development') {
-          return true;
-        }
 
-        if (topic == 'Support' && (supports.indexOf(supportType) != -1) ) {
+        if (topic == 'General' || topic == 'Professional Development' || topic == 'Existing Order Support' || topic == 'Parent Support' || topic == 'Curriculum Support' || topic == 'Content Error' || topic == 'Technical Support') {
           return true;
         }
         return false;
       }
 
       function requireFormat() {
-        console.log('require format')
         var topic = $('input[name="contact_form[topic]"]').val();
-        var supportType = $('select[name="contact_form[support_type]"]').val()
 
-        if (topic == 'Support' && supportType == 'Content Error') {
+        if (topic == 'Content Error') {
           return true;
         }
         return false;
@@ -338,16 +322,18 @@
       ];
 
       var topicFieldMapping = {
-        'General': [
-          { name: 'Description', required: true }
-        ],
-        'Sales and Purchasing': [
+        'Sales/Purchasing': [
           { name: 'Country' },
           { name: 'State' },
           { name: 'Curriculum' },
           { name: 'Title 1' },
           { name: 'Returning Customer' },
           { name: 'Description' },
+        ],
+        'Existing Order Support': [
+          { name: 'Items purchased' },
+          { name: 'Curriculum' },
+          { name: 'Description' }
         ],
         'Professional Development': [
           { name: 'Desired Dates' },
@@ -356,31 +342,26 @@
           { name: 'Size of Training Groups' },
           { name: 'Interested in hosting events' },
           { name: 'Description', required: true }
-        ]
+        ],
+        'Curriculum Support': [
+          { name: 'Curriculum' },
+          { name: 'Description' }
+        ],
+        'Technical Support':[
+          { name: 'Description' }
+        ],
+        'Parent Support': [
+          { name: 'Curriculum' },
+          { name: 'Description' }
+        ],
+        'Content Error': [
+          { name: 'Curriculum' },
+          { name: 'Format' }
+        ],
+        'General and Other': [
+          { name: 'Description', required: true }
+        ],
       }
-
-      var supportFieldMapping = {
-        "Order Support": [
-          { name: "Items purchased" },
-          { name: "Curriculum" },
-          { name: "Description" }
-        ],
-        "Parent Support": [
-          { name: "Curriculum" },
-          { name: "Description" }
-        ],
-        "Content/Implementation Support": [
-          { name: "Curriculum" },
-          { name: "Description" }
-        ],
-        "Content Error": [
-          { name: "Curriculum" },
-          { name: "Format" }
-        ],
-        "Technical Support":[
-          { name: "Description" }
-        ]
-      };
 
       var topicDropdown = $('#topicDropdown');
       var topicDropdownLinks = topicDropdown.find('.dropdown-menu a');
@@ -401,25 +382,11 @@
           toggleDependentFields(mapping);
           return;
         }
-        if (topic == 'Support') {
-          $("[data-name='Support Type']").removeClass('hidden');
-        } else {
-          $("[data-name='Support Type']").addClass('hidden');
-        }
       });
 
       <% if @contact_form.topic.present? %>
         $('[data-topic="<%= @contact_form.topic %>"]').trigger('click');
       <% end %>
-
-      $('select[name="contact_form[support_type]"]').change(function(e){
-        $('.dependent-field').not('[data-name="Support Type"]').addClass('hidden');
-        var value = $(this).val();
-        if(value) {
-          var mapping = supportFieldMapping[value];
-          toggleDependentFields(mapping);
-        }
-      });
 
       function toggleDependentFields(mapping) {
         _.each(mapping, function(m, i){

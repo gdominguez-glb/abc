@@ -1,8 +1,7 @@
 class ContactForm
   include ActiveModel::Model
 
-  TOPICS = ["General", "Sales and Purchasing", "Professional Development", "Support"]
-  SUPPORT_TYPES = ["Order Support", "Parent Support", "Content/Implementation Support", "Content Error", "Technical Support"]
+  TOPICS = ["Sales/Purchasing", "Existing Order Support", "Professional Development", "Curriculum Support", "Technical Support", "Parent Support", "Content Error", "General and Other"]
 
   attr_accessor :topic, :support_type, :first_name, :last_name, :email, :phone, :role, :school_district_name, :school_district_type,
     :country, :state, :curriculum, :grade, :school_district_size, :title_1, :returning_customer, :tax_exempt, :tax_exempt_id, :desired_dates,
