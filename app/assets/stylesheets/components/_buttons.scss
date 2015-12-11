@@ -1,8 +1,15 @@
-/* ----------------------------------------------------------------------------
-* Base Button Styling
-*
-* Styleguide 1.4
-*/
+// *************************************
+//
+//   Buttons
+//   Boostrap Button Overrides
+//
+// *************************************
+
+// -------------------------------------
+//   Base Button Styling
+//
+//   Styleguide 5.0
+// -------------------------------------
 
 .btn {
   font-family: 'Karla', sans-serif;
@@ -85,15 +92,47 @@
   }
 }
 
-.btn-sm {
-  padding: $b-space-s $b-space;
-}
-
 .btn-icon {
   width: 22px;
   height: 22px;
   padding: 0;
 }
+
+.btn-block {
+  margin-bottom: 30px;
+}
+
+.btn-block-xs {
+  display: block;
+  width: 100%;
+  margin-bottom: 60px;
+
+  @media screen and (min-width: $screen-sm-min) {
+    display: inline-block;
+    width: auto;
+    margin-bottom: 0;
+  }
+}
+
+// -------------------------------------
+//   Button Sizes
+//
+//   Styleguide 5.1
+// -------------------------------------
+
+.btn-sm {
+  padding: $b-space-s $b-space;
+}
+
+.btn-xs {
+  padding: ($b-space-s * .75) ($b-space * .75);
+}
+
+// -------------------------------------
+//   Button Groups
+//
+//   Styleguide 5.2
+// -------------------------------------
 
 .btn-group {
   display: block;
@@ -109,6 +148,7 @@
     @media screen and (min-width: $screen-sm-min) {
       float: left;
       width: auto;
+      margin-right: 0;
     }
   }
 
@@ -128,6 +168,12 @@
     }
   }
 }
+
+// -------------------------------------
+//   Dropdowns
+//
+//   Styleguide 5.3
+// -------------------------------------
 
 .dropdown-menu {
   width: 100%;
@@ -199,40 +245,3 @@
     top: 18px;
   }
 }
-
-.btn-block {
-  margin-bottom: 30px;
-}
-
-.btn-block-xs {
-  display: block;
-  width: 100%;
-  margin-bottom: 60px;
-
-  @media screen and (min-width: $screen-sm-min) {
-    display: inline-block;
-    width: auto;
-    margin-bottom: 0;
-  }
-}
-
-/* ----------------------------------------------------------------------------
-* Button Sizes
-* Default Bootstrap
-*
-* Styleguide 1.4.1
-*/
-
-/* ----------------------------------------------------------------------------
-* Button Groups
-* Default Bootstrap
-*
-* Styleguide 1.4.2
-*/
-
-/* ----------------------------------------------------------------------------
-* Dropdowns
-* Default Bootstrap
-*
-* Styleguide 1.4.3
-*/
