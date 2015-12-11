@@ -20,7 +20,6 @@ namespace :legacy do
 
     Importers::User.import(emails)
 
-    Importers::SchoolAdmin.import
     Importers::SchoolAdmin.import_sub_admins
 
     Importers::Licenses.import(emails)
