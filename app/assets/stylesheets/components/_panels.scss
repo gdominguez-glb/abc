@@ -3,9 +3,13 @@
 //   Panels
 //   Bootstrap Panel Overrides
 //
-//   Styleguide 1.16
-//
 // *************************************
+
+// -------------------------------------
+//   Default Panel
+//
+//   Styleguide 16.0
+// -------------------------------------
 
 .panel-group {
   .panel {
@@ -16,6 +20,12 @@
     margin-top: 0;
   }
 }
+
+// -------------------------------------
+//   Collapsible panel
+//
+//   Styleguide 16.1
+// -------------------------------------
 
 .panel {
 
@@ -69,6 +79,12 @@
 
 }
 
+// -------------------------------------
+//   Panel with Heading
+//
+//   Styleguide 16.2
+// -------------------------------------
+
 .panel-heading {
 	border-bottom-right-radius: 0;
 	border-bottom-left-radius: 0;
@@ -110,7 +126,11 @@
   }
 }
 
-// Contextual Variations
+// -------------------------------------
+//   Contextual Panel Variations
+//
+//   Styleguide 16.3
+// -------------------------------------
 
 .panel-default {
   @include panel-variant($panel-default-border, $panel-default-text, $panel-default-heading-bg, $panel-default-border);

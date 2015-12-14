@@ -23,9 +23,23 @@
   }
 
   > div {
-    > .margin {
-      margin: 5px 0 !important;
+
+    .alert {
+      margin-bottom: 10px !important;
     }
+
+    .navbar-primary {
+      height: auto;
+    }
+
+    .margin-left {
+      margin-left: 10px !important;
+    }
+
+    .margin-bottom {
+      margin-bottom: 10px !important;
+    }
+
   }
 }
 
