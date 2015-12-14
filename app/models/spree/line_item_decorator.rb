@@ -34,4 +34,9 @@ Spree::LineItem.class_eval do
     return nil if sfo.blank?
     matches_salesforce_object(sfo).first
   end
+
+  def skip_salesforce_sync?
+    return true if order.fulfillment?
+    false
+  end
 end
