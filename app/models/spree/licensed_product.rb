@@ -100,7 +100,6 @@ class Spree::LicensedProduct < ActiveRecord::Base
   assign_email_from_user :email, :user
 
   after_create :assign_user_admin_role
-  after_commit :send_notification, on: :create
 
   attr_accessor :skip_notification
 
