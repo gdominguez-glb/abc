@@ -12,4 +12,10 @@ class LicenseMailer < ApplicationMailer
     @product_names = @order.line_items.map{|li| li.variant.product.name }.join(', ')
     mail to: (order.user.try(:email) || order.email), subject: "#{order.admin_user.try(:full_name)} has given you access to #{@product_names}"
   end
+
+  def notify_other_admin(order)
+    @order = order
+    @licenses_names = @order.line_items.map{|li| "#{li.quantity} #{li.variant.product.name}" }.join(', ')
+    mail to: order.license_admin_email, subject: "#{order.user.try(:full_name)} has made you a Great Minds Administrator"
+  end
 end
