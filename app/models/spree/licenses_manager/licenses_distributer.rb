@@ -17,6 +17,8 @@ module Spree
           @rows.each do |row|
             create_distribution_license(row)
           end
+
+          send_email_notifications
         end
       end
 
@@ -70,6 +72,17 @@ module Spree
 
       def reduce_license_quantity(licensed_product, quantity)
         licensed_product.update(quantity: (licensed_product.quantity-quantity))
+      end
+
+      def send_email_notifications
+        @rows.each do |row|
+          LicenseMailer.notify_distribution(
+            school_admin: @user,
+            product_name: @product.name,
+            to_email: row[:email],
+            quantity: row[:quantity]
+          ).deliver_later
+        end
       end
 
     end
