@@ -1,9 +1,15 @@
-/* ----------------------------------------------------------------------------
-* Alerts
-* Default Bootstrap Alert Style
-*
-* Styleguide 1.7
-*/
+// *************************************
+//
+//   Alerts
+//   Bootstrap alert overrides
+//
+// *************************************
+
+// -------------------------------------
+//   Basic Alerts
+//
+//   Styleguide 8.0
+// -------------------------------------
 
 .flash {
   margin-bottom: 0;
@@ -11,6 +17,8 @@
 
 .alert {
   margin-bottom: $b-space;
+
+  @include alert-variant(darken($light-blue, 15%), $dark-blue, $dark-blue);
 
   a {
     text-transform: none;
@@ -22,7 +30,6 @@
   @include alert-variant($brand-success, darken($brand-success, 25%), #fff);
 }
 
-.alert,
 .alert-info {
   @include alert-variant(darken($light-blue, 15%), $dark-blue, $dark-blue);
 }

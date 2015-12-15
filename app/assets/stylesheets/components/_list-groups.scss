@@ -1,9 +1,15 @@
 // *************************************
 //
 //   List Groups
-//   -> Bootstrap List Group Overrides
+//   Bootstrap list group overrides
 //
 // *************************************
+
+// -------------------------------------
+//   Default List Group
+//
+//   Styleguide 15.0
+// -------------------------------------
 
 .list-group-item {
 
@@ -24,6 +30,12 @@
     }
   }
 }
+
+// -------------------------------------
+//   Linked Items
+//
+//   Styleguide 15.1
+// -------------------------------------
 
 a.list-group-item {
   color: inherit;

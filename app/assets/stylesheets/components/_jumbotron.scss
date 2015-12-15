@@ -1,9 +1,15 @@
 // *************************************
 //
 //   Jumbotron
-//   -> Bootstrap Jumbotron Overrides
+//   Bootstrap jumbotron overrides
 //
 // *************************************
+
+// -------------------------------------
+//   Default Jumbotron
+//
+//   Styleguide 12.0
+// -------------------------------------
 
 .jumbotron {
   text-align: center;
@@ -13,11 +19,23 @@
   }
 }
 
-.jumbotron-info {
-  background-color: $english;
-}
+// -------------------------------------
+//   Success Jumbotron
+//
+//   Styleguide 12.1
+// -------------------------------------
 
 .jumbotron-success {
   color: $dark-blue;
   background-color: $brand-green;
+}
+
+// -------------------------------------
+//   Info Jumbotron
+//
+//   Styleguide 12.2
+// -------------------------------------
+
+.jumbotron-info {
+  background-color: $english;
 }
