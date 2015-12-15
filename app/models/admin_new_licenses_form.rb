@@ -58,7 +58,11 @@ class AdminNewLicensesForm
   end
 
   def process_order(order)
-    order.next while order.state != 'complete'
+    count = 0
+    while count < 6
+      order.next if order.state != 'complete'
+      count += 1
+    end
     process_payment(order)
   end
 

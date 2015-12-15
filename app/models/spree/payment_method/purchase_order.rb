@@ -29,7 +29,7 @@ module Spree
     end
 
     def auto_capture?
-      false
+      true
     end
 
     def payment_source_class
