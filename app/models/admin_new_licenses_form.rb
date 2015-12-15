@@ -2,7 +2,7 @@ class AdminNewLicensesForm
   include ActiveModel::Model
 
   attr_accessor :user_id, :email, :product_ids, :fulfillment_at,
-                :payment_method_id, :payment_source_params,
+                :payment_method_id, :payment_source_params, :admin_user,
                 :salesforce_order_id, :salesforce_account_id, :amount, :products_quantity
 
   validates_presence_of :salesforce_order_id, :salesforce_account_id
@@ -25,7 +25,15 @@ class AdminNewLicensesForm
   end
 
   def create_order
-    order = Spree::Order.new(email: email, user_id: user_id, source: 'fulfillment', total: self.amount, item_total: self.amount, skip_salesforce_create: true)
+    order = Spree::Order.new(
+      email: email,
+      user_id: user_id,
+      source: 'fulfillment',
+      total: self.amount,
+      item_total: self.amount,
+      skip_salesforce_create: true,
+      admin_user: admin_user
+    )
     add_line_items(order)
     add_payments(order)
 

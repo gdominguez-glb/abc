@@ -3,6 +3,7 @@ class Spree::LicensedProduct < ActiveRecord::Base
   belongs_to :order, class_name: 'Spree::Order'
   belongs_to :user, class_name: 'Spree::User'
   belongs_to :product_distribution, class_name: 'Spree::ProductDistribution'
+  belongs_to :admin_user, class_name: 'Spree::User'
 
   include SalesforceAccess
 

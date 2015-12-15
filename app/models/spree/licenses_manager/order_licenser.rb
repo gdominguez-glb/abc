@@ -11,6 +11,7 @@ module Spree
         @order.line_items.each do |line_item|
           create_license(product: line_item.variant.product,
                          email: email,
+                         admin_user: @order.admin_user,
                          quantity: line_item.quantity)
         end
       end

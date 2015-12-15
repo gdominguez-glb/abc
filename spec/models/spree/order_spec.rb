@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Spree::Order, type: :model do
+  it { should belong_to(:admin_user).class_name('Spree::User') }
+  it { should belong_to(:school_district) }
+
   let(:product_with_license_length) { create(:product, license_length: 360, license_text: 'test') }
   let(:product_without_license_length) { create(:product, license_length: nil, license_text: nil) }
   let(:license_line_item) { create(:line_item, order: order, variant: product_with_license_length.master, :price => 1.0, :quantity => 2) }

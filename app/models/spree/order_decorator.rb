@@ -2,6 +2,7 @@ Spree::Order.class_eval do
   has_many :licensed_products, class_name: 'Spree::LicensedProduct'
 
   belongs_to :school_district
+  belongs_to :admin_user, class_name: 'Spree::User'
 
   enum source: { web: 0, fulfillment: 1 }
 
