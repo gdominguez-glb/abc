@@ -1,0 +1,36 @@
+<% if @order.user %>
+  <p>
+  Dear <%= @order.user.first_name %>,
+  </p>
+
+  <p>
+You have been granted access to <%= @product_names %>. Log into your dashboard at <%= link_to root_url, root_url %> to try it out. 
+  </p>
+
+  <p>
+Please reach out to us if you have any questions. 
+  </p>
+  
+<% else %>
+<p>
+  This message is to notify you that you have been granted access to <%= @product_names %>. To activate your account, click here <%= link_to spree.signup_url, spree.signup_url %> and sign up with this email address.
+</p>
+
+<p>
+  Please reach out to us if you have any questions or would like more information. 
+</p>
+
+<% end %>
+<p>
+  Regards,
+</p>
+
+<p>
+  Great Minds
+</p>
+
+<p> <a href="mailto:orderprocessing@greatminds.net">orderprocessing@greatminds.net</a> 
+</p>
+<p>
+202.223.1854
+</p>

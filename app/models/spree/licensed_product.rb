@@ -3,6 +3,7 @@ class Spree::LicensedProduct < ActiveRecord::Base
   belongs_to :order, class_name: 'Spree::Order'
   belongs_to :user, class_name: 'Spree::User'
   belongs_to :product_distribution, class_name: 'Spree::ProductDistribution'
+  belongs_to :admin_user, class_name: 'Spree::User'
 
   include SalesforceAccess
 
@@ -99,7 +100,6 @@ class Spree::LicensedProduct < ActiveRecord::Base
   assign_email_from_user :email, :user
 
   after_create :assign_user_admin_role
-  after_commit :send_notification, on: :create
 
   attr_accessor :skip_notification
 

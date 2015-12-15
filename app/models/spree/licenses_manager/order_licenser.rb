@@ -11,8 +11,11 @@ module Spree
         @order.line_items.each do |line_item|
           create_license(product: line_item.variant.product,
                          email: email,
+                         admin_user: @order.admin_user,
                          quantity: line_item.quantity)
         end
+
+        send_email_notification
       end
 
       def create_license(attrs = {})
@@ -28,6 +31,15 @@ module Spree
         licensed_product.create_in_salesforce
         licensed_product
       end
+
+      def send_email_notification
+        if @order.fulfillment?
+          LicenseMailer.notify_fulfillment(@order).deliver_later
+        elsif @order.license_admin_email.present?
+          LicenseMailer.notify_other_admin(@order).deliver_later
+        end
+      end
+
     end
   end
 end

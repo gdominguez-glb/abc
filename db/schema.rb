@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151126133338) do
+ActiveRecord::Schema.define(version: 20151215004336) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -656,6 +656,7 @@ ActiveRecord::Schema.define(version: 20151126133338) do
     t.integer  "product_distribution_id"
     t.boolean  "can_be_distributed",      default: false
     t.datetime "fulfillment_at"
+    t.integer  "admin_user_id"
   end
 
   create_table "spree_line_items", force: :cascade do |t|
@@ -801,6 +802,7 @@ ActiveRecord::Schema.define(version: 20151126133338) do
     t.string   "license_admin_email"
     t.integer  "school_district_id"
     t.integer  "source",                                                     default: 0
+    t.integer  "admin_user_id"
   end
 
   add_index "spree_orders", ["approver_id"], name: "index_spree_orders_on_approver_id", using: :btree
