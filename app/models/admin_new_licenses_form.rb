@@ -35,7 +35,6 @@ class AdminNewLicensesForm
       admin_user: admin_user
     )
     add_line_items(order)
-    add_payments(order)
 
     order.save
 
@@ -55,10 +54,16 @@ class AdminNewLicensesForm
 
   def add_payments(order)
     order.payments << build_payment if payment_method_id.present?
+    order.save
   end
 
   def process_order(order)
-    order.next while order.state != 'complete'
+    count = 0
+    while count < 6
+      add_payments(order) if order.state == 'payment'
+      order.next if order.state != 'complete'
+      count += 1
+    end
     process_payment(order)
   end
 
