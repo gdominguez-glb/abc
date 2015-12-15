@@ -1,5 +1,11 @@
-// "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
-@import "bootstrap-sprockets";
+// *************************************
+//
+//   Great Minds
+//   Style Manifest
+//
+// *************************************
+
+@import "bootstrap-sprockets"; // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
 @import "bootstrap";
 @import "spinner";
 @import 'bootstrap-datetimepicker';
@@ -11,14 +17,20 @@
 @import "shepherd-theme-default";
 @import "shepherd-theme-arrows";
 
-// base application style
+// -------------------------------------
+//   Base
+// -------------------------------------
+
 @import "base/config";
 @import "base/helpers";
 @import "base/foundation";
 @import "base/typography";
 @import "base/tools";
 
-// Components
+// -------------------------------------
+//   Components
+// -------------------------------------
+
 @import "components/alerts";
 @import "components/badges";
 @import "components/buttons";
@@ -39,10 +51,16 @@
 @import "components/thumbnails";
 @import "components/wells";
 
-// Tiles
+// -------------------------------------
+//   Tiles
+// -------------------------------------
+
 @import "tiles/foundation";
 
-// Page specific styling
+// -------------------------------------
+//   Page-specific (todo: remove)
+// -------------------------------------
+
 @import "404-page";
 @import "account";
 @import "license-mgmt";
@@ -56,9 +74,8 @@
 @import "slick-overrides";
 
 // -------------------------------------
-//   Inbox
+//   Inbox (todo: relocate)
 // -------------------------------------
-
 
 // _spree_admin_overrides.scss isn't available to store/admin/login, so...
 div[data-hook="login"] {
