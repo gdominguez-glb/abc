@@ -88,6 +88,8 @@ gem "browser"
 
 gem 'open_uri_redirections'
 
+gem 'sanitize'
+
 group :development do
   gem 'quiet_assets'
   gem 'letter_opener'
