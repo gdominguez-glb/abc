@@ -1,18 +1,16 @@
-# AdminNewLicensesForm
 class AdminNewLicensesForm
   include ActiveModel::Model
 
-  attr_accessor :user_id, :email, :product_ids, :quantity, :fulfillment_at,
-                :payment_method_id, :payment_source_params,
-                :salesforce_order_id, :salesforce_account_id, :amount
+  attr_accessor :user_id, :email, :product_ids, :fulfillment_at,
+                :payment_method_id, :payment_source_params, :admin_user,
+                :salesforce_order_id, :salesforce_account_id, :amount, :products_quantity
 
   validates_presence_of :salesforce_order_id, :salesforce_account_id
-  validates_numericality_of :quantity, greater_than_or_equal_to: 0,
-                                       only_integer: true, allow_blank: true
   validates_presence_of :user_id, if: -> { email.blank? }
   validates :email,
             format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i },
             presence: true, if: -> { user_id.blank? }
+  validates_presence_of :products_quantity
 
   def products
     @products ||= Spree::Product.where(id: product_ids.split(','))
@@ -27,9 +25,16 @@ class AdminNewLicensesForm
   end
 
   def create_order
-    order = Spree::Order.new(email: email, user_id: user_id, source: 'fulfillment', total: self.amount, item_total: self.amount, skip_salesforce_create: true)
+    order = Spree::Order.new(
+      email: email,
+      user_id: user_id,
+      source: 'fulfillment',
+      total: self.amount,
+      item_total: self.amount,
+      skip_salesforce_create: true,
+      admin_user: admin_user
+    )
     add_line_items(order)
-    add_payments(order)
 
     order.save
 
@@ -40,7 +45,8 @@ class AdminNewLicensesForm
   end
 
   def add_line_items(order)
-    products.each do |product|
+    products_quantity.each do |product_id, quantity|
+      product = Spree::Product.find(product_id)
       order.line_items << Spree::LineItem.new(variant: product.master,
                                               quantity: quantity)
     end
@@ -48,10 +54,16 @@ class AdminNewLicensesForm
 
   def add_payments(order)
     order.payments << build_payment if payment_method_id.present?
+    order.save
   end
 
   def process_order(order)
-    order.next while order.state != 'complete'
+    count = 0
+    while count < 6
+      add_payments(order) if order.state == 'payment'
+      order.next if order.state != 'complete'
+      count += 1
+    end
     process_payment(order)
   end
 
@@ -62,7 +74,8 @@ class AdminNewLicensesForm
 
   def create_order_salesforce_reference(order)
     SalesforceReference.create(id_in_salesforce: salesforce_order_id,
-                               local_object: order)
+                               local_object: order,
+                               object_properties: { 'Id' => salesforce_order_id })
   end
 
   def associate_school_district(order)

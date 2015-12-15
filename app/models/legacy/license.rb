@@ -31,7 +31,7 @@ class Legacy::License < ActiveRecord::Base
     return if emails.length == 1 && emails[0] == from_email
     source_licensed_product = create_source_licensed_product(from_email, product, expiration_date)
     return if source_licensed_product.nil?
-    Spree::LicensedProduct.where(product: product, email: emails.compact, expire_at: expiration_date).where.not(id: source_licensed_product.id).each do |licensed_product|
+    Spree::LicensedProduct.where(product: product, email: emails.compact, expire_at: revise_expiration_date(product, expiration_date)).where.not(id: source_licensed_product.id).each do |licensed_product|
       import_distribution(source_licensed_product, licensed_product)
     end
   end
@@ -42,7 +42,7 @@ class Legacy::License < ActiveRecord::Base
     total_quantity = licenses_scope.where(email: nil).count
     Spree::LicensedProduct.create(
       product:        product,
-      expire_at:      expiration_date,
+      expire_at:      revise_expiration_date(product, expiration_date),
       email:          from_email,
       quantity:       total_quantity,
       fulfillment_at: Time.now,

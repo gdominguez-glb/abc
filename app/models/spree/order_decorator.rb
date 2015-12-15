@@ -2,6 +2,7 @@ Spree::Order.class_eval do
   has_many :licensed_products, class_name: 'Spree::LicensedProduct'
 
   belongs_to :school_district
+  belongs_to :admin_user, class_name: 'Spree::User'
 
   enum source: { web: 0, fulfillment: 1 }
 
@@ -31,7 +32,7 @@ Spree::Order.class_eval do
     user = sfo.Contact__c && Spree::User.joins(:salesforce_reference).where(
       'salesforce_references.id_in_salesforce' => sfo.Contact__c).first
     sfo_data.merge!(number: sfo.Vendor_Order_Num__c,
-                    user_id: user.id)
+                    user_id: user.try(:id))
     ship_addr = address_attributes(sfo, 'Shipping')
     sfo_data.merge!(ship_address_attributes: ship_addr) if ship_addr.present?
     bill_addr = address_attributes(sfo, 'Billing')
@@ -92,6 +93,8 @@ Spree::Order.class_eval do
     #       of just 'Full Payment Received'
     if payment_received?
       attrs.merge('Order_Status__c' => 'Full Payment Received')
+    elsif complete?
+      attrs.merge('Order_Status__c' => 'License Activated')
     end
 
     attrs.merge!(sf_address(ship_address, 'Shipping')) if ship_address.present?

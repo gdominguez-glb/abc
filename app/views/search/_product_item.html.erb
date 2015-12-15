@@ -1,3 +1,4 @@
+<% item.description = Sanitize.clean(item.description, :remove_contents => ['style']) %>
 <a href="<%= search_product_path(item.id) %>" class="list-group-item">
   <h4 class="margin-bottom-reset"><%= item.name %></h4>
   <p class="small margin-bottom-reset"><%= truncate item.description, length: 150 %></p>

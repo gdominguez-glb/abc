@@ -7,15 +7,20 @@ module Spree
       end
 
       def execute
+        email = (@order.license_admin_email || @order.user.try(:email) || @order.email)
         @order.line_items.each do |line_item|
           create_license(product: line_item.variant.product,
+                         email: email,
+                         admin_user: @order.admin_user,
                          quantity: line_item.quantity)
         end
+
+        send_email_notification
       end
 
       def create_license(attrs = {})
         licensed_product = Spree::LicensedProduct.create!({
-          order: @order, user: @order.user, skip_salesforce_create: true
+          order: @order, skip_salesforce_create: true
         }.merge(attrs))
 
         licensed_product.skip_salesforce_create = false
@@ -26,6 +31,15 @@ module Spree
         licensed_product.create_in_salesforce
         licensed_product
       end
+
+      def send_email_notification
+        if @order.fulfillment?
+          LicenseMailer.notify_fulfillment(@order).deliver_later
+        elsif @order.license_admin_email.present?
+          LicenseMailer.notify_other_admin(@order).deliver_later
+        end
+      end
+
     end
   end
 end

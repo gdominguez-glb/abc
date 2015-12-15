@@ -5,6 +5,7 @@ RSpec.describe Spree::LicensedProduct, type: :model do
   it { should belong_to(:product).class_name('Spree::Product') }
   it { should belong_to(:order).class_name('Spree::Order') }
   it { should belong_to(:user).class_name('Spree::User') }
+  it { should belong_to(:admin_user).class_name('Spree::User') }
 
   it { should validate_numericality_of(:quantity) }
   it { should allow_value('john@doe.com').for(:email) }
