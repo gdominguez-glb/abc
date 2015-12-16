@@ -7,7 +7,7 @@ module Spree
       end
 
       def execute
-        email = (@order.license_admin_email || @order.user.try(:email) || @order.email)
+        email = choose_license_email
         @order.line_items.each do |line_item|
           create_license(product: line_item.variant.product,
                          email: email,
@@ -40,6 +40,11 @@ module Spree
         end
       end
 
+      def choose_license_email
+        return @order.license_admin_email if @order.license_admin_email.present?
+        return @order.user.email if @order.user
+        @order.email
+      end
     end
   end
 end
