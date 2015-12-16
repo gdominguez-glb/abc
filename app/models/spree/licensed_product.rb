@@ -34,7 +34,7 @@ class Spree::LicensedProduct < ActiveRecord::Base
 
   def assign_to_user_id_in_salesforce
     assign_user = user || product_distribution.try(:from_user)
-    return nil unless assign_user
+    return order.try(:sf_contact_id) unless assign_user
 
     if assign_user.id_in_salesforce.blank? && !skip_salesforce_create
       assign_user.create_in_salesforce(nil, false)
