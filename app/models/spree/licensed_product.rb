@@ -87,7 +87,7 @@ class Spree::LicensedProduct < ActiveRecord::Base
   scope :expire_in_days, ->(days) { where("date(expire_at) = ?", days.days.since.to_date) }
   scope :distributable, ->{ where(can_be_distributed: true) }
   scope :undistributable, ->{ where(can_be_distributed: false) }
-  scope :fulfillmentable, -> { where("spree_licensed_products.fulfillment_at < ?", Time.now) }
+  scope :fulfillmentable, -> { where("spree_licensed_products.fulfillment_at < ? or spree_licensed_products.fulfillment_at is NULL", Time.now) }
 
   validates_presence_of :product
   validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, allow_blank: true
