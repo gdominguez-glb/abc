@@ -2,7 +2,7 @@ class AdminNewLicensesForm
   include ActiveModel::Model
 
   attr_accessor :user_id, :email, :product_ids, :fulfillment_at,
-                :payment_method_id, :payment_source_params, :admin_user,
+                :payment_method_id, :payment_source_params, :admin_user, :sf_contact_id,
                 :salesforce_order_id, :salesforce_account_id, :amount, :products_quantity
 
   validates_presence_of :salesforce_order_id, :salesforce_account_id
@@ -32,6 +32,7 @@ class AdminNewLicensesForm
       total: self.amount,
       item_total: self.amount,
       skip_salesforce_create: true,
+      sf_contact_id: (sf_contact_id.present? ? sf_contact_id : nil),
       admin_user: admin_user
     )
     add_line_items(order)

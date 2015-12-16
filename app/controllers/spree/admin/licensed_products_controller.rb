@@ -60,6 +60,7 @@ module Spree
           :fulfillment_at,
           :salesforce_order_id,
           :salesforce_account_id,
+          :sf_contact_id,
           :amount
         )
       end
