@@ -86,6 +86,10 @@
     @include button-variant(#fff, darken($coral, 10%), darken($coral, 15%));
   }
 
+  &.btn-link {
+    text-decoration: underline;
+  }
+
   &.header-form-control {
     height: 34px;
     padding: 6px 12px;
