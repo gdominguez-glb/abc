@@ -30,4 +30,22 @@ $(document).ready(function() {
 
   var currentPage = $('body').data('page');
   nav.find('[data-primary-nav-item="'+ currentPage +'"]').addClass('active');
+
+  var selectContainer = $('.select-container');
+  if(selectContainer[0]) {
+    selectContainer.each(function() {
+      // Set the display text if selection is already made
+      var text = $(this).find('option[selected]').text();
+      if (text == '') {text = 'Please Select';}
+      $(this).find('span').text(text);
+
+      // Set the display text on selection
+      var select = $(this).find('select');
+      select.on('change', function() {
+        var text = $(this).find('option:selected').text();
+        if (text == '') {text = 'Please Select';}
+        $(this).parent().find('span').text(text);
+      });
+    });
+  }
 });
