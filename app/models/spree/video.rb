@@ -40,6 +40,12 @@ class Spree::Video < ActiveRecord::Base
     video_group.try(:products) || []
   end
 
+  def products_to_buy
+    (video_group.try(:products) || []).map do |product|
+      (product.free? && !product.individual_sale?) ? product.parent_bundle : product
+    end.compact.flatten
+  end
+
   def analyze_taxons
     title = self.title.gsub('_', ' ')
 
@@ -77,8 +83,12 @@ class Spree::Video < ActiveRecord::Base
     )
   end
 
+  def taxonomies
+    taxons.map(&:taxonomy).uniq.compact
+  end
+
   def categories
-    taxons.map(&:taxonomy).uniq.compact.map(&:name)
+    taxonomies.map(&:name)
   end
 
   def wistia_ready?

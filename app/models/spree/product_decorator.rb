@@ -189,6 +189,10 @@ Spree::Product.class_eval do
     }
   end
 
+  def parent_bundle
+    Spree::Part.where(product_id: self.id).map(&:bundle).first
+  end
+
   def active_license_user_ids
     Spree::LicensedProduct.available.where(product_id: self.id).pluck(:user_id)
   end

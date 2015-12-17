@@ -34,4 +34,11 @@ module DownloadPagesHelper
     return true if current_spree_user.grade_option.blank?
     current_spree_user.grade_option == material.name
   end
+
+  def product_free_paid_badge(product)
+    unless product.free?
+      return content_tag(:p, 'Paid')
+    end
+    product.individual_sale? ? content_tag(:p, 'Free') : ''
+  end
 end
