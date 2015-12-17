@@ -115,4 +115,22 @@ $(document).ready(function() {
     $('#browser-warning').remove();
     $.ajax({ url: '/turn_off_browser_warning', type: 'GET'});
   });
+
+  var selectContainer = $('.select-container');
+  if(selectContainer[0]) {
+    selectContainer.each(function() {
+      // Set the display text if selection is already made
+      var text = $(this).find('option[selected]').text();
+      if (text == '') {text = 'Please Select';}
+      $(this).find('span').text(text);
+
+      // Set the display text on selection
+      var select = $(this).find('select');
+      select.on('change', function() {
+        var text = $(this).find('option:selected').text();
+        if (text == '') {text = 'Please Select';}
+        $(this).parent().find('span').text(text);
+      });
+    });
+  }
 });
