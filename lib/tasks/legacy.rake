@@ -20,11 +20,11 @@ namespace :legacy do
 
     Importers::User.import(emails)
 
-    Importers::SchoolAdmin.import
-    Importers::SchoolAdmin.import_sub_admins
-
     Importers::Licenses.import(emails)
     Importers::Licenses.import_user_email
+
+    Importers::SchoolAdmin.import
+    Importers::SchoolAdmin.import_sub_admins
   end
 
   desc "change user emails to example.com"
