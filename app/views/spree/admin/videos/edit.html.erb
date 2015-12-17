@@ -11,7 +11,11 @@
     <%= render :partial => 'form', :locals => { :f => f } %>
 
     <div data-hook="admin_video_new_form_buttons">
-      <%= render :partial => 'spree/admin/shared/new_resource_links' %>
+      <div class="form-actions" data-hook="buttons">
+        <button name="button" type="submit" class="btn btn-primary btn-success"><span class="icon icon-ok"></span> <%= @video.new_record? ? 'Create' : 'Update' %></button>
+        <span class="or">or</span>
+        <a icon="remove" class="btn btn-default" href="/store/admin/videos"><span class="icon icon-remove"></span> Cancel</a>
+      </div>
     </div>
   <% end %>
 </div>
