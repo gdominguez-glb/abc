@@ -1,5 +1,5 @@
-<% if @video.products.length == 1 %>
-  window.location.href = "<%= spree.product_path(@video.products.first) %>";
+<% if @video.products_to_buy.length == 1 %>
+  window.location.href = "<%= spree.product_path(@video.products_to_buy.first) %>";
 <% else %>
   $('body').append("<%= escape_javascript(render 'choose_products_modal') %>");
   $('#choose-products-modal').modal('show');

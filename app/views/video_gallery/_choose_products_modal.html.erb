@@ -7,7 +7,7 @@
       </div>
       <div class="modal-body">
         <ul class="list-group">
-          <% @video.products.each do |product| %>
+          <% @video.products_to_buy.each do |product| %>
             <li class="list-group-item">
               <%= link_to product.name, spree.product_path(product) %>
             </li>
