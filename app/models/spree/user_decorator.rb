@@ -204,13 +204,13 @@ Spree::User.class_eval do
 
   def managed_products
     @managed_products ||= begin
-      product_ids = managed_licensed_products.distributable.pluck(:product_id) + product_distributions.pluck(:product_id)
+      product_ids = managed_licensed_products.pluck(:product_id) + product_distributions.pluck(:product_id)
       Spree::Product.where(id: product_ids).order("name asc")
     end
   end
 
   def managed_products_options
-    managed_licensed_products.fulfillmentable.distributable.includes(:product).group_by { |lp| "#{lp.product.name} expiring #{lp.expire_at.strftime("%B %Y") rescue nil}" }.map do |key, licenses|
+    managed_licensed_products.fulfillmentable.includes(:product).group_by { |lp| "#{lp.product.name} expiring #{lp.expire_at.strftime("%B %Y") rescue nil}" }.map do |key, licenses|
       [key, licenses.map(&:id).sort.join(',')]
     end
   end
