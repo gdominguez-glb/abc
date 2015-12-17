@@ -1,7 +1,7 @@
 // *************************************
 //
 //   Typography
-//   Baseline typography 
+//   Baseline typography
 //
 // *************************************
 
@@ -95,7 +95,7 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 // -------------------------------------
-//   Body Copy
+//   Body Copy with Links
 //
 //   Styleguide 3.3
 // -------------------------------------
@@ -184,6 +184,7 @@ a {
 
   p & {
     text-transform: none;
+    text-decoration: underline;
     @extend .serif;
   }
 
