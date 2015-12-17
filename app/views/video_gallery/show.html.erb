@@ -27,12 +27,6 @@
             <%= @video.title %>
           </h2>
         </div>
-        <div class="video-categories">
-          <p><%= @video.categories.join(", ") %></p>
-        </div>
-        <div class="video-taxons">
-          <p><%= @video.taxons.map(&:name).join(", ") %></p>
-        </div>
         <p class="padding-top-m padding-bottom">
           <%= @video.description %>
         </p>
