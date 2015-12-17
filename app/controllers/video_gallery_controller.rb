@@ -8,7 +8,7 @@ class VideoGalleryController < ApplicationController
   def index
     params[:taxon_ids] ||= []
 
-    @videos             = Spree::Video.where(nil)
+    @videos             = Spree::Video.order('spree_videos.title asc')
     @videos             = filter_videos(@videos)
     @videos             = @videos.includes([video_group: [:products], taxons: [:taxonomy]]).page(params[:page])
 
