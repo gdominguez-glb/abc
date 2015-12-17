@@ -1,7 +1,7 @@
 // *************************************
 //
 //   Foundation
-//   Tag-level and structural 
+//   Tag-level and structural
 //
 // *************************************
 
@@ -277,7 +277,15 @@ section.row-video-left {
 section.row-content-2col {
   padding: 0;
 
+  @media screen and (min-width: $screen-sm-min) {
+    @include display-flex;
+  }
+
   [class*='col-'] {
+
+    @media screen and (min-width: $screen-sm-min) {
+      @include justify-content(flex-start);
+    }
 
     &:first-child,
     &:last-child {
