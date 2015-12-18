@@ -10,7 +10,8 @@ class LicenseMailer < ApplicationMailer
   def notify_fulfillment(order)
     @order = order
     @product_names = @order.line_items.map{|li| li.variant.product.name }.join(', ')
-    mail to: (order.user.try(:email) || order.email), subject: "#{order.admin_user.try(:full_name)} has given you access to #{@product_names}"
+    @multiple = (@order.line_items.map(&:quantity).sum > @order.line_items.count)
+    mail to: (order.user.try(:email) || order.email), subject: generate_subject('Great Minds Customer Service', @product_names, @multiple)
   end
 
   def notify_other_admin(order)
@@ -24,7 +25,16 @@ class LicenseMailer < ApplicationMailer
     @product_name = attrs[:product_name]
     @quantity     = attrs[:quantity]
     to_email      = attrs[:to_email]
+    @to_user      = Spree::User.find_by(email: to_email)
 
-    mail to: to_email,  subject: "#{@school_admin.full_name} has assigned you #{@product_name} licenses to distribute"
+    mail to: to_email,  subject: generate_subject(@school_admin.full_name, [@product_name].join(', '), (@quantity.to_i > 1))
+  end
+
+  def generate_subject(admin_full_name, product_names, multiple=false)
+    if multiple
+      "#{admin_full_name} has assigned you #{product_names} licenses to distribute"
+    else
+      "#{admin_full_name} has given you access to #{product_names}"
+    end
   end
 end
