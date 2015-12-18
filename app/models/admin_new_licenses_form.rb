@@ -27,7 +27,7 @@ class AdminNewLicensesForm
   def create_order
     order = Spree::Order.new(
       email: email,
-      user_id: user_id,
+      user_id: (user_id.present? ? user_id : Spree::User.find_by(email: email).try(:id)),
       source: 'fulfillment',
       total: self.amount,
       item_total: self.amount,

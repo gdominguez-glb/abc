@@ -1,36 +1,5 @@
-<% if @order.user %>
-  <p>
-  Dear <%= @order.user.first_name %>,
-  </p>
-
-  <p>
-You have been granted access to <%= @product_names %>. Log into your dashboard at <%= link_to root_url, root_url %> to try it out. 
-  </p>
-
-  <p>
-Please reach out to us if you have any questions. 
-  </p>
-  
+<% if @multiple %>
+  <%= render partial: 'new_or_exist_multiple_license', locals: { admin_full_name: 'Great Minds Customer Service', licenses_text: @order.line_items.map{|li| "#{li.quantity} licenses for #{li.variant.product.name}"}.join(', ') } %>
 <% else %>
-<p>
-  This message is to notify you that you have been granted access to <%= @product_names %>. To activate your account, click here <%= link_to spree.signup_url, spree.signup_url %> and sign up with this email address.
-</p>
-
-<p>
-  Please reach out to us if you have any questions or would like more information. 
-</p>
-
+  <%= render partial: (@order.user.present? ? 'exist_user_single_license' : 'new_user_single_license'), locals: { product_name: @product_names, user_first_name: @order.user.try(:first_name) } %>
 <% end %>
-<p>
-  Regards,
-</p>
-
-<p>
-  Great Minds
-</p>
-
-<p> <a href="mailto:orderprocessing@greatminds.net">orderprocessing@greatminds.net</a> 
-</p>
-<p>
-202.223.1854
-</p>
