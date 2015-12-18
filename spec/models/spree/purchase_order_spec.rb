@@ -7,7 +7,7 @@ RSpec.describe Spree::PurchaseOrder, type: :model do
   it { should belong_to(:user).class_name('Spree::User') }
   it { should have_many(:payments) }
 
-  it { should validate_presence_of(:po_number) }
+  # it { should validate_presence_of(:po_number) }
 
   describe "#actions" do
     it "return capture and void" do
