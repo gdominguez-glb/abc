@@ -5,7 +5,7 @@
 
 # server 'example.com', user: 'deploy', roles: %w{app db web}, my_property: :my_value
 # server 'example.com', user: 'deploy', roles: %w{app web}, other_property: :other_value
-server '104.131.175.108', user: 'deploy', roles: %w{web db}
+server 'staging.greatminds.net', user: 'deploy', roles: %w{web db}
 
 
 set :branch, 'master'

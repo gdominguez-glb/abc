@@ -1,6 +1,6 @@
 Greatminds/Math app OAuth2 integration document
 
-Step 1: Before implement oauth2, need to create new application in greatminds web site(http://gm-qa.intridea.com/oauth/applications) which will give you app id, app secret and set redirect url to use in authorization.
+Step 1: Before implement oauth2, need to create new application in greatminds web site(http://qa.greatminds.net/oauth/applications) which will give you app id, app secret and set redirect url to use in authorization.
 
 Step 2: when user click link in greatminds to math app, math app need to first check if user is login in math app already, if not, math app need to genereate authorize url and send user back to greatminds for authorization.
 
