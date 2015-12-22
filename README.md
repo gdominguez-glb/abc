@@ -60,7 +60,7 @@ And the Admin login [here](http://localhost:3000/store/admin)
 
 ### QA / Staging
 
-Visit QA http://qa.greatminds.net/store/admin
+Visit QA http://qa.greatminds.org/store/admin
 
 Visit Staging http://staging.greatminds.net/store/admin
 

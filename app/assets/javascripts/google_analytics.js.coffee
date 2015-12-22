@@ -38,9 +38,9 @@ class @GoogleAnalytics
   @analyticsId: ->
     if document.domain == 'greatminds.net'
       'UA-3728186-1'
-    else if document.domain == 'qa.greatminds.net'
+    else if document.domain == 'qa.greatminds.org'
       'UA-3728186-5'
-    else if document.domain == 'staging.greatminds.net'
+    else if document.domain == 'staging.greatminds.org'
       'UA-3728186-6'
     else
       ''
