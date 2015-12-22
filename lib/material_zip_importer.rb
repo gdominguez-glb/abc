@@ -51,7 +51,7 @@ class MaterialZipImporter
   def process_directory(product, parent, directory_path, position)
     dir = Dir.new(directory_path)
     material = Spree::Material.create(
-      name: File.basename(directory_path).gsub(/^\d+ /, '').titleize,
+      name: revise_grade_in_name(File.basename(directory_path).gsub(/^\d+ /, '').titleize),
       parent: parent,
       product: product,
       position: position
@@ -73,5 +73,13 @@ class MaterialZipImporter
       material: material,
       file: file
     )
+  end
+
+  def revise_grade_in_name(name)
+    if name =~ /\((.*\ \d+)\)$/
+      grade = $1.split(' ').map(&:upcase).join('-')
+      name = name.gsub(/\(.*\ \d+\)$/, "(#{grade})")
+    end
+    name
   end
 end
