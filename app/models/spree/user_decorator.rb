@@ -210,7 +210,7 @@ Spree::User.class_eval do
   end
 
   def managed_products_options
-    managed_licensed_products.fulfillmentable.includes(:product).group_by { |lp| "#{lp.product.name} expiring #{lp.expire_at.strftime("%B %Y") rescue nil}" }.map do |key, licenses|
+    managed_licensed_products.distributable.fulfillmentable.includes(:product).group_by { |lp| "#{lp.product.name} expiring #{lp.expire_at.strftime("%B %Y") rescue nil}" }.map do |key, licenses|
       [key, licenses.map(&:id).sort.join(',')]
     end
   end
@@ -224,7 +224,7 @@ Spree::User.class_eval do
   end
 
   def remaining_licenses_count(licenses_ids)
-    managed_licensed_products.where(id: licenses_ids).sum(:quantity)
+    managed_licensed_products.distributable.where(id: licenses_ids).sum(:quantity)
   end
 
   def logins_in_last_days(days)
