@@ -60,6 +60,8 @@ class ContactForm
       'Phone__c'     => self.phone,
       'School_District__c' => self.school_district_type,
       'School_District_Name__c' => self.school_district_name,
+      'General__c' => true,
+      'General_Details__c' => 'Other'
     }
   end
 
