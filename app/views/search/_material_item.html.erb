@@ -2,5 +2,4 @@
 <% link = material_link(item) %>
 <%= link_to link.html_safe, class: 'list-group-item' if link do %>
   <h4 class="margin-bottom-reset"><%= item.name %></h4>
-  <p class="small margin-bottom-reset"><%= truncate item.description, length: 150 %></p>
 <% end %>
