@@ -31,7 +31,7 @@
 
   <div id="curriculum-input" class="form-group <%= 'hidden' if f.object.event_page_type == 'global' %>">
     <%= f.label "Curriculum" %>
-    <%= f.collection_select :page_id, Page.show_in_top_navigation, :id, :group_name, { }, class: 'form-control' %>
+    <%= f.collection_select :page_id, Page.show_in_top_navigation, :id, :group_name, { include_blank: 'Select Event Page' }, class: 'form-control' %>
   </div>
   <div class="form-group">
     <%= f.label 'Unique url' %>
@@ -67,6 +67,7 @@
         var eventPageType = $(this).val();
         if (eventPageType == 'global') {
           $('#curriculum-input').addClass('hidden');
+          $('select[name="event_page[page_id]"]').val(null);
         } else {
           $('#curriculum-input').removeClass('hidden');
         }
