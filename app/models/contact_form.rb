@@ -3,25 +3,25 @@ class ContactForm
 
   TOPICS = ["Sales/Purchasing", "Existing Order Support", "Professional Development", "Curriculum Support", "Technical Support", "Parent Support", "Content Error", "General and Other"]
 
-  attr_accessor :topic, :support_type, :first_name, :last_name, :email, :phone, :role, :school_district_name, :school_district_type,
+  attr_accessor :topic, :first_name, :last_name, :email, :phone, :role, :school_district_name, :school_district_type,
     :country, :state, :curriculum, :grade, :school_district_size, :title_1, :returning_customer, :tax_exempt, :tax_exempt_id, :desired_dates,
     :desired_training_topic, :items_purchased, :format, :description, :school_district, :grade_bands, :training_groups_size, :interested_in_hosting_events
 
   validates_presence_of :first_name, :last_name, :email, :phone
   validates_presence_of :description, if: :require_description?
-  validates_presence_of :format, if: ->{ self.support_type == 'Content Error' }
+  validates_presence_of :format, if: ->{ self.topic == 'Content Error' }
 
   def perform
-    if ['Sales and Purchasing', 'Professional Development'].include?(self.topic)
+    if ['Sales/Purchasing', 'Professional Development'].include?(self.topic)
       create_lead_object
-    elsif ['General', 'Support'].include?(self.topic)
+    elsif ["Existing Order Support", "Curriculum Support", "Technical Support", "Parent Support", "Content Error", "General and Other"].include?(self.topic)
       create_case_object(self.topic)
     end
   end
 
   def create_lead_object
     attrs = lead_common_attributes
-    if self.topic == 'Sales and Purchasing'
+    if self.topic == 'Sales/Purchasing'
       attrs.merge!(sales_attributes)
     elsif self.topic == 'Professional Development'
       attrs.merge!(pd_attributes)
@@ -31,9 +31,9 @@ class ContactForm
 
   def create_case_object(topic)
     attrs = case_common_attributes
-    if topic == 'General'
+    if topic == 'General and Other'
       attrs.merge!(general_attributes)
-    elsif topic == 'Support'
+    elsif ["Existing Order Support", "Curriculum Support", "Technical Support", "Parent Support", "Content Error"].include?(topic)
       attrs.merge!(support_attributes)
     end
     GmSalesforce::Client.instance.create('Case', attrs)
@@ -121,18 +121,18 @@ class ContactForm
       'Origin' => 'web',
       'Status' => 'New',
       'Priority' => 'Medium',
-      'Subject' => self.support_type
+      'Subject' => self.topic
     }.merge(support_type_attributes)
   end
 
   def support_type_attributes
-    case self.support_type
-    when 'Order Support'
+    case self.topic
+    when 'Existing Order Support'
       {
         'What_curriculum_are_you_interested_in__c' => self.curriculum,
         'Items_Purchased__c' => self.items_purchased,
       }
-    when 'Parent Support', 'Content/Implementation Support'
+    when 'Parent Support', 'Technical Support'
       {
         'What_curriculum_are_you_interested_in__c' => self.curriculum,
       }
@@ -149,7 +149,6 @@ class ContactForm
   private
 
   def require_description?
-    ['General', 'Professional Development'].include?(self.topic) ||
-      ( self.topic == 'Support' && ['Order Support', 'Parent Support', 'Content/Implementation Support', 'Technical Support'].include?(self.support_type) )
+    ['General and Other', 'Professional Development', 'Existing Order Support', 'Parent Support', 'Technical Support'].include?(self.topic)
   end
 end
