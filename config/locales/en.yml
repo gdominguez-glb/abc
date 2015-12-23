@@ -86,3 +86,5 @@ en:
         url: 'Store URL'
       staff:
         description: 'Bio'
+      event_page:
+        page_id: 'Curriculum'
