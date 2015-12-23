@@ -210,9 +210,13 @@ Spree::User.class_eval do
   end
 
   def managed_products_options
-    managed_licensed_products.distributable.fulfillmentable.includes(:product).group_by { |lp| "#{lp.product.name} expiring #{lp.expire_at.strftime("%B %Y") rescue nil}" }.map do |key, licenses|
+    managed_licensed_products.distributable.fulfillmentable.includes(:product).group_by { |lp| format_name_with_expire_date(lp) }.map do |key, licenses|
       [key, licenses.map(&:id).sort.join(',')]
     end
+  end
+
+  def format_name_with_expire_date(lp)
+    "#{lp.product.name}#{' expiring ' + lp.expire_at.strftime("%B %Y") rescue nil}"
   end
 
   def purchased_licenses_count(licenses_ids)
