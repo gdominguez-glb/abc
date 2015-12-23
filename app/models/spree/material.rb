@@ -8,6 +8,10 @@ class Spree::Material < ActiveRecord::Base
 
   searchkick callbacks: :async, personalize: "user_ids"
 
+  def should_index?
+    product ? true : false
+  end
+
   def search_data
     {
       name: name,

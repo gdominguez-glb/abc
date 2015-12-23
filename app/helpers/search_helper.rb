@@ -13,6 +13,8 @@ module SearchHelper
 
   def material_link(material)
     product = material.product
-    return  "#{product.access_url}?#{{opened_product_id: product.id, opened_material_id: material.id}.to_param}" if product && product.access_url.present?
+    return nil if product.nil?
+    return "#{product.access_url}?#{{opened_product_id: product.id, opened_material_id: material.id}.to_param}" if product.access_url.present?
+    spree.product_path
   end
 end
