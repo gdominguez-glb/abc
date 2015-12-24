@@ -65,7 +65,6 @@ module Spree
         licensed_product = Spree::LicensedProduct.create(license_attrs)
         if licensed_product.quantity > 1
           licensed_product.update(can_be_distributed: true)
-          SingleLicenseExtractor.new(licensed_product).execute
         end
         licensed_product
       end
