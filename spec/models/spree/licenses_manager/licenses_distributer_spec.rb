@@ -21,14 +21,14 @@ RSpec.describe Spree::LicensesManager::LicensesDistributer do
   it "distribute license to exist user" do
     licensed_products = user_to_receive_license.licensed_products
 
-    expect(licensed_products.count).to eq(2)
+    expect(licensed_products.count).to eq(1)
     expect(licensed_products.sum(:quantity)).to eq(3)
   end
 
   it "distribute license to un-register user" do
     licensed_products = Spree::LicensedProduct.where(email: 'jack@dooe.com')
 
-    expect(licensed_products.count).to eq(2)
+    expect(licensed_products.count).to eq(1)
     expect(licensed_products.sum(:quantity)).to eq(4)
   end
 
