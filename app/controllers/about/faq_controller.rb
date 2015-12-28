@@ -1,6 +1,6 @@
 class About::FaqController < About::BaseController
   def index
-    @faq_categories = FaqCategory.displayable.includes(:questions)
+    @faq_categories = FaqCategory.displayable.includes(:questions).order('position asc')
   end
 
   def qa
