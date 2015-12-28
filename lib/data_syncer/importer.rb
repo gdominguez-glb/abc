@@ -36,7 +36,7 @@ module DataSyncer
     end
 
     def import_model_from_yaml_file(file_path)
-      klass = File.basename(file_path).split('.').first.classify
+      klass = File.basename(file_path).split('.').first.classify.constantize
       klass.transaction do
         klass.destroy_all
         YAML.load_file(file_path).each do |attrs|
