@@ -10,7 +10,7 @@ module DataSyncer
     def export_model_to_yaml(klass, file)
       write_content_for_file(
         file,
-        klass.all.map(&:attributes).to_yaml
+        generate_yaml_content
       )
     end
 
@@ -18,6 +18,18 @@ module DataSyncer
       file = File.new file_name, 'a'
       file.puts content
       file.close
+    end
+
+    def generate_yaml_content
+      klass.all.map(&:attributes).to_yaml
+    end
+
+    def self.choose_syncer(klass)
+      if Object.const_defined?("DataSyncer::#{klass.name}Syncer")
+        "DataSyncer::#{klass.name}Syncer".constantize
+      else
+        DataSyncer::Base
+      end
     end
   end
 end
