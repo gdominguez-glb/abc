@@ -12,7 +12,7 @@ module DataSyncer
     def export
       FileUtils.mkdir_p(@sync_dir_path)
       @models_to_export.each do |klass|
-        syncer = DataSyncer::Base.choose_syncer(klass)
+        syncer = DataSyncer::Base.choose_syncer(klass).new
         syncer.export_model_to_yaml(klass, model_yaml_file_name(klass))
       end
       Zipper.zip(@sync_dir_path, @zip_file)
