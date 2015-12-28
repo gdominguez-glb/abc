@@ -10,6 +10,7 @@
     <div class="collapse navbar-collapse" id="sub-nav">
       <ul>
         <%= active_link_to "My Resources", main_app.account_products_path, wrap_tag: :li, class: 'my-resource-link' %>
+        <%= active_link_to "Video Gallery", '/video_gallery', wrap_tag: :li, class: 'video-gallery-link' %>
         <% if spree_current_user.has_admin_role? %>
           <li>
             <a href="/store/admin ">Store Admin<span class="sr-only">(current)</span></a>
@@ -17,7 +18,6 @@
         <% end %>
         <%= active_link_to "Bookmarks", '/account/bookmarks', wrap_tag: :li %>
         <%= active_link_to "History", '/account/history', wrap_tag: :li %>
-        <%= active_link_to "Video Gallery", '/video_gallery', wrap_tag: :li, class: 'video-gallery-link' %>
         <%= active_link_to "CMS", '/cms', wrap_tag: :li if current_spree_user.admin? %>
         <%= active_link_to "Settings", '/account/settings', wrap_tag: :li %>
         <% if spree_current_user.has_school_admin_role? %>
