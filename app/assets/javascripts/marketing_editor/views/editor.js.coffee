@@ -38,6 +38,7 @@ class MarketingEditorApp.Views.Editor extends Backbone.View
     @$('.rich-editor').trumbowyg(
       fullscreenable: false
       closable: false
+      removeformatPasted: true
       btns: ['bold', 'italic', 'underline', 'strikethrough', '|', 'formatting', '|', 'unorderedList', 'orderedList', '|', 'link']
     ).on('tbwchange', (e)->
       $(e.target).trigger('change')
