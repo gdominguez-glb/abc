@@ -73,7 +73,7 @@ function initEditor() {
     fullscreenable: false,
     closable: false,
     removeformatPasted: true,
-    btns: ['bold', 'italic', 'underline', 'strikethrough', '|', 'formatting', '|', 'unorderedList', 'orderedList', '|', 'link']
+    btns: ['bold', 'italic', 'underline', 'strikethrough', '|', 'formatting', '|', 'unorderedList', 'orderedList', '|', 'link', '|', 'removeformat']
   });
 }
 

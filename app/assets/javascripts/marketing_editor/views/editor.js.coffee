@@ -39,7 +39,7 @@ class MarketingEditorApp.Views.Editor extends Backbone.View
       fullscreenable: false
       closable: false
       removeformatPasted: true
-      btns: ['bold', 'italic', 'underline', 'strikethrough', '|', 'formatting', '|', 'unorderedList', 'orderedList', '|', 'link']
+      btns: ['bold', 'italic', 'underline', 'strikethrough', '|', 'formatting', '|', 'unorderedList', 'orderedList', '|', 'link', '|', 'removeformat']
     ).on('tbwchange', (e)->
       $(e.target).trigger('change')
     )
