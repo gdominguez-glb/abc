@@ -152,6 +152,6 @@ class ContactForm
   private
 
   def require_description?
-    ['General and Other', 'Professional Development', 'Existing Order Support', 'Parent Support', 'Technical Support'].include?(self.topic)
+    ['General and Other', 'Existing Order Support', 'Parent Support', 'Technical Support'].include?(self.topic)
   end
 end
