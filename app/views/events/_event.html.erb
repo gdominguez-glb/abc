@@ -35,7 +35,7 @@
       <% end %>
 
       <% if event.download_url.present? %>
-        <small class="block">Download: <%= link_to event.download_url, event.download_url, class: '', target: '_blank' %></small>
+        <small class="block"><%= link_to "Download Event Details", event.download_url, class: '', target: '_blank' %></small>
       <% end %>
     </div>
   </div>
