@@ -83,4 +83,8 @@ Spree::OrdersController.class_eval do
     end
     redirect_to spree.cart_path
   end
+
+  def completed
+    @order = current_spree_user.orders.find_by(number: params[:id])
+  end
 end
