@@ -266,7 +266,7 @@
       function requireDescription() {
         var topic = $('input[name="contact_form[topic]"]').val();
 
-        if (topic == 'General' || topic == 'Professional Development' || topic == 'Existing Order Support' || topic == 'Parent Support' || topic == 'Curriculum Support' || topic == 'Content Error' || topic == 'Technical Support') {
+        if (topic == 'General' || topic == 'Existing Order Support' || topic == 'Parent Support' || topic == 'Curriculum Support' || topic == 'Content Error' || topic == 'Technical Support') {
           return true;
         }
         return false;
@@ -342,7 +342,7 @@
           { name: 'Size of Training Groups' },
           { name: 'Curriculum' },
           { name: 'Interested in hosting events' },
-          { name: 'Description', required: true }
+          { name: 'Description' }
         ],
         'Curriculum Support': [
           { name: 'Curriculum' },
