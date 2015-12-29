@@ -17,8 +17,16 @@
         </div>
       </div>
     <% else %>
-      <div class="my-products">
-        <%= render 'my_products' %>
+      <div class="my-products-container">
+        <div class="my-products">
+          <%= render 'my_products' %>
+        </div>
+        <div class="js-prev-product prev-product">
+          <i class="mi md-48">chevron_left</i>
+        </div>
+        <div class="js-next-product next-product">
+          <i class="mi md-48">chevron_right</i>
+        </div>
       </div>
     <% end %>
   </div>
