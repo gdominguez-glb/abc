@@ -204,3 +204,4 @@ end
 Spree::Order.state_machine.after_transition to: :complete, do: :finalize_order
 Spree::Order.state_machine.before_transition to: :payment, do: :valid_terms_and_conditions?
 Spree::Order.state_machine.before_transition to: :delivery, do: :valid_terms_and_conditions?
+Spree::Order.state_machine.before_transition to: :confirm, do: :valid_terms_and_conditions?
