@@ -62,7 +62,7 @@ And the Admin login [here](http://localhost:3000/store/admin)
 
 Visit QA http://qa.greatminds.org/store/admin
 
-Visit Staging http://staging.greatminds.net/store/admin
+Visit Staging http://staging.greatminds.org/store/admin
 
 Login with
 
