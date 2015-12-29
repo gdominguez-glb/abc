@@ -47,7 +47,7 @@ class VimeoImporter
   end
 
   def assign_taxons_to_video(video, row)
-    taxon_headers = row.headers - ['Video Title', 'Vimeo URL']
+    taxon_headers = row.headers.reject(&:blank?) - ['Video Title', 'Vimeo URL']
     taxon_headers.each do |taxon_header|
       taxonomy_name = taxon_header.gsub(/(\ [A-Z]{1,2}$)/, '').strip
       assign_taxons(video, taxonomy_name, [row[taxon_header]]) if [row[taxon_header]].compact.present?
