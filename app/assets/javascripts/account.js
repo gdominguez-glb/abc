@@ -7,6 +7,8 @@ window.initMyProductsSlick = function() {
     slidesToShow: 3,
     slidesToScroll: 3,
     adaptiveHeight: true,
+    prevArrow: $('.js-prev-product'),
+    nextArrow: $('.js-next-product'),
     responsive: [
       {
         breakpoint: 1024,

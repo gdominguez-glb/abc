@@ -1,49 +1,32 @@
 // _slick-overrides.scss
 
-.slick-slider {
-  margin-bottom: 60px;
+.my-products-container {
+  position: relative;
 }
 
-.slick-prev, .slick-next {
-  width: 44px;
-  height: 44px;
-  color: #eee;
-  margin-top: 0;
+.prev-product,
+.next-product {
+  display: none !important;
+  position: absolute;
+  top: 50%;
 
   @include translate(0, -50%);
 
-  &:before {
-    font-family: "Glyphicons Halflings";
-    font-size: 40px;
+  @media screen and (min-width: $screen-sm-min) {
+    display: inline-block !important;
   }
 }
 
-.slick-prev {
-  display: none !important;
-
-  @media screen and (min-width: $screen-sm-min) {
-    display: inline-block !important;
-    left: -30px;
-  }
-
-  &:before {
-    content: "\e079";
-    color: #000;
-  }
+.prev-product {
+  left: -30px;
 }
 
-.slick-next {
-  display: none !important;
+.next-product {
+  right: -30px;
+}
 
-  @media screen and (min-width: $screen-sm-min) {
-    display: inline-block !important;
-    right: -30px;
-  }
-
-  &:before {
-    content: "\e080";
-    color: #000;
-  }
+.slick-slider {
+  margin-bottom: 60px;
 }
 
 ul.slick-dots {
