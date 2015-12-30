@@ -31,6 +31,9 @@ if (emails.length > 0) {
 
   // Make the "Number of Users" box in step 3 green
   $('#assign_licenses_form_total').addClass('success');
+
+  // Reveal the checkbox in step 3
+  $('.js-step-3 .js-check-icon').removeClass('hide');
 } else {
   // Reset everything if there are no selected emails
   $('.js-step-2 .js-check-icon').addClass('hide');
@@ -40,6 +43,7 @@ if (emails.length > 0) {
   $('#licenseTotal').text('');
   $('#btnAssignLicenses').addClass('disabled');
   $('#assign_licenses_form_total').removeClass('success');
+  $('.js-step-3 .js-check-icon').addClass('hide');
 }
 // Hide the modal
 $('#select-users-modal').modal('hide');
