@@ -37,18 +37,25 @@
       $('#userEmails').collapse('hide');
       $('#chooseUsers').collapse('show');
       $('#importUsers').collapse('hide');
+      $('.js-initial-header').addClass('hide');
+      $('.js-select-header').removeClass('hide');
     });
 
     $('#btnUploadUsers').on('click', function() {
       $('#userEmails').collapse('hide');
       $('#chooseUsers').collapse('hide');
       $('#importUsers').collapse('show');
+      $('.js-initial-header').addClass('hide');
+      $('.js-upload-header').removeClass('hide');
     });
 
     $('#btnBack, #btnImportBack').on('click', function(e) {
       $('#userEmails').collapse('show');
       $('#chooseUsers').collapse('hide');
       $('#importUsers').collapse('hide');
+      $('.js-initial-header').removeClass('hide');
+      $('.js-select-header').addClass('hide');
+      $('.js-upload-header').addClass('hide');
     });
   });
 <% end %>

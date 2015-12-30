@@ -1,9 +1,17 @@
 <div class="modal fade" id="select-users-modal">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header text-center">
+      <div class="js-initial-header modal-header text-center">
         <h4 class="modal-title">You can add users <strong>3</strong> ways</h4>
         <em class="small">Please use the options below to add users</em>
+      </div>
+      <div class="js-select-header modal-header text-center hide">
+        <h4 class="modal-title">Select users</h4>
+        <em class="small">Select and add users below</em>
+      </div>
+      <div class="js-upload-header modal-header text-center hide">
+        <h4 class="modal-title">Upload a user file</h4>
+        <em class="small">Uploading a file will give each user <strong>ONLY 1</strong> license</em>
       </div>
       <%= form_tag select_users_account_licenses_path, multipart: true, authenticity_token: true, remote: true do %>
         <div class="modal-body">
