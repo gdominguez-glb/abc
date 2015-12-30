@@ -12,6 +12,7 @@ Spree::Order.class_eval do
   attr_accessor :distribute_option
 
   validates_format_of :license_admin_email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, if: ->(o) { o.distribute_option == 'someone' }
+  validate :validate_trial_products
 
   before_save :check_terms_and_conditions
 
@@ -177,10 +178,19 @@ Spree::Order.class_eval do
     end
   end
 
-  def valid_terms_and_conditions?
+  def validate_terms_and_conditions
     if has_license_products? && terms_and_conditions != true
       self.errors[:terms_and_conditions] << Spree.t('terms_and_conditions.must_be_accepted')
       self.errors[:terms_and_conditions].empty? ? true : false
+    end
+  end
+
+  def validate_trial_products
+    return if self.user.blank?
+    self.line_items.each do |line_item|
+      if line_item.quantity > 0 && self.user.bought_free_trial_product?(line_item.variant.product)
+        self.errors.add(:base, "Bought #{line_item.variant.product.name} before (Can only buy trial products once)")
+      end
     end
   end
 
@@ -202,6 +212,7 @@ Spree::Order.class_eval do
 end
 
 Spree::Order.state_machine.after_transition to: :complete, do: :finalize_order
-Spree::Order.state_machine.before_transition to: :payment, do: :valid_terms_and_conditions?
-Spree::Order.state_machine.before_transition to: :delivery, do: :valid_terms_and_conditions?
-Spree::Order.state_machine.before_transition to: :confirm, do: :valid_terms_and_conditions?
+
+Spree::Order.state_machine.before_transition to: :payment, do: :validate_terms_and_conditions
+Spree::Order.state_machine.before_transition to: :delivery, do: :validate_terms_and_conditions
+Spree::Order.state_machine.before_transition to: :confirm, do: :validate_terms_and_conditions

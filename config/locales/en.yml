@@ -77,6 +77,7 @@ en:
         available_on: 'For Sale Date'
         sf_id_product: Salesforce Product2Id
         sf_id_pricebook: Salesforce Pricebook2Id
+        purchase_once: 'Trial - User may only purchase once'
       spree/user:
         school_district: School/District
       medium_publication:
