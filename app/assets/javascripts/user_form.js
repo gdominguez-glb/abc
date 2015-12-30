@@ -12,19 +12,8 @@ function shouldShowDistrict(userRole) {
   var visibleFields = {};
   visibleFields.showDistrictDetails = false;
 
-  switch(userRole) {
-    case "Teacher":
-      visibleFields.showDistrictDetails = true;
-      break;
-    case "Administrator":
-      visibleFields.showDistrictDetails = true;
-      break;
-    case "Administrative Assistant":
-      visibleFields.showDistrictDetails = true;
-      break;
-    case "Parent":
-      console.log("Hi mom");
-      break;
+  if (userRole === 'Teacher' || userRole === 'Administrator' || userRole === 'Administrative Assistant') {
+    visibleFields.showDistrictDetails = true;
   }
 
   return visibleFields;
@@ -99,9 +88,9 @@ $(document).on('click', '#closeAddDistrict', function() {
   $('#rowAddDistrict').collapse('hide');
 });
 
-$(function(){
+function listenToCountry() {
   $('select[name="spree_user[school_district_attributes][country_id]"]').change(function(){
-    if($(this).val() == window.us_country_id) {
+    if($(this).val() === window.us_country_id) {
       $('#state-input-wrapper').removeClass('hide');
       $('select[name="spree_user[school_district_attributes][state_id]"]').attr('disabled', false);
     } else {
@@ -109,6 +98,10 @@ $(function(){
       $('select[name="spree_user[school_district_attributes][state_id]"]').attr('disabled', true);
     }
   });
+}
+
+$(function(){
+  listenToCountry();
 
   var selectedStateId = $("#spree_user_school_district_attributes_state_id").val();
   updateSchoolDistrictSelect(parseInt(selectedStateId));

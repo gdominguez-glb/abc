@@ -105,8 +105,9 @@ class SchoolDistrict < ActiveRecord::Base
     { 'Name' => name,
       'RecordTypeId' => salesforce_record_type_id,
       'BillingState' => state.try(:abbr),
+      'BillingCity' => city,
       'Website_ID__c' => id,
-      'BillingCountry' => state.try(:country).try(:iso3) }
+      'BillingCountry' => country.try(:iso3) }
   end
 
   def self.matches_salesforce_object(sfo)
