@@ -105,6 +105,8 @@ Spree::Product.class_eval do
                       message: ' must be the 18-character Salesforce ID' },
             unless: :free?
 
+  validates_presence_of :available_on, if: Proc.new{|product| product.for_sale? }
+
   belongs_to :curriculum, class_name: 'Curriculum'
   belongs_to :grade, class_name: 'Spree::Grade'
   belongs_to :grade_unit, class_name: 'Spree::GradeUnit'
