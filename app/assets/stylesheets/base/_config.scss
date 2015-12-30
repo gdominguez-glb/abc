@@ -54,6 +54,9 @@ $panel-info-text:             #000;
 $panel-info-border:           darken($gray-lighter, 1%);
 $panel-info-heading-bg:       darken($gray-lighter, 1%);
 
+// Shepard Popovers
+$popover-outline: $coral;
+
 // Mixins
 @mixin button-bg($bg) {
   background: $bg;
