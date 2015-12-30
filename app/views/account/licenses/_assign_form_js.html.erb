@@ -1,4 +1,6 @@
 <%= javascript_tag do %>
+
+  // Update the total license count when user changes quantity
   $('#assign_licenses_form_licenses_number, #assign_licenses_form_licenses_recipients').change(function(){
     var emails = $('#assign_licenses_form_licenses_recipients').val();
     var number = $('#assign_licenses_form_licenses_number').val();
@@ -13,21 +15,24 @@
   });
 
   $(function() {
+    // Update the product stats text when the user makes a selection in step 1
     $(document).on('change', '#licenses_ids', function(e) {
       var selected = $(this).find(':selected').text();
       $('#licenseDescription').text(selected);
     });
 
+    // Open the add users modal
     $('#show-add-users-modal-btn').click(function(e){
       e.preventDefault();
       $('#select-users-modal').modal('show');
     });
-  });
-  $(function() {
+
+    // Check all the user checkboxes when the user clicks the select all button
     $('.select-all-users').click(function(e){
       $('.user-checkbox').attr('checked', true);
     });
 
+    // Handle the display/hiding of the various modal view states
     $('#btnSelectUsers').on('click', function() {
       $('#userEmails').collapse('hide');
       $('#chooseUsers').collapse('show');
