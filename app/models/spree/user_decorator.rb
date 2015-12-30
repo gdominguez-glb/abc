@@ -298,4 +298,8 @@ Spree::User.class_eval do
                                Spree::Product.where(id: _product_ids+_part_ids)
                              end
   end
+
+  def bought_free_trial_product?(product)
+    product.purchase_once? && Spree::LicensedProduct.where(user_id: self.id, product_id: product.id).exists?
+  end
 end
