@@ -1,0 +1,23 @@
+// *************************************
+//
+//   Popovers
+//   Shepherd Overrides
+//
+// *************************************
+
+.shepherd-content {
+  border: 5px solid $popover-outline;
+  .shepherd-buttons {
+    font-family: 'Karla', sans-serif;
+  }
+}
+
+.shepherd-element.shepherd-theme-arrows.shepherd-element-attached-top.shepherd-element-attached-center.shepherd-has-title .shepherd-content:before,
+.shepherd-element.shepherd-theme-arrows.shepherd-element-attached-top.shepherd-element-attached-right.shepherd-target-attached-bottom.shepherd-has-title .shepherd-content:before,
+.shepherd-element.shepherd-theme-arrows.shepherd-element-attached-top.shepherd-element-attached-left.shepherd-target-attached-bottom.shepherd-has-title .shepherd-content:before,
+.shepherd-element.shepherd-theme-arrows.shepherd-element-attached-top.shepherd-element-attached-center .shepherd-content:before {
+  border-bottom-color: $popover-outline;
+}
+.shepherd-element.shepherd-theme-arrows.shepherd-element-attached-bottom.shepherd-element-attached-center .shepherd-content:before {
+  border-top-color: $popover-outline;
+}
