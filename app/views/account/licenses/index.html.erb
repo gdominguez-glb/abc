@@ -24,24 +24,25 @@
     <%= render 'stats' %>
 
     <div class="row margin-bottom-xxl">
-      <div class="col-sm-4 border-right-primary min-200 padding-xs-horiz-xl">
-        <h4 class="margin-bottom-reset">Step 1.</h4>
+      <div class="js-step-1 col-sm-4 border-right-primary min-200 padding-xs-horiz-xl">
+        <h4 class="margin-bottom-reset">Step 1. <i class="mi">check_circle</i></h4>
         <small class="margin-bottom block"><em>Select product you'd like to assign*</em></small>
         <% selected_option = current_spree_user.managed_products_options.find{|o| o[1] == params[:licenses_ids] } || current_spree_user.managed_products_options.first %>
-        <div class="select-container dark-select margin-bottom-reset btn-block-xs">
+        <div class="select-container dark-select margin-bottom-reset btn-block">
           <span><%= selected_option[0] %></span>
           <%= select_tag :licenses_ids, options_for_select(current_spree_user.managed_products_options, selected_option[1]), class: 'licenses-select form-control inline-input' %>
         </div>
         <small><em>*This may affect your licenses above</em></small>
       </div>
-      <div class="col-sm-4 min-200 padding-xs-horiz-xl">
-        <h4 class="margin-bottom-reset">Step 2.</h4>
+      <div class="js-step-2 col-sm-4 min-200 padding-xs-horiz-xl">
+        <h4 class="margin-bottom-reset">Step 2. <i class="mi hide js-check-icon">check_circle</i></h4>
         <small class="margin-bottom block"><em>Select users you'd like to assign</em></small>
         <a href="#" class="btn btn-primary btn-block margin-bottom" id="show-add-users-modal-btn">Add Users</a>
+        <small class="js-success-message hide">You have successfully added <span class="js-number-total"></span> user</small>
         <%= f.hidden_field :licenses_recipients %>
       </div>
-      <div class="col-sm-4 border-left-primary min-200 padding-xs-horiz-xl">
-        <h4 class="margin-bottom-reset">Step 3.</h4>
+      <div class="js-step-3 col-sm-4 border-left-primary min-200 padding-xs-horiz-xl">
+        <h4 class="margin-bottom-reset">Step 3. <i class="mi hide js-check-icon">check_circle</i></h4>
         <small class="margin-bottom block"><em>Select the quantity of licenses to assign</em></small>
         <div class="row">
           <div class="col-sm-6">
@@ -62,6 +63,7 @@
     </div>
     <div class="row text-center license-actions">
       <div class="col-sm-4 col-sm-offset-4">
+        <h4>Step 4.</h4>
         <%= f.submit 'Assign License(s)', class: 'btn btn-success btn-block margin-bottom-s disabled', id: 'btnAssignLicenses', data: { disable_with: 'Saving' } %>
       </div>
     </div>
