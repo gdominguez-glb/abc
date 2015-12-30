@@ -3,10 +3,13 @@ class SchoolDistrict < ActiveRecord::Base
   include SalesforceAccess
 
   belongs_to :state, class_name: 'Spree::State'
+  belongs_to :country, class_name: 'Spree::Country'
   has_many :users, class_name: 'Spree::User'
 
   validates :name, presence: true
-  validates :state_id, presence: true, unless: :unaffiliated?
+  validates :state_id, presence: true, if: Proc.new{ |school_district|
+    !school_district.unaffiliated? && school_district.country.try(:name) == 'United States'
+  }
 
   enum place_type: { school: 'school', district: 'district',
                      unaffiliated: 'unaffiliated' }
@@ -102,8 +105,9 @@ class SchoolDistrict < ActiveRecord::Base
     { 'Name' => name,
       'RecordTypeId' => salesforce_record_type_id,
       'BillingState' => state.try(:abbr),
+      'BillingCity' => city,
       'Website_ID__c' => id,
-      'BillingCountry' => state.try(:country).try(:iso3) }
+      'BillingCountry' => country.try(:iso3) }
   end
 
   def self.matches_salesforce_object(sfo)

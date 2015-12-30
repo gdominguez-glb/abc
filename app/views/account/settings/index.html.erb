@@ -109,13 +109,43 @@
       </div>
     </div>
 
+  <% us_country = Spree::Country.find_by(iso: 'US') %>
+
+  <% selected_country_id = current_spree_user.school_district.try(:country).try(:id) || us_country.id %>
+  <% selected_country = Spree::Country.find_by(id: selected_country_id) %>
+
     <div class="row">
+      <div class="col-md-6">
+        <label>Country</label>
+        <div class="form-group school-district select-container dark-select block">
+          <span><%= current_spree_user.school_district.try(:country) ? current_spree_user.school_district.country.name : 'Select a Country' %></span>
+          <%= f.fields_for :school_district do |school_district_form| %>
+            <%= school_district_form.collection_select :country_id, Spree::Country.all, :id, :name, { prompt: true } , { class: 'form-control' } %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+  <% us_selected = (selected_country_id.to_i == us_country.id) %>
+
+  <div id="state-input-wrapper" class="row <%= 'hide' if !us_selected %>">
       <div class="col-md-6">
         <label>State</label>
         <div class="form-group school-district select-container dark-select block">
           <span><%= current_spree_user.school_district.try(:state) ? current_spree_user.school_district.state.name : 'Select a State' %></span>
           <%= f.fields_for :school_district do |school_district_form| %>
-            <%= school_district_form.collection_select :state_id, Spree::Country.find_by(iso: 'US').states, :id, :name, { prompt: true } , { class: 'form-control' } %>
+            <%= school_district_form.collection_select :state_id, us_country.states, :id, :name, { prompt: true  } , { class: 'form-control', disabled: !us_selected } %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <label>City(Optional)</label>
+        <div class="form-group">
+          <%= f.fields_for :school_district do |school_district_form| %>
+            <%= school_district_form.text_field :city, class: 'form-control' %>
           <% end %>
         </div>
       </div>
@@ -166,6 +196,9 @@
       <button href="#" class="btn btn-link" tabindex="16">Cancel</button>
     </div>
   </div>
+  <script type="text/javascript">
+    window.us_country_id = '<%= us_country.id %>';
+  </script>
 <% end %>
 <script type="text/javascript">
 //<![CDATA[
