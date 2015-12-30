@@ -245,6 +245,13 @@
         <%= f.number_field :license_length, class: 'form-control' %>
       </div>
     </div>
+
+    <div data-hook='admin_product_form_purchase_once'>
+      <div class='form-group field' id='product_purchase_once_field'>
+        <%= f.label :purchase_once %>
+        <%= f.check_box :purchase_once, class: 'form-control' %>
+      </div>
+    </div>
   </div>
 
 </div>

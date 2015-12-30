@@ -140,6 +140,13 @@
         </div>
       </div>
 
+      <div data-hook='new_product_purchase_once' class='col-md-4'>
+        <div class='form-group field' id='product_purchase_once_field'>
+          <%= f.label :purchase_once %>
+          <%= f.check_box :purchase_once, class: 'form-control' %>
+        </div>
+      </div>
+
     </div>
 
     <%= render :partial => 'spree/admin/shared/new_resource_links' %>
