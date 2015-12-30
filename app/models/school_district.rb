@@ -3,6 +3,7 @@ class SchoolDistrict < ActiveRecord::Base
   include SalesforceAccess
 
   belongs_to :state, class_name: 'Spree::State'
+  belongs_to :country, class_name: 'Spree::Country'
   has_many :users, class_name: 'Spree::User'
 
   validates :name, presence: true
