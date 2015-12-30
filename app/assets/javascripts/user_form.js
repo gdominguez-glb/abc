@@ -100,6 +100,16 @@ $(document).on('click', '#closeAddDistrict', function() {
 });
 
 $(function(){
+  $('select[name="spree_user[school_district_attributes][country_id]"]').change(function(){
+    if($(this).val() == window.us_country_id) {
+      $('#state-input-wrapper').removeClass('hide');
+      $('select[name="spree_user[school_district_attributes][state_id]"]').attr('disabled', false);
+    } else {
+      $('#state-input-wrapper').addClass('hide');
+      $('select[name="spree_user[school_district_attributes][state_id]"]').attr('disabled', true);
+    }
+  });
+
   var selectedStateId = $("#spree_user_school_district_attributes_state_id").val();
   updateSchoolDistrictSelect(parseInt(selectedStateId));
 

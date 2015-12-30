@@ -6,7 +6,9 @@ class SchoolDistrict < ActiveRecord::Base
   has_many :users, class_name: 'Spree::User'
 
   validates :name, presence: true
-  validates :state_id, presence: true, unless: :unaffiliated?
+  validates :state_id, presence: true, if: Proc.new{ |school_district|
+    !school_district.unaffiliated? && school_district.country.try(:name) == 'United States'
+  }
 
   enum place_type: { school: 'school', district: 'district',
                      unaffiliated: 'unaffiliated' }
