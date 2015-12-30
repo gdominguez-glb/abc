@@ -324,7 +324,7 @@ section.row-content-3col {
 .half-height {
 
   @media screen and (min-width: $screen-sm-min) {
-    min-height: 300px;
+    min-height: 400px;
     padding: 64px 0;
   }
 
@@ -345,7 +345,7 @@ section.row-content-3col {
     padding: 84px 0;
 
     .half-height & {
-      min-height: 300px;
+      min-height: 400px;
       padding: 64px 0;
     }
   }
@@ -384,7 +384,7 @@ section.row-content-3col {
     min-height: 600px;
 
     .half-height & {
-      min-height: 300px;
+      min-height: 400px;
     }
   }
 }
@@ -399,7 +399,7 @@ section.row-content-3col {
     @include justify-content(center);
 
     .half-height & {
-      min-height: 172px;
+      min-height: 272px;
     }
 
     .row-content-full & {
