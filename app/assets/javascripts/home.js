@@ -28,7 +28,12 @@ $(document).ready(function() {
 			roleText = 'admins';
 		}
 
-		var url = curriculumText + '/' + roleText;
+		if (roleText === 'others') {
+			var url = curriculumText;
+		} else {
+			var url = curriculumText + '/' + roleText;
+		}
+
 		window.location = url;
 	});
 
