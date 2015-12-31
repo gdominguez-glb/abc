@@ -4,7 +4,7 @@ Spree::Order.class_eval do
   belongs_to :school_district
   belongs_to :admin_user, class_name: 'Spree::User'
 
-  enum source: { web: 0, fulfillment: 1 }
+  enum source: { web: 0, fulfillment: 1, cc_process: 2 }
 
   include SalesforceAccess
   include SalesforceAddress
@@ -15,6 +15,22 @@ Spree::Order.class_eval do
   validate :validate_trial_products
 
   before_save :check_terms_and_conditions
+
+  def manual_process_order!(payment)
+    self.payments << payment
+    self.save
+    count = 0
+    while count < 6
+      self.next if self.state != 'complete'
+      count += 1
+    end
+    manual_process_payment
+  end
+
+  def manual_process_payment
+    payment = self.payments.last
+    payment.process! if payment
+  end
 
   def check_terms_and_conditions
     if self.user && self.terms_and_conditions_changed? && self.terms_and_conditions?
@@ -111,6 +127,11 @@ Spree::Order.class_eval do
     return {} if attributes_to_update.blank?
 
     update_record_in_salesforce(attributes_to_update)
+  end
+
+  def skip_salesforce_sync?
+    return true if cc_process?
+    false
   end
 
   def should_create_salesforce?
