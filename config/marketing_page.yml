@@ -5,23 +5,23 @@ marketing_templates:
       <style>
         @media all and (max-width: 360px) {
           #tileRoleSelectorHero<%= position %> {
-            background-image: url("<%= background_image_url.gsub /original/, 'thumb' %>");
+            background-image: url("<%= background_image_url.gsub(/original/, 'thumb') if background_image_url %>");
           }
         }
         @media all and (min-width: 361px) and (max-width: 767px) {
           #tileRoleSelectorHero<%= position %> {
-            background-image: url("<%= background_image_url.gsub /original/, 'small' %>")
+            background-image: url("<%= background_image_url.gsub(/original/, 'small') if background_image_url %>")
           }
         }
         @media all and (min-width: 768px) {
           #tileRoleSelectorHero<%= position %> {
-            background-image: url("<%= background_image_url.gsub /original/, 'large' %>");
+            background-image: url("<%= background_image_url.gsub(/original/, 'large') if background_image_url %>");
           }
         }
       </style>
       <div id="tileRoleSelectorHero<%= position %>" class="row intro masthead">
         <div class="col-xs-12 masthead-content text-center">
-          <h5 class="home-mast-intro bold"><%= title %> <span class="text-success"><% if title_highlight.present? %><%= title_highlight %><% end %></span></h5>
+          <h5 class="home-mast-intro bold"><%= title %> <span class="text-success"><% if defined?(title_highlight) && title_highlight.present? %><%= title_highlight %><% end %></span></h5>
           <div id="pageSelection">
             <div class="btn-group fixed-width image-background">
               <button class="btn btn-default btn-block-xs margin-sm-bottom-m dropdown-toggle" type="button" id="dropdownRole" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -75,17 +75,17 @@ marketing_templates:
       <style>
         @media all and (max-width: 360px) {
           #tileVideoHero<%= position %> {
-            background-image: url("<%= background_image_url.gsub /original/, 'thumb' %>");
+            background-image: url("<%= background_image_url.gsub(/original/, 'thumb') if background_image_url %>");
           }
         }
         @media all and (min-width: 361px) and (max-width: 767px) {
           #tileVideoHero<%= position %> {
-            background-image: url("<%= background_image_url.gsub /original/, 'small' %>")
+            background-image: url("<%= background_image_url.gsub(/original/, 'small') if background_image_url %>")
           }
         }
         @media all and (min-width: 768px) {
           #tileVideoHero<%= position %> {
-            background-image: url("<%= background_image_url.gsub /original/, 'large' %>");
+            background-image: url("<%= background_image_url.gsub(/original/, 'large') if background_image_url %>");
           }
         }
       </style>
@@ -104,12 +104,12 @@ marketing_templates:
       <style>
         @media all and (max-width: 360px) {
           #tileImgLeft<%= position %> {
-            background-image: url("<%= image_url.gsub /original/, 'thumb' %>");
+            background-image: url("<%= image_url.gsub(/original/, 'thumb') if image_url %>");
           }
         }
         @media all and (min-width: 361px) {
           #tileImgLeft<%= position %> {
-            background-image: url("<%= image_url.gsub /original/, 'small' %>");
+            background-image: url("<%= image_url.gsub(/original/, 'small') if image_url %>");
           }
         }
       </style>
@@ -136,12 +136,12 @@ marketing_templates:
       <style>
         @media all and (max-width: 360px) {
           #tileImgLeftHalf<%= position %> {
-            background-image: url("<%= image_url.gsub /original/, 'thumb' %>");
+            background-image: url("<%= image_url.gsub(/original/, 'thumb') if image_url %>");
           }
         }
         @media all and (min-width: 361px) {
           #tileImgLeftHalf<%= position %> {
-            background-image: url("<%= image_url.gsub /original/, 'small' %>");
+            background-image: url("<%= image_url.gsub(/original/, 'small') if image_url %>");
           }
         }
       </style>
@@ -165,12 +165,12 @@ marketing_templates:
       <style>
         @media all and (max-width: 360px) {
           #tileImgRight<%= position %> {
-            background-image: url("<%= image_url.gsub /original/, 'thumb' %>");
+            background-image: url("<%= image_url.gsub(/original/, 'thumb') if image_url %>");
           }
         }
         @media all and (min-width: 361px) {
           #tileImgRight<%= position %> {
-            background-image: url("<%= image_url.gsub /original/, 'small' %>");
+            background-image: url("<%= image_url.gsub(/original/, 'small') if image_url %>");
           }
         }
       </style>
@@ -194,12 +194,12 @@ marketing_templates:
       <style>
         @media all and (max-width: 360px) {
           #tileImgRightHalf<%= position %> {
-            background-image: url("<%= image_url.gsub /original/, 'thumb' %>");
+            background-image: url("<%= image_url.gsub(/original/, 'thumb') if image_url %>");
           }
         }
         @media all and (min-width: 361px) {
           #tileImgRightHalf<%= position %> {
-            background-image: url("<%= image_url.gsub /original/, 'small' %>");
+            background-image: url("<%= image_url.gsub(/original/, 'small') if image_url %>");
           }
         }
       </style>
@@ -225,9 +225,9 @@ marketing_templates:
           <div class="vertical-center">
             <picture>
               <!--[if IE 9]><video style="display: none;"><![endif]-->
-              <source srcset="<%= image_url.gsub /original/, 'small' %>" media="(min-width: 361px)">
+              <source srcset="<%= image_url.gsub(/original/, 'small') if image_url %>" media="(min-width: 361px)">
               <!--[if IE 9]></video><![endif]-->
-              <img srcset="<%= image_url.gsub /original/, 'thumb' %>" class="img-responsive margin-sm-bottom-xl">
+              <img srcset="<%= image_url.gsub(/original/, 'thumb') if image_url %>" class="img-responsive margin-sm-bottom-xl">
             </picture>
           </div>
         </div>
@@ -250,9 +250,9 @@ marketing_templates:
           <div class="vertical-center">
             <picture>
               <!--[if IE 9]><video style="display: none;"><![endif]-->
-              <source srcset="<%= image_url.gsub /original/, 'small' %>" media="(min-width: 361px)">
+              <source srcset="<%= image_url.gsub(/original/, 'small') if image_url %>" media="(min-width: 361px)">
               <!--[if IE 9]></video><![endif]-->
-              <img srcset="<%= image_url.gsub /original/, 'thumb' %>" class="img-responsive margin-sm-bottom-xl">
+              <img srcset="<%= image_url.gsub(/original/, 'thumb') if image_url %>" class="img-responsive margin-sm-bottom-xl">
             </picture>
           </div>
         </div>
@@ -284,9 +284,9 @@ marketing_templates:
           <div class="vertical-center">
             <picture>
               <!--[if IE 9]><video style="display: none;"><![endif]-->
-              <source srcset="<%= image_url.gsub /original/, 'small' %>" media="(min-width: 361px)">
+              <source srcset="<%= image_url.gsub(/original/, 'small') if image_url %>" media="(min-width: 361px)">
               <!--[if IE 9]></video><![endif]-->
-              <img srcset="<%= image_url.gsub /original/, 'thumb' %>" class="img-responsive">
+              <img srcset="<%= image_url.gsub(/original/, 'thumb') if image_url %>" class="img-responsive">
             </picture>
           </div>
         </div>
@@ -309,9 +309,9 @@ marketing_templates:
           <div class="vertical-center">
             <picture>
               <!--[if IE 9]><video style="display: none;"><![endif]-->
-              <source srcset="<%= image_url.gsub /original/, 'small' %>" media="(min-width: 361px)">
+              <source srcset="<%= image_url.gsub(/original/, 'small') if image_url %>" media="(min-width: 361px)">
               <!--[if IE 9]></video><![endif]-->
-              <img srcset="<%= image_url.gsub /original/, 'thumb' %>" class="img-responsive">
+              <img srcset="<%= image_url.gsub(/original/, 'thumb') if image_url %>" class="img-responsive">
             </picture>
           </div>
         </div>
@@ -325,9 +325,9 @@ marketing_templates:
           <div class="vertical-center">
             <picture>
               <!--[if IE 9]><video style="display: none;"><![endif]-->
-              <source srcset="<%= image_url.gsub /original/, 'small' %>" media="(min-width: 361px)">
+              <source srcset="<%= image_url.gsub(/original/, 'small') if image_url %>" media="(min-width: 361px)">
               <!--[if IE 9]></video><![endif]-->
-              <img srcset="<%= image_url.gsub /original/, 'thumb' %>" class="img-responsive img-shadow margin-sm-bottom-xl">
+              <img srcset="<%= image_url.gsub(/original/, 'thumb') if image_url %>" class="img-responsive img-shadow margin-sm-bottom-xl">
             </picture>
           </div>
         </div>
@@ -359,9 +359,9 @@ marketing_templates:
           <div class="vertical-center">
             <picture>
               <!--[if IE 9]><video style="display: none;"><![endif]-->
-              <source srcset="<%= image_url.gsub /original/, 'small' %>" media="(min-width: 361px)">
+              <source srcset="<%= image_url.gsub(/original/, 'small') if image_url %>" media="(min-width: 361px)">
               <!--[if IE 9]></video><![endif]-->
-              <img srcset="<%= image_url.gsub /original/, 'thumb' %>" class="img-responsive img-shadow">
+              <img srcset="<%= image_url.gsub(/original/, 'thumb') if image_url %>" class="img-responsive img-shadow">
             </picture>
           </div>
         </div>
@@ -375,9 +375,9 @@ marketing_templates:
           <div class="vertical-center">
             <picture>
               <!--[if IE 9]><video style="display: none;"><![endif]-->
-              <source srcset="<%= image_url.gsub /original/, 'small' %>" media="(min-width: 361px)">
+              <source srcset="<%= image_url.gsub(/original/, 'small') if image_url %>" media="(min-width: 361px)">
               <!--[if IE 9]></video><![endif]-->
-              <img srcset="<%= image_url.gsub /original/, 'thumb' %>" class="img-responsive img-book margin-sm-bottom-xl">
+              <img srcset="<%= image_url.gsub(/original/, 'thumb') if image_url %>" class="img-responsive img-book margin-sm-bottom-xl">
             </picture>
           </div>
         </div>
@@ -409,9 +409,9 @@ marketing_templates:
           <div class="vertical-center">
             <picture>
               <!--[if IE 9]><video style="display: none;"><![endif]-->
-              <source srcset="<%= image_url.gsub /original/, 'small' %>" media="(min-width: 361px)">
+              <source srcset="<%= image_url.gsub(/original/, 'small') if image_url %>" media="(min-width: 361px)">
               <!--[if IE 9]></video><![endif]-->
-              <img srcset="<%= image_url.gsub /original/, 'thumb' %>" class="img-responsive img-book">
+              <img srcset="<%= image_url.gsub(/original/, 'thumb') if image_url %>" class="img-responsive img-book">
             </picture>            
           </div>
         </div>
@@ -423,17 +423,17 @@ marketing_templates:
       <style>
         @media all and (max-width: 360px) {
           #tileImgBgTextFull<%= position %> {
-            background-image: url("<%= image_url.gsub /original/, 'thumb' %>");
+            background-image: url("<%= image_url.gsub(/original/, 'thumb') if image_url %>");
           }
         }
         @media all and (min-width: 361px) and (max-width: 767px) {
           #tileImgBgTextFull<%= position %> {
-            background-image: url("<%= image_url.gsub /original/, 'small' %>")
+            background-image: url("<%= image_url.gsub(/original/, 'small') if image_url %>")
           }
         }
         @media all and (min-width: 768px) {
           #tileImgBgTextFull<%= position %> {
-            background-image: url("<%= image_url.gsub /original/, 'large' %>");
+            background-image: url("<%= image_url.gsub(/original/, 'large') if image_url %>");
           }
         }
       </style>
@@ -457,17 +457,17 @@ marketing_templates:
       <style>
         @media all and (max-width: 360px) {
           #tileImgBgTextFullHalf<%= position %> {
-            background-image: url("<%= image_url.gsub /original/, 'thumb' %>");
+            background-image: url("<%= image_url.gsub(/original/, 'thumb') if image_url %>");
           }
         }
         @media all and (min-width: 361px) and (max-width: 767px) {
           #tileImgBgTextFullHalf<%= position %> {
-            background-image: url("<%= image_url.gsub /original/, 'small' %>")
+            background-image: url("<%= image_url.gsub(/original/, 'small') if image_url %>")
           }
         }
         @media all and (min-width: 768px) {
           #tileImgBgTextFullHalf<%= position %> {
-            background-image: url("<%= image_url.gsub /original/, 'large' %>");
+            background-image: url("<%= image_url.gsub(/original/, 'large') if image_url %>");
           }
         }
       </style>
@@ -493,17 +493,17 @@ marketing_templates:
       <style>
         @media all and (max-width: 360px) {
           #tileImgBgTextLeft<%= position %> {
-            background-image: url("<%= image_url.gsub /original/, 'thumb' %>");
+            background-image: url("<%= image_url.gsub(/original/, 'thumb') if image_url %>");
           }
         }
         @media all and (min-width: 361px) and (max-width: 767px) {
           #tileImgBgTextLeft<%= position %> {
-            background-image: url("<%= image_url.gsub /original/, 'small' %>")
+            background-image: url("<%= image_url.gsub(/original/, 'small') if image_url %>")
           }
         }
         @media all and (min-width: 768px) {
           #tileImgBgTextLeft<%= position %> {
-            background-image: url("<%= image_url.gsub /original/, 'large' %>");
+            background-image: url("<%= image_url.gsub(/original/, 'large') if image_url %>");
           }
         }
       </style>
@@ -528,17 +528,17 @@ marketing_templates:
       <style>
         @media all and (max-width: 360px) {
           #tileImgBgTextRight<%= position %> {
-            background-image: url("<%= image_url.gsub /original/, 'thumb' %>");
+            background-image: url("<%= image_url.gsub(/original/, 'thumb') if image_url %>");
           }
         }
         @media all and (min-width: 361px) and (max-width: 767px) {
           #tileImgBgTextRight<%= position %> {
-            background-image: url("<%= image_url.gsub /original/, 'small' %>")
+            background-image: url("<%= image_url.gsub(/original/, 'small') if image_url %>")
           }
         }
         @media all and (min-width: 768px) {
           #tileImgBgTextRight<%= position %> {
-            background-image: url("<%= image_url.gsub /original/, 'large' %>");
+            background-image: url("<%= image_url.gsub(/original/, 'large') if image_url %>");
           }
         }
       </style>
@@ -600,17 +600,17 @@ marketing_templates:
       <style>
         @media all and (max-width: 360px) {
           #tileVideoLeft<%= position %> {
-            background-image: url("<%= background_image_url.gsub /original/, 'thumb' %>");
+            background-image: url("<%= background_image_url.gsub(/original/, 'thumb') if background_image_url %>");
           }
         }
         @media all and (min-width: 361px) and (max-width: 767px) {
           #tileVideoLeft<%= position %> {
-            background-image: url("<%= background_image_url.gsub /original/, 'small' %>")
+            background-image: url("<%= background_image_url.gsub(/original/, 'small') if background_image_url %>")
           }
         }
         @media all and (min-width: 768px) {
           #tileVideoLeft<%= position %> {
-            background-image: url("<%= background_image_url.gsub /original/, 'large' %>");
+            background-image: url("<%= background_image_url.gsub(/original/, 'large') if background_image_url %>");
           }
         }
       </style>

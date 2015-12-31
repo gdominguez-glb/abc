@@ -63,4 +63,6 @@ namespace :cms do
   end
   resources :curriculum_mails
   resources :curriculum_shops
+  
+  post 'sync', to: 'sync#run'
 end
