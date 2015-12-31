@@ -15,7 +15,7 @@ class DataSyncWorker
     ).export
     Net::SSH.start('production.greatminds.org', 'deploy') do |ssh|
       ssh.scp.upload!(zip_file_path, "/var/www/greatminds/current/tmp/", recursive: true, via: :sftp)
-      output = ssh.exec!("cd /var/www/greatminds/current && export PATH=/home/deploy/.rbenv/shims:/home/deploy/.rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games && RAILS_ENV=qa bundle exec rake sync:import zip_file_path=/var/www/greatminds/current/tmp/#{zip_file_name}")
+      output = ssh.exec!("cd /var/www/greatminds/current && export PATH=/home/deploy/.rbenv/shims:/home/deploy/.rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games && RAILS_ENV=production bundle exec rake sync:import zip_file_path=/var/www/greatminds/current/tmp/#{zip_file_name}")
     end
   end
 end
