@@ -32,6 +32,7 @@ marketing_templates:
                 <li><a href="#">Teacher</a></li>
                 <li><a href="#">Parent</a></li>
                 <li><a href="#">Administrator</a></li>
+                <li><a href="#">Other</a></li>
               </ul>
             </div>
             <div class="btn-group fixed-width image-background">
@@ -49,25 +50,6 @@ marketing_templates:
           </div>
         </div>
       </div>
-      <script type="text/javascript">
-        $(function() {
-          $('select#role').change(function(e){
-            goToPage();
-          });
-          $('select#curriculum').change(function(e){
-            goToPage();
-          });
-
-          function goToPage(){
-            var role = $('select#role').val();
-            var curriculumId = $('select#curriculum').val();
-            if ( role && curriculumId ) {
-              var url = "/decide_page_to_go?" + $.param({role: role, curriculum_id: curriculumId});
-              window.location.href = url;
-            };
-          }
-        });
-      </script>
 
   -
     name: 'Video Hero'
@@ -412,7 +394,7 @@ marketing_templates:
               <source srcset="<%= image_url.gsub(/original/, 'small') if image_url %>" media="(min-width: 361px)">
               <!--[if IE 9]></video><![endif]-->
               <img srcset="<%= image_url.gsub(/original/, 'thumb') if image_url %>" class="img-responsive img-book">
-            </picture>            
+            </picture>
           </div>
         </div>
       </section>
