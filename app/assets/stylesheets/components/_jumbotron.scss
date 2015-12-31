@@ -12,6 +12,7 @@
 // -------------------------------------
 
 .jumbotron {
+  border: 1px solid $dark-blue;
   text-align: center;
 
   p {
@@ -26,6 +27,7 @@
 // -------------------------------------
 
 .jumbotron-success {
+  border: 0;
   color: $dark-blue;
   background-color: $brand-green;
 }
@@ -37,5 +39,6 @@
 // -------------------------------------
 
 .jumbotron-info {
+  border: 0;
   background-color: $english;
 }
