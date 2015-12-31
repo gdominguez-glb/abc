@@ -314,6 +314,10 @@ section.row-content-3col {
         padding-right: 24px;
       }
 
+      &:nth-child(2) {
+        padding: 0 54px;
+      }
+
       &:last-child {
         padding-left: 24px;
       }
