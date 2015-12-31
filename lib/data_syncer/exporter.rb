@@ -1,4 +1,5 @@
 require 'zipper'
+require 'fileutils'
 
 module DataSyncer
   class Exporter
@@ -16,6 +17,7 @@ module DataSyncer
         syncer.export_model_to_yaml(klass, model_yaml_file_name(klass))
       end
       Zipper.zip(@sync_dir_path, @zip_file)
+      FileUtils.remove_dir(@sync_dir_path)
     end
 
     def model_yaml_file_name(klass)
