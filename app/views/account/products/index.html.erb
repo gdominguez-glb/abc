@@ -11,7 +11,7 @@
   <div class="row">
     <% if @my_products.length == 0 %>
       <div class="col-sm-12">
-        <div class="jumbotron jumbotron-success">
+        <div class="jumbotron">
           <h2>You haven’t checked out any products yet!</h2>
           <%= link_to 'Visit Store', account_shop_of_interest_path, class: 'btn btn-default' %>
         </div>
