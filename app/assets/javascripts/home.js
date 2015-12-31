@@ -28,10 +28,11 @@ $(document).ready(function() {
 			roleText = 'admins';
 		}
 
+		var url = '';
 		if (roleText === 'others') {
-			var url = curriculumText;
+			url = curriculumText;
 		} else {
-			var url = curriculumText + '/' + roleText;
+			url = curriculumText + '/' + roleText;
 		}
 
 		window.location = url;
