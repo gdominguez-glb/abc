@@ -1,0 +1,39 @@
+<%= render :partial => 'spree/admin/shared/error_messages', :locals => { :target => @new_licenses_form } %>
+
+<% content_for :page_title do %>
+  Process Credit Card
+<% end %>
+
+<%= form_for @cc_order_processor_form, url: spree.admin_cc_orders_path, :html => { :multipart => true } do |f| %>
+  <fieldset data-hook="new_order">
+    <div class="form-group">
+      <label>Email</label>
+      <%= f.text_field :email, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <label>Salesforce Order ID</label>
+      <%= f.text_field :salesforce_order_id, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <label>Amount</label>
+      <%= f.text_field :amount, class: 'form-control' %>
+    </div>
+
+    <ul class="nav" id="payment-methods" data-hook>
+      <% @payment_methods.each do |method| %>
+        <li id="payment_method_<%= method.id %>" class="payment-method" style="display: none;">
+          <fieldset>
+            <%= render :partial => "spree/checkout/payment/#{method.method_type}", :locals => { :payment_method => method } %>
+          </fieldset>
+        </li>
+      <% end %>
+    </ul>
+    <%= f.submit 'Process', class: 'btn btn-primary' %>
+  </fieldset>
+<% end %>
+
+<script type="text/javascript">
+  $("#payment-methods .payment-method").show();
+</script>
