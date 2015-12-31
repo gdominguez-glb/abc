@@ -21,6 +21,6 @@ class DataSyncer::PageSyncer < DataSyncer::Base
         end
       end
     end
-    { tiles: rows }
+    { rows: rows }
   end
 end
