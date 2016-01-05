@@ -45,4 +45,15 @@ namespace :legacy do
     Legacy::License.import_to_new_licenses
     Legacy::License.import_distributions
   end
+
+  desc "send migration emails"
+  task send_notification: :environment do
+    Legacy::User.find_each do |legacy_user|
+      MigrationMailer.notify(
+        email: legacy_user.email,
+        first_name: legacy_user.first_name,
+        last_name: legacy_user.last_name
+      ).deliver_later
+    end
+  end
 end
