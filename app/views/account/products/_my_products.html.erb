@@ -1,9 +1,3 @@
-<% @my_products.each do |product| %>
-  <% if product.parts.exists? %>
-    <% product.parts.each do |product| %>
-      <%= render partial: 'product_item', locals: { product: product } %>
-    <% end %>
-  <% else %>
-    <%= render partial: 'product_item', locals: { product: product } %>
-  <% end %>
+<% @my_products.map{ |p| p.parts.exists? ? p.parts : p }.flatten.uniq.each do |product| %>
+  <%= render partial: 'product_item', locals: { product: product } %>
 <% end %>
