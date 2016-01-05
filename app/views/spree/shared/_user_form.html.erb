@@ -17,6 +17,7 @@
     <div class="col-md-6">
       <div class="form-group">
         <label>Email Address</label>
+        <% f.object.email ||= params[:email] %>
         <%= f.email_field :email, :class => 'form-control', :placeholder => Spree.t(:email), tabindex: 3 %>
       </div>
     </div>
