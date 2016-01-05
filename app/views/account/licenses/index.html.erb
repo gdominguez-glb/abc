@@ -27,10 +27,10 @@
       <div class="js-step-1 col-sm-4 border-right-primary min-200 padding-xs-horiz-xl">
         <h4 class="margin-bottom-reset">Step 1. <i class="mi">check_circle</i></h4>
         <small class="margin-bottom block"><em>Select product you'd like to assign*</em></small>
-        <% selected_option = current_spree_user.managed_products_options.find{|o| o[1] == params[:licenses_ids] } || current_spree_user.managed_products_options.first %>
+        <% selected_option = current_spree_user.managed_products_options.find{|o| o[1] == params[:licenses_ids] } %>
         <div class="select-container dark-select margin-bottom-reset btn-block">
-          <span><%= selected_option[0] %></span>
-          <%= select_tag :licenses_ids, options_for_select(current_spree_user.managed_products_options, selected_option[1]), class: 'licenses-select form-control inline-input' %>
+          <span><%= selected_option.try(:[], 0) || 'Select a product' %></span>
+          <%= select_tag :licenses_ids, options_for_select(current_spree_user.managed_products_options, selected_option.try(:[], 1)), prompt: 'Select a product', class: 'licenses-select form-control inline-input' %>
         </div>
         <small><em>*This may affect your licenses above</em></small>
       </div>
