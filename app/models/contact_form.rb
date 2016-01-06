@@ -93,7 +93,7 @@ class ContactForm
       'State' => self.state,
       'What_curriculum_are_you_interested_in__c' => self.curriculum,
       'Session_Preference__c' => self.desired_training_topic,
-      'X1st_Date_Preference__c' => self.desired_dates,
+      'X1st_Date_Preference__c' => (self.desired_dates.blank? ? nil : self.desired_dates),
       'Grade_Training_Request__c' => (self.grade_bands || []).join(';'),
       'Size_of_Training_Groups__c' => self.training_groups_size,
       'Description' => self.description,
