@@ -1,17 +1,32 @@
 <div class="modal fade" tabindex="-1" role="dialog" id="confirm-add-users-modal">
   <div class="modal-dialog">
     <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title">You have successfully added <%= @emails.count %> users</h4>
+        <em class="small">Please check below to make sure all users were added.</em>
+      </div>
       <div class="modal-body">
-        <h2>You have successfully added <%= @emails.count %> users</h2>
-        <p>Please check below to make sure all users were added.</p>
-        <% @emails.each do |email| %>
-          <p><%= email %></p>
-        <% end %>
+        <div class="row">
+          <div class="col-sm-12">
+            <% @emails.each do |email| %>
+              <p><%= email %></p>
+            <% end %>
+          </div>
+        </div>
+
+        <hr />
+
+        <div class="row">
+          <div class="col-md-6">
+            <button type="button" class="btn btn-danger btn-block margin-bottom-s" data-dismiss="modal">Cancel</button>
+          </div>
+          <div class="col-md-6">
+            <button type="button" class="btn btn-success btn-block margin-bottom" id="confirm-add-users-btn">Confirm</button>
+          </div>
+        </div>
+
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary" id="confirm-add-users-btn">Confirm</button>
-      </div>
+
     </div>
   </div>
 </div>
