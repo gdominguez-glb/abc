@@ -1,5 +1,5 @@
 class DataSyncer::PageSyncer < DataSyncer::Base
-  def generate_yaml_content
+  def generate_yaml_content(klass)
     Page.all.map do |page|
       attrs = page.attributes
       curriculum_id = attrs.delete('curriculum_id')
