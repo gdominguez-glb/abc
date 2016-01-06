@@ -65,16 +65,6 @@ class Legacy::License < ActiveRecord::Base
   end
 
 
-  def self.associate_licenses_to_distribution
-    Spree::ProductDistribution.find_each do |distribution|
-      licensed_product = Spree::LicensedProduct.find_by(product: distribution.product, email: distribution.from_email)
-      if licensed_product
-        quantity = Legacy::License.where(from_email: distribution.from_email, mapped_name: distribution.product.name).count
-        distribution.update(quantity: quantity, licensed_product: licensed_product)
-      end
-    end
-  end
-
   def self.revise_expiration_date(product, expiration_date)
     return nil if expiration_date.nil?
     june_30 = Date.new(2016, 6, 30)
