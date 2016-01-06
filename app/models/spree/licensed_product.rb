@@ -93,6 +93,8 @@ class Spree::LicensedProduct < ActiveRecord::Base
   validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, allow_blank: true
   validates_numericality_of :quantity
 
+  attr_accessor :lifetime_product
+
   before_create :set_licenses_date_range
 
   include EmailAssignment
@@ -125,6 +127,7 @@ class Spree::LicensedProduct < ActiveRecord::Base
   end
 
   def set_expire_at
+    return if self.lifetime_product && self.expiration_date.blank?
     if self.product.expiration_date.present?
       self.expire_at ||= self.product.expiration_date
     end

@@ -8,6 +8,7 @@ class Legacy::License < ActiveRecord::Base
       licensed_product = Spree::LicensedProduct.create(
         email:          legacy_license.email,
         expire_at:      revise_expiration_date(product, legacy_license.expiration_date),
+        lifetime_product: is_lifetime_product?(product),
         product:        product,
         quantity:       1,
         fulfillment_at: Time.now,
@@ -43,6 +44,7 @@ class Legacy::License < ActiveRecord::Base
     Spree::LicensedProduct.create(
       product:        product,
       expire_at:      revise_expiration_date(product, expiration_date),
+      lifetime_product: is_lifetime_product?(product),
       email:          from_email,
       quantity:       total_quantity,
       fulfillment_at: Time.now,
@@ -70,4 +72,18 @@ class Legacy::License < ActiveRecord::Base
     june_30 = Date.new(2016, 6, 30)
     (expiration_date <= june_30) ? expiration_date : product.expiration_date
   end
+
+  def self.is_lifetime_product?(product)
+    LIFETIME_PRODUCT_NAMES.include?(product.name)
+  end
+
+  LIFETIME_PRODUCT_NAMES = [
+    'Wheatley English Maps (Grades K-2)',
+    'Wheatley English Maps (Grades 3-5)',
+    'Wheatley English Maps (Grades 6-8)',
+    'Wheatley English Maps (Grades 9-12)',
+    'Wheatley English Maps (Grades K-12)',
+    'Alexandria Plan Lower Elementary',
+    'Alexandria Plan Upper Elementary'
+  ]
 end
