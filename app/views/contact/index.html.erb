@@ -193,12 +193,12 @@
               </div>
             </div>
 
-            <div class="col-sm-6 dependent-field hidden" data-name="Format">
-              <div class="form-group">
-                <label>Format</label>
-                <%= f.text_field :format, size: 20, maxlength: 80, class: 'form-control', placeholder: 'Format' %>
-              </div>
-            </div>
+            <%# <div class="col-sm-6 dependent-field hidden" data-name="Format"> %>
+            <%#   <div class="form-group"> %>
+            <%#     <label>Format</label> %>
+            <%#     <%= f.text_field :format, size: 20, maxlength: 80, class: 'form-control', placeholder: 'Format' %1> %>
+            <%#   </div> %>
+            <%# </div> %>
 
             <div class="col-sm-6 dependent-field hidden" data-name="Interested in hosting events">
               <div class="form-group">
@@ -275,9 +275,9 @@
       function requireFormat() {
         var topic = $('input[name="contact_form[topic]"]').val();
 
-        if (topic == 'Content Error') {
-          return true;
-        }
+        <%# if (topic == 'Content Error') { %>
+        <%#   return true; %>
+        <%# } %>
         return false;
       }
 
@@ -356,8 +356,7 @@
           { name: 'Description' }
         ],
         'Content Error': [
-          { name: 'Curriculum' },
-          { name: 'Format' }
+          { name: 'Curriculum' }
         ],
         'General and Other': [
           { name: 'Description', required: true }

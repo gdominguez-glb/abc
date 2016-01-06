@@ -5,11 +5,10 @@ class ContactForm
 
   attr_accessor :topic, :first_name, :last_name, :email, :phone, :role, :school_district_name, :school_district_type,
     :country, :state, :curriculum, :grade, :school_district_size, :title_1, :returning_customer, :tax_exempt, :tax_exempt_id, :desired_dates,
-    :desired_training_topic, :items_purchased, :format, :description, :school_district, :grade_bands, :training_groups_size, :interested_in_hosting_events
+    :desired_training_topic, :items_purchased, :description, :school_district, :grade_bands, :training_groups_size, :interested_in_hosting_events
 
   validates_presence_of :first_name, :last_name, :email, :phone
   validates_presence_of :description, if: :require_description?
-  validates_presence_of :format, if: ->{ self.topic == 'Content Error' }
 
   def perform
     if ['Sales/Purchasing', 'Professional Development'].include?(self.topic)
@@ -94,7 +93,7 @@ class ContactForm
       'State' => self.state,
       'What_curriculum_are_you_interested_in__c' => self.curriculum,
       'Session_Preference__c' => self.desired_training_topic,
-      'X1st_Date_Preference__c' => self.desired_dates,
+      'X1st_Date_Preference__c' => (self.desired_dates.blank? ? nil : self.desired_dates),
       'Grade_Training_Request__c' => (self.grade_bands || []).join(';'),
       'Size_of_Training_Groups__c' => self.training_groups_size,
       'Description' => self.description,
@@ -135,14 +134,9 @@ class ContactForm
         'What_curriculum_are_you_interested_in__c' => self.curriculum,
         'Items_Purchased__c' => self.items_purchased,
       }
-    when 'Parent Support', 'Technical Support'
+    when 'Parent Support', 'Technical Support', 'Content Error'
       {
         'What_curriculum_are_you_interested_in__c' => self.curriculum,
-      }
-    when 'Content Error'
-      {
-        'What_curriculum_are_you_interested_in__c' => self.curriculum,
-        'Format' => self.format
       }
     else
       {}
