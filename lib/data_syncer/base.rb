@@ -10,7 +10,7 @@ module DataSyncer
     def export_model_to_yaml(klass, file)
       write_content_for_file(
         file,
-        generate_yaml_content
+        generate_yaml_content(klass)
       )
     end
 
@@ -20,7 +20,7 @@ module DataSyncer
       file.close
     end
 
-    def generate_yaml_content
+    def generate_yaml_content(klass)
       klass.all.map(&:attributes).to_yaml
     end
 
