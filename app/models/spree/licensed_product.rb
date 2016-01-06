@@ -127,7 +127,7 @@ class Spree::LicensedProduct < ActiveRecord::Base
   end
 
   def set_expire_at
-    return if self.lifetime_product && self.expiration_date.blank?
+    return if self.lifetime_product && self.expire_at.blank?
     if self.product.expiration_date.present?
       self.expire_at ||= self.product.expiration_date
     end
