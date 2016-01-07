@@ -68,13 +68,17 @@ class Legacy::License < ActiveRecord::Base
 
 
   def self.revise_expiration_date(product, expiration_date)
-    return nil if expiration_date.nil?
+    return nil if expiration_date.nil? || is_never_expire_product?(product)
     june_30 = Date.new(2016, 6, 30)
     (expiration_date <= june_30) ? expiration_date : product.expiration_date
   end
 
   def self.is_lifetime_product?(product)
-    LIFETIME_PRODUCT_NAMES.include?(product.name)
+    LIFETIME_PRODUCT_NAMES.include?(product.name) || is_never_expire_product?(product)
+  end
+
+  def self.is_never_expire_product?(product)
+    NEVER_EXPIRE_PRODUCT_NAMES.include?(product.name)
   end
 
   LIFETIME_PRODUCT_NAMES = [
@@ -85,5 +89,9 @@ class Legacy::License < ActiveRecord::Base
     'Wheatley English Maps (Grades K-12)',
     'Alexandria Plan Lower Elementary',
     'Alexandria Plan Upper Elementary'
+  ]
+
+  NEVER_EXPIRE_PRODUCT_NAMES = [
+    'Basic Curriculum Files'
   ]
 end
