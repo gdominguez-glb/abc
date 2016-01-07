@@ -136,10 +136,6 @@ class Spree::LicensedProduct < ActiveRecord::Base
     end
   end
 
-  def send_notification
-    LicenseMailer.notify(self).deliver_later unless self.skip_notification
-  end
-
   def assign_user_admin_role
     if self.quantity > 1 && self.user
       self.user.assign_school_admin_role
