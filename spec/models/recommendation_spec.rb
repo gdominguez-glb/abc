@@ -14,4 +14,11 @@ RSpec.describe Recommendation, type: :model do
       expect(Recommendation.with_subject('Math')).to include(recommendation)
     end
   end
+
+  describe "#icon_image" do
+    it "icon image url" do
+      recommendation = create(:recommendation, subject: 'Math', icon: 'BLOG')
+      expect(recommendation.icon_image).to eq("recommendations/BLOG.png")
+    end
+  end
 end
