@@ -5,6 +5,7 @@ class Legacy::License < ActiveRecord::Base
   def self.import_to_new_licenses
     Legacy::License.where.not(email: nil).find_each do |legacy_license|
       product = Spree::Product.find_by(name: legacy_license.mapped_name)
+      next if product.blank?
       licensed_product = Spree::LicensedProduct.create(
         email:          legacy_license.email,
         expire_at:      revise_expiration_date(product, legacy_license.expiration_date),
