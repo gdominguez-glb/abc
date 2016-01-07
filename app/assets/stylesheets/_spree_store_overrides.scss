@@ -29,7 +29,7 @@
   }
 
   .product-body {
-    min-height: 130px;
+    min-height: 280px;
     text-align: center;
 
     .flip-front {
@@ -41,6 +41,9 @@
       padding: 20px 15px 15px 15px;
     }
 
+    .flip-container, .flip-back, .flip-front {
+      min-height: 280px;
+    }
   }
 
   .product-title {
