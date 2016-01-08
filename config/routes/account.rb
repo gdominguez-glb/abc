@@ -41,4 +41,5 @@ namespace :account do
 
   get 'tour/dashboard', to: 'tour#dashboard'
   get 'tour/licenses', to: 'tour#licenses'
+  get 'tour/licenses_users', to: 'tour#licenses_users'
 end
