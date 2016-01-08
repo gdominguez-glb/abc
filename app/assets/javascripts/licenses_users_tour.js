@@ -25,9 +25,11 @@ function startLicensesUsersTour() {
     attachTo: '.js-export-users-button right',
     buttons: [
       {
-        text: 'Exit',
+        text: 'My Resources Tour',
         classes: 'shepherd-button-secondary',
-        action: 'shepherd.cancel'
+        action: function() {
+          window.location.pathname = "/account/products";
+        }
       }
     ]
   });
