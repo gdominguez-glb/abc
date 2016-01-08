@@ -43,6 +43,7 @@ module Cms
     end
 
     def product_marketing_editor
+      @page.tiles[:rows].sort_by! { |row| row[:position]}
     end
 
     def update_tiles
