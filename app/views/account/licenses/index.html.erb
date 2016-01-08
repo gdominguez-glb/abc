@@ -78,7 +78,9 @@
   <%= render 'assign_form_js' %>
 
   <%= javascript_tag do %>
-    $.get('/account/tour/licenses');
+    <% unless current_spree_user.tour_showed_licenses? %>
+      $.get('/account/tour/licenses');
+    <% end %>
   <% end %>
 
 <% end %>

@@ -4,7 +4,7 @@ function startLicensesTour() {
   tour = tour.addStep('top_bar', {
     title: 'Top Bar',
     text: "The top bar displays how many licenses purchased, distributed and remaining of the selected product in Step 1.",
-    attachTo: '.js-license-stats'
+    attachTo: '.js-license-stats top'
   });
 
   tour = tour.addStep('step_1', {
@@ -33,7 +33,9 @@ function startLicensesTour() {
       {
         text: 'User Management',
         classes: 'shepherd-button-secondary',
-        action: ''
+        action: function() {
+          window.location.pathname = "/account/licenses/users";
+        }
       }
     ]
   });
