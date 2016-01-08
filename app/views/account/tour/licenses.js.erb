@@ -1,0 +1,9 @@
+$('body').append("<%= escape_javascript(render 'modal') %>");
+$('#tour-intro-modal').modal('show');
+$('#tour-intro-modal').on('hidden.bs.modal', function (e) {
+  $('#tour-intro-modal').remove();
+});
+$('#start-tour-btn').click(function(){
+  $('#tour-intro-modal').modal('hide');
+  startLicensesTour();
+});

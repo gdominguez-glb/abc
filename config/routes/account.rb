@@ -39,5 +39,7 @@ namespace :account do
 
   resources :bookmarks
 
-  get 'tour/start', to: 'tour#start'
+  get 'tour/dashboard', to: 'tour#dashboard'
+  get 'tour/licenses', to: 'tour#licenses'
+  get 'tour/licenses_users', to: 'tour#licenses_users'
 end
