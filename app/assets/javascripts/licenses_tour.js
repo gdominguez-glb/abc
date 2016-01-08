@@ -21,13 +21,13 @@ function startLicensesTour() {
 
   tour = tour.addStep('step_3', {
     title: 'Step 3',
-    text: "Once you’ve added users, use Step 3 to determine the number of licenses to distribute to each user. Generally, you will only want to assign one license per user. Assigning more than one license to a user will allow them to manage and distribute those licenses. The number of users will display, and multiply by the number of licenses to indicate the total number of licenses that will be distributed.",
+    text: "Once you've added users, use Step 3 to determine the number of licenses to distribute to each user. Generally, you will only want to assign one license per user. Assigning more than one license to a user will allow them to manage and distribute those licenses. The number of users will display, and multiply by the number of licenses to indicate the total number of licenses that will be distributed.",
     attachTo: '.js-step-3 top'
   });
 
   tour = tour.addStep('assign_licenses', {
     title: 'Assign Licenses',
-    text: "Finally, click to ‘Assign Licenses’, and your licenses will be distributed!",
+    text: "Finally, click to 'Assign Licenses', and your licenses will be distributed!",
     attachTo: '.js-step-4 top',
     buttons: [
       {
