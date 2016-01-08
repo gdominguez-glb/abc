@@ -56,7 +56,7 @@
         });
       });
 
-      <% unless current_spree_user.tour_showed? %>
+      <% unless current_spree_user.tour_showed_dashboard? %>
         $.get('/account/tour/start');
       <% end %>
     });
