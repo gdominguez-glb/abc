@@ -57,7 +57,7 @@
       });
 
       <% unless current_spree_user.tour_showed_dashboard? %>
-        $.get('/account/tour/start');
+        $.get('/account/tour/dashboard');
       <% end %>
     });
   <% end %>
