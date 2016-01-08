@@ -3,7 +3,7 @@ module Spree
     class VideosController < ResourceController
       def index
         @search = Spree::Video.ransack(params[:q])
-        @videos = @search.result.includes(:video_group).page(params[:page])
+        @videos = @search.result.includes(:video_group).distinct.page(params[:page])
       end
 
       protected
