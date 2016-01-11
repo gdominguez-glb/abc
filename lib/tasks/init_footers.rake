@@ -18,14 +18,6 @@ namespace :footers do
         link: '/terms-of-service'
       },
       {
-        title: 'Updates',
-        link: '',
-        sub_links: [
-          { name: 'Press', link: '/updates/global/press' },
-          { name: 'Reports', link: '/updates/global/reports' }
-        ]
-      },
-      {
         title: 'FAQ',
         link: ''
       },
