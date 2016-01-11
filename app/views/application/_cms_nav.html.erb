@@ -31,7 +31,7 @@
       </div>
     </div>
     <% if Rails.env == 'staging' %>
-      <%= link_to 'Sync Cms Data To Prod', '/cms/sync', class: 'btn btn-primary', data: { method: :post, confirm: 'Are you sure to sync data to prod?' } %>
+      <%= link_to 'Sync Cms Data To Prod', '/cms/sync', class: 'list-group-item', data: { method: :post, confirm: 'Are you sure to sync data to prod?' } %>
     <% end %>
   </div>
 </div>
