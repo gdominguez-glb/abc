@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160108135346) do
+ActiveRecord::Schema.define(version: 20160111022630) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -980,6 +980,7 @@ ActiveRecord::Schema.define(version: 20160108135346) do
     t.string   "sf_id_pricebook"
     t.boolean  "show_in_storefront",   default: true
     t.boolean  "purchase_once",        default: false
+    t.text     "short_description"
   end
 
   add_index "spree_products", ["available_on"], name: "index_spree_products_on_available_on", using: :btree
