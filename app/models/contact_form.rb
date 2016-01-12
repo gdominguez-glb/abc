@@ -131,12 +131,13 @@ class ContactForm
     case self.topic
     when 'Existing Order Support'
       {
-        'What_curriculum_are_you_interested_in__c' => self.curriculum,
+        'Curriculum__c' => self.curriculum,
         'Items_Purchased__c' => self.items_purchased,
       }
     when 'Parent Support', 'Technical Support', 'Content Error'
       {
-        'What_curriculum_are_you_interested_in__c' => self.curriculum,
+        'Curriculum__c' => self.curriculum,
+        'Description' => self.description
       }
     else
       {}
