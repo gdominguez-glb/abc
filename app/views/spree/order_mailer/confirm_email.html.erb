@@ -1,0 +1,32 @@
+<p>Thank you for purchasing the following materials:</p>
+
+<% @order.line_items.each do |line_item| %>
+  <p>
+  <%= line_item.variant.product.name %> (<%= line_item.quantity %>) @ <%= line_item.display_amount %>
+  </p>
+<% end %>
+
+<p>
+Please review and retain the following order information for your records. 
+</p>
+
+<p>
+<%= @order.number %>
+</p>
+<p>
+<%= @order.created_at.strftime('%F') %>
+</p>
+<p>
+<%= @order.display_total %>
+</p>
+
+<p>
+Thank you again for your order. Please reach out to us if you have any questions; we are happy to be of assistance.
+</p>
+
+<p>
+Kind regards,
+</p>
+<p>
+Great Minds
+</p>
