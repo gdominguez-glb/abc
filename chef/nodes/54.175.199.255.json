@@ -43,6 +43,7 @@
   "rails_env": "qa",
   "rails_secrets": "827125560a51d5d225fea5d293df7c5662fb3b1341fb538119b53a48eb006130712d3db914e1a4e48869c2057243d613e967109e8f23b98eb7b344f25b5b6d23",
   "domain": "qa.greatminds.org",
+  "the_domain": "qa.greatminds.org",
   "app_server": "true",
   "db_server": "true"
 }

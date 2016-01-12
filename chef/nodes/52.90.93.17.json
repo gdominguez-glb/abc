@@ -42,6 +42,7 @@
   "rails_env": "staging",
   "rails_secrets": "64550adc426749daffc881dc6c90c541d3896be12efb1a9c789bdbaf9b5f34368ffc5411966bb245f544f8f296e5b38255e5cd6208ba5ffb04805e86eede3d84",
   "domain": "staging.greatminds.org",
+  "the_domain": "staging.greatminds.org",
   "app_server": "true",
   "db_server": "true"
 }
