@@ -161,8 +161,11 @@ marketing_templates:
           <div class="vertical-center">
             <h6><%= title %></h6>
             <p><%= body_text %></p>
-            <% if button_title.present? && button_link.present? %>
-              <a class="btn btn-default btn-block-xs" href="<%= button_link %>"><%= button_title %></a>
+            <% if button_1_title.present? && button_1_link.present? %>
+              <a class="btn btn-default btn-block-xs margin-bottom-m" href="<%= button_1_link %>"><%= button_1_title %></a>
+            <% end %>
+            <% if button_2_title.present? && button_2_link.present? %>
+              <a class="btn btn-default btn-block-xs margin-bottom-m" href="<%= button_2_link %>"><%= button_2_title %></a>
             <% end %>
           </div>
         </div>
