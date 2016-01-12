@@ -222,9 +222,13 @@ Spree::Order.class_eval do
   end
 
   def deliver_order_confirmation_email
-    return if total == 0.0
+    return if free?
     OrderMailer.confirm_email(id).deliver_later
     update_column(:confirmation_delivered, true)
+  end
+
+  def free?
+    total == 0.0
   end
 
   checkout_flow do
