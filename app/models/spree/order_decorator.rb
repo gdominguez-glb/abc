@@ -221,6 +221,12 @@ Spree::Order.class_eval do
     log_purchase_activity!
   end
 
+  def deliver_order_confirmation_email
+    return if total == 0.0
+    OrderMailer.confirm_email(id).deliver_later
+    update_column(:confirmation_delivered, true)
+  end
+
   checkout_flow do
     go_to_state :address, if: -> (order) { !order.free_digital_order? }
     go_to_state :terms_and_conditions, if: -> (order) { order.has_license_products? }
