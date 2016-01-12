@@ -202,4 +202,10 @@ Spree::Product.class_eval do
   def active_license_user_ids
     Spree::LicensedProduct.available.where(product_id: self.id).pluck(:user_id)
   end
+
+  def parsed_access_url
+    uri = URI.parse(access_url)
+    uri.query = [uri.query, "opened_product_id=#{id}"].compact.join('&')
+    uri.to_s
+  end
 end
