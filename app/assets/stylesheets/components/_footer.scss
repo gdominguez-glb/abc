@@ -30,12 +30,6 @@
 .footer-section {
   margin: 0 0 30px;
   font-size: .90em;
-
-  &:last-child {
-    @media screen and (min-width: $screen-sm-min) {
-      margin-left: 20px;
-    }
-  }
 }
 
 .attribution {
