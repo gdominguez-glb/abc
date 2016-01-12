@@ -25,7 +25,7 @@ Spree::ProductsController.class_eval do
     if product.product_type == 'inkling'
       main_app.inkling_code_path(product)
     elsif product.access_url.present?
-      "#{product.access_url}?#{{opened_product_id: product.id}.to_param}"
+      product.parsed_access_url
     end
   end
 
