@@ -36,6 +36,8 @@
       - green
       - blue
       - cream
+      - orange
+      - light-blue
   - :name: button_1_title
     :label: Button 1 Title
     :input_type: text
@@ -66,6 +68,8 @@
       - green
       - blue
       - cream
+      - orange
+      - light-blue
   - :name: button_title
     :label: Button Title
     :input_type: text
@@ -90,6 +94,8 @@
       - green
       - blue
       - cream
+      - orange
+      - light-blue
   - :name: button_1_title
     :label: Button 1 Title
     :input_type: text
@@ -120,6 +126,8 @@
       - green
       - blue
       - cream
+      - orange
+      - light-blue
   - :name: button_title
     :label: Button Title
     :input_type: text
@@ -144,6 +152,8 @@
       - green
       - blue
       - cream
+      - orange
+      - light-blue
   - :name: button_title
     :label: Button Title
     :input_type: text
@@ -168,6 +178,8 @@
       - green
       - blue
       - cream
+      - orange
+      - light-blue
   - :name: button_title
     :label: Button Title
     :input_type: text
@@ -192,6 +204,8 @@
       - green
       - blue
       - cream
+      - orange
+      - light-blue
   - :name: button_title
     :label: Button Title
     :input_type: text
@@ -216,6 +230,8 @@
       - green
       - blue
       - cream
+      - orange
+      - light-blue
   - :name: button_title
     :label: Button Title
     :input_type: text
@@ -240,6 +256,8 @@
       - green
       - blue
       - cream
+      - orange
+      - light-blue
   - :name: button_title
     :label: Button Title
     :input_type: text
@@ -264,6 +282,8 @@
       - green
       - blue
       - cream
+      - orange
+      - light-blue
   - :name: button_title
     :label: Button Title
     :input_type: text
@@ -288,6 +308,8 @@
       - green
       - blue
       - cream
+      - orange
+      - light-blue
   - :name: button_title
     :label: Button Title
     :input_type: text
@@ -312,6 +334,8 @@
       - green
       - blue
       - cream
+      - orange
+      - light-blue
   - :name: button_title
     :label: Button Title
     :input_type: text
@@ -404,6 +428,8 @@
       - green
       - blue
       - cream
+      - orange
+      - light-blue
   - :name: button_title
     :label: Button Title
     :input_type: text
@@ -419,6 +445,8 @@
       - green
       - blue
       - cream
+      - orange
+      - light-blue
   - :name: title_1
     :label: Title 1
     :input_type: text
@@ -438,6 +466,8 @@
       - green
       - blue
       - cream
+      - orange
+      - light-blue
   - :name: title_2
     :label: Title 2
     :input_type: text
@@ -479,6 +509,8 @@
       - green
       - blue
       - cream
+      - orange
+      - light-blue
   - :name: title_1
     :label: Title 1
     :input_type: text
