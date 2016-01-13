@@ -1,36 +1,32 @@
 // _foundation.scss
 // Tile styling _foundation
 
-// Styles applied to class="blue-bg"
-
 .blue-bg {
-  background: $dark-blue;
   color: $cream;
+  background: $dark-blue;
 }
-
-// Styles for tiles with class="cream-bg"
 
 .cream-bg {
-  background: #FFFAE5;
   color: $dark-blue;
+  background: #FFFAE5;
 }
-
-// Styles for any tile with class="green-bg"
 
 .green-bg {
-  background: $brand-green;
   color: $dark-blue;
+  background: $brand-green;
 }
 
-// Styles for any tile with class="coral-bg"
+.light-blue-bg {
+  color: $dark-blue;
+  background: $english;
+}
+
+.orange-bg {
+  color: $dark-blue;
+  background: $history;
+}
 
 .coral-bg {
-  background: $coral;
   color: $cream;
-}
-
-// Styles for any tile with class="image-bg"
-
-.image-bg {
-
+  background: $coral;
 }
