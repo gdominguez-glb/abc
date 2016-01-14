@@ -81,9 +81,13 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0 0 10px;
   font-weight: bold;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.1em;
 
   @extend .sans-serif;
+
+  section.row & {
+    letter-spacing: 0.2em;
+  }
 }
 
 h1, h2, h3, h4, h5, h6, p {
