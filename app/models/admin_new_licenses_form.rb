@@ -65,12 +65,6 @@ class AdminNewLicensesForm
       order.next if order.state != 'complete'
       count += 1
     end
-    process_payment(order)
-  end
-
-  def process_payment(order)
-    payment = order.payments.last
-    payment.process! if payment
   end
 
   def create_order_salesforce_reference(order)
