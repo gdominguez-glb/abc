@@ -167,7 +167,7 @@ Spree::Product.class_eval do
   def add_video_group_taxon
     if self.video_group
       taxon = Spree::Taxon.find_by(name: self.video_group.name)
-      self.taxons << taxon if taxon
+      self.taxons << taxon if taxon && !self.taxons.where(id: taxon.id).exists?
     end
   end
 
