@@ -16,6 +16,11 @@
     margin-bottom: $b-space * 1.2;
   }
 
+  .panel-heading {
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+  }
+
   .panel + .panel {
     margin-top: 0;
   }
