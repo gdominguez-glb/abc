@@ -24,12 +24,13 @@ Spree::Order.class_eval do
       self.next if self.state != 'complete'
       count += 1
     end
-    manual_process_payment
   end
 
-  def manual_process_payment
-    payment = self.payments.last
-    payment.process! if payment
+  # overwrite to bypass validation for cc process
+  def ensure_line_items_present
+    if line_items.empty? && !self.cc_process?
+      errors.add(:base, Spree.t(:there_are_no_items_for_this_order)) and return false
+    end
   end
 
   def check_terms_and_conditions
