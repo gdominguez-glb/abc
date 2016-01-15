@@ -15,6 +15,8 @@ class NotificationWorker
               Spree::User.where("1 = 1")
             elsif nt.curriculum_users_target?
               Spree::User.with_curriculum(nt.curriculum)
+            elsif nt.product_target?
+              Spree::User.where(id: Spree::LicensedProduct.unexpire.pluck(:user_id))
             end
     delivery_notifications(nt, users) if users.present?
     nt.deliver!
