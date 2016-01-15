@@ -4,7 +4,7 @@
     <div data-hook="product_taxons">
       <ul class="list-group" id="similar_items_by_taxon" data-hook>
         <% @product.taxons.each do |taxon| %>
-          <li class="list-group-item"><%= link_to taxon.name, spree.root_path(taxon_ids: [taxon.id]) %></li>
+          <li class="list-group-item pull-left margin-right-s product-taxon"><%= link_to taxon.name, spree.root_path(taxon_ids: [taxon.id]) %></li>
         <% end %>
       </ul>
     </div>

@@ -34,7 +34,7 @@
     </div>
 
     <% if products.any? %>
-      <div id="products" data-hook class="col-sm-6 col-md-7 col-lg-8 col-lg-offset-halfone">
+      <div id="products" data-hook class="col-sm-6 col-md-7 col-lg-8 margin-top-xl margin-bottom-xl">
         <div class="row">
           <% products.each do |product| %>
             <%= render partial: 'spree/shared/product', locals: { product: product } %>
@@ -47,12 +47,6 @@
     <% if paginated_products.respond_to?(:num_pages) %>
       <%= paginate paginated_products, theme: 'twitter-bootstrap-3' %>
     <% end %>
-  </div>
-
-  <div class="row row-img-full" style="background-image: url('http://gm-s3-qa.intridea.com/documents/attachments/000/000/017/original/productspage-content1.jpg?1442948339')">
-    <div class="row-img-full-content">
-      <div class="col-xs-12"></div>
-    </div>
   </div>
 </div>
 

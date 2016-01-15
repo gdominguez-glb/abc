@@ -1,41 +1,46 @@
 <% url = spree.product_url(product, taxon_id: @taxon.try(:id)) %>
-<div id="product_<%= product.id %>" class="col-md-6 product-list-item" data-hook="products_list_item" itemscope itemtype="http://schema.org/Product">
+<div id="product_<%= product.id %>" class="col-md-12 product-list-item" data-hook="products_list_item" itemscope itemtype="http://schema.org/Product">
   <div class="product-wrapper">
-    <% cache(@taxon.present? ? [I18n.locale, current_currency, @taxon, product] : [I18n.locale, current_currency, product]) do %>
-      <div class="product-body flip-container">
-        <div class="flipper">
-          <div class="flip-front">
-            <h5 class="title">
+      <div class="row">
+        <div class="col-md-9">
+          <span class="product-type"><%= product.curriculum.try(:name) || 'General' %></span>
+          <% cache(@taxon.present? ? [I18n.locale, current_currency, @taxon, product] : [I18n.locale, current_currency, product]) do %>
+            <h5 class="product-title margin-top">
               <% if product.group_product? %>
                 <%= link_to truncate(product.name, length: 50), group_product_path(product), itemprop: "name", title: product.name %>
               <% else %>
                 <%= link_to truncate(product.name, length: 50), url, itemprop: "name", title: product.name %>
               <% end %>
             </h5>
-            <button class="btn btn-link flip-btn">
-              More
-            </button>
-          </div>
-          <div class="flip-back">
-            <p><%= truncate product.short_description %></p>
-            <button class="btn btn-link flip-btn">
-              Back
-            </button>
-          </div>
+            <p class="product-description">
+              <%= truncate(product.description, length: 180) %>
+              <% if product.group_product? %>
+                <%= link_to "Learn More", group_product_path(product), itemprop: "name", title: product.name %>
+              <% else %>
+                <%= link_to "Learn More", url, itemprop: "name", title: product.name %>
+              <% end %>
+            </p>
+          <% end %>
+        </div>
+
+        <div class="col-md-3 product-actions">
+          <span itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product-price">
+            <strong itemprop="price">
+              <% if display_price(product) == "$0.00" %>
+                FREE
+              <% else %>
+                <%= display_price(product) %>
+              <% end %>
+            </strong>
+          </span>
+          <% if product.group_product? %>
+            <%= link_to 'Explore Options', group_product_path(product), class: 'btn btn-primary product-btn-primary' %>
+          <% elsif product.partner_product? && product.redirect_url.present? %>
+            <%= link_to 'Visit Site', product.redirect_url, target: '_blank', class: 'btn btn-primary product-btn-primary' %>
+          <% else %>
+            <%= link_to "Add to cart", url, class: 'btn btn-primary product-btn-primary' %>
+          <% end %>
         </div>
       </div>
-      <div class="product-footer">
-        <span class="product-type"><%= product.curriculum.try(:name) || 'General' %></span>
-        <% if product.group_product? %>
-          <%= link_to 'Explore', group_product_path(product), class: 'pull-right' %>
-        <% elsif product.partner_product? && product.redirect_url.present? %>
-          <%= link_to 'Visit Partner Site', product.redirect_url, class: 'pull-right', target: '_blank' %>
-        <% else %>
-          <span itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product-price pull-right">
-            <span class="price selling" itemprop="price"><%= link_to display_price(product), url, class: 'btn btn-sm btn-primary' %></span>
-          </span>
-        <% end %>
-      </div>
-    <% end %>
   </div>
 </div>

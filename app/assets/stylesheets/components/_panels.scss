@@ -68,6 +68,23 @@
       overflow-y: scroll;
     }
 
+    &.panel-shop {
+      .panel-heading {
+        padding: $b-space $b-space-m;
+
+        a {
+          display: block;
+          padding: 0px;
+
+          &:after {
+            font-family: 'Glyphicons Halflings';
+            content:"\e252";
+            float: right;
+          }
+        }
+      }
+    }
+
     .panel-heading {
       padding: 0;
 
