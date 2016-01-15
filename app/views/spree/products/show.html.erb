@@ -6,14 +6,6 @@
     <div data-hook="product_show" itemscope itemtype="http://schema.org/Product">
 
       <div class="row">
-        <div class="col-xs-12">
-          <%= link_to '/store', class: 'btn btn-default btn-block-xs margin-bottom-m' do %>
-            <i class="mi">keyboard_arrow_left</i> Back
-          <% end %>
-        </div>
-      </div>
-
-      <div class="row">
 
         <div class="col-md-6" data-hook="product_left_part">
           <div data-hook="product_left_part_wrap">
@@ -42,6 +34,30 @@
           <div data-hook="product_right_part_wrap">
             <div id="product-description" data-hook="product_description">
               <h2 class="product-title" itemprop="name"><%= @product.name %></h2>
+              <% if @product.price_in(current_currency) and !@product.price.nil? %>
+                <div data-hook="product_price">
+                  <div id="product-price">
+                    <div>
+                      <span class="lead price selling" itemprop="price">
+                        <%= display_price(@product) %>
+                      </span>
+                      <span itemprop="priceCurrency" content="<%= @product.currency %>"></span>
+                    </div>
+
+                    <% if @product.master.can_supply? %>
+                      <link itemprop="availability" href="http://schema.org/InStock" />
+                    <% elsif @product.variants.empty? %>
+                      <br />
+                      <span class="out-of-stock"><%= Spree.t(:out_of_stock) %></span>
+                    <% end %>
+                  </div>
+                </div>
+              <% else %>
+                <div id="product-price">
+                  <br>
+                  <div><span class="price selling" itemprop="price"><%= Spree.t('product_not_available_in_this_currency') %></span></div>
+                </div>
+              <% end %>
 
               <p class="padding-top-m padding-bottom" itemprop="description" data-hook="description">
                 <%= product_description(@product) rescue Spree.t(:product_has_no_description) %>
