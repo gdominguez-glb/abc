@@ -16,7 +16,7 @@
         <%= f.label :target_type %>
         <div class="select-container dark-select block">
           <span>Select Target</span>
-          <%= f.select :target_type, NotificationTrigger::TARGET_TYPES, {}, class: 'form-control' %>
+          <%= f.select :target_type, NotificationTrigger::TARGET_TYPES, { include_blank: 'Please Select' }, class: 'form-control' %>
         </div>
       </div>
     </div>
@@ -66,6 +66,15 @@
       <div class="form-group" style="position: relative;">
         <%= f.label :notify_at %>
         <%= f.text_field :notify_at, class: 'form-control datetime-picker' %>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="form-group hidden target-input" data-input="product">
+        <%= f.label :product %>
+        <div class="select-container dark-select block">
+          <span>Select Product</span>
+          <%= f.collection_select :product_id, Spree::Product.where(individual_sale: true).all, :id, :name, { include_blank: 'Select Product' }, class: 'form-control' %>
+        </div>
       </div>
     </div>
     <div class="col-sm-12">
