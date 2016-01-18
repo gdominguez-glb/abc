@@ -50,6 +50,8 @@
   </div>
 </div>
 
+<%= render partial: 'spree/shared/partner_modal' %>
+
   <%= javascript_tag do %>
     $(function() {
       var filterItems = $('#categoryFilters .list-group-item');
@@ -63,6 +65,15 @@
         if ( $(this).hasClass('active') ) {
           $(this).closest('.panel-collapse').collapse('show');
         }
+      });
+    });
+
+    $(document).ready(function(){
+      $(".partner-modal").on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget);
+        var redirectUrl = button.data('redirect')
+        var $modal = $(this);
+        $modal.find('.partner-modal-proceed').attr({"href": redirectUrl});
       });
     });
   <% end %>
