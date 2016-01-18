@@ -43,7 +43,7 @@ class SchoolDistrict < ActiveRecord::Base
       "select Id from #{salesforce_sobject_name} where Name = '#{name}'").first
   end
 
-  def self.record_type_id(name = place_type.humanize, object_type = 'Account')
+  def self.record_type_id(name, object_type = 'Account')
     RecordType.find_in_salesforce_by_name_and_object_type(name, object_type)
       .try('Id')
   end
