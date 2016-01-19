@@ -1,6 +1,6 @@
 <h4 class='recommends-title'>Recommendations For You</h4>
 <div class="row">
-  <div class="recommended-products col-xs-12">
+  <div class="recommended-products col-xs-12 js-recommends">
     <% @recommendations.each do |recommendation| %>
       <div class="recommended-product-wrapper clearfix">
         <% recUrl = 'recommendations/' + recommendation.icon + '_' + recommendation.subject.upcase + '.png' %>
