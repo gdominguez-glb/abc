@@ -17,6 +17,16 @@
     }
   }
 
+  #order_summary {
+    h1 {
+      display: none;
+    }
+
+    h4 {
+      line-height: 1.2em;
+    }
+  }
+
   #productContactForm {
     .modal-header, .modal-body {
       padding: 30px;
