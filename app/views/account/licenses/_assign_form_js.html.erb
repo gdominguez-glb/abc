@@ -19,6 +19,11 @@
     $(document).on('change', '#licenses_ids', function(e) {
       var selected = $(this).find(':selected').text();
       $('#licenseDescription').text(selected);
+      if (selected === 'Select a product') {
+        $('.js-step-1 .js-check-icon').addClass('hide');
+      } else {
+        $('.js-step-1 .js-check-icon').removeClass('hide');
+      }
     });
 
     // Open the add users modal
