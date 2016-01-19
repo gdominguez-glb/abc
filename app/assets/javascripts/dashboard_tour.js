@@ -16,7 +16,7 @@ function startDashboardTour() {
   tour = tour.addStep('recommendations', {
     title: 'Recommendations',
     text: 'Recommendations will keep you in the loop about everything from new blog posts to professional development opportunities.',
-    attachTo: 'h4.recommends-title right'
+    attachTo: '.js-recommends right'
   });
 
   tour = tour.addStep('video_gallery', {
