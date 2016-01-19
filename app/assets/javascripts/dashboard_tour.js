@@ -34,7 +34,7 @@ function startDashboardTour() {
   tour = tour.addStep('support', {
     title: 'Support',
     text: "Need support? Check out our FAQ section. If you don't find what you're looking for, don't hesitate to contact us.",
-    attachTo: '.footer top',
+    attachTo: '.js-footer top',
     buttons: [
         {
           text: 'Exit',
