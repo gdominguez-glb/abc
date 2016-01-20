@@ -1,5 +1,5 @@
 Spree::FrontendHelper.class_eval do
-  
+
   def flash_messages(opts = {})
     ignore_types = ["order_completed"].concat(Array(opts[:ignore_types]).map(&:to_s) || [])
 
@@ -9,6 +9,10 @@ Spree::FrontendHelper.class_eval do
       end
     end
     nil
+  end
+
+  def product_type_class(product)
+    "product-type-#{product.curriculum.try(:name).downcase}" if product.curriculum.try(:name)
   end
 
 end
