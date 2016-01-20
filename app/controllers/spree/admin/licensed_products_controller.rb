@@ -22,7 +22,7 @@ module Spree
 
         if @new_licenses_form.valid?
           @new_licenses_form.perform
-          redirect_to spree.admin_licensed_products_path
+          redirect_to spree.admin_licensed_products_path, notice: 'Licenses successfully distributed'
         else
           render :new
         end
