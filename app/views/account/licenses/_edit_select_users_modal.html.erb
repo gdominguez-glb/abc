@@ -1,0 +1,35 @@
+<div class="modal fade" tabindex="-1" role="dialog" id="edit-select-users-modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title">Edit selected users</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <a class='btn btn-default' id="add-new-users-btn">Add New Users +</a>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <% @emails.each do |email| %>
+              
+              <p><span class="email-selection"><%= email %></span> <span class='remove-select-email'>x</span></p>
+            <% end %>
+          </div>
+        </div>
+
+        <hr />
+
+        <div class="row">
+          <div class="col-md-6">
+            <button type="button" class="btn btn-danger btn-block margin-bottom-s" data-dismiss="modal">Cancel</button>
+          </div>
+          <div class="col-md-6">
+            <button type="button" class="btn btn-success btn-block margin-bottom" id="confirm-edit-select-users-btn">Confirm</button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>

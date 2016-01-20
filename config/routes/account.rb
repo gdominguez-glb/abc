@@ -22,6 +22,7 @@ namespace :account do
       get :users
       get :export_users
       post :select_users
+      get :edit_select_users
       get :user_stats
       get :licenses_stats
       get :edit_user_licenses

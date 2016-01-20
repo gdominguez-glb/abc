@@ -63,6 +63,10 @@ class Account::LicensesController < Account::BaseController
     @emails = SelectUsersForm.new(licenses_recipients: params[:licenses_recipients], emails: params[:emails], users_file: params[:file]).perform
   end
 
+  def edit_select_users
+    @emails = params[:emails]
+  end
+
   def revoke_all
     distribution = current_spree_user.product_distributions.find(params[:distribution_id])
     Spree::LicensesManager::DistributionRevoker.new(distribution).revoke

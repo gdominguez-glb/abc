@@ -1,0 +1,24 @@
+$('body').append("<%= escape_javascript(render 'edit_select_users_modal') %>");
+$('#edit-select-users-modal').modal('show');
+$('#edit-select-users-modal').on('hidden.bs.modal', function (e) {
+  $('#edit-select-users-modal').remove();
+})
+$("#edit-select-users-modal .remove-select-email").click(function(){
+  $(this).parent().remove();
+});
+$('#confirm-edit-select-users-btn').click(function(){
+  var emails = [];
+  $.each($("#edit-select-users-modal .email-selection"), function(i, el){
+    emails.push($(el).text());
+  });
+  $('input[name="assign_licenses_form[licenses_recipients]"]').val(emails.join(','));
+  $('#edit-select-users-modal').modal('hide');
+  $('.js-step-2 .js-number-total').text(emails.length);
+});
+
+$('#edit-select-users-modal #add-new-users-btn').click(function(){
+  $('#edit-select-users-modal').modal('hide');
+  setTimeout(function(){
+    $('#select-users-modal').modal('show');
+  }, 1000);
+});
