@@ -14,9 +14,15 @@
       <div data-hook="admin_products_index_search" class="row">
         <div class="col-md-6">
           <div class="form-group">
-            <%= f.label :product_type, Spree.t(:name) %>
+            <%= f.label :name_cont, Spree.t(:name) %>
+            <%= f.text_field :name_cont, :size => 15, class: "form-control js-quick-search-target" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :product_type, Spree.t(:product_type) %>
             <%= f.select :product_type_eq, Spree::Product::PRODUCT_TYPES, { include_blank: 'All' }, class: "form-control" %>
           </div>
+        </div>
+        <div class="col-md-6">
           <div class="form-group">
             <label>Free</label>
             <%= f.check_box :master_prices_amount_eq, { include_hidden: false }, 0 %>
@@ -27,7 +33,7 @@
           </div>
         </div>
       </div>
-      <div data-hook="admin_products_index_search_buttons" class="form-actions">
+      <div data-hook="admin_products_index_search_buttons" class="form-actions" style="margin-bottom: 20px;">
         <%= button Spree.t(:search), 'search' %>
       </div>
     <% end %>
