@@ -3,7 +3,7 @@
   <div class="product-wrapper">
       <div class="row">
         <div class="col-md-9">
-          <span class="product-type product-type-<%= product.curriculum.try(:name) || 'general' %>"><%= product.curriculum.try(:name) || 'General' %></span>
+          <span class="product-type <%= product_type_class(product) %>"><%= product.curriculum.try(:name) || 'General' %></span>
           <% cache(@taxon.present? ? [I18n.locale, current_currency, @taxon, product] : [I18n.locale, current_currency, product]) do %>
             <h5 class="product-title margin-top">
               <% if product.group_product? %>
