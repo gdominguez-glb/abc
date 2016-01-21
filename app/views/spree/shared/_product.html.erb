@@ -26,11 +26,7 @@
         <div class="col-md-3 product-actions">
           <span itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product-price">
             <strong itemprop="price">
-              <% if display_price(product) == "$0.00" %>
-                FREE
-              <% else %>
-                <%= display_price(product) %>
-              <% end %>
+              <%= product_display_price(product) %>
             </strong>
           </span>
           <% if product.group_product? %>

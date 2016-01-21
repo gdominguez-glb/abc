@@ -15,4 +15,9 @@ Spree::FrontendHelper.class_eval do
     "product-type-#{product.curriculum.try(:name).downcase}" if product.curriculum.try(:name)
   end
 
+  def product_display_price(product)
+    price = display_price(product) unless product.product_type == "group" || product.product_type == "partner"
+    price == "$0.00" ? "FREE" : price
+  end
+
 end
