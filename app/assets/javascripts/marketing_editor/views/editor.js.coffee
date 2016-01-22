@@ -25,6 +25,11 @@ class MarketingEditorApp.Views.Editor extends Backbone.View
     @rows.add(row)
     rowView = new MarketingEditorApp.Views.TileRowView(model: row)
     @$('.rows').append(rowView.render().el)
+    @$('.tile-notice').html('Tile added, please scroll to bottom to edit.')
+    @$('.tile-notice').fadeIn(1000)
+    setTimeout(=>
+      @$('.tile-notice').fadeOut(500)
+    , 3000)
     @initEditor()
 
   saveRows: (e)->
