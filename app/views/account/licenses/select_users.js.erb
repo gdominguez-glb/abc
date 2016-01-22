@@ -10,6 +10,12 @@ $('#confirm-add-users-modal').on('hidden.bs.modal', function (e) {
 });
 
 $('#confirm-add-users-btn').click(function(){
+  <% unless params[:file].blank? %>
+    // limit quantity to 1 per user
+    $('input[name="assign_licenses_form[licenses_number]"]').val(1);
+    $('input[name="assign_licenses_form[licenses_number]"]').attr('readonly', true);
+  <% end %>
+
   // Get emails from hidden license recipients input
   $('#assign_licenses_form_licenses_recipients').val(emails.join(','));
 
