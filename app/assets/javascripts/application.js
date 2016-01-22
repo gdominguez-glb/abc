@@ -90,13 +90,13 @@ $(document).ready(function() {
     nav.find('.navbar-nav > li > a').removeAttr('data-toggle');
   }
 
-  var currentPage = $('body').data('page');
-  nav.find('[data-primary-nav-item="'+ currentPage +'"]').addClass('active');
-
-  if($('body').hasClass('blog')) {
+  if($('body').hasClass('blog') || $('body').hasClass('events')) {
     var firstSubNavLink = nav.find('#sub-nav li:first-child a').attr('href');
     $('body').attr('data-page', firstSubNavLink.replace('/',''));
   }
+
+  var currentPage = $('body').data('page');
+  nav.find('[data-primary-nav-item="'+ currentPage +'"]').addClass('active');
 
   var flipBtn = $('.flip-btn');
   flipBtn.on('click', function() {
