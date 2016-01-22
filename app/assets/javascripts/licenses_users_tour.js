@@ -10,13 +10,13 @@ function startLicensesUsersTour() {
   tour = tour.addStep('actions', {
     title: 'License Actions',
     text: "For users that have created a Great Minds website account, you'll see the option to 'Edit License' and 'View Details' on the user. For those that have not yet created an account, but have been assigned licenses, you will have the option to remind the user via email to sign up and claim their products, or you may cancel their invitation.",
-    attachTo: '.js-cancel-license top'
+    attachTo: '.js-user-table top'
   });
 
   tour = tour.addStep('edit_licenses', {
     title: 'Edit Licenses',
     text: "Using the 'Edit License' option, you can select a product to change the license quantity for, and update based on the displayed license amount available. If you'd like to revoke all licenses for the user and anyone they have given access to, you can 'Revoke All' here.",
-    attachTo: '.js-edit-license top'
+    attachTo: '.js-user-table top'
   });
 
   tour = tour.addStep('export_users', {

@@ -43,9 +43,9 @@
         <td><%= product_distribution.to_user.last_active_date.strftime("%b %-d, %Y") rescue nil %></td>
         <td>
           <% if product_distribution.to_user %>
-            <%= link_to 'Edit Licenses', edit_user_licenses_account_licenses_path(user_id: product_distribution.to_user.id), class: 'btn btn-default btn-sm js-edit-license', remote: true %>
+            <%= link_to 'Edit Licenses', edit_user_licenses_account_licenses_path(user_id: product_distribution.to_user.id), class: 'btn btn-default btn-sm', remote: true %>
           <% else %>
-            <%= link_to 'Cancel Invitation', cancel_invitation_account_licenses_path(email: product_distribution.email), class: 'btn btn-default btn-sm js-cancel-license', data: { confirm: 'Are you sure to cancel this license?', method: :post } %>
+            <%= link_to 'Cancel Invitation', cancel_invitation_account_licenses_path(email: product_distribution.email), class: 'btn btn-default btn-sm', data: { confirm: 'Are you sure to cancel this license?', method: :post } %>
           <% end %>
         </td>
         <td>
@@ -83,6 +83,6 @@
 
     <% unless current_spree_user.tour_showed_licenses_users? %>
       startLicensesUsersTour();
-    <% end %>    
+    <% end %>
   <% end %>
 <% end %>
