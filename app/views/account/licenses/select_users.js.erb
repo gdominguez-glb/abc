@@ -44,8 +44,7 @@ $('#confirm-add-users-btn').click(function(){
     // Update the total license count in step 3
     $('#licenseTotal').text(emails.length * licenseCount);
 
-    // Enable the "Assign Licenses" button
-    $('#btnAssignLicenses').removeClass('disabled');
+    window.validateSubmitButton();
 
     // Make the "Number of Users" box in step 3 green
     $('#assign_licenses_form_total').addClass('success');
