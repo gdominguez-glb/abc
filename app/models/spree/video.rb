@@ -3,14 +3,7 @@ class Spree::Video < ActiveRecord::Base
     path:           "/:class/:attachment/:id_partition/:style/:filename",
     url:            ":s3_alias_url",
     s3_protocol:    "http",
-    s3_host_alias:  ENV['s3_bucket_name'],
-    styles: lambda{ |a|
-      ["image/jpeg", "image/png"].include?( a.content_type ) ? {
-        thumb: "360x360>",
-        small:  "720x720>",
-        medium: "1080x1080>",
-        large: "1440x1440>"
-      } : {}  }
+    s3_host_alias:  ENV['s3_bucket_name']
   }
 
   searchkick callbacks: :async
