@@ -2,7 +2,7 @@
   <div class="video-wrapper">
     <div class="image-drawer-wrapper flip-container">
       <div class="flipper">
-        <div class="video-image-wrapper flip-front <% if video.preview_image_url %>video-preview-image<% end %>"<% if video.preview_image_url %> style="background-image: url('<%= video.preview_image_url %>')"<% end %> >
+        <div class="video-image-wrapper flip-front <% if video.screenshot.present? %>video-preview-image<% end %>"<% if video.screenshot.present? %> style="background-image: url('<%= video.screenshot.url %>')"<% end %> >
           <%= link_to play_video_gallery_path(video), remote: true, class: 'play-video-button' do %>
             <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span>
           <% end %>
