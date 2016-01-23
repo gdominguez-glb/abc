@@ -1,4 +1,4 @@
-$('body').append("<%= escape_javascript(render 'modal') %>");
+$('body').append("<%= escape_javascript(render 'account/tour/licenses/modal') %>");
 $('#tour-intro-modal').modal('show');
 $('#tour-intro-modal').on('hidden.bs.modal', function (e) {
   $('#tour-intro-modal').remove();
