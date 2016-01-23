@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160115073941) do
+ActiveRecord::Schema.define(version: 20160123034240) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -1624,12 +1624,12 @@ ActiveRecord::Schema.define(version: 20160115073941) do
     t.string   "title"
     t.text     "description"
     t.integer  "product_id"
-    t.boolean  "is_free",                        default: false
-    t.datetime "created_at",                                     null: false
-    t.datetime "updated_at",                                     null: false
+    t.boolean  "is_free",                           default: false
+    t.datetime "created_at",                                        null: false
+    t.datetime "updated_at",                                        null: false
     t.string   "file_file_name"
     t.string   "file_content_type"
-    t.integer  "file_file_size",       limit: 8
+    t.integer  "file_file_size",          limit: 8
     t.datetime "file_updated_at"
     t.string   "vimeo_uri"
     t.integer  "wistia_id"
@@ -1639,6 +1639,10 @@ ActiveRecord::Schema.define(version: 20160115073941) do
     t.integer  "video_group_id"
     t.string   "preview_image_url"
     t.string   "vimeo_id"
+    t.string   "screenshot_file_name"
+    t.string   "screenshot_content_type"
+    t.integer  "screenshot_file_size"
+    t.datetime "screenshot_updated_at"
   end
 
   create_table "spree_zone_members", force: :cascade do |t|
