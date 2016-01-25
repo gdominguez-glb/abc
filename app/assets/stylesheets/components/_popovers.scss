@@ -12,12 +12,11 @@
   }
 }
 
-.shepherd-element.shepherd-theme-arrows.shepherd-element-attached-top.shepherd-element-attached-center.shepherd-has-title .shepherd-content:before,
-.shepherd-element.shepherd-theme-arrows.shepherd-element-attached-top.shepherd-element-attached-right.shepherd-target-attached-bottom.shepherd-has-title .shepherd-content:before,
-.shepherd-element.shepherd-theme-arrows.shepherd-element-attached-top.shepherd-element-attached-left.shepherd-target-attached-bottom.shepherd-has-title .shepherd-content:before,
-.shepherd-element.shepherd-theme-arrows.shepherd-element-attached-top.shepherd-element-attached-center .shepherd-content:before {
-  border-bottom-color: $popover-outline;
-}
-.shepherd-element.shepherd-theme-arrows.shepherd-element-attached-bottom.shepherd-element-attached-center .shepherd-content:before {
-  border-top-color: $popover-outline;
+.shepherd-element {
+  &.shepherd-theme-arrows {
+    @include shepherd-arrow('top', 'center', 'bottom');
+    @include shepherd-arrow('right', 'middle', 'left');
+    @include shepherd-arrow('bottom', 'center', 'top');
+    @include shepherd-arrow('left', 'middle', 'right');
+  }
 }

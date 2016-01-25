@@ -84,6 +84,18 @@
 	backface-visibility: $val;
 }
 
+@mixin shepherd-arrow($attached, $position, $border) {
+  &.shepherd-element-attached-#{$attached} {
+    &.shepherd-element-attached-#{$position} {
+      &.shepherd-has-title {
+        .shepherd-content:before {
+          border-#{$border}-color: $popover-outline;
+        }
+      }
+    }
+  }
+}
+
 // -------------------------------------
 //   Flip Animation
 // -------------------------------------
