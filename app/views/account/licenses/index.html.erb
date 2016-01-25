@@ -28,9 +28,24 @@
         <h4 class="margin-bottom-reset">Step 1. <i class="mi hide js-check-icon">check_circle</i></h4>
         <small class="margin-bottom block"><em>Select product you'd like to assign*</em></small>
         <% selected_option = current_spree_user.managed_products_options.find{|o| o[1] == params[:licenses_ids] } %>
-        <div class="select-container dark-select margin-bottom-reset btn-block">
-          <span><%= selected_option.try(:[], 0) || 'Select a product' %></span>
-          <%= select_tag :licenses_ids, options_for_select(current_spree_user.managed_products_options, selected_option.try(:[], 1)), prompt: 'Select a product', class: 'licenses-select form-control inline-input' %>
+        <%= f.hidden_field :licenses_ids, :value => selected_option.nil? ? "" : selected_option[1] %>
+        <div class="btn-group btn-block margin-bottom-reset licenses-dropdown" id="licensesDropdown">
+          <button type="button" class="btn btn-default dropdown-toggle licenses-dropdown-button" data-toggle="dropdown">
+            <span class="licenses-dropdown-selection">
+              <% if selected_option %>
+                <%= selected_option[0] %>
+              <% else %>
+                Select a Product
+              <% end %>
+            </span>
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu btn-block">
+            <li><a href="">Select a Product</a></li>
+            <% current_spree_user.managed_products_options.each do |product| %>
+              <li><a href="#" data-product="<%= product[1] %>"><%= product[0] %></a></li>
+            <% end %>
+          </ul>
         </div>
         <small><em>*This may affect your licenses above</em></small>
       </div>

@@ -35,15 +35,25 @@
       $.get('/account/licenses/edit_select_users', { emails: emails.split(',') });
     }
 
+    var $licensesDropdown = $('#licensesDropdown');
+        $licensesDropdownLinks = $licensesDropdown.find('.dropdown-menu a');
+
     // Update the product stats text when the user makes a selection in step 1
-    $(document).on('change', '#licenses_ids', function(e) {
-      var selected = $(this).find(':selected').text();
-      $('#licenseDescription').text(selected);
-      if (selected === 'Select a product') {
+    $licensesDropdownLinks.on('click', function(e) {
+      var licenseId;
+      e.preventDefault();
+      var selected = $(this).text();
+      if (selected === 'Select a Product') {
+        licenseId = "";
         $('.js-step-1 .js-check-icon').addClass('hide');
+        $('#licenseDescription').text("N/A");
       } else {
+        licenseId = $(this).data("product");
+        $('#licenseDescription').text(selected);
         $('.js-step-1 .js-check-icon').removeClass('hide');
       }
+      $("#assign_licenses_form_licenses_ids").val(licenseId);
+      $(".licenses-dropdown-selection").text(selected);
     });
 
     // Open the add users modal

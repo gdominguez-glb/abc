@@ -7,11 +7,11 @@ class Account::LicensesController < Account::BaseController
   end
 
   def assign
-    @assign_licenses_form = AssignLicensesForm.new(assign_licenses_params.merge(user: current_spree_user, licenses_ids: params[:licenses_ids].split(',')))
+    @assign_licenses_form = AssignLicensesForm.new(assign_licenses_params.merge(user: current_spree_user))
     if @assign_licenses_form.valid?
       @assign_licenses_form.perform
       flash[:success] = "Successully assigned licenses to recipients"
-      redirect_to account_licenses_path(licenses_ids: params[:licenses_ids])
+      redirect_to account_licenses_path(licenses_ids: assign_licenses_params[:licenses_ids])
     else
       @assign_licenses_form.total = 0
       render :index
@@ -35,7 +35,8 @@ class Account::LicensesController < Account::BaseController
   end
 
   def licenses_stats
-    @licenses_ids = params[:licenses_ids].split(',')
+    @licenses_ids = params[:licenses_ids]
+    @licenses_ids.split(',') unless @licenses_ids.nil?
     render layout: false
   end
 
@@ -75,7 +76,7 @@ class Account::LicensesController < Account::BaseController
   private
 
   def assign_licenses_params
-    params.require(:assign_licenses_form).permit(:licenses_recipients, :licenses_number, :total, emails: [])
+    params.require(:assign_licenses_form).permit(:licenses_recipients, :licenses_number, :total, :licenses_ids, :emails => [])
   end
 
   def set_emails_to_choose
