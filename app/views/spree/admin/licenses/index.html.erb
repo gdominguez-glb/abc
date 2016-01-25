@@ -17,6 +17,7 @@
         <th>Quantity</th>
         <th>Fulfillment Date</th>
         <th>Expiration Date</th>
+        <th>Edit</th>
       </thead>
       <tbody>
         <% @licensed_products.each do |license| %>
@@ -25,6 +26,7 @@
             <td><%= license.quantity %></td>
             <td><%= license.fulfillment_at %></td>
             <td><%= license.expire_at %></td>
+            <td><%= link_to 'Edit', edit_admin_user_license_path(@user, license) %></td>
           </tr>
         <% end %>
       </tbody>
