@@ -26,7 +26,7 @@ spree_routes_overrides = Proc.new do
     end
 
     resources :users do
-      resources :licenses
+      resources :licenses, only: [:index, :edit, :update]
     end
 
     resources :licensed_products do
