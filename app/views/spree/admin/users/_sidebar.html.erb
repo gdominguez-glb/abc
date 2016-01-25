@@ -10,7 +10,7 @@
       <%= link_to_with_icon 'shopping-cart', Spree.t(:"admin.user.orders"), spree.orders_admin_user_path(@user) %>
     </li>
     <li<%== ' class="active"' if current == :licenses %>>
-      <%= link_to_with_icon 'shopping-cart', 'Current Product Licenses', spree.licenses_admin_user_path(@user) %>
+      <%= link_to_with_icon 'shopping-cart', 'Current Product Licenses', spree.admin_user_licenses_path(@user) %>
     </li>
   </ul>
 <% end %>
