@@ -3,7 +3,7 @@ function startDashboardTour() {
 
   tour = tour.addStep('resources', {
     title: 'Resources',
-    text: "You can find all the digital resources you have access to right here. This includes your copy of products that you've purchased to distribute.",
+    text: "You can find all the digital resources you have access to right here.",
     attachTo: 'li.my-resource-link bottom'
   });
 
