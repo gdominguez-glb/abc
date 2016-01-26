@@ -19,7 +19,7 @@ marketing_templates:
           }
         }
       </style>
-      <div id="tileRoleSelectorHero<%= position %>" class="row intro masthead">
+      <div id="tileRoleSelectorHero<%= position %>" class="row intro masthead image-bg">
         <div class="col-xs-12 masthead-content text-center">
           <h5 class="home-mast-intro bold"><%= title %> <span class="text-success"><% if defined?(title_highlight) && title_highlight.present? %><%= title_highlight %><% end %></span></h5>
           <div id="pageSelection">
@@ -71,7 +71,7 @@ marketing_templates:
           }
         }
       </style>
-      <section id="tileVideoHero<%= position %>" class="row row-video-hero">
+      <section id="tileVideoHero<%= position %>" class="row row-video-hero image-bg">
         <div class="col-xs-12">
           <h3 class="video-title"><%= title %></h3>
           <div class="embed-responsive embed-responsive-16by9">

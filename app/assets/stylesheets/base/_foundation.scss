@@ -220,6 +220,12 @@ section {
   p {
     margin: 0 0 25px;
   }
+
+  &.image-bg {
+    h3, h6, p {
+      text-shadow: 0 0 3px #000;
+    }
+  }
 }
 
 .coral-text {
