@@ -28,10 +28,12 @@
         <% if @product.price_in(current_currency) and !@product.price.nil? %>
           <div class="add-to-cart col-md-6">
             <br/>
-            <div class="form-group select-container dark-select block product-qty">
-              <span>Qty.</span>
-              <%= select_tag  :quantity, options_for_select(1..15), :prompt => 'Qty.', :class => 'form-control' %>
-            </div>
+            <% if @product.product_type != "partner" %>
+              <div class="form-group select-container dark-select block product-qty">
+                <span>Qty.</span>
+                <%= select_tag  :quantity, options_for_select(1..15), :prompt => 'Qty.', :class => 'form-control' %>
+              </div>
+            <% end %>
             <div class="form-group">
               <% if @product.redirect_url.present? %>
                 <%= link_to Spree.t(:purchase_from_partner), @product.redirect_url, class: 'btn btn-primary product-btn-primary' %>
