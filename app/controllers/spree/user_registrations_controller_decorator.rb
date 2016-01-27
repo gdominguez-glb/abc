@@ -29,7 +29,20 @@ Spree::UserRegistrationsController.class_eval do
   private
 
   def spree_user_params
-    new_params = params.require(:spree_user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :title, :school_id, :district_id, :allow_communication, school_district_attributes: [:name, :state_id, :country_id, :city, :place_type], interested_subjects: [])
+    new_params = params.require(:spree_user).permit(
+      :first_name,
+      :last_name,
+      :email,
+      :password,
+      :password_confirmation,
+      :title,
+      :school_id,
+      :district_id,
+      :allow_communication,
+      :phone,
+      school_district_attributes: [:name, :state_id, :country_id, :city, :place_type],
+      interested_subjects: []
+    )
     process_school_district_param(new_params)
     new_params
   end
