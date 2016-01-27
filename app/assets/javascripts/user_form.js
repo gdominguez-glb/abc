@@ -19,6 +19,13 @@ function shouldShowDistrict(userRole) {
   return visibleFields;
 }
 
+function shouldShowPhone(userRole) {
+  if (userRole === 'Administrator' || userRole === 'Administrative Assistant') {
+    return true;
+  }
+  return false;
+}
+
 function schoolSelected(id) {
   var schoolIsSelected = true;
 
@@ -42,6 +49,13 @@ $(document).on("change", "#spree_user_title", function(){
   }
 
   $('#spree_user_interested_subjects').select2();
+
+  if(shouldShowPhone(userRole)) {
+    $('#phone-field').removeClass('hide');
+  } else {
+    $('#phone-field').addClass('hide');
+    $('#phone-field').val(null);
+  }
 });
 
 $(document).on('change', '#schoolDistrictSelect input', function(e) {
