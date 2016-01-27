@@ -42,3 +42,7 @@
 .alert-danger {
   @include alert-variant($brand-danger, darken($brand-danger, 25%), #fff);
 }
+
+.alert-fullwidth {
+  border: none;
+}
