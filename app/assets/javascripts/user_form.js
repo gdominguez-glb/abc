@@ -54,6 +54,7 @@ $(document).on("change", "#spree_user_title", function(){
     $('#phone-field').removeClass('hide');
   } else {
     $('#phone-field').addClass('hide');
+    $('#phone-field').val(null);
   }
 });
 
