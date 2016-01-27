@@ -9,6 +9,10 @@
       <%= link_to_with_icon 'edit', Spree.t(:details), edit_admin_product_url(@product) %>
     <% end if can?(:admin, Spree::Product) %>
 
+    <%= content_tag :li, class: ('active' if current == :images) do %>
+      <%= link_to_with_icon 'picture', Spree.t(:images), spree.admin_product_images_url(@product) %>
+    <% end if can?(:admin, Spree::Image) %>
+    
     <% if @product.product_type == 'bundle' %>
       <%= content_tag :li, class: ('active' if current == Spree.t('bundles.admin.sidebar')) do %>
         <%= link_to_with_icon 'puzzle-piece', Spree.t('bundles.admin.sidebar'), admin_product_parts_path(@product) %>
