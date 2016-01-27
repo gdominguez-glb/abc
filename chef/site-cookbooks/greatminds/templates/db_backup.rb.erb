@@ -33,7 +33,7 @@ Model.new(:db_backup, 'Description for db_backup') do
     # Or, to use a IAM Profile:
     # s3.use_iam_profile = true
 
-    s3.bucket            = "gm-s3-<%= node['rails_env'] %>.intridea.com"
+    s3.bucket            = <%= node['rails_env'] == 'production' ? 's3.greatminds.org' : "s3-#{node['rails_env']}.greatminds.org" %>
     s3.path              = ""
   end
 
