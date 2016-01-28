@@ -3,6 +3,10 @@ Spree::HomeController.class_eval do
 
   def index
     products_list_with_taxons_filter
-    @products = @products.show_in_storefront.page(params[:page]).per(10)
+
+    if params[:taxon_ids].blank?
+      @products = @products.show_in_storefront
+    end
+    @products = @products.page(params[:page]).per(10)
   end
 end
