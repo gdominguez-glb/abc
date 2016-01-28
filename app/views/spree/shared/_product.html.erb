@@ -13,7 +13,7 @@
               <% end %>
             </h5>
             <p class="product-description">
-              <%= truncate(product.description, length: 180) %>
+              <%= product.short_description %>
               <% if product.group_product? %>
                 <%= link_to "Learn More", group_product_path(product), itemprop: "name", title: product.name %>
               <% else %>
