@@ -72,3 +72,9 @@ Login with
 ### Run tests with guard
 
 `$ bundle exec guard`
+
+### Livereload
+
+run `gem install foreman` (do not add to gemfile)
+run `foreman start`
+Install this [Chrome Plugin](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei?hl=en) for live reload. Don't forget to hit the livereload button when guard says `LiveReload is waiting for a browser to connect`
