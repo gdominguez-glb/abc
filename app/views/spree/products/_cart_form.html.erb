@@ -30,8 +30,8 @@
             <br/>
             <% if @product.product_type != "partner" %>
               <div class="form-group select-container dark-select block product-qty">
-                <span>Qty.</span>
-                <%= select_tag  :quantity, options_for_select(1..15), :prompt => 'Qty.', :class => 'form-control' %>
+                <span>1</span>
+                <%= select_tag  :quantity, options_for_select(1..15), :class => 'form-control' %>
               </div>
             <% end %>
             <div class="form-group">
