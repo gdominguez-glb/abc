@@ -32,7 +32,7 @@ $primary-hover: lighten($brand-primary, 20%);
 $brand-info: #5bc0de;
 $brand-success: #5cb85c;
 $brand-warning: #f0ad4e;
-$brand-danger: darken($coral, 10%);
+$brand-danger: $brand-warning;
 
 // Gray Scale
 $gray-darker: #222;
