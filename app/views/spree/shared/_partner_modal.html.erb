@@ -17,3 +17,16 @@
     </div>
   </div>
 </div>
+
+<%= javascript_tag do %>
+
+  $(document).ready(function(){
+    $(".partner-modal").on('show.bs.modal', function (event) {
+      var button = $(event.relatedTarget);
+      var redirectUrl = button.data('redirect')
+      var $modal = $(this);
+      $modal.find('.partner-modal-proceed').attr({"href": redirectUrl});
+    });
+  });
+
+<% end %>
