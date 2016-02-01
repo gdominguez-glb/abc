@@ -36,7 +36,7 @@
             <% end %>
             <div class="form-group">
               <% if @product.redirect_url.present? %>
-                <%= link_to Spree.t(:purchase_from_partner), @product.redirect_url, class: 'btn btn-primary product-btn-primary' %>
+                <%= link_to Spree.t(:purchase_from_partner), @product.redirect_url, target: '_blank', class: 'btn btn-primary product-btn-primary', :data => { :toggle => 'modal', :redirect => @product.redirect_url, :target => '.partner-modal' } %>
               <% else %>
                 <%= button_tag :class => 'btn btn-primary product-btn-primary', :id => 'add-to-cart-button', :type => :submit do %>
                   <%= Spree.t(:add_to_cart) %>
@@ -48,3 +48,5 @@
       </div>
   </div>
 <% end %>
+
+<%= render partial: 'spree/shared/partner_modal' %>

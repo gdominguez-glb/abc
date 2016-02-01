@@ -32,7 +32,7 @@ en:
   school_not_listed: School Not Listed
   spree:
     available_on: For Sale Date
-    purchase_from_partner: "Purchase From Partner"
+    purchase_from_partner: "Visit Site"
     purchase_order: "Purchase Order"
     bundles:
       admin:
