@@ -4,7 +4,7 @@ Deface::Override.new(
     insert_after: "#inside-product-cart-form",
     text: <<-HTML
       <% unless @product.free? %>
-        <p class="alert alert-info">If you would like to purchase more than 15 licenses of this product or pay with a purchase order, please <a href="/contact#sales">contact us</a>.</p>
+        <p class="alert alert-info">To purchase more than 15 licenses or to pay with a purchase order, <a href="/contact#sales">contact us</a>.</p>
       <% end %>
     HTML
 )
