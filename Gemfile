@@ -97,6 +97,7 @@ group :development do
   gem "binding_of_caller"
   gem 'guard'
   gem 'guard-rspec', require: false
+  gem 'guard-livereload', '~> 2.4', require: false
 end
 
 group :development, :test do
