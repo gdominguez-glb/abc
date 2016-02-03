@@ -83,6 +83,7 @@
 
     <% unless current_spree_user.tour_showed_licenses_users? %>
       startLicensesUsersTour();
+      $.get('/account/tour/licenses_users');
     <% end %>
   <% end %>
 <% end %>
