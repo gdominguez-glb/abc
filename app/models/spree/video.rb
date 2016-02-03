@@ -1,4 +1,6 @@
 class Spree::Video < ActiveRecord::Base
+  include Taxonable
+
   has_attached_file :screenshot, {
     path:           "/:class/:attachment/:id_partition/:style/:filename",
     url:            ":s3_alias_url",
@@ -25,10 +27,6 @@ class Spree::Video < ActiveRecord::Base
 
   has_many :video_classifications, dependent: :delete_all, inverse_of: :video
   has_many :taxons, through: :video_classifications
-
-  scope :with_taxons, ->(taxons) {
-    joins(:taxons).where("spree_taxons.id" => taxons.map(&:id))
-  }
 
   attr_accessor :video_group_name
 

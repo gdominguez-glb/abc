@@ -1,5 +1,6 @@
 Spree::Product.class_eval do
   include SalesforceAccess
+  include Taxonable
 
   def self.sobject_name
     'PricebookEntry'
