@@ -1,10 +1,10 @@
 Spree::ProductsController.class_eval do
-  include TaxonsFilter
+  include ProductTaxonsFilter
 
   before_action :find_launch_product, only: [:launch, :terms, :agree_terms]
 
   def index
-    products_list_with_taxons_filter
+    @products = products_list_with_taxons_filter
   end
 
   def launch

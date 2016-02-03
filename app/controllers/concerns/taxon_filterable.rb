@@ -1,0 +1,17 @@
+module TaxonFilterable
+  extend ActiveSupport::Concern
+
+  def filter_by_taxons(klass, entities, taxon_ids)
+    return entities if taxon_ids.blank?
+    taxons = Spree::Taxon.where(id: taxon_ids)
+    entity_ids = klass.find_by_sql(generate_intersect_sql(entities, taxons)).map(&:id)
+    entities.where(id: entity_ids)
+  end
+
+  def generate_intersect_sql(entities, taxons)
+    taxons.group_by(&:taxonomy).values.map do |t_taxons|
+      "( #{entities.with_taxons(t_taxons).to_sql} )"
+    end.join(' INTERSECT ')
+  end
+
+end
