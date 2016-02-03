@@ -65,7 +65,7 @@ class Account::LicensesController < Account::BaseController
   end
 
   def edit_select_users
-    @emails = params[:emails]
+    @emails = params[:emails].reject(&:blank?)
   end
 
   def revoke_all

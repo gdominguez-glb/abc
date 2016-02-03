@@ -14,6 +14,8 @@ $('#confirm-edit-select-users-btn').click(function(){
   $('input[name="assign_licenses_form[licenses_recipients]"]').val(emails.join(','));
   $('#edit-select-users-modal').modal('hide');
   $('.js-step-2 .js-number-total').text(emails.length);
+
+  window.updateAssignLicensesFormWithEmails(emails);
 });
 
 $('#edit-select-users-modal #add-new-users-btn').click(function(){
