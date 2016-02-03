@@ -208,4 +208,13 @@ Spree::Product.class_eval do
     uri.query = [uri.query, "opened_product_id=#{id}"].compact.join('&')
     uri.to_s
   end
+
+  def group_parent_access_url
+    group_parent_products.pluck(:access_url).reject(&:blank?).first
+  end
+
+  def group_parent_products
+    group_product_ids = Spree::Product.where(product_id: self.id).pluck(:group_id)
+    Spree::Product.where(id: group_product_ids)
+  end
 end
