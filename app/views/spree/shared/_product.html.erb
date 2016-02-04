@@ -2,7 +2,7 @@
 <div id="product_<%= product.id %>" class="col-md-12 product-list-item" data-hook="products_list_item" itemscope itemtype="http://schema.org/Product">
   <div class="product-wrapper">
       <div class="row">
-        <div class="col-md-9">
+        <div class="col-md-8 col-lg-9">
           <span class="product-type <%= product_type_class(product) %>"><%= product.curriculum.try(:name) || 'General' %></span>
           <% cache(@taxon.present? ? [I18n.locale, current_currency, @taxon, product] : [I18n.locale, current_currency, product]) do %>
             <h5 class="product-title margin-top">
@@ -23,7 +23,7 @@
           <% end %>
         </div>
 
-        <div class="col-md-3 product-actions">
+        <div class="col-md-4 col-lg-3 product-actions">
           <span itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product-price">
             <strong itemprop="price">
               <%= product_display_price(product) %>
