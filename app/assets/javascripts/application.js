@@ -71,7 +71,7 @@ window.Gm = Gm;
 function initEditor() {
   $('.rich-editor').trumbowyg({
     fullscreenable: false,
-    closable: false,
+    closable: true,
     removeformatPasted: true,
     btns: ['bold', 'italic', 'underline', 'strikethrough', '|', 'formatting', '|', 'unorderedList', 'orderedList', '|', 'link', '|', 'removeformat']
   });
