@@ -1,21 +1,16 @@
+<% url = spree.product_url(product, taxon_id: @taxon.try(:id)) %>
 <div class="col-md-4">
   <div class="product-wrapper">
-    <div class="product-wrapper-inner flip-container">
-      <div class="flipper">
-        <div class="flip-front">
-          <h5 class="title"><%= product.name %></h5>
-          <button class="btn btn-link flip-btn">
-            More
-          </button>
-        </div>
-        <div class="flip-back">
-          <p><%= truncate product.short_description, length: 200 %></p>
-          <button class="btn btn-link flip-btn">
-            Back
-          </button>
-        </div>
-      </div>
+    <div class="product-wrapper-inner product-tile">
+      <span class="product-type <%= product_type_class(product) %>"><%= product.curriculum.try(:name) || 'General' %></span>
+      <h5 class="product-title margin-top">
+        <%= link_to truncate(product.name, length: 50), url, itemprop: "name", title: product.name %>
+      </h5>
+      <p class="product-description">
+        <%= truncate product.short_description, length: 100 %>
+        <%= link_to "Learn More", url, itemprop: "name", title: product.name %>
+      </p>
     </div>
-    <%= link_to 'Launch', spree.launch_product_path(product), class: 'btn btn-link' %>
+    <%= link_to 'Launch Product', spree.launch_product_path(product), class: 'btn btn-primary' %>
   </div>
 </div>
