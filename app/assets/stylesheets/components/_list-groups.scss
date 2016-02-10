@@ -46,3 +46,13 @@ a.list-group-item {
     @extend .serif;
   }
 }
+
+// -------------------------------------
+//   Search Items
+// -------------------------------------
+.search {
+  .list-group-item h4 {
+    text-transform: none;
+    letter-spacing: normal;
+  }
+}
