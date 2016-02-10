@@ -4,6 +4,11 @@
       <div class="row">
         <div class="col-md-8 col-lg-9">
           <span class="product-type <%= product_type_class(product) %>"><%= product.curriculum.try(:name) || 'General' %></span>
+          <span itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product-price">
+            <strong itemprop="price">
+              <%= product_display_price(product) %>
+            </strong>
+          </span>
           <% cache(@taxon.present? ? [I18n.locale, current_currency, @taxon, product] : [I18n.locale, current_currency, product]) do %>
             <h5 class="product-title margin-top">
               <% if product.group_product? %>
@@ -24,11 +29,6 @@
         </div>
 
         <div class="col-md-4 col-lg-3 product-actions">
-          <span itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product-price">
-            <strong itemprop="price">
-              <%= product_display_price(product) %>
-            </strong>
-          </span>
           <% if product.group_product? %>
             <%= link_to 'Explore Options', group_product_path(product), class: 'btn btn-primary product-btn-primary' %>
           <% elsif product.partner_product? && product.redirect_url.present? %>

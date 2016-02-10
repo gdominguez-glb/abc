@@ -170,8 +170,9 @@
 
   .product-price {
     color: $dark-blue;
-    display: block;
+    display: inline;
     margin-bottom: $b-space-s;
+    font-family: Karla, sans-serif;
   }
 
   .product-qty {
@@ -276,6 +277,10 @@
 .product-tile {
   padding: $b-space;
   min-height: 280px;
+  .product-title {
+    letter-spacing: 0;
+    line-height: 1em;
+  }
   h5 {
     min-height: 115px;
   }
