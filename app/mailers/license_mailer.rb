@@ -17,7 +17,12 @@ class LicenseMailer < ApplicationMailer
   def notify_other_admin(order)
     @order = order
     @licenses_names = @order.line_items.map{|li| "#{li.quantity} #{li.variant.product.name}" }.join(', ')
-    mail to: order.license_admin_email, subject: "#{order.user.try(:full_name)} has made you a Great Minds Administrator"
+    subject = "#{order.user.try(:full_name)} has made you a Great Minds Administrator"
+    vars = {
+      purchasing_admin_full_name: @order.user.try(:full_name),
+      product_name: @licenses_names
+    }
+    MandrillSender.new.deliver_with_template('someone-else-will-distribute-these-licenses', order.license_admin_email, subject, vars)
   end
 
   def notify_distribution(attrs={})

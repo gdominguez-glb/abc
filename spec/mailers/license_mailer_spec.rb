@@ -57,24 +57,24 @@ RSpec.describe LicenseMailer do
     end
   end
 
-  describe "#notify_other_admin" do
-    let(:user) { create(:gm_user, email: 'john@foo.com', first_name: 'John', last_name: 'Foo') }
-    let(:order) { create(:order, license_admin_email: 'other@foo.com', user: user) }
-    let!(:line_item) { create(:line_item, order: order, variant: product.master, quantity: 1) }
-    let(:mail) { LicenseMailer.notify_other_admin(order) }
+  # describe "#notify_other_admin" do
+  #   let(:user) { create(:gm_user, email: 'john@foo.com', first_name: 'John', last_name: 'Foo') }
+  #   let(:order) { create(:order, license_admin_email: 'other@foo.com', user: user) }
+  #   let!(:line_item) { create(:line_item, order: order, variant: product.master, quantity: 1) }
+  #   let(:mail) { LicenseMailer.notify_other_admin(order) }
 
-    it "send to correct email" do
-      expect(mail.to).to eq(['other@foo.com'])
-    end
+  #   it "send to correct email" do
+  #     expect(mail.to).to eq(['other@foo.com'])
+  #   end
 
-    it "set correct subject" do
-      expect(mail.subject).to eq('John Foo has made you a Great Minds Administrator')
-    end
+  #   it "set correct subject" do
+  #     expect(mail.subject).to eq('John Foo has made you a Great Minds Administrator')
+  #   end
 
-    it "set correct body" do
-      expect(mail.body.encoded).to match('has made you the administrator')
-    end
-  end
+  #   it "set correct body" do
+  #     expect(mail.body.encoded).to match('has made you the administrator')
+  #   end
+  # end
 
   describe "#notify_distribution" do
     let!(:school_admin) { create(:gm_user, first_name: 'John', last_name: 'Doe') }
