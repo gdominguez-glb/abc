@@ -23,16 +23,6 @@
         <p class="form-group" data-hook="existing_cards">
           <table class="existing-credit-card-list">
             <tbody>
-              <% @payment_sources.each do |card| %>
-                <tr id="<%= dom_id(card,'spree')%>" class="<%= cycle('even', 'odd') %>">
-                  <td><%= card.name %></td>
-                  <td><%= card.display_number %></td>
-                  <td><%= card.month %> / <%= card.year %></td>
-                  <td>
-                    <%= radio_button_tag "order[existing_card]", card.id, (card == @payment_sources.first), { class: "existing-cc-radio" }  %>
-                  </td>
-                </tr>
-              <% end %>
             </tbody>
           </table>
         </p>
