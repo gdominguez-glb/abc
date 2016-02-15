@@ -33,7 +33,13 @@
           <div class="col-sm-6">
             <label><%= fields[i].label %></label>
             <div class="select-container dark-select block">
-              <span><%= fields[i].label %></span>
+              <span>
+                <% if (data[ fields[i].name ]) { %>
+                  <%= data[ fields[i].name ] %>
+                <% } else { %>
+                  <%= fields[i].label %>
+                <% } %>
+              </span>
               <select name="" data-name="<%= fields[i].name %>" class="form-control">
                 <% for(var j=0; j < fields[i].input_options.length; j ++) { %>
                   <option value="<%= fields[i].input_options[j] %>"  <% if(data[ fields[i].name ] == fields[i].input_options[j]) { %> selected <% } %>  ><%= fields[i].input_options[j] %></option>
