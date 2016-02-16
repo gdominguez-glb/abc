@@ -1,7 +1,6 @@
 <%= javascript_tag do %>
 
   window.updateAssignLicensesFormWithEmails = function(emails) {
-    console.log(emails);
     if (emails.length > 0) {
       // Reveal the checkbox in step 2
       $('.js-step-2 .js-check-icon').removeClass('hide');
@@ -46,7 +45,7 @@
   }
 
   window.validateSubmitButton = function() {
-    var productOption = $('select#licenses_ids').val();
+    var productOption = $('#assign_licenses_form_licenses_ids').val();
     var recipients = $('input[name="assign_licenses_form[licenses_recipients]"]').val();
 
     if (!_.isEmpty(productOption) && !_.isEmpty(recipients)) {
@@ -71,7 +70,7 @@
 
   $(function() {
 
-    $('select#licenses_ids').change(function(){
+    $('#assign_licenses_form_licenses_ids').change(function(){
       window.validateSubmitButton();
     });
 
@@ -98,6 +97,7 @@
         $('.js-step-1 .js-check-icon').removeClass('hide');
       }
       $("#assign_licenses_form_licenses_ids").val(licenseId);
+      $("#assign_licenses_form_licenses_ids").trigger('change');
       $(".licenses-dropdown-selection").text(selected);
     });
 
