@@ -3,12 +3,11 @@
   <div class="product-wrapper">
     <div class="product-wrapper-inner product-tile">
       <span class="product-type <%= product_type_class(product) %>"><%= product.curriculum.try(:name) || 'General' %></span>
-      <h5 class="product-title margin-top">
-        <%= link_to truncate(product.name, length: 50), url, itemprop: "name", title: product.name %>
-      </h5>
+        <div class="product-title-wrapper">
+          <h5 class="product-title margin-top margin-bottom-s"><%= link_to truncate(product.name, length: 50), url, itemprop: "name", title: product.name %></h5>
+        </div>
       <p class="product-description">
-        <%= truncate product.short_description, length: 100 %>
-        <%= link_to "Learn More", url, itemprop: "name", title: product.name %>
+        <%= truncate product.short_description, length: 110 %>
       </p>
     </div>
     <%= link_to 'Launch Product', spree.launch_product_path(product), class: 'btn btn-primary' %>

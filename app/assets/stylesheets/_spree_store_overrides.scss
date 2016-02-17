@@ -276,16 +276,23 @@
 
 .product-tile {
   padding: $b-space;
-  min-height: 280px;
+  min-height: 230px;
+  .product-title-wrapper {
+    min-height: 115px;
+    display: table;
+    width: 100%;
+  }
   .product-title {
     letter-spacing: 0;
     line-height: 1em;
   }
   h5 {
-    min-height: 115px;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
   }
   p {
-    min-height: 70px;
+    line-height: 18px;
   }
 }
 
