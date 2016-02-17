@@ -34,7 +34,7 @@ module Spree
 
       def send_email_notification
         if @order.fulfillment?
-          LicenseMailer.notify_fulfillment(@order).deliver_later
+          LicenseMailer.notify_fulfillment(@order)
         elsif @order.license_admin_email.present?
           LicenseMailer.notify_other_admin(@order)
         end

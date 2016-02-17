@@ -76,39 +76,39 @@ RSpec.describe LicenseMailer do
   #   end
   # end
 
-  describe "#notify_distribution" do
-    let!(:school_admin) { create(:gm_user, first_name: 'John', last_name: 'Doe') }
+  # describe "#notify_distribution" do
+  #   let!(:school_admin) { create(:gm_user, first_name: 'John', last_name: 'Doe') }
 
-    context "single" do
-      let(:mail) { LicenseMailer.notify_distribution({to_email: 'user@foo.com', quantity: 1, product_name: product.name, school_admin: school_admin}) }
+  #   context "single" do
+  #     let(:mail) { LicenseMailer.notify_distribution({to_email: 'user@foo.com', quantity: 1, product_name: product.name, school_admin: school_admin}) }
 
-      it "set correct email" do
-        expect(mail.to).to eq(['user@foo.com'])
-      end
+  #     it "set correct email" do
+  #       expect(mail.to).to eq(['user@foo.com'])
+  #     end
 
-      it "set correct subject" do
-        expect(mail.subject).to eq('John Doe has given you access to Curriculum')
-      end
+  #     it "set correct subject" do
+  #       expect(mail.subject).to eq('John Doe has given you access to Curriculum')
+  #     end
 
-      it "set correct body" do
-        expect(mail.body.encoded).to match('To activate your account')
-      end
-    end
+  #     it "set correct body" do
+  #       expect(mail.body.encoded).to match('To activate your account')
+  #     end
+  #   end
 
-    context "multiple" do
-      let(:mail) { LicenseMailer.notify_distribution({to_email: 'user@foo.com', quantity: 2, product_name: product.name, school_admin: school_admin}) }
+  #   context "multiple" do
+  #     let(:mail) { LicenseMailer.notify_distribution({to_email: 'user@foo.com', quantity: 2, product_name: product.name, school_admin: school_admin}) }
 
-      it "set correct email" do
-        expect(mail.to).to eq(['user@foo.com'])
-      end
+  #     it "set correct email" do
+  #       expect(mail.to).to eq(['user@foo.com'])
+  #     end
 
-      it "set correct subject" do
-        expect(mail.subject).to eq('John Doe has assigned you Curriculum licenses to distribute')
-      end
+  #     it "set correct subject" do
+  #       expect(mail.subject).to eq('John Doe has assigned you Curriculum licenses to distribute')
+  #     end
 
-      it "set correct body" do
-        expect(mail.body.encoded).to match('Log in or create an account')
-      end
-    end
-  end
+  #     it "set correct body" do
+  #       expect(mail.body.encoded).to match('Log in or create an account')
+  #     end
+  #   end
+  # end
 end

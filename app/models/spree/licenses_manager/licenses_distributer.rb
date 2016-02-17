@@ -81,7 +81,7 @@ module Spree
             product_name: @product.name,
             to_email: row[:email],
             quantity: row[:quantity]
-          ).deliver_later
+          )
         end
       end
 
