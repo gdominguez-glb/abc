@@ -9,9 +9,32 @@ class LicenseMailer < ApplicationMailer
 
   def notify_fulfillment(order)
     @order = order
-    @product_names = @order.line_items.map{|li| li.variant.product.name }.join(', ')
     @multiple = (@order.line_items.map(&:quantity).sum > @order.line_items.count)
-    mail to: (order.user.try(:email) || order.email), subject: generate_subject('Great Minds Customer Service', @product_names, @multiple)
+    @product_names = order.line_items.map{|li| li.variant.product.name }.join(', ')
+    recipient = (order.user.try(:email) || order.email)
+    subject = generate_subject('Great Minds Customer Service', @product_names, @multiple)
+    if @multiple
+      notify_multiple_fulfillment(recipient, subject, @order)
+    else
+      notify_single_fulfillment(recipient, subject, order, @product_names)
+    end
+  end
+
+  def notify_multiple_fulfillment(recipient, subject, order)
+    vars = {
+      admin_full_name: 'Great Minds Customer Service',
+      licenses_product_names: order.line_items.map{|li| "#{li.quantity} licenses for #{li.variant.product.name}"}.join(', ')
+    }
+    MandrillSender.new.deliver_with_template('new-or-existing-user-given-multiple-licenses-for-product-by-an-administrator', recipient, subject, vars)
+  end
+
+  def notify_single_fulfillment(recipient, subject, order, product_names)
+    vars = {
+      user_first_name: order.user.try(:first_name),
+      bundle_product_name: product_names
+    }
+    template_name = order.user.present? ? 'new-license-assigned-email-user-does-exist' : 'new-license-assigned-email-user-doesn-t-exist'
+    MandrillSender.new.deliver_with_template(template_name, recipient, subject, vars)
   end
 
   def notify_other_admin(order)

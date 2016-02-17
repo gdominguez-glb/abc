@@ -19,43 +19,43 @@ RSpec.describe LicenseMailer do
     end
   end
 
-  describe "#notify_fulfillment" do
-    let(:order) { create(:order, email: 'test@foo.com', user: nil) }
+  # describe "#notify_fulfillment" do
+  #   let(:order) { create(:order, email: 'test@foo.com', user: nil) }
 
-    context "single product" do
-      let!(:single_line_item) { create(:line_item, order: order, variant: product.master, quantity: 1) }
-      let(:mail) { LicenseMailer.notify_fulfillment(order) }
+  #   context "single product" do
+  #     let!(:single_line_item) { create(:line_item, order: order, variant: product.master, quantity: 1) }
+  #     let(:mail) { LicenseMailer.notify_fulfillment(order) }
 
-      it "send to correct email" do
-        expect(mail.to).to eq(['test@foo.com'])
-      end
+  #     it "send to correct email" do
+  #       expect(mail.to).to eq(['test@foo.com'])
+  #     end
 
-      it "set correct subject" do
-        expect(mail.subject).to eq("Great Minds Customer Service has given you access to Curriculum")
-      end
+  #     it "set correct subject" do
+  #       expect(mail.subject).to eq("Great Minds Customer Service has given you access to Curriculum")
+  #     end
 
-      it "generate correct body" do
-        expect(mail.body.encoded).to match('store/signup')
-      end
-    end
+  #     it "generate correct body" do
+  #       expect(mail.body.encoded).to match('store/signup')
+  #     end
+  #   end
 
-    context "multiple products" do
-      let!(:single_line_item) { create(:line_item, order: order, variant: product.master, quantity: 2) }
-      let(:mail) { LicenseMailer.notify_fulfillment(order) }
+  #   context "multiple products" do
+  #     let!(:single_line_item) { create(:line_item, order: order, variant: product.master, quantity: 2) }
+  #     let(:mail) { LicenseMailer.notify_fulfillment(order) }
 
-      it "send to correct email" do
-        expect(mail.to).to eq(['test@foo.com'])
-      end
+  #     it "send to correct email" do
+  #       expect(mail.to).to eq(['test@foo.com'])
+  #     end
 
-      it "set correct subject" do
-        expect(mail.subject).to eq('Great Minds Customer Service has assigned you Curriculum licenses to distribute')
-      end
+  #     it "set correct subject" do
+  #       expect(mail.subject).to eq('Great Minds Customer Service has assigned you Curriculum licenses to distribute')
+  #     end
 
-      it "set correct body" do
-        expect(mail.body.encoded).to match('Log in or create an account')
-      end
-    end
-  end
+  #     it "set correct body" do
+  #       expect(mail.body.encoded).to match('Log in or create an account')
+  #     end
+  #   end
+  # end
 
   # describe "#notify_other_admin" do
   #   let(:user) { create(:gm_user, email: 'john@foo.com', first_name: 'John', last_name: 'Foo') }
