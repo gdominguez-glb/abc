@@ -15,8 +15,8 @@
   - :name: title
     :label: Title
     :input_type: text
-  - :name: video_url
-    :label: Video Url
+  - :name: wistia_video_id
+    :label: Wistia Video Id
     :input_type: text
   - :name: background_image_url
     :label: Background Image Url
@@ -485,8 +485,8 @@
   - :name: background_image_url
     :label: Background Image Url
     :input_type: text
-  - :name: video_url
-    :label: Video Url
+  - :name: wistia_video_id
+    :label: Wistia Video Id
     :input_type: text
   - :name: title
     :label: Title
