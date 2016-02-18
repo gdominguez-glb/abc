@@ -52,6 +52,18 @@ marketing_templates:
       </div>
 
   -
+    name: 'Video Hero plain background color'
+    content: !xml |
+      <section id="tileVideoHero<%= position %>" class="row row-video-hero <%= background_color %>-bg">
+        <div class="col-xs-12">
+          <h3 class="video-title"><%= title %></h3>
+          <div class="embed-responsive embed-responsive-16by9">
+            <iframe src="http://fast.wistia.net/embed/iframe/<%= wistia_video_id %>" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" id="wistia-iframe" name="wistia_embed"></iframe>
+          </div>
+        </div>
+      </section>
+
+  -
     name: 'Video Hero'
     content: !xml |
       <style>
