@@ -10,6 +10,23 @@
   - :name: title_highlight
     :label: Title Highlight
     :input_type: text
+- :name: Video Hero plain background color
+  :fields:
+  - :name: title
+    :label: Title
+    :input_type: text
+  - :name: wistia_video_id
+    :label: Wistia Video Id
+    :input_type: text
+  - :name: background_color
+    :label: Background Color
+    :input_type: select
+    :input_options:
+      - green
+      - blue
+      - cream
+      - orange
+      - light-blue
 - :name: Video Hero
   :fields:
   - :name: title
