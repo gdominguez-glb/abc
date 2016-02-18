@@ -1,10 +1,10 @@
 <div class="col-md-6 video-grid">
-  <div class="video-wrapper locked-video">
+  <div class="video-wrapper">
     <div class="image-drawer-wrapper flip-container">
       <div class="flipper">
-        <div class="video-image-wrapper flip-front">
-          <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+        <div class="video-image-wrapper flip-front <% if video.screenshot.present? %>video-preview-image<% end %>"<% if video.screenshot.present? %> style="background-image: url('<%= video.screenshot.url %>')"<% end %> >
           <button class="btn btn-primary flip-btn">
+            <i class="glyphicon glyphicon-lock" aria-hidden="true"></i>
             More
           </button>
         </div>
