@@ -13,7 +13,7 @@ $(document).ready(function() {
 
 		e.preventDefault();
 
-		if (dropdownRole.next().find('.selected')[0] && dropdownCurriculum.next().find('.selected')[0]) {
+		if (dropdownRole.siblings('ul').find('.selected')[0] && dropdownCurriculum.siblings('ul').find('.selected')[0]) {
 			btnGo.removeAttr('disabled').removeClass('btn-default').addClass('btn-success');
 		}
 	});
