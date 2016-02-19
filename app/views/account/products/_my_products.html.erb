@@ -1,14 +1,14 @@
 <% products = @my_products.map{ |p| p.parts.exists? ? p.parts : p }.flatten.uniq %>
 <div class="my-products">
-  <% products.each do |product| %>
-    <%= render partial: 'product_item', locals: { product: product } %>
+  <% products.each_with_index do |product, index| %>
+    <%= render partial: 'product_item', locals: { product: product, index: index } %>
   <% end %>
 </div>
 <% if products.length > 3 %>
   <div class="js-prev-product prev-product">
-    <i class="mi md-48">chevron_left</i>
+    <i class="mi md-48 hide">chevron_left</i>
   </div>
   <div class="js-next-product next-product">
-    <i class="mi md-48">chevron_right</i>
+    <i class="mi md-48 hide">chevron_right</i>
   </div>
 <% end %>
