@@ -23,7 +23,8 @@ class LicenseMailer < ApplicationMailer
   def notify_multiple_fulfillment(recipient, subject, order)
     vars = {
       admin_full_name: 'Great Minds Customer Service',
-      licenses_product_names: order.line_items.map{|li| "#{li.quantity} licenses for #{li.variant.product.name}"}.join(', ')
+      licenses_product_names: order.line_items.map{|li| "#{li.quantity} licenses for #{li.variant.product.name}"}.join(', '),
+      host: Rails.configuration.root_url
     }
     MandrillSender.new.deliver_with_template('new-or-existing-user-given-multiple-licenses-for-product-by-an-administrator', recipient, subject, vars)
   end
@@ -31,7 +32,8 @@ class LicenseMailer < ApplicationMailer
   def notify_single_fulfillment(recipient, subject, order, product_names)
     vars = {
       user_first_name: order.user.try(:first_name),
-      bundle_product_name: product_names
+      bundle_product_name: product_names,
+      host: Rails.configuration.root_url
     }
     template_name = order.user.present? ? 'new-license-assigned-email-user-does-exist' : 'new-license-assigned-email-user-doesn-t-exist'
     MandrillSender.new.deliver_with_template(template_name, recipient, subject, vars)
@@ -43,7 +45,8 @@ class LicenseMailer < ApplicationMailer
     subject = "#{order.user.try(:full_name)} has made you a Great Minds Administrator"
     vars = {
       purchasing_admin_full_name: @order.user.try(:full_name),
-      product_name: @licenses_names
+      product_name: @licenses_names,
+      host: Rails.configuration.root_url
     }
     MandrillSender.new.deliver_with_template('someone-else-will-distribute-these-licenses', order.license_admin_email, subject, vars)
   end
@@ -67,7 +70,8 @@ class LicenseMailer < ApplicationMailer
   def notify_multiple_distribution(admin_full_name, to_email, subject, quantity, product_name)
     vars = {
       admin_full_name: admin_full_name,
-      licenses_product_names: "#{quantity} licenses for #{product_name}"
+      licenses_product_names: "#{quantity} licenses for #{product_name}",
+      host: Rails.configuration.root_url
     }
     MandrillSender.new.deliver_with_template('new-or-existing-user-given-multiple-licenses-for-product-by-an-administrator', to_email, subject, vars)
   end
@@ -75,7 +79,8 @@ class LicenseMailer < ApplicationMailer
   def notify_single_distribution(to_email, to_user, product_name, subject)
     vars = {
       user_first_name: to_user.try(:first_name),
-      bundle_product_name: product_name
+      bundle_product_name: product_name,
+      host: Rails.configuration.root_url
     }
     template_name = to_user.present? ? 'new-license-assigned-email-user-does-exist' : 'new-license-assigned-email-user-doesn-t-exist'
     MandrillSender.new.deliver_with_template(template_name, to_email, subject, vars)
