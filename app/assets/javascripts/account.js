@@ -1,5 +1,7 @@
 window.initMyProductsSlick = function() {
   // Products slider
+  $(".my-products .col-md-4").removeClass('hide');
+  $(".js-next-product .mi, .js-prev-product .mi").removeClass('hide');
   $(".my-products").slick({
     dots: true,
     infinite: true,
