@@ -3,16 +3,17 @@
   <div class="col-xs-12 margin-top-xxl margin-bottom-xl">
     <div class="row">
       <div class="col-sm-4 col-md-3 col-lg-2 col-sm-offset-1">
+        <h3>Filter By:</h3>
+        <div class="panel-group" id="categoryFilters" role="tablist" aria-multiselectable="true">
+          <%= render 'taxonomies' %>
+        </div>
+        <a id="removeAllFilters" href="/video_gallery?" class="btn btn-danger btn-block collapse">Remove All</a>
         <%= form_tag '', method: :get, class: 'side-search-form' do %>
           <% params[:taxon_ids].each do |taxon_id| %>
             <%= hidden_field_tag "taxon_ids[]", taxon_id %>
           <% end %>
           <%= text_field_tag :query, params[:query], class: 'form-control margin-bottom-1_2', placeholder: 'Search' %>
         <% end %>
-        <div class="panel-group" id="categoryFilters" role="tablist" aria-multiselectable="true">
-          <%= render 'taxonomies' %>
-        </div>
-        <a id="removeAllFilters" href="/video_gallery?" class="btn btn-danger btn-block collapse">Remove All</a>
       </div>
       <div class="col-sm-6 col-md-7 col-lg-8 col-lg-offset-halfone">
         <% if @videos.blank? %>
