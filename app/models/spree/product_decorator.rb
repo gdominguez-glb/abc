@@ -105,6 +105,7 @@ Spree::Product.class_eval do
             format: { with: /\A[0-9a-zA-Z]{18}\Z/,
                       message: ' must be the 18-character Salesforce ID' },
             unless: :free?
+  validates_presence_of :get_in_touch_url, if: Proc.new{|product| product.product_type == 'get_in_touch' }
 
   validates_presence_of :available_on, if: Proc.new{|product| product.for_sale? }
 
@@ -141,6 +142,7 @@ Spree::Product.class_eval do
       'group',
       'partner',
       'inkling',
+      'get_in_touch',
       'other'
     ]
   end
