@@ -94,6 +94,10 @@ Spree::Product.class_eval do
     self.product_type == 'partner'
   end
 
+  def get_in_touch_product?
+    self.product_type == 'get_in_touch'
+  end
+
   validates :access_url, format: { with: URI.regexp }, allow_blank: true
   validates :redirect_url, format: { with: URI.regexp }, allow_blank: true
   validates :learn_more_url, format: { with: URI.regexp }, allow_blank: true
