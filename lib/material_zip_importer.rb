@@ -50,8 +50,10 @@ class MaterialZipImporter
 
   def process_directory(product, parent, directory_path, position)
     dir = Dir.new(directory_path)
+    name = revise_grade_in_name(File.basename(directory_path).gsub(/^\d+ /, '').titleize)
+    return if (/macosx/i).match(name)
     material = Spree::Material.create(
-      name: revise_grade_in_name(File.basename(directory_path).gsub(/^\d+ /, '').titleize),
+      name: name,
       parent: parent,
       product: product,
       position: position
