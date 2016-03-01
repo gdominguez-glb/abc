@@ -9,7 +9,6 @@ class PagesController < ApplicationController
     @sub_nav_items = Page.show_in_sub_navigation(@page.group_name)
 
     set_page_meta_tags(@page)
-    log_activity(@page)
     if @page.layout.present?
       render layout: @page.layout
     end
@@ -19,16 +18,6 @@ class PagesController < ApplicationController
   end
 
   private
-
-  def log_activity(page)
-    if spree_current_user
-      spree_current_user.log_activity(
-        item: page,
-        action: 'view',
-        title: page.title
-      )
-    end
-  end
 
   def set_page_meta_tags(page)
     if page.keywords.present? || page.description.present?
