@@ -1,0 +1,60 @@
+<div class="col-sm-10 col-sm-offset-1 margin-top-xxl margin-bottom-xl">
+  <div class="row">
+    <div class="col-md-12">
+      <%= form_tag accept_terms_path do %>
+          <div class="terms_and_conditions_box">
+          <h4>Terms of Service for Use of This Website</h4>
+
+          <div class="terms_and_conditions_text">
+            <p>Nulla vitae elit libero, a pharetra augue. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam quis risus eget urna mollis ornare vel eu leo. Maecenas sed diam eget risus varius blandit sit amet non magna. Maecenas faucibus mollis interdum. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras mattis consectetur purus sit amet fermentum. Donec ullamcorper nulla non metus auctor fringilla. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam eget risus varius blandit sit amet non magna. Sed posuere consectetur est at lobortis. Maecenas sed diam eget risus varius blandit sit amet non magna. Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id dolor id nibh ultricies vehicula ut id elit. Cras mattis consectetur purus sit amet fermentum. Vestibulum id ligula porta felis euismod semper. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Sed posuere consectetur est at lobortis. Aenean lacinia bibendum nulla sed consectetur.</p>
+            <p>Etiam porta sem malesuada magna mollis euismod. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Etiam porta sem malesuada magna mollis euismod. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
+            <p>Nulla vitae elit libero, a pharetra augue. Nulla vitae elit libero, a pharetra augue. Aenean lacinia bibendum nulla sed consectetur. Nulla vitae elit libero, a pharetra augue. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur blandit tempus porttitor.</p>
+            <p>Etiam porta sem malesuada magna mollis euismod. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Etiam porta sem malesuada magna mollis euismod. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
+            <p>Nulla vitae elit libero, a pharetra augue. Nulla vitae elit libero, a pharetra augue. Aenean lacinia bibendum nulla sed consectetur. Nulla vitae elit libero, a pharetra augue. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur blandit tempus porttitor.</p>
+          </div>
+        <% unless spree_current_user.blank? || spree_current_user.accepted_terms %>
+            <div class="margin-top-s">
+              <%= check_box_tag :accept_terms %> <%= label_tag(:accept_terms, Spree.t('terms_and_conditions.checkbox')) %>
+            </div>
+            </div>
+            <%= button_tag Spree.t(:save_and_continue), :class => 'continue btn btn-success btn-block-xs disabled term-continue-button margin-bottom' %>
+            <div class="alert alert-info"><i class="mi">info_outline</i> Scroll through and accept the terms to continue.</div>
+        <% end %>
+
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(function(){
+    var scrolledToBottom = false;
+    var agreedTerms = false;
+    $('input[name="accept_terms"]').change(function(){
+      agreedTerms = $(this).is(':checked');
+      activateContinueButton();
+    });
+
+    if($('.terms_and_conditions_text').get(0).scrollHeight == ($('.terms_and_conditions_text').height() + 40)) {
+      setTimeout(function() {
+        scrolledToBottom = true;
+        activateContinueButton();
+      }, 3000)
+    } else {
+      $('.terms_and_conditions_text').scroll(function () {
+        if (($(this).scrollTop() + 40) == $(this).get(0).scrollHeight - $(this).height()) {
+          scrolledToBottom = true;
+          activateContinueButton();
+        }
+      });
+    }
+
+    function activateContinueButton() {
+      if(scrolledToBottom && agreedTerms) {
+        $('.term-continue-button').removeClass('disabled');
+      } else {
+        $('.term-continue-button').addClass('disabled');
+      }
+    }
+  })
+</script>
