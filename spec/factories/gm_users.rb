@@ -6,6 +6,7 @@ FactoryGirl.define do
     school_district
     password '123456'
     skip_salesforce_create true
+    accepted_terms true
     after(:create) do |u|
       create(:salesforce_reference, local_object: u)
     end
