@@ -310,3 +310,16 @@
 .prev-product, .next-product {
   cursor: pointer;
 }
+
+.terms_and_conditions_box {
+  padding: 15px;
+  margin-bottom: 15px;
+  background: #f7f7f7;
+}
+.terms_and_conditions_text {
+  padding: 20px;
+  margin: 15px 0;
+  height: 250px;
+  overflow: auto;
+  background: #fff;
+}

@@ -28,6 +28,10 @@ Spree::UserRegistrationsController.class_eval do
 
   private
 
+  def after_sign_up_path_for(resource_or_scope)
+    main_app.display_terms_path
+  end
+
   def spree_user_params
     new_params = params.require(:spree_user).permit(
       :first_name,

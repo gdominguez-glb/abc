@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
 
   helper_method :ghost_login?, :admin_ghost_login?
 
+  before_action :accepted_terms
+
   def current_ability
     @current_ability ||= Spree::Ability.new(current_user)
   end
@@ -40,6 +42,11 @@ class ApplicationController < ActionController::Base
   end
 
   protected
+
+  def accepted_terms
+    #Commented to avoid redirection issue
+    #redirect_to main_app.display_terms_url unless spree_current_user.accepted_terms
+  end
 
   def authenticate_user!
     if spree_current_user.blank?
