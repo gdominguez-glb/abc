@@ -277,3 +277,16 @@
     $('.select2-container').css();
   </script>
 <% end %>
+
+<%= content_for :custom_javascripts do %>
+  <script type="text/javascript">
+    $(function(){
+      $('#product_description').trumbowyg({
+        fullscreenable: false,
+        closable: true,
+        removeformatPasted: true,
+        btns: ['bold', 'italic', 'underline', 'strikethrough', '|', 'formatting', '|', 'unorderedList', 'orderedList', '|', 'link', '|', 'removeformat']
+      });
+    });
+  </script>
+<% end %>
