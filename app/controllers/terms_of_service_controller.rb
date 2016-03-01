@@ -1,6 +1,6 @@
 class TermsOfServiceController < ApplicationController
 
-  skip_before_action :accepted_terms, only: [:display]
+  skip_before_action :accepted_terms, only: [:display, :accept]
 
   def accept
     spree_current_user.update(:accepted_terms => true) unless spree_current_user.blank?

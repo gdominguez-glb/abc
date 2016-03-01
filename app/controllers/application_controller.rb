@@ -45,7 +45,7 @@ class ApplicationController < ActionController::Base
 
   def accepted_terms
     #Commented to avoid redirection issue
-    #redirect_to main_app.display_terms_url unless spree_current_user.accepted_terms
+    redirect_to main_app.display_terms_url unless spree_current_user.accepted_terms
   end
 
   def authenticate_user!
