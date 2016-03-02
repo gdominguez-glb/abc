@@ -1,9 +1,11 @@
 <div class="terms_and_conditions_box">
   <h4><%= Spree.t('terms_and_conditions.title') %></h4>
-
+  <p>
+    These are the license terms under which you are authorized to use this content. Please read and click I accept if you wish to proceed.
+  </p>
   <div class="terms_and_conditions_text">
     <% @current_order.products.select{|p| p.license_text.present?}.each do |product| %>
-      <h5><%= product.name %></h5>
+      <h5>License for <%= product.name %></h5>
       <p>
         <%= simple_format product.license_text %>
       </p>
