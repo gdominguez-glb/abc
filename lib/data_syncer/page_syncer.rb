@@ -17,7 +17,7 @@ class DataSyncer::PageSyncer < DataSyncer::Base
       row.keys.select{|k| k =~ /link/ }.each do |key|
         if row[key] && row[key].include?('staging.greatminds.org')
           changed = true
-          row[key] = row[key].gsub('staging.greatminds.org', 'production.greatminds.org')
+          row[key] = row[key].gsub('staging.greatminds.org', 'beta.greatminds.org')
         end
       end
     end
