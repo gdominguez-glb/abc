@@ -15,7 +15,7 @@ class DataSyncer::PageSyncer < DataSyncer::Base
     rows = tiles[:rows]
     rows.each do |row|
       row.keys.select{|k| k =~ /link/ }.each do |key|
-        if row[key] && row[key].include?('staging.greatminds.org')
+        if row[key] && row[key].include?('staging.greatminds.org') && row[key] !~ /s3-staging\.greatminds\.org/
           changed = true
           row[key] = row[key].gsub('staging.greatminds.org', 'beta.greatminds.org')
         end
