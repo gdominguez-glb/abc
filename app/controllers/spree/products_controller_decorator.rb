@@ -36,6 +36,6 @@ Spree::ProductsController.class_eval do
 
   def group
     @product_group = Spree::Product.find_by(slug: params[:id])
-    @products = @product_group.group_items
+    @products = @product_group.group_items.order('spree_group_items.created_at asc')
   end
 end
