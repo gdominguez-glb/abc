@@ -36,10 +36,14 @@ spree_routes_overrides = Proc.new do
       end
     end
 
+    resources :archives
     resources :products do
       resources :parts, only: [:index, :create, :destroy]
       resources :group_items, only: [:index, :create, :destroy]
-
+      member do
+        post :archive
+        post :unarchive
+      end
       resources :materials do
         collection do
           get :bulk_modal

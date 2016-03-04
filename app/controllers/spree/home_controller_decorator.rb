@@ -7,6 +7,6 @@ Spree::HomeController.class_eval do
     if params[:taxon_ids].blank?
       @products = @products.show_in_storefront
     end
-    @products = @products.page(params[:page]).per(10)
+    @products = @products.unarchive.page(params[:page]).per(10)
   end
 end
