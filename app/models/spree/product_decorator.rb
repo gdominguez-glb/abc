@@ -75,6 +75,7 @@ Spree::Product.class_eval do
   scope :unexpire, -> { where("spree_products.expiration_date > ? or spree_products.expiration_date is null", Time.now) }
   scope :show_in_storefront, -> { where(show_in_storefront: true) }
   scope :salesforceable, -> { where.not(sf_id_product: nil)}
+  scope :unarchive, -> { where(archived: false) }
 
   after_save :add_video_group_taxon
 
