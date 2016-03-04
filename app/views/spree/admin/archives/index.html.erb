@@ -1,0 +1,30 @@
+<% content_for :page_title do %>
+  <%= 'Archived Products' %>
+<% end %>
+
+<% if @archived_products.any? %>
+  <div id="list-archived-products" data-hook>
+      <table class="table sortable">
+        <thead>
+          <tr>
+            <th><%= Spree.t(:name) %></th>
+            <th class="actions"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @archived_products.each do |archived_product| %>
+            <tr>
+              <td><%= archived_product.name %></td>
+              <td class="actions actions-2 text-right">
+                <%= link_to 'Edit', edit_admin_product_path(archived_product), no_text: true %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+  </div>
+<% else %>
+  <div class="alert alert-info no-objects-found">
+    <p>No archived products exists.</p>
+  </div>
+<% end %>

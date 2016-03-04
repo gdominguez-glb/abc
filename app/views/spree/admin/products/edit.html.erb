@@ -13,7 +13,11 @@
     <%= render :partial => 'spree/admin/shared/edit_resource_links' %>
     <% if can?(:edit, Spree::Product) %>
       <div style='margin-top: 10px;'>
-        <%= link_to 'Archive Product', archive_admin_product_path(@product), class: 'btn btn-default', data: { confirm: 'Are you sure to archive this product?', method: :post } %>
+        <% if @product.archived? %>
+          <%= link_to 'Un-Archive Product', unarchive_admin_product_path(@product), class: 'btn btn-default', data: { confirm: 'Are you sure to un-archive this product?', method: :post } %>
+        <% else %>
+          <%= link_to 'Archive Product', archive_admin_product_path(@product), class: 'btn btn-default', data: { confirm: 'Are you sure to archive this product?', method: :post } %>
+        <% end %>
       </div>
     <% end %>
   </fieldset>
