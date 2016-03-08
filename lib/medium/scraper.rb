@@ -9,6 +9,7 @@ module Medium
             print '.'
             import_post_from_medium(publication, post)
           end
+          remove_deleted_posts(publication, publication_data['payload']['posts'])
         rescue
           puts
           puts 'failed to import posts from medium'
@@ -25,6 +26,17 @@ module Medium
       return if post_hash[:medium_id].blank?
       post      = publication.posts.find_or_initialize_by(medium_id: post_hash[:medium_id])
       post.update(post_hash.merge(medium_publication_id: publication.id))
+    end
+
+    def remove_deleted_posts(publication, medium_posts)
+      if medium_posts.size == 0
+        publication.posts.destroy_all
+        return
+      end
+      from_at = Time.at(medium_posts[0]['firstPublishedAt']/1000)
+      to_at   = Time.at(medium_posts[-1]['firstPublishedAt']/1000)
+      titles  = medium_posts.map {|p| p['title'] }
+      publication.posts.where.not(title: titles).where('published_at between ? and ?', from_at, to_at).destroy_all
     end
 
     def request_data_from_medium(url)
