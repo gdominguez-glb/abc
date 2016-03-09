@@ -105,15 +105,15 @@ if Curriculum.count == 0
   end
 end
 
-free_taxonomy = Spree::Taxonomy.find_or_create_by(name: 'Free?')
-if free_taxonomy.taxons.count == 1
-  root_free_taxon = free_taxonomy.taxons.first
-  free_taxonomy.taxons.create(parent: root_free_taxon, name: 'Free')
-  free_taxonomy.taxons.create(parent: root_free_taxon, name: 'Premium')
-end
+# free_taxonomy = Spree::Taxonomy.find_or_create_by(name: 'Free?')
+# if free_taxonomy.taxons.count == 1
+#   root_free_taxon = free_taxonomy.taxons.first
+#   free_taxonomy.taxons.create(parent: root_free_taxon, name: 'Free')
+#   free_taxonomy.taxons.create(parent: root_free_taxon, name: 'Paid')
+# end
 
-Spree::Taxonomy.find_or_create_by(name: 'Group')
-Spree::Taxonomy.find_or_create_by(name: 'Grade')
-Spree::Taxonomy.find_or_create_by(name: 'Grade Band')
-Spree::Taxonomy.find_or_create_by(name: 'Module')
-Spree::Taxonomy.find_or_create_by(name: 'Lesson')
+# Spree::Taxonomy.find_or_create_by(name: 'Group')
+# Spree::Taxonomy.find_or_create_by(name: 'Grade')
+# Spree::Taxonomy.find_or_create_by(name: 'Grade Band')
+# Spree::Taxonomy.find_or_create_by(name: 'Module')
+# Spree::Taxonomy.find_or_create_by(name: 'Lesson')
