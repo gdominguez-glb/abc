@@ -2,7 +2,7 @@
   <div class="video-wrapper">
     <div class="image-drawer-wrapper flip-container">
       <div class="flipper">
-        <div class="video-image-wrapper flip-front <% if video.screenshot.present? %>video-preview-image<% end %>"<% if video.screenshot.present? %> style="background-image: url('<%= video.screenshot.url %>')"<% end %> >
+        <div class="video-image-wrapper flip-front <% if video.screenshot.present? %>video-preview-image<% end %>"<% if video.screenshot.present? %> style="background-image: url('<%= video.screenshot.url(:medium) %>')"<% end %> >
           <button class="btn btn-primary flip-btn">
             <i class="glyphicon glyphicon-lock" aria-hidden="true"></i>
             More
