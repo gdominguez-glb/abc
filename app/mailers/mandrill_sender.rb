@@ -2,6 +2,7 @@ require "mandrill"
 
 class MandrillSender
   def initialize
+    @host = "http://#{ActionMailer::Base.default_url_options[:host]}"
     @mandrill = Mandrill::API.new(ENV['mandrill_password'])
   end
 
@@ -13,7 +14,7 @@ class MandrillSender
       merge_vars: [
         {
           rcpt: email,
-          vars: generate_vars(variables)
+          vars: generate_vars(variables.merge(host: @host))
         } 
       ]
     }
