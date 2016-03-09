@@ -10,9 +10,9 @@ RSpec.describe Spree::Video, type: :model do
   let(:video) { create(:spree_video, title: 'G4M2 TA L1') }
 
   def set_free_premium_taxons
-    free_taxonomy = create(:taxonomy, name: 'Free?')
+    free_taxonomy = create(:taxonomy, name: 'Free vs Paid')
     create(:taxon, name: 'Free', taxonomy: free_taxonomy)
-    create(:taxon, name: 'Premium', taxonomy: free_taxonomy)
+    create(:taxon, name: 'Paid', taxonomy: free_taxonomy)
   end
 
   def set_taxons
@@ -105,14 +105,14 @@ RSpec.describe Spree::Video, type: :model do
       video.update(is_free: true)
 
       expect(video.taxons.find_by(name: 'Free')).not_to be_nil
-      expect(video.taxons.find_by(name: 'Premium')).to be_nil
+      expect(video.taxons.find_by(name: 'Paid')).to be_nil
     end
 
     it "assign premium when is_free is false" do
       video.update(is_free: false)
 
       expect(video.taxons.find_by(name: 'Free')).to be_nil
-      expect(video.taxons.find_by(name: 'Premium')).not_to be_nil
+      expect(video.taxons.find_by(name: 'Paid')).not_to be_nil
     end
   end
 end

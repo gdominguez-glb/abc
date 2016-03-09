@@ -115,13 +115,13 @@ class Spree::Video < ActiveRecord::Base
 
   def assign_free_taxons
     free_taxon    = Spree::Taxon.find_by(name: 'Free')
-    premium_taxon = Spree::Taxon.find_by(name: 'Premium')
-    return if free_taxon.nil? && premium_taxon.nil?
+    paid_taxon = Spree::Taxon.find_by(name: 'Paid')
+    return if free_taxon.nil? && paid_taxon.nil?
     if self.is_free?
       assign_taxon(free_taxon)
-      self.taxons.destroy(premium_taxon)
+      self.taxons.destroy(paid_taxon)
     else
-      assign_taxon(premium_taxon)
+      assign_taxon(paid_taxon)
       self.taxons.destroy(free_taxon)
     end
   end
