@@ -5,7 +5,9 @@ class Spree::Video < ActiveRecord::Base
     path:           "/:class/:attachment/:id_partition/:style/:filename",
     url:            ":s3_alias_url",
     s3_protocol:    "http",
-    s3_host_alias:  ENV['s3_bucket_name']
+    s3_host_alias:  ENV['s3_bucket_name'],
+    :styles => {
+      :medium => "330x220" }
   }
 
   searchkick callbacks: :async
