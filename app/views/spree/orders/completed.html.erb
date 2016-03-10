@@ -9,7 +9,7 @@
       <br class="clear" />
 
       <p data-hook="links">
-        <%= link_to 'Access Dashboard', main_app.account_root_path, class: 'btn btn-block-xs btn-success margin-right-reset pull-right' %>
+        <%= link_to 'Access Dashboard', (@order.single_purchase? ? main_app.account_products_path : main_app.account_root_path), class: 'btn btn-block-xs btn-success margin-right-reset pull-right' %>
       </p>
     </div>
   </fieldset>
