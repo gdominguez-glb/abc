@@ -27,11 +27,12 @@
     }
   },
   "salesforce": {
-    "client_id": "3MVG90D5vR7UtjbrQmr8VbvTWzt2gzuEnKM7g1o8lrsl3FnJEp9uNfSSRh6O61v2ehZA7MMl3trxuwBMtCd6c",
-    "client_secret": "7698928844384121550",
-    "username": "maggie@greatminds.net.intridea",
+    "production": false,
+    "client_id": "3MVG9sLbBxQYwWquXwHk0CkdYOX9XY79JPFD_z5N20USMp8WrwRrzKsSRSyvHk0VkrLhiNMRaJYSJE.z4rH7x",
+    "client_secret": "6100227352039836313",
+    "username": "maggie@greatminds.net.gmpartial",
     "password": "intridea4gm",
-    "security_token": "u4xVcKb5XYw2ppzR25NJf6F1o"
+    "security_token": "PCrC2aVOm2C8jRysUWERDZFv"
   },
   "hightail": {
     "api_url": "https://test2-api.yousendit.com/",
