@@ -121,6 +121,7 @@ $(function(){
   updateSchoolDistrictSelect(parseInt(selectedStateId));
 
   $("#spree_user_title").trigger('change');
+  $("#spree_user_school_id").trigger('change');
 
   $("#spree_user_school_district_attributes_state_id").change(function(){
     var stateId = $(this).val();
