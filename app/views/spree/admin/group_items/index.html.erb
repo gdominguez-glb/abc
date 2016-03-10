@@ -12,10 +12,10 @@
   <%= f.submit "Add", class: 'btn btn-primary' %>
 <% end %>
 
-<table class="table">
+<table class="table" id='group-items-list'>
   <tbody>
     <% @product.group_items.each do |group_item| %>
-      <tr>
+      <tr data-id="<%= group_item.id %>">
         <td><%= link_to group_item.name, spree.admin_product_path(group_item) %></td>
         <td><%= link_to 'Delete', admin_product_group_item_path(@product, group_item.group_item_id), class: 'btn btn-primary btn-sm', data: { confirm: 'Are you sure?', method: :delete } %></td>
       </tr>
@@ -67,6 +67,25 @@
         return product.name;
       }
    });
+
+    function updatePositions() {
+      var data = {}
+      $.each($("#group-items-list tbody tr"), function(index, element) {
+        data[$(element).attr('data-id')] = index;
+      });
+      $.ajax({
+        url: '<%= update_position_admin_product_group_items_path(@product) %>',
+        type: 'POST',
+        data: { positions: data }
+      })
+    }
+    $(function(){
+      $("#group-items-list tbody").sortable({
+        update: function(event, ui) {
+          updatePositions();
+        }
+      });
+    });
   })(jQuery);
 //]]>
 </script>
