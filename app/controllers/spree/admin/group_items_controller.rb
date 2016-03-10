@@ -21,6 +21,13 @@ module Spree
         redirect_to location_after_save
       end
 
+      def update_position
+        params[:positions].each do |id, position|
+          Spree::GroupItem.find_by(group_id: @product.id, product_id: id).update(position: position)
+        end
+        render nothing: true
+      end
+
       protected
 
       def group_item_params

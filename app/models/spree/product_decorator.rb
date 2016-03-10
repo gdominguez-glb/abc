@@ -49,7 +49,7 @@ Spree::Product.class_eval do
 
   ## spree group_items
   group_items_habtm = select("#{Spree::Product.quoted_table_name}.*")
-                  .select("#{Spree::GroupItem.quoted_table_name}.id AS group_item_id")
+                  .select("#{Spree::GroupItem.quoted_table_name}.id AS group_item_id").order("#{Spree::GroupItem.quoted_table_name}.position asc")
   has_and_belongs_to_many :group_items, -> { group_items_habtm },
                           class_name: 'Spree::Product',
                           join_table: 'spree_group_items',
