@@ -22,7 +22,7 @@ module GmSalesforce
 
     def init_client
       sf_params = salesforce_params
-      unless Rails.env.production?
+      if ENV['salesforce_production'] != true
         sf_params[:host] = 'test.salesforce.com'
         Restforce.log = !Rails.env.test?
       end
