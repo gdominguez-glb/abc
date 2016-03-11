@@ -138,11 +138,17 @@ $(function(){
     renderDistrictOptions(stateDistrictData, _stateId);
   }
 
+  function formatSelect(object) {
+    return object.id === "#schoolNotListed" ? "<strong>" + object.text + "</strong>" : object.text;
+  }
+
   function renderSchoolOptions(data, stateId) {
     $('#spree_user_school_id').select2('destroy');
     $('#spree_user_school_id').select2({
       data: data,
       placeholder: 'Select A School',
+      formatSelection: formatSelect,
+      formatResult: formatSelect,
       initSelection: function(element, callback){
         var id = $(element).val();
         var selectedData = findSelectedData(data, id);
