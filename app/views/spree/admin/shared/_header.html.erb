@@ -1,0 +1,56 @@
+<% admin = try_spree_current_user.try(:has_spree_role?, "admin") %>
+
+<header class="header <%= admin ? "logged-in" : "logged-out" %>">
+
+  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="navbar-header col-sm-3 col-md-2">
+          <%= link_to(
+            'Spree',
+            spree.admin_path,
+            class: "logo navbar-brand"
+          ) %>
+          <% if admin %>
+            <span class="navbar-toggle" id="sidebar-toggle">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </span>
+          <% end %>
+        </div>
+
+        <% if admin %>
+          <div class="col-sm-9 col-md-10">
+            <div class="navbar-right" data-hook="admin_login_navigation_bar"></div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-9 col-sm-offset-3">
+        <div class="collapse navbar-collapse" id="sub-nav">
+          <ul>
+            <%= active_link_to "My Resources", main_app.account_products_path, wrap_tag: :li, class: 'my-resource-link' %>
+            <%= active_link_to "Video Gallery", '/video_gallery', wrap_tag: :li, class: 'video-gallery-link' %>
+            <% if spree_current_user.has_admin_role? %>
+              <li>
+                <a href="/store/admin ">Store Admin<span class="sr-only">(current)</span></a>
+              </li>
+            <% end %>
+            <%= active_link_to "Bookmarks", '/account/bookmarks', wrap_tag: :li %>
+            <%= active_link_to "History", '/account/history', wrap_tag: :li %>
+            <%= active_link_to "CMS", '/cms', wrap_tag: :li if current_spree_user.admin? %>
+            <%= active_link_to "Settings", '/account/settings', wrap_tag: :li %>
+            <% if spree_current_user.has_school_admin_role? %>
+              <%= active_link_to "License Management", main_app.account_licenses_path, wrap_tag: :li, class: 'js-license-management-link' %>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </nav>
+
+</header>
