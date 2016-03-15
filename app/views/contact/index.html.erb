@@ -33,7 +33,6 @@
               <span class="caret"></span>
             </button>
             <ul class="dropdown-menu">
-              <li><a href="">Select a Topic</a></li>
               <% ContactForm::TOPICS.each do |topic| %>
                 <li><a href="#" data-topic="<%= topic %>"><%= topic %></a></li>
               <% end %>
