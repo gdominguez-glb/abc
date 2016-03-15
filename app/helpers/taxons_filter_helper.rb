@@ -21,7 +21,7 @@ module TaxonsFilterHelper
 
   def generate_selected_taxon_item(taxon)
     content_tag :a, :href => remove_taxon_link(taxon), class: 'list-group-item active' do
-      (taxon.name + "<span class='badge badge-danger'><i class='mi'>close</i></span>").html_safe
+      ("<span class='panel-filter-text'>#{taxon.name}</span> <span class='badge badge-danger'><i class='mi'>close</i></span>").html_safe
     end
   end
 
