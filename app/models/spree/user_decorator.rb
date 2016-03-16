@@ -12,7 +12,7 @@ Spree::User.class_eval do
 
   validates_format_of :password, with: /\A\S*\z/, message: "can't include spaces", if: :password_required?
   validates :school_district, presence: true
-  validate :beta_password_valid, if: "Rails.env.production?"
+  validate :beta_password_valid, if: "Rails.env.production?", on: :create
 
   belongs_to :delegate_for_user, class_name: 'Spree::User', foreign_key: :delegate_user_id
 
