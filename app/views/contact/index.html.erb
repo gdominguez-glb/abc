@@ -108,23 +108,26 @@
 
           <div class="row">
             <div class="col-sm-6 dependent-field hidden" data-name='Country'>
-              <div class="form-group">
-                <label>Country</label>
-                <%= f.text_field :country, size: 20, maxlength: 80, class: 'form-control', placeholder: 'Country' %>
+              <label>Country</label>
+              <div class="select-container dark-select block">
+                <span>Country</span>
+                <%= f.collection_select :country, Spree::Country.all, :name, :name, { prompt: 'Select Country' }, class: 'form-control' %>
               </div>
             </div>
 
             <div class="col-sm-6 dependent-field hidden" data-name="State">
-              <div class="form-group">
-                <label>State</label>
-                <%= f.text_field :state, size: 20, maxlength: 80, class: 'form-control', placeholder: 'State' %>
+              <label>State</label>
+              <div class="select-container dark-select block">
+                <span>State</span>
+                <%= f.collection_select :state, Spree::Country.default.states, :name, :name, { prompt: 'Select State' }, class: 'form-control' %>
               </div>
             </div>
 
             <div class="col-sm-6 dependent-field hidden" data-name="Curriculum">
-              <div class="form-group">
-                <label>Curriculum</label>
-                <%= f.text_field :curriculum, size: 20, maxlength: 80, class: 'form-control', placeholder: 'Curriculum' %>
+              <label>Curriculum</label>
+              <div class="select-container dark-select block">
+                <span>Curriculum</span>
+                <%= f.collection_select :curriculum, Curriculum.visibles, :name, :name, { prompt: 'Select Curriculum' }, class: 'form-control' %>
               </div>
             </div>
 
@@ -301,7 +304,6 @@
         "Curriculum",
         "Format",
         "Country",
-        "State",
         "Curriculum",
         "Grade",
         "School or District Size",
@@ -317,7 +319,6 @@
       var topicFieldMapping = {
         'Sales/Purchasing': [
           { name: 'Country' },
-          { name: 'State' },
           { name: 'Curriculum' },
           { name: 'Title 1' },
           { name: 'Returning Customer' },
@@ -399,6 +400,13 @@
 
       $('input[name="contact_form[desired_dates]"]').datetimepicker({format: 'YYYY-MM-DD'});
 
+      $('#contact_form_country').change(function(e){
+        if($(this).val() == 'United States') {
+          $('[data-name="State"]').removeClass('hidden');
+        } else {
+          $('[data-name="State"]').addClass('hidden');
+        }
+      });
       var hash = window.location.hash;
       if(hash == '#sales') {
         $('#topicDropdown').find('[data-topic="Sales/Purchasing"]').trigger('click');
