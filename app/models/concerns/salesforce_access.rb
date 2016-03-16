@@ -39,6 +39,10 @@ module SalesforceAccess
     false
   end
 
+  # Override this method to run when salesforce object is updated
+  def update_from_cached_salesforce_object
+  end
+
   # this follows our convention where we store our pk in salesforce's MemberID
   # def find_in_salesforce_by_member_id(mid = id)
   #   return nil unless mid
@@ -95,6 +99,7 @@ module SalesforceAccess
     attrs = self.class.salesforce_reference_attributes(sfo)
     salesforce_reference.update_attributes(
       attrs.except(:last_imported_from_salesforce_at))
+    update_from_cached_salesforce_object
     self
   end
 

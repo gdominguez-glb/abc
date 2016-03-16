@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160310064553) do
+ActiveRecord::Schema.define(version: 20160316011931) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -408,11 +408,18 @@ ActiveRecord::Schema.define(version: 20160310064553) do
     t.string   "name"
     t.integer  "state_id"
     t.string   "place_type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.integer  "country_id"
     t.string   "city"
+    t.boolean  "sf_is_deleted", default: false
+    t.boolean  "sf_verified",   default: false
+    t.datetime "sf_created_at"
   end
+
+  add_index "school_districts", ["sf_created_at"], name: "index_school_districts_on_sf_created_at", using: :btree
+  add_index "school_districts", ["sf_is_deleted"], name: "index_school_districts_on_sf_is_deleted", using: :btree
+  add_index "school_districts", ["sf_verified"], name: "index_school_districts_on_sf_verified", using: :btree
 
   create_table "settings", force: :cascade do |t|
     t.string   "var",                   null: false
