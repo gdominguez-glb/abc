@@ -146,15 +146,7 @@ class SchoolDistrict < ActiveRecord::Base
 
   # The dropdown should be restricted to verified checkbox, last 48 hours, and
   # is not “is deleted"
-  scope :for_selection, -> {
-    ids = includes(:salesforce_reference).all.select do |sd|
-      next false if sd.cached_salesforce_object.try(:IsDeleted) == true
-      next true if sd.cached_salesforce_object.try(:Verified__c) != false
-      date = sd.cached_salesforce_object.try(:CreatedDate)
-      date && Date.parse(date) > 2.days.ago
-    end
-    where(id: ids)
-  }
+  scope :for_selection, -> { where("sf_is_deleted = ? and (sf_verified = ? or (sf_verified = ? and sf_created_at > ?))", false, true, false, 2.days.ago) }
 
   scope :with_state, ->(state_id) {
     where(state_id: state_id) if state_id

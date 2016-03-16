@@ -417,6 +417,10 @@ ActiveRecord::Schema.define(version: 20160316011931) do
     t.datetime "sf_created_at"
   end
 
+  add_index "school_districts", ["sf_created_at"], name: "index_school_districts_on_sf_created_at", using: :btree
+  add_index "school_districts", ["sf_is_deleted"], name: "index_school_districts_on_sf_is_deleted", using: :btree
+  add_index "school_districts", ["sf_verified"], name: "index_school_districts_on_sf_verified", using: :btree
+
   create_table "settings", force: :cascade do |t|
     t.string   "var",                   null: false
     t.text     "value"
