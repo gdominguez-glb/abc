@@ -32,6 +32,16 @@ class SchoolDistrict < ActiveRecord::Base
     nil
   end
 
+  def update_from_cached_salesforce_object
+    if cached_salesforce_object
+      update(
+        sf_is_deleted: cached_salesforce_object.IsDeleted,
+        sf_verified: cached_salesforce_object.Verified__c,
+        sf_created_at: (Date.parse(cached_salesforce_object.CreatedDate) rescue nil)
+      )
+    end
+  end
+
   # Looks for name + state, then looks for just name if not found
   def find_in_salesforce_by_name_and_state
     return nil if name.blank?
