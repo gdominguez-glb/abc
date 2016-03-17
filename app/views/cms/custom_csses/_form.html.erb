@@ -1,0 +1,46 @@
+<%= form_for([:cms, @custom_css], class: 'form') do |f| %>
+  <% if @custom_css.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@custom_css.errors.count, "error") %> prohibited this custom_css from being saved:</h2>
+
+      <ul>
+      <% @custom_css.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="form-group">
+        <%= f.label 'Css Type' %>
+        <%= f.select :custom_type, ['global_css', 'page_css'], {}, { class: 'form-control' } %>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="form-group">
+        <%= f.label 'Page (Required for page css)' %>
+        <%= f.collection_select :page_id, Page.all, :id, :slug, { prompt: 'Select a Page' }, { class: 'form-control' } %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Content</label>
+    <%= f.text_area :content, class: 'form-control', rows: 10, placeholder: 'write your css here: .black { color: #000; }' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit class: 'btn btn-success' %>
+  </div>
+<% end %>
