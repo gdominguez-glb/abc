@@ -30,7 +30,7 @@
     <div class="col-sm-6">
       <div class="form-group">
         <%= f.label 'Page (Required for page css)' %>
-        <%= f.collection_select :page_id, Page.all, :id, :title, { prompt: 'Select a Page' }, { class: 'form-control' } %>
+        <%= f.collection_select :page_id, Page.all, :id, :slug, { prompt: 'Select a Page' }, { class: 'form-control' } %>
       </div>
     </div>
   </div>
