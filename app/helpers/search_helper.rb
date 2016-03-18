@@ -17,7 +17,7 @@ module SearchHelper
     product = material.product
     return nil if product.nil?
     return "#{product.access_url}?#{{opened_product_id: product.id, opened_material_id: material.id}.to_param}" if product.access_url.present?
-    spree.product_path
+    spree.product_path(product)
   end
 
   def post_link(post)
