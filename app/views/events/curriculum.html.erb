@@ -6,7 +6,7 @@
     <div class="events-page">
       <div class="row margin-bottom">
         <div class="col-lg-6">
-          <p class="margin-bottom-reset"><%= @event_page.description %></p>
+          <p class="margin-bottom-reset"><%= @event_page.description.html_safe rescue '' %></p>
         </div>
       </div>
       <%= render 'events_list' %>

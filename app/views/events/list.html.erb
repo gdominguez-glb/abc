@@ -5,7 +5,7 @@
       <div class="row margin-bottom">
         <div class="col-sm-12">
           <h2 class="text-center"><%= @event_page.title.present? ? @event_page.title : 'Upcoming training' %></h2>
-          <p><%= @event_page.description %></p>
+          <p><%= @event_page.description.html_safe rescue '' %></p>
         </div>
       </div>
       <%= render 'events_list' %>
