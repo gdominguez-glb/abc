@@ -249,7 +249,7 @@ Spree::User.class_eval do
   end
 
   def twitter_list_code
-    TWITTER_LISTS[interested_curriculums.sort.join('_')]
+    TWITTER_LISTS[ interested_curriculums.sort.join('_') ] || TWITTER_LISTS['English_History_Math']
   end
 
   def has_more_than_3_products?
