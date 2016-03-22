@@ -5,7 +5,8 @@ class DataSyncer::DocumentSyncer < DataSyncer::Base
         'id' => document.id,
         'name' => document.name,
         'category' => document.category,
-        'remote_url' => document.attachment.url(:original)
+        'remote_url' => document.attachment.url(:original),
+        'attachment_file_name' => document.attachment_file_name
       }
     end.to_yaml
   end
