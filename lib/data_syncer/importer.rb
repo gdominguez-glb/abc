@@ -36,7 +36,7 @@ module DataSyncer
     end
 
     def import_model_from_yaml_file(file_path)
-      klass = File.basename(file_path).split('.').first.classify.constantize
+      klass = find_klass_from_file_name(File.basename(file_path))
       klass.transaction do
         klass.destroy_all
         YAML.load_file(file_path).each do |attrs|
@@ -53,5 +53,12 @@ module DataSyncer
       end
     end
 
+    def find_klass_from_file_name(file_name)
+      name = file_name.split('.').first
+      if name.start_with?('tag')
+        name = "acts_as_taggable_on/#{name}"
+      end
+      name.classify.constantize
+    end
   end
 end
