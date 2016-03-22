@@ -57,7 +57,7 @@ class LicenseMailer < ApplicationMailer
 
     subject = generate_subject(@school_admin.full_name, [@product_name].join(', '), (@quantity.to_i > 1))
     if @quantity > 1
-      notify_multiple_distribution(@school_admin.admin_full_name, to_email, subject, @quantity, @product_name)
+      notify_multiple_distribution(@school_admin.full_name, to_email, subject, @quantity, @product_name)
     else
       notify_single_distribution(to_email, @to_user, @product_name, subject)
     end

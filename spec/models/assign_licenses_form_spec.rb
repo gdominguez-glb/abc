@@ -9,6 +9,10 @@ RSpec.describe AssignLicensesForm, type: :model do
     AssignLicensesForm.new(licenses_recipients: 'john@doe.com', licenses_ids: [licensed_product.id], licenses_number: '1', user: school_admin_user)
   end
 
+  before(:each) do
+    mock_mandrill_delivery
+  end
+
   describe "validations" do
     it "invalid with incorrect recipients" do
       assign_licenses_form.licenses_recipients = 'john,foo'

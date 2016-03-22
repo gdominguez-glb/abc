@@ -11,6 +11,7 @@ RSpec.describe Spree::LicensesManager::LicensesDistributer do
       { email: 'john@doooe.com', quantity: 3  },
       { email: 'jack@dooe.com',  quantity: 4 }
     ]
+    mock_mandrill_delivery
     Spree::LicensesManager::LicensesDistributer.new(
       user: user,
       licensed_products: [licensed_product],
