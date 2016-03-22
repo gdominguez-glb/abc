@@ -36,7 +36,7 @@ class Account::LicensesController < Account::BaseController
 
   def licenses_stats
     @licenses_ids = params[:licenses_ids]
-    @licenses_ids.split(',') unless @licenses_ids.nil?
+    @licenses_ids = @licenses_ids.split(',') unless @licenses_ids.nil?
     render layout: false
   end
 
