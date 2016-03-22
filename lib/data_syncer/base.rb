@@ -27,6 +27,8 @@ module DataSyncer
     def self.choose_syncer(klass)
       if Object.const_defined?("DataSyncer::#{klass.name}Syncer")
         "DataSyncer::#{klass.name}Syncer".constantize
+      elsif klass == ActsAsTaggableOn::Tag
+        DataSyncer::TagSyncer
       else
         DataSyncer::Base
       end

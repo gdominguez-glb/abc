@@ -48,8 +48,8 @@ module DataSyncer
     def choose_klass_importer(klass)
       if Object.const_defined?("DataSyncer::#{klass.name}Importer")
         "DataSyncer::#{klass.name}Importer".constantize
-      elsif klass == ActsAsTaggableOn::Tagging
-        DataSyncer::TaggingImporter
+      elsif klass == ActsAsTaggableOn::Tag
+        DataSyncer::TagImporter
       else
         klass
       end
