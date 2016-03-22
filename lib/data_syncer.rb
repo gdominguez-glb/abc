@@ -5,6 +5,7 @@ require 'data_syncer/importer'
 require 'data_syncer/page_importer'
 require 'data_syncer/document_syncer'
 require 'data_syncer/document_importer'
+require 'data_syncer/tagging_importer'
 
 module DataSyncer
 end
