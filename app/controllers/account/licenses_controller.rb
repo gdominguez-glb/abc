@@ -56,7 +56,9 @@ class Account::LicensesController < Account::BaseController
   end
 
   def cancel_invitation
-    current_spree_user.product_distributions.where(to_user_id: nil, email: params[:email]).map{|pd| pd.revoke }
+    current_spree_user.product_distributions.where(to_user_id: nil, email: params[:email]).each do |pd|
+      Spree::LicensesManager::DistributionRevoker.new(pd).revoke
+    end
     redirect_to users_account_licenses_path
   end
 
