@@ -105,7 +105,7 @@
       <div class="form-group school-district select-container dark-select block">
         <span><%= selected_country.name %></span>
         <%= f.fields_for :school_district do |school_district_form| %>
-          <%= school_district_form.collection_select :country_id, Spree::Country.all, :id, :name, { selected: selected_country_id  } , { class: 'form-control' } %>
+          <%= school_district_form.collection_select :country_id, country_list, :id, :name, { selected: selected_country_id  } , { class: 'form-control' } %>
         <% end %>
       </div>
     </div>
