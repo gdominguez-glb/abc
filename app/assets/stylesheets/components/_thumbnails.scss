@@ -33,6 +33,11 @@
 	cursor: pointer;
 }
 
+.thumbnail-team {
+	padding: $b-space-l;
+	min-height: initial;
+}
+
 .col-thumbnail {
 
 	@media screen and (min-width: $screen-sm-min) {
