@@ -126,7 +126,7 @@
         <div class="form-group school-district select-container dark-select block">
           <span><%= current_spree_user.school_district.try(:country) ? current_spree_user.school_district.country.name : 'Select a Country' %></span>
           <%= f.fields_for :school_district do |school_district_form| %>
-            <%= school_district_form.collection_select :country_id, Spree::Country.all, :id, :name, { prompt: true } , { class: 'form-control' } %>
+            <%= school_district_form.collection_select :country_id, country_list, :id, :name, { prompt: true } , { class: 'form-control' } %>
           <% end %>
         </div>
       </div>

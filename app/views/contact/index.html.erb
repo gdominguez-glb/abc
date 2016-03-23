@@ -111,7 +111,7 @@
               <label>Country</label>
               <div class="select-container dark-select block">
                 <span>Country</span>
-                <%= f.collection_select :country, Spree::Country.all, :name, :name, { prompt: 'Select Country' }, class: 'form-control' %>
+                <%= f.collection_select :country, country_list, :name, :name, { prompt: 'Select Country' }, class: 'form-control' %>
               </div>
             </div>
 
