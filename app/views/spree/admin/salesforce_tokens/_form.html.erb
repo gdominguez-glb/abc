@@ -1,0 +1,38 @@
+<div data-hook="admin_mail_method_form_fields">
+  <div class="row">
+
+    <div class="col-md-6" data-hook="general">
+      <fieldset>
+        <legend>App Id/secret</legend>
+
+        <div class="form-group">
+          <%= label_tag :id, Spree.t(:id) %>
+          <%= text_field_tag :salesforce_client_id, Spree::Config[:salesforce_client_id], maxlength: 256, class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= label_tag :client_secret, Spree.t(:client_secret) %>
+          <%= text_field_tag :salesforce_client_secret, Spree::Config[:salesforce_client_secret], maxlength: 256, class: 'form-control' %>
+        </div>
+      </fieldset>
+    </div>
+
+    <div class="col-md-6" data-hook="smtp">
+      <fieldset>
+        <legend>Credentials</legend>
+        <div class="form-group">
+          <%= label_tag :salesforce_username, Spree.t(:salesforce_username) %>
+          <%= text_field_tag :salesforce_username, Spree::Config[:salesforce_username], class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= label_tag :salesforce_password, Spree.t(:salesforce_password) %>
+          <%= text_field_tag :salesforce_password, Spree::Config[:salesforce_password], class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= label_tag :salesforce_security_token, Spree.t(:salesforce_security_token) %>
+          <%= text_field_tag :salesforce_security_token, Spree::Config[:salesforce_security_token], class: 'form-control' %>
+        </div>
+      </fieldset>
+    </div>
+  </div>
+</div>
