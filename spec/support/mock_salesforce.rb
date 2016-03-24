@@ -106,12 +106,12 @@ shared_context 'mock_salesforce' do
   end
 
   def set_env_variables
-    ENV['salesforce_client_id'] = salesforce_client_id
-    ENV['salesforce_client_secret'] = salesforce_client_secret
+    Spree::Config[:salesforce_client_id] = salesforce_client_id
+    Spree::Config[:salesforce_client_secret] = salesforce_client_secret
 
-    ENV['salesforce_username'] = salesforce_username
-    ENV['salesforce_password'] = salesforce_password
-    ENV['salesforce_security_token'] = salesforce_security_token
+    Spree::Config[:salesforce_username] = salesforce_username
+    Spree::Config[:salesforce_password] = salesforce_password
+    Spree::Config[:salesforce_security_token] = salesforce_security_token
   end
 
   before do

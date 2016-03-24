@@ -11,11 +11,11 @@ module GmSalesforce
 
     def salesforce_params
       {
-        username: ENV['salesforce_username'],
-        password: ENV['salesforce_password'],
-        security_token: ENV['salesforce_security_token'],
-        client_id: ENV['salesforce_client_id'],
-        client_secret: ENV['salesforce_client_secret'],
+        username: Spree::Config[:salesforce_username],
+        password: Spree::Config[:salesforce_password],
+        security_token: Spree::Config[:salesforce_security_token],
+        client_id: Spree::Config[:salesforce_client_id],
+        client_secret: Spree::Config[:salesforce_client_secret],
         api_version: '32.0'
       }
     end

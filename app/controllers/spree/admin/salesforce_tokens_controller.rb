@@ -6,7 +6,7 @@ module Spree
           next unless Spree::Config.has_preference? name
           Spree::Config[name] = value
         end
-
+        Singleton.__init__(GmSalesforce::Client)
         flash[:success] = "Updated salesforce token successfully."
         redirect_to edit_admin_salesforce_token_url
       end
