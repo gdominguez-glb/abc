@@ -6,6 +6,15 @@
         <legend>App Id/secret</legend>
 
         <div class="form-group">
+          <div class="inline-radio">
+            <%= label_tag :salesforce_production do %>
+              <%= preference_field_tag(:salesforce_production, Spree::Config[:salesforce_production], type: :boolean) %>
+              Salesforce Production
+            <% end %>
+          </div>
+        </div>
+
+        <div class="form-group">
           <%= label_tag :id, Spree.t(:id) %>
           <%= text_field_tag :salesforce_client_id, Spree::Config[:salesforce_client_id], maxlength: 256, class: 'form-control' %>
         </div>
