@@ -1,0 +1,15 @@
+<% content_for :page_title do %>
+  Salesforce Token Settings
+<% end %>
+
+<% content_for :page_actions do %>
+  <%= link_to_with_icon 'envelope', 'Test Token', test_token_admin_salesforce_token_path,
+    method: :post, title: 'Test Salesforce Connection', class: 'send_mail btn btn-default' %>
+<% end %>
+
+<%= form_tag admin_salesforce_token_path, method: :put do |f| %>
+  <fieldset>
+    <%= render 'form', f: f %>
+    <div class="form-actions actions" data-hook="buttons"><%= button Spree.t('actions.update'), 'update' %></div>
+  </fieldset>
+<% end %>

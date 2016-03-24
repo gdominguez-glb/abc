@@ -1,5 +1,8 @@
 spree_routes_overrides = Proc.new do
   namespace :admin do
+    resource :salesforce_token, only: [:edit, :update] do
+      post :test_token, on: :collection
+    end
     resources :cc_orders, only: [:new, :create]
     resources :school_districts, only: [:index]
     resources :videos
