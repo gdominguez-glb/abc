@@ -1,6 +1,7 @@
 Spree::AppConfiguration.class_eval do
   preference :mails_from, :string
 
+  preference :salesforce_production, :boolean, default: false
   preference :salesforce_client_id, :string
   preference :salesforce_client_secret, :string
 
