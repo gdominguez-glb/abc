@@ -1,9 +1,12 @@
 module GmSalesforce
   # Client
   class Client
-    include Singleton
 
     attr_reader :client
+
+    def self.instance
+      GmSalesforce::Client.new
+    end
 
     def initialize
       @client = init_client
