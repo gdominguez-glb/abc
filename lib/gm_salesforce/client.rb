@@ -76,7 +76,6 @@ module GmSalesforce
             break
           else
             last_created_date = result.entries.last.CreatedDate
-            offset += per_page
           end
         end
       end
