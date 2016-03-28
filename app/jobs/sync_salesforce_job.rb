@@ -7,7 +7,7 @@ class SyncSalesforceJob < ActiveJob::Base
                   'Contact' => 'Spree::User',
                   'PricebookEntry' => 'Spree::Product' }
     classes.each do |name, clazz|
-      processed = clazz.constantize.import_salesforce.count
+      processed = SalesforceObjectImporter.new(name, clazz).import
       logger.info "#{processed} Salesforce #{name} records processed"
     end
   end
