@@ -35,7 +35,9 @@
 
 .thumbnail-team {
 	padding: $b-space-l;
-	min-height: initial;
+	h3 {
+		min-height: 50px;
+	}
 }
 
 .col-thumbnail {
