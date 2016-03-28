@@ -62,14 +62,20 @@ module GmSalesforce
       capture_net_errors do
         query_str = "select #{select_columns} from #{sobject_name}"
         query_str += " where #{where}" if where.present?
-        offset = 0
+        last_created_date = nil
         while true do
-          page_query = query_str + " limit #{per_page} offset #{offset}"
+          page_query = query_str
+          if last_created_date
+            page_query += " where " if !where.present?
+            page_query += " CreatedDate < #{last_created_date} "
+          end
+          page_query = page_query + " order by CreatedDate desc limit #{per_page}"
           result = client.query(page_query)
           block.call(result)
           if result.count < per_page
             break
           else
+            last_created_date = result.entries.last.CreatedDate
             offset += per_page
           end
         end
