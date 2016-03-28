@@ -58,19 +58,20 @@ module GmSalesforce
     def find_all_in_salesforce_by_pagination(sobject_name,
                                select_columns = columns(sobject_name).join(','),
                                where = nil, per_page = 100, &block)
-      query_str = construct_basic_query(sobject_name, select_columns, where)
       capture_net_errors do
-        last_created_date = nil
-        while true do
-          page_query = append_order_phase_to_query(query_str, last_created_date, per_page)
-          result = client.query(page_query)
-          block.call(result)
-          if result.count < per_page
-            break
-          else
-            last_created_date = result.entries.last.CreatedDate
-          end
-        end
+        query_str = construct_basic_query(sobject_name, select_columns, where)
+        execute_pagination_loop_query(query_str, per_page, &block)
+      end
+    end
+
+    def execute_pagination_loop_query(base_query, per_page, &block)
+      last_created_date = nil
+      while true do
+        page_query = append_order_phase_to_query(base_query, last_created_date, per_page)
+        result = client.query(page_query)
+        block.call(result)
+        break if result.count < per_page
+        last_created_date = result.entries.last.CreatedDate
       end
     end
 
