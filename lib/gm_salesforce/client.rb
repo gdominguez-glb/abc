@@ -27,7 +27,7 @@ module GmSalesforce
       sf_params = salesforce_params
       if !Spree::Config[:salesforce_production]
         sf_params[:host] = 'test.salesforce.com'
-        Restforce.log = !Rails.env.test?
+        Restforce.log = !!ENV['RESTFORCE_LOG']
       end
 
       Restforce.new sf_params
@@ -53,6 +53,26 @@ module GmSalesforce
         query_str = "select #{select_columns} from #{sobject_name}"
         query_str += " where #{where}" if where.present?
         client.query(query_str)
+      end
+    end
+
+    def find_all_in_salesforce_by_pagination(sobject_name,
+                               select_columns = columns(sobject_name).join(','),
+                               where = nil, per_page = 100, &block)
+      capture_net_errors do
+        query_str = "select #{select_columns} from #{sobject_name}"
+        query_str += " where #{where}" if where.present?
+        offset = 0
+        while true do
+          page_query = query_str + " limit #{per_page} offset #{offset}"
+          result = client.query(page_query)
+          block.call(result)
+          if result.count < per_page
+            break
+          else
+            offset += per_page
+          end
+        end
       end
     end
 

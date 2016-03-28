@@ -321,6 +321,12 @@ module SalesforceAccess
       salesforce_api.find_all_in_salesforce(sobject_name)
     end
 
+    def find_all_in_salesforce_by_pagination(&block)
+      salesforce_api.find_all_in_salesforce_by_pagination(sobject_name) do |sobjects|
+        block.call(sobjects)
+      end
+    end
+
     # Extracts attributes from a Salesforce object to be used to create/update
     # the related salesforce_reference record
     def salesforce_reference_attributes(sfo)
@@ -386,11 +392,13 @@ module SalesforceAccess
 
     # Query salesforce and incorporate changes into local database
     def import_salesforce
-      salesforce_objects = find_all_in_salesforce
-      updated_records = create_or_update_records(salesforce_objects)
-      remove_deleted_records(updated_records)
-
-      salesforce_objects
+      count = 0
+      find_all_in_salesforce_by_pagination do |salesforce_objects|
+        count += salesforce_objects.count
+        updated_records = create_or_update_records(salesforce_objects)
+        remove_deleted_records(updated_records)
+      end
+      count
     end
   end
 end

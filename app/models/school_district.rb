@@ -141,7 +141,6 @@ class SchoolDistrict < ActiveRecord::Base
         !user.should_create_salesforce?
       user.create_in_salesforce(nil, false)
     end
-    self.class.import_salesforce
   end
 
   # The dropdown should be restricted to verified checkbox, last 48 hours, and

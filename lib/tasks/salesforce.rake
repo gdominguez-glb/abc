@@ -5,7 +5,7 @@ namespace :salesforce do
                 'Contact' => Spree::User,
                 'PricebookEntry' => Spree::Product }
     classes.each do |name, clazz|
-      processed = clazz.import_salesforce.count
+      processed = clazz.import_salesforce
       puts "#{processed} Salesforce #{name} records processed"
     end
   end
