@@ -392,10 +392,13 @@ module SalesforceAccess
 
     # Query salesforce and incorporate changes into local database
     def import_salesforce
+      count = 0
       find_all_in_salesforce_by_pagination do |salesforce_objects|
+        count += salesforce_objects.count
         updated_records = create_or_update_records(salesforce_objects)
         remove_deleted_records(updated_records)
       end
+      count
     end
   end
 end

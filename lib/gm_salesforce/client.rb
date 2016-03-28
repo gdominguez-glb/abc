@@ -27,7 +27,7 @@ module GmSalesforce
       sf_params = salesforce_params
       if !Spree::Config[:salesforce_production]
         sf_params[:host] = 'test.salesforce.com'
-        Restforce.log = !ENV['RESTFORCE_LOG']
+        Restforce.log = !!ENV['RESTFORCE_LOG']
       end
 
       Restforce.new sf_params
