@@ -50,8 +50,7 @@ module GmSalesforce
                                select_columns = columns(sobject_name).join(','),
                                where = nil)
       capture_net_errors do
-        query_str = "select #{select_columns} from #{sobject_name}"
-        query_str += " where #{where}" if where.present?
+        query_str = construct_basic_query(sobject_name, select_columns, where)
         client.query(query_str)
       end
     end
@@ -59,17 +58,11 @@ module GmSalesforce
     def find_all_in_salesforce_by_pagination(sobject_name,
                                select_columns = columns(sobject_name).join(','),
                                where = nil, per_page = 100, &block)
+      query_str = construct_basic_query(sobject_name, select_columns, where)
       capture_net_errors do
-        query_str = "select #{select_columns} from #{sobject_name}"
-        query_str += " where #{where}" if where.present?
         last_created_date = nil
         while true do
-          page_query = query_str
-          if last_created_date
-            page_query += " where " if !where.present?
-            page_query += " CreatedDate < #{last_created_date} "
-          end
-          page_query = page_query + " order by CreatedDate desc limit #{per_page}"
+          page_query = append_order_phase_to_query(query_str, last_created_date, per_page)
           result = client.query(page_query)
           block.call(result)
           if result.count < per_page
@@ -79,6 +72,21 @@ module GmSalesforce
           end
         end
       end
+    end
+
+    def construct_basic_query(sobject_name, select_columns, where)
+      query_str = "select #{select_columns} from #{sobject_name}"
+      query_str += " where #{where}" if where.present?
+      query_str
+    end
+
+    def append_order_phase_to_query(query, last_created_date, per_page)
+      page_query = query
+      if last_created_date
+        page_query += " where " if !query.include?('where')
+        page_query += " CreatedDate < #{last_created_date} "
+      end
+      page_query + " order by CreatedDate desc limit #{per_page}"
     end
 
     def create(salesforce_sobject_name, attributes_to_create)
