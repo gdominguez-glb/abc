@@ -179,6 +179,8 @@
 
 <script type="text/javascript">
   window.us_country_id = '<%= us_country.id %>';
-  var schoolData = [{id: '#schoolNotListed', text: 'School Not Listed'}].concat(<%= raw school_district_selection_data(SchoolDistrict.for_selection.school).to_json %>);
-  var districtData = [{id: '#districtNotListed', text: 'District Not Listed'}].concat(<%= raw school_district_selection_data(SchoolDistrict.for_selection.district).to_json %>);
+  <% cache :school_district_data, expires_in: 30.minutes do %>
+    var schoolData = [{id: '#schoolNotListed', text: 'School Not Listed'}].concat(<%= raw school_district_selection_data(SchoolDistrict.for_selection.school.includes(:state)).to_json %>);
+    var districtData = [{id: '#districtNotListed', text: 'District Not Listed'}].concat(<%= raw school_district_selection_data(SchoolDistrict.for_selection.district.includes(:state)).to_json %>);
+  <% end %>
 </script>
