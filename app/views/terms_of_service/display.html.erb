@@ -35,14 +35,14 @@
       activateContinueButton();
     });
 
-    if($('.terms_and_conditions_text').get(0).scrollHeight == ($('.terms_and_conditions_text').height() + 40)) {
+    if($('.terms_and_conditions_text').get(0).scrollHeight == ($('.terms_and_conditions_text').innerHeight())) {
       setTimeout(function() {
         scrolledToBottom = true;
         activateContinueButton();
       }, 3000)
     } else {
       $('.terms_and_conditions_text').scroll(function () {
-        if (($(this).scrollTop() + 40) == $(this).get(0).scrollHeight - $(this).height()) {
+        if (($(this).scrollTop() + $(this).innerHeight()) >= $(this).get(0).scrollHeight) {
           scrolledToBottom = true;
           activateContinueButton();
         }
