@@ -130,6 +130,14 @@
   }
 }
 
+.margin-sm-top {
+  margin-top: 0;
+
+  @media screen and (min-width: $screen-sm-min) {
+    margin-top: $b-space;
+  }
+}
+
 .padding-xs-horiz-xl {
   padding: 0 12px;
 
