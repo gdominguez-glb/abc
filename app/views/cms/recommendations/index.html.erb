@@ -7,11 +7,9 @@
     <table class='table table-striped table-hover'>
       <thead>
         <tr>
-          <th>Title</th>
-          <th>Sub-header</th>
+          <th colspan="2">Title</th>
           <th>Subject</th>
-          <th>Call to action button text</th>
-          <th>Call to action button link</th>
+          <th>Display</th>
           <th colspan="2"></th>
         </tr>
       </thead>
@@ -19,11 +17,9 @@
         <% @recommendations.each do |recommendation| %>
           <tr>
             <td><%= recommendation.title %></td>
-            <td><%= recommendation.sub_header %></td>
-            <td><%= recommendation.subject %></td>
-            <td><%= recommendation.call_to_action_button_text %></td>
-            <td><%= recommendation.call_to_action_button_link %></td>
             <td><%= link_to 'Edit', edit_cms_recommendation_path(recommendation), class: 'btn btn-default' %></td>
+            <td><%= recommendation.subject %></td>
+            <td><%= recommendation.display %></td>
             <td><%= link_to 'Delete', cms_recommendation_path(recommendation), data: { method: :delete, confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
           </tr>
         <% end %>

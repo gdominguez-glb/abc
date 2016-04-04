@@ -2,6 +2,7 @@
 <div class="row">
   <div class="recommended-products col-xs-12 js-recommends">
     <% @recommendations.each do |recommendation| %>
+      <% if recommendation.display %>
       <div class="recommended-product-wrapper clearfix">
         <% recUrl = 'recommendations/' + recommendation.icon + '_' + recommendation.subject.upcase + '.png' %>
         <div class="row">
@@ -15,6 +16,7 @@
           </div>
         </div>
       </div>
+      <% end %>
     <% end %>
   </div>
 </div>
