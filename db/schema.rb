@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160316011931) do
+ActiveRecord::Schema.define(version: 20160404200547) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,12 @@ ActiveRecord::Schema.define(version: 20160316011931) do
     t.integer  "item_id"
     t.string   "item_type"
     t.string   "action"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "announcements", force: :cascade do |t|
+    t.text     "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -73,6 +79,15 @@ ActiveRecord::Schema.define(version: 20160316011931) do
     t.boolean  "visible",    default: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+  end
+
+  create_table "custom_csses", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "page_id"
+    t.integer  "custom_type"
+    t.text     "content"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "documents", force: :cascade do |t|
@@ -357,10 +372,11 @@ ActiveRecord::Schema.define(version: 20160316011931) do
     t.text     "sub_header"
     t.string   "call_to_action_button_text"
     t.string   "call_to_action_button_link"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
     t.string   "subject"
     t.string   "icon"
+    t.boolean  "display",                    default: false
   end
 
   create_table "regonline_events", force: :cascade do |t|

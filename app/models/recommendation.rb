@@ -5,6 +5,8 @@ class Recommendation < ActiveRecord::Base
 
   scope :with_subject, ->(subject){ where(subject: subject) }
 
+  scope :displayable, ->{ where(display:true) }
+
   ICONS = ['BLOG', 'DIGITAL_SUITE', 'PDF', 'PRINT', 'PROFESSIONAL', 'VIDEO']
 
   def icon_image
