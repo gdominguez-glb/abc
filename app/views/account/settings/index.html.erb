@@ -158,20 +158,30 @@
     </div>
 
     <div class="row collapse <%= 'in' if current_spree_user.school_district.try(:place_type) == 'district' %> fade" id="rowDistrictSelect">
-      <div class="col-md-6">
+      <div class="col-md-6 col-xs-5">
         <div class="form-group">
           <label>Select a District</label>
           <%= f.hidden_field :district_id, class: 'form-control' %>
         </div>
       </div>
+      <div class="col-md-6 col-xs-7">
+          <p class="district-not-found display-none">
+            <i class="glyphicon glyphicon-info-sign"></i> It looks like we don't have a match for that name. Please try again or help us by <a href="#" class="add-district-link">adding your district</a>.
+          </p>
+        </div>
     </div>
 
     <div class="row collapse <%= 'in' if current_spree_user.school_district.try(:place_type) == 'school' %> fade" id="rowSchoolSelect">
-      <div class="col-md-6">
+      <div class="col-md-6 col-xs-5">
         <div class="form-group">
           <label>Select a School</label>
           <%= f.hidden_field :school_id, class: 'form-control' %>
         </div>
+      </div>
+      <div class="col-md-6 col-xs-7">
+        <p class="school-not-found display-none">
+          <i class="glyphicon glyphicon-info-sign"></i> It looks like we don't have a match for that name. Please try again or help us by <a href="#" class="add-school-link">adding your school</a>.
+        </p>
       </div>
     </div>
 
@@ -180,7 +190,7 @@
         <%= school_district_form.text_field :name, class: 'form-control school-district-control', placeholder: 'New District Name' %>
       <% end %>
       <span class="input-group-btn">
-        <button type="button" class="btn btn-danger" id="closeAddDistrict"><i class="fa fa-lg fa-close"></i></button>
+        <button type="button" class="btn btn-danger" id="closeAddDistrict"><i class="mi">close</i></button>
       </span>
     </div>
 
@@ -189,7 +199,7 @@
         <%= school_district_form.text_field :name, class: 'form-control school-district-control', placeholder: 'New School Name' %>
       <% end %>
       <span class="input-group-btn">
-        <button type="button" class="btn btn-danger" id="closeAddSchool"><i class="fa fa-lg fa-close"></i></button>
+        <button type="button" class="btn btn-danger" id="closeAddSchool"><i class="mi">close</i></button>
       </span>
     </div>
 
