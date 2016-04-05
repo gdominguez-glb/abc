@@ -7,26 +7,26 @@
 
       <div class="alert alert-info"><i class="mi md-18">info_outline</i> If you would like to pay with a purchase order, please <a href="/contact">contact us</a>.</div>
 
-      <div class="card_options">
-        <%= radio_button_tag 'use_existing_card', 'yes', true %>
-        <label for="use_existing_card_yes">
-          <%= Spree.t(:use_existing_cc) %>
-        </label>
-        <br/>
-        <%= radio_button_tag 'use_existing_card', 'no' %>
-        <label for="use_existing_card_no">
-          <%= Spree.t(:use_new_cc_or_payment_method) %>
-        </label>
-      </div>
+      <%# <div class="card_options"> %>
+      <%#   <%= radio_button_tag 'use_existing_card', 'yes', true %1> %>
+      <%#   <label for="use_existing_card_yes"> %>
+      <%#     <%= Spree.t(:use_existing_cc) %1> %>
+      <%#   </label> %>
+      <%#   <br/> %>
+      <%#   <%= radio_button_tag 'use_existing_card', 'no' %1> %>
+      <%#   <label for="use_existing_card_no"> %>
+      <%#     <%= Spree.t(:use_new_cc_or_payment_method) %1> %>
+      <%#   </label> %>
+      <%# </div> %>
 
-      <div id="existing_cards">
-        <p class="form-group" data-hook="existing_cards">
-          <table class="existing-credit-card-list">
-            <tbody>
-            </tbody>
-          </table>
-        </p>
-      </div>
+      <%# <div id="existing_cards"> %>
+      <%#   <p class="form-group" data-hook="existing_cards"> %>
+      <%#     <table class="existing-credit-card-list"> %>
+      <%#       <tbody> %>
+      <%#       </tbody> %>
+      <%#     </table> %>
+      <%#   </p> %>
+      <%# </div> %>
     <% end %>
 
     <ul class="list-group" id="payment-method-fields" data-hook>
@@ -59,5 +59,9 @@
 
 <div class="well text-right form-buttons" data-hook="buttons">
   <%= submit_tag Spree.t(:save_and_continue), class: 'btn btn-lg btn-success primary' %>
-  <script>Spree.disableSaveOnClick();</script>
+  <script>
+    Spree.disableSaveOnClick();
+    $('#payment-method-fields').show()
+    $('#payment-methods').show()
+  </script>
 </div>
