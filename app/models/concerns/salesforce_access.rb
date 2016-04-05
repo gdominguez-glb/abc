@@ -312,7 +312,7 @@ module SalesforceAccess
 
     # Gets/sets the library to interface with Salesforce
     def salesforce_api
-      @gm_salesforce ||= GmSalesforce::Client.instance
+      GmSalesforce::Client.instance
     end
 
     # Selects all of the columns from all of the records in Salesforce for the
