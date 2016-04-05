@@ -59,3 +59,17 @@ _license-mgmt.scss
 .remove-select-email {
   cursor: pointer;
 }
+
+.license-steps {
+
+  @media screen and (min-width: $screen-sm-min) {
+    @include display-flex;
+  }
+
+  > div {
+    
+    @media screen and (min-width: $screen-sm-min) {
+      @include flex(1);
+    }
+  }
+}

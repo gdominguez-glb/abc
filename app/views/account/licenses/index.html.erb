@@ -23,7 +23,7 @@
   <% if current_spree_user.managed_products_options.size > 0 %>
     <%= render 'stats' %>
 
-    <div class="row margin-bottom-xxl">
+    <div class="row margin-bottom-xxl license-steps">
       <div class="js-step-1 col-sm-4 border-right-primary min-200 padding-xs-horiz-xl">
         <h4 class="margin-bottom-reset">Step 1. <i class="mi hide js-check-icon">check_circle</i></h4>
         <small class="margin-bottom block"><em>Select product you'd like to assign*</em></small>
@@ -62,23 +62,18 @@
         <div class="row">
           <div class="col-sm-6">
             <div class="form-group margin-bottom-s">
-              <label for="">License Quantity</label>
+              <label for="">Quantity</label>
               <%= f.number_field :licenses_number, class: 'form-control', value: 1 %>
             </div>
           </div>
           <div class="col-sm-6">
-            <div class="form-group">
-              <label for="">Number of Users</label>
+            <div class="form-group margin-bottom">
+              <label for=""># of Users</label>
               <%= f.text_field :total, class: 'form-control', readonly: true %>
             </div>
           </div>
         </div>
-        <strong class="text-uppercase sans-serif">Total Licenses = <span id="licenseTotal"></span></strong>
-      </div>
-    </div>
-    <div class="row text-center license-actions">
-      <div class="js-step-4 col-sm-4 col-sm-offset-4">
-        <h4>Step 4.</h4>
+        <strong class="text-uppercase sans-serif margin-bottom-s block">Total Licenses = <span id="licenseTotal"></span></strong>
         <%= f.submit 'Assign License(s)', class: 'btn btn-success btn-block margin-bottom-s disabled', id: 'btnAssignLicenses', data: { disable_with: 'Saving' } %>
       </div>
     </div>
