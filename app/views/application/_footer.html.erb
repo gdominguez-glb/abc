@@ -27,7 +27,7 @@
       <ul>
         <% MediumPublication.global.each do |blog| %>
           <li>
-            <%= link_to blog.title, global_blog_path(slug: blog.slug) %>
+            <%= link_to blog.title, main_app.global_blog_path(slug: blog.slug) %>
           </li>
         <% end %>
       </ul>
