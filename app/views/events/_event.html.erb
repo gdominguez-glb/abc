@@ -29,7 +29,7 @@
       <% if event.session_types.present? %>
         <small class="block">Session types:
           <% event.event_trainings.each do |event_traning| %>
-            <%= link_to event_traning.title, events_trainings_path(anchor: "session-#{event_traning.id}") %>
+            <%= link_to event_traning.title, events_trainings_path(anchor: "event-#{event_training.title_to_slug}") %>
           <% end %>
         </small>
       <% end %>
