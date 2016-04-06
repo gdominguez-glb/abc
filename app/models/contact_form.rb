@@ -46,7 +46,7 @@ class ContactForm
       'Email' => self.email,
       'Phone' => self.phone,
       'Type__c' => self.school_district_type,
-      'Company' => self.school_district,
+      'Company' => self.school_district_name,
       'What_curriculum_are_you_interested_in__c' => self.curriculum
     }
   end
