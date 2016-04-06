@@ -92,7 +92,9 @@ $(document).ready(function() {
 
   if($('body').hasClass('blog') || $('body').hasClass('events')) {
     var firstSubNavLink = nav.find('#sub-nav li:first-child a').attr('href');
-    $('body').attr('data-page', firstSubNavLink.replace('/',''));
+    if (firstSubNavLink) {
+      $('body').attr('data-page', firstSubNavLink.replace('/',''));
+    }
   }
 
   var currentPage = $('body').data('page');
