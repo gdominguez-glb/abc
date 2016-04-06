@@ -300,6 +300,11 @@ Spree::User.class_eval do
                              end
   end
 
+  def recommendation_ids_to_exclude
+    return [] if accessible_products.blank?
+    @ids_to_exclude ||= Recommendation.joins('join products_recommendations on products_recommendations.recommendation_id = recommendations.id').where("products_recommendations.product_id in (?)", accessible_products.map(&:id)).pluck(:id).uniq
+  end
+
   def bought_free_trial_product?(product)
     product.purchase_once? && Spree::LicensedProduct.where(user_id: self.id, product_id: product.id).exists?
   end

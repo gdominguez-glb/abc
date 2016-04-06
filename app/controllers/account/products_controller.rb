@@ -29,6 +29,9 @@ class Account::ProductsController < Account::BaseController
 
   def load_recommendations
     @recommendations = Recommendation.displayable.limit(3)
+    if current_spree_user.recommendation_ids_to_exclude.present?
+      @recommendations = @recommendations.where.not(id: current_spree_user.recommendation_ids_to_exclude)
+    end
     if current_spree_user.interested_curriculums.present?
       @recommendations = @recommendations.where(subject: current_spree_user.interested_curriculums)
     end
