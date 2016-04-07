@@ -36,6 +36,12 @@ body[data-hook="body"] {
   }
 }
 
+.spree-navbar {
+  margin: 0 -15px;
+  border: 0;
+  border-bottom: 1px solid #c5c5c5;
+}
+
 .admin {
   background-color: #fff;
 
@@ -120,6 +126,7 @@ body[data-hook="body"] {
 
   #main-sidebar {
     position: relative;
+    top: 0;
 
     &.hidden-xs {
       display: block !important;

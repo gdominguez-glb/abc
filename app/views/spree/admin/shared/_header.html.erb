@@ -2,32 +2,28 @@
 
 <%= render partial: 'application/header' %>
 
-<header class="header <%= admin ? "logged-in" : "logged-out" %>">
+<header class="container header <%= admin ? "logged-in" : "logged-out" %>">
 
-  <nav class="navbar navbar-inverse" role="navigation">
+  <nav class="navbar navbar-inverse spree-navbar" role="navigation">
     <div class="container-fluid">
-      <div class="row">
-        <div class="navbar-header col-sm-3 col-md-2">
-          <%= link_to(
-            'Spree',
-            spree.admin_path,
-            class: "logo navbar-brand"
-          ) %>
-          <% if admin %>
-            <span class="navbar-toggle" id="sidebar-toggle">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </span>
-          <% end %>
-        </div>
-
+      <div class="navbar-header col-sm-3 col-md-2">
+        <%= link_to(
+          'Spree',
+          spree.admin_path,
+          class: "logo navbar-brand"
+        ) %>
         <% if admin %>
-          <div class="col-sm-9 col-md-10">
-            <div class="navbar-right" data-hook="admin_login_navigation_bar"></div>
-          </div>
+          <span class="navbar-toggle" id="sidebar-toggle">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </span>
         <% end %>
       </div>
+
+      <% if admin %>
+        <div class="col-sm-9 col-md-10 text-right-sm" data-hook="admin_sync_button"></div>
+      <% end %>
 
     </div>
 
