@@ -46,7 +46,7 @@ Lint/DefEndAlignment:
 
 Lint/DeprecatedClassMethods:
   Description: 'Check for deprecated class method calls.'
-  Enabled: true
+  Enabled: false # FIXME: This should be true.
 
 Lint/DuplicateMethods:
   Description: 'Check for duplicate methods calls.'
@@ -92,7 +92,7 @@ Lint/FormatParameterMismatch:
 Lint/HandleExceptions:
   Description: "Don't suppress exception."
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#dont-hide-exceptions'
-  Enabled: true
+  Enabled: false # FIXME: This should be true.
 
 Lint/InvalidCharacterLiteral:
   Description: >-
@@ -129,7 +129,7 @@ Lint/ParenthesesAsGroupedExpression:
                  Checks for method calls with a space before the opening
                  parenthesis.
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#parens-no-spaces'
-  Enabled: true
+  Enabled: false # FIXME: This should be true.
 
 Lint/RequireParentheses:
   Description: >-
@@ -140,7 +140,7 @@ Lint/RequireParentheses:
 Lint/RescueException:
   Description: 'Avoid rescuing the Exception class.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#no-blind-rescues'
-  Enabled: true
+  Enabled: false # FIXME: This should be true.
 
 Lint/ShadowingOuterLocalVariable:
   Description: >-
@@ -155,7 +155,7 @@ Lint/StringConversionInInterpolation:
 
 Lint/UnderscorePrefixedVariableName:
   Description: 'Do not use prefix `_` for a variable that is used.'
-  Enabled: true
+  Enabled: false # FIXME: This should be true.
 
 Lint/UnneededDisable:
   Description: >-
@@ -167,12 +167,12 @@ Lint/UnneededDisable:
 Lint/UnusedBlockArgument:
   Description: 'Checks for unused block arguments.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#underscore-unused-vars'
-  Enabled: true
+  Enabled: false # FIXME: This should be true.
 
 Lint/UnusedMethodArgument:
   Description: 'Checks for unused method arguments.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#underscore-unused-vars'
-  Enabled: true
+  Enabled: false # FIXME: This should be true.
 
 Lint/UnreachableCode:
   Description: 'Unreachable code.'
@@ -185,7 +185,7 @@ Lint/UselessAccessModifier:
 Lint/UselessAssignment:
   Description: 'Checks for useless assignment to a local variable.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#underscore-unused-vars'
-  Enabled: true
+  Enabled: false # FIXME: This should be true.
 
 Lint/UselessComparison:
   Description: 'Checks for comparison of something with itself.'
@@ -311,7 +311,7 @@ Performance/StringReplacement:
                   number of characters. Use `delete` instead of `gsub` when
                   you are deleting characters.
   Reference: 'https://github.com/JuanitoFatas/fast-ruby#stringgsub-vs-stringtr-code'
-  Enabled: true
+  Enabled: false # FIXME: This should be true.
 
 ##################### Rails ##################################
 
