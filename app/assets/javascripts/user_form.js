@@ -171,7 +171,7 @@ $(function(){
       query: function(query) {
         var data = searchSchool(query.term, stateId);
         var $schoolNotFound = $(".school-not-found");
-        data.results.length == 1 && query.term.length != 0 ? $schoolNotFound.show() : $schoolNotFound.hide();
+        (data.results.length === 1 && query.term.length !== 0) ? $schoolNotFound.show() : $schoolNotFound.hide();
         query.callback(data);
       }
     });
@@ -196,7 +196,7 @@ $(function(){
       query: function(query) {
         var data = searchDistrict(query.term, stateId);
         var $districtNotfound = $(".district-not-found");
-        data.results.length == 1 && query.term.length != 0 ? $districtNotfound.show() : $districtNotfound.hide();
+        (data.results.length === 1 && query.term.length !== 0) ? $districtNotfound.show() : $districtNotfound.hide();
         query.callback(data);
       }
     });
