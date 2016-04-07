@@ -40,10 +40,6 @@ body[data-hook="body"] {
   margin: 0 -15px;
   border: 0;
   border-bottom: 1px solid #c5c5c5;
-}
-
-.admin {
-  background-color: #fff;
 
   .navbar-header {
     padding: 15px;
@@ -67,7 +63,7 @@ body[data-hook="body"] {
     margin: 0;
   }
 
-  .navbar-inverse {
+  &.navbar-inverse {
     background: #f8f8f8;
     border-color: darken(#f8f8f8, 20%);
 
@@ -82,6 +78,12 @@ body[data-hook="body"] {
       }
     }
   }
+}
+
+.admin {
+  background-color: #fff;
+
+
 
   .dropdown {
     &.user-menu {
