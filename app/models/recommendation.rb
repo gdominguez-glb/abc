@@ -4,7 +4,17 @@ class Recommendation < ActiveRecord::Base
   has_and_belongs_to_many :products, class_name: 'Spree::Product', join_table: 'products_recommendations'
 
   scope :with_subject, ->(subject){ where(subject: subject) }
-
+  scope :filter_by_subject_or_user_title, -> (subjects, user_title) {
+    if subjects.present? && user_title.present?
+      where("subject in (?) or user_title = ?", subjects, user_title)
+    elsif subjects.present?
+      where(subject: subjects)
+    elsif user_title.present?
+      where(user_title: user_title)
+    else
+      where('1=1')
+    end
+  }
   scope :displayable, ->{ where(display:true) }
 
   ICONS = ['BLOG', 'DIGITAL_SUITE', 'PDF', 'PRINT', 'PROFESSIONAL', 'VIDEO']

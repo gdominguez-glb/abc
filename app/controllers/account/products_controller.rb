@@ -32,9 +32,7 @@ class Account::ProductsController < Account::BaseController
     if current_spree_user.recommendation_ids_to_exclude.present?
       @recommendations = @recommendations.where.not(id: current_spree_user.recommendation_ids_to_exclude)
     end
-    if current_spree_user.interested_curriculums.present?
-      @recommendations = @recommendations.where(subject: current_spree_user.interested_curriculums)
-    end
+    @recommendations = @recommendations.filter_by_subject_or_user_title(current_spree_user.interested_curriculums, current_spree_user.title)
   end
 
   def load_notifications
