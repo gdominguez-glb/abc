@@ -41,7 +41,6 @@
             <span class="caret"></span>
           </button>
           <ul class="dropdown-menu btn-block">
-            <li><a href="">Select a Product</a></li>
             <% current_spree_user.managed_products_options.each do |product| %>
               <li><a href="#" data-product="<%= product[1] %>"><%= product[0] %></a></li>
             <% end %>
