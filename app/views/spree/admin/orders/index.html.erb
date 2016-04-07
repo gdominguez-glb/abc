@@ -2,10 +2,6 @@
   <%= plural_resource_name(Spree::Order) %>
 <% end %>
 
-<% content_for :page_actions do %>
-  <%= button_link_to Spree.t(:new_order), new_admin_order_url, :class => "btn-success", :icon => 'add', :id => 'admin_new_order' %>
-<% end if can? :create, Spree::Order %>
-
 <% content_for :table_filter do %>
   <div data-hook="admin_orders_index_search">
 
