@@ -4,7 +4,7 @@ Deface::Override.new(
     insert_top: "[data-hook='admin_sync_button']",
     text: <<EOF
     <div id="salesforce-update">
-      <%= button_to 'Sync Salesforce', admin_sync_salesforce_path, remote: true, id: 'sync_salesforce', class: 'btn btn-default margin-top-m' %>
+      <%= button_to 'Sync Salesforce', admin_sync_salesforce_path, remote: true, id: 'sync_salesforce', class: 'btn btn-default btn-block margin-bottom-reset margin-sm-top' %>
     </div>
     <%= javascript_tag do %>
     $(document).ready(function(){

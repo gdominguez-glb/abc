@@ -43,10 +43,10 @@ body[data-hook="body"] {
 
   .navbar-header {
     padding: 15px;
+    float: none;
   }
 
   .navbar-brand {
-    float: none;
     display: block;
     margin-left: -15px;
   }
@@ -102,6 +102,10 @@ body[data-hook="body"] {
     min-width: 1000px;
     max-width: none;
   }
+}
+
+ul.nav-sidebar {
+  margin: 0 0 15px;
 }
 
 .with-sidebar {
