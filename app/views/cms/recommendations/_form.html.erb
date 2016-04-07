@@ -18,12 +18,21 @@
         <%= f.text_field :title, class: 'form-control' %>
       </div>
     </div>
-    <div class="col-sm-6">
+    <div class="col-sm-3">
       <div class="form-group">
         <label>Subject</label>
         <div class="select-container dark-select block">
           <span>Select Subject</span>
           <%= f.collection_select :subject, Curriculum.all, :name, :name, { prompt: 'Select subject' }, class: 'form-control' %>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="form-group">
+        <label>User Role</label>
+        <div class="select-container dark-select block">
+          <span>Select Role</span>
+          <%= f.select :user_title, options_for_select(Spree::User::USER_TITLES, @recommendation.user_title), { prompt: 'Select title' }, class: 'form-control' %>
         </div>
       </div>
     </div>
