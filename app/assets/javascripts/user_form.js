@@ -156,6 +156,14 @@ $(function(){
     return object.id === "#schoolNotListed" ? "<u>" + object.text + "</u>" : object.text;
   }
 
+  function toggleMessage(matcher, resultsLength, queryLength) {
+    var $elem = $(matcher);
+    $elem.hide();
+    if (resultsLength === 1 && queryLength !== 0) {
+        $elem.show();
+    }
+  }
+
   function renderSchoolOptions(data, stateId) {
     $('#spree_user_school_id').select2('destroy');
     $('#spree_user_school_id').select2({
@@ -170,8 +178,7 @@ $(function(){
       },
       query: function(query) {
         var data = searchSchool(query.term, stateId);
-        var $schoolNotFound = $(".school-not-found");
-        (data.results.length === 1 && query.term.length !== 0) ? $schoolNotFound.show() : $schoolNotFound.hide();
+        toggleMessage(".school-not-found", data.results.length, query.term.length);
         query.callback(data);
       }
     });
@@ -195,8 +202,7 @@ $(function(){
       },
       query: function(query) {
         var data = searchDistrict(query.term, stateId);
-        var $districtNotfound = $(".district-not-found");
-        (data.results.length === 1 && query.term.length !== 0) ? $districtNotfound.show() : $districtNotfound.hide();
+        toggleMessage(".district-not-found", data.results.length, query.term.length);
         query.callback(data);
       }
     });
