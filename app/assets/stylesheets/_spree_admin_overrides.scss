@@ -37,7 +37,6 @@ body[data-hook="body"] {
 }
 
 .admin {
-  padding-top: 130px;
   background-color: #fff;
 
   .navbar-header {
@@ -120,7 +119,7 @@ body[data-hook="body"] {
 #wrapper {
 
   #main-sidebar {
-    top: 135px;
+    position: relative;
 
     &.hidden-xs {
       display: block !important;
