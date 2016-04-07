@@ -103,6 +103,15 @@
    $(document).on('click', '.remove-product', function(e){
      $(this).closest('.product-item').remove();
    });
+
+    $(".cardNumber").payment('formatCardNumber');
+    $(".cardExpiry").payment('formatCardExpiry');
+    $(".cardCode").payment('formatCardCVC');
+
+    $(".cardNumber").change(function(){
+      $(this).parent().siblings(".ccType").val($.payment.cardType($(this).val()));
+    });
+
   })(jQuery);
 //]]>
 </script>
