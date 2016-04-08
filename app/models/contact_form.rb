@@ -67,6 +67,7 @@ class ContactForm
 
   def general_attributes
     {
+      'State__c' => self.state,
       'Description' => self.description,
       'status' => 'new',
       'Priority' => 'Medium',
