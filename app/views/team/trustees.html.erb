@@ -11,25 +11,21 @@
     <div class="row">
       <% @trustees.each do |trustee| %>
         <div class="col-sm-6 col-md-3 col-thumbnail">
-          <div class="thumbnail">
-            <img src="<%= trustee.picture.url %>" class="img-square" data-toggle="modal" data-target="#bio<%= trustee.id %>" alt="" />
-            <div class="caption">
-              <h3><%= trustee.name %></h3>
-              <p><em><%= trustee.title %></em></p>
-            </div>
-            <div class="modal fade" id="bio<%= trustee.id %>">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h4 class="modal-title"><%= trustee.title %></h4>
-                  </div>
-                  <div class="modal-body">
-                    <%= trustee.description.html_safe rescue nil %>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                  </div>
-                </div>
+          <div data-toggle="modal"
+            data-target="#trusteeModal"
+            data-bio="<%= trustee.description rescue nil %>"
+            data-title="<%= trustee.title %>"
+            data-name="<%= trustee.name %>"
+            data-image="<%= trustee.picture.url %>">
+            <div class="thumbnail thumbnail-team thumbnail-modal"
+              data-toggle="tooltip"
+              title="Click for bio">
+              <% if trustee.picture.exists? %>
+                <%= image_tag trustee.picture.url, class: 'img-square' %>
+              <% end %>
+              <div class="caption">
+                <h3><%= trustee.name %></h3>
+                <p><em><%= trustee.title %></em></p>
               </div>
             </div>
           </div>
@@ -38,3 +34,41 @@
     </div>
   </div>
 </div>
+
+<div class="modal" id="trusteeModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-name"></h4>
+        <p class="modal-title"><strong></strong></p>
+      </div>
+      <div class="modal-body">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= javascript_tag do %>
+  $(document).ready(function(){
+    $('.tooltip-trigger').hover(function(e) {
+      $(this).tooltip('show');
+    });
+
+    $('#trusteeModal').on('show.bs.modal', function (event) {
+      var button = $(event.relatedTarget);
+      var name = button.data('name');
+      var title = button.data('title');
+      var bio = button.data('bio');
+      var img = button.data('image');
+
+      var modal = $(this);
+      modal.find('.modal-name').text(name);
+      modal.find('.modal-title strong').text(title);
+      modal.find('.modal-body').html(bio);
+      modal.find('.modal-body').prepend('<img src="' + img + '" class="pull-right" />')
+    });
+  });
+<% end %>
