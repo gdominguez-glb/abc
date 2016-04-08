@@ -1,10 +1,10 @@
 Deface::Override.new(
     virtual_path: "spree/admin/shared/_header",
     name: "add_sync_salesforce_button_to_admin",
-    insert_after: "[data-hook='admin_login_navigation_bar']",
+    insert_top: "[data-hook='admin_sync_button']",
     text: <<EOF
     <div id="salesforce-update">
-      <%= button_to 'Sync Salesforce', admin_sync_salesforce_path, remote: true, id: 'sync_salesforce' %>
+      <%= button_to 'Sync Salesforce', admin_sync_salesforce_path, remote: true, id: 'sync_salesforce', class: 'btn btn-default btn-block margin-bottom-reset margin-sm-top' %>
     </div>
     <%= javascript_tag do %>
     $(document).ready(function(){

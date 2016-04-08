@@ -36,16 +36,17 @@ body[data-hook="body"] {
   }
 }
 
-.admin {
-  padding-top: 130px;
-  background-color: #fff;
+.spree-navbar {
+  margin: 0 -15px;
+  border: 0;
+  border-bottom: 1px solid #c5c5c5;
 
   .navbar-header {
     padding: 15px;
+    float: none;
   }
 
   .navbar-brand {
-    float: none;
     display: block;
     margin-left: -15px;
   }
@@ -62,7 +63,7 @@ body[data-hook="body"] {
     margin: 0;
   }
 
-  .navbar-inverse {
+  &.navbar-inverse {
     background: #f8f8f8;
     border-color: darken(#f8f8f8, 20%);
 
@@ -77,6 +78,10 @@ body[data-hook="body"] {
       }
     }
   }
+}
+
+.admin {
+  background-color: #fff;
 
   .dropdown {
     &.user-menu {
@@ -97,6 +102,10 @@ body[data-hook="body"] {
     min-width: 1000px;
     max-width: none;
   }
+}
+
+ul.nav-sidebar {
+  margin: 0 0 15px;
 }
 
 .with-sidebar {
@@ -120,7 +129,8 @@ body[data-hook="body"] {
 #wrapper {
 
   #main-sidebar {
-    top: 135px;
+    position: relative;
+    top: 0;
 
     &.hidden-xs {
       display: block !important;
