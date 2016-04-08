@@ -147,8 +147,21 @@ $(function(){
     stateSchoolData = findStateData(window.schoolData, stateId);
     stateDistrictData = findStateData(window.districtData, stateId);
 
-    renderOptions("school", formatSelectSchool, searchSchool, stateSchoolData, _stateId);
-    renderOptions("district", formatSelectDistrict, searchDistrict,  stateDistrictData, _stateId);
+    renderOptions({
+      type: "school",
+      formatFunc: formatSelectSchool,
+      searchFunc: searchSchool,
+      data: stateSchoolData,
+      stateId: _stateId
+    });
+
+    renderOptions({
+      type: "district",
+      formatFunc: formatSelectDistrict,
+      searchFunc: searchDistrict,
+      data: stateDistrictData,
+      stateId: _stateId
+    });
   }
 
   function formatSelectSchool(object) {
@@ -163,22 +176,25 @@ $(function(){
     }
   }
 
-  function renderOptions(type, formatFunc, searchFunc, data, stateId) {
-    var $elem = $("#spree_user_" + type + "_id");
+  function renderOptions(options) {
+
+    var $elem = $("#spree_user_" + options.type + "_id");
+    var data = options.data;
+
     $elem.select2('destroy');
     $elem.select2({
       data: data,
-      placeholder: 'Select A ' + type,
-      formatSelection: formatFunc,
-      formatResult: formatFunc,
+      placeholder: 'Select A ' + options.type,
+      formatSelection: options.formatFunc,
+      formatResult: options.formatFunc,
       initSelection: function(element, callback){
         var id = $(element).val();
         var selectedData = findSelectedData(data, id);
         callback(selectedData);
       },
       query: function(query) {
-        var data = searchFunc(query.term, stateId);
-        toggleMessage("." + type +"-not-found", data.results.length, query.term.length);
+        var data = options.searchFunc(query.term, options.stateId);
+        toggleMessage("." + options.type +"-not-found", data.results.length, query.term.length);
         query.callback(data);
       }
     });
