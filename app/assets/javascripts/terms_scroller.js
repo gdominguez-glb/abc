@@ -23,19 +23,26 @@ function scrollHandler(checkboxToWatch, agreeRequired) {
     });
   }
 
+  function enableButton() {
+    $('.term-continue-button').removeClass('disabled');
+  }
+
+  function disableButton() {
+    $('.term-continue-button').addClass('disabled');
+  }
+
   function activateContinueButton() {
+    //local agreed var to handle both scenarios, and remove duplication
+    var agreed = true;
     if (agreeRequired) {
-      if (scrolledToBottom && agreedTerms) {
-        $('.term-continue-button').removeClass('disabled');
-      } else {
-        $('.term-continue-button').addClass('disabled');
-      }
-    } else {
-      if (scrolledToBottom) {
-        $('.term-continue-button').removeClass('disabled');
-      } else {
-        $('.term-continue-button').addClass('disabled');
-      }
+      agreed = agreedTerms;
     }
+
+    if (scrolledToBottom && agreed) {
+      enableButton();
+    } else {
+      disableButton();
+    }
+
   }
 }
