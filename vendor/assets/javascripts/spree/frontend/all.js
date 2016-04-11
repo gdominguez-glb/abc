@@ -11,6 +11,7 @@
 //= require slick.min
 //= require select2
 //= require user_form
+//= require terms_scroller
 //= require_tree .
 //= require spree/frontend/spree_digital
 //= require spree/frontend/spree_better_terms_and_conditions
