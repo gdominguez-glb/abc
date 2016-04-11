@@ -105,6 +105,7 @@ Spree::Order.class_eval do
               'EffectiveDate' => self.class.date_to_salesforce(created_at.utc),
               'Status' => salesforce_complete? ? 'Activated' : 'Draft',
               'BillToContactId' => bill_address && salesforce_user_id,
+              'Order_Phone__c' => bill_address.try(:phone),
               'ShipToContactId' => ship_address && salesforce_user_id }
 
     # TODO: Support Order_Status__c => PO Received/Full Payment Received instead
