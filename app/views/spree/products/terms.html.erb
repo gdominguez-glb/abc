@@ -12,10 +12,7 @@
               <%= simple_format @product.license_text %>
             </p>
         </div>
-
-        <div class="margin-top-s">
-
-        </div>
+        <div class="margin-top-s"></div>
       </div>
         <%= form_tag agree_terms_product_path(@product) do %>
           <%= submit_tag 'Agree And Continue', class: 'btn btn-primary term-continue-button disabled' %>
@@ -26,29 +23,7 @@
 </div>
 
 <script type="text/javascript">
-  $(function(){
-    var scrolledToBottom = false;
-
-    if($('.terms_and_conditions_text').get(0).scrollHeight == ($('.terms_and_conditions_text').height() + 40)) {
-      setTimeout(function() {
-        scrolledToBottom = true;
-        activateContinueButton();
-      }, 3000)
-    } else {
-      $('.terms_and_conditions_text').scroll(function () {
-        if (($(this).scrollTop() + 40) == $(this).get(0).scrollHeight - $(this).height()) {
-          scrolledToBottom = true;
-          activateContinueButton();
-        }
-      });
-    }
-
-    function activateContinueButton() {
-      if(scrolledToBottom) {
-        $('.term-continue-button').removeClass('disabled');
-      } else {
-        $('.term-continue-button').addClass('disabled');
-      }
-    }
-  })
+  $(function() {
+    scrollHandler(null, false);
+  });
 </script>

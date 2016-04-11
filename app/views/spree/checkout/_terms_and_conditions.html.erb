@@ -11,7 +11,6 @@
       </p>
     <% end %>
   </div>
-
   <div class="margin-top-s">
     <%= form.check_box :terms_and_conditions %> <%= label_tag(:terms_and_conditions, Spree.t('terms_and_conditions.checkbox')) %>
   </div>
@@ -20,34 +19,7 @@
 <div class="alert alert-info"><i class="mi">info_outline</i> Scroll through and accept the terms to continue.</div>
 
 <script type="text/javascript">
-  $(function(){
-    var scrolledToBottom = false;
-    var agreedTerms = false;
-    $('input[name="order[terms_and_conditions]"]').change(function(){
-      agreedTerms = $(this).is(':checked');
-      activateContinueButton();
-    });
-
-    if($('.terms_and_conditions_text').get(0).scrollHeight == ($('.terms_and_conditions_text').height() + 40)) {
-      setTimeout(function() {
-        scrolledToBottom = true;
-        activateContinueButton();
-      }, 3000)
-    } else {
-      $('.terms_and_conditions_text').scroll(function () {
-        if (($(this).scrollTop() + 40) == $(this).get(0).scrollHeight - $(this).height()) {
-          scrolledToBottom = true;
-          activateContinueButton();
-        }
-      });
-    }
-
-    function activateContinueButton() {
-      if(scrolledToBottom && agreedTerms) {
-        $('.term-continue-button').removeClass('disabled');
-      } else {
-        $('.term-continue-button').addClass('disabled');
-      }
-    }
-  })
+  $(function() {
+    scrollHandler('order[terms_and_conditions]', true);
+  });
 </script>
