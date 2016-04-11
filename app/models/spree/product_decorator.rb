@@ -73,7 +73,7 @@ Spree::Product.class_eval do
   scope :saleable, -> { where(for_sale: true) }
   scope :fulfillmentable, -> { where("spree_products.fulfillment_date < ? or spree_products.fulfillment_date is null", Time.now) }
   scope :unexpire, -> { where("spree_products.expiration_date > ? or spree_products.expiration_date is null", Time.now) }
-  scope :show_in_storefront, -> { where(show_in_storefront: true) }
+  scope :show_in_storefront, -> { where(show_in_storefront: true).order('position asc') }
   scope :salesforceable, -> { where.not(sf_id_product: [nil, ''])}
   scope :unarchive, -> { where(archived: false) }
 
