@@ -5,7 +5,8 @@ class ContactForm
 
   attr_accessor :topic, :first_name, :last_name, :email, :phone, :role, :school_district_name, :school_district_type,
     :country, :state, :curriculum, :grade, :school_district_size, :title_1, :returning_customer, :tax_exempt, :tax_exempt_id, :desired_dates,
-    :desired_training_topic, :items_purchased, :description, :school_district, :grade_bands, :training_groups_size, :interested_in_hosting_events
+    :desired_training_topic, :items_purchased, :description, :school_district, :grade_bands, :training_groups_size, :interested_in_hosting_events,
+    :related_grade_module_unit_lession
 
   validates_presence_of :topic, :first_name, :last_name, :email, :phone
   validates_presence_of :description, if: :require_description?
@@ -120,11 +121,13 @@ class ContactForm
 
   def support_attributes
     {
+      'State__c' => self.state,
       'Description' => self.description,
       'Origin' => 'web',
       'Status' => 'New',
       'Priority' => 'Medium',
-      'Subject' => self.topic
+      'Subject' => self.topic,
+      'Related_Grade_Module_Unit_Lesson__c' => self.related_grade_module_unit_lession
     }.merge(support_type_attributes)
   end
 

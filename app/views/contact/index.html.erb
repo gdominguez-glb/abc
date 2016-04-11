@@ -210,6 +210,15 @@
             </div>
           </div>
 
+          <div class="row dependent-field hidden" data-name="RelatedModuleGradeUnitLesson">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <label>Relatd grade, module/unit, lession</label>
+                <%= f.text_area :related_grade_module_unit_lession, class: 'form-control', rows: 5 %>
+              </div>
+            </div>
+          </div>
+
           <div class="row dependent-field hidden" data-name="Description">
             <div class="col-sm-12">
               <div class="form-group">
@@ -340,7 +349,9 @@
         ],
         'Curriculum Support': [
           { name: 'Curriculum' },
-          { name: 'Description' }
+          { name: 'Description' },
+          { name: 'Country' },
+          { name: 'RelatedModuleGradeUnitLesson' }
         ],
         'Technical Support':[
           { name: 'Description' }
