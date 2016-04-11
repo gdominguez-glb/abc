@@ -1,18 +1,21 @@
 module Spree
   module Admin
     class StorefrontsController < BaseController
+      before_action :set_products
 
       def show
-        @products = Spree::Product.show_in_storefront
       end
 
       # update list
       def create
-        @products = Spree::Product.show_in_storefront
         params[:positions].each do |id, position|
           @products.find(id).update_column(:position, position)
         end
         render nothing: true
+      end
+
+      def set_products
+        @products = Spree::Product.show_in_storefront.active.where(individual_sale: true).saleable.unarchive
       end
     end
   end
