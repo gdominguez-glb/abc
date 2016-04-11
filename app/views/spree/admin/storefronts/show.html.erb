@@ -1,0 +1,48 @@
+<% content_for :page_title do %>
+  Storefront Products
+<% end %>
+
+<% content_for :page_actions do %>
+  <%= button_link_to 'Back to Products', admin_products_path, { :class => "btn-success", :icon => 'list' } %>
+<% end if can?(:create, Spree::Product) %>
+
+<% if @products.any? %>
+  <div data-hook>
+      <table class="table" id="list-storefront-products">
+        <tbody>
+          <% @products.each do |product| %>
+            <tr data-id="<%= product.id %>">
+              <td><%= product.name %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+  </div>
+<% else %>
+  <div class="alert alert-info no-objects-found">
+    <p>No storefront products exists.</p>
+  </div>
+<% end %>
+<script type="text/javascript">
+//<![CDATA[
+  (function($){
+    function updatePositions() {
+      var data = {}
+      $.each($("#list-storefront-products tbody tr"), function(index, element) {
+        data[$(element).attr('data-id')] = index;
+      });
+      $.ajax({
+        url: '<%= admin_storefront_path %>',
+        type: 'POST',
+        data: { positions: data }
+      })
+    }
+
+    $("#list-storefront-products tbody").sortable({
+      update: function(event, ui) {
+        updatePositions();
+      }
+    });
+  })(jQuery);
+//]]>
+</script>

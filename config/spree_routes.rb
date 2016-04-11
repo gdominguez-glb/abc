@@ -40,6 +40,7 @@ spree_routes_overrides = Proc.new do
     end
 
     resources :archives
+    resource :storefront
     resources :products do
       resources :parts, only: [:index, :create, :destroy]
       resources :group_items, only: [:index, :create, :destroy] do
