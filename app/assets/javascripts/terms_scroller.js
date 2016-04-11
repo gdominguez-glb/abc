@@ -13,7 +13,7 @@ function scrollHandler(checkboxToWatch, agreeRequired) {
     setTimeout(function() {
       scrolledToBottom = true;
       activateContinueButton();
-    }, 3000)
+    }, 3000);
   } else {
     $('.terms_and_conditions_text').scroll(function() {
       if ( ($(this).scrollTop() + 40) === $(this).get(0).scrollHeight - $(this).height() ) {
