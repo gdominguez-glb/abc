@@ -1,6 +1,6 @@
 <li class="list-group-item" data-material-id="<%= material.id %>">
   <%= material.name %>
-  <%= link_to 'Bulk Add', bulk_modal_admin_product_materials_path(material.product, parent_id: material.id), class: 'btn btn-default btn-sm', remote: true %>
+  <%= link_to 'Add Multiple', bulk_modal_admin_product_materials_path(material.product, parent_id: material.id), class: 'btn btn-default btn-sm', remote: true %>
   <%= link_to 'Add Material', new_admin_product_material_path(material.product, parent_id: material.id), class: 'btn btn-default btn-sm', remote: true %>
   <%= link_to 'Edit', edit_admin_product_material_path(material.product, material), class: 'btn btn-default btn-sm', remote: true %>
   <%= link_to 'Delete', delete_confirm_admin_product_material_path(material.product, material), class: 'btn btn-default btn-sm', remote: true %>
