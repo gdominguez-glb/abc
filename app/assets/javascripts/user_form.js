@@ -26,33 +26,6 @@ function shouldShowPhone(userRole) {
   return false;
 }
 
-function schoolSelected(id) {
-  var schoolIsSelected = true;
-
-  switch(id) {
-    case 'spree_user_school_district_attributes_place_type_district':
-      schoolIsSelected = false;
-      break;
-  }
-
-  return schoolIsSelected;
-}
-
-function bindClickAddLink(selector, inputRowSelector) {
-  $(document).on('click', selector, function (e) {
-    e.preventDefault();
-    $(inputRowSelector).collapse("show");
-  });
-}
-
-function bindClickClose(selector, messageselector, selectselector, inputRowSelector) {
-  $(document).on('click', selector, function () {
-    $(messageselector).hide();
-    $(selectselector).select2("val","");
-    $(inputRowSelector).collapse("hide");
-  });
-}
-
 $(document).on("change", "#spree_user_title", function(){
   var userRole = $("#spree_user_title").val();
   var showVisibleFields = shouldShowDistrict(userRole);
@@ -73,55 +46,14 @@ $(document).on("change", "#spree_user_title", function(){
   }
 });
 
-$(document).on('change', '#schoolDistrictSelect input', function(e) {
-  var schoolIsSelected = schoolSelected(e.currentTarget.id);
-
-  if(schoolIsSelected) {
-    $('#rowSchoolSelect').collapse('show');
-    $('#rowAddSchool input').prop('disabled', false);
-
-    $('#rowDistrictSelect').collapse('hide');
-    $('#rowAddDistrict').collapse('hide');
-    $('#rowDistrictSelect #spree_user_district_id').val(null);
-    $('#rowAddDistrict input').prop('disabled', true);
-
-  } else {
-    $('#rowDistrictSelect').collapse('show');
-    $('#rowAddDistrict input').prop('disabled', false);
-
-    $('#rowSchoolSelect').collapse('hide');
-    $('#rowAddSchool').collapse('hide');
-    $('#rowSchoolSelect #spree_user_school_id').val(null);
-    $('#rowAddSchool input').prop('disabled', true);
-  }
-
-});
-
-$(document).on('change', '#spree_user_school_id', function() {
-  if( $(this).val() === '#schoolNotListed' ) {
-    $('#rowAddSchool').collapse('show');
+$(document).on("change", "#spree_user_district_id, #spree_user_school_id", function(e) {
+  var type = e.target.id;
+  type = type.split("_")[2];
+  type = type.charAt(0).toUpperCase() + type.slice(1);
+  if( $(this).val() === "#notListed" ) {
+    $("#rowAdd" + type).collapse('show');
   }
 });
-
-
-$(document).on('change', '#spree_user_district_id', function() {
-  if( $(this).val() === '#districtNotListed' ) {
-    $('#rowAddDistrict').collapse('show');
-  }
-});
-
-
-function listenToCountry() {
-  $('select[name="spree_user[school_district_attributes][country_id]"]').change(function(){
-    if($(this).val() === window.us_country_id) {
-      $('#state-input-wrapper').removeClass('hide');
-      $('select[name="spree_user[school_district_attributes][state_id]"]').attr('disabled', false);
-    } else {
-      $('#state-input-wrapper').addClass('hide');
-      $('select[name="spree_user[school_district_attributes][state_id]"]').attr('disabled', true);
-    }
-  });
-}
 
 $(function(){
   bindClickAddLink(".add-school-link", "#rowAddSchool");
@@ -141,6 +73,46 @@ $(function(){
     updateSchoolDistrictSelect(parseInt(stateId));
   });
 
+  $(document).on('change', '#schoolDistrictSelect input', function (e) {
+    var selectionId = e.currentTarget.id;
+
+    switch(selectionId) {
+      case "spree_user_school_district_attributes_place_type_district":
+        showControls("district", "school");
+        break;
+      default:
+        showControls("school", "district");
+      break;
+    }
+  });
+
+  function showControls(show, hide) {
+    var hideSelector = hide.charAt(0).toUpperCase() + hide.slice(1),
+        showSelector = show.charAt(0).toUpperCase() + show.slice(1),
+        rowSelectorHide = "#row" + hideSelector + "Select",
+        rowAddSelectorHide = "#rowAdd" + hideSelector + hide.slice(1),
+        rowAddSelectorShow = "#rowAdd" + showSelector,
+        rowSelectorShow = "#row" + showSelector + "Select";
+
+    $(rowSelectorHide + "," + rowAddSelectorHide).collapse("hide");
+    $(rowSelectorShow).collapse("show");
+    $(rowAddSelectorShow + "input").prop("disabled", false);
+    $(rowSelectorHide + " #spree_user_" + hide + "_id").val(null);
+    $(rowAddSelectorHide + "input").prop("disabled", true);
+  }
+
+  function listenToCountry() {
+    $('select[name="spree_user[school_district_attributes][country_id]"]').change(function(){
+      if($(this).val() === window.us_country_id) {
+        $('#state-input-wrapper').removeClass('hide');
+        $('select[name="spree_user[school_district_attributes][state_id]"]').attr('disabled', false);
+      } else {
+        $('#state-input-wrapper').addClass('hide');
+        $('select[name="spree_user[school_district_attributes][state_id]"]').attr('disabled', true);
+      }
+    });
+  }
+
   function updateSchoolDistrictSelect(_stateId) {
     var stateSchoolData, stateDistrictData;
     var stateId = parseInt(_stateId);
@@ -149,23 +121,38 @@ $(function(){
 
     renderOptions({
       type: "school",
-      formatFunc: formatSelectSchool,
-      searchFunc: searchSchool,
+      formatFunc: formatMessage,
+      searchFunc: search,
       data: stateSchoolData,
       stateId: _stateId
     });
 
     renderOptions({
       type: "district",
-      formatFunc: formatSelectDistrict,
-      searchFunc: searchDistrict,
+      formatFunc: formatMessage,
+      searchFunc: search,
       data: stateDistrictData,
       stateId: _stateId
     });
   }
 
-  function formatSelectSchool(object) {
-    return object.id === "#schoolNotListed" ? "<u>" + object.text + "</u>" : object.text;
+  function bindClickAddLink(selector, inputRowSelector) {
+    $(document).on('click', selector, function (e) {
+      e.preventDefault();
+      $(inputRowSelector).collapse("show");
+    });
+  }
+
+  function bindClickClose(selector, messageSelector, selectSelector, inputRowSelector) {
+    $(document).on('click', selector, function () {
+      $(messageSelector).hide();
+      $(selectSelector).select2("val","");
+      $(inputRowSelector).collapse("hide");
+    });
+  }
+
+  function formatMessage(object) {
+    return object.id === "#notListed" ? "<u>" + object.text + "</u>" : object.text;
   }
 
   function toggleMessage(selector, resultsLength, queryLength) {
@@ -200,10 +187,6 @@ $(function(){
     });
   }
 
-  function formatSelectDistrict(object) {
-    return object.id === "#districtNotListed" ? "<u>" + object.text + "</u>" : object.text;
-  }
-
   function findStateData(data, stateId) {
     if(!stateId) {
       return data;
@@ -218,23 +201,13 @@ $(function(){
     return matches;
   }
 
-  function searchDistrict(term, stateId) {
+  function search(term, stateId) {
     var data = { results: [] };
-    var _districtData = findStateData(window.districtData, stateId);
-    for(var i = 0; i < _districtData.length; i ++) {
-      if(!term || _districtData[i].text === 'District Not Listed' || _districtData[i].text.search(new RegExp(term, 'i')) >= 0) {
-        data.results.push(_districtData[i]);
-      }
-    }
-    return data;
-  }
-
-  function searchSchool(term, stateId) {
-    var data = { results: [] };
-    var _schoolData = findStateData(window.schoolData, stateId);
-    for(var i = 0; i < _schoolData.length; i ++) {
-      if(!term || _schoolData[i].text === 'School Not Listed' || _schoolData[i].text.search(new RegExp(term, 'i')) >= 0) {
-        data.results.push(_schoolData[i]);
+    var _stateData = findStateData(window[this.type + "Data"], stateId);
+    var _notListedMessage = (this.type + " Not Listed");
+    for(var i = 0; i < _stateData.length; i ++) {
+      if(!term || _stateData[i].text === _notListedMessage || _stateData[i].text.search(new RegExp(term, 'i')) >= 0) {
+        data.results.push(_stateData[i]);
       }
     }
     return data;
