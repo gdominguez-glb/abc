@@ -434,8 +434,8 @@ marketing_templates:
           }
         }
       </style>
-      <section id="tileImgBgTextFull<%= position %>" class="row row-img-full row-content-full image-bg <%= 'black-overlay' if (black_overlay.to_i == 1 rescue nil) %>">
-        <div class="row-img-full-content">
+      <section id="tileImgBgTextFull<%= position %>" class="row row-img-full row-content-full image-bg">
+        <div class="row-img-full-content <%= 'black-overlay' if (black_overlay.to_i == 1 rescue nil) %>">
           <div class="col-sm-12 col-centered-content">
             <div class="vertical-center">
               <h6><%= title %></h6>
@@ -468,8 +468,8 @@ marketing_templates:
           }
         }
       </style>
-      <section id="tileImgBgTextFullHalf<%= position %>" class="row row-img-full row-content-full image-bg half-height <%= 'black-overlay' if (black_overlay.to_i == 1 rescue nil) %>">
-        <div class="row-img-full-content">
+      <section id="tileImgBgTextFullHalf<%= position %>" class="row row-img-full row-content-full image-bg half-height">
+        <div class="row-img-full-content <%= 'black-overlay' if (black_overlay.to_i == 1 rescue nil) %>">
           <div class="col-sm-12 col-centered-content">
             <div class="vertical-center">
               <h6><%= title %></h6>
@@ -504,8 +504,8 @@ marketing_templates:
           }
         }
       </style>
-      <section id="tileImgBgTextLeft<%= position %>" class="row row-img-full image-bg <%= 'black-overlay' if (black_overlay.to_i == 1 rescue nil) %>">
-        <div class="row-img-full-content">
+      <section id="tileImgBgTextLeft<%= position %>" class="row row-img-full image-bg">
+        <div class="row-img-full-content <%= 'black-overlay' if (black_overlay.to_i == 1 rescue nil) %>">
           <div class="col-sm-6 col-centered-content">
             <div class="vertical-center">
               <h6><%= title %></h6>
@@ -539,8 +539,8 @@ marketing_templates:
           }
         }
       </style>
-      <section id="tileImgBgTextRight<%= position %>" class="row row-img-full image-bg <%= 'black-overlay' if (black_overlay.to_i == 1 rescue nil) %>">
-        <div class="row-img-full-content">
+      <section id="tileImgBgTextRight<%= position %>" class="row row-img-full image-bg">
+        <div class="row-img-full-content <%= 'black-overlay' if (black_overlay.to_i == 1 rescue nil) %>">
           <div class="col-sm-6"></div>
           <div class="col-sm-6 col-centered-content">
             <div class="vertical-center">

@@ -350,6 +350,10 @@ section.row-content-3col {
 .row-img-full-content {
   padding: 60px 0;
 
+  &.black-overlay {
+    background: rgba($dark-blue, .6);
+  }
+
   @media screen and (min-width: $screen-sm-min) {
     min-height: 600px;
     padding: 84px 0;
