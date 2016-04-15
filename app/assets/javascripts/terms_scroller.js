@@ -1,6 +1,7 @@
 function scrollHandler(checkboxToWatch, agreeRequired) {
   var scrolledToBottom = false;
   var agreedTerms = false;
+  $('input[name="' + checkboxToWatch + '"]').attr('checked', false);
 
   if (agreeRequired) {
     $('input[name="' + checkboxToWatch + '"]').change(function() {
