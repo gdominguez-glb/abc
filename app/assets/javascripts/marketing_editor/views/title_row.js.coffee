@@ -20,7 +20,13 @@ class MarketingEditorApp.Views.TileRowView extends Backbone.View
 
   valueChanged: ->
     $.each(@$('[data-name]'), (index, el)=>
-      @model.set($(el).attr('data-name'), $(el).val())
+      if $(el).attr('type') == 'checkbox'
+        if $(el).is(':checked')
+          @model.set($(el).attr('data-name'), $(el).val())
+        else
+          @model.set($(el).attr('data-name'), 0)
+      else
+        @model.set($(el).attr('data-name'), $(el).val())
     )
 
   fieldsOfRowType: (rowType)->

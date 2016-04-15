@@ -364,6 +364,9 @@
     :input_type: text
 - :name: Image Background, Full Width Text
   :fields:
+  - :name: black_overlay
+    :label: Black Overlay
+    :input_type: checkbox
   - :name: title
     :label: Title
     :input_type: text
@@ -381,6 +384,9 @@
     :input_type: text
 - :name: Image Background, Full Width Text, Half Height
   :fields:
+  - :name: black_overlay
+    :label: Black Overlay
+    :input_type: checkbox
   - :name: title
     :label: Title
     :input_type: text
@@ -398,6 +404,9 @@
     :input_type: text
 - :name: Image Background, Text Left
   :fields:
+  - :name: black_overlay
+    :label: Black Overlay
+    :input_type: checkbox
   - :name: title
     :label: Title
     :input_type: text
@@ -415,6 +424,9 @@
     :input_type: text
 - :name: Image Background, Text Right
   :fields:
+  - :name: black_overlay
+    :label: Black Overlay
+    :input_type: checkbox
   - :name: title
     :label: Title
     :input_type: text

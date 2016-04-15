@@ -21,6 +21,16 @@
             </div>
           </div>
         <% } %>
+        <% if(fields[i].input_type == 'checkbox') { %>
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label>
+                <input type="checkbox" class="title-input" data-name="<%= fields[i].name %>" value="1" <% if(data[fields[i].name] == 1) {%>checked<%}%>/>
+                <%= fields[i].label %>
+              </label>
+            </div>
+          </div>
+        <% } %>
         <% if(fields[i].input_type == 'text_area') { %>
           <div class="col-sm-12">
             <div class="form-group">
