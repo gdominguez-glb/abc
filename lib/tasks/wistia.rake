@@ -3,7 +3,7 @@ require 'open_uri_redirections'
 
 namespace :wistia do
   desc "refresh wistia media status"
-  task :refresh_media_status => :environment do
+  task refresh_media_status: :environment do
     Spree::Video.where.not(wistia_status: 'ready', wistia_hashed_id: nil).find_each do |video|
       begin
         media = Wistia::Media.find(video.wistia_hashed_id)
@@ -16,6 +16,15 @@ namespace :wistia do
         )
       rescue
       end
+    end
+  end
+
+  desc "Fill empty screenshot for videos"
+  task fill_empty_screenshot: :environment do
+    Spree::Video.where(wistia_status: 'ready', screenshot_file_size: 0).each do |video|
+      video.update(
+        screenshot: (video.preview_image_url ? open(video.preview_image_url, allow_redirections: :all) : nil)
+      )
     end
   end
 end
