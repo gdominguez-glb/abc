@@ -251,9 +251,10 @@
 }
 
 .product-type {
-  color: $cream;
+  border: 1px solid $brand-primary;
+  color: $brand-primary;
   font-size: 10px;
-  background-color: $dark-blue;
+  background-color: $cream;
   font-family: 'Karla', sans-serif;
   padding: $b-space-s;
   border-radius: 4px;
@@ -262,15 +263,21 @@
 }
 
 .product-type-math {
-  color: $math;
+  border: 1px solid $brand-primary;
+  color: $brand-primary;
+  background-color: $math;
 }
 
 .product-type-history {
-  color: $history;
+  border: 1px solid $brand-primary;
+  color: $brand-primary;
+  background-color: $history;
 }
 
 .product-type-english {
-  color: $english;
+  border: 1px solid $brand-primary;
+  color: $brand-primary;
+  background-color: $english;
 }
 
 .product-section-title {
