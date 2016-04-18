@@ -176,6 +176,16 @@
       min-width: 200px;
     }
   }
+
+  &.dropdown-contact-topic  {
+    .btn {
+      min-width: 230px;
+    }
+
+    .dropdown-menu {
+      min-width: 230px;
+    }
+  }
 }
 
 // -------------------------------------
