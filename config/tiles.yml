@@ -529,6 +529,32 @@
   - :name: button_link
     :label: Button Link
     :input_type: text
+- :name: 2-Column Video Left, Text Right, background color
+  :fields:
+  - :name: background_color
+    :label: Background Color
+    :input_type: select
+    :input_options:
+      - green
+      - blue
+      - cream
+      - orange
+      - light-blue
+  - :name: wistia_video_id
+    :label: Wistia Video Id
+    :input_type: text
+  - :name: title
+    :label: Title
+    :input_type: text
+  - :name: body_text
+    :label: Body Text
+    :input_type: text_area
+  - :name: button_title
+    :label: Button Title
+    :input_type: text
+  - :name: button_link
+    :label: Button Link
+    :input_type: text
 - :name: 3-Column Text
   :fields:
   - :name: background_color
