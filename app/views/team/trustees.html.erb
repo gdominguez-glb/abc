@@ -17,7 +17,7 @@
             data-title="<%= trustee.title %>"
             data-name="<%= trustee.name %>"
             data-image="<%= trustee.picture.url %>">
-            <div class="thumbnail thumbnail-team thumbnail-modal"
+            <div class="thumbnail thumbnail-team thumbnail-modal js-tooltip-trigger"
               data-toggle="tooltip"
               title="Click for bio">
               <% if trustee.picture.exists? %>
@@ -53,9 +53,7 @@
 
 <%= javascript_tag do %>
   $(document).ready(function(){
-    $('.tooltip-trigger').hover(function(e) {
-      $(this).tooltip('show');
-    });
+    $('.js-tooltip-trigger').tooltip();
 
     $('#trusteeModal').on('show.bs.modal', function (event) {
       var button = $(event.relatedTarget);
