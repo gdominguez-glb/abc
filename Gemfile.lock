@@ -694,6 +694,9 @@ GEM
       rack
       raindrops (~> 0.7)
     uuidtools (2.1.5)
+    validate_url (1.0.2)
+      activemodel (>= 3.0.0)
+      addressable
     vcr (2.9.3)
     versioncake (2.3.1)
       actionpack (>= 3.2)
@@ -788,12 +791,10 @@ DEPENDENCIES
   time_will_tell
   uglifier (>= 1.3.0)
   unicorn (~> 4.8.3)
+  validate_url
   vcr (~> 2.9.3)
   webmock
   whenever
   wistia-api
   zeroclipboard-rails
   zip-zip
-
-BUNDLED WITH
-   1.11.2

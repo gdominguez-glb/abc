@@ -93,6 +93,8 @@ gem 'sanitize'
 
 gem "mandrill-api"
 
+gem "validate_url"
+
 group :development do
   gem 'quiet_assets'
   gem 'letter_opener'
