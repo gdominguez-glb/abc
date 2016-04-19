@@ -1,3 +1,4 @@
 class VanityUrl < ActiveRecord::Base
-  validates_presence_of :url, :redirect_url
+  validates :url, presence: true, url: true
+  validates :redirect_url, presence: true, url: true
 end
