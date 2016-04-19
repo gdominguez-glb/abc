@@ -3,6 +3,8 @@ class ContactForm
 
   TOPICS = ["Sales/Purchasing", "Existing Order Support", "Professional Development", "Curriculum Support", "Technical Support", "Parent Support", "Content Error", "General and Other"]
 
+  ROLES = ["Teacher", "Parent",  "Administrator", "Other"]
+
   attr_accessor :topic, :first_name, :last_name, :email, :phone, :role, :school_district_name, :school_district_type,
     :country, :state, :curriculum, :grade, :school_district_size, :title_1, :returning_customer, :tax_exempt, :tax_exempt_id, :desired_dates,
     :desired_training_topic, :items_purchased, :description, :school_district, :grade_bands, :training_groups_size, :interested_in_hosting_events,

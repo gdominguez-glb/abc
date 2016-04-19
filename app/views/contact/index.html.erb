@@ -69,9 +69,10 @@
             </div>
 
             <div class="col-sm-6">
-              <div class="form-group">
-                <label>Role</label>
-                <%= f.text_field :role, size: 20, class: 'form-control', maxlength: 80, placeholder: 'Role'  %>
+              <label>Select your Role</label>
+              <div class="select-container dark-select block margin-bottom-reset">
+                <span>Please select your role</span>
+                <%= f.select :role, ContactForm::ROLES, { prompt: 'Please select your role' }, { class: 'form-control' } %>
               </div>
             </div>
 
