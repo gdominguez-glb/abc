@@ -4,6 +4,9 @@ engines:
     enabled: false
   bundler-audit:
     enabled: false
+  coffeelint:
+    enabled: true
+    config: coffeelint.json
   duplication:
     enabled: true
     config:
@@ -24,6 +27,7 @@ engines:
 ratings:
   paths:
   - Gemfile.lock
+  - "**.coffee"
   - "**.erb"
   - "**.haml"
   - "**.rb"
