@@ -4,6 +4,12 @@ class ActionDispatch::Routing::Mapper
   end
 end
 
+class VanityUrlConstraint
+  def self.matches?(request)
+    VanityUrl.find_by(url: request.original_url).present?
+  end
+end
+
 Rails.application.routes.draw do
   require 'sidekiq/web'
   authenticate :spree_user, lambda { |u| u.has_admin_role? } do
@@ -112,5 +118,10 @@ Rails.application.routes.draw do
   resources :newsletters, only: [:index, :create]
 
   get 'not-found', to: 'pages#not_found', as: :not_found
+
+  constraints VanityUrlConstraint do
+    get '*slug', to: 'vanity_urls#show'
+  end
+
   get '*slug', to: 'pages#show', constraints: lambda { |request| !(request.path =~ /\/(assets|store).*/) }
 end
