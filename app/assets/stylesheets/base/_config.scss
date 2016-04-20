@@ -46,12 +46,12 @@ $gray-lighter: #eee;
 $gray-lightest: #f8f8f8;
 
 // RGBA Transparents
-$c-black-transparent-1: rgba(0, 0, 0, 0.1);
-$c-black-transparent-4: rgba(0, 0, 0, 0.4);
-$c-black-transparent-5: rgba(0, 0, 0, 0.5);
+$c-black-transparent-1: rgba(0, 0, 0, .1);
+$c-black-transparent-4: rgba(0, 0, 0, .4);
+$c-black-transparent-5: rgba(0, 0, 0, .5);
 
-$c-white-transparent-5: rgba(255, 255, 255, 0.5);
-$c-white-transparent-9: rgba(255, 255, 255, 0.9);
+$c-white-transparent-5: rgba(255, 255, 255, .5);
+$c-white-transparent-9: rgba(255, 255, 255, .9);
 
 // Panels
 $panel-default-text:          $brand-primary;

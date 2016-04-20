@@ -52,7 +52,7 @@ label {
   box-shadow: none;
   background-color: $light-plum;
   line-height: 1.4em;
-  font-size: 0.9em;
+  font-size: .9em;
 
   @include placeholder-text-color {
     color: $gray-light;
@@ -134,7 +134,7 @@ label {
   font-size: 14px;
   font-family: 'Karla', sans-serif;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
+  letter-spacing: .15em;
   border-radius: 4px;
   box-shadow: none;
 

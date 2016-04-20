@@ -147,7 +147,7 @@
 }
 
 .flipper {
-  @include my-transition(0.6s);
+  @include my-transition(.6s);
   @include transform-style(preserve-3d);
 
   position: relative;
@@ -155,7 +155,7 @@
 
 .flip-front, .flip-back {
   @include backface-visibility(hidden);
-  @include transition(0.6s);
+  @include transition(.6s);
   @include transform-style(preserve-3d);
 
   position: absolute;
