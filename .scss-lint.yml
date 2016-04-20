@@ -18,7 +18,8 @@ linters:
     enabled: true
 
   Comment:
-    enabled: false
+    enabled: true
+    style: silent
 
   DeclarationOrder:
     enabled: false
