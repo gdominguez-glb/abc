@@ -12,10 +12,10 @@
 // -------------------------------------
 
 .well {
-  background: #ddd;
+  position: relative;
   margin-bottom: 30px;
   padding: 15px;
-  position: relative;
+  background: $gray-lighter;
   border-radius: 0;
 
   .banner {
@@ -24,20 +24,21 @@
     right: 0;
     width: 0;
     height: 0;
-    text-align: center;
+    border-top: 50px solid $c-absolute;
     border-left: 50px solid transparent;
-    border-top: 50px solid #000;
+    text-align: center;
+
     .glyphicon {
       position: absolute;
       top: -41px;
       right: 7px;
-      color: #fff;
+      color: $c-absent;
     }
   }
 
   &.license-well {
-    background: transparent;
     border: 2px solid $light-blue;
+    background: transparent;
     border-radius: 0;
     box-shadow: none;
 

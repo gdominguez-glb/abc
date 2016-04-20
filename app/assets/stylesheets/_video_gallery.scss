@@ -7,12 +7,13 @@
 }
 
 .video-wrapper {
+  @include transition(all, $transition-timing);
+
   position: relative;
   margin-bottom: 24px;
   padding: 15px 0;
   border: 1px solid darken($gray-lighter, 10%);
-  background-color: #fff;
-  @include transition(all, $transitionTiming);
+  background-color: $c-absent;
 
   @media screen and (min-width: $screen-sm-min) {
     min-height: 315px;
@@ -22,17 +23,19 @@
 
 .locked-video {
   .video-image-wrapper {
-    background-color: $steel-gray;
+    @include transition(all, $transition-timing);
+
     position: relative;
-    @include transition(all, $transitionTiming);
+    background-color: $steel-gray;
 
     .glyphicon-lock {
+      @include translate(-50%, -50%);
+
       position: absolute;
       top: 50%;
       left: 50%;
-      color: #fff;
       font-size: 100px;
-      @include translate(-50%, -50%);
+      color: $c-absent;
     }
   }
 }
@@ -47,11 +50,11 @@
 }
 
 .open-video {
-  height: 100%;
   display: block;
-  background-size: cover;
-  background-position: 50% 50%;
+  height: 100%;
   background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: cover;
 }
 
 .play-video-button {
@@ -60,36 +63,37 @@
   height: 100%;
 
   span {
+    @include transition(all, $transition-timing);
+    @include translate(-50%, -50%);
+
     position: absolute;
     top: 50%;
     left: 50%;
     font-size: 100px;
-
-    @include transition(all, $transitionTiming);
-    @include translate(-50%, -50%);
   }
 }
 
 .video-drawer {
+  @include transition(all, $transition-timing);
+
   padding: 10px;
-  @include transition(all, $transitionTiming);
 
   .product-description {
     padding: 5px 0 0;
 
     p {
-      font-size: 14px;
       margin-bottom: 5px;
+      font-size: 14px;
       line-height: 1.2em;
     }
   }
 }
 
 .video-preview-image {
-  background-color: #000;
-  background-size: contain;
-  background-position: 50% 50%;
+  background-color: $c-absolute;
   background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: contain;
 
   .play-video-button {
     span {
@@ -98,10 +102,10 @@
   }
 
   .btn-primary {
-    border: 1px solid #fff;
+    border: 1px solid $c-absent;
 
     &:hover {
-      border: 1px solid #fff;
+      border: 1px solid $c-absent;
     }
   }
 }
@@ -127,28 +131,29 @@
   line-height: 1em;
 
   #product-details & {
-    line-height: 0.8em;
+    line-height: .8em;
   }
 
   a {
-    color: #333;
-    letter-spacing: normal;
     font-size: 18px;
+    letter-spacing: normal;
+    color: $gray-dark;
   }
 }
 
-.video-categories, .video-taxons {
+.video-categories,
+.video-taxons {
   display: block;
   opacity: .6;
 
   p {
+    @extend .sans-serif;
+
     display: block;
     margin: 0;
     font-size: .85em;
+    line-height: 1em;
     text-transform: uppercase;
-    line-height: 1.0em;
-
-    @extend .sans-serif;
   }
 }
 
@@ -158,6 +163,6 @@
 
 // For Curriculim pages
 .video-title {
-  color: #fff;
   text-align: center;
+  color: $c-absent;
 }

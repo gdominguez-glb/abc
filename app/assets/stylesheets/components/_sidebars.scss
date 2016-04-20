@@ -8,16 +8,16 @@
 
   &.video-gallery-sidenav {
     @media screen and (max-width: 1025px) {
-      width: 75%;
-      position: absolute;
-      left: 0;
-      top: 0;
-      float: none;
-      bottom: 0;
-      z-index: 10;
-
-      @include transition(all, $transitionTiming);
+      @include transition(all, $transition-timing);
       @include translate(-100%, 0);
+
+      float: none;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 10;
+      width: 75%;
     }
 
     &.show-nav {
@@ -42,6 +42,7 @@
   .side-search-form {
     padding: 10px;
     color: $dark-blue;
+
     .form-control {
       box-shadow: inset 0 0 0 1px, inset 0 0 0 2px transparent;
     }
@@ -55,8 +56,8 @@
 .taxonomies-filters {
   .taxonomy-header {
     padding: 10px;
-    color: $dark-blue;
     border-bottom: 1px solid;
+    color: $dark-blue;
 
     &:hover {
       color: $steel-gray;
@@ -76,28 +77,30 @@
   }
 
   .list-group {
-    max-height: 0;
-    margin: 0;
-    color: #fff;
-    overflow: hidden;
+    @include transition(all, $transition-timing);
 
-    @include transition(all, $transitionTiming);
+    max-height: 0;
+    overflow: hidden;
+    margin: 0;
+    color: $c-absent;
 
     &.show-menu {
       max-height: 1000px;
-      border-bottom: 1px solid;
       overflow: auto;
+      border-bottom: 1px solid;
     }
 
     .list-group-item {
-      color: #fff;
-      border: none;
-      border-radius: 0;
-      text-align: center;
-      background-color: transparent;
-      @include transition(all, $transitionTiming);
+      @include transition(all, $transition-timing);
 
-      &.active, &:hover {
+      border: 0;
+      text-align: center;
+      color: $c-absent;
+      background-color: transparent;
+      border-radius: 0;
+
+      &.active,
+      &:hover {
         color: $brand-green;
         background: lighten($dark-blue, 3%);
       }

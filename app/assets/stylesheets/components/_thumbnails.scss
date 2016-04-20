@@ -12,50 +12,53 @@
 // -------------------------------------
 
 .thumbnail {
-	text-align: center;
+  text-align: center;
 
-	@media screen and (min-width: $screen-sm-min) {
-		min-height: 340px;
-	}
+  @media screen and (min-width: $screen-sm-min) {
+    min-height: 340px;
+  }
 
-	.img-square {
-		width: 156px;
-		height: 156px;
-	}
+  .img-square {
+    width: 156px;
+    height: 156px;
+  }
 
-	h3, p {
-		line-height: 1.2em;
-	}
+  h3,
+  p {
+    line-height: 1.2em;
+  }
 
 }
 
 .thumbnail-modal {
-	cursor: pointer;
+  cursor: pointer;
 }
 
 .thumbnail-team {
-	padding: $b-space-l;
-	h3 {
-		min-height: 50px;
-	}
+  padding: $b-space-l;
+
+  h3 {
+    min-height: 50px;
+  }
 }
 
 .col-thumbnail {
 
-	@media screen and (min-width: $screen-sm-min) {
-		&:nth-child(odd) {
-			clear: left;
-		}
-	}
+  @media screen and (min-width: $screen-sm-min) {
+    &:nth-child(odd) {
+      clear: left;
+    }
+  }
 
-	@media screen and (min-width: $screen-md-min) {
-		&:nth-child(odd) {
-			clear: none;
-		}
-		&:nth-child(5),
-		&:nth-child(9),
-		&:nth-child(13) {
-			clear: left;
-		}
-	}
+  @media screen and (min-width: $screen-md-min) {
+    &:nth-child(odd) {
+      clear: none;
+    }
+
+    &:nth-child(5),
+    &:nth-child(9),
+    &:nth-child(13) {
+      clear: left;
+    }
+  }
 }

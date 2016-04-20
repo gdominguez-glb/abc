@@ -13,6 +13,11 @@
 
 .modal-backdrop {
   z-index: 2001;
+
+  &.in {
+    background: $dark-blue;
+    opacity: .66;
+  }
 }
 
 .modal {
@@ -24,12 +29,13 @@
 
   &.video-play-modal {
     .modal-dialog {
+      @include translate(-50%, -200%);
+      @include transition(transform, .5s);
+
       position: absolute;
       top: 50%;
       left: 50%;
       margin: 0;
-      @include translate(-50%, -200%);
-      @include transition(transform, .5s);
 
       &.modal-lg {
         width: 100%;
@@ -51,7 +57,8 @@
           }
         }
 
-        iframe, .mejs-player {
+        iframe,
+        .mejs-player {
           width: 100%;
 
           // important is required to override inline, js-generated me-js styles
@@ -68,10 +75,11 @@
         @include translate(-50%, -50%);
       }
     }
+
     .modal-content {
+      border: 0;
       background: transparent;
       box-shadow: none;
-      border: none;
     }
 
     .modal-body {
@@ -84,31 +92,24 @@
       background: transparent;
 
       .close {
-        right: 5px;
         top: -8px;
-        color: #ddd;
+        right: 5px;
+        color: $gray-lighter;
       }
     }
   }
 }
 
-.modal-backdrop {
-  &.in {
-    background: $dark-blue;
-    opacity: .66;
-  }
-}
-
 .modal-header {
-  border: none;
+  border: 0;
 
   .close {
     position: absolute;
-    right: 5px;
     top: -5px;
-    margin-top: 0px;
-    color: $dark-blue;
+    right: 5px;
+    margin-top: 0;
     font-size: 40px;
+    color: $dark-blue;
     opacity: .75;
 
     &:hover {

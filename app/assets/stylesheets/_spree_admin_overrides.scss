@@ -3,11 +3,17 @@
 // header
 body[data-hook="body"] {
 
+  @media screen and (max-width: 768px) {
+    .taxon-title {
+      margin: 15px 0;
+    }
+  }
+
   .navbar-toggle {
     margin-left: 15px;
   }
 
-// Checkout Flow
+  // Checkout Flow
 
   #main-image {
     .panel-body {
@@ -27,23 +33,14 @@ body[data-hook="body"] {
   }
 }
 
-body[data-hook="body"] {
-
-  @media screen and (max-width: 768px) {
-    .taxon-title {
-      margin: 15px 0;
-    }
-  }
-}
-
 .spree-navbar {
   margin: 0 -15px;
   border: 0;
-  border-bottom: 1px solid #c5c5c5;
+  border-bottom: 1px solid $gray-light-mid;
 
   .navbar-header {
-    padding: 15px;
     float: none;
+    padding: 15px;
   }
 
   .navbar-brand {
@@ -58,35 +55,35 @@ body[data-hook="body"] {
   }
 
   #sidebar-toggle {
-    position: relative;
     float: left;
+    position: relative;
     margin: 0;
   }
 
   &.navbar-inverse {
-    background: #f8f8f8;
-    border-color: darken(#f8f8f8, 20%);
+    border-color: darken($gray-lightest, 20%);
+    background: $gray-lightest;
 
     .navbar-toggle {
 
       &:hover {
-        background: #f8f8f8;
+        background: $gray-lightest;
       }
 
       .icon-bar {
-        background: #333;
+        background: $gray-dark;
       }
     }
   }
 }
 
 .admin {
-  background-color: #fff;
+  background-color: $c-absent;
 
   .dropdown {
     &.user-menu {
       a {
-        color: #333 !important;
+        color: $gray-dark !important;
       }
 
       &.open {
@@ -114,7 +111,7 @@ ul.nav-sidebar {
     min-width: 0;
   }
 
-  @media screen and (max-width: $largeBP) {
+  @media screen and (max-width: $large-bp) {
     float: none;
     width: 100%;
 

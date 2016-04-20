@@ -5,10 +5,12 @@
 //
 // *************************************
 
-html, body {
-  min-height: 100%;
-  height: 100%;
+html,
+body {
   @include clearfix;
+
+  height: 100%;
+  min-height: 100%;
 }
 
 .container {
@@ -37,25 +39,142 @@ html, body {
   padding: 0 12px;
 }
 
-section.row {
-  [class*='col-'] {
-    padding: 0 30px;
+section {
+  @include clearfix;
 
-    @media screen and (min-width: $screen-sm-min) {
-      padding: 0 64px;
+  padding: 60px 0;
+  text-align: center;
 
-      &:first-child {
-        padding: 0 64px 0 84px;
+  @media screen and (min-width: $screen-xs-min) {
+    text-align: left;
+  }
+
+  @media screen and (min-width: $screen-sm-min) {
+    padding: 84px 0;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0 0 12px;
+  }
+
+  p {
+    margin: 0 0 25px;
+  }
+
+  &.image-bg {
+    h3,
+    h6,
+    p {
+      text-shadow: 0 0 3px $c-absolute;
+    }
+  }
+
+  &.row {
+    [class*='col-'] {
+      padding: 0 30px;
+
+      @media screen and (min-width: $screen-sm-min) {
+        padding: 0 64px;
+
+        &:first-child {
+          padding: 0 64px 0 84px;
+        }
+
+        &:last-child {
+          padding: 0 84px 0 64px;
+        }
       }
 
       &:last-child {
-        padding: 0 84px 0 64px;
+        .btn:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  .row-content-full {
+
+    @media screen and (min-width: $screen-sm-min) {
+      text-align: center;
+
+      [class*='col-'] {
+        &:first-child,
+        &:last-child {
+          padding: 0 168px;
+        }
+      }
+    }
+  }
+
+  .row-video-left {
+
+    @media screen and (min-width: $screen-sm-min) {
+      [class*='col-'] {
+        &:first-child {
+          padding-right: 32px;
+        }
+
+        &:last-child {
+          padding-left: 32px;
+        }
       }
     }
 
-    &:last-child {
-      .btn:last-child {
-        margin-bottom: 0;
+  }
+
+  .row-content-2col {
+    padding: 0;
+
+    @media screen and (min-width: $screen-sm-min) {
+      @include display-flex;
+    }
+
+    [class*='col-'] {
+
+      @media screen and (min-width: $screen-sm-min) {
+        @include justify-content(flex-start);
+      }
+
+      &:first-child,
+      &:last-child {
+        padding-top: 60px;
+        padding-bottom: 60px;
+
+        @media screen and (min-width: $screen-sm-min) {
+          padding-top: 84px;
+          padding-bottom: 84px;
+        }
+
+        .btn {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  .row-content-3col {
+
+    @media screen and (min-width: $screen-sm-min) {
+      [class*='col-'] {
+        padding: 0 24px;
+
+        &:first-child {
+          padding-right: 24px;
+        }
+
+        &:nth-child(2) {
+          padding: 0 54px;
+        }
+
+        &:last-child {
+          padding-left: 24px;
+        }
       }
     }
   }
@@ -75,10 +194,11 @@ footer > .row {
 }
 
 body {
+  @include animation(fade 1s);
+
   padding: 50px 0 0;
   color: $dark-blue;
   background: $gray-lighter;
-  @include animation(fade 1s);
 
   @media screen and (min-width: $screen-sm-min) {
     padding: 0;
@@ -87,8 +207,8 @@ body {
   &.nav-shown {
 
     .overlay {
-      opacity: .75;
       z-index: 3000;
+      opacity: .75;
     }
   }
 }
@@ -99,14 +219,15 @@ body {
   }
 }
 
-body.dragging, body.dragging * {
+body.dragging,
+body.dragging * {
   cursor: move !important;
 }
 
 .dragged {
   position: absolute;
-  opacity: 0.5;
   z-index: 2000;
+  opacity: .5;
 }
 
 *.unselectable {
@@ -114,37 +235,38 @@ body.dragging, body.dragging * {
   -khtml-user-select: none;
   -webkit-user-select: none;
 
-  /*
-    Introduced in IE 10.
-    See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
-  */
+  // Introduced in IE 10.
+  // See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
+
   -ms-user-select: none;
   user-select: none;
 }
 
 .overlay {
+  @include transition(all, $transition-timing);
+
   position: absolute;
   top: 0;
-  left: 0;
   right: 0;
   bottom: 0;
-  background: black;
-  opacity: 0;
+  left: 0;
   z-index: -1;
-  @include transition(all, $transitionTiming);
+  background: $c-absolute;
+  opacity: 0;
 }
 
 .search-overlay {
+  @include translate(0, -100%);
+  @include transition(all, $transition-timing);
+
   position: absolute;
   top: 0;
-  left: 0;
   right: 0;
-  height: 150px;
-  background: rgba($dark-blue, .95);
-  color: $cream;
+  left: 0;
   z-index: 9999;
-  @include translate(0, -100%);
-  @include transition(all, $transitionTiming);
+  height: 150px;
+  color: $cream;
+  background: rgba($dark-blue, .95);
 
   @media screen and (min-width: $screen-sm-min) {
     height: 109px;
@@ -155,10 +277,10 @@ body.dragging, body.dragging * {
   }
 
   .close {
-    margin: 10px 0;
-    color: #fff;
+    @include transition(opacity, $transition-timing);
 
-    @include transition(opacity, $transitionTiming);
+    margin: 10px 0;
+    color: $c-absent;
   }
 
   .form-control {
@@ -170,13 +292,14 @@ body.dragging, body.dragging * {
 }
 
 .wrapper {
-  position: relative;
-  padding: 0 15px;
   @include clearfix;
 
+  position: relative;
+  padding: 0 15px;
+
   @media screen and (min-width: $screen-sm-min) {
-    margin-left: -8.333%;
     margin-right: -8.333%;
+    margin-left: -8.333%;
     padding: 0 60px;
   }
 
@@ -188,7 +311,7 @@ body.dragging, body.dragging * {
 .page-header {
   margin: 30px 0 0;
   padding: 0;
-  border: none;
+  border: 0;
   text-align: center;
 
   @media screen and (min-width: $screen-xs-min) {
@@ -200,53 +323,11 @@ body.dragging, body.dragging * {
   }
 }
 
-section {
-  padding: 60px 0;
-  text-align: center;
-  @include clearfix;
-
-  @media screen and (min-width: $screen-xs-min) {
-    text-align: left;
-  }
-
-  @media screen and (min-width: $screen-sm-min) {
-    padding: 84px 0;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    margin: 0 0 12px;
-  }
-
-  p {
-    margin: 0 0 25px;
-  }
-
-  &.image-bg {
-    h3, h6, p {
-      text-shadow: 0 0 3px #000;
-    }
-  }
-}
-
 .coral-text {
   color: $coral;
 }
 
-section.row-content-full {
-
-  @media screen and (min-width: $screen-sm-min) {
-    text-align: center;
-
-    [class*='col-'] {
-      &:first-child,
-      &:last-child {
-        padding: 0 168px;
-      }
-    }
-  }
-}
-
-section.row-video-hero {
+.row-video-hero {
 
   @media screen and (min-width: $screen-sm-min) {
     .video-title {
@@ -264,73 +345,6 @@ section.row-video-hero {
 
 }
 
-section.row-video-left {
-
-  @media screen and (min-width: $screen-sm-min) {
-    [class*='col-'] {
-      &:first-child {
-        padding-right: 32px;
-      }
-
-      &:last-child {
-        padding-left: 32px;
-      }
-    }
-  }
-
-}
-
-section.row-content-2col {
-  padding: 0;
-
-  @media screen and (min-width: $screen-sm-min) {
-    @include display-flex;
-  }
-
-  [class*='col-'] {
-
-    @media screen and (min-width: $screen-sm-min) {
-      @include justify-content(flex-start);
-    }
-
-    &:first-child,
-    &:last-child {
-      padding-top: 60px;
-      padding-bottom: 60px;
-
-      @media screen and (min-width: $screen-sm-min) {
-        padding-top: 84px;
-        padding-bottom: 84px;
-      }
-
-      .btn {
-        margin-bottom: 0;
-      }
-    }
-  }
-}
-
-section.row-content-3col {
-
-  @media screen and (min-width: $screen-sm-min) {
-    [class*='col-'] {
-      padding: 0 24px;
-
-      &:first-child {
-        padding-right: 24px;
-      }
-
-      &:nth-child(2) {
-        padding: 0 54px;
-      }
-
-      &:last-child {
-        padding-left: 24px;
-      }
-    }
-  }
-}
-
 .half-height {
 
   @media screen and (min-width: $screen-sm-min) {
@@ -342,7 +356,7 @@ section.row-content-3col {
 
 .row-img-full {
   padding: 0;
-  color: #fff;
+  color: $c-absent;
   background-position: 0;
   background-size: cover;
 }
@@ -406,11 +420,11 @@ section.row-content-3col {
 .col-centered-content {
 
   @media screen and (min-width: $screen-sm-min) {
-    min-height: 432px;
-
     @include display-flex;
     @include flex-direction(column);
     @include justify-content(center);
+
+    min-height: 432px;
 
     .half-height & {
       min-height: 272px;

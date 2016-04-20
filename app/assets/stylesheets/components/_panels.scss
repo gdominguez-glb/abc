@@ -21,7 +21,7 @@
     border-bottom-left-radius: 3px;
   }
 
-  .panel + .panel {
+  + .panel {
     margin-top: 0;
   }
 }
@@ -48,18 +48,18 @@
   }
 
   .panel {
-		.panel {
-			margin-bottom: 0;
-		}
-	}
+    .panel {
+      margin-bottom: 0;
+    }
+  }
 
   &.panel-collapsible {
 
-    font-size: 0.9em;
+    font-size: .9em;
     line-height: 1.4em;
 
     .panel-title {
-      font-size: 0.9em;
+      font-size: .9em;
       line-height: 1.4em;
     }
 
@@ -74,12 +74,12 @@
 
         a {
           display: block;
-          padding: 0px;
+          padding: 0;
 
-          &:after {
-            font-family: 'Glyphicons Halflings';
-            content:"\e252";
+          &::after {
             float: right;
+            font-family: 'Glyphicons Halflings';
+            content: '\e252';
           }
         }
       }
@@ -108,16 +108,16 @@
 // -------------------------------------
 
 .panel-heading {
-	border-bottom-right-radius: 0;
-	border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
 
-	.panel-toggle,
+  .panel-toggle,
   .btn-icon {
-		@include transition(transform, .3s);
+    @include transition(transform, .3s);
 
     &.collapsed {
-	    @include rotate(180deg);
-	  }
+      @include rotate(180deg);
+    }
 
     &:focus {
       outline: 0;
@@ -127,7 +127,7 @@
       padding-top: 3px;
       font-size: 15px;
     }
-	}
+  }
 
   .btn-toggle {
     position: relative;
@@ -179,11 +179,11 @@
     }
 
     .list-group {
-      border-top: 1px solid #ddd;
+      border-top: 1px solid $gray-lighter;
     }
 
     .list-group-item {
-      padding: $b-space-s $b-space-s;
+      padding: $b-space-s;
 
       @media screen and (min-width: $screen-sm-min) {
         padding: $b-space-m $b-space;

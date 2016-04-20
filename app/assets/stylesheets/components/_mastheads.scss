@@ -2,10 +2,10 @@
 // todo: refactor
 
 .masthead {
-  background-size: cover;
+  color: $cream;
   background-repeat: no-repeat;
   background-position: 0 20%;
-  color: $cream;
+  background-size: cover;
 }
 
 .masthead-content {
@@ -23,7 +23,7 @@
 .home-mast-intro {
   margin-bottom: 60px;
   line-height: 1.9em;
-  text-shadow: 0 0 3px #000;
+  text-shadow: 0 0 3px $c-absolute;
 
   @media screen and (min-width: $screen-xs-min) {
     margin-bottom: 40px;

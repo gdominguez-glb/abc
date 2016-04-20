@@ -7,19 +7,22 @@
 //
 // *************************************
 
-input, label, .form-control, .form-group {
-  font-family: 'Karla', sans-serif;
-  font-weight: normal;
-  font-size: 16px;
-  color: inherit;
+input,
+label,
+.form-control,
+.form-group {
   @include transition(all, .3s);
-
   @include placeholder(inherit);
+
+  font-family: 'Karla', sans-serif;
+  font-size: 16px;
+  font-weight: normal;
+  color: inherit;
 }
 
 label {
-  font-weight: bold;
   font-size: .85em;
+  font-weight: bold;
   text-transform: uppercase;
 
   @media screen and (min-width: $screen-sm-min) {
@@ -49,10 +52,10 @@ label {
   height: auto;
   padding: 10px 15px;
   border: 1px solid $dark-blue;
-  box-shadow: none;
-  background-color: $light-plum;
+  font-size: .9em;
   line-height: 1.4em;
-  font-size: 0.9em;
+  background-color: $light-plum;
+  box-shadow: none;
 
   @include placeholder-text-color {
     color: $gray-light;
@@ -64,8 +67,8 @@ label {
   }
 
   &.header-form-control {
-    padding: 6px 12px;
     height: 34px;
+    padding: 6px 12px;
   }
 
   &.success {
@@ -87,6 +90,7 @@ label {
 
   &.collapse {
     display: none;
+
     &.in {
       display: table;
     }
@@ -122,20 +126,20 @@ label {
 }
 
 .select-container {
+  @include transition(background, .3s);
+
   display: block;
   position: relative;
   margin-bottom: 15px;
   padding: 10px 36px 10px 15px;
   border: 1px solid $dark-blue;
-  background: transparent;
-  font-size: 14px;
   font-family: 'Karla', sans-serif;
+  font-size: 14px;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
+  letter-spacing: .15em;
+  background: transparent;
   border-radius: 4px;
   box-shadow: none;
-
-  @include transition(background, .3s);
 
   .form-control {
     border: 0;
@@ -146,18 +150,18 @@ label {
     margin-bottom: 30px;
   }
 
-  &:after {
-    content: " ";
+  &::after {
+    display: inline-block;
     position: absolute;
     top: 19px;
     right: 10px;
-    display: inline-block;
     width: 0;
     height: 0;
-    vertical-align: middle;
     border-top: 4px dashed;
     border-right: 4px solid transparent;
     border-left: 4px solid transparent;
+    vertical-align: middle;
+    content: ' ';
   }
 
   label {
@@ -167,20 +171,20 @@ label {
   select {
     position: absolute;
     top: 0;
-    left: 0;
     right: 0;
     bottom: 0;
+    left: 0;
+    z-index: 2;
     width: 100%;
     opacity: 0;
-    z-index: 2;
     cursor: pointer;
   }
 
   &.dark-select {
 
     &:hover {
-      background: $dark-blue;
       color: $cream;
+      background: $dark-blue;
     }
   }
 
@@ -212,20 +216,21 @@ label {
     &:focus {
 
       + .glyphicon {
-          opacity: 1;
+        opacity: 1;
       }
     }
   }
 
   .glyphicon {
+    @include translate(0, -50%);
+    @include transition(all, .3s);
+
     position: absolute;
     top: 50%;
     left: 5px;
     padding: 5px 10px;
     border-right: 2px solid;
     opacity: .5;
-    @include translate(0, -50%);
-    @include transition(all, .3s);
   }
 }
 
@@ -241,10 +246,10 @@ label {
 
       .select2-search-field {
         input {
+          @extend .sans-serif;
+
           padding: 0;
           color: $dark-blue;
-
-          @extend .sans-serif;
         }
       }
 
@@ -257,7 +262,7 @@ label {
       border: 1px solid $english;
 
       .select2-choices {
-        border: none;
+        border: 0;
       }
     }
 
@@ -265,7 +270,7 @@ label {
       border-radius: 3px;
 
       .select2-choice {
-        border: none;
+        border: 0;
       }
     }
 
@@ -293,7 +298,7 @@ label {
 }
 
 .select2-drop-active {
-  border: 1px solid #000;
+  border: 1px solid $c-absolute;
 }
 
 .select2-search {
@@ -305,10 +310,10 @@ label {
 }
 
 .select2-results {
+  @extend .sans-serif;
+
   margin: 0;
   padding: 0;
-
-  @extend .sans-serif;
 
   &:first-child {
     border-top-left-radius: 4px;
@@ -326,13 +331,13 @@ label {
     text-transform: uppercase;
 
     &:hover {
-      color: #000;
+      color: $c-absolute;
       background-color: darken($light-plum, 5%);
     }
   }
 
   .select2-highlighted {
-    color: #000;
+    color: $c-absolute;
     background-color: darken($light-plum, 5%);
   }
 

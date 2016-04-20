@@ -70,7 +70,7 @@
 }
 
 .embed-responsive {
-  border: 1px solid #fff;
+  border: 1px solid $c-absent;
 }
 
 .embed-responsive-4by4 {
@@ -175,13 +175,13 @@
 // -------------------------------------
 
 .img-shadow {
-	box-shadow: 0 0 7px 0 rgba(0, 0, 0, 1.0);
+  box-shadow: 0 0 7px 0 $c-black-transparent-1;
 }
 
 .img-book {
-	box-shadow: 0 0 7px 0 rgba(0, 0, 0, 1.0);
-	border-top-right-radius: 12px;
-	border-bottom-right-radius: 12px;
+  box-shadow: 0 0 7px 0 $c-black-transparent-1;
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
 }
 
 .post-image {

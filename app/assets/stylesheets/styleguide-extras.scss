@@ -1,9 +1,10 @@
-@import "application";
+@import 'application';
 
 .sg-example {
   > h3 a {
-    border: none;
+    border: 0;
   }
+
   p {
     margin-bottom: 10px !important;
   }
@@ -11,15 +12,15 @@
 
 .sg-canvases {
   border: 2px solid $gray-light;
-  background: #fff;
+  background: $c-absent;
 }
 
 .sg-canvas {
-  border: none;
   overflow: visible;
+  border: 0;
 
   &.bg-light {
-    background: #fff;
+    background: $c-absent;
   }
 
   > div {
@@ -38,6 +39,29 @@
 
     .margin-bottom {
       margin-bottom: 10px !important;
+    }
+
+    // -------------------------------------
+    //   Icons
+    //   Google Material Icons
+    //
+    //   Styleguide 4.0
+    // -------------------------------------
+
+    .itemBox {
+      float: left !important;
+      width: 12.5%;
+      min-height: 100px;
+      padding: 10px;
+      border: 0;
+      font-size: 28px;
+      line-height: 1.4;
+      text-align: center;
+      background-color: transparent;
+
+      .caption {
+        font-size: 12px;
+      }
     }
 
   }
@@ -61,19 +85,22 @@
   &.gray-darker {
     background-color: $gray-darker;
   }
+
   &.gray-dark {
     background-color: $gray-dark;
   }
+
   &.gray {
     background-color: $gray;
   }
+
   &.gray-light {
     background-color: $gray-light;
   }
+
   &.gray-lighter {
     background-color: $gray-lighter;
   }
-}
 
 // -------------------------------------
 //   Color Palette
@@ -81,19 +108,22 @@
 //   Styleguide 1.0.1
 // -------------------------------------
 
-.color-swatch {
   &.brand-primary {
     background-color: $brand-primary;
   }
+
   &.brand-success {
     background-color: $brand-green;
   }
+
   &.brand-info {
     background-color: $english;
   }
+
   &.brand-warning {
     background-color: $history;
   }
+
   &.brand-danger {
     background-color: $brand-danger;
   }
@@ -105,35 +135,9 @@
 //   Styleguide 2.0
 // -------------------------------------
 
- .show-grid {
-    div {
-      border: 1px solid $brand-primary;
-      background: rgba($brand-primary, .3);
-    }
- }
-
- // -------------------------------------
- //   Icons
- //   Google Material Icons
- //
- //   Styleguide 4.0
- // -------------------------------------
-
-
-.sg-canvas > div > {
-  .itemBox {
-    float: left !important;
-    width: 12.5%;
-    min-height: 100px;
-    padding: 10px;
-    line-height: 1.4;
-    text-align: center;
-    background-color: transparent;
-    border: 0;
-    font-size: 28px;
-
-    .caption {
-      font-size: 12px;
-    }
+.show-grid {
+  div {
+    border: 1px solid $brand-primary;
+    background: rgba($brand-primary, .3);
   }
 }

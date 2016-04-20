@@ -46,49 +46,49 @@
 
 @mixin perspective($val) {
   -webkit-perspective: $val;
-	-moz-perspective: $val;
-	perspective: $val;
+  -moz-perspective: $val;
+  perspective: $val;
 }
 
-@mixin rotateY($val) {
+@mixin rotate-y($val) {
   -webkit-transform: rotateY($val);
-	-moz-transform: rotateY($val);
-	transform: rotateY($val);
-	filter: FlipH;
-	-ms-filter: "FlipH";
+  -moz-transform: rotateY($val);
+  transform: rotateY($val);
+  filter: FlipH;
+  -ms-filter: 'FlipH';
 }
 
-@mixin rotateX($val) {
+@mixin rotate-x($val) {
   -webkit-transform: rotateX($val);
-	-moz-transform: rotateX($val);
-	transform: rotateX($val);
-	filter: FlipV;
-	-ms-filter: "FlipV";
+  -moz-transform: rotateX($val);
+  transform: rotateX($val);
+  filter: FlipV;
+  -ms-filter: 'FlipV';
 }
 
 @mixin my-transition($val) {
   -webkit-transition: $val;
-	-moz-transition: $val;
-	transition: $val;
+  -moz-transition: $val;
+  transition: $val;
 }
 
 @mixin transform-style($val) {
   -webkit-transform-style: $val;
-	-moz-transform-style: $val;
-	transform-style: $val;
+  -moz-transform-style: $val;
+  transform-style: $val;
 }
 
 @mixin backface-visibility($val) {
   -webkit-backface-visibility: $val;
-	-moz-backface-visibility: $val;
-	backface-visibility: $val;
+  -moz-backface-visibility: $val;
+  backface-visibility: $val;
 }
 
 @mixin shepherd-arrow($attached, $position, $border) {
   &.shepherd-element-attached-#{$attached} {
     &.shepherd-element-attached-#{$position} {
       &.shepherd-has-title {
-        .shepherd-content:before {
+        .shepherd-content::before {
           border-#{$border}-color: $popover-outline;
         }
       }
@@ -98,9 +98,9 @@
 
 @mixin placeholder-text-color {
   &::-webkit-input-placeholder {@content}
-  &:-moz-placeholder           {@content}
-  &::-moz-placeholder          {@content}
-  &:-ms-input-placeholder      {@content}
+  &::-moz-placeholder {@content}
+  &::-moz-placeholder {@content}
+  &:-ms-input-placeholder {@content}
 }
 
 // -------------------------------------
@@ -108,8 +108,9 @@
 // -------------------------------------
 
 .flip-container {
-  margin: 0 auto;
   @include perspective(1000);
+
+  margin: 0 auto;
 
   &.flip {
     .flipper {
@@ -146,23 +147,27 @@
 }
 
 .flipper {
-  position: relative;
-  @include my-transition(0.6s);
+  @include my-transition(.6s);
   @include transform-style(preserve-3d);
+
+  position: relative;
 }
 
-.flip-front, .flip-back {
+.flip-front,
+.flip-back {
+  @include backface-visibility(hidden);
+  @include transition(.6s);
+  @include transform-style(preserve-3d);
+
   position: absolute;
   top: 0;
   left: 0;
-  @include backface-visibility(hidden);
-  @include transition(0.6s);
-  @include transform-style(preserve-3d);
 }
 
 .flip-front {
-  z-index: 2;
   @include rotateY(0deg);
+
+  z-index: 2;
 }
 
 .flip-back {

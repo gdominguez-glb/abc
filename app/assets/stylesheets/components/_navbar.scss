@@ -40,15 +40,15 @@
   .navbar-brand {
     width: 165px;
     padding: 0;
+    text-indent: -9999px;
     background: transparent asset-url('logo-half.png') no-repeat 50% 50%;
     background-size: 150px 35px;
-    text-indent: -9999px;
 
     @media screen and (min-width: $screen-sm-min) {
       position: relative;
       bottom: -3px;
-      margin-left: 50px;
       height: 109px;
+      margin-left: 50px;
       background: transparent asset-url('logo-full.png') no-repeat 50% 50%;
       background-size: 155px 109px;
     }
@@ -57,8 +57,8 @@
   // ----- Main Navigation Items & Dropdowns ----- //
 
   .navbar-collapse {
-    border: 0;
     max-height: none;
+    border: 0;
   }
 
   .navbar-nav {
@@ -118,7 +118,7 @@
         a:hover,
         a:focus {
           border-bottom: 1px solid $coral;
-          color: #fff;
+          color: $c-absent;
           background-color: darken($coral, 5%);
 
           @media screen and (min-width: $screen-sm-min) {
@@ -181,7 +181,7 @@
             > a {
               padding: 10px 15px 10px 25px;
               border-bottom: 1px solid $coral;
-              color: #fff;
+              color: $c-absent;
 
               [data-page='english'] &,
               [data-page='history'] &,
@@ -203,7 +203,7 @@
 
               &:hover,
               &:focus {
-                color: #fff;
+                color: $c-absent;
               }
             }
           }
@@ -212,7 +212,7 @@
 
       > a {
         border-bottom: 1px solid darken($coral, 5%);
-        color: #fff;
+        color: $c-absent;
 
         [data-page='english'] &,
         [data-page='history'] &,
@@ -234,7 +234,7 @@
 
         &:hover,
         &:focus {
-          color: darken(#fff, 15%);
+          color: darken($c-absent, 15%);
 
           [data-page='english'] &,
           [data-page='history'] &,
@@ -250,8 +250,8 @@
           [data-page='english'] &,
           [data-page='history'] &,
           [data-page='math'] & {
-            color: #fff;
             border-bottom: 0;
+            color: $c-absent;
           }
 
           &:hover,
@@ -261,7 +261,7 @@
             [data-page='english'] &,
             [data-page='history'] &,
             [data-page='math'] & {
-              color: $brand-green
+              color: $brand-green;
             }
           }
         }
@@ -343,7 +343,7 @@
   .subnav {
     display: none;
     margin: 0 -15px;
-    color: #fff;
+    color: $c-absent;
 
     [data-page='english'] &,
     [data-page='history'] &,
@@ -406,15 +406,15 @@
         &:active,
         &:focus {
           @media screen and (min-width: $screen-sm-min) {
-            color: #fff;
-            border-bottom: 2px solid #fff;
+            border-bottom: 2px solid $c-absent;
             text-decoration: none;
+            color: $c-absent;
 
             [data-page='english'] &,
             [data-page='history'] &,
             [data-page='math'] & {
-              color: $dark-blue;
               border-bottom: 2px solid $dark-blue;
+              color: $dark-blue;
             }
           }
         }
@@ -423,12 +423,12 @@
           padding: 3px 0 1px;
           border-bottom: 2px solid transparent;
           font-family: 'Lora', serif;
+          font-size: .8em;
           font-weight: normal;
-          font-size: 0.8em;
           text-transform: capitalize;
 
           &.active {
-            border-bottom: 2px solid #fff;
+            border-bottom: 2px solid $c-absent;
 
             [data-page='english'] &,
             [data-page='history'] &,
@@ -470,11 +470,11 @@
         }
 
         @media screen and (min-width: $screen-sm-min) {
-          float: left;
           display: inline-block;
+          float: left;
           padding: 15px 10px;
-          color: #fff;
           font-size: .75em;
+          color: $c-absent;
         }
       }
 
@@ -492,6 +492,7 @@
 
     .hello-text {
       display: none;
+
       @media screen and (min-width: $screen-sm-min) {
         display: inline-block;
       }
@@ -503,9 +504,10 @@
       a {
         display: block;
         padding: 10px 15px;
-        color: #fff;
+        color: $c-absent;
+
         &:hover {
-          color: darken(#fff, 15%);
+          color: darken($c-absent, 15%);
         }
 
         @media screen and (min-width: $screen-sm-min) {
@@ -519,7 +521,7 @@
     .cart-info {
       position: relative;
       font-size: 14px;
-      color: #fff;
+      color: $c-absent;
 
       &:hover {
         @media screen and (min-width: $screen-sm-min) {
@@ -533,7 +535,7 @@
         color: $dark-blue;
 
         @media screen and (min-width: $screen-sm-min) {
-          color: #fff;
+          color: $c-absent;
         }
 
         &:hover {
@@ -568,11 +570,11 @@
       &:focus {
         width: 100%;
         padding: 9px 15px 9px 30px;
-        background: #fff asset-url('icon-search-gray.png') no-repeat 2% 50%;
+        background: $c-absent asset-url('icon-search-gray.png') no-repeat 2% 50%;
         background-size: 15px 15px;
 
         @media screen and (min-width: $screen-sm-min) {
-          background: #fff asset-url('icon-search-gray.png') no-repeat 5% 50%;
+          background: $c-absent asset-url('icon-search-gray.png') no-repeat 5% 50%;
           background-size: 15px 15px;
         }
       }
@@ -589,11 +591,11 @@
         }
 
         &:focus {
-          background-color: #fff;
+          background-color: $c-absent;
           background-position: 2% 50%;
 
           @media screen and (min-width: $screen-sm-min) {
-            background: #fff asset-url('icon-search-gray.png') no-repeat 5% 50%;
+            background: $c-absent asset-url('icon-search-gray.png') no-repeat 5% 50%;
             background-size: 15px 15px;
           }
         }
@@ -605,7 +607,7 @@
 
   .navbar-toggle {
     border: 0;
-    color: #fff;
+    color: $c-absent;
 
     &:hover,
     &:focus {
@@ -617,10 +619,11 @@
     }
 
     .glyphicon {
+      @include transition(all, $transition-timing);
+
       position: absolute;
       top: 10px;
       right: 0;
-      @include transition(all, $transitionTiming);
     }
 
     .glyphicon-menu-hamburger {
@@ -639,6 +642,7 @@
       .glyphicon-remove {
         opacity: 0;
       }
+
       .glyphicon-menu-hamburger {
         opacity: 1;
       }
