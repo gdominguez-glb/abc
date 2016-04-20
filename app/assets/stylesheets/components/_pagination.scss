@@ -39,8 +39,8 @@
         &:hover,
         &:active,
         &:focus {
-          color: $c-absent;
           border-color: lighten($dark-blue, 5%);
+          color: $c-absent;
           background-color: lighten($dark-blue, 5%);
         }
       }

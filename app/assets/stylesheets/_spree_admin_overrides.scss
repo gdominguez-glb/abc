@@ -39,8 +39,8 @@ body[data-hook="body"] {
   border-bottom: 1px solid $gray-light-mid;
 
   .navbar-header {
-    padding: 15px;
     float: none;
+    padding: 15px;
   }
 
   .navbar-brand {
@@ -55,14 +55,14 @@ body[data-hook="body"] {
   }
 
   #sidebar-toggle {
-    position: relative;
     float: left;
+    position: relative;
     margin: 0;
   }
 
   &.navbar-inverse {
-    background: $gray-lightest;
     border-color: darken($gray-lightest, 20%);
+    background: $gray-lightest;
 
     .navbar-toggle {
 

@@ -14,8 +14,8 @@
 .btn {
   @include transition(all, .3s);
 
-  font-family: 'Karla', sans-serif;
   padding: 10px 30px;
+  font-family: 'Karla', sans-serif;
   text-transform: uppercase;
   letter-spacing: .15em;
 
@@ -24,9 +24,9 @@
   }
 
   &.btn-default {
+    border: 1px solid $dark-blue;
     color: $dark-blue;
     background-color: transparent;
-    border: 1px solid $dark-blue;
 
     &:hover {
       color: $c-absent;
@@ -35,8 +35,8 @@
 
     .blue-bg &,
     .image-bg & {
-      color: $c-absent;
       border-color: $c-absent;
+      color: $c-absent;
 
       &:hover {
         color: $dark-blue;
@@ -51,13 +51,13 @@
     &.dropdown-toggle {
       padding: 10px 30px 10px 15px;
       border: 1px solid $dark-blue;
+      text-align: left;
       color: $dark-blue;
       background: transparent;
-      text-align: left;
 
       .image-background & {
-        color: $c-absent;
         border: 1px solid $c-absent;
+        color: $c-absent;
 
         &:hover {
           color: $dark-blue;
@@ -164,8 +164,8 @@
 
   .caret {
     position: absolute;
-    right: 10px;
     top: 18px;
+    right: 10px;
   }
 
   &.fixed-width {
@@ -261,7 +261,7 @@
 
   .caret {
     position: absolute;
-    right: 10px;
     top: 18px;
+    right: 10px;
   }
 }

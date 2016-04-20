@@ -77,9 +77,9 @@
           padding: 0;
 
           &::after {
+            float: right;
             font-family: 'Glyphicons Halflings';
             content: '\e252';
-            float: right;
           }
         }
       }

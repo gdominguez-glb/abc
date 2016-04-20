@@ -16,8 +16,8 @@
 }
 
 .sg-canvas {
-  border: 0;
   overflow: visible;
+  border: 0;
 
   &.bg-light {
     background: $c-absent;
@@ -53,11 +53,11 @@
       width: 12.5%;
       min-height: 100px;
       padding: 10px;
+      border: 0;
+      font-size: 28px;
       line-height: 1.4;
       text-align: center;
       background-color: transparent;
-      border: 0;
-      font-size: 28px;
 
       .caption {
         font-size: 12px;

@@ -41,12 +41,12 @@
   tbody {
     tr {
       td {
-        vertical-align: middle;
         padding: 10px;
+        vertical-align: middle;
 
         .glyphicon {
-          font-size: 18px;
           top: 2px;
+          font-size: 18px;
         }
       }
     }
@@ -63,11 +63,11 @@
   display: block;
   margin-bottom: 10px;
   padding: 0 5px 0 0;
-  color: $c-absent;
-  background-color: $dark-blue;
   font-size: .85em;
   text-align: right;
   text-transform: uppercase;
+  color: $c-absent;
+  background-color: $dark-blue;
 
   .fa {
     font-size: .85em;

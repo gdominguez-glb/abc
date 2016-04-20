@@ -3,8 +3,8 @@
 
 .footer {
   padding: 40px 20px;
-  background: $brand-green;
   font-size: 1em;
+  background: $brand-green;
 
   a {
     font-weight: normal;
@@ -35,8 +35,8 @@
 
 .attribution {
   @media screen and (min-width: $screen-sm-min) {
-    text-align: center;
     font-size: .85em;
+    text-align: center;
   }
 
 

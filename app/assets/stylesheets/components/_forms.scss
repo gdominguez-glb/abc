@@ -15,14 +15,14 @@ label,
   @include placeholder(inherit);
 
   font-family: 'Karla', sans-serif;
-  font-weight: normal;
   font-size: 16px;
+  font-weight: normal;
   color: inherit;
 }
 
 label {
-  font-weight: bold;
   font-size: .85em;
+  font-weight: bold;
   text-transform: uppercase;
 
   @media screen and (min-width: $screen-sm-min) {
@@ -52,10 +52,10 @@ label {
   height: auto;
   padding: 10px 15px;
   border: 1px solid $dark-blue;
-  box-shadow: none;
-  background-color: $light-plum;
-  line-height: 1.4em;
   font-size: .9em;
+  line-height: 1.4em;
+  background-color: $light-plum;
+  box-shadow: none;
 
   @include placeholder-text-color {
     color: $gray-light;
@@ -67,8 +67,8 @@ label {
   }
 
   &.header-form-control {
-    padding: 6px 12px;
     height: 34px;
+    padding: 6px 12px;
   }
 
   &.success {
@@ -133,11 +133,11 @@ label {
   margin-bottom: 15px;
   padding: 10px 36px 10px 15px;
   border: 1px solid $dark-blue;
-  background: transparent;
-  font-size: 14px;
   font-family: 'Karla', sans-serif;
+  font-size: 14px;
   text-transform: uppercase;
   letter-spacing: .15em;
+  background: transparent;
   border-radius: 4px;
   box-shadow: none;
 
@@ -151,17 +151,17 @@ label {
   }
 
   &::after {
-    content: ' ';
+    display: inline-block;
     position: absolute;
     top: 19px;
     right: 10px;
-    display: inline-block;
     width: 0;
     height: 0;
-    vertical-align: middle;
     border-top: 4px dashed;
     border-right: 4px solid transparent;
     border-left: 4px solid transparent;
+    vertical-align: middle;
+    content: ' ';
   }
 
   label {
@@ -171,20 +171,20 @@ label {
   select {
     position: absolute;
     top: 0;
-    left: 0;
     right: 0;
     bottom: 0;
+    left: 0;
+    z-index: 2;
     width: 100%;
     opacity: 0;
-    z-index: 2;
     cursor: pointer;
   }
 
   &.dark-select {
 
     &:hover {
-      background: $dark-blue;
       color: $cream;
+      background: $dark-blue;
     }
   }
 

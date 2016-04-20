@@ -16,8 +16,8 @@
 ul.nav-pills {
   li {
     font-size: 14px;
-    font-weight: normal;
     line-height: 20px;
+    font-weight: normal;
     letter-spacing: 2px;
 
     a {
@@ -69,37 +69,37 @@ ul.nav-pills {
 
     &.active {
       a {
-        opacity: 1;
-        background: transparent;
         border: 0;
         border-bottom: 4px solid $brand-primary;
         font-weight: bold;
         color: $brand-primary;
+        background: transparent;
+        opacity: 1;
 
         &:hover,
         &:focus {
           border: 0;
           border-bottom: 4px solid $brand-primary;
-          background: transparent;
           color: $brand-primary;
+          background: transparent;
         }
       }
     }
 
     a {
-      opacity: .5;
-      border-radius: 0;
       border: 0;
       border-bottom: 4px solid transparent;
+      opacity: .5;
+      border-radius: 0;
 
       &:hover,
       &:focus,
       &.active {
-        color: $brand-primary;
-        opacity: 1;
         border: 0;
         border-bottom: 4px solid $brand-primary;
+        color: $brand-primary;
         background: transparent;
+        opacity: 1;
       }
     }
   }

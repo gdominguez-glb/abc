@@ -119,8 +119,8 @@ p {
 
 html,
 body {
-  font-family: 'Lora', serif;
   font: 100% / 1.5;
+  font-family: 'Lora', serif;
 }
 
 p {
@@ -193,15 +193,15 @@ a {
   @extend .sans-serif;
   @include transition(all, .3s);
 
-  color: inherit;
   font-weight: bold;
   text-transform: uppercase;
+  color: inherit;
 
   &:hover,
   &:active,
   &:focus {
-    color: lighten($dark-blue, 10%);
     text-decoration: underline;
+    color: lighten($dark-blue, 10%);
   }
 
   p & {
@@ -229,9 +229,9 @@ ol {
     list-style-type: none;
 
     .container-content & {
-      list-style-type: circle;
-      text-align: left;
       line-height: 2em;
+      text-align: left;
+      list-style-type: circle;
     }
   }
 
@@ -245,8 +245,8 @@ ol {
 
     li {
       font-size: .95em;
-      list-style-type: none;
       line-height: 1.5em;
+      list-style-type: none;
     }
   }
 
@@ -257,8 +257,8 @@ ol {
 
 hr {
   margin: 30px 0;
-  color: inherit;
   border-top: 1px solid;
+  color: inherit;
 }
 
 .serif {

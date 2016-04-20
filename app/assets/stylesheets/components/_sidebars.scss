@@ -11,13 +11,13 @@
       @include transition(all, $transition-timing);
       @include translate(-100%, 0);
 
-      width: 75%;
-      position: absolute;
-      left: 0;
-      top: 0;
       float: none;
+      position: absolute;
+      top: 0;
       bottom: 0;
+      left: 0;
       z-index: 10;
+      width: 75%;
     }
 
     &.show-nav {
@@ -56,8 +56,8 @@
 .taxonomies-filters {
   .taxonomy-header {
     padding: 10px;
-    color: $dark-blue;
     border-bottom: 1px solid;
+    color: $dark-blue;
 
     &:hover {
       color: $steel-gray;
@@ -80,24 +80,24 @@
     @include transition(all, $transition-timing);
 
     max-height: 0;
+    overflow: hidden;
     margin: 0;
     color: $c-absent;
-    overflow: hidden;
 
     &.show-menu {
       max-height: 1000px;
-      border-bottom: 1px solid;
       overflow: auto;
+      border-bottom: 1px solid;
     }
 
     .list-group-item {
       @include transition(all, $transition-timing);
 
-      color: $c-absent;
       border: 0;
-      border-radius: 0;
       text-align: center;
+      color: $c-absent;
       background-color: transparent;
+      border-radius: 0;
 
       &.active,
       &:hover {

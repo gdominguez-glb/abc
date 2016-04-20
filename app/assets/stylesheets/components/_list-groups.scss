@@ -38,9 +38,9 @@
 // -------------------------------------
 
 a.list-group-item {
-  color: inherit;
   font-weight: normal;
   text-transform: none;
+  color: inherit;
 
   p {
     @extend .serif;

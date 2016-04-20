@@ -40,15 +40,15 @@
   .navbar-brand {
     width: 165px;
     padding: 0;
+    text-indent: -9999px;
     background: transparent asset-url('logo-half.png') no-repeat 50% 50%;
     background-size: 150px 35px;
-    text-indent: -9999px;
 
     @media screen and (min-width: $screen-sm-min) {
       position: relative;
       bottom: -3px;
-      margin-left: 50px;
       height: 109px;
+      margin-left: 50px;
       background: transparent asset-url('logo-full.png') no-repeat 50% 50%;
       background-size: 155px 109px;
     }
@@ -57,8 +57,8 @@
   // ----- Main Navigation Items & Dropdowns ----- //
 
   .navbar-collapse {
-    border: 0;
     max-height: none;
+    border: 0;
   }
 
   .navbar-nav {
@@ -250,8 +250,8 @@
           [data-page='english'] &,
           [data-page='history'] &,
           [data-page='math'] & {
-            color: $c-absent;
             border-bottom: 0;
+            color: $c-absent;
           }
 
           &:hover,
@@ -406,15 +406,15 @@
         &:active,
         &:focus {
           @media screen and (min-width: $screen-sm-min) {
-            color: $c-absent;
             border-bottom: 2px solid $c-absent;
             text-decoration: none;
+            color: $c-absent;
 
             [data-page='english'] &,
             [data-page='history'] &,
             [data-page='math'] & {
-              color: $dark-blue;
               border-bottom: 2px solid $dark-blue;
+              color: $dark-blue;
             }
           }
         }
@@ -423,8 +423,8 @@
           padding: 3px 0 1px;
           border-bottom: 2px solid transparent;
           font-family: 'Lora', serif;
-          font-weight: normal;
           font-size: .8em;
+          font-weight: normal;
           text-transform: capitalize;
 
           &.active {
@@ -470,11 +470,11 @@
         }
 
         @media screen and (min-width: $screen-sm-min) {
-          float: left;
           display: inline-block;
+          float: left;
           padding: 15px 10px;
-          color: $c-absent;
           font-size: .75em;
+          color: $c-absent;
         }
       }
 

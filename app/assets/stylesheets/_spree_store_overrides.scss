@@ -3,13 +3,13 @@
 .spree-store {
 
   .call-banner {
-    padding: 15px;
     margin: 0 0 30px;
+    padding: 15px;
     text-align: center;
 
     h5 {
-      font-weight: 700;
       margin: 0 0 10px;
+      font-weight: 700;
     }
 
     h6 {
@@ -94,8 +94,8 @@
     }
 
     .mi {
-      color: $coral;
       font-size: 150px;
+      color: $coral;
 
       @media screen and (min-width: $screen-sm-min) {
         font-size: 250px;
@@ -105,8 +105,8 @@
 
   .cart-item-image {
     .mi {
-      color: $coral;
       font-size: 75px;
+      color: $coral;
     }
   }
 
@@ -129,10 +129,10 @@
     }
 
     .product-wrapper {
+      margin-bottom: 0;
+      padding: $b-space-l $b-space-xl;
       border: 1px solid $gray-lighter;
       border-bottom: 0;
-      padding: $b-space-l $b-space-xl;
-      margin-bottom: 0;
     }
 
     .price,
@@ -142,13 +142,13 @@
   }
 
   .product-actions {
-    text-align: center;
-    min-height: 115px;
-
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
+
+    min-height: 115px;
+    text-align: center;
 
     -webkit-box-flex: 1;
     -webkit-flex: 1;
@@ -172,19 +172,19 @@
   }
 
   .product-price {
-    color: $dark-blue;
     display: inline;
     margin-bottom: $b-space-s;
     font-family: Karla, sans-serif;
+    color: $dark-blue;
   }
 
   .product-qty {
-    border: 3px solid $dark-blue;
     max-width: 80px;
     height: 50px;
-    border-radius: 0;
-    font-weight: bold;
     padding: $b-space;
+    border: 3px solid $dark-blue;
+    font-weight: bold;
+    border-radius: 0;
 
     option {
       color: $dark-blue;
@@ -207,14 +207,14 @@
   .price a {
     @extend .sans-serif;
 
-    color: $coral;
     font-weight: bold;
-    letter-spacing: normal;
     text-transform: uppercase;
+    letter-spacing: normal;
+    color: $coral;
 
     &.btn {
-      color: $c-absent;
       text-decoration: none;
+      color: $c-absent;
     }
   }
 
@@ -236,8 +236,8 @@
     }
 
     &::-webkit-scrollbar-thumb {
-      border-radius: 4px;
       background-color: $c-black-transparent-5;
+      border-radius: 4px;
       -webkit-box-shadow: 0 0 1px $c-white-transparent-5;
     }
   }
@@ -256,15 +256,15 @@
 }
 
 .product-type {
-  border: 1px solid $brand-primary;
-  color: $brand-primary;
-  font-size: 10px;
-  background-color: $cream;
-  font-family: 'Karla', sans-serif;
-  padding: $b-space-s;
-  border-radius: 4px;
   display: inline-block;
+  padding: $b-space-s;
+  border: 1px solid $brand-primary;
+  font-family: 'Karla', sans-serif;
+  font-size: 10px;
   text-transform: uppercase;
+  color: $brand-primary;
+  background-color: $cream;
+  border-radius: 4px;
 }
 
 .product-type-math {
@@ -290,18 +290,18 @@
 }
 
 .product-tile {
-  padding: $b-space;
   min-height: 230px;
+  padding: $b-space;
 
   .product-title-wrapper {
-    min-height: 115px;
     display: table;
     width: 100%;
+    min-height: 115px;
   }
 
   .product-title {
-    letter-spacing: 0;
     line-height: 1em;
+    letter-spacing: 0;
   }
 
   h5 {
@@ -319,8 +319,8 @@
   color: $steel-gray;
 
   a {
-    text-decoration: none;
     text-transform: uppercase;
+    text-decoration: none;
   }
 
   .product-alert-link {
@@ -334,15 +334,15 @@
 }
 
 .terms_and_conditions_box {
-  padding: 15px;
   margin-bottom: 15px;
+  padding: 15px;
   background: $gray-lightest;
 }
 
 .terms_and_conditions_text {
-  padding: 20px;
-  margin: 15px 0;
   height: 250px;
   overflow: auto;
+  margin: 15px 0;
+  padding: 20px;
   background: $c-absent;
 }
