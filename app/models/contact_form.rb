@@ -10,6 +10,8 @@ class ContactForm
     :desired_training_topic, :items_purchased, :description, :school_district, :grade_bands, :training_groups_size, :interested_in_hosting_events,
     :related_grade_module_unit_lession
 
+  validates_length_of :first_name, :last_name, :phone, maximum: 40
+
   validates_presence_of :topic, :first_name, :last_name, :email, :phone
   validates_presence_of :description, if: :require_description?
 
