@@ -114,20 +114,19 @@
 //   Styleguide 2.0
 // -------------------------------------
 
- .show-grid {
-    div {
-      border: 1px solid $brand-primary;
-      background: rgba($brand-primary, .3);
-    }
- }
+.show-grid {
+  div {
+    border: 1px solid $brand-primary;
+    background: rgba($brand-primary, .3);
+  }
+}
 
- // -------------------------------------
- //   Icons
- //   Google Material Icons
- //
- //   Styleguide 4.0
- // -------------------------------------
-
+// -------------------------------------
+//   Icons
+//   Google Material Icons
+//
+//   Styleguide 4.0
+// -------------------------------------
 
 .sg-canvas > div > {
   .itemBox {

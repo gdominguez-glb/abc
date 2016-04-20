@@ -48,10 +48,10 @@
   }
 
   .panel {
-		.panel {
-			margin-bottom: 0;
-		}
-	}
+    .panel {
+      margin-bottom: 0;
+    }
+  }
 
   &.panel-collapsible {
 
@@ -108,16 +108,16 @@
 // -------------------------------------
 
 .panel-heading {
-	border-bottom-right-radius: 0;
-	border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
 
-	.panel-toggle,
+  .panel-toggle,
   .btn-icon {
-		@include transition(transform, .3s);
+    @include transition(transform, .3s);
 
     &.collapsed {
-	    @include rotate(180deg);
-	  }
+      @include rotate(180deg);
+    }
 
     &:focus {
       outline: 0;

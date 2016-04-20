@@ -80,19 +80,19 @@
 
 // _spree_admin_overrides.scss isn't available to store/admin/login, so...
 div[data-hook="login"] {
-	margin-top: 50px;
+  margin-top: 50px;
 
-	@media screen and (min-width: $screen-sm-min) {
-		margin-top: 100px;
-	}
+  @media screen and (min-width: $screen-sm-min) {
+    margin-top: 100px;
+  }
 }
 
 .mi {
-	font-size: 18px;
-	vertical-align: middle;
+  font-size: 18px;
+  vertical-align: middle;
 
-	.btn & {
-		position: relative;
-		top: -1px;
-	}
+  .btn & {
+    position: relative;
+    top: -1px;
+  }
 }

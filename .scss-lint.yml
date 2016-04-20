@@ -8,33 +8,28 @@ exclude: 'app/assets/stylesheets/vendor/**'
 linters:
 
   BorderZero:
-    enabled: true
-    convention: zero
+    enabled: false
 
   ColorKeyword:
-    enabled: true
+    enabled: false
 
   ColorVariable:
-    enabled: true
+    enabled: false
 
   Comment:
-    enabled: true
-    style: silent
+    enabled: false
 
   DeclarationOrder:
-    enabled: true
+    enabled: false
 
   EmptyLineBetweenBlocks:
-    enabled: true
-    ignore_single_line_blocks: true
+    enabled: false
 
   FinalNewline:
-    enabled: true
-    present: true
+    enabled: false
 
   HexNotation:
-    enabled: true
-    style: lowercase
+    enabled: false
 
   IdSelector:
     enabled: false
@@ -43,7 +38,10 @@ linters:
     enabled: false
 
   Indentation:
-    enabled: false
+    enabled: true
+    allow_non_nested_indentation: false
+    character: space
+    width: 2
 
   LeadingZero:
     enabled: false

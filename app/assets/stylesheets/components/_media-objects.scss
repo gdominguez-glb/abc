@@ -12,17 +12,17 @@
 // -------------------------------------
 
 .media-left {
-	display: block;
+  display: block;
 
-	@media screen and (min-width: $screen-xs-min) {
-		display: table-cell;
-	}
+  @media screen and (min-width: $screen-xs-min) {
+    display: table-cell;
+  }
 }
 
 .media-object {
-	margin: 0 auto 10px;
+  margin: 0 auto 10px;
 
-	@media screen and (min-width: $screen-xs-min) {
-		margin: auto;
-	}
+  @media screen and (min-width: $screen-xs-min) {
+    margin: auto;
+  }
 }
