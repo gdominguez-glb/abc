@@ -74,11 +74,11 @@ $popover-outline: $coral;
   background: $bg;
 
   &:hover {
-    background:lighten($bg, 8%);
+    background: lighten($bg, 8%);
   }
 
   &:active {
-    background:darken($bg, 10%);
+    background: darken($bg, 10%);
   }
 }
 

@@ -101,7 +101,8 @@ linters:
     enabled: true
 
   SpaceAfterPropertyColon:
-    enabled: false
+    enabled: true
+    style: one_space
 
   SpaceAroundOperator:
     enabled: false
