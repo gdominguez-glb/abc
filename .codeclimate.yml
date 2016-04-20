@@ -20,7 +20,7 @@ engines:
   reek:
     enabled: false
   scss-lint:
-    enabled: false
+    enabled: true
 ratings:
   paths:
   - Gemfile.lock
