@@ -33,7 +33,8 @@ linters:
     present: true
 
   HexNotation:
-    enabled: false
+    enabled: true
+    style: lowercase
 
   IdSelector:
     enabled: false
