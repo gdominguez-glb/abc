@@ -109,7 +109,9 @@ linters:
     style: one_space
 
   SpaceBeforeBrace:
-    enabled: false
+    enabled: true
+    style: space
+    allow_single_line_padding: false
 
   StringQuotes:
     enabled: false
