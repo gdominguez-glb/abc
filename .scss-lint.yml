@@ -105,7 +105,8 @@ linters:
     style: one_space
 
   SpaceAroundOperator:
-    enabled: false
+    enabled: true
+    style: one_space
 
   SpaceBeforeBrace:
     enabled: false
