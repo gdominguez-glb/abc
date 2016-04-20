@@ -1,6 +1,12 @@
 class Cms::VanityUrlsController < Cms::BaseController
   def index
     @vanity_urls = VanityUrl.page(params[:page])
+    if params[:url_q].present?
+      @vanity_urls = @vanity_urls.search_url(params[:url_q])
+    end
+    if params[:tag_q].present?
+      @vanity_urls = @vanity_urls.tagged_with(params[:tag_q])
+    end
   end
 
   def new
@@ -38,6 +44,6 @@ class Cms::VanityUrlsController < Cms::BaseController
   private
 
   def vanity_url_params
-    params.require(:vanity_url).permit(:url, :redirect_url)
+    params.require(:vanity_url).permit(:url, :redirect_url, :tag_list)
   end
 end
