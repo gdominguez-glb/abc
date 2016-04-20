@@ -17,6 +17,9 @@
 @import "shepherd-theme-default";
 @import "shepherd-theme-arrows";
 
+@import "select2";
+@import "select2-bootstrap";
+
 // -------------------------------------
 //   Base
 // -------------------------------------
@@ -65,7 +68,6 @@
 @import "404-page";
 @import "account";
 @import "license-mgmt";
-@import "vendor/select2_import";
 @import "vendor/mediaelement_import";
 @import "vendor/slick";
 @import "vendor/slick-theme";
