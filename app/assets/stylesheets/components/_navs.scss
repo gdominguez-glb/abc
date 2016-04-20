@@ -71,13 +71,13 @@ ul.nav-pills {
       a {
         opacity: 1;
         background: transparent;
-        border: none;
+        border: 0;
         border-bottom: 4px solid $brand-primary;
         font-weight: bold;
         color: $brand-primary;
 
         &:hover, &:focus {
-          border: none;
+          border: 0;
           border-bottom: 4px solid $brand-primary;
           background: transparent;
           color: $brand-primary;
@@ -88,13 +88,13 @@ ul.nav-pills {
     a {
       opacity: .5;
       border-radius: 0;
-      border: none;
+      border: 0;
       border-bottom: 4px solid transparent;
 
       &:hover, &:focus, &.active {
         color: $brand-primary;
         opacity: 1;
-        border: none;
+        border: 0;
         border-bottom: 4px solid $brand-primary;
         background: transparent;
       }

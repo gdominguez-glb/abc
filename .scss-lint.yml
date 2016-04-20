@@ -8,7 +8,8 @@ exclude: 'app/assets/stylesheets/vendor/**'
 linters:
 
   BorderZero:
-    enabled: false
+    enabled: true
+    convention: zero
 
   ColorKeyword:
     enabled: false

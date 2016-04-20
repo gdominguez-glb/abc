@@ -2,7 +2,7 @@
 
 .sg-example {
   > h3 a {
-    border: none;
+    border: 0;
   }
   p {
     margin-bottom: 10px !important;
@@ -15,7 +15,7 @@
 }
 
 .sg-canvas {
-  border: none;
+  border: 0;
   overflow: visible;
 
   &.bg-light {
