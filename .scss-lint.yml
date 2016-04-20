@@ -128,6 +128,9 @@ linters:
 
   VendorPrefix:
     enabled: false
+    identifier_list: base
+    additional_identifiers: []
+    excluded_identifiers: []
 
   ZeroUnit:
-    enabled: false
+    enabled: true
