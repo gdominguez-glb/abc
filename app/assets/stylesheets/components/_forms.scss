@@ -147,7 +147,7 @@ label {
     margin-bottom: 30px;
   }
 
-  &:after {
+  &::after {
     content: " ";
     position: absolute;
     top: 19px;

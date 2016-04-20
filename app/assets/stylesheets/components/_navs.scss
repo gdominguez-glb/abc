@@ -122,7 +122,7 @@ ul.nav-pills {
       padding: 10px 36px 10px 15px;
 
       &.block {
-        &:after {
+        &::after {
           top: 10px;
         }
       }

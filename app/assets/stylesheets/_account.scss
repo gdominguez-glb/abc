@@ -143,7 +143,7 @@
     padding-left: 27px;
     color: $c-absent;
 
-    &:before {
+    &::before {
       content: '';
       position: absolute;
       top: 0;
@@ -180,7 +180,7 @@
   .history-list-head {
     margin: 20px 0;
   }
-  
+
   .table {
     margin: 20px 0;
   }

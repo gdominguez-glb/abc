@@ -88,7 +88,7 @@
   &.shepherd-element-attached-#{$attached} {
     &.shepherd-element-attached-#{$position} {
       &.shepherd-has-title {
-        .shepherd-content:before {
+        .shepherd-content::before {
           border-#{$border}-color: $popover-outline;
         }
       }
@@ -98,7 +98,7 @@
 
 @mixin placeholder-text-color {
   &::-webkit-input-placeholder {@content}
-  &:-moz-placeholder           {@content}
+  &::-moz-placeholder           {@content}
   &::-moz-placeholder          {@content}
   &:-ms-input-placeholder      {@content}
 }

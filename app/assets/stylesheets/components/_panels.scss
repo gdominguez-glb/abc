@@ -76,7 +76,7 @@
           display: block;
           padding: 0px;
 
-          &:after {
+          &::after {
             font-family: 'Glyphicons Halflings';
             content:"\e252";
             float: right;
