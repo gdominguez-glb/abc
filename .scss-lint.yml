@@ -121,10 +121,10 @@ linters:
     enabled: true
 
   TrailingWhitespace:
-    enabled: false
+    enabled: true
 
   UnnecessaryMantissa:
-    enabled: false
+    enabled: true
 
   VendorPrefix:
     enabled: false
