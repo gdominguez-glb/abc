@@ -12,7 +12,7 @@ linters:
     convention: zero
 
   ColorKeyword:
-    enabled: false
+    enabled: true
 
   ColorVariable:
     enabled: false

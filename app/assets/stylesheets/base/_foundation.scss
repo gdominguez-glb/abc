@@ -128,7 +128,7 @@ body.dragging, body.dragging * {
   left: 0;
   right: 0;
   bottom: 0;
-  background: black;
+  background: #000;
   opacity: 0;
   z-index: -1;
   @include transition(all, $transitionTiming);
