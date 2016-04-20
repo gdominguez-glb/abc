@@ -112,12 +112,16 @@ class SchoolDistrict < ActiveRecord::Base
   end
 
   def attributes_for_salesforce
-    { 'Name' => name,
+    sf_attrs = { 'Name' => name,
       'RecordTypeId' => salesforce_record_type_id,
       'BillingState' => state.try(:abbr),
       'BillingCity' => city,
       'Website_ID__c' => id,
       'BillingCountry' => country.try(:iso3) }
+    if Rails.env.production?
+      sf_attrs['Override_Owner_Assignment__c'] = true
+    end
+    sf_attrs
   end
 
   def self.matches_salesforce_object(sfo)
