@@ -7,12 +7,13 @@
 }
 
 .video-wrapper {
+  @include transition(all, $transitionTiming);
+
   position: relative;
   margin-bottom: 24px;
   padding: 15px 0;
   border: 1px solid darken($gray-lighter, 10%);
   background-color: $c-absent;
-  @include transition(all, $transitionTiming);
 
   @media screen and (min-width: $screen-sm-min) {
     min-height: 315px;
@@ -22,17 +23,19 @@
 
 .locked-video {
   .video-image-wrapper {
-    background-color: $steel-gray;
-    position: relative;
     @include transition(all, $transitionTiming);
 
+    background-color: $steel-gray;
+    position: relative;
+
     .glyphicon-lock {
+      @include translate(-50%, -50%);
+
       position: absolute;
       top: 50%;
       left: 50%;
       color: $c-absent;
       font-size: 100px;
-      @include translate(-50%, -50%);
     }
   }
 }
@@ -60,19 +63,20 @@
   height: 100%;
 
   span {
+    @include transition(all, $transitionTiming);
+    @include translate(-50%, -50%);
+
     position: absolute;
     top: 50%;
     left: 50%;
     font-size: 100px;
-
-    @include transition(all, $transitionTiming);
-    @include translate(-50%, -50%);
   }
 }
 
 .video-drawer {
-  padding: 10px;
   @include transition(all, $transitionTiming);
+
+  padding: 10px;
 
   .product-description {
     padding: 5px 0 0;
@@ -142,13 +146,13 @@
   opacity: .6;
 
   p {
+    @extend .sans-serif;
+
     display: block;
     margin: 0;
     font-size: .85em;
     text-transform: uppercase;
     line-height: 1.0em;
-
-    @extend .sans-serif;
   }
 }
 

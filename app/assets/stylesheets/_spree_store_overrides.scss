@@ -201,12 +201,12 @@
 
   .price,
   .price a {
+    @extend .sans-serif;
+
     color: $coral;
     font-weight: bold;
     letter-spacing: normal;
     text-transform: uppercase;
-
-    @extend .sans-serif;
 
     &.btn {
       color: $c-absent;

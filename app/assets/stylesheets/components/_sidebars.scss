@@ -8,6 +8,9 @@
 
   &.video-gallery-sidenav {
     @media screen and (max-width: 1025px) {
+      @include transition(all, $transitionTiming);
+      @include translate(-100%, 0);
+
       width: 75%;
       position: absolute;
       left: 0;
@@ -15,9 +18,6 @@
       float: none;
       bottom: 0;
       z-index: 10;
-
-      @include transition(all, $transitionTiming);
-      @include translate(-100%, 0);
     }
 
     &.show-nav {
@@ -76,12 +76,12 @@
   }
 
   .list-group {
+    @include transition(all, $transitionTiming);
+
     max-height: 0;
     margin: 0;
     color: $c-absent;
     overflow: hidden;
-
-    @include transition(all, $transitionTiming);
 
     &.show-menu {
       max-height: 1000px;
@@ -90,12 +90,13 @@
     }
 
     .list-group-item {
+      @include transition(all, $transitionTiming);
+
       color: $c-absent;
       border: 0;
       border-radius: 0;
       text-align: center;
       background-color: transparent;
-      @include transition(all, $transitionTiming);
 
       &.active, &:hover {
         color: $brand-green;

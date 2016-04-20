@@ -22,7 +22,7 @@ linters:
     style: silent
 
   DeclarationOrder:
-    enabled: false
+    enabled: true
 
   EmptyLineBetweenBlocks:
     enabled: false

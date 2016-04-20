@@ -16,14 +16,15 @@
 }
 
 .alert {
-  margin-bottom: $b-space;
-
   @include alert-variant(darken($light-blue, 15%), $dark-blue, $dark-blue);
 
+  margin-bottom: $b-space;
+
   a {
+    @extend .serif;
+
     text-transform: none;
     text-decoration: underline;
-    @extend .serif;
   }
 }
 

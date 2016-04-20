@@ -40,18 +40,20 @@
 
 
   a {
+    @extend .sans-serif;
+
     margin: 0 10px;
     text-transform: uppercase;
-    @extend .sans-serif;
   }
 }
 
 .copyright {
+  @extend .sans-serif;
+
   margin: 0 10px;
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 2px;
-  @extend .sans-serif;
 }
 
 .social-icon {

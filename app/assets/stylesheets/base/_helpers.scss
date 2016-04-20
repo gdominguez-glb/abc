@@ -108,8 +108,9 @@
 // -------------------------------------
 
 .flip-container {
-  margin: 0 auto;
   @include perspective(1000);
+
+  margin: 0 auto;
 
   &.flip {
     .flipper {
@@ -146,23 +147,26 @@
 }
 
 .flipper {
-  position: relative;
   @include my-transition(0.6s);
   @include transform-style(preserve-3d);
+
+  position: relative;
 }
 
 .flip-front, .flip-back {
-  position: absolute;
-  top: 0;
-  left: 0;
   @include backface-visibility(hidden);
   @include transition(0.6s);
   @include transform-style(preserve-3d);
+
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .flip-front {
-  z-index: 2;
   @include rotateY(0deg);
+
+  z-index: 2;
 }
 
 .flip-back {

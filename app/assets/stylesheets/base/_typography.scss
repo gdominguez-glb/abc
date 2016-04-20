@@ -78,12 +78,12 @@ h6 {
 }
 
 h1, h2, h3, h4, h5, h6 {
+  @extend .sans-serif;
+
   margin: 0 0 10px;
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-
-  @extend .sans-serif;
 
   section.row & {
     letter-spacing: 0.2em;
@@ -171,12 +171,12 @@ blockquote {
 // -------------------------------------
 
 a {
+  @extend .sans-serif;
+  @include transition(all, .3s);
+
   color: inherit;
   font-weight: bold;
   text-transform: uppercase;
-
-  @extend .sans-serif;
-  @include transition(all, .3s);
 
   &:hover,
   &:active,
@@ -186,9 +186,10 @@ a {
   }
 
   p & {
+    @extend .serif;
+
     text-transform: none;
     text-decoration: underline;
-    @extend .serif;
   }
 
   &.text-normal {

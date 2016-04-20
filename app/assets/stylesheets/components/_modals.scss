@@ -24,12 +24,13 @@
 
   &.video-play-modal {
     .modal-dialog {
+      @include translate(-50%, -200%);
+      @include transition(transform, .5s);
+
       position: absolute;
       top: 50%;
       left: 50%;
       margin: 0;
-      @include translate(-50%, -200%);
-      @include transition(transform, .5s);
 
       &.modal-lg {
         width: 100%;
