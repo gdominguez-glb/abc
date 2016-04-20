@@ -50,7 +50,7 @@
   perspective: $val;
 }
 
-@mixin rotateY($val) {
+@mixin rotate-y($val) {
   -webkit-transform: rotateY($val);
   -moz-transform: rotateY($val);
   transform: rotateY($val);
@@ -58,7 +58,7 @@
   -ms-filter: "FlipH";
 }
 
-@mixin rotateX($val) {
+@mixin rotate-x($val) {
   -webkit-transform: rotateX($val);
   -moz-transform: rotateX($val);
   transform: rotateX($val);

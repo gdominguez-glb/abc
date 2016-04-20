@@ -52,7 +52,9 @@ linters:
     force_nesting: true
 
   NameFormat:
-    enabled: false
+    enabled: true
+    allow_leading_underscore: false
+    convention: hyphenated_lowercase
 
   NestingDepth:
     enabled: false

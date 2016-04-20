@@ -619,7 +619,7 @@
     }
 
     .glyphicon {
-      @include transition(all, $transitionTiming);
+      @include transition(all, $transition-timing);
 
       position: absolute;
       top: 10px;

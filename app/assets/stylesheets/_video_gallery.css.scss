@@ -7,7 +7,7 @@
 }
 
 .video-wrapper {
-  @include transition(all, $transitionTiming);
+  @include transition(all, $transition-timing);
 
   position: relative;
   margin-bottom: 24px;
@@ -23,7 +23,7 @@
 
 .locked-video {
   .video-image-wrapper {
-    @include transition(all, $transitionTiming);
+    @include transition(all, $transition-timing);
 
     background-color: $steel-gray;
     position: relative;
@@ -63,7 +63,7 @@
   height: 100%;
 
   span {
-    @include transition(all, $transitionTiming);
+    @include transition(all, $transition-timing);
     @include translate(-50%, -50%);
 
     position: absolute;
@@ -74,7 +74,7 @@
 }
 
 .video-drawer {
-  @include transition(all, $transitionTiming);
+  @include transition(all, $transition-timing);
 
   padding: 10px;
 

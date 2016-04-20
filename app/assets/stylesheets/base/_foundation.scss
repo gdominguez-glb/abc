@@ -234,7 +234,7 @@ body.dragging, body.dragging * {
 }
 
 .overlay {
-  @include transition(all, $transitionTiming);
+  @include transition(all, $transition-timing);
 
   position: absolute;
   top: 0;
@@ -248,7 +248,7 @@ body.dragging, body.dragging * {
 
 .search-overlay {
   @include translate(0, -100%);
-  @include transition(all, $transitionTiming);
+  @include transition(all, $transition-timing);
 
   position: absolute;
   top: 0;
@@ -268,7 +268,7 @@ body.dragging, body.dragging * {
   }
 
   .close {
-    @include transition(opacity, $transitionTiming);
+    @include transition(opacity, $transition-timing);
 
     margin: 10px 0;
     color: $c-absent;
