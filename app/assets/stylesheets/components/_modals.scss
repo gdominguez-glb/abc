@@ -13,7 +13,7 @@
 
 .modal-backdrop {
   z-index: 2001;
-  
+
   &.in {
     background: $dark-blue;
     opacity: .66;
@@ -57,7 +57,8 @@
           }
         }
 
-        iframe, .mejs-player {
+        iframe,
+        .mejs-player {
           width: 100%;
 
           // important is required to override inline, js-generated me-js styles

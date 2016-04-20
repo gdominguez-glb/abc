@@ -28,7 +28,8 @@
   }
 
   #productContactForm {
-    .modal-header, .modal-body {
+    .modal-header,
+    .modal-body {
       padding: 30px;
     }
   }
@@ -51,7 +52,9 @@
       padding: 20px 15px 15px;
     }
 
-    .flip-container, .flip-back, .flip-front {
+    .flip-container,
+    .flip-back,
+    .flip-front {
       min-height: 280px;
     }
   }
@@ -325,7 +328,8 @@
   }
 }
 
-.prev-product, .next-product {
+.prev-product,
+.next-product {
   cursor: pointer;
 }
 

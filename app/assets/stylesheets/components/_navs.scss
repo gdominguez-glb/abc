@@ -76,7 +76,8 @@ ul.nav-pills {
         font-weight: bold;
         color: $brand-primary;
 
-        &:hover, &:focus {
+        &:hover,
+        &:focus {
           border: 0;
           border-bottom: 4px solid $brand-primary;
           background: transparent;
@@ -91,7 +92,9 @@ ul.nav-pills {
       border: 0;
       border-bottom: 4px solid transparent;
 
-      &:hover, &:focus, &.active {
+      &:hover,
+      &:focus,
+      &.active {
         color: $brand-primary;
         opacity: 1;
         border: 0;

@@ -98,7 +98,7 @@ linters:
     allowed_shorthands: [1, 2, 3]
 
   SingleLinePerSelector:
-    enabled: false
+    enabled: true
 
   SpaceAfterPropertyColon:
     enabled: false

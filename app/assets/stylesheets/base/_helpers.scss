@@ -153,7 +153,8 @@
   position: relative;
 }
 
-.flip-front, .flip-back {
+.flip-front,
+.flip-back {
   @include backface-visibility(hidden);
   @include transition(.6s);
   @include transform-style(preserve-3d);

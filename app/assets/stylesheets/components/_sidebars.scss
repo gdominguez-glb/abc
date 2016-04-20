@@ -99,7 +99,8 @@
       text-align: center;
       background-color: transparent;
 
-      &.active, &:hover {
+      &.active,
+      &:hover {
         color: $brand-green;
         background: lighten($dark-blue, 3%);
       }
