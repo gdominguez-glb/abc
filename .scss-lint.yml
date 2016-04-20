@@ -81,15 +81,21 @@ linters:
 
   QualifyingElement:
     enabled: false
+    allow_element_with_attribute: false
+    allow_element_with_class: false
+    allow_element_with_id: false
 
   SelectorDepth:
     enabled: false
+    max_depth: 3
 
   SelectorFormat:
     enabled: false
+    convention: hyphenated_lowercase
 
   Shorthand:
-    enabled: false
+    enabled: true
+    allowed_shorthands: [1, 2, 3]
 
   SingleLinePerSelector:
     enabled: false
