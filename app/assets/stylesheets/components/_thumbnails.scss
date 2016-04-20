@@ -35,6 +35,7 @@
 
 .thumbnail-team {
 	padding: $b-space-l;
+
 	h3 {
 		min-height: 50px;
 	}
@@ -52,6 +53,7 @@
 		&:nth-child(odd) {
 			clear: none;
 		}
+
 		&:nth-child(5),
 		&:nth-child(9),
 		&:nth-child(13) {

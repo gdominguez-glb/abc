@@ -182,6 +182,7 @@
     border-radius: 0;
     font-weight: bold;
     padding: $b-space;
+
     option {
       color: $dark-blue;
     }
@@ -230,6 +231,7 @@
     &::-webkit-scrollbar {
       width: 7px;
     }
+
     &::-webkit-scrollbar-thumb {
       border-radius: 4px;
       background-color: $c-black-transparent-5;
@@ -287,20 +289,24 @@
 .product-tile {
   padding: $b-space;
   min-height: 230px;
+
   .product-title-wrapper {
     min-height: 115px;
     display: table;
     width: 100%;
   }
+
   .product-title {
     letter-spacing: 0;
     line-height: 1em;
   }
+
   h5 {
     display: table-cell;
     text-align: center;
     vertical-align: middle;
   }
+
   p {
     line-height: 18px;
   }
@@ -308,10 +314,12 @@
 
 .product-description {
   color: $steel-gray;
+
   a {
     text-decoration: none;
     text-transform: uppercase;
   }
+
   .product-alert-link {
    text-transform: none;
   }
@@ -326,6 +334,7 @@
   margin-bottom: 15px;
   background: $gray-lightest;
 }
+
 .terms_and_conditions_text {
   padding: 20px;
   margin: 15px 0;

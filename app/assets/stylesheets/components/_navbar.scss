@@ -492,6 +492,7 @@
 
     .hello-text {
       display: none;
+
       @media screen and (min-width: $screen-sm-min) {
         display: inline-block;
       }
@@ -504,6 +505,7 @@
         display: block;
         padding: 10px 15px;
         color: $c-absent;
+
         &:hover {
           color: darken($c-absent, 15%);
         }
@@ -640,6 +642,7 @@
       .glyphicon-remove {
         opacity: 0;
       }
+      
       .glyphicon-menu-hamburger {
         opacity: 1;
       }

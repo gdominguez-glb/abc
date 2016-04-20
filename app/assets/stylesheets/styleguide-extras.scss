@@ -4,6 +4,7 @@
   > h3 a {
     border: 0;
   }
+
   p {
     margin-bottom: 10px !important;
   }
@@ -61,15 +62,19 @@
   &.gray-darker {
     background-color: $gray-darker;
   }
+
   &.gray-dark {
     background-color: $gray-dark;
   }
+
   &.gray {
     background-color: $gray;
   }
+
   &.gray-light {
     background-color: $gray-light;
   }
+
   &.gray-lighter {
     background-color: $gray-lighter;
   }
@@ -85,15 +90,19 @@
   &.brand-primary {
     background-color: $brand-primary;
   }
+
   &.brand-success {
     background-color: $brand-green;
   }
+
   &.brand-info {
     background-color: $english;
   }
+
   &.brand-warning {
     background-color: $history;
   }
+
   &.brand-danger {
     background-color: $brand-danger;
   }
