@@ -78,3 +78,7 @@ Login with
 run `gem install foreman` (do not add to gemfile)
 run `foreman start`
 Install this [Chrome Plugin](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei?hl=en) for live reload. Don't forget to hit the livereload button when guard says `LiveReload is waiting for a browser to connect`
+
+### Scss-lint
+
+This project uses scss-lint. Download the scss-lint integration for your text editor: https://github.com/brigade/scss-lint#editor-integration
