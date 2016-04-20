@@ -118,7 +118,7 @@ linters:
     style: single_quotes
 
   TrailingSemicolon:
-    enabled: false
+    enabled: true
 
   TrailingWhitespace:
     enabled: false
