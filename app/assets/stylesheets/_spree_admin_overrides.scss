@@ -3,11 +3,17 @@
 // header
 body[data-hook="body"] {
 
+  @media screen and (max-width: 768px) {
+    .taxon-title {
+      margin: 15px 0;
+    }
+  }
+
   .navbar-toggle {
     margin-left: 15px;
   }
 
-// Checkout Flow
+  // Checkout Flow
 
   #main-image {
     .panel-body {
@@ -24,15 +30,6 @@ body[data-hook="body"] {
 #products {
   .panel-body {
     padding: 0;
-  }
-}
-
-body[data-hook="body"] {
-
-  @media screen and (max-width: 768px) {
-    .taxon-title {
-      margin: 15px 0;
-    }
   }
 }
 

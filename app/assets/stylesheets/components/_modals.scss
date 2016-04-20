@@ -13,6 +13,11 @@
 
 .modal-backdrop {
   z-index: 2001;
+  
+  &.in {
+    background: $dark-blue;
+    opacity: .66;
+  }
 }
 
 .modal {
@@ -91,13 +96,6 @@
         color: $gray-lighter;
       }
     }
-  }
-}
-
-.modal-backdrop {
-  &.in {
-    background: $dark-blue;
-    opacity: .66;
   }
 }
 

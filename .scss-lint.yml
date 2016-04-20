@@ -48,7 +48,8 @@ linters:
     style: exclude_zero
 
   MergeableSelector:
-    enabled: false
+    enabled: true
+    force_nesting: true
 
   NameFormat:
     enabled: false

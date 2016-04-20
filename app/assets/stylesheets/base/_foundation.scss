@@ -38,25 +38,135 @@ html, body {
   padding: 0 12px;
 }
 
-section.row {
-  [class*='col-'] {
-    padding: 0 30px;
+section {
+  @include clearfix;
 
-    @media screen and (min-width: $screen-sm-min) {
-      padding: 0 64px;
+  padding: 60px 0;
+  text-align: center;
 
-      &:first-child {
-        padding: 0 64px 0 84px;
+  @media screen and (min-width: $screen-xs-min) {
+    text-align: left;
+  }
+
+  @media screen and (min-width: $screen-sm-min) {
+    padding: 84px 0;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    margin: 0 0 12px;
+  }
+
+  p {
+    margin: 0 0 25px;
+  }
+
+  &.image-bg {
+    h3, h6, p {
+      text-shadow: 0 0 3px $c-absolute;
+    }
+  }
+
+  &.row {
+    [class*='col-'] {
+      padding: 0 30px;
+
+      @media screen and (min-width: $screen-sm-min) {
+        padding: 0 64px;
+
+        &:first-child {
+          padding: 0 64px 0 84px;
+        }
+
+        &:last-child {
+          padding: 0 84px 0 64px;
+        }
       }
 
       &:last-child {
-        padding: 0 84px 0 64px;
+        .btn:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  .row-content-full {
+
+    @media screen and (min-width: $screen-sm-min) {
+      text-align: center;
+
+      [class*='col-'] {
+        &:first-child,
+        &:last-child {
+          padding: 0 168px;
+        }
+      }
+    }
+  }
+
+  .row-video-left {
+
+    @media screen and (min-width: $screen-sm-min) {
+      [class*='col-'] {
+        &:first-child {
+          padding-right: 32px;
+        }
+
+        &:last-child {
+          padding-left: 32px;
+        }
       }
     }
 
-    &:last-child {
-      .btn:last-child {
-        margin-bottom: 0;
+  }
+
+  .row-content-2col {
+    padding: 0;
+
+    @media screen and (min-width: $screen-sm-min) {
+      @include display-flex;
+    }
+
+    [class*='col-'] {
+
+      @media screen and (min-width: $screen-sm-min) {
+        @include justify-content(flex-start);
+      }
+
+      &:first-child,
+      &:last-child {
+        padding-top: 60px;
+        padding-bottom: 60px;
+
+        @media screen and (min-width: $screen-sm-min) {
+          padding-top: 84px;
+          padding-bottom: 84px;
+        }
+
+        .btn {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  .row-content-3col {
+
+    @media screen and (min-width: $screen-sm-min) {
+      [class*='col-'] {
+        padding: 0 24px;
+
+        &:first-child {
+          padding-right: 24px;
+        }
+
+        &:nth-child(2) {
+          padding: 0 54px;
+        }
+
+        &:last-child {
+          padding-left: 24px;
+        }
       }
     }
   }
@@ -204,54 +314,11 @@ body.dragging, body.dragging * {
   }
 }
 
-section {
-  @include clearfix;
-
-  padding: 60px 0;
-  text-align: center;
-
-  @media screen and (min-width: $screen-xs-min) {
-    text-align: left;
-  }
-
-  @media screen and (min-width: $screen-sm-min) {
-    padding: 84px 0;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    margin: 0 0 12px;
-  }
-
-  p {
-    margin: 0 0 25px;
-  }
-
-  &.image-bg {
-    h3, h6, p {
-      text-shadow: 0 0 3px $c-absolute;
-    }
-  }
-}
-
 .coral-text {
   color: $coral;
 }
 
-section.row-content-full {
-
-  @media screen and (min-width: $screen-sm-min) {
-    text-align: center;
-
-    [class*='col-'] {
-      &:first-child,
-      &:last-child {
-        padding: 0 168px;
-      }
-    }
-  }
-}
-
-section.row-video-hero {
+.row-video-hero {
 
   @media screen and (min-width: $screen-sm-min) {
     .video-title {
@@ -267,73 +334,6 @@ section.row-video-hero {
     }
   }
 
-}
-
-section.row-video-left {
-
-  @media screen and (min-width: $screen-sm-min) {
-    [class*='col-'] {
-      &:first-child {
-        padding-right: 32px;
-      }
-
-      &:last-child {
-        padding-left: 32px;
-      }
-    }
-  }
-
-}
-
-section.row-content-2col {
-  padding: 0;
-
-  @media screen and (min-width: $screen-sm-min) {
-    @include display-flex;
-  }
-
-  [class*='col-'] {
-
-    @media screen and (min-width: $screen-sm-min) {
-      @include justify-content(flex-start);
-    }
-
-    &:first-child,
-    &:last-child {
-      padding-top: 60px;
-      padding-bottom: 60px;
-
-      @media screen and (min-width: $screen-sm-min) {
-        padding-top: 84px;
-        padding-bottom: 84px;
-      }
-
-      .btn {
-        margin-bottom: 0;
-      }
-    }
-  }
-}
-
-section.row-content-3col {
-
-  @media screen and (min-width: $screen-sm-min) {
-    [class*='col-'] {
-      padding: 0 24px;
-
-      &:first-child {
-        padding-right: 24px;
-      }
-
-      &:nth-child(2) {
-        padding: 0 54px;
-      }
-
-      &:last-child {
-        padding-left: 24px;
-      }
-    }
-  }
 }
 
 .half-height {
