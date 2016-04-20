@@ -11,7 +11,7 @@
 
 .sg-canvases {
   border: 2px solid $gray-light;
-  background: #fff;
+  background: $c-absent;
 }
 
 .sg-canvas {
@@ -19,7 +19,7 @@
   overflow: visible;
 
   &.bg-light {
-    background: #fff;
+    background: $c-absent;
   }
 
   > div {

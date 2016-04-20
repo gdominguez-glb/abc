@@ -209,7 +209,7 @@
     @extend .sans-serif;
 
     &.btn {
-      color: #fff;
+      color: $c-absent;
       text-decoration: none;
     }
   }
@@ -232,8 +232,8 @@
     }
     &::-webkit-scrollbar-thumb {
       border-radius: 4px;
-      background-color: rgba(0, 0, 0, .5);
-      -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+      background-color: $c-black-transparent-5;
+      -webkit-box-shadow: 0 0 1px $c-white-transparent-5;
     }
   }
 
@@ -324,12 +324,12 @@
 .terms_and_conditions_box {
   padding: 15px;
   margin-bottom: 15px;
-  background: #f7f7f7;
+  background: $gray-lightest;
 }
 .terms_and_conditions_text {
   padding: 20px;
   margin: 15px 0;
   height: 250px;
   overflow: auto;
-  background: #fff;
+  background: $c-absent;
 }

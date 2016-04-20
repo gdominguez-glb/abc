@@ -118,7 +118,7 @@
         a:hover,
         a:focus {
           border-bottom: 1px solid $coral;
-          color: #fff;
+          color: $c-absent;
           background-color: darken($coral, 5%);
 
           @media screen and (min-width: $screen-sm-min) {
@@ -181,7 +181,7 @@
             > a {
               padding: 10px 15px 10px 25px;
               border-bottom: 1px solid $coral;
-              color: #fff;
+              color: $c-absent;
 
               [data-page='english'] &,
               [data-page='history'] &,
@@ -203,7 +203,7 @@
 
               &:hover,
               &:focus {
-                color: #fff;
+                color: $c-absent;
               }
             }
           }
@@ -212,7 +212,7 @@
 
       > a {
         border-bottom: 1px solid darken($coral, 5%);
-        color: #fff;
+        color: $c-absent;
 
         [data-page='english'] &,
         [data-page='history'] &,
@@ -234,7 +234,7 @@
 
         &:hover,
         &:focus {
-          color: darken(#fff, 15%);
+          color: darken($c-absent, 15%);
 
           [data-page='english'] &,
           [data-page='history'] &,
@@ -250,7 +250,7 @@
           [data-page='english'] &,
           [data-page='history'] &,
           [data-page='math'] & {
-            color: #fff;
+            color: $c-absent;
             border-bottom: 0;
           }
 
@@ -343,7 +343,7 @@
   .subnav {
     display: none;
     margin: 0 -15px;
-    color: #fff;
+    color: $c-absent;
 
     [data-page='english'] &,
     [data-page='history'] &,
@@ -406,8 +406,8 @@
         &:active,
         &:focus {
           @media screen and (min-width: $screen-sm-min) {
-            color: #fff;
-            border-bottom: 2px solid #fff;
+            color: $c-absent;
+            border-bottom: 2px solid $c-absent;
             text-decoration: none;
 
             [data-page='english'] &,
@@ -428,7 +428,7 @@
           text-transform: capitalize;
 
           &.active {
-            border-bottom: 2px solid #fff;
+            border-bottom: 2px solid $c-absent;
 
             [data-page='english'] &,
             [data-page='history'] &,
@@ -473,7 +473,7 @@
           float: left;
           display: inline-block;
           padding: 15px 10px;
-          color: #fff;
+          color: $c-absent;
           font-size: .75em;
         }
       }
@@ -503,9 +503,9 @@
       a {
         display: block;
         padding: 10px 15px;
-        color: #fff;
+        color: $c-absent;
         &:hover {
-          color: darken(#fff, 15%);
+          color: darken($c-absent, 15%);
         }
 
         @media screen and (min-width: $screen-sm-min) {
@@ -519,7 +519,7 @@
     .cart-info {
       position: relative;
       font-size: 14px;
-      color: #fff;
+      color: $c-absent;
 
       &:hover {
         @media screen and (min-width: $screen-sm-min) {
@@ -533,7 +533,7 @@
         color: $dark-blue;
 
         @media screen and (min-width: $screen-sm-min) {
-          color: #fff;
+          color: $c-absent;
         }
 
         &:hover {
@@ -568,11 +568,11 @@
       &:focus {
         width: 100%;
         padding: 9px 15px 9px 30px;
-        background: #fff asset-url('icon-search-gray.png') no-repeat 2% 50%;
+        background: $c-absent asset-url('icon-search-gray.png') no-repeat 2% 50%;
         background-size: 15px 15px;
 
         @media screen and (min-width: $screen-sm-min) {
-          background: #fff asset-url('icon-search-gray.png') no-repeat 5% 50%;
+          background: $c-absent asset-url('icon-search-gray.png') no-repeat 5% 50%;
           background-size: 15px 15px;
         }
       }
@@ -589,11 +589,11 @@
         }
 
         &:focus {
-          background-color: #fff;
+          background-color: $c-absent;
           background-position: 2% 50%;
 
           @media screen and (min-width: $screen-sm-min) {
-            background: #fff asset-url('icon-search-gray.png') no-repeat 5% 50%;
+            background: $c-absent asset-url('icon-search-gray.png') no-repeat 5% 50%;
             background-size: 15px 15px;
           }
         }
@@ -605,7 +605,7 @@
 
   .navbar-toggle {
     border: 0;
-    color: #fff;
+    color: $c-absent;
 
     &:hover,
     &:focus {

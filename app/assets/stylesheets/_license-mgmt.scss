@@ -12,7 +12,7 @@ _license-mgmt.scss
 
 .user-details {
   background: $dark-blue;
-  color: #fff;
+  color: $c-absent;
 }
 
 // Override Bootstrap style
@@ -29,8 +29,8 @@ _license-mgmt.scss
   padding-top: 22px;
   padding-left: 25px;
   border-radius: 50%;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
+  border: 1px solid $c-black-transparent-1;
+  box-shadow: 0 0 30px $c-black-transparent-4;
 
   span {
     display: block;
@@ -67,7 +67,7 @@ _license-mgmt.scss
   }
 
   > div {
-    
+
     @media screen and (min-width: $screen-sm-min) {
       @include flex(1);
     }

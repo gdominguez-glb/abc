@@ -38,7 +38,7 @@ ul.nav-pills {
 
   > li.active {
     > a {
-      color: #fff;
+      color: $c-absent;
       background-color: $brand-primary;
 
       &:hover,

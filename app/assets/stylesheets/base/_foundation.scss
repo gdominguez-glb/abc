@@ -128,7 +128,7 @@ body.dragging, body.dragging * {
   left: 0;
   right: 0;
   bottom: 0;
-  background: #000;
+  background: $c-absolute;
   opacity: 0;
   z-index: -1;
   @include transition(all, $transitionTiming);
@@ -156,7 +156,7 @@ body.dragging, body.dragging * {
 
   .close {
     margin: 10px 0;
-    color: #fff;
+    color: $c-absent;
 
     @include transition(opacity, $transitionTiming);
   }
@@ -223,7 +223,7 @@ section {
 
   &.image-bg {
     h3, h6, p {
-      text-shadow: 0 0 3px #000;
+      text-shadow: 0 0 3px $c-absolute;
     }
   }
 }
@@ -342,7 +342,7 @@ section.row-content-3col {
 
 .row-img-full {
   padding: 0;
-  color: #fff;
+  color: $c-absent;
   background-position: 0;
   background-size: cover;
 }

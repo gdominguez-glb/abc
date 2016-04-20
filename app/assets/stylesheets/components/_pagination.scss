@@ -39,7 +39,7 @@
         &:hover,
         &:active,
         &:focus {
-          color: #fff;
+          color: $c-absent;
           border-color: lighten($dark-blue, 5%);
           background-color: lighten($dark-blue, 5%);
         }

@@ -39,7 +39,7 @@ body[data-hook="body"] {
 .spree-navbar {
   margin: 0 -15px;
   border: 0;
-  border-bottom: 1px solid #c5c5c5;
+  border-bottom: 1px solid $gray-light-mid;
 
   .navbar-header {
     padding: 15px;
@@ -64,29 +64,29 @@ body[data-hook="body"] {
   }
 
   &.navbar-inverse {
-    background: #f8f8f8;
-    border-color: darken(#f8f8f8, 20%);
+    background: $gray-lightest;
+    border-color: darken($gray-lightest, 20%);
 
     .navbar-toggle {
 
       &:hover {
-        background: #f8f8f8;
+        background: $gray-lightest;
       }
 
       .icon-bar {
-        background: #333;
+        background: $gray-dark;
       }
     }
   }
 }
 
 .admin {
-  background-color: #fff;
+  background-color: $c-absent;
 
   .dropdown {
     &.user-menu {
       a {
-        color: #333 !important;
+        color: $gray-dark !important;
       }
 
       &.open {

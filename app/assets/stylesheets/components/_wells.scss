@@ -12,7 +12,7 @@
 // -------------------------------------
 
 .well {
-  background: #ddd;
+  background: $gray-lighter;
   margin-bottom: 30px;
   padding: 15px;
   position: relative;
@@ -26,12 +26,12 @@
     height: 0;
     text-align: center;
     border-left: 50px solid transparent;
-    border-top: 50px solid #000;
+    border-top: 50px solid $c-absolute;
     .glyphicon {
       position: absolute;
       top: -41px;
       right: 7px;
-      color: #fff;
+      color: $c-absent;
     }
   }
 

@@ -78,7 +78,7 @@
   .list-group {
     max-height: 0;
     margin: 0;
-    color: #fff;
+    color: $c-absent;
     overflow: hidden;
 
     @include transition(all, $transitionTiming);
@@ -90,7 +90,7 @@
     }
 
     .list-group-item {
-      color: #fff;
+      color: $c-absent;
       border: 0;
       border-radius: 0;
       text-align: center;
