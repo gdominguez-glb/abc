@@ -55,7 +55,7 @@
   -moz-transform: rotateY($val);
   transform: rotateY($val);
   filter: FlipH;
-  -ms-filter: "FlipH";
+  -ms-filter: 'FlipH';
 }
 
 @mixin rotate-x($val) {
@@ -63,7 +63,7 @@
   -moz-transform: rotateX($val);
   transform: rotateX($val);
   filter: FlipV;
-  -ms-filter: "FlipV";
+  -ms-filter: 'FlipV';
 }
 
 @mixin my-transition($val) {

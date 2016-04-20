@@ -114,7 +114,8 @@ linters:
     allow_single_line_padding: false
 
   StringQuotes:
-    enabled: false
+    enabled: true
+    style: single_quotes
 
   TrailingSemicolon:
     enabled: false

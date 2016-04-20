@@ -5,74 +5,74 @@
 //
 // *************************************
 
-@import "bootstrap-sprockets"; // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
-@import "bootstrap";
-@import "spinner";
+@import 'bootstrap-sprockets'; // 'bootstrap-sprockets' must be imported before 'bootstrap' and 'bootstrap/variables'
+@import 'bootstrap';
+@import 'spinner';
 @import 'bootstrap-datetimepicker';
 
-@import "material_icons";
+@import 'material_icons';
 
-@import "trumbowyg";
+@import 'trumbowyg';
 
-@import "shepherd-theme-default";
-@import "shepherd-theme-arrows";
+@import 'shepherd-theme-default';
+@import 'shepherd-theme-arrows';
 
 // -------------------------------------
 //   Base
 // -------------------------------------
 
-@import "base/config";
-@import "base/helpers";
-@import "base/foundation";
-@import "base/typography";
-@import "base/tools";
+@import 'base/config';
+@import 'base/helpers';
+@import 'base/foundation';
+@import 'base/typography';
+@import 'base/tools';
 
 // -------------------------------------
 //   Components
 // -------------------------------------
 
-@import "components/alerts";
-@import "components/badges";
-@import "components/buttons";
-@import "components/footer";
-@import "components/forms";
-@import "components/jumbotron";
-@import "components/list-groups";
-@import "components/mastheads";
-@import "components/media-objects";
-@import "components/modals";
-@import "components/navbar";
-@import "components/navs";
-@import "components/pagination";
-@import "components/panels";
-@import "components/posts";
-@import "components/sidebars";
-@import "components/tables";
-@import "components/thumbnails";
-@import "components/wells";
-@import "components/popovers";
+@import 'components/alerts';
+@import 'components/badges';
+@import 'components/buttons';
+@import 'components/footer';
+@import 'components/forms';
+@import 'components/jumbotron';
+@import 'components/list-groups';
+@import 'components/mastheads';
+@import 'components/media-objects';
+@import 'components/modals';
+@import 'components/navbar';
+@import 'components/navs';
+@import 'components/pagination';
+@import 'components/panels';
+@import 'components/posts';
+@import 'components/sidebars';
+@import 'components/tables';
+@import 'components/thumbnails';
+@import 'components/wells';
+@import 'components/popovers';
 
 // -------------------------------------
 //   Tiles
 // -------------------------------------
 
-@import "tiles/foundation";
+@import 'tiles/foundation';
 
 // -------------------------------------
 //   Page-specific (todo: remove)
 // -------------------------------------
 
-@import "404-page";
-@import "account";
-@import "license-mgmt";
-@import "vendor/select2_import";
-@import "vendor/mediaelement_import";
-@import "vendor/slick";
-@import "vendor/slick-theme";
-@import "spree_admin_overrides";
-@import "spree_store_overrides";
-@import "video_gallery";
-@import "vendor/slick-overrides";
+@import '404-page';
+@import 'account';
+@import 'license-mgmt';
+@import 'vendor/select2_import';
+@import 'vendor/mediaelement_import';
+@import 'vendor/slick';
+@import 'vendor/slick-theme';
+@import 'spree_admin_overrides';
+@import 'spree_store_overrides';
+@import 'video_gallery';
+@import 'vendor/slick-overrides';
 
 // -------------------------------------
 //   Inbox (todo: relocate)
