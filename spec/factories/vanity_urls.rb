@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :vanity_url do
-    url "MyString"
-redirect_url "MyString"
+    url "http://test.foo/abc"
+    redirect_url "http://test.foo/a/c"
   end
 
 end
