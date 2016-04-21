@@ -424,7 +424,7 @@ marketing_templates:
       </style>
       <section id="tileImgBgTextFull<%= position %>" class="row row-img-full row-content-full image-bg">
         <div class="row-img-full-content <%= 'black-overlay' if (black_overlay.to_i == 1 rescue nil) %>">
-          <div class="col-sm-12 col-centered-content">
+          <div class="col-sm-6 col-sm-offset-3 col-centered-content">
             <div class="vertical-center">
               <h6><%= title %></h6>
               <p><%= body_text %></p>
@@ -458,7 +458,7 @@ marketing_templates:
       </style>
       <section id="tileImgBgTextFullHalf<%= position %>" class="row row-img-full row-content-full image-bg half-height">
         <div class="row-img-full-content <%= 'black-overlay' if (black_overlay.to_i == 1 rescue nil) %>">
-          <div class="col-sm-12 col-centered-content">
+          <div class="col-sm-6 col-sm-offset-3 col-centered-content">
             <div class="vertical-center">
               <h6><%= title %></h6>
               <% if body_text.present? %>
@@ -546,7 +546,7 @@ marketing_templates:
     name: 'Full Width Text'
     content: !xml |
       <section class="row row-content-full <%= background_color %>-bg">
-        <div class="col-sm-12">
+        <div class="col-sm-6 col-sm-offset-3">
           <h6><%= title %></h6>
           <p><%= body_text %></p>
           <% if button_title.present? && button_link.present? %>
