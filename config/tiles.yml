@@ -503,26 +503,15 @@
     :input_type: text
 - :name: 2-Column Video Left, Text Right
   :fields:
-  - :name: background_image_url
-    :label: Background Image Url
+  - :name: title
+    :label: Title
     :input_type: text
   - :name: wistia_video_id
     :label: Wistia Video Id
     :input_type: text
-  - :name: title
-    :label: Title
+  - :name: background_image_url
+    :label: Background Image Url (optional)
     :input_type: text
-  - :name: body_text
-    :label: Body Text
-    :input_type: text_area
-  - :name: button_title
-    :label: Button Title
-    :input_type: text
-  - :name: button_link
-    :label: Button Link
-    :input_type: text
-- :name: 2-Column Video Left, Text Right, background color
-  :fields:
   - :name: background_color
     :label: Background Color
     :input_type: select
@@ -532,12 +521,6 @@
       - cream
       - orange
       - light-blue
-  - :name: wistia_video_id
-    :label: Wistia Video Id
-    :input_type: text
-  - :name: title
-    :label: Title
-    :input_type: text
   - :name: body_text
     :label: Body Text
     :input_type: text_area
