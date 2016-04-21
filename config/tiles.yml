@@ -10,13 +10,16 @@
   - :name: title_highlight
     :label: Title Highlight
     :input_type: text
-- :name: Video Hero plain background color
+- :name: Video Hero
   :fields:
   - :name: title
     :label: Title
     :input_type: text
   - :name: wistia_video_id
     :label: Wistia Video Id
+    :input_type: text
+  - :name: background_image_url
+    :label: Background Image Url (optional)
     :input_type: text
   - :name: background_color
     :label: Background Color
@@ -27,17 +30,6 @@
       - cream
       - orange
       - light-blue
-- :name: Video Hero
-  :fields:
-  - :name: title
-    :label: Title
-    :input_type: text
-  - :name: wistia_video_id
-    :label: Wistia Video Id
-    :input_type: text
-  - :name: background_image_url
-    :label: Background Image Url
-    :input_type: text
 - :name: 50/50 Full-Bleed Image Left
   :fields:
   - :name: title
