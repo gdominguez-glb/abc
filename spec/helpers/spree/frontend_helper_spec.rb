@@ -8,7 +8,7 @@ RSpec.describe Spree::FrontendHelper, type: :helper do
   describe "#product_type_class" do
     it "return class with curriculum name if product belong to curriculum" do
       product.curriculum = curriculum
-      expect(helper.product_type_class(product)).to eq('product-type-math')
+      expect(helper.product_type_class(product)).to eq('label-math')
     end
 
     it "return nil if product dont belong to curriculum" do
