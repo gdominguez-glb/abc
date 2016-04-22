@@ -3,21 +3,12 @@
   <% @taxonomies.each do |taxonomy| %>
     <div class="panel panel-default panel-collapsible panel-shop">
       <div class="panel-heading">
-        <div class="row">
-          <div class="col-sm-10 col-lg-9">
-            <h4 class="panel-title">
-              <%= taxonomy.name %>
-            </h4>
-          </div>
-          <div class="col-sm-2 col-lg-3 text-right-sm">
-            <button
-              class="btn btn-primary btn-toggle btn-icon margin-right-reset collapsed"
-              data-toggle="collapse"
-              href="#collapse<%= taxonomy.name.gsub(/[^0-9A-Za-z]/, '') %>">
-              <i class="mi md-18 panel-toggle">keyboard_arrow_up</i>
-            </button>
-          </div>
-        </div>
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#categories" href="#collapse<%= taxonomy.name.gsub(/[^0-9A-Za-z]/, '') %>" class="collapsed">
+            <%= taxonomy.name %>
+            <i class="mi md-24 toggle-arrow">keyboard_arrow_up</i>
+          </a>
+        </h4>
       </div>
       <div id="collapse<%= taxonomy.name.gsub(/[^0-9A-Za-z]/, '') %>" class="panel-collapse collapse">
         <%= gm_taxons_tree(taxonomy.root, @taxon, taxonomy.allow_multiple_taxons_selected) %>
