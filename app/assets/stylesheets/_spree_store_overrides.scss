@@ -172,7 +172,7 @@
   }
 
   .product-price {
-    display: inline;
+    display: inline-block;
     margin-bottom: $b-space-s;
     font-family: Karla, sans-serif;
     color: $dark-blue;
@@ -210,7 +210,6 @@
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: normal;
-    color: $coral;
 
     &.btn {
       text-decoration: none;
@@ -253,36 +252,6 @@
     }
   }
 
-}
-
-.product-type {
-  display: inline-block;
-  padding: $b-space-s;
-  border: 1px solid $brand-primary;
-  font-family: 'Karla', sans-serif;
-  font-size: 10px;
-  text-transform: uppercase;
-  color: $brand-primary;
-  background-color: $cream;
-  border-radius: 4px;
-}
-
-.product-type-math {
-  border: 1px solid $brand-primary;
-  color: $brand-primary;
-  background-color: $math;
-}
-
-.product-type-history {
-  border: 1px solid $brand-primary;
-  color: $brand-primary;
-  background-color: $history;
-}
-
-.product-type-english {
-  border: 1px solid $brand-primary;
-  color: $brand-primary;
-  background-color: $english;
 }
 
 .product-section-title {

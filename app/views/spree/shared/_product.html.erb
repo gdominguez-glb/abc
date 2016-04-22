@@ -3,8 +3,8 @@
   <div class="product-wrapper">
       <div class="row">
         <div class="col-md-8 col-lg-9">
-          <span class="product-type <%= product_type_class(product) %>"><%= product.curriculum.try(:name) || 'General' %></span>
-          <span itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product-price">
+          <span class="label <%= product_type_class(product) %>"><%= product.curriculum.try(:name) || 'General' %></span>
+          <span itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product-price label label-default">
             <strong itemprop="price">
               <%= product_display_price(product) %>
             </strong>

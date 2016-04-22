@@ -12,7 +12,11 @@ Spree::FrontendHelper.class_eval do
   end
 
   def product_type_class(product)
-    "product-type-#{product.curriculum.try(:name).downcase}" if product.curriculum.try(:name)
+    if product.curriculum.try(:name)
+      "label-#{product.curriculum.try(:name).downcase}"
+    else
+      "label-default"
+    end
   end
 
   def product_display_price(product)
