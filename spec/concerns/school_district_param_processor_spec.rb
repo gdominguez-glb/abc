@@ -44,7 +44,7 @@ RSpec.describe SchoolDistrictParamProcessor do
     end
 
     it "remove school district id if select NotListed" do
-      user_params = { district_id: 'NotListed', school_district_attributes: { place_type: 'district' } }
+      user_params = { district_id: 'notListed', school_district_attributes: { place_type: 'district' } }
       processor.process_school_district_id(user_params)
 
       expect(user_params.key?(:school_district_id)).to eq(false)

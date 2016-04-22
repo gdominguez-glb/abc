@@ -120,7 +120,7 @@
         <% selected_state_name = Spree::State.find_by(id: selected_state_id).try(:name) %>
         <span><%= selected_state_name ? selected_state_name : 'Select a State' %></span>
         <%= f.fields_for :school_district do |school_district_form| %>
-          <%= school_district_form.collection_select :state_id, us_country.states, :id, :name, { prompt: true, selected: selected_state_id  } , { class: 'form-control', disabled: !us_selected } %>
+          <%= select_tag 'spree_user[school_district_attributes][state_id]', options_from_collection_for_select(us_country.states, :id, :name, selected_state_id), prompt: 'Select a State', class: 'form-control', disabled: !us_selected %>
         <% end %>
       </div>
     </div>
