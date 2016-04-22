@@ -63,6 +63,20 @@
       line-height: 1.4em;
     }
 
+    .toggle-arrow {
+      @include transition(all .5s ease);
+
+      position: absolute;
+      top: 8px;
+      right: 4px;
+    }
+
+    .collapsed {
+      .toggle-arrow {
+        @include rotate(-180deg);
+      }
+    }
+
     &.max-300 {
       max-height: 300px;
       overflow-y: scroll;
@@ -70,17 +84,12 @@
 
     &.panel-shop {
       .panel-heading {
+        position: relative;
         padding: $b-space $b-space-m;
 
         a {
           display: block;
           padding: 0;
-
-          &::after {
-            float: right;
-            font-family: 'Glyphicons Halflings';
-            content: '\e252';
-          }
         }
       }
     }
@@ -132,10 +141,6 @@
   .btn-toggle {
     position: relative;
     top: -2px;
-
-    .panel-shop & {
-      top: 0;
-    }
 
     .mi {
       padding-top: 0;
