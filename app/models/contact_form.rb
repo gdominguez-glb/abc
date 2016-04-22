@@ -30,7 +30,7 @@ class ContactForm
     elsif self.topic == 'Professional Development'
       attrs.merge!(pd_attributes)
     end
-    GmSalesforce::Client.instance.create('Lead', attrs)
+    ContactWorker.perform_async('Lead', attrs)
   end
 
   def create_case_object(topic)
@@ -40,7 +40,7 @@ class ContactForm
     elsif ["Existing Order Support", "Curriculum Support", "Technical Support", "Parent Support", "Content Error"].include?(topic)
       attrs.merge!(support_attributes)
     end
-    GmSalesforce::Client.instance.create('Case', attrs)
+    ContactWorker.perform_async('Case', attrs)
   end
 
   def lead_common_attributes
