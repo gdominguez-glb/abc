@@ -2,7 +2,7 @@
 <div class="col-md-4 <%= 'hide' if index > 2 %>">
   <div class="product-wrapper">
     <div class="product-wrapper-inner product-tile">
-      <span class="product-type <%= product_type_class(product) %>"><%= product.curriculum.try(:name) || 'General' %></span>
+      <span class="label <%= product_type_class(product) %>"><%= product.curriculum.try(:name) || 'General' %></span>
         <div class="product-title-wrapper">
           <h5 class="product-title margin-top margin-bottom-s"><%= truncate(product.name, length: 50) %></h5>
         </div>

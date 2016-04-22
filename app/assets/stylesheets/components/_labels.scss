@@ -1,0 +1,36 @@
+// *************************************
+//
+//   Labels
+//   Boostrap label overrides
+//
+// *************************************
+
+.label {
+  display: inline-block;
+  padding: $b-space-s;
+  border: 1px solid $brand-primary;
+  font-family: 'Karla', sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+  color: $brand-primary;
+  background-color: $cream;
+  border-radius: 4px;
+}
+
+.label-math {
+  border: 1px solid $brand-primary;
+  color: $brand-primary;
+  background-color: $math;
+}
+
+.label-history {
+  border: 1px solid $brand-primary;
+  color: $brand-primary;
+  background-color: $history;
+}
+
+.label-english {
+  border: 1px solid $brand-primary;
+  color: $brand-primary;
+  background-color: $english;
+}
