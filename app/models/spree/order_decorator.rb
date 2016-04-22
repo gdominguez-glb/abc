@@ -72,6 +72,7 @@ Spree::Order.class_eval do
   def salesforce_complete?
     return false if line_items.blank?
     return false if id_in_salesforce.blank?
+    return true if fulfillment?
     line_items.all? { |line_item| line_item.id_in_salesforce.present? }
   end
 
