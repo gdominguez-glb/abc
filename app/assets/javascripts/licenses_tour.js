@@ -25,11 +25,9 @@ function startLicensesTour() {
     attachTo: '.js-step-3 top',
     buttons: [
       {
-        text: 'User Management',
+        text: 'Exit',
         classes: 'shepherd-button-secondary',
-        action: function() {
-          window.location.pathname = "/account/licenses/users";
-        }
+        action: 'shepherd.cancel'
       }
     ]
   });
