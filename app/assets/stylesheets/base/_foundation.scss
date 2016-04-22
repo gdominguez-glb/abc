@@ -332,7 +332,21 @@ body.dragging * {
   @media screen and (min-width: $screen-sm-min) {
     .video-title {
       margin-bottom: 25px;
-      color: $brand-green;
+    }
+
+    &.green-bg,
+    &.orange-bg,
+    &.cream-bg,
+    &.light-blue-bg {
+      .video-title {
+        color: $dark-blue;
+      }
+    }
+
+    &.image-bg {
+      .video-title {
+        color: $brand-green;
+      }
     }
 
     [class*='col-'] {

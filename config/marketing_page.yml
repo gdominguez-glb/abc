@@ -71,7 +71,7 @@ marketing_templates:
           }
         }
       </style>
-      <section id="tileVideoHero<%= position %>" class="row row-video-hero image-bg <%= background_color %>-bg">
+      <section id="tileVideoHero<%= position %>" class="row row-video-hero <%= 'image-bg' if background_image_url.present? %> <%= background_color %>-bg">
         <div class="col-xs-12">
           <h3 class="video-title"><%= title %></h3>
           <div class="embed-responsive embed-responsive-16by9">
@@ -595,7 +595,7 @@ marketing_templates:
           }
         }
       </style>
-      <section id="tileVideoLeft<%= position %>" class="row row-img-full row-video-left image-bg <%= background_color %>-bg">
+      <section id="tileVideoLeft<%= position %>" class="row row-img-full row-video-left <%= 'image-bg' if background_image_url.present? %> <%= background_color %>-bg">
         <div class="row-img-full-content">
           <div class="col-sm-6 col-centered-content margin-sm-bottom-xl">
             <div class="vertical-center">
