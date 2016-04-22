@@ -98,7 +98,7 @@ section {
     }
   }
 
-  .row-content-full {
+  &.row-content-full {
 
     @media screen and (min-width: $screen-sm-min) {
       text-align: center;
@@ -112,7 +112,7 @@ section {
     }
   }
 
-  .row-video-left {
+  &.row-video-left {
 
     @media screen and (min-width: $screen-sm-min) {
       [class*='col-'] {
@@ -128,7 +128,7 @@ section {
 
   }
 
-  .row-content-2col {
+  &.row-content-2col {
     padding: 0;
 
     @media screen and (min-width: $screen-sm-min) {
@@ -158,7 +158,7 @@ section {
     }
   }
 
-  .row-content-3col {
+  &.row-content-3col {
 
     @media screen and (min-width: $screen-sm-min) {
       [class*='col-'] {
