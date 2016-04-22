@@ -1,3 +1,8 @@
+<% if params[:success] %>
+  <div class="alert alert-success margin-bottom-m">
+    Your information has been sent!
+  </div>
+<% end %>
 <div class="row margin-top-xxl margin-bottom-xl">
   <div class="col-lg-10 col-lg-offset-1">
     <%= form_for @contact_form, url: :create_contact, html: { class: 'form contact-form', novalidate: true } do |f| %>
@@ -230,12 +235,6 @@
               <%= f.submit 'Submit', class: 'btn btn-success btn-block' %>
             </div>
           </div>
-
-          <% if params[:success] %>
-            <div class="alert alert-success margin-bottom-m">
-              Your information has been sent!
-            </div>
-          <% end %>
 
         </div>
 
