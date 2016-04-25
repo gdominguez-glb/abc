@@ -122,8 +122,17 @@ class Spree::LicensedProduct < ActiveRecord::Base
   private
 
   def set_licenses_date_range
-    self.fulfillment_at ||= (self.product.fulfillment_date || Time.now)
+    set_fulfillment_at
     set_expire_at
+  end
+
+  def set_fulfillment_at
+    self.fulfillment_at ||= (self.product.fulfillment_date || Time.now)
+    if self.order &&
+      self.order.fulfillment_at &&
+      self.order.fulfillment_at > self.fulfillment_at
+      self.fulfillment_at = self.order.fulfillment_at
+    end
   end
 
   def set_expire_at
