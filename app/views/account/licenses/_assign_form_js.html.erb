@@ -20,7 +20,7 @@
       // Show the success message
       $('.js-step-2 .js-success-message').removeClass('hide');
       $('.js-step-2 .js-number-total').text(emails.length);
-      if (emails.length > 1) {
+      if (emails.length > 1 && $('.js-step-2 .js-success-message').text().indexOf('users') < 0 ) {
         $('.js-step-2 .js-success-message').append('s');
       }
 
