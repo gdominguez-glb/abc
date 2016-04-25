@@ -53,20 +53,6 @@
 
 <%= javascript_tag do %>
   $(document).ready(function(){
-    $('.js-tooltip-trigger').tooltip();
-
-    $('#trusteeModal').on('show.bs.modal', function (event) {
-      var button = $(event.relatedTarget);
-      var name = button.data('name');
-      var title = button.data('title');
-      var bio = button.data('bio');
-      var img = button.data('image');
-
-      var modal = $(this);
-      modal.find('.modal-name').text(name);
-      modal.find('.modal-title strong').text(title);
-      modal.find('.modal-body').html(bio);
-      modal.find('.modal-body').prepend('<img src="' + img + '" class="pull-right" />')
-    });
+    teamModals('#trusteeModal');
   });
 <% end %>
