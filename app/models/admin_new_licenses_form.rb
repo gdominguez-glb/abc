@@ -33,7 +33,8 @@ class AdminNewLicensesForm
       item_total: self.amount,
       skip_salesforce_create: true,
       sf_contact_id: (sf_contact_id.present? ? sf_contact_id : nil),
-      admin_user: admin_user
+      admin_user: admin_user,
+      fulfillment_at: fulfillment_at
     )
     add_line_items(order)
 
