@@ -31,7 +31,11 @@ Spree::ProductsController.class_eval do
 
   def find_launch_product
     @product = current_spree_user.products.find_by(slug: params[:id]) || current_spree_user.part_products.find_by(slug: params[:id])
-    redirect_to main_app.root_path and return if @product.blank?
+    if @product.blank?
+      flash[:error] = "You don't have access to this product or the license of product is not fulfillmented yet!"
+      redirect_to main_app.root_path
+      return
+    end
   end
 
   def group
