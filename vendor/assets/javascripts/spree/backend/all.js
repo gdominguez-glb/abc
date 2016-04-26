@@ -15,6 +15,7 @@
 //= require jquery.remotipart
 //= require jquery-sortable-lists
 //= require trumbowyg
+//= require dashboard_mobile_nav
 
 $(document).ready(function() {
   var nav = $('.navbar-primary');
