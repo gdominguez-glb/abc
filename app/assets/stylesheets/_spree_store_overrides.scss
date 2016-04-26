@@ -178,19 +178,6 @@
     color: $dark-blue;
   }
 
-  .product-qty {
-    max-width: 80px;
-    height: 50px;
-    padding: $b-space;
-    border: 3px solid $dark-blue;
-    font-weight: bold;
-    border-radius: 0;
-
-    option {
-      color: $dark-blue;
-    }
-  }
-
   .product-taxon {
     border: 1px solid $dark-blue;
     background-color: transparent;
