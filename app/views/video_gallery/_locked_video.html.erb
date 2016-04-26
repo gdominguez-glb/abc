@@ -3,17 +3,12 @@
     <div class="image-drawer-wrapper flip-container">
       <div class="flipper">
         <div class="video-image-wrapper flip-front <% if video.screenshot.present? %>video-preview-image<% end %>"<% if video.screenshot.present? %> style="background-image: url('<%= video.screenshot.url(:medium) %>')"<% end %> >
-          <button class="btn btn-primary flip-btn">
-            <i class="glyphicon glyphicon-lock" aria-hidden="true"></i>
-            More
-          </button>
         </div>
         <div class="video-drawer flip-back">
           <div class="product-description">
             <%= truncate video.description, length: 100 %>
             <p class="text-danger">Subscription Required</p>
           </div>
-
           <%= link_to unlock_video_gallery_path(video), class: 'btn btn-default btn-block', remote: true do %>
             Unlock Content
           <% end %>
