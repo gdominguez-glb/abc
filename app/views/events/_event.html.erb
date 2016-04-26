@@ -5,18 +5,14 @@
 
   <div class="row">
 
-    <% if event.start_date.present? && event.location_name.present? %>
+    <% if event.start_date.present? %>
       <div class="col-md-6">
         <small class="block margin-bottom">
           <% if event.start_date.present? && event.end_date.present? %>
             <%= date_range(event.start_date, event.end_date, format: :short) %><br />
           <% end %>
 
-          <% if event.location_name.present? && event.state.present? %>
-              <%= event.location_address1 if event.location_address1.present? %>
-              <%= event.location_name %>,
-              <%= event.state %>
-          <% end %>
+          <%= [event.location_address1, event.location_name, event.state].reject(&:blank?).join(', ') %>
         </small>
       </div>
     <% end %>
