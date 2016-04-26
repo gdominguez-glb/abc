@@ -351,22 +351,48 @@
       color: $dark-blue;
     }
 
+    .products &,
+    .video_gallery &,
+    .admin &,
+    .history &,
+    .bookmarks &,
+    .cms-wrapper &,
+    .settings &,
+    .licenses & {
+      display: block;
+    }
 
     @media screen and (min-width: $screen-sm-min) {
       display: block;
     }
 
     .navbar-collapse-toggle {
-      padding: 0 15px;
+      padding: 0;
       background-color: $coral;
 
       @media screen and (min-width: $screen-sm-min) {
         display: none;
       }
 
-      .glyphicon {
-        top: -2px;
-        right: -16px;
+      .dropdown-toggle {
+        display: block;
+        position: relative;
+        padding: 10px 15px;
+        border-bottom: 1px solid #ff461b;
+        font-size: 13.6px;
+        background-color: $coral;
+
+        &:hover,
+        &:active,
+        &:focus {
+          text-decoration: none;
+          color: #d9d9d9;
+        }
+
+        &.open {
+          border-bottom: 1px solid #ff5b34;
+          background-color: #ff461b;
+        }
       }
     }
 
@@ -439,6 +465,26 @@
         }
       }
     }
+
+    .dashboard-nav {
+      @media screen and (max-width: $screen-sm-min) {
+        padding: 0;
+
+        a {
+          padding: 10px 15px 10px 25px;
+          border-bottom: 1px solid #ff5b34;
+          color: #fff;
+          background-color: #ff461b;
+
+          &:hover,
+          &:active,
+          &:focus {
+            outline: none;
+            text-decoration: none;
+          }
+        }
+      }
+    }
   }
 
   .subnav-name {
@@ -446,6 +492,26 @@
     font-family: 'Karla', sans-serif;
     font-weight: bold;
     text-transform: uppercase;
+  }
+
+  // ----- Utility Nav Items ----- //
+
+  .link-dashboard {
+
+    .products &,
+    .video_gallery &,
+    .admin &,
+    .history &,
+    .bookmarks &,
+    .cms-wrapper &,
+    .settings &,
+    .licenses & {
+      display: none;
+    }
+
+    @media screen and (min-width: $screen-sm-min) {
+      display: block;
+    }
   }
 
   // ----- Cart Navigation Items ----- //
