@@ -29,7 +29,8 @@
           <div class="add-to-cart col-md-6">
             <br/>
             <% if @product.product_type != "partner" %>
-              <div class="form-group select-container dark-select block product-qty">
+              <label>Quantity</label>
+              <div class="form-group select-container dark-select block">
                 <span>1</span>
                 <%= select_tag  :quantity, options_for_select(1..15), :class => 'form-control' %>
               </div>
