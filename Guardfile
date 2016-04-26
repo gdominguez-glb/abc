@@ -70,7 +70,7 @@ guard :rspec, cmd: "bundle exec rspec" do
 end
 
 guard 'livereload', grace_period: 0, apply_css_live: true do
-  watch(%r{app/views/.+\.(html.erb)$})
+  watch(%r{app/views/.+\.(html.erb|html)$})
   watch(%r{app/helpers/.+\.rb})
   watch(%r{public/.+\.(css|js|html)})
   watch(%r{config/locales/.+\.yml})
