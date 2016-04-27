@@ -30,7 +30,7 @@ RSpec.describe Medium::ParagraphsProcessor do
         'markups' => [{"type"=>2, "start"=>2, "end"=>4}]
       }]
       result = Medium::ParagraphsProcessor.new(paragraphs: paragraphs, url: url).process
-      expect(result).to eq("<p>he<em>ll</em>o worl</p>")
+      expect(result).to eq("<p>he<em>ll</em>o world</p>")
     end
   end
 end
