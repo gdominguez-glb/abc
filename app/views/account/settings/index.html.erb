@@ -219,8 +219,6 @@
 <script type="text/javascript">
 //<![CDATA[
   (function($){
-    window.schoolData = [{id: '#notListed', text: 'school Not Listed'}].concat(<%= raw school_district_selection_data(SchoolDistrict.for_selection.school).to_json %>);
-    window.districtData = [{id: '#notListed', text: 'district Not Listed'}].concat(<%= raw school_district_selection_data(SchoolDistrict.for_selection.district).to_json %>);
     $(".school-district-input-toggle").click(function(){
       $('.school-district-control').removeClass('hidden');
       $(".school-district-input-toggle").addClass('hidden');

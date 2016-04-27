@@ -117,6 +117,8 @@ Rails.application.routes.draw do
 
   resources :newsletters, only: [:index, :create]
 
+  resources :school_districts, only: [:index, :show]
+
   get 'not-found', to: 'pages#not_found', as: :not_found
 
   constraints VanityUrlConstraint do
