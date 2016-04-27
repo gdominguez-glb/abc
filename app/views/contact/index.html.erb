@@ -393,6 +393,7 @@
 
         if (mapping) {
           toggleDependentFields(mapping);
+          toggleCountryState();
           return;
         }
       });
@@ -405,6 +406,14 @@
         _.each(mapping, function(m, i){
           $('[data-name="'+m.name+'"]').removeClass('hidden');
         });
+      }
+
+      function toggleCountryState() {
+        if($('#contact_form_country').hasClass('hidden')) {
+          $('[data-name="State"]').addClass('hidden');
+        } else {
+          $('#contact_form_country').trigger('change');
+        }
       }
 
       $('input[type="submit"]').click(function(e){
@@ -425,6 +434,7 @@
           $('[data-name="State"]').addClass('hidden');
         }
       });
+
       var hash = window.location.hash;
       if(hash == '#sales') {
         $('#topicDropdown').find('[data-topic="Sales/Purchasing"]').trigger('click');

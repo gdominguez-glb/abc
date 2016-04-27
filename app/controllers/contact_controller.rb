@@ -2,7 +2,7 @@ class ContactController < ApplicationController
 
   def index
     default_topic = params[:topic].present? ? ContactForm::TOPICS[ (params[:topic].to_i) ] : nil
-    @contact_form = ContactForm.new(school_district_type: 'School', topic: default_topic)
+    @contact_form = ContactForm.new(school_district_type: 'School', topic: default_topic, country: 'United States')
   end
 
   def create
