@@ -12,6 +12,6 @@ RSpec.describe Medium::MarkupsProcessor do
   end
 
   it "process markups with links" do
-    expect(Medium::MarkupsProcessor.new(link_opts).process).to eq("An expert review of classroom math materials released Wednesday gives <em>Eureka Math</em> top marks. <em>Eureka Math</em> is written by teachers and mathematicians and published by the nonprofit <a href='http://greatminds.net/' title='' rel=''>Great Minds</a>")
+    expect(Medium::MarkupsProcessor.new(link_opts).process).to eq("An expert review of classroom math materials released Wednesday gives <em>Eureka Math</em> top marks. <em>Eureka Math</em> is written by teachers and mathematicians and published by the nonprofit <a href='http://greatminds.net/' title='' rel=''>Great Minds</a>.")
   end
 end

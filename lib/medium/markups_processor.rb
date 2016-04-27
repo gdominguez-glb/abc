@@ -35,7 +35,7 @@ module Medium
     def construct_positions
       positions = markups.map { |markup| [markup['start'], markup['end']] }.flatten
       positions << 0
-      positions << (text.length - 1)
+      positions << text.length
       positions.uniq.sort
     end
 

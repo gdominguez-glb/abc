@@ -62,10 +62,10 @@ RSpec.describe Medium::PostProcessor do
   end
 
   it "set body" do
-    expect(@post_data[:body]).to eq("<p>he<em>ll</em>o worl</p>")
+    expect(@post_data[:body]).to eq("<p>he<em>ll</em>o world</p>")
   end
 
   it "set preview_conetnt" do
-    expect(@post_data[:body]).to eq("<p>he<em>ll</em>o worl</p>")
+    expect(@post_data[:body]).to eq("<p>he<em>ll</em>o world</p>")
   end
 end 
