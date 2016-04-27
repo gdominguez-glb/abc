@@ -4,11 +4,13 @@
       <div class="row">
         <div class="col-md-8 col-lg-9">
           <span class="label <%= product_type_class(product) %>"><%= product.curriculum.try(:name) || 'General' %></span>
-          <span itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product-price label label-default">
-            <strong itemprop="price">
-              <%= product_display_price(product) %>
-            </strong>
-          </span>
+          <% unless product.product_type == "group" || product.product_type == "partner" %>
+            <span itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product-price label label-default">
+              <strong itemprop="price">
+                <%= product_display_price(product) %>
+              </strong>
+            </span>
+          <% end %>
           <% cache(@taxon.present? ? [I18n.locale, current_currency, @taxon, product] : [I18n.locale, current_currency, product]) do %>
             <h5 class="product-title margin-top">
               <% if product.group_product? %>
