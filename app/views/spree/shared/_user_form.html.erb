@@ -189,10 +189,4 @@
 
 <script type="text/javascript">
   window.us_country_id = '<%= us_country.id %>';
-  <% cache [:school_signup_data, SchoolDistrict.for_selection.school.last] do %>
-    var schoolData = [{id: '#notListed', text: 'school Not Listed'}].concat(<%= raw school_district_selection_data(SchoolDistrict.for_selection.school.includes(:state)).to_json %>);
-  <% end %>
-  <% cache [:district_signup_data, SchoolDistrict.for_selection.district.last] do %>
-    var districtData = [{id: '#notListed', text: 'district Not Listed'}].concat(<%= raw school_district_selection_data(SchoolDistrict.for_selection.district.includes(:state)).to_json %>);
-  <% end %>
 </script>

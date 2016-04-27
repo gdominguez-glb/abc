@@ -114,16 +114,12 @@ $(function(){
   }
 
   function updateSchoolDistrictSelect(_stateId) {
-    var stateSchoolData, stateDistrictData;
     var stateId = parseInt(_stateId);
-    stateSchoolData = findStateData(window.schoolData, stateId);
-    stateDistrictData = findStateData(window.districtData, stateId);
 
     renderOptions({
       type: "school",
       formatFunc: formatMessage,
       searchFunc: search,
-      data: stateSchoolData,
       stateId: _stateId
     });
 
@@ -131,7 +127,6 @@ $(function(){
       type: "district",
       formatFunc: formatMessage,
       searchFunc: search,
-      data: stateDistrictData,
       stateId: _stateId
     });
   }
@@ -166,23 +161,39 @@ $(function(){
   function renderOptions(options) {
 
     var $elem = $("#spree_user_" + options.type + "_id");
-    var data = options.data;
 
     $elem.select2('destroy');
     $elem.select2({
-      data: data,
       placeholder: 'Select A ' + options.type,
       formatSelection: options.formatFunc,
       formatResult: options.formatFunc,
-      initSelection: function(element, callback){
-        var id = $(element).val();
-        var selectedData = findSelectedData(data, id);
-        callback(selectedData);
+      initSelection: function (element, callback) {
+        if ( $(element).val() !== null ) {
+          return $.getJSON("/school_districts/" + $(element).val(), null, function (data) {
+            return callback(data.item);
+          });
+        }
       },
-      query: function(query) {
-        var data = options.searchFunc(query.term, options.stateId);
-        toggleMessage("." + options.type +"-not-found", data.results.length, query.term.length);
-        query.callback(data);
+      ajax: {
+        url: '/school_districts',
+        datatype: 'json',
+        data: function (term, page) {
+          return {
+            per_page: 20,
+            page: page,
+            q: term,
+            type: options.type,
+            state_id: options.stateId
+          };
+        },
+        results: function (data, page) {
+          var more = page < data.pages;
+          toggleMessage("." + options.type +"-not-found", data.items.length, 1);
+          return {
+            results: data.items,
+            more: more
+          };
+        }
       }
     });
   }
