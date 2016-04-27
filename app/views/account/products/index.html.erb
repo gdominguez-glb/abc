@@ -3,11 +3,16 @@
   <%= render partial: 'notifications', locals: { notifications: @notifications } %>
 
   <div class="row">
-    <div class="col-sm-9">
+    <div class="col-sm-6">
       <h2>My Resources</h2>
     </div>
-    <div class="col-sm-3 text-right-sm">
-      <a href="/contact" class="btn btn-sm btn-default margin-sm-top margin-bottom-m margin-right-reset">
+    <div class="col-xs-6 col-sm-3 col-md-2 col-md-offset-2">
+      <a href="/" class="btn btn-sm btn-default margin-sm-top margin-bottom-m btn-block">
+        <i class="mi">help</i> Tour
+      </a>
+    </div>
+    <div class="col-xs-6 col-sm-3 col-md-2">
+      <a href="/contact" class="btn btn-sm btn-default margin-sm-top margin-bottom-m margin-right-reset btn-block">
         <i class="mi">person</i> Contact Us
       </a>
     </div>
