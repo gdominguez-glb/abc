@@ -174,7 +174,8 @@
   @include rotateY(180deg);
 }
 
-.flip-btn {
+.flip-btn,
+.non-flip-btn {
   position: absolute;
   right: 6px;
   bottom: 6px;
