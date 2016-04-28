@@ -16,8 +16,16 @@ class Spree::Video < ActiveRecord::Base
     {
       title: title,
       description: description,
-      user_ids: [-1]
+      user_ids: find_user_ids_to_index
     }
+  end
+
+  def find_user_ids_to_index
+    return [-1] if self.is_free?
+    return [] if video_group.nil?
+    product_ids = video_group.products.pluck(:id)
+    group_ids = Spree::GroupItem.where(product_id: video_group.products.pluck(:id)).pluck(:group_id)
+    Spree::LicensedProduct.available.where(product_id: product_ids+group_ids).pluck(:user_id).uniq
   end
 
   belongs_to :video_group, class_name: 'Spree::VideoGroup'

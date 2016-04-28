@@ -24,8 +24,7 @@ RSpec.describe Spree::Material, type: :model do
     let!(:product) { create(:product) }
     let!(:material) { create(:spree_material, name: "Test", product: product) }
     let!(:user) { create(:gm_user) }
-    let!(:order) { create(:order, user: user) }
-    let!(:line_item) { create(:line_item, order: order, variant: product.master) }
+    let!(:spree_licensed_product) { create(:spree_licensed_product, user: user, product: product, quantity: 1, expire_at: 1.years.from_now, can_be_distributed: false, fulfillment_at: Date.yesterday) }
 
     it "index name and user ids associate with material" do
       expect(material.search_data).to eq({

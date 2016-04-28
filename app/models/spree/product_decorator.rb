@@ -222,7 +222,7 @@ Spree::Product.class_eval do
   end
 
   def group_parent_products
-    group_product_ids = Spree::Product.where(product_id: self.id).pluck(:group_id)
+    group_product_ids = Spree::GroupItem.where(product_id: self.id).pluck(:group_id)
     Spree::Product.where(id: group_product_ids)
   end
 end
