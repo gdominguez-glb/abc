@@ -1,0 +1,4 @@
+<a href="<%= events_trainings_path(anchor: "event-#{item.title_to_slug}") %>" class="list-group-item">
+  <h4 class="margin-bottom-reset"><%= item.title %></h4>
+  <p class="small margin-bottom-reset"><%= truncate strip_tags(item.content), length: 150 %></p>
+</a>
