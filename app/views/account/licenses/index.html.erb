@@ -87,9 +87,21 @@
   <%= render 'assign_form_js' %>
 
   <%= javascript_tag do %>
-    <% unless current_spree_user.tour_showed_licenses? %>
-      $.get('/account/tour/licenses');
-    <% end %>
+
+    $(function() {
+      function getLicensesTour() {
+        $.get('/account/tour/licenses');
+      }
+
+      <% unless current_spree_user.tour_showed_licenses? %>
+        getLicensesTour();
+      <% end %>
+
+      $('.js-get-licenses-tour').on('click', function(e) {
+        e.preventDefault();
+        getLicensesTour();
+      });
+    });
   <% end %>
 
 <% end %>

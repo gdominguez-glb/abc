@@ -78,6 +78,10 @@ label {
   }
 }
 
+.form-control-sm {
+  padding: 5px 15px 4px;
+}
+
 .form-control[readonly] {
   background: $gray-light;
 }

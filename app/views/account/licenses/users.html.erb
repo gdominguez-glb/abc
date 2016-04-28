@@ -79,11 +79,19 @@
           $.get(url);
         }
       });
-    });
 
-    <% unless current_spree_user.tour_showed_licenses_users? %>
-      startLicensesUsersTour();
-      $.get('/account/tour/licenses_users');
-    <% end %>
+      function getLicensesUsersTour() {
+        $.get('/account/tour/licenses_users');
+      }
+      
+      <% unless current_spree_user.tour_showed_licenses_users? %>
+        getLicensesUsersTour();
+      <% end %>
+
+      $('.js-get-licenses-users-tour').on('click', function(e) {
+        e.preventDefault();
+        getLicensesUsersTour();
+      });
+    });
   <% end %>
 <% end %>

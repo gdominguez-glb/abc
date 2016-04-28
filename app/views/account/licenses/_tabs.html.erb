@@ -6,15 +6,25 @@
       <li role="presentation" class="<%= 'active' if tab == 'users' %>"><a href="/account/licenses/users">User Management</a></li>
     </ul>
   </div>
+  <% if tab == 'licenses' %>
+    <div class="col-xs-4 col-xs-offset-8 col-sm-3 col-md-2 col-sm-offset-3 col-md-offset-4 text-right">
+      <a href="/" class="btn btn-sm btn-default margin-sm-top margin-bottom-m btn-block js-get-licenses-tour">
+        <i class="mi">help</i> Tour
+      </a>
+    </div>
+  <% end %>
   <% if tab == 'users' %>
     <div class="col-sm-6 text-right">
       <form action="" class="form">
         <div class="row">
-          <div class="col-sm-6">
+          <div class="col-xs-6 col-md-3 col-md-offset-3">
+            <a href="/" class="btn btn-sm btn-default margin-sm-top margin-bottom-m btn-block js-get-licenses-users-tour">
+              <i class="mi">help</i> Tour
+            </a>
           </div>
-          <div class="col-sm-6">
+          <div class="col-xs-6">
             <div class="form-group">
-              <%= text_field_tag :query, params[:query], class: 'form-control', placeholder: 'Search Users' %>
+              <%= text_field_tag :query, params[:query], class: 'form-control form-control-sm margin-sm-top', placeholder: 'Search Users' %>
             </div>
           </div>
         </div>
