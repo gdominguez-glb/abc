@@ -15,7 +15,14 @@ class Spree::Material < ActiveRecord::Base
   def search_data
     {
       name: name,
-      user_ids: (product.orders.pluck(:user_id) rescue [])
+      user_ids: find_user_ids_to_index
     }
+  end
+
+  def find_user_ids_to_index
+    group_ids = Spree::GroupItem.where(product_id: product_id).pluck(:group_id)
+    Spree::LicensedProduct.available.where(product_id: [product_id]+group_ids).pluck(:user_id).uniq
+  rescue
+    []
   end
 end
