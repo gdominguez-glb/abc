@@ -1,16 +1,6 @@
 module SearchHelper
   def search_result_partial(item)
-    if item.is_a?(Page)
-      'page_item'
-    elsif item.is_a?(Spree::Product)
-      'product_item'
-    elsif item.is_a?(Spree::Video)
-      'video_item'
-    elsif item.is_a?(Spree::Material)
-      'material_item'
-    elsif item.is_a?(Post)
-      'post_item'
-    end
+    "#{item.class.name.underscore.split('/').last}_item"
   end
 
   def material_link(material)
@@ -28,5 +18,13 @@ module SearchHelper
     end
   rescue
     nil
+  end
+
+  def event_page_link(event_page)
+    if event_page.global?
+      events_list_path(slug: event_page.slug)
+    elsif event_page.curriculum?
+      curriculum_events_path(page_slug: event_page.page.slug, slug: event_page.slug)
+    end
   end
 end

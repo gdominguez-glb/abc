@@ -26,6 +26,16 @@
     text-transform: none;
     text-decoration: underline;
   }
+
+  .home & {
+    position: absolute;
+    top: 10px;
+    width: 100%;
+  }
+
+  .close {
+    z-index: 1000;
+  }
 }
 
 .alert-success {
