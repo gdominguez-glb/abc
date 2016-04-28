@@ -25,11 +25,15 @@ function scrollHandler(checkboxToWatch, agreeRequired) {
   }
 
   function enableButton() {
-    $('.term-continue-button').removeClass('disabled');
+    var $btn = $('.term-continue-button');
+    $btn.removeClass('disabled');
+    $btn.prop("disabled", false);
   }
 
   function disableButton() {
-    $('.term-continue-button').addClass('disabled');
+    var $btn = $('.term-continue-button');
+    $btn.addClass('disabled');
+    $btn.prop("disabled", true);
   }
 
   function activateContinueButton() {
