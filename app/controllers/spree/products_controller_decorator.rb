@@ -32,8 +32,8 @@ Spree::ProductsController.class_eval do
   def find_launch_product
     @product = current_spree_user.products.find_by(slug: params[:id]) || current_spree_user.part_products.find_by(slug: params[:id])
     if @product.blank?
-      flash[:error] = "You don't have access to this product or the license of product is not fulfillmented yet!"
-      redirect_to main_app.root_path
+      flash[:error] = "This product is currently inactive. You will have access on your fulfillment date. If you have any questions, please contact us."
+      redirect_to main_app.account_products_path
       return
     end
   end
