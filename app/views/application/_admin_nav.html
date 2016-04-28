@@ -2,13 +2,13 @@
   <div class="subnav js-dashboard-nav">
     <div class="clearfix navbar-collapse-toggle">
       <a href="<%= main_app.account_products_path %>" class="dropdown-toggle js-dashboard-nav-toggle">
-        My Resources
+        My Dashboard
         <span class="caret"></span>
       </a>
     </div>
     <div class="collapse navbar-collapse dashboard-nav js-dashboard-nav-sections" id="sub-nav">
       <ul>
-        <%= active_link_to "My Resources", main_app.account_products_path, wrap_tag: :li, class: 'my-resource-link' %>
+        <%= active_link_to "My Dashboard", main_app.account_products_path, wrap_tag: :li, class: 'my-resource-link' %>
         <%= active_link_to "Video Gallery", '/video_gallery', wrap_tag: :li, class: 'video-gallery-link' %>
         <% if spree_current_user.has_admin_role? %>
           <%= active_link_to "Store Admin", '/store/admin', wrap_tag: :li %>
