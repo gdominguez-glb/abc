@@ -10,6 +10,7 @@ class SchoolDistrict < ActiveRecord::Base
   validates :state_id, presence: true, if: Proc.new{ |school_district|
     !school_district.unaffiliated? && school_district.country.try(:name) == 'United States'
   }
+  validates :city, presence: true, on: :create
 
   enum place_type: { school: 'school', district: 'district',
                      unaffiliated: 'unaffiliated' }
@@ -154,4 +155,8 @@ class SchoolDistrict < ActiveRecord::Base
   scope :with_state, ->(state_id) {
     where(state_id: state_id) if state_id
   }
+
+  def name_in_option
+    [ name, [city.try(:name), state.try(:name)].compact.join(',') ].join(' - ')
+  end
 end
