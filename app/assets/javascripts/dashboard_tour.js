@@ -2,7 +2,7 @@ function startDashboardTour() {
   var tour = new Shepherd.Tour({ defaults: { classes: 'shepherd-theme-arrows', scrollTo: true } });
 
   tour = tour.addStep('resources', {
-    title: 'Resources',
+    title: 'My Dashboard',
     text: "You can find all the digital resources you have access to right here.",
     attachTo: 'li.my-resource-link bottom'
   });
