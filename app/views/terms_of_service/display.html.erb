@@ -17,7 +17,7 @@
             <%= check_box_tag :accept_terms %> <%= label_tag(:accept_terms, Spree.t('terms_and_conditions.checkbox')) %>
           </div>
           </div>
-          <%= button_tag Spree.t(:save_and_continue), :class => 'continue btn btn-success btn-block-xs disabled term-continue-button margin-bottom' %>
+          <%= button_tag Spree.t(:save_and_continue), :class => 'continue btn btn-success btn-block-xs disabled term-continue-button margin-bottom', :disabled => true %>
           <div class="alert alert-info"><i class="mi">info_outline</i> Scroll through and accept the terms to continue.</div>
         <% end %>
 

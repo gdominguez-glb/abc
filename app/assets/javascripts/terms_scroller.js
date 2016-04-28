@@ -24,12 +24,10 @@ function scrollHandler(checkboxToWatch, agreeRequired) {
     });
   }
 
-  function enableButton() {
-    $('.term-continue-button').removeClass('disabled');
-  }
-
-  function disableButton() {
-    $('.term-continue-button').addClass('disabled');
+  function toggleButtonState() {
+    var $btn = $(".term-continue-button");
+    $btn.toggleClass("disabled");
+    $btn.prop("disabled", !$btn.prop("disabled"));
   }
 
   function activateContinueButton() {
@@ -40,9 +38,9 @@ function scrollHandler(checkboxToWatch, agreeRequired) {
     }
 
     if (scrolledToBottom && agreed) {
-      enableButton();
+      toggleButtonState();
     } else {
-      disableButton();
+      toggleButtonState();
     }
 
   }
