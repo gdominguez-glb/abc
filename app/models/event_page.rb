@@ -11,4 +11,17 @@ class EventPage < ActiveRecord::Base
   def events
     RegonlineEvent.with_filter(self.regonline_filter)
   end
+
+  searchkick callbacks: :async
+
+  def should_index?
+    self.display?
+  end
+
+  def search_data
+    {
+      title: title,
+      description: description
+    }
+  end
 end
