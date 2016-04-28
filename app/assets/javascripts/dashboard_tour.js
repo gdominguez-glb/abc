@@ -7,11 +7,13 @@ function startDashboardTour() {
     attachTo: 'li.my-resource-link bottom'
   });
 
-  tour = tour.addStep('launch', {
-    title: 'Launch',
-    text: 'Use the launch button to navigate into your tools.',
-    attachTo: '.js-my-products bottom'
-  });
+  if ($('.my-products .slick-slide').length) {
+    tour = tour.addStep('launch', {
+      title: 'Launch',
+      text: 'Use the launch button to navigate into your tools.',
+      attachTo: '.js-my-products bottom'
+    });
+  }
 
   tour = tour.addStep('recommendations', {
     title: 'Recommendations',
