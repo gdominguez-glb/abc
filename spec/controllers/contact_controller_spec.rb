@@ -14,8 +14,8 @@ RSpec.describe ContactController, type: :controller do
       allow_any_instance_of(ContactForm).to receive(:perform)
 
       post :create, contact_form: { first_name: 'John' }
-      expect(response).to redirect_to(contact_path)
-      expect(flash[:success]).to eq("Thanks for reaching out. We will be in touch shortly.")
+      expect(response).to redirect_to(root_path)
+      expect(flash[:notice]).to eq("Thanks for reaching out. We will be in touch shortly.")
     end
 
     it "render index when fail to submit" do

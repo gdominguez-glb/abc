@@ -9,8 +9,8 @@ class ContactController < ApplicationController
     @contact_form = ContactForm.new(contact_form_params)
     if @contact_form.valid?
       @contact_form.perform
-      flash[:success] = "Thanks for reaching out. We will be in touch shortly."
-      redirect_to contact_path
+      flash[:notice] = "Thanks for reaching out. We will be in touch shortly."
+      redirect_to root_path
     else
       render :index
     end
