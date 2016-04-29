@@ -21,7 +21,7 @@ RSpec.describe Spree::User do
 
   it { should validate_presence_of(:first_name) }
   it { should validate_presence_of(:last_name) }
-  it { should validate_presence_of(:school_district) }
+  # it { should validate_presence_of(:school_district) }
 
   it { should allow_value('1231asfsdf@#@#').for(:password) }
   it { should_not allow_value('  1231asfsdf@#@#').for(:password) }
