@@ -56,7 +56,7 @@ class Spree::Video < ActiveRecord::Base
 
   def products_to_buy
     (video_group.try(:products) || []).map do |product|
-      (product.free? && !product.individual_sale?) ? product.parent_bundle : product
+      product.individual_sale? ? product : product.parent_bundle
     end.compact.flatten
   end
 
