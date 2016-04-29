@@ -147,3 +147,5 @@ gem 'capistrano-rails', '~> 1.1'
 gem 'capistrano-sidekiq', github: 'seuros/capistrano-sidekiq'
 
 gem 'unicorn', '~> 4.8.3'
+
+gem 'newrelic_rpm'
