@@ -52,7 +52,7 @@ class ContactForm
       'Phone' => self.phone,
       'Type__c' => self.school_district_type,
       'Company' => self.school_district_name,
-      'What_curriculum_are_you_interested_in__c' => self.curriculum
+      'Curriculum__c' => self.curriculum
     }
   end
 
@@ -85,7 +85,7 @@ class ContactForm
     {
       'Country' => 'US',
       'State' => self.state,
-      'What_curriculum_are_you_interested_in__c' => self.curriculum,
+      'Curriculum__c' => self.curriculum,
       'Title_1__c' => self.title_1,
       'Returning_Customer__c' => self.returning_customer,
       'Description' => self.description,
@@ -97,7 +97,7 @@ class ContactForm
     {
       'Country' => 'US',
       'State' => self.state,
-      'What_curriculum_are_you_interested_in__c' => self.curriculum,
+      'Curriculum__c' => self.curriculum,
       'Session_Preference__c' => self.desired_training_topic,
       'X1st_Date_Preference__c' => (self.desired_dates.blank? ? nil : self.desired_dates),
       'Grade_Training_Request__c' => (self.grade_bands || []).join(';'),
