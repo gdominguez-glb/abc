@@ -44,10 +44,12 @@ test:
 qa:
   <<: *default_settings
   app_name: Greatminds (QA)
+  monitor_mode: false
 
 staging:
   <<: *default_settings
   app_name: Greatminds (Staging)
+  monitor_mode: false
 
 production:
   <<: *default_settings
