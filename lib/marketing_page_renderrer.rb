@@ -22,10 +22,17 @@ class MarketingPageRenderrer
   end
 
   def generate_binding(tile_row)
+    blank_tile_rows = build_blank_tile_rows(tile_row)
     b = binding
-    tile_row.each do |k, v|
+    blank_tile_rows.merge(tile_row).each do |k, v|
       b.local_variable_set(k, v)
     end
     b
+  end
+
+  def build_blank_tile_rows(tile_row)
+    tile_definition      = Page::TILES.find{|t| t[:name] == tile_row['rowType'] }
+    all_tile_field_names = tile_definition[:fields].map{|f| f[:name]}
+    Hash[all_tile_field_names.map{|n| [n, nil] }]
   end
 end
