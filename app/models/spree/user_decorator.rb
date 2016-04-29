@@ -11,10 +11,14 @@ Spree::User.class_eval do
   serialize :interested_subjects, Array
 
   validates_format_of :password, with: /\A\S*\z/, message: "can't include spaces", if: :password_required?
-  validates :school_district, presence: true
+  validates :school_district, presence: true, if: :school_district_required?
   validate :beta_password_valid, if: "Rails.env.production?", on: :create
 
   belongs_to :delegate_for_user, class_name: 'Spree::User', foreign_key: :delegate_user_id
+
+  def school_district_required?
+    ['Teacher', 'Administrator', 'Administrative Assistant'].include?(self.title)
+  end
 
   def self.sobject_name
     'Contact'
