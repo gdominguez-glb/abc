@@ -1,0 +1,14 @@
+// *************************************
+//
+//   Twitter Timeline
+//   -> Twitter widget overrides
+//
+// *************************************
+
+.twitter-timeline {
+  display: none;
+
+  &.twitter-timeline-rendered {
+    display: block;
+  }
+}
