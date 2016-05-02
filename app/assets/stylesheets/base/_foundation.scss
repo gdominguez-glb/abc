@@ -13,6 +13,18 @@ body {
   min-height: 100%;
 }
 
+.pages {
+  &.no-tiles {
+    .page {
+
+      @media screen and (min-width: $screen-sm-min) {
+        //pages without tiles have same padding as tiles
+        padding: 84px;
+      }
+    }
+  }
+}
+
 .container {
   width: auto;
 
