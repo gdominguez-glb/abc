@@ -12,7 +12,6 @@ Spree::User.class_eval do
 
   validates_format_of :password, with: /\A\S*\z/, message: "can't include spaces", if: :password_required?
   validates :school_district, presence: true, if: :school_district_required?
-  validate :beta_password_valid, if: "Rails.env.production?", on: :create
 
   belongs_to :delegate_for_user, class_name: 'Spree::User', foreign_key: :delegate_user_id
 
@@ -44,10 +43,6 @@ Spree::User.class_eval do
     end
     # TODO: handle the case where the district is not found
     sfo_data
-  end
-
-  def beta_password_valid
-    errors[:base] << "Beta Password Invalid" if self.beta_password != "GMbeta"
   end
 
   def attributes_for_salesforce
@@ -138,7 +133,7 @@ Spree::User.class_eval do
   has_many :bookmarks
   has_many :product_agreements, class_name: 'Spree::ProductAgreement'
 
-  attr_accessor :school_id, :district_id, :beta_password
+  attr_accessor :school_id, :district_id
 
   accepts_nested_attributes_for :school_district, reject_if: proc { |attributes| attributes['name'].blank? }
 
