@@ -6,6 +6,7 @@
         <p>
           These are the license terms under which you are authorized to use this content. Please read and click I accept if you wish to proceed.
         </p>
+        <div class="alert alert-info margin-top"><i class="mi">info_outline</i> Scroll through and accept the terms to continue.</div>
         <div class="terms_and_conditions_text">
             <h5>License for <%= @product.name %></h5>
             <p>
@@ -14,10 +15,9 @@
         </div>
         <div class="margin-top-s"></div>
       </div>
-        <%= form_tag agree_terms_product_path(@product) do %>
-          <%= submit_tag 'Agree And Continue', class: 'btn btn-primary term-continue-button disabled', :disabled => true %>
-        <% end %>
-      <div class="alert alert-info margin-top"><i class="mi">info_outline</i> Scroll through and accept the terms to continue.</div>
+      <%= form_tag agree_terms_product_path(@product) do %>
+        <%= submit_tag 'Agree And Continue', class: 'btn btn-primary term-continue-button disabled', :disabled => true %>
+      <% end %>
     </div>
   </div>
 </div>
