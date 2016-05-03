@@ -4,6 +4,7 @@
 # User-agent: *
 # Disallow: /
 User-agent: *
+Disallow: /
 Disallow: /store/checkout
 Disallow: /store/cart
 Disallow: /store/orders
