@@ -127,17 +127,15 @@
   }
 }
 
-.video-name {
+.video-name,
+.video-name a {
+  font-size: 15px;
   line-height: 1em;
+  letter-spacing: normal;
+  color: $gray-dark;
 
   #product-details & {
     line-height: .8em;
-  }
-
-  a {
-    font-size: 18px;
-    letter-spacing: normal;
-    color: $gray-dark;
   }
 }
 
