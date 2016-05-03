@@ -34,14 +34,6 @@
         <label><%= f.check_box :allow_communication %> Receive Newsletter and updates </label>
       </div>
     </div>
-    <% if Rails.env.production? %>
-      <div class="col-md-6">
-        <div class="form-group">
-          <label>Beta Password</label>
-          <%= f.password_field :beta_password, :class => 'form-control' %>
-        </div>
-      </div>
-    <% end %>
   </div>
   <div class="row">
     <div class="col-md-6">

@@ -77,20 +77,6 @@ RSpec.describe Spree::User do
     end
   end
 
-  describe "#beta_password_valid" do
-    it "set error on base without password" do
-      user.beta_password_valid
-
-      expect(user.errors[:base]).to include('Beta Password Invalid')
-    end
-
-    it "not set error with correct password" do
-      user.beta_password = 'GMbeta'
-
-      expect(user.errors[:base]).to be_empty
-    end
-  end
-
   describe "#bought_free_trial_product?" do
     let(:purchase_once_product) { create(:product, purchase_once: true) }
 
