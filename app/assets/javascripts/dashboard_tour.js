@@ -28,7 +28,7 @@ function startDashboardTour() {
   });
 
   tour = tour.addStep('store', {
-    title: 'Store',
+    title: 'Shop',
     text: 'Looking for more great resources? You can find everything from the Eureka Digital Suite to free parent tip sheets in our shop. As soon as you check out, they will be accessible from your dashboard.',
     attachTo: 'li.store-link bottom'
   });
