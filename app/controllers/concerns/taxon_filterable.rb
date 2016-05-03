@@ -10,7 +10,7 @@ module TaxonFilterable
 
   def generate_intersect_sql(entities, taxons)
     taxons.group_by(&:taxonomy).values.map do |t_taxons|
-      "( #{entities.with_taxons(t_taxons).to_sql} )"
+      "( #{entities.with_taxons(t_taxons).limit(nil).offset(nil).to_sql} )"
     end.join(' INTERSECT ')
   end
 
