@@ -3,6 +3,7 @@
   <p>
     These are the license terms under which you are authorized to use this content. Please read and click I accept if you wish to proceed.
   </p>
+  <div class="alert alert-info"><i class="mi">info_outline</i> Scroll through and accept the terms to continue.</div>
   <div class="terms_and_conditions_text">
     <% @current_order.products.select{|p| p.license_text.present?}.each do |product| %>
       <h5>License for <%= product.name %></h5>
@@ -16,7 +17,6 @@
   </div>
 </div>
 <%= button_tag Spree.t(:save_and_continue), :class => 'continue btn btn-success btn-block-xs disabled term-continue-button margin-bottom', :disabled => true %>
-<div class="alert alert-info"><i class="mi">info_outline</i> Scroll through and accept the terms to continue.</div>
 
 <script type="text/javascript">
   $(function() {
