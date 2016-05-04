@@ -1,5 +1,7 @@
 <% @body_id = 'product-details' %>
 
+<% console %>
+
 <div class="col-sm-10 col-sm-offset-1 margin-top-xxl margin-bottom-xl">
 
   <% cache [I18n.locale, current_currency, @product] do %>
@@ -37,23 +39,25 @@
             <div id="product-description" data-hook="product_description" class="product-description">
               <h2 class="product-title" itemprop="name"><%= @product.name %></h2>
               <% if @product.price_in(current_currency) and !@product.price.nil? %>
-                <div data-hook="product_price">
-                  <div id="product-price">
-                    <div>
-                      <span class="lead price selling label label-default" itemprop="price">
-                        <%= product_display_price(@product) %>
-                      </span>
-                      <span itemprop="priceCurrency" content="<%= @product.currency %>"></span>
-                    </div>
+                <% unless @product.product_type == "group" || @product.product_type == "partner" %>
+                  <div data-hook="product_price">
+                    <div id="product-price">
+                      <div>
+                        <span class="lead price selling label label-default" itemprop="price">
+                          <%= product_display_price(@product) %>
+                        </span>
+                        <span itemprop="priceCurrency" content="<%= @product.currency %>"></span>
+                      </div>
 
-                    <% if @product.master.can_supply? %>
-                      <link itemprop="availability" href="http://schema.org/InStock" />
-                    <% elsif @product.variants.empty? %>
-                      <br />
-                      <span class="out-of-stock"><%= Spree.t(:out_of_stock) %></span>
-                    <% end %>
+                      <% if @product.master.can_supply? %>
+                        <link itemprop="availability" href="http://schema.org/InStock" />
+                      <% elsif @product.variants.empty? %>
+                        <br />
+                        <span class="out-of-stock"><%= Spree.t(:out_of_stock) %></span>
+                      <% end %>
+                    </div>
                   </div>
-                </div>
+                <% end %>
               <% else %>
                 <div id="product-price">
                   <br>
