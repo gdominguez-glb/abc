@@ -96,6 +96,11 @@
     text-decoration: underline;
   }
 
+  &.btn-link-alt {
+    text-decoration: none;
+    white-space: normal;
+  }
+
   &.header-form-control {
     height: 34px;
     padding: 6px 12px;
