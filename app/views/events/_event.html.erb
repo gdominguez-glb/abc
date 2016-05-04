@@ -11,12 +11,10 @@
           <% if event.start_date.present? && event.end_date.present? %>
             <%= date_range(event.start_date, event.end_date, format: :short) %><br />
           <% end %>
-
-          <%= [event.location_address1, event.location_name, event.state].reject(&:blank?).join(', ') %>
         </small>
 
         <% if event.download_url.present? %>
-          <small class="block"><%= link_to "Event Details", event.download_url, class: 'btn btn-info', target: '_blank' %></small>
+          <small class="block"><%= link_to "Event Details", event.download_url, class: 'btn btn-info margin-bottom', target: '_blank' %></small>
         <% end %>
       </div>
     <% end %>
