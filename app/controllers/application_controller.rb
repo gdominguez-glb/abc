@@ -16,7 +16,17 @@ class ApplicationController < ActionController::Base
     redirect_to :root, alert: exception.message
   end
 
-  http_basic_authenticate_with name: ENV['auth_username'], password: ENV['auth_password'], if: :require_http_basic_auth
+  before_action :custom_authenticate, if: :require_http_basic_auth
+
+  def custom_authenticate
+    authenticate_or_request_with_http_basic('Not what you were looking for? Please visit greatminds.net.') do |username, password|
+      if(username == ENV['auth_username'] && password == ENV['auth_password'])
+        true
+      else
+        redirect_to '/auth_error.html'
+      end
+    end
+  end
 
   def signed_in_root_path(resource_or_scope)
     if resource_or_scope.is_a?(Spree::User)
