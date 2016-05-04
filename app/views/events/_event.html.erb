@@ -14,6 +14,10 @@
 
           <%= [event.location_address1, event.location_name, event.state].reject(&:blank?).join(', ') %>
         </small>
+
+        <% if event.download_url.present? %>
+          <small class="block"><%= link_to "Event Details", event.download_url, class: 'btn btn-info', target: '_blank' %></small>
+        <% end %>
       </div>
     <% end %>
 
@@ -28,10 +32,6 @@
             <%= link_to event_traning.title, events_trainings_path(anchor: "event-#{event_traning.title_to_slug}") %> <%= "," unless event.event_trainings.size == index + 1  %>
           <% end %>
         </small>
-      <% end %>
-
-      <% if event.download_url.present? %>
-        <small class="block"><%= link_to "Event Details", event.download_url, class: 'btn btn-info', target: '_blank' %></small>
       <% end %>
     </div>
   </div>
