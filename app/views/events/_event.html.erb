@@ -27,9 +27,9 @@
       <% end %>
 
       <% if event.session_types.present? %>
-        <small class="block margin-bottom">Session types:
+        <small class="block margin-bottom">Session types:<br />
           <% event.event_trainings.each_with_index do |event_traning, index| %>
-            <%= link_to event_traning.title, events_trainings_path(anchor: "event-#{event_traning.title_to_slug}") %> <%= "," unless event.event_trainings.size == index + 1  %>
+            <%= link_to event_traning.title, events_trainings_path(anchor: "event-#{event_traning.title_to_slug}") %><br />
           <% end %>
         </small>
       <% end %>
