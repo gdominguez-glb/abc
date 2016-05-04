@@ -1,17 +1,3 @@
-<% if order.payment_required? %>
-  <div class="row">
-    <div class="col-xs-12">
-      <p class="alert alert-info"><i class="mi">info_outline</i> Please confirm that the information listed below is accurate before clicking "place order".</p>
-    </div>
-  </div>
-<% else %>
-  <div class="row">
-    <div class="col-xs-12">
-      <p class="alert alert-info"><i class="mi">info_outline</i> Once you confirm below you will be taken to your dashboard where you can access all your online products.</p>
-    </div>
-  </div>
-<% end %>
-
 <div class="row steps-data">
   <% if order.has_step?("address") %>
     <div class="col-md-3" data-hook="order-bill-address">
