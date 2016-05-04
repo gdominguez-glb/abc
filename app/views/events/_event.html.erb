@@ -11,27 +11,25 @@
           <% if event.start_date.present? && event.end_date.present? %>
             <%= date_range(event.start_date, event.end_date, format: :short) %><br />
           <% end %>
-
-          <%= [event.location_address1, event.location_name, event.state].reject(&:blank?).join(', ') %>
         </small>
+
+        <% if event.download_url.present? %>
+          <small class="block"><%= link_to "Event Details", event.download_url, class: 'btn btn-info margin-bottom', target: '_blank' %></small>
+        <% end %>
       </div>
     <% end %>
 
     <div class="col-md-6">
       <% if event.grade_bands.present? %>
-        <small class="block margin-bottom">Grade Bands: <%= event.grade_bands %></small>
+        <small class="block margin-bottom">Grade Bands: <strong><%= event.grade_bands %></strong></small>
       <% end %>
 
       <% if event.session_types.present? %>
-        <small class="block margin-bottom">Session types:
+        <small class="block margin-bottom">Session types:<br />
           <% event.event_trainings.each_with_index do |event_traning, index| %>
-            <%= link_to event_traning.title, events_trainings_path(anchor: "event-#{event_traning.title_to_slug}") %> <%= "," unless event.event_trainings.size == index + 1  %>
+            <%= link_to event_traning.title, events_trainings_path(anchor: "event-#{event_traning.title_to_slug}") %><br />
           <% end %>
         </small>
-      <% end %>
-
-      <% if event.download_url.present? %>
-        <small class="block"><%= link_to "Event Details", event.download_url, class: 'btn btn-info', target: '_blank' %></small>
       <% end %>
     </div>
   </div>
