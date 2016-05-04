@@ -23,7 +23,7 @@
 
     <div class="col-md-6">
       <% if event.grade_bands.present? %>
-        <small class="block margin-bottom">Grade Bands: <%= event.grade_bands %></small>
+        <small class="block margin-bottom">Grade Bands: <strong><%= event.grade_bands %></strong></small>
       <% end %>
 
       <% if event.session_types.present? %>
