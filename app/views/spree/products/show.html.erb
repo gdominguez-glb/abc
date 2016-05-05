@@ -12,13 +12,8 @@
             <div id="product-images" class="product-images" data-hook="product_images">
               <div id="main-image" class="panel panel-default" data-hook>
                 <div class="panel-body text-center">
-                  <% @product.images.each do |image| %>
-                    <%= render :partial => 'image', locals: { image: image } %>
-                  <% end %>
+                  <%= render :partial => 'image', locals: { image: @product.images.first } %>
                 </div>
-              </div>
-              <div id="thumbnails" data-hook>
-                <%= render :partial => 'thumbnails' %>
               </div>
             </div>
 
