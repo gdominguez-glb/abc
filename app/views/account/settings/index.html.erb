@@ -56,7 +56,7 @@
   <div class="row">
     <div class="col-sm-6">
       <div class="form-group">
-        <label>Subjects you are interested in</label>
+        <label>Subject(s) you are interested in</label>
         <%= f.collection_select :interested_subjects, Curriculum.visibles, :id, :name, { include_hidden: false, multiple: true }, { class: 'form-control', tabindex: 7, multiple: 'multiple' } %>
       </div>
     </div>
