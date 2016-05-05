@@ -20,7 +20,7 @@
               <% end %>
             </h5>
             <p class="product-description">
-              <%= product.short_description %>
+              <%= product.short_description.html_safe rescue '' %>
               <% if product.group_product? %>
                 <%= link_to "Learn More", group_product_path(product), itemprop: "name", title: product.name %>
               <% else %>
