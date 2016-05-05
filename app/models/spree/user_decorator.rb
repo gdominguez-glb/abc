@@ -122,7 +122,7 @@ Spree::User.class_eval do
   has_many :managed_licensed_products, -> { unexpire.fulfillmentable }, class_name: 'Spree::LicensedProduct'
   has_many :products, -> { unexpire.where(spree_licensed_products: { can_be_distributed: false }).order('spree_licensed_products.id desc') }, through: :licensed_products, class_name: 'Spree::Product'
   has_many :dashboard_licensed_products, -> { unexpire }, class_name: 'Spree::LicensedProduct'
-  has_many :products_in_dashboard, -> { unexpire.where(spree_licensed_products: { can_be_distributed: false }).order('spree_licensed_products.id desc') }, through: :dashboard_licensed_products, class_name: 'Spree::Product', source: :product
+  has_many :products_in_dashboard, -> { unexpire.where(spree_licensed_products: { can_be_distributed: false }).where("spree_licensed_products.quantity > 0").order('spree_licensed_products.id desc') }, through: :dashboard_licensed_products, class_name: 'Spree::Product', source: :product
   has_many :materials, -> { uniq }, through: :products, class_name: 'Spree::Material'
   has_many :product_distributions, foreign_key: :from_user_id, class_name: 'Spree::ProductDistribution'
   has_many :to_users, -> { uniq }, through: :product_distributions, class_name: 'Spree::User'
