@@ -7,7 +7,7 @@ class DownloadPagesController < ApplicationController
     redirect_to root_path if @download_page.blank?
 
     @products            = @download_page.products
-    @boughted_products   = current_spree_user.products.where(id: @products.map(&:id))
+    @boughted_products   = current_spree_user.accessible_products.where(id: @products.map(&:id))
 
     set_product_tracks
     set_bookmark_ids
