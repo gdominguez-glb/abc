@@ -6,8 +6,11 @@ class Cms::BaseController < ApplicationController
 
   def authenticate_cms_accessor!
     authenticate_spree_user!
+    if current_spree_user.has_vanity_admin_role?
+      redirect_to cms_vanity_urls_path and return
+    end
     unless current_spree_user.has_admin_role?
-      redirect_to '/'
+      redirect_to '/' and return
     end
   end
 

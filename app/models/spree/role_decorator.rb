@@ -10,4 +10,8 @@ Spree::Role.class_eval do
   def self.school_admin
     Spree::Role.find_or_create_by(name: 'school admin')
   end
+
+  def self.vanity_admin
+    Spree::Role.find_or_create_by(name: 'vanity admin')
+  end
 end
