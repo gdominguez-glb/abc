@@ -21,18 +21,6 @@
       </div>
     <% end %>
     <div class="col-sm-2 footer-section">
-      <h6 class="section-lead">
-        News
-      </h6>
-      <ul>
-        <% MediumPublication.global.each do |blog| %>
-          <li>
-            <%= link_to blog.title, main_app.global_blog_path(slug: blog.slug) %>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-    <div class="col-sm-2 footer-section">
       <h6 class="section-lead">Connect</h6>
       <ul>
         <li>
