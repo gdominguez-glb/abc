@@ -17,8 +17,8 @@ function startDashboardTour() {
 
   tour = tour.addStep('recommendations', {
     title: 'Recommendations',
-    text: 'Recommendations will keep you in the loop about everything from new blog posts to professional development opportunities.',
-    attachTo: '.js-recommends right'
+    text: 'These will keep you posted about blog posts, professional development, etc.',
+    attachTo: '.js-recommends top'
   });
 
   tour = tour.addStep('video_gallery', {
@@ -29,14 +29,8 @@ function startDashboardTour() {
 
   tour = tour.addStep('store', {
     title: 'Shop',
-    text: 'Looking for more great resources? You can find everything from the Eureka Digital Suite to free parent tip sheets in our shop. As soon as you check out, they will be accessible from your dashboard.',
-    attachTo: 'li.store-link bottom'
-  });
-
-  tour = tour.addStep('support', {
-    title: 'Support',
-    text: "Need support? Check out our FAQ section. If you don't find what you're looking for, don't hesitate to contact us.",
-    attachTo: '.js-footer top',
+    text: 'Looking for more great resources? You can find them here.',
+    attachTo: 'li.store-link bottom',
     buttons: [
         {
           text: 'Exit',
