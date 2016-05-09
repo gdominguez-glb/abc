@@ -88,6 +88,7 @@ class Spree::LicensedProduct < ActiveRecord::Base
   scope :distributable, ->{ where(can_be_distributed: true) }
   scope :undistributable, ->{ where(can_be_distributed: false) }
   scope :fulfillmentable, -> { where("spree_licensed_products.fulfillment_at < ? or spree_licensed_products.fulfillment_at is NULL", Time.now) }
+  scope :quantible, -> { where("spree_licensed_products.quantity > 0") }
 
   validates_presence_of :product
   validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, allow_blank: true
