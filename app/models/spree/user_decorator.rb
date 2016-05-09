@@ -19,6 +19,12 @@ Spree::User.class_eval do
     ['Teacher', 'Administrator', 'Administrative Assistant'].include?(self.title)
   end
 
+  def state_name
+    school_district.try(:state).try(:name) ||
+      ship_address.try(:state).try(:name) ||
+      bill_address.try(:state).try(:name)
+  end
+
   def self.sobject_name
     'Contact'
   end

@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  helper_method :ghost_login?, :admin_ghost_login?, :current_user_state
+  helper_method :ghost_login?, :admin_ghost_login?
 
   before_action :accepted_terms
   skip_before_action :accepted_terms, only: [:logout]
@@ -77,10 +77,4 @@ class ApplicationController < ActionController::Base
     Rails.env.qa? || Rails.env.staging? || Rails.env.production?
   end
 
-  def current_user_state
-    results = Geocoder.search(request.ip)
-    results.first.data['region_name']
-  rescue
-    nil
-  end
 end
