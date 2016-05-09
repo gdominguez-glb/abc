@@ -4,7 +4,9 @@ Spree::Order.class_eval do
   belongs_to :school_district
   belongs_to :admin_user, class_name: 'Spree::User'
 
-  enum source: { web: 0, fulfillment: 1, cc_process: 2 }
+  if !Spree::Order.method_defined?(:fulfillment?)
+    enum source: { web: 0, fulfillment: 1, cc_process: 2 }
+  end
 
   include SalesforceAccess
   include SalesforceAddress
