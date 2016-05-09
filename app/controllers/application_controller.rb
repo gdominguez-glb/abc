@@ -76,4 +76,5 @@ class ApplicationController < ActionController::Base
     return false if self.class.ancestors.include?(Api::BaseController)
     Rails.env.qa? || Rails.env.staging? || Rails.env.production?
   end
+
 end

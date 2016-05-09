@@ -1,5 +1,7 @@
 Spree::CheckoutController.class_eval do
 
+  before_action :check_user_state, only: [:edit]
+
   # override to custom page after complete order
   def completion_route(custom_params = nil)
     if @order.all_digitals? && @order.license_admin_email.blank?
@@ -12,4 +14,22 @@ Spree::CheckoutController.class_eval do
     end
   end
 
+  def check_user_state
+    if params[:state] == 'address' &&
+      !current_order.free? &&
+      require_adoption_pricing_state?(current_spree_user.state_name || current_user_state)
+      flash[:warning] = "We're unable to accept online orders from schools or districts in Louisiana and Tennessee at this time. If you're a teacher or administrator in Louisiana or Tennessee, please <a href='#{main_app.contact_path}'>contact us</a> and we will be happy to assist you."
+    end
+  end
+
+  def current_user_state
+    results = Geocoder.search(request.ip)
+    results.first.data['region_name']
+  rescue
+    nil
+  end
+
+  def require_adoption_pricing_state?(state_name)
+    ['Louisiana', 'Tennessee'].include?(state_name)
+  end
 end
