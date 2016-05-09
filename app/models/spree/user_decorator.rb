@@ -288,7 +288,7 @@ Spree::User.class_eval do
     self.product_agreements.where(product: product).exists?
   end
 
-  before_save :subscribe_list
+  after_commit :subscribe_list
 
   def subscribe_list
     if self.allow_communication_changed?
