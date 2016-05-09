@@ -13,6 +13,7 @@ module Spree
 
       def update
         @licensed_product.update(license_params)
+        @licensed_product.product_distribution.update(quantity: @licensed_product.quantity) if @licensed_product.product_distribution
         redirect_to admin_user_licenses_path(@user), notice: 'Update license successfully'
       end
 
