@@ -4,4 +4,10 @@ class DownloadPage < ActiveRecord::Base
 
   has_many :download_products
   has_many :products, through: :download_products
+
+  before_save :lowercase_slug
+
+  def lowercase_slug
+    self.slug = self.slug.downcase
+  end
 end

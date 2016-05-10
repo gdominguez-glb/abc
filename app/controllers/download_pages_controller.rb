@@ -4,7 +4,9 @@ class DownloadPagesController < ApplicationController
   helper_method :locked_product?, :bookmarked_material?
 
   def show
-    redirect_to root_path if @download_page.blank?
+    if @download_page.blank?
+      redirect_to not_found_path and return
+    end
 
     @products            = @download_page.products
     @boughted_products   = current_spree_user.accessible_products.where(id: @products.map(&:id))
@@ -16,7 +18,7 @@ class DownloadPagesController < ApplicationController
   private
 
   def find_download_page
-    @download_page = DownloadPage.find_by(slug: params[:slug])
+    @download_page = DownloadPage.find_by(slug: params[:slug].downcase)
   end
 
   def locked_product?(product)
