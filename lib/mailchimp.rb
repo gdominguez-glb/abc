@@ -43,16 +43,37 @@ class Mailchimp
 
   def self.subscribe(list_id, info={})
     url = "#{API_ROOT}lists/#{list_id}/members"
-    HTTParty.post(url, 
-                  body: { status: 'subscribed', email_address: info[:email], merge_fields: {FNAME: info[:first_name], LNAME: info[:last_name] } }.to_json,
-                  basic_auth: auth,
-                  headers: { 'content-type' => 'application/json'}
-                 )
+    if member_exists?(list_id, info[:email])
+      subscribe_exist_user(list_id, info[:email])
+    else
+      res = HTTParty.post(url,
+                    body: { status: 'subscribed', email_address: info[:email], merge_fields: {FNAME: info[:first_name], LNAME: info[:last_name] } }.to_json,
+                    basic_auth: auth,
+                    headers: { 'content-type' => 'application/json'}
+                   )
+      puts res.inspect
+    end
+  end
+
+  def self.subscribe_exist_user(list_id, email)
+    url = "#{API_ROOT}lists/#{list_id}/members/#{Digest::MD5.hexdigest(email)}"
+    res = HTTParty.patch(url, body: { status: 'subscribed' }.to_json, basic_auth: auth, headers: { 'content-type' => 'application/json'})
+    puts res.inspect
+  end
+
+  def self.member_exists?(list_id, email)
+    url = "#{API_ROOT}lists/#{list_id}/members/#{Digest::MD5.hexdigest(email)}"
+    res = HTTParty.get(url, basic_auth: auth, headers: { 'content-type' => 'application/json'})
+    res.response.code == '200'
   end
 
   def self.unsubscribe(list_id, email)
     url = "#{API_ROOT}lists/#{list_id}/members/#{Digest::MD5.hexdigest(email)}"
-    HTTParty.delete(url, basic_auth: auth)
+    HTTParty.patch(url,
+                   body: { status: 'unsubscribed' }.to_json,
+                   basic_auth: auth,
+                   headers: { 'content-type' => 'application/json'}
+                  )
   end
 
   def self.lists
