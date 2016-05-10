@@ -1,4 +1,5 @@
 class DownloadPagesController < ApplicationController
+  before_action :authenticate_user!
   before_action :find_download_page
 
   helper_method :locked_product?, :bookmarked_material?
