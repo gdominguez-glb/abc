@@ -3,13 +3,20 @@ upstream unicorn {
 }
 
 server {
-  server_name www.<%= node['domain'] %>;
-  return 301 $scheme://<%= node['domain'] %>$request_uri;
+  server_name www.<%= node['the_domain'] %>;
+  return 301 $scheme://<%= node['the_domain'] %>$request_uri;
 }
+
+<% if node['rails_env'] == 'production' %>
+  server {
+    server_name beta.<%= node['the_domain'] %>;
+    return 301 $scheme://<%= node['the_domain'] %>$request_uri;
+  }
+<% end %>
 
 server {
   listen 80 default deferred;
-  server_name <%= node['domain'] %>;
+  server_name <%= node['the_domain'] %>;
   root /var/www/<%= node['app'] %>/current/public;
 
   client_max_body_size 1024m;
