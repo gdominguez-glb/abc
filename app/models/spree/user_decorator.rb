@@ -291,12 +291,10 @@ Spree::User.class_eval do
   after_commit :subscribe_list
 
   def subscribe_list
-    if self.allow_communication_changed?
-      if self.allow_communication?
-        Mailchimp.delay.subscribe_for_user(self.id)
-      else
-        Mailchimp.delay.unsubscribe_user(self.id)
-      end
+    if self.allow_communication?
+      Mailchimp.delay.subscribe_for_user(self.id)
+    else
+      Mailchimp.delay.unsubscribe_user(self.id)
     end
   end
 
