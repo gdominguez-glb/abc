@@ -2,7 +2,7 @@ $(()->
   $('#licensesDropdown').find('.dropdown-menu a').on('click', ()->
     url = '/account/licenses/licenses_stats'
     $el = $(this)
-    licensesId = $el.data('product');
+    licensesId = $el.data('product')
 
     $.ajax
       url: url

@@ -33,7 +33,7 @@ window.initMyProductsSlick = function() {
       // instead of a settings object
     ]
   });
-}
+};
 
 $(function(){
 
