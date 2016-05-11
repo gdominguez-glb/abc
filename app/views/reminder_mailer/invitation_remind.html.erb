@@ -1,0 +1,11 @@
+<p><%= @from_user.full_name %> has given you access to: </p>
+
+<% @product_names.each do |product_name| %>
+<p>
+  <%= product_name %>
+</p>
+<% end %>
+
+<p>
+  Click here <%= link_to spree.signup_url, spree.signup_url %> and register with this email address to get access to your product(s). 
+</p>
