@@ -2,6 +2,7 @@ class ContactForm
   include ActiveModel::Model
 
   TOPICS = ["Sales/Purchasing", "Existing Order Support", "Professional Development", "Curriculum Support", "Technical Support", "Parent Support", "Content Error", "General and Other"]
+  TOPICS_HASH = TOPICS.inject({}) {|result, topic| result[topic] = topic.gsub(' ', '-').underscore.dasherize.gsub('/', '-'); result }
 
   ROLES = ["Teacher", "Parent",  "Administrator", "Other"]
 

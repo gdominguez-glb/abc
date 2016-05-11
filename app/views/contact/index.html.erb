@@ -34,7 +34,7 @@
             </button>
             <ul class="dropdown-menu">
               <% ContactForm::TOPICS.each do |topic| %>
-                <li><a href="#" data-topic="<%= topic %>"><%= topic %></a></li>
+                <li><a href="#" data-topic="<%= topic %>" data-topic-hash="<%= ContactForm::TOPICS_HASH[topic] %>"><%= topic %></a></li>
               <% end %>
             </ul>
           </div>
@@ -267,6 +267,7 @@
 <%= content_for :javascripts do %>
   <%= javascript_tag do %>
     $(function(){
+      var topicHash = <%= ContactForm::TOPICS_HASH.to_json.html_safe %>;
       $('#contact_form_grade_bands').select2({});
 
       function requireDescription() {
@@ -385,6 +386,8 @@
         var topic = $(this).text();
         var mapping = topicFieldMapping[topic];
 
+        updateLocationHash(topic);
+
         $('#contact_form_topic').val(topic);
 
         $('.dependent-field').addClass('hidden');
@@ -401,6 +404,15 @@
       <% if @contact_form.topic.present? %>
         $('[data-topic="<%= @contact_form.topic %>"]').trigger('click');
       <% end %>
+
+      function updateLocationHash(topic) {
+        if (topic == 'Sales/Purchasing') {
+          var hash = 'sales';
+        } else {
+          var hash = topicHash[topic];
+        }
+        window.location.hash = hash;
+      }
 
       function toggleDependentFields(mapping) {
         _.each(mapping, function(m, i){
@@ -438,6 +450,8 @@
       var hash = window.location.hash;
       if(hash == '#sales') {
         $('#topicDropdown').find('[data-topic="Sales/Purchasing"]').trigger('click');
+      } else {
+        $('#topicDropdown').find('[data-topic-hash="'+ hash.replace('#', '') +'"]').trigger('click');
       }
     });
   <% end %>
