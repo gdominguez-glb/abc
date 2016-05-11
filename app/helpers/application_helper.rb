@@ -12,4 +12,13 @@ module ApplicationHelper
     end
     taxon_ids << taxon.id
   end
+
+  def preview_medium_publication_link(medium_publication)
+    if medium_publication.blog_type == 'curriculum'
+      main_app.curriculum_blog_path(page_slug: medium_publication.page.slug, slug: medium_publication.slug)
+    else
+      main_app.global_blog_path(slug: medium_publication.slug)
+    end
+  end
+
 end
