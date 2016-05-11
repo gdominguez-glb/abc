@@ -23,8 +23,9 @@ Spree::OrdersController.class_eval do
   def validate_line_item_quantity!
     if params[:order] && params[:order][:line_items_attributes]
       params[:order][:line_items_attributes].each do |key, line_item_params|
-        if line_item_params[:quantity].to_i > 15
-          flash[:error] = "To place an order for more than 15 licenses of this product you must <a href='/contact'>contact us</a>.".html_safe
+        product = Spree::LineItem.find(line_item_params[:id]).product
+        if line_item_params[:quantity].to_i > product.max_quantity_to_purchase
+          flash[:error] = "To place an order for more than #{product.max_quantity_to_purchase} licenses of this #{product.free? ? 'free' : 'paid' } product you must <a href='/contact'>contact us</a>.".html_safe
           return false
         end
       end

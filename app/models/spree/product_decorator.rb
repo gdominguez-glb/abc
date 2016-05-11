@@ -225,4 +225,8 @@ Spree::Product.class_eval do
     group_product_ids = Spree::GroupItem.where(product_id: self.id).pluck(:group_id)
     Spree::Product.where(id: group_product_ids)
   end
+
+  def max_quantity_to_purchase
+    free? ? MAX_FREE_PRODUCT_QUANTITY : MAX_PAID_PRODUCT_QUANTITY
+  end
 end
