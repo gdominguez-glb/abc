@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-md-8 col-lg-9">
           <span class="label <%= product_type_class(product) %>"><%= product.curriculum.try(:name) || 'General' %></span>
-          <% unless product.product_type == "group" || product.product_type == "partner" %>
+          <% unless product.product_type == "group" || product.product_type == "partner" || product.get_in_touch_product? %>
             <span itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product-price label label-default">
               <strong itemprop="price">
                 <%= product_display_price(product) %>
