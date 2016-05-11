@@ -68,3 +68,6 @@ Spree::PermittedAttributes.source_attributes.concat([
 ])
 
 Spree::PermittedAttributes.checkout_attributes.concat([ :license_admin_email, :distribute_option ])
+
+MAX_FREE_PRODUCT_QUANTITY = 1
+MAX_PAID_PRODUCT_QUANTITY = 5
