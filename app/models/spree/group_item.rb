@@ -6,12 +6,12 @@ class Spree::GroupItem < ActiveRecord::Base
   after_destroy :set_product_storefront_on_destroy
 
   def set_product_storefront_on_create
-    self.product.update(show_in_storefront: false)
+    self.product.update_column(:show_in_storefront, false)
   end
 
   def set_product_storefront_on_destroy
     if !Spree::GroupItem.where(product_id: self.product_id).exists?
-      self.product.update(show_in_storefront: true)
+      self.product.update_column(:show_in_storefront, true)
     end
   end
 end
