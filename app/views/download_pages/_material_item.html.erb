@@ -22,33 +22,33 @@
       <div class="col-xs-12 text-left">
         <% if material.link.present? %>
           <%= link_to material.link, target: '_blank', class: 'btn btn-default btn-icon' do %>
-            <i class="mi md-18" title='View'>open_in_browser</i>
+            <i class="mi md-18 js-tooltip-trigger" data-toggle="tooltip" title='View'>open_in_browser</i>
           <% end %>
         <% end %>
         <% if material.material_files_count == 1 && material.children.count == 0 %>
           <%= link_to download_material_path(material), remote: true, class: 'btn btn-default btn-icon' do %>
-            <i class="mi md-18" title='Download'>cloud_download</i>
+            <i class="mi md-18 js-tooltip-trigger" title='Download'>cloud_download</i>
           <% end %>
         <% end %>
         <% if material.material_files_count > 0 %>
 
           <% if material.material_files_count == 1 %>
             <%= link_to material.material_files.first.file.preview_expiring_url(60*60*60), target: '_blank', class: 'btn btn-default btn-icon' do %>
-              <i class="mi md-18" title="View">remove_red_eye</i>
+              <i class="mi md-18 js-tooltip-trigger" title="View">remove_red_eye</i>
             <% end %>
           <% else %>
             <%= link_to preview_material_path(material), remote: true, class: 'btn btn-default btn-icon' do %>
-              <i class="mi md-18" title="View">remove_red_eye</i>
+              <i class="mi md-18 js-tooltip-trigger" title="View">remove_red_eye</i>
             <% end %>
           <% end %>
 
           <%# <% if bookmarked_material?(material) %1> %>
           <%#   <%= link_to remove_bookmark_material_path(material, ref_id: "#bookmark-#{material.id}"), id: "bookmark-#{material.id}", remote: true, data: { method: :post }, class: 'btn btn-default btn-icon' do %1> %>
-          <%#     <i class="mi md-18">bookmark</i> %>
+          <%#     <i class="mi md-18 js-tooltip-trigger">bookmark</i> %>
           <%#   <% end %1> %>
           <%# <% else %1> %>
           <%#   <%= link_to bookmark_material_path(material, ref_id: "#bookmark-#{material.id}"), id: "bookmark-#{material.id}", remote: true, data: { method: :post }, class: 'btn btn-default btn-icon' do %1> %>
-          <%#     <i class="mi md-18">bookmark_border</i> %>
+          <%#     <i class="mi md-18 js-tooltip-trigger">bookmark_border</i> %>
           <%#   <% end %1> %>
           <%# <% end %1> %>
 
@@ -62,3 +62,9 @@
     </div>
   <% end %>
 </div>
+
+<%= javascript_tag do %>
+  $(document).ready(function(){
+    $('.js-tooltip-trigger').tooltip();
+  });
+<% end %>
