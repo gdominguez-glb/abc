@@ -25,20 +25,21 @@
   }
 
   figure {
-    margin-bottom: $b-space-l;
-    padding: $b-space;
-    border: 1px solid $brand-primary;
+    text-align: center;
 
-    @media screen and (min-width: $screen-sm-min) {
-      max-width: 600px;
-      margin: 0 auto $b-space-l;
-      padding: $b-space-l;
-      text-align: center;
+    > div {
+      display: inline-block;
+      padding: $b-space;
+      border: 1px solid $brand-primary;
+
+      @media screen and (min-width: $screen-sm-min) {
+        padding: $b-space-l;
+      }
     }
   }
 
   figcaption {
-    margin-top: $b-space;
+    margin: $b-space 0 $b-space-l;
     font-size: .85em;
     font-style: italic;
   }
