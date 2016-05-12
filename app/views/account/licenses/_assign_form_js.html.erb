@@ -11,8 +11,6 @@
     $('#licenseTotal').text(emails.length * licenseCount);
 
     if (emails.length > 0) {
-      // Reveal the checkbox in step 2
-      $('.js-step-2 .js-check-icon').removeClass('hide');
 
       // Update the button text in step 2
       $('#show-add-users-modal-btn').text('Edit Users');
@@ -29,18 +27,14 @@
       // Make the "Number of Users" box in step 3 green
       $('#assign_licenses_form_total').addClass('success');
 
-      // Reveal the checkbox in step 3
-      $('.js-step-3 .js-check-icon').removeClass('hide');
     } else {
       // Reset everything if there are no selected emails
-      $('.js-step-2 .js-check-icon').addClass('hide');
       $('#show-add-users-modal-btn').text('Add Users');
       $('.js-step-2 .js-success-message').addClass('hide');
       $('#assign_licenses_form_total').val('0');
       $('#licenseTotal').text('');
       $('#btnAssignLicenses').addClass('disabled btn-default').removeClass('btn-success');
       $('#assign_licenses_form_total').removeClass('success');
-      $('.js-step-3 .js-check-icon').addClass('hide');
     }
   }
 
@@ -89,12 +83,10 @@
       var selected = $(this).text();
       if (selected === 'Select a Product') {
         licenseId = "";
-        $('.js-step-1 .js-check-icon').addClass('hide');
         $('#licenseDescription').text("N/A");
       } else {
         licenseId = $(this).data("product");
         $('#licenseDescription').text(selected);
-        $('.js-step-1 .js-check-icon').removeClass('hide');
       }
       $("#assign_licenses_form_licenses_ids").val(licenseId);
       $("#assign_licenses_form_licenses_ids").trigger('change');
@@ -140,6 +132,10 @@
       $('.js-initial-header').removeClass('hide');
       $('.js-select-header').addClass('hide');
       $('.js-upload-header').addClass('hide');
+    });
+
+    $('.js-licenses-dropdown a').on('click', function() {
+      $('.js-license-stats').removeClass('hide');
     });
   });
 <% end %>

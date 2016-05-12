@@ -39,7 +39,7 @@
 }
 
 .alert-success {
-  @include alert-variant($brand-success, darken($brand-success, 25%), $c-absent);
+  @include alert-variant($brand-green, darken($brand-green, 25%), $dark-blue);
 }
 
 .alert-info {

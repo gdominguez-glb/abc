@@ -10,7 +10,7 @@ class Account::LicensesController < Account::BaseController
     @assign_licenses_form = AssignLicensesForm.new(assign_licenses_params.merge(user: current_spree_user))
     if @assign_licenses_form.valid?
       @assign_licenses_form.perform
-      flash[:success] = "Successully assigned licenses to recipients"
+      flash[:success] = "Licenses have been successfully assigned. To change licenses, use the USER MANAGEMENT tab below. Assign additional licenses by clicking SELECT PRODUCT below."
       redirect_to account_licenses_path(licenses_ids: assign_licenses_params[:licenses_ids])
     else
       @assign_licenses_form.total = 0

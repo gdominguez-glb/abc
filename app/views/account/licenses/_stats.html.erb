@@ -1,6 +1,8 @@
-<% selected_option = current_spree_user.managed_products_options.find{|o| o[1] == params[:licenses_ids] } %>
-  <p class="small margin-bottom-reset"><em>Your Licenses for <span id="licenseDescription">
-  <%= selected_option.try(:[], 0) || 'N/A' %>
-  <%= hidden_field_tag :licenses_ids, selected_option.try(:[], 1) %>
-  </span></em></p>
-<%= render partial: 'licenses_stats', locals: { licenses_ids: (selected_option ? selected_option[1].split(',') : nil) } %>
+<div class="js-license-stats hide">
+  <% selected_option = current_spree_user.managed_products_options.find{|o| o[1] == params[:licenses_ids] } %>
+    <p class="small margin-bottom-reset">Assign licenses for <strong id="licenseDescription">
+    <%= selected_option.try(:[], 0) || 'N/A' %>
+    <%= hidden_field_tag :licenses_ids, selected_option.try(:[], 1) %>
+  </strong></p>
+  <%= render partial: 'licenses_stats', locals: { licenses_ids: (selected_option ? selected_option[1].split(',') : nil) } %>
+</div>
