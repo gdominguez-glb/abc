@@ -3,10 +3,6 @@
 <%= render 'tabs' %>
 
 <%= form_for @assign_licenses_form, url: assign_account_licenses_path do |f| %>
-  <div class="page-header margin-top-xl">
-    <h2 class="margin-bottom-m">Ready to assign some licenses...</h2>
-    <p class="lead margin-bottom-m">Assign one or more licenses to anyone you want</p>
-  </div>
   <% if @assign_licenses_form.errors.count > 0 %>
     <div id="error_explanation" class="alert alert-danger">
       <p>
