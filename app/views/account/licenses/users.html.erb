@@ -8,7 +8,6 @@
   <table class="table table-striped">
   <thead>
     <tr>
-      <th><input type="checkbox" /></th>
       <th>User</th>
       <th>Email</th>
       <th>School/District</th>
@@ -20,7 +19,6 @@
   <tbody>
     <% @product_distributions.each do |product_distribution| %>
       <tr data-user-id='<%= product_distribution.to_user_id %>'>
-        <td><input type="checkbox" /></td>
         <td><%= product_distribution.to_user.full_name rescue nil %></td>
         <td><%= product_distribution.to_user.try(:email) || product_distribution.email %></td>
         <td><%= product_distribution.to_user.school_district.try(:name) rescue nil %></td>
