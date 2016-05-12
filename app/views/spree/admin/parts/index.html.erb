@@ -12,16 +12,18 @@
   <%= f.submit "Add", class: 'btn btn-primary' %>
 <% end %>
 
-<table class="table">
-  <tbody>
-    <% @product.parts.each do |part| %>
-      <tr>
-        <td><%= link_to part.name, spree.admin_product_path(part) %></td>
-        <td><%= link_to 'Delete', admin_product_part_path(@product, part.part_id), class: 'btn btn-primary btn-sm', data: { confirm: 'Are you sure?', method: :delete } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="table-responsive">
+  <table class="table">
+    <tbody>
+      <% @product.parts.each do |part| %>
+        <tr>
+          <td><%= link_to part.name, spree.admin_product_path(part) %></td>
+          <td><%= link_to 'Delete', admin_product_part_path(@product, part.part_id), class: 'btn btn-primary btn-sm', data: { confirm: 'Are you sure?', method: :delete } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
 <script type="text/javascript">
 //<![CDATA[

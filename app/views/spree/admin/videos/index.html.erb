@@ -20,30 +20,32 @@
   </div>
 <% end %>
 
-<table class="table" id="listing_videos" data-hook>
-  <thead>
-    <tr data-hook="admin_videos_index_headers">
-      <th>
-        Title
-      </th>
-      <th>
-        Video Group
-      </th>
-      <th data-hook="admin_videos_index_header_actions" class="actions"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @videos.each do |video|%>
-      <tr id="<%= spree_dom_id video %>" data-hook="admin_videos_index_rows">
-        <td class='video_title'><%=link_to video.title, edit_admin_video_url(video) %></td>
-        <td><%= video.video_group.try(:name) %></td>
-        <td data-hook="admin_videos_index_row_actions" class="actions actions-2 text-right">
-          <%= link_to_edit video, :no_text => true %>
-          <%= link_to_delete video, :no_text => true %>
-        </td>
+<div class="table-responsive">
+  <table class="table" id="listing_videos" data-hook>
+    <thead>
+      <tr data-hook="admin_videos_index_headers">
+        <th>
+          Title
+        </th>
+        <th>
+          Video Group
+        </th>
+        <th data-hook="admin_videos_index_header_actions" class="actions"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @videos.each do |video|%>
+        <tr id="<%= spree_dom_id video %>" data-hook="admin_videos_index_rows">
+          <td class='video_title'><%=link_to video.title, edit_admin_video_url(video) %></td>
+          <td><%= video.video_group.try(:name) %></td>
+          <td data-hook="admin_videos_index_row_actions" class="actions actions-2 text-right">
+            <%= link_to_edit video, :no_text => true %>
+            <%= link_to_delete video, :no_text => true %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
 <%= paginate @videos %>

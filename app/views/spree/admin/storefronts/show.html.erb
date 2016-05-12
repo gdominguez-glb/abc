@@ -8,6 +8,7 @@
 
 <% if @products.any? %>
   <div data-hook>
+    <div class="table-responsive">
       <table class="table" id="list-storefront-products">
         <tbody>
           <% @products.each do |product| %>
@@ -17,6 +18,7 @@
           <% end %>
         </tbody>
       </table>
+    </div>
   </div>
 <% else %>
   <div class="alert alert-info no-objects-found">

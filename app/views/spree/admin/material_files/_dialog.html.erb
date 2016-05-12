@@ -11,25 +11,27 @@
         </div>
         <%= f.submit 'Upload', class: 'btn btn-primary', data: { disable_with: 'Uploading' } %>
       <% end %>
-      <table class="table" style="min-width: 100%;">
-        <thead>
-          <tr>
-            <th>File</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @material_files.each do |material_file| %>
-            <% next if material_file.new_record? %>
+      <div class="table-responsive">
+        <table class="table" style="min-width: 100%;">
+          <thead>
             <tr>
-              <td><%= material_file.file_file_name %></td>
-              <td>
-                <%= link_to 'Delete', spree.admin_material_material_file_path(@material, material_file), class: 'btn btn-default btn-sm', data: { confirm: 'Are you sure?', method: :delete } %>
-              </td>
+              <th>File</th>
+              <th></th>
             </tr>
-          <% end %>
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            <% @material_files.each do |material_file| %>
+              <% next if material_file.new_record? %>
+              <tr>
+                <td><%= material_file.file_file_name %></td>
+                <td>
+                  <%= link_to 'Delete', spree.admin_material_material_file_path(@material, material_file), class: 'btn btn-default btn-sm', data: { confirm: 'Are you sure?', method: :delete } %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

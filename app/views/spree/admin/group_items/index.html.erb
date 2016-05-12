@@ -12,16 +12,18 @@
   <%= f.submit "Add", class: 'btn btn-primary' %>
 <% end %>
 
-<table class="table" id='group-items-list'>
-  <tbody>
-    <% @product.group_items.each do |group_item| %>
-      <tr data-id="<%= group_item.id %>">
-        <td><%= link_to group_item.name, spree.admin_product_path(group_item) %></td>
-        <td><%= link_to 'Delete', admin_product_group_item_path(@product, group_item.group_item_id), class: 'btn btn-primary btn-sm', data: { confirm: 'Are you sure?', method: :delete } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="table-responsive">
+  <table class="table" id='group-items-list'>
+    <tbody>
+      <% @product.group_items.each do |group_item| %>
+        <tr data-id="<%= group_item.id %>">
+          <td><%= link_to group_item.name, spree.admin_product_path(group_item) %></td>
+          <td><%= link_to 'Delete', admin_product_group_item_path(@product, group_item.group_item_id), class: 'btn btn-primary btn-sm', data: { confirm: 'Are you sure?', method: :delete } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
 <script type="text/javascript">
 //<![CDATA[
