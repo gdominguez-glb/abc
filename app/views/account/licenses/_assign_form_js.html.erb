@@ -133,5 +133,9 @@
       $('.js-select-header').addClass('hide');
       $('.js-upload-header').addClass('hide');
     });
+
+    $('.js-licenses-dropdown a').on('click', function() {
+      $('.js-license-stats').removeClass('hide');
+    });
   });
 <% end %>
