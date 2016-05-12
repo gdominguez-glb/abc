@@ -2,7 +2,7 @@
 
 <%= render partial: 'tabs', locals: { tab: 'users' } %>
 
-<%= link_to 'Export Users List', export_users_account_licenses_path(format: 'xlsx'), class: 'btn btn-primary btn-block-xs margin-bottom js-export-users-button' %>
+<%= link_to 'Export Users List', export_users_account_licenses_path(format: 'xlsx'), class: 'btn btn-default btn-block-xs margin-bottom js-export-users-button' %>
 
 <div class="table-responsive js-user-table">
   <table class="table table-striped">
@@ -53,8 +53,8 @@
 </div>
 <%= paginate @product_distributions %>
 
-<%= link_to new_account_reminder_path, remote: true, class: 'btn btn-primary red-btn reminder-btn' do %>
-  <span class="glyphicon glyphicon-comment"></span>
+<%= link_to new_account_reminder_path, remote: true, class: 'btn btn-default red-btn reminder-btn' do %>
+  <%= material_icon.add_alert.md_36 %>
 <% end %>
 
 <%= content_for :javascripts do %>
