@@ -3,10 +3,6 @@
 <%= render 'tabs' %>
 
 <%= form_for @assign_licenses_form, url: assign_account_licenses_path do |f| %>
-  <div class="page-header margin-top-xl">
-    <h2 class="margin-bottom-m">Ready to assign some licenses...</h2>
-    <p class="lead margin-bottom-m">Assign one or more licenses to anyone you want</p>
-  </div>
   <% if @assign_licenses_form.errors.count > 0 %>
     <div id="error_explanation" class="alert alert-danger">
       <p>
@@ -51,7 +47,7 @@
       <div class="js-step-2 col-sm-4 min-200 padding-xs-horiz-xl">
         <h4 class="margin-bottom-reset">Step 2. <i class="mi hide js-check-icon">check_circle</i></h4>
         <small class="margin-bottom block"><em>Select users you'd like to assign</em></small>
-        <a href="#" class="btn btn-primary btn-block margin-bottom" id="show-add-users-modal-btn">Add Users</a>
+        <a href="#" class="btn btn-default btn-block margin-bottom" id="show-add-users-modal-btn">Add Users</a>
         <small class="js-success-message hide">You have successfully added <span class="js-number-total"></span> user</small>
         <%= f.hidden_field :licenses_recipients %>
       </div>
@@ -73,7 +69,7 @@
           </div>
         </div>
         <strong class="text-uppercase sans-serif margin-bottom-s block">Total Licenses = <span id="licenseTotal"></span></strong>
-        <%= f.submit 'Assign License(s)', class: 'btn btn-success btn-block margin-bottom-s disabled', id: 'btnAssignLicenses', data: { disable_with: 'Saving' } %>
+        <%= f.submit 'Assign License(s)', class: 'btn btn-default btn-block margin-bottom-s disabled', id: 'btnAssignLicenses', data: { disable_with: 'Saving' } %>
       </div>
     </div>
   <% else %>

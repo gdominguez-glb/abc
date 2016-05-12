@@ -2,11 +2,6 @@
 
 <%= render partial: 'tabs', locals: { tab: 'users' } %>
 
-<div class="page-header margin-top-xl">
-  <h2 class="margin-bottom-m">Need to transfer a license, or just checking in...</h2>
-  <p class="lead margin-bottom-m">Here is where you can remind, reassign, and revoke user licenses</p>
-</div>
-
 <%= link_to 'Export Users List', export_users_account_licenses_path(format: 'xlsx'), class: 'btn btn-primary btn-block-xs margin-bottom js-export-users-button' %>
 
 <div class="table-responsive js-user-table">
@@ -83,7 +78,7 @@
       function getLicensesUsersTour() {
         $.get('/account/tour/licenses_users');
       }
-      
+
       <% unless current_spree_user.tour_showed_licenses_users? %>
         getLicensesUsersTour();
       <% end %>
