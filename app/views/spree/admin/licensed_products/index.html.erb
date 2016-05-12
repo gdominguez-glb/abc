@@ -7,36 +7,38 @@
 <% end if can? :create, Spree::Order %>
 
 <% if @licensed_products.any? %>
-  <table class="table" id="listing_licensed_products" data-hook>
-    <thead>
-      <tr data-hook="admin_orders_index_headers">
-        <th>User</th>
-        <th>Product</th>
-        <th>Order</th>
-        <th>License Expiration Date</th>
-        <th>Quantity</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @licensed_products.each do |licensed_product| %>
-        <tr>
-          <td>
-            <% if licensed_product.user %>
-              <%= link_to licensed_product.user.email, spree.admin_user_path(licensed_product.user) %>
-            <% elsif licensed_product.email %>
-              <%= licensed_product.email %>
-            <% end %>
-          </td>
-          <td><%= link_to licensed_product.product.name, spree.admin_product_path(licensed_product.product) %></td>
-          <td><%= link_to licensed_product.order.number, spree.order_path(licensed_product.order) if licensed_product.order %></td>
-          <td><%= licensed_product.expire_at %></td>
-          <td><%= licensed_product.quantity %></td>
-          <td><%= link_to 'Edit', edit_admin_licensed_product_path(licensed_product), class: 'btn btn-primary' %></td>
+  <div class="table-responsive">
+    <table class="table" id="listing_licensed_products" data-hook>
+      <thead>
+        <tr data-hook="admin_orders_index_headers">
+          <th>User</th>
+          <th>Product</th>
+          <th>Order</th>
+          <th>License Expiration Date</th>
+          <th>Quantity</th>
+          <th></th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        <% @licensed_products.each do |licensed_product| %>
+          <tr>
+            <td>
+              <% if licensed_product.user %>
+                <%= link_to licensed_product.user.email, spree.admin_user_path(licensed_product.user) %>
+              <% elsif licensed_product.email %>
+                <%= licensed_product.email %>
+              <% end %>
+            </td>
+            <td><%= link_to licensed_product.product.name, spree.admin_product_path(licensed_product.product) %></td>
+            <td><%= link_to licensed_product.order.number, spree.order_path(licensed_product.order) if licensed_product.order %></td>
+            <td><%= licensed_product.expire_at %></td>
+            <td><%= licensed_product.quantity %></td>
+            <td><%= link_to 'Edit', edit_admin_licensed_product_path(licensed_product), class: 'btn btn-primary' %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 <% else %>
   <div class="alert alert-info no-objects-found">
     <%= Spree.t(:no_resource_found, resource: plural_resource_name(Spree::LicensedProduct)) %>,
