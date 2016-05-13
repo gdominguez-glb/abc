@@ -91,6 +91,10 @@ Spree::Product.class_eval do
     self.product_type == 'group'
   end
 
+  def free_group_product?
+    self.group_items.map(&:free?).all?
+  end
+
   def partner_product?
     self.product_type == 'partner'
   end

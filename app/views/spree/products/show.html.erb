@@ -32,7 +32,7 @@
             <div id="product-description" data-hook="product_description" class="product-description">
               <h2 class="product-title" itemprop="name"><%= @product.name %></h2>
               <% if @product.price_in(current_currency) and !@product.price.nil? %>
-                <% unless @product.product_type == "group" || @product.product_type == "partner" %>
+                <% unless display_product_price_tag?(@product) %>
                   <div data-hook="product_price">
                     <div id="product-price">
                       <div>
