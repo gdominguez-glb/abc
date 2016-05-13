@@ -19,8 +19,14 @@ Spree::FrontendHelper.class_eval do
     end
   end
 
+  def display_product_price_tag?(product)
+    return false if product.partner_product? || product.get_in_touch_product? || (product.group_product? && !product.free_group_product?)
+    return true
+  end
+
   def product_display_price(product)
-    price = display_price(product) unless product.product_type == "group" || product.product_type == "partner"
+    return 'FREE' if product.group_product? && product.free_group_product?
+    price = display_price(product) unless product.group_product? || product.partner_product?
     price == "$0.00" ? "FREE" : price
   end
 
