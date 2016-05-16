@@ -1,8 +1,8 @@
 <nav id="categoryFilters" class="panel-group" data-hook>
-  <h3>Shop By</h3>
+  <h3 class="filters-title">Shop By:</h3>
   <% @taxonomies.each do |taxonomy| %>
     <div class="panel panel-default panel-collapsible panel-shop">
-      <div class="panel-heading">
+      <div class="panel-heading filter-title">
         <h4 class="panel-title">
           <a data-toggle="collapse" data-parent="#categories" href="#collapse<%= taxonomy.name.gsub(/[^0-9A-Za-z]/, '') %>" class="collapsed">
             <%= taxonomy.name %>

@@ -1,8 +1,11 @@
 <% @taxonomies.each do |taxonomy| %>
 <div class="panel panel-default panel-collapsible max-300 panel-filter">
   <div class="panel-heading">
-    <h4 class="panel-title">
-      <a data-toggle="collapse" data-parent="#categories" href="#collapse<%= taxonomy.name.gsub(/[^0-9A-Za-z]/, '') %>"><%= taxonomy.name %></a>
+    <h4 class="panel-title filter-title">
+      <a data-toggle="collapse" data-parent="#categories" href="#collapse<%= taxonomy.name.gsub(/[^0-9A-Za-z]/, '') %>" class="collapsed">
+        <%= taxonomy.name %>
+        <i class="mi md-24 toggle-arrow">keyboard_arrow_up</i>
+      </a>
     </h4>
   </div>
   <%# <% selected_taxons = taxonomy.root.children.where(id: params[:taxon_ids]) %1> %>
