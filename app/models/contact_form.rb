@@ -67,7 +67,8 @@ class ContactForm
       'School_District__c' => self.school_district_type,
       'School_District_Name__c' => self.school_district_name,
       'General__c' => true,
-      'General_Details__c' => 'Other'
+      'General_Details__c' => 'Other',
+      'Curriculum__c' => self.curriculum
     }
   end
 
