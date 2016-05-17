@@ -33,9 +33,9 @@
             </span>
             <span class="caret"></span>
           </button>
-          <ul class="dropdown-menu btn-block js-licenses-dropdown">
+          <ul class="dropdown-menu btn-block js-licenses-dropdown width-100pct">
             <% current_spree_user.managed_products_options.each do |product| %>
-              <li><a href="#" data-product="<%= product[1] %>"><%= product[0] %></a></li>
+              <li><a href="#" class="whitespace-reset" data-product="<%= product[1] %>"><%= product[0] %></a></li>
             <% end %>
           </ul>
         </div>
