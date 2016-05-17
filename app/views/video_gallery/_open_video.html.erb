@@ -1,7 +1,7 @@
 <div class="col-md-6 video-grid">
   <div class="video-wrapper <% if video.screenshot.present? %>video-preview-image<% end %>" <% if video.screenshot.present? %> style="background-image: url('<%= video.screenshot.url(:medium) %>')"<% end %>>
     <div class="video-content">
-      <%= link_to video_gallery_path(video), class: 'video-link' do %>
+      <%= link_to play_video_gallery_path(video), class: 'video-link', remote: true do %>
         <h6 class="video-text">
           <%= truncate(video.title, length: 160) %>
         </h6>
