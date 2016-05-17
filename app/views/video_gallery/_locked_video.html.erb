@@ -1,28 +1,13 @@
 <div class="col-md-6 video-grid">
-  <div class="video-wrapper">
-    <div class="image-drawer-wrapper flip-container">
-      <div class="flipper">
-        <div class="video-image-wrapper flip-front <% if video.screenshot.present? %>video-preview-image<% end %>"<% if video.screenshot.present? %> style="background-image: url('<%= video.screenshot.url(:medium) %>')"<% end %> >
-          <%= link_to unlock_video_gallery_path(video), class: 'btn btn-primary non-flip-btn', remote: true do %>
-            <i class="glyphicon glyphicon-lock" aria-hidden="true"></i> Unlock
-          <% end %>
-        </div>
-        <div class="video-drawer flip-back">
-          <div class="product-description">
-            <%= truncate video.description, length: 100 %>
-            <p class="text-danger">Subscription Required</p>
-          </div>
-          <%= link_to unlock_video_gallery_path(video), class: 'btn btn-default btn-block', remote: true do %>
-            Unlock Content
-          <% end %>
-          <button class="btn btn-primary flip-btn">
-            Back
-          </button>
-        </div>
-      </div>
+  <div class="video-wrapper <% if video.screenshot.present? %>video-preview-image<% end %>" <% if video.screenshot.present? %> style="background-image: url('<%= video.screenshot.url(:medium) %>')"<% end %>>
+    <div class="video-content">
+      <%= link_to unlock_video_gallery_path(video), class: 'video-link' do %>
+        <%= mi.lock.css_class('video-lock') %>
+        <h6 class="video-text">
+          <%= truncate(video.title, length: 160) %>
+        </h6>
+      <% end %>
     </div>
-    <div class="video-footer">
-      <h6 class="video-name margin-bottom-reset"><%= truncate(video.title, length: 160) %></h6>
-    </div>
+    <div class="video-overlay"></div>
   </div>
 </div>
