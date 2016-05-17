@@ -2,8 +2,8 @@
   <h3 class="filters-title">Shop By:</h3>
   <% @taxonomies.each do |taxonomy| %>
     <div class="panel panel-default panel-collapsible panel-shop">
-      <div class="panel-heading filter-title">
-        <h4 class="panel-title">
+      <div class="panel-heading">
+        <h4 class="panel-title filter-title">
           <a data-toggle="collapse" data-parent="#categories" href="#collapse<%= taxonomy.name.gsub(/[^0-9A-Za-z]/, '') %>" class="collapsed">
             <%= taxonomy.name %>
             <i class="mi md-24 toggle-arrow">keyboard_arrow_up</i>

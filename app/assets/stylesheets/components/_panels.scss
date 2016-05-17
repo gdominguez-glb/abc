@@ -82,18 +82,6 @@
       overflow-y: scroll;
     }
 
-    &.panel-shop {
-      .panel-heading {
-        position: relative;
-        padding: $b-space $b-space-m;
-
-        a {
-          display: block;
-          padding: 0;
-        }
-      }
-    }
-
     .panel-heading {
       padding: 0;
 
