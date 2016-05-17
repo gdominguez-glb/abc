@@ -10,11 +10,11 @@ function scrollHandler(checkboxToWatch, agreeRequired) {
     });
   }
 
-  if ( $('.terms_and_conditions_text').get(0).scrollHeight === ($('terms_and_conditions_text').innerHeight()) ) {
+  if ( $('.terms_and_conditions_text').get(0).scrollHeight === ($('.terms_and_conditions_text').innerHeight()) ) {
     setTimeout(function() {
       scrolledToBottom = true;
       activateContinueButton();
-    }, 3000);
+    }, 1500);
   } else {
     $('.terms_and_conditions_text').scroll(function() {
       if ( ($(this).scrollTop() + 40) === $(this).get(0).scrollHeight - $(this).height() ) {
