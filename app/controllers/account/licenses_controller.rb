@@ -11,7 +11,7 @@ class Account::LicensesController < Account::BaseController
     if @assign_licenses_form.valid?
       @assign_licenses_form.perform
       flash[:success] = "Licenses have been successfully assigned. To change licenses, use the USER MANAGEMENT tab below. Assign additional licenses by clicking SELECT PRODUCT below."
-      redirect_to account_licenses_path(licenses_ids: assign_licenses_params[:licenses_ids])
+      redirect_to account_licenses_path
     else
       @assign_licenses_form.total = 0
       render :index

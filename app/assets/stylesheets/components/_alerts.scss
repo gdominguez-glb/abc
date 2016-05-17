@@ -18,6 +18,7 @@
 .alert {
   @include alert-variant(darken($light-blue, 15%), $dark-blue, $dark-blue);
 
+  position: relative;
   margin-bottom: $b-space;
 
   a {
@@ -34,6 +35,9 @@
   }
 
   .close {
+    position: absolute;
+    top: 5px;
+    right: 10px;
     z-index: 1000;
   }
 }

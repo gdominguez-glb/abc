@@ -26,7 +26,7 @@
 }
 
 .whitespace-reset {
-  white-space: normal;
+  white-space: normal !important;
 }
 
 .min-150 {
@@ -39,6 +39,10 @@
 
 .min-300 {
   min-height: 300px;
+}
+
+.width-100pct {
+  width: 100% !important;
 }
 
 // -------------------------------------
