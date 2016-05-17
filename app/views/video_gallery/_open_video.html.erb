@@ -1,27 +1,12 @@
 <div class="col-md-6 video-grid">
-  <div class="video-wrapper">
-    <div class="image-drawer-wrapper flip-container">
-      <div class="flipper">
-        <div class="video-image-wrapper flip-front <% if video.screenshot.present? %>video-preview-image<% end %>"<% if video.screenshot.present? %> style="background-image: url('<%= video.screenshot.url(:medium) %>')"<% end %> >
-          <%= link_to play_video_gallery_path(video), remote: true, class: 'play-video-button' do %>
-            <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span>
-          <% end %>
-        </div>
-        <div class="video-drawer flip-back">
-          <div class="product-description">
-            <p><%= truncate video.description, length: 100 %></p>
-          </div>
-          <%= link_to 'MORE INFO', video_gallery_path(video), itemprop: 'url', class: 'btn btn-default btn-block margin-top' %>
-          <button class="btn btn-primary flip-btn">
-            Back
-          </button>
-        </div>
-      </div>
+  <div class="video-wrapper <% if video.screenshot.present? %>video-preview-image<% end %>" <% if video.screenshot.present? %> style="background-image: url('<%= video.screenshot.url(:medium) %>')"<% end %>>
+    <div class="video-content">
+      <%= link_to video_gallery_path(video), class: 'video-link' do %>
+        <h6 class="video-text">
+          <%= truncate(video.title, length: 160) %>
+        </h6>
+      <% end %>
     </div>
-    <div class="video-footer">
-      <h6 class="video-name margin-bottom-reset">
-        <%= link_to truncate(video.title, length: 160), video_gallery_path(video), class: 'info', itemprop: "title", title: video.title %>
-      </h6>
-    </div>
+    <div class="video-overlay"></div>
   </div>
 </div>

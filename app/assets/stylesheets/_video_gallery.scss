@@ -8,123 +8,60 @@
 
 .video-wrapper {
   @include transition(all, $transition-timing);
+  @include display-flex;
+  @include flex-direction(column);
 
   position: relative;
+  min-height: 150px;
   margin-bottom: 24px;
-  padding: 15px 0;
+  padding: $b-space-m;
   border: 1px solid darken($gray-lighter, 10%);
   background-color: $c-absent;
+  background-position: 50%;
+  background-size: cover;
 
   @media screen and (min-width: $screen-sm-min) {
-    min-height: 315px;
+    min-height: 300px;
+    padding: 25px 40px;
     text-align: center;
   }
 }
 
-.locked-video {
-  .video-image-wrapper {
-    @include transition(all, $transition-timing);
-
-    position: relative;
-    background-color: $steel-gray;
-
-    .glyphicon-lock {
-      @include translate(-50%, -50%);
-
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      font-size: 100px;
-      color: $c-absent;
-    }
-  }
-}
-
-.video-image-wrapper {
-  position: relative;
-  background-color: $gray-lighter;
-}
-
-.image-drawer-wrapper {
-  margin-bottom: $b-space;
-}
-
-.open-video {
-  display: block;
-  height: 100%;
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-  background-size: cover;
-}
-
-.play-video-button {
-  display: block;
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
+  background-color: rgba(0, 0, 0, .3);
+}
 
-  span {
-    @include transition(all, $transition-timing);
-    @include translate(-50%, -50%);
+.video-content {
+  @include flex(1);
 
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    font-size: 100px;
+  z-index: 1;
+  padding: 15px;
+  background-color: rgba(0, 0, 0, .7);
+}
+
+.video-link {
+  display: block;
+  color: $c-absent;
+
+  &:hover,
+  &:active,
+  &:focus {
+    text-decoration: none;
+    color: darken($c-absent, 30%);
   }
 }
 
-.video-drawer {
-  @include transition(all, $transition-timing);
-
-  padding: 10px;
-
-  .product-description {
-    padding: 5px 0 0;
-
-    p {
-      margin-bottom: 5px;
-      font-size: 14px;
-      line-height: 1.2em;
-    }
-  }
+.video-text {
+  margin-bottom: 0;
 }
 
-.video-preview-image {
-  background-color: $c-absolute;
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-  background-size: contain;
-
-  .play-video-button {
-    span {
-      display: none;
-    }
-  }
-
-  .btn-primary {
-    border: 1px solid $c-absent;
-
-    &:hover {
-      border: 1px solid $c-absent;
-    }
-  }
-}
-
-.video-footer {
-  width: 280px;
-  margin: 0 auto;
-
-  @media screen and (min-width: $screen-sm-min) {
-    width: 350px;
-  }
-
-  @media screen and (min-width: $screen-md-min) {
-    width: 250px;
-  }
-
-  @media screen and (min-width: $screen-lg-min) {
-    width: 330px;
-  }
+.video-lock {
+  color: $c-absent;
 }
 
 .video-name,
