@@ -1,6 +1,6 @@
 <div class="js-license-stats hide">
   <% selected_option = current_spree_user.managed_products_options.find{|o| o[1] == params[:licenses_ids] } %>
-    <p class="small margin-bottom-reset">Assign licenses for <strong id="licenseDescription">
+    <p class="small margin-bottom-reset sans-serif">Assign licenses for <strong id="licenseDescription">
     <%= selected_option.try(:[], 0) || 'N/A' %>
     <%= hidden_field_tag :licenses_ids, selected_option.try(:[], 1) %>
   </strong></p>
