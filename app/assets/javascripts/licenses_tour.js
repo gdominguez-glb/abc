@@ -1,13 +1,6 @@
 function startLicensesTour() {
   var tour = new Shepherd.Tour({ defaults: { classes: 'shepherd-theme-arrows', scrollTo: true } });
 
-  tour = tour.addStep('top_bar', {
-    title: 'Top Bar',
-    text: "The top bar displays how many licenses purchased, distributed and remaining of the selected product in Step 1.",
-    attachTo: '.js-license-stats top',
-    showCancelLink: true
-  });
-
   tour = tour.addStep('step_1', {
     title: 'Step 1',
     text: "You can change the selected product by using the dropdown in Step 1.",
