@@ -57,8 +57,8 @@
     :label: Button 1 Target
     :input_type: select
     :input_options:
-      - _self
-      - _blank
+      - Open in Same Tab
+      - Open in New Tab
   - :name: button_2_title
     :label: Button 2 Title
     :input_type: text
@@ -69,8 +69,8 @@
     :label: Button 2 Target
     :input_type: select
     :input_options:
-      - _self
-      - _blank
+      - Open in Same Tab
+      - Open in New Tab
   - :name: image_url
     :label: Image Url
     :input_type: text
@@ -101,8 +101,8 @@
     :label: Button Target
     :input_type: select
     :input_options:
-      - _self
-      - _blank
+      - Open in Same Tab
+      - Open in New Tab
   - :name: image_url
     :label: Image Url
     :input_type: text
@@ -133,8 +133,8 @@
     :label: Button 1 Target
     :input_type: select
     :input_options:
-      - _self
-      - _blank
+      - Open in Same Tab
+      - Open in New Tab
   - :name: button_2_title
     :label: Button 2 Title
     :input_type: text
@@ -145,8 +145,8 @@
     :label: Button 2 Target
     :input_type: select
     :input_options:
-      - _self
-      - _blank
+      - Open in Same Tab
+      - Open in New Tab
   - :name: image_url
     :label: Image Url
     :input_type: text
@@ -177,8 +177,8 @@
     :label: Button Target
     :input_type: select
     :input_options:
-      - _self
-      - _blank
+      - Open in Same Tab
+      - Open in New Tab
   - :name: image_url
     :label: Image Url
     :input_type: text
@@ -209,8 +209,8 @@
     :label: Button Target
     :input_type: select
     :input_options:
-      - _self
-      - _blank
+      - Open in Same Tab
+      - Open in New Tab
   - :name: image_url
     :label: Image Url
     :input_type: text
@@ -241,8 +241,8 @@
     :label: Button Target
     :input_type: select
     :input_options:
-      - _self
-      - _blank
+      - Open in Same Tab
+      - Open in New Tab
   - :name: image_url
     :label: Image Url
     :input_type: text
@@ -273,8 +273,8 @@
     :label: Button Target
     :input_type: select
     :input_options:
-      - _self
-      - _blank
+      - Open in Same Tab
+      - Open in New Tab
   - :name: image_url
     :label: Image Url
     :input_type: text
@@ -305,8 +305,8 @@
     :label: Button Target
     :input_type: select
     :input_options:
-      - _self
-      - _blank
+      - Open in Same Tab
+      - Open in New Tab
   - :name: image_url
     :label: Image Url
     :input_type: text
@@ -337,8 +337,8 @@
     :label: Button Target
     :input_type: select
     :input_options:
-      - _self
-      - _blank
+      - Open in Same Tab
+      - Open in New Tab
   - :name: image_url
     :label: Image Url
     :input_type: text
@@ -369,8 +369,8 @@
     :label: Button Target
     :input_type: select
     :input_options:
-      - _self
-      - _blank
+      - Open in Same Tab
+      - Open in New Tab
   - :name: image_url
     :label: Image Url
     :input_type: text
@@ -401,8 +401,8 @@
     :label: Button Target
     :input_type: select
     :input_options:
-      - _self
-      - _blank
+      - Open in Same Tab
+      - Open in New Tab
   - :name: image_url
     :label: Image Url
     :input_type: text
@@ -433,8 +433,8 @@
     :label: Button Target
     :input_type: select
     :input_options:
-      - _self
-      - _blank
+      - Open in Same Tab
+      - Open in New Tab
   - :name: image_url
     :label: Image Url
     :input_type: text
@@ -459,8 +459,8 @@
     :label: Button Target
     :input_type: select
     :input_options:
-      - _self
-      - _blank
+      - Open in Same Tab
+      - Open in New Tab
   - :name: image_url
     :label: Image Url
     :input_type: text
@@ -485,8 +485,8 @@
     :label: Button Target
     :input_type: select
     :input_options:
-      - _self
-      - _blank
+      - Open in Same Tab
+      - Open in New Tab
   - :name: image_url
     :label: Image Url
     :input_type: text
@@ -511,8 +511,8 @@
     :label: Button Target
     :input_type: select
     :input_options:
-      - _self
-      - _blank
+      - Open in Same Tab
+      - Open in New Tab
   - :name: image_url
     :label: Image Url
     :input_type: text
@@ -537,8 +537,8 @@
     :label: Button Target
     :input_type: select
     :input_options:
-      - _self
-      - _blank
+      - Open in Same Tab
+      - Open in New Tab
   - :name: image_url
     :label: Image Url
     :input_type: text
@@ -569,8 +569,8 @@
     :label: Button Target
     :input_type: select
     :input_options:
-      - _self
-      - _blank
+      - Open in Same Tab
+      - Open in New Tab
 - :name: 2-Column Text
   :fields:
   - :name: background_color_1
@@ -598,8 +598,8 @@
     :label: Button Target 1
     :input_type: select
     :input_options:
-      - _self
-      - _blank
+      - Open in Same Tab
+      - Open in New Tab
   - :name: background_color_2
     :label: Background Color 2
     :input_type: select
@@ -625,8 +625,8 @@
     :label: Button Target 2
     :input_type: select
     :input_options:
-      - _self
-      - _blank
+      - Open in Same Tab
+      - Open in New Tab
 - :name: 2-Column Video Left, Text Right
   :fields:
   - :name: title
@@ -660,8 +660,8 @@
     :label: Button Target
     :input_type: select
     :input_options:
-      - _self
-      - _blank
+      - Open in Same Tab
+      - Open in New Tab
 - :name: 3-Column Text
   :fields:
   - :name: background_color
@@ -689,8 +689,8 @@
     :label: Button Target 1
     :input_type: select
     :input_options:
-      - _self
-      - _blank
+      - Open in Same Tab
+      - Open in New Tab
   - :name: title_2
     :label: Title 2
     :input_type: text
@@ -707,8 +707,8 @@
     :label: Button Target 2
     :input_type: select
     :input_options:
-      - _self
-      - _blank
+      - Open in Same Tab
+      - Open in New Tab
   - :name: title_3
     :label: Title 3
     :input_type: text
@@ -725,5 +725,5 @@
     :label: Button Target 3
     :input_type: select
     :input_options:
-      - _self
-      - _blank
+      - Open in Same Tab
+      - Open in New Tab
