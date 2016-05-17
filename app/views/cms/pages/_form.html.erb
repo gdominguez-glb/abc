@@ -17,7 +17,7 @@
         <%= f.label :curriculum %>
         <div class="select-container dark-select block margin-bottom-reset">
           <span>Curriculum</span>
-          <%= f.select :curriculum_id, Curriculum.all.collect{|c| [c.name, c.id]}, { prompt: 'Choose curriculum' }, class: 'form-control' %>
+          <%= f.select :curriculum_id, Curriculum.all.collect{|c| [c.name, c.id]}, { include_blank: 'Global', prompt: 'Choose curriculum' }, class: 'form-control' %>
         </div>
         <small class="help-block">To make sure this page display under subject/curriculum nav, you need to choose curriculum.</small>
       </div>
