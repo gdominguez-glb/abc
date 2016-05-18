@@ -1,7 +1,6 @@
 class VideoGalleryController < ApplicationController
   before_action :authenticate_user!
   before_action :find_video, only: [:show, :show_description, :play, :unlock, :remove_bookmark]
-  before_action :load_taxonomies, only: [:index]
 
   helper_method :bought_products?, :can_play_video?, :bookmarked_video?
 
@@ -12,6 +11,9 @@ class VideoGalleryController < ApplicationController
 
     @videos             = Spree::Video.order('spree_videos.title asc')
     @videos             = filter_videos(@videos)
+
+    load_taxonomies(@videos, params[:taxon_ids])
+
     @videos             = @videos.includes([video_group: [:products], taxons: [:taxonomy]]).page(params[:page])
 
     @bought_product_ids = fetch_bought_ids(@videos.map(&:products).flatten.compact)
@@ -74,13 +76,23 @@ class VideoGalleryController < ApplicationController
     current_spree_user ? current_spree_user.accessible_products.where(id: products.map(&:id)).pluck(:id) : []
   end
 
-  def load_taxonomies
-    @taxonomies = Spree::Taxonomy.show_in_video.includes(root: :children)
+  def load_taxonomies(videos, selected_taxon_ids)
+    taxonomies = Spree::Taxonomy.show_in_video
+    if selected_taxon_ids.present?
+      taxon_ids    = Spree::VideoClassification.where(video_id: @videos.pluck(:id)).pluck('distinct(taxon_id)')
+      taxonomy_ids = Spree::Taxon.where(id: taxon_ids).pluck('distinct(taxonomy_id)')
+      taxonomies   = taxonomies.where(id: taxonomy_ids + [group_taxonomy_id])
+    end
+    @taxonomies = taxonomies.includes(root: :children)
   end
 
   def log_activity(video)
     if current_spree_user
       current_spree_user.log_activity(item: video, title: video.title, action: :view)
     end
+  end
+
+  def group_taxonomy_id
+    Spree::Taxonomy.show_in_video.find_by(name: 'Group').try(:id)
   end
 end
