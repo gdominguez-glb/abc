@@ -694,7 +694,7 @@ marketing_templates:
             <div class="vertical-center">
               <h6><%= title %></h6>
               <p><%= body_text %></p>
-              <% if button_title.present? && button_l  ink.present? %>
+              <% if button_title.present? && button_link.present? %>
                 <% if button_target == 'Open in Same Tab' %>
                   <% button_target = '_self' %>
                 <% else %>
