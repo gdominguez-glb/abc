@@ -4,6 +4,7 @@
       <th class="no-border"></th>
       <th><%= Spree.t(:name) %> HHH</th>
       <th>Applied Locations</th>
+      <th>Top Filter in Video</th>
       <th class="actions"></th>
     </tr>
   </thead>
@@ -20,6 +21,11 @@
           <% end %>
           <% if taxonomy.show_in_video? %>
             <span>Video Gallery</span>
+          <% end %>
+        </td>
+        <td>
+          <% if taxonomy.top_level_in_video? %>
+            Yes
           <% end %>
         </td>
         <td class="actions actions-2 text-right">

@@ -18,5 +18,10 @@ Deface::Override.new(
         <%= error_message_on :taxonomy, :show_in_video, :class => 'error-message' %>
         <%= check_box :taxonomy, :show_in_video, :class => 'form-control' %>
       <% end %>
+      <%= f.field_container :top_level_in_video, class: ['form-group'] do %>
+        <%= f.label :top_level_in_video, 'Top Level Filter in Video Gallery' %>
+        <%= error_message_on :taxonomy, :top_level_in_video, :class => 'error-message' %>
+        <%= check_box :taxonomy, :top_level_in_video, :class => 'form-control' %>
+      <% end %>
     HTML
 )
