@@ -2,7 +2,7 @@
 <div id="product_<%= product.id %>" class="col-md-12 product-list-item" data-hook="products_list_item" itemscope itemtype="http://schema.org/Product">
   <div class="product-wrapper">
       <div class="row">
-        <div class="col-md-8 col-lg-9">
+        <div class="col-md-7 col-lg-8">
           <span class="label <%= product_type_class(product) %>"><%= product.curriculum.try(:name) || 'General' %></span>
           <% if display_product_price_tag?(product) %>
             <span itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product-price label label-default">
@@ -30,7 +30,7 @@
           <% end %>
         </div>
 
-        <div class="col-md-4 col-lg-3 product-actions">
+        <div class="col-md-5 col-lg-4 product-actions">
           <% if product.group_product? %>
             <%= link_to 'Explore Options', group_product_path(product), class: 'btn btn-primary product-btn-primary' %>
           <% elsif product.partner_product? && product.redirect_url.present? %>
