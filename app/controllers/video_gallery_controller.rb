@@ -82,6 +82,8 @@ class VideoGalleryController < ApplicationController
       taxon_ids    = Spree::VideoClassification.where(video_id: @videos.pluck(:id)).pluck('distinct(taxon_id)')
       taxonomy_ids = Spree::Taxon.where(id: taxon_ids).pluck('distinct(taxonomy_id)')
       taxonomies   = taxonomies.where(id: taxonomy_ids + [group_taxonomy_id])
+    else
+      taxonomies = taxonomies.top_level_in_video
     end
     @taxonomies = taxonomies.includes(root: :children)
   end
