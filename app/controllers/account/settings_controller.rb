@@ -64,7 +64,7 @@ class Account::SettingsController < Account::BaseController
       :school_id,
       :district_id,
       :phone,
-      school_district_attributes: [:name, :country_id, :state_id, :city_id, :place_type],
+      school_district_attributes: [:name, :country_id, :state_id, :city, :place_type],
       interested_subjects: [],
     )
     process_school_district_param(_params)
