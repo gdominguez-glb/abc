@@ -54,7 +54,7 @@ class Cms::DocumentsController < Cms::BaseController
       documents = documents.where("category ilike ?", "%#{params[:category]}%")
     end
     if params[:tags].present?
-      documents = documents.tagged_with(params[:tags].split(','), any: true)
+      documents = documents.tagged_with(params[:tags].split(','))
     end
     documents
   end
