@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-sm-10 col-sm-offset-1 margin-top-xxl margin-bottom-xl">
-    <h2><%= @publication_title %></h2>
+    <h1><%= @publication_title %></h1>
     <div class="posts">
       <%= render partial: 'posts', locals: { posts: @posts, blog_type: @blog_type, group_page: @group_page, publication: @medium_publication } %>
     </div>
