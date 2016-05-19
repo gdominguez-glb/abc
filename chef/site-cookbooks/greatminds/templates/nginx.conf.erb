@@ -8,11 +8,51 @@ server {
 }
 
 <% if node['rails_env'] == 'production' %>
-  server {
-    server_name beta.<%= node['the_domain'] %>;
-    return 301 $scheme://<%= node['the_domain'] %>$request_uri;
-  }
+server {
+  server_name beta.<%= node['the_domain'] %>;
+  return 301 $scheme://<%= node['the_domain'] %>$request_uri;
+}
 <% end %>
+
+<% if node['ssl'] %>
+
+server {
+  listen      80;
+  server_name <%= node['the_domain'] %>;
+  rewrite     ^   https://$server_name$request_uri? permanent;
+}
+
+server {
+  listen 443;
+
+  ssl    on;
+  ssl_certificate    <%= node['ssl']['ssl_certificate'] %>;
+  ssl_certificate_key    <%= node['ssl']['ssl_certificate_key'] %>;
+
+  server_name <%= node['the_domain'] %>;
+  root /var/www/<%= node['app'] %>/current/public;
+
+  client_max_body_size 1024m;
+
+  location ^~ /assets/ {
+    gzip_static on;
+    expires max;
+    add_header Cache-Control public;
+  }
+
+  try_files $uri/index.html $uri @unicorn;
+  location @unicorn {
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header Host $http_host;
+    proxy_redirect off;
+    proxy_pass http://unicorn;
+  }
+
+  error_page 500 502 503 504 /500.html;
+  keepalive_timeout 5;
+}
+
+<% else %>
 
 server {
   listen 80 default deferred;
@@ -38,3 +78,5 @@ server {
   error_page 500 502 503 504 /500.html;
   keepalive_timeout 5;
 }
+
+<% end %>
