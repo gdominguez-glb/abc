@@ -5,9 +5,9 @@ class BlogController < ApplicationController
 
   def global
     @blog_type = 'global'
-
     load_global_publication
     load_posts
+    @publication_title = @medium_publication.title
   end
 
   def global_post
@@ -26,7 +26,7 @@ class BlogController < ApplicationController
   end
 
   private
-  
+
   def load_global_publications
     @global_publications = MediumPublication.global
   end
