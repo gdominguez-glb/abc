@@ -14,7 +14,7 @@ module Taggable
         self.tag_klass = _tag_klass
         self.tagging_klass = _tagging_klass
 
-        has_many :taggings, class_name: tagging_klass.name
+        has_many :taggings, class_name: tagging_klass.name, dependent: :destroy
         has_many :tags, class_name: tag_klass.name, through: :taggings
 
         scope :tagged_with, ->(tag_list) {

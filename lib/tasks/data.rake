@@ -1,4 +1,15 @@
 namespace :data do
+  desc 'migrate document tags'
+  task document_tags: :environment do
+    ActsAsTaggableOn::Tagging.where(taggable_type: 'Document').find_each do |tagging|
+      document = tagging.taggable
+      if document
+        new_tag_list = document.tags.map(&:name) + [tagging.tag.name]
+        document.update(tag_list: new_tag_list.join(','))
+      end
+    end
+  end
+
   desc "clear users data"
   task clear: :environment do
     SchoolDistrict.delete_all
