@@ -47,7 +47,7 @@
   "elasticsearch_url": "172.31.53.237",
   "app_server": "true",
   "ssl": {
-    "ssl_certificate": "/etc/ssl/greatminds_org.pem",
+    "ssl_certificate": "/etc/ssl/wild_greatminds_org_combined.pem",
     "ssl_certificate_key": "/etc/ssl/greatminds_org.key"
   }
 }

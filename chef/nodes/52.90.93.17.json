@@ -44,5 +44,9 @@
   "domain": "staging.greatminds.org",
   "the_domain": "staging.greatminds.org",
   "app_server": "true",
-  "db_server": "true"
+  "db_server": "true",
+  "ssl": {
+    "ssl_certificate": "/etc/ssl/wild_greatminds_org_combined.pem",
+    "ssl_certificate_key": "/etc/ssl/greatminds_org.key"
+  }
 }
