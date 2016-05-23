@@ -293,7 +293,10 @@
           'contact_form[topic]': 'required',
           'contact_form[first_name]': 'required',
           'contact_form[last_name]': 'required',
-          'contact_form[email]': 'required',
+          'contact_form[email]': {
+            required: true,
+            email: true
+          },
           'contact_form[phone]': 'required',
           'contact_form[description]': {
             required: function() {
