@@ -15,6 +15,7 @@ class ContactForm
 
   validates_presence_of :topic, :first_name, :last_name, :email, :phone
   validates_presence_of :description, if: :require_description?
+  validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
 
   def perform
     if ['Sales/Purchasing', 'Professional Development'].include?(self.topic)
