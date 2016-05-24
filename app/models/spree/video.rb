@@ -40,7 +40,7 @@ class Spree::Video < ActiveRecord::Base
 
   attr_accessor :video_group_name
 
-  before_save :set_video_group
+  before_save :set_video_group, :set_grade_order
 
   after_save :assign_free_taxons
 
@@ -136,5 +136,13 @@ class Spree::Video < ActiveRecord::Base
 
   def assign_taxon(taxon)
     self.taxons << taxon unless self.taxons.where(name: taxon.name).exists?
+  end
+
+  def set_grade_order
+    grade_taxonomy = Spree::Taxonomy.show_in_video.find_by(name: 'Grade')
+    if grade_taxonomy
+      grade_taxon = self.taxons.where(taxonomy_id: grade_taxonomy.id).first
+      self.grade_order = grade_taxon.lft if grade_taxon
+    end
   end
 end
