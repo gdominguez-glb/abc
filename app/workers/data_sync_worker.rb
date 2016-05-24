@@ -10,7 +10,7 @@ class DataSyncWorker
     zip_file_name = "export_models_#{Time.now.to_i}.zip"
     zip_file_path = Rails.root.join('tmp', zip_file_name).to_s
     DataSyncer::Exporter.new(
-      models_to_export: [Page, FaqCategory, Question, Job, Document, EventPage],
+      models_to_export: [Page, FaqCategory, Question, Answer, Job, Document, EventPage],
       zip_file: zip_file_path
     ).export
     Net::SSH.start('beta.greatminds.org', 'deploy') do |ssh|

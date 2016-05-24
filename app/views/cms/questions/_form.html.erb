@@ -28,7 +28,7 @@
     <%= f.text_field :title, class: 'form-control' %>
   </div>
   <div class="form-group">
-    <% f.object.answer ||= Answer.new(question: f.object) %>
+    <% f.object.build_answer if f.object.answer.blank? %>
     <%= f.fields_for :answer do |answer_form| %>
       <label>Answer</label>
       <%= answer_form.text_area :content, class: 'form-control rich-editor' %>
