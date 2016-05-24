@@ -9,12 +9,12 @@ class VideoGalleryController < ApplicationController
   def index
     params[:taxon_ids] ||= []
 
-    @videos             = Spree::Video.order('spree_videos.title asc')
+    @videos             = Spree::Video.where('1=1')
     @videos             = filter_videos(@videos)
 
     load_taxonomies(@videos, params[:taxon_ids])
 
-    @videos             = @videos.includes([video_group: [:products], taxons: [:taxonomy]]).page(params[:page])
+    @videos             = @videos.includes([video_group: [:products], taxons: [:taxonomy]]).order('is_free desc, grade_order asc, title asc').page(params[:page])
 
     @bought_product_ids = fetch_bought_ids(@videos.map(&:products).flatten.compact)
   end
