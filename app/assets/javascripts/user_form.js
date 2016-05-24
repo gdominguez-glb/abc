@@ -52,6 +52,8 @@ $(document).on("change", "#spree_user_district_id, #spree_user_school_id", funct
   type = type.charAt(0).toUpperCase() + type.slice(1);
   if( $(this).val() === "#notListed" ) {
     $("#rowAdd" + type).collapse('show');
+  } else {
+    $("#rowAdd" + type).collapse('hide');
   }
 });
 
@@ -67,6 +69,7 @@ $(function(){
 
   $("#spree_user_title").trigger('change');
   $("#spree_user_school_id").trigger('change');
+  $("#spree_user_district_id").trigger('change');
 
   $("#spree_user_school_district_attributes_state_id").change(function(){
     var stateId = $(this).val();
@@ -168,7 +171,9 @@ $(function(){
       formatSelection: options.formatFunc,
       formatResult: options.formatFunc,
       initSelection: function (element, callback) {
-        if ( $(element).val() !== null ) {
+        if ( $(element).val() === '#notListed' ) {
+          return callback({id: '#notListed', text: (options.type + " Not Listed") });
+        } else if ( $(element).val() !== null ) {
           return $.getJSON("/school_districts/" + $(element).val(), null, function (data) {
             return callback(data.item);
           });
