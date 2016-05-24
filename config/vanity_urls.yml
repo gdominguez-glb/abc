@@ -1,0 +1,14 @@
+development:
+  - http://localhost
+
+test:
+  - http://localhost
+
+qa:
+  - https://qa.greatminds.org
+
+staging:
+  - https://qa.greatminds.org
+
+production:
+  - https://greatminds.org

@@ -47,7 +47,7 @@ class Cms::VanityUrlsController < Cms::BaseController
   private
 
   def vanity_url_params
-    params.require(:vanity_url).permit(:url, :redirect_url, :tag_list)
+    params.require(:vanity_url).permit(:url, :redirect_url, :tag_list, :base_domain, :url_path)
   end
 
   def authenticate_vanity_admin
