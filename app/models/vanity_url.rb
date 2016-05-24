@@ -10,6 +10,30 @@ class VanityUrl < ActiveRecord::Base
 
   validate :must_not_be_root_url, :must_not_be_exist_path, :must_not_be_page_slug
 
+  if File.exists?(Rails.root.join('config/vanity_urls.yml'))
+    BASE_DOMAINS = YAML.load_file(Rails.root.join('config/vanity_urls.yml'))[Rails.env]
+  else
+    BASE_DOMAINS = ['https://greatminds.org']
+  end
+
+  attr_accessor :base_domain, :url_path
+
+  before_validation :combine_url
+
+  after_initialize do |vanity_url|
+    if vanity_url.url.present?
+      uri = URI(url)
+      vanity_url.base_domain = "#{uri.scheme}://#{uri.host}"
+      vanity_url.url_path = uri.path
+    end
+  end
+
+  def combine_url
+    if base_domain.present? && url_path.present?
+      self.url = URI.join(base_domain, url_path)
+    end
+  end
+
   def must_not_be_root_url
     if path.length == 0 || path.length == 1
       self.errors.add(:url, "can't be root url")
