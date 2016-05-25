@@ -116,8 +116,12 @@
       @include rotate(180deg);
     }
 
+    &:hover,
     &:focus {
       outline: 0;
+      background-color: lighten($dark-blue, 5%);
+      cursor: pointer;
+      border-radius: $b-space-s;
     }
 
     .mi {
