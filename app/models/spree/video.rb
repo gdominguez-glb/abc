@@ -40,7 +40,7 @@ class Spree::Video < ActiveRecord::Base
 
   attr_accessor :video_group_name
 
-  before_save :set_video_group, :set_grade_order
+  before_save :set_video_group, :analyze_orders
 
   after_save :assign_free_taxons
 
@@ -138,11 +138,14 @@ class Spree::Video < ActiveRecord::Base
     self.taxons << taxon unless self.taxons.where(name: taxon.name).exists?
   end
 
-  def set_grade_order
-    grade_taxonomy = Spree::Taxonomy.show_in_video.find_by(name: 'Grade')
-    if grade_taxonomy
-      grade_taxon = self.taxons.where(taxonomy_id: grade_taxonomy.id).first
-      self.grade_order = grade_taxon.lft if grade_taxon
+  def analyze_orders
+    if self.title =~ /G(P?K||d+) M(\d+) Lessons (\d+)\-(\d+)/ || self.title =~ /G(P?K|\d+)[\ |-]?M(\d+)[\ |-]?L?(\d+)?/
+      # GK M3 Lessons 25-32
+      # GK-M4-L2, G2M2L9, GPK-M1-L18, GPK M3 Assessments
+      self.grade_order, self.module_order, self.lesson_order = $1, $2, $3
+    elsif self.title =~ /Grades (\d+)-(\d+)/
+      # Grades 3-5
+      self.grade_order = $1
     end
   end
 end
