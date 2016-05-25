@@ -142,10 +142,15 @@ class Spree::Video < ActiveRecord::Base
     if self.title =~ /G(P?K||d+) M(\d+) Lessons (\d+)\-(\d+)/ || self.title =~ /G(P?K|\d+)[\ |-]?M(\d+)[\ |-]?L?(\d+)?/
       # GK M3 Lessons 25-32
       # GK-M4-L2, G2M2L9, GPK-M1-L18, GPK M3 Assessments
-      self.grade_order, self.module_order, self.lesson_order = $1, $2, $3
+      self.grade_order, self.module_order, self.lesson_order = revise_grade_order_value($1), $2, $3
     elsif self.title =~ /Grades (\d+)-(\d+)/
       # Grades 3-5
-      self.grade_order = $1
+      self.grade_order = revise_grade_order_value($1)
     end
+  end
+
+  def revise_grade_order_value(grade_name)
+    return 0 if grade_name == 'PK'
+    (grade_name.to_i + 1)
   end
 end
