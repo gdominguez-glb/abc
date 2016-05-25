@@ -93,15 +93,15 @@ $(function(){
     var hideSelector = hide.charAt(0).toUpperCase() + hide.slice(1),
         showSelector = show.charAt(0).toUpperCase() + show.slice(1),
         rowSelectorHide = "#row" + hideSelector + "Select",
-        rowAddSelectorHide = "#rowAdd" + hideSelector + hide.slice(1),
+        rowAddSelectorHide = "#rowAdd" + hideSelector,
         rowAddSelectorShow = "#rowAdd" + showSelector,
         rowSelectorShow = "#row" + showSelector + "Select";
 
     $(rowSelectorHide + "," + rowAddSelectorHide).collapse("hide");
     $(rowSelectorShow).collapse("show");
-    $(rowAddSelectorShow + "input").prop("disabled", false);
+    $(rowAddSelectorShow + " input").prop("disabled", false);
     $(rowSelectorHide + " #spree_user_" + hide + "_id").val(null);
-    $(rowAddSelectorHide + "input").prop("disabled", true);
+    $(rowAddSelectorHide + " input").prop("disabled", true);
   }
 
   function listenToCountry() {
