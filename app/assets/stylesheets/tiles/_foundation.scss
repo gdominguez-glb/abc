@@ -9,21 +9,37 @@
 .cream-bg {
   color: $dark-blue;
   background: $gray-yellow;
+
+  &.image-bg {
+    color: $c-absent;
+  }
 }
 
 .green-bg {
   color: $dark-blue;
   background: $brand-green;
+
+  &.image-bg {
+    color: $c-absent;
+  }
 }
 
 .light-blue-bg {
   color: $dark-blue;
   background: $english;
+
+  &.image-bg {
+    color: $c-absent;
+  }
 }
 
 .orange-bg {
   color: $dark-blue;
   background: $history;
+
+  &.image-bg {
+    color: $c-absent;
+  }
 }
 
 .coral-bg {
