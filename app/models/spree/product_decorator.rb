@@ -76,6 +76,7 @@ Spree::Product.class_eval do
   scope :show_in_storefront, -> { where(show_in_storefront: true).order('position asc') }
   scope :salesforceable, -> { where.not(sf_id_product: [nil, ''])}
   scope :unarchive, -> { where(archived: false) }
+  scope :sort_group_first, -> { order("case product_type when 'group' then 1 else 2 end") }
 
   after_save :add_video_group_taxon
 
