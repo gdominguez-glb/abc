@@ -12,7 +12,7 @@ pages:
           rowType: 'Role/Curriculum Selector Hero'
           title: '<h5 class="home-mast-intro bold">Every child is capable of <span class="text-success">greatness</span></h5>'
           title_highlight: ''
-          background_image_url: 'http://gm-s3-qa.intridea.com/documents/attachments/000/000/020/original/homepage-masthead.jpg?1443038050'
+          background_image_url: '//gm-s3-qa.intridea.com/documents/attachments/000/000/020/original/homepage-masthead.jpg?1443038050'
           position: 0
 
         -
@@ -27,7 +27,7 @@ pages:
           button_title: 'Learn More'
           button_link: '/'
           background_color: 'green'
-          image_url: 'http://gm-s3-qa.intridea.com/documents/attachments/000/000/014/original/homepage-content1.png?1442491419'
+          image_url: '//gm-s3-qa.intridea.com/documents/attachments/000/000/014/original/homepage-content1.png?1442491419'
           position: 1
 
         -
@@ -42,7 +42,7 @@ pages:
           button_title: 'Learn More'
           button_link: '/'
           background_color: 'cream'
-          image_url: 'http://gm-s3-qa.intridea.com/documents/attachments/000/000/013/original/homepage-book.png?1442491391'
+          image_url: '//gm-s3-qa.intridea.com/documents/attachments/000/000/013/original/homepage-book.png?1442491391'
           position: 2
 
         -
@@ -59,5 +59,5 @@ pages:
           button_2_title: 'Download'
           button_2_link: '/'
           background_color: 'blue'
-          image_url: 'http://gm-s3-qa.intridea.com/documents/attachments/000/000/015/original/homepage-content2.png?1442491440'
+          image_url: '//gm-s3-qa.intridea.com/documents/attachments/000/000/015/original/homepage-content2.png?1442491440'
           position: 3
