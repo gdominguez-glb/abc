@@ -9,7 +9,7 @@ Spree::ProductsController.class_eval do
 
   def launch
     path = path_to_redirect_for_product(@product)
-    (redirect_to terms_product_path and return) if @product.license_text.present? && !current_spree_user.agree_term_of_product?(@product)
+    (redirect_to terms_product_path and return) if @product.has_license_text? && !current_spree_user.agree_term_of_product?(@product)
     redirect_to (path ? path : main_app.root_path)
   end
 

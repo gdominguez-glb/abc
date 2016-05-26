@@ -234,4 +234,12 @@ Spree::Product.class_eval do
   def max_quantity_to_purchase
     free? ? MAX_FREE_PRODUCT_QUANTITY : MAX_PAID_PRODUCT_QUANTITY
   end
+
+  def has_license_text?
+    license_text.present? || (parent_bundle && parent_bundle.license_text.present?)
+  end
+
+  def license_text_for_terms
+    license_text.present? ? license_text : (parent_bundle && parent_bundle.license_text)
+  end
 end
