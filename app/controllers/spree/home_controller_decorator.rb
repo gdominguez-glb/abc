@@ -6,6 +6,8 @@ Spree::HomeController.class_eval do
 
     if params[:taxon_ids].blank?
       @products = @products.show_in_storefront
+    else
+      @products = @products.sort_group_first
     end
     @products = @products.unarchive.page(params[:page]).per(10)
   end
