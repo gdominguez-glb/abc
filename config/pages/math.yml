@@ -14,8 +14,8 @@ pages:
         -
           rowType: 'Video Hero'
           title: 'Lorem ipsum dolor sit amet'
-          video_url: 'http://gm-s3-qa.intridea.com/documents/attachments/000/000/011/original/eureka-math-hd.mp4?1442330466'
-          background_image_url: 'http://gm-s3-qa.intridea.com/documents/attachments/000/000/018/original/mathpage-videobackground1.jpg?1443029702'
+          video_url: '//gm-s3-qa.intridea.com/documents/attachments/000/000/011/original/eureka-math-hd.mp4?1442330466'
+          background_image_url: '//gm-s3-qa.intridea.com/documents/attachments/000/000/018/original/mathpage-videobackground1.jpg?1443029702'
           position: 0
 
         -
@@ -33,7 +33,7 @@ pages:
           body_text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
           button_title: 'Learn More'
           button_link: '/math'
-          image_url: 'http://gm-s3-qa.intridea.com/documents/attachments/000/000/008/original/mathpage-content1.jpg?1442330362'
+          image_url: '//gm-s3-qa.intridea.com/documents/attachments/000/000/008/original/mathpage-content1.jpg?1442330362'
           position: 2
 
         -
@@ -59,7 +59,7 @@ pages:
           body_text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
           button_title: 'Learn More'
           button_link: '/math'
-          image_url: 'http://gm-s3-qa.intridea.com/documents/attachments/000/000/010/original/mathpage-content2.jpg?1442330393'
+          image_url: '//gm-s3-qa.intridea.com/documents/attachments/000/000/010/original/mathpage-content2.jpg?1442330393'
           position: 4
 
         -
@@ -82,7 +82,7 @@ pages:
           body_text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
           button_title: 'Learn More'
           button_link: '/math'
-          image_url: 'http://gm-s3-qa.intridea.com/documents/attachments/000/000/010/original/mathpage-content2.jpg?1442330393'
+          image_url: '//gm-s3-qa.intridea.com/documents/attachments/000/000/010/original/mathpage-content2.jpg?1442330393'
           position: 6
 
   -
