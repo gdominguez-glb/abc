@@ -65,4 +65,23 @@ RSpec.describe SearchHelper, type: :helper do
       expect(helper.post_link(_post)).to eq("/math/blog/report/post/#{_post.id}")
     end
   end
+
+  describe "#event_page_link" do
+    describe "global event link" do
+      let(:event_page) { create(:event_page, slug: 'this-is-global-events', event_page_type: :global) }
+
+      it "generate global link" do
+        expect(helper.event_page_link(event_page)).to eq('/events/l/this-is-global-events')
+      end
+    end
+
+    describe "curriculum link" do
+      let(:page) { create(:page, slug: 'math') }
+      let(:event_page) { create(:event_page, slug: 'this-is-math-events', event_page_type: :curriculum, page: page) }
+
+      it "generate curriculum link" do
+        expect(helper.event_page_link(event_page)).to eq("/math/events/this-is-math-events")
+      end
+    end
+  end
 end

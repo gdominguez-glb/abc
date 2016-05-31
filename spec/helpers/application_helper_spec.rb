@@ -31,4 +31,17 @@ RSpec.describe ApplicationHelper, type: :helper do
       expect(helper.store_generate_taxon_ids_param(taxon_ids, sibling_ids, taxon)).to eq([taxon.id])
     end
   end
+
+  describe "#preview_medium_publication_link" do
+    it "generate link for global blog" do
+      medium_publication = create(:medium_publication, blog_type: 'global', slug: 'this-is-global')
+      expect(helper.preview_medium_publication_link(medium_publication)).to eq('/updates/global/this-is-global')
+    end
+
+    it "generate link for curriculum blog" do
+      page = create(:page, slug: 'math')
+      medium_publication = create(:medium_publication, blog_type: 'curriculum', slug: 'this-is-math', page: page)
+      expect(helper.preview_medium_publication_link(medium_publication)).to eq('/math/blog/this-is-math')
+    end
+  end
 end
