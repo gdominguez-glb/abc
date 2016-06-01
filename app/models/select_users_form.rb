@@ -12,13 +12,14 @@ class SelectUsersForm
 
   def emails_in_file
     return [] if @users_file.blank?
-    rows = case file_format
-    when '.xlsx'
-      parse_excel_rows
-    when '.csv'
-      parse_csv_rows
-    else
-      []
+    rows =
+    case file_format
+      when '.xlsx'
+        parse_excel_rows
+      when '.csv'
+        parse_csv_rows
+      else
+        []
     end
     rows.map {|row| row['email'] }
   end
