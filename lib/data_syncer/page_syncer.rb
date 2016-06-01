@@ -14,7 +14,7 @@ class DataSyncer::PageSyncer < DataSyncer::Base
   def convert_urls_in_tiles(tiles)
     rows = tiles[:rows]
     rows.each do |row|
-      row.keys.select{|k| k =~ /link/ }.each do |key|
+      row.keys.select{|k| k =~ /link|url/ }.each do |key|
         next if row[key].blank?
         if row[key].include?('staging.greatminds.org') && row[key] !~ /s3-staging\.greatminds\.org/
           row[key] = row[key].gsub('staging.greatminds.org', 'greatminds.org')
