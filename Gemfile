@@ -95,7 +95,7 @@ gem "mandrill-api"
 
 gem "validate_url"
 
-gem "geocoder"
+gem "cloudfront-signer"
 
 group :development do
   gem 'quiet_assets'
