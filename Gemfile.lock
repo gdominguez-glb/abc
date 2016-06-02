@@ -214,6 +214,7 @@ GEM
     cldr-plurals-runtime-rb (1.0.0)
     climate_control (0.0.3)
       activesupport (>= 3.0)
+    cloudfront-signer (3.0.0)
     cocaine (0.5.7)
       climate_control (>= 0.0.3, < 1.0)
     codeclimate-test-reporter (0.4.7)
@@ -743,6 +744,7 @@ DEPENDENCIES
   capistrano-rails (~> 1.1)
   capistrano-rbenv (~> 2.0)
   capistrano-sidekiq!
+  cloudfront-signer
   codeclimate-test-reporter
   coffee-rails (~> 4.0.0)
   database_cleaner (~> 1.4.1)
