@@ -59,3 +59,26 @@ $(function(){
   }
 
 });
+
+
+var shepherdHelper = {
+  stepFactory: function(tour, title, text, attach, cancel, buttonsFlag) {
+    var button = [{text: 'Next', action: tour.next}];
+
+    if (buttonsFlag) {
+      button = [{
+        text: 'Exit',
+        classes: 'shepherd-button-secondary',
+        action: 'shepherd.cancel'
+      }];
+    }
+
+    return {
+      title: title,
+      text: text,
+      attachTo: attach,
+      showCancelLink: cancel,
+      buttons: button
+    };
+  }
+};
