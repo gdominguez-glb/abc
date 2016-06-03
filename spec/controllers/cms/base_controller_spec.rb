@@ -23,6 +23,15 @@ RSpec.describe Cms::BaseController, type: :controller do
       end
     end
 
+    context "as user" do
+      login_vanity_admin
+
+      it "redirect with vanity admin user" do
+        get :index
+        expect(response).to be_redirect
+      end
+    end
+
     context "as admin" do
       login_admin
 

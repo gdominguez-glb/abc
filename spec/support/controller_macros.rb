@@ -7,6 +7,14 @@ module ControllerMacros
     end
   end
 
+  def login_vanity_admin
+    before(:each) do
+      @request.env["devise.mapping"] = Devise.mappings[:spree_user]
+      user = create(:gm_user); user.spree_roles << Spree::Role.vanity_admin; user
+      sign_in :spree_user, user
+    end
+  end
+
   def login_user
     before(:each) do
       @request.env["devise.mapping"] = Devise.mappings[:spree_user]

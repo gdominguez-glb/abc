@@ -69,4 +69,20 @@ RSpec.describe Cms::PagesController, type: :controller do
       expect(Page.find_by(id: page.id)).to be_nil
     end
   end
+
+  describe "POST 'product_marketing_editor'" do
+    it "product_marketing_editor successfully" do
+      post :product_marketing_editor, id: page.id
+      expect(assigns(:page)).not_to be_nil
+      expect(response).to be_success
+    end
+  end
+
+  describe "POST 'update_tiles'" do
+    it "update_tiles successfully" do
+      post :update_tiles, id: page.id, format: :js
+      expect(assigns(:page)).not_to be_nil
+      expect(response).to be_success
+    end
+  end
 end
