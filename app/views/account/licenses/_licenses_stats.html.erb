@@ -7,7 +7,7 @@
       <h5>Distributed: <span><%= licenses_ids ? current_spree_user.distributed_licenses_count(licenses_ids) : 'N/A' %></span></h5>
     </div>
     <div class="col-sm-4 stat-container">
-      <h5>Updated Total: <span><%= licenses_ids ? current_spree_user.remaining_licenses_count(licenses_ids) : 'N/A' %></span></h5>
+      <h5>Remaining: <span><%= licenses_ids ? current_spree_user.remaining_licenses_count(licenses_ids) : 'N/A' %></span></h5>
     </div>
   </div>
 </div>
