@@ -3,7 +3,7 @@ class Cms::FooterLinksController < Cms::BaseController
   before_action :find_footer_link, except: [:index, :new, :create, :update_positions]
 
   def index
-    @footer_links = @footer_title.footer_links.order('position asc')
+    @footer_links = @footer_title.footer_links
   end
 
   def new
