@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-sm-2"></div>
     <div style="width: 16.66%; position: absolute;"></div>
-    <% FooterTitle.all.each do |footer_title| %>
+    <% FooterTitle.order('position asc').each do |footer_title| %>
       <div class="col-sm-2 footer-section">
         <h6 class="section-lead">
           <% if footer_title.link.present? %>
