@@ -12,6 +12,7 @@ Spree::UserRegistrationsController.class_eval do
         current_order.associate_user! @user if current_order
 
         sign_up(resource_name, resource)
+        SignUpNotifier.delay.notify(@user.id)
         session[:spree_user_signup] = true
         respond_with resource, location: after_sign_up_path_for(resource)
       else
