@@ -35,8 +35,8 @@
 
     &.active {
       a {
-        color: $c-absent;
         border-color: $dark-blue;
+        color: $c-absent;
         background-color: $dark-blue;
 
         &:hover,

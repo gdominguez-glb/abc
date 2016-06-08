@@ -49,3 +49,4 @@ exclude_paths:
 - script/
 - spec/
 - vendor/
+- public/
