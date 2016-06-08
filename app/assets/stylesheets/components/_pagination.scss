@@ -19,7 +19,9 @@
 //   Styleguide 10.2
 // -------------------------------------
 
-.pagination {
+.pagination.pagination {
+  margin: 0 0 $b-space-l;
+
   li {
     a {
       color: $dark-blue;
@@ -34,6 +36,7 @@
     &.active {
       a {
         border-color: $dark-blue;
+        color: $c-absent;
         background-color: $dark-blue;
 
         &:hover,
@@ -44,6 +47,15 @@
           background-color: lighten($dark-blue, 5%);
         }
       }
+    }
+  }
+
+  .prev,
+  .next {
+    display: none;
+
+    @media screen and (min-width: $screen-sm-min) {
+      display: inline;
     }
   }
 }
