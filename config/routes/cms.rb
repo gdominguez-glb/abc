@@ -48,7 +48,11 @@ namespace :cms do
   resources :curriculums
   resources :event_trainings
   resources :download_pages do
-    resources :download_products
+    resources :download_products do
+      collection do
+        post :update_positions
+      end
+    end
   end
   resources :jobs
   resources :footer_titles do
