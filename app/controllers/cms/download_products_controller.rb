@@ -25,6 +25,11 @@ class Cms::DownloadProductsController < Cms::BaseController
     redirect_to cms_download_page_download_products_path(@download_page), notice: 'Destroy download page successfully'
   end
 
+  def update_positions
+    update_positions_with_klass(DownloadProduct)
+    render nothing: true
+  end
+
   private
 
   def download_product_params
