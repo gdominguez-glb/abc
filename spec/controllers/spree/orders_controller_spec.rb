@@ -30,6 +30,33 @@ RSpec.describe Spree::OrdersController, type: :controller do
       expect(order.line_items.size).to eq(2)
       expect(response).to be_redirect
     end
-    
+
+  end
+
+  describe "Update" do
+    let(:order) do
+      Spree::Order.create!
+    end
+
+    before do
+      allow(controller).to receive :check_authorization
+      allow(controller).to receive_messages current_order: order
+    end
+
+    login_user
+
+    it "should render the edit view (on failure)" do
+      # email validation is only after address state
+      order.update_column(:state, "delivery")
+      put :update, { order: { email: "" } }, { order_id: order.id }
+      expect(response).to render_template :edit
+    end
+
+    it "should redirect to cart path (on success)" do
+      allow(order).to receive(:update_attributes).and_return true
+      put :update, {}, {order_id: 1}
+      expect(response).to redirect_to(cart_path)
+    end
+
   end
 end
