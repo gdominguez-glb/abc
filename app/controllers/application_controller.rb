@@ -8,6 +8,12 @@ class ApplicationController < ActionController::Base
   before_action :accepted_terms
   skip_before_action :accepted_terms, only: [:logout]
 
+  if Rails.env.qa? || Rails.env.staging? || Rails.env.production?
+    def default_url_options(options={})
+      options.merge({ protocol: "https" })
+    end
+  end
+
   def current_ability
     @current_ability ||= Spree::Ability.new(current_user)
   end
