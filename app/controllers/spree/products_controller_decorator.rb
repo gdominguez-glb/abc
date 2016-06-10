@@ -1,6 +1,7 @@
 Spree::ProductsController.class_eval do
   include ProductTaxonsFilter
 
+  before_action :authenticate_user!, only: [:launch, :terms, :agree_terms, :find_launch_product]
   before_action :find_launch_product, only: [:launch, :terms, :agree_terms]
 
   def index
