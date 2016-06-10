@@ -204,7 +204,7 @@ Spree::User.class_eval do
     assign_distributions
     Legacy::Migrater.new(self).execute
 
-    if licensed_products.where('quantity > 1').exists?
+    if licensed_products.group_by(&:product_id).values.any?{|licenses| licenses.map(&:quantity).sum > 1 }
       assign_school_admin_role
     end
 
