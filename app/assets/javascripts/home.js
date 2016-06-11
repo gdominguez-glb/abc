@@ -5,6 +5,7 @@ $(document).ready(function() {
 	var dropdownRole = pageSelection.find('#dropdownRole');
 	var dropdownCurriculum = pageSelection.find('#dropdownCurriculum');
 	var btnGo = pageSelection.find('#btnGo');
+			btnGo.prop("disabled", true);
 
 	dropdownLinks.on('click', function(e) {
 		var text = $(this).text();
@@ -20,6 +21,10 @@ $(document).ready(function() {
 
 	btnGo.on('click', function(e) {
 		e.preventDefault();
+
+		if($(this).prop("disabled")) {
+			return true;
+		}
 
 		var roleText = dropdownRole.text().trim().toLowerCase() + 's';
 		var curriculumText = dropdownCurriculum.text().trim().toLowerCase();
