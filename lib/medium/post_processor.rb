@@ -11,7 +11,7 @@ module Medium
 
       published_at    = Time.at(value['firstPublishedAt']/1000)
       body            = process_paragraphs(value['content']['bodyModel']['paragraphs'])
-      preview_content = process_paragraphs(value['previewContent']['bodyModel']['paragraphs'])
+      preview_content = process_preview_paragraphs(value['previewContent']['bodyModel']['paragraphs'], value['title'])
 
       {
         medium_id:       value['id'],
@@ -25,6 +25,10 @@ module Medium
 
     def process_paragraphs(paragraphs)
       Medium::ParagraphsProcessor.new(paragraphs: paragraphs[1..-1], url: @url).process
+    end
+
+    def process_preview_paragraphs(paragraphs, title)
+      self.process_paragraphs(paragraphs.reject { |p| p["text"] == title and p["name"] == "previewTitle" })
     end
   end
 end
