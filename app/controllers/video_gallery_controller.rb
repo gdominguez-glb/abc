@@ -81,7 +81,7 @@ class VideoGalleryController < ApplicationController
     if selected_taxon_ids.present?
       taxon_ids    = Spree::VideoClassification.where(video_id: @videos.pluck(:id)).pluck('distinct(taxon_id)')
       taxonomy_ids = Spree::Taxon.where(id: taxon_ids).pluck('distinct(taxonomy_id)')
-      taxonomies   = taxonomies.where(id: taxonomy_ids + [group_taxonomy_id])
+      taxonomies   = taxonomies.where("id in (?) or top_level_in_video = ?",  taxonomy_ids, true)
     else
       taxonomies = taxonomies.top_level_in_video
     end
@@ -92,9 +92,5 @@ class VideoGalleryController < ApplicationController
     if current_spree_user
       current_spree_user.log_activity(item: video, title: video.title, action: :view)
     end
-  end
-
-  def group_taxonomy_id
-    Spree::Taxonomy.show_in_video.find_by(name: 'Group').try(:id)
   end
 end

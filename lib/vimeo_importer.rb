@@ -66,7 +66,7 @@ class VimeoImporter
   end
 
   def assign_video_group(video)
-    group_taxonomy = Spree::Taxonomy.find_by(name: 'Group')
+    group_taxonomy = Spree::Taxonomy.find_by(name: 'Type')
     return if group_taxonomy.nil?
     video_group_name = video.taxons.where(id: group_taxonomy.taxons.pluck(:id)).first.try(:name)
     video.update(video_group_name: video_group_name) if video_group_name
