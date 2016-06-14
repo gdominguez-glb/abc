@@ -46,7 +46,11 @@ namespace :cms do
   end
   resources :notification_triggers
   resources :curriculums
-  resources :event_trainings
+  resources :event_trainings do
+    collection do
+      post :update_positions
+    end
+  end
   resources :download_pages do
     resources :download_products do
       collection do

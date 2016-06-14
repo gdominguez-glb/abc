@@ -7,6 +7,8 @@ class EventTraining < ActiveRecord::Base
 
   searchkick callbacks: :async
 
+  acts_as_list
+
   def search_data
     {
       title: title,
