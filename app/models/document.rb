@@ -19,4 +19,13 @@ class Document < ActiveRecord::Base
   include Taggable
 
   activate_taggble DocumentTag, DocumentTagging
+
+  attr_reader :attachment_remote_url
+  def attachment_remote_url=(url_value)
+    self.attachment = URI.parse(url_value)
+    # Assuming url_value is http://example.com/photos/face.png
+    # attachment_file_name == "face.png"
+    # attachment_content_type == "image/png"
+    @attachment_remote_url = url_value
+  end
 end
