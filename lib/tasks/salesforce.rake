@@ -6,7 +6,8 @@ namespace :salesforce do
                 'Contact' => Spree::User,
                 'PricebookEntry' => Spree::Product }
     classes.each do |name, klass|
-      processed = SalesforceObjectImporter.new(name, klass).import
+      import_all = (klass == Spree::Product ? true : false)
+      processed = SalesforceObjectImporter.new(name, klass).import(import_all)
       puts "#{processed} Salesforce #{name} records processed"
     end
   end
