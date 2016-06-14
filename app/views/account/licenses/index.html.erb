@@ -18,7 +18,7 @@
 
   <% if current_spree_user.managed_products_options.size > 0 %>
     <div class="row">
-      <div class="js-step-1 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4 margin-bottom-xl padding-xs-horiz-xl">
+      <div class="js-step-1 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 margin-bottom-xl padding-xs-horiz-xl">
         <p class="sans-serif"><strong>1. Select product to assign</strong></p>
         <% selected_option = current_spree_user.managed_products_options.find{|o| o[1] == params[:licenses_ids] } %>
         <%= f.hidden_field :licenses_ids, :value => selected_option.nil? ? "" : selected_option[1] %>
