@@ -34,7 +34,7 @@ class EventsController < ApplicationController
   end
 
   def trainings
-    @event_trainings = EventTraining.all
+    @event_trainings = EventTraining.order(:position)
   end
 
   private

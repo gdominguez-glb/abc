@@ -2,7 +2,7 @@ class Cms::EventTrainingsController < Cms::BaseController
   before_action :set_event_training, only: [:show, :edit, :update, :destroy]
 
   def index
-    @event_trainings = EventTraining.page(params[:page])
+    @event_trainings = EventTraining.order(:position)
   end
 
   def new
@@ -29,6 +29,11 @@ class Cms::EventTrainingsController < Cms::BaseController
   def destroy
     @event_training.destroy
     redirect_to cms_event_trainings_path, notice: 'Destroy event training successfully'
+  end
+
+  def update_positions
+    update_positions_with_klass(EventTraining)
+    render nothing: true
   end
 
   private
