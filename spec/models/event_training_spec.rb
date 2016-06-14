@@ -16,7 +16,8 @@ RSpec.describe EventTraining, type: :model do
     it "index title and content" do
       expect(event_training.search_data).to eq({
         title: 'This is a event training',
-        content: 'test'
+        content: 'test',
+        user_ids: [-1]
       })
     end
   end
