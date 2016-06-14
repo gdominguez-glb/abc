@@ -7,7 +7,7 @@ class Spree::VideoGroup < ActiveRecord::Base
   private
 
   def create_taxon
-    group_taxonomy = Spree::Taxonomy.find_or_create_by(name: 'Group')
+    group_taxonomy = Spree::Taxonomy.find_or_create_by(name: 'Type')
     group_taxonomy.root.children.find_or_create_by(name: self.name) if group_taxonomy
   end
 end
