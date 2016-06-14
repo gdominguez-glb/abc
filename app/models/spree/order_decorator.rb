@@ -75,7 +75,7 @@ Spree::Order.class_eval do
     return false if line_items.blank?
     return false if id_in_salesforce.blank?
     return true if fulfillment?
-    line_items.all? { |line_item| line_item.id_in_salesforce.present? }
+    line_items.any? { |line_item| line_item.id_in_salesforce.present? }
   end
 
   def payment_received?
