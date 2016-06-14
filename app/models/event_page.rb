@@ -21,7 +21,8 @@ class EventPage < ActiveRecord::Base
   def search_data
     {
       title: title,
-      description: description
+      description: description,
+      user_ids: [-1]
     }
   end
 end

@@ -10,7 +10,8 @@ class EventTraining < ActiveRecord::Base
   def search_data
     {
       title: title,
-      content: content
+      content: content,
+      user_ids: [-1]
     }
   end
 end
