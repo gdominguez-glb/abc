@@ -7,7 +7,7 @@
           <h5 class="product-title margin-top margin-bottom-s"><%= truncate(product.name, length: 50) %></h5>
         </div>
       <p class="product-description">
-        <%= truncate(product.short_description, length: 110) %>
+        <%= truncate(strip_tags(product.short_description), length: 110) %>
       </p>
     </div>
     <%= link_to 'Launch Product', spree.launch_product_path(product), class: 'btn btn-primary' %>
