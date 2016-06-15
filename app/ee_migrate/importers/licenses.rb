@@ -4,7 +4,21 @@ module Importers
     PRODUCTS_MAPPINGS = YAML.load_file(Rails.root.join('config/data/legacy_products.yml'))['products']
 
     def self.import(emails=[])
-      Migrate::Credit.find_by_sql(["select credits.id, credits.member_id, credits.product_id, credits.expiration_date, credits.order_id, tokens.first_name, tokens.last_name, tokens.email, orders.author_id as author_id, authors.email as author_email from exp_commoncore_credits credits join exp_commoncore_registration_tokens tokens on tokens.id = credits.token_id join exp_channel_titles orders on orders.entry_id = credits.order_id join exp_members authors on authors.member_id = orders.author_id where  (credits.expiration_date > '2016-06-30 00:00:00' or credits.expiration_date is null) #{emails.present? ? "and authors.email in (:emails)" : '' }", { emails: emails }]).each do |credit|
+      product_ids = PRODUCTS_MAPPINGS.map {|h| h[:legacy_id]}
+      sql = """
+        select
+           credits.id, credits.member_id, credits.product_id, credits.expiration_date, credits.order_id,
+           tokens.first_name, tokens.last_name, tokens.email,
+           orders.author_id as author_id, authors.email as author_email
+         from exp_commoncore_credits credits
+         join exp_commoncore_registration_tokens tokens on tokens.id = credits.token_id
+         join exp_channel_titles orders on orders.entry_id = credits.order_id
+         join exp_members authors on authors.member_id = orders.author_id
+         where
+           (credits.expiration_date > '#{Date.today.to_s} 00:00:00' or credits.expiration_date is null)
+           and credits.product_id in (:product_ids) #{emails.present? ? "and authors.email in (:emails)" : '' }
+      """
+      Migrate::Credit.find_by_sql([sql, { emails: emails, product_ids: product_ids }]).each do |credit|
         Legacy::License.create(
           user_id: credit.member_id,
           product_id: credit.product_id,

@@ -2,7 +2,9 @@ namespace :legacy do
   desc "cleanup legacy users"
   task cleanup: :environment do
     emails = ENV['emails'].split(',').map(&:strip).map(&:downcase)
-    raise 'please specify emails to cleanup' if emails.blank?
+    if emails.blank?
+      emails = (Legacy::User.pluck(:email) + Legacy::License.pluck(:email)).uniq
+    end
     Legacy::User.delete_all
     Legacy::License.delete_all
 
