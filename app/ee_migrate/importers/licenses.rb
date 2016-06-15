@@ -5,30 +5,22 @@ module Importers
 
     def self.import(emails=[])
       product_ids = PRODUCTS_MAPPINGS.map {|h| h[:legacy_id]}
-      sql = """
-        select
-           credits.id, credits.member_id, credits.product_id, credits.expiration_date, credits.order_id,
-           tokens.first_name, tokens.last_name, tokens.email,
-           orders.author_id as author_id, authors.email as author_email
-         from exp_commoncore_credits credits
-         join exp_commoncore_registration_tokens tokens on tokens.id = credits.token_id
-         join exp_channel_titles orders on orders.entry_id = credits.order_id
-         join exp_members authors on authors.member_id = orders.author_id
-         where
-           (credits.expiration_date > '#{Date.today.to_s} 00:00:00' or credits.expiration_date is null)
-           and credits.product_id in (:product_ids) #{emails.present? ? "and authors.email in (:emails)" : '' }
-      """
-      Migrate::Credit.find_by_sql([sql, { emails: emails, product_ids: product_ids }]).each do |credit|
+      Migrate::Credit.where("expiration_date > ? or expiration_date is null", Date.today).where(product_id: product_ids).each do |credit|
+        member = Migrate::Member.find_by(member_id: credit.member_id)
+        token = Migrate::RegistrationToken.find_by(id: credit.token_id)
+        order = Migrate::ChannelTitle.find_by(entry_id: credit.order_id)
+        author = (order ? Migrate::Member.find_by(member_id: order.author_id) : nil
+
         Legacy::License.create(
           user_id: credit.member_id,
           product_id: credit.product_id,
           expiration_date: credit.expiration_date,
           order_id: credit.order_id,
-          first_name: credit.first_name,
-          last_name: credit.last_name,
-          email: credit.email.try(:downcase),
-          from_user_id: credit.author_id,
-          from_email: credit.author_email.try(:downcase),
+          first_name: token.try(:first_name),
+          last_name: token.try(:last_name),
+          email: (member.try(:email).try(:downcase) || token.try(:email)),
+          from_user_id: author.try(:member_id),
+          from_email: author.try(:email),
           ee_id: credit.id,
           mapped_name: PRODUCTS_MAPPINGS.find{|m| m[:legacy_id] == credit.product_id }.try(:[], :name)
         )

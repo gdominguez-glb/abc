@@ -3,7 +3,7 @@ module Importers
     def self.import(emails=[])
       product_ids = Importers::Licenses::PRODUCTS_MAPPINGS.map {|h| h[:legacy_id]}
 
-      member_ids = Migrate::Credit.where("expiration_date > ? or expiration_date is null", Date.today).where(product_id: product_ids).pluck(:member_id)
+      member_ids = Migrate::Credit.where("expiration_date > ? or expiration_date is null", Date.today).where(product_id: product_ids).pluck(:member_id).compact.uniq
       members = Migrate::Member.where(member_id: member_ids)
 
       if emails.present?
