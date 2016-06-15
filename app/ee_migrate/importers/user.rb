@@ -13,7 +13,7 @@ module Importers
       ]).joins("left join exp_member_data ON exp_members.member_id = exp_member_data.member_id")
       .joins("left join exp_channel_titles ON exp_channel_titles.author_id = exp_members.member_id")
       .joins("left join exp_channel_data ON exp_channel_titles.entry_id = exp_channel_data.entry_id")
-      .where("exp_members.id in (?)", member_ids)
+      .where("exp_members.member_id in (?)", member_ids)
       .group("exp_members.member_id")
 
       if emails.present?
