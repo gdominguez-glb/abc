@@ -9,7 +9,7 @@ module Importers
         member = Migrate::Member.find_by(member_id: credit.member_id)
         token = Migrate::RegistrationToken.find_by(id: credit.token_id)
         order = Migrate::ChannelTitle.find_by(entry_id: credit.order_id)
-        author = (order ? Migrate::Member.find_by(member_id: order.author_id) : nil
+        author = (order ? Migrate::Member.find_by(member_id: order.author_id) : nil)
 
         Legacy::License.create(
           user_id: credit.member_id,

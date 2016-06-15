@@ -1,7 +1,7 @@
 namespace :legacy do
   desc "cleanup legacy users"
   task cleanup: :environment do
-    emails = ENV['emails'].split(',').map(&:strip).map(&:downcase)
+    emails = ENV['emails'].split(',').map(&:strip).map(&:downcase) rescue nil
     if emails.blank?
       emails = (Legacy::User.pluck(:email) + Legacy::License.pluck(:email)).uniq
     end
@@ -16,7 +16,7 @@ namespace :legacy do
 
   desc "import users/licenses from web 1.0"
   task import: :environment do
-    emails = ENV['emails'].split(',').map(&:strip)
+    emails = ENV['emails'].split(',').map(&:strip) rescue nil
 
     puts 'importing all users' if emails.blank?
 
