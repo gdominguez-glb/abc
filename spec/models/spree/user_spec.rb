@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Spree::User do
-  let(:user_attributes) { {skip_salesforce_create: true, first_name: 'John', last_name: 'Doe', school_district: create(:school_district)} }
+  let(:user_attributes) { {skip_salesforce_create: true, first_name: 'John', last_name: 'Doe', school_district: create(:school_district), title: 'Homeschooler' } }
   let(:user) { create(:user, user_attributes) }
   let(:product) { create(:product, name: 'Product A') }
   let(:math) { create(:curriculum, name: 'Math') }

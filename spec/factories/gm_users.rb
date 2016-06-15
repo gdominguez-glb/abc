@@ -7,6 +7,7 @@ FactoryGirl.define do
     password '123456'
     skip_salesforce_create true
     accepted_terms true
+    title 'Homeschooler'
     after(:create) do |u|
       create(:salesforce_reference, local_object: u)
     end
