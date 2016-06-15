@@ -37,15 +37,15 @@ $(document).ready(function() {
     selectContainer.each(function() {
       // Set the display text if selection is already made
       var text = $(this).find('option[selected]').text();
-      if (text == '') {text = $(this).find('span').text() || 'Please Select';}
-      $(this).find('span').text(text);
+      if (text == '') {text = $(this).find('span').not('.field_with_errors').text() || 'Please Select';}
+      $(this).find('span').not('.field_with_errors').text(text);
 
       // Set the display text on selection
       var select = $(this).find('select');
       select.on('change', function() {
         var text = $(this).find('option:selected').text();
         if (text == '') {text = 'Please Select';}
-        $(this).parent().find('span').text(text);
+        $(this).closest('.select-container').find('span').not('.field_with_errors').text(text);
       });
     });
   }
