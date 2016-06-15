@@ -97,6 +97,8 @@ gem "validate_url"
 
 gem "cloudfront-signer"
 
+gem "html_truncator", "~>0.2"
+
 group :development do
   gem 'quiet_assets'
   gem 'letter_opener'
