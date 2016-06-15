@@ -28,6 +28,11 @@ class Spree::LicensedProduct < ActiveRecord::Base
     super
   end
 
+  def skip_salesforce_sync?
+    return true if order_id.blank?
+    false
+  end
+
   def line_item
     order && order.line_items.find { |li| li.product.id == product.id }
   end

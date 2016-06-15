@@ -4,6 +4,7 @@ class Legacy::License < ActiveRecord::Base
 
   def self.import_to_new_licenses
     Legacy::License.where.not(email: nil).find_each do |legacy_license|
+      next if legacy_license.mapped_name.blank?
       product = Spree::Product.find_by(name: legacy_license.mapped_name)
       next if product.blank?
       licensed_product = Spree::LicensedProduct.create(
@@ -71,7 +72,7 @@ class Legacy::License < ActiveRecord::Base
   def self.revise_expiration_date(product, expiration_date)
     return nil if expiration_date.nil? || is_never_expire_product?(product)
     june_30 = Date.new(2016, 6, 30)
-    (expiration_date <= june_30) ? expiration_date : product.expiration_date
+    (expiration_date <= june_30) ? expiration_date : Date.new(2017, 6, 30)
   end
 
   def self.is_lifetime_product?(product)
