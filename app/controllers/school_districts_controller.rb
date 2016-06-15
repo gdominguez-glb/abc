@@ -10,7 +10,7 @@ class SchoolDistrictsController < ApplicationController
       school_districts = school_districts.where(state_id: state.id)
     end
     render json: {
-      items: [{id: '#notListed', text: "#{params[:type]} Not Listed"}] + school_districts.map{|sd| { id: sd.id, text: sd.name_in_option } },
+      items: school_districts.map{|sd| { id: sd.id, text: sd.name_in_option } },
       total_pages: school_districts.total_pages,
       total_count: school_districts.total_count
     }

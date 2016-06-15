@@ -121,14 +121,12 @@ $(function(){
 
     renderOptions({
       type: "school",
-      formatFunc: formatMessage,
       searchFunc: search,
       stateId: _stateId
     });
 
     renderOptions({
       type: "district",
-      formatFunc: formatMessage,
       searchFunc: search,
       stateId: _stateId
     });
@@ -149,14 +147,10 @@ $(function(){
     });
   }
 
-  function formatMessage(object) {
-    return object.id === "#notListed" ? "<u>" + object.text + "</u>" : object.text;
-  }
-
   function toggleMessage(selector, resultsLength, queryLength) {
     var $elem = $(selector);
     $elem.hide();
-    if (resultsLength === 1 && queryLength !== 0) {
+    if (resultsLength === 0 && queryLength !== 0) {
         $elem.show();
     }
   }
@@ -168,12 +162,8 @@ $(function(){
     $elem.select2('destroy');
     $elem.select2({
       placeholder: 'Select A ' + options.type,
-      formatSelection: options.formatFunc,
-      formatResult: options.formatFunc,
       initSelection: function (element, callback) {
-        if ( $(element).val() === '#notListed' ) {
-          return callback({id: '#notListed', text: (options.type + " Not Listed") });
-        } else if ( $(element).val() !== null ) {
+        if ( $(element).val() !== null ) {
           return $.getJSON("/school_districts/" + $(element).val(), null, function (data) {
             return callback(data.item);
           });
