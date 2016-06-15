@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160404200547) do
+ActiveRecord::Schema.define(version: 20160614081141) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,12 +22,6 @@ ActiveRecord::Schema.define(version: 20160404200547) do
     t.integer  "item_id"
     t.string   "item_type"
     t.string   "action"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "announcements", force: :cascade do |t|
-    t.text     "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -90,6 +84,22 @@ ActiveRecord::Schema.define(version: 20160404200547) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "document_taggings", force: :cascade do |t|
+    t.integer  "document_id"
+    t.integer  "tag_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "document_taggings", ["document_id"], name: "index_document_taggings_on_document_id", using: :btree
+  add_index "document_taggings", ["tag_id"], name: "index_document_taggings_on_tag_id", using: :btree
+
+  create_table "document_tags", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "documents", force: :cascade do |t|
     t.string   "name"
     t.string   "category"
@@ -146,8 +156,9 @@ ActiveRecord::Schema.define(version: 20160404200547) do
     t.string   "title"
     t.text     "content"
     t.string   "training_type"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.integer  "position",      default: 0
   end
 
   create_table "faq_categories", force: :cascade do |t|
@@ -377,6 +388,7 @@ ActiveRecord::Schema.define(version: 20160404200547) do
     t.string   "subject"
     t.string   "icon"
     t.boolean  "display",                    default: false
+    t.string   "user_title"
   end
 
   create_table "regonline_events", force: :cascade do |t|
@@ -433,9 +445,11 @@ ActiveRecord::Schema.define(version: 20160404200547) do
     t.datetime "sf_created_at"
   end
 
+  add_index "school_districts", ["name"], name: "index_school_districts_on_name", using: :btree
   add_index "school_districts", ["sf_created_at"], name: "index_school_districts_on_sf_created_at", using: :btree
   add_index "school_districts", ["sf_is_deleted"], name: "index_school_districts_on_sf_is_deleted", using: :btree
   add_index "school_districts", ["sf_verified"], name: "index_school_districts_on_sf_verified", using: :btree
+  add_index "school_districts", ["state_id"], name: "index_school_districts_on_state_id", using: :btree
 
   create_table "settings", force: :cascade do |t|
     t.string   "var",                   null: false
@@ -830,6 +844,7 @@ ActiveRecord::Schema.define(version: 20160404200547) do
     t.integer  "source",                                                     default: 0
     t.integer  "admin_user_id"
     t.string   "sf_contact_id"
+    t.date     "fulfillment_at"
   end
 
   add_index "spree_orders", ["approver_id"], name: "index_spree_orders_on_approver_id", using: :btree
@@ -1008,6 +1023,7 @@ ActiveRecord::Schema.define(version: 20160404200547) do
     t.string   "get_in_touch_url"
     t.boolean  "archived",             default: false
     t.datetime "archived_at"
+    t.integer  "position"
   end
 
   add_index "spree_products", ["available_on"], name: "index_spree_products_on_available_on", using: :btree
@@ -1492,13 +1508,14 @@ ActiveRecord::Schema.define(version: 20160404200547) do
   add_index "spree_tax_rates", ["zone_id"], name: "index_spree_tax_rates_on_zone_id", using: :btree
 
   create_table "spree_taxonomies", force: :cascade do |t|
-    t.string   "name",                                          null: false
-    t.datetime "created_at",                                    null: false
-    t.datetime "updated_at",                                    null: false
+    t.string   "name",                                           null: false
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
     t.integer  "position",                       default: 0
     t.boolean  "allow_multiple_taxons_selected", default: true
     t.boolean  "show_in_store",                  default: true
     t.boolean  "show_in_video",                  default: true
+    t.boolean  "top_level_in_video",             default: false
   end
 
   add_index "spree_taxonomies", ["position"], name: "index_spree_taxonomies_on_position", using: :btree
@@ -1670,6 +1687,9 @@ ActiveRecord::Schema.define(version: 20160404200547) do
     t.string   "screenshot_content_type"
     t.integer  "screenshot_file_size"
     t.datetime "screenshot_updated_at"
+    t.integer  "grade_order"
+    t.integer  "module_order"
+    t.integer  "lesson_order"
   end
 
   create_table "spree_zone_members", force: :cascade do |t|
@@ -1730,5 +1750,12 @@ ActiveRecord::Schema.define(version: 20160404200547) do
   end
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
+
+  create_table "vanity_urls", force: :cascade do |t|
+    t.string   "url"
+    t.string   "redirect_url"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
 
 end
