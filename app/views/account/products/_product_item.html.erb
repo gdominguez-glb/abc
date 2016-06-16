@@ -7,7 +7,7 @@
           <h5 class="product-title margin-top margin-bottom-s"><%= truncate(product.name, length: 50) %></h5>
         </div>
       <p class="product-description">
-        <%= HTML_Truncator.truncate(product.short_description, 110, length_in_chars: true) %>
+        <%= HTML_Truncator.truncate(product.short_description, 110, length_in_chars: true).html_safe %>
       </p>
     </div>
     <%= link_to 'Launch Product', spree.launch_product_path(product), class: 'btn btn-primary' %>
