@@ -83,6 +83,7 @@ Spree::Order.class_eval do
   end
 
   def pricebook_id
+    return nil if fulfillment?
     # TODO: Need a better way to get this
     pbids = line_items.all.map { |li| li.try(:product).try(:sf_id_pricebook) }
     pbid = pbids.reject(&:blank?).first
