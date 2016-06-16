@@ -178,6 +178,7 @@ $(function(){
             page: page,
             q: term,
             type: options.type,
+            country_id: $('#spree_user_school_district_attributes_country_id').val(),
             state_id: options.stateId
           };
         },
