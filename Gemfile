@@ -125,6 +125,7 @@ group :test do
   gem 'vcr', '~> 2.9.3'
 
   gem 'shoulda-matchers'
+  gem 'test_after_commit'
 end
 
 # Use ActiveModel has_secure_password

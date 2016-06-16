@@ -144,7 +144,8 @@ Spree::User.class_eval do
 
   accepts_nested_attributes_for :school_district, reject_if: proc { |attributes| attributes['name'].blank? }
 
-  after_commit :assign_user_role, :assign_to_exist_assets
+  after_commit :assign_user_role, on: :create
+  after_commit :assign_to_exist_assets, on: :create
 
   def part_products
     part_product_ids = licensed_products.
@@ -289,7 +290,7 @@ Spree::User.class_eval do
     self.product_agreements.where(product: product).exists?
   end
 
-  after_commit :subscribe_list
+  after_commit :subscribe_list, on: [:create, :update]
 
   def subscribe_list
     if self.allow_communication?
