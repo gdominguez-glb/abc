@@ -5,7 +5,11 @@ class SchoolDistrictsController < ApplicationController
       where(place_type: params[:type]).
       where('name ilike ?', "%#{params[:q]}%").
       page(params[:page]).per(params[:per_page])
+    country = Spree::Country.find_by(id: params[:country_id])
     state = Spree::State.find_by(id: params[:state_id])
+    if country
+      school_districts = school_districts.where(country_id: country.id)
+    end
     if state
       school_districts = school_districts.where(state_id: state.id)
     end
