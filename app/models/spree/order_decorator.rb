@@ -14,7 +14,7 @@ Spree::Order.class_eval do
   attr_accessor :distribute_option
 
   validates_format_of :license_admin_email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, if: ->(o) { o.distribute_option == 'someone' }
-  validate :validate_trial_products
+  validate :validate_trial_products, unless: :complete?
 
   before_save :check_terms_and_conditions
 
