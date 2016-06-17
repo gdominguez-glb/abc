@@ -38,6 +38,6 @@ class AssignLicensesForm
   end
 
   def all_emails
-    @all_emails ||= (@licenses_recipients || '').split(',').map(&:strip) + (@emails||[])
+    @all_emails ||= (@licenses_recipients || '').split(',').map(&:strip).map(&:downcase) + (@emails||[])
   end
 end

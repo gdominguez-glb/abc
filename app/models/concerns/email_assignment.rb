@@ -14,7 +14,7 @@ module EmailAssignment
       before_save -> {
         _user = self.send(user_column)
         _email = self.send(email_column)
-        self.send("#{user_column}_id=", Spree::User.find_by(email: email).try(:id)) if _email && _user.blank?
+        self.send("#{user_column}_id=", Spree::User.find_by(email: email.downcase).try(:id)) if _email && _user.blank?
       }
     end
   end
