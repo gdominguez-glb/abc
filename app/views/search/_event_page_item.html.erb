@@ -1,4 +1,4 @@
 <a href="<%= event_page_link(item) %>" class="list-group-item">
   <h4 class="margin-bottom-reset"><%= item.title %></h4>
-  <p class="small margin-bottom-reset"><%= truncate strip_tags(item.description), length: 150 %></p>
+  <p class="small margin-bottom-reset"><%= truncate_html item.description, length: 150 %></p>
 </a>
