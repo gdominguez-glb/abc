@@ -177,6 +177,10 @@ Spree::User.class_eval do
     spree_roles.where(id: Spree::Role.admin.id).count > 0
   end
 
+  def has_csr_role?
+    spree_roles.where(id: Spree::Role.csr.id).count > 0
+  end
+
   def has_vanity_admin_role?
     spree_roles.where(id: Spree::Role.vanity_admin.id).count > 0
   end

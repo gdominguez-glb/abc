@@ -71,3 +71,5 @@ Spree::PermittedAttributes.checkout_attributes.concat([ :license_admin_email, :d
 
 MAX_FREE_PRODUCT_QUANTITY = 1
 MAX_PAID_PRODUCT_QUANTITY = 5
+
+Spree::Ability.register_ability(Spree::CsrAbility)

@@ -14,4 +14,8 @@ Spree::Role.class_eval do
   def self.vanity_admin
     Spree::Role.find_or_create_by(name: 'vanity admin')
   end
+
+  def self.csr
+    Spree::Role.find_or_create_by(name: 'csr')
+  end
 end
