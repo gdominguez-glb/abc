@@ -215,7 +215,7 @@ Spree::Order.class_eval do
   def validate_trial_products
     return if self.user.blank?
     self.line_items.each do |line_item|
-      if line_item.quantity > 0 && self.user.bought_free_trial_product?(line_item.variant.product)
+      if line_item.quantity > 0 && self.user.bought_free_trial_product?(line_item.variant.product, self)
         self.errors.add(:base, "Bought #{line_item.variant.product.name} before (Can only buy trial products once)")
       end
     end
