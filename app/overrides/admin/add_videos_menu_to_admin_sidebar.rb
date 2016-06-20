@@ -3,8 +3,10 @@ Deface::Override.new(
     name: "add_videos_menu_to_admin_sidebar",
     insert_bottom: "#main-sidebar",
     text: <<-HTML
-      <ul class="nav nav-sidebar">
-        <%= tab 'Videos', url: spree.admin_videos_path, icon: 'film' %>
-      </ul>
+      <% if can? :admin, Spree::Video %>
+        <ul class="nav nav-sidebar">
+          <%= tab 'Videos', url: spree.admin_videos_path, icon: 'film' %>
+        </ul>
+      <% end %>
     HTML
 )

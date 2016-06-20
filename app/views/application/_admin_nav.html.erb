@@ -12,6 +12,8 @@
         <%= active_link_to "Video Gallery", '/video_gallery', wrap_tag: :li, class: 'video-gallery-link' %>
         <% if spree_current_user.has_admin_role? %>
           <%= active_link_to "Store Admin", '/store/admin', wrap_tag: :li %>
+        <% elsif current_spree_user.has_csr_role?%>
+          <%= active_link_to "Store Admin", '/store/admin/users', wrap_tag: :li %>
         <% end %>
         <%= active_link_to "Bookmarks", '/account/bookmarks', wrap_tag: :li, class: 'hide' %>
         <%= active_link_to "History", '/account/history', wrap_tag: :li, class: 'hide' %>
