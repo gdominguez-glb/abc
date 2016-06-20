@@ -79,14 +79,16 @@ RSpec.describe Spree::User do
 
   describe "#bought_free_trial_product?" do
     let(:purchase_once_product) { create(:product, purchase_once: true) }
+    let(:exclude_order) { create(:order, user: create(:gm_user)) }
+    let(:current_order) { create(:order, user: create(:gm_user)) }
 
     it "return true when purchase once product before" do
-      create(:spree_licensed_product, product: purchase_once_product, user: user)
-      expect(user.bought_free_trial_product?(purchase_once_product)).to eq(true)
+      create(:spree_licensed_product, product: purchase_once_product, user: user, order_id: current_order.id)
+      expect(user.bought_free_trial_product?(purchase_once_product, exclude_order)).to eq(true)
     end
 
     it "return false if not purchase before" do
-      expect(user.bought_free_trial_product?(purchase_once_product)).to eq(false)
+      expect(user.bought_free_trial_product?(purchase_once_product, exclude_order)).to eq(false)
     end
   end
 end
