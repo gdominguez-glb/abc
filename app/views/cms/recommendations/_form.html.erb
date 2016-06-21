@@ -38,10 +38,16 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-8">
       <div class="form-group">
         <label>Sub Header</label>
         <%= f.text_area :sub_header, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label>Position</label>
+        <%= f.number_field :position, class: 'form-control' %>
       </div>
     </div>
   </div>
