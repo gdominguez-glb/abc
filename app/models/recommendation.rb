@@ -15,7 +15,7 @@ class Recommendation < ActiveRecord::Base
       where('1=1')
     end
   }
-  scope :displayable, ->{ where(display:true) }
+  scope :displayable, ->{ where(display:true).order('position ASC') }
 
   ICONS = ['BLOG', 'DIGITAL_SUITE', 'PDF', 'PRINT', 'PROFESSIONAL', 'VIDEO']
 
