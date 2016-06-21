@@ -21,7 +21,9 @@ class Account::LicensesController < Account::BaseController
   def users
     @product_distributions = current_spree_user.product_distributions.where('quantity > 0').select('to_user_id, spree_product_distributions.email').group('to_user_id, spree_product_distributions.email')
     if params[:query].present?
-      @product_distributions = @product_distributions.joins(:to_user).where("spree_users.email ilike :query or spree_users.first_name ilike :query or spree_users.last_name ilike :query", query: "%#{params[:query]}%")
+      @product_distributions = @product_distributions.
+        joins("left join spree_users on spree_product_distributions.to_user_id = spree_users.id").
+        where("spree_product_distributions.email like :query or spree_users.email ilike :query or spree_users.first_name ilike :query or spree_users.last_name ilike :query", query: "%#{params[:query]}%")
     end
     @product_distributions = @product_distributions.page(params[:page])
   end
