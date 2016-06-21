@@ -18,9 +18,9 @@ module Importers
           order_id: credit.order_id,
           first_name: token.try(:first_name),
           last_name: token.try(:last_name),
-          email: (member.try(:email).try(:downcase) || token.try(:email)),
+          email: (member.try(:email).try(:downcase) || token.try(:email).try(:downcase)),
           from_user_id: author.try(:member_id),
-          from_email: author.try(:email),
+          from_email: author.try(:email).try(:downcase),
           ee_id: credit.id,
           mapped_name: PRODUCTS_MAPPINGS.find{|m| m[:legacy_id] == credit.product_id }.try(:[], :name)
         )
