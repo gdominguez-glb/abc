@@ -39,8 +39,9 @@ RSpec.describe SchoolDistrict, type: :model do
       expect(SchoolDistrict.new(place_type: :unaffiliated).salesforce_record_type_id).to eq('unaffiliated_id_123')
     end
 
-    it "return nil without place type" do
-      expect(SchoolDistrict.new(place_type: nil).salesforce_record_type_id).to eq(nil)
+    it "return unaffiate without place type to avoid sf sync error when school district is used somewhere" do
+      allow(SchoolDistrict).to receive(:unaffiliated_type_id).and_return('unaffiliated_id_123')
+      expect(SchoolDistrict.new(place_type: nil).salesforce_record_type_id).to eq('unaffiliated_id_123')
     end
   end
 

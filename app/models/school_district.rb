@@ -29,7 +29,7 @@ class SchoolDistrict < ActiveRecord::Base
   def salesforce_record_type_id
     return self.class.school_type_id if school?
     return self.class.district_type_id if district?
-    return self.class.unaffiliated_type_id if unaffiliated?
+    return self.class.unaffiliated_type_id if unaffiliated? || place_type.blank?
     nil
   end
 
@@ -150,7 +150,7 @@ class SchoolDistrict < ActiveRecord::Base
 
   # The dropdown should be restricted to verified checkbox, last 48 hours, and
   # is not “is deleted"
-  scope :for_selection, -> { where("sf_is_deleted = ? and (sf_verified = ? or (sf_verified = ? and (sf_created_at > ? or sf_created_at is null)))", false, true, false, 2.days.ago) }
+  scope :for_selection, -> { where.not(place_type: nil).where("sf_is_deleted = ? and (sf_verified = ? or (sf_verified = ? and (sf_created_at > ? or sf_created_at is null)))", false, true, false, 2.days.ago) }
 
   scope :with_state, ->(state_id) {
     where(state_id: state_id) if state_id
