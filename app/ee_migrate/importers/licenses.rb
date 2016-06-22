@@ -5,7 +5,7 @@ module Importers
 
     def self.import(emails=[])
       product_ids = PRODUCTS_MAPPINGS.map {|h| h[:legacy_id]}
-      Migrate::Credit.where("expiration_date > ? or expiration_date is null", Date.today).where(product_id: product_ids).each do |credit|
+      Migrate::Credit.where("expiration_date > ? or expiration_date is null", Date.new(2016, 6, 30)).where(product_id: product_ids).each do |credit|
         member = Migrate::Member.find_by(member_id: credit.member_id)
         token = Migrate::RegistrationToken.find_by(id: credit.token_id)
         order = Migrate::ChannelTitle.find_by(entry_id: credit.order_id)
