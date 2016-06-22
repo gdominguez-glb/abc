@@ -51,8 +51,8 @@ Spree::Order.class_eval do
     sfo_data = super(sfo)
     user = sfo.Contact__c && Spree::User.joins(:salesforce_reference).where(
       'salesforce_references.id_in_salesforce' => sfo.Contact__c).first
-    sfo_data.merge!(number: sfo.Vendor_Order_Num__c,
-                    user_id: user.try(:id))
+    sfo_data.merge!(number: sfo.Vendor_Order_Num__c) if sfo.Vendor_Order_Num__c.present?
+    sfo_data.merge!(user_id: user.id) if user
     ship_addr = address_attributes(sfo, 'Shipping')
     sfo_data.merge!(ship_address_attributes: ship_addr) if ship_addr.present?
     bill_addr = address_attributes(sfo, 'Billing')
