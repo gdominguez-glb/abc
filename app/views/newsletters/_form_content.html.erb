@@ -17,7 +17,7 @@
   <%= f.text_field :email, class: 'form-control' %>
 </div>
 <div>
-  <label>Lists to subscribe</label>
+  <label>Check to Subscribe</label>
   <p>
   <% Mailchimp::LISTS.each do |list_name, list_id| %>
     <label><%= f.check_box :lists, { multiple: true, include_hidden: false }, list_id %>   <%= list_name %></label>
