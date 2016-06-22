@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-md-6">
+    <div class="form-group">
+      <label>First Name</label>
+      <%= f.text_field :first_name, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="form-group">
+      <label>Last Name</label>
+      <%= f.text_field :last_name, class: 'form-control' %>
+    </div>
+  </div>
+</div>
+<div class="form-group">
+  <label>Email</label>
+  <%= f.text_field :email, class: 'form-control' %>
+</div>
+<div>
+  <label>Lists to subscribe</label>
+  <p>
+  <% Mailchimp::LISTS.each do |list_name, list_id| %>
+    <label><%= f.check_box :lists, { multiple: true, include_hidden: false }, list_id %>   <%= list_name %></label>
+  <% end %>
+  </p>
+</div>
