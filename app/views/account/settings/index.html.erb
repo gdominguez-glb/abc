@@ -115,6 +115,8 @@
       </div>
     </div>
 
+    <%= f.hidden_field :school_district_id %>
+
   <% us_country = Spree::Country.find_by(iso: 'US') %>
 
   <% selected_country_id = current_spree_user.school_district.try(:country).try(:id) || us_country.id %>
