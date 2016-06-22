@@ -50,8 +50,7 @@ class Spree::LicensedProduct < ActiveRecord::Base
   end
 
   def account_id_in_salesforce
-    account_user = order.try(:user) || product_distribution.try(:from_user) ||
-      user
+    account_user = order.try(:user) || product_distribution.try(:from_user) || user
     school_district = account_user.try(:school_district) || order.try(:school_district)
     return nil unless school_district
 
