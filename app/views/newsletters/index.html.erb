@@ -1,0 +1,18 @@
+<div class="row padding-top-xl padding-bottom-xl">
+  <div class="col-sm-10 col-sm-offset-1">
+
+      <div class="row margin-bottom">
+        <div class="col-sm-6 col-sm-offset-3">
+
+          <h2>Newsletter and Updates</h2>
+
+          <%= form_for @newsletter do |f| %>
+            <%= render partial: 'form_content', locals: { f: f } %>
+            <%= f.submit "Subscribe", class: 'btn btn-primary', data: { disable_with: 'Submitting...' } %>
+          <% end %>
+
+        </div>
+      </div>
+
+  </div>
+</div>

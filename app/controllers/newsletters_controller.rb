@@ -11,6 +11,10 @@ class NewslettersController < ApplicationController
     if @newsletter.valid?
       @newsletter.perform
     end
+    respond_to do |format|
+      format.js {}
+      format.html { redirect_to newsletters_path, notice: 'Update successfully.' }
+    end
   end
 
   private
