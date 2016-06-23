@@ -1,21 +1,14 @@
-<div style='margin-bottom: 30px;'>
-  <h3>Last 24 hours</h3>
-
-  <div class="row no-padding-bottom">
-
-    <div class="col-md-8">
-      <div class="row">
-        <div class="col-md-4">
-          <span>Orders <b><%= number_with_delimiter orders_count_within_date_range(Date.today, Date.today) %></b></span>
-        </div>
-        <div class="col-md-4">
-          <span>New Users <b><%= number_with_delimiter users_count_within_date_range(Date.today, Date.today) %></b></span>
-        </div>
-        <div class="col-md-4">
-          <span>Contact Form Submits <b><%= number_with_delimiter contacts_count_within_date_range(Date.today, Date.today) %></b></span>
-        </div>
-      </div>
+<span class="sans-serif">Last 24 hours</span>
+<div class="well">
+  <div class="row padding-bottom-reset">
+    <div class="col-md-3">
+      <h5 class="margin-bottom-reset">Orders: <span><%= number_with_delimiter orders_count_within_date_range(Date.today, Date.today) %></span></h5>
     </div>
-
+    <div class="col-md-3">
+      <h5 class="margin-bottom-reset">New Users: <span><%= number_with_delimiter users_count_within_date_range(Date.today, Date.today) %></span></h5>
+    </div>
+    <div class="col-md-6">
+      <h5 class="margin-bottom-reset">Contact Form Submits: <span><%= number_with_delimiter contacts_count_within_date_range(Date.today, Date.today) %></span></h5>
+    </div>
   </div>
 </div>
