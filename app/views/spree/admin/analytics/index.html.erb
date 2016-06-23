@@ -4,62 +4,64 @@
 
 <%= render 'last_24_hours' %>
 
-<%= form_tag '', method: :get do %>
-  <div class="date-range-filter">
-    <div class="form-group margin-bottom-reset">
-      <div class="row padding-bottom-reset">
-        <div class="col-md-4">
-          <div class="input-group">
-            <%= text_field_tag :start_date, params[:start_date], :class => 'datepicker datepicker-from form-control', :placeholder => Spree.t(:start) %>
-            <span class="input-group-addon">
-              <i class="icon icon-calendar"></i>
-            </span>
+<div class="well">
+  <%= form_tag '', method: :get do %>
+    <div class="date-range-filter">
+      <div class="form-group margin-bottom-reset">
+        <div class="row padding-bottom-reset">
+          <div class="col-md-4">
+            <div class="input-group">
+              <%= text_field_tag :start_date, params[:start_date], :class => 'datepicker datepicker-from form-control', :placeholder => Spree.t(:start) %>
+              <span class="input-group-addon">
+                <i class="icon icon-calendar"></i>
+              </span>
+            </div>
           </div>
-        </div>
-        <div class="col-md-4">
-          <div class="input-group">
-            <%= text_field_tag :end_date, params[:end_date], :class => 'datepicker datepicker-to form-control', :placeholder => Spree.t(:stop) %>
-            <span class="input-group-addon">
-              <i class="icon icon-calendar"></i>
-            </span>
+          <div class="col-md-4">
+            <div class="input-group">
+              <%= text_field_tag :end_date, params[:end_date], :class => 'datepicker datepicker-to form-control', :placeholder => Spree.t(:stop) %>
+              <span class="input-group-addon">
+                <i class="icon icon-calendar"></i>
+              </span>
+            </div>
           </div>
-        </div>
-        <div class="col-md-2">
-          <%= submit_tag 'Submit', class: 'btn btn-primary btn-block' %>
+          <div class="col-md-2">
+            <%= submit_tag 'Submit', class: 'btn btn-primary btn-block' %>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
 
-<div class="row padding-bottom-reset">
+  <div class="row padding-bottom-reset">
 
-  <div class="col-md-10">
-    <div class="row">
-      <div class="col-md-4">
-        <div class="order-dot pull-left"></div>
-        <div>
-          <span style='display: block'>Numbers of Orders</span>
-          <b><%= number_with_delimiter orders_count_within_date_range(params[:start_date], params[:end_date]) %></b>
+    <div class="col-md-10">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="order-dot pull-left"></div>
+          <div>
+            <span style='display: block'>Numbers of Orders</span>
+            <b><%= number_with_delimiter orders_count_within_date_range(params[:start_date], params[:end_date]) %></b>
+          </div>
         </div>
-      </div>
-      <div class="col-md-4">
-        <div class="user-dot pull-left"></div>
-        <div>
-          <span style='display: block'>Numbers of New Users</span>
-          <b><%= number_with_delimiter users_count_within_date_range(params[:start_date], params[:end_date]) %></b>
+        <div class="col-md-4">
+          <div class="user-dot pull-left"></div>
+          <div>
+            <span style='display: block'>Numbers of New Users</span>
+            <b><%= number_with_delimiter users_count_within_date_range(params[:start_date], params[:end_date]) %></b>
+          </div>
         </div>
-      </div>
-      <div class="col-md-4">
-        <div class="contact-dot pull-left"></div>
-        <div>
-          <span style='display: block'>Contact Form Submits</span>
-          <b><%= number_with_delimiter contacts_count_within_date_range(params[:start_date], params[:end_date]) %></b>
+        <div class="col-md-4">
+          <div class="contact-dot pull-left"></div>
+          <div>
+            <span style='display: block'>Contact Form Submits</span>
+            <b><%= number_with_delimiter contacts_count_within_date_range(params[:start_date], params[:end_date]) %></b>
+          </div>
         </div>
       </div>
     </div>
+
   </div>
 
+  <%= render 'chart' %>
 </div>
-
-<%= render 'chart' %>
