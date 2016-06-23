@@ -36,25 +36,25 @@
   <div class="row padding-bottom-reset">
 
     <div class="col-md-10">
-      <div class="row">
+      <div class="row sans-serif">
         <div class="col-md-4">
           <div class="order-dot pull-left"></div>
           <div>
-            <span style='display: block'>Numbers of Orders</span>
+            <span class="block">Numbers of Orders</span>
             <b><%= number_with_delimiter orders_count_within_date_range(params[:start_date], params[:end_date]) %></b>
           </div>
         </div>
         <div class="col-md-4">
           <div class="user-dot pull-left"></div>
           <div>
-            <span style='display: block'>Numbers of New Users</span>
+            <span class="block">Numbers of New Users</span>
             <b><%= number_with_delimiter users_count_within_date_range(params[:start_date], params[:end_date]) %></b>
           </div>
         </div>
         <div class="col-md-4">
           <div class="contact-dot pull-left"></div>
           <div>
-            <span style='display: block'>Contact Form Submits</span>
+            <span class="block">Contact Form Submits</span>
             <b><%= number_with_delimiter contacts_count_within_date_range(params[:start_date], params[:end_date]) %></b>
           </div>
         </div>
