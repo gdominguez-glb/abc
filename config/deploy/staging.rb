@@ -8,7 +8,7 @@
 server 'staging.greatminds.org', user: 'deploy', roles: %w{web db}
 
 
-set :branch, 'master'
+set :branch, 'staging'
 set :rails_env, 'staging'                  # If the environment differs from the stage name
 
 # role-based syntax
