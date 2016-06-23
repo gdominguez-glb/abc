@@ -5,12 +5,12 @@ body[data-hook="body"] {
 
   @media screen and (max-width: 768px) {
     .taxon-title {
-      margin: 15px 0;
+      margin: $b-space-m 0;
     }
   }
 
   .navbar-toggle {
-    margin-left: 15px;
+    margin-left: $b-space-m;
   }
 
   // Checkout Flow
@@ -22,7 +22,7 @@ body[data-hook="body"] {
   }
 
   #taxon-crumbs {
-    margin: 15px 0;
+    margin: $b-space-m 0;
   }
 }
 
@@ -40,12 +40,15 @@ body[data-hook="body"] {
 
   .navbar-header {
     float: none;
-    padding: 15px;
+    padding: $b-space-m;
+
+    @media screen and (min-width: $screen-md-min) {
+      padding: $b-space-m 0;
+    }
   }
 
   .navbar-brand {
-    display: block;
-    margin-left: -15px;
+    display: none;
   }
 
   div[data-hook="admin_login_navigation_bar"] {
@@ -102,7 +105,7 @@ body[data-hook="body"] {
 }
 
 ul.nav-sidebar {
-  margin: 0 0 15px;
+  margin: 0 0 $b-space-m;
 }
 
 .with-sidebar {
@@ -146,18 +149,18 @@ ul.nav-sidebar {
 #main-part {
 
   &.sidebar-collapsed {
-    padding-left: 15px;
+    padding-left: $b-space-m;
   }
 }
 
 .order-dot,
 .user-dot,
 .contact-dot {
-  width: 10px;
-  height: 10px;
-  margin-top: 15px;
-  margin-right: 10px;
-  border-radius: 5px;
+  width: $b-space;
+  height: $b-space;
+  margin-top: $b-space-m;
+  margin-right: $b-space;
+  border-radius: $b-space-s;
 }
 .order-dot {
   background-color: #35AAE2;
