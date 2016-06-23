@@ -1,0 +1,21 @@
+<div style='margin-bottom: 30px;'>
+  <h3>Last 24 hours</h3>
+
+  <div class="row no-padding-bottom">
+
+    <div class="col-md-8">
+      <div class="row">
+        <div class="col-md-4">
+          <span>Orders <b><%= number_with_delimiter orders_count_within_date_range(Date.today, Date.today) %></b></span>
+        </div>
+        <div class="col-md-4">
+          <span>New Users <b><%= number_with_delimiter users_count_within_date_range(Date.today, Date.today) %></b></span>
+        </div>
+        <div class="col-md-4">
+          <span>Contact Form Submits <b><%= number_with_delimiter contacts_count_within_date_range(Date.today, Date.today) %></b></span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

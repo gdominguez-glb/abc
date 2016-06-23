@@ -1,0 +1,113 @@
+<div id="chart">
+</div>
+
+<script type="text/javascript">
+  var ordersLink = "<%= orders_admin_analytics_path %>";
+  var usersLink = "<%= users_admin_analytics_path %>";
+  var contactsLink = "<%= contacts_admin_analytics_path %>";
+
+  function getDateFromTimeSeconds(secs) {
+    var d = new Date();
+    d.setTime(secs);
+    return d;
+  }
+
+  function formatDateString(d) {
+    return "" + d.getFullYear() + '/' + (d.getMonth() + 1) + "/" + d.getDate()
+  }
+
+  function handlePointClick(point) {
+    var dateString = formatDateString(getDateFromTimeSeconds(point.x));
+    var seriesName = point.series.name;
+    var urlParams = $.param({ start_date: dateString, end_date: dateString });
+    var url ;
+    if (seriesName == 'Order') {
+      url = ordersLink;
+    } else if (seriesName == 'User') {
+      url = usersLink;
+    } else if (seriesName == 'Contact') {
+      url = contactsLink;
+    }
+    if (url) {
+      window.open(url + '?' + urlParams, '_blank');
+    }
+  }
+
+  $(function () {
+    var chartData = <%= raw @chart_data.to_json %>;
+    for(var i = 0; i < chartData.users.length; i ++) {
+      var dateBits = chartData.users[i][0].split('-');
+      chartData.users[i][0] = Date.UTC(dateBits[0], parseInt(dateBits[1]) - 1, dateBits[2]);
+    }
+    for(var i = 0; i < chartData.orders.length; i ++) {
+      var dateBits = chartData.orders[i][0].split('-');
+      chartData.orders[i][0] = Date.UTC(dateBits[0], parseInt(dateBits[1]) - 1, dateBits[2]);
+    }
+    for(var i = 0; i < chartData.contacts.length; i ++) {
+      var dateBits = chartData.contacts[i][0].split('-');
+      chartData.contacts[i][0] = Date.UTC(dateBits[0], parseInt(dateBits[1]) - 1, dateBits[2]);
+    }
+    $('#chart').highcharts({
+      chart: {
+        type: 'spline'
+      },
+      title: {
+        text: ''
+      },
+      xAxis: {
+        type: 'datetime',
+        dateTimeLabelFormats: { // don't display the dummy year
+          month: '%e. %b',
+          year: '%b'
+        },
+        title: {
+          text: 'Date'
+        }
+      },
+      yAxis: {
+        title: {
+          text: ''
+        },
+        min: 0
+      },
+      tooltip: {
+        crosshairs: true,
+        shared: true
+      },
+
+      plotOptions: {
+        series: {
+          events: {
+            click: function(event) {
+              handlePointClick(event.point);
+            }
+          }
+        },
+        spline: {
+          marker: {
+            enabled: true,
+            symbol: 'circle'
+          },
+          lineWidth: 0
+        }
+      },
+
+      series: [{
+        name: 'Order',
+        color: '#35AAE2',
+        // Define the data points. All series have a dummy year
+        // of 1970/71 in order to be compared on the same x axis. Note
+        // that in JavaScript, months start at 0 for January, 1 for February etc.
+        data: chartData.orders
+      }, {
+        color: '#FD5F3F',
+        name: 'User',
+        data: chartData.users
+      }, {
+        color: '#98C53D',
+        name: 'Contact',
+        data: chartData.contacts
+      }]
+    });
+  });
+</script>

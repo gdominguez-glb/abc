@@ -16,6 +16,7 @@
 //= require jquery-sortable-lists
 //= require trumbowyg
 //= require dashboard_mobile_nav
+//= require highcharts
 
 $(document).ready(function() {
   var nav = $('.navbar-primary');

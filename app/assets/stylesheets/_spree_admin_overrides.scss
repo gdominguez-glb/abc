@@ -149,3 +149,22 @@ ul.nav-sidebar {
     padding-left: 15px;
   }
 }
+
+.order-dot,
+.user-dot,
+.contact-dot {
+  width: 10px;
+  height: 10px;
+  margin-top: 15px;
+  margin-right: 10px;
+  border-radius: 5px;
+}
+.order-dot {
+  background-color: #35AAE2;
+}
+.user-dot {
+  background-color: #FD5F3F;
+}
+.contact-dot {
+  background-color: #98C53D;
+}

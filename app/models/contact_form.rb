@@ -32,6 +32,7 @@ class ContactForm
     elsif self.topic == 'Professional Development'
       attrs.merge!(pd_attributes)
     end
+    save_contact_record(attrs)
     ContactWorker.perform_async('Lead', attrs)
   end
 
@@ -42,7 +43,12 @@ class ContactForm
     elsif ["Existing Order Support", "Curriculum Support", "Technical Support", "Parent Support", "Content Error"].include?(topic)
       attrs.merge!(support_attributes)
     end
+    save_contact_record(attrs)
     ContactWorker.perform_async('Case', attrs)
+  end
+
+  def save_contact_record(sf_attrs)
+    Contact.create(first_name: first_name, last_name: last_name, topic: topic, message: sf_attrs, email: email)
   end
 
   def lead_common_attributes
