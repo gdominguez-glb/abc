@@ -107,6 +107,11 @@ label {
   }
 }
 
+.input-group-addon {
+  border-color: $dark-blue;
+  color: $dark-blue;
+}
+
 .input-group-btn {
   .btn {
     border: 1px solid $dark-blue;
