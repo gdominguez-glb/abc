@@ -33,7 +33,8 @@ module Spree
           quantity: 1,
           product_distribution_id: distribution.id,
           can_be_distributed: false,
-          skip_notification: true
+          skip_notification: true,
+          skip_salesforce_create: true
         )
       end
 
@@ -55,7 +56,7 @@ module Spree
 
       def update_original_license
         @licensed_product.tap do
-          @licensed_product.update(quantity: @licensed_product.quantity - 1)
+          @licensed_product.update(quantity: @licensed_product.quantity - 1, skip_salesforce_create: true)
         end
       end
     end

@@ -163,8 +163,11 @@ Spree::Order.class_eval do
       # already been created in Salesforce at the time the license was created.
       # They need to be updated to set the Order (in Salesforce).
       # Skip the update if the create has not been run yet.
-      next if license.id_in_salesforce.blank?
-      license.update_salesforce(nil, true, true)
+      if license.id_in_salesforce.blank?
+        license.create_in_salesforce
+      else
+        license.update_salesforce(nil, true, true)
+      end
     end
   end
 
