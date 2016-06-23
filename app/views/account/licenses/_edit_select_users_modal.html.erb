@@ -6,13 +6,15 @@
       </div>
       <div class="modal-body">
         <div class="row">
-          <a class='btn btn-default' id="add-new-users-btn">Add New Users +</a>
+          <div class="col-sm-12 margin-bottom-l">
+            <a class='btn btn-default' id="add-new-users-btn">Add New Users +</a>
+          </div>
         </div>
         <div class="row">
           <div class="col-sm-12">
             <% @emails.each do |email| %>
 
-              <p><span class="email-selection"><%= email %></span> <span class='remove-select-email'>&times;</span></p>
+              <p><span class="email-selection"><%= email %></span> <span class='remove-select-email' data-toggle="tooltip" data-placement="top" title="Remove User"><i class='mi'>close</i></span></p>
             <% end %>
           </div>
         </div>
@@ -33,3 +35,9 @@
     </div>
   </div>
 </div>
+
+<%= javascript_tag do %>
+  $(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+  });
+<% end %>
