@@ -23,12 +23,10 @@ module Spree
           order: @order, skip_salesforce_create: true
         }.merge(attrs))
 
-        licensed_product.skip_salesforce_create = false
         if licensed_product.quantity > 1
-          licensed_product.update(can_be_distributed: true)
+          licensed_product.update(can_be_distributed: true, skip_salesforce_create: true)
           SingleLicenseExtractor.new(licensed_product).execute
         end
-        licensed_product.create_in_salesforce
         licensed_product
       end
 
