@@ -11,7 +11,7 @@ class Cms::LinkFilesController < Cms::BaseController
   end
 
   def create
-    @link_file = LinkFile.new(link_file_params)
+    @link_file = LinkFile.find_by(file_file_name: link_file_params[:file].original_filename) || LinkFile.new(link_file_params)
     if @link_file.save
       redirect_to cms_link_files_path, notice: "Link upload created successfully!"
     else

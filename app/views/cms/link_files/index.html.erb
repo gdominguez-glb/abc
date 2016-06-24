@@ -7,7 +7,7 @@
       <thead>
         <tr>
           <th>Name</th>
-          <th>Slug</th>
+          <th>Url</th>
           <th colspan="4"></th>
         </tr>
       </thead>
@@ -18,7 +18,7 @@
               <%= link_file.file_file_name %>
             </td>
             <td>
-              <%= link_file.slug %>
+              <%= wit_eng_link_url(slug: link_file.slug, domain: ENV['WITENG_LINK_DOMAIN'], protocol: 'http') %>
             </td>
             <td>
               <%= link_to 'Edit', edit_cms_link_file_path(link_file), class: 'btn btn-default btn-sm' %>
