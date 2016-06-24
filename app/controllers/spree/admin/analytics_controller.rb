@@ -4,7 +4,7 @@ class Spree::Admin::AnalyticsController < Spree::Admin::BaseController
   helper_method :orders_count_within_date_range, :users_count_within_date_range, :contacts_count_within_date_range
 
   def index
-    @chart_data = generate_chart_date_within_range(params[:start_date], params[:end_date])
+    @chart_data = generate_chart_data_within_range(params[:start_date], params[:end_date])
   end
 
   def orders
@@ -49,7 +49,7 @@ class Spree::Admin::AnalyticsController < Spree::Admin::BaseController
     relation.where('created_at between ? and ?', start_date.to_date.beginning_of_day, end_date.to_date.end_of_day)
   end
 
-  def generate_chart_date_within_range(start_date, end_date)
+  def generate_chart_data_within_range(start_date, end_date)
     {
       orders: aggregate_entities_count_within_range(Spree::Order.complete, start_date, end_date),
       users: aggregate_entities_count_within_range(Spree::User.all, start_date, end_date),
