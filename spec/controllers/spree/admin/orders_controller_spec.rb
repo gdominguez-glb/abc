@@ -20,7 +20,7 @@ RSpec.describe Spree::Admin::OrdersController, type: :controller do
     end
 
     it "Should return orders with a range" do
-      get :index, :q => {"created_at_gt"=>"2015/06/22", "created_at_lt"=>"2016/06/23" }
+      get :index, :q => {"created_at_gt"=>5.days.ago.strftime('%Y/%m/%d') , "created_at_lt"=> Date.tomorrow.strftime('%Y/%m/%d') }
       expect(assigns(:orders)).not_to be_empty
     end
   end
