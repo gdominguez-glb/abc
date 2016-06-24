@@ -1,6 +1,6 @@
 aws_access_key_id: "AKIAIG4RPQKGLBDHWPLA"
 aws_secret_access_key: "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"
-s3_bucket_name: <%= node['rails_env'] == 'production' ? 's3.greatminds.org' : "s3-#{node['rails_env']}.greatminds.org" %>
+s3_bucket_name: "<%= node['rails_env'] == 'production' ? 's3.greatminds.org' : "s3-#{node['rails_env']}.greatminds.org" %>"
 
 mandrill_username: "web.admin@greatminds.net"
 mandrill_password: "1W0RAoHxNG_o-IeS9VeFBA"
@@ -33,6 +33,8 @@ hightail_password: '<%= node['hightail']['password'] %>'
 
 mailchimp_api_key: '4e6818c68fc256c11636a406bbcb3527-us11'
 
-ELASTICSEARCH_URL: <%= node['elasticsearch_url'] || 'localhost' %>
+ELASTICSEARCH_URL: '<%= node['elasticsearch_url'] || 'localhost' %>'
 
 REDIS_URL: 'redis://<%= node['redis_host'] || 'localhost' %>:6379/12'
+
+WITENG_LINK_DOMAIN: '<%= node['witeng_link_domain'] %>'

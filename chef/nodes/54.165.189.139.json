@@ -44,5 +44,6 @@
   "domain": "greatminds.org",
   "the_domain": "greatminds.org",
   "redis_host": "172.31.0.166",
-  "db_server": "true"
+  "db_server": "true",
+  "witeng_link_domain": "witeng.link"
 }
