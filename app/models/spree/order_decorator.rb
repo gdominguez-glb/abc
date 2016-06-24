@@ -137,12 +137,8 @@ Spree::Order.class_eval do
 
   def skip_salesforce_sync?
     return true if cc_process?
+    return true if state != 'complete'
     false
-  end
-
-  def should_create_salesforce?
-    return false if state != 'complete'
-    super
   end
 
   # Performs additional tasks after creating a record in Salesforce.  This will
