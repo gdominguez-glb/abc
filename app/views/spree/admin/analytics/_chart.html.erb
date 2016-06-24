@@ -2,6 +2,8 @@
 </div>
 
 <script type="text/javascript">
+  var rawChartData = <%= raw @chart_data.to_json %>;
+  var chartData = <%= raw @chart_data.to_json %>;
   var ordersLink = "<%= orders_admin_analytics_path %>";
   var usersLink = "<%= users_admin_analytics_path %>";
   var contactsLink = "<%= contacts_admin_analytics_path %>";
@@ -17,24 +19,27 @@
   }
 
   function handlePointClick(point) {
+    var index = point.index;
     var dateString = formatDateString(getDateFromTimeSeconds(point.x));
     var seriesName = point.series.name;
-    var urlParams = $.param({ start_date: dateString, end_date: dateString });
     var url ;
     if (seriesName == 'Order') {
-      url = ordersLink;
+      url = ordersLink + '?' + buildDateRangeParam(rawChartData.orders[index][0]);
     } else if (seriesName == 'User') {
-      url = usersLink;
+      url = usersLink + '?' + buildDateRangeParam(rawChartData.users[index][0]);
     } else if (seriesName == 'Contact') {
-      url = contactsLink;
+      url = contactsLink + '?' + buildDateRangeParam(rawChartData.contacts[index][0]);
     }
     if (url) {
-      window.open(url + '?' + urlParams, '_blank');
+      window.open(url, '_blank');
     }
   }
 
+  function buildDateRangeParam(dateString) {
+    return $.param({ start_date: dateString, end_date: dateString });
+  }
+
   $(function () {
-    var chartData = <%= raw @chart_data.to_json %>;
     for(var i = 0; i < chartData.users.length; i ++) {
       var dateBits = chartData.users[i][0].split('-');
       chartData.users[i][0] = Date.UTC(dateBits[0], parseInt(dateBits[1]) - 1, dateBits[2]);
