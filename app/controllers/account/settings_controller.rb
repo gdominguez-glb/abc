@@ -66,6 +66,7 @@ class Account::SettingsController < Account::BaseController
       :phone,
       school_district_attributes: [:name, :country_id, :state_id, :city, :place_type],
       interested_subjects: [],
+      grades: []
     )
     process_school_district_param(_params)
     _params
