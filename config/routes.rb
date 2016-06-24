@@ -136,7 +136,7 @@ Rails.application.routes.draw do
   end
 
   constraints LinkUploadsConstraint.new('witeng.link') do
-    get '*slug', to: 'wit_eng#show'
+    get '*slug', to: 'wit_eng#show', as: :wit_eng_link
   end
 
   get '*slug', to: 'pages#show', constraints: lambda { |request| !(request.path =~ /\/(assets|store).*/) }

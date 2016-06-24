@@ -27,7 +27,7 @@
               <%= link_to 'Download', link_file.file.url, class: 'btn btn-default btn-sm', target: '_blank' %>
             </td>
             <td>
-              <a class="btn btn-default copy-download-url-button btn-sm" data-clipboard-text="<%= link_file.file.url %>">Copy Url</a>
+              <a class="btn btn-default copy-download-url-button btn-sm" data-clipboard-text="<%= wit_eng_link_url(slug: link_file.slug, domain: ENV['WITENG_LINK_DOMAIN'], protocol: 'http') %>">Copy Url</a>
             </td>
             <td>
               <%= link_to 'Delete', cms_link_file_path(link_file), class: 'btn btn-danger btn-sm', data: { method: :delete, confirm: "Are you sure?" } %>
