@@ -20,6 +20,7 @@ namespace :cms do
     resources :regonline_events, only: [:index, :edit, :update]
   end
   resources :documents
+  resources :link_files
   resources :faq_categories do
     collection do
       post :update_positions

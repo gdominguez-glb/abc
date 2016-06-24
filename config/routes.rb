@@ -10,6 +10,16 @@ class VanityUrlConstraint
   end
 end
 
+class LinkUploadsConstraint
+  def initialize(domain)
+    @domains = [domain].flatten
+  end
+
+  def matches?(request)
+    @domains.include?(request.domain.downcase)
+  end
+end
+
 Rails.application.routes.draw do
   require 'sidekiq/web'
   authenticate :spree_user, lambda { |u| u.has_admin_role? } do
@@ -123,6 +133,10 @@ Rails.application.routes.draw do
 
   constraints VanityUrlConstraint do
     get '*slug', to: 'vanity_urls#show'
+  end
+
+  constraints LinkUploadsConstraint.new('witeng.link') do
+    get '*slug', to: 'wit_eng#show', as: :wit_eng_link
   end
 
   get '*slug', to: 'pages#show', constraints: lambda { |request| !(request.path =~ /\/(assets|store).*/) }
