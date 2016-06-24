@@ -1,0 +1,23 @@
+<%= form_for [:cms, @link_file], html: { multipart: true } do |f| %>
+  <% if @link_file.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@link_file.errors.count, "error") %> prohibited this link_file from being saved:</h2>
+
+      <ul>
+        <% @link_file.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <p>Make sure your file name don't include spaces or characters that can't be in url.</p>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>File</label>
+        <%= f.file_field :file %>
+      </div>
+      <%= f.submit (f.object.new_record? ? "Create File": "Update File"), class: 'btn btn-success' %>
+    </div>
+  </div>
+<% end %>
