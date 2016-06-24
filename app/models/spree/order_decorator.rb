@@ -110,7 +110,7 @@ Spree::Order.class_eval do
               'Status' => salesforce_complete? ? 'Activated' : 'Draft',
               'BillToContactId' => bill_address && salesforce_user_id,
               'Order_Phone__c' => bill_address.try(:phone),
-              'ShipToContactId' => ship_address && salesforce_user_id }
+              'ShipToContactId' => ship_address && salesforce_user_id }.compact
 
     # TODO: Support Order_Status__c => PO Received/Full Payment Received instead
     #       of just 'Full Payment Received'
@@ -154,13 +154,13 @@ Spree::Order.class_eval do
       line_item.create_in_salesforce(nil, false)
     end
     mark_order_complete_in_salesforce
+    sync_licenses
+  end
+
+  def sync_licenses
     licensed_products.each do |license|
-      # Update is used instead of create because the licenses should have
-      # already been created in Salesforce at the time the license was created.
-      # They need to be updated to set the Order (in Salesforce).
-      # Skip the update if the create has not been run yet.
       if license.id_in_salesforce.blank?
-        license.create_in_salesforce
+        license.create_in_salesforce(nil, false)
       else
         license.update_salesforce(nil, true, true)
       end
