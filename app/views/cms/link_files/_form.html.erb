@@ -17,7 +17,7 @@
         <label>File</label>
         <%= f.file_field :file %>
       </div>
-      <%= f.submit (f.object.new_record? ? "Create File": "Update File"), class: 'btn btn-success' %>
+      <%= f.submit (f.object.new_record? ? "Create File": "Update File"), class: 'btn btn-success', data: { disable_with: 'Submitting...' } %>
     </div>
   </div>
 <% end %>

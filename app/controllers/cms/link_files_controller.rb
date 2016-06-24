@@ -11,12 +11,10 @@ class Cms::LinkFilesController < Cms::BaseController
   end
 
   def create
-    @link_file = LinkFile.find_by(file_file_name: link_file_params[:file].original_filename) || LinkFile.new(link_file_params)
-    if @link_file.save
-      redirect_to cms_link_files_path, notice: "Link upload created successfully!"
-    else
-      render :new
-    end
+    @link_files = build_link_files
+    @link_files.each {|lf| lf.save }
+
+    redirect_to cms_link_files_path, notice: "Link upload created successfully!"
   end
 
   def edit
@@ -43,5 +41,33 @@ class Cms::LinkFilesController < Cms::BaseController
 
   def find_link_file
     @link_file = LinkFile.find(params[:id])
+  end
+
+  def build_link_files
+    if File.extname(link_file_params[:file].original_filename) == '.zip'
+      build_link_files_from_zip(link_file_params[:file].path)
+    else
+      [build_link_file(link_file_params[:file])]
+    end
+  end
+
+  def build_link_files_from_zip(zip_file_path)
+    link_files = []
+    tmp_directory = Rails.root.join("tmp/link_files/files_#{Time.now.to_i}")
+    FileUtils.mkdir_p(tmp_directory)
+    Zip::ZipFile.open(zip_file_path) do |zip_file|
+      zip_file.each do |entry|
+        next if entry.name.start_with?('.') || entry.name.start_with?('__')
+        file_path = File.join(tmp_directory, entry.name)
+        zip_file.extract(entry, file_path)
+        link_files << build_link_file(File.new(file_path))
+      end
+    end
+    link_files
+  end
+
+  def build_link_file(file)
+    file_name = file.respond_to?(:original_filename) ? file.original_filename : File.basename(file.path)
+    LinkFile.find_by(file_file_name: file_name) || LinkFile.new(file: file)
   end
 end
