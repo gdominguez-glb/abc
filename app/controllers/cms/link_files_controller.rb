@@ -59,8 +59,11 @@ class Cms::LinkFilesController < Cms::BaseController
       zip_file.each do |entry|
         next if entry.name.start_with?('.') || entry.name.start_with?('__')
         file_path = File.join(tmp_directory, entry.name)
+        FileUtils.mkdir_p(File.dirname(file_path))
         zip_file.extract(entry, file_path)
-        link_files << build_link_file(File.new(file_path))
+        if File.exist?(file_path) && !File.directory?(file_path)
+          link_files << build_link_file(File.new(file_path))
+        end
       end
     end
     link_files
