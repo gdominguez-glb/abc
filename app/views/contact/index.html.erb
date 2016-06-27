@@ -288,6 +288,15 @@
         return false;
       }
 
+      function requireState() {
+        var country = $('select[name="contact_form[country]"]').val();
+        if (country === 'United States') {
+          return true;
+        } else {
+          return false;
+        }
+      }
+
       $(".contact-form").validate({
         rules: {
           'contact_form[topic]': 'required',
@@ -306,6 +315,11 @@
           'contact_form[format]': {
             required: function() {
               return requireFormat();
+            }
+          },
+          'contact_form[state]': {
+            required: function() {
+              return requireState();
             }
           }
         }
