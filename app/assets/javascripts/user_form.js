@@ -162,7 +162,7 @@ $(function(){
 
     $elem.select2('destroy');
     $elem.select2({
-      placeholder: 'Select A ' + options.type,
+      placeholder: 'Type ' + options.type + ' name and select',
       initSelection: function (element, callback) {
         if ( $(element).val() !== null ) {
           return $.getJSON("/school_districts/" + $(element).val(), null, function (data) {
