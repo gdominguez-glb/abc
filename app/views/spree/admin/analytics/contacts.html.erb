@@ -1,18 +1,29 @@
 <% content_for :page_title do %>
-  Contacts <%= params[:start_date] %> ~ <%= params[:end_date] %>
+  Analytics
 <% end %>
 
-<% if params[:topic].blank? %>
-  <p>Contact Form Submissions: <%= @total_contacts %></p>
-  <% @topics_breakdown.each do |breakdown| %>
-    <p>
+<div class="well">
+  <p class="sans-serif">Contact Form Submissions from <strong><%= params[:start_date] %></strong> to <strong><%= params[:end_date] %></strong></p>
+
+  <% if params[:topic].blank? %>
+    <div class="row sans-serif padding-bottom-s">
+      <div class="col-sm-3 text-right"><strong>Total:</strong> </div>
+      <div class="col-sm-3"><strong class="text-danger"><%= @total_contacts %></strong></div>
+    </div>
+    <% @topics_breakdown.each do |breakdown| %>
       <% percent = @total_contacts > 0 ? ((breakdown.topic_count / @total_contacts.to_f) * 100) : 0 %>
-      <%= breakdown.topic %>: <%= breakdown.topic_count %>  (<%= number_to_percentage(percent, precision: 1) %>)
-    </p>
+      <div class="row sans-serif padding-bottom-s">
+        <div class="col-sm-3 text-right"><%= breakdown.topic %>: </div>
+        <div class="col-sm-3">
+          <div class="bar-graph" style="width: <%= number_to_percentage(percent, precision: 1) %>;"></div>
+          <strong><%= breakdown.topic_count %></strong>  (<%= number_to_percentage(percent, precision: 1) %>)
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <p><%= params[:topic] %> Submissions : <%= @total_contacts %></p>
   <% end %>
-<% else %>
-  <h4><%= params[:topic] %> : <%= @total_contacts %></h4>
-<% end %>
+</div>
 
 <div class="table-responsive">
   <table class="table">
