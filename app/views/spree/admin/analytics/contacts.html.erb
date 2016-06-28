@@ -2,12 +2,16 @@
   Contacts <%= params[:start_date] %> ~ <%= params[:end_date] %>
 <% end %>
 
-<h4>Topics Breakdown</h4>
-<% @topics_breakdown.each do |breakdown| %>
-  <p>
-    <% percent = @total_contacts > 0 ? ((breakdown.topic_count / @total_contacts.to_f) * 100) : 0 %>
-    <%= breakdown.topic %>:  <%= number_to_percentage(percent, precision: 1) %>
-  </p>
+<% if params[:topic].blank? %>
+  <h4>Topics Breakdown</h4>
+  <% @topics_breakdown.each do |breakdown| %>
+    <p>
+      <% percent = @total_contacts > 0 ? ((breakdown.topic_count / @total_contacts.to_f) * 100) : 0 %>
+      <%= breakdown.topic %>:  <%= number_to_percentage(percent, precision: 1) %>
+    </p>
+  <% end %>
+<% else %>
+  <h4><%= params[:topic] %> : <%= @total_contacts %></h4>
 <% end %>
 
 <div class="table-responsive">

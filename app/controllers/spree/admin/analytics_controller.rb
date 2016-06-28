@@ -17,6 +17,9 @@ class Spree::Admin::AnalyticsController < Spree::Admin::BaseController
 
   def contacts
     contacts = relation_within_date_range(Contact.all, params[:start_date], params[:end_date])
+    if params[:topic].present?
+      @contacts = @contacts.where(topic: params[:topic])
+    end
     @contacts = contacts.page(params[:page])
     @total_contacts = contacts.count
     @topics_breakdown = contacts.select('topic, count(*) as topic_count').group(:topic)
