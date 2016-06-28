@@ -1,18 +1,34 @@
 <% content_for :page_title do %>
-  Contacts <%= params[:start_date] %> ~ <%= params[:end_date] %>
+  Analytics
 <% end %>
 
-<% if params[:topic].blank? %>
-  <h4>Topics Breakdown</h4>
-  <% @topics_breakdown.each do |breakdown| %>
-    <p>
+<div class="well">
+  <p class="sans-serif">Contact Form Submissions from <strong><%= params[:start_date] %></strong> to <strong><%= params[:end_date] %></strong></p>
+
+  <% if params[:topic].blank? %>
+    <div class="row sans-serif padding-bottom-s">
+      <div class="col-sm-3 text-right-sm"><strong>Total</strong></div>
+      <div class="col-sm-6"><strong class="text-danger"><%= @total_contacts %></strong></div>
+    </div>
+    <% @topics_breakdown.each do |breakdown| %>
       <% percent = @total_contacts > 0 ? ((breakdown.topic_count / @total_contacts.to_f) * 100) : 0 %>
-      <%= breakdown.topic %>:  <%= number_to_percentage(percent, precision: 1) %>
-    </p>
+      <div class="row sans-serif padding-bottom-s">
+        <div class="col-sm-3 text-right-sm">
+          <%= link_to contacts_admin_analytics_path(start_date: params[:start_date], end_date: params[:end_date], topic: breakdown.topic), class: 'bar-graph-label' do %>
+            <%= breakdown.topic %>
+          <% end %>
+        </div>
+        <div class="col-sm-6">
+          <a href="<%= contacts_admin_analytics_path(start_date: params[:start_date], end_dage: params[:end_date], topic: breakdown.topic) %>" class="bar-graph" style="width: <%= number_to_percentage(percent, precision: 1) %>;"></a>
+          <strong><%= breakdown.topic_count %></strong>  (<%= number_to_percentage(percent, precision: 1) %>)
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <p><%= params[:topic] %>  <strong><%= @total_contacts %></strong></p>
+    <%= link_to 'Reset', contacts_admin_analytics_path(start_date: params[:start_date], end_date: params[:end_date]), class: 'btn btn-primary' %>
   <% end %>
-<% else %>
-  <h4><%= params[:topic] %> : <%= @total_contacts %></h4>
-<% end %>
+</div>
 
 <div class="table-responsive">
   <table class="table">

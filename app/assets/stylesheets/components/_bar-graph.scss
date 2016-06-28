@@ -1,0 +1,21 @@
+// *************************************
+//
+//   Bar Graph
+//   -> Bar Graph Component
+//
+// *************************************
+
+.bar-graph {
+  display: inline-block;
+  height: $b-space-m;
+  background-color: $coral;
+
+  &:hover {
+    background-color: lighten($coral, 5%);
+  }
+}
+
+.bar-graph-label {
+  font-weight: normal;
+  text-transform: initial;
+}
