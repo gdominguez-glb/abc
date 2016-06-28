@@ -30,7 +30,7 @@ server {
   ssl_certificate    <%= node['ssl']['ssl_certificate'] %>;
   ssl_certificate_key    <%= node['ssl']['ssl_certificate_key'] %>;
 
-  server_name <%= node['the_domain'] %> <%= node['witeng_link_domain'] %>;
+  server_name <%= node['the_domain'] %> <%= node['vanity_urls'] %>;
   root /var/www/<%= node['app'] %>/current/public;
 
   client_max_body_size 1024m;
