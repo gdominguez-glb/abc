@@ -7,21 +7,26 @@
 
   <% if params[:topic].blank? %>
     <div class="row sans-serif padding-bottom-s">
-      <div class="col-sm-3 text-right"><strong>Total:</strong> </div>
-      <div class="col-sm-3"><strong class="text-danger"><%= @total_contacts %></strong></div>
+      <div class="col-sm-3 text-right"><strong>Total</strong></div>
+      <div class="col-sm-6"><strong class="text-danger"><%= @total_contacts %></strong></div>
     </div>
     <% @topics_breakdown.each do |breakdown| %>
       <% percent = @total_contacts > 0 ? ((breakdown.topic_count / @total_contacts.to_f) * 100) : 0 %>
       <div class="row sans-serif padding-bottom-s">
-        <div class="col-sm-3 text-right"><%= breakdown.topic %>: </div>
-        <div class="col-sm-3">
-          <div class="bar-graph" style="width: <%= number_to_percentage(percent, precision: 1) %>;"></div>
+        <div class="col-sm-3 text-right">
+          <%= link_to contacts_admin_analytics_path(start_date: params[:start_date], end_date: params[:end_date], topic: breakdown.topic), class: 'bar-graph-label' do %>
+            <%= breakdown.topic %>
+          <% end %>
+        </div>
+        <div class="col-sm-6">
+          <a href="<%= contacts_admin_analytics_path(start_date: params[:start_date], end_dage: params[:end_date], topic: breakdown.topic) %>" class="bar-graph" style="width: <%= number_to_percentage(percent, precision: 1) %>;"></a>
           <strong><%= breakdown.topic_count %></strong>  (<%= number_to_percentage(percent, precision: 1) %>)
         </div>
       </div>
     <% end %>
   <% else %>
-    <p><%= params[:topic] %> Submissions : <%= @total_contacts %></p>
+    <p><%= params[:topic] %>  <strong><%= @total_contacts %></strong></p>
+    <%= link_to 'Reset', contacts_admin_analytics_path(start_date: params[:start_date], end_date: params[:end_date]), class: 'btn btn-primary' %>
   <% end %>
 </div>
 
