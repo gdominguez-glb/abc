@@ -3,11 +3,11 @@
 <% end %>
 
 <% if params[:topic].blank? %>
-  <h4>Topics Breakdown</h4>
+  <p>Contact Form Submissions: <%= @total_contacts %></p>
   <% @topics_breakdown.each do |breakdown| %>
     <p>
       <% percent = @total_contacts > 0 ? ((breakdown.topic_count / @total_contacts.to_f) * 100) : 0 %>
-      <%= breakdown.topic %>:  <%= number_to_percentage(percent, precision: 1) %>
+      <%= breakdown.topic %>: <%= breakdown.topic_count %>  (<%= number_to_percentage(percent, precision: 1) %>)
     </p>
   <% end %>
 <% else %>
