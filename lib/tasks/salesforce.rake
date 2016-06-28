@@ -19,9 +19,21 @@ namespace :salesforce do
       begin
         client.find('Account', salesforce_reference.id_in_salesforce)
       rescue Exception => e
-        if e.message == "NOT_FOUND: The requested resource does not exist"
+        if e.message =~ /NOT_FOUND/
+          reassign_school_district_for_users(sf_client, salesforce_reference.local_object)
           salesforce_reference.local_object.destroy
         end
+      end
+    end
+  end
+
+  def reassign_school_district_for_users(sf_client, school_district)
+    Spree::User.where(school_district_id: school_district.id).find_each do |user|
+      begin
+        contact = sf_client.find('Contact', user.id_in_salesforce)
+        new_school_district = SalesforceReference.find_by(id_in_salesforce: contact.AccountId).local_object
+        user.update(school_district: new_school_district)
+      rescue
       end
     end
   end
