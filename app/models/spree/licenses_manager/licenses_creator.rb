@@ -38,7 +38,7 @@ module Spree
       end
 
       def assign_one_as_non_distributable(licensed_product)
-        SingleLicenseExtractor.new(licensed_product).execute
+        SingleLicenseExtractor.new(licensed_product, false).execute
       end
     end
   end
