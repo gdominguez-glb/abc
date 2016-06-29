@@ -370,10 +370,14 @@ module SalesforceAccess
       local_object = find_or_create_by_salesforce_object(sfo) do
         new_record = true
       end
-      if local_object && !new_record && local_object.id_in_salesforce == sfo.Id
+      if local_object && !new_record && local_object_match_sfo?(local_object, sfo)
         local_object.update_from_salesforce(sfo)
       end
       local_object
+    end
+
+    def local_object_match_sfo?(local_object, sfo)
+      local_object.id_in_salesforce == sfo.Id
     end
 
     # Create or update local records from Salesforce objects

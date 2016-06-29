@@ -133,6 +133,12 @@ class SchoolDistrict < ActiveRecord::Base
     where(name: sfo.Name, state_id: state)
   end
 
+  def self.local_object_match_sfo?(local_object, sfo)
+    return true if local_object.id_in_salesforce == sfo.Id
+    state = state_from_salesforce_object(sfo)
+    local_object.name == sfo.Name && local_object.state == state
+  end
+
   # Performs additional tasks after creating a record in Salesforce.  This will
   # be called from within ActiveJob
   # Params:
