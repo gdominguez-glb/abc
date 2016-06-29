@@ -2,8 +2,9 @@ module Spree
   module LicensesManager
     # SingleLicenseExtractor
     class SingleLicenseExtractor
-      def initialize(licensed_product)
+      def initialize(licensed_product, skip_salesforce_create=true)
         @licensed_product = licensed_product
+        @skip_salesforce_create = skip_salesforce_create
       end
 
       def execute
@@ -34,7 +35,7 @@ module Spree
           product_distribution_id: distribution.id,
           can_be_distributed: false,
           skip_notification: true,
-          skip_salesforce_create: true
+          skip_salesforce_create: @skip_salesforce_create
         )
       end
 
@@ -56,7 +57,7 @@ module Spree
 
       def update_original_license
         @licensed_product.tap do
-          @licensed_product.update(quantity: @licensed_product.quantity - 1, skip_salesforce_create: true)
+          @licensed_product.update(quantity: @licensed_product.quantity - 1, skip_salesforce_create: @skip_salesforce_create)
         end
       end
     end
