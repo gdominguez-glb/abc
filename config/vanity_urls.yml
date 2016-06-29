@@ -6,9 +6,15 @@ test:
 
 qa:
   - https://qa.greatminds.org
+  - http://qa.witeng.link
+  - http://qa.eurmath.link
 
 staging:
   - https://qa.greatminds.org
+  - http://staging.witeng.link
+  - http://staging.eurmath.link
 
 production:
   - https://greatminds.org
+  - http://witeng.link
+  - http://eurmath.link
