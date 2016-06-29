@@ -50,5 +50,6 @@
     "ssl_certificate": "/etc/ssl/wild_greatminds_org_combined.pem",
     "ssl_certificate_key": "/etc/ssl/greatminds_org.key"
   },
+  "witeng_link_domain": "qa.witeng.link",
   "vanity_urls": "qa.witeng.link qa.eurmath.link"
 }
