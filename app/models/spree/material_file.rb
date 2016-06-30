@@ -14,7 +14,10 @@ class Spree::MaterialFile < ActiveRecord::Base
     Aws::CF::Signer.sign_url(self.file.url, expires: (Time.now + expire_in_seconds))
   end
 
+  require 'uri'
   def preview_signed_url(expire_in_seconds=3600)
-    Aws::CF::Signer.sign_url(self.file.url + '?response-content-disposition=inline', expires: (Time.now + expire_in_seconds))
+    uri = URI(self.file.url)
+    uri.query = 'response-content-disposition=inline'
+    Aws::CF::Signer.sign_url(uri.to_s, expires: (Time.now + expire_in_seconds))
   end
 end
