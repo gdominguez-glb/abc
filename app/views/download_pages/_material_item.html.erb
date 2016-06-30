@@ -32,14 +32,10 @@
         <% end %>
         <% if material.material_files_count > 0 %>
 
-          <% if material.material_files_count == 1 %>
-            <%= link_to material.material_files.first.file.preview_expiring_url(60*60*60), target: '_blank', class: 'btn btn-default btn-icon' do %>
-              <i class="mi md-18 js-tooltip-trigger" title="View">remove_red_eye</i>
-            <% end %>
-          <% else %>
-            <%= link_to preview_material_path(material), remote: true, class: 'btn btn-default btn-icon' do %>
-              <i class="mi md-18 js-tooltip-trigger" title="View">remove_red_eye</i>
-            <% end %>
+          <% html_options = material.material_files_count == 1 ? { target: '_blank' } : { remote: true } %>
+
+          <%= link_to preview_material_path(material), target: '_blank', { class: 'btn btn-default btn-icon' }.merge(html_options) do %>
+            <i class="mi md-18 js-tooltip-trigger" title="View">remove_red_eye</i>
           <% end %>
 
           <%# <% if bookmarked_material?(material) %1> %>
