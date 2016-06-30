@@ -46,6 +46,12 @@ class MaterialsController < ApplicationController
   end
 
   def preview
+    respond_to do |format|
+      format.js {}
+      format.html {
+        redirect_to @material.material_files.first.file.preview_expiring_url(60*60*60)
+      }
+    end
   end
 
   def bookmark
