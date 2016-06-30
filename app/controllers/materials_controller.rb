@@ -7,7 +7,7 @@ class MaterialsController < ApplicationController
     log_activity(@material, "Download #{@material.name}")
 
     if @material.material_files.count == 1 && @material.children.count == 0
-      @download_url = @material.material_files.first.file.expiring_url(60*60*60)
+      @download_url = @material.material_files.first.signed_url
     else
       @download_job = DownloadJob.create(user: current_spree_user, material_ids: [@material.id], status: 'pending')
     end
@@ -49,7 +49,7 @@ class MaterialsController < ApplicationController
     respond_to do |format|
       format.js {}
       format.html {
-        redirect_to @material.material_files.first.file.preview_expiring_url(60*60*60)
+        redirect_to @material.material_files.first.preview_signed_url
       }
     end
   end
