@@ -2,6 +2,7 @@ class Spree::MaterialFile < ActiveRecord::Base
   belongs_to :material, class_name: 'Spree::Material', counter_cache: true
 
   has_attached_file :file,
+    path:           "/:class/:attachment/:id_partition/:style/:filename",
     s3_permissions: :private,
     url:            ":s3_alias_url",
     s3_protocol:    "https",
