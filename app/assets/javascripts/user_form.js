@@ -120,17 +120,24 @@ $(function(){
   function updateSchoolDistrictSelect(_stateId) {
     var stateId = parseInt(_stateId);
 
+    // Temporary Workaround to focus on select2 searchbox when list is open
+    var ensureInputFocus = function (e) {
+      window.setTimeout(function (){
+        $("#select2-drop").find("input").focus();
+      }, 1000);
+    }
+
     renderOptions({
       type: "school",
       searchFunc: search,
       stateId: _stateId
-    });
+    }).on("select2-open", ensureInputFocus);
 
     renderOptions({
       type: "district",
       searchFunc: search,
       stateId: _stateId
-    });
+    }).on("select2-open", ensureInputFocus);
   }
 
   function bindClickAddLink(selector, inputRowSelector) {
@@ -161,7 +168,7 @@ $(function(){
     var $elem = $("#spree_user_" + options.type + "_id");
 
     $elem.select2('destroy');
-    $elem.select2({
+    return $elem.select2({
       placeholder: 'Type ' + options.type + ' name and select',
       initSelection: function (element, callback) {
         if ( $(element).val() !== null ) {
