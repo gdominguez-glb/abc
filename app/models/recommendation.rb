@@ -17,6 +17,8 @@ class Recommendation < ActiveRecord::Base
   }
   scope :displayable, ->{ where(display:true).order('position ASC') }
 
+  scope :displayable_random, ->{ where(display:true).order("RANDOM()") }
+
   ICONS = ['BLOG', 'DIGITAL_SUITE', 'PDF', 'PRINT', 'PROFESSIONAL', 'VIDEO']
 
   def icon_image
