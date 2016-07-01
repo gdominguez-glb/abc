@@ -8,6 +8,7 @@ FactoryGirl.define do
     skip_salesforce_create true
     accepted_terms true
     title 'Homeschooler'
+    zip_code '10000'
     after(:create) do |u|
       create(:salesforce_reference, local_object: u)
     end
