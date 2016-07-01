@@ -34,7 +34,7 @@
 
           <% html_options = material.material_files_count == 1 ? { target: '_blank' } : { remote: true } %>
 
-          <%= link_to preview_material_path(material), target: '_blank', { class: 'btn btn-default btn-icon' }.merge(html_options) do %>
+          <%= link_to preview_material_path(material), { class: 'btn btn-default btn-icon' }.merge(html_options) do %>
             <i class="mi md-18 js-tooltip-trigger" title="View">remove_red_eye</i>
           <% end %>
 
