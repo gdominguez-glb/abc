@@ -1,6 +1,6 @@
 <div class="list-group-item">
   <h4 class="margin-bottom-reset">
-    <%= link_to strip_tags(event.title), "http://regonline.com/#{event.regonline_id}", target: '_blank' %>
+    <%= link_to event.title.html_safe, "http://regonline.com/#{event.regonline_id}", target: '_blank' %>
   </h4>
 
   <div class="row">
