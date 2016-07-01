@@ -49,6 +49,7 @@ Spree::ProductsController.class_eval do
 
   def show
     redirect_to @product.get_in_touch_url if @product.get_in_touch_product?
+    redirect_to spree.group_product_path(@product) if @product.group_product?
     @variants = @product.variants_including_master.active(current_currency).includes([:option_values, :images])
     @product_properties = @product.product_properties.includes(:property)
     @taxon = Spree::Taxon.find(params[:taxon_id]) if params[:taxon_id]

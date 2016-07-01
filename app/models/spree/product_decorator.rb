@@ -84,7 +84,7 @@ Spree::Product.class_eval do
     parts.any?
   end
 
-  def group_items?
+  def has_group_items?
     group_items.any?
   end
 
@@ -195,6 +195,10 @@ Spree::Product.class_eval do
 
   def expired?
     !!(expiration_date && expiration_date < Time.now)
+  end
+
+  def should_index?
+    show_in_storefront?
   end
 
   def search_data
