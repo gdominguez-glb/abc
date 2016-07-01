@@ -64,6 +64,7 @@ class Account::SettingsController < Account::BaseController
       :school_id,
       :district_id,
       :phone,
+      :zip_code,
       school_district_attributes: [:name, :country_id, :state_id, :city, :place_type],
       interested_subjects: [],
       grades: []
