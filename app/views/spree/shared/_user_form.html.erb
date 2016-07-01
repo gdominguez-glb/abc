@@ -32,7 +32,7 @@
     <div class="col-md-6">
       <div class="form-group">
         <label>Zip Code</label>
-        <%= f.text_field :zip_code, class: 'form-control' %>
+        <%= f.text_field :zip_code, class: 'form-control', tabindex: 5 %>
       </div>
     </div>
   </div>
@@ -47,7 +47,7 @@
     <div class="col-md-6">
       <div class="form-group">
         <label>Grades</label>
-        <%= f.select :grades, options_for_select(Spree::User::GRADES, f.object.grades), { }, { class: 'form-control', tabindex: 6, multiple: 'multiple', placeholder: 'Select your grades' } %>
+        <%= f.select :grades, options_for_select(Spree::User::GRADES, f.object.grades), { }, { class: 'form-control', tabindex: 5, multiple: 'multiple', placeholder: 'Select your grades' } %>
       </div>
     </div>
     <div class="col-md-6">
