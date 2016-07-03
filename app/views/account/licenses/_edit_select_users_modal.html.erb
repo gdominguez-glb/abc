@@ -12,10 +12,12 @@
         </div>
         <div class="row">
           <div class="col-sm-12">
-            <% @emails.each do |email| %>
+            <div class="edit-users-email-list">
+              <% @emails.each do |email| %>
 
-              <p><span class="email-selection"><%= email %></span> <span class='remove-select-email' data-toggle="tooltip" data-placement="top" title="Remove User"><i class='mi'>close</i></span></p>
-            <% end %>
+                <p><span class="email-selection"><%= email %></span> <span class='remove-select-email' data-toggle="tooltip" data-placement="top" title="Remove User"><i class='mi'>close</i></span></p>
+              <% end %>
+            </div>
           </div>
         </div>
 

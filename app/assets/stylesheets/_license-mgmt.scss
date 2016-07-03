@@ -63,3 +63,9 @@
 .remove-select-email {
   cursor: pointer;
 }
+
+.edit-users-email-list,
+.confirm-users-email-list {
+  max-height: 450px;
+  overflow: scroll;
+}

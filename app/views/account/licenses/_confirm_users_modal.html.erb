@@ -8,9 +8,11 @@
       <div class="modal-body">
         <div class="row">
           <div class="col-sm-12">
-            <% @emails.each do |email| %>
-              <p><%= email %></p>
-            <% end %>
+            <div class="confirm-users-email-list">
+              <% @emails.each do |email| %>
+                <p><%= email %></p>
+              <% end %>
+            </div>
           </div>
         </div>
 
