@@ -21,7 +21,7 @@ class ContactForm
     if ['Sales/Purchasing', 'Professional Development'].include?(self.topic)
       create_lead_object
     elsif ["Existing Order Support", "Curriculum Support", "Technical Support", "Parent Support", "Content Error", "General and Other"].include?(self.topic)
-      create_case_object(self.topic)
+      create_case_object
     end
   end
 
@@ -36,11 +36,11 @@ class ContactForm
     ContactWorker.perform_async('Lead', attrs)
   end
 
-  def create_case_object(topic)
+  def create_case_object
     attrs = case_common_attributes
-    if topic == 'General and Other'
+    if self.topic == 'General and Other'
       attrs.merge!(general_attributes)
-    elsif ["Existing Order Support", "Curriculum Support", "Technical Support", "Parent Support", "Content Error"].include?(topic)
+    elsif ["Existing Order Support", "Curriculum Support", "Technical Support", "Parent Support", "Content Error"].include?(self.topic)
       attrs.merge!(support_attributes)
     end
     save_contact_record(attrs)
