@@ -65,13 +65,13 @@ module GmSalesforce
     end
 
     def execute_pagination_loop_query(base_query, per_page, &block)
-      last_created_date = nil
+      last_sf_id = nil
       while true do
-        page_query = append_order_phase_to_query(base_query, last_created_date, per_page)
+        page_query = append_order_phase_to_query(base_query, last_sf_id, per_page)
         result = client.query(page_query)
         block.call(result)
         break if result.count < per_page
-        last_created_date = result.entries.last.CreatedDate
+        last_sf_id = result.entries.last.Id
       end
     end
 
@@ -81,13 +81,13 @@ module GmSalesforce
       query_str
     end
 
-    def append_order_phase_to_query(query, last_created_date, per_page)
+    def append_order_phase_to_query(query, last_sf_id, per_page)
       page_query = query
-      if last_created_date
+      if last_sf_id
         page_query += " where " if !query.include?('where')
-        page_query += " CreatedDate < #{last_created_date} "
+        page_query += " Id < '#{last_sf_id}' "
       end
-      page_query + " order by CreatedDate desc limit #{per_page}"
+      page_query + " order by Id desc limit #{per_page}"
     end
 
     def create(salesforce_sobject_name, attributes_to_create)

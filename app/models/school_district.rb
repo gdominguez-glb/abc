@@ -100,6 +100,7 @@ class SchoolDistrict < ActiveRecord::Base
   def self.attributes_from_salesforce_object(sfo)
     sfo_data = super(sfo)
     sfo_data.merge!(name: sfo.Name,
+                    city: sfo.BillingCity,
                     place_type: place_type_from_salesforce_object(sfo))
     state = state_from_salesforce_object(sfo)
     sfo_data.merge!(state_id: state.id) if state
