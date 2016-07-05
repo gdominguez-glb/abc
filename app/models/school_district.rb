@@ -10,7 +10,9 @@ class SchoolDistrict < ActiveRecord::Base
   validates :state_id, presence: true, if: Proc.new{ |school_district|
     !school_district.unaffiliated? && school_district.country.try(:name) == 'United States'
   }
-  validates :city, presence: true, on: :create, if: ->(sd){ sd.school? || sd.district? }
+
+  attr_accessor :skip_city_validation
+  validates :city, presence: true, on: :create, if: ->(sd){ !sd.skip_city_validation && (sd.school? || sd.district?) }
 
   enum place_type: { school: 'school', district: 'district',
                      unaffiliated: 'unaffiliated' }
@@ -101,6 +103,7 @@ class SchoolDistrict < ActiveRecord::Base
     sfo_data = super(sfo)
     sfo_data.merge!(name: sfo.Name,
                     city: sfo.BillingCity,
+                    skip_city_validation: true,
                     place_type: place_type_from_salesforce_object(sfo))
     state = state_from_salesforce_object(sfo)
     sfo_data.merge!(state_id: state.id) if state
