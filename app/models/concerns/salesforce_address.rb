@@ -19,8 +19,8 @@ module SalesforceAddress
     end
 
     def address_attributes_valid?(attrs)
-      !attrs.values_at(:first_name, :last_name, :address1, :city, :country,
-                       :zipcode, :phone).any?(&:blank?)
+      attrs.values_at(:first_name, :last_name, :address1, :city, :country,
+                       :zipcode, :phone).all?(&:present?)
     end
 
     def parse_state_and_country(sfo, type)
@@ -34,7 +34,7 @@ module SalesforceAddress
 
     def parse_phone(sfo)
       phone = sfo.Phone
-      phone.blank? ? phone : '000-000-0000'
+      phone.blank? ? '000-000-0000' : phone
     end
 
     def address_attributes(sfo, type)
