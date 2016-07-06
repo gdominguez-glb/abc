@@ -67,11 +67,12 @@ Spree::User.class_eval do
               'Web_Front_End_Email__c' => email,
               'Web_Front_End_ID__c' => id,
               'Email' => email,
-              'Phone' => phone,
               'DoNotCall' => !allow_communication,
               'MailingPostalCode' => zip_code,
               'Curriculum_of_Interest__c' => interested_curriculums.join(';'),
               'Grade_Level_Served__c' => grades.join(';') }
+
+    attrs.merge!({'Phone' => self.phone}) if self.phone.present?
     attrs.merge!(sf_address(ship_address, 'Mailing')) if ship_address.present?
     attrs.merge!(sf_address(bill_address, 'Other')) if bill_address.present?
     attrs
