@@ -20,4 +20,8 @@ class EventTraining < ActiveRecord::Base
       user_ids: [-1]
     }
   end
+
+  def title_with_category
+    [title, category].compact.join(' - ')
+  end
 end
