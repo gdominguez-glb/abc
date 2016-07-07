@@ -57,6 +57,7 @@ Rails.application.routes.draw do
 
   get 'events', to: 'events#index'
   get 'events/trainings', to: 'events#trainings', as: :events_trainings
+  get 'events/trainings/:category', to: 'events#trainings_by_category', as: :category_events_trainings
   get 'events/l/:slug', to: 'events#list', as: :events_list
 
   resources :video_gallery, only: [:index, :show] do
