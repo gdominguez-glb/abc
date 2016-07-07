@@ -39,7 +39,7 @@ class Cms::EventTrainingsController < Cms::BaseController
   private
 
   def event_training_params
-    params.require(:event_training).permit(:title, :content, :training_type, :position)
+    params.require(:event_training).permit(:title, :content, :training_type, :position, :category)
   end
 
   def set_event_training

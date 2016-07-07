@@ -25,10 +25,20 @@
       </div>
     </div>
   </div>
-  <div class="form-group">
-    <%= f.label "Training Type" %>
-    <%= f.text_field :training_type, class: 'form-control' %>
-    <small class="help-text">This field mapping to ClientEventID in regonline events, for example: regonline filter,your training type, the words after first comma is training type</small>
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="form-group">
+        <%= f.label :category %>
+        <%= f.select :category, options_for_select(EventTraining::CATEGORIES, f.object.category), { prompt: 'Select Category' }, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="form-group">
+        <%= f.label "Training Type" %>
+        <%= f.text_field :training_type, class: 'form-control' %>
+        <small class="help-text">This field mapping to ClientEventID in regonline events, for example: regonline filter,your training type, the words after first comma is training type</small>
+      </div>
+    </div>
   </div>
   <div class="form-group">
     <%= f.label :content %>
