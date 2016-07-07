@@ -9,6 +9,7 @@
         <tr>
           <th>Title</th>
           <th>Position</th>
+          <th>Category</th>
           <th>Training Session Type</th>
           <th colspan="2"></th>
         </tr>
@@ -19,6 +20,7 @@
           <tr data-id="<%= event_training.id %>">
             <td><%= event_training.title %></td>
             <td><%= event_training.position %></td>
+            <td><%= event_training.category %></td>
             <td><%= event_training.training_type %></td>
             <td><%= link_to 'Edit', edit_cms_event_training_path(event_training) %></td>
             <td><%= link_to 'Destroy', [:cms, event_training], method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-danger' %></td>

@@ -1,6 +1,10 @@
 class EventTraining < ActiveRecord::Base
   validates_presence_of :title, :content
 
+  CATEGORIES = ['english', 'math']
+
+  scope :by_category, ->(category) { where(category: category) }
+
   def title_to_slug
     title.parameterize
   end

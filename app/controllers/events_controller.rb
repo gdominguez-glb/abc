@@ -37,6 +37,11 @@ class EventsController < ApplicationController
     @event_trainings = EventTraining.order(:position)
   end
 
+  def trainings_by_category
+    @event_trainings = EventTraining.by_category(params[:category]).order(:position)
+    render template: 'events/trainings'
+  end
+
   private
 
   def filter_by_zipcode
