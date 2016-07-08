@@ -162,12 +162,15 @@ ul.nav-sidebar {
   margin-right: $b-space;
   border-radius: $b-space-s;
 }
+
 .order-dot {
   background-color: #35AAE2;
 }
+
 .user-dot {
   background-color: #FD5F3F;
 }
+
 .contact-dot {
   background-color: #98C53D;
 }
@@ -178,4 +181,41 @@ ul.nav-sidebar {
 
 .ui-datepicker-calendar.ui-datepicker-calendar {
   min-width: initial;
+}
+
+// -------------------------------------
+//   Filters
+// -------------------------------------
+
+.label-completed,
+.label-complete,
+.label-considered_safe,
+.label-paid,
+.label-shipped,
+.label-ready,
+.label-active,
+.label-success,
+.label-sold,
+.label-balance_due {
+  a {
+    color: $brand-primary !important;
+  }
+}
+
+.icon-filter.icon-filter.icon-filter {
+  position: absolute;
+  top: 38%;
+  left: -7px;
+  color: $gray-light;
+}
+
+// Ensure filters stay attached to their cell
+.table.table {
+  tbody {
+    tr {
+      td {
+        position: relative;
+      }
+    }
+  }
 }
