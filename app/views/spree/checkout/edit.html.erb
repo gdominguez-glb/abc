@@ -2,32 +2,28 @@
   <%= render partial: 'spree/shared/google_checkout.js', locals: { order: @order, step_number: (@order.checkout_steps.index(@order.state) + 1) } %>
 <% end %>
 
-<div class="col-sm-10 col-sm-offset-1 margin-top-xxl margin-bottom-xl">
+<div id="checkout" data-hook>
+  <%= render partial: 'spree/shared/error_messages', locals: { target: @order } %>
 
-  <div id="checkout" data-hook>
-    <%= render partial: 'spree/shared/error_messages', locals: { target: @order } %>
-
-    <div class="row" data-hook="checkout_header">
-      <div class="col-md-3">
-        <h1 data-hook="checkout_title" class="margin-bottom-reset"><%= Spree.t(:checkout) %></h1>
-      </div>
-      <div class="col-sm-12 col-md-9 margin-bottom-l" data-hook="checkout_progress"><%= checkout_progress %></div>
+  <div class="row" data-hook="checkout_header">
+    <div class="col-md-3">
+      <h1 data-hook="checkout_title" class="margin-bottom-reset"><%= Spree.t(:checkout) %></h1>
     </div>
-
-    <div class="row" data-hook="checkout_content">
-      <div class="<%= if @order.state != 'confirm' then 'col-md-9' else 'col-md-12' end %>" data-hook="checkout_form_wrapper">
-        <%= form_for @order, url: update_checkout_path(@order.state), html: { id: "checkout_form_#{@order.state}" } do |form| %>
-          <% if @order.state == 'address' || !@order.email? %>
-            <% @order.email ||= current_spree_user.email %>
-            <%= form.hidden_field :email %>
-          <% end %>
-          <%= form.hidden_field :state_lock_version %>
-          <%= render @order.state, form: form %>
-        <% end %>
-      </div>
-    </div>
+    <div class="col-sm-12 col-md-9 margin-bottom-l" data-hook="checkout_progress"><%= checkout_progress %></div>
   </div>
 
+  <div class="row" data-hook="checkout_content">
+    <div class="<%= if @order.state != 'confirm' then 'col-md-9' else 'col-md-12' end %>" data-hook="checkout_form_wrapper">
+      <%= form_for @order, url: update_checkout_path(@order.state), html: { id: "checkout_form_#{@order.state}" } do |form| %>
+        <% if @order.state == 'address' || !@order.email? %>
+          <% @order.email ||= current_spree_user.email %>
+          <%= form.hidden_field :email %>
+        <% end %>
+        <%= form.hidden_field :state_lock_version %>
+        <%= render @order.state, form: form %>
+      <% end %>
+    </div>
+  </div>
 </div>
 
 <script>

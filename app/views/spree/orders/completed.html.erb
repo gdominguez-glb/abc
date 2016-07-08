@@ -1,16 +1,14 @@
-<div class="col-sm-10 col-sm-offset-1 margin-top-xxl margin-bottom-xl">
-  <fieldset id="order_summary" data-hook>
-    <legend><%= Spree.t(:order_number, number: @order.number) %></legend>
-    <h1><%= accurate_title %></h1>
+<fieldset id="order_summary" data-hook>
+  <legend><%= Spree.t(:order_number, number: @order.number) %></legend>
+  <h1><%= accurate_title %></h1>
 
-    <div id="order" data-hook>
-      <%= render partial: 'spree/orders/completed_order_details', locals: { order: @order } %>
+  <div id="order" data-hook>
+    <%= render partial: 'spree/orders/completed_order_details', locals: { order: @order } %>
 
-      <br class="clear" />
+    <br class="clear" />
 
-      <p data-hook="links">
-        <%= link_to 'Access Dashboard', (@order.single_purchase? ? main_app.account_products_path : main_app.account_root_path), class: 'btn btn-block-xs btn-success margin-right-reset pull-right' %>
-      </p>
-    </div>
-  </fieldset>
-</div>
+    <p data-hook="links">
+      <%= link_to 'Access Dashboard', (@order.single_purchase? ? main_app.account_products_path : main_app.account_root_path), class: 'btn btn-block-xs btn-success margin-right-reset pull-right' %>
+    </p>
+  </div>
+</fieldset>

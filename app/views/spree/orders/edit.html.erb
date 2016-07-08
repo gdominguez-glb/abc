@@ -1,57 +1,53 @@
 <% @body_id = 'cart' %>
 
-<div class="col-sm-10 col-sm-offset-1 margin-top-xxl margin-bottom-xl">
+<div data-hook="cart_container">
+  <h1><%= Spree.t(:shopping_cart) %></h1>
 
-  <div data-hook="cart_container">
-    <h1><%= Spree.t(:shopping_cart) %></h1>
+  <% if @order.line_items.empty? %>
+    <div data-hook="empty_cart">
+      <div class="alert alert-info"><%= Spree.t(:your_cart_is_empty) %></div>
+      <p><%= link_to Spree.t(:continue_shopping), products_path, class: 'btn btn-default' %></p>
+    </div>
+  <% else %>
+    <div data-hook="outside_cart_form">
+      <%= form_for @order, url: update_cart_path, html: { id: 'update-cart' } do |order_form| %>
+        <div data-hook="inside_cart_form">
 
-    <% if @order.line_items.empty? %>
-      <div data-hook="empty_cart">
-        <div class="alert alert-info"><%= Spree.t(:your_cart_is_empty) %></div>
-        <p><%= link_to Spree.t(:continue_shopping), products_path, class: 'btn btn-default' %></p>
-      </div>
-    <% else %>
-      <div data-hook="outside_cart_form">
-        <%= form_for @order, url: update_cart_path, html: { id: 'update-cart' } do |order_form| %>
-          <div data-hook="inside_cart_form">
+          <div data-hook="cart_items" class="table-responsive">
+            <%= render partial: 'form', locals: { order_form: order_form } %>
+          </div>
 
-            <div data-hook="cart_items" class="table-responsive">
-              <%= render partial: 'form', locals: { order_form: order_form } %>
-            </div>
-
-            <div class="row">
-              <div class="col-sm-12 text-right-sm">
-                <div class="links navbar-form" data-hook="cart_buttons">
-                  <div class="row">
-                    <div class="col-sm-3 col-sm-offset-6">
-                      <%= button_tag class: 'btn btn-primary btn-block margin-bottom margin-right-reset', id: 'update-button' do %>
-                        <%= Spree.t(:update) %>
-                      <% end %>
-                    </div>
-                    <div class="col-sm-3">
-                      <%= button_tag class: 'btn btn-success btn-block margin-bottom margin-right-reset', id: 'checkout-link', name: 'checkout' do %>
-                        <%= Spree.t(:checkout) %>
-                      <% end %>
-                    </div>
+          <div class="row">
+            <div class="col-sm-12 text-right-sm">
+              <div class="links navbar-form" data-hook="cart_buttons">
+                <div class="row">
+                  <div class="col-sm-3 col-sm-offset-6">
+                    <%= button_tag class: 'btn btn-primary btn-block margin-bottom margin-right-reset', id: 'update-button' do %>
+                      <%= Spree.t(:update) %>
+                    <% end %>
+                  </div>
+                  <div class="col-sm-3">
+                    <%= button_tag class: 'btn btn-success btn-block margin-bottom margin-right-reset', id: 'checkout-link', name: 'checkout' do %>
+                      <%= Spree.t(:checkout) %>
+                    <% end %>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="row">
+      <div id="empty-cart" class="col-sm-3 col-sm-offset-9" data-hook>
+        <%= form_tag empty_cart_path, method: :put do %>
+          <p id="clear_cart_link" data-hook>
+            <%= button_tag Spree.t(:empty_cart), class: 'btn btn-default btn-block margin-bottom-s' %>
+            <%= link_to Spree.t(:continue_shopping), "/store", class: 'btn btn-default btn-block btn-link-alt margin-bottom-s' %>
+          </p>
         <% end %>
       </div>
-
-      <div class="row">
-        <div id="empty-cart" class="col-sm-3 col-sm-offset-9" data-hook>
-          <%= form_tag empty_cart_path, method: :put do %>
-            <p id="clear_cart_link" data-hook>
-              <%= button_tag Spree.t(:empty_cart), class: 'btn btn-default btn-block margin-bottom-s' %>
-              <%= link_to Spree.t(:continue_shopping), "/store", class: 'btn btn-default btn-block btn-link-alt margin-bottom-s' %>
-            </p>
-          <% end %>
-        </div>
-      </div>
-    <% end %>
-  </div>
-
+    </div>
+  <% end %>
 </div>
