@@ -34,8 +34,7 @@
         <%= link_to 'Back', cms_pages_path, class: 'btn btn-default btn-block' %>
       </div>
       <div class="col-sm-3">
-        <% pageURL = request.protocol + request.host_with_port + '/' + @page.slug %>
-        <%= link_to 'View Page', pageURL, class: 'btn btn-default btn-block', target: '_blank' %>
+        <%= link_to 'View Page', page_url(slug: @page.slug), class: 'btn btn-default btn-block', target: '_blank' %>
       </div>
     </div>
   </div>
