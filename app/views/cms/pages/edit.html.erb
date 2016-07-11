@@ -1,8 +1,8 @@
 <%= render 'cms_nav' %>
 <div class="col-md-9">
   <h2>Editing Page</h2>
-  <% pageURL = request.protocol + request.host_with_port + '/' + @page.slug %>
-  <small class="help-block">Current URL: <%= link_to pageURL, pageURL, target: '_blank' %></small>
+  <% page_url = page_url(slug: @page.slug) %>
+  <small class="help-block">Current URL: <%= link_to page_url, page_url, target: '_blank' %></small>
 
   <%= render 'form' %>
 
