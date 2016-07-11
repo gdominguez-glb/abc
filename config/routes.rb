@@ -140,5 +140,5 @@ Rails.application.routes.draw do
     get '*slug', to: 'wit_eng#show', as: :wit_eng_link, :constraints => { :slug => /[^\/]+/ }
   end
 
-  get '*slug', to: 'pages#show', constraints: lambda { |request| !(request.path =~ /\/(assets|store).*/) }
+  get '*slug', to: 'pages#show', as: :page, constraints: lambda { |request| !(request.path =~ /\/(assets|store).*/) }
 end
