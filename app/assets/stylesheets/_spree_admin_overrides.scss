@@ -1,6 +1,14 @@
-// _spree_admin.scss
+// *************************************
+//
+//   Spree Admin
+//   -> Styles scoped to Spree Admin
+//
+// *************************************
 
-// header
+// -------------------------------------
+//   Not Admin
+// -------------------------------------
+
 body[data-hook="body"] {
 
   @media screen and (max-width: 768px) {
@@ -13,7 +21,9 @@ body[data-hook="body"] {
     margin-left: $b-space-m;
   }
 
-  // Checkout Flow
+// -------------------------------------
+//   Checkout, Also Not Admin
+// -------------------------------------
 
   #main-image {
     .panel-body {
@@ -26,12 +36,19 @@ body[data-hook="body"] {
   }
 }
 
-// Products Page
+// -------------------------------------
+//   Products Page, Also Not Admin
+// -------------------------------------
+
 #products {
   .panel-body {
     padding: 0;
   }
 }
+
+// -------------------------------------
+//   Bar above Spree admin
+// -------------------------------------
 
 .spree-navbar {
   margin: 0 -15px;
@@ -80,6 +97,10 @@ body[data-hook="body"] {
   }
 }
 
+// -------------------------------------
+//   Scoped to body.admin
+// -------------------------------------
+
 .admin {
   background-color: $c-absent;
 
@@ -97,7 +118,6 @@ body[data-hook="body"] {
     }
   }
 
-  // Tables
   table {
     min-width: 1000px;
     max-width: none;
@@ -121,7 +141,10 @@ body[data-hook="body"] {
   }
 }
 
-// Sidebar
+// -------------------------------------
+//   Sidebar
+// -------------------------------------
+
 #wrapper {
 
   #main-sidebar {
@@ -232,12 +255,20 @@ body[data-hook="body"] {
   }
 }
 
+// -------------------------------------
+//   Primary Content
+// -------------------------------------
+
 #main-part {
 
   &.sidebar-collapsed {
     padding-left: $b-space-m;
   }
 }
+
+// -------------------------------------
+//   Analytics
+// -------------------------------------
 
 .order-dot,
 .user-dot,
