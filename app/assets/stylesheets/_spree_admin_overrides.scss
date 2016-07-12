@@ -96,6 +96,32 @@
       margin-left: -1px;
       padding: 8px 10px;
     }
+
+    .btn {
+
+      &:focus {
+        border-color: $brand-primary;
+        background-color: transparent;
+
+        &:hover {
+          color: $brand-primary;
+
+          .icon {
+            color: $brand-primary;
+          }
+        }
+      }
+
+      &:hover {
+        .icon {
+          color: $c-absent;
+        }
+      }
+    }
+
+    .icon {
+      color: $brand-primary;
+    }
   }
 
   .filter-well {
