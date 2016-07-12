@@ -104,10 +104,6 @@ body[data-hook="body"] {
   }
 }
 
-ul.nav-sidebar {
-  margin: 0 0 $b-space-m;
-}
-
 .with-sidebar {
 
   table {
@@ -131,9 +127,99 @@ ul.nav-sidebar {
   #main-sidebar {
     position: relative;
     top: 0;
+    padding: $b-space-m 12px;
+    border: 0;
+    background: transparent;
 
     &.hidden-xs {
       display: block !important;
+    }
+
+    .icon {
+      position: relative;
+      top: -5px;
+      font-size: 16px;
+
+      @media screen and (min-width: $screen-sm-min) {
+        top: -8px;
+      }
+    }
+
+    .icon-chevron-left,
+    .icon-chevron-down {
+      position: absolute;
+      top: 1px;
+      right: 6px;
+      margin-top: 0;
+      font-size: 16px;
+      color: $brand-primary;
+    }
+
+    .icon-chevron-left {
+      @include rotate(-90deg);
+    }
+
+    .icon-chevron-down {
+      @include rotate(-180deg);
+
+      top: 4px;
+      right: 10px;
+    }
+
+    .nav-sidebar {
+      margin: 0;
+    }
+
+    li {
+      margin-bottom: 12px;
+      border: 1px solid $brand-primary;
+      border-radius: 3px;
+
+      > a {
+        padding: $b-space-s $b-space;
+        font-size: 13px;
+        font-weight: bold;
+        letter-spacing: normal;
+        color: $brand-primary;
+        border-radius: 3px;
+
+        &[data-toggle="collapse"] {
+          padding-right: 25px;
+        }
+      }
+    }
+
+    .nav-pills {
+      border-radius: 3px;
+
+      li {
+        margin: 0;
+        margin-bottom: -1px;
+        border: 1px solid #ddd;
+        border-radius: 0;
+
+        &:last-child {
+          margin-bottom: 0;
+          border: 0;
+        }
+
+        > a {
+          margin: 0;
+          padding: $b-space $b-space-m;
+          border: 0;
+          font-size: 14px;
+          font-weight: normal;
+        }
+
+        &.active.active {
+          border-color: $brand-primary;
+
+          > a {
+            color: $c-absent;
+            border-radius: 0;
+          }
+        }
+      }
     }
   }
 
