@@ -103,6 +103,23 @@
       margin-bottom: $b-space;
     }
   }
+
+  .with-sidebar {
+
+    table {
+      min-width: 0;
+    }
+
+    @media screen and (max-width: $large-bp) {
+      float: none;
+      width: 100%;
+
+      + div {
+        float: none;
+        width: 100%;
+      }
+    }
+  }
 }
 
 // -------------------------------------
