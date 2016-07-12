@@ -6,47 +6,6 @@
 // *************************************
 
 // -------------------------------------
-//   Not Admin
-// -------------------------------------
-
-body[data-hook="body"] {
-
-  @media screen and (max-width: 768px) {
-    .taxon-title {
-      margin: $b-space-m 0;
-    }
-  }
-
-  .navbar-toggle {
-    margin-left: $b-space-m;
-  }
-
-// -------------------------------------
-//   Checkout, Also Not Admin
-// -------------------------------------
-
-  #main-image {
-    .panel-body {
-      padding: 0;
-    }
-  }
-
-  #taxon-crumbs {
-    margin: $b-space-m 0;
-  }
-}
-
-// -------------------------------------
-//   Products Page, Also Not Admin
-// -------------------------------------
-
-#products {
-  .panel-body {
-    padding: 0;
-  }
-}
-
-// -------------------------------------
 //   Bar above Spree admin
 // -------------------------------------
 

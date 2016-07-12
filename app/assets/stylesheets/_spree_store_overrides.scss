@@ -302,3 +302,36 @@
   padding: 20px;
   background: $c-absent;
 }
+
+
+// Store
+body[data-hook="body"] {
+
+  @media screen and (max-width: 768px) {
+    .taxon-title {
+      margin: $b-space-m 0;
+    }
+  }
+
+  .navbar-toggle {
+    margin-left: $b-space-m;
+  }
+
+  // Checkout
+  #main-image {
+    .panel-body {
+      padding: 0;
+    }
+  }
+
+  #taxon-crumbs {
+    margin: $b-space-m 0;
+  }
+}
+
+// Products
+#products {
+  .panel-body {
+    padding: 0;
+  }
+}
