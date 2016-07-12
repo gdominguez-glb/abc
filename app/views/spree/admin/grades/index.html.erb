@@ -3,7 +3,11 @@
 <% end %>
 
 <% content_for :page_actions do %>
-  <%= button_link_to Spree.t(:new_grade), new_object_url, class: "btn-success", icon: 'add', id: 'admin_new_grade_link' %>
+  <div class="row">
+    <div class="col-md-6">
+      <%= button_link_to Spree.t(:new_grade), new_object_url, class: "btn-success btn-block", icon: 'add', id: 'admin_new_grade_link' %>
+    </div>
+  </div>
 <% end %>
 
 <% if @grades.any? %>

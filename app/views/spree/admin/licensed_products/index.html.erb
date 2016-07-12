@@ -3,7 +3,11 @@
 <% end %>
 
 <% content_for :page_actions do %>
-  <%= button_link_to "Fulfill an Order", spree.new_admin_licensed_product_url, :class => "btn-success", :icon => 'add', :id => 'admin_new_licensed_product' %>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-6">
+      <%= button_link_to "Fulfill an Order", spree.new_admin_licensed_product_url, :class => "btn-success btn-block", :icon => 'add', :id => 'admin_new_licensed_product' %>
+    </div>
+  </div>
 <% end if can? :create, Spree::Order %>
 
 <% if @licensed_products.any? %>

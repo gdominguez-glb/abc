@@ -4,7 +4,11 @@
 
 <%= render :partial => 'spree/admin/users/sidebar', :locals => { :current => :licenses } %>
 <% content_for :page_actions do %>
-  <%= button_link_to Spree.t(:back_to_users_list), spree.admin_users_path, class: 'btn-primary', icon: 'chevron-left' %>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-6">
+      <%= button_link_to Spree.t(:back_to_users_list), spree.admin_users_path, class: 'btn-primary btn-block', icon: 'chevron-left' %>
+    </div>
+  </div>
 <% end %>
 
 <fieldset data-hook="admin_user_items_purchased">

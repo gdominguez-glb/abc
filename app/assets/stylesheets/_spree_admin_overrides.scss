@@ -1,42 +1,19 @@
-// _spree_admin.scss
+// *************************************
+//
+//   Spree Admin
+//   -> Styles scoped to Spree Admin
+//
+// *************************************
 
-// header
-body[data-hook="body"] {
-
-  @media screen and (max-width: 768px) {
-    .taxon-title {
-      margin: $b-space-m 0;
-    }
-  }
-
-  .navbar-toggle {
-    margin-left: $b-space-m;
-  }
-
-  // Checkout Flow
-
-  #main-image {
-    .panel-body {
-      padding: 0;
-    }
-  }
-
-  #taxon-crumbs {
-    margin: $b-space-m 0;
-  }
-}
-
-// Products Page
-#products {
-  .panel-body {
-    padding: 0;
-  }
-}
+// -------------------------------------
+//   Bar above Spree admin
+// -------------------------------------
 
 .spree-navbar {
   margin: 0 -15px;
   border: 0;
   border-bottom: 1px solid $gray-light-mid;
+  border-radius: 0;
 
   .navbar-header {
     float: none;
@@ -57,12 +34,6 @@ body[data-hook="body"] {
     }
   }
 
-  #sidebar-toggle {
-    float: left;
-    position: relative;
-    margin: 0;
-  }
-
   &.navbar-inverse {
     border-color: darken($gray-lightest, 20%);
     background: $gray-lightest;
@@ -79,6 +50,10 @@ body[data-hook="body"] {
     }
   }
 }
+
+// -------------------------------------
+//   Scoped to admin body
+// -------------------------------------
 
 .admin {
   background-color: $c-absent;
@@ -97,31 +72,90 @@ body[data-hook="body"] {
     }
   }
 
-  // Tables
   table {
     min-width: 1000px;
     max-width: none;
   }
-}
 
-.with-sidebar {
-
-  table {
-    min-width: 0;
+  .nav-stacked {
+    li + li {
+      margin-top: $b-space-s;
+    }
   }
 
-  @media screen and (max-width: $large-bp) {
-    float: none;
-    width: 100%;
+  [id="payment-methods"] {
+    margin-left: 0;
+  }
 
-    + div {
+  // -------------------------------------
+  //   Orders
+  // -------------------------------------
+
+  .index-filter-button {
+    .form-control {
+      margin-left: -1px;
+      padding: 8px 10px;
+    }
+
+    .btn {
+
+      &:focus {
+        border-color: $brand-primary;
+        background-color: transparent;
+
+        &:hover {
+          color: $brand-primary;
+
+          .icon {
+            color: $brand-primary;
+          }
+        }
+      }
+
+      &:hover {
+        .icon {
+          color: $c-absent;
+        }
+      }
+    }
+
+    .icon {
+      color: $brand-primary;
+    }
+  }
+
+  .filter-well {
+    .form-group {
+      margin-bottom: 0;
+    }
+
+    .input-group {
+      margin-bottom: $b-space;
+    }
+  }
+
+  .with-sidebar {
+
+    table {
+      min-width: 0;
+    }
+
+    @media screen and (max-width: $large-bp) {
       float: none;
       width: 100%;
+
+      + div {
+        float: none;
+        width: 100%;
+      }
     }
   }
 }
 
-// Sidebar
+// -------------------------------------
+//   Sidebar
+// -------------------------------------
+
 #wrapper {
 
   #main-sidebar {
@@ -171,7 +205,7 @@ body[data-hook="body"] {
     }
 
     li {
-      margin-bottom: 12px;
+      margin-bottom: $b-space-s;
       border: 1px solid $brand-primary;
       border-radius: 3px;
 
@@ -232,12 +266,20 @@ body[data-hook="body"] {
   }
 }
 
+// -------------------------------------
+//   Primary Content
+// -------------------------------------
+
 #main-part {
 
   &.sidebar-collapsed {
     padding-left: $b-space-m;
   }
 }
+
+// -------------------------------------
+//   Analytics
+// -------------------------------------
 
 .order-dot,
 .user-dot,
