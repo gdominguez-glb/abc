@@ -153,6 +153,7 @@ Spree::Product.class_eval do
       'partner',
       'inkling',
       'get_in_touch',
+      'library',
       'other'
     ]
   end
