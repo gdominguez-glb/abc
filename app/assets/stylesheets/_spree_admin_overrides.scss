@@ -13,6 +13,7 @@
   margin: 0 -15px;
   border: 0;
   border-bottom: 1px solid $gray-light-mid;
+  border-radius: 0;
 
   .navbar-header {
     float: none;
@@ -33,12 +34,6 @@
     }
   }
 
-  #sidebar-toggle {
-    float: left;
-    position: relative;
-    margin: 0;
-  }
-
   &.navbar-inverse {
     border-color: darken($gray-lightest, 20%);
     background: $gray-lightest;
@@ -57,7 +52,7 @@
 }
 
 // -------------------------------------
-//   Scoped to body.admin
+//   Scoped to admin body
 // -------------------------------------
 
 .admin {
