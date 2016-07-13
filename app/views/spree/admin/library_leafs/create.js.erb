@@ -1,0 +1,6 @@
+<% if @library_leaf.valid? %>
+  $("#new-library-leaf-modal").modal('hide');
+  $('#library-leafs').append("<%= escape_javascript(render partial: 'leaf_item', locals: { library_leaf: @library_leaf }) %>")
+<% else %>
+  alert('Must enter name!')
+<% end %>

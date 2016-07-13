@@ -42,5 +42,11 @@
          <%= link_to_with_icon 'cloud', 'Inkling Code', admin_product_inkling_code_path(@product) %>
       </li>
     <% end %>
+
+    <% if @product.product_type == 'library' %>
+      <li class="<%= 'active' if current == 'Library' %>">
+         <%= link_to_with_icon 'book', 'Library', admin_product_library_leafs_path(@product) %>
+      </li>
+    <% end %>
   </ul>
 <% end %>

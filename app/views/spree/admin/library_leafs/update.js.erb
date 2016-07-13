@@ -1,0 +1,6 @@
+<% if @library_leaf.valid? %>
+  $("[data-id='<%= @library_leaf.id %>']").replaceWith("<%= escape_javascript(render partial: 'leaf_item', locals: { library_leaf: @library_leaf }) %>")
+  $("#new-library-leaf-modal").modal('hide');
+<% else %>
+  alert('Must enter name!')
+<% end %>
