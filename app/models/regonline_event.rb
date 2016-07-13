@@ -32,6 +32,10 @@ class RegonlineEvent < ActiveRecord::Base
     EventTraining.where(id: self.session_types)
   end
 
+  def text_to_index
+    [title, city, state, country, postal_code, location_address1, location_address2, client_event_id].compact.join(' ')
+  end
+
   class << self
     ATTRIBUTES_TO_IMPORT = ["ID", "Title", "StartDate", "EndDate", "ActiveDate", "City", "State", "Country", "PostalCode", "LocationName", "LocationRoom", "LocationBuilding", "LocationAddress1", "LocationAddress2", "Latitude", "Longitude", "ClientEventID"]
     def import(data)
