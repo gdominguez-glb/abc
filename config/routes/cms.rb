@@ -59,7 +59,11 @@ namespace :cms do
       end
     end
   end
-  resources :jobs
+  resources :jobs do
+    collection do
+      post :update_positions
+    end
+  end
   resources :footer_titles do
     collection do
       post :update_positions

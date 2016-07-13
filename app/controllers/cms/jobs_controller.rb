@@ -1,8 +1,8 @@
 class Cms::JobsController < Cms::BaseController
-  before_action :find_job, except: [:index, :new, :create]
+  before_action :find_job, except: [:index, :new, :create, :update_positions]
 
   def index
-    @jobs = Job.page(params[:page]).per(params[:per_page])
+    @jobs = Job.order(:position)
   end
 
   def new
@@ -32,6 +32,11 @@ class Cms::JobsController < Cms::BaseController
   def destroy
     @job.destroy
     redirect_to cms_jobs_path, notice: 'Deleted job successfully!'
+  end
+
+  def update_positions
+    update_positions_with_klass(Job)
+    render nothing: true
   end
 
   private
