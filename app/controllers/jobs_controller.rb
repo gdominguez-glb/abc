@@ -1,7 +1,7 @@
 class JobsController < ApplicationController
   def index
     @careers_page = Page.find_by(slug: 'careers')
-    @jobs = Job.displayable
+    @jobs = Job.displayable.order(:position)
   end
 
   def show
