@@ -3,7 +3,7 @@
   <h2>Staff</h2>
   <%= link_to "New Staff", new_cms_staff_path, class: 'btn btn-primary margin-bottom-xl' %>
   <div class="table-responsive">
-    <table class="table contact-topics-list">
+    <table class="table staffs-list">
       <thead>
         <tr>
           <th></th>
@@ -38,7 +38,7 @@
   <%= javascript_tag do %>
     function updatePositions() {
       var data = {}
-      $.each($(".contact-topics-list tbody tr"), function(index, element) {
+      $.each($(".staffs-list tbody tr"), function(index, element) {
         data[$(element).attr('data-id')] = index;
       });
       $.ajax({
@@ -48,7 +48,7 @@
       })
     }
     $(function(){
-      $(".contact-topics-list").sortable({
+      $(".staffs-list").sortable({
         containerSelector: 'table',
         itemPath: '> tbody',
         itemSelector: 'tr',
