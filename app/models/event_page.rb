@@ -18,10 +18,15 @@ class EventPage < ActiveRecord::Base
     self.display?
   end
 
+  def events_text
+    events.map(&:text_to_index).join(',')
+  end
+
   def search_data
     {
       title: title,
       description: description,
+      events_text: events_text,
       user_ids: [-1]
     }
   end
