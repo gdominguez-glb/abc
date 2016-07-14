@@ -5,7 +5,7 @@ class CreateSpreeLibraryItems < ActiveRecord::Migration
       t.string :name
       t.integer :position
       t.text :inkling_code
-      t.string :item_type
+      t.integer :item_type
 
       t.timestamps null: false
     end

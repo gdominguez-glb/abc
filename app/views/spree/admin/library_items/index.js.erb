@@ -1,0 +1,15 @@
+$("body").append("<%= escape_javascript(render 'list_modal') %>");
+$('#library-items-modal').modal('show')
+$('#library-items-modal').on('hidden.bs.modal', function (e) {
+  $('#library-items-modal').remove();
+});
+
+$('#library-items-modal #library_item_item_type').change(function(){
+  if ( $(this).val() == 'inkling' ) {
+    $('#library-items-modal .inkling-code-wraper').removeClass('hide');
+    $('#library-items-modal .pdf-wraper').addClass('hide');
+  } else {
+    $('#library-items-modal .inkling-code-wraper').addClass('hide');
+    $('#library-items-modal .pdf-wraper').removeClass('hide');
+  }
+});

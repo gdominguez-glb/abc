@@ -4,4 +4,6 @@ class Spree::LibraryLeaf < ActiveRecord::Base
   validates_presence_of :name
 
   acts_as_list scope: :product
+
+  has_many :library_items, class_name: 'Spree::LibraryItem'
 end

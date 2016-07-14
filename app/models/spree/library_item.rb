@@ -15,6 +15,7 @@ class Spree::LibraryItem < ActiveRecord::Base
     :styles => {
       :medium => "330x220" }
   }
+  validates_attachment :cover, presence: true, content_type: { content_type: /\A*\Z/ }
 
   has_attached_file :attachment, s3_permissions: :private
   validates_attachment :attachment, content_type: { content_type: /\A*\Z/ }

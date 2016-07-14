@@ -74,6 +74,11 @@ spree_routes_overrides = Proc.new do
         collection do
           post :update_position
         end
+        resources :library_items do
+          collection do
+            post :update_position
+          end
+        end
       end
       resource :inkling_code
     end
