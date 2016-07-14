@@ -17,7 +17,9 @@ function scrollHandler(checkboxToWatch, agreeRequired) {
     }, 1500);
   } else {
     $('.terms_and_conditions_text').scroll(function() {
-      if ( ($(this).scrollTop() + 40) === $(this).get(0).scrollHeight - $(this).height() ) {
+      var scrollHeight = $(this).scrollTop() + 40;
+      var offsetHeight = $(this).get(0).scrollHeight - $(this).height();
+      if (isHeightEqual(scrollHeight, offsetHeight)) {
         scrolledToBottom = true;
         activateContinueButton();
       }
@@ -46,5 +48,14 @@ function scrollHandler(checkboxToWatch, agreeRequired) {
       toggleButtonState(true);
     }
 
+  }
+
+  function isHeightEqual(height_one, height_two) {
+    // fix issues that in some browser the height could be float number which cause equal off
+    if(Math.abs(height_one - height_two) < 2) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }
