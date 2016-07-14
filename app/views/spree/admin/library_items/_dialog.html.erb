@@ -28,7 +28,7 @@
         <%= f.submit 'Save', class: 'btn btn-primary', data: { disable_with: 'Uploading' } %>
       <% end %>
       <div class="table-responsive">
-        <table class="table" style="min-width: 100%;">
+        <table class="table" style="min-width: 100%;" id="library-items-list-<%= @library_leaf.id %>">
           <thead>
             <tr>
               <th>Name</th>
@@ -39,11 +39,11 @@
           <tbody>
             <% @library_items.each do |library_item| %>
               <% next if library_item.new_record? %>
-              <tr>
+              <tr data-id="<%= library_item.id %>">
                 <td><%= library_item.name %> </td>
                 <td><%= library_item.item_type %></td>
                 <td>
-                  <%= link_to 'Delete', spree.admin_product_library_leaf_library_item_path(@library_leaf.product, @library_leaf, library_item), class: 'btn btn-default btn-sm', data: { confirm: 'Are you sure?', method: :delete } %>
+                  <%= link_to 'Delete', spree.admin_product_library_leaf_library_item_path(@library_leaf.product, @library_leaf, library_item), class: 'btn btn-default btn-sm', remote: true, data: { confirm: 'Are you sure?', method: :delete } %>
                 </td>
               </tr>
             <% end %>

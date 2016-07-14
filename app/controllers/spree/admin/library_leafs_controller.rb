@@ -17,17 +17,12 @@ module Spree
         @library_leaf = @product.library_leafs.find(params[:id])
       end
 
-      def bulk_modal
-      end
-
       def destroy
         @object.destroy
       end
 
       def update_position
-        params[:positions].each do |id, position|
-          Spree::LibraryLeaf.find(id).set_list_position(position.to_i + 1)
-        end
+        update_positions_with_klass(Spree::LibraryLeaf)
         render nothing: true
       end
 

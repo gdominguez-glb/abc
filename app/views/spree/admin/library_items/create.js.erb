@@ -1,23 +1,10 @@
 <% if @library_item.save %>
   <% 
-    @library_items = @library_leaf.library_items
+    @library_items = @library_leaf.library_items.order(:position)
     @library_item = @library_leaf.library_items.new
   %>
   $('.modal.in').html("<%= escape_javascript(render 'dialog') %>");
-  $('#library-items-modal').modal('show')
-  $('#library-items-modal').on('hidden.bs.modal', function (e) {
-    $('#library-items-modal').remove();
-  });
-
-  $('#library-items-modal #library_item_item_type').change(function(){
-    if ( $(this).val() == 'inkling' ) {
-      $('#library-items-modal .inkling-code-wraper').removeClass('hide');
-      $('#library-items-modal .pdf-wraper').addClass('hide');
-    } else {
-      $('#library-items-modal .inkling-code-wraper').addClass('hide');
-      $('#library-items-modal .pdf-wraper').removeClass('hide');
-    }
-  });
+  <%= render 'modal_js' %>
 <% else %>
   alert('Must enter name and upload file or enter inkling code.')
 <% end %>

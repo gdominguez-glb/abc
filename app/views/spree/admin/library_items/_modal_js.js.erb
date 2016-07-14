@@ -1,0 +1,29 @@
+$('#library-items-modal').modal('show')
+$('#library-items-modal').on('hidden.bs.modal', function (e) {
+  $('#library-items-modal').remove();
+});
+
+$('#library-items-modal #library_item_item_type').change(function(){
+  if ( $(this).val() == 'inkling' ) {
+    $('#library-items-modal .inkling-code-wraper').removeClass('hide');
+    $('#library-items-modal .pdf-wraper').addClass('hide');
+  } else {
+    $('#library-items-modal .inkling-code-wraper').addClass('hide');
+    $('#library-items-modal .pdf-wraper').removeClass('hide');
+  }
+});
+
+var updatePositionUrl = "<%= spree.update_position_admin_product_library_leaf_library_items_path(@library_leaf.product, @library_leaf) %>"
+$("#library-items-list-<%= @library_leaf.id %> tbody").sortable({
+  stop: function  (event, ui) {
+    var positions = {};
+    $.each($("#library-items-list-<%= @library_leaf.id %> tbody tr"), function(index, el){
+      positions[$(el).attr('data-id')] = index + 1;
+    });
+    $.ajax({
+      url: updatePositionUrl,
+      type: 'POST',
+      data: { positions: positions }
+    })
+  }
+})
