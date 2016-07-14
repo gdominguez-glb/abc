@@ -1,0 +1,5 @@
+$("body").append("<%= escape_javascript(render 'modal_form') %>")
+$('#new-library-leaf-modal').modal('show')
+$('#new-library-leaf-modal').on('hidden.bs.modal', function (e) {
+  $('#new-library-leaf-modal').remove();
+})

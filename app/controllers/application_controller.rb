@@ -83,4 +83,9 @@ class ApplicationController < ActionController::Base
     Rails.env.qa? || Rails.env.staging?
   end
 
+  def update_positions_with_klass(klass)
+    params[:positions].each do |id, position|
+      klass.find(id).set_list_position(position.to_i + 1)
+    end
+  end
 end

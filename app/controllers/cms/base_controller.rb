@@ -17,10 +17,4 @@ class Cms::BaseController < ApplicationController
   def current_ability
     @current_ability ||= CmsAbility.new(current_spree_user)
   end
-
-  def update_positions_with_klass(klass)
-    params[:positions].each do |id, position|
-      klass.find(id).set_list_position(position.to_i + 1)
-    end
-  end
 end

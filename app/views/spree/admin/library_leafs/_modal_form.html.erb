@@ -1,0 +1,21 @@
+<div class="modal fade" id="new-library-leaf-modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Add Library Leaf for <%= @product.name %></h4>
+      </div>
+      <%= form_for([:admin, @library_leaf.product, @library_leaf], remote: true) do |f| %>
+        <div class="modal-body">
+            <div class="form-group">
+              <%= f.label :name %>
+              <%= f.text_field :name, class: 'form-control' %>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <%= f.submit 'Save', class: 'btn btn-primary', data: { disable_with: 'Please wait...' } %>
+        </div>
+      <% end %>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

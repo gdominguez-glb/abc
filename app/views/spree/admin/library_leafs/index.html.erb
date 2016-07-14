@@ -1,0 +1,36 @@
+<%= render :partial => 'spree/admin/shared/product_tabs', :locals => {:current => "Library"} %>
+
+<% content_for :page_title do %>
+  Library
+<% end %>
+
+<%= button_link_to 'New Library Leaf', new_object_url, { :class => "btn-success", :icon => 'add', :id => 'admin_new_product_library_leaf', remote: true } %>
+
+<ul class="list-group" style="margin-top: 10px;" id="library-leafs">
+  <% @library_leafs.each do |library_leaf| %>
+    <%= render partial: 'leaf_item', locals: { library_leaf: library_leaf } %>
+  <% end %>
+</ul>
+
+<script type="text/javascript">
+  $(function(){
+    function updatePositions() {
+      var path = "<%= spree.update_position_admin_product_library_leafs_path(@product) %>";
+      var positions = {};
+      $.each($('#library-leafs li'), function(index, el){
+        positions[$(el).attr('data-id')] = index + 1;
+      });
+      $.ajax({
+        url: path,
+        type: 'POST',
+        data: { positions: positions }
+      })
+    }
+
+    $("#library-leafs").sortable({
+      stop: function  (event, ui) {
+        updatePositions();
+      }
+    })
+  });
+</script>

@@ -127,6 +127,7 @@ Spree::Product.class_eval do
   has_many :material_import_jobs
   has_many :download_products
   has_many :download_pages, through: :download_products
+  has_many :library_leafs
 
   after_create :init_grades_materials
 
@@ -153,6 +154,7 @@ Spree::Product.class_eval do
       'partner',
       'inkling',
       'get_in_touch',
+      'library',
       'other'
     ]
   end

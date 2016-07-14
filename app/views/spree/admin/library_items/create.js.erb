@@ -1,0 +1,11 @@
+<% if @library_item.save %>
+  <% 
+    @library_items = @library_leaf.library_items.order(:position)
+    @library_item = @library_leaf.library_items.new
+  %>
+  $('.modal.in').html("<%= escape_javascript(render 'dialog') %>");
+  <%= render 'modal_js' %>
+<% else %>
+  alert('Must enter name and upload file or enter inkling code.')
+<% end %>
+
