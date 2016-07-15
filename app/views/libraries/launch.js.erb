@@ -1,0 +1,5 @@
+$('body').append("<%= escape_javascript(render 'launch_modal') %>");
+$('#launch-library-modal').modal('show');
+$('#launch-library-modal').on('hidden.bs.modal', function (e) {
+  $('#launch-library-modal').remove();
+})
