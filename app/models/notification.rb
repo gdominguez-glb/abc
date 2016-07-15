@@ -3,6 +3,7 @@ class Notification < ActiveRecord::Base
   belongs_to :user, class_name: 'Spree::User'
 
   scope :unread, -> { where(read: false).order('notifications.created_at desc') }
+  scope :unexpire, -> { where('expire_at is null or expire_at < ?', Time.now) }
 
   def mark_as_read!
     update(read: true)

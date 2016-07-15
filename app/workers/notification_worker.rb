@@ -28,7 +28,8 @@ class NotificationWorker
         Notification.create(
           user: user,
           notification_trigger: notification_trigger,
-          content: notification_trigger.content
+          content: notification_trigger.content,
+          expire_at: notification_trigger.expire_at
         )
       end
       if notification_trigger.email? && user.allow_communication?
