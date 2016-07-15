@@ -25,6 +25,8 @@ Spree::ProductsController.class_eval do
   def path_to_redirect_for_product(product)
     if product.product_type == 'inkling'
       main_app.inkling_code_path(product)
+    elsif product.library_product?
+      main_app.library_path(product)
     elsif product.access_url.present?
       product.parsed_access_url
     end

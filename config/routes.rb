@@ -107,6 +107,12 @@ Rails.application.routes.draw do
   get '/download_pages/:slug', to: 'download_pages#show', as: :download_page
 
   resources :inkling_codes, only: [:show]
+  resources :libraries, only: [:show] do
+    member do
+      get '/launch/:item_id', to: :launch, as: :launch_item
+      get '/download/:item_id', to: :download, as: :download_item
+    end
+  end
 
   resources :materials do
     collection do

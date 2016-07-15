@@ -104,6 +104,10 @@ Spree::Product.class_eval do
     self.product_type == 'get_in_touch'
   end
 
+  def library_product?
+    self.product_type == 'library'
+  end
+
   validates :access_url, format: { with: URI.regexp }, allow_blank: true
   validates :redirect_url, format: { with: URI.regexp }, allow_blank: true
   validates :learn_more_url, format: { with: URI.regexp }, allow_blank: true
@@ -128,6 +132,7 @@ Spree::Product.class_eval do
   has_many :download_products
   has_many :download_pages, through: :download_products
   has_many :library_leafs
+  has_many :library_items, through: :library_leafs
 
   after_create :init_grades_materials
 
