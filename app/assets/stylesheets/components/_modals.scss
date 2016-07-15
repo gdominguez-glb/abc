@@ -137,3 +137,9 @@
     margin: 0 0 20px 20px;
   }
 }
+
+.modal--has-media {
+  iframe {
+    max-width: 100%;
+  }
+}
