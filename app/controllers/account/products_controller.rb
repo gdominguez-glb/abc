@@ -36,7 +36,7 @@ class Account::ProductsController < Account::BaseController
   end
 
   def load_notifications
-    @notifications = current_spree_user.notifications.unread.limit(5)
+    @notifications = current_spree_user.notifications.unread.unexpire.limit(5)
   end
 
   def load_taxons
