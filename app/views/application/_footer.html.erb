@@ -14,7 +14,11 @@
         <ul>
           <% footer_title.footer_links.each do |link| %>
             <li>
-              <%= link_to link.name, link.link %>
+              <% if link.name == 'FAQ' %>
+                <%= link_to link.name, link.link, :target => '_blank' %>
+              <% else %>
+                <%= link_to link.name, link.link %>
+              <% end %>
             </li>
           <% end %>
         </ul>
