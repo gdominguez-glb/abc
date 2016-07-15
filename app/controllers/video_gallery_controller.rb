@@ -27,7 +27,10 @@ class VideoGalleryController < ApplicationController
   end
 
   def play
-    log_activity(@video)
+    respond_to do |format|
+      format.html { redirect_to video_gallery_path(@video) }
+      format.js { log_activity(@video) }
+    end
   end
 
   def unlock
