@@ -1,0 +1,8 @@
+$('#library-items-modal').modal('hide');
+$('#library-items-modal').on('hidden.bs.modal', function (e) {
+  $('body').append("<%= escape_javascript(render 'edit_modal') %>");
+  $('#edit-library-item-modal').modal('show');
+  $('#edit-library-item-modal').on('hidden.bs.modal', function (e) {
+    $('#edit-library-item-modal').remove();
+  });
+});
