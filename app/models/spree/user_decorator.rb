@@ -9,17 +9,11 @@ Spree::User.class_eval do
   scope :with_curriculum, ->(curriculum) { where("interested_subjects like '%?%'", curriculum.id) }
 
   serialize :interested_subjects, Array
-  serialize :grades, Array
-
-  if !defined?(GRADES)
-    GRADES = ['PK', 'K', '1', '2', '3', '4', '5', '6', '7', '8', '9', '11', '12', 'Other']
-  end
 
   validates_format_of :password, with: /\A\S*\z/, message: "can't include spaces", if: :password_required?
   validates :school_district, presence: true, if: :school_district_required?
   validates :title, presence: true, on: :create
   validates :zip_code, presence: true, on: :create
-  validates :grades, presence: { on: :create, if: ->(user){ user.title == 'Teacher' }, message: "can't be blank for teacher"}, on: :create
 
   belongs_to :delegate_for_user, class_name: 'Spree::User', foreign_key: :delegate_user_id
 
@@ -69,8 +63,7 @@ Spree::User.class_eval do
               'Email' => email,
               'DoNotCall' => !allow_communication,
               'MailingPostalCode' => zip_code,
-              'Curriculum_of_Interest__c' => interested_curriculums.join(';'),
-              'Grade_Level_Served__c' => grades.join(';') }
+              'Curriculum_of_Interest__c' => interested_curriculums.join(';') }
 
     attrs.merge!({'Phone' => self.phone}) if self.phone.present?
     attrs.merge!(sf_address(ship_address, 'Mailing')) if ship_address.present?

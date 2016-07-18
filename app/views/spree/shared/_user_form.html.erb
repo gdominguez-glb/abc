@@ -46,12 +46,6 @@
   <div class="row">
     <div class="col-md-6">
       <div class="form-group">
-        <label>Grades</label>
-        <%= f.select :grades, options_for_select(Spree::User::GRADES, f.object.grades), { }, { class: 'form-control', tabindex: 5, multiple: 'multiple', placeholder: 'Select your grades' } %>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="form-group">
         <label>Subject(s) you are interested in</label>
         <%= f.collection_select :interested_subjects, Curriculum.visibles, :id, :name, { include_hidden: false, multiple: true }, { class: 'form-control', tabindex: 5, multiple: 'multiple', placeholder: "Select one or more" } %>
       </div>
