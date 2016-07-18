@@ -1,6 +1,8 @@
 <%= render 'cms_nav' %>
 <div class="col-md-9">
   <h2>Editing Page</h2>
+  <% page_url = page_url(slug: @page.slug) %>
+  <small class="help-block">Current URL: <%= link_to page_url, page_url, target: '_blank' %></small>
 
   <div id="editor">
     <div class="row">
@@ -25,16 +27,11 @@
     </div>
 
     <div class="row">
-      <div class="col-sm-4">
+      <div class="col-sm-3">
         <button class="btn btn-success btn-block save-btn">Save</button>
       </div>
-    </div>
-    <div class="row">
       <div class="col-sm-3">
         <%= link_to 'Back', cms_pages_path, class: 'btn btn-default btn-block' %>
-      </div>
-      <div class="col-sm-3">
-        <%= link_to 'View Page', page_url(slug: @page.slug), class: 'btn btn-default btn-block', target: '_blank' %>
       </div>
     </div>
   </div>
