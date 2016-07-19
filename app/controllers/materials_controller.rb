@@ -6,10 +6,17 @@ class MaterialsController < ApplicationController
   def download
     log_activity(@material, "Download #{@material.name}")
 
-    if @material.material_files.count == 1 && @material.children.count == 0
-      @download_url = @material.material_files.first.signed_url
-    else
-      @download_job = DownloadJob.create(user: current_spree_user, material_ids: [@material.id], status: 'pending')
+    respond_to do |format|
+      format.html {
+        redirect_to @material.material_files.first.signed_url
+      }
+      format.js {
+        if @material.material_files.count == 1 && @material.children.count == 0
+          @download_url = @material.material_files.first.signed_url
+        else
+          @download_job = DownloadJob.create(user: current_spree_user, material_ids: [@material.id], status: 'pending')
+        end
+      }
     end
   end
 
