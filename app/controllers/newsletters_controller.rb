@@ -1,6 +1,6 @@
 class NewslettersController < ApplicationController
   def index
-    @newsletter = Newsletter.new
+    @newsletter = Newsletter.new(role: 'Parent')
     if current_spree_user
       @newsletter.set_attribtues_from_user(current_spree_user)
     end
@@ -20,6 +20,6 @@ class NewslettersController < ApplicationController
   private
 
   def newsletter_params
-    params.require(:newsletter).permit(:first_name, :last_name, :email, lists: [])
+    params.require(:newsletter).permit(:first_name, :last_name, :email, :zip_code, :role, lists: [])
   end
 end
