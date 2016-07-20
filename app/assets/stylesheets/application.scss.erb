@@ -102,3 +102,14 @@ div[data-hook="login"] {
     top: -1px;
   }
 }
+
+// To feature flip CSS, this conditional works
+// It currently requires restarting the server, then triggering a CSS rebuild
+//
+// Example:
+//
+//<% if $flipper[:alert_flipped].enabled? %>
+// .alert-flipped {
+//   background-color: green !important;
+// }
+//<% end %>
