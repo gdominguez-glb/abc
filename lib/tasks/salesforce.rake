@@ -16,8 +16,8 @@ namespace :salesforce do
   task cleanup: :environment do
     sf_client = GmSalesforce::Client.instance.client
     deleted_response = client.get_deleted('Account', Date.yesterday.beginning_of_day, Date.yesterday.end_of_day)
-    deleted_response.each do |deleted_object|
-      sr = SalesforceReference.find_by(id_in_salesforce: deleted_object.Id)
+    deleted_response.deletedRecords.each do |deleted_object|
+      sr = SalesforceReference.find_by(id_in_salesforce: deleted_object.id)
       if sr && sr.local_object
         reassign_school_district_for_users(sf_client, sr.local_object)
       end
