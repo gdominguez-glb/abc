@@ -3,8 +3,13 @@ module Importers
     def self.import(emails=[])
       product_ids = Importers::Licenses::PRODUCTS_MAPPINGS.map {|h| h[:legacy_id]}
 
-      member_ids = Migrate::Credit.where("expiration_date > ? or expiration_date is null", Date.new(2016, 6, 30)).where(product_id: product_ids).pluck(:member_id).compact.uniq
-      order_ids = Migrate::Credit.where("expiration_date > ? or expiration_date is null", Date.new(2016, 6, 30)).where(product_id: product_ids).pluck(:order_id).compact.uniq
+      order_ids_left_to_migrate = Importers::Licenses.order_ids_left_to_migrate
+
+      member_ids = Migrate::Credit.where(order_id: order_ids_left_to_migrate).
+        where("expiration_date >= ? or expiration_date is null", Date.new(2016, 6, 30)).
+        where(product_id: product_ids).pluck(:member_id).compact.uniq
+
+      order_ids = order_ids_left_to_migrate
       author_ids = Migrate::ChannelTitle.where(entry_id: order_ids).pluck(:author_id).compact.uniq
 
       members = Migrate::Member.select([
