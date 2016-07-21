@@ -10,7 +10,7 @@ module Importers
         where("expiration_date >= ? or expiration_date is null", Date.new(2016, 6, 30)).
         where(product_id: product_ids).each do |credit|
 
-          next if Legacy::License.find_by(ee_id: credit.ee_id)
+          next if Legacy::License.find_by(ee_id: credit.id)
 
           member = Migrate::Member.find_by(member_id: credit.member_id)
           token = Migrate::RegistrationToken.find_by(id: credit.token_id)
