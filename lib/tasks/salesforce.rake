@@ -14,15 +14,12 @@ namespace :salesforce do
 
   desc 'Cleanup salesforce reference not exists in salesforce'
   task cleanup: :environment do
-    client = GmSalesforce::Client.instance
-    SalesforceReference.where(local_object_type: 'SchoolDistrict').find_each do |salesforce_reference|
-      begin
-        client.find('Account', salesforce_reference.id_in_salesforce)
-      rescue Exception => e
-        if e.message =~ /NOT_FOUND/
-          reassign_school_district_for_users(sf_client, salesforce_reference.local_object)
-          salesforce_reference.local_object.destroy
-        end
+    sf_client = GmSalesforce::Client.instance.client
+    deleted_response = client.get_deleted('Account', Date.yesterday.beginning_of_day, Date.yesterday.end_of_day)
+    deleted_response.each do |deleted_object|
+      sr = SalesforceReference.find_by(id_in_salesforce: deleted_object.Id)
+      if sr && sr.local_object
+        reassign_school_district_for_users(sf_client, sr.local_object)
       end
     end
   end
@@ -32,9 +29,12 @@ namespace :salesforce do
       begin
         contact = sf_client.find('Contact', user.id_in_salesforce)
         new_school_district = SalesforceReference.find_by(id_in_salesforce: contact.AccountId).local_object
-        user.update(school_district: new_school_district)
+        user.update(school_district: new_school_district) if new_school_district
       rescue
       end
+    end
+    if Spree::User.where(school_district_id: school_district.id).count == 0
+      school_district.destroy
     end
   end
 end
