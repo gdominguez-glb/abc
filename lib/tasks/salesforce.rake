@@ -15,7 +15,7 @@ namespace :salesforce do
   desc 'Cleanup salesforce reference not exists in salesforce'
   task cleanup: :environment do
     sf_client = GmSalesforce::Client.instance.client
-    deleted_response = client.get_deleted('Account', Date.yesterday.beginning_of_day, Date.yesterday.end_of_day)
+    deleted_response = sf_client.get_deleted('Account', Date.yesterday.beginning_of_day, Date.today.end_of_day)
     deleted_response.deletedRecords.each do |deleted_object|
       sr = SalesforceReference.find_by(id_in_salesforce: deleted_object.id)
       if sr && sr.local_object
