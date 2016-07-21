@@ -48,7 +48,7 @@ gem "mediaelement_rails"
 
 gem 'httparty', require: false
 
-gem 'restforce'
+gem 'restforce', '~> 2.3'
 
 gem 'wistia-api'
 gem 'whenever', :require => false
