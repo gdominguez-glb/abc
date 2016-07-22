@@ -101,6 +101,10 @@ gem "cloudfront-signer"
 
 gem "truncate_html"
 
+gem "flipper"
+gem "flipper-redis"
+gem "flipper-ui"
+
 group :development do
   gem 'quiet_assets'
   gem 'letter_opener'
