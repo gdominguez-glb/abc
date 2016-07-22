@@ -15,4 +15,17 @@ class Staff < ActiveRecord::Base
   validates_attachment :picture, content_type: { content_type: /\A*\Z/ }
 
   acts_as_list
+
+  searchkick callbacks: :async
+
+  def search_data
+    {
+      name: name,
+      title: title,
+      description: description,
+      feature: "Staff",
+      user_ids: [-1]
+    }
+  end
+
 end
