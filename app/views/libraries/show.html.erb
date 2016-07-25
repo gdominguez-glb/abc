@@ -11,7 +11,7 @@
 
         <div class="row">
           <% library_leaf.library_items.each do |library_item| %>
-            <div class="col-sm-4">
+            <div class="col-sm-3">
               <% if library_item.inkling? %>
 
                 <%= link_to launch_item_library_path(@product, item_id: library_item.id), remote: true, class: 'thumbnail' do %>
