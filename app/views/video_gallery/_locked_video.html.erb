@@ -3,6 +3,7 @@
     <div class="video-content">
       <%= link_to unlock_video_gallery_path(video), class: 'video-link', remote: true do %>
         <%= mi.lock.css_class('video-lock') %>
+        <span></span>
         <h6 class="video-text">
           <%= truncate(video.title, length: 160) %>
         </h6>
