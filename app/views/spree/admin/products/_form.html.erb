@@ -22,7 +22,7 @@
       <div data-hook="admin_product_form_short_description">
         <%= f.field_container :short_description, class: ['form-group'] do %>
           <%= f.label :short_description, Spree.t(:short_description) %>
-          <%= f.text_area :short_description, { rows: 5, class: 'form-control' } %>
+          <%= f.text_area :short_description, { rows: 5, class: 'form-control rich-editor' } %>
           <%= f.error_message_on :short_description %>
         <% end %>
       </div>
@@ -30,7 +30,7 @@
       <div data-hook="admin_product_form_description">
         <%= f.field_container :description, class: ['form-group'] do %>
           <%= f.label :description, Spree.t(:description) %>
-          <%= f.text_area :description, { rows: "#{unless @product.has_variants? then '20' else '13' end}", class: 'form-control' } %>
+          <%= f.text_area :description, { rows: "#{unless @product.has_variants? then '20' else '13' end}", class: 'form-control rich-editor' } %>
           <%= f.error_message_on :description %>
         <% end %>
       </div>
@@ -252,7 +252,7 @@
     <div data-hook='admin_product_form_license_text'>
       <div class='form-group field' id='product_license_text_field'>
         <%= f.label :license_text %>
-        <%= f.text_area :license_text, class: 'form-control' %>
+        <%= f.text_area :license_text, class: 'form-control rich-editor' %>
       </div>
     </div>
     <div data-hook='admin_product_form_license_length'>
@@ -275,18 +275,5 @@
 <% unless Rails.env.test? %>
   <script>
     $('.select2-container').css();
-  </script>
-<% end %>
-
-<%= content_for :custom_javascripts do %>
-  <script type="text/javascript">
-    $(function(){
-      $('#product_short_description, #product_description, #product_license_text').trumbowyg({
-        fullscreenable: false,
-        closable: true,
-        removeformatPasted: true,
-        btns: ['bold', 'italic', 'underline', 'strikethrough', '|', 'formatting', '|', 'unorderedList', 'orderedList', '|', 'link', '|', 'removeformat']
-      });
-    });
   </script>
 <% end %>
