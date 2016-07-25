@@ -74,12 +74,6 @@ RSpec.describe Spree::ProductsController, type: :controller do
 
   describe "GET 'show'" do
 
-    it "should redirect to get_in_touch_url, get_in_touch type products" do
-      get :show, id: get_in_touch_product.id
-      expect(assigns(:product)).not_to be_nil
-      expect(response).to redirect_to(get_in_touch_product.get_in_touch_url)
-    end
-
     it "should display a product" do
       get :show, id: product.id
       expect(response).to be_success
