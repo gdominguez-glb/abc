@@ -1,6 +1,10 @@
 <div class="row">
   <div class="col-sm-10 col-sm-offset-1 margin-top-xl margin-bottom-xl">
-    <p><%= link_to 'Back to dashboard', account_products_path %></p>
+    <p>
+      <%= link_to account_products_path, :class => 'btn btn-default' do %>
+        <i class="mi">keyboard_arrow_left</i> Back to dashboard
+      <% end %>
+    </p>
     <% @library_leafs.each do |library_leaf| %>
       <div class="thumbnail-library">
         <h2 class="thumbnail-library-leaf-title"><%= library_leaf.name %></h2>
