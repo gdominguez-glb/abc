@@ -113,8 +113,8 @@ Rails.application.routes.draw do
   resources :inkling_codes, only: [:show]
   resources :libraries, only: [:show] do
     member do
-      get '/launch/:item_id', to: :launch, as: :launch_item
-      get '/download/:item_id', to: :download, as: :download_item
+      get '/launch/:item_id', action: :launch, as: :launch_item
+      get '/download/:item_id', action: :download, as: :download_item
     end
   end
 

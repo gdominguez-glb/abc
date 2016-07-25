@@ -60,9 +60,17 @@
               <%= product_description(@product) rescue Spree.t(:product_has_no_description) %>
             </p>
 
-            <div id="cart-form" data-hook="cart_form">
-              <%= render :partial => 'cart_form' %>
-            </div>
+            <% if @product.get_in_touch_product? %>
+              <div class='row'>
+                <div class="col-md-5">
+                  <%= link_to Spree.t(:get_in_touch), @product.get_in_touch_url, target: '_blank', class: 'btn btn-primary product-btn-primary' %>
+                </div>
+              </div>
+            <% else %>
+              <div id="cart-form" data-hook="cart_form">
+                <%= render :partial => 'cart_form' %>
+              </div>
+            <% end %>
           </div>
 
           <%= render :partial => 'taxons' %>
