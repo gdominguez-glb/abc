@@ -20,12 +20,6 @@
 
                 <h3 class="thumbnail-library-item-title"><%= library_item.name %></h3>
 
-                <p class="small">
-                  <%= link_to launch_item_library_path(@product, item_id: library_item.id), remote: true, class: 'thumbnail-library-link' do %>
-                    <%= material_icon.md_18.launch.css_class('thumbnail-library-icon') %> Launch
-                  <% end %>
-                </p>
-
               <% elsif library_item.pdf? %>
 
                 <%= link_to download_item_library_path(@product, item_id: library_item.id), target: '_blank', class: 'thumbnail' do %>
@@ -33,12 +27,6 @@
                 <% end %>
 
                 <h3 class="thumbnail-library-item-title"><%= library_item.name %></h3>
-
-                <p class="small">
-                  <%= link_to download_item_library_path(@product, item_id: library_item.id), target: '_blank', class: 'thumbnail-library-link' do %>
-                    <%= material_icon.md_18.insert_drive_file.css_class('thumbnail-library-icon') %> Download
-                  <% end %>
-                </p>
 
               <% end %>
             </div>
