@@ -1,45 +1,39 @@
 <div class="row">
   <div class="col-sm-10 col-sm-offset-1 margin-top-xl margin-bottom-xl">
-    <p><%= link_to 'Back to dashboard', account_products_path %></p>
+    <p>
+      <%= link_to account_products_path, :class => 'btn btn-default' do %>
+        <i class="mi">keyboard_arrow_left</i> Back to dashboard
+      <% end %>
+    </p>
     <% @library_leafs.each do |library_leaf| %>
-      <div class="thumbnail-library">
-        <h2 class="thumbnail-library-leaf-title"><%= library_leaf.name %></h2>
+      <h2 class="thumbnail-library-leaf-title"><%= library_leaf.name %></h2>
 
-        <div class="row">
-          <% library_leaf.library_items.each do |library_item| %>
-            <div class="col-sm-4">
-              <% if library_item.inkling? %>
+      <div class="row">
+        <% library_leaf.library_items.each do |library_item| %>
+          <div class="col-sm-3">
+            <% if library_item.inkling? %>
 
-                <%= link_to launch_item_library_path(@product, item_id: library_item.id), remote: true, class: 'thumbnail' do %>
-                  <%= image_tag library_item.cover.url %>
-                <% end %>
+              <%= link_to launch_item_library_path(@product, item_id: library_item.id), remote: true, class: 'thumbnail thumbnail-library thumbnail-library-inkling' do %>
+                <%= image_tag library_item.cover.url %>
+                <%= material_icon.md_48.launch.css_class('thumbnail-library-icon') %>
+              <% end %>
 
-                <h3 class="thumbnail-library-item-title"><%= library_item.name %></h3>
 
-                <p class="small">
-                  <%= link_to launch_item_library_path(@product, item_id: library_item.id), remote: true, class: 'thumbnail-library-link' do %>
-                    <%= material_icon.md_18.launch.css_class('thumbnail-library-icon') %> Launch
-                  <% end %>
-                </p>
+              <h3 class="thumbnail-library-item-title"><%= library_item.name %></h3>
 
-              <% elsif library_item.pdf? %>
+            <% elsif library_item.pdf? %>
 
-                <%= link_to download_item_library_path(@product, item_id: library_item.id), target: '_blank', class: 'thumbnail' do %>
-                  <%= image_tag library_item.cover.url %>
-                <% end %>
-
-                <h3 class="thumbnail-library-item-title"><%= library_item.name %></h3>
-
-                <p class="small">
-                  <%= link_to download_item_library_path(@product, item_id: library_item.id), target: '_blank', class: 'thumbnail-library-link' do %>
-                    <%= material_icon.md_18.insert_drive_file.css_class('thumbnail-library-icon') %> Download
-                  <% end %>
-                </p>
+              <%= link_to download_item_library_path(@product, item_id: library_item.id), target: '_blank', class: 'thumbnail thumbnail-library thumbnail-library-pdf' do %>
+                <%= image_tag library_item.cover.url %>
+                <%= material_icon.md_48.cloud_download.css_class('thumbnail-library-icon') %>
 
               <% end %>
-            </div>
-          <% end %>
-        </div>
+
+              <h3 class="thumbnail-library-item-title"><%= library_item.name %></h3>
+
+            <% end %>
+          </div>
+        <% end %>
       </div>
     <% end %>
   </div>
