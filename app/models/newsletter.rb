@@ -3,7 +3,7 @@ require 'mailchimp'
 class Newsletter
   include ActiveModel::Model
 
-  attr_accessor :email, :first_name, :last_name, :lists, :user, :role, :zip_code
+  attr_accessor :email, :first_name, :last_name, :lists, :user, :role, :zip_code, :state
 
   ROLES = ['Parent', 'Teacher', 'Administrator', 'Administrative Assistant', 'Homeschooler', 'Other']
 
@@ -28,7 +28,8 @@ class Newsletter
         first_name: @first_name,
         last_name: @last_name,
         zip_code: @zip_code,
-        role: @role
+        role: @role,
+        state: @state
       })
     end
   end
