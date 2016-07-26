@@ -16,6 +16,13 @@
         <% end %>
       </div>
       <div class="col-sm-6 col-md-7 col-lg-8 col-lg-offset-halfone">
+
+        <% if teach_eureka_selected? && document = Document.find_by(attachment_file_name: "teach_eureka-viewing_guide.pdf") %>
+          <p>
+          Download the <%= link_to 'Teach Eureka Viewing Guide', document.attachment.url, target: '_blank'  %> for convenient note taking.
+          </p>
+        <% end %>
+
         <% if @videos.blank? %>
           <div class="video-empty-state">
             <div class="alert alert-warning" role="alert">
