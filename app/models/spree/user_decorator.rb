@@ -14,6 +14,7 @@ Spree::User.class_eval do
   validates :school_district, presence: true, if: :school_district_required?
   validates :title, presence: true, on: :create
   validates :zip_code, presence: true, on: :create
+  validates :interested_subjects, presence: true, on: :create
 
   belongs_to :delegate_for_user, class_name: 'Spree::User', foreign_key: :delegate_user_id
 
