@@ -11,3 +11,7 @@
     <%= Spree.t(:your_order_is_empty_add_product)%>
   </div>
 <% end %>
+
+<div>
+  <%= link_to 'Cancel This Order', spree.cancel_admin_order_path(@order), class: 'btn btn-primary', data: { confirm: 'Are you cancel this order? This will delete all licenses associate with the order.', method: :put } if @order.allow_cancel? %>
+</div>

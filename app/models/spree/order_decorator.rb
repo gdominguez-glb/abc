@@ -249,6 +249,18 @@ Spree::Order.class_eval do
     go_to_state :complete
     remove_transition from: :delivery, to: :confirm
   end
+
+  def allow_cancel?
+    return false unless fulfillment?
+    return false unless completed? and state != 'canceled'
+    true
+  end
+
+  def after_cancel
+    Spree::LicensesManager::OrderCanceller.new(self).execute
+    self.update!
+  end
+
 end
 
 Spree::Order.state_machine.after_transition to: :complete, do: :finalize_order
