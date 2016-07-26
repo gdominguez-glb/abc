@@ -96,7 +96,7 @@ module GmSalesforce
 
     def self.find_first_error(e)
       body = find_response_section(e, :body)
-      body && JSON.parse(body).try(:first)
+      body && (body.is_a?(Array) ? body.first : JSON.parse(body).try(:first))
     end
 
     def self.find_error_property(e, property_name)

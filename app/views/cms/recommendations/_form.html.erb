@@ -65,7 +65,17 @@
       </div>
     </div>
   </div>
-
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="form-group">
+        <label>Button Target</label>
+        <div class="select-container dark-select block">
+          <span>Select Target</span>
+          <%= f.select :call_to_action_button_target, options_for_select([['Open in Same Tab', '_self'],['Open in New Tab', '_blank']]), { prompt: 'Select target' }, class: 'form-control' %>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="form-group">
     <label>Icon</label>
     <%= f.select :icon, Recommendation::ICONS, {}, class: 'form-control' %>

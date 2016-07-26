@@ -14,15 +14,18 @@ namespace :salesforce do
 
   desc 'Cleanup salesforce reference not exists in salesforce'
   task cleanup: :environment do
-    client = GmSalesforce::Client.instance
-    SalesforceReference.where(local_object_type: 'SchoolDistrict').find_each do |salesforce_reference|
-      begin
-        client.find('Account', salesforce_reference.id_in_salesforce)
-      rescue Exception => e
-        if e.message =~ /NOT_FOUND/
-          reassign_school_district_for_users(sf_client, salesforce_reference.local_object)
-          salesforce_reference.local_object.destroy
-        end
+    sf_client = GmSalesforce::Client.instance.client
+
+    cleanup_deleted_accounts(sf_client)
+    cleanup_deleted_contacts(sf_client)
+  end
+
+  def cleanup_deleted_accounts(sf_client)
+    deleted_response = sf_client.get_deleted('Account', 2.days.ago.beginning_of_day, Date.today.end_of_day)
+    deleted_response.deletedRecords.each do |deleted_object|
+      sr = SalesforceReference.find_by(id_in_salesforce: deleted_object.id)
+      if sr && sr.local_object
+        reassign_school_district_for_users(sf_client, sr.local_object)
       end
     end
   end
@@ -30,11 +33,30 @@ namespace :salesforce do
   def reassign_school_district_for_users(sf_client, school_district)
     Spree::User.where(school_district_id: school_district.id).find_each do |user|
       begin
-        contact = sf_client.find('Contact', user.id_in_salesforce)
-        new_school_district = SalesforceReference.find_by(id_in_salesforce: contact.AccountId).local_object
-        user.update(school_district: new_school_district)
+        if user.id_in_salesforce.present?
+          contact_sfo = sf_client.find('Contact', user.id_in_salesforce)
+          new_school_district = SalesforceReference.find_by(id_in_salesforce: contact_sfo.AccountId).local_object
+          user.update(school_district: new_school_district) if new_school_district
+        end
       rescue
       end
     end
+    if Spree::User.where(school_district_id: school_district.id).count == 0
+      school_district.destroy
+    end
   end
+
+  def cleanup_deleted_contacts(sf_client)
+    deleted_response = sf_client.get_deleted('Contact', 29.days.ago.beginning_of_day, Date.today.end_of_day)
+
+    salesforce_references = deleted_response.deletedRecords.map { |deleted_object| SalesforceReference.find_by(id_in_salesforce: deleted_object.id) }.compact
+
+    salesforce_references.each do |salesforce_reference|
+      result = sf_client.query("select Id from Contact where Web_Front_End_ID__c = '#{sr.local_object.id}'").first
+      if result && result.Id.present?
+        salesforce_reference.update(id_in_salesforce: result.Id)
+      end
+    end
+  end
+
 end

@@ -48,7 +48,7 @@ gem "mediaelement_rails"
 
 gem 'httparty', require: false
 
-gem 'restforce'
+gem 'restforce', '~> 2.3'
 
 gem 'wistia-api'
 gem 'whenever', :require => false
@@ -100,6 +100,10 @@ gem "validate_url"
 gem "cloudfront-signer"
 
 gem "truncate_html"
+
+gem "flipper"
+gem "flipper-redis"
+gem "flipper-ui"
 
 group :development do
   gem 'quiet_assets'

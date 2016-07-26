@@ -27,7 +27,10 @@ class Mailchimp
       subscribe(list_id, {
         email: user.email,
         first_name: user.first_name,
-        last_name: user.last_name
+        last_name: user.last_name,
+        zip_code: user.zip_code,
+        role: user.title, 
+        state: user.state_name
       })
     end
   end
@@ -44,10 +47,10 @@ class Mailchimp
   def self.subscribe(list_id, info={})
     url = "#{API_ROOT}lists/#{list_id}/members"
     if member_exists?(list_id, info[:email])
-      subscribe_exist_user(list_id, info[:email])
+      subscribe_exist_user(list_id, info)
     else
       res = HTTParty.post(url,
-                    body: { status: 'subscribed', email_address: info[:email], merge_fields: {FNAME: info[:first_name], LNAME: info[:last_name] } }.to_json,
+                    body: subscribe_request_data(info).to_json,
                     basic_auth: auth,
                     headers: { 'content-type' => 'application/json'}
                    )
@@ -55,10 +58,24 @@ class Mailchimp
     end
   end
 
-  def self.subscribe_exist_user(list_id, email)
-    url = "#{API_ROOT}lists/#{list_id}/members/#{Digest::MD5.hexdigest(email)}"
-    res = HTTParty.patch(url, body: { status: 'subscribed' }.to_json, basic_auth: auth, headers: { 'content-type' => 'application/json'})
+  def self.subscribe_exist_user(list_id, info)
+    url = "#{API_ROOT}lists/#{list_id}/members/#{Digest::MD5.hexdigest(info[:email])}"
+    res = HTTParty.patch(url, body: subscribe_request_data(info).to_json, basic_auth: auth, headers: { 'content-type' => 'application/json'})
     puts res.inspect
+  end
+
+  def self.subscribe_request_data(info)
+    {
+      status: 'subscribed',
+      email_address: info[:email],
+      merge_fields: {
+        FNAME: info[:first_name],
+        LNAME: info[:last_name],
+        ZIPCODE: info[:zip_code],
+        ROLE: info[:role],
+        STATE: info[:state]
+      }
+    }
   end
 
   def self.member_exists?(list_id, email)

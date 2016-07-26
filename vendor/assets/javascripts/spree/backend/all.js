@@ -18,6 +18,15 @@
 //= require dashboard_mobile_nav
 //= require highcharts
 
+function initEditor() {
+  $('.rich-editor').trumbowyg({
+    fullscreenable: false,
+    closable: true,
+    removeformatPasted: true,
+    btns: ['bold', 'italic', 'underline', 'strikethrough', '|', 'formatting', '|', 'unorderedList', 'orderedList', '|', 'link', '|', 'removeformat']
+  });
+}
+
 $(document).ready(function() {
   var nav = $('.navbar-primary');
   var subnav = nav.find('.subnav')[0];
@@ -33,4 +42,6 @@ $(document).ready(function() {
 
   var currentPage = $('body').data('page');
   nav.find('[data-primary-nav-item="'+ currentPage +'"]').addClass('active');
+
+  initEditor();
 });

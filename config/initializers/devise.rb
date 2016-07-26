@@ -25,4 +25,5 @@ Devise.setup do |config|
   config.router_name = :spree
 
   # Add any other devise configurations here, as they will override the defaults provided by spree_auth_devise.
+  config.email_regexp = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
 end

@@ -12,9 +12,40 @@
     </div>
   </div>
 </div>
-<div class="form-group">
-  <label>Email</label>
-  <%= f.text_field :email, class: 'form-control' %>
+<div class="row">
+  <div class="col-md-6">
+    <div class="form-group">
+      <label>Email</label>
+      <%= f.text_field :email, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="form-group">
+      <label>Zip Code</label>
+      <%= f.text_field :zip_code, class: 'form-control' %>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <div class="form-group">
+      <label>State</label>
+      <% country = Spree::Country.find_by(iso: 'US') %>
+      <%= f.collection_select :state, country.states, :name, :name, { include_blank: 'Select State' }, class: 'form-control' %>
+    </div>
+  </div>
+</div>
+<div>
+  <label>Role</label>
+  <p>
+    <% Newsletter::ROLES.each do |role_value| %>
+      <label>
+        <%= f.radio_button(:role, role_value) %>
+        <%= role_value %>
+        &nbsp;
+      </label>
+    <% end %>
+  </p>
 </div>
 <div>
   <label>Check to Subscribe</label>

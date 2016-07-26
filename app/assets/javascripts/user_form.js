@@ -37,7 +37,6 @@ $(document).on("change", "#spree_user_title", function(){
   }
 
   $('#spree_user_interested_subjects').select2();
-  $('#spree_user_grades').select2();
 
   if(shouldShowPhone(userRole)) {
     $('#phone-field').removeClass('hide');

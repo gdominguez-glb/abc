@@ -50,7 +50,6 @@ Spree::ProductsController.class_eval do
   end
 
   def show
-    redirect_to @product.get_in_touch_url if @product.get_in_touch_product?
     redirect_to spree.group_product_path(@product) if @product.group_product?
     @variants = @product.variants_including_master.active(current_currency).includes([:option_values, :images])
     @product_properties = @product.product_properties.includes(:property)

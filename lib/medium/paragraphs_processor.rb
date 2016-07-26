@@ -20,7 +20,7 @@ module Medium
       type    = paragraph['type']
       text    = paragraph['text']
       markups = paragraph['markups']
-      tag     = PARAGRAPH_TYPES[type]
+      tag     = paragraph_tag(type)
       "<#{tag}>#{MarkupsProcessor.new(text: text, markups: markups).process}</#{tag}>"
     end
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160621134757) do
+ActiveRecord::Schema.define(version: 20160719180542) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,12 +42,14 @@ ActiveRecord::Schema.define(version: 20160621134757) do
   end
 
   create_table "contacts", force: :cascade do |t|
-    t.string   "name"
     t.string   "email"
     t.text     "message"
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "topic"
   end
 
   create_table "curriculum_mails", force: :cascade do |t|
@@ -159,6 +161,7 @@ ActiveRecord::Schema.define(version: 20160621134757) do
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.integer  "position",      default: 0
+    t.string   "category"
   end
 
   create_table "faq_categories", force: :cascade do |t|
@@ -214,6 +217,7 @@ ActiveRecord::Schema.define(version: 20160621134757) do
     t.boolean  "display"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "position"
   end
 
   create_table "legacy_licenses", force: :cascade do |t|
@@ -245,6 +249,16 @@ ActiveRecord::Schema.define(version: 20160621134757) do
     t.datetime "updated_at",                      null: false
   end
 
+  create_table "link_files", force: :cascade do |t|
+    t.string   "slug"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
+  end
+
   create_table "medium_publications", force: :cascade do |t|
     t.string   "title"
     t.string   "url"
@@ -272,6 +286,7 @@ ActiveRecord::Schema.define(version: 20160621134757) do
     t.boolean  "dashboard",                     default: false
     t.integer  "curriculum_id"
     t.integer  "product_id"
+    t.datetime "expire_at"
   end
 
   create_table "notifications", force: :cascade do |t|
@@ -281,6 +296,7 @@ ActiveRecord::Schema.define(version: 20160621134757) do
     t.boolean  "read",                    default: false
     t.datetime "created_at",                              null: false
     t.datetime "updated_at",                              null: false
+    t.datetime "expire_at"
   end
 
   create_table "oauth_access_grants", force: :cascade do |t|
@@ -383,13 +399,14 @@ ActiveRecord::Schema.define(version: 20160621134757) do
     t.text     "sub_header"
     t.string   "call_to_action_button_text"
     t.string   "call_to_action_button_link"
-    t.datetime "created_at",                                 null: false
-    t.datetime "updated_at",                                 null: false
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
     t.string   "subject"
     t.string   "icon"
-    t.boolean  "display",                    default: false
+    t.boolean  "display",                      default: false
     t.string   "user_title"
-    t.integer  "position",                   default: 0
+    t.integer  "position",                     default: 0
+    t.string   "call_to_action_button_target"
   end
 
   create_table "regonline_events", force: :cascade do |t|
@@ -684,6 +701,32 @@ ActiveRecord::Schema.define(version: 20160621134757) do
   add_index "spree_inventory_units", ["order_id"], name: "index_inventory_units_on_order_id", using: :btree
   add_index "spree_inventory_units", ["shipment_id"], name: "index_inventory_units_on_shipment_id", using: :btree
   add_index "spree_inventory_units", ["variant_id"], name: "index_inventory_units_on_variant_id", using: :btree
+
+  create_table "spree_library_items", force: :cascade do |t|
+    t.integer  "library_leaf_id"
+    t.string   "name"
+    t.integer  "position"
+    t.text     "inkling_code"
+    t.integer  "item_type"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.string   "cover_file_name"
+    t.string   "cover_content_type"
+    t.integer  "cover_file_size"
+    t.datetime "cover_updated_at"
+    t.string   "attachment_file_name"
+    t.string   "attachment_content_type"
+    t.integer  "attachment_file_size"
+    t.datetime "attachment_updated_at"
+  end
+
+  create_table "spree_library_leafs", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "product_id"
+    t.integer  "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "spree_licensed_products", force: :cascade do |t|
     t.integer  "user_id"
@@ -1627,6 +1670,8 @@ ActiveRecord::Schema.define(version: 20160621134757) do
     t.boolean  "tour_showed_licenses",                   default: false
     t.boolean  "tour_showed_licenses_users",             default: false
     t.boolean  "accepted_terms",                         default: false
+    t.text     "grades"
+    t.string   "zip_code"
   end
 
   add_index "spree_users", ["deleted_at"], name: "index_spree_users_on_deleted_at", using: :btree
