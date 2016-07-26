@@ -29,7 +29,8 @@ class Mailchimp
         first_name: user.first_name,
         last_name: user.last_name,
         zip_code: user.zip_code,
-        role: user.title
+        role: user.title, 
+        state: user.state_name
       })
     end
   end
@@ -64,7 +65,17 @@ class Mailchimp
   end
 
   def self.subscribe_request_data(info)
-    { status: 'subscribed', email_address: info[:email], merge_fields: {FNAME: info[:first_name], LNAME: info[:last_name], ZIPCODE: info[:zip_code], ROLE: info[:role] } }
+    {
+      status: 'subscribed',
+      email_address: info[:email],
+      merge_fields: {
+        FNAME: info[:first_name],
+        LNAME: info[:last_name],
+        ZIPCODE: info[:zip_code],
+        ROLE: info[:role],
+        STATE: info[:state]
+      }
+    }
   end
 
   def self.member_exists?(list_id, email)

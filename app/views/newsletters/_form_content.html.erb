@@ -26,6 +26,15 @@
     </div>
   </div>
 </div>
+<div class="row">
+  <div class="col-md-6">
+    <div class="form-group">
+      <label>State</label>
+      <% country = Spree::Country.find_by(iso: 'US') %>
+      <%= f.collection_select :state, country.states, :name, :name, { include_blank: 'Select State' }, class: 'form-control' %>
+    </div>
+  </div>
+</div>
 <div>
   <label>Role</label>
   <p>
