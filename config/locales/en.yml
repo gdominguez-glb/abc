@@ -20,6 +20,9 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  devise:
+    failure:
+      invalid: "Invalid email or password. Note: your account and products will not carry over from GreatMinds.net, so make sure to sign up for a new account <a href='/store/signup'>here</a>."
   hello: "Hello world"
   error_messages:
     permission_denied: Permission denied
