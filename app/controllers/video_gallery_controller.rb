@@ -2,7 +2,7 @@ class VideoGalleryController < ApplicationController
   before_action :authenticate_user!
   before_action :find_video, only: [:show, :show_description, :play, :unlock, :remove_bookmark]
 
-  helper_method :bought_products?, :can_play_video?, :bookmarked_video?
+  helper_method :bought_products?, :can_play_video?, :bookmarked_video?, :teach_eureka_selected?
 
   include TaxonFilterable
 
@@ -95,5 +95,10 @@ class VideoGalleryController < ApplicationController
     if current_spree_user
       current_spree_user.log_activity(item: video, title: video.title, action: :view)
     end
+  end
+
+  def teach_eureka_selected?
+    teach_eureka_taxon = Spree::Taxon.find_by(name: 'Teach Eureka')
+    teach_eureka_taxon && params[:taxon_ids].include?(teach_eureka_taxon.id.to_s)
   end
 end
