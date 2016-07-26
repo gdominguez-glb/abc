@@ -15,6 +15,12 @@ namespace :salesforce do
   desc 'Cleanup salesforce reference not exists in salesforce'
   task cleanup: :environment do
     sf_client = GmSalesforce::Client.instance.client
+
+    cleanup_deleted_accounts(sf_client)
+    cleanup_deleted_contacts(sf_client)
+  end
+
+  def cleanup_deleted_accounts(sf_client)
     deleted_response = sf_client.get_deleted('Account', 2.days.ago.beginning_of_day, Date.today.end_of_day)
     deleted_response.deletedRecords.each do |deleted_object|
       sr = SalesforceReference.find_by(id_in_salesforce: deleted_object.id)
@@ -39,4 +45,18 @@ namespace :salesforce do
       school_district.destroy
     end
   end
+
+  def cleanup_deleted_contacts(sf_client)
+    deleted_response = sf_client.get_deleted('Contact', 29.days.ago.beginning_of_day, Date.today.end_of_day)
+
+    salesforce_references = deleted_response.deletedRecords.map { |deleted_object| SalesforceReference.find_by(id_in_salesforce: deleted_object.id) }.compact
+
+    salesforce_references.each do |salesforce_reference|
+      result = sf_client.query("select Id from Contact where Web_Front_End_ID__c = '#{sr.local_object.id}'").first
+      if result && result.Id.present?
+        salesforce_reference.update(id_in_salesforce: result.Id)
+      end
+    end
+  end
+
 end
