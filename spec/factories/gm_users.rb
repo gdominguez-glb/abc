@@ -5,6 +5,7 @@ FactoryGirl.define do
     email
     school_district
     password '123456'
+    interested_subjects ["math"]
     skip_salesforce_create true
     accepted_terms true
     title 'Homeschooler'
