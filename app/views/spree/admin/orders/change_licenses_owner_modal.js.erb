@@ -1,0 +1,5 @@
+$('body').append("<%= escape_javascript(render 'change_licenses_owner_modal') %>");
+$('#change-licenses-owner-modal').modal('show');
+$('#change-licenses-owner-modal').on('hidden.bs.modal', function (e) {
+  $('#change-licenses-owner-modal').remove();
+})

@@ -256,6 +256,13 @@ Spree::Order.class_eval do
     true
   end
 
+  def allow_change_owner?
+    return false unless fulfillment?
+    return false unless completed? and state != 'canceled'
+    return false if Spree::LicensedProduct.where(order_id: self.id).where.not(email: self.email).exists?
+    true
+  end
+
   def after_cancel
     Spree::LicensesManager::OrderCanceller.new(self).execute
     self.update!

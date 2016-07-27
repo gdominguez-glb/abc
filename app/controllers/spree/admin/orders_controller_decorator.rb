@@ -45,4 +45,21 @@ Spree::Admin::OrdersController.class_eval do
 
   def edit
   end
+
+  def change_licenses_owner_modal
+    load_order
+  end
+
+  def change_licenses_owner
+    load_order
+
+    user = Spree::User.find_by(email: params[:new_owner_email])
+    if @order.update(user: user, email: params[:new_owner_email])
+      Spree::LicensesManager::OrderOwnerChanger.new(@order).execute
+      flash[:notice] = 'Successfully changed licenses for order'
+    else
+      flash[:error] = 'Failed to change licenses for order'
+    end
+    redirect_to :back
+  end
 end
