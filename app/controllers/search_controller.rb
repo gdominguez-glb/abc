@@ -11,6 +11,7 @@ class SearchController < ApplicationController
       EventPage.searchkick_index.name,
       EventTraining.searchkick_index.name,
       Staff.searchkick_index.name,
+      CustomIndexPage.searchkick_index.name
     ] }
     if current_spree_user
       options[:index_name].concat([Spree::Material.searchkick_index.name, Spree::Video.searchkick_index.name])
