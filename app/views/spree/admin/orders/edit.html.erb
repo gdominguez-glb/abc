@@ -14,4 +14,6 @@
 
 <div>
   <%= link_to 'Cancel This Order', spree.cancel_admin_order_path(@order), class: 'btn btn-primary', data: { confirm: 'Are you cancel this order? This will delete all licenses associate with the order.', method: :put } if @order.allow_cancel? %>
+
+  <%= link_to 'Change Licenses Owner', spree.change_licenses_owner_modal_admin_order_path(@order), class: 'btn btn-primary', remote: true if @order.allow_change_owner? %>
 </div>

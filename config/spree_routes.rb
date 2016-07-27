@@ -46,6 +46,13 @@ spree_routes_overrides = Proc.new do
       end
     end
 
+    resources :orders do
+      member do
+        get :change_licenses_owner_modal
+        post :change_licenses_owner
+      end
+    end
+
     resources :archives
     resource :storefront
     resources :products do

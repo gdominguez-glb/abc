@@ -1,0 +1,22 @@
+<div class="modal fade" tabindex="-1" role="dialog" id="change-licenses-owner-modal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Change Licenses Owner Of Order: <%= @order.number %></h4>
+      </div>
+      <%= form_tag spree.change_licenses_owner_admin_order_path(@order) do || %>
+        <div class="modal-body">
+          <p>Current Licenses Owner: <%= @order.user.try(:email) || @order.email %></p>
+          <div class="form-group">
+            <label>New Licenses Owner Email:</label>
+            <%= text_field_tag :new_owner_email, nil, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <%= submit_tag 'Change', class: 'btn btn-primary', data: { disable_with: 'Submitting...'} %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
