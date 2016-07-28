@@ -30,7 +30,7 @@ class Mailchimp
         last_name: user.last_name,
         zip_code: user.zip_code,
         role: user.title, 
-        state: user.state_name
+        state: (user.state_name || '')
       })
     end
   end
