@@ -15,6 +15,10 @@
       <%= f.text_field :email, class: 'form-control' %>
     </div>
 
+    <div class="form-group">
+      <label><%= f.check_box :enable_single_distribution %> Enable single license distribution</label>
+    </div>
+
     <div class="row">
       <div class="col-md-4">
         <div data-hook="admin_licensed_product_form_product_id" class="form-group">

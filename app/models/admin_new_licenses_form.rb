@@ -1,7 +1,7 @@
 class AdminNewLicensesForm
   include ActiveModel::Model
 
-  attr_accessor :user_id, :email, :product_ids, :fulfillment_at,
+  attr_accessor :user_id, :email, :product_ids, :fulfillment_at, :enable_single_distribution,
                 :payment_method_id, :payment_source_params, :admin_user, :sf_contact_id,
                 :salesforce_order_id, :salesforce_account_id, :amount, :products_quantity
 
@@ -33,7 +33,8 @@ class AdminNewLicensesForm
       item_total: self.amount,
       sf_contact_id: (sf_contact_id.present? ? sf_contact_id : nil),
       admin_user: admin_user,
-      fulfillment_at: fulfillment_at
+      fulfillment_at: fulfillment_at,
+      enable_single_distribution: enable_single_distribution
     )
     add_line_items(order)
 

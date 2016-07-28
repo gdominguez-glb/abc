@@ -15,19 +15,30 @@ module Spree
                          quantity: line_item.quantity)
         end
 
+        assign_school_admin_to_order_user
         send_email_notification
       end
 
       def create_license(attrs = {})
         licensed_product = Spree::LicensedProduct.create!({
-          order: @order, skip_salesforce_create: true
+          order: @order,
+          skip_salesforce_create: true
         }.merge(attrs))
 
-        if licensed_product.quantity > 1
+        if licensed_product.quantity > 1 || @order.enable_single_distribution?
           licensed_product.update(can_be_distributed: true, skip_salesforce_create: true)
-          SingleLicenseExtractor.new(licensed_product).execute
+
+          SingleLicenseExtractor.new(licensed_product).execute if !@order.enable_single_distribution?
         end
         licensed_product
+      end
+
+      def assign_school_admin_to_order_user
+        @order.user.assign_school_admin_role if can_assign_school_admin_to_order_user?
+      end
+
+      def can_assign_school_admin_to_order_user?
+        @order.user && (@order.enable_single_distribution? || @order.multi_license?)
       end
 
       def send_email_notification

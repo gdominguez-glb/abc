@@ -106,8 +106,6 @@ class Spree::LicensedProduct < ActiveRecord::Base
   assign_user_from_email :user, :email
   assign_email_from_user :email, :user
 
-  after_create :assign_user_admin_role
-
   attr_accessor :skip_notification
 
   def increase_quantity!(add_quantity)
@@ -150,9 +148,4 @@ class Spree::LicensedProduct < ActiveRecord::Base
     end
   end
 
-  def assign_user_admin_role
-    if self.quantity > 1 && self.user
-      self.user.assign_school_admin_role
-    end
-  end
 end
