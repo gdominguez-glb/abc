@@ -215,7 +215,7 @@
             <div class="col-sm-12">
               <div class="form-group">
                 <label>Related grade, module/unit, lesson</label>
-                <%= f.text_area :related_grade_module_unit_lession, class: 'form-control', rows: 5 %>
+                <%= f.text_field :related_grade_module_unit_lession, class: 'form-control' %>
               </div>
             </div>
           </div>
@@ -321,6 +321,9 @@
             required: function() {
               return requireState();
             }
+          },
+          'contact_form[training_groups_size]': {
+            digits: true
           }
         }
       });
