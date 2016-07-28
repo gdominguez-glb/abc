@@ -147,7 +147,7 @@
   </div>
 <% else %>
   <div class="alert alert-info no-objects-found">
-    <%= Spree.t(:no_resource_found, resource: plural_resource_name(Spree::Order)) %>,
+    <%= Spree.t(:no_resource_found, resource: plural_resource_name(Spree::Order)) %>.
     <%= link_to(Spree.t(:add_one), new_admin_order_url) if can? :create, Spree::Order %>!
   </div>
 <% end %>

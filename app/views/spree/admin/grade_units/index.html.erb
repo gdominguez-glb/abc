@@ -16,7 +16,7 @@
   </div>
 <% else %>
   <div class="alert alert-info no-objects-found">
-    <%= Spree.t(:no_resource_found, resource: plural_resource_name(Spree::GradeUnit)) %>,
+    <%= Spree.t(:no_resource_found, resource: plural_resource_name(Spree::GradeUnit)) %>.
     <%= link_to Spree.t(:add_one), new_admin_grade_grade_unit_path(@grade) %>!
   </div>
 <% end %>
