@@ -94,7 +94,7 @@
   .index-filter-button {
     .form-control {
       margin-left: -1px;
-      padding: 8px 10px;
+      padding: 8px $b-space;
     }
 
     .btn {
@@ -197,7 +197,7 @@
       @include rotate(-180deg);
 
       top: 4px;
-      right: 10px;
+      right: $b-space;
     }
 
     .nav-sidebar {
@@ -349,6 +349,22 @@
 }
 
 // -------------------------------------
+//   Forms
+// -------------------------------------
+
+.checkbox {
+  input[type="checkbox"] {
+    top: 2px;
+  }
+}
+
+.radio {
+  input[type="radio"] {
+    top: 2px;
+  }
+}
+
+// -------------------------------------
 //   Select 2
 // -------------------------------------
 
@@ -362,21 +378,38 @@
 
 .select2-choice.select2-choice {
   height: 39px;
-  border: 1px solid #07212d;
+  border: 1px solid $dark-blue;
 }
 
 .select2-arrow.select2-arrow.select2-arrow {
-  border-left: 1px solid #07212d;
+  border-left: 1px solid $dark-blue;
 
   [role="presentation"] {
-    background-position-y: 5px;
+    background-position-y: $b-space-s;
   }
 }
 
 .select2-drop.select2-drop {
-  border: 1px solid #000;
+  border: 1px solid $c-absolute;
 }
 
 .select2-result-label.select2-result-label.select2-result-label {
-  color: #000;
+  color: $c-absolute;
+}
+
+// ----- Search Select2 ----- //
+
+.select2-choices.select2-choices {
+  height: 39px !important;
+  border: 1px solid $dark-blue;
+  border-radius: 3px;
+}
+
+.select2-search-choice.select2-search-choice.select2-search-choice {
+  margin-top: 8px;
+}
+
+.select2-search-choice-close.select2-search-choice-close.select2-search-choice-close.select2-search-choice-close {
+  top: 4px;
+  color: $dark-blue !important;
 }
