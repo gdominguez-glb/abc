@@ -64,7 +64,7 @@
               <% @emails.each do |email| %>
                 <div class="col-md-6">
                   <div class="checkbox">
-                    <label>
+                    <label class="word-wrap-break text-lowercase">
                       <%= check_box_tag 'emails[]', email, false, { multiple: true, class: 'user-checkbox' } %>
                       <%= email %>
                     </label>
