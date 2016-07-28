@@ -74,7 +74,7 @@ class Mailchimp
         ZIPCODE: info[:zip_code],
         ROLE: info[:role],
         STATE: info[:state]
-      }
+      }.reject{|k, v| v.blank?}
     }
   end
 
