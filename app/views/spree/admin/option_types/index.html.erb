@@ -38,7 +38,7 @@
 </table>
 <% else %>
   <div class="alert alert-info no-objects-found">
-    <%= Spree.t(:no_resource_found, resource: plural_resource_name(Spree::OptionType)) %>,
+    <%= Spree.t(:no_resource_found, resource: plural_resource_name(Spree::OptionType)) %>.
     <%= link_to Spree.t(:add_one), new_object_url %>!
   </div>
 <% end %>
