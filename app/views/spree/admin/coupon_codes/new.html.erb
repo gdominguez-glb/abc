@@ -1,0 +1,60 @@
+<% content_for :page_title do %>
+  <%= Spree.t(:new_coupon_code) %>
+<% end %>
+
+<%= form_for [:admin, @coupon_code] do |f| %>
+  <fieldset>
+    <div class="row">
+      <div class="col-md-5">
+        <div class="form-group">
+          <label>Products</label>
+          <%= f.text_field :product_ids %>
+        </div>
+        <div class="form-group">
+          <label>Total Quantity</label>
+          <%= f.text_field :total_quantity, class: 'form-control' %>
+        </div>
+      </div>
+    </div>
+    <div class="form-actions" data-hook="buttons">
+      <%= button Spree.t(:create), 'save' %>
+    </div>
+  </fieldset>
+<% end %>
+
+<script type="text/javascript">
+  $(function(){
+     $("#coupon_code_product_ids").select2({
+        placeholder: "Select product",
+        multiple: true,
+        ajax: {
+          url: '/storeapi/products',
+          datatype: 'json',
+          data: function (term, page) {
+            return {
+              per_page: 50,
+              page: page,
+              without_children: true,
+              q: {
+                name_cont: term
+              },
+              token: Spree.api_key
+            };
+          },
+          results: function (data, page) {
+            var more = page < data.pages;
+            return {
+              results: data['products'],
+              more: more
+            };
+          }
+        },
+        formatResult: function (product) {
+          return product.name;
+        },
+        formatSelection: function (product) {
+          return product.name;
+        }
+     });
+  });
+</script>
