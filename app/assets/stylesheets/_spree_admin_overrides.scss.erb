@@ -12,7 +12,7 @@
 .spree-navbar {
   margin: 0 -15px;
   border: 0;
-  border-bottom: 1px solid $gray-light-mid;
+  border-bottom: 1px solid $c-firm-secondary;
   border-radius: 0;
 
   .navbar-header {
@@ -35,17 +35,17 @@
   }
 
   &.navbar-inverse {
-    border-color: darken($gray-lightest, 20%);
-    background: $gray-lightest;
+    border-color: darken($c-firm-highlight, 20%);
+    background: $c-firm-highlight;
 
     .navbar-toggle {
 
       &:hover {
-        background: $gray-lightest;
+        background: $c-firm-highlight;
       }
 
       .icon-bar {
-        background: $gray-dark;
+        background: $c-stable-secondary;
       }
     }
   }
@@ -61,7 +61,7 @@
   .dropdown {
     &.user-menu {
       a {
-        color: $gray-dark !important;
+        color: $c-stable-secondary !important;
       }
 
       &.open {
@@ -334,7 +334,7 @@
   position: absolute;
   top: 38%;
   left: -7px;
-  color: $gray-light;
+  color: $c-firm-primary;
 }
 
 // Ensure filters stay attached to their cell
