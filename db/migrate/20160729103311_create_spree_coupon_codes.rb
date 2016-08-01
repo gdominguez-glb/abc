@@ -4,6 +4,7 @@ class CreateSpreeCouponCodes < ActiveRecord::Migration
       t.string :code
       t.integer :total_quantity
       t.integer :used_quantity
+      t.integer :school_district_id
 
       t.timestamps null: false
     end
