@@ -8,21 +8,11 @@ module Spree
       end
 
       def execute
-        return @licensed_product if exist_product_license_not_expire?
+        return @licensed_product if Spree::LicensedProduct.exist_product_license_not_expire?(@licensed_product)
         Spree::LicensedProduct.transaction do
           create_new_license(create_distribution)
           update_original_license
         end
-      end
-
-      def exist_product_license_not_expire?
-        Spree::LicensedProduct
-          .where('email = ?', @licensed_product.email)
-          .where(can_be_distributed: false,
-                 product_id: @licensed_product.product_id)
-          .where('id != ?', @licensed_product.id)
-          .where('(expire_at IS NULL OR expire_at > ?)', Time.now)
-          .exists?
       end
 
       def create_new_license(distribution)

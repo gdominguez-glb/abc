@@ -25,10 +25,14 @@ module Spree
           skip_salesforce_create: true
         }.merge(attrs))
 
-        if licensed_product.quantity > 1 || @order.enable_single_distribution?
+        if licensed_product.quantity > 1 ||
+          @order.enable_single_distribution? ||
+          Spree::LicensedProduct.exist_product_license_not_expire?(licensed_product)
           licensed_product.update(can_be_distributed: true, skip_salesforce_create: true)
+        end
 
-          SingleLicenseExtractor.new(licensed_product).execute if !@order.enable_single_distribution?
+        if licensed_product.quantity > 1 && !@order.enable_single_distribution?
+          SingleLicenseExtractor.new(licensed_product).execute
         end
         licensed_product
       end
