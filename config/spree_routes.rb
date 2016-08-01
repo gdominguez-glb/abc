@@ -1,5 +1,7 @@
 spree_routes_overrides = Proc.new do
   namespace :admin do
+    resources :coupon_codes
+
     resources :analytics, only: [:index] do
       collection do
         get :orders
@@ -27,6 +29,7 @@ spree_routes_overrides = Proc.new do
       end
       collection do
         post :update_positions
+        get :search
       end
       resources :grade_units do
         collection do

@@ -38,6 +38,8 @@ Spree::Product.class_eval do
 
   has_one :inkling_code, class_name: 'Spree::InklingCode'
 
+  has_and_belongs_to_many :grades, class_name: 'Spree::Grade', join_table: :spree_grades_products
+
   ## spree bundles
   parts_habtm = select("#{Spree::Product.quoted_table_name}.*")
                   .select("#{Spree::Part.quoted_table_name}.id AS part_id")

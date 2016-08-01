@@ -1,0 +1,36 @@
+<% content_for :page_title do %>
+  Coupon Codes
+<% end %>
+
+<% content_for :page_actions do %>
+  <div class="row">
+    <div class="col-md-6">
+      <%= button_link_to Spree.t(:new_coupon_code), new_object_url, class: "btn-success btn-block", icon: 'add' %>
+    </div>
+  </div>
+<% end %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Code</th>
+      <th>School/District</th>
+      <th>Products</th>
+      <th>Total Quantity</th>
+      <th>Used Quantity</th>
+      <th class="actions"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @coupon_codes.each do |coupon_code| %>
+      <tr>
+        <td><%= coupon_code.code %></td>
+        <td><%= coupon_code.school_district.try(:name) %></td>
+        <td><%= coupon_code.products.map(&:name).join(', ') %></td>
+        <td><%= coupon_code.total_quantity %></td>
+        <td><%= coupon_code.used_quantity %></td>
+        <td></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
