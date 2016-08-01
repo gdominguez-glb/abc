@@ -84,8 +84,11 @@ module GmSalesforce
     def append_order_phase_to_query(query, last_sf_id, per_page)
       page_query = query
       if last_sf_id
-        page_query += " where " if !query.include?('where')
-        page_query += " Id < '#{last_sf_id}' "
+        if !query.include?('where')
+          page_query += " where Id < '#{last_sf_id}' "
+        else
+          page_query += " and Id < '#{last_sf_id}' "
+        end
       end
       page_query + " order by Id desc limit #{per_page}"
     end
