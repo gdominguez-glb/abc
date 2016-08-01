@@ -1,10 +1,21 @@
 class Spree::CouponCode < ActiveRecord::Base
   belongs_to :school_district
 
-  has_many :coupon_code_products, class_name: 'Spree::CouponCodeProduct'
   has_and_belongs_to_many :products, class_name: 'Spree::Product', join_table: :spree_coupon_codes_products
 
   before_validation :generate_code, on: :create
+
+  def grades_to_select
+    sql = <<-SQL
+      select distinct(spree_grades.*) from spree_grades
+        join spree_grades_products on spree_grades_products.grade_id = spree_grades.id
+        join spree_coupon_codes_products on spree_coupon_codes_products.product_id = spree_grades_products.product_id
+        where spree_coupon_codes_products.coupon_code_id = #{self.id}
+    SQL
+    Spree::Grade.find_by_sql(sql)
+  end
+
+  private
 
   def generate_code
     max_length = 8
