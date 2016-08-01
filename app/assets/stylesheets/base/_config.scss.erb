@@ -1,107 +1,108 @@
 // *************************************
 //
 //   Config
-//   Varibles, @font-face
+//   App-Wide Varibles
 //
 // *************************************
 
-$transition-timing: .3s;
+// -------------------------------------
+//   Colors
+// -------------------------------------
 
-$large-bp: 1182px;
+// ----- Palette ----- //
 
-// Border-radius
-$border-radius-value: 4px;
+$black:                           #000;
+$white:                           #fff;
 
-// Digo Color palette
-$coral: #ff5b34;
-$cream: #fff;
-$dark-blue: #07212d;
-$light-blue: #e2e7e9;
-$light-plum: #f4f4f4;
-$brand-green: #ccff63;
-$steel-gray: #46565c;
-$english: #7cc7f1;
-$history: #ff8c00;
-$math: $brand-green;
-$c-absolute: #000;
-$c-absent: #fff;
-
-// Bootstrap Colors
-$brand-primary: $dark-blue;
-$brand-primary-dark: #1d4a70;
-$primary-hover: lighten($brand-primary, 20%);
-
-$brand-info: #5bc0de;
-$brand-success: #5cb85c;
-$brand-warning: #f0ad4e;
-$brand-danger: $brand-warning;
+$coral:                           #ff5b34;
+$cream:                           #fff;
+$dark-blue:                       #07212d;
+$light-blue:                      #e2e7e9;
+$light-plum:                      #f4f4f4;
+$brand-green:                     #ccff63;
+$steel-gray:                      #46565c;
+$english:                         #7cc7f1;
+$history:                         #ff8c00;
+$math:                            $brand-green;
 
 // Gray Scale
-$gray-darker: #222;
-$gray-dark: #333;
-$gray: $steel-gray;
-$gray-light: #aaa;
-$gray-light-mid: #c5c5c5;
-$gray-lighter: #eee;
-$gray-lightest: #f8f8f8;
-$gray-yellow: #FFFAE5;
+$gray-darker:                     #222;
+$gray-dark:                       #333;
+$gray:                            $steel-gray;
+$gray-light:                      #aaa;
+$gray-light-mid:                  #c5c5c5;
+$gray-lighter:                    #eee;
+$gray-lightest:                   #f8f8f8;
+$gray-yellow:                     #FFFAE5;
 
-// RGBA Transparents
-$c-black-transparent-1: rgba(0, 0, 0, .1);
-$c-black-transparent-4: rgba(0, 0, 0, .4);
-$c-black-transparent-5: rgba(0, 0, 0, .5);
+// *************************************
+//
+//   Variable Naming:
+//   c-{description}--{modifier}
+//
+//   'descriptions' include:
+//     absolute, stable, positive, calm,
+//     balanced, firm, energized, assertive
+//
+//   'modifiers' include:
+//     primary, secondary,
+//     accent, highlight, subdue
+//
+// *************************************
 
-$c-white-transparent-5: rgba(255, 255, 255, .5);
-$c-white-transparent-9: rgba(255, 255, 255, .9);
+$c-absolute:                      $black;
+$c-absent:                        $white;
 
-// Panels
-$panel-default-text:          $brand-primary;
-$panel-default-border:        $brand-primary;
-$panel-default-heading-bg:    $light-plum;
+// ----- Transparent ----- //
 
-$panel-primary-text:          #fff;
-$panel-primary-border:        $brand-primary;
-$panel-primary-heading-bg:    $brand-primary;
+$c-black-transparent-1:           rgba(0, 0, 0, .1);
+$c-black-transparent-4:           rgba(0, 0, 0, .4);
+$c-black-transparent-5:           rgba(0, 0, 0, .5);
 
-$panel-info-text:             #000;
-$panel-info-border:           darken($gray-lighter, 1%);
-$panel-info-heading-bg:       darken($gray-lighter, 1%);
+$c-white-transparent-5:           rgba(255, 255, 255, .5);
+$c-white-transparent-9:           rgba(255, 255, 255, .9);
 
-// Shepard Popovers
-$popover-outline: $coral;
+// -------------------------------------
+//   Bootstrap Variable Overrides
+// -------------------------------------
 
-// Mixins
-@mixin button-bg($bg) {
-  background: $bg;
+$brand-primary:                   $dark-blue;
+$brand-primary-dark:              #1d4a70;
+$primary-hover:                   lighten($brand-primary, 20%);
 
-  &:hover {
-    background: lighten($bg, 8%);
-  }
+$brand-info:                      #5bc0de;
+$brand-success:                   #5cb85c;
+$brand-warning:                   #f0ad4e;
+$brand-danger:                    $brand-warning;
 
-  &:active {
-    background: darken($bg, 10%);
-  }
-}
+$border-radius-value:             4px;
 
-@mixin keyframes($name) {
-  @-webkit-keyframes #{$name} {
-    @content;
-  }
-  @-moz-keyframes #{$name} {
-    @content;
-  }
-  @-ms-keyframes #{$name} {
-    @content;
-  }
-  @keyframes #{$name} {
-    @content;
-  }
-}
+$panel-default-text:              $brand-primary;
+$panel-default-border:            $brand-primary;
+$panel-default-heading-bg:        $light-plum;
 
-// ----- Sizes ----- //
+$panel-primary-text:              #fff;
+$panel-primary-border:            $brand-primary;
+$panel-primary-heading-bg:        $brand-primary;
 
-$b-space-s: 5px;
-$b-space: 10px;
-$b-space-m: 15px;
-$b-space-l: 20px;
-$b-space-xl: 40px;
+$panel-info-text:                 #000;
+$panel-info-border:               darken($gray-lighter, 1%);
+$panel-info-heading-bg:           darken($gray-lighter, 1%);
+
+// -------------------------------------
+//   Assorted
+// -------------------------------------
+
+$popover-outline:                 $coral;
+$transition-timing:               .3s;
+$large-bp:                        1182px;
+
+// -------------------------------------
+//   Sizes
+// -------------------------------------
+
+$b-space-s:                       5px;
+$b-space:                         10px;
+$b-space-m:                       15px;
+$b-space-l:                       20px;
+$b-space-xl:                      40px;
