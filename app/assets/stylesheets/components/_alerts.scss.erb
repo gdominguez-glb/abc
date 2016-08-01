@@ -16,7 +16,7 @@
 }
 
 .alert {
-  @include alert-variant(darken($light-blue, 15%), $dark-blue, $dark-blue);
+  @include alert-variant(darken($c-positive-highlight, 15%), $c-positive-secondary, $c-positive-secondary);
 
   position: relative;
   margin-bottom: $b-space;
@@ -43,11 +43,11 @@
 }
 
 .alert-success {
-  @include alert-variant($c-balanced, darken($c-balanced, 25%), $dark-blue);
+  @include alert-variant($c-balanced, darken($c-balanced, 25%), $c-positive-secondary);
 }
 
 .alert-info {
-  @include alert-variant(darken($light-blue, 15%), $dark-blue, $dark-blue);
+  @include alert-variant(darken($c-positive-highlight, 15%), $c-positive-secondary, $c-positive-secondary);
 }
 
 .alert-warning {

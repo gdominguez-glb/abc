@@ -25,13 +25,13 @@
   }
 
   &.btn-default {
-    border: 1px solid $dark-blue;
-    color: $dark-blue;
+    border: 1px solid $c-positive-secondary;
+    color: $c-positive-secondary;
     background-color: transparent;
 
     &:hover {
       color: $c-absolute;
-      background-color: $dark-blue;
+      background-color: $c-positive-secondary;
     }
 
     .blue-bg &,
@@ -40,7 +40,7 @@
       color: $c-absolute;
 
       &:hover {
-        color: $dark-blue;
+        color: $c-positive-secondary;
         background-color: $c-absolute;
       }
     }
@@ -51,9 +51,9 @@
 
     &.dropdown-toggle {
       padding: 10px 30px 10px 15px;
-      border: 1px solid $dark-blue;
+      border: 1px solid $c-positive-secondary;
       text-align: left;
-      color: $dark-blue;
+      color: $c-positive-secondary;
       background: transparent;
 
       .image-background & {
@@ -61,7 +61,7 @@
         color: $c-absolute;
 
         &:hover {
-          color: $dark-blue;
+          color: $c-positive-secondary;
           background-color: $c-absolute;
         }
       }
@@ -69,7 +69,7 @@
     }
 
     &[disabled] {
-      background-color: $steel-gray;
+      background-color: $c-stable-primary;
     }
   }
 
@@ -78,15 +78,15 @@
   }
 
   &.btn-primary {
-    @include button-variant($c-absolute, $dark-blue, darken($dark-blue, 5%));
+    @include button-variant($c-absolute, $c-positive-secondary, darken($c-positive-secondary, 5%));
   }
 
   &.btn-info {
-    @include button-variant($c-absolute, $english, darken($english, 5%));
+    @include button-variant($c-absolute, $c-positive-primary, darken($c-positive-primary, 5%));
   }
 
   &.btn-success {
-    @include button-variant($dark-blue, $c-balanced, $dark-blue);
+    @include button-variant($c-positive-secondary, $c-balanced, $c-positive-secondary);
   }
 
   &.btn-danger {
