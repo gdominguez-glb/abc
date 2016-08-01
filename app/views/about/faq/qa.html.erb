@@ -2,7 +2,7 @@
   <div class="col-sm-10 col-sm-offset-1 margin-top-xxl margin-bottom-xxl">
     <h3><%= @question.title %></h3>
     <p>
-      <%= simple_format @question.answer.try(:content) %>
+      <%= @question.answer.try(:content).html_safe rescue nil %>
     </p>
     <%= link_to 'Back', '/about/faq', class: 'btn btn-default btn-block-xs' %>
   </div>
