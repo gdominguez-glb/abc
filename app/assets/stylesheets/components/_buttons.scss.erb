@@ -30,18 +30,18 @@
     background-color: transparent;
 
     &:hover {
-      color: $c-absent;
+      color: $c-absolute;
       background-color: $dark-blue;
     }
 
     .blue-bg &,
     .image-bg & {
-      border-color: $c-absent;
-      color: $c-absent;
+      border-color: $c-absolute;
+      color: $c-absolute;
 
       &:hover {
         color: $dark-blue;
-        background-color: $c-absent;
+        background-color: $c-absolute;
       }
     }
 
@@ -57,12 +57,12 @@
       background: transparent;
 
       .image-background & {
-        border: 1px solid $c-absent;
-        color: $c-absent;
+        border: 1px solid $c-absolute;
+        color: $c-absolute;
 
         &:hover {
           color: $dark-blue;
-          background-color: $c-absent;
+          background-color: $c-absolute;
         }
       }
 
@@ -78,11 +78,11 @@
   }
 
   &.btn-primary {
-    @include button-variant($c-absent, $dark-blue, darken($dark-blue, 5%));
+    @include button-variant($c-absolute, $dark-blue, darken($dark-blue, 5%));
   }
 
   &.btn-info {
-    @include button-variant($c-absent, $english, darken($english, 5%));
+    @include button-variant($c-absolute, $english, darken($english, 5%));
   }
 
   &.btn-success {
@@ -90,7 +90,7 @@
   }
 
   &.btn-danger {
-    @include button-variant($c-absent, darken($coral, 10%), darken($coral, 15%));
+    @include button-variant($c-absolute, darken($coral, 10%), darken($coral, 15%));
   }
 
   &.btn-link {
@@ -204,7 +204,7 @@
 .dropdown-menu {
   width: 100%;
   padding: 0;
-  border: 1px solid $c-absolute;
+  border: 1px solid $c-depleted;
   background-color: $light-plum;
 
   @media screen and (min-width: $screen-sm-min) {
@@ -251,10 +251,10 @@
 
       .image-background & {
         @media screen and (min-width: $screen-sm-min) {
-          color: $c-absent;
+          color: $c-absolute;
 
           &:hover {
-            color: $c-absolute;
+            color: $c-depleted;
           }
         }
       }

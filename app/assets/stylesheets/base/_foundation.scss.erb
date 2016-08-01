@@ -82,7 +82,7 @@ section {
     h3,
     h6,
     p {
-      text-shadow: 0 0 3px $c-absolute;
+      text-shadow: 0 0 3px $c-depleted;
     }
   }
 
@@ -263,7 +263,7 @@ body.dragging * {
   bottom: 0;
   left: 0;
   z-index: -1;
-  background: $c-absolute;
+  background: $c-depleted;
   opacity: 0;
 }
 
@@ -292,7 +292,7 @@ body.dragging * {
     @include transition(opacity, $transition-timing);
 
     margin: 10px 0;
-    color: $c-absent;
+    color: $c-absolute;
   }
 
   .form-control {
@@ -382,7 +382,7 @@ body.dragging * {
 
 .row-img-full {
   padding: 0;
-  color: $c-absent;
+  color: $c-absolute;
   background-position: 0;
   background-size: cover;
 }
