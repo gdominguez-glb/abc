@@ -83,6 +83,13 @@
         </div>
       </div>
 
+      <div>
+        <div class="form-group field">
+          <%= f.label :grades %>
+          <%= f.hidden_field :grade_ids, value: @product.grade_ids.join(',') %>
+        </div>
+      </div>
+
       <div data-hook='new_product_video_group_id' class='col-md-4 <%= 'hidden' if f.object.product_type != 'video' %>'>
         <div class='form-group field' id='product_video_group'>
           <%= f.label :video_group %>

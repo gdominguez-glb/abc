@@ -1,24 +1,15 @@
 <table class="table sortable" id='listing_grades' data-hook  data-hook  data-sortable-link="<%= update_positions_admin_grades_url %>">
   <thead>
     <tr data-hook="grades_header">
-      <th class="no-border"></th>
       <th><%= Spree.t(:name) %></th>
-      <th><%= Spree.t(:abbr) %></th>
-      <th><%= Spree.t(:school) %></th>
       <th class="actions"></th>
     </tr>
   </thead>
   <tbody>
     <% @grades.each do |grade| %>
       <tr id="<%= spree_dom_id grade %>" data-hook="grades_row">
-        <td class="move-handle">
-          <span class="icon icon-sort handle"></span>
-        </td>
         <td><%= grade.name %></td>
-        <td><%= grade.abbr %></td>
-        <td><%= grade.school %></td>
         <td class="actions actions-2 text-right">
-          <%= link_to 'Manage Units', admin_grade_grade_units_path(grade), class: 'btn btn-primary btn-sm' %>
           <%= link_to_edit grade.id, no_text: true %>
           <%= link_to_delete grade, no_text: true %>
         </td>

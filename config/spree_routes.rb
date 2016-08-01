@@ -29,6 +29,7 @@ spree_routes_overrides = Proc.new do
       end
       collection do
         post :update_positions
+        get :search
       end
       resources :grade_units do
         collection do
