@@ -31,7 +31,7 @@
 
   &.nav-border-bottom {
     @media screen and (min-width: $screen-sm-min) {
-      border-bottom: 3px solid $coral;
+      border-bottom: 3px solid $c-energized-secondary;
     }
   }
 
@@ -62,7 +62,7 @@
 
   .navbar-nav {
     margin: 0 -15px;
-    background-color: $coral;
+    background-color: $c-energized-secondary;
     box-shadow: none;
 
     @media screen and (min-width: $screen-sm-min) {
@@ -79,7 +79,7 @@
     }
 
     [data-page='history'] & {
-      background-color: $history;
+      background-color: $c-energized-primary;
 
       @media screen and (min-width: $screen-sm-min) {
         background-color: transparent;
@@ -116,9 +116,9 @@
         a,
         a:hover,
         a:focus {
-          border-bottom: 1px solid $coral;
+          border-bottom: 1px solid $c-energized-secondary;
           color: $c-absolute;
-          background-color: darken($coral, 5%);
+          background-color: darken($c-energized-secondary, 5%);
 
           @media screen and (min-width: $screen-sm-min) {
             border: 0;
@@ -136,11 +136,11 @@
           }
 
           [data-page='history'] & {
-            border-bottom: 1px solid $history;
-            background-color: darken($history, 5%);
+            border-bottom: 1px solid $c-energized-primary;
+            background-color: darken($c-energized-primary, 5%);
 
             @media screen and (min-width: $screen-sm-min) {
-              color: $history;
+              color: $c-energized-primary;
             }
           }
 
@@ -155,7 +155,7 @@
 
           body.spree-store & {
             @media screen and (min-width: $screen-sm-min) {
-              color: $coral;
+              color: $c-energized-secondary;
             }
           }
 
@@ -179,7 +179,7 @@
           > li {
             > a {
               padding: 10px 15px 10px 25px;
-              border-bottom: 1px solid $coral;
+              border-bottom: 1px solid $c-energized-secondary;
               color: $c-absolute;
 
               [data-page='english'] &,
@@ -193,7 +193,7 @@
               }
 
               [data-page='history'] & {
-                border-bottom: 1px solid $history;
+                border-bottom: 1px solid $c-energized-primary;
               }
 
               [data-page='math'] & {
@@ -210,7 +210,7 @@
       }
 
       > a {
-        border-bottom: 1px solid darken($coral, 5%);
+        border-bottom: 1px solid darken($c-energized-secondary, 5%);
         color: $c-absolute;
 
         [data-page='english'] &,
@@ -224,7 +224,7 @@
         }
 
         [data-page='history'] & {
-          border-bottom: 1px solid darken($history, 5%);
+          border-bottom: 1px solid darken($c-energized-primary, 5%);
         }
 
         [data-page='math'] & {
@@ -280,7 +280,7 @@
           > a {
             &:hover,
             &:focus {
-              color: $history;
+              color: $c-energized-primary;
             }
           }
         }
@@ -298,14 +298,14 @@
           > a {
             &:hover,
             &:focus {
-              color: $coral;
+              color: $c-energized-secondary;
             }
           }
         }
       }
 
       &.search-button {
-        border-bottom: 1px solid darken($coral, 5%);
+        border-bottom: 1px solid darken($c-energized-secondary, 5%);
 
         @media screen and (min-width: $screen-sm-min) {
           border: 0;
@@ -316,7 +316,7 @@
         }
 
         [data-page='history'] & {
-          border-bottom: 1px solid darken($history, 5%);
+          border-bottom: 1px solid darken($c-energized-primary, 5%);
         }
 
         [data-page='math'] & {
@@ -367,7 +367,7 @@
 
     .navbar-collapse-toggle {
       padding: 0;
-      background-color: $coral;
+      background-color: $c-energized-secondary;
 
       @media screen and (min-width: $screen-sm-min) {
         display: none;
@@ -379,7 +379,7 @@
         padding: 10px 15px;
         border-bottom: 1px solid #ff461b;
         font-size: 13.6px;
-        background-color: $coral;
+        background-color: $c-energized-secondary;
 
         &:hover,
         &:active,
@@ -398,14 +398,14 @@
     .navbar-collapse {
       clear: both;
       padding: 10px 0 10px 25px;
-      background-color: $coral;
+      background-color: $c-energized-secondary;
 
       [data-page='english'] & {
         background-color: $c-positive-primary;
       }
 
       [data-page='history'] & {
-        background-color: $history;
+        background-color: $c-energized-primary;
       }
 
       [data-page='math'] & {
