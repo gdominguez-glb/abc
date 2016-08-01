@@ -35,7 +35,7 @@ body {
 
 .container-content {
   padding: 0 12px;
-  background-color: $light-plum;
+  background-color: $c-firm-highlight;
 }
 
 .row {
@@ -82,7 +82,7 @@ section {
     h3,
     h6,
     p {
-      text-shadow: 0 0 3px $c-absolute;
+      text-shadow: 0 0 3px $c-depleted;
     }
   }
 
@@ -209,8 +209,8 @@ body {
   @include animation(fade 1s);
 
   padding: 50px 0 0;
-  color: $dark-blue;
-  background: $gray-lighter;
+  color: $c-positive-secondary;
+  background: $c-firm-accent;
 
   @media screen and (min-width: $screen-sm-min) {
     padding: 0;
@@ -263,7 +263,7 @@ body.dragging * {
   bottom: 0;
   left: 0;
   z-index: -1;
-  background: $c-absolute;
+  background: $c-depleted;
   opacity: 0;
 }
 
@@ -277,8 +277,8 @@ body.dragging * {
   left: 0;
   z-index: 9999;
   height: 150px;
-  color: $cream;
-  background: rgba($dark-blue, .95);
+  color: $c-absolute;
+  background: rgba($c-positive-secondary, .95);
 
   @media screen and (min-width: $screen-sm-min) {
     height: 109px;
@@ -292,7 +292,7 @@ body.dragging * {
     @include transition(opacity, $transition-timing);
 
     margin: 10px 0;
-    color: $c-absent;
+    color: $c-absolute;
   }
 
   .form-control {
@@ -336,7 +336,7 @@ body.dragging * {
 }
 
 .coral-text {
-  color: $coral;
+  color: $c-energized-secondary;
 }
 
 .row-video-hero {
@@ -351,13 +351,13 @@ body.dragging * {
     &.cream-bg,
     &.light-blue-bg {
       .video-title {
-        color: $dark-blue;
+        color: $c-positive-secondary;
       }
     }
 
     &.image-bg {
       .video-title {
-        color: $brand-green;
+        color: $c-balanced;
       }
     }
 
@@ -382,7 +382,7 @@ body.dragging * {
 
 .row-img-full {
   padding: 0;
-  color: $c-absent;
+  color: $c-absolute;
   background-position: 0;
   background-size: cover;
 }
@@ -391,7 +391,7 @@ body.dragging * {
   padding: 60px 0;
 
   &.black-overlay {
-    background: rgba($dark-blue, .6);
+    background: rgba($c-positive-secondary, .6);
   }
 
   @media screen and (min-width: $screen-sm-min) {

@@ -84,18 +84,6 @@
   backface-visibility: $val;
 }
 
-@mixin shepherd-arrow($attached, $position, $border) {
-  &.shepherd-element-attached-#{$attached} {
-    &.shepherd-element-attached-#{$position} {
-      &.shepherd-has-title {
-        .shepherd-content::before {
-          border-#{$border}-color: $popover-outline;
-        }
-      }
-    }
-  }
-}
-
 @mixin placeholder-text-color {
   &::-webkit-input-placeholder {@content}
   &::-moz-placeholder {@content}
@@ -196,5 +184,48 @@
     height: auto;
     padding: $b-space-s $b-space !important;
     border-radius: 4px;
+  }
+}
+
+// -------------------------------------
+//   Assorted
+// -------------------------------------
+
+@mixin button-bg($bg) {
+  background: $bg;
+
+  &:hover {
+    background: lighten($bg, 8%);
+  }
+
+  &:active {
+    background: darken($bg, 10%);
+  }
+}
+
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+  @-ms-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+@mixin shepherd-arrow($attached, $position, $border) {
+  &.shepherd-element-attached-#{$attached} {
+    &.shepherd-element-attached-#{$position} {
+      &.shepherd-has-title {
+        .shepherd-content::before {
+          border-#{$border}-color: $popover-outline;
+        }
+      }
+    }
   }
 }

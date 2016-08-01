@@ -11,8 +11,8 @@
 }
 
 .sg-canvases {
-  border: 2px solid $gray-light;
-  background: $c-absent;
+  border: 2px solid $c-firm-primary;
+  background: $c-absolute;
 }
 
 .sg-canvas {
@@ -20,7 +20,7 @@
   border: 0;
 
   &.bg-light {
-    background: $c-absent;
+    background: $c-absolute;
   }
 
   > div {
@@ -83,23 +83,23 @@
   height: 100px;
 
   &.gray-darker {
-    background-color: $gray-darker;
+    background-color: $c-stable-subdue;
   }
 
   &.gray-dark {
-    background-color: $gray-dark;
+    background-color: $c-stable-secondary;
   }
 
   &.gray {
-    background-color: $gray;
+    background-color: $c-stable-primary
   }
 
   &.gray-light {
-    background-color: $gray-light;
+    background-color: $c-firm-primary;
   }
 
   &.gray-lighter {
-    background-color: $gray-lighter;
+    background-color: $c-firm-accent;
   }
 
 // -------------------------------------
@@ -109,23 +109,23 @@
 // -------------------------------------
 
   &.brand-primary {
-    background-color: $brand-primary;
+    background-color: $c-positive-secondary;
   }
 
   &.brand-success {
-    background-color: $brand-green;
+    background-color: $c-balanced;
   }
 
   &.brand-info {
-    background-color: $english;
+    background-color: $c-positive-primary;
   }
 
   &.brand-warning {
-    background-color: $history;
+    background-color: $c-energized-primary;
   }
 
   &.brand-danger {
-    background-color: $brand-danger;
+    background-color: $c-energized-highlight;
   }
 }
 
@@ -137,7 +137,7 @@
 
 .show-grid {
   div {
-    border: 1px solid $brand-primary;
-    background: rgba($brand-primary, .3);
+    border: 1px solid $c-positive-secondary;
+    background: rgba($c-positive-secondary, .3);
   }
 }

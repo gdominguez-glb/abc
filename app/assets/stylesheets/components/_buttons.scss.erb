@@ -25,23 +25,23 @@
   }
 
   &.btn-default {
-    border: 1px solid $dark-blue;
-    color: $dark-blue;
+    border: 1px solid $c-positive-secondary;
+    color: $c-positive-secondary;
     background-color: transparent;
 
     &:hover {
-      color: $c-absent;
-      background-color: $dark-blue;
+      color: $c-absolute;
+      background-color: $c-positive-secondary;
     }
 
     .blue-bg &,
     .image-bg & {
-      border-color: $c-absent;
-      color: $c-absent;
+      border-color: $c-absolute;
+      color: $c-absolute;
 
       &:hover {
-        color: $dark-blue;
-        background-color: $c-absent;
+        color: $c-positive-secondary;
+        background-color: $c-absolute;
       }
     }
 
@@ -51,25 +51,25 @@
 
     &.dropdown-toggle {
       padding: 10px 30px 10px 15px;
-      border: 1px solid $dark-blue;
+      border: 1px solid $c-positive-secondary;
       text-align: left;
-      color: $dark-blue;
+      color: $c-positive-secondary;
       background: transparent;
 
       .image-background & {
-        border: 1px solid $c-absent;
-        color: $c-absent;
+        border: 1px solid $c-absolute;
+        color: $c-absolute;
 
         &:hover {
-          color: $dark-blue;
-          background-color: $c-absent;
+          color: $c-positive-secondary;
+          background-color: $c-absolute;
         }
       }
 
     }
 
     &[disabled] {
-      background-color: $steel-gray;
+      background-color: $c-stable-primary;
     }
   }
 
@@ -78,19 +78,19 @@
   }
 
   &.btn-primary {
-    @include button-variant($c-absent, $dark-blue, darken($dark-blue, 5%));
+    @include button-variant($c-absolute, $c-positive-secondary, darken($c-positive-secondary, 5%));
   }
 
   &.btn-info {
-    @include button-variant($c-absent, $english, darken($english, 5%));
+    @include button-variant($c-absolute, $c-positive-primary, darken($c-positive-primary, 5%));
   }
 
   &.btn-success {
-    @include button-variant($dark-blue, $brand-green, $dark-blue);
+    @include button-variant($c-positive-secondary, $c-balanced, $c-positive-secondary);
   }
 
   &.btn-danger {
-    @include button-variant($c-absent, darken($coral, 10%), darken($coral, 15%));
+    @include button-variant($c-absolute, darken($c-energized-secondary, 10%), darken($c-energized-secondary, 15%));
   }
 
   &.btn-link {
@@ -204,8 +204,8 @@
 .dropdown-menu {
   width: 100%;
   padding: 0;
-  border: 1px solid $c-absolute;
-  background-color: $light-plum;
+  border: 1px solid $c-depleted;
+  background-color: $c-firm-highlight;
 
   @media screen and (min-width: $screen-sm-min) {
     width: auto;
@@ -213,7 +213,7 @@
 
   .image-background & {
     border: 0;
-    background: $c-white-transparent-9;
+    background: $c-transparent-highlight-9;
     box-shadow: inset 0 0 0 1px;
 
     @media screen and (min-width: $screen-sm-min) {
@@ -246,15 +246,15 @@
       }
 
       &:hover {
-        background-color: darken($light-plum, 5%);
+        background-color: darken($c-firm-highlight, 5%);
       }
 
       .image-background & {
         @media screen and (min-width: $screen-sm-min) {
-          color: $c-absent;
+          color: $c-absolute;
 
           &:hover {
-            color: $c-absolute;
+            color: $c-depleted;
           }
         }
       }

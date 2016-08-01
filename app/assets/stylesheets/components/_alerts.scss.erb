@@ -16,7 +16,7 @@
 }
 
 .alert {
-  @include alert-variant(darken($light-blue, 15%), $dark-blue, $dark-blue);
+  @include alert-variant(darken($c-positive-highlight, 15%), $c-positive-secondary, $c-positive-secondary);
 
   position: relative;
   margin-bottom: $b-space;
@@ -43,19 +43,19 @@
 }
 
 .alert-success {
-  @include alert-variant($brand-green, darken($brand-green, 25%), $dark-blue);
+  @include alert-variant($c-balanced, darken($c-balanced, 25%), $c-positive-secondary);
 }
 
 .alert-info {
-  @include alert-variant(darken($light-blue, 15%), $dark-blue, $dark-blue);
+  @include alert-variant(darken($c-positive-highlight, 15%), $c-positive-secondary, $c-positive-secondary);
 }
 
 .alert-warning {
-  @include alert-variant($brand-warning, darken($brand-warning, 25%), $c-absent);
+  @include alert-variant($c-energized-highlight, darken($c-energized-highlight, 25%), $c-absolute);
 }
 
 .alert-danger {
-  @include alert-variant($brand-danger, darken($brand-danger, 25%), $c-absent);
+  @include alert-variant($c-energized-highlight, darken($c-energized-highlight, 25%), $c-absolute);
 }
 
 .alert-fullwidth {

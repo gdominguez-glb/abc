@@ -12,7 +12,7 @@
 .spree-navbar {
   margin: 0 -15px;
   border: 0;
-  border-bottom: 1px solid $gray-light-mid;
+  border-bottom: 1px solid $c-firm-secondary;
   border-radius: 0;
 
   .navbar-header {
@@ -35,17 +35,17 @@
   }
 
   &.navbar-inverse {
-    border-color: darken($gray-lightest, 20%);
-    background: $gray-lightest;
+    border-color: darken($c-firm-highlight, 20%);
+    background: $c-firm-highlight;
 
     .navbar-toggle {
 
       &:hover {
-        background: $gray-lightest;
+        background: $c-firm-highlight;
       }
 
       .icon-bar {
-        background: $gray-dark;
+        background: $c-stable-secondary;
       }
     }
   }
@@ -56,12 +56,12 @@
 // -------------------------------------
 
 .admin {
-  background-color: $c-absent;
+  background-color: $c-absolute;
 
   .dropdown {
     &.user-menu {
       a {
-        color: $gray-dark !important;
+        color: $c-stable-secondary !important;
       }
 
       &.open {
@@ -100,27 +100,27 @@
     .btn {
 
       &:focus {
-        border-color: $brand-primary;
+        border-color: $c-positive-secondary;
         background-color: transparent;
 
         &:hover {
-          color: $brand-primary;
+          color: $c-positive-secondary;
 
           .icon {
-            color: $brand-primary;
+            color: $c-positive-secondary;
           }
         }
       }
 
       &:hover {
         .icon {
-          color: $c-absent;
+          color: $c-absolute;
         }
       }
     }
 
     .icon {
-      color: $brand-primary;
+      color: $c-positive-secondary;
     }
   }
 
@@ -186,7 +186,7 @@
       right: 6px;
       margin-top: 0;
       font-size: 16px;
-      color: $brand-primary;
+      color: $c-positive-secondary;
     }
 
     .icon-chevron-left {
@@ -206,7 +206,7 @@
 
     li {
       margin-bottom: $b-space-s;
-      border: 1px solid $brand-primary;
+      border: 1px solid $c-positive-secondary;
       border-radius: 3px;
 
       > a {
@@ -214,7 +214,7 @@
         font-size: 13px;
         font-weight: bold;
         letter-spacing: normal;
-        color: $brand-primary;
+        color: $c-positive-secondary;
         border-radius: 3px;
 
         &[data-toggle="collapse"] {
@@ -246,10 +246,10 @@
         }
 
         &.active.active {
-          border-color: $brand-primary;
+          border-color: $c-positive-secondary;
 
           > a {
-            color: $c-absent;
+            color: $c-absolute;
             border-radius: 0;
           }
         }
@@ -326,7 +326,7 @@
 .label-sold,
 .label-balance_due {
   a {
-    color: $brand-primary !important;
+    color: $c-positive-secondary !important;
   }
 }
 
@@ -334,7 +334,7 @@
   position: absolute;
   top: 38%;
   left: -7px;
-  color: $gray-light;
+  color: $c-firm-primary;
 }
 
 // Ensure filters stay attached to their cell
@@ -374,11 +374,11 @@
 
 .select2-choice.select2-choice {
   height: 39px;
-  border: 1px solid $dark-blue;
+  border: 1px solid $c-positive-secondary;
 }
 
 .select2-arrow.select2-arrow.select2-arrow {
-  border-left: 1px solid $dark-blue;
+  border-left: 1px solid $c-positive-secondary;
 
   [role="presentation"] {
     background-position-y: $b-space-s;
@@ -387,22 +387,22 @@
 
 .select2-drop.select2-drop {
   margin-top: -1px;
-  border: 1px solid $c-absolute;
+  border: 1px solid $c-depleted;
 }
 
 .select2-drop-active.select2-drop-active.select2-drop-active {
-  border: 1px solid $dark-blue;
+  border: 1px solid $c-positive-secondary;
 }
 
 .select2-result-label.select2-result-label.select2-result-label {
-  color: $c-absolute;
+  color: $c-depleted;
 }
 
 // ----- Search Select2 ----- //
 
 .select2-choices.select2-choices {
   height: 39px !important;
-  border: 1px solid $dark-blue;
+  border: 1px solid $c-positive-secondary;
   border-radius: 3px;
 }
 
@@ -412,5 +412,5 @@
 
 .select2-search-choice-close.select2-search-choice-close.select2-search-choice-close.select2-search-choice-close {
   top: 4px;
-  color: $dark-blue !important;
+  color: $c-positive-secondary !important;
 }

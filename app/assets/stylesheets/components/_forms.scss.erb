@@ -51,18 +51,18 @@ label {
 .form-control {
   height: auto;
   padding: 10px 15px;
-  border: 1px solid $dark-blue;
+  border: 1px solid $c-positive-secondary;
   font-size: .9em;
   line-height: 1.4em;
-  background-color: $light-plum;
+  background-color: $c-firm-highlight;
   box-shadow: none;
 
   @include placeholder-text-color {
-    color: $gray-light;
+    color: $c-firm-primary;
   }
 
   &:focus {
-    border: 1px solid $english;
+    border: 1px solid $c-positive-primary;
     box-shadow: none;
   }
 
@@ -72,9 +72,9 @@ label {
   }
 
   &.success {
-    border: 1px solid darken($brand-green, 25%);
-    color: $dark-blue;
-    background-color: $brand-green !important;
+    border: 1px solid darken($c-balanced, 25%);
+    color: $c-positive-secondary;
+    background-color: $c-balanced !important;
   }
 }
 
@@ -83,7 +83,7 @@ label {
 }
 
 .form-control[readonly] {
-  background: $gray-light;
+  background: $c-firm-primary;
 }
 
 .input-group {
@@ -102,24 +102,24 @@ label {
 
   .form-control {
     &:focus {
-      border-color: $dark-blue;
+      border-color: $c-positive-secondary;
     }
   }
 }
 
 .input-group-addon {
-  border-color: $dark-blue;
-  color: $dark-blue;
+  border-color: $c-positive-secondary;
+  color: $c-positive-secondary;
 }
 
 .input-group-btn {
   .btn {
-    border: 1px solid $dark-blue;
+    border: 1px solid $c-positive-secondary;
   }
 }
 
 .error {
-  color: $brand-danger;
+  color: $c-energized-highlight;
 }
 
 .radio {
@@ -141,7 +141,7 @@ label {
   position: relative;
   margin-bottom: 15px;
   padding: 10px 36px 10px 15px;
-  border: 1px solid $dark-blue;
+  border: 1px solid $c-positive-secondary;
   font-family: 'Karla', sans-serif;
   font-size: 14px;
   text-transform: uppercase;
@@ -192,8 +192,8 @@ label {
   &.dark-select {
 
     &:hover {
-      color: $cream;
-      background: $dark-blue;
+      color: $c-absolute;
+      background: $c-positive-secondary;
     }
   }
 
@@ -258,7 +258,7 @@ label {
           @extend .sans-serif;
 
           padding: 0;
-          color: $dark-blue;
+          color: $c-positive-secondary;
         }
       }
 
@@ -268,7 +268,7 @@ label {
     }
 
     &.select2-container-active {
-      border: 1px solid $english;
+      border: 1px solid $c-positive-primary;
 
       .select2-choices {
         border: 0;
@@ -301,13 +301,13 @@ label {
 
 .select2-drop {
   margin-top: 2px;
-  background-color: $light-plum;
+  background-color: $c-firm-highlight;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
 }
 
 .select2-drop-active {
-  border: 1px solid $c-absolute;
+  border: 1px solid $c-depleted;
 }
 
 .select2-search {
@@ -340,14 +340,14 @@ label {
     text-transform: uppercase;
 
     &:hover {
-      color: $c-absolute;
-      background-color: darken($light-plum, 5%);
+      color: $c-depleted;
+      background-color: darken($c-firm-highlight, 5%);
     }
   }
 
   .select2-highlighted {
-    color: $c-absolute;
-    background-color: darken($light-plum, 5%);
+    color: $c-depleted;
+    background-color: darken($c-firm-highlight, 5%);
   }
 
   .select2-result-label {
