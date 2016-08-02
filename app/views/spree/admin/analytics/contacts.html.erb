@@ -8,7 +8,7 @@
   <% if params[:topic].blank? %>
     <div class="row sans-serif padding-bottom-s">
       <div class="col-sm-3 text-right-sm"><strong>Total</strong></div>
-      <div class="col-sm-6"><strong class="text-danger"><%= @total_contacts %></strong></div>
+      <div class="col-sm-6"><strong class="text--danger"><%= @total_contacts %></strong></div>
     </div>
     <% @topics_breakdown.each do |breakdown| %>
       <% percent = @total_contacts > 0 ? ((breakdown.topic_count / @total_contacts.to_f) * 100) : 0 %>

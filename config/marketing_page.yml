@@ -21,7 +21,7 @@ marketing_templates:
       </style>
       <div id="tileRoleSelectorHero<%= position %>" class="row intro masthead image-bg">
         <div class="col-xs-12 masthead-content text-center">
-          <h5 class="home-mast-intro bold"><%= title %> <span class="text-success"><% if defined?(title_highlight) && title_highlight.present? %><%= title_highlight %><% end %></span></h5>
+          <h5 class="home-mast-intro bold"><%= title %> <span class="text--success"><% if defined?(title_highlight) && title_highlight.present? %><%= title_highlight %><% end %></span></h5>
           <div id="pageSelection">
             <div class="btn-group fixed-width image-background">
               <button class="btn btn-default btn-block-xs margin-sm-bottom-m dropdown-toggle" type="button" id="dropdownRole" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">

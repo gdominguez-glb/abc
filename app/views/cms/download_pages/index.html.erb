@@ -20,7 +20,7 @@
             <td><%= "/download_pages/#{download_page.slug}" %></td>
             <td><%= link_to 'Manage Products', cms_download_page_download_products_path(download_page) %></td>
             <td><%= link_to 'Edit', edit_cms_download_page_path(download_page) %></td>
-            <td><%= link_to 'Destroy', [:cms, download_page], method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-danger' %></td>
+            <td><%= link_to 'Destroy', [:cms, download_page], method: :delete, data: { confirm: 'Are you sure?' }, class: 'text--danger' %></td>
           </tr>
         <% end %>
       </tbody>
