@@ -9,6 +9,6 @@ Spree::HomeController.class_eval do
     else
       @products = @products.sort_group_first
     end
-    @products = @products.unarchive.page(params[:page]).per(10)
+    @products = @products.unexpire.unarchive.page(params[:page]).per(10)
   end
 end
