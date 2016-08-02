@@ -103,10 +103,10 @@ marketing_templates:
             <h6><%= title %></h6>
             <p><%= body_text %></p>
             <% if button_1_title.present? && button_1_link.present? %>
-              <a class="btn btn-default btn-block-xs margin-bottom-m" href="<%= button_1_link %>" target="<%= button_1_target %>"><%= button_1_title %></a>
+              <a class="btn btn-default btn-block-xs margin-bottom--m" href="<%= button_1_link %>" target="<%= button_1_target %>"><%= button_1_title %></a>
             <% end %>
             <% if button_2_title.present? && button_2_link.present? %>
-              <a class="btn btn-default btn-block-xs margin-bottom-m" href="<%= button_2_link %>" target="<%= button_2_target %>"><%= button_2_title %></a>
+              <a class="btn btn-default btn-block-xs margin-bottom--m" href="<%= button_2_link %>" target="<%= button_2_target %>"><%= button_2_title %></a>
             <% end %>
           </div>
         </div>
@@ -141,7 +141,7 @@ marketing_templates:
                 <% button_target = '_blank' %>
               <% end %>
 
-              <a class="btn btn-default btn-block-xs margin-bottom-m" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+              <a class="btn btn-default btn-block-xs margin-bottom--m" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
             <% end %>
           </div>
         </div>
@@ -168,10 +168,10 @@ marketing_templates:
             <h6><%= title %></h6>
             <p><%= body_text %></p>
             <% if button_1_title.present? && button_1_link.present? %>
-              <a class="btn btn-default btn-block-xs margin-bottom-m" href="<%= button_1_link %>" target="<%= button_1_target %>"><%= button_1_title %></a>
+              <a class="btn btn-default btn-block-xs margin-bottom--m" href="<%= button_1_link %>" target="<%= button_1_target %>"><%= button_1_title %></a>
             <% end %>
             <% if button_2_title.present? && button_2_link.present? %>
-              <a class="btn btn-default btn-block-xs margin-bottom-m" href="<%= button_2_link %>" target="<%= button_2_target %>"><%= button_2_title %></a>
+              <a class="btn btn-default btn-block-xs margin-bottom--m" href="<%= button_2_link %>" target="<%= button_2_target %>"><%= button_2_title %></a>
             <% end %>
           </div>
         </div>
@@ -485,7 +485,7 @@ marketing_templates:
                 <% else %>
                   <% button_target = '_blank' %>
                 <% end %>
-                <a class="btn btn-default btn-block-xs margin-bottom-s" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+                <a class="btn btn-default btn-block-xs margin-bottom--s" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
               <% end %>
             </div>
           </div>
@@ -526,7 +526,7 @@ marketing_templates:
                 <% else %>
                   <% button_target = '_blank' %>
                 <% end %>
-                <a class="btn btn-default btn-block-xs margin-bottom-s" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+                <a class="btn btn-default btn-block-xs margin-bottom--s" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
               <% end %>
             </div>
           </div>
@@ -565,7 +565,7 @@ marketing_templates:
                 <% else %>
                   <% button_target = '_blank' %>
                 <% end %>
-                <a class="btn btn-default btn-block-xs margin-bottom-s" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+                <a class="btn btn-default btn-block-xs margin-bottom--s" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
               <% end %>
             </div>
           </div>
@@ -606,7 +606,7 @@ marketing_templates:
                 <% else %>
                   <% button_target = '_blank' %>
                 <% end %>
-                <a class="btn btn-default btn-block-xs margin-bottom-s" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+                <a class="btn btn-default btn-block-xs margin-bottom--s" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
               <% end %>
             </div>
           </div>

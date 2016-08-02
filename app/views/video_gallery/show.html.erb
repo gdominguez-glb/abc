@@ -1,15 +1,15 @@
 <div class="row">
-  <div class="col-sm-10 col-sm-offset-1 margin-top-xxl margin-bottom-xl">
+  <div class="col-sm-10 col-sm-offset-1 margin-top--xxl margin-bottom--xl">
     <div class="row">
       <div class="col-xs-12">
-        <%= link_to video_gallery_index_path, class: 'btn btn-default btn-block-xs margin-bottom-m' do %>
+        <%= link_to video_gallery_index_path, class: 'btn btn-default btn-block-xs margin-bottom--m' do %>
           <i class="mi">keyboard_arrow_left</i> Back
         <% end %>
       </div>
     </div>
     <div class="row">
       <div class="col-sm-6">
-        <div class="embed-responsive embed-responsive-16by9 margin-bottom-l">
+        <div class="embed-responsive embed-responsive-16by9 margin-bottom--l">
           <% if can_play_video?(@video) %>
             <% if @video.wistia_ready? %>
               <iframe src="//fast.wistia.net/embed/iframe/<%= @video.wistia_hashed_id %>" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" id="wistia-iframe" name="wistia_embed" width="560" height="400"></iframe>
@@ -27,7 +27,7 @@
             <%= @video.title %>
           </h2>
         </div>
-        <p class="padding-top-m padding-bottom">
+        <p class="padding-top--m padding-bottom">
           <%= @video.description %>
         </p>
 

@@ -82,7 +82,7 @@
     <div class="col-sm-6">
       <div class="form-group">
         <label>Select your Role</label>
-        <div class="select-container dark-select block margin-bottom-reset">
+        <div class="select-container dark-select block margin-bottom--reset">
           <span>Please select your role</span>
           <%= f.select :title, options_for_select(USER_TITLES, f.object.title), { prompt: 'Please select your role' }, { class: 'form-control', tabindex: 9 } %>
         </div>

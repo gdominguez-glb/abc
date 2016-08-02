@@ -1,12 +1,12 @@
 <% selected_option = current_spree_user.managed_products_options.find{|o| o[1] == params[:licenses_ids] } || current_spree_user.managed_products_options.first %>
 <%  if current_spree_user.managed_products_options.count > 1 %>
-  <p class="small inline margin-bottom-reset"><em>Your Licenses for:</em></p>
-  <div class="select-container dark-select margin-xs-left-m margin-bottom-s">
+  <p class="small inline margin-bottom--reset"><em>Your Licenses for:</em></p>
+  <div class="select-container dark-select margin-xs-left-m margin-bottom--s">
     <span><%= selected_option[0] %></span>
     <%= select_tag :licenses_ids, options_for_select(current_spree_user.managed_products_options, selected_option[1]), class: 'licenses-select form-control inline-input' %>
   </div>
 <%  elsif current_spree_user.managed_products_options.count == 1 %>
-  <p class="small margin-bottom-reset"><em>Your Licenses for: <span id="licenseDescription">
+  <p class="small margin-bottom--reset"><em>Your Licenses for: <span id="licenseDescription">
   <%= selected_option[0] %>
   <%= hidden_field_tag :licenses_ids, selected_option[1]  %>
   </span></em></p>
