@@ -3,6 +3,8 @@ class Spree::CouponCode < ActiveRecord::Base
 
   has_and_belongs_to_many :products, class_name: 'Spree::Product', join_table: :spree_coupon_codes_products
 
+  validates_presence_of :total_quantity
+
   before_validation :generate_code, on: :create
 
   def grades_to_select
@@ -13,6 +15,26 @@ class Spree::CouponCode < ActiveRecord::Base
         where spree_coupon_codes_products.coupon_code_id = #{self.id}
     SQL
     Spree::Grade.find_by_sql(sql)
+  end
+
+  def available?
+    (used_quantity || 0) < total_quantity
+  end
+
+  def products_of_grade(grade_id)
+    sql = <<-SQL
+      select distinct(spree_products.*) from spree_products
+        join spree_grades_products on spree_grades_products.product_id = spree_products.id
+        join spree_coupon_codes_products on spree_coupon_codes_products.product_id = spree_grades_products.product_id
+        where spree_coupon_codes_products.coupon_code_id = #{self.id} and spree_grades_products.grade_id = #{grade_id}
+    SQL
+    Spree::Product.find_by_sql(sql)
+  end
+
+  def increase_used_quantity!
+    self.used_quantity ||= 0
+    self.used_quantity += 1
+    self.save
   end
 
   private
