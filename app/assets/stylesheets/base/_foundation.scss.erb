@@ -46,6 +46,23 @@ body {
   background-color: $c-firm-highlight;
 }
 
+.wrapper {
+  @include clearfix;
+
+  position: relative;
+  padding: 0 15px;
+
+  @media screen and (min-width: $screen-sm-min) {
+    margin-right: -8.333%;
+    margin-left: -8.333%;
+    padding: 0 60px;
+  }
+
+  @media screen and (min-width: $screen-lg-min) {
+    margin: 0;
+  }
+}
+
 // -------------------------------------
 //   Grid
 // -------------------------------------
@@ -74,89 +91,4 @@ footer > .row {
   @media screen and (min-width: $screen-xs-min) {
     padding: 0 60px;
   }
-}
-
-.overlay {
-  @include transition(all, $transition-timing);
-
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: -1;
-  background: $c-depleted;
-  opacity: 0;
-}
-
-.search-overlay {
-  @include translate(0, -100%);
-  @include transition(all, $transition-timing);
-
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  z-index: 9999;
-  height: 150px;
-  color: $c-absolute;
-  background: rgba($c-positive-secondary, .95);
-
-  @media screen and (min-width: $screen-sm-min) {
-    height: 109px;
-  }
-
-  &.show-search {
-    @include translate(0, 0);
-  }
-
-  .close {
-    @include transition(opacity, $transition-timing);
-
-    margin: 10px 0;
-    color: $c-absolute;
-  }
-
-  .form-control {
-    width: 100%;
-    margin-bottom: 10px;
-    padding: 10px 15px;
-    line-height: 20px;
-  }
-}
-
-.wrapper {
-  @include clearfix;
-
-  position: relative;
-  padding: 0 15px;
-
-  @media screen and (min-width: $screen-sm-min) {
-    margin-right: -8.333%;
-    margin-left: -8.333%;
-    padding: 0 60px;
-  }
-
-  @media screen and (min-width: $screen-lg-min) {
-    margin: 0;
-  }
-}
-
-.page-header {
-  margin: 30px 0 0;
-  padding: 0;
-  border: 0;
-  text-align: center;
-
-  @media screen and (min-width: $screen-xs-min) {
-    margin: 64px 0;
-  }
-
-  h2 {
-    line-height: 1.1em;
-  }
-}
-
-.coral-text {
-  color: $c-energized-secondary;
 }
