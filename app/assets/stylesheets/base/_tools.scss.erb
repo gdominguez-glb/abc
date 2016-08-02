@@ -58,107 +58,6 @@
 }
 
 // -------------------------------------
-//   Responsive
-// -------------------------------------
-
-.col-lg-offset-halfone {
-  @media screen and (min-width: $screen-lg-min) {
-    width: 62.3333% !important;
-    margin-left: 4.3333% !important;
-  }
-}
-
-.img-responsive {
-  width: 100% !important;
-
-  @media screen and (min-width: $screen-xs-min) {
-    width: auto !important;
-    margin: 0 auto !important;
-  }
-}
-
-.embed-responsive {
-  border: 1px solid $c-absolute !important;
-}
-
-.embed-responsive-4by4 {
-  padding-bottom: 100% !important;
-  border: 0 !important;
-}
-
-.pull-right-sm {
-  @media screen and (min-width: $screen-sm-min) {
-    float: right !important;
-  }
-}
-
-.text-left-sm {
-  @media screen and (min-width: $screen-sm-min) {
-    text-align: left !important;
-  }
-}
-
-.text-right-sm {
-  @media screen and (min-width: $screen-sm-min) {
-    text-align: right !important;
-  }
-}
-
-.text-right-lg {
-  @media screen and (min-width: $screen-lg-min) {
-    text-align: right !important;
-  }
-}
-
-.margin-sm-bottom-m {
-  margin-bottom: $b-space-m !important;
-
-  @media screen and (min-width: $screen-sm-min) {
-    margin-bottom: 0 !important;
-  }
-}
-
-.margin-sm-bottom-xl {
-  margin-bottom: $b-space-xl !important;
-
-  @media screen and (min-width: $screen-sm-min) {
-    margin-bottom: 0 !important;
-  }
-}
-
-.margin-xs-left-xl {
-  margin-left: 0 !important;
-
-  @media screen and (min-width: $screen-sm-min) {
-    margin-left: $b-space-xl !important;
-  }
-}
-
-.margin-xs-left-m {
-  margin-left: 0 !important;
-
-  @media screen and (min-width: $screen-sm-min) {
-    margin-left: $b-space-m !important;
-  }
-}
-
-.margin-sm-top {
-  margin-top: 0 !important;
-
-  @media screen and (min-width: $screen-sm-min) {
-    margin-top: $b-space !important;
-  }
-}
-
-.padding-xs-horiz-xl {
-  padding: 0 12px !important;
-
-  @media screen and (min-width: $screen-sm-min) {
-    padding: 0 $b-space-xl !important;
-  }
-}
-
-// -------------------------------------
 //   Text
 // -------------------------------------
 
@@ -180,22 +79,6 @@
 
 .text--lowercase {
   text-transform: lowercase !important;
-}
-
-// -------------------------------------
-//   Borders
-// -------------------------------------
-
-.border-right-primary {
-  @media screen and (min-width: $screen-sm-min) {
-    border-right: 1px solid $c-positive-secondary !important;
-  }
-}
-
-.border-left-primary {
-  @media screen and (min-width: $screen-sm-min) {
-    border-left: 1px solid $c-positive-secondary !important;
-  }
 }
 
 // -------------------------------------
@@ -440,4 +323,129 @@
 
 .margin-bottom-1_2 {
   margin-bottom: $b-space * 1.2 !important;
+}
+
+// -------------------------------------
+//   Responsive
+// -------------------------------------
+
+// ----- Grid ----- //
+
+.col-lg-offset-halfone {
+  @media screen and (min-width: $screen-lg-min) {
+    width: 62.3333% !important;
+    margin-left: 4.3333% !important;
+  }
+}
+
+// ----- Media ----- //
+
+.img-responsive {
+  width: 100% !important;
+
+  @media screen and (min-width: $screen-xs-min) {
+    width: auto !important;
+    margin: 0 auto !important;
+  }
+}
+
+.embed-responsive {
+  border: 1px solid $c-absolute !important;
+}
+
+.embed-responsive-4by4 {
+  padding-bottom: 100% !important;
+  border: 0 !important;
+}
+
+// ----- Alignment ----- //
+
+.pull-right-sm {
+  @media screen and (min-width: $screen-sm-min) {
+    float: right !important;
+  }
+}
+
+.text-left-sm {
+  @media screen and (min-width: $screen-sm-min) {
+    text-align: left !important;
+  }
+}
+
+.text-right-sm {
+  @media screen and (min-width: $screen-sm-min) {
+    text-align: right !important;
+  }
+}
+
+.text-right-lg {
+  @media screen and (min-width: $screen-lg-min) {
+    text-align: right !important;
+  }
+}
+
+// ----- Padding ----- //
+
+.padding-xs-horiz-xl {
+  padding: 0 12px !important;
+
+  @media screen and (min-width: $screen-sm-min) {
+    padding: 0 $b-space-xl !important;
+  }
+}
+
+// ----- Border ----- //
+
+.border-right-primary {
+  @media screen and (min-width: $screen-sm-min) {
+    border-right: 1px solid $c-positive-secondary !important;
+  }
+}
+
+.border-left-primary {
+  @media screen and (min-width: $screen-sm-min) {
+    border-left: 1px solid $c-positive-secondary !important;
+  }
+}
+
+// ----- Margin ----- //
+
+.margin-sm-bottom-m {
+  margin-bottom: $b-space-m !important;
+
+  @media screen and (min-width: $screen-sm-min) {
+    margin-bottom: 0 !important;
+  }
+}
+
+.margin-sm-bottom-xl {
+  margin-bottom: $b-space-xl !important;
+
+  @media screen and (min-width: $screen-sm-min) {
+    margin-bottom: 0 !important;
+  }
+}
+
+.margin-xs-left-xl {
+  margin-left: 0 !important;
+
+  @media screen and (min-width: $screen-sm-min) {
+    margin-left: $b-space-xl !important;
+  }
+}
+
+.margin-xs-left-m {
+  margin-left: 0 !important;
+
+  @media screen and (min-width: $screen-sm-min) {
+    margin-left: $b-space-m !important;
+  }
+}
+
+.margin-sm-top {
+  margin-top: 0 !important;
+
+  @media screen and (min-width: $screen-sm-min) {
+    margin-top: $b-space !important;
+  }
 }
