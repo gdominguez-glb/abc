@@ -11,10 +11,10 @@ pages:
     group_root: true
     body: !xml |
       <div class="row margin-top--xxl">
-      	<div class="col-sm-5 col-sm-offset-1 text-left-sm">
+      	<div class="col-sm-5 col-sm-offset-1 text-left--sm-min">
       		<h2>Terms of Service</h2>
       	</div>
-      	<div class="col-sm-5 text-right-sm margin-top--m margin-bottom--m">
+      	<div class="col-sm-5 text-right--sm-min margin-top--m margin-bottom--m">
       		<strong>Questions call: (123)0456-7890</strong>
       	</div>
       </div>

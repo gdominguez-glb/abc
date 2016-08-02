@@ -15,7 +15,7 @@
           <%= text_field_tag :query, params[:query], class: 'form-control margin-bottom--1_2', placeholder: 'Search' %>
         <% end %>
       </div>
-      <div class="col-sm-6 col-md-7 col-lg-8 col-lg-offset-halfone">
+      <div class="col-sm-6 col-md-7 col-lg-8 col-lg-offset--halfone--lg-min">
 
         <% if teach_eureka_selected? && document = Document.find_by(attachment_file_name: "teach_eureka-viewing_guide.pdf") %>
           <p>

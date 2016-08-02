@@ -11,7 +11,7 @@
               <%= render partial: 'material', locals: { material: bookmark.bookmarkable } %>
             <% end %>
           </div>
-          <div class="col-sm-6 text-right-sm">
+          <div class="col-sm-6 text-right--sm-min">
             <%= link_to account_bookmark_path(bookmark), data: { method: :delete }, class: 'btn btn-default' do %>
               <i class="mi">bookmark</i> Remove Bookmark
             <% end %>

@@ -18,7 +18,7 @@
 
   <% if current_spree_user.managed_products_options.size > 0 %>
     <div class="row">
-      <div class="js-step-1 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 margin-bottom--xl padding-xs-horiz-xl">
+      <div class="js-step-1 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 margin-bottom--xl padding-horiz--sm-min--horiz-xl">
         <p class="sans-serif"><strong>1. Select product to assign</strong></p>
         <% selected_option = current_spree_user.managed_products_options.find{|o| o[1] == params[:licenses_ids] } %>
         <%= f.hidden_field :licenses_ids, :value => selected_option.nil? ? "" : selected_option[1] %>
@@ -45,13 +45,13 @@
     <%= render 'stats' %>
 
     <div class="row margin-bottom--xxl license-steps">
-      <div class="js-step-2 col-sm-6 col-lg-5 col-lg-offset-1 margin-bottom--xl padding-xs-horiz-xl">
+      <div class="js-step-2 col-sm-6 col-lg-5 col-lg-offset-1 margin-bottom--xl padding-horiz--sm-min--horiz-xl">
         <p class="sans-serif"><strong>2. Select users to assign</strong></p>
         <small class="js-success-message hide margin-bottom--s block sans-serif">You successfully added <span class="js-number-total"></span> user</small>
         <a href="#" class="btn btn-default btn-block margin-bottom" id="show-add-users-modal-btn">Add Users</a>
         <%= f.hidden_field :licenses_recipients %>
       </div>
-      <div class="js-step-3 col-sm-6 col-lg-5 border-left-primary margin-bottom--xl padding-xs-horiz-xl">
+      <div class="js-step-3 col-sm-6 col-lg-5 border-left--primary--sm-min margin-bottom--xl padding-horiz--sm-min--horiz-xl">
         <p class="sans-serif"><strong>3. Select quantity of licenses to assign</strong></p>
         <div class="row">
           <div class="col-sm-6">

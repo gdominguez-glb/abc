@@ -331,7 +331,7 @@
 
 // ----- Grid ----- //
 
-.col-lg-offset-halfone {
+.col-lg-offset--halfone--lg-min {
   @media screen and (min-width: $screen-lg-min) {
     width: 62.3333% !important;
     margin-left: 4.3333% !important;
@@ -360,25 +360,25 @@
 
 // ----- Alignment ----- //
 
-.pull-right-sm {
+.pull-right--sm-min {
   @media screen and (min-width: $screen-sm-min) {
     float: right !important;
   }
 }
 
-.text-left-sm {
+.text-left--sm-min {
   @media screen and (min-width: $screen-sm-min) {
     text-align: left !important;
   }
 }
 
-.text-right-sm {
+.text-right--sm-min {
   @media screen and (min-width: $screen-sm-min) {
     text-align: right !important;
   }
 }
 
-.text-right-lg {
+.text-right--lg-min {
   @media screen and (min-width: $screen-lg-min) {
     text-align: right !important;
   }
@@ -386,7 +386,7 @@
 
 // ----- Padding ----- //
 
-.padding-xs-horiz-xl {
+.padding-horiz--sm-min--horiz-xl {
   padding: 0 12px !important;
 
   @media screen and (min-width: $screen-sm-min) {
@@ -396,13 +396,13 @@
 
 // ----- Border ----- //
 
-.border-right-primary {
+.border-right--primary--sm-min {
   @media screen and (min-width: $screen-sm-min) {
     border-right: 1px solid $c-positive-secondary !important;
   }
 }
 
-.border-left-primary {
+.border-left--primary--sm-min {
   @media screen and (min-width: $screen-sm-min) {
     border-left: 1px solid $c-positive-secondary !important;
   }
@@ -410,7 +410,7 @@
 
 // ----- Margin ----- //
 
-.margin-sm-bottom-m {
+.margin-bottom--m--sm-min {
   margin-bottom: $b-space-m !important;
 
   @media screen and (min-width: $screen-sm-min) {
@@ -418,7 +418,7 @@
   }
 }
 
-.margin-sm-bottom-xl {
+.margin-bottom--xl--sm-min {
   margin-bottom: $b-space-xl !important;
 
   @media screen and (min-width: $screen-sm-min) {
@@ -426,15 +426,7 @@
   }
 }
 
-.margin-xs-left-xl {
-  margin-left: 0 !important;
-
-  @media screen and (min-width: $screen-sm-min) {
-    margin-left: $b-space-xl !important;
-  }
-}
-
-.margin-xs-left-m {
+.margin-left--sm-min--m {
   margin-left: 0 !important;
 
   @media screen and (min-width: $screen-sm-min) {
@@ -442,7 +434,15 @@
   }
 }
 
-.margin-sm-top {
+.margin-left--sm-min--xl {
+  margin-left: 0 !important;
+
+  @media screen and (min-width: $screen-sm-min) {
+    margin-left: $b-space-xl !important;
+  }
+}
+
+.margin-top--sm-min {
   margin-top: 0 !important;
 
   @media screen and (min-width: $screen-sm-min) {
