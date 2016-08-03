@@ -37,7 +37,7 @@ module DataSyncer
 
     def import_model_from_yaml_file(file_path)
       klass = find_klass_from_file_name(File.basename(file_path))
-      klass.destroy_all if klass != Document
+      klass.destroy_all if ![Document, Page].include?(klass)
       klass.transaction do
         YAML.load_file(file_path).each do |attrs|
           choose_klass_importer(klass).create(attrs)
