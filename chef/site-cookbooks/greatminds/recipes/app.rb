@@ -37,17 +37,21 @@ template "#{path}/application.yml" do
   group node['group']
 end
 
-# set unicorn config
-template "/etc/init.d/unicorn_#{node['app']}" do
-  source "unicorn.sh.erb"
-  mode 0755
-  owner node['user']['name']
-  group node['group']
-end
+if node['app_server'] == 'true'
 
-# add init script link
-execute "update-rc.d unicorn_#{node['app']} defaults" do
-  not_if "ls /etc/rc2.d | grep unicorn_#{node['app']}"
+  # set unicorn config
+  template "/etc/init.d/unicorn_#{node['app']}" do
+    source "unicorn.sh.erb"
+    mode 0755
+    owner node['user']['name']
+    group node['group']
+  end
+
+  # add init script link
+  execute "update-rc.d unicorn_#{node['app']} defaults" do
+    not_if "ls /etc/rc2.d | grep unicorn_#{node['app']}"
+  end
+
 end
 
 # add logrotate config file
