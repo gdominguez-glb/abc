@@ -72,11 +72,10 @@ class MaterialsController < ApplicationController
   private
 
   def set_material
-    material = Spree::Material.find(params[:id])
-    if material.product.free?
-      @material = material
-    else
-      @material = current_spree_user.materials.reorder('spree_materials.id asc').find(material.id)
+    @material = Spree::Material.find(params[:id])
+    if !(@material.product.free? || current_spree_user.accessible_products.where(id: @material.product_id).exists?)
+      flash[:error] = "Your're not allowed to view the file."
+      redirect_to root_path and return
     end
     @product = @material.product
   end
@@ -86,7 +85,7 @@ class MaterialsController < ApplicationController
     if product.free?
       @product = product
     else
-      @product = current_spree_user.products.find(product.id)
+      @product = current_spree_user.accessible_products.find(product.id)
     end
   end
 
