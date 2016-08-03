@@ -6,6 +6,7 @@
     "recipe[greatminds::monit]",
     "recipe[greatminds::nodejs]",
     "recipe[greatminds::elasticsearch]",
+    "recipe[greatminds::mysql]",
     "recipe[greatminds::postgres_lib]",
     "recipe[greatminds::imagemagick]",
     "recipe[greatminds::rbenv]",
