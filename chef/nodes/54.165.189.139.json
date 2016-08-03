@@ -43,6 +43,7 @@
   "domain": "greatminds.org",
   "the_domain": "greatminds.org",
   "redis_host": "172.31.0.166",
+  "elasticsearch_url": "172.31.61.66",
   "db_server": "true",
   "worker_server": "true",
   "witeng_link_domain": "witeng.link",
