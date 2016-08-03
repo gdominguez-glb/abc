@@ -7,8 +7,8 @@
 <div class="well">
   <%= form_tag '', method: :get do %>
     <div class="date-range-filter">
-      <div class="form-group margin-bottom-reset">
-        <div class="row padding-bottom-reset">
+      <div class="form-group margin-bottom--reset">
+        <div class="row padding-bottom--reset">
           <div class="col-md-4">
             <div class="input-group">
               <%= text_field_tag :start_date, params[:start_date], :class => 'datepicker datepicker-from form-control', :placeholder => Spree.t(:start) %>
@@ -33,7 +33,7 @@
     </div>
   <% end %>
 
-  <div class="row padding-bottom-reset">
+  <div class="row padding-bottom--reset">
 
     <div class="col-md-10">
       <div class="row sans-serif">

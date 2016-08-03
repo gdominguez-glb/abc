@@ -82,7 +82,7 @@
     <div class="col-sm-6">
       <div class="form-group">
         <label>Select your Role</label>
-        <div class="select-container dark-select block margin-bottom-reset">
+        <div class="select-container dark-select block margin-bottom--reset">
           <span>Please select your role</span>
           <%= f.select :title, options_for_select(USER_TITLES, f.object.title), { prompt: 'Please select your role' }, { class: 'form-control', tabindex: 9 } %>
         </div>
@@ -175,7 +175,7 @@
         </div>
       </div>
       <div class="col-md-6 col-xs-7">
-          <p class="district-not-found display-none">
+          <p class="district-not-found none">
             <i class="glyphicon glyphicon-info-sign"></i> It looks like we don't have a match for that name. Please try again or help us by <a href="#" class="add-district-link">adding your district</a>.
           </p>
         </div>
@@ -189,7 +189,7 @@
         </div>
       </div>
       <div class="col-md-6 col-xs-7">
-        <p class="school-not-found display-none">
+        <p class="school-not-found none">
           <i class="glyphicon glyphicon-info-sign"></i> It looks like we don't have a match for that name. Please try again or help us by <a href="#" class="add-school-link">adding your school</a>.
         </p>
       </div>

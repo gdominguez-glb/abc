@@ -229,3 +229,32 @@
     }
   }
 }
+
+@include keyframes(fade) {
+  0% {
+    opacity: 0;
+  }
+}
+
+body.dragging,
+body.dragging * {
+  cursor: move !important;
+}
+
+.dragged {
+  position: absolute;
+  z-index: 2000;
+  opacity: .5;
+}
+
+*.unselectable {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+
+  // Introduced in IE 10.
+  // See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
+
+  -ms-user-select: none;
+  user-select: none;
+}

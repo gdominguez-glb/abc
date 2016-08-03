@@ -1,6 +1,6 @@
 <%= content_for :body_class, 'without-subnav' if current_spree_user.blank? %>
 <div class="row">
-  <div class="col-xs-12 margin-top-xxl margin-bottom-xl">
+  <div class="col-xs-12 margin-top--xxl margin-bottom--xl">
     <div class="row">
       <div class="col-sm-4 col-md-3 col-lg-2 col-sm-offset-1">
         <h3 class="filters-title">Filter By:</h3>
@@ -12,10 +12,10 @@
           <% params[:taxon_ids].each do |taxon_id| %>
             <%= hidden_field_tag "taxon_ids[]", taxon_id %>
           <% end %>
-          <%= text_field_tag :query, params[:query], class: 'form-control margin-bottom-1_2', placeholder: 'Search' %>
+          <%= text_field_tag :query, params[:query], class: 'form-control margin-bottom--1_2', placeholder: 'Search' %>
         <% end %>
       </div>
-      <div class="col-sm-6 col-md-7 col-lg-8 col-lg-offset-halfone">
+      <div class="col-sm-6 col-md-7 col-lg-8 col-lg-offset--halfone--lg-min">
 
         <% if teach_eureka_selected? && document = Document.find_by(attachment_file_name: "teach_eureka-viewing_guide.pdf") %>
           <p>

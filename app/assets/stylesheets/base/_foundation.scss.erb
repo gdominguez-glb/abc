@@ -13,198 +13,6 @@ body {
   min-height: 100%;
 }
 
-.pages {
-  &.no-tiles {
-    .page {
-
-      @media screen and (min-width: $screen-sm-min) {
-        //pages without tiles have same padding as tiles
-        padding: 84px;
-      }
-    }
-  }
-}
-
-.container {
-  width: auto;
-
-  @media screen and (min-width: 1440px) {
-    width: 1440px;
-  }
-}
-
-.container-content {
-  padding: 0 12px;
-  background-color: $c-firm-highlight;
-}
-
-.row {
-  margin: 0 -12px;
-  text-align: center;
-
-  @media screen and (min-width: $screen-sm-min) {
-    text-align: left;
-  }
-}
-
-[class*='col-'] {
-  padding: 0 12px;
-}
-
-section {
-  @include clearfix;
-
-  padding: 60px 0;
-  text-align: center;
-
-  @media screen and (min-width: $screen-xs-min) {
-    text-align: left;
-  }
-
-  @media screen and (min-width: $screen-sm-min) {
-    padding: 84px 0;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    margin: 0 0 12px;
-  }
-
-  p {
-    margin: 0 0 25px;
-  }
-
-  &.image-bg {
-    h3,
-    h6,
-    p {
-      text-shadow: 0 0 3px $c-depleted;
-    }
-  }
-
-  &.row {
-    [class*='col-'] {
-      padding: 0 30px;
-
-      @media screen and (min-width: $screen-sm-min) {
-        padding: 0 64px;
-
-        &:first-child {
-          padding: 0 64px 0 84px;
-        }
-
-        &:last-child {
-          padding: 0 84px 0 64px;
-        }
-      }
-
-      &:last-child {
-        .btn:last-child {
-          margin-bottom: 0;
-        }
-      }
-    }
-  }
-
-  &.row-content-full {
-
-    @media screen and (min-width: $screen-sm-min) {
-      text-align: center;
-
-      [class*='col-'] {
-        &:first-child,
-        &:last-child {
-          padding: 0 168px;
-        }
-      }
-    }
-  }
-
-  &.row-video-left {
-
-    @media screen and (min-width: $screen-sm-min) {
-      [class*='col-'] {
-        &:first-child {
-          padding-right: 32px;
-        }
-
-        &:last-child {
-          padding-left: 32px;
-        }
-      }
-    }
-
-  }
-
-  &.row-content-2col {
-    padding: 0;
-
-    @media screen and (min-width: $screen-sm-min) {
-      @include display-flex;
-    }
-
-    [class*='col-'] {
-
-      @media screen and (min-width: $screen-sm-min) {
-        @include justify-content(flex-start);
-      }
-
-      &:first-child,
-      &:last-child {
-        padding-top: 60px;
-        padding-bottom: 60px;
-
-        @media screen and (min-width: $screen-sm-min) {
-          padding-top: 84px;
-          padding-bottom: 84px;
-        }
-
-        .btn {
-          margin-bottom: 0;
-        }
-      }
-    }
-  }
-
-  &.row-content-3col {
-
-    @media screen and (min-width: $screen-sm-min) {
-      [class*='col-'] {
-        padding: 0 24px;
-
-        &:first-child {
-          padding-right: 24px;
-        }
-
-        &:nth-child(2) {
-          padding: 0 54px;
-        }
-
-        &:last-child {
-          padding-left: 24px;
-        }
-      }
-    }
-  }
-}
-
-.no-gutter {
-  > [class*='col-'] {
-    padding-right: 0;
-    padding-left: 0;
-  }
-}
-
-footer > .row {
-  @media screen and (min-width: $screen-xs-min) {
-    padding: 0 60px;
-  }
-}
-
 body {
   @include animation(fade 1s);
 
@@ -225,82 +33,17 @@ body {
   }
 }
 
-@include keyframes(fade) {
-  0% {
-    opacity: 0;
+.container {
+  width: auto;
+
+  @media screen and (min-width: 1440px) {
+    width: 1440px;
   }
 }
 
-body.dragging,
-body.dragging * {
-  cursor: move !important;
-}
-
-.dragged {
-  position: absolute;
-  z-index: 2000;
-  opacity: .5;
-}
-
-*.unselectable {
-  -moz-user-select: none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-
-  // Introduced in IE 10.
-  // See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
-
-  -ms-user-select: none;
-  user-select: none;
-}
-
-.overlay {
-  @include transition(all, $transition-timing);
-
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: -1;
-  background: $c-depleted;
-  opacity: 0;
-}
-
-.search-overlay {
-  @include translate(0, -100%);
-  @include transition(all, $transition-timing);
-
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  z-index: 9999;
-  height: 150px;
-  color: $c-absolute;
-  background: rgba($c-positive-secondary, .95);
-
-  @media screen and (min-width: $screen-sm-min) {
-    height: 109px;
-  }
-
-  &.show-search {
-    @include translate(0, 0);
-  }
-
-  .close {
-    @include transition(opacity, $transition-timing);
-
-    margin: 10px 0;
-    color: $c-absolute;
-  }
-
-  .form-control {
-    width: 100%;
-    margin-bottom: 10px;
-    padding: 10px 15px;
-    line-height: 20px;
-  }
+.container-content {
+  padding: 0 12px;
+  background-color: $c-firm-highlight;
 }
 
 .wrapper {
@@ -320,144 +63,32 @@ body.dragging * {
   }
 }
 
-.page-header {
-  margin: 30px 0 0;
-  padding: 0;
-  border: 0;
+// -------------------------------------
+//   Grid
+// -------------------------------------
+
+.row {
+  margin: 0 -12px;
   text-align: center;
 
+  @media screen and (min-width: $screen-sm-min) {
+    text-align: left;
+  }
+}
+
+[class*='col-'] {
+  padding: 0 12px;
+}
+
+.no-gutter {
+  > [class*='col-'] {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+footer > .row {
   @media screen and (min-width: $screen-xs-min) {
-    margin: 64px 0;
-  }
-
-  h2 {
-    line-height: 1.1em;
-  }
-}
-
-.coral-text {
-  color: $c-energized-secondary;
-}
-
-.row-video-hero {
-
-  @media screen and (min-width: $screen-sm-min) {
-    .video-title {
-      margin-bottom: 25px;
-    }
-
-    &.green-bg,
-    &.orange-bg,
-    &.cream-bg,
-    &.light-blue-bg {
-      .video-title {
-        color: $c-positive-secondary;
-      }
-    }
-
-    &.image-bg {
-      .video-title {
-        color: $c-balanced;
-      }
-    }
-
-    [class*='col-'] {
-      &:first-child,
-      &:last-child {
-        padding: 0 168px;
-      }
-    }
-  }
-
-}
-
-.half-height {
-
-  @media screen and (min-width: $screen-sm-min) {
-    min-height: 400px;
-    padding: 64px 0;
-  }
-
-}
-
-.row-img-full {
-  padding: 0;
-  color: $c-absolute;
-  background-position: 0;
-  background-size: cover;
-}
-
-.row-img-full-content {
-  padding: 60px 0;
-
-  &.black-overlay {
-    background: rgba($c-positive-secondary, .6);
-  }
-
-  @media screen and (min-width: $screen-sm-min) {
-    min-height: 600px;
-    padding: 84px 0;
-
-    .half-height & {
-      min-height: 400px;
-      padding: 64px 0;
-    }
-  }
-}
-
-.col-img-full {
-  min-height: 400px;
-  background-position: 50%;
-  background-size: cover;
-
-  &:first-child {
-    margin: -60px 0 60px;
-
-    @media screen and (min-width: $screen-sm-min) {
-      margin: -84px 0;
-
-      .half-height & {
-        margin: -64px 0;
-      }
-    }
-  }
-
-  &:last-child {
-    margin: 0 0 -60px;
-
-    @media screen and (min-width: $screen-sm-min) {
-      margin: -84px 0;
-
-      .half-height & {
-        margin: -64px 0;
-      }
-    }
-  }
-
-  @media screen and (min-width: $screen-sm-min) {
-    min-height: 600px;
-
-    .half-height & {
-      min-height: 400px;
-    }
-  }
-}
-
-.col-centered-content {
-
-  @media screen and (min-width: $screen-sm-min) {
-    @include display-flex;
-    @include flex-direction(column);
-    @include justify-content(center);
-
-    min-height: 432px;
-
-    .half-height & {
-      min-height: 272px;
-    }
-
-    .row-content-full & {
-      float: none;
-    }
+    padding: 0 60px;
   }
 }

@@ -2,7 +2,7 @@
 
 <div class="col-md-9">
   <h2>Vanity Url</h2>
-  <%= link_to 'Create new Vanity Url', new_cms_vanity_url_path, class: 'btn btn-primary margin-bottom-l' %>
+  <%= link_to 'Create new Vanity Url', new_cms_vanity_url_path, class: 'btn btn-primary margin-bottom--l' %>
 
   <%= form_tag cms_vanity_urls_path, method: :get, class: 'form' do %>
     <div class="row">
@@ -47,7 +47,7 @@
               <%= link_to 'Edit', edit_cms_vanity_url_path(vanity_url) %>
             </td>
             <td>
-              <%= link_to 'Destroy', [:cms, vanity_url], method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-danger' %>
+              <%= link_to 'Destroy', [:cms, vanity_url], method: :delete, data: { confirm: 'Are you sure?' }, class: 'text--danger' %>
             </td>
           </tr>
         <% end %>

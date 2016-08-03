@@ -1,0 +1,55 @@
+// *************************************
+//
+//   Overlays
+//   -> Custom overlay styles
+//
+// *************************************
+
+.overlay {
+  @include transition(all, $transition-timing);
+
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  background: $c-depleted;
+  opacity: 0;
+}
+
+.search-overlay {
+  @include translate(0, -100%);
+  @include transition(all, $transition-timing);
+
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 9999;
+  height: 150px;
+  color: $c-absolute;
+  background: rgba($c-positive-secondary, .95);
+
+  @media screen and (min-width: $screen-sm-min) {
+    height: 109px;
+  }
+
+  &.show-search {
+    @include translate(0, 0);
+  }
+
+  .close {
+    @include transition(opacity, $transition-timing);
+
+    margin: 10px 0;
+    color: $c-absolute;
+  }
+
+  .form-control {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px 15px;
+    line-height: 20px;
+  }
+}

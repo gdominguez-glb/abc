@@ -2,7 +2,7 @@
 
 <div class="col-md-9">
   <h2>Download Page Lists</h2>
-  <%= link_to 'Create new download page', new_cms_download_page_path, class: 'btn btn-primary margin-bottom-xl' %>
+  <%= link_to 'Create new download page', new_cms_download_page_path, class: 'btn btn-primary margin-bottom--xl' %>
   <div class="table-responsive">
     <table class='table table-striped table-hover'>
       <thead>
@@ -20,7 +20,7 @@
             <td><%= "/download_pages/#{download_page.slug}" %></td>
             <td><%= link_to 'Manage Products', cms_download_page_download_products_path(download_page) %></td>
             <td><%= link_to 'Edit', edit_cms_download_page_path(download_page) %></td>
-            <td><%= link_to 'Destroy', [:cms, download_page], method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-danger' %></td>
+            <td><%= link_to 'Destroy', [:cms, download_page], method: :delete, data: { confirm: 'Are you sure?' }, class: 'text--danger' %></td>
           </tr>
         <% end %>
       </tbody>

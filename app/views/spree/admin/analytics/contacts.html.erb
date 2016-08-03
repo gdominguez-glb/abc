@@ -6,14 +6,14 @@
   <p class="sans-serif">Contact Form Submissions from <strong><%= params[:start_date] %></strong> to <strong><%= params[:end_date] %></strong></p>
 
   <% if params[:topic].blank? %>
-    <div class="row sans-serif padding-bottom-s">
-      <div class="col-sm-3 text-right-sm"><strong>Total</strong></div>
-      <div class="col-sm-6"><strong class="text-danger"><%= @total_contacts %></strong></div>
+    <div class="row sans-serif padding-bottom--s">
+      <div class="col-sm-3 text-right--sm-min"><strong>Total</strong></div>
+      <div class="col-sm-6"><strong class="text--danger"><%= @total_contacts %></strong></div>
     </div>
     <% @topics_breakdown.each do |breakdown| %>
       <% percent = @total_contacts > 0 ? ((breakdown.topic_count / @total_contacts.to_f) * 100) : 0 %>
-      <div class="row sans-serif padding-bottom-s">
-        <div class="col-sm-3 text-right-sm">
+      <div class="row sans-serif padding-bottom--s">
+        <div class="col-sm-3 text-right--sm-min">
           <%= link_to contacts_admin_analytics_path(start_date: params[:start_date], end_date: params[:end_date], topic: breakdown.topic), class: 'bar-graph-label' do %>
             <%= breakdown.topic %>
           <% end %>

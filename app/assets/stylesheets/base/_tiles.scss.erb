@@ -1,0 +1,350 @@
+// *************************************
+//
+//   Tiles
+//   -> Marketing Page Tile Styles
+//
+// *************************************
+
+.pages {
+  &.no-tiles {
+    .page {
+
+      @media screen and (min-width: $screen-sm-min) {
+        //pages without tiles have same padding as tiles
+        padding: 84px;
+      }
+    }
+  }
+}
+
+section {
+  @include clearfix;
+
+  padding: 60px 0;
+  text-align: center;
+
+  @media screen and (min-width: $screen-xs-min) {
+    text-align: left;
+  }
+
+  @media screen and (min-width: $screen-sm-min) {
+    padding: 84px 0;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0 0 12px;
+  }
+
+  p {
+    margin: 0 0 25px;
+  }
+
+  &.image-bg {
+    h3,
+    h6,
+    p {
+      text-shadow: 0 0 3px $c-depleted;
+    }
+  }
+
+  &.row {
+    [class*='col-'] {
+      padding: 0 30px;
+
+      @media screen and (min-width: $screen-sm-min) {
+        padding: 0 64px;
+
+        &:first-child {
+          padding: 0 64px 0 84px;
+        }
+
+        &:last-child {
+          padding: 0 84px 0 64px;
+        }
+      }
+
+      &:last-child {
+        .btn:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  &.row-content-full {
+
+    @media screen and (min-width: $screen-sm-min) {
+      text-align: center;
+
+      [class*='col-'] {
+        &:first-child,
+        &:last-child {
+          padding: 0 168px;
+        }
+      }
+    }
+  }
+
+  &.row-video-left {
+
+    @media screen and (min-width: $screen-sm-min) {
+      [class*='col-'] {
+        &:first-child {
+          padding-right: 32px;
+        }
+
+        &:last-child {
+          padding-left: 32px;
+        }
+      }
+    }
+
+  }
+
+  &.row-content-2col {
+    padding: 0;
+
+    @media screen and (min-width: $screen-sm-min) {
+      @include display-flex;
+    }
+
+    [class*='col-'] {
+
+      @media screen and (min-width: $screen-sm-min) {
+        @include justify-content(flex-start);
+      }
+
+      &:first-child,
+      &:last-child {
+        padding-top: 60px;
+        padding-bottom: 60px;
+
+        @media screen and (min-width: $screen-sm-min) {
+          padding-top: 84px;
+          padding-bottom: 84px;
+        }
+
+        .btn {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  &.row-content-3col {
+
+    @media screen and (min-width: $screen-sm-min) {
+      [class*='col-'] {
+        padding: 0 24px;
+
+        &:first-child {
+          padding-right: 24px;
+        }
+
+        &:nth-child(2) {
+          padding: 0 54px;
+        }
+
+        &:last-child {
+          padding-left: 24px;
+        }
+      }
+    }
+  }
+}
+
+.row-video-hero {
+
+  @media screen and (min-width: $screen-sm-min) {
+    .video-title {
+      margin-bottom: 25px;
+    }
+
+    &.green-bg,
+    &.orange-bg,
+    &.cream-bg,
+    &.light-blue-bg {
+      .video-title {
+        color: $c-positive-secondary;
+      }
+    }
+
+    &.image-bg {
+      .video-title {
+        color: $c-balanced;
+      }
+    }
+
+    [class*='col-'] {
+      &:first-child,
+      &:last-child {
+        padding: 0 168px;
+      }
+    }
+  }
+
+}
+
+.half-height {
+
+  @media screen and (min-width: $screen-sm-min) {
+    min-height: 400px;
+    padding: 64px 0;
+  }
+
+}
+
+.row-img-full {
+  padding: 0;
+  color: $c-absolute;
+  background-position: 0;
+  background-size: cover;
+}
+
+.row-img-full-content {
+  padding: 60px 0;
+
+  &.black-overlay {
+    background: rgba($c-positive-secondary, .6);
+  }
+
+  @media screen and (min-width: $screen-sm-min) {
+    min-height: 600px;
+    padding: 84px 0;
+
+    .half-height & {
+      min-height: 400px;
+      padding: 64px 0;
+    }
+  }
+}
+
+.col-img-full {
+  min-height: 400px;
+  background-position: 50%;
+  background-size: cover;
+
+  &:first-child {
+    margin: -60px 0 60px;
+
+    @media screen and (min-width: $screen-sm-min) {
+      margin: -84px 0;
+
+      .half-height & {
+        margin: -64px 0;
+      }
+    }
+  }
+
+  &:last-child {
+    margin: 75px 0 -60px;
+
+    @media screen and (min-width: $screen-sm-min) {
+      margin: -84px 0;
+
+      .half-height & {
+        margin: -64px 0;
+      }
+    }
+  }
+
+  @media screen and (min-width: $screen-sm-min) {
+    min-height: 600px;
+
+    .half-height & {
+      min-height: 400px;
+    }
+  }
+}
+
+.col-centered-content {
+
+  @media screen and (min-width: $screen-sm-min) {
+    @include display-flex;
+    @include flex-direction(column);
+    @include justify-content(center);
+
+    min-height: 432px;
+
+    .half-height & {
+      min-height: 272px;
+    }
+
+    .row-content-full & {
+      float: none;
+    }
+  }
+}
+
+// -------------------------------------
+//   Colors
+// -------------------------------------
+
+.blue-bg {
+  color: $c-absolute;
+  background: $c-positive-secondary;
+}
+
+.cream-bg {
+  color: $c-positive-secondary;
+  background: $c-firm-subdue;
+
+  &.image-bg {
+    color: $c-absolute;
+  }
+}
+
+.green-bg {
+  color: $c-positive-secondary;
+  background: $c-balanced;
+
+  &.image-bg {
+    color: $c-absolute;
+  }
+}
+
+.light-blue-bg {
+  color: $c-positive-secondary;
+  background: $c-positive-primary;
+
+  &.image-bg {
+    color: $c-absolute;
+  }
+}
+
+.orange-bg {
+  color: $c-positive-secondary;
+  background: $c-energized-primary;
+
+  &.image-bg {
+    color: $c-absolute;
+  }
+}
+
+.coral-bg {
+  color: $c-absolute;
+  background: $c-energized-secondary;
+}
+
+// -------------------------------------
+//   Images
+// -------------------------------------
+
+.img-shadow {
+  box-shadow: 0 0 7px 0 $c-transparent-subdue-1 !important;
+}
+
+.img-book {
+  box-shadow: 0 0 7px 0 $c-transparent-subdue-1 !important;
+  border-top-right-radius: 12px !important;
+  border-bottom-right-radius: 12px !important;
+}
+
+.post-image {
+  max-width: 100% !important;
+}
