@@ -8,7 +8,7 @@
       <div class="modal-body">
         <%= render partial: 'stats_dropdown' %>
         <%= form_tag update_user_licenses_account_licenses_path(user_id: @user.id), remote: true do %>
-        <div class="table-responsive margin-bottom-xxl">
+        <div class="table-responsive margin-bottom--xxl">
           <table class="table table-striped">
             <thead>
               <tr>
@@ -32,7 +32,7 @@
           </div>
           <div class="row">
             <div class="col-md-3 col-md-offset-3">
-              <%= submit_tag 'Save Updates', class: 'btn btn-success btn-block margin-bottom-s', data: { disable_with: 'Saving...' } %>
+              <%= submit_tag 'Save Updates', class: 'btn btn-success btn-block margin-bottom--s', data: { disable_with: 'Saving...' } %>
             </div>
             <div class="col-md-3">
               <button type="button" class="btn btn-danger btn-block margin-bottom" data-dismiss="modal">Cancel</button>

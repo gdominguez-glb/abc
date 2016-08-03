@@ -21,10 +21,10 @@ marketing_templates:
       </style>
       <div id="tileRoleSelectorHero<%= position %>" class="row intro masthead image-bg">
         <div class="col-xs-12 masthead-content text-center">
-          <h5 class="home-mast-intro bold"><%= title %> <span class="text-success"><% if defined?(title_highlight) && title_highlight.present? %><%= title_highlight %><% end %></span></h5>
+          <h5 class="home-mast-intro bold"><%= title %> <span class="text--success"><% if defined?(title_highlight) && title_highlight.present? %><%= title_highlight %><% end %></span></h5>
           <div id="pageSelection">
             <div class="btn-group fixed-width image-background">
-              <button class="btn btn-default btn-block-xs margin-sm-bottom-m dropdown-toggle" type="button" id="dropdownRole" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              <button class="btn btn-default btn-block-xs margin-bottom--m--sm-min dropdown-toggle" type="button" id="dropdownRole" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                 I am a
                 <span class="caret"></span>
               </button>
@@ -36,7 +36,7 @@ marketing_templates:
               </ul>
             </div>
             <div class="btn-group fixed-width image-background">
-              <button class="btn btn-default btn-block-xs margin-sm-bottom-m dropdown-toggle" type="button" id="dropdownCurriculum" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              <button class="btn btn-default btn-block-xs margin-bottom--m--sm-min dropdown-toggle" type="button" id="dropdownCurriculum" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                 Looking into
                 <span class="caret"></span>
               </button>
@@ -46,7 +46,7 @@ marketing_templates:
                 <li><a href="#">History</a></li>
               </ul>
             </div>
-            <a href="#" id="btnGo" class="btn btn-default btn-transparent btn-block-xs margin-sm-bottom-m" disabled="disabled">Go</a>
+            <a href="#" id="btnGo" class="btn btn-default btn-transparent btn-block-xs margin-bottom--m--sm-min" disabled="disabled">Go</a>
           </div>
         </div>
       </div>
@@ -103,10 +103,10 @@ marketing_templates:
             <h6><%= title %></h6>
             <p><%= body_text %></p>
             <% if button_1_title.present? && button_1_link.present? %>
-              <a class="btn btn-default btn-block-xs margin-bottom-m" href="<%= button_1_link %>" target="<%= button_1_target %>"><%= button_1_title %></a>
+              <a class="btn btn-default btn-block-xs margin-bottom--m" href="<%= button_1_link %>" target="<%= button_1_target %>"><%= button_1_title %></a>
             <% end %>
             <% if button_2_title.present? && button_2_link.present? %>
-              <a class="btn btn-default btn-block-xs margin-bottom-m" href="<%= button_2_link %>" target="<%= button_2_target %>"><%= button_2_title %></a>
+              <a class="btn btn-default btn-block-xs margin-bottom--m" href="<%= button_2_link %>" target="<%= button_2_target %>"><%= button_2_title %></a>
             <% end %>
           </div>
         </div>
@@ -141,7 +141,7 @@ marketing_templates:
                 <% button_target = '_blank' %>
               <% end %>
 
-              <a class="btn btn-default btn-block-xs margin-bottom-m" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+              <a class="btn btn-default btn-block-xs margin-bottom--m" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
             <% end %>
           </div>
         </div>
@@ -168,10 +168,10 @@ marketing_templates:
             <h6><%= title %></h6>
             <p><%= body_text %></p>
             <% if button_1_title.present? && button_1_link.present? %>
-              <a class="btn btn-default btn-block-xs margin-bottom-m" href="<%= button_1_link %>" target="<%= button_1_target %>"><%= button_1_title %></a>
+              <a class="btn btn-default btn-block-xs margin-bottom--m" href="<%= button_1_link %>" target="<%= button_1_target %>"><%= button_1_title %></a>
             <% end %>
             <% if button_2_title.present? && button_2_link.present? %>
-              <a class="btn btn-default btn-block-xs margin-bottom-m" href="<%= button_2_link %>" target="<%= button_2_target %>"><%= button_2_title %></a>
+              <a class="btn btn-default btn-block-xs margin-bottom--m" href="<%= button_2_link %>" target="<%= button_2_target %>"><%= button_2_title %></a>
             <% end %>
           </div>
         </div>
@@ -223,7 +223,7 @@ marketing_templates:
               <!--[if IE 9]><video style="display: none;"><![endif]-->
               <source srcset="<%= image_url.gsub(/original/, 'small') if image_url %>" media="(min-width: 361px)">
               <!--[if IE 9]></video><![endif]-->
-              <img srcset="<%= image_url.gsub(/original/, 'thumb') if image_url %>" class="img-responsive margin-sm-bottom-xl">
+              <img srcset="<%= image_url.gsub(/original/, 'thumb') if image_url %>" class="img-responsive margin-bottom--xl--sm-min">
             </picture>
           </div>
         </div>
@@ -253,7 +253,7 @@ marketing_templates:
               <!--[if IE 9]><video style="display: none;"><![endif]-->
               <source srcset="<%= image_url.gsub(/original/, 'small') if image_url %>" media="(min-width: 361px)">
               <!--[if IE 9]></video><![endif]-->
-              <img srcset="<%= image_url.gsub(/original/, 'thumb') if image_url %>" class="img-responsive margin-sm-bottom-xl">
+              <img srcset="<%= image_url.gsub(/original/, 'thumb') if image_url %>" class="img-responsive margin-bottom--xl--sm-min">
             </picture>
           </div>
         </div>
@@ -343,7 +343,7 @@ marketing_templates:
               <!--[if IE 9]><video style="display: none;"><![endif]-->
               <source srcset="<%= image_url.gsub(/original/, 'small') if image_url %>" media="(min-width: 361px)">
               <!--[if IE 9]></video><![endif]-->
-              <img srcset="<%= image_url.gsub(/original/, 'thumb') if image_url %>" class="img-responsive img-shadow margin-sm-bottom-xl">
+              <img srcset="<%= image_url.gsub(/original/, 'thumb') if image_url %>" class="img-responsive img-shadow margin-bottom--xl--sm-min">
             </picture>
           </div>
         </div>
@@ -403,7 +403,7 @@ marketing_templates:
               <!--[if IE 9]><video style="display: none;"><![endif]-->
               <source srcset="<%= image_url.gsub(/original/, 'small') if image_url %>" media="(min-width: 361px)">
               <!--[if IE 9]></video><![endif]-->
-              <img srcset="<%= image_url.gsub(/original/, 'thumb') if image_url %>" class="img-responsive img-book margin-sm-bottom-xl">
+              <img srcset="<%= image_url.gsub(/original/, 'thumb') if image_url %>" class="img-responsive img-book margin-bottom--xl--sm-min">
             </picture>
           </div>
         </div>
@@ -485,7 +485,7 @@ marketing_templates:
                 <% else %>
                   <% button_target = '_blank' %>
                 <% end %>
-                <a class="btn btn-default btn-block-xs margin-bottom-s" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+                <a class="btn btn-default btn-block-xs margin-bottom--s" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
               <% end %>
             </div>
           </div>
@@ -526,7 +526,7 @@ marketing_templates:
                 <% else %>
                   <% button_target = '_blank' %>
                 <% end %>
-                <a class="btn btn-default btn-block-xs margin-bottom-s" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+                <a class="btn btn-default btn-block-xs margin-bottom--s" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
               <% end %>
             </div>
           </div>
@@ -565,7 +565,7 @@ marketing_templates:
                 <% else %>
                   <% button_target = '_blank' %>
                 <% end %>
-                <a class="btn btn-default btn-block-xs margin-bottom-s" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+                <a class="btn btn-default btn-block-xs margin-bottom--s" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
               <% end %>
             </div>
           </div>
@@ -606,7 +606,7 @@ marketing_templates:
                 <% else %>
                   <% button_target = '_blank' %>
                 <% end %>
-                <a class="btn btn-default btn-block-xs margin-bottom-s" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+                <a class="btn btn-default btn-block-xs margin-bottom--s" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
               <% end %>
             </div>
           </div>
@@ -683,7 +683,7 @@ marketing_templates:
       </style>
       <section id="tileVideoLeft<%= position %>" class="row row-img-full row-video-left <%= 'image-bg' if background_image_url.present? %> <%= background_color %>-bg">
         <div class="row-img-full-content">
-          <div class="col-sm-6 col-centered-content margin-sm-bottom-xl">
+          <div class="col-sm-6 col-centered-content margin-bottom--xl--sm-min">
             <div class="vertical-center">
               <div class="embed-responsive embed-responsive-16by9">
                 <iframe src="//fast.wistia.net/embed/iframe/<%= wistia_video_id %>" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" id="wistia-iframe" name="wistia_embed"></iframe>

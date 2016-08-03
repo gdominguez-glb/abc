@@ -15,7 +15,7 @@
     <div class="col-sm-6">
       <div class="form-group">
         <%= f.label :curriculum %>
-        <div class="select-container dark-select block margin-bottom-reset">
+        <div class="select-container dark-select block margin-bottom--reset">
           <span>Curriculum</span>
           <%= f.select :curriculum_id, Curriculum.all.collect{|c| [c.name, c.id]}, { include_blank: 'Global', prompt: 'Choose curriculum' }, class: 'form-control' %>
         </div>
@@ -96,7 +96,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-sm-6 margin-bottom-l">
+    <div class="col-sm-6 margin-bottom--l">
       <div class="checkbox">
         <%= f.label :show_in_footer do %>
           <%= f.check_box :show_in_footer %> Show in Footer

@@ -145,7 +145,7 @@ RSpec.describe Page, type: :model do
             'image_url' => 'http://img.com/123'
           }] })
       page.save
-      expect(page.body).to eq("<section class=\"row green-bg\">\n  <div class=\"col-sm-6 col-centered-content\">\n    <div class=\"vertical-center\">\n      <picture>\n        <!--[if IE 9]><video style=\"display: none;\"><![endif]-->\n        <source srcset=\"http://img.com/123\" media=\"(min-width: 361px)\">\n        <!--[if IE 9]></video><![endif]-->\n        <img srcset=\"http://img.com/123\" class=\"img-responsive margin-sm-bottom-xl\">\n      </picture>\n    </div>\n  </div>\n  <div class=\"col-sm-6 col-centered-content\">\n    <div class=\"vertical-center\">\n      <h6>Hello</h6>\n      <p>hello body</p>\n      \n        \n          \n        \n        <a class=\"btn btn-default btn-block-xs\" href=\"http://aa.com\" target=\"_blank\">hello btn</a>\n      \n    </div>\n  </div>\n</section>\n")
+      expect(page.body).to eq("<section class=\"row green-bg\">\n  <div class=\"col-sm-6 col-centered-content\">\n    <div class=\"vertical-center\">\n      <picture>\n        <!--[if IE 9]><video style=\"display: none;\"><![endif]-->\n        <source srcset=\"http://img.com/123\" media=\"(min-width: 361px)\">\n        <!--[if IE 9]></video><![endif]-->\n        <img srcset=\"http://img.com/123\" class=\"img-responsive margin-bottom--xl--sm-min\">\n      </picture>\n    </div>\n  </div>\n  <div class=\"col-sm-6 col-centered-content\">\n    <div class=\"vertical-center\">\n      <h6>Hello</h6>\n      <p>hello body</p>\n      \n        \n          \n        \n        <a class=\"btn btn-default btn-block-xs\" href=\"http://aa.com\" target=\"_blank\">hello btn</a>\n      \n    </div>\n  </div>\n</section>\n")
     end
   end
 end

@@ -18,16 +18,16 @@
           </div>
 
           <div class="row">
-            <div class="col-sm-12 text-right-sm">
+            <div class="col-sm-12 text-right--sm-min">
               <div class="links navbar-form" data-hook="cart_buttons">
                 <div class="row">
                   <div class="col-sm-3 col-sm-offset-6">
-                    <%= button_tag class: 'btn btn-primary btn-block margin-bottom margin-right-reset', id: 'update-button' do %>
+                    <%= button_tag class: 'btn btn-primary btn-block margin-bottom margin-right--reset', id: 'update-button' do %>
                       <%= Spree.t(:update) %>
                     <% end %>
                   </div>
                   <div class="col-sm-3">
-                    <%= button_tag class: 'btn btn-success btn-block margin-bottom margin-right-reset', id: 'checkout-link', name: 'checkout' do %>
+                    <%= button_tag class: 'btn btn-success btn-block margin-bottom margin-right--reset', id: 'checkout-link', name: 'checkout' do %>
                       <%= Spree.t(:checkout) %>
                     <% end %>
                   </div>
@@ -43,8 +43,8 @@
       <div id="empty-cart" class="col-sm-3 col-sm-offset-9" data-hook>
         <%= form_tag empty_cart_path, method: :put do %>
           <p id="clear_cart_link" data-hook>
-            <%= button_tag Spree.t(:empty_cart), class: 'btn btn-default btn-block margin-bottom-s' %>
-            <%= link_to Spree.t(:continue_shopping), "/store", class: 'btn btn-default btn-block btn-link-alt margin-bottom-s' %>
+            <%= button_tag Spree.t(:empty_cart), class: 'btn btn-default btn-block margin-bottom--s' %>
+            <%= link_to Spree.t(:continue_shopping), "/store", class: 'btn btn-default btn-block btn-link-alt margin-bottom--s' %>
           </p>
         <% end %>
       </div>

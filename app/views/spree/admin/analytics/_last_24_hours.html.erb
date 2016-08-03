@@ -1,8 +1,8 @@
 <span class="sans-serif">Last 24 hours</span>
 <div class="well">
-  <div class="row padding-bottom-reset">
+  <div class="row padding-bottom--reset">
     <div class="col-md-3">
-      <h5 class="margin-bottom-reset">
+      <h5 class="margin-bottom--reset">
         Orders:
         <span>
           <%= link_to orders_admin_analytics_path(start_date: Date.today.to_s, end_date: Date.today.to_s), target: '_blank' do %>
@@ -12,7 +12,7 @@
       </h5>
     </div>
     <div class="col-md-3">
-      <h5 class="margin-bottom-reset">
+      <h5 class="margin-bottom--reset">
         New Users:
         <span>
           <%= link_to users_admin_analytics_path(start_date: Date.today.to_s, end_date: Date.today.to_s), target: '_blank' do %>
@@ -22,7 +22,7 @@
       </h5>
     </div>
     <div class="col-md-6">
-      <h5 class="margin-bottom-reset">Contact Form Submits:
+      <h5 class="margin-bottom--reset">Contact Form Submits:
         <span>
           <%= link_to contacts_admin_analytics_path(start_date: Date.today.to_s, end_date: Date.today.to_s), target: '_blank' do %>
             <%= number_with_delimiter contacts_count_within_date_range(Date.today, Date.today) %>

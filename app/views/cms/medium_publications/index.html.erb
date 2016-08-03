@@ -2,7 +2,7 @@
 
 <div class="col-md-9">
   <h2>Medium Publications Lists</h2>
-  <%= link_to 'Create new medium publication', new_cms_medium_publication_path, class: 'btn btn-primary margin-bottom-xl' %>
+  <%= link_to 'Create new medium publication', new_cms_medium_publication_path, class: 'btn btn-primary margin-bottom--xl' %>
   <div class="table-responsive">
     <table class='table table-striped table-hover'>
       <thead>
@@ -30,7 +30,7 @@
             <td><%= medium_publication.display ? 'Yes' : 'No' %></td>
             <td><%= link_to 'Preview', preview_medium_publication_link(medium_publication), target: '_blank' %></td>
             <td><%= link_to 'Edit', edit_cms_medium_publication_path(medium_publication) %></td>
-            <td><%= link_to 'Destroy', [:cms, medium_publication], method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-danger' %></td>
+            <td><%= link_to 'Destroy', [:cms, medium_publication], method: :delete, data: { confirm: 'Are you sure?' }, class: 'text--danger' %></td>
           </tr>
         <% end %>
       </tbody>

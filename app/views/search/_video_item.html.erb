@@ -1,5 +1,5 @@
 <% item.description = Sanitize.clean(item.description, :remove_contents => ['style']) %>
 <%= link_to video_gallery_path(item), class: 'list-group-item' do %>
-  <h4 class="margin-bottom-reset"><%= item.title %></h4>
-  <p class="small margin-bottom-reset"><%= truncate item.description, length: 150 %></p>
+  <h4 class="margin-bottom--reset"><%= item.title %></h4>
+  <p class="small margin-bottom--reset"><%= truncate item.description, length: 150 %></p>
 <% end %>

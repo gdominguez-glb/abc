@@ -4,7 +4,7 @@
     <div class="product-wrapper-inner product-tile">
       <span class="label <%= product_type_class(product) %>"><%= product.curriculum.try(:name) || 'General' %></span>
         <div class="product-title-wrapper">
-          <h5 class="product-title margin-top margin-bottom-s"><%= truncate(product.name, length: 50) %></h5>
+          <h5 class="product-title margin-top margin-bottom--s"><%= truncate(product.name, length: 50) %></h5>
         </div>
       <p class="product-description">
         <%= truncate_html(product.short_description, length: 130) %>
