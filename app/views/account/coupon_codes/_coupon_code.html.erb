@@ -1,0 +1,26 @@
+<div class="modal fade" tabindex="-1" role="dialog" id="enter-code-modal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Coupon Code Redemption</h4>
+      </div>
+      <%= form_tag activate_account_coupon_codes_path, remote: true, authenticity_token: true do %>
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Coupon Code</label>
+            <%= text_field_tag :code, nil, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <label>
+              <%= check_box_tag 'tos', 'yes', false, class: 'accept_tos' %> I agree to the <%= link_to 'Terms & Conditions', display_terms_path, target: '_blank' %>
+            </label>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <%= submit_tag 'Submit', class: 'btn btn-primary', data: { disable_with: 'Submitting...' } %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,5 @@
+$('body').append("<%= escape_javascript(render 'coupon_code') %>");
+$('#enter-code-modal').modal('show');
+$('#enter-code-modal').on('hidden.bs.modal', function (e) {
+  $('#enter-code-modal').remove();
+});

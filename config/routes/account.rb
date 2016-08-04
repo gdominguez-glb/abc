@@ -40,6 +40,15 @@ namespace :account do
 
   resources :bookmarks
 
+  resources :coupon_codes do
+    collection do
+      post :activate
+    end
+    member do
+      post :activate_product
+    end
+  end
+
   get 'tour/dashboard', to: 'tour#dashboard'
   get 'tour/licenses', to: 'tour#licenses'
   get 'tour/licenses_users', to: 'tour#licenses_users'
