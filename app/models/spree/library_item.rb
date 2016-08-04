@@ -18,6 +18,6 @@ class Spree::LibraryItem < ActiveRecord::Base
   validates_attachment :cover, presence: true, content_type: { content_type: /\A*\Z/ }
 
   has_attached_file :attachment, s3_permissions: :private
-  validates_attachment :attachment, content_type: { content_type: /\A*\Z/ }
+  validates_attachment :attachment, content_type: { content_type: "application/pdf" }
 
 end
