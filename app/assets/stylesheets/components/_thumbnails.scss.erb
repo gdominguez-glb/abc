@@ -106,3 +106,26 @@
   margin-left: -24px;
   color: $c-transparent-subdue-5;
 }
+
+// -------------------------------------
+//   Coupon Code Thumbnails
+// -------------------------------------
+
+.thumbnail--coupon-code {
+  @include display-flex;
+  @include flex-direction(column);
+  @include justify-content(center);
+
+  min-height: 120px;
+  border-radius: 0;
+  color: $c-firm-primary;
+}
+
+.thumbnail--coupon-code--trigger {
+  display: none;
+
+  &:checked + .thumbnail--coupon-code {
+    color: $c-depleted;
+    box-shadow: 0 0 5px 0 $c-transparent-subdue-2;
+  }
+}

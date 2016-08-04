@@ -3,7 +3,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Coupon Code Redemption</h4>
+        <h4 class="modal-title">Coupon Redemption</h4>
       </div>
       <%= form_tag activate_account_coupon_codes_path, remote: true, authenticity_token: true do %>
         <div class="modal-body">
@@ -17,7 +17,7 @@
             </label>
           </div>
         </div>
-        <div class="modal-footer">
+        <div class="modal-footer text-left">
           <%= submit_tag 'Submit', class: 'btn btn-primary', data: { disable_with: 'Submitting...' } %>
         </div>
       <% end %>
