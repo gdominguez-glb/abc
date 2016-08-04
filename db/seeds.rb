@@ -26,7 +26,10 @@ if Spree::User.count == 0
     password: 'intridea4gm',
     password_confirmation: 'intridea4gm',
     school_district: school_district,
-    skip_salesforce_create: true
+    skip_salesforce_create: true,
+    interested_subjects: ["math"],
+    title: 'Homeschooler',
+    zip_code: '10000'
   )
   role = Spree::Role.find_or_create_by(name: 'admin')
   admin.spree_roles << role
