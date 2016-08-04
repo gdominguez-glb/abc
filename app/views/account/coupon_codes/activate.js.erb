@@ -1,0 +1,14 @@
+<% if params[:tos] != 'yes' %>
+  alert('Please accept the terms!');
+<% elsif @coupon_code.blank? %>
+  alert('Please enter a valid coupone code!');
+<% elsif !@coupon_code.available? %>
+  alert('The coupon code you enter is not available!');
+<% else %>
+  $('#enter-code-modal').modal('hide');
+  $('body').append("<%= escape_javascript(render 'select_product') %>");
+  $('#select-product-modal').modal('show');
+  $('#select-product-modal').on('hidden.bs.modal', function (e) {
+    $('#select-product-modal').remove();
+  });
+<% end %>

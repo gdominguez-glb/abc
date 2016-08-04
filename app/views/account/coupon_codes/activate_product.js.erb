@@ -1,0 +1,10 @@
+<% if @result[:success] == true %>
+  $('#select-product-modal').modal('hide');
+  $('body').append("<%= escape_javascript(render 'success_modal') %>");
+  $('#success-modal').modal('show');
+  $('#success-modal').on('hidden.bs.modal', function (e) {
+    $('#success-modal').remove();
+  });
+<% else %>
+  alert("<%= @result[:message] %>");
+<% end %>
