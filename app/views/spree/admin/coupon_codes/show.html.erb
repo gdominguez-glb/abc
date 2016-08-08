@@ -1,0 +1,23 @@
+<% content_for :page_title do %>
+  Coupon Code / <%= @coupon_code.code  %>
+<% end %>
+
+<h4>Products from this coupon code: </h4>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Product</th>
+      <th>Quantity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @licenses_with_quantity.each do |license| %>
+      <tr>
+        <td><%= license.product.name %></td>
+        <td><%= license.product_quantity %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

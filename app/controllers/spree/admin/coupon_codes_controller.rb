@@ -14,6 +14,10 @@ module Spree
         end
       end
 
+      def show
+        @licenses_with_quantity = Spree::LicensedProduct.where(coupon_code_id: @coupon_code.id).select('product_id, count(*) product_quantity').group('product_id').includes(:product)
+      end
+
       def coupon_code_params
         _params = params.require(:coupon_code).permit(:total_quantity, :school_district_id, :product_ids)
         _params[:product_ids] = _params[:product_ids].split(',')
