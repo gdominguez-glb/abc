@@ -24,7 +24,7 @@
   <tbody>
     <% @coupon_codes.each do |coupon_code| %>
       <tr>
-        <td><%= coupon_code.code %></td>
+        <td><%= link_to coupon_code.code, spree.admin_coupon_code_path(coupon_code) %></td>
         <td><%= coupon_code.school_district.try(:name) %></td>
         <td><%= coupon_code.products.map(&:name).join(', ') %></td>
         <td><%= coupon_code.total_quantity %></td>
