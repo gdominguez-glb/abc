@@ -14,7 +14,6 @@
   position: relative;
   min-height: 150px;
   margin-bottom: 24px;
-  padding: $b-space-m;
   border: 1px solid darken($c-firm-accent, 10%);
   background-color: $c-absolute;
   background-position: 50%;
@@ -22,7 +21,6 @@
 
   @media screen and (min-width: $screen-sm-min) {
     min-height: 300px;
-    padding: 25px 40px;
     text-align: center;
   }
 }
@@ -40,12 +38,19 @@
   @include flex(1);
 
   z-index: 1;
+  min-height: 120px;
   padding: 15px;
   background-color: rgba(0, 0, 0, .7);
+
+  @media screen and (min-width: $screen-sm-min) {
+    min-height: 250px;
+  }
 }
 
 .video-link {
   display: block;
+  z-index: 1;
+  padding: $b-space-m;
   color: $c-absolute;
 
   &:hover,
@@ -53,6 +58,11 @@
   &:focus {
     text-decoration: none;
     color: darken($c-absolute, 30%);
+    cursor: pointer;
+  }
+
+  @media screen and (min-width: $screen-sm-min) {
+    padding: 25px 40px;
   }
 }
 

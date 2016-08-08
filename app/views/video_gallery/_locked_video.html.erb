@@ -1,13 +1,13 @@
 <div class="col-md-6 video-grid">
   <div class="video-wrapper <% if video.screenshot.present? %>video-preview-image<% end %>" <% if video.screenshot.present? %> style="background-image: url('<%= video.screenshot.url(:medium) %>')"<% end %>>
-    <div class="video-content">
-      <%= link_to unlock_video_gallery_path(video), class: 'video-link', remote: true do %>
+    <%= link_to unlock_video_gallery_path(video), class: 'video-link', remote: true do %>
+      <div class="video-content">
         <%= mi.lock.css_class('video-lock') %>
         <h6 class="video-text">
           <%= truncate(video.title, length: 160) %>
         </h6>
-      <% end %>
-    </div>
+      </div>  
+    <% end %>
     <div class="video-overlay"></div>
   </div>
 </div>
