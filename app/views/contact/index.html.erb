@@ -273,7 +273,7 @@
       function requireDescription() {
         var topic = $('input[name="contact_form[topic]"]').val();
 
-        if (topic == 'General' || topic == 'Existing Order Support' || topic == 'Parent Support' || topic == 'Curriculum Support' || topic == 'Content Error' || topic == 'Technical Support') {
+        if (topic == 'General' || topic == 'Existing Order Support' || topic == 'Parent Support' || topic == 'Curriculum Support' || topic == 'Content Error' || topic == 'Technical Support' || topic == 'Sales/Purchasing') {
           return true;
         }
         return false;
@@ -297,6 +297,33 @@
         }
       }
 
+      function requireRole() {
+        var topic = $('input[name="contact_form[topic]"]').val();
+        if (topic == 'Sales/Purchasing') {
+          return true;
+        } else {
+          return false;
+        }
+      }
+
+      function requireSchoolDistrictName() {
+        var topic = $('input[name="contact_form[topic]"]').val();
+        if (topic == 'Sales/Purchasing') {
+          return true;
+        } else {
+          return false;
+        }
+      }
+
+      function requireCurriculum() {
+        var topic = $('input[name="contact_form[topic]"]').val();
+        if (topic == 'Sales/Purchasing') {
+          return true;
+        } else {
+          return false;
+        }
+      }
+
       $(".contact-form").validate({
         rules: {
           'contact_form[topic]': 'required',
@@ -307,6 +334,21 @@
             email: true
           },
           'contact_form[phone]': 'required',
+          'contact_form[role]': {
+            required: function() {
+              return requireRole();
+            }
+          },
+          'contact_form[school_district_name]': {
+            required: function() {
+              return requireSchoolDistrictName();
+            }
+          },
+          'contact_form[curriculum]': {
+            required: function() {
+              return requireCurriculum();
+            }
+          },
           'contact_form[description]': {
             required: function() {
               return requireDescription();
