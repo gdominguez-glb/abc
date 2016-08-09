@@ -14,6 +14,20 @@ server {
 }
 <% end %>
 
+server {
+  listen      80;
+  server_name <%= node['vanity_urls'] %>;
+
+  try_files $uri/index.html $uri @unicorn;
+  location @unicorn {
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header Host $http_host;
+    proxy_redirect off;
+    proxy_pass http://unicorn;
+  }
+
+}
+
 <% if node['ssl'] %>
 
 server {
@@ -24,13 +38,12 @@ server {
 
 server {
   listen 443;
-  listen 80;
 
   ssl    on;
   ssl_certificate    <%= node['ssl']['ssl_certificate'] %>;
   ssl_certificate_key    <%= node['ssl']['ssl_certificate_key'] %>;
 
-  server_name <%= node['the_domain'] %> <%= node['vanity_urls'] %>;
+  server_name <%= node['the_domain'] %>;
   root /var/www/<%= node['app'] %>/current/public;
 
   client_max_body_size 1024m;
@@ -47,6 +60,8 @@ server {
     proxy_set_header Host $http_host;
     proxy_redirect off;
     proxy_pass http://unicorn;
+    proxy_set_header X-Forwarded-Proto https;
+    proxy_set_header X-Forwarded-Ssl on;
   }
 
   error_page 500 502 503 504 /500.html;
@@ -57,7 +72,7 @@ server {
 
 server {
   listen 80 default deferred;
-  server_name <%= node['the_domain'] %> <%= node['witeng_link_domain'] %>;
+  server_name <%= node['the_domain'] %>;
   root /var/www/<%= node['app'] %>/current/public;
 
   client_max_body_size 1024m;
