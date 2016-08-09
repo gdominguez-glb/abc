@@ -21,8 +21,7 @@
 // -------------------------------------
 
 @import
-'bootstrap-sprockets', // 'bootstrap-sprockets' must be imported before 'bootstrap' and 'bootstrap/variables'
-'bootstrap',
+'vendor/bootstrap',
 'spinner',
 'bootstrap-datetimepicker',
 'material_icons',
