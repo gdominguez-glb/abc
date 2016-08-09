@@ -6,7 +6,7 @@ class DataSyncer::PageSyncer < DataSyncer::Base
       if page.tiles.present?
         attrs['tiles'] = convert_urls_in_tiles(page.tiles)
       else
-        attrs['body'] = convert_urls_in_page_body(page.body)
+        attrs['body'] = convert_urls_in_content(page.body)
       end
       attrs['curriculum_name'] = Curriculum.find_by(id: curriculum_id).try(:name)
       attrs.to_hash
@@ -29,9 +29,4 @@ class DataSyncer::PageSyncer < DataSyncer::Base
     { rows: rows }
   end
 
-  def convert_urls_in_page_body(body)
-    body = body.gsub('s3-staging.greatminds.org', 's3.greatminds.org')
-    body = body.gsub('staging.greatminds.org', 'greatminds.org')
-    body
-  end
 end
