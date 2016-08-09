@@ -33,5 +33,12 @@ module DataSyncer
         DataSyncer::Base
       end
     end
+
+    def convert_urls_in_content(content)
+      content = content.gsub('s3-staging.greatminds.org', 's3.greatminds.org')
+      content = content.gsub('staging.greatminds.org', 'greatminds.org')
+      content
+    end
+
   end
 end
