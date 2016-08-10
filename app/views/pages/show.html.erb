@@ -2,13 +2,15 @@
   <%= @page.body.html_safe %>
 </div>
 
-<% if @page.custom_css %>
-  <style type="text/css">
-    <%= @page.custom_css.content.html_safe %>
-  </style>
-<% end %>
-<% CustomCss.global_css.each do |custom_css| %>
-  <style type="text/css">
-    <%= custom_css.content %>
-  </style>
+<% cache @page, expires_in: 2.hours do %>
+  <% if @page.custom_css %>
+    <style type="text/css">
+      <%= @page.custom_css.content.html_safe %>
+    </style>
+  <% end %>
+  <% CustomCss.global_css.each do |custom_css| %>
+    <style type="text/css">
+      <%= custom_css.content %>
+    </style>
+  <% end %>
 <% end %>
