@@ -4,10 +4,8 @@ class Account::ProductsController < Account::BaseController
 
     @my_products = filter_by_grade_taxon(current_spree_user.products_in_dashboard).to_a.uniq(&:id)
 
-    load_recent_activities
     load_recommendations
     load_notifications
-    load_taxons
   end
 
   def shop_of_interest
