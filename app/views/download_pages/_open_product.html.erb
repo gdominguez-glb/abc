@@ -1,5 +1,3 @@
-<% open_product = (@opened_product_id == product.id) %>
-
 <div id="product<%= product.id %>" class="panel panel-primary panel-product" data-product-id="<%= product.id %>">
   <div class="panel-heading">
     <div class="row">
@@ -9,14 +7,14 @@
       </div>
       <div class="col-sm-2 text-right--sm-min">
         <span
-          class="mi md-36 panel-toggle productToggle <%= 'collapsed' unless open_product %>"
+          class="mi md-36 panel-toggle productToggle collapsed"
           data-toggle="collapse"
           data-parent="#product<%= product.id %>"
           href="#collapse<%= product.id %>">keyboard_arrow_up</span>
       </div>
     </div>
   </div>
-  <div id="collapse<%= product.id %>" class="panel-body collapse <%= 'in' if open_product %>">
+  <div id="collapse<%= product.id %>" class="panel-body collapse">
     <% nested_materials(product.materials.order('lft asc')).each do |item| %>
       <% material = item.material %>
       <% next if !show_grade_material?(product, material) %>
