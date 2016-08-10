@@ -6,8 +6,8 @@
 # server 'example.com', user: 'deploy', roles: %w{app db web}, my_property: :my_value
 # server 'example.com', user: 'deploy', roles: %w{app web}, other_property: :other_value
 server '54.172.94.127', user: 'deploy', roles: %w{app web}
-server '54.165.189.139', user: 'deploy', roles: %w{db worker}
-server '54.86.188.144', user: 'deploy', roles: %w{search}
+server '54.165.189.139', user: 'deploy', roles: %w{db}
+server '54.86.188.144', user: 'deploy', roles: %w{search worker}
 
 set :branch, 'production'
 set :rails_env, 'production'                  # If the environment differs from the stage name

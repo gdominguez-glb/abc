@@ -19,6 +19,7 @@
   },
   "db": {
     "root_password": "intridea4greatminds",
+    "host": "172.31.53.237",
     "user": {
       "name": "greatminds",
       "password": "intridea4greatminds"
@@ -44,6 +45,7 @@
   "the_domain": "greatminds.org",
   "redis_host": "172.31.0.166",
   "search_server": "true",
+  "worker_server": "true",
   "witeng_link_domain": "witeng.link",
   "vanity_urls": "witeng.link eurmath.link"
 }

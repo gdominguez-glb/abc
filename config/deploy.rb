@@ -42,7 +42,7 @@ set :sidekiq_role, :worker
 set :sidekiq_concurrency, 3
 
 set :whenever_identifier, ->{ "#{fetch(:application)}" }
-set :whenever_roles, [:db]
+set :whenever_roles, [:worker]
 
 namespace :deploy do
 
