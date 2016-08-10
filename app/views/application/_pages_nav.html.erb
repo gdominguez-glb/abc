@@ -9,18 +9,20 @@
     </div>
     <div class="collapse navbar-collapse" id="sub-nav">
       <ul>
-        <%= active_link_to @group_page.title, "/#{@group_page.slug}", active: (request.path == "/#{@group_page.slug}"), wrap_tag: :li if @group_page %>
-        <% @sub_nav_items.each do |page| %>
-          <%= active_link_to page.title, "/#{page.slug}", wrap_tag: :li %>
-        <% end %>
-        <% if @group_page && @group_page.shop %>
-          <li><%= link_to @group_page.shop.title, @group_page.shop.url  %></li>
-        <% end %>
-        <% if @group_page && publication = @group_page.medium_publications.sorted.first %>
-          <%= active_link_to 'Blog', curriculum_blog_path(page_slug: @group_page.slug, slug: publication.slug), wrap_tag: :li, active: /#{@group_page.slug}\/blog/ %>
-        <% end %>
-        <% if @group_page && event_page = @group_page.available_event_pages.first %>
-          <%= active_link_to 'Events', curriculum_events_path(page_slug: @group_page.slug, slug: event_page.slug), wrap_tag: :li, active: /#{@group_page.slug}\/events\/#{event_page.slug}/ %>
+        <% cache [@group_page, request.path], expires_in: 2.hours do %>
+          <%= active_link_to @group_page.title, "/#{@group_page.slug}", active: (request.path == "/#{@group_page.slug}"), wrap_tag: :li if @group_page %>
+          <% @sub_nav_items.each do |page| %>
+            <%= active_link_to page.title, "/#{page.slug}", wrap_tag: :li %>
+          <% end %>
+          <% if @group_page && @group_page.shop %>
+            <li><%= link_to @group_page.shop.title, @group_page.shop.url  %></li>
+          <% end %>
+          <% if @group_page && publication = @group_page.medium_publications.sorted.first %>
+            <%= active_link_to 'Blog', curriculum_blog_path(page_slug: @group_page.slug, slug: publication.slug), wrap_tag: :li, active: /#{@group_page.slug}\/blog/ %>
+          <% end %>
+          <% if @group_page && event_page = @group_page.available_event_pages.first %>
+            <%= active_link_to 'Events', curriculum_events_path(page_slug: @group_page.slug, slug: event_page.slug), wrap_tag: :li, active: /#{@group_page.slug}\/events\/#{event_page.slug}/ %>
+          <% end %>
         <% end %>
       </ul>
     </div>
