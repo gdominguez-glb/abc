@@ -10,6 +10,9 @@ check process unicorn with pidfile /var/www/<%= node['app'] %>/current/tmp/pids/
   stop program = "/etc/init.d/unicorn_<%= node['app'] %> stop"
   group unicorn
 
+<% end %>
+
+<% if node['redis_server'] == 'true' %>
 check process redis-server with pidfile "/var/run/redis_6379.pid"
   start program = "/etc/init.d/redis_6379 start"
   stop program = "/etc/init.d/redis_6379 stop"

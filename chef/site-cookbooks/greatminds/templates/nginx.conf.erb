@@ -31,8 +31,13 @@ server {
 <% if node['ssl'] %>
 
 server {
-  listen      80;
+  listen      80 default deferred;
   server_name <%= node['the_domain'] %>;
+
+  if ($request_uri = '/lb_health_check') {
+    return 200 'gangnam style!';
+  }
+
   rewrite     ^   https://$server_name$request_uri? permanent;
 }
 
