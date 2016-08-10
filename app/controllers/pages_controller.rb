@@ -1,12 +1,18 @@
 class PagesController < ApplicationController
   def show
-    @page          = Page.find_by(slug: params[:slug])
+    @page          = cache [:page_slug, params[:slug]], expires_in: 2.hours do
+      Page.find_by(slug: params[:slug])
+    end
 
     redirect_to not_found_path and return if @page.nil?
 
     @page_title    = @page.title
-    @group_page    = Page.find_by(group_name: @page.group_name, group_root: true)
-    @sub_nav_items = Page.show_in_sub_navigation(@page.group_name)
+    @group_page    = cache [@page, :group_page], expires_in: 2.hours do
+      Page.find_by(group_name: @page.group_name, group_root: true)
+    end
+    @sub_nav_items = cache [@page, :sub_nav_items], expires_in: 2.hours do
+      Page.show_in_sub_navigation(@page.group_name)
+    end
 
     set_page_meta_tags(@page)
     if @page.layout.present?
