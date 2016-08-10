@@ -12,7 +12,9 @@
           <% if locked_product?(product) %>
             <%= render partial: 'locked_product', locals: { product: product } %>
           <% else %>
-            <%= render partial: 'open_product', locals: { product: product } %>
+            <% cache [product, :download_materials], expires_in: 2.hours do %>
+              <%= render partial: 'open_product', locals: { product: product } %>
+            <% end %>
           <% end %>
         <% end %>
       </div>
@@ -106,6 +108,11 @@
             trackProductMaterial(product_id, material_id);
           }
         });
+
+        <% if @opened_product_id %>
+          var opened_product_id = <%= @opened_product_id %>;
+          $("#product"+ opened_product_id + " .productToggle").trigger('click');
+        <% end %>
 
         var material_ids_to_scroll = <%= raw @material_ids_to_scroll.to_json %>;
         for(var i=0; i < material_ids_to_scroll.length; i ++) {
