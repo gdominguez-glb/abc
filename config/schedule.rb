@@ -21,11 +21,11 @@
 
 job_type :rbenv_rake, %Q{export PATH=/home/deploy/.rbenv/shims:/home/deploy/.rbenv/bin:/usr/bin:$PATH; eval "$(rbenv init -)"; \ cd :path && RAILS_ENV=:environment bundle exec rake :task --silent :output }
 
-every 2.hours do
+every 1.day do
   rbenv_rake "medium:import_posts"
 end
 
-every 2.hours do
+every 1.day do
   rbenv_rake "regonline:import_events"
 end
 
@@ -45,6 +45,6 @@ every 2.days, at: '11:30 pm' do
   rbenv_rake "salesforce:cleanup"
 end
 
-every 12.hour do
+every 1.days do
   rbenv_rake "searchkick:reindex:all"
 end
