@@ -369,6 +369,11 @@
 .embed-responsive-4by4 {
   padding-bottom: 100% !important;
   border: 0 !important;
+
+  iframe {
+    width: 100% !important;
+    height: 100% !important;
+  }
 }
 
 // ----- Alignment ----- //
