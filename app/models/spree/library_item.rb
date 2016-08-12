@@ -9,9 +9,9 @@ class Spree::LibraryItem < ActiveRecord::Base
 
   has_attached_file :cover, {
     path:           "/:class/:attachment/:id_partition/:style/:filename",
-    url:            ":s3_alias_url",
+    # url:            ":s3_alias_url",
     s3_protocol:    "https",
-    s3_host_alias:  ENV['s3_bucket_name'],
+    # s3_host_alias:  ENV['s3_bucket_name'],
     :styles => {
       :medium => "330x220" }
   }
