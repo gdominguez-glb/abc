@@ -8,6 +8,9 @@
 // Customize any variables here, before imports
 
 @import
+// helpers for fonts, images & assets
+'bootstrap-sprockets',
+
 // Core variables and mixins
 'bootstrap/variables',
 'bootstrap/mixins',
@@ -15,6 +18,8 @@
 // Reset and dependencies
 'bootstrap/normalize',
 // 'bootstrap/print',
+'bootstrap/glyphicons',
+
 
 // Core CSS
 'bootstrap/scaffolding',
