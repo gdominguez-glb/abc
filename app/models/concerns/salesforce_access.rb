@@ -370,7 +370,7 @@ module SalesforceAccess
       local_object = find_or_create_by_salesforce_object(sfo) do
         new_record = true
       end
-      if local_object.salesforce_reference.blank?
+      if local_object && local_object.salesforce_reference.blank?
         local_object.create_salesforce_reference(id_in_salesforce: sfo.Id)
       end
       if local_object && !new_record && local_object_match_sfo?(local_object, sfo)
