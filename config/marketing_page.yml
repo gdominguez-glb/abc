@@ -36,8 +36,8 @@ marketing_templates:
       <script>
         var imageList = [];
         imageList.push('<%= background_image_url if background_image_url %>');
-        <% if background_image_2_url %> imageList.push('<%= background_image_2_url if background_image_2_url %>'); <% end %>
-        <% if background_image_3_url %> imageList.push('<%= background_image_3_url %>'); <% end %>
+        <% if background_image_2_url.present? %> imageList.push('<%= background_image_2_url if background_image_2_url %>'); <% end %>
+        <% if background_image_3_url.present? %> imageList.push('<%= background_image_3_url if background_image_3_url %>'); <% end %>
 
         // change the background image url with each page load
         var backgroundImageUrl = imageList[Math.floor(Math.random() * (imageList.length - 0)) + 0];
