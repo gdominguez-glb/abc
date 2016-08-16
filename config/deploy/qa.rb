@@ -8,7 +8,7 @@
 server 'qa.greatminds.org', user: 'deploy', roles: %w{web app db workder}
 
 
-set :branch, 'master'
+set :branch, 'develop'
 set :rails_env, 'qa'                  # If the environment differs from the stage name
 
 # role-based syntax

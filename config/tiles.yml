@@ -4,6 +4,12 @@
   - :name: background_image_url
     :label: Background Image Url
     :input_type: text
+  - :name: background_image_2_url
+    :label: Background Image 2 Url (optional)
+    :input_type: text
+  - :name: background_image_3_url
+    :label: Background Image 3 Url (optional)
+    :input_type: text
   - :name: title
     :label: Title
     :input_type: text
