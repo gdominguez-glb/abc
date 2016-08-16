@@ -14,7 +14,7 @@ class VideoGalleryController < ApplicationController
 
     load_taxonomies(@videos, params[:taxon_ids])
 
-    @videos             = @videos.includes([video_group: [:products], taxons: [:taxonomy]]).order('is_free desc, grade_order asc, module_order asc, lesson_order asc, title asc').page(params[:page])
+    @videos             = @videos.includes([video_group: [:products], taxons: [:taxonomy]]).order('is_free desc, grade_order asc, module_order asc, lesson_order asc, title asc').page(params[:page]).per(24)
 
     @bought_product_ids = fetch_bought_ids(@videos.map(&:products).flatten.compact)
   end
