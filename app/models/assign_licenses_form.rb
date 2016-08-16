@@ -30,10 +30,9 @@ class AssignLicensesForm
   end
 
   def emails_must_be_correct
-    all_emails.each do |email|
-      if email !~ EMAIL_REGEX
-        self.errors.add(:licenses_recipients, 'must include correct emails')
-      end
+    error_emails = all_emails.select { |email| email !~ EMAIL_REGEX }
+    if error_emails.present?
+      self.errors.add(:licenses_recipients, "must include correct emails. (Incorrect email: #{error_emails.join(', ')})")
     end
   end
 
