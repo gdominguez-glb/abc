@@ -139,7 +139,7 @@ class Spree::Video < ActiveRecord::Base
   end
 
   def analyze_orders
-    if self.title =~ /G(P?K||d+) M(\d+) Lessons (\d+)\-(\d+)/ || self.title =~ /G(P?K|\d+)[\ |-]?M(\d+)[\ |-]?L?(\d+)?/
+    if self.title =~ /G(P?K||\d+) M(\d+) Lessons (\d+)\-(\d+)/ || self.title =~ /G(P?K|\d+)[\ |-]?M(\d+)[\ |-]?L?(\d+)?/
       # GK M3 Lessons 25-32
       # GK-M4-L2, G2M2L9, GPK-M1-L18, GPK M3 Assessments
       self.grade_order, self.module_order, self.lesson_order = revise_grade_order_value($1), $2, $3
