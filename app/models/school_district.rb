@@ -88,8 +88,8 @@ class SchoolDistrict < ActiveRecord::Base
   end
 
   def self.country_from_salesforce_object(sfo)
-    return nil if sfo.BillingCountry.blank?
-    Spree::Country.find_by(iso: sfo.BillingCountry).try(:iso3)
+    return Spree::Country.find_by(iso: 'US') if sfo.BillingCountry.blank?
+    Spree::Country.find_by(iso: sfo.BillingCountry)
   end
 
   def self.state_from_salesforce_object(sfo)
@@ -103,10 +103,16 @@ class SchoolDistrict < ActiveRecord::Base
     sfo_data = super(sfo)
     sfo_data.merge!(name: sfo.Name,
                     city: sfo.BillingCity,
+                    sf_verified: sfo.Verified__c,
                     skip_city_validation: true,
                     place_type: place_type_from_salesforce_object(sfo))
+
+    country = country_from_salesforce_object(sfo)
     state = state_from_salesforce_object(sfo)
+
+    sfo_data.merge!(country_id: country.id) if country
     sfo_data.merge!(state_id: state.id) if state
+
     sfo_data
   end
 
