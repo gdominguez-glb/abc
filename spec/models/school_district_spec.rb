@@ -107,14 +107,14 @@ RSpec.describe SchoolDistrict, type: :model do
   end
 
   describe ".country_from_salesforce_object" do
-    it "return iso from country with salesforce billing country" do
+    it "return country from country with salesforce billing country" do
       sfo = Hashie::Mash.new(BillingCountry: 'US')
-      expect(SchoolDistrict.country_from_salesforce_object(sfo)).to eq('USA')
+      expect(SchoolDistrict.country_from_salesforce_object(sfo)).to eq(country)
     end
 
-    it "return nil if country billing country is empty" do
+    it "return us if country billing country is empty" do
       sfo = Hashie::Mash.new(BillingCountry: '')
-      expect(SchoolDistrict.country_from_salesforce_object(sfo)).to eq(nil)
+      expect(SchoolDistrict.country_from_salesforce_object(sfo)).to eq(country)
     end
   end
 
