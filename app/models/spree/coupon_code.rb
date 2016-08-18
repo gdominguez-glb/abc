@@ -55,6 +55,6 @@ class Spree::CouponCode < ActiveRecord::Base
   end
 
   def generate_coupon_code_order
-    Spree::Order.create(coupon_code_id: self.id, source: :coupon_code_order, state: 'complete', school_district_id: self.school_district_id)
+    Spree::Order.create(coupon_code_id: self.id, source: :coupon_code_order, state: 'complete', school_district_id: self.school_district_id, email: 'web.admin@greatminds.net')
   end
 end
