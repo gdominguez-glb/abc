@@ -3,9 +3,10 @@ Spree::Order.class_eval do
 
   belongs_to :school_district
   belongs_to :admin_user, class_name: 'Spree::User'
+  belongs_to :coupon_code, class_name: 'Spree::CouponCode'
 
   if !Spree::Order.method_defined?(:fulfillment?)
-    enum source: { web: 0, fulfillment: 1, cc_process: 2 }
+    enum source: { web: 0, fulfillment: 1, cc_process: 2, coupon_code_order: 3 }
   end
 
   include SalesforceAccess
@@ -74,7 +75,7 @@ Spree::Order.class_eval do
   def salesforce_complete?
     return false if line_items.blank?
     return false if id_in_salesforce.blank?
-    return true if fulfillment?
+    return true if fulfillment? || coupon_code_order?
     line_items.any? { |line_item| line_item.id_in_salesforce.present? }
   end
 
@@ -83,7 +84,7 @@ Spree::Order.class_eval do
   end
 
   def pricebook_id
-    return nil if fulfillment?
+    return nil if fulfillment? || coupon_code_order?
     # TODO: Need a better way to get this
     pbids = line_items.all.map { |li| li.try(:product).try(:sf_id_pricebook) }
     pbid = pbids.reject(&:blank?).first
