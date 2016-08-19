@@ -1,31 +1,14 @@
-// _footer.scss
-// todo: refactor
+// *************************************
+//
+//   Footer
+//   -> Footer component styles
+//
+// *************************************
 
 .footer {
-  padding: 40px 20px;
+  padding: $b-space-xl $b-space-l;
   font-size: 1em;
   background: $c-balanced;
-
-  a {
-    font-weight: normal;
-    letter-spacing: 2px;
-  }
-
-  h6 {
-    margin-bottom: 0;
-    font-size: 1em;
-
-    a {
-      font-weight: bold;
-    }
-  }
-
-  hr {
-    margin-top: 15px;
-    color: $c-firm-primary;
-    opacity: .4;
-  }
-
 }
 
 .footer-section {
@@ -33,33 +16,54 @@
   font-size: .90em;
 }
 
-.attribution {
+.footer-rule {
+  margin-top: $b-space-m;
+  color: $c-firm-primary;
+  opacity: .4;
+}
+
+.footer-title {
+  margin-bottom: 0;
+  font-size: 1em;
+}
+
+.footer-title-link {
+  // font-weight: bold;
+}
+
+.footer-link {
+  font-weight: normal;
+  letter-spacing: 2px;
+}
+
+.footer-attribution {
   @media screen and (min-width: $screen-sm-min) {
     font-size: .85em;
     text-align: center;
   }
-
-
-  a {
-    @extend .sans-serif;
-
-    margin: 0 10px;
-    text-transform: uppercase;
-  }
 }
 
-.copyright {
+.footer-terms {
   @extend .sans-serif;
 
-  margin: 0 10px;
+  margin: 0 $b-space;
+  font-weight: normal;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.footer-copyright {
+  @extend .sans-serif;
+
+  margin: 0 $b-space;
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 2px;
 }
 
-.social-icon {
+.footer-social-icon {
   position: relative;
   bottom: -2px;
-  min-width: 15px;
+  min-width: $b-space-m;
   font-size: 13.68px;
 }
