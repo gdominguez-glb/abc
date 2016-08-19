@@ -33,7 +33,7 @@ class SelectUsersForm
     sheet  = xlsx.sheet(0)
     header = sheet.row(1)
     (2..sheet.last_row).map do |i|
-      Hash[[header, sheet.row(i)].transpose]
+      Hash[[header.map(&:strip), sheet.row(i).map(&:strip)].transpose]
     end
   end
 
@@ -41,7 +41,7 @@ class SelectUsersForm
     rows   = CSV.read(@users_file.path)
     header = rows[0]
     (1..(rows.length-1)).to_a.map do |i|
-      Hash[[header, rows[i]].transpose]
+      Hash[[header.map(&:strip), rows[i].map(&:strip)].transpose]
     end
   end
 end
