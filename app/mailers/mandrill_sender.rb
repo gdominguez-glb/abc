@@ -18,7 +18,9 @@ class MandrillSender
         } 
       ]
     }
-    @mandrill.messages.send_template(template_name, template_content, message)
+    if Rails.env.qa? || Rails.env.staging? || Rails.env.production?
+      @mandrill.messages.send_template(template_name, template_content, message)
+    end
   end
 
   def generate_vars(variables)

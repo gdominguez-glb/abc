@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'sidekiq/testing'
 
 RSpec.describe AssignLicensesForm, type: :model do
   let(:school_admin_user) { create(:gm_user) }
@@ -42,6 +43,7 @@ RSpec.describe AssignLicensesForm, type: :model do
   describe "#perform" do
     it "create distributions to user" do
       assign_licenses_form.perform
+      LicensesDistributionWorker.drain
       distribution = Spree::ProductDistribution.find_by(email: 'john@doe.com')
 
       expect(distribution.quantity).to eq(1)
@@ -49,6 +51,7 @@ RSpec.describe AssignLicensesForm, type: :model do
 
     it "reduce licenses quantity on school admin user" do
       assign_licenses_form.perform
+      LicensesDistributionWorker.drain
 
       expect(licensed_product.reload.quantity).to eq(9)
     end
@@ -59,6 +62,7 @@ RSpec.describe AssignLicensesForm, type: :model do
       it "able to assign licenses from two licenses" do
         assign_licenses_form = AssignLicensesForm.new(licenses_recipients: 'john@doe.com', licenses_ids: [licensed_product.id, another_licensed_product.id], licenses_number: '13', user: school_admin_user)
         assign_licenses_form.perform
+        LicensesDistributionWorker.drain
 
         expect(licensed_product.reload.quantity).to eq(0)
         expect(another_licensed_product.reload.quantity).to eq(2)
@@ -73,6 +77,7 @@ RSpec.describe AssignLicensesForm, type: :model do
 
     before(:each) do
       assign_licenses_form.perform
+      LicensesDistributionWorker.drain
     end
 
 

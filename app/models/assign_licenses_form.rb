@@ -12,8 +12,7 @@ class AssignLicensesForm
   validates :licenses_number, presence: true, numericality: { greater_than: 0 }
 
   def perform
-    licensed_products = @user.licensed_products.where(id: all_licenses_ids)
-    Spree::LicensesManager::LicensesDistributer.new(user: @user, licensed_products: licensed_products, rows: build_rows).execute
+    LicensesDistributionWorker.perform_async(@user.id, all_licenses_ids, all_emails, @licenses_number)
   end
 
   def build_rows
