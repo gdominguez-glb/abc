@@ -4,9 +4,9 @@
     <div style="width: 16.66%; position: absolute;"></div>
     <% FooterTitle.order('position asc').each do |footer_title| %>
       <div class="col-sm-2 footer-section">
-        <h6 class="section-lead">
+        <h6 class="section-lead footer-title">
           <% if footer_title.link.present? %>
-            <%= link_to footer_title.title, footer_title.link %>
+            <%= link_to footer_title.title, footer_title.link, :class => 'footer-title-link' %>
           <% else %>
             <%= footer_title.title %>
           <% end %>
@@ -15,9 +15,9 @@
           <% footer_title.footer_links.each do |link| %>
             <li>
               <% if link.name == 'FAQ' %>
-                <%= link_to link.name, link.link, :target => '_blank' %>
+                <%= link_to link.name, link.link, :target => '_blank', :class => 'footer-link' %>
               <% else %>
-                <%= link_to link.name, link.link %>
+                <%= link_to link.name, link.link, :class => 'footer-link' %>
               <% end %>
             </li>
           <% end %>
@@ -25,21 +25,21 @@
       </div>
     <% end %>
     <div class="col-sm-2 footer-section">
-      <h6 class="section-lead">Connect</h6>
+      <h6 class="section-lead footer-title"><span class="footer-title-no-link">Connect</span></h6>
       <ul>
         <li>
-          <a href="https://www.facebook.com/GreatMindsNonProfit/" target="_blank">
-            <%= material_icon.share.css_class('social-icon') %> Facebook
+          <a href="https://www.facebook.com/GreatMindsNonProfit/" class="footer-link" target="_blank">
+            <%= material_icon.share.css_class('footer-social-icon') %> Facebook
           </a>
         </li>
         <li>
-          <a href="/contact">
-            <%= material_icon.person.css_class('social-icon') %> Contact
+          <a href="/contact" class="footer-link">
+            <%= material_icon.person.css_class('footer-social-icon') %> Contact
           </a>
         </li>
         <li>
-          <%= link_to main_app.newsletters_path, remote: true do %>
-            <%= material_icon.mail.css_class('social-icon') %> Newsletter
+          <%= link_to main_app.newsletters_path, remote: true, :class => 'footer-link' do %>
+            <%= material_icon.mail.css_class('footer-social-icon') %> Newsletter
           <% end %>
         </li>
       </ul>
@@ -48,14 +48,14 @@
 
   <div class="row">
     <div class="col-sm-10 col-sm-offset-1">
-      <hr />
+      <hr class="footer-rule" />
     </div>
   </div>
 
   <div class="row">
     <div class="col-sm-12">
-      <p class="attribution">
-        <span class="copyright">Copyright &copy; 2016 Great Minds</span> | <a href="/terms-of-service">Terms of Service</a>
+      <p class="footer-attribution">
+        <span class="footer-copyright">Copyright &copy; 2016 Great Minds</span> <span class="footer-attribution-break">|</span> <a href="/terms-of-service" class="footer-terms">Terms of Service</a>
       </p>
     </div>
   </div>
