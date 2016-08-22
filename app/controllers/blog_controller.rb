@@ -37,10 +37,12 @@ class BlogController < ApplicationController
 
   def load_global_publication
     @medium_publication = MediumPublication.global.find_by(slug: params[:slug])
+    raise ActiveRecord::RecordNotFound.new('blog not exist') if @medium_publication.blank?
   end
 
   def load_curriculum_publication
     @medium_publication = MediumPublication.curriculum.find_by(slug: params[:slug])
+    raise ActiveRecord::RecordNotFound.new('blog not exist') if @medium_publication.blank?
   end
 
   def load_posts

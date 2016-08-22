@@ -41,7 +41,7 @@ every 1.hour do
   rbenv_rake "salesforce:sync"
 end
 
-every 2.days, at: '11:30 pm' do
+every 2.hours do
   rbenv_rake "salesforce:cleanup"
 end
 
