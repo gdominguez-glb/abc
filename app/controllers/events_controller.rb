@@ -28,6 +28,7 @@ class EventsController < ApplicationController
 
   def list
     @event_page = EventPage.find_by(slug: params[:slug])
+    raise ActiveRecord::RecordNotFound.new('events not exist') if @event_page.blank?
     @events     = @event_page.events.displayable.sorted.page(params[:page])
 
     filter_by_zipcode
