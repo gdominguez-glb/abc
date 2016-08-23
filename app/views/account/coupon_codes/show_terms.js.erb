@@ -2,6 +2,9 @@
   $('#select-product-modal').modal('hide');
   $('body').append("<%= escape_javascript(render 'product_terms') %>");
   $('#product-terms-modal').modal('show');
+  $('#product-terms-modal').on('shown.bs.modal', function() {
+    scrollHandler('product_terms', true);
+  });
   $('#product-terms-modal').on('hidden.bs.modal', function (e) {
     $('#product-terms-modal').remove();
   });
