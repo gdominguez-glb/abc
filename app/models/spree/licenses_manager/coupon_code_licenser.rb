@@ -32,7 +32,7 @@ module Spree
 
         _used_code_before = used_code_before?
 
-        common_attrs = { email: @user.email, user_id: @user.id, coupon_code: @code, quantity: 1 }
+        common_attrs = { email: @user.email, user_id: @user.id, coupon_code: @code, quantity: 1, order: @code.order }
         products_to_assign.each do |product|
           Spree::LicensedProduct.find_or_create_by({ product_id: product.id }.merge(common_attrs))
         end

@@ -1,4 +1,5 @@
 <% if @result[:success] == true %>
+  $('#product-terms-modal').modal('hide');
   $('#select-product-modal').modal('hide');
   $('body').append("<%= escape_javascript(render 'success_modal') %>");
   $('#success-modal').modal('show');

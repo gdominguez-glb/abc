@@ -11,11 +11,6 @@
             <label>Coupon Code</label>
             <%= text_field_tag :code, nil, class: 'form-control' %>
           </div>
-          <div class="form-group">
-            <label>
-              <%= check_box_tag 'tos', 'yes', false, class: 'accept_tos' %> I agree to the <%= link_to 'Terms & Conditions', display_terms_path, target: '_blank' %>
-            </label>
-          </div>
         </div>
         <div class="modal-footer text-left">
           <%= submit_tag 'Submit', class: 'btn btn-primary', data: { disable_with: 'Submitting...' } %>

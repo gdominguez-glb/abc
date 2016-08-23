@@ -20,6 +20,9 @@ module Spree
 
           send_email_notifications
         end
+        @rows.each do |row|
+          Spree::LicensesManager::SingleLicenseDistributer.new(row[:email]).execute
+        end
       end
 
       def create_distribution_license(row)
@@ -63,7 +66,7 @@ module Spree
         }.merge(attrs)
 
         licensed_product = Spree::LicensedProduct.create(license_attrs)
-        if licensed_product.quantity > 1
+        if licensed_product.quantity > 1 || Spree::LicensedProduct.exist_product_license_not_expire?(licensed_product)
           licensed_product.user.assign_school_admin_role if licensed_product.user
           licensed_product.update(can_be_distributed: true)
           SingleLicenseExtractor.new(licensed_product, false).execute

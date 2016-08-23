@@ -78,9 +78,9 @@ window.Gm = Gm;
 function initEditor() {
   $('.rich-editor').trumbowyg({
     fullscreenable: false,
-    closable: true,
+    closable: false,
     removeformatPasted: true,
-    btns: ['bold', 'italic', 'underline', 'strikethrough', '|', 'formatting', '|', 'unorderedList', 'orderedList', '|', 'link', '|', 'removeformat']
+    btns: ['bold', 'italic', 'underline', 'strikethrough', '|', 'formatting', '|', 'unorderedList', 'orderedList', '|', 'link', '|', 'viewHTML', 'removeformat']
   });
 }
 
