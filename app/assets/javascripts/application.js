@@ -143,4 +143,8 @@ $(document).ready(function() {
       });
     });
   }
+
+  // Enable select2 on pages where we can't inline JS
+  $('.js-select2').select2();
+
 });
