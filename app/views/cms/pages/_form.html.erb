@@ -75,7 +75,7 @@
     <div class="col-sm-12">
       <div class="form-group">
         <%= f.label :body %>
-        <%= f.text_area :body, class: 'form-control rich-editor', rows: 10 %>
+        <%= f.text_area :body, class: "form-control #{@page.body && @page.body.include?('form') ? '' : 'rich-editor'}", rows: 20 %>
       </div>
     </div>
     <div class="col-sm-6">
