@@ -20,7 +20,7 @@ module Spree
       end
 
       def coupon_code_params
-        _params = params.require(:coupon_code).permit(:total_quantity, :school_district_id, :product_ids)
+        _params = params.require(:coupon_code).permit(:total_quantity, :school_district_id, :product_ids, :code)
         _params[:product_ids] = _params[:product_ids].split(',')
         _params
       end
