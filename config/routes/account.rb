@@ -46,7 +46,6 @@ namespace :account do
     end
     member do
       post :activate_product
-      post :show_terms
     end
   end
 

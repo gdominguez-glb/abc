@@ -5,7 +5,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title">Coupon Redemption</h4>
       </div>
-      <%= form_tag show_terms_account_coupon_code_path(@coupon_code.code), remote: true, authenticity_token: true do %>
+      <%= form_tag activate_product_account_coupon_code_path(@coupon_code.code), remote: true, authenticity_token: true do %>
         <div class="modal-body">
           <label class="margin-bottom--l">Please select the product you wish to redeem...</label>
           <div class="row">
