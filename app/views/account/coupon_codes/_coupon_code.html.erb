@@ -7,10 +7,12 @@
       </div>
       <%= form_tag activate_account_coupon_codes_path, remote: true, authenticity_token: true do %>
         <div class="modal-body">
-          <div class="form-group">
+          <p>Enter your coupon code below to redeem your resources.</p>
+          <div class="form-group margin-bottom--s">
             <label>Coupon Code</label>
             <%= text_field_tag :code, nil, class: 'form-control' %>
           </div>
+          <p class="small text--italic">Coupon codes are used to distribute access to premium parent and teacher resources. If you're interested in these resources for your school or district, contact our <a href="/contact#sales">sales team</a>.</p>
         </div>
         <div class="modal-footer text-left">
           <%= submit_tag 'Submit', class: 'btn btn-primary', data: { disable_with: 'Submitting...' } %>
