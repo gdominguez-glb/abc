@@ -45,3 +45,9 @@ check process elasticsearch with pidfile /var/run/elasticsearch.pid
     stop program = "/etc/init.d/elasticsearch stop"
     if cpu usage > 40% for 3 cycles then restart
 <% end %>
+
+<% if node['load_balancer_server'] == 'true' %>
+check process haproxy-server with pidfile "/var/run/haproxy.pid"
+  start program = "/etc/init.d/haproxy start"
+  stop program = "/etc/init.d/haproxy stop"
+<% end %>
