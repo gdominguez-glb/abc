@@ -1,5 +1,5 @@
 <% if @coupon_code.blank? %>
-  alert('Please enter a valid coupone code!');
+  alert('Please enter a valid coupon code!');
 <% elsif !@coupon_code.available? %>
   alert('The coupon code you enter is not available!');
 <% else %>
