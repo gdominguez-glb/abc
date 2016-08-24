@@ -1,6 +1,6 @@
-<% if params[:tos] != 'yes' %>
-  alert('Please accept the terms!');
-<% elsif @coupon_code.blank? %>
+<%# if params[:tos] != 'yes' %>
+  //alert('Please accept the terms!');
+<% if @coupon_code.blank? %>
   alert('Please enter a valid coupon code!');
 <% elsif !@coupon_code.available? %>
   alert('The coupon code you enter is not available!');
