@@ -7,7 +7,7 @@ module AutocompleteByName
     collection_name = klass.name.split('::').last.underscore.pluralize
 
     if params[:q]
-      collection = collection.where("name like ?", "%#{params[:q]}%")
+      collection = collection.where("name ilike ?", "%#{params[:q]}%")
     end
 
     if params[:name]
