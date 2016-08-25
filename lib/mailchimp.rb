@@ -17,7 +17,8 @@ class Mailchimp
   SUBJECT_LISTS = {
     'Math' => 'd8714f2c62',
     'History' => 'abb1b31c20',
-    'English' => 'c689119d94'
+    'English' => 'c689119d94',
+    "Science" => "511f8b7762"
   }
 
   def self.subscribe_for_user(user_id)
