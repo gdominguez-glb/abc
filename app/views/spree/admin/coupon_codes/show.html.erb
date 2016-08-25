@@ -15,7 +15,7 @@
     <% @licenses_with_quantity.each do |license| %>
       <tr>
         <td><%= license.product.name %></td>
-        <td><%= license.product_quantity %></td>
+        <td><%= link_to license.product_quantity, breakdown_admin_coupon_code_path(@coupon_code, product_id: license.product_id) %></td>
       </tr>
     <% end %>
   </tbody>
