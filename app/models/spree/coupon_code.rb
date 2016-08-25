@@ -6,7 +6,7 @@ class Spree::CouponCode < ActiveRecord::Base
   has_one :order, class_name: 'Spree::Order'
 
   validates_presence_of :total_quantity, :code
-  validates_uniqueness_of :code
+  validates_uniqueness_of :code, if:  Proc.new { |cc| cc.code.present? }
 
   before_validation :generate_code, on: :create
   after_commit :generate_coupon_code_order, on: :create
@@ -45,6 +45,7 @@ class Spree::CouponCode < ActiveRecord::Base
 
   def generate_code
     return if self.code.present?
+    self.code = nil
     max_length = 8
     self.code ||= loop do
       random = ([*('A'..'Z'),*('0'..'9')]-%w(0 1 I O)).sample(max_length).join
