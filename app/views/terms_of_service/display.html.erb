@@ -1,23 +1,20 @@
 <div class="col-sm-10 col-sm-offset-1 margin-top--xxl margin-bottom--xl">
   <div class="row">
     <div class="col-md-12">
-      <% if Date.today < Date.new(2016, 7, 1) %>
-        <h3 class='alert alter-warning'>These terms and all product licenses will be updated on July 1st. </h3>
-      <% end %>
       <%= form_tag accept_terms_path do %>
         <div class="terms_and_conditions_box">
-        <h4>Terms of Service for Use of This Website</h4>
-        <div class="alert alert-info"><i class="mi">info_outline</i> Scroll through and accept the terms to continue.</div>
-        <div class="terms_and_conditions_text">
-          <%= render 'term_text' %>
+          <h4>Terms of Service for Use of This Website</h4>
+          <div class="alert alert-info"><i class="mi">info_outline</i> Scroll through and accept the terms to continue.</div>
+          <div class="terms_and_conditions_text">
+            <%= render 'term_text' %>
+          </div>
+          <% unless spree_current_user.blank? || spree_current_user.accepted_terms %>
+            <div class="margin-top--s">
+              <%= check_box_tag :accept_terms %> <%= label_tag(:accept_terms, Spree.t('terms_and_conditions.checkbox')) %>
+            </div>
+            <%= button_tag Spree.t(:save_and_continue), :class => 'continue btn btn-success btn-block-xs disabled term-continue-button margin-bottom', :disabled => true %>
+          <% end %>
         </div>
-        <% unless spree_current_user.blank? || spree_current_user.accepted_terms %>
-          <div class="margin-top--s">
-            <%= check_box_tag :accept_terms %> <%= label_tag(:accept_terms, Spree.t('terms_and_conditions.checkbox')) %>
-          </div>
-          </div>
-          <%= button_tag Spree.t(:save_and_continue), :class => 'continue btn btn-success btn-block-xs disabled term-continue-button margin-bottom', :disabled => true %>
-        <% end %>
       <% end %>
     </div>
   </div>
