@@ -3,9 +3,12 @@ class Spree::CouponCode < ActiveRecord::Base
 
   has_and_belongs_to_many :products, class_name: 'Spree::Product', join_table: :spree_coupon_codes_products
 
+  has_one :order, class_name: 'Spree::Order'
+
   validates_presence_of :total_quantity
 
   before_validation :generate_code, on: :create
+  after_commit :generate_coupon_code_order, on: :create
 
   def grades_to_select
     sql = <<-SQL
@@ -49,5 +52,9 @@ class Spree::CouponCode < ActiveRecord::Base
         break random
       end
     end
+  end
+
+  def generate_coupon_code_order
+    Spree::Order.create(coupon_code_id: self.id, source: :coupon_code_order, state: 'complete', school_district_id: self.school_district_id, email: 'web.admin@greatminds.net')
   end
 end

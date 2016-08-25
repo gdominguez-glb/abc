@@ -6,11 +6,12 @@ class Mailchimp
   API_ROOT = 'https://us11.api.mailchimp.com/3.0/'
 
   LISTS = {
+    "General Great Minds Updates" => "1df83dd41d",
     "Art updates" => "51bebc0779",
     "ELA updates" => "c689119d94",
-    "General Great Minds Updates" => "1df83dd41d",
-    "History Updates (Alexandria Plan)"=>"abb1b31c20",
-    "Math Updates (Eureka Math)"=>"d8714f2c62"
+    "History Updates (Alexandria Plan)" => "abb1b31c20",
+    "Math Updates (Eureka Math)" => "d8714f2c62",
+    "Science" => "511f8b7762"
   }
 
   SUBJECT_LISTS = {

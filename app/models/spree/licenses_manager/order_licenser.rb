@@ -15,7 +15,9 @@ module Spree
                          quantity: line_item.quantity)
         end
 
+
         assign_school_admin_to_order_user
+        Spree::LicensesManager::SingleLicenseDistributer.new(email).execute
         send_email_notification
       end
 
@@ -34,6 +36,7 @@ module Spree
         if licensed_product.quantity > 1 && !@order.enable_single_distribution?
           SingleLicenseExtractor.new(licensed_product).execute
         end
+
         licensed_product
       end
 

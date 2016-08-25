@@ -2,7 +2,7 @@
 <div class="col-md-9">
   <h2>Editing Page</h2>
   <% page_url = page_url(slug: @page.slug) %>
-  <small class="help-block">Current URL: <%= link_to page_url, page_url, target: '_blank' %></small>
+  <small class="help-block">Current URL: <%= link_to page_url, page_url, target: '_blank', style: 'text-transform: none;' %></small>
 
   <%= render 'form' %>
 

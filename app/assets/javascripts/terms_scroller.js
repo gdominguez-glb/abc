@@ -50,12 +50,16 @@ function scrollHandler(checkboxToWatch, agreeRequired) {
 
   }
 
-  function isHeightEqual(height_one, height_two) {
+  function isHeightEqual(heightOne, heightTwo) {
     // fix issues that in some browser the height could be float number which cause equal off
-    if(Math.abs(height_one - height_two) < 2) {
-      return true;
+    var isEqual;
+
+    if (Math.abs(heightOne - heightTwo) < 2) {
+      isEqual = true;
     } else {
-      return false;
+      isEqual = false;
     }
+
+    return isEqual;
   }
 }

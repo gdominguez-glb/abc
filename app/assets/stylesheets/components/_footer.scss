@@ -1,65 +1,115 @@
-// _footer.scss
-// todo: refactor
+// *************************************
+//
+//   Footer
+//   -> Footer component styles
+//
+// *************************************
 
 .footer {
-  padding: 40px 20px;
+  padding: $b-space-xl $b-space-l;
   font-size: 1em;
   background: $c-balanced;
-
-  a {
-    font-weight: normal;
-    letter-spacing: 2px;
-  }
-
-  h6 {
-    margin-bottom: 0;
-    font-size: 1em;
-
-    a {
-      font-weight: bold;
-    }
-  }
-
-  hr {
-    margin-top: 15px;
-    color: $c-firm-primary;
-    opacity: .4;
-  }
-
 }
 
 .footer-section {
-  margin: 0 0 30px;
+  margin: 0 0 $b-space;
   font-size: .90em;
+
+  @media screen and (min-width: $screen-sm-min) {
+    margin: 0 0 ($b-space * 3);
+  }
 }
 
-.attribution {
+.footer-rule {
+  margin-top: $b-space;
+  color: $c-firm-primary;
+  opacity: .4;
+
+  @media screen and (min-width: $screen-sm-min) {
+    margin-top: $b-space-m;
+  }
+}
+
+.footer-title {
+  min-height: $b-space-xl;
+  margin-bottom: 0;
+  font-size: 1em;
+
+  @media screen and (min-width: $screen-sm-min) {
+    min-height: initial;
+  }
+}
+
+.footer-title-link,
+.footer-title-no-link {
+  display: block;
+  padding: $b-space ($b-space * 3);
+
+  @media screen and (min-width: $screen-sm-min) {
+    display: inline;
+    padding: initial;
+  }
+}
+
+.footer-link {
+  display: block;
+  padding: $b-space ($b-space * 3);
+  font-weight: normal;
+  letter-spacing: 2px;
+
+  @media screen and (min-width: $screen-sm-min) {
+    display: inline;
+    padding: initial;
+  }
+}
+
+.footer-attribution {
+  margin-bottom: 0;
+
   @media screen and (min-width: $screen-sm-min) {
     font-size: .85em;
     text-align: center;
   }
+}
 
+.footer-attribution-break {
+  display: none;
 
-  a {
-    @extend .sans-serif;
-
-    margin: 0 10px;
-    text-transform: uppercase;
+  @media screen and (min-width: $screen-sm-min) {
+    display: inline;
   }
 }
 
-.copyright {
+.footer-terms {
   @extend .sans-serif;
 
-  margin: 0 10px;
+  display: block;
+  margin: 0 $b-space;
+  padding: $b-space ($b-space * 3);
+  font-weight: normal;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 2px;
+
+  @media screen and (min-width: $screen-sm-min) {
+    display: inline;
+    padding: initial;
+    text-decoration: underline;
+  }
+}
+
+.footer-copyright {
+  @extend .sans-serif;
+
+  margin: 0 $b-space;
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 2px;
 }
 
-.social-icon {
+.footer-social-icon {
   position: relative;
   bottom: -2px;
-  min-width: 15px;
+  min-width: $b-space-m;
   font-size: 13.68px;
 }

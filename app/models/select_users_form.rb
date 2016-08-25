@@ -7,7 +7,7 @@ class SelectUsersForm
   end
 
   def all_emails
-    @all_emails ||= (@licenses_recipients || '').split(',').map(&:strip) + (@emails||[]) + emails_in_file
+    @all_emails ||= ((@licenses_recipients || '').split(',').map(&:strip) + (@emails||[]) + emails_in_file).reject(&:blank?)
   end
 
   def emails_in_file
