@@ -1,0 +1,21 @@
+// Production Load Balancer Instance
+{
+  "run_list": [
+    "recipe[greatminds]",
+    "recipe[greatminds::users]",
+    "recipe[greatminds::monit]",
+    "recipe[greatminds::haproxy]"
+  ],
+  "group": "deploy",
+  "user": {
+    "name": "deploy",
+    "password": "$1$GSGzIqIX$YjH2Yypf0Wiy3VKJDVP6D1"
+  },
+  "rails_env": "production",
+  "rails_secrets": "6c46153a8029c862afd9427f8059c98a04b741ed26411d0474d247531e1511ecc14250590075e8707445cdd502e1e8272c7ff7416cf03e84157ed4b00b75c87e",
+  "domain": "greatminds.org",
+  "the_domain": "greatminds.org",
+  "load_balancer_server": "true",
+  "witeng_link_domain": "witeng.link",
+  "vanity_urls": "witeng.link eurmath.link"
+}
