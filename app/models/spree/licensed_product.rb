@@ -126,7 +126,7 @@ class Spree::LicensedProduct < ActiveRecord::Base
   def self.exist_product_license_not_expire?(licensed_product)
     Spree::LicensedProduct.
       where('email = ?', licensed_product.email).
-      where(can_be_distributed: false, product_id: licensed_product.product_id).
+      where(can_be_distributed: false, product_id: licensed_product.product_id, quantity: 1).
       where('id != ?', licensed_product.id).
       where('(expire_at IS NULL OR expire_at > ?)', Time.now).exists?
   end
