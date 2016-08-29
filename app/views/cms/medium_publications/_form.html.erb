@@ -28,8 +28,8 @@
       <div class="form-group">
         <%= f.label "Medium publication url" %>
         <%= f.text_field :url, class: 'form-control' %>
-        <small class="help-block margin-bottom--reset">This is the URL of a blog on medium.com.</small>
-        <small class="help-block margin-top--reset">Example: https://medium.com/great-minds-reports</small>
+        <small class="help-block">This is the URL of a blog on medium.com.<br />
+        Example: https://medium.com/great-minds-reports</small>
       </div>
     </div>
     <div class="col-sm-6">
@@ -55,9 +55,9 @@
         <%= f.label "Blog Unique url" %>
         <%= f.text_field :slug, class: 'form-control' %>
         <small class="help-block">This should be entered with no leading slash. The URL will differ, depending on the "Blog Type" and "Curriculum Page" selections in the above dropdowns.</small>
-        <small class="help-block margin-top--reset margin-bottom--reset">For example, say you enter 'report' (without the quotes).</small>
-        <small class="help-block margin-top--reset margin-bottom--reset">If you have selected "Global" as the blog type, the resulting URL will be: /blog/global/report</small>
-        <small class="help-block margin-top--reset">If you have selected "Curriculum", and "Math", the resulting URL will be: /math/blog/report</small>
+        <small class="help-block">For example, say you enter 'report' (without the quotes).<br />
+        If you have selected "Global" as the blog type, the resulting URL will be: /blog/global/report<br />
+        If you have selected "Curriculum", and "Math", the resulting URL will be: /math/blog/report</small>
       </div>
     </div>
     <div class="col-sm-6">
