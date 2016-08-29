@@ -1,7 +1,7 @@
 <% if @coupon_code.blank? %>
-  alert('Please enter a valid coupon code!');
+  alert('Please enter a valid product key!');
 <% elsif !@coupon_code.available? %>
-  alert('The coupon code you enter is not available!');
+  alert('The product key you enter is not available!');
 <% else %>
   $('#enter-code-modal').modal('hide');
   $('body').append("<%= escape_javascript(render 'select_product') %>");
