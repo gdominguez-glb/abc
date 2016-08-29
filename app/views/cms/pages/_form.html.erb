@@ -32,7 +32,7 @@
       <div class="form-group">
         <%= f.label :meta_keywords %>
         <%= f.text_field :keywords, class: 'form-control' %>
-        <small class="help-block">Separate by commas.</small>
+        <small class="help-block">Separate keywords using commas.</small>
       </div>
     </div>
     <div class="col-sm-6">
@@ -45,7 +45,7 @@
       <div class="form-group">
         <%= f.label 'Unique Url' %>
         <%= f.text_field :slug, class: 'form-control' %>
-        <small class="help-block">For example if you enter 'about' here, this page could be visit under /about .</small>
+        <small class="help-block">URL should be entered without leading slash. See the permalink at top of the page for an example of how the full URL can be accessed on the site.</small>
       </div>
     </div>
     <div class="col-sm-6">
