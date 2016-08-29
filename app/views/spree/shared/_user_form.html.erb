@@ -51,10 +51,12 @@
       </div>
     </div>
     <div class="col-md-6">
-      <label>Role</label>
-      <div class="form-group select-container dark-select block">
-        <span>Select your Role</span>
-        <%= f.select :title, options_for_select(USER_TITLES, f.object.title), { prompt: 'Please select your role' }, { class: 'form-control', tabindex: 6 } %>
+      <div class="form-group">
+        <label>Role</label>
+        <div class="select-container dark-select block">
+          <span>Select your Role</span>
+          <%= f.select :title, options_for_select(USER_TITLES, f.object.title), { prompt: 'Please select your role' }, { class: 'form-control', tabindex: 6 } %>
+        </div>
       </div>
     </div>
   </div>
@@ -101,12 +103,14 @@
 
   <div class="row">
     <div class="col-md-6">
-      <label>Country</label>
-      <div class="form-group school-district select-container dark-select block">
-        <span><%= selected_country.name %></span>
-        <%= f.fields_for :school_district do |school_district_form| %>
-          <%= school_district_form.collection_select :country_id, country_list, :id, :name, { selected: selected_country_id  } , { class: 'form-control' } %>
-        <% end %>
+      <div class="form-group">
+        <label>Country</label>
+        <div class="school-district select-container dark-select block">
+          <span><%= selected_country.name %></span>
+          <%= f.fields_for :school_district do |school_district_form| %>
+            <%= school_district_form.collection_select :country_id, country_list, :id, :name, { selected: selected_country_id  } , { class: 'form-control' } %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
@@ -114,14 +118,16 @@
   <% us_selected = (selected_country_id.to_i == us_country.id) %>
   <div id="state-input-wrapper" class="row <%= 'hide' if !us_selected %>">
     <div class="col-md-6">
-      <label>State</label>
-      <div class="form-group school-district select-container dark-select block">
-        <% selected_state_id = params[:spree_user].try(:[], :school_district_attributes).try(:[], :state_id) %>
-        <% selected_state_name = Spree::State.find_by(id: selected_state_id).try(:name) %>
-        <span><%= selected_state_name ? selected_state_name : 'Select a State' %></span>
-        <%= f.fields_for :school_district do |school_district_form| %>
-          <%= select_tag 'spree_user[school_district_attributes][state_id]', options_from_collection_for_select(us_country.states, :id, :name, selected_state_id), prompt: 'Select a State', class: 'form-control', disabled: !us_selected %>
-        <% end %>
+      <div class="form-group">
+        <label>State</label>
+        <div class="form-group school-district select-container dark-select block">
+          <% selected_state_id = params[:spree_user].try(:[], :school_district_attributes).try(:[], :state_id) %>
+          <% selected_state_name = Spree::State.find_by(id: selected_state_id).try(:name) %>
+          <span><%= selected_state_name ? selected_state_name : 'Select a State' %></span>
+          <%= f.fields_for :school_district do |school_district_form| %>
+            <%= select_tag 'spree_user[school_district_attributes][state_id]', options_from_collection_for_select(us_country.states, :id, :name, selected_state_id), prompt: 'Select a State', class: 'form-control', disabled: !us_selected %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
