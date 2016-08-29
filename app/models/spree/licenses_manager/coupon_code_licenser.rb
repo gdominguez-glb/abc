@@ -26,9 +26,9 @@ module Spree
       end
 
       def execute
-        return { success: false, message: 'Code not available' } if !code_available?
+        return { success: false, message: 'Product key not available' } if !code_available?
         return { success: false, message: 'No products to activate' } if products_to_assign.empty?
-        return { success: false, message: 'Already activated the code with the option.' } if already_activated?
+        return { success: false, message: 'Already activated the product key with this product' } if already_activated?
 
         _used_code_before = used_code_before?
 
