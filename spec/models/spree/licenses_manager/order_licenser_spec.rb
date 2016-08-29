@@ -18,6 +18,14 @@ RSpec.describe Spree::LicensesManager::OrderLicenser do
     it "assign school admin role to user" do
       expect(user.reload.has_school_admin_role?).to eq(true)
     end
+
+    it "assign distributable license to user" do
+      expect(Spree::LicensedProduct.where(user_id: user.id, product_id: product.id, quantity: 9, can_be_distributed: true).count).to eq(1)
+    end
+
+    it "assign single license to self" do
+      expect(Spree::LicensedProduct.where(user_id: user.id, product_id: product.id, quantity: 1, can_be_distributed: false).count).to eq(1)
+    end
   end
 
   context "single license" do
@@ -28,6 +36,10 @@ RSpec.describe Spree::LicensesManager::OrderLicenser do
 
     it "create license from order" do
       expect(user.licensed_products.count).to eq(1)
+    end
+
+    it "create single accessible license" do
+      expect(user.licensed_products.where(can_be_distributed: false).count).to eq(1)
     end
 
     it "assign school admin role to user" do
@@ -43,8 +55,8 @@ RSpec.describe Spree::LicensesManager::OrderLicenser do
       Spree::LicensesManager::OrderLicenser.new(order).execute
     end
 
-    it "create license from order" do
-      expect(user.licensed_products.count).to eq(1)
+    it "create distributable license from order" do
+      expect(user.licensed_products.where(can_be_distributed: true).count).to eq(1)
     end
 
     it "assign school admin role to user" do
