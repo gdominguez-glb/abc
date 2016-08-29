@@ -5,7 +5,7 @@ Deface::Override.new(
     text: <<-HTML
       <% if can? :admin, current_store %>
         <ul class="nav nav-sidebar">
-          <%= tab 'Coupon Codes', url: spree.admin_coupon_codes_path, icon: 'cloud' %>
+          <%= tab 'Product Keys', url: spree.admin_coupon_codes_path, icon: 'lock' %>
         </ul>
       <% end %>
     HTML
