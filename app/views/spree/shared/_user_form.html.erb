@@ -80,18 +80,20 @@
   <div id="schoolDistrictSelect">
     <p>Is this a school or a district?</p>
     <div class="form-group">
-      <div class="radio">
-        <%= f.fields_for :school_district do |school_district_form| %>
+      <%= f.fields_for :school_district do |school_district_form| %>
+        <div class="radio">
           <label>
             <%= school_district_form.radio_button :place_type, 'school' %>
             This is a School
           </label>
+        </div>
+        <div class="radio">
           <label>
             <%= school_district_form.radio_button :place_type, 'district' %>
             This is Multiple Schools/District
           </label>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     </div>
   </div>
 
