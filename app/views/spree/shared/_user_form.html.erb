@@ -144,13 +144,13 @@
   </div>
 
   <div class="row collapse <%= 'in' if f.object.school_district.place_type == 'district' %> fade" id="rowDistrictSelect">
-    <div class="col-md-6 col-xs-5">
+    <div class="col-md-6">
       <div class="form-group">
         <label>Select a District</label>
         <%= f.hidden_field :district_id, class: 'form-control' %>
       </div>
     </div>
-      <div class="col-md-6 col-xs-7">
+      <div class="col-md-6">
         <p class="district-not-found js-none">
           <i class="glyphicon glyphicon-info-sign"></i> It looks like we don't have a match for that name. Please try again or help us by <a href="#" class="add-district-link">adding your district</a>.
         </p>
@@ -158,13 +158,13 @@
   </div>
 
   <div class="row collapse <%= 'in' if f.object.school_district.place_type == 'school' %>  fade" id="rowSchoolSelect">
-    <div class="col-md-6 col-xs-5">
+    <div class="col-md-6">
       <div class="form-group">
         <label>Select a School</label>
         <%= f.hidden_field :school_id, class: 'form-control' %>
       </div>
     </div>
-    <div class="col-md-6 col-xs-7">
+    <div class="col-md-6">
       <p class="school-not-found js-none">
         <i class="glyphicon glyphicon-info-sign"></i> It looks like we don't have a match for that name. Please try again or help us by <a href="#" class="add-school-link">adding your school</a>.
       </p>
