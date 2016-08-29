@@ -8,7 +8,7 @@ module Spree
       def create
         @coupon_code = Spree::CouponCode.new(coupon_code_params)
         if @coupon_code.save
-          redirect_to admin_coupon_codes_path, notice: 'Coupon Code generated successfully.'
+          redirect_to admin_coupon_codes_path, notice: 'Product Key generated successfully.'
         else
           flash[:error] = @coupon_code.errors.full_messages.join(', ')
           render :new
