@@ -102,7 +102,7 @@ Spree::Order.class_eval do
     attrs = { 'Contact__c' => user.try(:id_in_salesforce),
               'Pricebook2Id' => pricebook_id,
               'Vendor_Order_Num__c' => number,
-              'AccountId' => (user.try(:school_district) || school_district).try(:id_in_salesforce),
+              'AccountId' => (school_district || user.try(:school_district)).try(:id_in_salesforce),
               'Type' => 'Online',
               'Purchase_Type__c' => multi_license? ? 'Group' : 'Single',
               'Payment_Type__c' => payment_type,
