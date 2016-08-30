@@ -16,16 +16,4 @@ class Staff < ActiveRecord::Base
 
   acts_as_list
 
-  searchkick callbacks: :async
-
-  def search_data
-    {
-      name: name,
-      title: title,
-      description: description,
-      feature: "Staff",
-      user_ids: [-1]
-    }
-  end
-
 end

@@ -10,7 +10,7 @@ class SearchController < ApplicationController
       Post.searchkick_index.name,
       EventPage.searchkick_index.name,
       EventTraining.searchkick_index.name,
-      Staff.searchkick_index.name,
+      Job.searchkick_index.name,
       CustomIndexPage.searchkick_index.name
     ] }
     if current_spree_user

@@ -21,7 +21,7 @@ class Spree::Material < ActiveRecord::Base
 
   def find_user_ids_to_index
     group_ids = Spree::GroupItem.where(product_id: product_id).pluck(:group_id)
-    Spree::LicensedProduct.available.where(product_id: [product_id]+group_ids).pluck(:user_id).uniq
+    Spree::LicensedProduct.available.where(product_id: [product_id]+group_ids).distinct(:user_id).compact.uniq
   rescue
     []
   end
