@@ -16,11 +16,15 @@ class CustomIndexPage
   end
 
   def self.build_team_content
-    Staff.staff.map{|staff| "#{staff.name}-#{staff.title}"}.join(' ')
+    generate_staff_content(Staff.staff)
   end
 
   def self.build_team_trustees_content
-    Staff.trustee.map{|staff| "#{staff.name}-#{staff.title}"}.join(' ')
+    generate_staff_content(Staff.trustee)
+  end
+
+  def self.generate_staff_content(staffs)
+    staffs.map{|staff| "#{staff.name}-#{staff.title}"}.join(' ')
   end
 
   def self.build_careers_content
