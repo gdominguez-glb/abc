@@ -15,7 +15,7 @@ if Rails.env.qa?
 end
 
 if Rails.env.staging?
-  $flipper[:coupon_code].disable
+  $flipper[:coupon_code].enable
 end
 
 if Rails.env.production?
