@@ -207,7 +207,7 @@ Spree::Product.class_eval do
   end
 
   def should_index?
-    show_in_storefront?
+    show_in_storefront? || individual_sale?
   end
 
   def search_data
