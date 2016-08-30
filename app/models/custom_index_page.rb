@@ -10,7 +10,8 @@ class CustomIndexPage
     CustomIndexArray.new([
       CustomIndexPage.new(title: 'Meet the Team', description: "Team staff #{build_team_content}", feature: 'team', id: 'team_page', url: '/team'),
       CustomIndexPage.new(title: 'Meet the trustees', description: "Team trustees #{build_team_trustees_content}", feature: 'team', id: 'team_trustees_page', url: '/team/trustees'),
-      CustomIndexPage.new(title: 'Join the great minds team', description: "Jobs careers #{build_careers_content}", feature: 'careers', id: 'jobs', url: '/careers')
+      CustomIndexPage.new(title: 'Join the great minds team', description: "Jobs careers #{build_careers_content}", feature: 'careers', id: 'jobs', url: '/careers'),
+      CustomIndexPage.new(title: 'Frequently asked questions', description: "FAQ Click any section to view questions. #{build_faq_content}", feature: 'faq', id: 'faq', url: '/about/faq')
     ])
   end
 
@@ -24,6 +25,12 @@ class CustomIndexPage
 
   def self.build_careers_content
     "We're looking to fill the following positions on our Great Minds team. Click below to find out more. Great Minds is an Equal Opportunity Employer.  #{Job.all.map(&:title).join(' ')}"
+  end
+
+  def self.build_faq_content
+    FaqCategory.displayable.includes(:questions).order('position asc').map do |faq_category|
+      "#{faq_category.name} #{faq_category.questions.map(&:title).join(' ')}"
+    end.join(' ')
   end
 
   def search_data

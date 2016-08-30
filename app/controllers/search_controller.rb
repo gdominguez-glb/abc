@@ -11,6 +11,7 @@ class SearchController < ApplicationController
       EventPage.searchkick_index.name,
       EventTraining.searchkick_index.name,
       Job.searchkick_index.name,
+      Question.searchkick_index.name,
       CustomIndexPage.searchkick_index.name
     ] }
     if current_spree_user
