@@ -42,7 +42,7 @@
           <tr>
             <td><%= vanity_url.url %></td>
             <td><%= vanity_url.redirect_url %></td>
-            <td><%= vanity_url.tag_list.join(',') %></td>
+            <td><%= vanity_url.tag_list.sort.join(', ') %></td>
             <td>
               <%= link_to 'Edit', edit_cms_vanity_url_path(vanity_url) %>
             </td>
