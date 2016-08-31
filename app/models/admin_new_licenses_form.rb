@@ -34,8 +34,10 @@ class AdminNewLicensesForm
       sf_contact_id: (sf_contact_id.present? ? sf_contact_id : nil),
       admin_user: admin_user,
       fulfillment_at: fulfillment_at,
+      school_district: find_school_district,
       enable_single_distribution: enable_single_distribution
     )
+
     add_line_items(order)
 
     order.save
@@ -43,7 +45,6 @@ class AdminNewLicensesForm
     create_order_salesforce_reference(order)
 
     process_order(order)
-    order.tap { associate_school_district(order) }
   end
 
   def add_line_items(order)
@@ -74,11 +75,10 @@ class AdminNewLicensesForm
                                object_properties: { 'Id' => salesforce_order_id })
   end
 
-  def associate_school_district(order)
-    school_district = SalesforceReference.find_by(
+  def find_school_district
+    SalesforceReference.find_by(
       id_in_salesforce: salesforce_account_id,
       local_object_type: 'SchoolDistrict').try(:local_object)
-    order.update(school_district: school_district)
   end
 
   def build_payment
