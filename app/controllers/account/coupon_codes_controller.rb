@@ -4,11 +4,11 @@ class Account::CouponCodesController < Account::BaseController
   end
 
   def activate
-    @coupon_code = Spree::CouponCode.find_by(code: params[:code])
+    @coupon_code = Spree::CouponCode.find_by(code: params[:code].upcase)
   end
 
   def activate_product
-    @coupon_code = Spree::CouponCode.find_by(code: params[:id])
+    @coupon_code = Spree::CouponCode.find_by(code: params[:id].upcase)
     @result = Spree::LicensesManager::CouponCodeLicenser.new(
       code: @coupon_code.code,
       user: current_spree_user,

@@ -44,7 +44,10 @@ class Spree::CouponCode < ActiveRecord::Base
   private
 
   def generate_code
-    return if self.code.present?
+    if self.code.present?
+      self.code = self.code.upcase
+      return
+    end
     self.code = nil
     max_length = 8
     self.code ||= loop do
