@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Spree::CouponCode, type: :model do
   it { should belong_to(:school_district) }
-  it { should have_and_belong_to_many(:products).class_name('Spree::Product') }
+  it { should have_many(:coupon_code_products).class_name('Spree::CouponCodeProduct') }
+  it { should have_many(:products).class_name('Spree::Product') }
   it { should have_one(:order).class_name('Spree::Order') }
 
   it { should validate_presence_of(:total_quantity) }
