@@ -19,5 +19,5 @@ if Rails.env.staging?
 end
 
 if Rails.env.production?
-  $flipper[:coupon_code].disable
+  $flipper[:coupon_code].enable
 end
