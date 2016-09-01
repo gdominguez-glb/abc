@@ -51,16 +51,27 @@ class Spree::LicensedProduct < ActiveRecord::Base
   end
 
   def account_id_in_salesforce
-    account_user = order.try(:user) || product_distribution.try(:from_user) || user
-    school_district = order.try(:school_district) || account_user.try(:school_district)
-    return nil unless school_district
+    school_district = school_district_for_salesforce
+    school_district.try(:id_in_salesforce)
+  end
 
-    if school_district.id_in_salesforce.blank? && !skip_salesforce_create
-      school_district.create_in_salesforce(nil, false)
-      school_district.reload
+  def school_district_for_salesforce
+    return order.school_district if order && order.fulfillment? && order.school_district
+    school_district = school_district_from_user || order.try(:school_district)
+
+    if should_manual_sync_school_district?(school_district)
+      school_district.manual_sync_to_salesforce
     end
+    school_district
+  end
 
-    school_district.id_in_salesforce
+  def school_district_from_user
+    account_user = order.try(:user) || product_distribution.try(:from_user) || user
+    account_user.try(:school_district)
+  end
+
+  def should_manual_sync_school_district?(school_district)
+    school_district && school_district.id_in_salesforce.blank? && !skip_salesforce_create
   end
 
   def attributes_for_salesforce
