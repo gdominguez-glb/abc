@@ -73,9 +73,9 @@ Spree::Order.class_eval do
   end
 
   def salesforce_complete?
-    return true if fulfillment? || coupon_code_order?
     return false if line_items.blank?
     return false if id_in_salesforce.blank?
+    return true if fulfillment?
     line_items.any? { |line_item| line_item.id_in_salesforce.present? }
   end
 
