@@ -276,6 +276,13 @@
         <%= f.check_box :purchase_once, class: 'form-control' %>
       </div>
     </div>
+
+    <div data-hook='admin_product_form_is_beta'>
+      <div class='form-group field' id='product_is_beta_field'>
+        <%= f.label :is_beta %>
+        <%= f.check_box :is_beta, class: 'form-control' %>
+      </div>
+    </div>
   </div>
 
 </div>

@@ -1,5 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe DocumentTagging, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { should belong_to(:document) }
+  it { should belong_to(:tag).class_name('DocumentTag') }
 end

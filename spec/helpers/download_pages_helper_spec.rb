@@ -48,4 +48,23 @@ RSpec.describe DownloadPagesHelper do
       expect(helper.show_grade_material?(product, material)).to eq(false)
     end
   end
+
+  describe "#product_free_paid_badge" do
+    let(:paid_product) { create(:product, price: 100.0) }
+    let(:free_product) { create(:product, price: 0.0) }
+
+    it "return Paid if product is not free" do
+      expect(helper.product_free_paid_badge(paid_product)).to eq('<p>Paid</p>')
+    end
+
+    it "return Free if product is free and can be sell alone" do
+      free_product.individual_sale = true
+      expect(helper.product_free_paid_badge(free_product)).to eq('<p>Free</p>')
+    end
+
+    it "return empty if product is free and can't be sell alone" do
+      free_product.individual_sale = false
+      expect(helper.product_free_paid_badge(free_product)).to eq('')
+    end
+  end
 end

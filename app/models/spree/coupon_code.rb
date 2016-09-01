@@ -1,11 +1,13 @@
 class Spree::CouponCode < ActiveRecord::Base
   belongs_to :school_district
 
-  has_and_belongs_to_many :products, class_name: 'Spree::Product', join_table: :spree_coupon_codes_products
+  has_many :coupon_code_products, class_name: 'Spree::CouponCodeProduct'
+  has_many :products, -> { order("spree_coupon_codes_products.created_at asc") }, through: :coupon_code_products
 
   has_one :order, class_name: 'Spree::Order'
 
-  validates_presence_of :total_quantity
+  validates_presence_of :total_quantity, :code
+  validates_uniqueness_of :code, if:  Proc.new { |cc| cc.code.present? }
 
   before_validation :generate_code, on: :create
   after_commit :generate_coupon_code_order, on: :create
@@ -43,6 +45,11 @@ class Spree::CouponCode < ActiveRecord::Base
   private
 
   def generate_code
+    if self.code.present?
+      self.code = self.code.upcase
+      return
+    end
+    self.code = nil
     max_length = 8
     self.code ||= loop do
       random = ([*('A'..'Z'),*('0'..'9')]-%w(0 1 I O)).sample(max_length).join

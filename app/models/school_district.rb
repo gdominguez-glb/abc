@@ -56,6 +56,11 @@ class SchoolDistrict < ActiveRecord::Base
       "select Id from #{salesforce_sobject_name} where Name = '#{name}'").first
   end
 
+  def manual_sync_to_salesforce
+    create_in_salesforce(nil, false)
+    reload
+  end
+
   def self.record_type_id(name, object_type = 'Account')
     RecordType.find_in_salesforce_by_name_and_object_type(name, object_type)
       .try('Id')

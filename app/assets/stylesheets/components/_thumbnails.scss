@@ -116,9 +116,12 @@
   @include flex-direction(column);
   @include justify-content(center);
 
-  min-height: 120px;
   color: $c-firm-primary;
   border-radius: 0;
+
+  @media screen and (min-width: $screen-sm-min) {
+    min-height: 150px;
+  }
 }
 
 .thumbnail--coupon-code--trigger {

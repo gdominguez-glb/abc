@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Spree::LicensedProduct, type: :model do
+  let(:user) { create(:gm_user) }
 
   it { should belong_to(:product).class_name('Spree::Product') }
   it { should belong_to(:order).class_name('Spree::Order') }
@@ -52,6 +53,25 @@ RSpec.describe Spree::LicensedProduct, type: :model do
       licensed_product = create(:spree_licensed_product, product: days_product)
 
       expect(licensed_product.expire_at > 99.days.since).to eq(true)
+    end
+  end
+
+  describe ".exist_product_license_not_expire?" do
+    let(:product) { create(:product) }
+    let!(:multiple_license) { create(:spree_licensed_product, product: product, user: user, quantity: 5, can_be_distributed: true) }
+
+    context "without exist license" do
+      it "return false if user don't have license to product" do
+        expect(Spree::LicensedProduct.exist_product_license_not_expire?(multiple_license)).to eq(false)
+      end
+    end
+
+    context "with exist license" do
+      let!(:single_license) { create(:spree_licensed_product, product: product, user: user, quantity: 1, can_be_distributed: false) }
+
+      it "return true if user already have license to product" do
+        expect(Spree::LicensedProduct.exist_product_license_not_expire?(multiple_license)).to eq(true)
+      end
     end
   end
 end
