@@ -4,7 +4,7 @@ module Spree
       include AutocompleteByName
 
       def index
-        autocomplate_by_name(SchoolDistrict)
+        autocomplate_by_name(SchoolDistrict, :id, :name_in_option)
       end
 
     end
