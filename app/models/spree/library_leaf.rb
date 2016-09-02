@@ -5,5 +5,5 @@ class Spree::LibraryLeaf < ActiveRecord::Base
 
   acts_as_list scope: :product
 
-  has_many :library_items, class_name: 'Spree::LibraryItem'
+  has_many :library_items, ->{ order(:position) }, class_name: 'Spree::LibraryItem'
 end
