@@ -4,6 +4,7 @@ class CreateTrainingTypeCategories < ActiveRecord::Migration
       t.string :title
       t.text :description
       t.boolean :is_default, default: false
+      t.string :slug
 
       t.timestamps null: false
     end
