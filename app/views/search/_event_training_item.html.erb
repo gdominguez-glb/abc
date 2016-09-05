@@ -1,8 +1,8 @@
 <%
-    path = if item.category.present?
-             category_events_trainings_path(anchor: "event-#{item.title_to_slug}", category: item.category)
+    path = if item.training_type_category.is_default?
+             events_trainings_path(anchor: "event-#{item.title_to_slug}", category: item.category)
            else
-             events_trainings_path(anchor: "event-#{item.title_to_slug}")
+             parent_events_trainings_path(parent_slug: item.training_type_category.slug, anchor: "event-#{item.title_to_slug}", category: item.category)
            end
 %>
 <a href="<%= path %>" class="list-group-item">

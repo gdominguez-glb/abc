@@ -13,7 +13,7 @@ class EventTraining < ActiveRecord::Base
 
   searchkick callbacks: :async
 
-  acts_as_list
+  acts_as_list scope: :training_type_category
 
   def search_data
     {

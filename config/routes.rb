@@ -61,6 +61,7 @@ Rails.application.routes.draw do
 
   get 'events', to: 'events#index'
   get 'events/trainings', to: 'events#trainings', as: :events_trainings
+  get 'events/:parent_slug/trainings', to: 'events#trainings_by_parent', as: :parent_events_trainings
   get 'events/trainings/:category', to: 'events#trainings_by_category', as: :category_events_trainings
   get 'events/l/:slug', to: 'events#list', as: :events_list
 
