@@ -25,6 +25,7 @@ class EventPage < ActiveRecord::Base
   def search_data
     {
       title: title,
+      feature: 'events',
       description: description,
       events_text: events_text,
       user_ids: [-1]
