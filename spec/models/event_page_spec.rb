@@ -57,7 +57,7 @@ RSpec.describe EventPage, type: :model do
     let(:event_page) { create(:event_page, title: 'E', description: 'D', display: true ) }
 
     it "return data to index" do
-      expect(event_page.search_data).to eq({ title: 'E', description: 'D', user_ids: [-1], :events_text => "" })
+      expect(event_page.search_data).to eq({ title: 'E', description: 'D', user_ids: [-1], :events_text => "", feature: 'events' })
     end
   end
 end

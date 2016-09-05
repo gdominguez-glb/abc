@@ -1,0 +1,9 @@
+<% path = if item.global?
+            global_blog_path(slug: item.slug)
+          else
+            curriculum_blog_path(page_slug: item.page.slug, slug: item.slug)
+          end
+ %>
+<a href="<%= path %>" class="list-group-item">
+  <h4 class="margin-bottom--reset"><%= item.title %></h4>
+</a>
