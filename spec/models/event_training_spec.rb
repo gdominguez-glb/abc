@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe EventTraining, type: :model do
+  it { should belong_to(:training_type_category) }
+
   it { should validate_presence_of(:title) }
   it { should validate_presence_of(:content) }
 
