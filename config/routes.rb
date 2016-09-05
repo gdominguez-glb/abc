@@ -16,7 +16,7 @@ class LinkUploadsConstraint
   end
 
   def matches?(request)
-    @domains.include?(request.domain.downcase)
+    @domains.include?(request.domain.downcase) if request.domain.present?
   end
 end
 
