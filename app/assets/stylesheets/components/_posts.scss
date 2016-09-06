@@ -20,6 +20,12 @@
 }
 
 .post-view {
+  h1 {
+    margin-bottom: $b-space-l;
+    letter-spacing: normal;
+    line-height: 1em;
+  }
+
   li {
     margin-bottom: $b-space-m;
   }
