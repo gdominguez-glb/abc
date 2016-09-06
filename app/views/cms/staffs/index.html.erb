@@ -17,7 +17,7 @@
       <tbody>
         <% @staffs.each do |staff| %>
           <tr data-id="<%= staff.id %>">
-            <td><span class="glyphicon glyphicon-resize-vertical" aria-hidden="true"></span></td>
+            <td><%= mi.swap_vert %></td>
             <td><%= staff.name %></td>
             <td><%= staff.title %></td>
             <td><%= staff.staff_type %></td>

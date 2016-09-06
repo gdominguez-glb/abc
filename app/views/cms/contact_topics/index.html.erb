@@ -13,7 +13,7 @@
     <tbody>
       <% @contact_topics.each do |contact_topic| %>
         <tr data-id="<%= contact_topic.id %>">
-          <td><span class="glyphicon glyphicon-resize-vertical" aria-hidden="true"></span></td>
+          <td><%= mi.swap_vert %></td>
           <td><%= contact_topic.name %></td>
           <td>
             <%= link_to 'Edit', edit_cms_contact_topic_path(contact_topic), class: 'btn btn-default' %>
