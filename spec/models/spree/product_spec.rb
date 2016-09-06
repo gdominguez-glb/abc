@@ -94,4 +94,12 @@ RSpec.describe Spree::Product, type: :model do
       expect(product.expired?).to eq(true)
     end
   end
+
+  describe ".with_taxons" do
+    it "filter with taxon ids" do
+      taxon = create(:taxon, name: 'Test')
+      product.taxons << taxon
+      expect(Spree::Product.with_taxons([taxon])).to eq([product])
+    end
+  end
 end

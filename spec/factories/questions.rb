@@ -3,6 +3,7 @@ FactoryGirl.define do
     title "MyString"
     position 1
     display false
+    faq_category
   end
 
 end
