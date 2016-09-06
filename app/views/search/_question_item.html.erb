@@ -1,4 +1,4 @@
 <a href="<%= about_qa_path(item) %>" class="list-group-item">
   <h4 class="margin-bottom--reset"><%= item.title %></h4>
-  <p class="small margin-bottom--reset"><%= truncate_html item.content, length: 150 %></p>
+  <p class="small margin-bottom--reset"><%= strip_tags(truncate_html item.content, length: 150) %></p>
 </a>
