@@ -5,8 +5,8 @@ module Cms
                                     :product_marketing_editor, :update_tiles]
 
     def index
-      @pages = Page.order('group_name ASC, position ASC').page(params[:page])
-               .per(10)
+      @q = Page.ransack(params[:q])
+      @pages = @q.result.order('group_name ASC, position ASC').page(params[:page]).per(10)
     end
 
     def show
