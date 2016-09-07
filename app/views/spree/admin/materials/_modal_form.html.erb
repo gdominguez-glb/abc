@@ -15,6 +15,10 @@
               <%= f.label :link %>
               <%= f.text_field :link, class: 'form-control' %>
             </div>
+            <div class="form-group">
+              <%= f.label :link_icon %>
+              <%= f.select :link_icon, options_for_select(Spree::Material::LINK_ICON_OPTIONS), {}, class: 'form-control' %>
+            </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
