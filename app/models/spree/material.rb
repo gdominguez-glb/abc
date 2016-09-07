@@ -8,6 +8,8 @@ class Spree::Material < ActiveRecord::Base
 
   searchkick callbacks: :async, personalize: "user_ids"
 
+  LINK_ICON_OPTIONS = [['Link', 'open_in_browser'], ['Video Play', 'play_arrow']]
+
   def should_index?
     product ? true : false
   end
