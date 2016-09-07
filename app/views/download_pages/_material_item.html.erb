@@ -22,7 +22,7 @@
       <div class="col-xs-12 text-left">
         <% if material.link.present? %>
           <%= link_to material.link, target: '_blank', class: 'btn btn-default btn-icon' do %>
-            <i class="mi md-18 js-tooltip-trigger" data-toggle="tooltip" title='View'>open_in_browser</i>
+            <i class="mi md-18 js-tooltip-trigger" data-toggle="tooltip" title='View'><%= material.link_icon %></i>
           <% end %>
         <% end %>
         <% if material.material_files_count == 1 && material.children.count == 0 %>
