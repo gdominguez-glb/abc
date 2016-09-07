@@ -45,6 +45,6 @@ class Cms::MediumPublicationsController < Cms::BaseController
   end
 
   def medium_publication_params
-    params.require(:medium_publication).permit(:title, :url, :blog_type, :page_id, :position, :display, :slug)
+    params.require(:medium_publication).permit(:title, :url, :blog_type, :page_id, :position, :display, :slug, :header, :description)
   end
 end

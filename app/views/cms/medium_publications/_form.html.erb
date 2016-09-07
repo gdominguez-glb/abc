@@ -60,6 +60,18 @@
         If you have selected "Curriculum", and "Math", the resulting URL will be: /math/blog/report</small>
       </div>
     </div>
+    <div class="col-sm-12">
+      <div class="form-group">
+        <%= f.label "Header" %>
+        <%= f.text_field :header, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="col-sm-12">
+      <div class="form-group">
+        <%= f.label "Description (Copy under header)" %>
+        <%= f.text_area :description, class: 'form-control rich-editor' %>
+      </div>
+    </div>
     <div class="col-sm-6">
       <div class="form-group">
         <div class="checkbox">
@@ -71,7 +83,7 @@
     </div>
   </div>
   <div class="form-group">
-    <%= f.submit class: 'btn btn-success' %>
+    <%= f.submit class: 'btn btn-success', data: { disable_with: 'Submitting...' } %>
   </div>
 <% end %>
 <%= content_for :javascripts do %>
