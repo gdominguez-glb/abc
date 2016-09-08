@@ -6,7 +6,7 @@
   <p id="notice"><%= notice %></p>
   <%= search_form_for @q, url: cms_pages_path, class: 'form-inline' do |f| %>
     <div class="form-group">
-      <%= f.text_field :title_or_body_or_slug_cont, class: 'form-control' %>
+      <%= f.text_field :title_or_slug_or_curriculum_name_cont, class: 'form-control' %>
     </div>
     <%= submit_tag 'Search', class: 'btn btn-primary' %>
   <% end %>
