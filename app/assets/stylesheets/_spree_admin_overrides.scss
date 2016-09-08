@@ -166,6 +166,14 @@
       top: 2px;
     }
   }
+
+  .select2-container {
+    .select2-choice {
+      .select2-chosen {
+        line-height: 26px;
+      }
+    }
+  }
 }
 
 // -------------------------------------
