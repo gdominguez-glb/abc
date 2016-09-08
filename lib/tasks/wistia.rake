@@ -7,7 +7,7 @@ namespace :wistia do
     Spree::Video.where.not(wistia_status: 'ready', wistia_hashed_id: nil).find_each do |video|
       begin
         media = Wistia::Media.find(video.wistia_hashed_id)
-        preview_image_url = (media.assets.first.url.gsub(/bin$/, 'jpg') << '?video_still_time=1') rescue nil
+        preview_image_url = (media.assets.first.url.gsub(/bin$/, 'jpg') << '?video_still_time=10') rescue nil
         video.update(
           wistia_status: media.status,
           wistia_thumbnail_url: (media.thumbnail.url rescue nil),
