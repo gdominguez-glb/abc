@@ -56,8 +56,7 @@ function loadCSS( href, before, media, callback ){
     }
     if( defined ){
       cb();
-    }
-    else {
+    } else {
       setTimeout(function() {
         ss.onloadcssdefined( cb );
       });
