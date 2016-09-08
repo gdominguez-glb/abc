@@ -33,21 +33,22 @@ class VimeoImporter
 
     title            = row['Video Title']
     vimeo_id         = row['Vimeo URL'].split('/').last
+    custom_order     = row['Order']
 
     download_url = GmVimeo.new.download_url_of_video(vimeo_id)
 
     video = Spree::Video.find_or_initialize_by(vimeo_id: vimeo_id)
-    video.update(
-      title: title,
-      file: open(download_url, allow_redirections: :all)
-    )
+    video.title        = title
+    video.custom_order = custom_order
+    video.file         = open(download_url, allow_redirections: :all) if video.new_record?
+    video.save
 
     assign_taxons_to_video(video, row)
     assign_video_group(video)
   end
 
   def assign_taxons_to_video(video, row)
-    taxon_headers = row.headers.reject(&:blank?) - ['Video Title', 'Vimeo URL']
+    taxon_headers = row.headers.reject(&:blank?) - ['Video Title', 'Vimeo URL', 'Order']
     taxon_headers.each do |taxon_header|
       taxonomy_name = taxon_header.gsub(/(\ [A-Z]{1,2}$)/, '').strip
       assign_taxons(video, taxonomy_name, [row[taxon_header]]) if [row[taxon_header]].compact.present?
