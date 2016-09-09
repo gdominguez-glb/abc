@@ -17,7 +17,7 @@
         <% end %>
         <%= active_link_to "Bookmarks", '/account/bookmarks', wrap_tag: :li, class: 'hide' %>
         <%= active_link_to "History", '/account/history', wrap_tag: :li, class: 'hide' %>
-        <%= active_link_to "CMS", '/cms', wrap_tag: :li if current_spree_user.can_see_cms? %>
+        <%= active_link_to "CMS", cms_root_for_user(current_spree_user), wrap_tag: :li if current_spree_user.can_see_cms? %>
         <%= active_link_to "Settings", '/account/settings', wrap_tag: :li %>
         <% if spree_current_user.has_school_admin_role? %>
           <%= active_link_to "License Management", main_app.account_licenses_path, wrap_tag: :li, class: 'js-license-management-link' %>

@@ -1,16 +1,25 @@
 class Cms::BaseController < ApplicationController
   layout 'cms_admin'
-  before_action :authenticate_cms_accessor!
+  before_action :authenticate_spree_user!
+  before_action :authenticate_admin_in_cms!
 
   private
 
-  def authenticate_cms_accessor!
-    authenticate_spree_user!
-    if current_spree_user.has_vanity_admin_role?
-      redirect_to cms_vanity_urls_path and return
+  def authenticate_admin_in_cms!
+    if !current_spree_user.admin?
+      redirect_to root_path and return
     end
-    unless current_spree_user.has_admin_role?
-      redirect_to '/' and return
+  end
+
+  def authenticate_vanity_admin_in_cms!
+    if !(current_spree_user.admin? || current_spree_user.has_vanity_admin_role?)
+      redirect_to root_path and return
+    end
+  end
+
+  def authenticate_hr_admin_in_cms!
+    if !(current_spree_user.admin? || current_spree_user.has_hr_role?)
+      redirect_to root_path and return
     end
   end
 

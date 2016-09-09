@@ -1,4 +1,7 @@
 class Cms::JobsController < Cms::BaseController
+  skip_before_action :authenticate_admin_in_cms!
+  before_action :authenticate_hr_admin_in_cms!
+
   before_action :find_job, except: [:index, :new, :create, :update_positions]
 
   def index
