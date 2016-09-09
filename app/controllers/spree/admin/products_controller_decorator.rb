@@ -18,4 +18,8 @@ Spree::Admin::ProductsController.class_eval do
 
     redirect_to admin_product_path(@product), notice: 'Successfully un-archive product'
   end
+
+  def location_after_save
+    session[:return_to] || admin_products_path
+  end
 end
