@@ -18,4 +18,8 @@ Spree::Role.class_eval do
   def self.csr
     Spree::Role.find_or_create_by(name: 'csr')
   end
+
+  def self.hr
+    Spree::Role.find_or_create_by(name: 'hr')
+  end
 end
