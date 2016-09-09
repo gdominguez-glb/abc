@@ -189,8 +189,12 @@ Spree::User.class_eval do
     spree_roles.where(id: Spree::Role.vanity_admin.id).count > 0
   end
 
+  def has_hr_role?
+    spree_roles.where(id: Spree::Role.hr.id).count > 0
+  end
+
   def can_see_cms?
-    has_admin_role? || has_vanity_admin_role?
+    has_admin_role? || has_vanity_admin_role? || has_hr_role?
   end
 
   def full_name

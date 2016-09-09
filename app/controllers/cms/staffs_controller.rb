@@ -1,4 +1,7 @@
 class Cms::StaffsController < Cms::BaseController
+  skip_before_action :authenticate_admin_in_cms!
+  before_action :authenticate_hr_admin_in_cms!
+
   before_action :find_staff, except: [:index, :new, :create, :update_positions]
 
   def index

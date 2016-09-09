@@ -1,6 +1,6 @@
 class Cms::VanityUrlsController < Cms::BaseController
-  skip_before_action :authenticate_cms_accessor!
-  before_action :authenticate_vanity_admin
+  skip_before_action :authenticate_admin_in_cms!
+  before_action :authenticate_vanity_admin_in_cms!
 
   def index
     @vanity_urls = VanityUrl.page(params[:page])
@@ -50,9 +50,4 @@ class Cms::VanityUrlsController < Cms::BaseController
     params.require(:vanity_url).permit(:url, :redirect_url, :tag_list, :base_domain, :url_path)
   end
 
-  def authenticate_vanity_admin
-    if !current_spree_user.can_see_cms?
-      redirect_to '/'
-    end
-  end
 end
