@@ -6,6 +6,7 @@ require 'data_syncer/page_importer'
 require 'data_syncer/document_syncer'
 require 'data_syncer/document_importer'
 require 'data_syncer/answer_syncer'
+require 'data_syncer/job_syncer'
 
 module DataSyncer
 end
