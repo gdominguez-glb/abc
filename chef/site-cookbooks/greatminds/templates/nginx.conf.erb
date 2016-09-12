@@ -1,103 +1,99 @@
-upstream unicorn {
-  server unix:/tmp/unicorn.<%= node['app'] %>.sock fail_timeout=0;
+user www-data;
+worker_processes 4;
+pid /run/nginx.pid;
+
+events {
+        worker_connections 768;
+        # multi_accept on;
 }
 
-server {
-  server_name www.<%= node['the_domain'] %>;
-  return 301 $scheme://<%= node['the_domain'] %>$request_uri;
+http {
+
+        ##
+        # Basic Settings
+        ##
+
+        sendfile on;
+        tcp_nopush on;
+        tcp_nodelay on;
+        keepalive_timeout 65;
+        types_hash_max_size 2048;
+        # server_tokens off;
+
+        # server_names_hash_bucket_size 64;
+        # server_name_in_redirect off;
+
+        include /etc/nginx/mime.types;
+        default_type application/octet-stream;
+
+        ##
+        # Logging Settings
+        ##
+
+        access_log /var/log/nginx/access.log;
+        error_log /var/log/nginx/error.log;
+
+        proxy_buffer_size   128k;
+        proxy_buffers   4 256k;
+        proxy_busy_buffers_size   256k;
+
+        ##
+        # Gzip Settings
+        ##
+
+        gzip on;
+        gzip_disable "msie6";
+
+        # gzip_vary on;
+        # gzip_proxied any;
+        # gzip_comp_level 6;
+        # gzip_buffers 16 8k;
+        # gzip_http_version 1.1;
+        # gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript;
+
+        ##
+        # nginx-naxsi config
+        ##
+        # Uncomment it if you installed nginx-naxsi
+        ##
+
+        #include /etc/nginx/naxsi_core.rules;
+
+        ##
+        # nginx-passenger config
+        ##
+        # Uncomment it if you installed nginx-passenger
+        ##
+
+        #passenger_root /usr;
+        #passenger_ruby /usr/bin/ruby;
+
+        ##
+        # Virtual Host Configs
+        ##
+
+        include /etc/nginx/conf.d/*.conf;
+        include /etc/nginx/sites-enabled/*;
 }
 
-<% if node['rails_env'] == 'production' %>
-server {
-  server_name beta.<%= node['the_domain'] %>;
-  return 301 $scheme://<%= node['the_domain'] %>$request_uri;
-}
-<% end %>
 
-server {
-  listen      80;
-  server_name <%= node['vanity_urls'] %>;
-
-  try_files $uri/index.html $uri @unicorn;
-  location @unicorn {
-    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    proxy_set_header Host $http_host;
-    proxy_redirect off;
-    proxy_pass http://unicorn;
-  }
-
-}
-
-<% if node['ssl'] %>
-
-server {
-  listen      80 default deferred;
-  server_name <%= node['the_domain'] %>;
-
-  if ($request_uri = '/lb_health_check') {
-    return 200 'gangnam style!';
-  }
-
-  rewrite     ^   https://$server_name$request_uri? permanent;
-}
-
-server {
-  listen 443;
-
-  ssl    on;
-  ssl_certificate    <%= node['ssl']['ssl_certificate'] %>;
-  ssl_certificate_key    <%= node['ssl']['ssl_certificate_key'] %>;
-
-  server_name <%= node['the_domain'] %>;
-  root /var/www/<%= node['app'] %>/current/public;
-
-  client_max_body_size 1024m;
-
-  location ^~ /assets/ {
-    gzip_static on;
-    expires max;
-    add_header Cache-Control public;
-  }
-
-  try_files $uri/index.html $uri @unicorn;
-  location @unicorn {
-    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    proxy_set_header Host $http_host;
-    proxy_redirect off;
-    proxy_pass http://unicorn;
-    proxy_set_header X-Forwarded-Proto https;
-    proxy_set_header X-Forwarded-Ssl on;
-  }
-
-  error_page 500 502 503 504 /500.html;
-  keepalive_timeout 5;
-}
-
-<% else %>
-
-server {
-  listen 80 default deferred;
-  server_name <%= node['the_domain'] %>;
-  root /var/www/<%= node['app'] %>/current/public;
-
-  client_max_body_size 1024m;
-
-  location ^~ /assets/ {
-    gzip_static on;
-    expires max;
-    add_header Cache-Control public;
-  }
-
-  try_files $uri/index.html $uri @unicorn;
-  location @unicorn {
-    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    proxy_set_header Host $http_host;
-    proxy_redirect off;
-    proxy_pass http://unicorn;
-  }
-
-  error_page 500 502 503 504 /500.html;
-  keepalive_timeout 5;
-}
-
-<% end %>
+#mail {
+#       # See sample authentication script at:
+#       # http://wiki.nginx.org/ImapAuthenticateWithApachePhpScript
+#
+#       # auth_http localhost/auth.php;
+#       # pop3_capabilities "TOP" "USER";
+#       # imap_capabilities "IMAP4rev1" "UIDPLUS";
+#
+#       server {
+#               listen     localhost:110;
+#               protocol   pop3;
+#               proxy      on;
+#       }
+#
+#       server {
+#               listen     localhost:143;
+#               protocol   imap;
+#               proxy      on;
+#       }
+#}
