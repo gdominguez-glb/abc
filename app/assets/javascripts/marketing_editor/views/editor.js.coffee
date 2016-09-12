@@ -33,6 +33,7 @@ class MarketingEditorApp.Views.Editor extends Backbone.View
     @initEditor()
 
   saveRows: (e)->
+    @$('.save-btn').text('Saving').attr('disabled', true)
     $.ajax(
       url: @updateUrl,
       type: 'POST',
