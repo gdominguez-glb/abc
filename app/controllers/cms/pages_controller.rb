@@ -31,7 +31,7 @@ module Cms
 
     def update
       if @page.update(page_params)
-        redirect_to [:cms, @page], notice: 'Page was successfully updated.'
+        redirect_to edit_cms_page_path(@page), notice: 'Page was successfully updated.'
       else
         render :edit
       end
@@ -53,6 +53,7 @@ module Cms
         tiles = { rows: params[:page][:tiles][:rows].values }
       end
       @page.update(tiles: tiles)
+      flash[:notice] = "Page was succesfully updated."
     end
 
     private
