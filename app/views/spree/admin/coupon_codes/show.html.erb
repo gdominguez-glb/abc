@@ -4,19 +4,21 @@
 
 <h4>Products from this product key: </h4>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Product</th>
-      <th>Quantity</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @licenses_with_quantity.each do |license| %>
+<div class="table-responsive">
+  <table class="table">
+    <thead>
       <tr>
-        <td><%= license.product.name %></td>
-        <td><%= link_to license.product_quantity, breakdown_admin_coupon_code_path(@coupon_code, product_id: license.product_id) %></td>
+        <th>Product</th>
+        <th>Quantity</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @licenses_with_quantity.each do |license| %>
+        <tr>
+          <td><%= license.product.name %></td>
+          <td><%= link_to license.product_quantity, breakdown_admin_coupon_code_path(@coupon_code, product_id: license.product_id) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
