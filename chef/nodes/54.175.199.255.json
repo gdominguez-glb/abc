@@ -11,7 +11,7 @@
     "recipe[greatminds::elasticsearch]",
     "recipe[greatminds::imagemagick]",
     "recipe[greatminds::rbenv]",
-    "recipe[greatminds::nginx]",
+    "recipe[greatminds::nginx_with_pagespeed]",
     "recipe[greatminds::app]",
     "recipe[greatminds::backup]"
   ],
