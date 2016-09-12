@@ -4,7 +4,7 @@ package "libpcre3 "
 package "libpcre3-dev"
 package "unzip"
 
-nginx_download_url = "http://nginx.org/download/nginx-.1.10.1.tar.gz"
+nginx_download_url = "http://nginx.org/download/nginx-1.10.1.tar.gz"
 
 bash "complie nginx with pagespeed" do
   cwd "/home/#{node['user']['name']}"
