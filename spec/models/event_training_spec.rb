@@ -23,4 +23,12 @@ RSpec.describe EventTraining, type: :model do
       })
     end
   end
+
+  describe "#title_with_category" do
+    it "display title with category" do
+      event_training.title = 'A'
+      event_training.category = 'B'
+      expect(event_training.title_with_category).to eq('A - B')
+    end
+  end
 end
