@@ -71,8 +71,8 @@ class Mailchimp
       status: 'subscribed',
       email_address: info[:email],
       merge_fields: {
-        FNAME: info[:first_name],
-        LNAME: info[:last_name],
+        FNAME: info[:first_name].try(:capitalize),
+        LNAME: info[:last_name].try(:capitalize),
         ZIPCODE: info[:zip_code],
         ROLE: info[:role],
         STATE: info[:state]
