@@ -22,6 +22,7 @@ module Spree
         end
         @rows.each do |row|
           Spree::LicensesManager::SingleLicenseDistributer.new(row[:email]).execute
+          assign_admin_role_to_email(row[:email])
         end
       end
 
@@ -86,6 +87,13 @@ module Spree
             to_email: row[:email],
             quantity: row[:quantity]
           ).deliver_later
+        end
+      end
+
+      def assign_admin_role_to_email(email)
+        user = Spree::User.find_by(email: email)
+        if user && Spree::LicensedProduct.where(user_id: user.id, can_be_distributed: true).exists?
+          user.assign_school_admin_role
         end
       end
 
