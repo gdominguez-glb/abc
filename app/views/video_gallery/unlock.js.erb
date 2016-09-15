@@ -1,9 +1,8 @@
 <% if @video.products_to_buy.length == 1 %>
-  <% product_to_buy = @video.products_to_buy.first %>
-  <% if product_to_buy.is_beta?  %>
+  <% if @single_product_to_buy.is_beta?  %>
     alert('This product is currently in beta!');
   <% else %>
-    window.location.href = "<%= spree.product_path(product_to_buy) %>";
+    window.location.href = "<%= spree.product_path(@single_product_to_buy) %>";
   <% end %>
 <% else %>
   $('body').append("<%= escape_javascript(render 'choose_products_modal') %>");

@@ -34,6 +34,19 @@ class VideoGalleryController < ApplicationController
   end
 
   def unlock
+    @single_product_to_buy = @video.products_to_buy.first
+    respond_to do |format|
+      format.html {
+        if @single_product_to_buy.blank?
+          redirect_to '/video_gallery', notice: 'Not available for purchase!'
+        elsif @single_product_to_buy.is_beta?
+          redirect_to '/video_gallery', notice: 'This product is currently in beta!'
+        else
+          redirect_to spree.product_path(@single_product_to_buy)
+        end
+      }
+      format.js {}
+    end
   end
 
   def bookmark
