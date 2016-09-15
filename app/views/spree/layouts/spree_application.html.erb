@@ -26,7 +26,10 @@
       </div>
     </div>
 
-    <%= render 'footer' %>
+    <% cache :footer, expires_in: 2.hours do %>
+      <%= render 'footer' %>
+    <% end %>
+
     <%= render 'jira_ticket' %>
   </body>
 </html>
