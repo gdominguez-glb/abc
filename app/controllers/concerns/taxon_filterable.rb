@@ -2,8 +2,8 @@ module TaxonFilterable
   extend ActiveSupport::Concern
 
   def filter_by_taxons(klass, entities, taxon_ids)
-    return entities if taxon_ids.blank?
     taxons = Spree::Taxon.where(id: taxon_ids)
+    return entities if taxons.blank?
     entity_ids = klass.find_by_sql(generate_intersect_sql(entities, taxons)).map(&:id)
     entities.where(id: entity_ids)
   end
