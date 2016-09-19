@@ -53,12 +53,15 @@ server {
 
   client_max_body_size 1024m;
 
+  <% if node['rails_env'] == 'qa' %>
   # Only for QA; remove for STG and PROD
   location ~* \.(css)$ {
   expires 1h;
   add_header Cache-Control "public";
   }
+  <% end %>
 
+  <% if node['pagespeed'] == 'true' %>
   pagespeed on;
 
   # Needs to exist and be writable by nginx.  Use tmpfs for best performance.
@@ -75,6 +78,7 @@ server {
   }
   location ~ "^/pagespeed_static/" { }
   location ~ "^/ngx_pagespeed_beacon$" { }
+  <% end %>
 
   location ^~ /assets/ {
     gzip_static on;
