@@ -87,7 +87,7 @@ gem 'backbone-on-rails'
 
 gem 'meta-tags'
 
-gem "browser"
+gem 'browser', '~> 2.2'
 
 gem 'open_uri_redirections'
 

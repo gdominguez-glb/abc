@@ -159,7 +159,7 @@ GEM
       sass (>= 3.3.4)
     bootstrap3-datetimepicker-rails (4.14.30)
       momentjs-rails (>= 2.8.1)
-    browser (1.0.1)
+    browser (2.2.0)
     builder (3.2.2)
     camertron-eprun (1.1.0)
     cancancan (1.10.1)
@@ -751,7 +751,7 @@ DEPENDENCIES
   binding_of_caller
   bootstrap-sass (~> 3.3.6)
   bootstrap3-datetimepicker-rails (~> 4.14.30)
-  browser
+  browser (~> 2.2)
   capistrano (~> 3.4.0)
   capistrano-bundler (~> 1.1.2)
   capistrano-rails (~> 1.1)
@@ -827,6 +827,3 @@ DEPENDENCIES
   wistia-api
   zeroclipboard-rails
   zip-zip
-
-BUNDLED WITH
-   1.11.2
