@@ -44,7 +44,7 @@ module Cms
 
     def product_marketing_editor
       @page.tiles ||= { rows: [] }
-      @page.tiles[:rows].sort_by! { |row| row[:position]}
+      @page.tiles[:rows].sort_by! { |row| row[:position].to_i }
     end
 
     def update_tiles
