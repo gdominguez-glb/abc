@@ -18,7 +18,7 @@ module Cms
 
     def edit
       @page.tiles ||= { rows: [] }
-      @page.tiles[:rows].sort_by! { |row| row[:position]}
+      @page.tiles[:rows].sort_by! { |row| row[:position].to_i }
     end
 
     def create
