@@ -8,6 +8,9 @@ namespace :cms do
   get 'users/search', to: 'users#search'
 
   resources :pages do
+    collection do
+      post :process_tiles
+    end
     member do
       get :product_marketing_editor
       post :update_tiles

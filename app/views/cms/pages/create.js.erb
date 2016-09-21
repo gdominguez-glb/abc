@@ -1,0 +1,5 @@
+<% if @page.persisted? %>
+  window.location.href = "<%= edit_cms_page_path(@page) %>";
+<% else %>
+  alert("Fail to save page: <%= @page.errors.full_messages.join(', ').html_safe %>");
+<% end %>
