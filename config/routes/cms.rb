@@ -12,9 +12,7 @@ namespace :cms do
       post :process_tiles
     end
     member do
-      get :product_marketing_editor
       post :publish
-      post :update_tiles
     end
   end
   resources :event_pages do

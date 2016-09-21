@@ -2,7 +2,7 @@ module Cms
   # PagesController
   class PagesController < Cms::BaseController
     before_action :set_page, only: [:show, :edit, :update, :destroy,
-                                    :product_marketing_editor, :update_tiles, :publish]
+                                    :update_tiles, :publish]
 
     def index
       @q = Page.ransack(params[:q])
@@ -17,6 +17,8 @@ module Cms
     end
 
     def edit
+      @page.tiles ||= { rows: [] }
+      @page.tiles[:rows].sort_by! { |row| row[:position]}
     end
 
     def create
@@ -24,10 +26,11 @@ module Cms
       @page = Page.new(page_params.merge(tiles: { rows: tile_rows}))
 
       if @page.save
-          respond_to do |format|
-            format.html { redirect_to [:cms, @page], notice: 'Page was successfully created.' }
-            format.js
-          end
+        flash[:notice] = 'Page was successfully created.'
+        respond_to do |format|
+          format.html { redirect_to [:cms, @page] }
+          format.js
+        end
       else
         respond_to do |format|
           format.html{ render :new }
@@ -38,7 +41,8 @@ module Cms
 
     def update
       tile_rows = (params[:tiles] || {}).values
-      if @page.update(page_params.merge(tiles: { rows: tile_rows}))
+      draft_status = @page.published? ? :draft_in_progress : :draft
+      if @page.update(page_params.merge(tiles: { rows: tile_rows}, draft_status: draft_status))
         flash[:notice] = 'Page was successfully updated.'
         respond_to do |format|
           format.html{ redirect_to edit_cms_page_path(@page) }
@@ -55,20 +59,6 @@ module Cms
     def destroy
       @page.destroy
       redirect_to cms_pages_url, notice: 'Page was successfully destroyed.'
-    end
-
-    def product_marketing_editor
-      @page.tiles ||= { rows: [] }
-      @page.tiles[:rows].sort_by! { |row| row[:position]}
-    end
-
-    def update_tiles
-      tiles = nil
-      if params[:page].try('[]', :tiles).present?
-        tiles = { rows: params[:page][:tiles][:rows].values }
-      end
-      @page.update(tiles: tiles)
-      flash[:notice] = "Page was succesfully updated."
     end
 
     def process_tiles
