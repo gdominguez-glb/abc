@@ -1,6 +1,8 @@
 class EventTraining < ActiveRecord::Base
   validates_presence_of :title, :content
 
+  belongs_to :training_type_category
+
   CATEGORIES = ['english', 'math']
 
   scope :by_category, ->(category) { where(category: category) }
@@ -11,7 +13,7 @@ class EventTraining < ActiveRecord::Base
 
   searchkick callbacks: :async
 
-  acts_as_list
+  acts_as_list scope: :training_type_category
 
   def search_data
     {

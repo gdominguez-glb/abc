@@ -45,7 +45,7 @@ module Spree
       end
 
       def can_assign_school_admin_to_order_user?
-        @order.user && (@order.enable_single_distribution? || @order.multi_license?)
+        @order.user && (@order.enable_single_distribution? || @order.multi_license? || Spree::LicensedProduct.where(user_id: @order.user_id, can_be_distributed: true).exists?)
       end
 
       def send_email_notification

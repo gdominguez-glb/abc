@@ -35,11 +35,21 @@ class EventsController < ApplicationController
   end
 
   def trainings
-    @event_trainings = EventTraining.order(:position)
+    @event_trainings = TrainingTypeCategory.default_category.event_trainings.order(:position)
+    @event_trainings = filter_by_category(@event_trainings)
+  end
+
+  def trainings_by_parent
+    @training_type_category = TrainingTypeCategory.find_by(slug: params[:parent_slug])
+    @event_trainings = @training_type_category.event_trainings.order(:position)
+    @event_trainings = filter_by_category(@event_trainings)
+    render template: 'events/trainings'
   end
 
   def trainings_by_category
-    @event_trainings = EventTraining.by_category(params[:category]).order(:position)
+    @training_type_category = TrainingTypeCategory.default_category
+    @event_trainings = @training_type_category.event_trainings.by_category(params[:category]).order(:position)
+    @event_trainings = filter_by_category(@event_trainings)
     render template: 'events/trainings'
   end
 
@@ -49,5 +59,12 @@ class EventsController < ApplicationController
     if params[:zipcode].present?
       @events = @events.near(params[:zipcode], 100)
     end
+  end
+
+  def filter_by_category(event_trainings)
+    if params[:category].present?
+      event_trainings = event_trainings.by_category(params[:category])
+    end
+    event_trainings
   end
 end

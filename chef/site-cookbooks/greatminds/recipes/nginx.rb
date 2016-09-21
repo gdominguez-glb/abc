@@ -14,7 +14,7 @@ end
 
 # set custom nginx config
 template "/etc/nginx/sites-enabled/#{node['app']}" do
-  source "nginx.conf.erb"
+  source "nginx_server.conf.erb"
   mode 0644
   owner node['user']['name']
   group node['group']

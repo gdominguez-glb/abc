@@ -120,7 +120,7 @@
               <label>State</label>
               <div class="select-container dark-select block">
                 <span>State</span>
-                <%= f.collection_select :state, Spree::Country.default.states, :name, :name, { prompt: 'Select State' }, class: 'form-control' %>
+                <%= f.collection_select :state, Spree::Country.default.states, :abbr, :name, { prompt: 'Select State' }, class: 'form-control' %>
               </div>
             </div>
 

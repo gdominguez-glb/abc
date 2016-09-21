@@ -121,7 +121,12 @@
           var $product = $material.parents('.materials');
           $product.scrollTo($material);
         }
-      })
+
+        $('.panel-product button, .panel-product a').mouseout(function(){
+         $(this).blur();
+        });
+
+      });
     <% end %>
   <% end %>
 </div>

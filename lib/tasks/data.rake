@@ -1,4 +1,10 @@
 namespace :data do
+  desc "create new training type category"
+  task training_type_category: :environment do
+    default_category = TrainingTypeCategory.create(title: 'Professional Development Sessions', is_default: true)
+    EventTraining.update_all(training_type_category_id: default_category.id)
+  end
+
   desc 'migrate document tags'
   task document_tags: :environment do
     ActsAsTaggableOn::Tagging.where(taggable_type: 'Document').find_each do |tagging|

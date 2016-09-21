@@ -1,4 +1,4 @@
-<%= form_for([:cms, @event_training], class: 'form') do |f| %>
+<%= form_for([:cms, @training_type_category, @event_training], class: 'form') do |f| %>
   <% if @event_training.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@event_training.errors.count, "error") %> prohibited this event_training from being saved:</h2>
