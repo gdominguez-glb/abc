@@ -13,6 +13,7 @@ namespace :cms do
     end
     member do
       get :product_marketing_editor
+      post :publish
       post :update_tiles
     end
   end

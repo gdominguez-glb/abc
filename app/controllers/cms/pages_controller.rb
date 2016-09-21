@@ -2,7 +2,7 @@ module Cms
   # PagesController
   class PagesController < Cms::BaseController
     before_action :set_page, only: [:show, :edit, :update, :destroy,
-                                    :product_marketing_editor, :update_tiles]
+                                    :product_marketing_editor, :update_tiles, :publish]
 
     def index
       @q = Page.ransack(params[:q])
@@ -81,6 +81,11 @@ module Cms
       render json: { body: page.body }
     end
 
+    def publish
+      @page.publish!
+      redirect_to edit_cms_page_path, notice: 'Published page successfully!'
+    end
+
     private
 
     # Use callbacks to share common setup or constraints between actions.
@@ -93,7 +98,7 @@ module Cms
     def page_params
       params.require(:page).permit(:title, :seo_content, :slug, :group_name,
                                    :keywords, :description,
-                                   :sub_group_name, :position, :layout, :body,
+                                   :sub_group_name, :position, :layout, :body, :body_draft,
                                    :visible, :curriculum_id, :group_root,
                                    :show_in_nav, :show_in_footer, tiles: {})
     end

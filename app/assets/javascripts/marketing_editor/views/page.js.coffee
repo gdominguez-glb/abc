@@ -27,8 +27,9 @@ class MarketingEditorApp.Views.PageView extends Backbone.View
       dataType: 'script'
       data: formData
       complete: (res)=>
-        setTimeout(=>
-          @$('.save-page-btn').attr('disabled', false).val('Save Page')
+        func = => $('.save-page-btn').attr('disabled', false).val('Save Page')
+        setTimeout(
+          func
           2000
         )
     })

@@ -34,7 +34,11 @@
   <div class="row">
     <div class="col-sm-3">
       <div class="form-group">
-        <%= f.submit class: 'btn btn-success btn-block save-page-btn' %>
+        <%= f.submit 'Save Draft', class: 'btn btn-success btn-block save-page-btn' %>
+
+        <% if @page.persisted? %>
+          <%= link_to 'Publish', publish_cms_page_path(@page), class: 'btn btn-primary', data: { method: :post, confirm: 'Are you sure to publish this page? (Make sure you save draft first)', disable_with: 'Publising' } %>
+        <% end %>
       </div>
     </div>
   </div>

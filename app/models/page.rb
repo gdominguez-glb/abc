@@ -2,7 +2,8 @@ require 'marketing_page_renderrer'
 
 class Page < ActiveRecord::Base
 
-  enum status: [ :draft, :published, :trashed ]
+  enum publish_status: [ :pending, :published ]
+  enum draft_status: [ :draft, :draft_in_progress, :draft_published ]
 
   searchkick callbacks: :async
 
@@ -53,7 +54,7 @@ class Page < ActiveRecord::Base
   end
 
   def publish!
-    self.update(published_at: Time.now, body: self.body_draft, status: :published)
+    self.update(published_at: Time.now, body: self.body_draft, publish_status: :published, draft_status: :draft_published)
   end
 
   private
