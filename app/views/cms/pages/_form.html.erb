@@ -34,6 +34,10 @@
   <div class="row">
     <div class="col-sm-3">
       <div class="form-group">
+        <% if @page.persisted? %>
+          <%= link_to 'Preview', preview_cms_page_path(@page), class: 'btn btn-default', style: 'margin-bottom: 10px;', target: '_blank' %>
+        <% end %>
+
         <%= f.submit 'Save Draft', class: 'btn btn-success btn-block save-page-btn' %>
 
         <% if @page.persisted? %>

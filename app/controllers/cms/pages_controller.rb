@@ -2,7 +2,7 @@ module Cms
   # PagesController
   class PagesController < Cms::BaseController
     before_action :set_page, only: [:show, :edit, :update, :destroy,
-                                    :update_tiles, :publish]
+                                    :update_tiles, :publish, :preview]
 
     def index
       @q = Page.ransack(params[:q])
@@ -74,6 +74,10 @@ module Cms
     def publish
       @page.publish!
       redirect_to edit_cms_page_path, notice: 'Published page successfully!'
+    end
+
+    def preview
+      render layout: 'application'
     end
 
     private

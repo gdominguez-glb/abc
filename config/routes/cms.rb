@@ -13,6 +13,7 @@ namespace :cms do
     end
     member do
       post :publish
+      get :preview
     end
   end
   resources :event_pages do
