@@ -2,7 +2,7 @@ module Cms
   # PagesController
   class PagesController < Cms::BaseController
     before_action :set_page, only: [:show, :edit, :update, :destroy,
-                                    :product_marketing_editor, :update_tiles]
+                                    :update_tiles, :publish, :preview]
 
     def index
       @q = Page.ransack(params[:q])
@@ -17,23 +17,42 @@ module Cms
     end
 
     def edit
+      @page.tiles ||= { rows: [] }
+      @page.tiles[:rows].sort_by! { |row| row[:position]}
     end
 
     def create
-      @page = Page.new(page_params)
+      tile_rows = (params[:tiles] || {}).values
+      @page = Page.new(page_params.merge(tiles: { rows: tile_rows}))
 
       if @page.save
-        redirect_to [:cms, @page], notice: 'Page was successfully created.'
+        flash[:notice] = 'Page was successfully created.'
+        respond_to do |format|
+          format.html { redirect_to [:cms, @page] }
+          format.js
+        end
       else
-        render :new
+        respond_to do |format|
+          format.html{ render :new }
+          format.js
+        end
       end
     end
 
     def update
-      if @page.update(page_params)
-        redirect_to edit_cms_page_path(@page), notice: 'Page was successfully updated.'
+      tile_rows = (params[:tiles] || {}).values
+      draft_status = @page.published? ? :draft_in_progress : :draft
+      if @page.update(page_params.merge(tiles: { rows: tile_rows}, draft_status: draft_status))
+        flash[:notice] = 'Page was successfully updated.'
+        respond_to do |format|
+          format.html{ redirect_to edit_cms_page_path(@page) }
+          format.js
+        end
       else
-        render :edit
+        respond_to do |format|
+          format.html { render :edit }
+          format.js
+        end
       end
     end
 
@@ -42,18 +61,23 @@ module Cms
       redirect_to cms_pages_url, notice: 'Page was successfully destroyed.'
     end
 
-    def product_marketing_editor
-      @page.tiles ||= { rows: [] }
-      @page.tiles[:rows].sort_by! { |row| row[:position]}
-    end
-
-    def update_tiles
+    def process_tiles
       tiles = nil
       if params[:page].try('[]', :tiles).present?
         tiles = { rows: params[:page][:tiles][:rows].values }
       end
-      @page.update(tiles: tiles)
-      flash[:notice] = "Page was succesfully updated."
+      page = Page.new(tiles: tiles)
+      page.send(:generate_page_from_tiles)
+      render json: { body: page.body }
+    end
+
+    def publish
+      @page.publish!
+      redirect_to edit_cms_page_path, notice: 'Published page successfully!'
+    end
+
+    def preview
+      render layout: 'application'
     end
 
     private
@@ -68,9 +92,9 @@ module Cms
     def page_params
       params.require(:page).permit(:title, :seo_content, :slug, :group_name,
                                    :keywords, :description,
-                                   :sub_group_name, :position, :layout, :body,
+                                   :sub_group_name, :position, :layout, :body, :body_draft,
                                    :visible, :curriculum_id, :group_root,
-                                   :show_in_nav, :show_in_footer, :tiles)
+                                   :show_in_nav, :show_in_footer, tiles: {})
     end
   end
 end

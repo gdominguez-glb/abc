@@ -2,6 +2,9 @@ require 'marketing_page_renderrer'
 
 class Page < ActiveRecord::Base
 
+  enum publish_status: [ :pending, :published ]
+  enum draft_status: [ :draft, :draft_in_progress, :draft_published ]
+
   searchkick callbacks: :async
 
   def should_index?
@@ -48,6 +51,10 @@ class Page < ActiveRecord::Base
 
   def available_event_pages
     event_pages.select{|event_page| event_page.events.exists? }
+  end
+
+  def publish!
+    self.update(published_at: Time.now, body: self.body_draft, publish_status: :published, draft_status: :draft_published)
   end
 
   private
