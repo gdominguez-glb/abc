@@ -35,7 +35,8 @@ class EventsController < ApplicationController
   end
 
   def trainings
-    @event_trainings = TrainingTypeCategory.default_category.event_trainings.order(:position)
+    @training_type_category = TrainingTypeCategory.default_category
+    @event_trainings = @training_type_category.event_trainings.order(:position)
     @event_trainings = filter_by_category(@event_trainings)
   end
 
