@@ -22,7 +22,8 @@ class Cms::QuestionsController < Cms::BaseController
   end
 
   def update
-    if @question.update(question_params)
+    draft_status = @question.published? ? :draft_in_progress : :draft
+    if @question.update(question_params.merge(draft_status: draft_status))
       redirect_to cms_questions_path, notice: 'Updated question successfully!'
     else
       render :edit
@@ -34,10 +35,15 @@ class Cms::QuestionsController < Cms::BaseController
     redirect_to cms_questions_path, notice: 'Deleted question successfully!'
   end
 
+  def publish
+    @question.publish!
+    redirect_to cms_questions_path, notice: 'Publish faq successfully!'
+  end
+
   private
 
   def question_params
-    params.require(:question).permit(:title, :display, :faq_category_id, answer_attributes: [:content])
+    params.require(:question).permit(:title, :display, :faq_category_id, answer_attributes: [:content_draft])
   end
 
   def find_question

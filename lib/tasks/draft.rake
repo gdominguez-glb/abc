@@ -10,5 +10,8 @@ namespace :draft do
     EventPage.find_each do |event_page|
       event_page.update(description_draft: event_page.description)
     end
+    Answer.find_each do |answer|
+      answer.update(content_draft: answer.content)
+    end
   end
 end
