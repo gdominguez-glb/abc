@@ -20,6 +20,10 @@ namespace :cms do
     collection do
       post :import_events
     end
+    member do
+      post :publish
+      get :preview
+    end
     resources :regonline_events, only: [:index, :edit, :update]
   end
   resources :documents

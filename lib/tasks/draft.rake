@@ -7,5 +7,8 @@ namespace :draft do
     Job.find_each do |job|
       job.update(content_draft: job.content)
     end
+    EventPage.find_each do |event_page|
+      event_page.update(description_draft: event_page.description)
+    end
   end
 end
