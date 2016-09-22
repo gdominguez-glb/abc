@@ -68,6 +68,10 @@ namespace :cms do
     collection do
       post :update_positions
     end
+    member do
+      post :publish
+      get :preview
+    end
   end
   resources :footer_titles do
     collection do
