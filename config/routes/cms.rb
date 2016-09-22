@@ -38,7 +38,12 @@ namespace :cms do
       post :update_positions
     end
   end
-  resources :questions
+  resources :questions do
+    member do
+      post :publish
+      get :preview
+    end
+  end
   resources :help_items
   resources :contacts, only: [:index, :destroy, :edit, :update]
   resources :recommendations

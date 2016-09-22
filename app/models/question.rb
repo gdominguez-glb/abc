@@ -1,4 +1,7 @@
 class Question < ActiveRecord::Base
+  enum publish_status: [ :pending, :published ]
+  enum draft_status: [ :draft, :draft_in_progress, :draft_published ]
+
   belongs_to :faq_category
 
   has_one :answer
@@ -23,6 +26,11 @@ class Question < ActiveRecord::Base
       content: content,
       user_ids: [-1]
     }
+  end
+
+  def publish!
+    self.update(published_at: Time.now, publish_status: :published, draft_status: :draft_published)
+    self.answer.update(content: self.answer.content_draft)
   end
 
 end

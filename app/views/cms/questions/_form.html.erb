@@ -1,4 +1,5 @@
 <%= form_for([:cms, @question], class: 'form') do |f| %>
+  <p>Status: <%= @question.draft_status %></p>
   <% if @question.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@question.errors.count, "error") %> prohibited this question from being saved:</h2>
@@ -31,7 +32,7 @@
     <% f.object.build_answer if f.object.answer.blank? %>
     <%= f.fields_for :answer do |answer_form| %>
       <label>Answer</label>
-      <%= answer_form.text_area :content, class: 'form-control rich-editor' %>
+      <%= answer_form.text_area :content_draft, class: 'form-control rich-editor' %>
     <% end %>
   </div>
   <div class="checkbox margin-bottom--xl">
@@ -40,6 +41,11 @@
     </label>
   </div>
   <div class="form-group">
-    <%= f.submit (@question.new_record? ? 'Create FAQ' : 'Update FAQ') , class: 'btn btn-success' %>
+    <%= f.submit 'Save Draft', class: 'btn btn-success' %>
+
+    <% if @question.persisted? %>
+      <%= link_to 'Publish', publish_cms_question_path(@question), class: 'btn btn-primary', data: { method: :post, confirm: 'Are you sure to publish? (Make sure you save the draft first)' } %>
+      <%= link_to 'Preview', preview_cms_question_path(@question), class: 'btn btn-default', target: '_blank' %>
+    <% end %>
   </div>
 <% end %>
