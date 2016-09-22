@@ -1,5 +1,5 @@
 class Cms::EventPagesController < Cms::BaseController
-  before_action :set_event_page, only: [:show, :edit, :update, :destroy]
+  before_action :set_event_page, only: [:show, :edit, :update, :destroy, :publish, :preview]
 
   def index
     @event_pages = EventPage.page(params[:page])
@@ -33,6 +33,11 @@ class Cms::EventPagesController < Cms::BaseController
 
   def import_events
     RegonlineWorker.perform_async
+  end
+
+  def publish
+    @event_page.publish!
+    redirect_to cms_event_pages_path, notice: 'Event page published successfully'
   end
 
   private

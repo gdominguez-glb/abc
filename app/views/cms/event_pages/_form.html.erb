@@ -1,4 +1,8 @@
 <%= form_for([:cms, @event_page], class: 'form') do |f| %>
+  <p>
+    Status: <%= @event_page.draft_status %>
+  </p>
+
   <% if @event_page.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@event_page.errors.count, "error") %> prohibited this event_page from being saved:</h2>
@@ -46,7 +50,7 @@
   </div>
   <div class="form-group">
     <label>Description</label>
-    <%= f.text_area :description, rows: 3, class: 'form-control rich-editor' %>
+    <%= f.text_area :description_draft, rows: 3, class: 'form-control rich-editor' %>
   </div>
   <div class="form-group">
     <div class="checkbox">
@@ -57,6 +61,10 @@
   </div>
   <div class="form-group">
     <%= f.submit class: 'btn btn-success' %>
+    <% if @event_page.persisted? %>
+      <%= link_to 'Publish', publish_cms_event_page_path(@event_page), class: 'btn btn-primary', data: { method: :post, confirm: 'Are you sure to publish? (Make sure you save the draft first)' } %>
+      <%= link_to 'Preview', preview_cms_event_page_path(@event_page), class: 'btn btn-default', target: '_blank' %>
+    <% end %>
   </div>
 <% end %>
 
