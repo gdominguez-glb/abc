@@ -25,7 +25,8 @@ class Cms::JobsController < Cms::BaseController
   end
 
   def update
-    if @job.update(job_params)
+    draft_status = @job.published? ? :draft_in_progress : :draft
+    if @job.update(job_params.merge(draft_status: draft_status))
       redirect_to cms_jobs_path, notice: 'Updated job successfully!'
     else
       render :edit
@@ -40,6 +41,15 @@ class Cms::JobsController < Cms::BaseController
   def update_positions
     update_positions_with_klass(Job)
     render nothing: true
+  end
+
+  def publish
+    @job.publish!
+    redirect_to edit_cms_job_path(@job), notice: 'Publish career successfully!'
+  end
+
+  def preview
+    render layout: 'application'
   end
 
   private

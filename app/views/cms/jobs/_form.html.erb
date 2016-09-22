@@ -1,4 +1,8 @@
 <%= form_for([:cms, @job], class: 'form') do |f| %>
+  <p>
+    Status: <%= @job.draft_status %>
+  </p>
+
   <% if @job.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@job.errors.count, "error") %> prohibited this job from being saved:</h2>
@@ -22,7 +26,7 @@
 
   <div class="form-group">
     <label>Content</label>
-    <%= f.text_area :content, class: 'form-control rich-editor', rows: 3 %>
+    <%= f.text_area :content_draft, class: 'form-control rich-editor', rows: 3 %>
   </div>
   <div class="form-group">
     <div class="checkbox">
@@ -33,6 +37,11 @@
     </div>
   </div>
   <div class="form-group">
-    <%= f.submit class: 'btn btn-success' %>
+    <%= f.submit 'Save Draft', class: 'btn btn-success' %>
   </div>
+
+  <% if @job.persisted? %>
+    <%= link_to 'Publish', publish_cms_job_path(@job), class: 'btn btn-primary', data: { method: :post, confirm: 'Are you sure to publish? (Make sure you save the draft first)' } %>
+    <%= link_to 'Preview', preview_cms_job_path(@job), class: 'btn btn-default', target: '_blank' %>
+  <% end %>
 <% end %>
