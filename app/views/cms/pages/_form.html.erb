@@ -13,13 +13,23 @@
 
   <div>
 
-  <!-- Nav tabs -->
-  <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active"><a href="#tiles" role="tab" data-toggle="tab">Tiles</a></li>
-    <li role="presentation"><a href="#metadata" role="tab" data-toggle="tab">Metadata</a></li>
-  </ul>
+  <div class="panel panel-primary">
+    <div class="panel-body panel-body--padding">
+      <div class="row">
+        <div class="col-lg-4">
+          <ul class="nav nav-tabs margin-bottom--s--lg-min">
+            <li class="active">
+              <a href="#tiles" data-toggle="tab">Tiles</a>
+            </li>
+            <li>
+              <a href="#metadata" data-toggle="tab">Metadata</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <!-- Tab panes -->
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="tiles" style="padding: 10px;">
       <%= render partial: 'tiles', locals: { f: f } %>
