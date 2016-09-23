@@ -1,11 +1,29 @@
 module Cms
   # PagesController
   class PagesController < Cms::BaseController
+    before_action :set_page_search_form, only: [:index, :published, :drafts, :published_category, :drafts_category, :search]
     before_action :set_page, only: [:show, :edit, :update, :destroy,
                                     :update_tiles, :publish, :preview]
 
     def index
-      @q = Page.ransack(params[:q])
+      redirect_to published_cms_pages_path
+    end
+
+    def published
+    end
+
+    def published_category
+      @pages = Page.published.by_category(params[:category]).order('group_name ASC, position ASC').page(params[:page]).per(10)
+    end
+
+    def drafts
+    end
+
+    def drafts_category
+      @pages = Page.draft.by_category(params[:category]).order('group_name ASC, position ASC').page(params[:page]).per(10)
+    end
+
+    def search
       @pages = @q.result.order('group_name ASC, position ASC').page(params[:page]).per(10)
     end
 
@@ -81,6 +99,10 @@ module Cms
     end
 
     private
+
+    def set_page_search_form
+      @q = Page.ransack(params[:q])
+    end
 
     # Use callbacks to share common setup or constraints between actions.
     def set_page

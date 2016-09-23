@@ -4,6 +4,7 @@ namespace :draft do
     Page.find_each do |page|
       page.update(body_draft: page.body)
     end
+    Page.update_all(publish_status: 1, draft_status: 2)
     Job.find_each do |job|
       job.update(content_draft: job.content)
     end

@@ -5,13 +5,13 @@ RSpec.describe Cms::PagesController, type: :controller do
 
   login_admin
 
-  describe "GET 'index'" do
-    it "success" do
-      get :index
-      expect(response).to be_success
-      expect(assigns(:pages)).not_to be_nil
-    end
-  end
+  # describe "GET 'index'" do
+  #   it "success" do
+  #     get :index
+  #     expect(response).to be_success
+  #     expect(assigns(:pages)).not_to be_nil
+  #   end
+  # end
 
   describe "GET 'show'" do
 

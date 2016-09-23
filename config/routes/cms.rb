@@ -10,6 +10,11 @@ namespace :cms do
   resources :pages do
     collection do
       post :process_tiles
+      get :published
+      get 'published/:category', to: 'pages#published_category', as: :published_category
+      get :drafts
+      get 'drafts/:category', to: 'pages#drafts_category', as: :drafts_category
+      get :search
     end
     member do
       post :publish
