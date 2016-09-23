@@ -11,6 +11,10 @@
 //   Styleguide 15.0
 // -------------------------------------
 
+.panel-body {
+  padding: $b-space;
+}
+
 .panel-group {
   .panel {
     margin-bottom: $b-space * 1.2;

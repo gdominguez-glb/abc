@@ -432,6 +432,14 @@
 
 // ----- Margin ----- //
 
+.margin-bottom--s--sm-min {
+  margin-bottom: $b-space-s !important;
+
+  @media screen and (min-width: $screen-sm-min) {
+    margin-bottom: 0 !important;
+  }
+}
+
 .margin-bottom--m--sm-min {
   margin-bottom: $b-space-m !important;
 
@@ -444,6 +452,14 @@
   margin-bottom: $b-space-xl !important;
 
   @media screen and (min-width: $screen-sm-min) {
+    margin-bottom: 0 !important;
+  }
+}
+
+.margin-bottom-s--lg-min {
+  margin-bottom: $b-space-s !important;
+
+  @media screen and (min-width: $screen-lg-min) {
     margin-bottom: 0 !important;
   }
 }
