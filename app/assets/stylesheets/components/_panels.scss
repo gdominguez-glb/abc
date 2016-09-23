@@ -11,10 +11,6 @@
 //   Styleguide 15.0
 // -------------------------------------
 
-.panel-body {
-  padding: $b-space;
-}
-
 .panel-group {
   .panel {
     margin-bottom: $b-space * 1.2;
@@ -198,4 +194,29 @@
     display: inline-block;
     width: 110px;
   }
+}
+
+// -------------------------------------
+//   Panel Modifiers
+// -------------------------------------
+
+.panel-title--s {
+  font-size: .8em;
+  font-weight: normal;
+  text-transform: initial;
+
+  a {
+    font-weight: normal;
+    text-transform: initial;
+
+    &:hover,
+    &:active {
+      text-decoration: underline;
+      color: $c-absolute;
+    }
+  }
+}
+
+.panel-body--padding {
+  padding: $b-space !important;
 }
