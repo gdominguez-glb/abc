@@ -1,0 +1,7 @@
+<%= render 'cms_nav' %>
+
+<div class="col-md-9">
+  <%= render partial: 'search_bar', locals: { selected_state: 'drafts' } %>
+  <p><%= link_to 'All Drafts Pages', drafts_cms_pages_path %> &gt; <%= params[:category] %></p>
+  <%= render 'pages' %>
+</div>

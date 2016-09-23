@@ -5,6 +5,16 @@ class Page < ActiveRecord::Base
   enum publish_status: [ :pending, :published ]
   enum draft_status: [ :draft, :draft_in_progress, :draft_published ]
 
+  scope :by_category, -> (category) {
+    if category == 'Footer'
+      where(show_in_footer: true)
+    elsif category == 'Enterprise'
+      where(show_in_footer: false, curriculum_id: nil)
+    else
+      joins(:curriculum).where(curriculums: { name: category })
+    end
+  }
+
   searchkick callbacks: :async
 
   def should_index?

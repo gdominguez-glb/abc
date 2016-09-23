@@ -1,0 +1,19 @@
+
+<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-md-2">
+    <%= link_to 'Published', '/cms/pages/published', class: (selected_state == 'published' ? 'active' : '') %>
+  </div>
+  <div class="col-md-2">
+    <%= link_to 'Drafts', '/cms/pages/drafts', class: (selected_state == 'drafts' ? 'active' : '') %>
+  </div>
+  <div class="col-md-2">
+    <%= link_to 'Add Page', new_cms_page_path, class: 'btn btn-primary' %>
+  </div>
+  <div class="col-md-5">
+    <%= search_form_for @q, url: search_cms_pages_path, class: 'form-inline' do |f| %>
+      <%= f.text_field :title_or_slug_or_curriculum_name_cont, class: 'form-control' %>
+      <%= submit_tag 'Search', class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>

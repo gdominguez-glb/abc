@@ -1,0 +1,7 @@
+<%= render 'cms_nav' %>
+
+<div class="col-md-9">
+  <%= render partial: 'search_bar', locals: { selected_state: 'drafts' } %>
+  <p>All Drafts Pages</p>
+  <%= render partial: 'categories', locals: { state: 'drafts' } %>
+</div>
