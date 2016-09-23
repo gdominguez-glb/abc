@@ -13,18 +13,33 @@
 
   <div>
 
-  <!-- Nav tabs -->
-  <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active"><a href="#tiles" role="tab" data-toggle="tab">Tiles</a></li>
-    <li role="presentation"><a href="#metadata" role="tab" data-toggle="tab">Metadata</a></li>
-  </ul>
+  <div class="panel panel-primary">
+    <div class="panel-body panel-body--padding">
+      <div class="row">
+        <div class="col-lg-4">
+          <ul class="nav nav-tabs margin-bottom--s--lg-min">
+            <li class="active">
+              <a href="#tiles" data-toggle="tab">Tiles</a>
+            </li>
+            <li>
+              <a href="#metadata" data-toggle="tab">Metadata</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-lg-8 text-right">
+          <% if @page.persisted? %>
+            <%= link_to 'Preview Page', preview_cms_page_path(@page), class: 'btn btn-success btn-block-xs margin-bottom--s--sm-min', target: '_blank' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <!-- Tab panes -->
   <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="tiles" style="padding: 10px;">
+    <div class="tab-pane active" id="tiles">
       <%= render partial: 'tiles', locals: { f: f } %>
     </div>
-    <div role="tabpanel" class="tab-pane" id="metadata" style="padding: 10px;">
+    <div class="tab-pane" id="metadata">
       <%= render partial: 'metadata', locals: { f: f } %>
     </div>
   </div>
@@ -32,19 +47,21 @@
   </div>
 
   <div class="row">
-    <div class="col-sm-3">
-      <div class="form-group">
-        <% if @page.persisted? %>
-          <%= link_to 'Preview', preview_cms_page_path(@page), class: 'btn btn-default', style: 'margin-bottom: 10px;', target: '_blank' %>
-        <% end %>
-
-        <%= f.submit 'Save Draft', class: 'btn btn-success btn-block save-page-btn' %>
-
-        <% if @page.persisted? %>
-          <%= link_to 'Publish', publish_cms_page_path(@page), class: 'btn btn-primary', data: { method: :post, confirm: 'Are you sure to publish this page? (Make sure you save draft first)', disable_with: 'Publising' } %>
-        <% end %>
+    <% if @page.persisted? %>
+      <div class="col-sm-3">
+        <%= link_to 'Preview', preview_cms_page_path(@page), class: 'btn btn-default btn-block margin-bottom--s--sm-min', target: '_blank' %>
       </div>
+    <% end %>
+
+    <div class="col-sm-3">
+      <%= f.submit 'Save Draft', class: 'btn btn-primary btn-block save-page-btn margin-bottom--s--sm-min' %>
     </div>
+
+    <% if @page.persisted? %>
+      <div class="col-sm-3 col-sm-offset-3">
+        <%= link_to 'Publish Page', publish_cms_page_path(@page), class: 'btn btn-success btn-block margin-bottom--s--sm-min', data: { method: :post, confirm: 'Are you sure to publish this page? (Make sure you save draft first)', disable_with: 'Publising' } %>
+      </div>
+    <% end %>
   </div>
 <% end %>
 

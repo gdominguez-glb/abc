@@ -60,4 +60,8 @@
       display: inline;
     }
   }
+
+  .panel & {
+    margin: $b-space-s 0 0 $b-space-s;
+  }
 }

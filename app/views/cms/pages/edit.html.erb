@@ -1,14 +1,4 @@
 <%= render 'cms_nav' %>
 <div class="col-md-9">
-  <h2>Editing Page</h2>
-  <% page_url = page_url(slug: @page.slug) %>
-  <small class="help-block">Permalink: <%= link_to page_url, page_url, target: '_blank', class: 'text--lowercase' %></small>
-
   <%= render 'form' %>
-
-  <div class="row">
-    <div class="col-sm-3">
-      <%= link_to 'Back', cms_pages_path, class: 'btn btn-default btn-block' %>
-    </div>
-  </div>
 </div>
