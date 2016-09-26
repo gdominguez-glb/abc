@@ -1,8 +1,4 @@
 <%= form_for([:cms, @job], class: 'form') do |f| %>
-  <p>
-    Status: <%= @job.draft_status %>
-  </p>
-
   <% if @job.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@job.errors.count, "error") %> prohibited this job from being saved:</h2>
@@ -15,33 +11,51 @@
     </div>
   <% end %>
 
-  <div class="row">
-    <div class="col-sm-6">
+  <div class="panel panel-primary">
+    <div class="panel-heading padding-top--s padding-bottom--s">
+      <h3 class="panel-title panel-title--s">Jobs</h3>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label>Title</label>
+            <%= f.text_field :title, class: 'form-control' %>
+          </div>
+        </div>
+      </div>
+
       <div class="form-group">
-        <label>Title</label>
-        <%= f.text_field :title, class: 'form-control' %>
+        <label>Content</label>
+        <%= f.text_area :content_draft, class: 'form-control rich-editor', rows: 3 %>
+      </div>
+      <div class="form-group">
+        <div class="checkbox">
+          <label>
+            <%= f.check_box :display %>
+            Display
+          </label>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="form-group">
-    <label>Content</label>
-    <%= f.text_area :content_draft, class: 'form-control rich-editor', rows: 3 %>
-  </div>
-  <div class="form-group">
-    <div class="checkbox">
-      <label>
-        <%= f.check_box :display %>
-        Display
-      </label>
+  <span class="label label-english margin-bottom">Status: <%= @job.draft_status %></span>
+
+  <div class="row">
+    <% if @job.persisted? %>
+      <div class="col-sm-3">
+        <%= link_to 'Preview', preview_cms_job_path(@job), class: 'btn btn-default btn-block margin-bottom--s--sm-min', target: '_blank' %>
+      </div>
+    <% end %>
+    <div class="col-sm-3">
+      <%= f.submit 'Save Draft', class: 'btn btn-primary btn-block margin-bottom--s--sm-min' %>
     </div>
-  </div>
-  <div class="form-group">
-    <%= f.submit 'Save Draft', class: 'btn btn-success' %>
+    <% if @job.persisted? %>
+      <div class="col-sm-3">
+        <%= link_to 'Publish', publish_cms_job_path(@job), class: 'btn btn-success btn-block margin-bottom--s--sm-min', data: { method: :post, confirm: 'Are you sure to publish? (Make sure you save the draft first)' } %>
+      </div>
+    <% end %>
   </div>
 
-  <% if @job.persisted? %>
-    <%= link_to 'Publish', publish_cms_job_path(@job), class: 'btn btn-primary', data: { method: :post, confirm: 'Are you sure to publish? (Make sure you save the draft first)' } %>
-    <%= link_to 'Preview', preview_cms_job_path(@job), class: 'btn btn-default', target: '_blank' %>
-  <% end %>
 <% end %>
