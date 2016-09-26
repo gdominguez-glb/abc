@@ -1,5 +1,4 @@
 <%= form_for([:cms, @question], class: 'form') do |f| %>
-  <p>Status: <%= @question.draft_status %></p>
   <% if @question.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@question.errors.count, "error") %> prohibited this question from being saved:</h2>
@@ -12,40 +11,56 @@
     </div>
   <% end %>
 
-  <div class="row">
-    <div class="col-sm-6">
-      <div class="form-group">
-        <label>Category</label>
-        <div class="select-container dark-select block">
-          <span>Category</span>
-          <%= f.collection_select :faq_category_id, FaqCategory.all, :id, :name, { prompt: 'Select Category' }, class: 'form-control' %>
+  <div class="panel panel-primary">
+    <div class="panel-heading padding-top--s padding-bottom--s">
+      <h3 class="panel-title panel-title--s">FAQ</h3>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label>Category</label>
+            <div class="select-container dark-select block">
+              <span>Category</span>
+              <%= f.collection_select :faq_category_id, FaqCategory.all, :id, :name, { prompt: 'Select Category' }, class: 'form-control' %>
+            </div>
+          </div>
         </div>
+      </div>
+      <div class="form-group">
+        <label>Title</label>
+        <%= f.text_field :title, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <% f.object.build_answer if f.object.answer.blank? %>
+        <%= f.fields_for :answer do |answer_form| %>
+          <label>Answer</label>
+          <%= answer_form.text_area :content_draft, class: 'form-control rich-editor' %>
+        <% end %>
+      </div>
+      <div class="checkbox margin-bottom--xl">
+        <label>
+          <%= f.check_box :display %> Display
+        </label>
       </div>
     </div>
   </div>
 
-  <div class="form-group">
-    <label>Title</label>
-    <%= f.text_field :title, class: 'form-control' %>
-  </div>
-  <div class="form-group">
-    <% f.object.build_answer if f.object.answer.blank? %>
-    <%= f.fields_for :answer do |answer_form| %>
-      <label>Answer</label>
-      <%= answer_form.text_area :content_draft, class: 'form-control rich-editor' %>
-    <% end %>
-  </div>
-  <div class="checkbox margin-bottom--xl">
-    <label>
-      <%= f.check_box :display %> Display
-    </label>
-  </div>
-  <div class="form-group">
-    <%= f.submit 'Save Draft', class: 'btn btn-success' %>
+  <span class="label label-english margin-bottom">Status: <%= @question.draft_status %></span>
 
+  <div class="row">
     <% if @question.persisted? %>
-      <%= link_to 'Publish', publish_cms_question_path(@question), class: 'btn btn-primary', data: { method: :post, confirm: 'Are you sure to publish? (Make sure you save the draft first)' } %>
-      <%= link_to 'Preview', preview_cms_question_path(@question), class: 'btn btn-default', target: '_blank' %>
+      <div class="col-sm-3">
+        <%= link_to 'Preview', preview_cms_question_path(@question), class: 'btn btn-default btn-block margin-bottom--s--sm-min', target: '_blank' %>
+      </div>
+    <% end %>
+    <div class="col-sm-3">
+      <%= f.submit 'Save Draft', class: 'btn btn-primary btn-block margin-bottom--s--sm-min' %>
+    </div>
+    <% if @question.persisted? %>
+      <div class="col-sm-3">
+        <%= link_to 'Publish', publish_cms_question_path(@question), class: 'btn btn-success btn-block margin-bottom--s--sm-min', data: { method: :post, confirm: 'Are you sure to publish? (Make sure you save the draft first)' } %>
+      </div>
     <% end %>
   </div>
 <% end %>

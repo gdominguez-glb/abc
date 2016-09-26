@@ -1,0 +1,24 @@
+<div class="panel panel-primary">
+  <div class="panel-body panel-body--padding">
+    <div class="row">
+      <div class="col-lg-5">
+        <ul class="nav nav-tabs margin-bottom-s--lg-min">
+          <li>
+            <%= link_to 'Published', '/cms/event_pages/published', class: (selected_state == 'published' ? 'active' : '') %>
+          </li>
+          <li>
+            <%= link_to 'Drafts', '/cms/event_pages/drafts', class: (selected_state == 'drafts' ? 'active' : '') %>
+          </li>
+          <li>
+            <%= link_to 'Archived', '/cms/event_pages/archived', class: (selected_state == 'archived' ? 'active' : '') %>
+          </li>
+        </ul>
+      </div>
+      <div class="col-lg-7 text-right">
+        <div class="form-inline">
+          <%= link_to 'New Event Page', new_cms_event_page_path, class: 'btn btn-success btn-block-xs' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -27,6 +27,9 @@ namespace :cms do
   resources :event_pages do
     collection do
       post :import_events
+      get :published
+      get :drafts
+      get :archived
     end
     member do
       post :publish
@@ -47,6 +50,11 @@ namespace :cms do
     end
   end
   resources :questions do
+    collection do
+      get :published
+      get :drafts
+      get :archived
+    end
     member do
       post :publish
       get :preview
@@ -84,6 +92,9 @@ namespace :cms do
   resources :jobs do
     collection do
       post :update_positions
+      get :published
+      get :drafts
+      get :archived
     end
     member do
       post :publish
@@ -104,6 +115,6 @@ namespace :cms do
   resources :curriculum_shops
   resources :custom_csses
   resources :vanity_urls
-  
+
   post 'sync', to: 'sync#run'
 end

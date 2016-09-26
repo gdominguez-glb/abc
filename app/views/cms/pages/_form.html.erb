@@ -46,6 +46,8 @@
 
   </div>
 
+  <span class="label label-english margin-bottom">Status: <%= @page.draft_status %></span>
+
   <div class="row">
     <% if @page.persisted? %>
       <div class="col-sm-3">
@@ -58,7 +60,7 @@
     </div>
 
     <% if @page.persisted? %>
-      <div class="col-sm-3 col-sm-offset-3">
+      <div class="col-sm-3">
         <%= link_to 'Publish Page', publish_cms_page_path(@page), class: 'btn btn-success btn-block margin-bottom--s--sm-min', data: { method: :post, confirm: 'Are you sure to publish this page? (Make sure you save draft first)', disable_with: 'Publising' } %>
       </div>
     <% end %>

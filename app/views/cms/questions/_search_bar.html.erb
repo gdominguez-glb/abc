@@ -1,0 +1,24 @@
+<div class="panel panel-primary">
+  <div class="panel-body panel-body--padding">
+    <div class="row">
+      <div class="col-lg-5">
+        <ul class="nav nav-tabs margin-bottom-s--lg-min">
+          <li>
+            <%= link_to 'Published', '/cms/questions/published', class: (selected_state == 'published' ? 'active' : '') %>
+          </li>
+          <li>
+            <%= link_to 'Drafts', '/cms/questions/drafts', class: (selected_state == 'drafts' ? 'active' : '') %>
+          </li>
+          <li>
+            <%= link_to 'Archived', '/cms/questions/archived', class: (selected_state == 'archived' ? 'active' : '') %>
+          </li>
+        </ul>
+      </div>
+      <div class="col-lg-7 text-right">
+        <div class="form-inline">
+          <%= link_to 'New FAQ', new_cms_question_path, class: 'btn btn-success btn-block-xs' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
