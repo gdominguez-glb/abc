@@ -1,8 +1,4 @@
 <%= form_for([:cms, @event_page], class: 'form') do |f| %>
-  <p>
-    Status: <%= @event_page.draft_status %>
-  </p>
-
   <% if @event_page.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@event_page.errors.count, "error") %> prohibited this event_page from being saved:</h2>
@@ -15,56 +11,74 @@
     </div>
   <% end %>
 
-  <div class="row">
-    <div class="col-sm-6">
-      <div class="form-group">
-        <%= f.label :title %>
-        <%= f.text_field :title, class: 'form-control' %>
-      </div>
+  <div class="panel panel-primary">
+    <div class="panel-heading padding-top--s padding-bottom--s">
+      <h3 class="panel-title panel-title--s">Event Page</h3>
     </div>
-    <div class="col-sm-6">
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <%= f.label :title %>
+            <%= f.text_field :title, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <%= f.label :event_page_type %>
+            <div class="select-container dark-select block">
+              <span>Select Type</span>
+              <%= f.select :event_page_type, EventPage.event_page_types.keys, {}, class: 'form-control' %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="curriculum-input" class="form-group <%= 'hidden' if f.object.event_page_type == 'global' %>">
+        <%= f.label "Curriculum" %>
+        <%= f.collection_select :page_id, Page.show_in_top_navigation, :id, :group_name, { include_blank: 'Select Event Page' }, class: 'form-control' %>
+      </div>
       <div class="form-group">
-        <%= f.label :event_page_type %>
-        <div class="select-container dark-select block">
-          <span>Select Type</span>
-          <%= f.select :event_page_type, EventPage.event_page_types.keys, {}, class: 'form-control' %>
+        <%= f.label 'Unique url' %>
+        <%= f.text_field :slug, class: 'form-control' %>
+        <p class="help-block">For example: if enter 'events' and this event page belong to math curriculum, it will be visited under /math/events</p>
+        <p class="help-block">If this is a global page with slug: hello, the list can be visited under /events/l/hello</p>
+      </div>
+      <div class="form-group">
+        <%= f.label :regonline_filter %>
+        <%= f.text_field :regonline_filter, class: 'form-control' %>
+        <p class="help-block">This field is mapping to Internal Code(open event edit, under Registration Rules section, click Advanced Setting) in regonline event to assocaite events with related curriculum. if this field is entered as 'Math' and in regonline event Internal Code has value 'Math,..', this event will be displayed in this events list</p>
+      </div>
+      <div class="form-group">
+        <label>Description</label>
+        <%= f.text_area :description_draft, rows: 3, class: 'form-control rich-editor' %>
+      </div>
+      <div class="form-group">
+        <div class="checkbox">
+          <%= f.label :display do %>
+            <%= f.check_box :display %> Display
+          <% end %>
         </div>
       </div>
     </div>
   </div>
 
-  <div id="curriculum-input" class="form-group <%= 'hidden' if f.object.event_page_type == 'global' %>">
-    <%= f.label "Curriculum" %>
-    <%= f.collection_select :page_id, Page.show_in_top_navigation, :id, :group_name, { include_blank: 'Select Event Page' }, class: 'form-control' %>
-  </div>
-  <div class="form-group">
-    <%= f.label 'Unique url' %>
-    <%= f.text_field :slug, class: 'form-control' %>
-    <p class="help-block">For example: if enter 'events' and this event page belong to math curriculum, it will be visited under /math/events</p>
-    <p class="help-block">If this is a global page with slug: hello, the list can be visited under /events/l/hello</p>
-  </div>
-  <div class="form-group">
-    <%= f.label :regonline_filter %>
-    <%= f.text_field :regonline_filter, class: 'form-control' %>
-    <p class="help-block">This field is mapping to Internal Code(open event edit, under Registration Rules section, click Advanced Setting) in regonline event to assocaite events with related curriculum. if this field is entered as 'Math' and in regonline event Internal Code has value 'Math,..', this event will be displayed in this events list</p>
-  </div>
-  <div class="form-group">
-    <label>Description</label>
-    <%= f.text_area :description_draft, rows: 3, class: 'form-control rich-editor' %>
-  </div>
-  <div class="form-group">
-    <div class="checkbox">
-      <%= f.label :display do %>
-        <%= f.check_box :display %> Display
+  <span class="label label-english margin-bottom">Status: <%= @event_page.draft_status %></span>
+
+  <div class="row">
+    <% if @event_page.persisted? %>
+      <div class="col-sm-3">
+        <%= link_to 'Preview', preview_cms_event_page_path(@event_page), class: 'btn btn-default btn-block margin-bottom--s--sm-min', target: '_blank' %>
+      </div>
+    <% end %>
+    <div class="col-sm-3">
+      <%= f.submit 'Save Draft', class: 'btn btn-primary btn-block margin-bottom--s--sm-min' %>
+    </div>
+    <div class="col-sm-3">
+      <% if @event_page.persisted? %>
+        <%= link_to 'Publish', publish_cms_event_page_path(@event_page), class: 'btn btn-success btn-block margin-bottom--s--sm-min', data: { method: :post, confirm: 'Are you sure to publish? (Make sure you save the draft first)' } %>
       <% end %>
     </div>
-  </div>
-  <div class="form-group">
-    <%= f.submit class: 'btn btn-success' %>
-    <% if @event_page.persisted? %>
-      <%= link_to 'Publish', publish_cms_event_page_path(@event_page), class: 'btn btn-primary', data: { method: :post, confirm: 'Are you sure to publish? (Make sure you save the draft first)' } %>
-      <%= link_to 'Preview', preview_cms_event_page_path(@event_page), class: 'btn btn-default', target: '_blank' %>
-    <% end %>
   </div>
 <% end %>
 
