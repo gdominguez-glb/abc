@@ -92,6 +92,9 @@ namespace :cms do
   resources :jobs do
     collection do
       post :update_positions
+      get :published
+      get :drafts
+      get :archived
     end
     member do
       post :publish

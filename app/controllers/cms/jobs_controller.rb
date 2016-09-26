@@ -2,10 +2,20 @@ class Cms::JobsController < Cms::BaseController
   skip_before_action :authenticate_admin_in_cms!
   before_action :authenticate_hr_admin_in_cms!
 
-  before_action :find_job, except: [:index, :new, :create, :update_positions]
+  before_action :find_jobs, only: [:index, :published, :drafts, :archived]
+  before_action :find_job, except: [:index, :new, :create, :update_positions, :published, :drafts, :archived]
 
   def index
-    @jobs = Job.order(:position)
+    redirect_to published_cms_jobs_path
+  end
+
+  def published
+  end
+
+  def drafts
+  end
+
+  def archived
   end
 
   def new
@@ -60,5 +70,9 @@ class Cms::JobsController < Cms::BaseController
 
   def find_job
     @job = Job.find(params[:id])
+  end
+
+  def find_jobs
+    @jobs = Job.order(:position)
   end
 end
