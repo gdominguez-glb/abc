@@ -1,8 +1,18 @@
 class Cms::EventPagesController < Cms::BaseController
+  before_action :set_event_pages, only: [:index, :published, :drafts, :archived]
   before_action :set_event_page, only: [:show, :edit, :update, :destroy, :publish, :preview]
 
   def index
-    @event_pages = EventPage.page(params[:page])
+    redirect_to published_cms_event_pages_path
+  end
+
+  def published
+  end
+
+  def drafts
+  end
+
+  def archived
   end
 
   def new
@@ -48,5 +58,9 @@ class Cms::EventPagesController < Cms::BaseController
 
   def set_event_page
     @event_page = EventPage.find(params[:id])
+  end
+
+  def set_event_pages
+    @event_pages = EventPage.page(params[:page])
   end
 end

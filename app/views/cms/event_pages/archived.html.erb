@@ -1,0 +1,18 @@
+<%= render 'cms_nav' %>
+
+<div class="col-md-9">
+  <%= render partial: 'search_bar', locals: { selected_state: 'archived' } %>
+
+  <div class="alert alert-info">
+    A Event page will be showing as sub nav within a curriculum nav. which list related events associate with the curriculum.
+  </div>
+
+  <div class="panel panel-primary">
+    <div class="panel-heading padding-top--s padding-bottom--s">
+      <h3 class="panel-title panel-title--s">All Archived Event Pages</h3>
+    </div>
+    <%= render partial: 'event_list', locals: { state: 'archived' } %>
+  </div>
+
+  <%= link_to 'Import Events Now', import_events_cms_event_pages_path, class: 'btn btn-primary', remote: true, data: { confirm: 'Are you sure to import events?', method: :post } %>
+</div>

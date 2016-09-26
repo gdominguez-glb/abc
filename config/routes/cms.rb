@@ -27,6 +27,9 @@ namespace :cms do
   resources :event_pages do
     collection do
       post :import_events
+      get :published
+      get :drafts
+      get :archived
     end
     member do
       post :publish
