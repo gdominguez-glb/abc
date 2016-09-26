@@ -1,6 +1,6 @@
 class Cms::QuestionsController < Cms::BaseController
-  before_action :find_questions_search_form, only: [:index, :published, :drafts]
-  before_action :find_question, except: [:index, :new, :create, :published, :drafts]
+  before_action :find_questions_search_form, only: [:index, :published, :drafts, :archived]
+  before_action :find_question, except: [:index, :new, :create, :published, :drafts, :archived]
 
   def index
     redirect_to published_cms_questions_path
@@ -10,6 +10,9 @@ class Cms::QuestionsController < Cms::BaseController
   end
 
   def drafts
+  end
+
+  def archived
   end
 
   def new

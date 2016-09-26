@@ -9,6 +9,9 @@
           <li>
             <%= link_to 'Drafts', '/cms/questions/drafts', class: (selected_state == 'drafts' ? 'active' : '') %>
           </li>
+          <li>
+            <%= link_to 'Archived', '/cms/questions/archived', class: (selected_state == 'archived' ? 'active' : '') %>
+          </li>
         </ul>
       </div>
       <div class="col-lg-7 text-right">

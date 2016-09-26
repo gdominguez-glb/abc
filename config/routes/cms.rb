@@ -50,6 +50,7 @@ namespace :cms do
     collection do
       get :published
       get :drafts
+      get :archived
     end
     member do
       post :publish
