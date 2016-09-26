@@ -14,11 +14,14 @@ namespace :cms do
       get 'published/:category', to: 'pages#published_category', as: :published_category
       get :drafts
       get 'drafts/:category', to: 'pages#drafts_category', as: :drafts_category
+      get :archived
+      get 'archived/:category', to: 'pages#archived_category', as: :archived_category
       get :search
     end
     member do
       post :publish
       get :preview
+      post :archive
     end
   end
   resources :event_pages do

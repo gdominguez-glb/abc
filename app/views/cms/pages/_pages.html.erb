@@ -6,7 +6,7 @@
           <td><%= page.title %></td>
           <td><%= page.draft_status %></td>
           <td><%= link_to 'Edit Detail', edit_cms_page_path(page) %></td>
-          <td><%= link_to 'Destroy', [:cms, page], method: :delete, data: { confirm: 'Are you sure?' }, class: 'text--danger' %></td>
+          <td><%= link_to 'Archive', archive_cms_page_path(page), method: :post, data: { confirm: 'Are you sure to archive this page?' }, class: 'text--danger' if !page.archived? %></td>
         </tr>
       <% end %>
     </tbody>

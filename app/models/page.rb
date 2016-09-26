@@ -50,6 +50,8 @@ class Page < ActiveRecord::Base
   scope :show_in_sub_navigation, -> (group_name) { visibles.not_group_roots.where(group_name: group_name, show_in_nav: true) }
   scope :show_in_footer_as_top_links, -> { visibles.group_roots.where(show_in_footer: true) }
   scope :show_in_footer_as_subgroup_links, -> (group_name) { visibles.not_group_roots.where(show_in_footer: true, group_name: group_name) }
+  scope :archived, -> { where(archived: true) }
+  scope :unarchive, -> { where(archived: false) }
 
   before_save :generate_page_from_tiles
 
@@ -65,6 +67,10 @@ class Page < ActiveRecord::Base
 
   def publish!
     self.update(published_at: Time.now, body: self.body_draft, publish_status: :published, draft_status: :draft_published)
+  end
+
+  def archive!
+    self.update(archived: true, archived_at: Time.now)
   end
 
   private
