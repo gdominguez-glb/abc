@@ -5,16 +5,6 @@ class Page < ActiveRecord::Base
   enum publish_status: [ :pending, :published ]
   enum draft_status: [ :draft, :draft_in_progress, :draft_published ]
 
-  scope :by_category, -> (category) {
-    if category == 'Footer'
-      where(show_in_footer: true)
-    elsif category == 'Enterprise'
-      where(show_in_footer: false, curriculum_id: nil)
-    else
-      joins(:curriculum).where(curriculums: { name: category })
-    end
-  }
-
   searchkick callbacks: :async
 
   def should_index?
@@ -52,6 +42,16 @@ class Page < ActiveRecord::Base
   scope :show_in_footer_as_subgroup_links, -> (group_name) { visibles.not_group_roots.where(show_in_footer: true, group_name: group_name) }
   scope :archived, -> { where(archived: true) }
   scope :unarchive, -> { where(archived: false) }
+  scope :by_category, -> (category) {
+    if category == 'Footer'
+      where(show_in_footer: true)
+    elsif category == 'Enterprise'
+      where(show_in_footer: false, curriculum_id: nil)
+    else
+      joins(:curriculum).where(curriculums: { name: category })
+    end
+  }
+
 
   before_save :generate_page_from_tiles
 

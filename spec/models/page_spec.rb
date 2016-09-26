@@ -14,6 +14,23 @@ RSpec.describe Page, type: :model do
 
   let(:page) { create(:page, title: 'T', body: 'B') }
 
+  describe ".by_category" do
+    it "return footer pages" do
+      page = create(:page, show_in_footer: true)
+      expect(Page.by_category('Footer')).to eq([page])
+    end
+
+    it "return enterprises pages" do
+      page = create(:page, curriculum_id: nil)
+      expect(Page.by_category('Enterprise')).to eq([page])
+    end
+
+    it "return curriculum page" do
+      page = create(:page, curriculum: create(:curriculum, name: 'Math'))
+      expect(Page.by_category('Math')).to eq([page])
+    end
+  end
+
   describe ".visibles" do
     let!(:visible_page) { create(:page, visible: true) }
 
@@ -146,6 +163,23 @@ RSpec.describe Page, type: :model do
           }] })
       page.save
       expect(page.body).to eq("<section class=\"row green-bg\">\n  <div class=\"col-sm-6 col-centered-content\">\n    <div class=\"vertical-center\">\n      <picture>\n        <!--[if IE 9]><video style=\"display: none;\"><![endif]-->\n        <source srcset=\"http://img.com/123\" media=\"(min-width: 361px)\">\n        <!--[if IE 9]></video><![endif]-->\n        <img srcset=\"http://img.com/123\" class=\"img-responsive margin-bottom--xl--sm-min\">\n      </picture>\n    </div>\n  </div>\n  <div class=\"col-sm-6 col-centered-content\">\n    <div class=\"vertical-center\">\n      <h6>Hello</h6>\n      <p>hello body</p>\n      \n        \n          \n        \n        <a class=\"btn btn-default btn-block-xs\" href=\"http://aa.com\" target=\"_blank\">hello btn</a>\n      \n    </div>\n  </div>\n</section>\n")
+    end
+  end
+
+  describe "#publish!" do
+    it "publish page" do
+      page.publish!
+      expect(page.reload.publish_status).to eq('published')
+      expect(page.reload.draft_status).to eq('draft_published')
+      expect(page.reload.published_at).not_to be_nil
+    end
+  end
+
+  describe "#archive!" do
+    it "archive page" do
+      page.archive!
+      expect(page.reload.archived?).to eq(true)
+      expect(page.reload.archived_at).not_to be_nil
     end
   end
 end

@@ -98,7 +98,7 @@ module Cms
 
     def publish
       @page.publish!
-      redirect_to edit_cms_page_path, notice: 'Published page successfully!'
+      redirect_to edit_cms_page_path(@page), notice: 'Published page successfully!'
     end
 
     def archive
