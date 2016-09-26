@@ -1,32 +1,42 @@
 <%= render 'cms_nav' %>
 
+<%= form_for [:cms, @event_page, @event] do |f| %>
 <div class="col-md-9">
-  <%= link_to 'Back', cms_event_page_regonline_events_path(@event_page), class: 'btn btn-primary margin-bottom--xl' %>
-  <h2>Edit Event</h2>
-  <%= form_for [:cms, @event_page, @event] do |f| %>
-    <div class="form-group">
-      <label>Title</label>
-      <%= f.text_field :title, class: 'form-control' %>
+  <div class="panel panel-primary">
+    <div class="panel-heading padding-top--s padding-bottom--s">
+      <h3 class="panel-title panel-title--s">Edit Event</h3>
     </div>
-    <div class="form-group">
-      <label>Download Url</label>
-      <%= f.text_field :download_url, class: 'form-control' %>
+    <div class="panel-body">
+      <div class="form-group">
+        <label>Title</label>
+        <%= f.text_field :title, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <label>Download Url</label>
+        <%= f.text_field :download_url, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <label>Grade Bands</label>
+        <%= f.text_field :grade_bands, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <label>Session Types</label>
+        <%= f.collection_select :session_types, EventTraining.all, :id, :title_with_category, { include_hidden: false }, class: 'form-control', multiple: true, placeholder: 'Set session type' %>
+      </div>
+      <div class="form-group">
+        <label>Visible</label>
+        <%= f.check_box :display, class: 'form-control' %>
+      </div>
     </div>
-    <div class="form-group">
-      <label>Grade Bands</label>
-      <%= f.text_field :grade_bands, class: 'form-control' %>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-3">
+      <%= f.submit "Save", class: 'btn btn-success btn-block margin-bottom--s--sm-min' %>
     </div>
-    <div class="form-group">
-      <label>Session Types</label>
-      <%= f.collection_select :session_types, EventTraining.all, :id, :title_with_category, { include_hidden: false }, class: 'form-control', multiple: true, placeholder: 'Set session type' %>
-    </div>
-    <div class="form-group">
-      <label>Visible</label>
-      <%= f.check_box :display, class: 'form-control' %>
-    </div>
-    <%= f.submit "Save", class: 'btn btn-success' %>
-  <% end %>
+  </div>
 </div>
+<% end %>
 
 <%= content_for :javascripts do %>
   <script type="text/javascript">
