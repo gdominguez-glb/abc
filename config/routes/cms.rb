@@ -47,6 +47,10 @@ namespace :cms do
     end
   end
   resources :questions do
+    collection do
+      get :published
+      get :drafts
+    end
     member do
       post :publish
       get :preview
@@ -104,6 +108,6 @@ namespace :cms do
   resources :curriculum_shops
   resources :custom_csses
   resources :vanity_urls
-  
+
   post 'sync', to: 'sync#run'
 end

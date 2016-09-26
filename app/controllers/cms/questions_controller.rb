@@ -1,8 +1,15 @@
 class Cms::QuestionsController < Cms::BaseController
-  before_action :find_question, except: [:index, :new, :create]
+  before_action :find_questions_search_form, only: [:index, :published, :drafts]
+  before_action :find_question, except: [:index, :new, :create, :published, :drafts]
 
   def index
-    @questions = Question.includes(:faq_category).page(params[:page])
+    redirect_to published_cms_questions_path
+  end
+
+  def published
+  end
+
+  def drafts
   end
 
   def new
@@ -48,5 +55,9 @@ class Cms::QuestionsController < Cms::BaseController
 
   def find_question
     @question = Question.find(params[:id])
+  end
+
+  def find_questions_search_form
+    @questions = Question.includes(:faq_category).page(params[:page])
   end
 end
