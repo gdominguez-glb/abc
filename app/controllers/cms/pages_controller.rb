@@ -1,9 +1,9 @@
 module Cms
   # PagesController
   class PagesController < Cms::BaseController
-    before_action :set_page_search_form, only: [:index, :published, :drafts, :published_category, :drafts_category, :search]
+    before_action :set_page_search_form, only: [:index, :published, :drafts, :published_category, :drafts_category, :archived, :archived_category, :search]
     before_action :set_page, only: [:show, :edit, :update, :destroy,
-                                    :update_tiles, :publish, :preview]
+                                    :update_tiles, :publish, :preview, :archive]
 
     def index
       redirect_to published_cms_pages_path
@@ -13,18 +13,25 @@ module Cms
     end
 
     def published_category
-      @pages = Page.published.by_category(params[:category]).order('group_name ASC, position ASC').page(params[:page]).per(10)
+      @pages = Page.published.unarchive.by_category(params[:category]).order('group_name ASC, position ASC').page(params[:page]).per(10)
     end
 
     def drafts
     end
 
     def drafts_category
-      @pages = Page.draft.by_category(params[:category]).order('group_name ASC, position ASC').page(params[:page]).per(10)
+      @pages = Page.draft.unarchive.by_category(params[:category]).order('group_name ASC, position ASC').page(params[:page]).per(10)
     end
 
     def search
       @pages = @q.result.order('group_name ASC, position ASC').page(params[:page]).per(10)
+    end
+
+    def archived
+    end
+
+    def archived_category
+      @pages = Page.archived.by_category(params[:category]).order('group_name ASC, position ASC').page(params[:page]).per(10)
     end
 
     def show
@@ -92,6 +99,11 @@ module Cms
     def publish
       @page.publish!
       redirect_to edit_cms_page_path, notice: 'Published page successfully!'
+    end
+
+    def archive
+      @page.archive!
+      redirect_to archived_cms_pages_path, notice: 'Archived page successfully!'
     end
 
     def preview
