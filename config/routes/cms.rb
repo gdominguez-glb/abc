@@ -58,6 +58,7 @@ namespace :cms do
     member do
       post :publish
       get :preview
+      post :archive
     end
   end
   resources :help_items
