@@ -1,5 +1,6 @@
 class Cms::QuestionsController < Cms::BaseController
-  before_action :find_question, except: [:index, :new, :create, :published, :drafts, :archived]
+  before_action :set_search_form, only: [:published, :drafts, :archived, :search]
+  before_action :find_question, except: [:index, :new, :create, :published, :drafts, :archived, :search]
 
   def index
     redirect_to published_cms_questions_path
@@ -15,6 +16,10 @@ class Cms::QuestionsController < Cms::BaseController
 
   def archived
     @questions = Question.archived.includes(:faq_category).page(params[:page])
+  end
+
+  def search
+    @questions = @q.result.page(params[:page])
   end
 
   def new
@@ -65,5 +70,9 @@ class Cms::QuestionsController < Cms::BaseController
 
   def find_question
     @question = Question.find(params[:id])
+  end
+
+  def set_search_form
+    @q = Question.ransack(params[:q])
   end
 end

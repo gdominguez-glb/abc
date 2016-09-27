@@ -54,6 +54,7 @@ namespace :cms do
       get :published
       get :drafts
       get :archived
+      get :search
     end
     member do
       post :publish

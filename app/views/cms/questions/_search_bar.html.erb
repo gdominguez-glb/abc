@@ -17,6 +17,12 @@
       <div class="col-lg-7 text-right">
         <div class="form-inline">
           <%= link_to 'New FAQ', new_cms_question_path, class: 'btn btn-success btn-block-xs' %>
+          <%= search_form_for @q, url: search_cms_questions_path, class: 'inline' do |f| %>
+            <div class="form-group margin-bottom--reset">
+              <%= f.text_field :title_cont, class: 'form-control margin-bottom--s--sm-min' %>
+              <%= submit_tag 'Search', class: 'btn btn-primary btn-block-xs margin-bottom--s--sm-min margin-right--reset' %>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
