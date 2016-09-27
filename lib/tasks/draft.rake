@@ -11,6 +11,7 @@ namespace :draft do
     EventPage.find_each do |event_page|
       event_page.update(description_draft: event_page.description)
     end
+    Question.update_all(publish_status: 1, draft_status: 2)
     Answer.find_each do |answer|
       answer.update(content_draft: answer.content)
     end

@@ -54,10 +54,12 @@ namespace :cms do
       get :published
       get :drafts
       get :archived
+      get :search
     end
     member do
       post :publish
       get :preview
+      post :archive
     end
   end
   resources :help_items
