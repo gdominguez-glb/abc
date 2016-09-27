@@ -12,6 +12,12 @@
       <%= f.error_message_on :name %>
     <% end %>
 
+    <%= f.field_container :internal_name, :class => ['form-group'] do %>
+      <%= f.label :internal_name, Spree.t(:internal_name) %> <span class="required">*</span>
+      <%= f.text_field :internal_name, :class => 'form-control title' %>
+      <%= f.error_message_on :internal_name %>
+    <% end %>
+
     <div data-hook="new_product_attrs" class="row">
 
       <div data-hook="new_product_curriculum" class="col-md-4">
