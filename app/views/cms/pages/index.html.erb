@@ -22,7 +22,7 @@
       <% @pages.each do |page| %>
         <tr>
           <td><%= page.title %></td>
-          <td><%= page.draft_status %></td>
+          <td><%= cms_display_status(page) %></td>
           <td><%= link_to 'Edit Detail', edit_cms_page_path(page) %></td>
           <td><%= link_to 'Destroy', [:cms, page], method: :delete, data: { confirm: 'Are you sure?' }, class: 'text--danger' %></td>
         </tr>

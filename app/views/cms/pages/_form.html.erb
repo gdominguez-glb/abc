@@ -46,7 +46,7 @@
 
   </div>
 
-  <span class="label label-english margin-bottom">Status: <%= @page.draft_status %></span>
+  <span class="label label-english margin-bottom">Status: <%= cms_display_status(@page) %></span>
 
   <div class="row">
     <% if @page.persisted? %>
