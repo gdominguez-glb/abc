@@ -11,6 +11,14 @@
         <% end %>
       </div>
 
+      <div data-hook="admin_product_form_internal_name">
+        <%= f.field_container :internal_name, class: ['form-group'] do %>
+          <%= f.label :internal_name, raw(Spree.t(:internal_name) + content_tag(:span, ' *', class: 'required')) %>
+          <%= f.text_field :internal_name, class: 'form-control title' %>
+          <%= f.error_message_on :internal_name %>
+        <% end %>
+      </div>
+
       <div data-hook="admin_product_form_slug">
         <%= f.field_container :slug, class: ['form-group'] do %>
           <%= f.label :slug, raw(Spree.t(:slug) + content_tag(:span, ' *', class: "required")) %>
