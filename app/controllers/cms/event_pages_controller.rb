@@ -1,18 +1,20 @@
 class Cms::EventPagesController < Cms::BaseController
-  before_action :set_event_pages, only: [:index, :published, :drafts, :archived]
-  before_action :set_event_page, only: [:show, :edit, :update, :destroy, :publish, :preview]
+  before_action :set_event_page, only: [:show, :edit, :update, :destroy, :publish, :preview, :archive]
 
   def index
     redirect_to published_cms_event_pages_path
   end
 
   def published
+    @event_pages = EventPage.published.unarchive.page(params[:page])
   end
 
   def drafts
+    @event_pages = EventPage.draft.unarchive.page(params[:page])
   end
 
   def archived
+    @event_pages = EventPage.archived.page(params[:pages])
   end
 
   def new
@@ -50,6 +52,11 @@ class Cms::EventPagesController < Cms::BaseController
     redirect_to cms_event_pages_path, notice: 'Event page published successfully'
   end
 
+  def archive
+    @event_page.archive!
+    redirect_to archived_cms_event_pages_path, notice: 'Event page archived successfully'
+  end
+
   private
 
   def event_page_params
@@ -58,9 +65,5 @@ class Cms::EventPagesController < Cms::BaseController
 
   def set_event_page
     @event_page = EventPage.find(params[:id])
-  end
-
-  def set_event_pages
-    @event_pages = EventPage.page(params[:page])
   end
 end

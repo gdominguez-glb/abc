@@ -8,6 +8,7 @@ namespace :draft do
     Job.find_each do |job|
       job.update(content_draft: job.content)
     end
+    EventPage.update_all(publish_status: 1, draft_status: 2)
     EventPage.find_each do |event_page|
       event_page.update(description_draft: event_page.description)
     end

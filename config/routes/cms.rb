@@ -34,6 +34,7 @@ namespace :cms do
     member do
       post :publish
       get :preview
+      post :archive
     end
     resources :regonline_events, only: [:index, :edit, :update]
   end
