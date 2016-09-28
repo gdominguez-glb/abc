@@ -1,5 +1,6 @@
 class EventPage < ActiveRecord::Base
   include Displayable
+  include Archiveable
 
   belongs_to :page
 
@@ -7,9 +8,6 @@ class EventPage < ActiveRecord::Base
 
   enum publish_status: [ :pending, :published ]
   enum draft_status: [ :draft, :draft_in_progress, :draft_published ]
-
-  scope :archived, -> { where(archived: true) }
-  scope :unarchive, -> { where(archived: false) }
 
   validates_presence_of :title, :slug
   validates_presence_of :page_id, if:  Proc.new { |ep| ep.curriculum? }
@@ -40,9 +38,5 @@ class EventPage < ActiveRecord::Base
 
   def publish!
     self.update(published_at: Time.now, description: self.description_draft, publish_status: :published, draft_status: :draft_published)
-  end
-
-  def archive!
-    self.update(archived: true, archived_at: Time.now)
   end
 end
