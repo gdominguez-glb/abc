@@ -1,9 +1,7 @@
 class Question < ActiveRecord::Base
   include Archiveable
   include Displayable
-
-  enum publish_status: [ :pending, :published ]
-  enum draft_status: [ :draft, :draft_in_progress, :draft_published ]
+  include Publishable
 
   belongs_to :faq_category
 
