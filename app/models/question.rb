@@ -1,5 +1,6 @@
 class Question < ActiveRecord::Base
   include Archiveable
+  include Displayable
 
   enum publish_status: [ :pending, :published ]
   enum draft_status: [ :draft, :draft_in_progress, :draft_published ]
@@ -9,8 +10,6 @@ class Question < ActiveRecord::Base
   has_one :answer
 
   delegate :content, to: :answer, allow_nil: true
-
-  scope :displayable, ->{ where(display: true) }
 
   accepts_nested_attributes_for :answer
 
