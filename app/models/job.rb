@@ -1,7 +1,6 @@
 class Job < ActiveRecord::Base
+  include Displayable
   include Archiveable
-
-  scope :displayable, ->{ where(display: true) }
 
   enum publish_status: [ :pending, :published ]
   enum draft_status: [ :draft, :draft_in_progress, :draft_published ]
