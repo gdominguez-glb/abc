@@ -1,4 +1,6 @@
 class Question < ActiveRecord::Base
+  include Archiveable
+
   enum publish_status: [ :pending, :published ]
   enum draft_status: [ :draft, :draft_in_progress, :draft_published ]
 
@@ -9,8 +11,6 @@ class Question < ActiveRecord::Base
   delegate :content, to: :answer, allow_nil: true
 
   scope :displayable, ->{ where(display: true) }
-  scope :archived, -> { where(archived: true) }
-  scope :unarchive, -> { where(archived: false) }
 
   accepts_nested_attributes_for :answer
 
@@ -33,9 +33,5 @@ class Question < ActiveRecord::Base
   def publish!
     self.update(published_at: Time.now, publish_status: :published, draft_status: :draft_published)
     self.answer.update(content: self.answer.content_draft)
-  end
-
-  def archive!
-    self.update(archived: true, archived_at: Time.now)
   end
 end
