@@ -60,7 +60,7 @@ class Cms::EventPagesController < Cms::BaseController
   private
 
   def event_page_params
-    params.require(:event_page).permit(:title, :page_id, :slug, :display, :regonline_filter, :description, :event_page_type)
+    params.require(:event_page).permit(:title, :page_id, :slug, :display, :regonline_filter, :description_draft, :event_page_type)
   end
 
   def set_event_page

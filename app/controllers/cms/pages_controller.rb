@@ -126,7 +126,7 @@ module Cms
     def page_params
       params.require(:page).permit(:title, :seo_content, :slug, :group_name,
                                    :keywords, :description,
-                                   :sub_group_name, :position, :layout, :body, :body_draft,
+                                   :sub_group_name, :position, :layout, :body_draft,
                                    :visible, :curriculum_id, :group_root,
                                    :show_in_nav, :show_in_footer, tiles: {})
     end

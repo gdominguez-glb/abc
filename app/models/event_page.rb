@@ -1,13 +1,12 @@
 class EventPage < ActiveRecord::Base
   include Displayable
   include Archiveable
+  include Publishable
+  publishable name: :description
 
   belongs_to :page
 
   enum event_page_type: { global: 0, curriculum: 1 }
-
-  enum publish_status: [ :pending, :published ]
-  enum draft_status: [ :draft, :draft_in_progress, :draft_published ]
 
   validates_presence_of :title, :slug
   validates_presence_of :page_id, if:  Proc.new { |ep| ep.curriculum? }
@@ -34,9 +33,5 @@ class EventPage < ActiveRecord::Base
       events_text: events_text,
       user_ids: [-1]
     }
-  end
-
-  def publish!
-    self.update(published_at: Time.now, description: self.description_draft, publish_status: :published, draft_status: :draft_published)
   end
 end

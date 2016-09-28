@@ -72,7 +72,7 @@ class Cms::JobsController < Cms::BaseController
   private
 
   def job_params
-    params.require(:job).permit(:title, :content, :display)
+    params.require(:job).permit(:title, :content_draft, :display)
   end
 
   def find_job
