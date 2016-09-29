@@ -8,13 +8,13 @@
     </div>
     <div class="col-sm-4 col-md-2">
       <% if $flipper[:coupon_code].enabled? %>
-        <%= link_to new_account_coupon_code_path, class: 'btn btn-sm btn-default margin-top--sm-min margin-bottom--m btn-block', remote: true do %>
+        <%= link_to new_account_coupon_code_path, class: 'btn btn-sm btn-default margin-top--sm-min margin-bottom--m btn-block hide', id: 'new-coupon-code-btn', remote: true do %>
           Product Key
         <% end %>
       <% end %>
     </div>
     <div class="col-sm-4 col-md-2">
-      <a href="/" class="btn btn-sm btn-default margin-top--sm-min margin-bottom--m btn-block js-get-dashboard-tour">
+      <a href="/" class="btn btn-sm btn-default margin-top--sm-min margin-bottom--m btn-block js-get-dashboard-tour hide" id="show-tour-btn">
         Tour
       </a>
     </div>
@@ -78,6 +78,9 @@
         e.preventDefault();
         getDashboardTour();
       });
+
+      $('#new-coupon-code-btn').removeClass('hide');
+      $('#show-tour-btn').removeClass('hide');
     });
   <% end %>
 <% end %>
