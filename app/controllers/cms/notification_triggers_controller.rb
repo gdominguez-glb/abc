@@ -30,7 +30,8 @@ class Cms::NotificationTriggersController < Cms::BaseController
       :content,
       :email,
       :dashboard,
-      :product_id
+      :product_id,
+      :zip_codes
     )
     _params[:user_ids] = _params[:user_ids].split(',')
     _params
