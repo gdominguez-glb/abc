@@ -19,7 +19,8 @@ class NotificationTrigger < ActiveRecord::Base
     :user_type,
     :every,
     :curriculum_users,
-    :product
+    :product,
+    :zip_codes
   ]
 
   TARGET_TYPES.each do |target_type|

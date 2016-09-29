@@ -17,6 +17,8 @@ class NotificationWorker
               Spree::User.with_curriculum(nt.curriculum)
             elsif nt.product_target?
               find_product_target_users(nt.product_id)
+            elsif nt.zip_codes_target?
+              find_zip_codes_target_users(nt.zip_codes)
             end
     delivery_notifications(nt, users) if users.present?
     nt.deliver!
@@ -49,5 +51,9 @@ class NotificationWorker
       user_ids << user.id if user.accessible_products.where(id: product_id).exists?
     end
     Spree::User.where(id: user_ids)
+  end
+
+  def find_zip_codes_target_users(zip_codes)
+    Spree::User.where(zip_code: zip_codes.split(',').map(&:strip))
   end
 end
