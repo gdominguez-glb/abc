@@ -63,6 +63,12 @@
       </div>
     </div>
     <div class="col-sm-6">
+      <div class="form-group hidden target-input" data-input="zip_codes">
+        <%= f.label :zip_codes %>
+        <%= f.text_field :zip_codes, class: 'form-control', placeholder: 'Separate zip code by comma, for example: 10000, 11000' %>
+      </div>
+    </div>
+    <div class="col-sm-6">
       <div class="form-group" style="position: relative;">
         <%= f.label :notify_at %>
         <%= f.text_field :notify_at, class: 'form-control datetime-picker' %>
