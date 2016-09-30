@@ -3,6 +3,7 @@ FactoryGirl.define do
     title "MyString"
     url "MyString"
     slug "my-string"
+    display true
   end
 
 end
