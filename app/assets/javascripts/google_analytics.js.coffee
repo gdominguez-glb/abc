@@ -36,10 +36,8 @@ class @GoogleAnalytics
     document.domain.indexOf(str) isnt -1
 
   @analyticsId: ->
-    if document.domain == 'greatminds.net'
+    if document.domain == 'greatminds.org'
       'UA-3728186-1'
-    else if document.domain == 'greatminds.org'
-      'UA-3728186-8'
     else if document.domain == 'beta.greatminds.org'
       'UA-3728186-7'
     else if document.domain == 'qa.greatminds.org'
