@@ -4,21 +4,22 @@
 // It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
 // the compiled file.
 
+// Polyfills First
 //= require polyfills
 
-// jQuery
+// Gems
 //= require jquery
 //= require jquery_ujs
+//= require select2
+//= require slick.min
 
-// Spree
+// Vendor/Spree
 //= require spree/frontend
 //= require spree/frontend/spree_digital
 //= require spree/frontend/spree_better_terms_and_conditions
 
-// Miscellaneous
-//= require select2
+// App
 //= require select2_mod
-//= require slick.min
 //= require terms_scroller
 //= require user_form
 

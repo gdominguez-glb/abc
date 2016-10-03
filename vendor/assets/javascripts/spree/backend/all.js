@@ -4,24 +4,25 @@
 // It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
 // the compiled file.
 
+// Polyfills First
 //= require polyfills
 
-// jQuery
+// Gems
 //= require jquery
 //= require jquery_ujs
 //= require jquery.remotipart
-//= require jquery-sortable-lists
+//= require highcharts
+//= require trumbowyg
 
-// Spree
+// Vendor/Spree
+//= require jquery-sortable-lists
 //= require spree/backend
-//= require spree_admin
 //= require spree/backend/spree_digital
 //= require spree/backend/spree_better_terms_and_conditions
 
-// Miscellaneous
+// App
 //= require dashboard_mobile_nav
-//= require highcharts
-//= require trumbowyg
+//= require spree_admin
 
 function initEditor() {
   $('.rich-editor').trumbowyg({
