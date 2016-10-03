@@ -3,20 +3,26 @@
 // be included in the compiled file accessible from http://example.com/assets/application.js
 // It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
 // the compiled file.
-//
+
 //= require polyfills
+
+// jQuery
 //= require jquery
 //= require jquery_ujs
-//= require spree/frontend
 
-//= require slick.min
-//= require select2
-//= require user_form
-//= require terms_scroller
-//= require select2_mod
-//= require_tree .
+// Spree
+//= require spree/frontend
 //= require spree/frontend/spree_digital
 //= require spree/frontend/spree_better_terms_and_conditions
+
+// Miscellaneous
+//= require select2
+//= require select2_mod
+//= require slick.min
+//= require terms_scroller
+//= require user_form
+
+//= require_tree .
 
 $(document).ready(function() {
   var nav = $('.navbar-primary');
