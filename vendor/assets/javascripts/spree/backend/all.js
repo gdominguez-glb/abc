@@ -23,8 +23,6 @@
 //= require highcharts
 //= require trumbowyg
 
-//= require_tree .
-
 function initEditor() {
   $('.rich-editor').trumbowyg({
     fullscreenable: false,

@@ -49,8 +49,6 @@
 //= require user_form
 //= require zeroclipboard
 
-//= require_tree .
-
 var Gm;
 Gm = {
   fetch_cart: function() {

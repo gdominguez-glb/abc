@@ -22,8 +22,6 @@
 //= require terms_scroller
 //= require user_form
 
-//= require_tree .
-
 $(document).ready(function() {
   var nav = $('.navbar-primary');
   var subnav = nav.find('.subnav')[0];
