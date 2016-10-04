@@ -11,9 +11,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require select2
-//= require slick.min
 
 // Vendor/Spree
+//= require slick.min
 //= require spree/frontend
 //= require spree/frontend/spree_digital
 //= require spree/frontend/spree_better_terms_and_conditions

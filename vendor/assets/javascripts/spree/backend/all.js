@@ -12,11 +12,11 @@
 //= require jquery_ujs
 //= require jquery.remotipart
 //= require highcharts
-//= require slick.min
-//= require trumbowyg
 
 // Vendor/Spree
 //= require jquery-sortable-lists
+//= require slick.min
+//= require trumbowyg
 //= require spree/backend
 //= require spree/backend/spree_digital
 //= require spree/backend/spree_better_terms_and_conditions

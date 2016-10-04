@@ -27,8 +27,6 @@
 //= require bootstrap/popover
 //= require mediaelement_rails
 //= require select2
-//= require slick.min
-//= require trumbowyg
 //= require zeroclipboard
 
 // Datetimepicker requires Moment
@@ -41,6 +39,8 @@
 //= require jquery.infinitescroll.min
 //= require jquery-sortable
 //= require picturefill
+//= require slick.min
+//= require trumbowyg
 
 // Shepherd requires Tether
 //= require tether
