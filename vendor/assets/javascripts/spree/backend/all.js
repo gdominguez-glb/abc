@@ -24,7 +24,7 @@
 
 // App
 //= require_tree ../../../../../app/assets/javascripts/global
-//= require_tree ../../../../../app/assets/javascripts/account
+//= require account/dashboard_mobile_nav
 
 function initEditor() {
   $('.rich-editor').trumbowyg({
