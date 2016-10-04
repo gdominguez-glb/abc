@@ -124,7 +124,7 @@ $(function(){
       window.setTimeout(function (){
         $("#select2-drop").find("input").focus();
       }, 1000);
-    }
+    };
 
     renderOptions({
       type: "school",
