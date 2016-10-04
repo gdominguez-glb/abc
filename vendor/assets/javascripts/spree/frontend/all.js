@@ -17,6 +17,7 @@
 //= require spree/frontend
 //= require spree/frontend/spree_digital
 //= require spree/frontend/spree_better_terms_and_conditions
+//= require spree/frontend/cart_decorator.js.coffee
 
 // App
 //= require_tree ../../../../../app/assets/javascripts/global
