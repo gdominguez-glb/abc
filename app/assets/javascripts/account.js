@@ -10,4 +10,9 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 
+// Gems
+//= require underscore
+
+// App
 //= require_tree ./account
+//= require frontend/user_form
