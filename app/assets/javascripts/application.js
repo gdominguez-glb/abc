@@ -11,7 +11,7 @@
 // about supported directives.
 
 // Polyfills First
-//= require polyfills
+//= require global/polyfills
 
 // Gems
 //= require jquery
@@ -47,7 +47,7 @@
 //= require shepherd
 
 // App
-//= require user_form
+//= require_tree ./global
 
 var Gm;
 Gm = {

@@ -5,7 +5,7 @@
 // the compiled file.
 
 // Polyfills First
-//= require polyfills
+//= require global/polyfills
 
 // Gems
 //= require jquery
@@ -19,9 +19,8 @@
 //= require spree/frontend/spree_better_terms_and_conditions
 
 // App
-//= require select2_mod
-//= require terms_scroller
-//= require user_form
+//= require_tree ../../../../../app/assets/javascripts/global
+//= require_tree ../../../../../app/assets/javascripts/frontend
 
 $(document).ready(function() {
   var nav = $('.navbar-primary');

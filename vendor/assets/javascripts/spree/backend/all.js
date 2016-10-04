@@ -5,7 +5,7 @@
 // the compiled file.
 
 // Polyfills First
-//= require polyfills
+//= require global/polyfills
 
 // Gems
 //= require jquery
@@ -21,8 +21,7 @@
 //= require spree/backend/spree_better_terms_and_conditions
 
 // App
-//= require dashboard_mobile_nav
-//= require spree_admin
+//= require_tree ../../../../../app/assets/javascripts/account
 
 function initEditor() {
   $('.rich-editor').trumbowyg({
