@@ -42,10 +42,6 @@
 //= require slick.min
 //= require trumbowyg
 
-// Shepherd requires Tether
-//= require tether
-//= require shepherd
-
 // App
 //= require_tree ./global
 
