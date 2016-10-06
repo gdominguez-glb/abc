@@ -17,7 +17,7 @@
         </div>
         <div id="collapse<%= faq_category.name.gsub(/[^0-9A-Za-z]/, '') %>" class="panel-collapse collapse">
           <div class="list-group">
-            <% faq_category.questions.each do |question| %>
+            <% faq_category.questions.displayable.published.each do |question| %>
               <%= link_to question.title, about_qa_path(question.id), class: 'list-group-item' %>
             <% end %>
           </div>
