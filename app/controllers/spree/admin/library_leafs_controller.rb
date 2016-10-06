@@ -6,7 +6,7 @@ module Spree
       before_action :find_product, only: [:bulk_modal, :bulk_create, :delete_confirm]
 
       def index
-        @library_leafs = @product.library_leafs.order(:position)
+        @library_leafs = @product.library_leafs
       end
 
       def new
