@@ -3,7 +3,7 @@
     <tbody>
       <% @pages.each do |page| %>
         <tr>
-          <td><%= page.title %></td>
+          <td><%= page.title %><%= (page.curriculum && params[:q].present?) ? " (#{page.curriculum.name})" : '' %></td>
           <td><span class="label label-english"><%= cms_display_status(page) %></span></td>
           <td><%= link_to 'Edit Detail', edit_cms_page_path(page) %></td>
           <td><%= link_to 'Archive', archive_cms_page_path(page), method: :post, data: { confirm: 'Are you sure to archive this page?' }, class: 'text--danger' if !page.archived? %></td>
