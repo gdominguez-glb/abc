@@ -10,14 +10,4 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 
-// Gems
-//= require underscore
-
-// Vendor
-// Shepherd requires Tether
-//= require tether
-//= require shepherd
-
-// App
-//= require_tree ./account
-//= require frontend/user_form
+//= require_tree ./cms

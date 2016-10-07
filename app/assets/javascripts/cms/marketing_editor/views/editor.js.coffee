@@ -1,6 +1,6 @@
 class MarketingEditorApp.Views.Editor extends Backbone.View
 
-  template: JST['marketing_editor/templates/editor']
+  template: JST['cms/marketing_editor/templates/editor']
 
   initialize: (opts={})->
     tilesData         = opts.tilesData || {}
