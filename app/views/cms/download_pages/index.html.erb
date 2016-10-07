@@ -9,7 +9,7 @@
         <tr>
           <th>Title</th>
           <th>Url</th>
-          <th colspan="3"></th>
+          <th colspan="4"></th>
         </tr>
       </thead>
 
@@ -20,6 +20,9 @@
             <td><%= "/download_pages/#{download_page.slug}" %></td>
             <td><%= link_to 'Manage Products', cms_download_page_download_products_path(download_page) %></td>
             <td><%= link_to 'Edit', edit_cms_download_page_path(download_page) %></td>
+            <td>
+              <a class="btn btn-default copy-download-page-url-button btn-sm" data-clipboard-text="<%= download_page_url(slug: download_page.slug) %>">Copy Url</a>
+            </td>
             <td><%= link_to 'Destroy', [:cms, download_page], method: :delete, data: { confirm: 'Are you sure?' }, class: 'text--danger' %></td>
           </tr>
         <% end %>
@@ -30,3 +33,20 @@
 
   <%= paginate @download_pages %>
 </div>
+
+<%= content_for :javascripts do %>
+  <%= javascript_tag do %>
+    $(function() {
+      var client = new ZeroClipboard( $('.copy-download-page-url-button') );
+      client.on( 'ready', function(event) {
+        client.on( 'copy', function(event) {
+          event.clipboardData.setData('text/plain', $(event.target).attr('data-url'));
+        });
+
+        client.on( 'aftercopy', function(event) {
+          alert('Copied to your clipboard');
+        });
+      });
+    });
+  <% end %>
+<% end %>
