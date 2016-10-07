@@ -18,6 +18,7 @@ class MarketingEditorApp.Views.Editor extends Backbone.View
   events:
     "click .add-tile-row-btn": "addNewTileRow"
     "click .save-btn": "saveRows"
+    "change": "tilesChanged"
 
   addNewTileRow: (e)->
     e.preventDefault()
@@ -39,6 +40,30 @@ class MarketingEditorApp.Views.Editor extends Backbone.View
       type: 'POST',
       data: { page: { tiles: { rows: @rows.toJSON() } } }
     )
+
+  tilesChanged: ->
+    if @tilesTimer?
+      window.clearTimeout(@tilesTimer)
+
+    func = =>
+      @processTiles()
+
+    @tilesTimer = setTimeout(
+      func
+      1500
+    )
+
+  processTiles: ->
+    $.ajax(
+      url: '/cms/pages/process_tiles'
+      type: 'POST'
+      data: { page: { tiles: { rows: @rows.toJSON() } } }
+      success: (res)=>
+        $('[name="page[body_draft]"]').trumbowyg('html', res.body)
+    )
+
+  tilesJSON: ->
+    @rows.toJSON()
 
   initEditor: ->
     @$('.rich-editor').trumbowyg(

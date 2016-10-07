@@ -2,6 +2,10 @@ require 'marketing_page_renderrer'
 
 class Page < ActiveRecord::Base
 
+  include Archiveable
+  include Publishable
+  publishable name: :body
+
   searchkick callbacks: :async
 
   def should_index?
@@ -37,6 +41,16 @@ class Page < ActiveRecord::Base
   scope :show_in_sub_navigation, -> (group_name) { visibles.not_group_roots.where(group_name: group_name, show_in_nav: true) }
   scope :show_in_footer_as_top_links, -> { visibles.group_roots.where(show_in_footer: true) }
   scope :show_in_footer_as_subgroup_links, -> (group_name) { visibles.not_group_roots.where(show_in_footer: true, group_name: group_name) }
+  scope :by_category, -> (category) {
+    if category == 'Footer'
+      where(show_in_footer: true)
+    elsif category == 'Enterprise'
+      where(show_in_footer: false, curriculum_id: nil)
+    else
+      joins(:curriculum).where(curriculums: { name: category })
+    end
+  }
+
 
   before_save :generate_page_from_tiles
 

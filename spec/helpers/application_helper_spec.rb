@@ -44,4 +44,23 @@ RSpec.describe ApplicationHelper, type: :helper do
       expect(helper.preview_medium_publication_link(medium_publication)).to eq('/math/blog/this-is-math')
     end
   end
+
+  describe "#cms_root_for_user" do
+    let(:user) { create(:gm_user) }
+
+    it "return root for admin" do
+      user.spree_roles << Spree::Role.admin
+      expect(helper.cms_root_for_user(user)).to eq('/cms')
+    end
+
+    it "return vanity url for vanity url admin" do
+      user.spree_roles << Spree::Role.vanity_admin
+      expect(helper.cms_root_for_user(user)).to eq('/cms/vanity_urls')
+    end
+
+    it "return jobs for hr" do
+      user.spree_roles << Spree::Role.hr
+      expect(helper.cms_root_for_user(user)).to eq('/cms/jobs')
+    end
+  end
 end

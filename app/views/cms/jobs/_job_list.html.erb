@@ -1,0 +1,51 @@
+<div class="table-responsive">
+  <table class='table table-striped table-hover jobs-list'>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Display</th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @jobs.each do |job| %>
+        <tr data-id="<%= job.id %>">
+          <td><%= job.title %></td>
+          <td><%= job.display %></td>
+          <td>
+            <%= link_to 'Edit', edit_cms_job_path(job), class: 'btn btn-default' %>
+            <%= link_to 'Archive', archive_cms_job_path(job), class: 'btn btn-danger', data: { confirm: 'Are you sure?', method: :post } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<%= content_for :javascripts do %>
+  <%= javascript_tag do %>
+    function updatePositions() {
+      var data = {}
+      $.each($(".jobs-list tbody tr"), function(index, element) {
+        data[$(element).attr('data-id')] = index;
+      });
+      $.ajax({
+        url: '/cms/jobs/update_positions',
+        type: 'POST',
+        data: { positions: data }
+      })
+    }
+    $(function(){
+      $(".jobs-list").sortable({
+        containerSelector: 'table',
+        itemPath: '> tbody',
+        itemSelector: 'tr',
+        placeholder: '<tr class="placeholder"/>',
+        onDrop: function  (item, container, _super) {
+          _super(item);
+          updatePositions();
+        }
+      })
+    });
+  <% end %>
+<% end %>

@@ -9,7 +9,7 @@ class InklingCodesController < ApplicationController
   private
 
   def find_product
-    @product = Spree::Product.find_by(slug: params[:id])
+    @product = current_spree_user.accessible_products.find_by(slug: params[:id])
     redirect_to root_path if @product.blank?
   end
 end

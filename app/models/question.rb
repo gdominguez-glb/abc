@@ -1,11 +1,13 @@
 class Question < ActiveRecord::Base
+  include Archiveable
+  include Displayable
+  include Publishable
+
   belongs_to :faq_category
 
   has_one :answer
 
   delegate :content, to: :answer, allow_nil: true
-
-  scope :displayable, ->{ where(display: true) }
 
   accepts_nested_attributes_for :answer
 
@@ -25,4 +27,8 @@ class Question < ActiveRecord::Base
     }
   end
 
+  def publish!
+    self.update(published_at: Time.now, publish_status: :published, draft_status: :draft_published)
+    self.answer.update(content: self.answer.content_draft)
+  end
 end

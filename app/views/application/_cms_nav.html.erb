@@ -22,16 +22,18 @@
             <%= active_link_to "Training Session Types", '/cms/training_type_categories', class: 'list-group-item' %>
             <%= active_link_to "Dashboard Notifications", '/cms/notification_triggers', class: 'list-group-item' %>
             <%= active_link_to "Download Pages", '/cms/download_pages', class: 'list-group-item' %>
-            <%= active_link_to "Careers", '/cms/jobs', class: 'list-group-item' %>
-            <%= active_link_to "Staff", '/cms/staffs', class: 'list-group-item' %>
             <%= active_link_to "Footer", '/cms/footer_titles', class: 'list-group-item' %>
-            <%= active_link_to "Curriculum Mail", '/cms/curriculum_mails', class: 'list-group-item' %>
+            <%# <%= active_link_to "Curriculum Mail", '/cms/curriculum_mails', class: 'list-group-item' %1> %>
             <%= active_link_to "Curriculum Shop", '/cms/curriculum_shops', class: 'list-group-item' %>
             <%= active_link_to "Custom Css", '/cms/custom_csses', class: 'list-group-item' %>
             <%= active_link_to "Link Uploads", '/cms/link_files', class: 'list-group-item' %>
             <%= active_link_to "Curriculums", '/cms/curriculums', class: 'list-group-item' %>
           <% end %>
-          <% if current_spree_user.can_see_cms? %>
+          <% if current_spree_user.admin? || current_spree_user.has_hr_role? %>
+            <%= active_link_to "Careers", '/cms/jobs', class: 'list-group-item' %>
+            <%= active_link_to "Staff", '/cms/staffs', class: 'list-group-item' %>
+          <% end %>
+          <% if current_spree_user.admin? || current_spree_user.has_vanity_admin_role? %>
             <%= active_link_to "Vanity Url", '/cms/vanity_urls', class: 'list-group-item' %>
           <% end %>
         </ul>

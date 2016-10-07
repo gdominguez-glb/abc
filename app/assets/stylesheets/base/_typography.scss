@@ -12,8 +12,6 @@
 //   Styleguide 3.1
 // -------------------------------------
 
-@import url(//fonts.googleapis.com/css?family=Karla:400,700|Lora:400,700);
-
 // -------------------------------------
 //   Headlines
 //
@@ -112,6 +110,7 @@ p {
 }
 
 .blog-post-title {
+  line-height: 1em;
   letter-spacing: normal;
 }
 

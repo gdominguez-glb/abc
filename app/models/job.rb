@@ -1,5 +1,8 @@
 class Job < ActiveRecord::Base
-  scope :displayable, ->{ where(display: true) }
+  include Displayable
+  include Archiveable
+  include Publishable
+  publishable name: :content
 
   acts_as_list
 

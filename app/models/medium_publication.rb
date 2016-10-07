@@ -11,4 +11,26 @@ class MediumPublication < ActiveRecord::Base
   BLOG_TYPES.each do |blog_type|
     scope blog_type, -> { where(display: true).where(blog_type: blog_type).where("slug is not null").order('position asc') }
   end
+
+  def global?
+    blog_type == 'global'
+  end
+
+  def curriculum?
+    blog_type == 'curriculum'
+  end
+
+  searchkick callbacks: :async
+
+  def should_index?
+    self.display?
+  end
+
+  def search_data
+    {
+      title: title,
+      feature: 'blog',
+      user_ids: [-1]
+    }
+  end
 end

@@ -1,0 +1,28 @@
+<div class="table-responsive">
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Category</th>
+        <th>Display</th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @questions.each do |question| %>
+        <tr>
+          <td><%= question.title %></td>
+          <td><%= question.faq_category.try(:name) %></td>
+          <td><%= question.display %></td>
+          <td>
+            <%= link_to 'Edit', edit_cms_question_path(question), class: 'btn btn-default' %>
+          </td>
+          <td>
+            <%= link_to 'Archive', archive_cms_question_path(question), class: 'btn btn-danger', data: { confirm: 'Are you sure?', method: :post } if !question.archived? %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<%= paginate @questions %>

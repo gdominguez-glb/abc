@@ -14,7 +14,7 @@
     <tbody>
       <% @faq_categories.each do |faq_category| %>
         <tr data-id="<%= faq_category.id %>">
-          <td><span class="glyphicon glyphicon-resize-vertical" aria-hidden="true"></span></td>
+          <td><%= mi.swap_vert %></td>
           <td><%= faq_category.name %></td>
           <td><%= faq_category.display? ? 'Yes' : 'No' %></td>
           <td>

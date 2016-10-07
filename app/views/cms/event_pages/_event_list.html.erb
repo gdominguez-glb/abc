@@ -1,0 +1,32 @@
+<div class="table-responsive">
+  <table class='table table-striped table-hover'>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Regonline filter</th>
+        <th>Curriculum</th>
+        <th>Unique Url</th>
+        <th>Event Page Type</th>
+        <th>Visible</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @event_pages.each do |event_page| %>
+        <tr>
+          <td><%= event_page.title %></td>
+          <td><%= event_page.regonline_filter %></td>
+          <td><%= event_page.page.try(:group_name) %></td>
+          <td><%= event_page.slug %></td>
+          <td><%= event_page.event_page_type %></td>
+          <td><%= event_page.display ? 'Yes' : 'No' %></td>
+          <td><%= link_to 'Events', cms_event_page_regonline_events_path(event_page) %></td>
+          <td><%= link_to 'Edit', edit_cms_event_page_path(event_page) %></td>
+          <td><%= link_to 'Archive', archive_cms_event_page_path(event_page), method: :post, data: { confirm: 'Are you sure?' }, class: 'text--danger' if !event_page.archived? %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<%= paginate @event_pages %>
