@@ -3,7 +3,8 @@ class Cms::LinkFilesController < Cms::BaseController
   layout 'cms_admin'
 
   def index
-    @link_files = LinkFile.page(params[:page]).per(params[:per_page])
+    @q = LinkFile.ransack(params[:q])
+    @link_files = @q.result.page(params[:page]).per(params[:per_page])
   end
 
   def new

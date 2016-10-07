@@ -2,6 +2,12 @@
 <div class="col-md-9">
   <h2>Link Uploads</h2>
   <a href="/cms/link_files/new" class="btn btn-primary margin-bottom--xl">Upload New File</a>
+  <%= search_form_for @q, url: '', class: 'form-inline' do |f| %>
+      <div class="form-group">
+        <%= f.text_field :file_file_name_cont, class: 'form-control', placeholder: 'Search File name' %>
+        <%= submit_tag 'Search', class: 'btn btn-primary' %>
+      </div>
+  <% end %>
   <div class="table-responsive">
     <table class="table">
       <thead>
