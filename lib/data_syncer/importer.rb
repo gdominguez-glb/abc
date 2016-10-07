@@ -40,7 +40,7 @@ module DataSyncer
       klass.destroy_all if ![Document, Page].include?(klass)
       klass.transaction do
         YAML.load_file(file_path).each do |attrs|
-          choose_klass_importer(klass).create(attrs)
+          choose_klass_importer(klass).create(attrs.reject{|k, v| !klass.column_names.include?(k)})
         end
       end
     end
