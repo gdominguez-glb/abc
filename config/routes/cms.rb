@@ -85,13 +85,6 @@ namespace :cms do
       end
     end
   end
-  resources :download_pages do
-    resources :download_products do
-      collection do
-        post :update_positions
-      end
-    end
-  end
   resources :jobs do
     collection do
       post :update_positions

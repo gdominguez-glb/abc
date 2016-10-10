@@ -1,4 +1,4 @@
-class Cms::DownloadProductsController < Cms::BaseController
+class Spree::Admin::DownloadProductsController < Spree::Admin::BaseController
   before_action :set_download_page
   before_action :set_download_product, only: [:show, :destroy]
 
@@ -14,7 +14,7 @@ class Cms::DownloadProductsController < Cms::BaseController
   def create
     @download_product = @download_page.download_products.new(download_product_params)
     if @download_product.save
-      redirect_to cms_download_page_download_products_path(@download_page), notice: 'Product added successfully'
+      redirect_to admin_download_page_download_products_path(@download_page), notice: 'Product added successfully'
     else
       render :new
     end
@@ -22,7 +22,7 @@ class Cms::DownloadProductsController < Cms::BaseController
 
   def destroy
     @download_product.destroy
-    redirect_to cms_download_page_download_products_path(@download_page), notice: 'Destroy download page successfully'
+    redirect_to admin_download_page_download_products_path(@download_page), notice: 'Destroy download page successfully'
   end
 
   def update_positions
