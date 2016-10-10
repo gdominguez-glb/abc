@@ -3,6 +3,7 @@ class HomeController < ApplicationController
     @page = Rails.cache.fetch(:home_page, expires_in: 2.hours) do
       Page.find_by(slug: '/')
     end
+    respond_to :html
   end
 
   def turn_off_browser_warning
