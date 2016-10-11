@@ -23,7 +23,7 @@ RSpec.describe PagesController, type: :controller do
   describe "GET 'not_found'" do
     it "success" do
       get :not_found
-      expect(response).to be_success
+      expect(response.status).to eq(404)
     end
   end
 end
