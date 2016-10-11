@@ -11,19 +11,36 @@
     </div>
   <% end %>
 
-  <div class="form-group">
-    <%= f.label :title %>
-    <%= f.text_field :title, class: 'form-control' %>
+  <div class="panel panel-primary">
+    <div class="panel-heading padding-top--s padding-bottom--s">
+      <h3 class="panel-title panel-title--s">Curriculum Shop</h3>
+    </div>
+    <div class="panel-body">
+      <div class="form-group">
+        <%= f.label :title %>
+        <%= f.text_field :title, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label "Store URL (with filters applied)" %>
+        <%= f.text_field :url, class: 'form-control' %>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group curriculum-input>">
+            <%= f.label "Curriculum Page" %>
+            <div class="select-container dark-select block">
+              <span>Curriculum Page</span>
+              <%= f.collection_select :page_id, Page.show_in_top_navigation, :id, :group_name, { prompt: true }, class: 'form-control' %>
+            </div>
+          </div>          
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="form-group">
-    <%= f.label "Store URL (with filters applied)" %>
-    <%= f.text_field :url, class: 'form-control' %>
-  </div>
-  <div class="form-group curriculum-input>">
-    <%= f.label "Curriculum Page" %>
-    <%= f.collection_select :page_id, Page.show_in_top_navigation, :id, :group_name, { prompt: true }, class: 'form-control' %>
-  </div>
-  <div class="form-group">
-    <%= f.submit class: 'btn btn-success' %>
+
+  <div class="row">
+    <div class="col-sm-5">
+      <%= f.submit class: 'btn btn-success btn-block' %>
+    </div>
   </div>
 <% end %>
