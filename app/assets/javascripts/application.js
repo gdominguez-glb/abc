@@ -148,10 +148,4 @@ $(document).ready(function() {
   // Enable select2 on pages where we can't inline JS
   $('.js-select2').select2();
 
-  // Hotfix, remove
-  $('.btn[href^="http://staging"]').each(function() {
-    var val = $(this).attr('href');
-    $(this).attr('href', val.replace('staging.', ''));
-  });
-
 });
