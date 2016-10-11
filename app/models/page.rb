@@ -38,7 +38,7 @@ class Page < ActiveRecord::Base
   scope :show_in_footer_as_top_links, -> { visibles.group_roots.where(show_in_footer: true) }
   scope :show_in_footer_as_subgroup_links, -> (group_name) { visibles.not_group_roots.where(show_in_footer: true, group_name: group_name) }
 
-  before_save :generate_page_from_tiles
+  #before_save :generate_page_from_tiles
 
   TILES = YAML.load_file(Rails.root.join('config/tiles.yml'))
 
