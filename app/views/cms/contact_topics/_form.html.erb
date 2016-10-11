@@ -1,7 +1,20 @@
 <%= form_for [:cms, @contact_topic], class: 'form' do |f| %>
-  <div class="form-group">
-    <label for="name">Name</label>
-    <%= f.text_field :name, class: 'form-control' %>
+
+  <div class="panel panel-primary">
+    <div class="panel-heading padding-top--s padding-bottom--s">
+      <h3 class="panel-title panel-title--s">Contact Topic</h3>
+    </div>
+    <div class="panel-body">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
+    </div>
   </div>
-  <%= f.submit class: 'btn btn-success' %>
+
+  <div class="row">
+    <div class="col-sm-4">
+      <%= f.submit class: 'btn btn-success btn-block' %>
+    </div>
+  </div>
 <% end %>
