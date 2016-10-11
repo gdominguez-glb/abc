@@ -1,4 +1,4 @@
-<div class="col-md-3">
+<div class="col-md-3 js-nav-column">
   <% if current_spree_user.admin? %>
     <div class="panel-group margin-bottom--reset">
       <div class="panel panel-default panel-collapsible margin-bottom--s">
@@ -142,3 +142,14 @@
     <%= link_to 'Sync Cms Data To Prod', '/cms/sync', class: 'btn btn-danger btn-block', data: { method: :post, confirm: 'Are you sure to sync data to prod?' } %>
   <% #end %>
 </div>
+
+<script>
+  $(document).ready(function() {
+    var navColumn = $('.js-nav-column');
+    navColumn.find('.list-group-item').each(function() {
+      if($(this).hasClass('active')) {
+        $(this).closest('.panel-collapse').addClass('in');
+      }
+    })
+  });
+</script>
