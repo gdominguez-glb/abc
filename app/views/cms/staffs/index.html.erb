@@ -1,63 +1,11 @@
 <%= render 'cms_nav' %>
+
 <div class="col-md-9">
-  <h2>Staff</h2>
-  <%= link_to "New Staff", new_cms_staff_path, class: 'btn btn-primary margin-bottom--xl' %>
-  <div class="table-responsive">
-    <table class="table staffs-list">
-      <thead>
-        <tr>
-          <th></th>
-          <th>Name</th>
-          <th>Title</th>
-          <th>Staff Type</th>
-          <th>Display</th>
-          <th colspan="2"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @staffs.each do |staff| %>
-          <tr data-id="<%= staff.id %>">
-            <td><%= mi.swap_vert %></td>
-            <td><%= staff.name %></td>
-            <td><%= staff.title %></td>
-            <td><%= staff.staff_type %></td>
-            <td><%= staff.display? ? 'Yes' : 'No' %></td>
-            <td>
-              <%= link_to 'Edit', edit_cms_staff_path(staff), class: 'btn btn-default' %>
-            </td>
-            <td>
-              <%= link_to 'Delete', cms_staff_path(staff), class: 'btn btn-danger', data: { confirm: 'Are you sure?', method: :delete } %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+  <%= render partial: 'search_bar' %>
+  <div class="panel panel-primary">
+    <div class="panel-heading padding-top--s padding-bottom--s">
+      <h3 class="panel-title panel-title-s">Staff</h3>
+    </div>
+    <%= render partial: 'staff_list' %>
   </div>
 </div>
-<%= content_for :javascripts do %>
-  <%= javascript_tag do %>
-    function updatePositions() {
-      var data = {}
-      $.each($(".staffs-list tbody tr"), function(index, element) {
-        data[$(element).attr('data-id')] = index;
-      });
-      $.ajax({
-        url: '/cms/staffs/update_positions',
-        type: 'POST',
-        data: { positions: data }
-      })
-    }
-    $(function(){
-      $(".staffs-list").sortable({
-        containerSelector: 'table',
-        itemPath: '> tbody',
-        itemSelector: 'tr',
-        placeholder: '<tr class="placeholder"/>',
-        onDrop: function  (item, container, _super) {
-          _super(item);
-          updatePositions();
-        }
-      })
-    });
-  <% end %>
-<% end %>
