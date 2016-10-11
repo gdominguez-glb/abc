@@ -11,13 +11,22 @@
     </div>
   <% end %>
   <div class="alert alert-info"><%= mi.info_outline.md_18 %> Make sure the urls in your file don't include spaces or characters that can't be part of a url.</div>
-  <div class="row">
-    <div class="col-md-6">
-      <div class="form-group">
-        <label>File</label>
-        <%= f.file_field :file %>
+
+  <div class="panel panel-primary">
+    <div class="panel-heading padding-top--s padding-bottom--s">
+      <h3 class="panel-title panel-title--s">Link Upload</h3>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>File</label>
+            <%= f.file_field :file %>
+          </div>
+          <%= f.submit (f.object.new_record? ? "Create File": "Update File"), class: 'btn btn-success', data: { disable_with: 'Submitting...' } %>
+        </div>
       </div>
-      <%= f.submit (f.object.new_record? ? "Create File": "Update File"), class: 'btn btn-success', data: { disable_with: 'Submitting...' } %>
     </div>
   </div>
+
 <% end %>
