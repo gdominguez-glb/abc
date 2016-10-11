@@ -1,0 +1,51 @@
+<div class="table-responsive">
+  <table class="table table-striped table-hover" id="footer-titles-list">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Link</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @footer_titles.each do |footer_title| %>
+        <tr data-id="<%= footer_title.id %>">
+          <td><%= footer_title.title %></td>
+          <td><%= footer_title.link %></td>
+          <td><%= link_to 'Links', cms_footer_title_footer_links_path(footer_title), class: 'btn btn-default btn-sm' %>
+          <%= link_to 'Edit', edit_cms_footer_title_path(footer_title), class: 'btn btn-default btn-sm' %>
+          <%= link_to 'Delete', cms_footer_title_path(footer_title), class: 'btn btn-danger btn-sm', data: { confirm: 'Are you sure?', method: :delete } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<%= content_for :javascripts do %>
+  <%= javascript_tag do %>
+    function updatePositions() {
+      var data = {}
+      $.each($("#footer-titles-list tbody tr"), function(index, element) {
+        data[$(element).attr('data-id')] = index;
+      });
+      $.ajax({
+        url: '/cms/footer_titles/update_positions',
+        type: 'POST',
+        data: { positions: data }
+      })
+    }
+    $(function(){
+      $("#footer-titles-list").sortable({
+        containerSelector: 'table',
+        itemPath: '> tbody',
+        itemSelector: 'tr',
+        placeholder: '<tr class="placeholder"/>',
+        onDrop: function  (item, container, _super) {
+          _super(item);
+          updatePositions();
+        }
+      })
+    });
+  <% end %>
+<% end %>
