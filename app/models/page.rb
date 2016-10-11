@@ -52,7 +52,7 @@ class Page < ActiveRecord::Base
   }
 
 
-  before_save :generate_page_from_tiles
+  #before_save :generate_page_from_tiles
 
   TILES = YAML.load_file(Rails.root.join('config/tiles.yml'))
 
