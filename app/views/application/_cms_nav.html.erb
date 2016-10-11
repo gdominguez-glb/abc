@@ -3,8 +3,11 @@
     <div class="panel-group margin-bottom--reset">
       <div class="panel panel-default panel-collapsible margin-bottom--s">
         <div class="panel-heading">
-          <h3 class="panel-title">
-            <a data-toggle="collapse" data-target="#cmsCommerce">Commerce</a>
+          <h3 class="panel-title filter-title">
+            <a data-toggle="collapse" data-target="#cmsCommerce" class="collapsed">
+              Commerce
+              <i class="mi md-24 toggle-arrow">keyboard_arrow_up</i>
+            </a>
           </h3>
         </div>
         <div id="cmsCommerce" class="panel-collapse collapse">
@@ -21,8 +24,11 @@
     <div class="panel-group margin-bottom--reset">
       <div class="panel panel-default panel-collapsible margin-bottom--s">
         <div class="panel-heading">
-          <h3 class="panel-title">
-            <a data-toggle="collapse" data-target="#cmsEngagement">Custom Engagement</a>
+          <h3 class="panel-title filter-title">
+            <a data-toggle="collapse" data-target="#cmsEngagement" class="collapsed">
+              Custom Engagement
+              <i class="mi md-24 toggle-arrow">keyboard_arrow_up</i>
+            </a>
           </h3>
         </div>
         <div id="cmsEngagement" class="panel-collapse collapse">
@@ -39,8 +45,11 @@
     <div class="panel-group margin-bottom--reset">
       <div class="panel panel-default panel-collapsible margin-bottom--s">
         <div class="panel-heading">
-          <h3 class="panel-title">
-            <a data-toggle="collapse" data-target="#cmsFAQ">FAQs</a>
+          <h3 class="panel-title filter-title">
+            <a data-toggle="collapse" data-target="#cmsFAQ" class="collapsed">
+              FAQs
+              <i class="mi md-24 toggle-arrow">keyboard_arrow_up</i>
+            </a>
           </h3>
         </div>
         <div id="cmsFAQ" class="panel-collapse collapse">
@@ -56,8 +65,11 @@
   <div class="panel-group margin-bottom--reset">
     <div class="panel panel-default panel-collapsible margin-bottom--s">
       <div class="panel-heading">
-        <h3 class="panel-title">
-          <a data-toggle="collapse" data-target="#cmsFooter">Footer Content</a>
+        <h3 class="panel-title filter-title">
+          <a data-toggle="collapse" data-target="#cmsFooter" class="collapsed">
+            Footer Content
+            <i class="mi md-24 toggle-arrow">keyboard_arrow_up</i>
+          </a>
         </h3>
       </div>
       <div id="cmsFooter" class="panel-collapse collapse">
@@ -81,8 +93,11 @@
   <div class="panel-group margin-bottom--reset">
     <div class="panel panel-default panel-collapsible margin-bottom--s">
       <div class="panel-heading">
-        <h3 class="panel-title">
-          <a data-toggle="collapse" data-target="#cmsUploads">Links and Uploads</a>
+        <h3 class="panel-title filter-title">
+          <a data-toggle="collapse" data-target="#cmsUploads" class="collapsed">
+            Links and Uploads
+            <i class="mi md-24 toggle-arrow">keyboard_arrow_up</i>
+          </a>
         </h3>
       </div>
       <div id="cmsUploads" class="panel-collapse collapse">
@@ -105,8 +120,11 @@
     <div class="panel-group margin-bottom--reset">
       <div class="panel panel-default panel-collapsible margin-bottom--s">
         <div class="panel-heading">
-          <h3 class="panel-title">
-            <a data-toggle="collapse" data-target="#cmsPages">Pages</a>
+          <h3 class="panel-title filter-title">
+            <a data-toggle="collapse" data-target="#cmsPages" class="collapsed">
+              Pages
+              <i class="mi md-24 toggle-arrow">keyboard_arrow_up</i>
+            </a>
           </h3>
         </div>
         <div id="cmsPages" class="panel-collapse collapse">
@@ -124,8 +142,11 @@
     <div class="panel-group margin-bottom--reset">
       <div class="panel panel-default panel-collapsible margin-bottom--s">
         <div class="panel-heading">
-          <h3 class="panel-title">
-            <a data-toggle="collapse" data-target="#cmsPD2">PD 2</a>
+          <h3 class="panel-title filter-title">
+            <a data-toggle="collapse" data-target="#cmsPD2" class="collapsed">
+              PD 2
+              <i class="mi md-24 toggle-arrow">keyboard_arrow_up</i>
+            </a>
           </h3>
         </div>
         <div id="cmsPD2" class="panel-collapse collapse">
@@ -148,7 +169,7 @@
     var navColumn = $('.js-nav-column');
     navColumn.find('.list-group-item').each(function() {
       if($(this).hasClass('active')) {
-        $(this).closest('.panel-collapse').addClass('in');
+        $(this).closest('.panel-collapse').addClass('in').prev().find('.collapsed').removeClass('collapsed');
       }
     })
   });
