@@ -48,7 +48,7 @@ module Cms
 
     def create
       tile_rows = (params[:tiles] || {}).values
-      @page = Page.new(page_params.merge(tiles: { rows: tile_rows}))
+      @page = Page.new(page_params.merge(tiles: (tile_rows.present? ? { rows: tile_rows} : nil)))
 
       if @page.save
         flash[:notice] = 'Page was successfully created.'
@@ -67,7 +67,7 @@ module Cms
     def update
       tile_rows = (params[:tiles] || {}).values
       draft_status = @page.published? ? :draft_in_progress : :draft
-      if @page.update(page_params.merge(tiles: { rows: tile_rows}, draft_status: draft_status))
+      if @page.update(page_params.merge(tiles: (tile_rows.present? ? { rows: tile_rows} : nil), draft_status: draft_status))
         flash[:notice] = 'Page was successfully updated.'
         respond_to do |format|
           format.html{ redirect_to edit_cms_page_path(@page) }
