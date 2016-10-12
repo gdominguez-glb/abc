@@ -13,7 +13,7 @@
     <meta name="google-site-verification" content="dK_DebvSLewL8S2FH_DIBQYgmNFK7tQOROn_eJHBjA0" />
   </head>
   <% cache [controller_name, @page] do %>
-    <body class="<%= controller_name %> <%= 'with-subnav' if @sub_nav_items.present? %> <%= yield :body_class %> <%= (@page && @page.tiles) ? 'has-tiles' : 'no-tiles' %>" data-page="<%= @page.group_name if @page.present? %>">
+    <body class="<%= controller_name %> <%= 'with-subnav' if @sub_nav_items.present? %> <%= yield :body_class %> <%= (@page && !@page.blank_tiles?) ? 'has-tiles' : 'no-tiles' %>" data-page="<%= @page.group_name if @page.present? %>">
   <% end %>
 
     <%= render 'google_tag_manager' if Rails.env.production? %>
