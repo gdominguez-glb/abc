@@ -8,8 +8,8 @@ class MarketingEditorApp.Views.Editor extends Backbone.View
     @updateUrl        = opts.updateUrl
 
   render: ->
-    @rows.each((row)->
-      rowView = new MarketingEditorApp.Views.TileRowView(model: row)
+    @rows.each((row)=>
+      rowView = new MarketingEditorApp.Views.TileRowView(model: row, parentView: @)
       @$('.rows').append(rowView.render().el)
     )
     @initEditor()
@@ -24,7 +24,7 @@ class MarketingEditorApp.Views.Editor extends Backbone.View
     e.preventDefault()
     row = new MarketingEditorApp.Models.RowModel({ rowType: @$('.row-type-select').val() })
     @rows.add(row)
-    rowView = new MarketingEditorApp.Views.TileRowView(model: row)
+    rowView = new MarketingEditorApp.Views.TileRowView(model: row, parentView: @)
     @$('.rows').append(rowView.render().el)
     @$('.tile-notice').html('Tile added, please scroll to bottom to edit.')
     @$('.tile-notice').fadeIn(1000)
