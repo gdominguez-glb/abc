@@ -9,6 +9,7 @@ class MarketingEditorApp.Views.TileRowView extends Backbone.View
   initialize: (options={})->
     @listenTo(@model, 'destroy', this.remove)
     @fields = @fieldsOfRowType(@model.get('rowType'))
+    @parentView = options.parentView
 
   render: ()->
     @$el.html(@template(data: @model.attributes, fields: @fields))
@@ -17,6 +18,8 @@ class MarketingEditorApp.Views.TileRowView extends Backbone.View
 
   removeRow: ->
     @model.destroy()
+    if @parentView && @parentView.tilesChanged?
+      @parentView.tilesChanged()
 
   valueChanged: ->
     $.each(@$('[data-name]'), (index, el)=>
