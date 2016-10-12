@@ -8,28 +8,22 @@
     <div class="row">
       <%= form_tag '', method: :get do %>
         <div class="col-sm-3">
-          <div class="form-group">
-            <label>Name</label>
-            <%= text_field_tag :name, params[:name], class: 'form-control' %>
-          </div>
+          <label>Name</label>
+          <%= text_field_tag :name, params[:name], class: 'form-control margin-bottom--s--sm-min' %>
         </div>
         <div class="col-sm-3">
-          <div class="form-group">
-            <label>Category</label>
-            <%= text_field_tag :category, params[:category], class: 'form-control' %>
-          </div>
+          <label>Category</label>
+          <%= text_field_tag :category, params[:category], class: 'form-control margin-bottom--s--sm-min' %>
         </div>
         <div class="col-sm-3">
-          <div class="form-group">
-            <label>Tags</label>
-            <%= text_field_tag :tags, params[:tags], class: 'form-control', placeholder: 'seperate by comma' %>
-          </div>
+          <label>Tags</label>
+          <%= text_field_tag :tags, params[:tags], class: 'form-control margin-bottom--s--sm-min', placeholder: 'seperate by comma' %>
         </div>
         <div class="col-sm-3">
           <label>&nbsp;</label>
-          <button type="submit" class="btn btn-success btn-block">Search</button>
+          <button type="submit" class="btn btn-primary btn-block margin-bottom--s--sm-min">Search</button>
         </div>
-      <% end %>      
+      <% end %>
     </div>
   </div>
 </div>
