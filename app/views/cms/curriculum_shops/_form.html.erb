@@ -32,15 +32,11 @@
               <span>Curriculum Page</span>
               <%= f.collection_select :page_id, Page.show_in_top_navigation, :id, :group_name, { prompt: true }, class: 'form-control' %>
             </div>
-          </div>          
+          </div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-sm-5">
-      <%= f.submit class: 'btn btn-success btn-block' %>
-    </div>
-  </div>
+  <%= f.submit class: 'btn btn-success btn-block-xs' %>
 <% end %>

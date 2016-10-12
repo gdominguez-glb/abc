@@ -23,10 +23,11 @@
             <label>File</label>
             <%= f.file_field :file %>
           </div>
-          <%= f.submit (f.object.new_record? ? "Create File": "Update File"), class: 'btn btn-success', data: { disable_with: 'Submitting...' } %>
         </div>
       </div>
     </div>
   </div>
+
+  <%= f.submit (f.object.new_record? ? "Create File": "Update File"), class: 'btn btn-success btn-block-xs', data: { disable_with: 'Submitting...' } %>
 
 <% end %>
