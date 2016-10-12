@@ -64,6 +64,10 @@ class Page < ActiveRecord::Base
     event_pages.select{|event_page| event_page.events.exists? }
   end
 
+  def blank_tiles?
+    tiles.blank? || tiles[:rows].blank?
+  end
+
   private
 
   def generate_page_from_tiles
