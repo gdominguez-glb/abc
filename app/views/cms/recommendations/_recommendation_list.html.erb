@@ -1,0 +1,26 @@
+<div class="table-responsive">
+  <table class='table table-striped table-hover'>
+    <thead>
+      <tr>
+        <th colspan="2">Title</th>
+        <th>Subject</th>
+        <th>Role</th>
+        <th>Display</th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @recommendations.each do |recommendation| %>
+        <tr>
+          <td><%= recommendation.title %></td>
+          <td><%= link_to 'Edit', edit_cms_recommendation_path(recommendation), class: 'btn btn-default' %></td>
+          <td><%= recommendation.subject %></td>
+          <td><%= recommendation.user_title %></td>
+          <td><%= recommendation.display %></td>
+          <td><%= link_to 'Delete', cms_recommendation_path(recommendation), data: { method: :delete, confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<%= paginate @recommendations %>

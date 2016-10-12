@@ -2,7 +2,7 @@
 
 <div class="col-md-9">
   <h2>Page Lists</h2>
-  <%= link_to 'Create new page', new_cms_page_path, class: 'btn btn-primary' %>
+  <%= link_to 'New page', new_cms_page_path, class: 'btn btn-primary' %>
   <p id="notice"><%= notice %></p>
   <%= search_form_for @q, url: cms_pages_path, class: 'form-inline' do |f| %>
     <div class="form-group">

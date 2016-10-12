@@ -1,0 +1,30 @@
+<div class="table-responsive">
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>Vanity Url</th>
+        <th>Redirect Url</th>
+        <th>Tags</th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @vanity_urls.each do |vanity_url| %>
+        <tr>
+          <td><%= vanity_url.url %></td>
+          <td><%= vanity_url.redirect_url %></td>
+          <td><%= vanity_url.tag_list.sort.join(', ') %></td>
+          <td>
+            <%= link_to 'Edit', edit_cms_vanity_url_path(vanity_url) %>
+          </td>
+          <td>
+            <%= link_to 'Destroy', [:cms, vanity_url], method: :delete, data: { confirm: 'Are you sure?' }, class: 'text--danger' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<%= paginate @vanity_urls %>

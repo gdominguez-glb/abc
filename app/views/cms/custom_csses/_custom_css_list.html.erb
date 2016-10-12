@@ -1,0 +1,24 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Page</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @custom_csses.each do |custom_css| %>
+      <tr>
+        <td><%= custom_css.name %></td>
+        <td><%= custom_css.custom_type %></td>
+        <td><%= custom_css.page.try(:title) %></td>
+        <td>
+          <%= link_to 'Edit', edit_cms_custom_css_path(custom_css) %>
+          <%= link_to 'Delete', cms_custom_css_path(custom_css), data: { confirm: 'Are you sure?', method: :delete } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= paginate @custom_csses %>

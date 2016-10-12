@@ -1,33 +1,11 @@
 <%= render 'cms_nav' %>
 
 <div class="col-md-9">
-  <h2>Curriculum Shop</h2>
-  <%= link_to 'New Curriculum Shop', new_cms_curriculum_shop_path, class: 'btn btn-primary margin-bottom--xl' %>
-  <div class="table-responsive">
-    <table class="table table-striped table-hover">
-      <thead>
-        <tr>
-          <th>Title</th>
-          <th>Curriculum Page</th>
-          <th>Store Url</th>
-          <th colspan="2"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @curriculum_shops.each do |curriculum_shop| %>
-          <tr>
-            <td><%= curriculum_shop.title %></td>
-            <td><%= curriculum_shop.page.group_name %></td>
-            <td><%= curriculum_shop.url %></td>
-            <td class="text-right">
-              <%= link_to 'Edit', edit_cms_curriculum_shop_path(curriculum_shop), class: 'btn btn-default' %>
-              <%= link_to 'Delete', cms_curriculum_shop_path(curriculum_shop), class: 'btn btn-danger', data: { confirm: 'Are you sure?', method: :delete } %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+  <%= render partial: 'search_bar' %>
+  <div class="panel panel-primary">
+    <div class="panel-heading padding-top--s padding-bottom--s">
+      <h3 class="panel-title panel-title-s">Curriculum Shops</h3>
+    </div>
+    <%= render partial: 'curriculum_shop_list' %>
   </div>
 </div>
-
-<%= paginate @curriculum_shops %>
