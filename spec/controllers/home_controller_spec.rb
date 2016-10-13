@@ -12,4 +12,11 @@ RSpec.describe HomeController, type: :controller do
       expect(assigns(:page)).to eq(home_page)
     end
   end
+
+  describe "POST 'turn_off_browser_warning'" do
+    it "success" do
+      post :turn_off_browser_warning
+      expect(session[:turn_off_browser_warning]).to eq('true')
+    end
+  end
 end
