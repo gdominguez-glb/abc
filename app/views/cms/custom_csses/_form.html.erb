@@ -11,36 +11,41 @@
     </div>
   <% end %>
 
-  <div class="row">
-    <div class="col-sm-6">
+  <div class="panel panel-primary">
+    <div class="panel-heading padding-top--s padding-bottom--s">
+      <h3 class="panel-title panel-title--s">Custom CSS</h3>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <%= f.label :name %>
+            <%= f.text_field :name, class: 'form-control' %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <%= f.label 'Css Type' %>
+            <%= f.select :custom_type, ['global_css', 'page_css'], {}, { class: 'form-control' } %>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <%= f.label 'Page (Required for page css)' %>
+            <%= f.collection_select :page_id, Page.all, :id, :slug, { prompt: 'Select a Page' }, { class: 'form-control' } %>
+          </div>
+        </div>
+      </div>
+
       <div class="form-group">
-        <%= f.label :name %>
-        <%= f.text_field :name, class: 'form-control' %>
+        <label>Content</label>
+        <%= f.text_area :content, class: 'form-control', rows: 10, placeholder: 'write your css here: .black { color: #000; }' %>
       </div>
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-sm-6">
-      <div class="form-group">
-        <%= f.label 'Css Type' %>
-        <%= f.select :custom_type, ['global_css', 'page_css'], {}, { class: 'form-control' } %>
-      </div>
-    </div>
-    <div class="col-sm-6">
-      <div class="form-group">
-        <%= f.label 'Page (Required for page css)' %>
-        <%= f.collection_select :page_id, Page.all, :id, :slug, { prompt: 'Select a Page' }, { class: 'form-control' } %>
-      </div>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label>Content</label>
-    <%= f.text_area :content, class: 'form-control', rows: 10, placeholder: 'write your css here: .black { color: #000; }' %>
-  </div>
-
-  <div class="form-group">
-    <%= f.submit class: 'btn btn-success' %>
-  </div>
+  <%= f.submit class: 'btn btn-success btn-block-xs' %>
 <% end %>

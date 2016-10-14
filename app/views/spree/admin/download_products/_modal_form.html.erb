@@ -5,7 +5,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title">Select Product</h4>
       </div>
-      <%= form_for([:cms, @download_page, @download_product]) do |f| %>
+      <%= form_for([:admin, @download_page, @download_product]) do |f| %>
         <div class="modal-body">
             <%= f.collection_select :product_id, @products, :id, :name, {}, class: 'form-control' %>
         </div>

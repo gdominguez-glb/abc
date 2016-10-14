@@ -5,6 +5,11 @@
 <div class="panel panel-primary">
   <div class="panel-body panel-body--padding">
     <div class="row">
+      <div class="col-sm-12 text-right">
+        <%= link_to 'Add Page', new_cms_page_path, class: 'btn btn-success btn-block-xs margin-right--reset margin-bottom--s' %>        
+      </div>
+    </div>
+    <div class="row">
       <div class="col-lg-5">
         <ul class="nav nav-tabs margin-bottom-s--lg-min">
           <li>
@@ -20,7 +25,6 @@
       </div>
       <div class="col-lg-7 text-right">
         <div class="form-inline">
-          <%= link_to 'Add Page', new_cms_page_path, class: 'btn btn-success btn-block-xs margin-bottom--s--sm-min' %>
           <%= search_form_for @q, url: search_cms_pages_path, class: 'inline' do |f| %>
             <div class="form-group margin-bottom--reset">
               <%= f.text_field :title_or_slug_or_curriculum_name_cont, class: 'form-control margin-bottom--s--sm-min' %>

@@ -1,0 +1,52 @@
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Url</th>
+        <th colspan="4"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @link_files.each do |link_file| %>
+        <tr>
+          <td>
+            <%= link_file.file_file_name %>
+          </td>
+          <td>
+            <%= wit_eng_link_url(slug: link_file.slug, domain: ENV['WITENG_LINK_DOMAIN'], subdomain: nil, protocol: 'http') %>
+          </td>
+          <td>
+            <%= link_to 'Edit', edit_cms_link_file_path(link_file), class: 'btn btn-default btn-sm' %>
+          </td>
+          <td>
+            <%= link_to 'Download', link_file.file.url, class: 'btn btn-default btn-sm', target: '_blank' %>
+          </td>
+          <td>
+            <a class="btn btn-default copy-download-url-button btn-sm" data-clipboard-text="<%= wit_eng_link_url(slug: link_file.slug, domain: ENV['WITENG_LINK_DOMAIN'], subdomain: nil, protocol: 'http') %>">Copy Url</a>
+          </td>
+          <td>
+            <%= link_to 'Delete', cms_link_file_path(link_file), class: 'btn btn-danger btn-sm', data: { method: :delete, confirm: "Are you sure?" } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<%= paginate @link_files %>
+<%= content_for :javascripts do %>
+  <%= javascript_tag do %>
+    $(function() {
+      var client = new ZeroClipboard( $('.copy-download-url-button') );
+      client.on( 'ready', function(event) {
+        client.on( 'copy', function(event) {
+          event.clipboardData.setData('text/plain', $(event.target).attr('data-url'));
+        });
+
+        client.on( 'aftercopy', function(event) {
+          alert('Copied to your clipboard');
+        });
+      });
+    });
+  <% end %>
+<% end %>

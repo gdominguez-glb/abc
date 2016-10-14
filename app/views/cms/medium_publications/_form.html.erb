@@ -11,80 +11,86 @@
     </div>
   <% end %>
 
-  <div class="row">
-    <div class="col-sm-6">
-      <div class="form-group">
-        <%= f.label :title %>
-        <%= f.text_field :title, class: 'form-control' %>
-      </div>
+  <div class="panel panel-primary">
+    <div class="panel-heading padding-top--s padding-bottom--s">
+      <h3 class="panel-title panel-title--s">Medium Publication</h3>
     </div>
-    <div class="col-sm-6">
-      <div class="form-group">
-        <%= f.label :position %>
-        <%= f.number_field :position, class: 'form-control' %>
-      </div>
-    </div>
-    <div class="col-sm-12">
-      <div class="form-group">
-        <%= f.label "Medium publication url" %>
-        <%= f.text_field :url, class: 'form-control' %>
-        <small class="help-block">This is the URL of a blog on medium.com.<br />
-        Example: https://medium.com/great-minds-reports</small>
-      </div>
-    </div>
-    <div class="col-sm-6">
-      <div class="form-group">
-        <%= f.label :blog_type %>
-        <div class="select-container dark-select block">
-          <span>Select Blog Type</span>
-          <%= f.select :blog_type, MediumPublication::BLOG_TYPES, {}, class: 'form-control' %>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <%= f.label :title %>
+            <%= f.text_field :title, class: 'form-control' %>
+          </div>
         </div>
-      </div>
-    </div>
-    <div class="col-sm-6">
-      <div class="form-group curriculum-input <%= 'hidden' if @medium_publication.blog_type != 'curriculum' %>">
-        <%= f.label "Curriculum Page" %>
-        <div class="select-container dark-select block">
-          <span>Select Curriculum</span>
-          <%= f.collection_select :page_id, Page.show_in_top_navigation, :id, :group_name, { prompt: true }, class: 'form-control' %>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <%= f.label :position %>
+            <%= f.number_field :position, class: 'form-control' %>
+          </div>
         </div>
-      </div>
-    </div>
-    <div class="col-sm-12">
-      <div class="form-group">
-        <%= f.label "Blog Unique url" %>
-        <%= f.text_field :slug, class: 'form-control' %>
-        <small class="help-block">This should be entered with no leading slash. The URL will differ, depending on the "Blog Type" and "Curriculum Page" selections in the above dropdowns.</small>
-        <small class="help-block">For example, say you enter 'report' (without the quotes).<br />
-        If you have selected "Global" as the blog type, the resulting URL will be: /blog/global/report<br />
-        If you have selected "Curriculum", and "Math", the resulting URL will be: /math/blog/report</small>
-      </div>
-    </div>
-    <div class="col-sm-12">
-      <div class="form-group">
-        <%= f.label "Header" %>
-        <%= f.text_field :header, class: 'form-control' %>
-      </div>
-    </div>
-    <div class="col-sm-12">
-      <div class="form-group">
-        <%= f.label "Description (Copy under header)" %>
-        <%= f.text_area :description, class: 'form-control rich-editor' %>
-      </div>
-    </div>
-    <div class="col-sm-6">
-      <div class="form-group">
-        <div class="checkbox">
-        <%= f.label :display do %>
-          <%= f.check_box :display %> Display
-        <% end %>
+        <div class="col-sm-12">
+          <div class="form-group">
+            <%= f.label "Medium publication url" %>
+            <%= f.text_field :url, class: 'form-control' %>
+            <small class="help-block">This is the URL of a blog on medium.com.<br />
+            Example: https://medium.com/great-minds-reports</small>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <%= f.label :blog_type %>
+            <div class="select-container dark-select block">
+              <span>Select Blog Type</span>
+              <%= f.select :blog_type, MediumPublication::BLOG_TYPES, {}, class: 'form-control' %>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group curriculum-input <%= 'hidden' if @medium_publication.blog_type != 'curriculum' %>">
+            <%= f.label "Curriculum Page" %>
+            <div class="select-container dark-select block">
+              <span>Select Curriculum</span>
+              <%= f.collection_select :page_id, Page.show_in_top_navigation, :id, :group_name, { prompt: true }, class: 'form-control' %>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="form-group">
+            <%= f.label "Blog Unique url" %>
+            <%= f.text_field :slug, class: 'form-control' %>
+            <small class="help-block">This should be entered with no leading slash. The URL will differ, depending on the "Blog Type" and "Curriculum Page" selections in the above dropdowns.</small>
+            <small class="help-block">For example, say you enter 'report' (without the quotes).<br />
+            If you have selected "Global" as the blog type, the resulting URL will be: /blog/global/report<br />
+            If you have selected "Curriculum", and "Math", the resulting URL will be: /math/blog/report</small>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="form-group">
+            <%= f.label "Header" %>
+            <%= f.text_field :header, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="form-group">
+            <%= f.label "Description (Copy under header)" %>
+            <%= f.text_area :description, class: 'form-control rich-editor' %>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <div class="checkbox">
+            <%= f.label :display do %>
+              <%= f.check_box :display %> Display
+            <% end %>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="form-group">
-    <%= f.submit class: 'btn btn-success', data: { disable_with: 'Submitting...' } %>
-  </div>
+
+  <%= f.submit class: 'btn btn-success btn-block-xs', data: { disable_with: 'Submitting...' } %>
 <% end %>
 <%= content_for :javascripts do %>
   <%= javascript_tag do %>

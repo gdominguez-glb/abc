@@ -1,0 +1,29 @@
+<div class="panel panel-primary">
+  <div class="panel-body panel-body--padding">
+    <div class="row">
+      <div class="col-sm-12 text-right">
+        <a href="/cms/documents/new" class="btn btn-success btn-block-xs">Upload New File</a>
+      </div>
+    </div>
+    <div class="row">
+      <%= form_tag '', method: :get do %>
+        <div class="col-sm-3">
+          <label>Name</label>
+          <%= text_field_tag :name, params[:name], class: 'form-control margin-bottom--s--sm-min' %>
+        </div>
+        <div class="col-sm-3">
+          <label>Category</label>
+          <%= text_field_tag :category, params[:category], class: 'form-control margin-bottom--s--sm-min' %>
+        </div>
+        <div class="col-sm-3">
+          <label>Tags</label>
+          <%= text_field_tag :tags, params[:tags], class: 'form-control margin-bottom--s--sm-min', placeholder: 'seperate by comma' %>
+        </div>
+        <div class="col-sm-3">
+          <label>&nbsp;</label>
+          <button type="submit" class="btn btn-primary btn-block margin-bottom--s--sm-min">Search</button>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

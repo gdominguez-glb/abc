@@ -1,4 +1,4 @@
-class Cms::DownloadPagesController < Cms::BaseController
+class Spree::Admin::DownloadPagesController < Spree::Admin::BaseController
   before_action :set_download_page, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -12,7 +12,7 @@ class Cms::DownloadPagesController < Cms::BaseController
   def create
     @download_page = DownloadPage.new(download_page_params)
     if @download_page.save
-      redirect_to cms_download_pages_path, notice: 'Download page created successfully'
+      redirect_to admin_download_pages_path, notice: 'Download page created successfully'
     else
       render :new
     end
@@ -20,7 +20,7 @@ class Cms::DownloadPagesController < Cms::BaseController
 
   def update
     if @download_page.update(download_page_params)
-      redirect_to cms_download_pages_path, notice: 'Update download page successfully'
+      redirect_to admin_download_pages_path, notice: 'Update download page successfully'
     else
       render :edit
     end
@@ -28,7 +28,7 @@ class Cms::DownloadPagesController < Cms::BaseController
 
   def destroy
     @download_page.destroy
-    redirect_to cms_download_pages_path, notice: 'Destroy download page successfully'
+    redirect_to admin_download_pages_path, notice: 'Destroy download page successfully'
   end
 
   private

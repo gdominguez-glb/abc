@@ -1,87 +1,11 @@
 <%= render 'cms_nav' %>
+
 <div class="col-md-9">
-  <h2>Uploads</h2>
-  <a href="/cms/documents/new" class="btn btn-primary margin-bottom--xl">Upload New File</a>
-  <div class="row">
-
-  <%= form_tag '', method: :get do %>
-    <div class="col-sm-3">
-      <div class="form-group">
-        <label>Name</label>
-        <%= text_field_tag :name, params[:name], class: 'form-control' %>
-      </div>
+  <%= render partial: 'search_bar' %>
+  <div class="panel panel-primary">
+    <div class="panel-heading padding-top--s padding-bottom--s">
+      <h3 class="panel-title panel-title-s">Uploads</h3>
     </div>
-    <div class="col-sm-3">
-      <div class="form-group">
-        <label>Category</label>
-        <%= text_field_tag :category, params[:category], class: 'form-control' %>
-      </div>
-    </div>
-    <div class="col-sm-3">
-      <div class="form-group">
-        <label>Tags</label>
-        <%= text_field_tag :tags, params[:tags], class: 'form-control', placeholder: 'seperate by comma' %>
-      </div>
-    </div>
-    <div class="col-sm-3">
-      <label>&nbsp;</label>
-      <button type="submit" class="btn btn-success btn-block">Search</button>
-    </div>
-  <% end %>
-
+    <%= render partial: 'documents_list' %>
   </div>
-  <div class="table-responsive">
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Category</th>
-          <th>Tags</th>
-          <th>File</th>
-          <th colspan="4"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @documents.each do |document| %>
-          <tr>
-            <td><%= document.name %></td>
-            <td><%= document.category %></td>
-            <td><%= document.tags.map(&:name).join(',') %></td>
-            <td>
-              <%= document.attachment_file_name %>
-            </td>
-            <td>
-              <%= link_to 'Edit', edit_cms_document_path(document), class: 'btn btn-default btn-sm' %>
-            </td>
-            <td>
-              <%= link_to 'Download', document.attachment.url, class: 'btn btn-default btn-sm', target: '_blank' %>
-            </td>
-            <td>
-              <a class="btn btn-default copy-download-url-button btn-sm" data-clipboard-text="<%= document.attachment.url %>">Copy Url</a>
-            </td>
-            <td>
-              <%= link_to 'Delete', cms_document_path(document), class: 'btn btn-danger btn-sm', data: { method: :delete, confirm: "Are you sure?" } %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-  <%= paginate @documents %>
-  <%= content_for :javascripts do %>
-    <%= javascript_tag do %>
-      $(function() {
-        var client = new ZeroClipboard( $('.copy-download-url-button') );
-        client.on( 'ready', function(event) {
-          client.on( 'copy', function(event) {
-            event.clipboardData.setData('text/plain', $(event.target).attr('data-url'));
-          });
-
-          client.on( 'aftercopy', function(event) {
-            alert('Copied to your clipboard');
-          });
-        });
-      });
-    <% end %>
-  <% end %>
 </div>

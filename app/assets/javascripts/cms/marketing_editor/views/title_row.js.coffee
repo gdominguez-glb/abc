@@ -1,6 +1,6 @@
 class MarketingEditorApp.Views.TileRowView extends Backbone.View
 
-  template: JST['marketing_editor/templates/row']
+  template: JST['cms/marketing_editor/templates/row']
 
   events:
     'click .remove-row-btn': 'removeRow'

@@ -1,63 +1,11 @@
 <%= render 'cms_nav' %>
-<div class="col-md-9">
-  <h2>Link Uploads</h2>
-  <a href="/cms/link_files/new" class="btn btn-primary margin-bottom--xl">Upload New File</a>
-  <%= search_form_for @q, url: '', class: 'form-inline' do |f| %>
-      <div class="form-group">
-        <%= f.text_field :file_file_name_cont, class: 'form-control', placeholder: 'Search File name' %>
-        <%= submit_tag 'Search', class: 'btn btn-primary' %>
-      </div>
-  <% end %>
-  <div class="table-responsive">
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Url</th>
-          <th colspan="4"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @link_files.each do |link_file| %>
-          <tr>
-            <td>
-              <%= link_file.file_file_name %>
-            </td>
-            <td>
-              <%= wit_eng_link_url(slug: link_file.slug, domain: ENV['WITENG_LINK_DOMAIN'], subdomain: nil, protocol: 'http') %>
-            </td>
-            <td>
-              <%= link_to 'Edit', edit_cms_link_file_path(link_file), class: 'btn btn-default btn-sm' %>
-            </td>
-            <td>
-              <%= link_to 'Download', link_file.file.url, class: 'btn btn-default btn-sm', target: '_blank' %>
-            </td>
-            <td>
-              <a class="btn btn-default copy-download-url-button btn-sm" data-clipboard-text="<%= wit_eng_link_url(slug: link_file.slug, domain: ENV['WITENG_LINK_DOMAIN'], subdomain: nil, protocol: 'http') %>">Copy Url</a>
-            </td>
-            <td>
-              <%= link_to 'Delete', cms_link_file_path(link_file), class: 'btn btn-danger btn-sm', data: { method: :delete, confirm: "Are you sure?" } %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-  <%= paginate @link_files %>
-  <%= content_for :javascripts do %>
-    <%= javascript_tag do %>
-      $(function() {
-        var client = new ZeroClipboard( $('.copy-download-url-button') );
-        client.on( 'ready', function(event) {
-          client.on( 'copy', function(event) {
-            event.clipboardData.setData('text/plain', $(event.target).attr('data-url'));
-          });
 
-          client.on( 'aftercopy', function(event) {
-            alert('Copied to your clipboard');
-          });
-        });
-      });
-    <% end %>
-  <% end %>
+<div class="col-md-9">
+  <%= render partial: 'search_bar' %>
+  <div class="panel panel-primary">
+    <div class="panel-heading padding-top--s padding-bottom--s">
+      <h3 class="panel-title panel-title-s">Link Uploads</h3>
+    </div>
+    <%= render partial: 'link_files_list' %>
+  </div>
 </div>

@@ -11,82 +11,92 @@
     </div>
   <% end %>
 
-  <div class="row">
-    <div class="col-sm-6">
-      <div class="form-group">
-        <label>Title</label>
-        <%= f.text_field :title, class: 'form-control' %>
-      </div>
+
+  <div class="panel panel-primary">
+    <div class="panel-heading padding-top--s padding-bottom--s">
+      <h3 class="panel-title panel-title--s">Recommendation</h3>
     </div>
-    <div class="col-sm-3">
-      <div class="form-group">
-        <label>Subject</label>
-        <div class="select-container dark-select block">
-          <span>Select Subject</span>
-          <%= f.collection_select :subject, Curriculum.all, :name, :name, { prompt: 'Select subject' }, class: 'form-control' %>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label>Title</label>
+            <%= f.text_field :title, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="form-group">
+            <label>Subject</label>
+            <div class="select-container dark-select block">
+              <span>Select Subject</span>
+              <%= f.collection_select :subject, Curriculum.all, :name, :name, { prompt: 'Select subject' }, class: 'form-control' %>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="form-group">
+            <label>User Role</label>
+            <div class="select-container dark-select block">
+              <span>Select Role</span>
+              <%= f.select :user_title, options_for_select(Spree::User::USER_TITLES, @recommendation.user_title), { prompt: 'Select title' }, class: 'form-control' %>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col-sm-3">
-      <div class="form-group">
-        <label>User Role</label>
-        <div class="select-container dark-select block">
-          <span>Select Role</span>
-          <%= f.select :user_title, options_for_select(Spree::User::USER_TITLES, @recommendation.user_title), { prompt: 'Select title' }, class: 'form-control' %>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="form-group">
+            <label>Sub Header</label>
+            <%= f.text_area :sub_header, class: 'form-control' %>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="form-group">
-        <label>Sub Header</label>
-        <%= f.text_area :sub_header, class: 'form-control' %>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-6">
-      <div class="form-group">
-        <label>Call to action button text</label>
-        <%= f.text_field :call_to_action_button_text, class: 'form-control' %>
-      </div>
-    </div>
-    <div class="col-sm-6">
-      <div class="form-group">
-        <label>Call to action button link</label>
-        <%= f.text_field :call_to_action_button_link, class: 'form-control' %>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-6">
-      <div class="form-group">
-        <label>Button Target</label>
-        <div class="select-container dark-select block">
-          <span>Select Target</span>
-          <%= f.select :call_to_action_button_target, options_for_select([['Open in Same Tab', '_self'],['Open in New Tab', '_blank']]), { prompt: 'Select target' }, class: 'form-control' %>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label>Call to action button text</label>
+            <%= f.text_field :call_to_action_button_text, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label>Call to action button link</label>
+            <%= f.text_field :call_to_action_button_link, class: 'form-control' %>
+          </div>
         </div>
       </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label>Button Target</label>
+            <div class="select-container dark-select block">
+              <span>Select Target</span>
+              <%= f.select :call_to_action_button_target, options_for_select([['Open in Same Tab', '_self'],['Open in New Tab', '_blank']]), { prompt: 'Select target' }, class: 'form-control' %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Icon</label>
+        <div class="select-container dark-select block">
+          <span>Icon</span>
+          <%= f.select :icon, Recommendation::ICONS, {}, class: 'form-control' %>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Products</label>
+        <div>
+          <%= f.hidden_field :product_ids, style: 'width: 100%;', value: @recommendation.product_ids.join(','), class: 'form-control' %>
+        </div>
+      </div>
+      <div class="checkbox margin-bottom--xl">
+        <label>
+          <%= f.check_box :display %> Display
+        </label>
+      </div>
     </div>
   </div>
-  <div class="form-group">
-    <label>Icon</label>
-    <%= f.select :icon, Recommendation::ICONS, {}, class: 'form-control' %>
-  </div>
-  <div class="form-group">
-    <label>Products</label>
-    <div>
-      <%= f.hidden_field :product_ids, style: 'width: 100%;', value: @recommendation.product_ids.join(','), class: 'form-control' %>
-    </div>
-  </div>
-  <div class="checkbox margin-bottom--xl">
-    <label>
-      <%= f.check_box :display %> Display
-    </label>
-  </div>
-  <div class="form-group">
-    <%= f.submit class: 'btn btn-success' %>
-  </div>
+
+  <%= f.submit class: 'btn btn-success btn-block-xs' %>
 <% end %>
 <%= render 'products_autocomplete' %>

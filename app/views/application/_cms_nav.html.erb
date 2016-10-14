@@ -1,57 +1,176 @@
-<div class="col-md-3">
-  <div class="panel-group">
-    <div class="panel panel-default panel-collapsible">
+<div class="col-md-3 js-nav-column">
+  <% if current_spree_user.admin? %>
+    <div class="panel-group margin-bottom--reset">
+      <div class="panel panel-default panel-collapsible margin-bottom--s">
+        <div class="panel-heading">
+          <h3 class="panel-title filter-title">
+            <a data-toggle="collapse" data-target="#cmsCommerce" class="collapsed">
+              Commerce
+              <i class="mi md-24 toggle-arrow">keyboard_arrow_up</i>
+            </a>
+          </h3>
+        </div>
+        <div id="cmsCommerce" class="panel-collapse collapse">
+          <ul class="nav nav-sidebar list-group">
+            <%= active_link_to "Store", '/store/admin', class: 'list-group-item' %>
+            <%= active_link_to "Curriculum Shop", '/cms/curriculum_shops', class: 'list-group-item' %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <% if current_spree_user.admin? %>
+    <div class="panel-group margin-bottom--reset">
+      <div class="panel panel-default panel-collapsible margin-bottom--s">
+        <div class="panel-heading">
+          <h3 class="panel-title filter-title">
+            <a data-toggle="collapse" data-target="#cmsEngagement" class="collapsed">
+              Custom Engagement
+              <i class="mi md-24 toggle-arrow">keyboard_arrow_up</i>
+            </a>
+          </h3>
+        </div>
+        <div id="cmsEngagement" class="panel-collapse collapse">
+          <ul class="nav nav-sidebar list-group">
+            <%= active_link_to "Dashboard Notifications", '/cms/notification_triggers', class: 'list-group-item' %>
+            <%= active_link_to "Recommendations", '/cms/recommendations', class: 'list-group-item' %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <% if current_spree_user.admin? %>
+    <div class="panel-group margin-bottom--reset">
+      <div class="panel panel-default panel-collapsible margin-bottom--s">
+        <div class="panel-heading">
+          <h3 class="panel-title filter-title">
+            <a data-toggle="collapse" data-target="#cmsFAQ" class="collapsed">
+              FAQs
+              <i class="mi md-24 toggle-arrow">keyboard_arrow_up</i>
+            </a>
+          </h3>
+        </div>
+        <div id="cmsFAQ" class="panel-collapse collapse">
+          <ul class="nav nav-sidebar list-group">
+            <%= active_link_to "FAQ", '/cms/questions', class: 'list-group-item' %>
+            <%= active_link_to "FAQ Categories", '/cms/faq_categories', class: 'list-group-item' %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="panel-group margin-bottom--reset">
+    <div class="panel panel-default panel-collapsible margin-bottom--s">
       <div class="panel-heading">
-        <h3 class="panel-title">
-          <a id="cmsNavToggle" data-toggle="collapse" data-target="#cmsNav">Sections</a>
+        <h3 class="panel-title filter-title">
+          <a data-toggle="collapse" data-target="#cmsFooter" class="collapsed">
+            Footer Content
+            <i class="mi md-24 toggle-arrow">keyboard_arrow_up</i>
+          </a>
         </h3>
       </div>
-      <div id="cmsNav" class="panel-collapse collapse in">
+      <div id="cmsFooter" class="panel-collapse collapse">
         <ul class="nav nav-sidebar list-group">
           <% if current_spree_user.admin? %>
-            <%= active_link_to "Pages", '/cms/pages', class: 'list-group-item' %>
-            <%= active_link_to "Uploads", '/cms/documents', class: 'list-group-item' %>
-            <%= active_link_to "FAQ Categories", '/cms/faq_categories', class: 'list-group-item' %>
-            <%= active_link_to "FAQ", '/cms/questions', class: 'list-group-item' %>
-            <%= active_link_to "Recommendations", '/cms/recommendations', class: 'list-group-item' %>
-            <%= active_link_to "Contact Topics", '/cms/contact_topics', class: 'list-group-item' %>
-            <%# <%= active_link_to "User Profile Settings", '/cms/user_profile_settings', class: 'list-group-item' %1> %>
-            <%= active_link_to "Store", '/store/admin', class: 'list-group-item' %>
-            <%= active_link_to "Medium Publications (Blog)", '/cms/medium_publications', class: 'list-group-item' %>
-            <%= active_link_to "Event Pages", '/cms/event_pages', class: 'list-group-item' %>
-            <%= active_link_to "Training Session Types", '/cms/training_type_categories', class: 'list-group-item' %>
-            <%= active_link_to "Dashboard Notifications", '/cms/notification_triggers', class: 'list-group-item' %>
-            <%= active_link_to "Download Pages", '/cms/download_pages', class: 'list-group-item' %>
             <%= active_link_to "Footer", '/cms/footer_titles', class: 'list-group-item' %>
-            <%# <%= active_link_to "Curriculum Mail", '/cms/curriculum_mails', class: 'list-group-item' %1> %>
-            <%= active_link_to "Curriculum Shop", '/cms/curriculum_shops', class: 'list-group-item' %>
-            <%= active_link_to "Custom Css", '/cms/custom_csses', class: 'list-group-item' %>
-            <%= active_link_to "Link Uploads", '/cms/link_files', class: 'list-group-item' %>
-            <%= active_link_to "Curriculums", '/cms/curriculums', class: 'list-group-item' %>
           <% end %>
           <% if current_spree_user.admin? || current_spree_user.has_hr_role? %>
-            <%= active_link_to "Careers", '/cms/jobs', class: 'list-group-item' %>
             <%= active_link_to "Staff", '/cms/staffs', class: 'list-group-item' %>
+            <%= active_link_to "Careers", '/cms/jobs', class: 'list-group-item' %>
           <% end %>
-          <% if current_spree_user.admin? || current_spree_user.has_vanity_admin_role? %>
-            <%= active_link_to "Vanity Url", '/cms/vanity_urls', class: 'list-group-item' %>
+          <% if current_spree_user.admin? %>
+            <%= active_link_to "Medium Publications (Blog)", '/cms/medium_publications', class: 'list-group-item' %>
+            <%= active_link_to "Contact Topics", '/cms/contact_topics', class: 'list-group-item' %>
           <% end %>
         </ul>
       </div>
     </div>
-    <% if Rails.env == 'staging' %>
-      <%= link_to 'Sync Cms Data To Prod', '/cms/sync', class: 'list-group-item', data: { method: :post, confirm: 'Are you sure to sync data to prod?' } %>
-    <% end %>
   </div>
-</div>
-<!-- <script>
-  $(document).ready(function() {
-    navToggle = $('#cmsNavToggle');
 
-    navToggle.on('click', function() {
-      if ( $(this).hasClass('collapsed') ) {
-        $(this).text('');
+  <div class="panel-group margin-bottom--reset">
+    <div class="panel panel-default panel-collapsible margin-bottom--s">
+      <div class="panel-heading">
+        <h3 class="panel-title filter-title">
+          <a data-toggle="collapse" data-target="#cmsUploads" class="collapsed">
+            Links and Uploads
+            <i class="mi md-24 toggle-arrow">keyboard_arrow_up</i>
+          </a>
+        </h3>
+      </div>
+      <div id="cmsUploads" class="panel-collapse collapse">
+        <ul class="nav nav-sidebar list-group">
+          <% if current_spree_user.admin? %>
+            <%= active_link_to "Link Uploads", '/cms/link_files', class: 'list-group-item' %>
+          <% end %>
+          <% if current_spree_user.admin? || current_spree_user.has_vanity_admin_role? %>
+            <%= active_link_to "Vanity Url", '/cms/vanity_urls', class: 'list-group-item' %>
+          <% end %>
+          <% if current_spree_user.admin? %>
+            <%= active_link_to "Uploads", '/cms/documents', class: 'list-group-item' %>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <% if current_spree_user.admin? %>
+    <div class="panel-group margin-bottom--reset">
+      <div class="panel panel-default panel-collapsible margin-bottom--s">
+        <div class="panel-heading">
+          <h3 class="panel-title filter-title">
+            <a data-toggle="collapse" data-target="#cmsPages" class="collapsed">
+              Pages
+              <i class="mi md-24 toggle-arrow">keyboard_arrow_up</i>
+            </a>
+          </h3>
+        </div>
+        <div id="cmsPages" class="panel-collapse collapse">
+          <ul class="nav nav-sidebar list-group">
+            <%= active_link_to "Pages", '/cms/pages', class: 'list-group-item' %>
+            <%= active_link_to "Custom Css", '/cms/custom_csses', class: 'list-group-item' %>
+            <%= active_link_to "Curriculums", '/cms/curriculums', class: 'list-group-item' %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <% if current_spree_user.admin? %>
+    <div class="panel-group margin-bottom--reset">
+      <div class="panel panel-default panel-collapsible margin-bottom--s">
+        <div class="panel-heading">
+          <h3 class="panel-title filter-title">
+            <a data-toggle="collapse" data-target="#cmsPD2" class="collapsed">
+              PD
+              <i class="mi md-24 toggle-arrow">keyboard_arrow_up</i>
+            </a>
+          </h3>
+        </div>
+        <div id="cmsPD2" class="panel-collapse collapse">
+          <ul class="nav nav-sidebar list-group">
+            <%= active_link_to "Event Pages", '/cms/event_pages', class: 'list-group-item' %>
+            <%= active_link_to "Training Session Types", '/cms/training_type_categories', class: 'list-group-item' %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <% #if Rails.env == 'staging' %>
+    <%= link_to 'Sync Cms Data To Prod', '/cms/sync', class: 'btn btn-danger btn-block', data: { method: :post, confirm: 'Are you sure to sync data to prod?' } %>
+  <% #end %>
+</div>
+
+<script>
+  $(document).ready(function() {
+    var navColumn = $('.js-nav-column');
+    navColumn.find('.list-group-item').each(function() {
+      if($(this).hasClass('active')) {
+        $(this).closest('.panel-collapse').addClass('in').prev().find('.collapsed').removeClass('collapsed');
       }
-    });
+    })
   });
-</script> -->
+</script>

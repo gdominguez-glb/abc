@@ -1,0 +1,30 @@
+<div class="table-responsive">
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Position</th>
+        <th>Visible</th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @curriculums.each do |curriculum| %>
+        <tr>
+          <td><%= curriculum.name %></td>
+          <td><%= curriculum.position %></td>
+          <td><%= curriculum.visible ? 'Yes' : 'No' %></td>
+          <td>
+            <%= link_to 'Edit', edit_cms_curriculum_path(curriculum) %>
+          </td>
+          <td>
+            <%= link_to 'Destroy', [:cms, curriculum], method: :delete, data: { confirm: 'Are you sure?' }, class: 'text--danger' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<%= paginate @curriculums %>
