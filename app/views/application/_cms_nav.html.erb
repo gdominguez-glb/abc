@@ -159,9 +159,9 @@
     </div>
   <% end %>
 
-  <% #if Rails.env == 'staging' %>
+  <% if Rails.env == 'staging' %>
     <%= link_to 'Sync Cms Data To Prod', '/cms/sync', class: 'btn btn-danger btn-block', data: { method: :post, confirm: 'Are you sure to sync data to prod?' } %>
-  <% #end %>
+  <% end %>
 </div>
 
 <script>
