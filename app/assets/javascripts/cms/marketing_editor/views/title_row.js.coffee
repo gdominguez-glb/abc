@@ -5,6 +5,7 @@ class MarketingEditorApp.Views.TileRowView extends Backbone.View
   events:
     'click .remove-row-btn': 'removeRow'
     'change': 'valueChanged'
+    'change .select-container select': 'customSelectChanged'
 
   initialize: (options={})->
     @listenTo(@model, 'destroy', this.remove)
@@ -34,3 +35,6 @@ class MarketingEditorApp.Views.TileRowView extends Backbone.View
 
   fieldsOfRowType: (rowType)->
     _.find(MarketingEditorApp.tilesDefinitions, (tileData)-> tileData.name == rowType).fields
+
+  customSelectChanged: (e)->
+    $(e.target).siblings('span').text($(e.target).val())

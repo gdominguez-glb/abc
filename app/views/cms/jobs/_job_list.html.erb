@@ -14,7 +14,11 @@
           <td><%= job.display %></td>
           <td>
             <%= link_to 'Edit', edit_cms_job_path(job), class: 'btn btn-default' %>
-            <%= link_to 'Archive', archive_cms_job_path(job), class: 'btn btn-danger', data: { confirm: 'Are you sure?', method: :post } %>
+            <% if job.archived? %>
+              <%= link_to 'Un-Archive', unarchive_cms_job_path(job), class: 'btn btn-danger', data: { confirm: 'Are you sure?', method: :post } %>
+            <% else %>
+              <%= link_to 'Archive', archive_cms_job_path(job), class: 'btn btn-danger', data: { confirm: 'Are you sure?', method: :post } %>
+            <% end %>
           </td>
         </tr>
       <% end %>

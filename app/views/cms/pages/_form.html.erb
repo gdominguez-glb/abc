@@ -13,36 +13,40 @@
 
   <div>
 
-  <div class="panel panel-primary">
-    <div class="panel-body panel-body--padding">
-      <div class="row">
-        <div class="col-lg-4">
-          <ul class="nav nav-tabs margin-bottom--s--lg-min">
-            <li class="active">
-              <a href="#tiles" data-toggle="tab">Tiles</a>
-            </li>
-            <li>
-              <a href="#metadata" data-toggle="tab">Metadata</a>
-            </li>
-          </ul>
+    <div class="panel panel-primary">
+      <div class="panel-body panel-body--padding">
+        <div class="row">
+          <div class="col-lg-4">
+            <ul class="nav nav-tabs margin-bottom--s--lg-min">
+              <li class="active">
+                <a href="#tiles" data-toggle="tab">Tiles</a>
+              </li>
+              <li>
+                <a href="#metadata" data-toggle="tab">Metadata</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-lg-8 text-right">
+            <% if @page.persisted? %>
+              <%= link_to 'Preview Page', preview_cms_page_path(@page), class: 'btn btn-success btn-block-xs margin-bottom--s--sm-min', target: '_blank' %>
+            <% end %>
+          </div>
+
         </div>
-        <div class="col-lg-8 text-right">
-          <% if @page.persisted? %>
-            <%= link_to 'Preview Page', preview_cms_page_path(@page), class: 'btn btn-success btn-block-xs margin-bottom--s--sm-min', target: '_blank' %>
-          <% end %>
-        </div>
+
       </div>
     </div>
-  </div>
 
-  <div class="tab-content">
-    <div class="tab-pane active" id="tiles">
-      <%= render partial: 'tiles', locals: { f: f } %>
+    <span class="label label-english margin-bottom">Status: <%= cms_display_status(@page) %></span>
+
+    <div class="tab-content">
+      <div class="tab-pane active" id="tiles">
+        <%= render partial: 'tiles', locals: { f: f } %>
+      </div>
+      <div class="tab-pane" id="metadata">
+        <%= render partial: 'metadata', locals: { f: f } %>
+      </div>
     </div>
-    <div class="tab-pane" id="metadata">
-      <%= render partial: 'metadata', locals: { f: f } %>
-    </div>
-  </div>
 
   </div>
 

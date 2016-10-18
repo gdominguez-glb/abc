@@ -69,6 +69,11 @@ class Cms::JobsController < Cms::BaseController
     redirect_to archived_cms_jobs_path, notice: 'Archived career successfully!'
   end
 
+  def unarchive
+    @job.unarchive!
+    redirect_to cms_jobs_path, notice: 'Un-Archived career successfully!'
+  end
+
   private
 
   def job_params

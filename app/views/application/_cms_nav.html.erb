@@ -90,31 +90,33 @@
     </div>
   </div>
 
-  <div class="panel-group margin-bottom--reset">
-    <div class="panel panel-default panel-collapsible margin-bottom--s">
-      <div class="panel-heading">
-        <h3 class="panel-title filter-title">
-          <a data-toggle="collapse" data-target="#cmsUploads" class="collapsed">
-            Links and Uploads
-            <i class="mi md-24 toggle-arrow">keyboard_arrow_up</i>
-          </a>
-        </h3>
-      </div>
-      <div id="cmsUploads" class="panel-collapse collapse">
-        <ul class="nav nav-sidebar list-group">
-          <% if current_spree_user.admin? %>
-            <%= active_link_to "Link Uploads", '/cms/link_files', class: 'list-group-item' %>
-          <% end %>
-          <% if current_spree_user.admin? || current_spree_user.has_vanity_admin_role? %>
-            <%= active_link_to "Vanity Url", '/cms/vanity_urls', class: 'list-group-item' %>
-          <% end %>
-          <% if current_spree_user.admin? %>
-            <%= active_link_to "Uploads", '/cms/documents', class: 'list-group-item' %>
-          <% end %>
-        </ul>
+  <% if current_spree_user.admin? || current_spree_user.has_vanity_admin_role? %>
+    <div class="panel-group margin-bottom--reset">
+      <div class="panel panel-default panel-collapsible margin-bottom--s">
+        <div class="panel-heading">
+          <h3 class="panel-title filter-title">
+            <a data-toggle="collapse" data-target="#cmsUploads" class="collapsed">
+              Links and Uploads
+              <i class="mi md-24 toggle-arrow">keyboard_arrow_up</i>
+            </a>
+          </h3>
+        </div>
+        <div id="cmsUploads" class="panel-collapse collapse">
+          <ul class="nav nav-sidebar list-group">
+            <% if current_spree_user.admin? %>
+              <%= active_link_to "Link Uploads", '/cms/link_files', class: 'list-group-item' %>
+            <% end %>
+            <% if current_spree_user.admin? || current_spree_user.has_vanity_admin_role? %>
+              <%= active_link_to "Vanity Url", '/cms/vanity_urls', class: 'list-group-item' %>
+            <% end %>
+            <% if current_spree_user.admin? %>
+              <%= active_link_to "Uploads", '/cms/documents', class: 'list-group-item' %>
+            <% end %>
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
+  <% end %>
 
   <% if current_spree_user.admin? %>
     <div class="panel-group margin-bottom--reset">
@@ -159,9 +161,9 @@
     </div>
   <% end %>
 
-  <% #if Rails.env == 'staging' %>
+  <% if Rails.env == 'staging' %>
     <%= link_to 'Sync Cms Data To Prod', '/cms/sync', class: 'btn btn-danger btn-block', data: { method: :post, confirm: 'Are you sure to sync data to prod?' } %>
-  <% #end %>
+  <% end %>
 </div>
 
 <script>

@@ -99,7 +99,7 @@ marketing_templates:
         <div class="col-xs-12">
           <h3 class="video-title"><%= title %></h3>
           <div class="embed-responsive embed-responsive-16by9">
-            <iframe src="//fast.wistia.net/embed/iframe/<%= wistia_video_id %>" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" id="wistia-iframe" name="wistia_embed"></iframe>
+            <iframe src="//fast.wistia.net/embed/iframe/<%= wistia_video_id %>" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" id="wistia-iframe" name="wistia_embed" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
           </div>
         </div>
       </section>
@@ -710,7 +710,7 @@ marketing_templates:
           <div class="col-sm-6 col-centered-content margin-bottom--xl--sm-min">
             <div class="vertical-center">
               <div class="embed-responsive embed-responsive-16by9">
-                <iframe src="//fast.wistia.net/embed/iframe/<%= wistia_video_id %>" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" id="wistia-iframe" name="wistia_embed"></iframe>
+                <iframe src="//fast.wistia.net/embed/iframe/<%= wistia_video_id %>" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" id="wistia-iframe" name="wistia_embed"  webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
               </div>
             </div>
           </div>
