@@ -23,7 +23,13 @@
           <td><%= event_page.display ? 'Yes' : 'No' %></td>
           <td><%= link_to 'Events', cms_event_page_regonline_events_path(event_page) %></td>
           <td><%= link_to 'Edit', edit_cms_event_page_path(event_page) %></td>
-          <td><%= link_to 'Archive', archive_cms_event_page_path(event_page), method: :post, data: { confirm: 'Are you sure?' }, class: 'text--danger' if !event_page.archived? %></td>
+          <td>
+            <% if event_page.archived? %>
+              <%= link_to 'Un-Archive', unarchive_cms_event_page_path(event_page), method: :post, data: { confirm: 'Are you sure?' }, class: 'text--danger' %>
+            <% else %>
+              <%= link_to 'Archive', archive_cms_event_page_path(event_page), method: :post, data: { confirm: 'Are you sure?' }, class: 'text--danger' %>
+            <% end %>
+          </td>
         </tr>
       <% end %>
     </tbody>

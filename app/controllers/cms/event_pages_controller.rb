@@ -1,5 +1,5 @@
 class Cms::EventPagesController < Cms::BaseController
-  before_action :set_event_page, only: [:show, :edit, :update, :destroy, :publish, :preview, :archive]
+  before_action :set_event_page, only: [:show, :edit, :update, :destroy, :publish, :preview, :archive, :unarchive]
 
   def index
     redirect_to published_cms_event_pages_path
@@ -55,6 +55,11 @@ class Cms::EventPagesController < Cms::BaseController
   def archive
     @event_page.archive!
     redirect_to archived_cms_event_pages_path, notice: 'Event page archived successfully'
+  end
+
+  def unarchive
+    @event_page.unarchive!
+    redirect_to cms_event_pages_path, notice: 'Event page un-archived successfully'
   end
 
   private
