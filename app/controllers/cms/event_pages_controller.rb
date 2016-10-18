@@ -24,7 +24,7 @@ class Cms::EventPagesController < Cms::BaseController
   def create
     @event_page = EventPage.new(event_page_params)
     if @event_page.save
-      redirect_to cms_event_pages_path, notice: 'Event page created successfully'
+      redirect_to edit_cms_event_page_path(@event_page), notice: 'Event page created successfully'
     else
       render :new
     end
@@ -32,7 +32,7 @@ class Cms::EventPagesController < Cms::BaseController
 
   def update
     if @event_page.update(event_page_params)
-      redirect_to cms_event_pages_path, notice: 'Update event page successfully'
+      redirect_to edit_cms_event_page_path(@event_page), notice: 'Update event page successfully'
     else
       render :edit
     end
