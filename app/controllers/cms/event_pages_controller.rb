@@ -31,7 +31,8 @@ class Cms::EventPagesController < Cms::BaseController
   end
 
   def update
-    if @event_page.update(event_page_params)
+    draft_status = @event_page.published? ? :draft_in_progress : :draft
+    if @event_page.update(event_page_params.merge(draft_status: draft_status))
       redirect_to edit_cms_event_page_path(@event_page), notice: 'Update event page successfully'
     else
       render :edit
