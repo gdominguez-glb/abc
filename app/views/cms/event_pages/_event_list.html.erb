@@ -8,6 +8,7 @@
         <th>Unique Url</th>
         <th>Event Page Type</th>
         <th>Visible</th>
+        <th>Status</th>
         <th colspan="3"></th>
       </tr>
     </thead>
@@ -21,6 +22,7 @@
           <td><%= event_page.slug %></td>
           <td><%= event_page.event_page_type %></td>
           <td><%= event_page.display ? 'Yes' : 'No' %></td>
+          <td><span class="label label-english"><%= cms_display_status(event_page) %></span></td>
           <td><%= link_to 'Events', cms_event_page_regonline_events_path(event_page) %></td>
           <td><%= link_to 'Edit', edit_cms_event_page_path(event_page) %></td>
           <td>
