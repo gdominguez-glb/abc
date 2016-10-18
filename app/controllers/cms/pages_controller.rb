@@ -3,7 +3,7 @@ module Cms
   class PagesController < Cms::BaseController
     before_action :set_page_search_form, only: [:index, :published, :drafts, :published_category, :drafts_category, :archived, :archived_category, :search]
     before_action :set_page, only: [:show, :edit, :update, :destroy,
-                                    :update_tiles, :publish, :preview, :archive]
+                                    :update_tiles, :publish, :preview, :archive, :unarchive]
 
     def index
       redirect_to published_cms_pages_path
@@ -104,6 +104,11 @@ module Cms
     def archive
       @page.archive!
       redirect_to archived_cms_pages_path, notice: 'Archived page successfully!'
+    end
+
+    def unarchive
+      @page.unarchive!
+      redirect_to published_cms_pages_path, notice: 'Un-Archived page successfully!'
     end
 
     def preview

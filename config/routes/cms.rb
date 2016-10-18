@@ -22,6 +22,7 @@ namespace :cms do
       post :publish
       get :preview
       post :archive
+      post :unarchive
     end
   end
   resources :event_pages do
@@ -35,6 +36,7 @@ namespace :cms do
       post :publish
       get :preview
       post :archive
+      post :unarchive
     end
     resources :regonline_events, only: [:index, :edit, :update]
   end
@@ -61,6 +63,7 @@ namespace :cms do
       post :publish
       get :preview
       post :archive
+      post :unarchive
     end
   end
   resources :help_items
@@ -96,6 +99,7 @@ namespace :cms do
       post :publish
       get :preview
       post :archive
+      post :unarchive
     end
   end
   resources :footer_titles do

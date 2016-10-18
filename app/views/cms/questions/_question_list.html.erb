@@ -18,7 +18,11 @@
             <%= link_to 'Edit', edit_cms_question_path(question), class: 'btn btn-default' %>
           </td>
           <td>
-            <%= link_to 'Archive', archive_cms_question_path(question), class: 'btn btn-danger', data: { confirm: 'Are you sure?', method: :post } if !question.archived? %>
+            <% if question.archived? %>
+              <%= link_to 'Un-Archive', unarchive_cms_question_path(question), class: 'btn btn-danger', data: { confirm: 'Are you sure?', method: :post } %>
+            <% else %>
+              <%= link_to 'Archive', archive_cms_question_path(question), class: 'btn btn-danger', data: { confirm: 'Are you sure?', method: :post } %>
+            <% end %>
           </td>
         </tr>
       <% end %>

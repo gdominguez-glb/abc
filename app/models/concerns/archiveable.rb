@@ -9,4 +9,8 @@ module Archiveable
   def archive!
     update(archived: true, archived_at: Time.now)
   end
+
+  def unarchive!
+    update(archived: false, archived_at: nil)
+  end
 end

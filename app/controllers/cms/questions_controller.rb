@@ -62,6 +62,11 @@ class Cms::QuestionsController < Cms::BaseController
     redirect_to archived_cms_questions_path, notice: 'Archived faq successfully!'
   end
 
+  def unarchive
+    @question.unarchive!
+    redirect_to cms_questions_path, notice: 'Un-Archived faq successfully!'
+  end
+
   private
 
   def question_params
