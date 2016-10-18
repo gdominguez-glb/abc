@@ -59,7 +59,11 @@ class MarketingEditorApp.Views.Editor extends Backbone.View
       type: 'POST'
       data: { page: { tiles: { rows: @rows.toJSON() } } }
       success: (res)=>
-        $('[name="page[body_draft]"]').trumbowyg('html', res.body)
+        if $('[name="page[body_draft]"]').hasClass('trumbowyg-textarea')
+          $('[name="page[body_draft]"]').trumbowyg('html', res.body)
+        else
+          $('[name="page[body_draft]"]').val(res.body)
+
     )
 
   tilesJSON: ->
