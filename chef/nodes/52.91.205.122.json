@@ -5,6 +5,7 @@
     "recipe[greatminds::users]",
     "recipe[greatminds::monit]",
     "recipe[greatminds::nodejs]",
+    "recipe[greatminds::memcached]",
     "recipe[greatminds::mysql]",
     "recipe[greatminds::postgres_lib]",
     "recipe[greatminds::imagemagick]",
@@ -46,6 +47,7 @@
   "redis_host": "172.31.0.166",
   "elasticsearch_url": "172.31.61.66",
   "app_server": "true",
+  "memcached_server": "true",
   "ssl": {
     "ssl_certificate": "/etc/ssl/wild_greatminds_org_combined.pem",
     "ssl_certificate_key": "/etc/ssl/greatminds_org.key"
