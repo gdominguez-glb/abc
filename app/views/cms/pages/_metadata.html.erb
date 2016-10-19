@@ -3,7 +3,7 @@
     <div class="panel-heading padding-top--s padding-bottom--s">
       <h3 class="panel-title panel-title--s">
         <% page_url = page_url(slug: @page.slug) %>
-        Permalink: <%= link_to page_url, page_url, target: '_blank', class: 'text--lowercase' %>
+        Permalink: <%= link_to page_url, page_url, target: '_blank', class: 'text--lowercase permalink-link' %>
     </h3>
     </div>
   <% end %>

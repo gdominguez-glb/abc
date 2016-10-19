@@ -5,6 +5,7 @@
         <th>Title</th>
         <th>Category</th>
         <th>Display</th>
+        <th>Status</th>
         <th colspan="2"></th>
       </tr>
     </thead>
@@ -14,6 +15,7 @@
           <td><%= question.title %></td>
           <td><%= question.faq_category.try(:name) %></td>
           <td><%= question.display %></td>
+          <td><span class="label label-english"><%= cms_display_status(question) %></span></td>
           <td>
             <%= link_to 'Edit', edit_cms_question_path(question), class: 'btn btn-default' %>
           </td>

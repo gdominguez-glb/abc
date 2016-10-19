@@ -77,4 +77,5 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.action_controller.perform_caching = true
+  config.cache_store = :mem_cache_store, ENV['MEMCACACHED_URL']
 end

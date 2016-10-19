@@ -76,6 +76,10 @@
     $(function(){
       MarketingEditorApp.tilesDefinitions = <%= raw Page::TILES.to_json %>;
       var pageView = new MarketingEditorApp.Views.PageView({el: '.page-form', tiles: <%= raw @page.tiles.to_json %>});
+
+      $('.permalink-link').click(function(){
+        $(this).blur();
+      });
     });
   </script>
 <% end %>

@@ -29,7 +29,7 @@ class Cms::QuestionsController < Cms::BaseController
   def create
     @question = Question.new(question_params)
     if @question.save
-      redirect_to cms_questions_path, notice: 'Created question successfully!'
+      redirect_to edit_cms_question_path(@question), notice: 'Created question successfully!'
     else
       render :new
     end
@@ -41,7 +41,7 @@ class Cms::QuestionsController < Cms::BaseController
   def update
     draft_status = @question.published? ? :draft_in_progress : :draft
     if @question.update(question_params.merge(draft_status: draft_status))
-      redirect_to cms_questions_path, notice: 'Updated question successfully!'
+      redirect_to edit_cms_question_path(@question), notice: 'Updated question successfully!'
     else
       render :edit
     end
