@@ -31,3 +31,5 @@ hightail_username: ''
 hightail_password: ''
 
 mailchimp_api_key: '4e6818c68fc256c11636a406bbcb3527-us11'
+
+MEMCACACHED_URL: 'localhost'

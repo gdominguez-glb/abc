@@ -105,6 +105,8 @@ gem "flipper"
 gem "flipper-redis"
 gem "flipper-ui"
 
+gem "dalli" # memcache
+
 group :development do
   gem 'quiet_assets'
   gem 'letter_opener'

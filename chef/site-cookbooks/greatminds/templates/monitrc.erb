@@ -51,3 +51,14 @@ check process haproxy-server with pidfile "/var/run/haproxy.pid"
   start program = "/etc/init.d/haproxy start"
   stop program = "/etc/init.d/haproxy stop"
 <% end %>
+
+
+<% if node['memcached_server'] == 'true' %>
+check process memcached with pidfile /var/run/memcached.pid
+  start program = "/etc/init.d/memcached start"
+  stop program  = "/etc/init.d/memcached stop"
+  if failed port 11211 then restart
+  if 5 restarts with 5 cycles then timeout
+  if cpu usage is greater than 60 percent for 2 cycles then alert
+  if cpu usage > 98% for 5 cycles then restart
+<% end %>
