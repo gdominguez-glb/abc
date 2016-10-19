@@ -23,14 +23,8 @@
         <td><%= product_distribution.to_user.try(:email) || product_distribution.email %></td>
         <td><%= product_distribution.to_user.school_district.try(:name) rescue nil %></td>
         <td>
-          <% if product_distribution.to_user %>
-            <% product_distribution.to_user.licensed_products_from(current_spree_user).group_by(&:product).each do |product, licenses| %>
-              <%= product.name %>(x<%= licenses.map(&:quantity).sum %>) <br/>
-            <% end %>
-          <% else %>
-            <% Spree::ProductDistribution.from_user_to_email(current_spree_user, product_distribution.email).each do |_product_distribution| %>
-              <%= _product_distribution.product.name %>(x<%= _product_distribution.quantity %>)
-            <% end %>
+          <% Spree::ProductDistribution.from_user_to_email(current_spree_user, product_distribution.email).each do |_product_distribution| %>
+            <%= _product_distribution.product.name %>(x<%= _product_distribution.quantity %>)
           <% end %>
         </td>
         <td><%= product_distribution.to_user.last_active_date.strftime("%b %-d, %Y") rescue nil %></td>
