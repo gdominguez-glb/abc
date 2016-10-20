@@ -6,6 +6,7 @@ class MarketingEditorApp.Views.Editor extends Backbone.View
     tilesData         = opts.tilesData || {}
     @rows             = new MarketingEditorApp.Collections.RowsCollection(tilesData.rows || [])
     @updateUrl        = opts.updateUrl
+    @btnToDisabled    = opts.btnToDisabled
 
   render: ->
     @rows.each((row)=>
@@ -54,6 +55,9 @@ class MarketingEditorApp.Views.Editor extends Backbone.View
     )
 
   processTiles: ->
+    origin_text = @btnToDisabled.val()
+    @btnToDisabled.attr('disabled', true)
+    @btnToDisabled.val('Rendering tiles')
     $.ajax(
       url: '/cms/pages/process_tiles'
       type: 'POST'
@@ -64,6 +68,8 @@ class MarketingEditorApp.Views.Editor extends Backbone.View
         else
           $('[name="page[body_draft]"]').val(res.body)
 
+        @btnToDisabled.val(origin_text)
+        @btnToDisabled.attr('disabled', false)
     )
 
   tilesJSON: ->

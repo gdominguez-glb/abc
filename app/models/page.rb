@@ -52,6 +52,7 @@ class Page < ActiveRecord::Base
   }
 
 
+  before_save :lowercase_group_name
   #before_save :generate_page_from_tiles
 
   TILES = YAML.load_file(Rails.root.join('config/tiles.yml'))
@@ -86,5 +87,9 @@ class Page < ActiveRecord::Base
         tile[k] = sanitize(v.strip, attributes: ['href', 'target', 'title'])
       end
     end
+  end
+
+  def lowercase_group_name
+    self.group_name = self.group_name.strip.downcase if self.group_name.present?
   end
 end

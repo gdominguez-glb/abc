@@ -7,7 +7,8 @@ class MarketingEditorApp.Views.PageView extends Backbone.View
   renderTilesEditor: ->
     @editor = new MarketingEditorApp.Views.Editor(
       el: @$('#editor'),
-      tilesData: @tiles
+      tilesData: @tiles,
+      btnToDisabled: @$('#save-draft-btn')
     )
     @editor.render()
 

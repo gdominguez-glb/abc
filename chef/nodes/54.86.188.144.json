@@ -47,5 +47,6 @@
   "search_server": "true",
   "worker_server": "true",
   "witeng_link_domain": "witeng.link",
-  "vanity_urls": "witeng.link eurmath.link"
+  "vanity_urls": "witeng.link eurmath.link",
+  "memcached_url": "172.31.51.27"
 }
