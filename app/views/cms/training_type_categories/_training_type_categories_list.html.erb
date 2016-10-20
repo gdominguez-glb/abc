@@ -1,0 +1,25 @@
+<div class="table-responsive">
+  <table class='table table-striped table-hover event-trainings-list'>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Is Default</th>
+        <th>Slug</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @training_type_categories.each do |training_type_category| %>
+        <tr data-id="<%= training_type_category.id %>">
+          <td><%= training_type_category.title %></td>
+          <td><%= training_type_category.is_default? ? 'Yes' : 'No' %></td>
+          <td><%= training_type_category.slug %></td>
+          <td><%= link_to 'Manage Types', cms_training_type_category_event_trainings_path(training_type_category)  %></td>
+          <td><%= link_to 'Edit', edit_cms_training_type_category_path(training_type_category) %></td>
+          <td><%= link_to 'Destroy', [:cms, training_type_category], method: :delete, data: { confirm: 'Are you sure?' }, class: 'text--danger' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

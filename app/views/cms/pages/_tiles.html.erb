@@ -1,0 +1,33 @@
+<div id="editor">
+  <% if @page.persisted? %>
+    <div class="panel panel-primary">
+      <div class="panel-heading padding-top--s padding-bottom--s">
+        <h3 class="panel-title panel-title--s">
+          <% page_url = page_url(slug: @page.slug) %>
+          Permalink: <%= link_to page_url, page_url, target: '_blank', class: 'text--lowercase permalink-link' %>
+      </h3>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-md-6">
+      <label>Select Tile Type</label>
+      <div class="select-container dark-select block">
+        <span>Select Tile Type</span>
+        <%= select_tag :row_type, options_for_select(Page::TILES.map{|t| t[:name] }), class: 'row-type-select form-control' %>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label>&nbsp;</label>
+      <button class="btn btn-primary btn-block add-tile-row-btn">Add New Tile Row</button>
+    </div>
+  </div>
+
+  <div class="alert alert-success tile-notice" style="display:none;"></div>
+
+  <div class="alert alert-info"><i class="mi">info_outline</i> Please note: You must assign a unique position to each tile, and save your changes before collapsing tiles will function.</div>
+
+  <div class="rows">
+  </div>
+</div>

@@ -46,7 +46,7 @@ Spree::ProductsController.class_eval do
     if @product_group.blank?
       redirect_to not_found_path and return
     end
-    @products = @product_group.group_items.order('spree_group_items.created_at asc')
+    @products = @product_group.group_items.unexpire.unarchive.order('spree_group_items.created_at asc')
   end
 
   def show

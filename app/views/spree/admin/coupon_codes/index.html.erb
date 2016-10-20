@@ -10,29 +10,31 @@
   </div>
 <% end %>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Key</th>
-      <th>School/District</th>
-      <th>Products</th>
-      <th>Total Quantity</th>
-      <th>Used Quantity</th>
-      <th class="actions"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @coupon_codes.each do |coupon_code| %>
+<div class="table-responsive">
+  <table class="table">
+    <thead>
       <tr>
-        <td><%= link_to coupon_code.code, spree.admin_coupon_code_path(coupon_code) %></td>
-        <td><%= coupon_code.school_district.try(:name) %></td>
-        <td><%= coupon_code.products.map(&:name).join(', ') %></td>
-        <td><%= coupon_code.total_quantity %></td>
-        <td><%= coupon_code.used_quantity %></td>
-        <td></td>
+        <th>Key</th>
+        <th>School/District</th>
+        <th>Products</th>
+        <th>Total Quantity</th>
+        <th>Used Quantity</th>
+        <th class="actions"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @coupon_codes.each do |coupon_code| %>
+        <tr>
+          <td><%= link_to coupon_code.code, spree.admin_coupon_code_path(coupon_code) %></td>
+          <td><%= coupon_code.school_district.try(:name) %></td>
+          <td><%= coupon_code.products.map(&:name).join(', ') %></td>
+          <td><%= coupon_code.total_quantity %></td>
+          <td><%= coupon_code.used_quantity %></td>
+          <td></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
 <%= paginate @coupon_codes %>

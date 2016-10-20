@@ -1,4 +1,7 @@
 <% if @video %>
+  if($('.video-play-modal').length > 0){
+    $('.video-play-modal').modal('hide');
+  }
   $("body").append("<%= escape_javascript(render 'video_modal') %>");
   $(".video-play-modal-<%= @video.id %>").on("hidden.bs.modal", function() {
     $(".video-play-modal-<%= @video.id %>").remove();

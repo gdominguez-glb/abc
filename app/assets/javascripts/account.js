@@ -1,84 +1,23 @@
-window.initMyProductsSlick = function() {
-  // Products slider
-  $(".my-products .col-md-4").removeClass('hide');
-  $(".js-next-product .mi, .js-prev-product .mi").removeClass('hide');
-  $(".my-products").slick({
-    dots: true,
-    infinite: true,
-    speed: 300,
-    slidesToShow: 3,
-    slidesToScroll: 3,
-    adaptiveHeight: true,
-    prevArrow: $('.js-prev-product'),
-    nextArrow: $('.js-next-product'),
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          infinite: true,
-          dots: true
-        }
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-      // You can unslick at a given breakpoint by adding:
-      // settings: "unslick"
-      // instead of a settings object
-    ]
-  });
-};
+// This is a manifest file that'll be compiled into application.js, which will include all the files
+// listed below.
+//
+// Any JavaScript/Coffee file within this directory, lib/assets/javascripts, vendor/assets/javascripts,
+// or vendor/assets/javascripts of plugins, if any, can be referenced here using a relative path.
+//
+// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
+// compiled file.
+//
+// Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
+// about supported directives.
 
-$(function(){
+// Gems
+//= require underscore
 
-  window.initMyProductsSlick();
+// Vendor
+// Shepherd requires Tether
+//= require tether
+//= require shepherd
 
-  function debounce(func, wait, immediate) {
-    var timeout;
-    return function() {
-      var context = this, args = arguments;
-      var later = function() {
-        timeout = null;
-        if (!immediate) {
-          func.apply(context, args);
-        }
-      };
-      var callNow = immediate && !timeout;
-      clearTimeout(timeout);
-      timeout = setTimeout(later, wait);
-      if (callNow) {
-        func.apply(context, args);
-      }
-    };
-  }
-
-});
-
-
-var shepherdHelper = {
-  stepFactory: function(tour, title, text, attach, cancel, buttonsFlag) {
-    var button = [{text: 'Next', action: tour.next}];
-
-    if (buttonsFlag) {
-      button = [{
-        text: 'Exit',
-        classes: 'shepherd-button-secondary',
-        action: 'shepherd.cancel'
-      }];
-    }
-
-    return {
-      title: title,
-      text: text,
-      attachTo: attach,
-      showCancelLink: cancel,
-      buttons: button
-    };
-  }
-};
+// App
+//= require_tree ./account
+//= require frontend/user_form

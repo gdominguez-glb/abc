@@ -41,4 +41,14 @@ module AccountHelper
       product_material_link(item)
     end
   end
+
+  def cms_display_status(item)
+    if item.draft_status === 'draft_published'
+      'published'
+    elsif item.draft_status === 'draft_in_progress'
+      'in progress'
+    else
+      'draft'
+    end
+  end
 end

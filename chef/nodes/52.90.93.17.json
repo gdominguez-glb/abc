@@ -6,11 +6,12 @@
     "recipe[greatminds::nodejs]",
     "recipe[greatminds::postgres]",
     "recipe[greatminds::mysql]",
+    "recipe[greatminds::memcached]",
     "recipe[greatminds::redis]",
     "recipe[greatminds::elasticsearch]",
     "recipe[greatminds::imagemagick]",
     "recipe[greatminds::rbenv]",
-    "recipe[greatminds::nginx]",
+    "recipe[greatminds::nginx_with_pagespeed]",
     "recipe[greatminds::app]",
     "recipe[greatminds::backup]"
   ],
@@ -50,5 +51,6 @@
     "ssl_certificate_key": "/etc/ssl/greatminds_org.key"
   },
   "witeng_link_domain": "staging.witeng.link",
-  "vanity_urls": "staging.witeng.link staging.eurmath.link"
+  "vanity_urls": "staging.witeng.link staging.eurmath.link",
+  "pagespeed": "true"
 }

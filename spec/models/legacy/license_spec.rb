@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Legacy::License, type: :model do
   let!(:product) { create(:product, name: 'Sample Product') }
-  let!(:expiration_date) { Date.new(2016, 6, 30) }
+  let!(:expiration_date) { Date.new(2016, 6, 29) }
 
   before(:each) do
     create(:legacy_license, email: 'john@example.com', from_email: 'author@example.com', mapped_name: 'Sample Product', expiration_date: expiration_date)
@@ -19,7 +19,7 @@ RSpec.describe Legacy::License, type: :model do
 
       expect(licensed_product.count).to eq(2)
       expect(licensed_product.last.product).to eq(product)
-      expect(licensed_product.last.expire_at).to eq(expiration_date)
+      expect(licensed_product.last.expire_at.to_date).to eq(expiration_date)
       expect(licensed_product.last.quantity).to eq(1)
     end
   end

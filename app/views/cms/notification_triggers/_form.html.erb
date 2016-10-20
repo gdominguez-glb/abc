@@ -10,114 +10,121 @@
       </ul>
     </div>
   <% end %>
-  <div class="row">
-    <div class="col-sm-6">
+
+  <div class="panel panel-primary">
+    <div class="panel-heading padding-top--s padding-bottom--s">
+      <h3 class="panel-title panel-title--s">Notification</h3>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <%= f.label :target_type %>
+            <div class="select-container dark-select block">
+              <span>Select Target</span>
+              <%= f.select :target_type, NotificationTrigger::TARGET_TYPES, { include_blank: 'Please Select' }, class: 'form-control' %>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group target-input" data-input="single_user">
+            <%= f.label :single_user %>
+            <div>
+              <%= f.hidden_field :single_user_id, style: 'width: 100%', class: 'form-control' %>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group hidden target-input" data-input="group_users">
+            <%= f.label :group_users %>
+            <div>
+              <%= f.hidden_field :user_ids, style: 'width: 100%', class: 'form-control' %>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group hidden target-input" data-input="school_district">
+            <%= f.label :school_district_admin %>
+            <div>
+              <%= f.hidden_field :school_district_admin_user_id, style: 'width: 100%', class: 'form-control'  %>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group hidden target-input" data-input="user_type">
+            <%= f.label :user_type %>
+            <div class="select-container dark-select block">
+              <span>User Type</span>
+              <%= f.select :user_type, USER_TITLES, {}, class: 'form-control' %>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group hidden target-input" data-input="curriculum_users">
+            <%= f.label :curriculum %>
+            <div class="select-container dark-select block">
+              <span>Curriculum</span>
+              <%= f.collection_select :curriculum_id, Curriculum.visibles, :id, :name, {}, class: 'form-control' %>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group hidden target-input" data-input="zip_codes">
+            <%= f.label :zip_codes %>
+            <%= f.text_field :zip_codes, class: 'form-control', placeholder: 'Separate zip code by comma, for example: 10000, 11000' %>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group" style="position: relative;">
+            <%= f.label :notify_at %>
+            <%= f.text_field :notify_at, class: 'form-control datetime-picker' %>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group" style="position: relative;">
+            <%= f.label :expire_at %>
+            <%= f.text_field :expire_at, class: 'form-control datetime-picker' %>
+            <p class="hint">Won't display in dashboard if expired.</p>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group hidden target-input" data-input="product">
+            <%= f.label :product %>
+            <div class="select-container dark-select block">
+              <span>Select Product</span>
+              <%= f.collection_select :product_id, Spree::Product.where(individual_sale: true).all, :id, :name, { include_blank: 'Select Product' }, class: 'form-control' %>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="form-group">
+            <div class="checkbox">
+              <%= f.label 'Send to dashboard notification' do %>
+                <%= f.check_box :dashboard %> Send to dashboard notification
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="form-group">
+            <div class="checkbox">
+              <%= f.label 'Send via email' do %>
+                <%= f.check_box :email %> Send via email
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="alert alert-warning">
+        <small><i class="mi">warning</i> Please note: If you are embedding a URL you can use an HTML link (like this: &lt;a href="//www.example.com"&gt;link &lt;/a&gt;) but please be sure to prefix with "<strong>//</strong>".</small>
+      </div>
       <div class="form-group">
-        <%= f.label :target_type %>
-        <div class="select-container dark-select block">
-          <span>Select Target</span>
-          <%= f.select :target_type, NotificationTrigger::TARGET_TYPES, { include_blank: 'Please Select' }, class: 'form-control' %>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-6">
-      <div class="form-group target-input" data-input="single_user">
-        <%= f.label :single_user %>
-        <div>
-          <%= f.hidden_field :single_user_id, style: 'width: 100%', class: 'form-control' %>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-6">
-      <div class="form-group hidden target-input" data-input="group_users">
-        <%= f.label :group_users %>
-        <div>
-          <%= f.hidden_field :user_ids, style: 'width: 100%', class: 'form-control' %>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-6">
-      <div class="form-group hidden target-input" data-input="school_district">
-        <%= f.label :school_district_admin %>
-        <div>
-          <%= f.hidden_field :school_district_admin_user_id, style: 'width: 100%', class: 'form-control'  %>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-6">
-      <div class="form-group hidden target-input" data-input="user_type">
-        <%= f.label :user_type %>
-        <div class="select-container dark-select block">
-          <span>User Type</span>
-          <%= f.select :user_type, USER_TITLES, {}, class: 'form-control' %>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-6">
-      <div class="form-group hidden target-input" data-input="curriculum_users">
-        <%= f.label :curriculum %>
-        <div class="select-container dark-select block">
-          <span>Curriculum</span>
-          <%= f.collection_select :curriculum_id, Curriculum.visibles, :id, :name, {}, class: 'form-control' %>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-6">
-      <div class="form-group hidden target-input" data-input="zip_codes">
-        <%= f.label :zip_codes %>
-        <%= f.text_field :zip_codes, class: 'form-control', placeholder: 'Separate zip code by comma, for example: 10000, 11000' %>
-      </div>
-    </div>
-    <div class="col-sm-6">
-      <div class="form-group" style="position: relative;">
-        <%= f.label :notify_at %>
-        <%= f.text_field :notify_at, class: 'form-control datetime-picker' %>
-      </div>
-    </div>
-    <div class="col-sm-6">
-      <div class="form-group" style="position: relative;">
-        <%= f.label :expire_at %>
-        <%= f.text_field :expire_at, class: 'form-control datetime-picker' %>
-        <p class="hint">Won't display in dashboard if expired.</p>
-      </div>
-    </div>
-    <div class="col-sm-6">
-      <div class="form-group hidden target-input" data-input="product">
-        <%= f.label :product %>
-        <div class="select-container dark-select block">
-          <span>Select Product</span>
-          <%= f.collection_select :product_id, Spree::Product.where(individual_sale: true).all, :id, :name, { include_blank: 'Select Product' }, class: 'form-control' %>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-12">
-      <div class="form-group">
-        <div class="checkbox">
-          <%= f.label 'Send to dashboard notification' do %>
-            <%= f.check_box :dashboard %> Send to dashboard notification
-          <% end %>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-12">
-      <div class="form-group">
-        <div class="checkbox">
-          <%= f.label 'Send via email' do %>
-            <%= f.check_box :email %> Send via email
-          <% end %>
-        </div>
+        <%= f.label :content %>
+        <%= f.text_area :content, class: 'form-control' %>
       </div>
     </div>
   </div>
-  <div class="alert alert-warning">
-    <small><i class="mi">warning</i> Please note: If you are embedding a URL you can use an HTML link (like this: &lt;a href="//www.example.com"&gt;link &lt;/a&gt;) but please be sure to prefix with "<strong>//</strong>".</small>
-  </div>
-  <div class="form-group">
-    <%= f.label :content %>
-    <%= f.text_area :content, class: 'form-control' %>
-  </div>
-  <div class="form-group">
-    <%= f.submit class: 'btn btn-success' %>
-  </div>
+
+  <%= f.submit class: 'btn btn-success btn-block-xs' %>
 <% end %>
 <%= render 'form_js' %>

@@ -1,55 +1,11 @@
 <%= render 'cms_nav' %>
+
 <div class="col-md-9">
-  <h2>Faq Categories</h2>
-  <%= link_to "New Faq Category", new_cms_faq_category_path, class: 'btn btn-primary margin-bottom--xl' %>
-  <table class="table contact-topics-list">
-    <thead>
-      <tr>
-        <th></th>
-        <th>Name</th>
-        <th>Display</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @faq_categories.each do |faq_category| %>
-        <tr data-id="<%= faq_category.id %>">
-          <td><span class="glyphicon glyphicon-resize-vertical" aria-hidden="true"></span></td>
-          <td><%= faq_category.name %></td>
-          <td><%= faq_category.display? ? 'Yes' : 'No' %></td>
-          <td>
-            <%= link_to 'Edit', edit_cms_faq_category_path(faq_category), class: 'btn btn-default' %>
-            <%= link_to 'Delete', cms_faq_category_path(faq_category), class: 'btn btn-danger', data: { confirm: 'Are you sure?', method: :delete } %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+  <%= render partial: 'search_bar' %>
+  <div class="panel panel-primary">
+    <div class="panel-heading padding-top--s padding-bottom--s">
+      <h3 class="panel-title panel-title-s">FAQ Categories</h3>
+    </div>
+    <%= render partial: 'faq_categories_list' %>
+  </div>
 </div>
-<%= content_for :javascripts do %>
-  <%= javascript_tag do %>
-    function updatePositions() {
-      var data = {}
-      $.each($(".contact-topics-list tbody tr"), function(index, element) {
-        data[$(element).attr('data-id')] = index;
-      });
-      $.ajax({
-        url: '/cms/faq_categories/update_positions',
-        type: 'POST',
-        data: { positions: data }
-      })
-    }
-    $(function(){
-      $(".contact-topics-list").sortable({
-        containerSelector: 'table',
-        itemPath: '> tbody',
-        itemSelector: 'tr',
-        placeholder: '<tr class="placeholder"/>',
-        onDrop: function  (item, container, _super) {
-          _super(item);
-          updatePositions();
-        }
-      })
-    });
-  <% end %>
-<% end %>

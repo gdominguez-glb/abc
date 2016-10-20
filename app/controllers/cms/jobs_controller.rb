@@ -1,8 +1,23 @@
 class Cms::JobsController < Cms::BaseController
-  before_action :find_job, except: [:index, :new, :create, :update_positions]
+  skip_before_action :authenticate_admin_in_cms!
+  before_action :authenticate_hr_admin_in_cms!
+
+  before_action :find_job, except: [:index, :new, :create, :update_positions, :published, :drafts, :archived]
 
   def index
-    @jobs = Job.order(:position)
+    redirect_to published_cms_jobs_path
+  end
+
+  def published
+    @jobs = Job.published.unarchive.order(:position)
+  end
+
+  def drafts
+    @jobs = Job.draft.unarchive.order(:position)
+  end
+
+  def archived
+    @jobs = Job.archived.order(:position)
   end
 
   def new
@@ -22,7 +37,8 @@ class Cms::JobsController < Cms::BaseController
   end
 
   def update
-    if @job.update(job_params)
+    draft_status = @job.published? ? :draft_in_progress : :draft
+    if @job.update(job_params.merge(draft_status: draft_status))
       redirect_to cms_jobs_path, notice: 'Updated job successfully!'
     else
       render :edit
@@ -39,10 +55,29 @@ class Cms::JobsController < Cms::BaseController
     render nothing: true
   end
 
+  def publish
+    @job.publish!
+    redirect_to edit_cms_job_path(@job), notice: 'Publish career successfully!'
+  end
+
+  def preview
+    render layout: 'application'
+  end
+
+  def archive
+    @job.archive!
+    redirect_to archived_cms_jobs_path, notice: 'Archived career successfully!'
+  end
+
+  def unarchive
+    @job.unarchive!
+    redirect_to cms_jobs_path, notice: 'Un-Archived career successfully!'
+  end
+
   private
 
   def job_params
-    params.require(:job).permit(:title, :content, :display)
+    params.require(:job).permit(:title, :content_draft, :display)
   end
 
   def find_job

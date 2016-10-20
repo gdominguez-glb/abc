@@ -50,12 +50,18 @@
     }
   }
 
+  .first,
   .prev,
-  .next {
+  .next_page,
+  .last {
     display: none;
 
     @media screen and (min-width: $screen-sm-min) {
       display: inline;
     }
+  }
+
+  .panel & {
+    margin: $b-space-s 0 0 $b-space-s;
   }
 }

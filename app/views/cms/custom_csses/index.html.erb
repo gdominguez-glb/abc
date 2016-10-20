@@ -1,29 +1,11 @@
 <%= render 'cms_nav' %>
+
 <div class="col-md-9">
-  <h2>Custom Css</h2>
-  <%= link_to 'Create new Custom Css', new_cms_custom_css_path, class: 'btn btn-primary margin-bottom--l' %>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Page</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @custom_csses.each do |custom_css| %>
-        <tr>
-          <td><%= custom_css.name %></td>
-          <td><%= custom_css.custom_type %></td>
-          <td><%= custom_css.page.try(:title) %></td>
-          <td>
-            <%= link_to 'Edit', edit_cms_custom_css_path(custom_css) %>
-            <%= link_to 'Delete', cms_custom_css_path(custom_css), data: { confirm: 'Are you sure?', method: :delete } %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-  <%= paginate @custom_csses %>
+  <%= render partial: 'search_bar' %>
+  <div class="panel panel-primary">
+    <div class="panel-heading padding-top--s padding-bottom--s">
+      <h3 class="panel-title panel-title-s">Custom CSS</h3>
+    </div>
+    <%= render partial: 'custom_css_list' %>
+  </div>
 </div>

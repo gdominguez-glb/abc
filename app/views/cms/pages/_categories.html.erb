@@ -1,0 +1,17 @@
+<div class="table-responsive">
+  <table class='table table-striped table-hover'>
+    <tbody>
+      <% Curriculum.all.each do |curriculum| %>
+        <tr>
+          <td><%= link_to curriculum.name, "/cms/pages/#{state}/#{curriculum.name}" %></td>
+        </tr>
+      <% end %>
+      <tr>
+        <td><%= link_to 'Footer', "/cms/pages/#{state}/Footer" %></td>
+      </tr>
+      <tr>
+        <td><%= link_to 'Enterprise', "/cms/pages/#{state}/Enterprise" %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

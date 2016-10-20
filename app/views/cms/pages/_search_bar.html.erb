@@ -1,0 +1,38 @@
+<% if notice %>
+  <p id="notice"><%= notice %></p>
+<% end %>
+
+<div class="panel panel-primary">
+  <div class="panel-body panel-body--padding">
+    <div class="row">
+      <div class="col-sm-12 text-right">
+        <%= link_to 'Add Page', new_cms_page_path, class: 'btn btn-success btn-block-xs margin-right--reset margin-bottom--s' %>        
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-5">
+        <ul class="nav nav-tabs margin-bottom-s--lg-min">
+          <li>
+            <%= link_to 'Published', '/cms/pages/published', class: (selected_state == 'published' ? 'active' : '') %>
+          </li>
+          <li>
+            <%= link_to 'Drafts', '/cms/pages/drafts', class: (selected_state == 'drafts' ? 'active' : '') %>
+          </li>
+          <li>
+            <%= link_to 'Archived', '/cms/pages/archived', class: (selected_state == 'archived' ? 'active' : '') %>
+          </li>
+        </ul>
+      </div>
+      <div class="col-lg-7 text-right">
+        <div class="form-inline">
+          <%= search_form_for @q, url: search_cms_pages_path, class: 'inline' do |f| %>
+            <div class="form-group margin-bottom--reset">
+              <%= f.text_field :title_or_slug_or_curriculum_name_cont, class: 'form-control margin-bottom--s--sm-min' %>
+              <%= submit_tag 'Search', class: 'btn btn-primary btn-block-xs margin-bottom--s--sm-min margin-right--reset' %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

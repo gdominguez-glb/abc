@@ -2,17 +2,19 @@
   Product Key / <%= link_to @coupon_code.code, admin_coupon_code_path(@coupon_code)  %> / <%= @product.name %>
 <% end %>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Email</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @emails.each do |email| %>
+<div class="table-responsive">
+  <table class="table">
+    <thead>
       <tr>
-        <td><%= email %></td>
+        <th>Email</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @emails.each do |email| %>
+        <tr>
+          <td><%= email %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

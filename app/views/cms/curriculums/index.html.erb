@@ -1,40 +1,14 @@
 <%= render 'cms_nav' %>
 
 <div class="col-md-9">
-  <h2>Curriculums</h2>
-  <%= link_to 'Create new curriculum', new_cms_curriculum_path, class: 'btn btn-primary margin-bottom--l' %>
-
+  <%= render partial: 'search_bar' %>
   <div class="alert alert-info" role="alert">
     <i class="mi">warning</i> To make a new curriculum show up in the nav, you also need to create a new page under <a href="/cms/pages">Sections > Pages</a> that belongs to the new curriculum, and this page needs to have 'Show in nav' and 'Group root' checked. (check Overview page for example.)
   </div>
-  <div class="table-responsive">
-    <table class="table table-striped table-hover">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Position</th>
-          <th>Visible</th>
-          <th colspan="2"></th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @curriculums.each do |curriculum| %>
-          <tr>
-            <td><%= curriculum.name %></td>
-            <td><%= curriculum.position %></td>
-            <td><%= curriculum.visible ? 'Yes' : 'No' %></td>
-            <td>
-              <%= link_to 'Edit', edit_cms_curriculum_path(curriculum) %>
-            </td>
-            <td>
-              <%= link_to 'Destroy', [:cms, curriculum], method: :delete, data: { confirm: 'Are you sure?' }, class: 'text--danger' %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+  <div class="panel panel-primary">
+    <div class="panel-heading padding-top--s padding-bottom--s">
+      <h3 class="panel-title panel-title-s">Curriculums</h3>
+    </div>
+    <%= render partial: 'curriculum_list' %>
   </div>
-
-  <%= paginate @curriculums %>
 </div>

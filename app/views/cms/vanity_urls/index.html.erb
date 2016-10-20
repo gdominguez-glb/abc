@@ -1,59 +1,11 @@
 <%= render 'cms_nav' %>
 
 <div class="col-md-9">
-  <h2>Vanity Url</h2>
-  <%= link_to 'Create new Vanity Url', new_cms_vanity_url_path, class: 'btn btn-primary margin-bottom--l' %>
-
-  <%= form_tag cms_vanity_urls_path, method: :get, class: 'form' do %>
-    <div class="row">
-      <div class="col-md-5">
-        <label>Search By Url</label>
-      </div>
-      <div class="col-md-5">
-        <label>Search By Tag</label>
-      </div>
+  <%= render partial: 'search_bar' %>
+  <div class="panel panel-primary">
+    <div class="panel-heading padding-top--s padding-bottom--s">
+      <h3 class="panel-title panel-title-s">Vanity Urls</h3>
     </div>
-    <div class="row">
-      <div class="col-md-5">
-        <%= text_field_tag :url_q, params[:url_q], class: 'form-control' %>
-      </div>
-      <div class="col-md-5">
-        <%= text_field_tag :tag_q, params[:tag_q], class: 'form-control' %>
-      </div>
-      <div class="col-md-2">
-        <%= submit_tag 'Search', class: 'btn btn-primary' %>
-      </div>
-    </div>
-  <% end %>
-
-  <div class="table-responsive">
-    <table class="table table-striped table-hover">
-      <thead>
-        <tr>
-          <th>Vanity Url</th>
-          <th>Redirect Url</th>
-          <th>Tags</th>
-          <th colspan="2"></th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @vanity_urls.each do |vanity_url| %>
-          <tr>
-            <td><%= vanity_url.url %></td>
-            <td><%= vanity_url.redirect_url %></td>
-            <td><%= vanity_url.tag_list.sort.join(', ') %></td>
-            <td>
-              <%= link_to 'Edit', edit_cms_vanity_url_path(vanity_url) %>
-            </td>
-            <td>
-              <%= link_to 'Destroy', [:cms, vanity_url], method: :delete, data: { confirm: 'Are you sure?' }, class: 'text--danger' %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+    <%= render partial: 'vanity_urls_list' %>
   </div>
-
-  <%= paginate @vanity_urls %>
 </div>

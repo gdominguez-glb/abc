@@ -2,7 +2,6 @@
   "run_list": [
     "recipe[greatminds]",
     "recipe[greatminds::users]",
-    // "recipe[greatminds::iptables]",
     "recipe[greatminds::monit]",
     "recipe[greatminds::nodejs]",
     "recipe[greatminds::mysql]",
@@ -53,5 +52,6 @@
     "ssl_certificate_key": "/etc/ssl/greatminds_org.key"
   },
   "witeng_link_domain": "qa.witeng.link",
-  "vanity_urls": "qa.witeng.link qa.eurmath.link"
+  "vanity_urls": "qa.witeng.link qa.eurmath.link",
+  "pagespeed": "true"
 }

@@ -46,5 +46,6 @@
   "elasticsearch_url": "172.31.61.66",
   "db_server": "true",
   "witeng_link_domain": "witeng.link",
-  "vanity_urls": "witeng.link eurmath.link"
+  "vanity_urls": "witeng.link eurmath.link",
+  "memcached_url": "172.31.51.27"
 }

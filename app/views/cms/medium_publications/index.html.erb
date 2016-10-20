@@ -1,41 +1,15 @@
 <%= render 'cms_nav' %>
 
 <div class="col-md-9">
-  <h2>Medium Publications Lists</h2>
-  <%= link_to 'Create new medium publication', new_cms_medium_publication_path, class: 'btn btn-primary margin-bottom--xl' %>
-  <div class="table-responsive">
-    <table class='table table-striped table-hover'>
-      <thead>
-        <tr>
-          <th>Title</th>
-          <th>Url</th>
-          <th>Blog Type</th>
-          <th>Curriculum Page</th>
-          <th>Unique Url</th>
-          <th>Position</th>
-          <th>Display</th>
-          <th colspan="3"></th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @medium_publications.each do |medium_publication| %>
-          <tr>
-            <td><%= medium_publication.title %></td>
-            <td><%= medium_publication.url %></td>
-            <td><%= medium_publication.blog_type %></td>
-            <td><%= medium_publication.page.try(:group_name) %></td>
-            <td><%= medium_publication.slug %></td>
-            <td><%= medium_publication.position %></td>
-            <td><%= medium_publication.display ? 'Yes' : 'No' %></td>
-            <td><%= link_to 'Preview', preview_medium_publication_link(medium_publication), target: '_blank' %></td>
-            <td><%= link_to 'Edit', edit_cms_medium_publication_path(medium_publication) %></td>
-            <td><%= link_to 'Destroy', [:cms, medium_publication], method: :delete, data: { confirm: 'Are you sure?' }, class: 'text--danger' %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+  <%= render partial: 'search_bar' %>
+  <div class="panel panel-primary">
+    <div class="panel-heading padding-top--s padding-bottom--s">
+      <h3 class="panel-title panel-title-s">Medium Publications</h3>
+    </div>
+    <%= render partial: 'medium_publications_list' %>
   </div>
-  <p>All medium posts will be imported every 2 hours. To import immediately click follow button.</p>
+
+  <p>All medium posts will be imported every 2 hours. To import immediately click the following button.</p>
   <%= link_to "Import posts from medium", trigger_medium_importer_cms_medium_publications_path, class: 'btn btn-primary', remote: true, data: { method: :post, confirm: 'Are you sure to import medium posts immediately?' } %>
+  
 </div>

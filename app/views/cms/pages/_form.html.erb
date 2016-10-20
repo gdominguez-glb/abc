@@ -1,4 +1,5 @@
-<%= form_for([:cms, @page], class: 'form') do |f| %>
+<%= form_for([:cms, @page], html: { class: 'form page-form' }) do |f| %>
+  <%= hidden_field_tag :tab, params[:tab] %>
   <% if @page.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@page.errors.count, "error") %> prohibited this page from being saved:</h2>
@@ -11,111 +12,82 @@
     </div>
   <% end %>
 
-  <div class="row">
-    <div class="col-sm-6">
-      <div class="form-group">
-        <%= f.label :curriculum %>
-        <div class="select-container dark-select block margin-bottom--reset">
-          <span>Curriculum</span>
-          <%= f.select :curriculum_id, Curriculum.all.collect{|c| [c.name, c.id]}, { include_blank: 'Global', prompt: 'Choose curriculum' }, class: 'form-control' %>
+  <div>
+
+    <div class="panel panel-primary">
+      <div class="panel-body panel-body--padding">
+        <div class="row">
+          <div class="col-lg-4">
+            <ul class="nav nav-tabs margin-bottom--s--lg-min page-editor-tabs">
+              <li class="active">
+                <a href="#tiles" data-toggle="tab">Tiles</a>
+              </li>
+              <li>
+                <a href="#metadata" data-toggle="tab">Metadata</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-lg-8 text-right">
+            <% if @page.persisted? %>
+              <%= link_to 'Preview Page', preview_cms_page_path(@page), class: 'btn btn-success btn-block-xs margin-bottom--s--sm-min', target: '_blank' %>
+            <% end %>
+          </div>
+
         </div>
-        <small class="help-block">To make sure this page display under subject/curriculum nav, you need to choose curriculum.</small>
+
       </div>
     </div>
-    <div class="col-sm-6">
-      <div class="form-group">
-        <%= f.label :title %>
-        <%= f.text_field :title, class: 'form-control' %>
+
+    <span class="label label-english margin-bottom">Status: <%= cms_display_status(@page) %></span>
+
+    <div class="tab-content">
+      <div class="tab-pane active" id="tiles">
+        <%= render partial: 'tiles', locals: { f: f } %>
+      </div>
+      <div class="tab-pane" id="metadata">
+        <%= render partial: 'metadata', locals: { f: f } %>
       </div>
     </div>
-    <div class="col-sm-12">
-      <div class="form-group">
-        <%= f.label :meta_keywords %>
-        <%= f.text_field :keywords, class: 'form-control' %>
-        <small class="help-block">Separate keywords using commas.</small>
-      </div>
-    </div>
-    <div class="col-sm-6">
-      <div class="form-group">
-        <%= f.label :meta_description %>
-        <%= f.text_field :description, class: 'form-control' %>
-      </div>
-    </div>
-    <div class="col-sm-6">
-      <div class="form-group">
-        <%= f.label 'Unique Url' %>
-        <%= f.text_field :slug, class: 'form-control' %>
-        <small class="help-block">URL should be entered without leading slash. See the permalink at top of the page for an example of how the full URL can be accessed on the site.</small>
-      </div>
-    </div>
-    <div class="col-sm-6">
-      <div class="form-group">
-        <%= f.label :group_name %>
-        <%= f.text_field :group_name, class: 'form-control' %>
-      </div>
-    </div>
-    <div class="col-sm-6">
-      <div class="form-group">
-        <%= f.label :sub_group_name %>
-        <%= f.text_field :sub_group_name, class: 'form-control' %>
-      </div>
-    </div>
-    <div class="col-sm-6">
-      <div class="form-group">
-        <%= f.label :position %>
-        <%= f.number_field :position, class: 'form-control' %>
-      </div>
-    </div>
-    <div class="col-sm-6">
-      <div class="form-group">
-        <%= f.label :layout %>
-        <%= f.text_field :layout, class: 'form-control' %>
-      </div>
-    </div>
-    <div class="col-sm-12">
-      <div class="form-group">
-        <%= f.label :body %>
-        <%= f.text_area :body, class: "form-control #{@page.body && @page.body.include?('form') ? '' : 'rich-editor'}", rows: 20 %>
-      </div>
-    </div>
-    <div class="col-sm-6">
-      <div class="checkbox">
-        <%= f.label :group_root do %>
-          <%= f.check_box :group_root %> Group Root
-        <% end %>
-        <small class="help-block">Checked this will make this page as group root, like Math Overview page, which has many sub pages.</small>
-      </div>
-    </div>
-    <div class="col-sm-6">
-      <div class="checkbox">
-        <%= f.label :show_in_nav do %>
-          <%= f.check_box :show_in_nav %> Show in Nav
-        <% end %>
-        <small class="help-block">Checked this will make this page display under top nav.</small>
-      </div>
-    </div>
+
   </div>
+
+  <span class="label label-english margin-bottom">Status: <%= cms_display_status(@page) %></span>
+
   <div class="row">
-    <div class="col-sm-6 margin-bottom--l">
-      <div class="checkbox">
-        <%= f.label :show_in_footer do %>
-          <%= f.check_box :show_in_footer %> Show in Footer
-        <% end %>
+    <% if @page.persisted? %>
+      <div class="col-sm-3">
+        <%= link_to 'Preview', preview_cms_page_path(@page), class: 'btn btn-default btn-block margin-bottom--s--sm-min', target: '_blank' %>
       </div>
-    </div>
-    <div class="col-sm-6">
-      <div class="checkbox">
-        <%= f.label :visible do %>
-          <%= f.check_box :visible %> Visible
-        <% end %>
-      </div>
-    </div>
-  </div>
-  <div class="row">
+    <% end %>
+
     <div class="col-sm-3">
-      <div class="form-group">
-        <%= f.submit class: 'btn btn-success btn-block' %>
-      </div>
+      <%= f.submit 'Save Draft', class: 'btn btn-primary btn-block save-page-btn margin-bottom--s--sm-min', id: 'save-draft-btn' %>
     </div>
+
+    <% if @page.persisted? %>
+      <div class="col-sm-3">
+        <%= link_to 'Publish Page', publish_cms_page_path(@page, tab: params[:tab]), class: 'btn btn-success btn-block margin-bottom--s--sm-min', data: { method: :post, confirm: 'Are you sure to publish this page? (Make sure you save draft first)', disable_with: 'Publishing' } %>
+      </div>
+    <% end %>
   </div>
+<% end %>
+
+<%= content_for :javascripts do %>
+  <script type="text/javascript">
+    $(function(){
+      MarketingEditorApp.tilesDefinitions = <%= raw Page::TILES.to_json %>;
+      var pageView = new MarketingEditorApp.Views.PageView({el: '.page-form', tiles: <%= raw @page.tiles.to_json %>});
+
+      $('.permalink-link').click(function(){
+        $(this).blur();
+      });
+
+      $('.page-editor-tabs a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+        $('#tab').val($(e.target).attr('href'));
+      });
+      if($('#tab').val()) {
+        $('.page-editor-tabs a[href="'+ $('#tab').val() +'"]').tab('show');
+      }
+    });
+  </script>
 <% end %>

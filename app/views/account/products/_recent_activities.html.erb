@@ -2,7 +2,7 @@
 <div class="history-list">
   <% @recent_activities.each do |activity| %>
     <div class="history-item">
-      <span class="glyphicon glyphicon-info-sign"></span>
+      <%= mi.info %>
       <h6><%= activity.title %></h6>
       <p><%= activity.created_at.strftime("%b %d, %Y") %></p>
     </div>

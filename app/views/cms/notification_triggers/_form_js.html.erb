@@ -43,14 +43,38 @@
       set_users_select($('#notification_trigger_single_user_id'), false);
       set_users_select($('#notification_trigger_user_ids'), true);
       set_users_select($('#notification_trigger_school_district_admin_user_id'), false);
-      $('.datetime-picker').datetimepicker({
-        format: 'YYYY-MM-DD HH:mm:ss'
+
+      var datetime_pickers = $('.datetime-picker');
+
+      datetime_pickers.datetimepicker({
+        format: 'YYYY-MM-DD HH:mm:ss',
       });
+
+      // convert datetimepicker icons to material design
+      datetime_pickers.on('dp.show', function(e) {
+        $('.glyphicon-chevron-left').addClass('mi md-24').text('chevron_left');
+        $('.glyphicon-chevron-right').addClass('mi md-24').text('chevron_right');
+        $('.glyphicon-chevron-down').addClass('mi md-24').text('keyboard_arrow_down');
+        $('.glyphicon-chevron-up').addClass('mi md-24').text('keyboard_arrow_up');
+        $('.glyphicon-time').addClass('mi').text('access_time');
+        $('.glyphicon-calendar').addClass('mi').text('date_range');
+
+        $('.bootstrap-datetimepicker-widget [data-action="togglePicker"]').on('click', function(e) {
+          var icon = $(this).find('.glyphicon');
+          if ( icon.hasClass('glyphicon-time') ) {
+            icon.addClass('mi').text('date_range');
+          } else  {
+            icon.addClass('mi').text('access_time');
+          }
+        });
+      });
+
       $('#notification_trigger_target_type').change(function(e){
         var target = $(this).val();
         $('.target-input').addClass('hidden');
         $("[data-input='"+ target +"']").removeClass('hidden');
       });
+
     });
   <% end %>
 <% end %>

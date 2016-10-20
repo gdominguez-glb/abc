@@ -23,7 +23,7 @@ RSpec.describe Cms::BaseController, type: :controller do
       end
     end
 
-    context "as user" do
+    context "as vanity url" do
       login_vanity_admin
 
       it "redirect with vanity admin user" do

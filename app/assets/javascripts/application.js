@@ -9,13 +9,14 @@
 //
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
-//
+
+// Polyfills First
+//= require global/polyfills
+
+// Gems
 //= require jquery
 //= require jquery_ujs
 //= require jquery.remotipart
-//= require jquery.validate
-//= require jquery.scrollTo
-//= require jquery.infinitescroll.min
 //= require bootstrap/alert
 //= require bootstrap/collapse
 //= require bootstrap/dropdown
@@ -24,19 +25,25 @@
 //= require bootstrap/transition
 //= require bootstrap/tooltip
 //= require bootstrap/popover
-//= require moment
-//= require tether
-//= require shepherd
-//= require trumbowyg
-//= require bootstrap-datetimepicker
+//= require mediaelement_rails
 //= require select2
 //= require zeroclipboard
+
+// Datetimepicker requires Moment
+//= require moment
+//= require bootstrap-datetimepicker
+
+// Vendor
+//= require jquery.validate
+//= require jquery.scrollTo
+//= require jquery.infinitescroll.min
 //= require jquery-sortable
-//= require mediaelement_rails
-//= require slick.min
-//= require user_form
 //= require picturefill
-//= require_tree .
+//= require slick.min
+//= require trumbowyg
+
+// App
+//= require_tree ./global
 
 var Gm;
 Gm = {

@@ -15,16 +15,16 @@
         <tr>
           <td>
             <% if activity.action == "view" %>
-              <span class="glyphicon glyphicon-eye-open"></span>
+              <%= mi.remove_red_eye %>
             <% end %>
             <% if activity.action == "login" %>
-              <span class="glyphicon glyphicon-log-in"></span>
+              <%= mi.exit_to_app %>
             <% end %>
             <% if activity.action == "logout" %>
-              <span class="glyphicon glyphicon-log-out"></span>
+              <%= mi.highlight_off %>
             <% end %>
             <% if activity.action == 'download' %>
-              <span class="glyphicon glyphicon-download"></span>
+              <%= mi.get_app %>
             <% end %>
           </td>
           <td><%= activity.title %></td>

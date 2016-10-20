@@ -1,5 +1,8 @@
 class EventPage < ActiveRecord::Base
   include Displayable
+  include Archiveable
+  include Publishable
+  publishable name: :description
 
   belongs_to :page
 
@@ -25,6 +28,7 @@ class EventPage < ActiveRecord::Base
   def search_data
     {
       title: title,
+      feature: 'events',
       description: description,
       events_text: events_text,
       user_ids: [-1]

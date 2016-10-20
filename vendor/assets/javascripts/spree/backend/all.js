@@ -3,20 +3,29 @@
 // be included in the compiled file accessible from http://example.com/assets/application.js
 // It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
 // the compiled file.
-//
+
+// Polyfills First
+//= require global/polyfills
+
+// Gems
 //= require jquery
 //= require jquery_ujs
-//= require spree/backend
+//= require jquery.remotipart
+//= require highcharts
 
-//= require spree_admin
-//= require_tree .
+// Vendor/Spree
+//= require jquery-sortable-lists
+//= require slick.min
+//= require trumbowyg
+//= require spree/backend
 //= require spree/backend/spree_digital
 //= require spree/backend/spree_better_terms_and_conditions
-//= require jquery.remotipart
-//= require jquery-sortable-lists
-//= require trumbowyg
-//= require dashboard_mobile_nav
-//= require highcharts
+//= require spree/backend/cart_decorator.js.coffee
+//= require zeroclipboard
+
+// App
+//= require_tree ../../../../../app/assets/javascripts/global
+//= require account/dashboard_mobile_nav
 
 function initEditor() {
   $('.rich-editor').trumbowyg({

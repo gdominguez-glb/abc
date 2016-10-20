@@ -26,7 +26,7 @@
     </div>
 
     <% if products.any? %>
-      <div id="products" data-hook class="col-sm-6 col-md-7 col-lg-8 margin-bottom--xl">
+      <div id="products" data-hook class="col-sm-7 col-lg-8 margin-bottom--xl">
         <div class="row">
           <% products.each do |product| %>
             <% cache([product, :store_list], expires_in: 2.hours) do %>
@@ -39,7 +39,7 @@
     <% end %>
 
 
-    <div class="col-sm-offset-3 col-md-offset-4 col-lg-offset-3 col-md-7 col-lg-8">
+    <div class="col-sm-offset-2 col-md-offset-3 col-md-8 text-right">
         <% if paginated_products.respond_to?(:num_pages) %>
           <%= paginate paginated_products, theme: 'twitter-bootstrap-3' %>
         <% end %>

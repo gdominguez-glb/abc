@@ -683,33 +683,33 @@
       display: none;
     }
 
-    .glyphicon {
+    .material-icons {
       @include transition(all, $transition-timing);
 
       position: absolute;
-      top: 10px;
+      top: 7px;
       right: 0;
     }
 
-    .glyphicon-menu-hamburger {
+    .icon-menu {
       opacity: 0;
     }
 
-    .glyphicon-remove {
+    .icon-close {
       opacity: 1;
     }
 
     &.collapsed {
-      .glyphicon {
+      .material-icons {
         @include rotate(180deg);
       }
 
-      .glyphicon-remove {
-        opacity: 0;
+      .icon-menu {
+        opacity: 1;
       }
 
-      .glyphicon-menu-hamburger {
-        opacity: 1;
+      .icon-close {
+        opacity: 0;
       }
     }
   }

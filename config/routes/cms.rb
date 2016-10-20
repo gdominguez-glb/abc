@@ -8,14 +8,35 @@ namespace :cms do
   get 'users/search', to: 'users#search'
 
   resources :pages do
+    collection do
+      post :process_tiles
+      get :published
+      get 'published/:category', to: 'pages#published_category', as: :published_category
+      get :drafts
+      get 'drafts/:category', to: 'pages#drafts_category', as: :drafts_category
+      get :archived
+      get 'archived/:category', to: 'pages#archived_category', as: :archived_category
+      get :search
+    end
     member do
-      get :product_marketing_editor
-      post :update_tiles
+      post :publish
+      get :preview
+      post :archive
+      post :unarchive
     end
   end
   resources :event_pages do
     collection do
       post :import_events
+      get :published
+      get :drafts
+      get :archived
+    end
+    member do
+      post :publish
+      get :preview
+      post :archive
+      post :unarchive
     end
     resources :regonline_events, only: [:index, :edit, :update]
   end
@@ -31,7 +52,20 @@ namespace :cms do
       post :update_positions
     end
   end
-  resources :questions
+  resources :questions do
+    collection do
+      get :published
+      get :drafts
+      get :archived
+      get :search
+    end
+    member do
+      post :publish
+      get :preview
+      post :archive
+      post :unarchive
+    end
+  end
   resources :help_items
   resources :contacts, only: [:index, :destroy, :edit, :update]
   resources :recommendations
@@ -54,16 +88,18 @@ namespace :cms do
       end
     end
   end
-  resources :download_pages do
-    resources :download_products do
-      collection do
-        post :update_positions
-      end
-    end
-  end
   resources :jobs do
     collection do
       post :update_positions
+      get :published
+      get :drafts
+      get :archived
+    end
+    member do
+      post :publish
+      get :preview
+      post :archive
+      post :unarchive
     end
   end
   resources :footer_titles do
@@ -80,6 +116,6 @@ namespace :cms do
   resources :curriculum_shops
   resources :custom_csses
   resources :vanity_urls
-  
+
   post 'sync', to: 'sync#run'
 end
