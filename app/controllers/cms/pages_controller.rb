@@ -53,7 +53,7 @@ module Cms
       if @page.save
         flash[:notice] = 'Page was successfully created.'
         respond_to do |format|
-          format.html { redirect_to [:cms, @page] }
+          format.html{ redirect_to edit_cms_page_path(@page, tab: params[:tab]) }
           format.js
         end
       else
@@ -70,7 +70,7 @@ module Cms
       if @page.update(page_params.merge(tiles: (tile_rows.present? ? { rows: tile_rows} : nil), draft_status: draft_status))
         flash[:notice] = 'Page was successfully updated.'
         respond_to do |format|
-          format.html{ redirect_to edit_cms_page_path(@page) }
+          format.html{ redirect_to edit_cms_page_path(@page, tab: params[:tab]) }
           format.js
         end
       else
@@ -98,7 +98,7 @@ module Cms
 
     def publish
       @page.publish!
-      redirect_to edit_cms_page_path(@page), notice: 'Published page successfully!'
+      redirect_to edit_cms_page_path(@page, tab: params[:tab]), notice: 'Published page successfully!'
     end
 
     def archive

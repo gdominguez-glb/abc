@@ -1,5 +1,5 @@
 <% if @page.valid? %>
-  window.location.reload(true);
+  window.location.href= "<%= edit_cms_page_path(@page, tab: params[:tab]) %>";
 <% else %>
   alert("Fail to save page: <%= @page.errors.full_messages.join(', ').html_safe %>");
 <% end %>
