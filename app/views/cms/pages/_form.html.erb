@@ -60,7 +60,7 @@
     <% end %>
 
     <div class="col-sm-3">
-      <%= f.submit 'Save Draft', class: 'btn btn-primary btn-block save-page-btn margin-bottom--s--sm-min' %>
+      <%= f.submit 'Save Draft', class: 'btn btn-primary btn-block save-page-btn margin-bottom--s--sm-min', id: 'save-draft-btn' %>
     </div>
 
     <% if @page.persisted? %>
