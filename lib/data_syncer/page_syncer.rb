@@ -3,11 +3,7 @@ class DataSyncer::PageSyncer < DataSyncer::Base
     Page.all.map do |page|
       attrs = page.attributes
       curriculum_id = attrs.delete('curriculum_id')
-      if page.tiles.present?
-        attrs['tiles'] = convert_urls_in_tiles(page.tiles)
-      else
-        attrs['body'] = convert_urls_in_content(page.body)
-      end
+      attrs['body'] = convert_urls_in_content(page.body)
       attrs['curriculum_name'] = Curriculum.find_by(id: curriculum_id).try(:name)
       attrs.to_hash
     end.to_yaml
