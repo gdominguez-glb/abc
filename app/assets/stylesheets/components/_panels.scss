@@ -125,17 +125,17 @@
     }
 
     .mi {
-      padding-top: 3px;
+      top: -2px;
       font-size: 15px;
+      line-height: 20px;
     }
   }
 
   .btn-toggle {
     position: relative;
-    top: -2px;
 
     .mi {
-      padding-top: 0;
+      top: -1px;
       font-size: 20px;
     }
   }
