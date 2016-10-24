@@ -43,6 +43,7 @@ class EventsController < ApplicationController
 
   def trainings_by_parent
     @training_type_category = TrainingTypeCategory.find_by(slug: params[:parent_slug])
+    raise ActiveRecord::RecordNotFound.new('event training category not exist') if @training_type_category.blank?
     @event_trainings = @training_type_category.event_trainings.order(:position)
     @event_trainings = filter_by_category(@event_trainings)
     render template: 'events/trainings'
