@@ -10,7 +10,7 @@
     "recipe[greatminds::redis]",
     "recipe[greatminds::imagemagick]",
     "recipe[greatminds::rbenv]",
-    "recipe[greatminds::nginx]",
+    "recipe[greatminds::nginx_with_pagespeed]",
     "recipe[greatminds::app]"
   ],
   "group": "deploy",
@@ -53,5 +53,6 @@
   },
   "witeng_link_domain": "witeng.link",
   "vanity_urls": "witeng.link eurmath.link",
-  "memcached_url": "172.31.51.27"
+  "memcached_url": "172.31.51.27",
+  "pagespeed": "true"
 }
