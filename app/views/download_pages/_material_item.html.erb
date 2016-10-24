@@ -5,21 +5,6 @@
         <h4 class="panel-title"><%= material.name %></h4>
       </div>
       <div class="col-xs-2 text-right">
-        <% if item.children.size > 0 %>
-          <% open_material = @opened_material_ids.include?(material.id) %>
-          <button
-            class="btn btn-default btn-toggle btn-icon margin-right--reset collapsed"
-            data-material-id="<%= material.id %>"
-            data-toggle="collapse"
-            data-parent="#material<%= material.id %>"
-            href="#collapse<%= material.id %>">
-            <i class="mi md-18 panel-toggle">keyboard_arrow_up</i>
-          </button>
-        <% end %>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-12 text-left">
         <% if material.link.present? %>
           <%= link_to material.link, target: '_blank', class: 'btn btn-default btn-icon' do %>
             <i class="mi md-18 js-tooltip-trigger" data-toggle="tooltip" title='View'><%= material.link_icon %></i>
@@ -49,6 +34,23 @@
           <%# <% end %1> %>
 
         <% end %>
+
+        <% if item.children.size > 0 %>
+          <% open_material = @opened_material_ids.include?(material.id) %>
+          <button
+            class="btn btn-default btn-toggle btn-icon margin-right--reset collapsed"
+            data-material-id="<%= material.id %>"
+            data-toggle="collapse"
+            data-parent="#material<%= material.id %>"
+            href="#collapse<%= material.id %>">
+            <i class="mi md-18 panel-toggle">keyboard_arrow_up</i>
+          </button>
+        <% end %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 text-left">
+
       </div>
     </div>
   </div>
