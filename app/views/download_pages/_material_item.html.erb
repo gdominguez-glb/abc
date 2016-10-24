@@ -1,10 +1,40 @@
 <div id="material<%= material.id %>" class="panel panel-info" data-material-id="<%= material.id %>">
   <div class="panel-heading">
     <div class="row">
-      <div class="col-xs-10 text-left">
+      <div class="col-xs-9 text-left">
         <h4 class="panel-title"><%= material.name %></h4>
       </div>
-      <div class="col-xs-2 text-right">
+      <div class="col-xs-3 text-right">
+        <% if material.link.present? %>
+          <%= link_to material.link, target: '_blank', class: 'btn btn-default btn-icon' do %>
+            <i class="mi md-18 js-tooltip-trigger" data-toggle="tooltip" title='View'><%= material.link_icon %></i>
+          <% end %>
+        <% end %>
+        <% if material.material_files_count == 1 && material.children.count == 0 %>
+          <%= link_to download_material_path(material), remote: true, class: 'btn btn-default btn-icon margin-bottom--s--sm-min' do %>
+            <i class="mi md-18 js-tooltip-trigger" title='Download'>cloud_download</i>
+          <% end %>
+        <% end %>
+        <% if material.material_files_count > 0 %>
+
+          <% html_options = material.material_files_count == 1 ? { target: '_blank' } : { remote: true } %>
+
+          <%= link_to preview_material_path(material), { class: 'btn btn-default btn-icon margin-bottom--s--sm-min' }.merge(html_options) do %>
+            <i class="mi md-18 js-tooltip-trigger" title="View">open_in_new</i>
+          <% end %>
+
+          <%# <% if bookmarked_material?(material) %1> %>
+          <%#   <%= link_to remove_bookmark_material_path(material, ref_id: "#bookmark-#{material.id}"), id: "bookmark-#{material.id}", remote: true, data: { method: :post }, class: 'btn btn-default btn-icon' do %1> %>
+          <%#     <i class="mi md-18 js-tooltip-trigger">bookmark</i> %>
+          <%#   <% end %1> %>
+          <%# <% else %1> %>
+          <%#   <%= link_to bookmark_material_path(material, ref_id: "#bookmark-#{material.id}"), id: "bookmark-#{material.id}", remote: true, data: { method: :post }, class: 'btn btn-default btn-icon' do %1> %>
+          <%#     <i class="mi md-18 js-tooltip-trigger">bookmark_border</i> %>
+          <%#   <% end %1> %>
+          <%# <% end %1> %>
+
+        <% end %>
+
         <% if item.children.size > 0 %>
           <% open_material = @opened_material_ids.include?(material.id) %>
           <button
@@ -20,35 +50,7 @@
     </div>
     <div class="row">
       <div class="col-xs-12 text-left">
-        <% if material.link.present? %>
-          <%= link_to material.link, target: '_blank', class: 'btn btn-default btn-icon' do %>
-            <i class="mi md-18 js-tooltip-trigger" data-toggle="tooltip" title='View'><%= material.link_icon %></i>
-          <% end %>
-        <% end %>
-        <% if material.material_files_count == 1 && material.children.count == 0 %>
-          <%= link_to download_material_path(material), remote: true, class: 'btn btn-default btn-icon' do %>
-            <i class="mi md-18 js-tooltip-trigger" title='Download'>cloud_download</i>
-          <% end %>
-        <% end %>
-        <% if material.material_files_count > 0 %>
 
-          <% html_options = material.material_files_count == 1 ? { target: '_blank' } : { remote: true } %>
-
-          <%= link_to preview_material_path(material), { class: 'btn btn-default btn-icon' }.merge(html_options) do %>
-            <i class="mi md-18 js-tooltip-trigger" title="View">remove_red_eye</i>
-          <% end %>
-
-          <%# <% if bookmarked_material?(material) %1> %>
-          <%#   <%= link_to remove_bookmark_material_path(material, ref_id: "#bookmark-#{material.id}"), id: "bookmark-#{material.id}", remote: true, data: { method: :post }, class: 'btn btn-default btn-icon' do %1> %>
-          <%#     <i class="mi md-18 js-tooltip-trigger">bookmark</i> %>
-          <%#   <% end %1> %>
-          <%# <% else %1> %>
-          <%#   <%= link_to bookmark_material_path(material, ref_id: "#bookmark-#{material.id}"), id: "bookmark-#{material.id}", remote: true, data: { method: :post }, class: 'btn btn-default btn-icon' do %1> %>
-          <%#     <i class="mi md-18 js-tooltip-trigger">bookmark_border</i> %>
-          <%#   <% end %1> %>
-          <%# <% end %1> %>
-
-        <% end %>
       </div>
     </div>
   </div>
