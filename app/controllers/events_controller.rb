@@ -21,6 +21,7 @@ class EventsController < ApplicationController
     @sub_nav_items = Page.show_in_sub_navigation(@group_page.group_name)
 
     @event_page    = @group_page.event_pages.find_by(slug: params[:slug])
+    raise ActiveRecord::RecordNotFound.new('events not exist') if @event_page.blank?
     @events        = @event_page.events.displayable.sorted.page(params[:page])
 
     filter_by_zipcode

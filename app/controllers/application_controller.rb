@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
   end
 
   rescue_from ActiveRecord::RecordNotFound do |exception|
-    redirect_to not_found_path, status: 404
+    redirect_to not_found_path
   end
 
   before_action :custom_authenticate, if: :require_http_basic_auth
