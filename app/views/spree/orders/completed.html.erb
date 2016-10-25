@@ -14,7 +14,7 @@
 </fieldset>
 
 <%= content_for :google_analytics do %>
-  ga('require', 'ecommerce');
+  ga('require', 'ecommerce', 'ecommerce.js');
 
   ga('ecommerce:addTransaction', {
   'id': '<%= j @order.number %>',                                    // Transaction ID. Required.
