@@ -125,17 +125,34 @@
     }
 
     .mi {
-      padding-top: 3px;
+      top: -2px;
       font-size: 15px;
+      line-height: 20px;
+    }
+  }
+
+  .btn-icon {
+    @media screen and (min-width: $screen-sm-min) {
+      width: 50px;
+      height: 27px;
+
+      &.btn-toggle {
+        width: 22px;
+        height: 22px;
+      }
+
+      .md-18 {
+        top: 2px;
+        font-size: 22px;
+      }
     }
   }
 
   .btn-toggle {
     position: relative;
-    top: -2px;
 
     .mi {
-      padding-top: 0;
+      top: -1px;
       font-size: 20px;
     }
   }
