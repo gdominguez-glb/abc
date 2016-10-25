@@ -5,6 +5,7 @@
       <th>Type</th>
       <th>Page</th>
       <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -15,7 +16,9 @@
         <td><%= custom_css.page.try(:title) %></td>
         <td>
           <%= link_to 'Edit', edit_cms_custom_css_path(custom_css) %>
-          <%= link_to 'Delete', cms_custom_css_path(custom_css), data: { confirm: 'Are you sure?', method: :delete } %>
+        </td>
+        <td>
+          <%= link_to 'Delete', cms_custom_css_path(custom_css), data: { confirm: 'Are you sure?', method: :delete }, class: 'text--danger' %>
         </td>
       </tr>
     <% end %>
