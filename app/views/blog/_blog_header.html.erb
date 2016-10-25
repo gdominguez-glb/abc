@@ -1,6 +1,10 @@
-<% if medium_publication.header.present? %>
-  <h3><%= medium_publication.header %></h3>
-<% end %>
-<% if medium_publication.description.present? %>
-  <p><%= medium_publication.description.html_safe %></p>
+<% if medium_publication.header.present? || medium_publication.description.present? %>
+  <div class="blog-section-description">
+    <% if medium_publication.header.present? %>
+      <h2 class="blog-section-title text-center"><%= medium_publication.header %></h2>
+    <% end %>
+    <% if medium_publication.description.present? %>
+      <p><%= medium_publication.description.html_safe %></p>
+    <% end %>
+  </div>
 <% end %>
