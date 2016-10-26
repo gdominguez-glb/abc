@@ -23,6 +23,7 @@ namespace :cms do
       get :preview
       post :archive
       post :unarchive
+      post :copy_page
     end
   end
   resources :event_pages do
