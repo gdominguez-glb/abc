@@ -16,6 +16,12 @@ class Cms::NotificationTriggersController < Cms::BaseController
     end
   end
 
+  def destroy
+    notification_trigger = NotificationTrigger.find(params[:id])
+    notification_trigger.destroy
+    redirect_to cms_notification_triggers_path, notice: 'Delete notifications successfully.'
+  end
+
   private
 
   def notification_trigger_params
