@@ -3,7 +3,7 @@ class NotificationTrigger < ActiveRecord::Base
 
   validates_presence_of :target_type, :content, :notify_at
 
-  has_many :notifications
+  has_many :notifications, dependent: :destroy
 
   belongs_to :single_user, class_name: 'Spree::User'
   belongs_to :school_district_admin_user, class_name: 'Spree::User'
