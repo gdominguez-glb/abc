@@ -2,7 +2,8 @@ class Spree::Admin::DownloadPagesController < Spree::Admin::BaseController
   before_action :set_download_page, only: [:show, :edit, :update, :destroy]
 
   def index
-    @download_pages = DownloadPage.page(params[:page])
+    @q = DownloadPage.ransack(params[:q])
+    @download_pages = @q.result.page(params[:page])
   end
 
   def new
