@@ -95,13 +95,17 @@ $panel-default-text:              $c-positive-secondary;
 $panel-default-border:            $c-positive-secondary;
 $panel-default-heading-bg:        $c-firm-highlight;
 
-$panel-primary-text:              #fff;
+$panel-primary-text:              $c-absolute;
 $panel-primary-border:            $c-positive-secondary;
 $panel-primary-heading-bg:        $c-positive-secondary;
 
-$panel-info-text:                 #000;
-$panel-info-border:               darken($gainsboro, 1%);
-$panel-info-heading-bg:           darken($gainsboro, 1%);
+$panel-info-text:                 $c-depleted;
+$panel-info-border:               darken($c-firm-accent, 1%);
+$panel-info-heading-bg:           darken($c-firm-accent, 1%);
+
+$panel-info-alt-text:             $c-depleted;
+$panel-info-alt-border:           $c-firm-secondary;
+$panel-info-alt-heading-bg:       $c-firm-secondary;
 
 // -------------------------------------
 //   Assorted
