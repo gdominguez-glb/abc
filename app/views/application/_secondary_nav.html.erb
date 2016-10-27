@@ -1,4 +1,4 @@
-<% if request.path.start_with?('/cms') || request.path.start_with?('/store/admin') || (request.path.start_with?('/account') && ['products', 'bookmarks', 'history', 'settings', 'licenses'].include?(controller_name)) %>
+<% if (request.path.start_with?('/cms') && !(controller_name == 'pages' && action_name == 'preview') ) || request.path.start_with?('/store/admin') || (request.path.start_with?('/account') && ['products', 'bookmarks', 'history', 'settings', 'licenses'].include?(controller_name)) %>
   <%= render 'products_nav' %>
 <% elsif ['pages', 'blog', 'video_gallery', 'events'].include?(controller_name) %>
   <%= render "#{controller_name}_nav"  %>

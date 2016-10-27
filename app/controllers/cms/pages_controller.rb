@@ -112,6 +112,8 @@ module Cms
     end
 
     def preview
+      @group_page    = Page.find_by(group_name: @page.group_name, group_root: true)
+      @sub_nav_items = Page.show_in_sub_navigation(@page.group_name)
       render layout: 'application'
     end
 
