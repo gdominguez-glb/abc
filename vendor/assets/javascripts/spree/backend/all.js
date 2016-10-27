@@ -24,7 +24,8 @@
 //= require zeroclipboard
 
 // App
-//= require_tree ../../../../../app/assets/javascripts/global
+//= require global/polyfills
+//= require global/sidenav
 //= require account/dashboard_mobile_nav
 
 function initEditor() {
