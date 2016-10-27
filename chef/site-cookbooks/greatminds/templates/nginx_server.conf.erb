@@ -53,13 +53,10 @@ server {
 
   client_max_body_size 1024m;
 
-  <% if node['rails_env'] == 'qa' %>
-  # Only for QA; remove for STG and PROD
   location ~* \.(css)$ {
-  expires 1h;
-  add_header Cache-Control "public";
+    expires max;
+    add_header Cache-Control "public";
   }
-  <% end %>
 
   <% if node['pagespeed'] == 'true' %>
   pagespeed on;
@@ -70,6 +67,7 @@ server {
   location ~ ^/pagespeed_admin { allow 127.0.0.1; }
   pagespeed AdminPath /pagespeed_admin;
   pagespeed EnableFilters prioritize_critical_css;
+  pagespeed EnableFilters extend_cache;
 
   # Ensure requests for pagespeed optimized resources go to the pagespeed handler
   # and no extraneous headers get set.
