@@ -20,7 +20,9 @@
 //= require spree/frontend/cart_decorator.js.coffee
 
 // App
-//= require_tree ../../../../../app/assets/javascripts/global
+// Explicit import of global assets
+//= require global/terms_scroller
+// Implicit import of frontend assets
 //= require_tree ../../../../../app/assets/javascripts/frontend
 
 $(document).ready(function() {
