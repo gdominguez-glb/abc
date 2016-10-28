@@ -11,3 +11,7 @@
   <%= button_tag Spree.t(:place_order), :class => 'btn btn-block-xs btn-success margin-right--reset', :id => 'placeOrderBtn' %>
   <script>Spree.disableSaveOnClick();</script>
 </div>
+
+<% if @order.free? %>
+  <%= render partial: 'spree/shared/google_ecommerce.js' %>
+<% end %>
