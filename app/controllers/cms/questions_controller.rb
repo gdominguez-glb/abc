@@ -29,7 +29,7 @@ class Cms::QuestionsController < Cms::BaseController
   def create
     @question = Question.new(question_params)
     if @question.save
-      redirect_to edit_cms_question_path(@question), notice: 'Created question successfully!'
+      redirect_to edit_cms_question_path(@question), notice: 'Created question successfully'
     else
       render :new
     end
@@ -41,7 +41,7 @@ class Cms::QuestionsController < Cms::BaseController
   def update
     draft_status = @question.published? ? :draft_in_progress : :draft
     if @question.update(question_params.merge(draft_status: draft_status))
-      redirect_to edit_cms_question_path(@question), notice: 'Updated question successfully!'
+      redirect_to edit_cms_question_path(@question), notice: 'Updated question successfully'
     else
       render :edit
     end
@@ -54,17 +54,17 @@ class Cms::QuestionsController < Cms::BaseController
 
   def publish
     @question.publish!
-    redirect_to edit_cms_question_path(@question), notice: 'Publish faq successfully!'
+    redirect_to edit_cms_question_path(@question), notice: 'Published FAQ successfully'
   end
 
   def archive
     @question.archive!
-    redirect_to archived_cms_questions_path, notice: 'Archived faq successfully!'
+    redirect_to archived_cms_questions_path, notice: 'Archived faq successfully'
   end
 
   def unarchive
     @question.unarchive!
-    redirect_to cms_questions_path, notice: 'Un-Archived faq successfully!'
+    redirect_to cms_questions_path, notice: 'Un-Archived faq successfully'
   end
 
   private

@@ -3,7 +3,7 @@ module Cms
   class PagesController < Cms::BaseController
     before_action :set_page_search_form, only: [:index, :published, :drafts, :published_category, :drafts_category, :archived, :archived_category, :search]
     before_action :set_page, only: [:show, :edit, :update, :destroy,
-                                    :update_tiles, :publish, :preview, :archive, :unarchive]
+                                    :update_tiles, :publish, :preview, :archive, :unarchive, :copy_page]
 
     def index
       redirect_to published_cms_pages_path
@@ -112,7 +112,19 @@ module Cms
     end
 
     def preview
+      @group_page    = Page.find_by(group_name: @page.group_name, group_root: true)
+      @sub_nav_items = Page.show_in_sub_navigation(@page.group_name)
       render layout: 'application'
+    end
+
+    def copy_page
+      new_page = @page.copy_to_new_page
+      if new_page.save
+        redirect_to edit_cms_page_path(new_page), notice: 'Successfully duplicate new page'
+      else
+        flash[:error] = "Failed to duplicate new page"
+        redirect_to edit_cms_page_path(@page)
+      end
     end
 
     private

@@ -69,6 +69,16 @@ class Page < ActiveRecord::Base
     tiles.blank? || tiles[:rows].blank?
   end
 
+  def copy_to_new_page
+    new_page = self.dup
+    new_page.title = self.title + ' (Copy)'
+    new_page.slug = self.slug + '-copy'
+    new_page.publish_status = :pending
+    new_page.draft_status = :draft
+    new_page.visible = false
+    new_page
+  end
+
   private
 
   def generate_page_from_tiles
