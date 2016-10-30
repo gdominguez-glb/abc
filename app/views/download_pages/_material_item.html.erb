@@ -1,4 +1,4 @@
-<div id="material<%= material.id %>" class="panel panel-info" data-material-id="<%= material.id %>">
+<div id="material<%= material.id %>" class="panel <%= item.children.size == 0 ? "panel-info panel-no-children": "panel-info--alt panel-children" %>" data-material-id="<%= material.id %>">
   <div class="panel-heading">
     <div class="row">
       <div class="col-xs-9 text-left">
