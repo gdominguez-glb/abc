@@ -15,6 +15,7 @@ namespace :account do
   get :shop_of_interest, to: 'products#shop_of_interest'
 
   resources :reminders, only: [:new, :create]
+  resources :recommendations, only: [:show]
 
   resources :licenses do
     collection do
