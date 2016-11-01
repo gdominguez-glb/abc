@@ -7,6 +7,7 @@
         <th>Notify at</th>
         <th>Expire at</th>
         <th>Status</th>
+	<th>Views</th>
         <th></th>
       </tr>
     </thead>
@@ -18,6 +19,7 @@
           <td><%= notification_trigger.notify_at %></td>
           <td><%= notification_trigger.expire_at %></td>
           <td><%= notification_trigger.status %></td>
+	  <td><%= notification_trigger.notifications.viewed.count %></td>
           <td><%= link_to 'Delete', cms_notification_trigger_path(notification_trigger), data: { confirm: 'Are you sure to delete (This will remove notifications from dashboard too)?', method: :delete }, btn: 'btn btn-danger' %></td>
         </tr>
       <% end %>
