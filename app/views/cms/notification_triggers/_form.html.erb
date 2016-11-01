@@ -24,6 +24,7 @@
               <span>Select Target</span>
               <%= f.select :target_type, NotificationTrigger::TARGET_TYPES, { include_blank: 'Please Select' }, class: 'form-control' %>
             </div>
+            <p class="hide" id='target-users-count-text'></p>
           </div>
         </div>
         <div class="col-sm-6">
