@@ -38,6 +38,9 @@ class Account::ProductsController < Account::BaseController
 
   def load_notifications
     @notifications = current_spree_user.notifications.unread.unexpire.limit(5)
+    @notifications.each do |notification|
+      notification.mark_as_viewed!
+    end
   end
 
   def load_taxons
