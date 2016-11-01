@@ -11,7 +11,7 @@
           <div class="col-sm-9">
             <h5><%= recommendation.title %></h5>
             <p><%= truncate(recommendation.sub_header, length: 120) %></p>
-            <%= link_to recommendation.call_to_action_button_text, recommendation.call_to_action_button_link, class: 'btn btn-link', target: recommendation.call_to_action_button_target %>
+            <%= link_to recommendation.call_to_action_button_text, account_recommendation_path(recommendation), class: 'btn btn-link', target: recommendation.call_to_action_button_target %>
           </div>
         </div>
       </div>

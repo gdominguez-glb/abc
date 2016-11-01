@@ -24,4 +24,12 @@ class Recommendation < ActiveRecord::Base
   def icon_image
     "recommendations/#{self.icon}.png"
   end
+
+  def increase_clicks!
+    update(clicks: self.clicks + 1)
+  end
+
+  def increase_views!
+    update(views: self.views + 1)
+  end
 end

@@ -31,6 +31,9 @@ class Account::ProductsController < Account::BaseController
       @recommendations = @recommendations.where.not(id: current_spree_user.recommendation_ids_to_exclude)
     end
     @recommendations = @recommendations.filter_by_subject_or_user_title(current_spree_user.interested_curriculums, current_spree_user.title)
+    @recommendations.each do |recommendation|
+      recommendation.increase_views!
+    end
   end
 
   def load_notifications
