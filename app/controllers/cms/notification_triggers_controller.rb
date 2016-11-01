@@ -22,6 +22,13 @@ class Cms::NotificationTriggersController < Cms::BaseController
     redirect_to cms_notification_triggers_path, notice: 'Delete notifications successfully.'
   end
 
+  include ActiveSupport::NumberHelper
+  def target_users_count
+    notification_trigger = NotificationTrigger.new(notification_trigger_params)
+    text = "Sending notifications to #{number_to_delimited(notification_trigger.calculate_target_users.count)} users"
+    render json: { target_users_text:  text}
+  end
+
   private
 
   def notification_trigger_params

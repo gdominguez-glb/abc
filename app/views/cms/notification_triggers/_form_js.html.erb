@@ -75,6 +75,30 @@
         $("[data-input='"+ target +"']").removeClass('hidden');
       });
 
+      var changedInputs = [
+        'form.new_notification_trigger #notification_trigger_target_type',
+        'form.new_notification_trigger #notification_trigger_single_user_id',
+        'form.new_notification_trigger #notification_trigger_user_ids',
+        'form.new_notification_trigger #notification_trigger_school_district_admin_user_id',
+        'form.new_notification_trigger #notification_trigger_user_type',
+        'form.new_notification_trigger #notification_trigger_curriculum_id',
+        'form.new_notification_trigger #notification_trigger_zip_codes',
+      ]
+      $(changedInputs.join(', ')).change(function(){
+        getTargetUsersCount();
+      });
+
+      function getTargetUsersCount() {
+        $.ajax({
+          type: 'POST',
+          url: '/cms/notification_triggers/target_users_count',
+          data: $('form.new_notification_trigger').serialize(),
+          success: function(res){
+          $('#target-users-count-text').removeClass('hide');
+            $('#target-users-count-text').text(res.target_users_text);
+          }
+        });
+      }
     });
   <% end %>
 <% end %>
