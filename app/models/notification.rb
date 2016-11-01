@@ -4,6 +4,7 @@ class Notification < ActiveRecord::Base
 
   scope :unread, -> { where(read: false).order('notifications.created_at desc') }
   scope :unexpire, -> { where('expire_at is null or expire_at > ?', Time.now) }
+  scope :viewed, -> { where(viewed: true) }
 
   def mark_as_read!
     update(read: true)
@@ -19,5 +20,9 @@ class Notification < ActiveRecord::Base
         action: :create
       )
     end
+  end
+
+  def mark_as_viewed!
+    update(viewed: true)
   end
 end
