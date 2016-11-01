@@ -37,9 +37,41 @@ class NotificationTrigger < ActiveRecord::Base
     update(status: 'delivered')
   end
 
+  def calculate_target_users
+    if self.single_user_target?
+      [self.single_user]
+    elsif self.school_district_target?
+      [self.school_district_admin_user.to_users]
+    elsif self.group_users_target?
+      self.group_users
+    elsif self.user_type_target?
+      Spree::User.send("with_#{self.user_type.downcase}_title")
+    elsif self.every_target?
+      Spree::User.where("1 = 1")
+    elsif self.curriculum_users_target?
+      Spree::User.with_curriculum(self.curriculum)
+    elsif self.product_target?
+      find_product_target_users(self.product_id)
+    elsif self.zip_codes_target?
+      find_zip_codes_target_users(self.zip_codes)
+    end
+  end
+
   private
 
   def send_notifications
     NotificationWorker.perform_at(self.notify_at, self.id)
+  end
+
+  def find_product_target_users(product_id)
+    user_ids = []
+    Spree::User.find_each do |user|
+      user_ids << user.id if user.accessible_products.where(id: product_id).exists?
+    end
+    Spree::User.where(id: user_ids)
+  end
+
+  def find_zip_codes_target_users(zip_codes)
+    Spree::User.where(zip_code: zip_codes.split(',').map(&:strip))
   end
 end
