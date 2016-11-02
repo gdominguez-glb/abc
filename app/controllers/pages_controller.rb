@@ -14,7 +14,6 @@ class PagesController < ApplicationController
       Page.show_in_sub_navigation(@page.group_name)
     end
 
-    set_page_meta_tags(@page)
     if @page.layout.present?
       render layout: @page.layout
     end
@@ -22,13 +21,5 @@ class PagesController < ApplicationController
 
   def not_found
     render status: 404
-  end
-
-  private
-
-  def set_page_meta_tags(page)
-    if page.keywords.present? || page.description.present?
-      set_meta_tags keywords: page.keywords, description: page.description
-    end
   end
 end
