@@ -205,7 +205,7 @@ a {
   &:active,
   &:focus {
     text-decoration: underline;
-    color: lighten($c-positive-secondary, 10%);
+    color: $c-positive-subdue;
   }
 
   p & {
@@ -213,6 +213,12 @@ a {
 
     text-transform: none;
     text-decoration: underline;
+  }
+
+  .blue-bg & {
+    &:hover {
+      color: $c-firm-secondary;
+    }
   }
 
   &.text-normal {
