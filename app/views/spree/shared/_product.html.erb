@@ -28,7 +28,7 @@
         <div class="col-md-5 col-lg-4 product-actions">
           <% if product.group_product? %>
             <%= link_to 'Explore Options', group_product_path(product), class: 'btn btn-primary product-btn-primary' %>
-          <% elsif product.get_in_touch_product? || (product.partner_product? && product.redirect_url.present?) %>
+          <% elsif product.get_in_touch_product? || product.partner_product? %>
             <%= link_to 'Learn More', spree.product_path(product), class: 'btn btn-primary product-btn-primary' %>
           <% else %>
             <%= link_to "Add to cart", url, class: 'btn btn-primary product-btn-primary' %>
