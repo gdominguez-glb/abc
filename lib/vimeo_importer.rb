@@ -35,12 +35,13 @@ class VimeoImporter
     vimeo_id         = row['Vimeo URL'].split('/').last
     custom_order     = row['Order']
 
-    download_url = GmVimeo.new.download_url_of_video(vimeo_id)
-
     video = Spree::Video.find_or_initialize_by(vimeo_id: vimeo_id)
     video.title        = title
     video.custom_order = custom_order
-    video.file         = open(download_url, allow_redirections: :all) if video.new_record?
+    if video.new_record?
+      download_url = GmVimeo.new.download_url_of_video(vimeo_id)
+      video.file = open(download_url, allow_redirections: :all)
+    end
     video.save
 
     assign_taxons_to_video(video, row)
