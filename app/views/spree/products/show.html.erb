@@ -67,7 +67,11 @@
                 </div>
               </div>
             <% elsif @product.partner_product? %>
-              <%= link_to Spree.t(:purchase_from_partner), @product.redirect_url, target: '_blank', class: 'btn btn-primary product-btn-primary', :data => { :toggle => 'modal', :redirect => @product.redirect_url, :target => '.partner-modal' } %>
+              <div class="row">
+                <div class="col-md-5">
+                  <%= link_to Spree.t(:purchase_from_partner), @product.redirect_url, target: '_blank', class: 'btn btn-primary product-btn-primary', :data => { :toggle => 'modal', :redirect => @product.redirect_url, :target => '.partner-modal' } %>
+                </div>
+              </div>
             <% else %>
               <div id="cart-form" data-hook="cart_form">
                 <%= render :partial => 'cart_form' %>
