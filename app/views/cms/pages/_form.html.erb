@@ -68,6 +68,9 @@
       <div class="col-sm-3">
         <%= link_to 'Publish Page', publish_cms_page_path(@page, tab: params[:tab]), class: 'btn btn-success btn-block margin-bottom--s--sm-min', data: { method: :post, confirm: 'Are you sure to publish this page? (Make sure you save draft first)', disable_with: 'Publishing' } %>
       </div>
+      <div class="col-sm-3">
+        <%= link_to 'Duplicate', copy_page_cms_page_path(@page), class: 'btn btn-default', data: { method: :post, confirm: 'Are you sure to duplicate this page?', disable_with: 'Duplicating' } %>
+      </div>
     <% end %>
   </div>
 <% end %>

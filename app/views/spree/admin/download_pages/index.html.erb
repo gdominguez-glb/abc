@@ -1,6 +1,18 @@
 <div class="col-md-12">
   <h2>Download Page Lists</h2>
-  <%= link_to 'Create new download page', spree.new_admin_download_page_path, class: 'btn btn-primary margin-bottom--xl' %>
+  <div class="row">
+    <div class="col-md-7">
+      <%= search_form_for @q, url: '', class: 'form-inline' do |f| %>
+        <div class="form-group">
+          <%= f.text_field :title_cont, class: 'form-control' %>
+        </div>
+        <%= f.submit 'Search', class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+    <div class="col-md-5 text-right">
+      <%= link_to 'Create new download page', spree.new_admin_download_page_path, class: 'btn btn-primary margin-bottom--xl' %>
+    </div>
+  </div>
   <div class="table-responsive">
     <table class='table table-striped table-hover'>
       <thead>
