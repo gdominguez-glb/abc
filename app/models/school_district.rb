@@ -178,6 +178,6 @@ class SchoolDistrict < ActiveRecord::Base
   }
 
   def name_in_option
-    [ name, [city.try(:name), state.try(:name)].compact.join(',') ].reject(&:blank?).join(' - ')
+    [ name, city.try(:name) ].reject(&:blank?).join(' - ')
   end
 end
