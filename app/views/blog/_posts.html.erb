@@ -3,20 +3,20 @@
     <%# <p><%= post.published_at.strftime('%b %d %Y') rescue nil %1></p> %>
     <h2 class="blog-post-title">
       <% if blog_type == 'global' %>
-        <%= link_to post.title, global_post_path(slug: publication.slug, id: post.id) %>
+        <%= link_to post.title, global_post_path(slug: publication.slug, id: post.slug) %>
       <% else %>
-        <%= link_to post.title, curriculum_post_path(page_slug: group_page.slug, slug: publication.slug, id: post.id) %>
+        <%= link_to post.title, curriculum_post_path(page_slug: group_page.slug, slug: publication.slug, id: post.slug) %>
       <% end %>
     </h2>
     <p>
     <%= raw post.preview_content %>
     </p>
     <% if blog_type == 'global' %>
-      <%= link_to global_post_path(slug: publication.slug, id: post.id), class: "btn btn-default btn-block-xs margin-bottom--xl" do %>
+      <%= link_to global_post_path(slug: publication.slug, id: post.slug), class: "btn btn-default btn-block-xs margin-bottom--xl" do %>
         Read More <i class="mi">keyboard_arrow_right</i>
       <% end %>
     <% else %>
-      <%= link_to curriculum_post_path(page_slug: group_page.slug, slug: publication.slug, id: post.id), class: "btn btn-default btn-block-xs margin-bottom--xl" do %>
+      <%= link_to curriculum_post_path(page_slug: group_page.slug, slug: publication.slug, id: post.slug), class: "btn btn-default btn-block-xs margin-bottom--xl" do %>
         Read More <i class="mi">keyboard_arrow_right</i>
       <% end %>
     <% end %>

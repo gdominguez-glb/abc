@@ -11,7 +11,7 @@ class BlogController < ApplicationController
   end
 
   def global_post
-    @post = Post.find(params[:id])
+    find_post
   end
 
   def curriculum
@@ -22,7 +22,7 @@ class BlogController < ApplicationController
   end
 
   def curriculum_post
-    @post = Post.find(params[:id])
+    find_post
   end
 
   private
@@ -54,5 +54,10 @@ class BlogController < ApplicationController
   def load_curriculum_nav_info
     @group_page    = Page.show_in_top_navigation.find_by(slug: params[:page_slug])
     @sub_nav_items = Page.show_in_sub_navigation(@group_page.group_name)
+  end
+
+  def find_post
+    @post = Post.find_by(id: params[:id]) || Post.find_by(slug: params[:slug])
+    raise ActiveRecord::RecordNotFound.new('post not exist') if @post.blank?
   end
 end
