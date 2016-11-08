@@ -57,7 +57,7 @@ class BlogController < ApplicationController
   end
 
   def find_post
-    @post = Post.find_by(id: params[:id]) || Post.find_by(slug: params[:slug])
+    @post = Post.find_by(id: params[:id]) || Post.find_by(slug: params[:id])
     raise ActiveRecord::RecordNotFound.new('post not exist') if @post.blank?
   end
 end
