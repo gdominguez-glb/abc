@@ -1,6 +1,9 @@
 class Post < ActiveRecord::Base
   belongs_to :medium_publication
 
+  include FriendlyId
+  friendly_id :title, use: :slugged
+
   searchkick callbacks: :async
 
   def should_index?
