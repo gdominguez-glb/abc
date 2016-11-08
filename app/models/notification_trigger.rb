@@ -64,11 +64,12 @@ class NotificationTrigger < ActiveRecord::Base
   end
 
   def find_product_target_users(product_id)
+    return [] if product_id.blank?
     user_ids = []
-    Spree::User.find_each do |user|
-      user_ids << user.id if user.accessible_products.where(id: product_id).exists?
-    end
-    Spree::User.where(id: user_ids)
+    product = Spree::Product.find(product_id)
+    bundles = Spree::Part.where(product_id: product_id).map(&:bundle)
+    products = [product, bundles].flatten.compact
+    Spree::User.joins(:licensed_products).where(spree_licensed_products: { product_id: products.map(&:id) })
   end
 
   def find_zip_codes_target_users(zip_codes)
