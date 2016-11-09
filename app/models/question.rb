@@ -3,6 +3,9 @@ class Question < ActiveRecord::Base
   include Displayable
   include Publishable
 
+  include FriendlyId
+  friendly_id :title, use: :slugged
+    
   belongs_to :faq_category
 
   has_one :answer
