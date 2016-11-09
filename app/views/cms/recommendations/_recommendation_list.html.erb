@@ -5,6 +5,7 @@
         <th colspan="2">Title</th>
         <th>Subject</th>
         <th>Role</th>
+	<th>Zip Codes</th>
 	<th>Views</th>
 	<th>Clicks</th>
         <th>Display</th>
@@ -18,6 +19,7 @@
           <td><%= link_to 'Edit', edit_cms_recommendation_path(recommendation), class: 'btn btn-default' %></td>
           <td><%= recommendation.subject %></td>
           <td><%= recommendation.user_title %></td>
+          <td><%= recommendation.zip_codes %></td>
           <td><%= recommendation.views %></td>
           <td><%= recommendation.clicks %></td>
           <td><%= recommendation.display %></td>
