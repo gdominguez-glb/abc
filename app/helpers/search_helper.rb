@@ -12,9 +12,9 @@ module SearchHelper
 
   def post_link(post)
     if post.medium_publication.blog_type == 'global'
-      global_post_path(slug: post.medium_publication.slug, id: post.id)
+      global_post_path(slug: post.medium_publication.slug, id: post.slug)
     else
-      curriculum_post_path(page_slug: post.medium_publication.page.slug, slug: post.medium_publication.slug, id: post.id)
+      curriculum_post_path(page_slug: post.medium_publication.page.slug, slug: post.medium_publication.slug, id: post.slug)
     end
   rescue
     nil
