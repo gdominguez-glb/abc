@@ -22,7 +22,7 @@ RSpec.describe BlogController, type: :controller do
 
   describe "GET 'global_post'" do
     it "success" do
-      get :global_post, slug: global_medium_publication.slug, id: global_post.id
+      get :global_post, slug: global_medium_publication.slug, id: global_post.slug
 
       expect(response).to be_success
       expect(assigns(:post)).to eq(global_post)
@@ -41,7 +41,7 @@ RSpec.describe BlogController, type: :controller do
 
   describe "GET 'curriculum_post'" do
     it "success" do
-      get :curriculum_post, page_slug: page.slug, slug: math_medium_publication.slug, id: math_post.id
+      get :curriculum_post, page_slug: page.slug, slug: math_medium_publication.slug, id: math_post.slug
 
       expect(response).to be_success
       expect(assigns(:post)).to eq(math_post)

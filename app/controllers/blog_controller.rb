@@ -56,8 +56,13 @@ class BlogController < ApplicationController
     @sub_nav_items = Page.show_in_sub_navigation(@group_page.group_name)
   end
 
+  include SearchHelper
   def find_post
-    @post = Post.find_by(id: params[:id]) || Post.find_by(slug: params[:slug])
+    post_with_id = Post.find_by(id: params[:id])
+    if post_with_id.present?
+      redirect_to post_link(post_with_id) and return
+    end
+    @post = Post.find_by(slug: params[:id])
     raise ActiveRecord::RecordNotFound.new('post not exist') if @post.blank?
   end
 end
