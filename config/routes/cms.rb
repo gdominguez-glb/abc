@@ -122,5 +122,4 @@ namespace :cms do
   resources :custom_csses
   resources :vanity_urls
 
-  post 'sync', to: 'sync#run'
 end
