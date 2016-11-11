@@ -50,6 +50,7 @@ namespace :cms do
   end
   resources :staffs do
     collection do
+      get :trustees
       post :update_positions
     end
   end

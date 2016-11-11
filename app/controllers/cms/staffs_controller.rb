@@ -2,14 +2,21 @@ class Cms::StaffsController < Cms::BaseController
   skip_before_action :authenticate_admin_in_cms!
   before_action :authenticate_hr_admin_in_cms!
 
-  before_action :find_staff, except: [:index, :new, :create, :update_positions]
+  before_action :find_staff, except: [:index, :new, :create, :update_positions, :trustees]
 
   def index
-    @staffs = Staff.order('position asc')
+    @staffs = Staff.staff.order('position asc')
+  end
+
+  def trustees
+    @staffs = Staff.trustee.order('position asc')
   end
 
   def new
     @staff = Staff.new
+    if params[:state] == 'trustees'
+      @staff.staff_type = :trustee
+    end
   end
 
   def create
@@ -38,7 +45,8 @@ class Cms::StaffsController < Cms::BaseController
   end
 
   def update_positions
-    update_positions_with_klass(Staff)
+    staffs = (params[:scope] == 'trustees' ? Staff.trustee : Staff.staff)
+    update_positions_with_klass(staffs)
     render nothing: true
   end
 

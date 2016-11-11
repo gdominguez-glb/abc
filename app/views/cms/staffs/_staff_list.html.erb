@@ -40,7 +40,7 @@
       $.ajax({
         url: '/cms/staffs/update_positions',
         type: 'POST',
-        data: { positions: data }
+        data: { positions: data, scope: '<%= selected_state %>' }
       })
     }
     $(function(){
