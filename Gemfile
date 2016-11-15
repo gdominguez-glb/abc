@@ -107,6 +107,8 @@ gem "flipper-ui"
 
 gem "dalli" # memcache
 
+gem 'sitemap_generator', require: false
+
 group :development do
   gem 'quiet_assets'
   gem 'letter_opener'
