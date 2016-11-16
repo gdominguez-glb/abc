@@ -12,6 +12,12 @@ SitemapGenerator::Sitemap.create do
       add curriculum_events_path(page_slug: curriculum_page.slug, slug: event_page.slug)
     end
   end
+  Page.by_category('Footer').each do |footer_page|
+    add "/#{footer_page.slug}"
+  end
+  Page.by_category('Enterprise').each do |enterprise_page|
+    add "/#{enterprise_page.slug}"
+  end
 
   add '/store'
   spree_routes = Spree::Core::Engine.routes.url_helpers
@@ -30,6 +36,24 @@ SitemapGenerator::Sitemap.create do
     footer_title.footer_links.each do |link|
       add link.link
     end
+  end
+
+  MediumPublication.displayable.each do |publication|
+    publication.posts.find_each do |post|
+      if publication.blog_type == 'global'
+        add global_post_path(slug: publication.slug, id: post.slug)
+      else
+        add curriculum_post_path(page_slug: publication.page.slug, slug: publication.slug, id: post.slug)
+      end
+    end
+  end
+
+  Question.displayable.find_each do |question|
+    add about_qa_path(id: question.slug)
+  end
+
+  EventPage.global.each do |event_page|
+    add events_list_path(slug: event_page.slug)
   end
 
   add '/contact'

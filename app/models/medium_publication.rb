@@ -1,4 +1,6 @@
 class MediumPublication < ActiveRecord::Base
+  include Displayable
+
   validates_presence_of :title, :url, :slug
 
   BLOG_TYPES = ['global', 'curriculum']
