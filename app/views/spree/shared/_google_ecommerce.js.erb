@@ -1,29 +1,3 @@
-<% if Rails.env.production? %>
-<%= content_for :google_tag_manager_ecommerce_tracking do %>
- <script>
-   window.dataLayer = window.dataLayer || [];
-   var products = [];
-  <% @order.line_items.each do |line_item| %>
-    products.push({
-    'name': '<%= j line_item.variant.product.name %>',    // Product name. Required.
-    'sku': '<%= j line_item.variant.sku %>',             // SKU/code.
-    'category': '',                                     // Category or variation.
-    'price': '<%= line_item.price %>',                 // Unit price.
-    'quantity': '<%= line_item.quantity %>'           // Quantity.
-    });
-  <% end %>
-   dataLayer.push({
-   'event': 'spree.purchase_order',
-   'transactionId': '<%= j @order.number %>',
-   'transactionAffiliation': '<%= current_store.name %>',
-   'transactionTotal': <%= @order.total %>,
-   'transactionTax': <%= @order.tax_total %>,
-   'transactionShipping': <%= @order.ship_total %>,
-   'transactionProducts': products
-   });
- </script>
-<% end %>
-<% else %>
 <%= content_for :google_analytics do %>
   ga('require', 'ecommerce', 'ecommerce.js');
 
@@ -46,5 +20,4 @@
     });
   <% end %>
   ga('ecommerce:send');
-<% end %>
 <% end %>
