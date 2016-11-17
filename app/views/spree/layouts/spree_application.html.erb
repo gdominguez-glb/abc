@@ -9,6 +9,7 @@
   </head>
   <body class="<%= body_class %> spree-store" id="<%= @body_id || 'default' %>" data-hook="body">
 
+    <%= yield :google_tag_manager_ecommerce_tracking %>
     <%= render 'google_tag_manager' if Rails.env.production? %>
     <%= render partial: 'spree/shared/google_analytics.js' %>
     <%= render partial: 'spree/shared/header' %>
