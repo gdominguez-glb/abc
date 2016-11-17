@@ -13,7 +13,7 @@
     });
   <% end %>
    dataLayer.push({
-   'event: 'spree.purchase_order',
+   'event': 'spree.purchase_order',
    'transactionId': '<%= j @order.number %>',
    'transactionAffiliation': '<%= current_store.name %>',
    'transactionTotal': '<%= @order.total %>',
