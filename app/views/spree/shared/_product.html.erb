@@ -1,5 +1,5 @@
 <% if $flipper[:store_redesign].enabled? %>
-  <%= render partial: 'spree/shared/product_new' %>
+  <%= render partial: 'spree/shared/product_new', locals: {product: product} %>
 <% else %>
-  <%= render partial: 'spree/shared/product_old' %>
+  <%= render partial: 'spree/shared/product_old', locals: {product: product} %>
 <% end %>
