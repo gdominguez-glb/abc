@@ -27,6 +27,7 @@ end
 
 every 1.day do
   rbenv_rake "regonline:import_events"
+  rbenv_rake "regonline:invisible_events"
 end
 
 every 1.day, at: '00:00 am' do
