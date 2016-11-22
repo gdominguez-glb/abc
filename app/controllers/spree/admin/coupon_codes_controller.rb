@@ -2,7 +2,8 @@ module Spree
   module Admin
     class CouponCodesController < ResourceController
       def index
-        @coupon_codes = Spree::CouponCode.order('created_at desc').page(params[:page])
+        @q = Spree::CouponCode.ransack(params[:q])
+        @coupon_codes = @q.result.order('created_at desc').page(params[:page])
       end
 
       def create
