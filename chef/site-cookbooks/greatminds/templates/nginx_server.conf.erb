@@ -53,11 +53,6 @@ server {
 
   client_max_body_size 1024m;
 
-  location ~* \.(css)$ {
-    expires max;
-    add_header Cache-Control "public";
-  }
-
   <% if node['pagespeed'] == 'true' %>
   pagespeed on;
 
