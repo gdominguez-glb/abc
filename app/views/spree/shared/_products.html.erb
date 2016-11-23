@@ -28,15 +28,22 @@
     <% if $flipper[:store_redesign].enabled? %>
       <% if products.any? %>
         <div id="products" data-hook class="col-sm-7 col-lg-8 margin-bottom--xl">
-            <% products.in_groups_of(2, false).each do |group| %>
-              <div class="row">
-                <% group.each do |product| %>
-                  <% cache([product, :store_list], expires_in: 2.hours) do %>
-                    <%= render partial: 'spree/shared/product', locals: { product: product } %>
-                  <% end %>
+          <div class="jumbotron jumbotron-primary text-left hidden-xs">
+            <button class="btn btn-link btn-dismiss js-dismiss-jumbotron">
+              Dismiss <i class="mi md-24">close</i>
+            </button>
+            <h1 class="bh2">Welcome to the Great Minds Shop!</h1>
+            <p>Great minds curricula are becoming the most widely used in the United States. Here you'll find curriculum files, lesson plans, core and supplemental materials, video series and more. Use the filters at left to refine your results.</p>
+          </div>
+          <% products.in_groups_of(2, false).each do |group| %>
+            <div class="row">
+              <% group.each do |product| %>
+                <% cache([product, :store_list], expires_in: 2.hours) do %>
+                  <%= render partial: 'spree/shared/product', locals: { product: product } %>
                 <% end %>
-              </div>
-            <% end %>
+              <% end %>
+            </div>
+          <% end %>
           <% reset_cycle("classes") %>
         </div>
       <% end %>
@@ -79,6 +86,10 @@
         if ( $(this).hasClass('active') ) {
           $(this).closest('.panel-collapse').collapse('show');
         }
+      });
+
+      $('.js-dismiss-jumbotron').on('click', function() {
+        $(this).closest('.jumbotron').hide();
       });
     });
   <% end %>

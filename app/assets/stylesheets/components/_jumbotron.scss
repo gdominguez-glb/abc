@@ -11,19 +11,48 @@
 //   Styleguide 12.0
 // -------------------------------------
 
-.jumbotron {
+.jumbotron.jumbotron {
+  position: relative;
   border: 1px solid $c-positive-secondary;
   text-align: center;
+  border-radius: 2px;
 
   p {
-    font-size: 1em;
+    font-size: .85em;
+  }
+
+  .btn-dismiss {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  @media screen and (min-width: $screen-sm-min) {
+    padding: $b-space-xl;
+  }
+}
+
+// -------------------------------------
+//   Primary Jumbotron
+//
+//   Styleguide 12.1
+// -------------------------------------
+
+.jumbotron-primary {
+  border: 0;
+  color: $c-absolute;
+  background-color: $c-positive-secondary;
+
+  .btn-dismiss {
+    text-decoration: none;
+    color: $c-absolute;
   }
 }
 
 // -------------------------------------
 //   Success Jumbotron
 //
-//   Styleguide 12.1
+//   Styleguide 12.2
 // -------------------------------------
 
 .jumbotron-success {
@@ -35,7 +64,7 @@
 // -------------------------------------
 //   Info Jumbotron
 //
-//   Styleguide 12.2
+//   Styleguide 12.3
 // -------------------------------------
 
 .jumbotron-info {
