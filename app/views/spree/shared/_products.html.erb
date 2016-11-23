@@ -25,19 +25,36 @@
       <% end %>
     </div>
 
-    <% if products.any? %>
-      <div id="products" data-hook class="col-sm-7 col-lg-8 margin-bottom--xl">
-        <div class="row">
-          <% products.each do |product| %>
-            <% cache([product, :store_list], expires_in: 2.hours) do %>
-              <%= render partial: 'spree/shared/product', locals: { product: product } %>
+    <% if $flipper[:store_redesign].enabled? %>
+      <% if products.any? %>
+        <div id="products" data-hook class="col-sm-7 col-lg-8 margin-bottom--xl">
+            <% products.in_groups_of(2, false).each do |group| %>
+              <div class="row">
+                <% group.each do |product| %>
+                  <% cache([product, :store_list], expires_in: 2.hours) do %>
+                    <%= render partial: 'spree/shared/product', locals: { product: product } %>
+                  <% end %>
+                <% end %>
+              </div>
             <% end %>
-          <% end %>
+          <% reset_cycle("classes") %>
         </div>
-        <% reset_cycle("classes") %>
-      </div>
+      <% end %>
+    <% else %>
+      <!-- Remove when store_redesign flipper is removed -->
+      <% if products.any? %>
+        <div id="products" data-hook class="col-sm-7 col-lg-8 margin-bottom--xl">
+          <div class="row">
+            <% products.each do |product| %>
+              <% cache([product, :store_list], expires_in: 2.hours) do %>
+                <%= render partial: 'spree/shared/product', locals: { product: product } %>
+              <% end %>
+            <% end %>
+          </div>
+          <% reset_cycle("classes") %>
+        </div>
+      <% end %>
     <% end %>
-
 
     <div class="col-sm-offset-2 col-md-offset-3 col-md-8 text-right">
         <% if paginated_products.respond_to?(:num_pages) %>
