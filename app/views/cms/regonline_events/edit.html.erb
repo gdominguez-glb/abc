@@ -27,6 +27,10 @@
         <label>Visible</label>
         <%= f.check_box :display, class: 'form-control' %>
       </div>
+      <div class="form-group" style="position:relative;">
+        <label>Invisible Date</label>
+        <%= f.text_field :invisible_at, class: 'form-control datetime-picker' %>
+      </div>
     </div>
   </div>
 
@@ -42,6 +46,7 @@
   <script type="text/javascript">
     $(function(){
       $('#regonline_event_session_types').select2();
+      $("#regonline_event_invisible_at").datetimepicker({format: 'YYYY-MM-DD'});
     });
   </script>
 <% end %>

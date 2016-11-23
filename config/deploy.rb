@@ -79,3 +79,4 @@ end
 
 after "deploy:finished", 'deploy:unicorn_restart'
 after "deploy:finished", 'sidekiq:restart'
+after "deploy:finished", 'deploy:sitemap:create'

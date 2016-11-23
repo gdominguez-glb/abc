@@ -11,3 +11,5 @@ Disallow: /store/user
 Disallow: /store/account
 Disallow: /store/api
 Disallow: /store/password
+
+Sitemap: /sitemap.xml.gz
