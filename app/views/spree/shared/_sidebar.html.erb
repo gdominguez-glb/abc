@@ -1,3 +1,9 @@
-<aside id="sidebar" class="col-sm-4 col-md-3 col-lg-2 col-sm-offset-1" data-hook>
-  <%= yield :sidebar %>
-</aside>
+<% if $flipper[:store_redesign].enabled? %>
+  <aside id="sidebar" class="col-sm-4 col-md-3" data-hook>
+    <%= yield :sidebar %>
+  </aside>
+<% else %>
+  <aside id="sidebar" class="col-sm-4 col-md-3 col-lg-2 col-sm-offset-1" data-hook>
+    <%= yield :sidebar %>
+  </aside>
+<% end %>

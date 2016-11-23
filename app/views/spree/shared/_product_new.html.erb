@@ -1,5 +1,5 @@
 <% url = spree.product_url(product, taxon_id: @taxon.try(:id)) %>
-<div id="product_<%= product.id %>" class="col-sm-6" data-hook="products_list_item" itemscope itemtype="http://schema.org/Product">
+<div id="product_<%= product.id %>" class="col-md-6" data-hook="products_list_item" itemscope itemtype="http://schema.org/Product">
   <div class="card <%= card_type_class(product) %>">
     <div class="card-curriculum">
       <%= product.curriculum.try(:name) || 'General' %>
