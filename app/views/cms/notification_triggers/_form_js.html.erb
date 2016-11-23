@@ -74,6 +74,7 @@
         $('.target-input').addClass('hidden');
         $("[data-input='"+ target +"']").removeClass('hidden');
       });
+      $('#notification_trigger_target_type').trigger('change');
 
       var changedInputs = [
         'form.new_notification_trigger #notification_trigger_target_type',

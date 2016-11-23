@@ -2,6 +2,7 @@ class NotificationTrigger < ActiveRecord::Base
   serialize :user_ids, Array
 
   validates_presence_of :target_type, :content, :notify_at
+  validates_presence_of :school_district_admin_user, if: ->(nt) { nt.school_district_target? }
 
   has_many :notifications, dependent: :destroy
 
