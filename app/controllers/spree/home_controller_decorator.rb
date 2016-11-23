@@ -10,10 +10,10 @@ Spree::HomeController.class_eval do
 
     @products = products_list_with_taxons_filter
 
-    if params[:taxon_ids].blank?
-      @products = @products.show_in_storefront
-    else
+    if params[:taxon_ids].present? && grade_taxon_selected?
       @products = @products.sort_group_first
+    else
+      @products = @products.show_in_storefront
     end
     @products = @products.unexpire.unarchive.page(params[:page]).per(10)
   end
@@ -37,5 +37,9 @@ Spree::HomeController.class_eval do
     Spree::Taxonomy.show_in_store.find_by(name: taxonomy_name).taxons.find_by(name: taxon_name).id
   rescue
     nil
+  end
+
+  def grade_taxon_selected?
+    Spree::Taxonomy.show_in_store.find_by(name: 'Grade').taxons.where(id: params[:taxon_ids]).exists?
   end
 end
