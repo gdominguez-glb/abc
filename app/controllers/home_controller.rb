@@ -10,4 +10,10 @@ class HomeController < ApplicationController
     session[:turn_off_browser_warning] = 'true'
     render nothing: true
   end
+
+  def set_filter_preferences
+    session[:filter_role] = params[:role]
+    session[:filter_curriculum] = params[:curriculum]
+    render nothing: true
+  end
 end

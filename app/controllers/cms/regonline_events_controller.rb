@@ -3,7 +3,8 @@ class Cms::RegonlineEventsController < Cms::BaseController
   before_action :find_event, except: [:index]
 
   def index
-    @events = @event_page.events.page(params[:page])
+    @q = @event_page.events.ransack(params[:q])
+    @events = @q.result.order('display desc, start_date asc').page(params[:page])
   end
 
   def edit
@@ -28,6 +29,6 @@ class Cms::RegonlineEventsController < Cms::BaseController
   end
 
   def event_params
-    params.require(:regonline_event).permit(:title, :display, :download_url, :grade_bands, :description, session_types: [])
+    params.require(:regonline_event).permit(:title, :display, :download_url, :grade_bands, :description, :invisible_at, session_types: [])
   end
 end

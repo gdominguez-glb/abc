@@ -2,13 +2,19 @@
   Product Keys
 <% end %>
 
-<% content_for :page_actions do %>
-  <div class="row">
-    <div class="col-md-6">
-      <%= button_link_to Spree.t(:new_product_key), new_object_url, class: "btn-success btn-block", icon: 'add' %>
-    </div>
+<div class="row">
+  <div class="col-md-8">
+    <%= search_form_for @q, url: '', class: 'form-inline' do |f| %>
+      <div class="form-group">
+        <%= f.text_field :school_district_name_or_code_cont, class: 'form-control', placeholder: 'Search by schoo/district name or key', style: 'width: 350px;' %>
+      </div>
+      <%= f.submit 'Search', class: 'btn btn-primary' %>
+    <% end %>
   </div>
-<% end %>
+  <div class="col-md-4 text-right">
+    <%= button_link_to Spree.t(:new_product_key), new_object_url, class: "btn-success btn-block", icon: 'add' %>
+  </div>
+</div>
 
 <div class="table-responsive">
   <table class="table">
