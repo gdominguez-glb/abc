@@ -30,7 +30,7 @@ module TaxonsFilterHelper
       content_tag :li, class: "dropdown-md-item" do
         concat(content_tag(:a, href: remove_taxon_link(taxon), class: "dropdown-md-link active") do
                  concat(taxon.name)
-                 concat('<i class="mi dropdown-md-mi">close</i>'.html_safeo)
+                 concat('<i class="mi dropdown-md-mi">close</i>'.html_safe)
         end)
       end
     else
