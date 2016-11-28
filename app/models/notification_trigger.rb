@@ -11,7 +11,7 @@ class NotificationTrigger < ActiveRecord::Base
   belongs_to :curriculum
   belongs_to :product, class_name: 'Spree::Product'
 
-  after_create :send_notifications
+  after_commit :send_notifications, on: :create
 
   TARGET_TYPES = [
     :single_user,
