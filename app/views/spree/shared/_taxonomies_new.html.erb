@@ -1,0 +1,33 @@
+<nav id="categoryFilters" class="panel-group" data-hook>
+  <h3 class="text-left">Shop</h3>
+
+  <input type="text" class="form-control input-md input-md-search margin-bottom--l" placeholder="Search" />
+
+  <h4 class="text-left bh4">I am a:</h4>
+
+  <% @taxonomies.where(name: 'I am a...').each do |taxonomy| %>
+    <div class="dropdown dropdown-md">
+      <button class="btn btn-default btn-block dropdown-toggle dropdown-md-btn" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        Role
+        <i class="dropdown-md-mi mi md-24 toggle-arrow">keyboard_arrow_down</i>
+      </button>
+      <%= gm_taxons_tree(taxonomy.root, @taxon, taxonomy.allow_multiple_taxons_selected) %>
+    </div>
+  <% end %>
+
+  <h4 class="text-left bh4">Looking for:</h4>
+
+  <% @taxonomies.where.not(name: 'I am a...').each do |taxonomy| %>
+    <div class="dropdown dropdown-md">
+      <button class="btn btn-default btn-block dropdown-toggle dropdown-md-btn margin-bottom--m" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        <%= taxonomy.name %>
+        <i class="dropdown-md-mi mi md-24 toggle-arrow">keyboard_arrow_down</i>
+      </button>
+      <%= gm_taxons_tree(taxonomy.root, @taxon, taxonomy.allow_multiple_taxons_selected) %>
+    </div>
+  <% end %>
+
+</nav>
+<h4 class="text-left bh4 js-applied-filters-title collapse">Applied Filters:</h4>
+<p class="js-applied-filters"></p>
+<a id="removeAllFilters" href="/store/?" class="btn btn-danger btn-block collapse">Remove All</a>
