@@ -75,18 +75,39 @@
 
   <%= javascript_tag do %>
     $(function() {
-      var filterItems = $('#categoryFilters .list-group-item');
+      <% if $flipper[:store_redesign].enabled? %>
+        var filterItems = $('#categoryFilters .dropdown-md-link');
+      <% else %>
+        var filterItems = $('#categoryFilters .list-group-item');
+      <% end %>
+
       var removeAllFilters = $('#removeAllFilters');
 
       if( filterItems.hasClass('active') ) {
         removeAllFilters.addClass('in');
+
+        <% if $flipper[:store_redesign].enabled? %>
+          $('.js-applied-filters-title').addClass('in');
+        <% end %>
       }
 
       filterItems.each(function() {
         if ( $(this).hasClass('active') ) {
-          $(this).closest('.panel-collapse').collapse('show');
+          <% if $flipper[:store_redesign].enabled? %>
+            var activeFilter = $(this).text();
+            activeFilter = activeFilter.replace('close', '');
+            $('.js-applied-filters').append('<h5 class="js-applied-filter bh5 inline">' + activeFilter + ',</h5> ');
+          <% else %>
+            $(this).closest('.panel-collapse').collapse('show');
+          <% end %>
         }
       });
+
+      <% if $flipper[:store_redesign].enabled? %>
+        var lastFilter = $('.js-applied-filter').last();
+        var text = lastFilter.text().replace(',', '');
+        lastFilter.text(text);
+      <% end %>
 
       $('.js-dismiss-jumbotron').on('click', function() {
         $(this).closest('.jumbotron').hide();
