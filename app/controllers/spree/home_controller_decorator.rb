@@ -41,5 +41,7 @@ Spree::HomeController.class_eval do
 
   def grade_taxon_selected?
     Spree::Taxonomy.show_in_store.find_by(name: 'Grade').taxons.where(id: params[:taxon_ids]).exists?
+  rescue
+    nil
   end
 end
