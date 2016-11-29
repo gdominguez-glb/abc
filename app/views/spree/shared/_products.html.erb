@@ -85,29 +85,17 @@
 
       if( filterItems.hasClass('active') ) {
         removeAllFilters.addClass('in');
-
-        <% if $flipper[:store_redesign].enabled? %>
-          $('.js-applied-filters-title').addClass('in');
-        <% end %>
       }
 
       filterItems.each(function() {
         if ( $(this).hasClass('active') ) {
           <% if $flipper[:store_redesign].enabled? %>
-            var activeFilter = $(this).text();
-            activeFilter = activeFilter.replace('close', '');
-            $('.js-applied-filters').append('<h5 class="js-applied-filter bh5 inline">' + activeFilter + ',</h5> ');
+            $(this).closest('.dropdown-md').addClass('open');
           <% else %>
             $(this).closest('.panel-collapse').collapse('show');
           <% end %>
         }
       });
-
-      <% if $flipper[:store_redesign].enabled? %>
-        var lastFilter = $('.js-applied-filter').last();
-        var text = lastFilter.text().replace(',', '');
-        lastFilter.text(text);
-      <% end %>
 
       $('.js-dismiss-jumbotron').on('click', function() {
         $(this).closest('.jumbotron').hide();
