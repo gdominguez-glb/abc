@@ -90,7 +90,7 @@
       filterItems.each(function() {
         if ( $(this).hasClass('active') ) {
           <% if $flipper[:store_redesign].enabled? %>
-            $(this).closest('.dropdown-md').addClass('open');
+            $(this).closest('.dropdown-md-menu').addClass('block');
           <% else %>
             $(this).closest('.panel-collapse').collapse('show');
           <% end %>
