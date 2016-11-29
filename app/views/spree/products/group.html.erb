@@ -5,10 +5,16 @@
       <p class="text-left--sm-min"><%= @product_group.description.html_safe rescue '' %></p>
       <div class="row">
         <% @products.each do |product| %>
-          <%= render partial: 'spree/shared/product', locals: { product: product } %>
+          <% if $flipper[:store_redesign].enabled? %>
+            <div class="col-md-4">
+              <%= render partial: 'spree/shared/product', locals: { product: product } %>
+            </div>
+          <% else %>
+            <%= render partial: 'spree/shared/product', locals: { product: product } %>
+          <% end %>
         <% end %>
       </div>
-    </div>    
+    </div>
   </div>
 </div>
 <%= render partial: 'spree/shared/partner_modal' %>
