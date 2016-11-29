@@ -1,8 +1,10 @@
 <div class="group-products">
   <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <h2 class="text-left lh4"><%= @product_group.name %></h2>
+      <p class="text-left"><%= @product_group.description.html_safe rescue '' %></p>
+    </div>
     <div class="col-xs-12">
-      <h2 class="text-center"><%= @product_group.name %></h2>
-      <p class="text-left--sm-min"><%= @product_group.description.html_safe rescue '' %></p>
       <div class="row">
         <% @products.each do |product| %>
           <% if $flipper[:store_redesign].enabled? %>
