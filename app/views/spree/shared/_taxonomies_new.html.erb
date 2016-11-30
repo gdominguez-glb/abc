@@ -1,7 +1,12 @@
 <nav id="categoryFilters" class="panel-group" data-hook>
   <h3 class="text-left">Shop</h3>
 
-  <input type="text" class="form-control input-md input-md-search margin-bottom--l" placeholder="Search" />
+  <%= form_tag '', method: :get do %>
+    <% params[:taxon_ids].each do |taxon_id| %>
+      <%= hidden_field_tag 'taxon_ids[]', taxon_id %>
+    <% end  %>
+    <%= text_field_tag :q, params[:q], class: "form-control input-md input-md-search margin-bottom--l", placeholder: "Search" %>
+  <% end %>
 
   <h4 class="text-left bh4">I am a:</h4>
 
