@@ -1,0 +1,63 @@
+// *************************************
+//
+//   Card
+//   Card Component based on upcoming
+//   Bootstrap 4 cards
+//
+// *************************************
+
+.card {
+  display: block;
+  margin-bottom: $b-space-l;
+  padding: $b-space-l;
+  border-top: 9px solid $c-positive-secondary;
+  text-align: left;
+  background-color: $c-absolute;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, .175);
+
+  @media screen and (min-width: $screen-sm-min) {
+    padding: $b-space-l $b-space-xl;
+  }
+
+  @media screen and (min-width: $screen-md-min) {
+    padding: $b-space-l;
+  }
+
+  @media screen and (min-width: $screen-lg-min) {
+    padding: $b-space-l $b-space-xl $b-space-xl;
+  }
+}
+
+.card-math {
+  border-top-color: $c-balanced;
+}
+
+.card-english {
+  border-top-color: $c-positive-primary;
+}
+
+.card-history {
+  border-top-color: $c-energized-primary;
+}
+
+.card-curriculum {
+  margin-bottom: $b-space-s;
+  font-size: .80em;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+
+  @extend .sans-serif;
+
+  @media screen and (min-width: $screen-sm-min) {
+    font-size: .9em;
+  }
+}
+
+.card-title {
+  line-height: 1.2em;
+}
+
+.card-text {
+  font-size: .9em;
+}

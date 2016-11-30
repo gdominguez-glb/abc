@@ -1,19 +1,5 @@
-<nav id="categoryFilters" class="panel-group" data-hook>
-  <h3 class="filters-title">Shop By:</h3>
-  <% @taxonomies.each do |taxonomy| %>
-    <div class="panel panel-default panel-collapsible panel-shop">
-      <div class="panel-heading">
-        <h4 class="panel-title filter-title">
-          <a data-toggle="collapse" data-parent="#categories" href="#collapse<%= taxonomy.name.gsub(/[^0-9A-Za-z]/, '') %>" class="collapsed">
-            <%= taxonomy.name %>
-            <i class="mi md-24 toggle-arrow">keyboard_arrow_up</i>
-          </a>
-        </h4>
-      </div>
-      <div id="collapse<%= taxonomy.name.gsub(/[^0-9A-Za-z]/, '') %>" class="panel-collapse collapse">
-        <%= gm_taxons_tree(taxonomy.root, @taxon, taxonomy.allow_multiple_taxons_selected) %>
-      </div>
-    </div>
-  <% end %>
-</nav>
-<a id="removeAllFilters" href="/store/?remove_all=1" class="btn btn-danger btn-block collapse">Remove All</a>
+<% if $flipper[:store_redesign].enabled? %>
+  <%= render partial: 'spree/shared/taxonomies_new' %>
+<% else %>
+  <%= render partial: 'spree/shared/taxonomies_old' %>
+<% end %>

@@ -25,19 +25,43 @@
       <% end %>
     </div>
 
-    <% if products.any? %>
-      <div id="products" data-hook class="col-sm-7 col-lg-8 margin-bottom--xl">
-        <div class="row">
-          <% products.each do |product| %>
-            <% cache([product, :store_list], expires_in: 2.hours) do %>
-              <%= render partial: 'spree/shared/product', locals: { product: product } %>
-            <% end %>
+    <% if $flipper[:store_redesign].enabled? %>
+      <% if products.any? %>
+        <div id="products" data-hook class="col-sm-8 col-md-offset-1 margin-bottom--xl">
+          <div class="jumbotron jumbotron-primary text-left hidden-xs">
+            <button class="btn btn-link btn-dismiss js-dismiss-jumbotron">
+              Dismiss <i class="mi md-24">close</i>
+            </button>
+            <h1 class="bh2">Welcome to the Great Minds Shop!</h1>
+            <p>Great minds curricula are becoming the most widely used in the United States. Here you'll find curriculum files, lesson plans, core and supplemental materials, video series and more. Use the filters at left to refine your results.</p>
+          </div>
+          <% products.in_groups_of(2, false).each do |group| %>
+            <div class="row">
+              <% group.each do |product| %>
+                <% cache([product, :store_list], expires_in: 2.hours) do %>
+                  <%= render partial: 'spree/shared/product', locals: { product: product } %>
+                <% end %>
+              <% end %>
+            </div>
           <% end %>
+          <% reset_cycle("classes") %>
         </div>
-        <% reset_cycle("classes") %>
-      </div>
+      <% end %>
+    <% else %>
+      <!-- Remove when store_redesign flipper is removed -->
+      <% if products.any? %>
+        <div id="products" data-hook class="col-sm-7 col-lg-8 margin-bottom--xl">
+          <div class="row">
+            <% products.each do |product| %>
+              <% cache([product, :store_list], expires_in: 2.hours) do %>
+                <%= render partial: 'spree/shared/product', locals: { product: product } %>
+              <% end %>
+            <% end %>
+          </div>
+          <% reset_cycle("classes") %>
+        </div>
+      <% end %>
     <% end %>
-
 
     <div class="col-sm-offset-2 col-md-offset-3 col-md-8 text-right">
         <% if paginated_products.respond_to?(:num_pages) %>
@@ -51,7 +75,12 @@
 
   <%= javascript_tag do %>
     $(function() {
-      var filterItems = $('#categoryFilters .list-group-item');
+      <% if $flipper[:store_redesign].enabled? %>
+        var filterItems = $('#categoryFilters .dropdown-md-link');
+      <% else %>
+        var filterItems = $('#categoryFilters .list-group-item');
+      <% end %>
+
       var removeAllFilters = $('#removeAllFilters');
 
       if( filterItems.hasClass('active') ) {
@@ -60,8 +89,17 @@
 
       filterItems.each(function() {
         if ( $(this).hasClass('active') ) {
-          $(this).closest('.panel-collapse').collapse('show');
+          <% if $flipper[:store_redesign].enabled? %>
+            $(this).closest('.dropdown-md').addClass('dropdown-md-relative-open');
+            $(this).closest('.dropdown-md-menu').addClass('block');
+          <% else %>
+            $(this).closest('.panel-collapse').collapse('show');
+          <% end %>
         }
+      });
+
+      $('.js-dismiss-jumbotron').on('click', function() {
+        $(this).closest('.jumbotron').hide();
       });
     });
   <% end %>
