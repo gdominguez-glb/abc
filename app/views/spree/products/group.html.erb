@@ -9,7 +9,7 @@
         <% @products.each do |product| %>
           <% if $flipper[:store_redesign].enabled? %>
             <div class="col-md-4">
-              <%= render partial: 'spree/shared/product', locals: { product: product } %>
+              <%= render partial: 'spree/shared/product_group', locals: { product: product } %>
             </div>
           <% else %>
             <%= render partial: 'spree/shared/product', locals: { product: product } %>
