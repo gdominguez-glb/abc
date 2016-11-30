@@ -102,6 +102,14 @@
     white-space: normal;
   }
 
+  &.btn-link--stable {
+    @include button-variant($c-stable-primary, transparent, transparent);
+
+    &:focus {
+      outline: none;
+    }
+  }
+
   &.header-form-control {
     height: 34px;
     padding: 6px 12px;
