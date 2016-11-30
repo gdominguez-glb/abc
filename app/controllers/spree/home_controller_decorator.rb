@@ -15,7 +15,7 @@ Spree::HomeController.class_eval do
     else
       @products = @products.show_in_storefront
     end
-    @products = @products.unexpire.unarchive.page(params[:page]).per(10)
+    @products = @products.unexpire.unarchive.search_by_text(params[:q]).page(params[:page]).per(10)
   end
 
   def clear_preference_filters
