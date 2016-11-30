@@ -6,7 +6,7 @@
     </div>
     <% cache(@taxon.present? ? [I18n.locale, current_currency, @taxon, product] : [I18n.locale, current_currency, product]) do %>
       <div class="card-image">
-        <%= render :partial => 'image', locals: { image: product.images.first } %>
+        <%= render :partial => 'spree/products/image', locals: { image: product.images.first } %>
       </div>
       <h4 class="card-title">
         <% if product.group_product? %>
