@@ -17,7 +17,7 @@
       <%= product.short_description.html_safe rescue '' %>
     </p>
     <% if product.group_product? %>
-      <%= link_to 'Explore Options', group_product_path(product), class: 'btn btn-primary' %>
+      <%= link_to "Explore Options (#{product.group_items.to_a.size})", group_product_path(product), class: 'btn btn-primary' %>
     <% elsif product.get_in_touch_product? || product.partner_product? %>
       <%= link_to 'Learn More', spree.product_path(product), class: 'btn btn-primary' %>
     <% else %>
