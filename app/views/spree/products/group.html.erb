@@ -2,12 +2,16 @@
   <div class="row">
     <div class="col-md-10 col-md-offset-1">
       <h2 class="text-left lh4"><%= @product_group.name %></h2>
-      <div class="margin-bottom--l border-bottom--firm-accent">
-        <div class="js-read-more overflow--hidden height--100">
-          <p class="text-left"><%= @product_group.description.html_safe rescue '' %></p>
+      <% if $flipper[:store_redesign].enabled? %>
+        <div class="margin-bottom--l border-bottom--firm-accent">
+          <div class="js-read-more overflow--hidden height--100">
+            <p class="text-left"><%= @product_group.description.html_safe rescue '' %></p>
+          </div>
+          <button class="btn btn-link-alt btn-link--stable js-read-more-btn">Read More <i class="mi md-24 js-read-more-arrow">keyboard_arrow_down</i></button>
         </div>
-        <button class="btn btn-link-alt btn-link--stable js-read-more-btn">Read More <i class="mi md-24 js-read-more-arrow">keyboard_arrow_down</i></button>
-      </div>
+      <% else %>
+        <p class="text-left"><%= @product_group.description.html_safe rescue '' %></p>
+      <% end %>
     </div>
     <div class="col-xs-12">
       <div class="row">
@@ -26,11 +30,13 @@
 </div>
 <%= render partial: 'spree/shared/partner_modal' %>
 
-<%= javascript_tag do %>
-  $(function() {
-    $('.js-read-more-btn').on('click', function() {
-      $('.js-read-more').toggleClass('height--100');
-      $('.js-read-more-arrow').toggleClass('rotate--180');
+<% if $flipper[:store_redesign].enabled? %>
+  <%= javascript_tag do %>
+    $(function() {
+      $('.js-read-more-btn').on('click', function() {
+        $('.js-read-more').toggleClass('height--100');
+        $('.js-read-more-arrow').toggleClass('rotate--180');
+      });
     });
-  });
+  <% end %>
 <% end %>
