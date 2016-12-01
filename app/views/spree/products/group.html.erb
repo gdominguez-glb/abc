@@ -19,17 +19,23 @@
       <% end %>
     </div>
     <div class="col-xs-12">
-      <div class="row">
-        <% @products.each do |product| %>
-          <% if $flipper[:store_redesign].enabled? %>
-            <div class="col-md-4">
-              <%= render partial: 'spree/shared/product_group', locals: { product: product } %>
-            </div>
-          <% else %>
+      <% if $flipper[:store_redesign].enabled? %>
+        <% @products.in_groups_of(3, false).each do |group| %>
+          <div class="row">
+            <% group.each do |product| %>
+              <div class="col-md-4">
+                <%= render partial: 'spree/shared/product_group', locals: { product: product } %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      <% else %>
+        <div class="row">
+          <% @products.each do |product| %>
             <%= render partial: 'spree/shared/product', locals: { product: product } %>
           <% end %>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
