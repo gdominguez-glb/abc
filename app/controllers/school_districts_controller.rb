@@ -1,7 +1,7 @@
 class SchoolDistrictsController < ApplicationController
 
   def index
-    school_districts = SchoolDistrict.
+    school_districts = SchoolDistrict.for_selection.
       where(place_type: params[:type]).
       where('name ilike ?', "%#{params[:q]}%").
       page(params[:page]).per(params[:per_page])
