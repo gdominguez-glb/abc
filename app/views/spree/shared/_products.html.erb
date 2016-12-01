@@ -28,13 +28,7 @@
     <% if $flipper[:store_redesign].enabled? %>
       <% if products.any? %>
         <div id="products" data-hook class="col-sm-8 col-md-offset-1 margin-bottom--xl">
-          <div class="jumbotron jumbotron-primary text-left hidden-xs">
-            <button class="btn btn-link btn-dismiss js-dismiss-jumbotron">
-              Dismiss <i class="mi md-24">close</i>
-            </button>
-            <h1 class="bh2">Welcome to the Great Minds Shop!</h1>
-            <p>Great minds curricula are becoming the most widely used in the United States. Here you'll find curriculum files, lesson plans, core and supplemental materials, video series and more. Use the filters at left to refine your results.</p>
-          </div>
+          <%= show_store_welcome_message %>
           <% products.in_groups_of(2, false).each do |group| %>
             <div class="row">
               <% group.each do |product| %>
