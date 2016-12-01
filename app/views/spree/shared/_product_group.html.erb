@@ -19,7 +19,7 @@
         <div data-hook="product_price">
           <div id="product-price">
             <div>
-              <span class="lead price selling <%= product.free? ? 'text-danger' : '' %>" itemprop="price">
+              <span class="lead price selling block margin-bottom--l  <%= product.free? ? 'text-danger' : '' %>" itemprop="price">
                 <%= product_display_price(product) %>
               </span>
               <span itemprop="priceCurrency" content="<%= product.currency %>"></span>
@@ -29,9 +29,6 @@
       <% end %>
     <% end %>
 
-    <p class="card-text">
-      <%= product.short_description.html_safe rescue '' %>
-    </p>
     <% if product.group_product? %>
       <%= link_to 'Explore Options', group_product_path(product), class: 'btn btn-primary' %>
     <% elsif product.get_in_touch_product? || product.partner_product? %>
