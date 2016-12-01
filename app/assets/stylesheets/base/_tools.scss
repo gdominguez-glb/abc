@@ -30,6 +30,10 @@
   display: inline-block !important;
 }
 
+.overflow--hidden {
+  overflow: hidden;
+}
+
 .clear {
   clear: both !important;
 }
@@ -56,6 +60,14 @@
 
 .width--100pct {
   width: 100% !important;
+}
+
+.height--100 {
+  height: 100px !important;
+}
+
+.rotate--180 {
+  @include rotate(-180deg);
 }
 
 // -------------------------------------
@@ -100,6 +112,54 @@
 
 .text--italic {
   font-style: italic !important;
+}
+
+.bh1 {
+  font-size: 2em !important;
+}
+
+.bh2 {
+  font-size: 1.5em !important;
+}
+
+.bh3 {
+  font-size: 1.25em !important;
+}
+
+.bh4 {
+  font-size: 1em !important;
+}
+
+.bh5 {
+  font-size: .875em !important;
+}
+
+.bh6 {
+  font-size: .75em !important;
+}
+
+.lh1 {
+  line-height: 1.5em;
+}
+
+.lh2 {
+  line-height: 1.4em;
+}
+
+.lh3 {
+  line-height: 1.3em;
+}
+
+.lh4 {
+  line-height: 1.2em;
+}
+
+.lh5 {
+  line-height: 1.1em;
+}
+
+.lh6 {
+  line-height: 1em;
 }
 
 // -------------------------------------
@@ -421,6 +481,18 @@
 }
 
 // ----- Border ----- //
+
+.border-bottom--firm-primary {
+  border-bottom: 1px solid $c-firm-primary;
+}
+
+.border-bottom--firm-secondary {
+  border-bottom: 1px solid $c-firm-secondary;
+}
+
+.border-bottom--firm-accent {
+  border-bottom: 1px solid $c-firm-accent;
+}
 
 .border-right--primary--sm-min {
   @media screen and (min-width: $screen-sm-min) {
