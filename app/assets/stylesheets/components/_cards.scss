@@ -54,6 +54,14 @@
   }
 }
 
+.card-image {
+  text-align: center;
+
+  img {
+    margin-bottom: $b-space-l;
+  }
+}
+
 .card-title {
   line-height: 1.2em;
 }
