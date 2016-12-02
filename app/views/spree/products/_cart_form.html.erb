@@ -33,19 +33,19 @@
               <br/>
               <% if @product.product_type != "partner" %>
                 <label class="block margin-bottom--m">Quantity:</label>
-                <div class="select-container dark-select">
+                <div class="select-container dark-select dropdown-md-btn margin-bottom--s inline-block">
                   <span>1</span>
                   <%= select_tag  :quantity, options_for_select(1..@product.max_quantity_to_purchase), :class => 'form-control' %>
                 </div>
               <% end %>
 
               <% if @product.get_in_touch_product? %>
-                <%= link_to Spree.t(:get_in_touch), @product.get_in_touch_url, target: '_blank', class: 'btn btn-success' %>
+                <%= link_to Spree.t(:get_in_touch), @product.get_in_touch_url, target: '_blank', class: 'btn btn-danger--alt btn--md' %>
               <% elsif @product.redirect_url.present? %>
-                <%= link_to Spree.t(:purchase_from_partner), @product.redirect_url, target: '_blank', class: 'btn btn-success', :data => { :toggle => 'modal', :redirect => @product.redirect_url, :target => '.partner-modal' } %>
+                <%= link_to Spree.t(:purchase_from_partner), @product.redirect_url, target: '_blank', class: 'btn btn-danger--alt btn--md', :data => { :toggle => 'modal', :redirect => @product.redirect_url, :target => '.partner-modal' } %>
               <% else %>
-                <%= button_tag :class => 'btn btn-success', :id => 'add-to-cart-button', :type => :submit do %>
-                  <%= Spree.t(:add_to_cart) %>
+                <%= button_tag :class => 'btn btn-danger--alt btn--md', :id => 'add-to-cart-button', :type => :submit do %>
+                  <i class="mi">shopping_cart</i> <%= Spree.t(:add_to_cart) %>
                 <% end %>
               <% end %>
             </div>

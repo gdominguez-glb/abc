@@ -93,6 +93,10 @@
     @include button-variant($c-absolute, darken($c-energized-secondary, 10%), darken($c-energized-secondary, 15%));
   }
 
+  &.btn-danger--alt {
+    @include button-variant($c-absolute, $c-energized-secondary, $c-energized-secondary);
+  }
+
   &.btn-link {
     text-decoration: underline;
   }
@@ -114,6 +118,10 @@
     height: 34px;
     padding: 6px 12px;
   }
+}
+
+.btn--md {
+  border-radius: 2px;
 }
 
 .btn-icon {
