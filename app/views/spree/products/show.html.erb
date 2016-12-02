@@ -7,7 +7,7 @@
 
       <div class="row">
 
-        <div class="col-md-6" data-hook="product_left_part">
+        <div class="col-md-5" data-hook="product_left_part">
           <div data-hook="product_left_part_wrap">
             <div id="product-images" class="product-images" data-hook="product_images">
               <div id="main-image" class="panel panel-default" data-hook>
@@ -27,7 +27,7 @@
           </div>
         </div>
 
-        <div class="col-md-6" data-hook="product_right_part">
+        <div class="col-md-7" data-hook="product_right_part">
           <div class="card <%= card_type_class(@product) %>" data-hook="product_right_part_wrap">
             <div class="card-curriculum">
               <%= @product.curriculum.try(:name) || 'General' %>
@@ -35,11 +35,11 @@
             <div id="product-description" data-hook="product_description" class="product-description">
               <h2 class="product-title card-title" itemprop="name"><%= @product.name %></h2>
               <% if @product.price_in(current_currency) and !@product.price.nil? %>
-                <% if display_product_price_tag?(@product) %>
+                <%# if display_product_price_tag?(@product) %>
                   <div data-hook="product_price">
                     <div id="product-price">
                       <div>
-                        <span class="lead price selling label label-default label-large" itemprop="price">
+                        <span class="lead price selling block margin-bottom--l <%= @product.free? ? 'text-danger' : '' %>" itemprop="price">
                           <%= product_display_price(@product) %>
                         </span>
                         <span itemprop="priceCurrency" content="<%= @product.currency %>"></span>
@@ -53,7 +53,7 @@
                       <% end %>
                     </div>
                   </div>
-                <% end %>
+                <%# end %>
               <% else %>
                 <div id="product-price">
                   <br>
