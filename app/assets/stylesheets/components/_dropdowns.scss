@@ -9,10 +9,12 @@
 //   Material Design-Inspired Dropdown
 // -------------------------------------
 
-.dropdown-md-btn.dropdown-md-btn.dropdown-md-btn {
+.dropdown-md-btn.dropdown-md-btn.dropdown-md-btn,
+.dropdown-md-btn.dropdown-md-btn.dropdown-md-btn:hover {
   border: 1px solid $c-firm-primary;
   font-weight: 700;
   letter-spacing: .05em;
+  color: $c-positive-secondary;
   background-color: $c-absolute;
   border-radius: 2px;
   transition: none;

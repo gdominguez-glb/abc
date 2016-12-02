@@ -39,7 +39,7 @@
                   <div data-hook="product_price">
                     <div id="product-price">
                       <div>
-                        <span class="lead price selling block margin-bottom--l <%= @product.free? ? 'text-danger' : '' %>" itemprop="price">
+                        <span class="lead price selling block margin-bottom--l <%= @product.free? ? 'text--danger-alt' : '' %>" itemprop="price">
                           <%= product_display_price(@product) %>
                         </span>
                         <span itemprop="priceCurrency" content="<%= @product.currency %>"></span>
@@ -61,20 +61,20 @@
                 </div>
               <% end %>
 
-              <p class="padding-top--m padding-bottom card-text" itemprop="description" data-hook="description">
+              <div class="padding-bottom card-text" itemprop="description" data-hook="description">
                 <%= product_description(@product) rescue Spree.t(:product_has_no_description) %>
-              </p>
+              </div>
 
               <% if @product.get_in_touch_product? %>
                 <div class='row'>
                   <div class="col-md-5">
-                    <%= link_to Spree.t(:get_in_touch), @product.get_in_touch_url, target: '_blank', class: 'btn btn-primary product-btn-primary' %>
+                    <%= link_to Spree.t(:get_in_touch), @product.get_in_touch_url, target: '_blank', class: 'btn btn-danger--alt btn--md product-btn-primary' %>
                   </div>
                 </div>
               <% elsif @product.partner_product? %>
                 <div class="row">
                   <div class="col-md-5">
-                    <%= link_to Spree.t(:purchase_from_partner), @product.redirect_url, target: '_blank', class: 'btn btn-primary product-btn-primary', :data => { :toggle => 'modal', :redirect => @product.redirect_url, :target => '.partner-modal' } %>
+                    <%= link_to Spree.t(:purchase_from_partner), @product.redirect_url, target: '_blank', class: 'btn btn-danger--alt btn--md product-btn-primary', :data => { :toggle => 'modal', :redirect => @product.redirect_url, :target => '.partner-modal' } %>
                   </div>
                 </div>
               <% else %>

@@ -98,6 +98,10 @@
   color: darken($c-energized-secondary, 10%) !important;
 }
 
+.text--danger-alt {
+  color: $c-energized-secondary !important;
+}
+
 .text--lowercase {
   text-transform: lowercase !important;
 }

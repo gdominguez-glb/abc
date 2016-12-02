@@ -19,7 +19,7 @@
         <div data-hook="product_price">
           <div id="product-price">
             <div>
-              <span class="lead price selling block margin-bottom--l  <%= product.free? ? 'text-danger' : '' %>" itemprop="price">
+              <span class="lead price selling block margin-bottom--l  <%= product.free? ? 'text--danger-alt' : '' %>" itemprop="price">
                 <%= product_display_price(product) %>
               </span>
               <span itemprop="priceCurrency" content="<%= product.currency %>"></span>
