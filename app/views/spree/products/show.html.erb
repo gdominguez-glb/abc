@@ -29,8 +29,11 @@
 
         <div class="col-md-6" data-hook="product_right_part">
           <div class="card <%= card_type_class(@product) %>" data-hook="product_right_part_wrap">
+            <div class="card-curriculum">
+              <%= @product.curriculum.try(:name) || 'General' %>
+            </div>
             <div id="product-description" data-hook="product_description" class="product-description">
-              <h2 class="product-title" itemprop="name"><%= @product.name %></h2>
+              <h2 class="product-title card-title" itemprop="name"><%= @product.name %></h2>
               <% if @product.price_in(current_currency) and !@product.price.nil? %>
                 <% if display_product_price_tag?(@product) %>
                   <div data-hook="product_price">
@@ -58,7 +61,7 @@
                 </div>
               <% end %>
 
-              <p class="padding-top--m padding-bottom" itemprop="description" data-hook="description">
+              <p class="padding-top--m padding-bottom card-text" itemprop="description" data-hook="description">
                 <%= product_description(@product) rescue Spree.t(:product_has_no_description) %>
               </p>
 
