@@ -21,7 +21,7 @@
             <div class="row">
               <% group.each do |product| %>
                 <% cache([product, :store_list], expires_in: 2.hours) do %>
-                  <div class="col-md-6">
+                  <div class="col-lg-6">
                     <%= render partial: 'spree/shared/product', locals: { product: product } %>
                   </div>
                 <% end %>
