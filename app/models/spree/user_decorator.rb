@@ -339,7 +339,6 @@ Spree::User.class_eval do
 
   private
   def is_in_usa?
-    return false if self.ip_location.nil?
     ip_location == 'US'
   end
 end
