@@ -79,6 +79,7 @@ Spree::Product.class_eval do
   scope :salesforceable, -> { where.not(sf_id_product: [nil, ''])}
   scope :unarchive, -> { where(archived: false) }
   scope :sort_group_first, -> { order("case product_type when 'group' then 1 else 2 end").order('position asc') }
+  scope :search_by_text, ->(q) { where("spree_products.name ilike :q or spree_products.short_description ilike :q", q: "%#{q}%") if q.present? }
 
   after_save :add_video_group_taxon
 
