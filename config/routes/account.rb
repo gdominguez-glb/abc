@@ -2,6 +2,7 @@ namespace :account do
   root to: 'root#index'
 
   get 'products', to: 'products#index'
+  get 'resources', to: 'resources#index'
 
   get 'history', to: 'history#index'
   delete 'history/:id/remove', to: 'history#remove', as: :remove_history
