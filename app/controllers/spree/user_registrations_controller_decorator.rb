@@ -5,7 +5,6 @@ Spree::UserRegistrationsController.class_eval do
   # override to remove flash message on sign up
   def create
     @user = build_resource(spree_user_params)
-    @user.ip = request.ip unless request.nil?
     resource_saved = resource.save
     yield resource if block_given?
     if resource_saved
@@ -47,6 +46,7 @@ Spree::UserRegistrationsController.class_eval do
       :allow_communication,
       :phone,
       :zip_code,
+      :ip_location,
       school_district_attributes: [:name, :state_id, :country_id, :city, :place_type],
       interested_subjects: [],
       grades: []

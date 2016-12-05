@@ -31,10 +31,15 @@ module ApplicationHelper
     end
   end
 
-  def is_located_in_usa?
-    results = Geocoder.search(request.ip)
-    return results.first.data['country_code'] == 'US' unless results.first.nil?
+  def geo_coder(ip = nil)
+    ip = request.ip if ip.nil?
+    Geocoder.search(ip)
+  end
 
+  def is_located_in_usa?(ip = nil)
+    ip = request.ip if ip.nil?
+    results = geo_coder(ip)
+    return results.first.data['country_code'] == 'US' unless results.first.nil?
     false
   end
 

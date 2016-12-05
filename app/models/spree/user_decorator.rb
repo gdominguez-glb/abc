@@ -144,7 +144,7 @@ Spree::User.class_eval do
   has_many :bookmarks
   has_many :product_agreements, class_name: 'Spree::ProductAgreement'
 
-  attr_accessor :school_id, :district_id, :ip
+  attr_accessor :school_id, :district_id, :ip_location
 
   accepts_nested_attributes_for :school_district, reject_if: proc { |attributes| attributes['name'].blank? }
 
@@ -339,11 +339,7 @@ Spree::User.class_eval do
 
   private
   def is_in_usa?
-    return false if self.ip.nil?
-
-    results = Geocoder.search(self.ip)
-    return results.first.data['country_code'] == 'US' unless results.first.nil?
-
-    false
+    return false if self.ip_location.nil?
+    ip_location == 'US'
   end
 end
