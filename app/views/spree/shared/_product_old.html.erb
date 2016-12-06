@@ -14,7 +14,7 @@
           <% cache(@taxon.present? ? [I18n.locale, current_currency, @taxon, product] : [I18n.locale, current_currency, product]) do %>
             <h5 class="product-title margin-top">
               <% if product.group_product? %>
-                <%= link_to truncate(product.name, length: 50), group_product_path(product), itemprop: "name", title: product.name %>
+                <%= link_to truncate(product.name, length: 50), spree.group_product_path(product), itemprop: "name", title: product.name %>
               <% else %>
                 <%= link_to truncate(product.name, length: 50), url, itemprop: "name", title: product.name %>
               <% end %>
@@ -27,7 +27,7 @@
 
         <div class="col-md-5 col-lg-4 product-actions">
           <% if product.group_product? %>
-            <%= link_to 'Explore Options', group_product_path(product), class: 'btn btn-primary product-btn-primary' %>
+            <%= link_to 'Explore Options', spree.group_product_path(product), class: 'btn btn-primary product-btn-primary' %>
           <% elsif product.get_in_touch_product? || product.partner_product? %>
             <%= link_to 'Learn More', spree.product_path(product), class: 'btn btn-primary product-btn-primary' %>
           <% else %>
