@@ -1,0 +1,28 @@
+<% url = spree.product_url(product, taxon_id: @taxon.try(:id)) %>
+<div id="product_<%= product.id %>" data-hook="products_list_item" itemscope itemtype="http://schema.org/Product">
+  <div class="card <%= card_type_class(product) %>">
+    <div class="card-curriculum">
+      <%= product.curriculum.try(:name) || 'General' %>
+    </div>
+    <% cache(@taxon.present? ? [I18n.locale, current_currency, @taxon, product] : [I18n.locale, current_currency, product]) do %>
+      <h4 class="card-title">
+        <% if product.group_product? %>
+          <%= link_to truncate(product.name, length: 50), spree.group_product_path(product), itemprop: "name", title: product.name %>
+        <% else %>
+          <%= link_to truncate(product.name, length: 50), url, itemprop: "name", title: product.name %>
+        <% end %>
+      </h4>
+    <% end %>
+
+    <p class="card-text">
+      <%= product.short_description.html_safe rescue '' %>
+    </p>
+    <% if product.group_product? %>
+      <%= link_to "Explore Options (#{product.group_items.to_a.size})", spree.group_product_path(product), class: 'btn btn-primary' %>
+    <% elsif product.get_in_touch_product? || product.partner_product? %>
+      <%= link_to 'Learn More', spree.product_path(product), class: 'btn btn-primary' %>
+    <% else %>
+      <%= link_to "Add to cart", url, class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>
