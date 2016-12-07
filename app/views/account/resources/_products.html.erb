@@ -1,8 +1,8 @@
 <% if products.length == 0 %>
   <div class="col-sm-8 col-md-offset-1 margin-bottom--xl">
-    <div class="jumbotron">
-      <h2>You haven’t checked out any products yet!</h2>
-      <%= link_to 'Visit Store', account_shop_of_interest_path, class: 'btn btn-default' %>
+    <div class="jumbotron text-left">
+      <h1 class="bh2">No products found!</h2>
+      <p>Please refine your search.</p>
     </div>
   </div>
 <% else %>
@@ -12,7 +12,9 @@
         <div class="row">
           <% group.each do |product| %>
             <% cache([product, :store_list], expires_in: 2.hours) do %>
-              <%= render partial: 'spree/shared/product', locals: { product: product } %>
+              <div class="col-lg-6">
+                <%= render partial: 'account/resources/product', locals: { product: product } %>
+              </div>
             <% end %>
           <% end %>
         </div>

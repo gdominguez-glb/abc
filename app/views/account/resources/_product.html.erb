@@ -1,0 +1,27 @@
+<% url = spree.product_url(product, taxon_id: @taxon.try(:id)) %>
+<div id="product_<%= product.id %>" data-hook="products_list_item" itemscope itemtype="http://schema.org/Product">
+  <div class="card <%= card_type_class(product) %> padding-bottom--l">
+    <div class="card-curriculum">
+      <%= product.curriculum.try(:name) || 'General' %>
+    </div>
+    <% cache(@taxon.present? ? [I18n.locale, current_currency, @taxon, product] : [I18n.locale, current_currency, product]) do %>
+      <h4 class="card-title">
+        <% if product.group_product? %>
+          <%= link_to truncate(product.name, length: 50), spree.group_product_path(product), itemprop: "name", title: product.name %>
+        <% else %>
+          <%= link_to truncate(product.name, length: 50), url, itemprop: "name", title: product.name %>
+        <% end %>
+      </h4>
+    <% end %>
+
+    <% if product.group_product? %>
+      <%= link_to spree.group_product_path(product), class: 'btn btn-text padding-left--reset padding-right--reset' do %>
+        Launch <i class="mi">chevron_right</i>
+      <% end %>
+    <% else %>
+      <%= link_to url, class: 'btn btn-text padding-left--reset padding-right--reset' do %>
+        Launch <i class="mi">chevron_right</i>
+      <% end %>
+    <% end %>
+  </div>
+</div>
