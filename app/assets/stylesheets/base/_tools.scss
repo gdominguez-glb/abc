@@ -70,10 +70,6 @@
   @include rotate(-180deg);
 }
 
-.center--block {
-  margin: 0 auto;
-}
-
 // -------------------------------------
 //   Forms
 // -------------------------------------
@@ -497,6 +493,12 @@
 }
 
 // ----- Alignment ----- //
+
+.center--lg-min--block {
+  @media screen and (min-width: $screen-lg-min) {
+    margin: 0 auto;
+  }
+}
 
 .pull-right--sm-min {
   @media screen and (min-width: $screen-sm-min) {
