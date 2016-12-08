@@ -1,6 +1,6 @@
 <% url = spree.product_url(product, taxon_id: @taxon.try(:id)) %>
-<div id="product_<%= product.id %>" data-hook="products_list_item" itemscope itemtype="http://schema.org/Product">
-  <div class="card <%= card_type_class(product) %>">
+<div id="product_<%= product.id %>" data-hook="products_list_item" itemscope itemtype="http://schema.org/Product" class="display-flex--lg-min flex-column--lg-min flex-1--lg-min">
+  <div class="card <%= card_type_class(product) %> flex-1--lg-min">
     <div class="card-curriculum">
       <%= product.curriculum.try(:name) || 'General' %>
     </div>
@@ -15,7 +15,7 @@
     <% end %>
 
     <div class="card-text">
-      <%= product.short_description.html_safe rescue '' %>
+      <%= truncate(product.short_description, length: 150, escape: false) rescue '' %>
     </div>
     <% if product.group_product? %>
       <%= link_to "Explore Options (#{product.group_items.to_a.size})", spree.group_product_path(product), class: 'btn btn-primary' %>
