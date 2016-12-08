@@ -425,6 +425,24 @@
 
 // ----- Display ----- //
 
+.display-flex--md-min {
+  @media screen and (min-width: $screen-md-min) {
+    @include display-flex;
+  }
+}
+
+.flex-1--md-min {
+  @media screen and (min-width: $screen-md-min) {
+    @include flex(1);
+  }
+}
+
+.flex-column--md-min {
+  @media screen and (min-width: $screen-md-min) {
+    @include flex-direction(column);
+  }
+}
+
 .display-flex--lg-min {
   @media screen and (min-width: $screen-lg-min) {
     @include display-flex;

@@ -1,6 +1,6 @@
 <% url = spree.product_url(product, taxon_id: @taxon.try(:id)) %>
-<div id="product_<%= product.id %>" data-hook="products_list_item" itemscope itemtype="http://schema.org/Product">
-  <div class="card <%= card_type_class(product) %>">
+<div id="product_<%= product.id %>" data-hook="products_list_item" itemscope itemtype="http://schema.org/Product" class="display-flex--md-min flex-column--md-min flex-1--md-min">
+  <div class="card <%= card_type_class(product) %> flex-1--md-min">
     <% cache(@taxon.present? ? [I18n.locale, current_currency, @taxon, product] : [I18n.locale, current_currency, product]) do %>
       <div class="card-image">
         <%= render :partial => 'spree/products/image', locals: { image: product.images.first } %>
