@@ -1,14 +1,63 @@
 <div class="group-products">
   <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <% if $flipper[:store_redesign].enabled? %>
+        <h2 class="bh6 margin-bottom--reset text-left">
+          <%= @product_group.curriculum.try(:name) || 'General' %>
+        </h2>
+      <% end %>
+      <h2 class="text-left lh4"><%= @product_group.name %></h2>
+      <% if $flipper[:store_redesign].enabled? %>
+        <div class="margin-bottom--l border-bottom--firm-accent">
+          <div class="js-read-more overflow--hidden height--100">
+            <div class="js-read-more-full">
+              <%= @product_group.description.html_safe rescue '' %>
+            </div>
+          </div>
+          <button class="btn btn-link-alt btn-link--stable js-read-more-btn none">Read More <i class="mi md-24 js-read-more-arrow">keyboard_arrow_down</i></button>
+        </div>
+      <% else %>
+        <p class="text-left"><%= @product_group.description.html_safe rescue '' %></p>
+      <% end %>
+    </div>
     <div class="col-xs-12">
-      <h2 class="text-center"><%= @product_group.name %></h2>
-      <p class="text-left--sm-min"><%= @product_group.description.html_safe rescue '' %></p>
-      <div class="row">
-        <% @products.each do |product| %>
-          <%= render partial: 'spree/shared/product', locals: { product: product } %>
+      <% if $flipper[:store_redesign].enabled? %>
+        <% @products.in_groups_of(3, false).each do |group| %>
+          <div class="row">
+            <% group.each do |product| %>
+              <div class="col-md-4">
+                <%= render partial: 'spree/shared/product_group', locals: { product: product } %>
+              </div>
+            <% end %>
+          </div>
         <% end %>
-      </div>
-    </div>    
+      <% else %>
+        <div class="row">
+          <% @products.each do |product| %>
+            <%= render partial: 'spree/shared/product', locals: { product: product } %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
 <%= render partial: 'spree/shared/partner_modal' %>
+
+<% if $flipper[:store_redesign].enabled? %>
+  <%= javascript_tag do %>
+    $(function() {
+      function readMoreCheck() {
+        if ( $('.js-read-more-full').height() > $('.js-read-more').height() ) {
+          $('.js-read-more-btn').removeClass('none');
+        }
+      }
+
+      $('.js-read-more-btn').on('click', function() {
+        $('.js-read-more').toggleClass('height--100');
+        $('.js-read-more-arrow').toggleClass('rotate--180');
+      });
+
+      readMoreCheck();
+    });
+  <% end %>
+<% end %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160719180542) do
+ActiveRecord::Schema.define(version: 20161206181633) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,8 +30,9 @@ ActiveRecord::Schema.define(version: 20160719180542) do
     t.integer  "question_id"
     t.text     "content"
     t.integer  "position"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.text     "content_draft"
   end
 
   create_table "contact_topics", force: :cascade do |t|
@@ -145,23 +146,30 @@ ActiveRecord::Schema.define(version: 20160719180542) do
   create_table "event_pages", force: :cascade do |t|
     t.string   "title"
     t.integer  "page_id"
-    t.boolean  "display",          default: false
+    t.boolean  "display",           default: false
     t.string   "regonline_filter"
     t.string   "slug"
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
-    t.integer  "event_page_type",  default: 0
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.integer  "event_page_type",   default: 0
     t.text     "description"
+    t.text     "description_draft"
+    t.integer  "publish_status",    default: 0
+    t.integer  "draft_status",      default: 0
+    t.datetime "published_at"
+    t.boolean  "archived",          default: false
+    t.datetime "archived_at"
   end
 
   create_table "event_trainings", force: :cascade do |t|
     t.string   "title"
     t.text     "content"
     t.string   "training_type"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-    t.integer  "position",      default: 0
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+    t.integer  "position",                  default: 0
     t.string   "category"
+    t.integer  "training_type_category_id"
   end
 
   create_table "faq_categories", force: :cascade do |t|
@@ -215,9 +223,15 @@ ActiveRecord::Schema.define(version: 20160719180542) do
     t.string   "title"
     t.text     "content"
     t.boolean  "display"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.integer  "position"
+    t.text     "content_draft"
+    t.integer  "publish_status", default: 0
+    t.integer  "draft_status",   default: 0
+    t.datetime "published_at"
+    t.boolean  "archived",       default: false
+    t.datetime "archived_at"
   end
 
   create_table "legacy_licenses", force: :cascade do |t|
@@ -226,14 +240,15 @@ ActiveRecord::Schema.define(version: 20160719180542) do
     t.datetime "expiration_date"
     t.integer  "ee_id"
     t.string   "mapped_name"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.integer  "order_id"
     t.string   "email"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "from_email"
     t.integer  "from_user_id"
+    t.boolean  "is_migrated",     default: false
   end
 
   create_table "legacy_users", force: :cascade do |t|
@@ -259,16 +274,31 @@ ActiveRecord::Schema.define(version: 20160719180542) do
     t.datetime "file_updated_at"
   end
 
+  create_table "mafis_products", force: :cascade do |t|
+    t.string   "record_id"
+    t.string   "name"
+    t.string   "image"
+    t.text     "small_description"
+    t.text     "description"
+    t.decimal  "price"
+    t.integer  "grade"
+    t.string   "isbn"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
   create_table "medium_publications", force: :cascade do |t|
     t.string   "title"
     t.string   "url"
     t.string   "blog_type"
     t.integer  "position"
     t.boolean  "display"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.string   "slug"
     t.integer  "page_id"
+    t.string   "header"
+    t.text     "description"
   end
 
   create_table "notification_triggers", force: :cascade do |t|
@@ -287,6 +317,7 @@ ActiveRecord::Schema.define(version: 20160719180542) do
     t.integer  "curriculum_id"
     t.integer  "product_id"
     t.datetime "expire_at"
+    t.text     "zip_codes"
   end
 
   create_table "notifications", force: :cascade do |t|
@@ -297,6 +328,7 @@ ActiveRecord::Schema.define(version: 20160719180542) do
     t.datetime "created_at",                              null: false
     t.datetime "updated_at",                              null: false
     t.datetime "expire_at"
+    t.boolean  "viewed",                  default: false
   end
 
   create_table "oauth_access_grants", force: :cascade do |t|
@@ -358,6 +390,12 @@ ActiveRecord::Schema.define(version: 20160719180542) do
     t.text     "tiles"
     t.string   "keywords"
     t.string   "description"
+    t.integer  "publish_status", default: 0
+    t.integer  "draft_status",   default: 0
+    t.datetime "published_at"
+    t.text     "body_draft"
+    t.boolean  "archived",       default: false
+    t.datetime "archived_at"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -370,6 +408,7 @@ ActiveRecord::Schema.define(version: 20160719180542) do
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
     t.text     "preview_content"
+    t.string   "slug"
   end
 
   create_table "product_tracks", force: :cascade do |t|
@@ -392,6 +431,12 @@ ActiveRecord::Schema.define(version: 20160719180542) do
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
     t.integer  "faq_category_id"
+    t.integer  "publish_status",  default: 0
+    t.integer  "draft_status",    default: 0
+    t.datetime "published_at"
+    t.boolean  "archived",        default: false
+    t.datetime "archived_at"
+    t.string   "slug"
   end
 
   create_table "recommendations", force: :cascade do |t|
@@ -407,6 +452,9 @@ ActiveRecord::Schema.define(version: 20160719180542) do
     t.string   "user_title"
     t.integer  "position",                     default: 0
     t.string   "call_to_action_button_target"
+    t.integer  "views",                        default: 0
+    t.integer  "clicks",                       default: 0
+    t.string   "zip_codes"
   end
 
   create_table "regonline_events", force: :cascade do |t|
@@ -434,6 +482,7 @@ ActiveRecord::Schema.define(version: 20160719180542) do
     t.string   "grade_bands"
     t.text     "session_types"
     t.boolean  "display",                                    default: false
+    t.date     "invisible_at"
   end
 
   create_table "salesforce_references", force: :cascade do |t|
@@ -573,6 +622,22 @@ ActiveRecord::Schema.define(version: 20160719180542) do
     t.datetime "updated_at"
   end
 
+  create_table "spree_coupon_codes", force: :cascade do |t|
+    t.string   "code"
+    t.integer  "total_quantity"
+    t.integer  "used_quantity"
+    t.integer  "school_district_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  create_table "spree_coupon_codes_products", id: false, force: :cascade do |t|
+    t.integer  "coupon_code_id", null: false
+    t.integer  "product_id",     null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "spree_credit_cards", force: :cascade do |t|
     t.string   "month"
     t.string   "year"
@@ -671,6 +736,11 @@ ActiveRecord::Schema.define(version: 20160719180542) do
     t.datetime "deleted_at"
   end
 
+  create_table "spree_grades_products", id: false, force: :cascade do |t|
+    t.integer "grade_id",   null: false
+    t.integer "product_id", null: false
+  end
+
   create_table "spree_group_items", force: :cascade do |t|
     t.integer  "group_id"
     t.integer  "product_id"
@@ -741,7 +811,15 @@ ActiveRecord::Schema.define(version: 20160719180542) do
     t.boolean  "can_be_distributed",      default: false
     t.datetime "fulfillment_at"
     t.integer  "admin_user_id"
+    t.integer  "coupon_code_id"
   end
+
+  add_index "spree_licensed_products", ["can_be_distributed"], name: "index_spree_licensed_products_on_can_be_distributed", using: :btree
+  add_index "spree_licensed_products", ["expire_at"], name: "index_spree_licensed_products_on_expire_at", using: :btree
+  add_index "spree_licensed_products", ["fulfillment_at"], name: "index_spree_licensed_products_on_fulfillment_at", using: :btree
+  add_index "spree_licensed_products", ["product_id"], name: "index_spree_licensed_products_on_product_id", using: :btree
+  add_index "spree_licensed_products", ["quantity"], name: "index_spree_licensed_products_on_quantity", using: :btree
+  add_index "spree_licensed_products", ["user_id"], name: "index_spree_licensed_products_on_user_id", using: :btree
 
   create_table "spree_line_items", force: :cascade do |t|
     t.integer  "variant_id"
@@ -804,11 +882,12 @@ ActiveRecord::Schema.define(version: 20160719180542) do
     t.integer  "rgt"
     t.integer  "depth",                default: 0
     t.integer  "children_count",       default: 0
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
     t.integer  "position",             default: 0
     t.integer  "material_files_count", default: 0
     t.string   "link"
+    t.string   "link_icon",            default: "open_in_browser"
   end
 
   create_table "spree_option_types", force: :cascade do |t|
@@ -847,48 +926,50 @@ ActiveRecord::Schema.define(version: 20160719180542) do
   add_index "spree_option_values_variants", ["variant_id"], name: "index_spree_option_values_variants_on_variant_id", using: :btree
 
   create_table "spree_orders", force: :cascade do |t|
-    t.string   "number",                 limit: 32
-    t.decimal  "item_total",                        precision: 10, scale: 2, default: 0.0,     null: false
-    t.decimal  "total",                             precision: 10, scale: 2, default: 0.0,     null: false
+    t.string   "number",                     limit: 32
+    t.decimal  "item_total",                            precision: 10, scale: 2, default: 0.0,     null: false
+    t.decimal  "total",                                 precision: 10, scale: 2, default: 0.0,     null: false
     t.string   "state"
-    t.decimal  "adjustment_total",                  precision: 10, scale: 2, default: 0.0,     null: false
+    t.decimal  "adjustment_total",                      precision: 10, scale: 2, default: 0.0,     null: false
     t.integer  "user_id"
     t.datetime "completed_at"
     t.integer  "bill_address_id"
     t.integer  "ship_address_id"
-    t.decimal  "payment_total",                     precision: 10, scale: 2, default: 0.0
+    t.decimal  "payment_total",                         precision: 10, scale: 2, default: 0.0
     t.integer  "shipping_method_id"
     t.string   "shipment_state"
     t.string   "payment_state"
     t.string   "email"
     t.text     "special_instructions"
-    t.datetime "created_at",                                                                   null: false
-    t.datetime "updated_at",                                                                   null: false
+    t.datetime "created_at",                                                                       null: false
+    t.datetime "updated_at",                                                                       null: false
     t.string   "currency"
     t.string   "last_ip_address"
     t.integer  "created_by_id"
-    t.decimal  "shipment_total",                    precision: 10, scale: 2, default: 0.0,     null: false
-    t.decimal  "additional_tax_total",              precision: 10, scale: 2, default: 0.0
-    t.decimal  "promo_total",                       precision: 10, scale: 2, default: 0.0
-    t.string   "channel",                                                    default: "spree"
-    t.decimal  "included_tax_total",                precision: 10, scale: 2, default: 0.0,     null: false
-    t.integer  "item_count",                                                 default: 0
+    t.decimal  "shipment_total",                        precision: 10, scale: 2, default: 0.0,     null: false
+    t.decimal  "additional_tax_total",                  precision: 10, scale: 2, default: 0.0
+    t.decimal  "promo_total",                           precision: 10, scale: 2, default: 0.0
+    t.string   "channel",                                                        default: "spree"
+    t.decimal  "included_tax_total",                    precision: 10, scale: 2, default: 0.0,     null: false
+    t.integer  "item_count",                                                     default: 0
     t.integer  "approver_id"
     t.datetime "approved_at"
-    t.boolean  "confirmation_delivered",                                     default: false
-    t.boolean  "considered_risky",                                           default: false
+    t.boolean  "confirmation_delivered",                                         default: false
+    t.boolean  "considered_risky",                                               default: false
     t.string   "guest_token"
     t.datetime "canceled_at"
     t.integer  "canceler_id"
     t.integer  "store_id"
-    t.integer  "state_lock_version",                                         default: 0,       null: false
+    t.integer  "state_lock_version",                                             default: 0,       null: false
     t.boolean  "terms_and_conditions"
     t.string   "license_admin_email"
     t.integer  "school_district_id"
-    t.integer  "source",                                                     default: 0
+    t.integer  "source",                                                         default: 0
     t.integer  "admin_user_id"
     t.string   "sf_contact_id"
     t.date     "fulfillment_at"
+    t.boolean  "enable_single_distribution",                                     default: false
+    t.integer  "coupon_code_id"
   end
 
   add_index "spree_orders", ["approver_id"], name: "index_spree_orders_on_approver_id", using: :btree
@@ -1068,6 +1149,8 @@ ActiveRecord::Schema.define(version: 20160719180542) do
     t.boolean  "archived",             default: false
     t.datetime "archived_at"
     t.integer  "position"
+    t.boolean  "is_beta",              default: false
+    t.string   "internal_name"
   end
 
   add_index "spree_products", ["available_on"], name: "index_spree_products_on_available_on", using: :btree
@@ -1612,6 +1695,10 @@ ActiveRecord::Schema.define(version: 20160719180542) do
     t.integer "position"
   end
 
+  add_index "spree_taxons_videos", ["position"], name: "index_spree_taxons_videos_on_position", using: :btree
+  add_index "spree_taxons_videos", ["taxon_id"], name: "index_spree_taxons_videos_on_taxon_id", using: :btree
+  add_index "spree_taxons_videos", ["video_id"], name: "index_spree_taxons_videos_on_video_id", using: :btree
+
   create_table "spree_trackers", force: :cascade do |t|
     t.string   "analytics_id"
     t.boolean  "active",       default: true
@@ -1670,8 +1757,8 @@ ActiveRecord::Schema.define(version: 20160719180542) do
     t.boolean  "tour_showed_licenses",                   default: false
     t.boolean  "tour_showed_licenses_users",             default: false
     t.boolean  "accepted_terms",                         default: false
-    t.text     "grades"
     t.string   "zip_code"
+    t.text     "grades"
   end
 
   add_index "spree_users", ["deleted_at"], name: "index_spree_users_on_deleted_at", using: :btree
@@ -1736,6 +1823,7 @@ ActiveRecord::Schema.define(version: 20160719180542) do
     t.integer  "grade_order"
     t.integer  "module_order"
     t.integer  "lesson_order"
+    t.integer  "custom_order"
   end
 
   create_table "spree_zone_members", force: :cascade do |t|
@@ -1796,6 +1884,15 @@ ActiveRecord::Schema.define(version: 20160719180542) do
   end
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
+
+  create_table "training_type_categories", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.boolean  "is_default",  default: false
+    t.string   "slug"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
 
   create_table "vanity_urls", force: :cascade do |t|
     t.string   "url"

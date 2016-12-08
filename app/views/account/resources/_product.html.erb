@@ -1,6 +1,6 @@
 <% url = spree.product_url(product, taxon_id: @taxon.try(:id)) %>
 <div id="product_<%= product.id %>" data-hook="products_list_item" itemscope itemtype="http://schema.org/Product">
-  <div class="card <%= card_type_class(product) %>">
+  <div class="card <%= card_type_class(product) %> padding-bottom--l">
     <div class="card-curriculum">
       <%= product.curriculum.try(:name) || 'General' %>
     </div>
@@ -14,15 +14,14 @@
       </h4>
     <% end %>
 
-    <p class="card-text">
-      <%= product.short_description.html_safe rescue '' %>
-    </p>
     <% if product.group_product? %>
-      <%= link_to "Explore Options (#{product.group_items.to_a.size})", spree.group_product_path(product), class: 'btn btn-primary' %>
-    <% elsif product.get_in_touch_product? || product.partner_product? %>
-      <%= link_to 'Learn More', spree.product_path(product), class: 'btn btn-primary' %>
+      <%= link_to spree.group_product_path(product), class: 'btn btn-text padding-left--reset padding-right--reset' do %>
+        Launch <i class="mi">chevron_right</i>
+      <% end %>
     <% else %>
-      <%= link_to "Add to cart", url, class: 'btn btn-primary' %>
+      <%= link_to url, class: 'btn btn-text padding-left--reset padding-right--reset' do %>
+        Launch <i class="mi">chevron_right</i>
+      <% end %>
     <% end %>
   </div>
 </div>

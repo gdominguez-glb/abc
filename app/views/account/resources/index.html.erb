@@ -1,0 +1,60 @@
+<%= render partial: 'account/resources/top', locals: { products: @my_products, total: @total } %>
+
+<div class="row">
+  <div class="col-sm-4 col-md-3">
+    <%= render partial: 'account/resources/taxonomies', locals: { taxonomies: @taxonomies }  %>
+  </div>
+  <%= render partial: 'account/resources/products', locals: { products: @my_products } %>
+</div>
+
+<%= content_for :javascripts do %>
+  <%= javascript_tag do %>
+    $(function(){
+      var url = "/account/save_grade_option";
+      $("#grade_option").change(function(e){
+        $.ajax({
+          url: url,
+          type: 'POST',
+          data: { grade_option: $(this).val() }
+        });
+      });
+
+      $('.js-get-dashboard-tour').on('click', function(e) {
+        e.preventDefault();
+        getDashboardTour();
+      });
+
+      $('#new-coupon-code-btn').removeClass('hide');
+      $('#show-tour-btn').removeClass('hide');
+    });
+
+    $(function() {
+      <% if $flipper[:store_redesign].enabled? %>
+        var filterItems = $('#categoryFilters .dropdown-md-link');
+      <% else %>
+        var filterItems = $('#categoryFilters .list-group-item');
+      <% end %>
+
+      var removeAllFilters = $('#removeAllFilters');
+
+      if( filterItems.hasClass('active') ) {
+        removeAllFilters.addClass('in');
+      }
+
+      filterItems.each(function() {
+        if ( $(this).hasClass('active') ) {
+        <% if $flipper[:store_redesign].enabled? %>
+          $(this).closest('.dropdown-md').addClass('dropdown-md-relative-open');
+          $(this).closest('.dropdown-md-menu').addClass('block');
+        <% else %>
+          $(this).closest('.panel-collapse').collapse('show');
+        <% end %>
+        }
+      });
+
+      $('.js-dismiss-jumbotron').on('click', function() {
+        $(this).closest('.jumbotron').hide();
+      });
+    });
+  <% end %>
+<% end %>

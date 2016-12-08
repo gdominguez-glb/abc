@@ -1,5 +1,6 @@
 Spree::HomeController.class_eval do
   include ProductTaxonsFilter
+  include ProductsSearchHelper
 
   def index
     if params[:remove_all].present?
@@ -16,11 +17,6 @@ Spree::HomeController.class_eval do
       @products = @products.show_in_storefront
     end
     @products = @products.unexpire.unarchive.search_by_text(params[:q]).page(params[:page]).per(10)
-  end
-
-  def clear_preference_filters
-    session[:filter_role] = nil
-    session[:filter_curriculum] = nil
   end
 
   def apply_preference_filters

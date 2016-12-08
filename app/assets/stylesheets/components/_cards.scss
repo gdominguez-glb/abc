@@ -54,6 +54,19 @@
   }
 }
 
+.card-image {
+  text-align: center;
+
+  img {
+    margin-bottom: $b-space-l;
+  }
+
+  .mi {
+    font-size: 200px;
+    color: $c-energized-secondary;
+  }
+}
+
 .card-title {
   line-height: 1.2em;
 }
