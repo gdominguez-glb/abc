@@ -70,6 +70,10 @@
   @include rotate(-180deg);
 }
 
+.center--block {
+  margin: 0 auto;
+}
+
 // -------------------------------------
 //   Forms
 // -------------------------------------
@@ -424,6 +428,12 @@
 }
 
 // ----- Display ----- //
+
+.max-width--md-min--300 {
+  @media screen and (min-width: $screen-md-min) {
+    max-width: 300px;
+  }
+}
 
 .display-flex--md-min {
   @media screen and (min-width: $screen-md-min) {
