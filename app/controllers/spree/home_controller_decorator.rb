@@ -7,7 +7,11 @@ Spree::HomeController.class_eval do
       clear_preference_filters
       redirect_to spree.root_path and return
     end
-    apply_preference_filters if params[:taxon_ids].blank?
+    if params[:taxon_ids].blank?
+      apply_preference_filters
+    else
+      clear_preference_filters
+    end
 
     @products = products_list_with_taxons_filter
 
@@ -27,6 +31,11 @@ Spree::HomeController.class_eval do
         params[:taxon_ids] = [subject_id, role_id]
       end
     end
+  end
+
+  def clear_preference_filters
+    session[:filter_role] = nil
+    session[:filter_curriculum] = nil
   end
 
   def find_taxon_by_taxonomy_and_name(taxonomy_name, taxon_name)
