@@ -53,7 +53,7 @@ Rails.application.routes.draw do
   get 'terms-of-service', to: 'terms_of_service#display', as: :display_terms
   post 'terms-of-service', to: 'terms_of_service#accept', as: :accept_terms
 
-  get 'mafis/:record_id', to: 'mafis#show'
+  get 'famis/:record_id', to: 'famis#show'
 
   get 'contact', to: 'contact#index'
   post 'contact', to: 'contact#create', as: :create_contact
