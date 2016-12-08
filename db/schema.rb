@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161206181633) do
+ActiveRecord::Schema.define(version: 20161208021322) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -172,6 +172,19 @@ ActiveRecord::Schema.define(version: 20161206181633) do
     t.integer  "training_type_category_id"
   end
 
+  create_table "famis_products", force: :cascade do |t|
+    t.string   "record_id"
+    t.string   "name"
+    t.string   "image"
+    t.text     "small_description"
+    t.text     "description"
+    t.decimal  "price"
+    t.string   "grade"
+    t.string   "isbn"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
   create_table "faq_categories", force: :cascade do |t|
     t.string   "name"
     t.integer  "position"
@@ -272,19 +285,6 @@ ActiveRecord::Schema.define(version: 20161206181633) do
     t.string   "file_content_type"
     t.integer  "file_file_size"
     t.datetime "file_updated_at"
-  end
-
-  create_table "mafis_products", force: :cascade do |t|
-    t.string   "record_id"
-    t.string   "name"
-    t.string   "image"
-    t.text     "small_description"
-    t.text     "description"
-    t.decimal  "price"
-    t.integer  "grade"
-    t.string   "isbn"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
   end
 
   create_table "medium_publications", force: :cascade do |t|
