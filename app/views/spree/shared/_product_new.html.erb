@@ -1,28 +1,28 @@
 <% url = spree.product_url(product, taxon_id: @taxon.try(:id)) %>
 <div id="product_<%= product.id %>" data-hook="products_list_item" itemscope itemtype="http://schema.org/Product" class="display-flex--lg-min flex-column--lg-min flex-1--lg-min">
   <div class="card <%= card_type_class(product) %> flex-1--lg-min">
-    <div class="card-curriculum">
-      <%= product.curriculum.try(:name) || 'General' %>
-    </div>
-    <% cache(@taxon.present? ? [I18n.locale, current_currency, @taxon, product] : [I18n.locale, current_currency, product]) do %>
-      <h4 class="card-title">
-        <% if product.group_product? %>
-          <%= link_to truncate(product.name, length: 50), spree.group_product_path(product), itemprop: "name", title: product.name %>
-        <% else %>
-          <%= link_to truncate(product.name, length: 50), url, itemprop: "name", title: product.name %>
-        <% end %>
-      </h4>
+
+    <% if product.group_product? %>
+      <% product_url = spree.group_product_path(product) %>
+    <% elsif product.get_in_touch_product? || product.partner_product? %>
+      <% product_url = spree.product_path(product) %>
+    <% else %>
+      <% product_url = url %>
     <% end %>
 
-    <div class="card-text">
-      <%= truncate(product.short_description, length: 150, escape: false) rescue '' %>
-    </div>
-    <% if product.group_product? %>
-      <%= link_to "Explore Options (#{product.group_items.to_a.size})", spree.group_product_path(product), class: 'btn btn-primary' %>
-    <% elsif product.get_in_touch_product? || product.partner_product? %>
-      <%= link_to 'Learn More', spree.product_path(product), class: 'btn btn-primary' %>
-    <% else %>
-      <%= link_to "Add to cart", url, class: 'btn btn-primary' %>
+    <%= link_to product_url do %>
+
+      <div class="card-curriculum">
+        <%= product.curriculum.try(:name) || 'General' %>
+      </div>
+      <% cache(@taxon.present? ? [I18n.locale, current_currency, @taxon, product] : [I18n.locale, current_currency, product]) do %>
+        <h4 class="card-title"><%= product.name %></h4>
+      <% end %>
+      <div class="card-text">
+        <%= truncate(product.short_description, length: 150, escape: false) rescue '' %>
+      </div>
+
     <% end %>
+
   </div>
 </div>
