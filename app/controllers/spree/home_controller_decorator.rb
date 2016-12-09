@@ -27,8 +27,8 @@ Spree::HomeController.class_eval do
     if session[:filter_role].present? && session[:filter_curriculum].present?
       subject_id = find_taxon_by_taxonomy_and_name('Subject', session[:filter_curriculum])
       role_id    = find_taxon_by_taxonomy_and_name('I am a...', session[:filter_role])
-      if subject_id && role_id
-        params[:taxon_ids] = [subject_id, role_id]
+      if subject_id || role_id
+        params[:taxon_ids] = [subject_id, role_id].compact
       end
     end
   end
