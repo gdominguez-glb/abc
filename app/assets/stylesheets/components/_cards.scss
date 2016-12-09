@@ -18,13 +18,20 @@
   @media screen and (min-width: $screen-sm-min) {
     padding: $b-space-l $b-space-xl;
   }
+}
 
-  @media screen and (min-width: $screen-md-min) {
-    padding: $b-space-l;
-  }
+.card-link {
+  font-weight: normal;
+  text-transform: none;
+  @extend .serif;
 
-  @media screen and (min-width: $screen-lg-min) {
-    padding: $b-space-l $b-space-xl $b-space-xl;
+  &:hover {
+    text-decoration: none;
+    color: inherit;
+
+    .card {
+      background-color: darken($c-absolute, 5%);
+    }
   }
 }
 
@@ -72,5 +79,12 @@
 }
 
 .card-text {
+  margin-bottom: $b-space-m;
   font-size: .9em;
+  line-height: 1.55em;
+
+  p {
+    font-size: inherit;
+    line-height: inherit;
+  }
 }
