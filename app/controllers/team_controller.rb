@@ -1,6 +1,6 @@
 class TeamController < ApplicationController
   def index
-    @page_title = 'Team'
+    @page_title = 'Leadership Team'
     @staffs = Staff.displayable.staff.order('position asc')
   end
 

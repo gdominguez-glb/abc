@@ -56,13 +56,13 @@ RSpec.describe SearchHelper, type: :helper do
     it "return global post link for global medium publication" do
       _post = create(:post, medium_publication: global_medium_publication)
 
-      expect(helper.post_link(_post)).to eq("/updates/global/test/post/#{_post.id}")
+      expect(helper.post_link(_post)).to eq("/updates/global/test/post/#{_post.slug}")
     end
 
     it "return curriculum post link for curriculum medium publication" do
       _post = create(:post, medium_publication: curriculum_medium_publication)
 
-      expect(helper.post_link(_post)).to eq("/math/blog/report/post/#{_post.id}")
+      expect(helper.post_link(_post)).to eq("/math/blog/report/post/#{_post.slug}")
     end
   end
 

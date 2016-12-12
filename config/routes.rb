@@ -87,6 +87,7 @@ Rails.application.routes.draw do
 
   get '/turn_off_browser_warning', to: 'home#turn_off_browser_warning'
   get '/decide_page_to_go', to: 'home#decide_page_to_go'
+  post '/set_filter_preferences', to: 'home#set_filter_preferences'
 
   get 'careers', to: 'jobs#index', as: :jobs
   get 'careers/:id', to: 'jobs#show', as: :job

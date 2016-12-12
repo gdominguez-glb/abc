@@ -1,0 +1,79 @@
+// *************************************
+//
+//   Dropdowns
+//   Bootstrap Dropdown Overrides
+//
+// *************************************
+
+// -------------------------------------
+//   Material Design-Inspired Dropdown
+// -------------------------------------
+
+.dropdown-md-btn.dropdown-md-btn.dropdown-md-btn,
+.dropdown-md-btn.dropdown-md-btn.dropdown-md-btn:hover {
+  border: 1px solid $c-firm-primary;
+  font-weight: 700;
+  letter-spacing: .05em;
+  color: $c-positive-secondary;
+  background-color: $c-absolute;
+  border-radius: 2px;
+  transition: none;
+}
+
+.dropdown-md-mi.dropdown-md-mi.dropdown-md-mi {
+  position: absolute;
+  top: $b-space;
+  right: $b-space;
+  color: $c-firm-primary;
+}
+
+.dropdown-md-menu.dropdown-md-menu {
+  top: 0;
+  width: 100%;
+  min-width: initial;
+  margin-top: 0;
+  border: 1px solid $c-firm-primary;
+  border-radius: 2px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, .175);
+}
+
+.dropdown-md-item {
+  &:last-child {
+    .dropdown-md-link {
+      border-bottom-left-radius: 2px;
+      border-bottom-right-radius: 2px;
+    }
+  }
+}
+
+.dropdown-md-link.dropdown-md-link {
+  position: relative;
+  padding: $b-space $b-space-m;
+  font-weight: 700;
+  letter-spacing: .05em;
+  color: $c-firm-primary;
+  background-color: $c-absolute;
+
+  &.active {
+    margin: 0 -1px;
+    color: $c-absolute;
+    background-color: $c-positive-secondary;
+
+    .dropdown-md-mi {
+      color: $c-absolute;
+    }
+  }
+}
+
+.dropdown-md-relative-open,
+.dropdown-md-relative.open {
+  .dropdown-md-btn {
+    margin-bottom: 0 !important;
+  }
+
+  .dropdown-md-menu {
+    position: relative;
+    top: -42px;
+    margin-bottom: -27px;
+  }
+}

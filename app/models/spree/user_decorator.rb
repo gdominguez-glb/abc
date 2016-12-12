@@ -13,7 +13,7 @@ Spree::User.class_eval do
   validates_format_of :password, with: /\A\S*\z/, message: "can't include spaces", if: :password_required?
   validates :school_district, presence: true, if: :school_district_required?
   validates :title, presence: true, on: :create
-  validates :zip_code, presence: true, on: :create
+  validates :zip_code, presence: true, on: :create, if: :is_in_usa?
   validates :interested_subjects, presence: true, on: :create
 
   belongs_to :delegate_for_user, class_name: 'Spree::User', foreign_key: :delegate_user_id
@@ -144,7 +144,7 @@ Spree::User.class_eval do
   has_many :bookmarks
   has_many :product_agreements, class_name: 'Spree::ProductAgreement'
 
-  attr_accessor :school_id, :district_id
+  attr_accessor :school_id, :district_id, :ip_location
 
   accepts_nested_attributes_for :school_district, reject_if: proc { |attributes| attributes['name'].blank? }
 
@@ -335,5 +335,10 @@ Spree::User.class_eval do
 
   def bought_free_trial_product?(product, exclude_order)
     product.purchase_once? && Spree::LicensedProduct.where(user_id: self.id, product_id: product.id).where.not(order_id: exclude_order.try(:id)).exists?
+  end
+
+  private
+  def is_in_usa?
+    ip_location == 'US'
   end
 end

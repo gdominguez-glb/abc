@@ -11,6 +11,6 @@ module Archiveable
   end
 
   def unarchive!
-    update(archived: false, archived_at: nil)
+    update(archived: false, archived_at: nil, publish_status: :pending, draft_status: :draft)
   end
 end

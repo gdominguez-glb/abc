@@ -26,6 +26,13 @@ RSpec.describe Spree::FrontendHelper, type: :helper do
     end
   end
 
+  describe "#card_type_class" do
+    it "returns class with curriculum name if product belongs to curriculum" do
+      product.curriculum = curriculum
+      expect(helper.card_type_class(product)).to eq('card-math')
+    end
+  end
+
   describe "#display_product_price_tag?" do
     it "return false for partner product" do
       product = create(:product, product_type: 'partner')

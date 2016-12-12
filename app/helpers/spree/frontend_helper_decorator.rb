@@ -19,6 +19,12 @@ Spree::FrontendHelper.class_eval do
     end
   end
 
+  def card_type_class(product)
+    if product.curriculum.try(:name)
+      "card-#{product.curriculum.try(:name).downcase}"
+    end
+  end
+
   def display_product_price_tag?(product)
     return false if product.partner_product? || product.get_in_touch_product? || (product.group_product? && !product.free_group_product?)
     return true
@@ -30,4 +36,12 @@ Spree::FrontendHelper.class_eval do
     price == "$0.00" ? "FREE" : price
   end
 
+  def show_store_welcome_message
+    if session[:showed_welcome_message].blank?
+      session[:showed_welcome_message] = '1'
+      render(partial: 'spree/shared/welcome_message').html_safe
+    else
+      ''
+    end
+  end
 end

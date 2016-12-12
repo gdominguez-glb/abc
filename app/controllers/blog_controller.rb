@@ -11,7 +11,7 @@ class BlogController < ApplicationController
   end
 
   def global_post
-    @post = Post.find(params[:id])
+    find_post
   end
 
   def curriculum
@@ -22,17 +22,17 @@ class BlogController < ApplicationController
   end
 
   def curriculum_post
-    @post = Post.find(params[:id])
+    find_post
   end
 
   private
 
   def load_global_publications
-    @global_publications = MediumPublication.global
+    @global_publications = MediumPublication.global.displayable
   end
 
   def load_curriculum_publications
-    @curriculum_publications = MediumPublication.curriculum.where(page: @group_page).sorted
+    @curriculum_publications = MediumPublication.curriculum.displayable.where(page: @group_page).sorted
   end
 
   def load_global_publication
@@ -54,5 +54,15 @@ class BlogController < ApplicationController
   def load_curriculum_nav_info
     @group_page    = Page.show_in_top_navigation.find_by(slug: params[:page_slug])
     @sub_nav_items = Page.show_in_sub_navigation(@group_page.group_name)
+  end
+
+  include SearchHelper
+  def find_post
+    post_with_id = Post.find_by(id: params[:id])
+    if post_with_id.present?
+      redirect_to post_link(post_with_id) and return
+    end
+    @post = Post.find_by(slug: params[:id])
+    raise ActiveRecord::RecordNotFound.new('post not exist') if @post.blank?
   end
 end

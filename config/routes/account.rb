@@ -2,6 +2,7 @@ namespace :account do
   root to: 'root#index'
 
   get 'products', to: 'products#index'
+  get 'resources', to: 'resources#index'
 
   get 'history', to: 'history#index'
   delete 'history/:id/remove', to: 'history#remove', as: :remove_history
@@ -15,6 +16,7 @@ namespace :account do
   get :shop_of_interest, to: 'products#shop_of_interest'
 
   resources :reminders, only: [:new, :create]
+  resources :recommendations, only: [:show]
 
   resources :licenses do
     collection do

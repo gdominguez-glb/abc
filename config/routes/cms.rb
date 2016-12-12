@@ -50,6 +50,7 @@ namespace :cms do
   end
   resources :staffs do
     collection do
+      get :trustees
       post :update_positions
     end
   end
@@ -80,7 +81,11 @@ namespace :cms do
       post :update_positions
     end
   end
-  resources :notification_triggers
+  resources :notification_triggers do
+    collection do
+      post :target_users_count
+    end
+  end
   resources :curriculums
   resources :training_type_categories do
     resources :event_trainings do
@@ -118,5 +123,4 @@ namespace :cms do
   resources :custom_csses
   resources :vanity_urls
 
-  post 'sync', to: 'sync#run'
 end

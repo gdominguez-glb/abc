@@ -46,6 +46,7 @@ Spree::UserRegistrationsController.class_eval do
       :allow_communication,
       :phone,
       :zip_code,
+      :ip_location,
       school_district_attributes: [:name, :state_id, :country_id, :city, :place_type],
       interested_subjects: [],
       grades: []

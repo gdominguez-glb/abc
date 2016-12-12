@@ -13,31 +13,52 @@
       <% end %>
     <% end %>
 
-    <div data-hook="products_search_results_heading">
-      <% if products.empty? %>
-        <div data-hook="products_search_results_heading_no_results_found">
+    <% if $flipper[:store_redesign].enabled? %>
+      <div id="products" data-hook class="col-sm-8 col-md-offset-1 margin-bottom--xl">
+        <%= show_store_welcome_message %>
+        <% if products.any? %>
+          <% products.in_groups_of(2, false).each do |group| %>
+            <div class="row display-flex--lg-min">
+              <% group.each do |product| %>
+                <% cache([product, :store_list], expires_in: 2.hours) do %>
+                  <div class="col-lg-6 display-flex--lg-min flex-column--lg-min">
+                    <%= render partial: 'spree/shared/product', locals: { product: product } %>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+          <% end %>
+          <% reset_cycle("classes") %>
+        <% else %>
           <%= Spree.t(:no_products_found) %>
-        </div>
-      <% elsif params.key?(:keywords) %>
-        <div data-hook="products_search_results_heading_results_found">
-          <h6 class="search-results-title"><%= Spree.t(:search_results, keywords: h(params[:keywords])) %></h6>
+        <% end %>
+      </div>
+    <% else %>
+      <!-- Remove when store_redesign flipper is removed -->
+      <% if products.any? %>
+        <div id="products" data-hook class="col-sm-7 col-lg-8 margin-bottom--xl">
+          <div class="row">
+            <% products.each do |product| %>
+              <% cache([product, :store_list], expires_in: 2.hours) do %>
+                <%= render partial: 'spree/shared/product', locals: { product: product } %>
+              <% end %>
+            <% end %>
+          </div>
+          <% reset_cycle("classes") %>
         </div>
       <% end %>
-    </div>
-
-    <% if products.any? %>
-      <div id="products" data-hook class="col-sm-7 col-lg-8 margin-bottom--xl">
-        <div class="row">
-          <% products.each do |product| %>
-            <% cache([product, :store_list], expires_in: 2.hours) do %>
-              <%= render partial: 'spree/shared/product', locals: { product: product } %>
-            <% end %>
-          <% end %>
-        </div>
-        <% reset_cycle("classes") %>
+      <div data-hook="products_search_results_heading">
+        <% if products.empty? %>
+          <div data-hook="products_search_results_heading_no_results_found">
+            <%= Spree.t(:no_products_found) %>
+          </div>
+        <% elsif params.key?(:keywords) %>
+          <div data-hook="products_search_results_heading_results_found">
+            <h6 class="search-results-title"><%= Spree.t(:search_results, keywords: h(params[:keywords])) %></h6>
+          </div>
+        <% end %>
       </div>
     <% end %>
-
 
     <div class="col-sm-offset-2 col-md-offset-3 col-md-8 text-right">
         <% if paginated_products.respond_to?(:num_pages) %>
@@ -51,7 +72,12 @@
 
   <%= javascript_tag do %>
     $(function() {
-      var filterItems = $('#categoryFilters .list-group-item');
+      <% if $flipper[:store_redesign].enabled? %>
+        var filterItems = $('#categoryFilters .dropdown-md-link');
+      <% else %>
+        var filterItems = $('#categoryFilters .list-group-item');
+      <% end %>
+
       var removeAllFilters = $('#removeAllFilters');
 
       if( filterItems.hasClass('active') ) {
@@ -60,8 +86,17 @@
 
       filterItems.each(function() {
         if ( $(this).hasClass('active') ) {
-          $(this).closest('.panel-collapse').collapse('show');
+          <% if $flipper[:store_redesign].enabled? %>
+            $(this).closest('.dropdown-md').addClass('dropdown-md-relative-open');
+            $(this).closest('.dropdown-md-menu').addClass('block');
+          <% else %>
+            $(this).closest('.panel-collapse').collapse('show');
+          <% end %>
         }
+      });
+
+      $('.js-dismiss-jumbotron').on('click', function() {
+        $(this).closest('.jumbotron').hide();
       });
     });
   <% end %>

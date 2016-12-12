@@ -1,81 +1,182 @@
 <% @body_id = 'product-details' %>
 
 <% cache [I18n.locale, current_currency, @product] do %>
-  <div data-hook="product_show" itemscope itemtype="http://schema.org/Product">
+  <% if $flipper[:store_redesign].enabled? %>
 
-    <div class="row">
+    <div data-hook="product_show" itemscope itemtype="http://schema.org/Product">
 
-      <div class="col-md-6" data-hook="product_left_part">
-        <div data-hook="product_left_part_wrap">
-          <div id="product-images" class="product-images" data-hook="product_images">
-            <div id="main-image" class="panel panel-default" data-hook>
-              <div class="panel-body text-center">
-                <%= render :partial => 'image', locals: { image: @product.images.first } %>
+      <div class="row">
+
+        <div class="col-md-5" data-hook="product_left_part">
+          <div data-hook="product_left_part_wrap">
+            <div id="product-images" class="product-images" data-hook="product_images">
+              <div id="main-image" class="panel panel-default" data-hook>
+                <div class="panel-body text-center">
+                  <%= render :partial => 'image', locals: { image: @product.images.first } %>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div data-hook="product_properties">
-            <%= render :partial => 'properties' %>
-          </div>
+            <div data-hook="product_properties">
+              <%= render :partial => 'properties' %>
+            </div>
 
-          <div data-hook="promotions">
-            <%= render :partial => 'promotions' %>
+            <div data-hook="promotions">
+              <%= render :partial => 'promotions' %>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="col-md-6" data-hook="product_right_part">
-        <div data-hook="product_right_part_wrap">
-          <div id="product-description" data-hook="product_description" class="product-description">
-            <h2 class="product-title" itemprop="name"><%= @product.name %></h2>
-            <% if @product.price_in(current_currency) and !@product.price.nil? %>
-              <% if display_product_price_tag?(@product) %>
-                <div data-hook="product_price">
-                  <div id="product-price">
-                    <div>
-                      <span class="lead price selling label label-default label-large" itemprop="price">
-                        <%= product_display_price(@product) %>
-                      </span>
-                      <span itemprop="priceCurrency" content="<%= @product.currency %>"></span>
+        <div class="col-md-7" data-hook="product_right_part">
+          <div class="card <%= card_type_class(@product) %>" data-hook="product_right_part_wrap">
+            <div class="card-curriculum">
+              <%= @product.curriculum.try(:name) || 'General' %>
+            </div>
+            <div id="product-description" data-hook="product_description" class="product-description">
+              <h2 class="product-title card-title" itemprop="name"><%= @product.name %></h2>
+              <% if @product.price_in(current_currency) and !@product.price.nil? %>
+                <%# if display_product_price_tag?(@product) %>
+                  <div data-hook="product_price">
+                    <div id="product-price">
+                      <div>
+                        <span class="lead price selling block margin-bottom--l <%= @product.free? ? 'text--danger-alt' : '' %>" itemprop="price">
+                          <%= product_display_price(@product) %>
+                        </span>
+                        <span itemprop="priceCurrency" content="<%= @product.currency %>"></span>
+                      </div>
+
+                      <% if @product.master.can_supply? %>
+                        <link itemprop="availability" href="http://schema.org/InStock" />
+                      <% elsif @product.variants.empty? %>
+                        <br />
+                        <span class="out-of-stock"><%= Spree.t(:out_of_stock) %></span>
+                      <% end %>
                     </div>
-
-                    <% if @product.master.can_supply? %>
-                      <link itemprop="availability" href="http://schema.org/InStock" />
-                    <% elsif @product.variants.empty? %>
-                      <br />
-                      <span class="out-of-stock"><%= Spree.t(:out_of_stock) %></span>
-                    <% end %>
                   </div>
+                <%# end %>
+              <% else %>
+                <div id="product-price">
+                  <br>
+                  <div><span class="price selling" itemprop="price"><%= Spree.t('product_not_available_in_this_currency') %></span></div>
                 </div>
               <% end %>
-            <% else %>
-              <div id="product-price">
-                <br>
-                <div><span class="price selling" itemprop="price"><%= Spree.t('product_not_available_in_this_currency') %></span></div>
+
+              <div class="padding-bottom card-text" itemprop="description" data-hook="description">
+                <%= product_description(@product) rescue Spree.t(:product_has_no_description) %>
               </div>
-            <% end %>
 
-            <p class="padding-top--m padding-bottom" itemprop="description" data-hook="description">
-              <%= product_description(@product) rescue Spree.t(:product_has_no_description) %>
-            </p>
+              <% if @product.get_in_touch_product? %>
+                <div class='row'>
+                  <div class="col-md-5">
+                    <%= link_to Spree.t(:get_in_touch), @product.get_in_touch_url, target: '_blank', class: 'btn btn-danger--alt btn--md product-btn-primary' %>
+                  </div>
+                </div>
+              <% elsif @product.partner_product? %>
+                <div class="row">
+                  <div class="col-md-5">
+                    <%= link_to Spree.t(:purchase_from_partner), @product.redirect_url, target: '_blank', class: 'btn btn-danger--alt btn--md product-btn-primary', :data => { :toggle => 'modal', :redirect => @product.redirect_url, :target => '.partner-modal' } %>
+                  </div>
+                </div>
+              <% else %>
+                <div id="cart-form" data-hook="cart_form">
+                  <%= render :partial => 'cart_form' %>
+                </div>
+              <% end %>
+            </div>
 
-            <% if @product.get_in_touch_product? %>
-              <div class='row'>
-                <div class="col-md-5">
-                  <%= link_to Spree.t(:get_in_touch), @product.get_in_touch_url, target: '_blank', class: 'btn btn-primary product-btn-primary' %>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  <% else %>
+
+    <div data-hook="product_show" itemscope itemtype="http://schema.org/Product">
+
+      <div class="row">
+
+        <div class="col-md-6" data-hook="product_left_part">
+          <div data-hook="product_left_part_wrap">
+            <div id="product-images" class="product-images" data-hook="product_images">
+              <div id="main-image" class="panel panel-default" data-hook>
+                <div class="panel-body text-center">
+                  <%= render :partial => 'image', locals: { image: @product.images.first } %>
                 </div>
               </div>
-            <% else %>
-              <div id="cart-form" data-hook="cart_form">
-                <%= render :partial => 'cart_form' %>
-              </div>
-            <% end %>
+            </div>
+
+            <div data-hook="product_properties">
+              <%= render :partial => 'properties' %>
+            </div>
+
+            <div data-hook="promotions">
+              <%= render :partial => 'promotions' %>
+            </div>
           </div>
-
         </div>
-      </div>
 
+        <div class="col-md-6" data-hook="product_right_part">
+          <div data-hook="product_right_part_wrap">
+            <div id="product-description" data-hook="product_description" class="product-description">
+              <h2 class="product-title" itemprop="name"><%= @product.name %></h2>
+              <% if @product.price_in(current_currency) and !@product.price.nil? %>
+                <% if display_product_price_tag?(@product) %>
+                  <div data-hook="product_price">
+                    <div id="product-price">
+                      <div>
+                        <span class="lead price selling label label-default label-large" itemprop="price">
+                          <%= product_display_price(@product) %>
+                        </span>
+                        <span itemprop="priceCurrency" content="<%= @product.currency %>"></span>
+                      </div>
+
+                      <% if @product.master.can_supply? %>
+                        <link itemprop="availability" href="http://schema.org/InStock" />
+                      <% elsif @product.variants.empty? %>
+                        <br />
+                        <span class="out-of-stock"><%= Spree.t(:out_of_stock) %></span>
+                      <% end %>
+                    </div>
+                  </div>
+                <% end %>
+              <% else %>
+                <div id="product-price">
+                  <br>
+                  <div><span class="price selling" itemprop="price"><%= Spree.t('product_not_available_in_this_currency') %></span></div>
+                </div>
+              <% end %>
+
+              <p class="padding-top--m padding-bottom" itemprop="description" data-hook="description">
+                <%= product_description(@product) rescue Spree.t(:product_has_no_description) %>
+              </p>
+
+              <% if @product.get_in_touch_product? %>
+                <div class='row'>
+                  <div class="col-md-5">
+                    <%= link_to Spree.t(:get_in_touch), @product.get_in_touch_url, target: '_blank', class: 'btn btn-primary product-btn-primary' %>
+                  </div>
+                </div>
+              <% elsif @product.partner_product? %>
+                <div class="row">
+                  <div class="col-md-5">
+                    <%= link_to Spree.t(:purchase_from_partner), @product.redirect_url, target: '_blank', class: 'btn btn-primary product-btn-primary', :data => { :toggle => 'modal', :redirect => @product.redirect_url, :target => '.partner-modal' } %>
+                  </div>
+                </div>
+              <% else %>
+                <div id="cart-form" data-hook="cart_form">
+                  <%= render :partial => 'cart_form' %>
+                </div>
+              <% end %>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
     </div>
-  </div>
+
+  <% end %>
 <% end %>
+
+<%= render partial: 'spree/shared/partner_modal' %>

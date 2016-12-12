@@ -43,7 +43,9 @@ module AccountHelper
   end
 
   def cms_display_status(item)
-    if item.draft_status === 'draft_published'
+    if item.archived?
+      'archived'
+    elsif item.draft_status === 'draft_published'
       'published'
     elsif item.draft_status === 'draft_in_progress'
       'in progress'

@@ -30,11 +30,17 @@ class Account::ProductsController < Account::BaseController
     if current_spree_user.recommendation_ids_to_exclude.present?
       @recommendations = @recommendations.where.not(id: current_spree_user.recommendation_ids_to_exclude)
     end
-    @recommendations = @recommendations.filter_by_subject_or_user_title(current_spree_user.interested_curriculums, current_spree_user.title)
+    @recommendations = @recommendations.filter_by_subject_or_user_title_or_zip_code(current_spree_user.interested_curriculums, current_spree_user.title, current_spree_user.zip_code)
+    @recommendations.each do |recommendation|
+      recommendation.increase_views!
+    end
   end
 
   def load_notifications
     @notifications = current_spree_user.notifications.unread.unexpire.limit(5)
+    @notifications.each do |notification|
+      notification.mark_as_viewed!
+    end
   end
 
   def load_taxons

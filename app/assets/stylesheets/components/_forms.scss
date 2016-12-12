@@ -64,7 +64,7 @@ select {
   background-color: $c-firm-highlight;
   box-shadow: none;
 
-  @include placeholder-text-color {
+  @include input-placeholder {
     color: $c-firm-primary;
   }
 
@@ -361,4 +361,25 @@ select {
   .select2-result-label {
     padding: 0;
   }
+}
+
+// -------------------------------------
+//   Material Design Inputs
+// -------------------------------------
+
+.input-md {
+  border: 1px solid $c-firm-primary;
+  background-color: $c-absolute;
+  border-radius: 2px;
+
+  @include input-placeholder {
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+}
+
+.input-md-search {
+  background: $c-absolute asset-url('icon-search-gray.png') no-repeat right $b-space-m top 50%;
+  background-size: $b-space-m $b-space-m;
 }

@@ -3,7 +3,7 @@
   <div class="recommended-products col-xs-12">
     <% @recommendations.each do |recommendation| %>
       <div class="recommended-product-wrapper clearfix">
-        <% recUrl = 'recommendations/' + recommendation.icon + '_' + recommendation.subject.upcase + '.png' %>
+        <% recUrl = 'recommendations/' + [recommendation.icon, recommendation.subject.upcase].reject(&:blank?).join('_') + '.png' %>
         <div class="row">
           <div class="col-sm-3">
             <%= image_tag recUrl, class: 'recommended-thumb img-thumbnail' %>
@@ -11,7 +11,7 @@
           <div class="col-sm-9">
             <h5><%= recommendation.title %></h5>
             <p><%= truncate(recommendation.sub_header, length: 120) %></p>
-            <%= link_to recommendation.call_to_action_button_text, recommendation.call_to_action_button_link, class: 'btn btn-link', target: recommendation.call_to_action_button_target %>
+            <%= link_to recommendation.call_to_action_button_text, account_recommendation_path(recommendation), class: 'btn btn-link', target: recommendation.call_to_action_button_target %>
           </div>
         </div>
       </div>
