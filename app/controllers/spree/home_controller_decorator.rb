@@ -7,7 +7,8 @@ Spree::HomeController.class_eval do
       clear_preference_filters
       redirect_to spree.root_path and return
     end
-    if params[:taxon_ids].blank?
+
+    if use_preference_filters?
       apply_preference_filters
     else
       clear_preference_filters
@@ -31,6 +32,10 @@ Spree::HomeController.class_eval do
         params[:taxon_ids] = [subject_id, role_id].compact
       end
     end
+  end
+
+  def use_preference_filters?
+    params[:taxon_ids].blank? && params[:q].blank?
   end
 
   def clear_preference_filters
