@@ -40,10 +40,13 @@ SitemapGenerator::Sitemap.create do
 
   MediumPublication.displayable.each do |publication|
     publication.posts.find_each do |post|
-      if publication.blog_type == 'global'
-        add global_post_path(slug: publication.slug, id: post.slug)
-      else
-        add curriculum_post_path(page_slug: publication.page.slug, slug: publication.slug, id: post.slug)
+      begin
+        if publication.blog_type == 'global'
+          add global_post_path(slug: publication.slug, id: post.slug)
+        else
+          add curriculum_post_path(page_slug: publication.page.slug, slug: publication.slug, id: post.slug)
+        end
+      rescue
       end
     end
   end
