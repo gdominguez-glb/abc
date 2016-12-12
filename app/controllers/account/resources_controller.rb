@@ -23,9 +23,9 @@ class Account::ResourcesController < Account::BaseController
       @my_products = filter_by_taxons(Spree::Product, @my_products, params[:taxon_ids])
     end
 
-    @my_products = @my_products.search_by_text(params[:q]).page(params[:page])
+    @my_products = @my_products.search_by_text(params[:q])
     @total = @my_products.length
-    @my_products = @my_products.per(10)
+    @my_products = @my_products.page(params[:page]).per(10)
     @taxonomies = Spree::Taxonomy.show_in_store.includes(root: :children)
   end
 
