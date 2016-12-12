@@ -1757,8 +1757,8 @@ ActiveRecord::Schema.define(version: 20161208021322) do
     t.boolean  "tour_showed_licenses",                   default: false
     t.boolean  "tour_showed_licenses_users",             default: false
     t.boolean  "accepted_terms",                         default: false
-    t.string   "zip_code"
     t.text     "grades"
+    t.string   "zip_code"
   end
 
   add_index "spree_users", ["deleted_at"], name: "index_spree_users_on_deleted_at", using: :btree

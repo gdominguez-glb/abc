@@ -263,4 +263,32 @@ $(function(){
     }
     return null;
   }
+
+  var stateField = $('#spree_user_school_district_attributes_state_id');
+  var cityField = $('#spree_user_school_district_attributes_city');
+  var schoolRow = $('#rowSchoolSelect');
+
+  var checkStateCityFilled = function() {
+      return stateField.val() !== '' && cityField.val() !== '';
+  };
+
+  var updateSchoolField = function() {
+      if(checkStateCityFilled()) {
+          schoolRow.show();
+      } else {
+          schoolRow.hide();
+      }
+  };
+
+  $(document).ready(function() {
+      updateSchoolField();
+  });
+
+  stateField.change(function() {
+      updateSchoolField();
+  });
+
+  cityField.keyup(function() {
+      updateSchoolField();
+  });
 });
