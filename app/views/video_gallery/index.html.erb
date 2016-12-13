@@ -2,9 +2,9 @@
 
   <%= content_for :body_class, 'without-subnav' if current_spree_user.blank? %>
   <div class="row">
-    <div class="col-xs-12 margin-top--xxl margin-bottom--xl">
+    <div class="col-sm-10 col-sm-offset-1 margin-top--xxl margin-bottom--xl">
       <div class="row">
-        <div class="col-sm-4 col-md-3 col-lg-2 col-sm-offset-1">
+        <div class="col-sm-4 col-md-3">
           <h3 class="filters-title">Filter By:</h3>
           <div class="panel-group" id="categoryFilters" role="tablist" aria-multiselectable="true">
             <% cache [:video_gallery_taxonomies, params[:taxon_ids].join('_'), params[:query]], expires_in: 2.hours do %>
@@ -19,7 +19,7 @@
             <%= text_field_tag :query, params[:query], class: 'form-control margin-bottom--1_2', placeholder: 'Search' %>
           <% end %>
         </div>
-        <div class="col-sm-6 col-md-7 col-lg-8 col-lg-offset--halfone--lg-min">
+        <div class="col-sm-8 col-md-offset-1 margin-bottom--xl">
 
           <% cache [:teach_eureka_viewing_guide, params[:taxon_ids].join('_')], expires_in: 2.hours do %>
             <% if teach_eureka_selected? && document = Document.find_by(attachment_file_name: "teach_eureka-viewing_guide.pdf") %>
