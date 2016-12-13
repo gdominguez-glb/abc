@@ -35,7 +35,7 @@ Spree::HomeController.class_eval do
   end
 
   def use_preference_filters?
-    params[:taxon_ids].blank? && params[:q].blank?
+    params[:taxon_ids].blank? && params[:r].blank?
   end
 
   def clear_preference_filters

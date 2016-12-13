@@ -59,6 +59,6 @@ module TaxonsFilterHelper
   def remove_taxon_link(taxon)
     taxon_ids = params[:taxon_ids].dup.map(&:to_s)
     taxon_ids.delete(taxon.id.to_s)
-    url_for(taxon_ids: taxon_ids, q: 1)
+    url_for(taxon_ids: taxon_ids, r: 1)
   end
 end
