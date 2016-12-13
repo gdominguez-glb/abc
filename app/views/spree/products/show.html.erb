@@ -29,7 +29,7 @@
 
         <div class="col-md-7" data-hook="product_right_part">
           <div class="card <%= card_type_class(@product) %>" data-hook="product_right_part_wrap">
-            <div class="card-curriculum">
+            <div class="card-meta">
               <%= @product.curriculum.try(:name) || 'General' %>
             </div>
             <div id="product-description" data-hook="product_description" class="product-description">
