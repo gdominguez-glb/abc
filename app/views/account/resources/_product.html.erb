@@ -9,7 +9,7 @@
 
   <%= link_to product_url, class: 'card-link display-flex--lg-min flex-column--lg-min flex-1--lg-min' do %>
     <div class="card <%= card_type_class(product) %> flex-1--lg-min">
-      <div class="card-curriculum">
+      <div class="card-meta">
         <%= product.curriculum.try(:name) || 'General' %>
       </div>
       <% cache(@taxon.present? ? [I18n.locale, current_currency, @taxon, product] : [I18n.locale, current_currency, product]) do %>
