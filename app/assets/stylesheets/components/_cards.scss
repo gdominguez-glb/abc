@@ -25,7 +25,10 @@
   text-transform: none;
   @extend .serif;
 
-  &:hover {
+  &:hover,
+  &:focus,
+  &:active {
+    outline: none;
     text-decoration: none;
     color: inherit;
 

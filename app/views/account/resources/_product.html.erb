@@ -1,27 +1,20 @@
 <% url = spree.product_url(product, taxon_id: @taxon.try(:id)) %>
-<div id="product_<%= product.id %>" data-hook="products_list_item" itemscope itemtype="http://schema.org/Product">
-  <div class="card <%= card_type_class(product) %> padding-bottom--l">
-    <div class="card-curriculum">
-      <%= product.curriculum.try(:name) || 'General' %>
-    </div>
-    <% cache(@taxon.present? ? [I18n.locale, current_currency, @taxon, product] : [I18n.locale, current_currency, product]) do %>
-      <h4 class="card-title">
-        <% if product.group_product? %>
-          <%= link_to truncate(product.name, length: 50), spree.group_product_path(product), itemprop: "name", title: product.name %>
-        <% else %>
-          <%= link_to truncate(product.name, length: 50), url, itemprop: "name", title: product.name %>
-        <% end %>
-      </h4>
-    <% end %>
+<div id="product_<%= product.id %>" data-hook="products_list_item" itemscope itemtype="http://schema.org/Product" class="display-flex--lg-min flex-column--lg-min flex-1--lg-min">
 
-    <% if product.group_product? %>
-      <%= link_to spree.group_product_path(product), class: 'btn btn-text padding-left--reset padding-right--reset' do %>
-        Launch <i class="mi">chevron_right</i>
+  <% if product.group_product? %>
+    <% product_url = spree.group_product_path(product) %>
+  <% else %>
+    <% product_url = url %>
+  <% end %>
+
+  <%= link_to product_url, class: 'card-link display-flex--lg-min flex-column--lg-min flex-1--lg-min' do %>
+    <div class="card <%= card_type_class(product) %> flex-1--lg-min">
+      <div class="card-curriculum">
+        <%= product.curriculum.try(:name) || 'General' %>
+      </div>
+      <% cache(@taxon.present? ? [I18n.locale, current_currency, @taxon, product] : [I18n.locale, current_currency, product]) do %>
+        <h4 class="card-title"><%= product.name %></h4>
       <% end %>
-    <% else %>
-      <%= link_to url, class: 'btn btn-text padding-left--reset padding-right--reset' do %>
-        Launch <i class="mi">chevron_right</i>
-      <% end %>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 </div>
