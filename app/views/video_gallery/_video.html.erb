@@ -1,5 +1,9 @@
 <% if video.is_free? || bought_products?(video.products) %>
-  <%= render partial: 'open_video', locals: { video: video } %>
+  <% cache [video, :open], expires_in: 2.hours do %>
+    <%= render partial: 'open_video', locals: { video: video } %>
+  <% end %>
 <% else %>
-  <%= render partial: 'locked_video', locals: { video: video } %>
+  <% cache [video, :lock], expires_in: 2.hours do %>
+    <%= render partial: 'locked_video', locals: { video: video } %>
+  <% end %>
 <% end %>

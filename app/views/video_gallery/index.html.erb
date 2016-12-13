@@ -37,17 +37,7 @@
           <div class="row">
             <% @videos.each do |video| %>
               <% if video.is_free? || bought_products?(video.products) %>
-
-                <% cache [video, :open], expires_in: 2.hours do %>
-                  <%= render partial: 'open_video', locals: { video: video } %>
-                <% end %>
-
-              <% else %>
-
-                <% cache [video, :lock], expires_in: 2.hours do %>
-                  <%= render partial: 'locked_video', locals: { video: video } %>
-                <% end %>
-
+                <%= render partial: 'video', locals: { video: video } %>
               <% end %>
             <% end %>
           </div>
