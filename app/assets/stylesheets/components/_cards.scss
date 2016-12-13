@@ -18,6 +18,31 @@
   @media screen and (min-width: $screen-sm-min) {
     padding: $b-space-l $b-space-xl;
   }
+
+  &.card-media {
+    padding: 0;
+  }
+}
+
+.card-media--content {
+  padding: $b-space-l;
+
+  @media screen and (min-width: $screen-sm-min) {
+    padding: $b-space-l $b-space-xl;
+  }
+}
+
+.card-video {
+  position: relative;
+  min-height: 175px;
+  background-color: transparent;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 0;
+
+  .video-link-icon {
+    display: block;
+  }
 }
 
 .card-link {
@@ -34,6 +59,10 @@
 
     .card {
       background-color: darken($c-absolute, 5%);
+    }
+
+    .video-link-icon {
+      color: darken($c-absolute, 5%);
     }
   }
 }

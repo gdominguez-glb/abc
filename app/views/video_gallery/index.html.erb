@@ -43,10 +43,16 @@
             </div>
           <% else %>
             <div class="row">
-              <% @videos.each do |video| %>
-                <% if video.is_free? || bought_products?(video.products) %>
-                  <%= render partial: 'video', locals: { video: video } %>
-                <% end %>
+              <% @videos.in_groups_of(2, false).each do |group| %>
+                <div class="row display-flex--lg-min">
+                  <% group.each do |video| %>
+                    <% if video.is_free? || bought_products?(video.products) %>
+                      <div class="col-lg-6 display-flex--lg-min flex-column--lg-min">
+                        <%= render partial: 'video', locals: { video: video } %>
+                      </div>
+                    <% end %>
+                  <% end %>
+                </div>
               <% end %>
             </div>
             <%= paginate @videos %>
