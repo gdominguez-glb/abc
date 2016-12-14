@@ -1,0 +1,13 @@
+<%= link_to unlock_video_gallery_path(video), class: 'card-link display-flex--lg-min flex-column--lg-min flex-1--lg-min', remote: true do %>
+  <div class="card card-media flex-1--lg-min">
+    <% if video.screenshot.present? %>
+      <div class="card-video" <% if video.screenshot.present? %>style="background-image: url('<%= video.screenshot.url(:medium) %>')"<% end %>>
+        <%= mi.md_48.lock.css_class('video-link-icon') %>
+      </div>
+    <% end %>
+    <div class="card-media--content">
+      <div class="card-meta"><%= video.type_taxon_name %></div>
+      <h4 class="card-title"><%= video.title %></h4>
+    </div>
+  </div>
+<% end %>

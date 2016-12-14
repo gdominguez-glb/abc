@@ -1,67 +1,128 @@
-<%= content_for :body_class, 'without-subnav' if current_spree_user.blank? %>
-<div class="row">
-  <div class="col-xs-12 margin-top--xxl margin-bottom--xl">
-    <div class="row">
-      <div class="col-sm-4 col-md-3 col-lg-2 col-sm-offset-1">
-        <h3 class="filters-title">Filter By:</h3>
-        <div class="panel-group" id="categoryFilters" role="tablist" aria-multiselectable="true">
-          <% cache [:video_gallery_taxonomies, params[:taxon_ids].join('_'), params[:query]], expires_in: 2.hours do %>
-            <%= render 'taxonomies' %>
+<% if $flipper[:video_redesign].enabled? %>
+
+  <%= content_for :body_class, 'without-subnav' if current_spree_user.blank? %>
+  <div class="row">
+    <div class="col-sm-10 col-sm-offset-1 margin-top--xxl margin-bottom--xl">
+      <div class="row">
+        <div class="col-sm-4 col-md-3">
+          <h3 class="text-left">My Videos (<%= @videos.length %>)</h3>
+
+          <%= form_tag '', method: :get do %>
+            <% params[:taxon_ids].each do |taxon_id| %>
+              <%= hidden_field_tag "taxon_ids[]", taxon_id %>
+            <% end %>
+            <%= text_field_tag :query, params[:query], class: 'form-control input-md input-md-search margin-bottom--l', placeholder: 'Search' %>
           <% end %>
-        </div>
-        <a id="removeAllFilters" href="/video_gallery?" class="btn btn-danger btn-block collapse">Remove All</a>
-        <%= form_tag '', method: :get, class: 'side-search-form' do %>
-          <% params[:taxon_ids].each do |taxon_id| %>
-            <%= hidden_field_tag "taxon_ids[]", taxon_id %>
-          <% end %>
-          <%= text_field_tag :query, params[:query], class: 'form-control margin-bottom--1_2', placeholder: 'Search' %>
-        <% end %>
-      </div>
-      <div class="col-sm-6 col-md-7 col-lg-8 col-lg-offset--halfone--lg-min">
 
-        <% cache [:teach_eureka_viewing_guide, params[:taxon_ids].join('_')], expires_in: 2.hours do %>
-          <% if teach_eureka_selected? && document = Document.find_by(attachment_file_name: "teach_eureka-viewing_guide.pdf") %>
-            <p>
-            Download the <%= link_to 'Teach Eureka Viewing Guide', document.attachment.url, target: '_blank'  %> for convenient note taking.
-            </p>
-          <% end %>
-        <% end %>
+          <h4 class="text-left bh4">Filter By:</h4>
 
-        <% if @videos.blank? %>
-          <div class="video-empty-state">
-            <div class="alert alert-warning" role="alert">
-              <i class="mi">warning</i> There are no videos that match your request. <strong>Please refine the search settings.</strong>
-            </div>
-          </div>
-        <% else %>
-          <div class="row">
-            <% @videos.each do |video| %>
-              <% if video.is_free? || bought_products?(video.products) %>
-
-                <% cache [video, :open], expires_in: 2.hours do %>
-                  <%= render partial: 'open_video', locals: { video: video } %>
-                <% end %>
-
-              <% else %>
-
-                <% cache [video, :lock], expires_in: 2.hours do %>
-                  <%= render partial: 'locked_video', locals: { video: video } %>
-                <% end %>
-
-              <% end %>
+          <div class="panel-group" id="categoryFilters" role="tablist" aria-multiselectable="true">
+            <% cache [:video_gallery_taxonomies, params[:taxon_ids].join('_'), params[:query]], expires_in: 2.hours do %>
+              <%= render 'taxonomies_new' %>
             <% end %>
           </div>
-          <%= paginate @videos %>
-        <% end %>
-      </div>
-    </div>
 
+          <a id="removeAllFilters" href="/video_gallery?" class="btn btn-danger btn-block collapse clear">Remove All</a>
+        </div>
+
+        <div class="col-sm-8 col-md-offset-1 margin-bottom--xl">
+
+          <% cache [:teach_eureka_viewing_guide, params[:taxon_ids].join('_')], expires_in: 2.hours do %>
+            <% if teach_eureka_selected? && document = Document.find_by(attachment_file_name: "teach_eureka-viewing_guide.pdf") %>
+              <p>
+              Download the <%= link_to 'Teach Eureka Viewing Guide', document.attachment.url, target: '_blank'  %> for convenient note taking.
+              </p>
+            <% end %>
+          <% end %>
+
+          <% if @videos.blank? %>
+            <div class="video-empty-state">
+              <div class="alert alert-warning" role="alert">
+                <i class="mi">warning</i> There are no videos that match your request. <strong>Please refine the search settings.</strong>
+              </div>
+            </div>
+          <% else %>
+            <% @videos.in_groups_of(2, false).each do |group| %>
+              <div class="row display-flex--lg-min">
+                <% group.each do |video| %>
+                  <div class="col-lg-6 display-flex--lg-min flex-column--lg-min">
+                    <%= render partial: 'video', locals: { video: video } %>
+                  </div>
+                <% end %>
+              </div>
+            <% end %>
+            <%= paginate @videos %>
+          <% end %>
+        </div>
+      </div>
+
+    </div>
   </div>
-</div>
+
+<% else %>
+  <!-- Remove when video_redesign flipper is removed -->
+  <%= content_for :body_class, 'without-subnav' if current_spree_user.blank? %>
+  <div class="row">
+    <div class="col-xs-12 margin-top--xxl margin-bottom--xl">
+      <div class="row">
+        <div class="col-sm-4 col-md-3 col-lg-2 col-sm-offset-1">
+          <h3 class="filters-title">Filter By:</h3>
+          <div class="panel-group" id="categoryFilters" role="tablist" aria-multiselectable="true">
+            <% cache [:video_gallery_taxonomies, params[:taxon_ids].join('_'), params[:query]], expires_in: 2.hours do %>
+              <%= render 'taxonomies' %>
+            <% end %>
+          </div>
+          <a id="removeAllFilters" href="/video_gallery?" class="btn btn-danger btn-block collapse">Remove All</a>
+          <%= form_tag '', method: :get, class: 'side-search-form' do %>
+            <% params[:taxon_ids].each do |taxon_id| %>
+              <%= hidden_field_tag "taxon_ids[]", taxon_id %>
+            <% end %>
+            <%= text_field_tag :query, params[:query], class: 'form-control margin-bottom--1_2', placeholder: 'Search' %>
+          <% end %>
+        </div>
+        <div class="col-sm-6 col-md-7 col-lg-8 col-lg-offset--halfone--lg-min">
+
+          <% cache [:teach_eureka_viewing_guide, params[:taxon_ids].join('_')], expires_in: 2.hours do %>
+            <% if teach_eureka_selected? && document = Document.find_by(attachment_file_name: "teach_eureka-viewing_guide.pdf") %>
+              <p>
+              Download the <%= link_to 'Teach Eureka Viewing Guide', document.attachment.url, target: '_blank'  %> for convenient note taking.
+              </p>
+            <% end %>
+          <% end %>
+
+          <% if @videos.blank? %>
+            <div class="video-empty-state">
+              <div class="alert alert-warning" role="alert">
+                <i class="mi">warning</i> There are no videos that match your request. <strong>Please refine the search settings.</strong>
+              </div>
+            </div>
+          <% else %>
+            <div class="row">
+              <% @videos.each do |video| %>
+                <% if video.is_free? || bought_products?(video.products) %>
+                  <%= render partial: 'video', locals: { video: video } %>
+                <% end %>
+              <% end %>
+            </div>
+            <%= paginate @videos %>
+          <% end %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+<% end %>
+
 <%= content_for :javascripts do %>
   <%= javascript_tag do %>
     $(function() {
-      var filterItems = $('#categoryFilters .list-group-item');
+      <% if $flipper[:store_redesign].enabled? %>
+        var filterItems = $('#categoryFilters .dropdown-md-link');
+      <% else %>
+        var filterItems = $('#categoryFilters .list-group-item');
+      <% end %>
+
       var removeAllFilters = $('#removeAllFilters');
 
       if( filterItems.hasClass('active') ) {
@@ -70,7 +131,12 @@
 
       filterItems.each(function() {
         if ( $(this).hasClass('active') ) {
-          $(this).closest('.panel-collapse').collapse('show');
+          <% if $flipper[:store_redesign].enabled? %>
+            $(this).closest('.dropdown-md').addClass('dropdown-md-relative-open');
+            $(this).closest('.dropdown-md-menu').addClass('block');
+          <% else %>
+            $(this).closest('.panel-collapse').collapse('show');
+          <% end %>
         }
       });
     });
