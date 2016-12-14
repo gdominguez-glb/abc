@@ -113,6 +113,10 @@ class Spree::Video < ActiveRecord::Base
     self.file.expiring_url(60*60*60)
   end
 
+  def type_taxon_name
+    taxons.joins(:taxonomy).where(spree_taxonomies: { name: 'Type' }).first.name rescue nil
+  end
+
   private
 
   def set_video_group
