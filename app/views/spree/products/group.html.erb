@@ -14,7 +14,7 @@
               <%= @product_group.description.html_safe rescue '' %>
             </div>
           </div>
-          <button class="btn btn-link-alt btn-link--stable js-read-more-btn none">Read More <i class="mi md-24 js-read-more-arrow">keyboard_arrow_down</i></button>
+          <button class="btn btn-link-alt btn-link--stable js-read-more-btn none">Read <span class="js-read-more-btn-text">More</span><span class="js-read-less-btn-text none">Less</span> <i class="mi md-24 js-read-more-arrow">keyboard_arrow_down</i></button>
         </div>
       <% else %>
         <p class="text-left"><%= @product_group.description.html_safe rescue '' %></p>
@@ -55,6 +55,8 @@
       $('.js-read-more-btn').on('click', function() {
         $('.js-read-more').toggleClass('height--100');
         $('.js-read-more-arrow').toggleClass('rotate--180');
+        $('.js-read-more-btn-text').toggleClass('none');
+        $('.js-read-less-btn-text').toggleClass('none');
       });
 
       readMoreCheck();
