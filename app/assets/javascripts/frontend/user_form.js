@@ -266,10 +266,14 @@ $(function(){
 
   var stateField = $('#spree_user_school_district_attributes_state_id');
   var cityField = $('#spree_user_school_district_attributes_city');
+  var countryField = $('#spree_user_school_district_attributes_country_id');
   var schoolRow = $('#rowSchoolSelect');
 
   var checkStateCityFilled = function() {
-      return stateField.val() !== '' && cityField.val() !== '';
+    var selectedUs = parseInt(countryField.val()) === parseInt(window.us_country_id);
+    return (
+      (stateField.val() !== '' || !selectedUs) &&
+        cityField.val() !== '');
   };
 
   var updateSchoolField = function() {
