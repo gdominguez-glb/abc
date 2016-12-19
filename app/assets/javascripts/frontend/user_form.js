@@ -105,10 +105,15 @@ $(function(){
     return false;
   }
 
+  function selectUsCountry() {
+    var countryId = $('#spree_user_school_district_attributes_country_id').val();
+    return parseInt(countryId) === parseInt(window.us_country_id);
+  }
+
   function checkStateAndCityForName() {
     var state = $("#spree_user_school_district_attributes_state_id").val();
     var city = $("#spree_user_school_district_attributes_city").val();
-    if(isValueBlank(state) || isValueBlank(city)) {
+    if((isValueBlank(state) && selectUsCountry()) || isValueBlank(city)) {
       $(".select-state-city-tooltip").removeClass('hide');
       $("input[name='spree_user[school_district_attributes][name]']").prop('readonly', true);
     } else {
