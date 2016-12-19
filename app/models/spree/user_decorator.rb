@@ -333,6 +333,6 @@ Spree::User.class_eval do
 
   private
   def is_in_usa?
-    ip_location == 'US'
+    self.ip_location == 'US'
   end
 end
