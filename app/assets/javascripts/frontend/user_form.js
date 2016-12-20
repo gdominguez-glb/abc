@@ -322,8 +322,16 @@ $(function(){
 
 
   placeTypeField.change(function(){
+    var schoolDistrictType = $("input[name='spree_user[school_district_attributes][place_type]']:checked").val();
+    if(schoolDistrictType === 'school') {
+      showControls('school', 'district');
+    } else {
+      showControls('district', 'school');
+    }
     updateSchoolDistrictField();
   });
+
+  placeTypeField.trigger('change');
 
   stateField.change(function() {
     updateSchoolDistrictField();
@@ -336,5 +344,5 @@ $(function(){
   $(document).ready(function(){
     updateSchoolDistrictField();
   });
-
+  
 });
