@@ -79,6 +79,9 @@ $(function(){
     var stateId = $(this).val();
     updateSchoolDistrictSelect(parseInt(stateId));
     checkStateAndCityForName();
+
+    resetCity();
+    resetSchoolDistrictName();
   });
 
   $("#spree_user_school_district_attributes_city").change(function(){
@@ -97,6 +100,19 @@ $(function(){
       break;
     }
   });
+
+  function resetCity() {
+    $("#spree_user_school_district_attributes_city").val(null);
+  }
+
+  function resetSchoolDistrictName() {
+    $("#spree_user_school_id").select2('data', null);
+    $("#spree_user_district_id").select2('data', null);
+    $("#rowAddSchool").collapse('hide');
+    $("#rowAddDistrict").collapse('hide');
+    $("#rowAddSchool #spree_user_school_district_attributes_name").val('');
+    $("#rowAddDistrict #spree_user_school_district_attributes_name").val('');
+  }
 
   function isValueBlank(val) {
     if (val === '' || val === null) {
