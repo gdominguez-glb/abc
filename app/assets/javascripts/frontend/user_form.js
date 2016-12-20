@@ -288,6 +288,7 @@ $(function(){
   var stateField = $('#spree_user_school_district_attributes_state_id');
   var cityField = $('#spree_user_school_district_attributes_city');
   var countryField = $('#spree_user_school_district_attributes_country_id');
+  var cityRow = $('#city-row');
   var schoolRow = $('#rowSchoolSelect');
   var districtRow = $('#rowDistrictSelect');
 
@@ -305,13 +306,14 @@ $(function(){
       rowToToggle = districtRow;
     }
     if(checkCountryStateFilled()) {
+      cityRow.show();
       rowToToggle.show();
     } else {
+      cityRow.hide();
       rowToToggle.hide();
     }
   };
 
-  updateSchoolDistrictField();
 
   stateField.change(function() {
     updateSchoolDistrictField();
@@ -320,4 +322,9 @@ $(function(){
   cityField.keyup(function() {
     updateSchoolDistrictField();
   });
+
+  $(document).ready(function(){
+    updateSchoolDistrictField();
+  });
+
 });
