@@ -291,6 +291,7 @@ $(function(){
   var cityRow = $('#city-row');
   var schoolRow = $('#rowSchoolSelect');
   var districtRow = $('#rowDistrictSelect');
+  var placeTypeField = $('input[name="spree_user[school_district_attributes][place_type]"]');
 
   var checkCountryStateFilled = function() {
     var selectedUs = parseInt(countryField.val()) === parseInt(window.us_country_id);
@@ -300,6 +301,7 @@ $(function(){
   var updateSchoolDistrictField = function() {
     var schoolDistrictType = $("input[name='spree_user[school_district_attributes][place_type]']:checked").val();
     var rowToToggle;
+
     if(schoolDistrictType === 'school') {
       rowToToggle = schoolRow;
     } else {
@@ -314,6 +316,10 @@ $(function(){
     }
   };
 
+
+  placeTypeField.change(function(){
+    updateSchoolDistrictField();
+  });
 
   stateField.change(function() {
     updateSchoolDistrictField();
