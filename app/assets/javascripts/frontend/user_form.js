@@ -309,10 +309,10 @@ $(function(){
     }
     if(checkCountryStateFilled()) {
       cityRow.show();
-      rowToToggle.show();
+      rowToToggle.collapse('show');
     } else {
       cityRow.hide();
-      rowToToggle.hide();
+      rowToToggle.collapse('hide');
     }
   };
 
