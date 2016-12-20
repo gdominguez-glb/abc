@@ -93,10 +93,10 @@ $(function(){
 
     switch(selectionId) {
       case "spree_user_school_district_attributes_place_type_district":
-        showControls("district", "school");
+        //showControls("district", "school");
         break;
       default:
-        showControls("school", "district");
+        //showControls("school", "district");
       break;
     }
   });
