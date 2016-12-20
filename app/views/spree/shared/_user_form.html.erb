@@ -154,7 +154,7 @@
     <div class="col-md-6">
       <div class="form-group">
         <label>Select a District</label>
-        <%= f.hidden_field :district_id, class: 'form-control' %>
+        <%= f.hidden_field :district_id, class: 'form-control', value: default_school_district_id_value(f.object.school_district, 'district', f.object.district_id) %>
       </div>
     </div>
       <div class="col-md-6">
@@ -168,7 +168,7 @@
     <div class="col-md-6">
       <div class="form-group">
         <label>Select a School</label>
-        <%= f.hidden_field :school_id, class: 'form-control' %>
+        <%= f.hidden_field :school_id, class: 'form-control', value: default_school_district_id_value(f.object.school_district, 'school', f.object.school_id) %>
       </div>
     </div>
     <div class="col-md-6">

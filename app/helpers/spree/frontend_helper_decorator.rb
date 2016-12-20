@@ -44,4 +44,13 @@ Spree::FrontendHelper.class_eval do
       ''
     end
   end
+
+  def default_school_district_id_value(school_district, place_type, default_value)
+    if school_district.place_type.to_s == place_type &&
+       school_district.name.present?
+      "#notListed"
+    else
+      default_value
+    end
+  end
 end
