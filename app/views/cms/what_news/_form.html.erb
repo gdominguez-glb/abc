@@ -1,20 +1,28 @@
-<%= form_for([:cms, @recommendation], class: 'form') do |f| %>
-  <% if @recommendation.errors.any? %>
+<% # TODO if i put form_for([:cms, @what_new]), the console shows this error: No route matches {:action=>"show", :controller=>"cms/what_news"} missing required keys: [:id]%>
+<% if @what_new.id.nil? %>
+    <% url = '/cms/what_news' %>
+    <% method = 'POST' %>
+<% else %>
+    <% url = "/cms/what_news/#{@what_new.id}" %>
+    <% method = 'PUT' %>
+<% end %>
+
+<%= form_for(@what_new, url: url, method: method, class: 'form') do |f| %>
+  <% if @what_new.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@recommendation.errors.count, "error") %> prohibited this recommendation from being saved:</h2>
+      <h2><%= pluralize(@what_new.errors.count, "error") %> prohibited this whatsnew from being saved:</h2>
 
       <ul>
-      <% @recommendation.errors.full_messages.each do |message| %>
+      <% @what_new.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
 
-
   <div class="panel panel-primary">
     <div class="panel-heading padding-top--s padding-bottom--s">
-      <h3 class="panel-title panel-title--s">Recommendation</h3>
+      <h3 class="panel-title panel-title--s">What's new?</h3>
     </div>
     <div class="panel-body">
       <div class="row">
@@ -38,7 +46,7 @@
             <label>User Role</label>
             <div class="select-container dark-select block">
               <span>Select Role</span>
-              <%= f.select :user_title, options_for_select(Spree::User::USER_TITLES, @recommendation.user_title), { prompt: 'Select title' }, class: 'form-control' %>
+              <%= f.select :user_title, options_for_select(Spree::User::USER_TITLES, @what_new.user_title), { prompt: 'Select title' }, class: 'form-control' %>
             </div>
           </div>
         </div>
@@ -48,14 +56,6 @@
           <div class="form-group">
             <label>Zip Codes (Seperate by comma)</label>
             <%= f.text_field :zip_codes, class: 'form-control' %>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="form-group">
-            <label>Sub Header</label>
-            <%= f.text_area :sub_header, class: 'form-control' %>
           </div>
         </div>
       </div>
@@ -85,16 +85,9 @@
         </div>
       </div>
       <div class="form-group">
-        <label>Icon</label>
-        <div class="select-container dark-select block">
-          <span>Icon</span>
-          <%= f.select :icon, Recommendation::ICONS, {}, class: 'form-control' %>
-        </div>
-      </div>
-      <div class="form-group">
         <label>Products</label>
         <div>
-          <%= f.hidden_field :product_ids, style: 'width: 100%;', value: @recommendation.product_ids.join(','), class: 'form-control', id: 'product-ids' %>
+          <%= f.hidden_field :product_ids, style: 'width: 100%;', value: @what_new.product_ids.join(','), class: 'form-control', id: 'product_ids' %>
         </div>
       </div>
       <div class="checkbox margin-bottom--xl">

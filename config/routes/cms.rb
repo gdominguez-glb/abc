@@ -71,6 +71,7 @@ namespace :cms do
   resources :help_items
   resources :contacts, only: [:index, :destroy, :edit, :update]
   resources :recommendations
+  resources :what_news
   resources :medium_publications do
     collection do
       post :trigger_medium_importer

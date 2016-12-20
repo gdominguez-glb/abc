@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161208021322) do
+ActiveRecord::Schema.define(version: 20161220164125) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -422,6 +422,16 @@ ActiveRecord::Schema.define(version: 20161208021322) do
   create_table "products_recommendations", id: false, force: :cascade do |t|
     t.integer "product_id"
     t.integer "recommendation_id"
+  end
+
+  create_table "products_what_news", force: :cascade do |t|
+    t.integer "product_id"
+    t.integer "what_new_id"
+  end
+
+  create_table "products_whats_news", force: :cascade do |t|
+    t.integer "product_id"
+    t.integer "whats_new_id"
   end
 
   create_table "questions", force: :cascade do |t|
@@ -1899,6 +1909,38 @@ ActiveRecord::Schema.define(version: 20161208021322) do
     t.string   "redirect_url"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+  end
+
+  create_table "what_news", force: :cascade do |t|
+    t.string   "title"
+    t.string   "url"
+    t.string   "call_to_action_button_text"
+    t.string   "call_to_action_button_link"
+    t.string   "call_to_action_button_target"
+    t.boolean  "display"
+    t.string   "user_title"
+    t.string   "subject"
+    t.string   "icon"
+    t.integer  "views",                        default: 0
+    t.integer  "clicks",                       default: 0
+    t.text     "zip_codes"
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+  end
+
+  create_table "whats_news", force: :cascade do |t|
+    t.string   "title"
+    t.string   "url"
+    t.string   "call_to_action_button_text"
+    t.string   "call_to_action_button_link"
+    t.string   "call_to_action_button_target"
+    t.boolean  "display"
+    t.string   "user_title"
+    t.integer  "views"
+    t.integer  "clicks"
+    t.text     "zip_codes"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
 end
