@@ -123,5 +123,4 @@ namespace :cms do
   resources :curriculum_shops
   resources :custom_csses
   resources :vanity_urls
-
 end

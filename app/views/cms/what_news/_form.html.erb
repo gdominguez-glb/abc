@@ -1,13 +1,4 @@
-<% # TODO if i put form_for([:cms, @what_new]), the console shows this error: No route matches {:action=>"show", :controller=>"cms/what_news"} missing required keys: [:id]%>
-<% if @what_new.id.nil? %>
-    <% url = '/cms/what_news' %>
-    <% method = 'POST' %>
-<% else %>
-    <% url = "/cms/what_news/#{@what_new.id}" %>
-    <% method = 'PUT' %>
-<% end %>
-
-<%= form_for(@what_new, url: url, method: method, class: 'form') do |f| %>
+<%= form_for([:cms, @what_new], class: 'form') do |f| %>
   <% if @what_new.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@what_new.errors.count, "error") %> prohibited this whatsnew from being saved:</h2>
