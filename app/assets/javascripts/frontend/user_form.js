@@ -301,11 +301,14 @@ $(function(){
   var updateSchoolDistrictField = function() {
     var schoolDistrictType = $("input[name='spree_user[school_district_attributes][place_type]']:checked").val();
     var rowToToggle;
+    var rowToHide;
 
     if(schoolDistrictType === 'school') {
       rowToToggle = schoolRow;
+      rowToHide = districtRow;
     } else {
       rowToToggle = districtRow;
+      rowToHide = schoolRow;
     }
     if(checkCountryStateFilled()) {
       cityRow.show();
@@ -314,6 +317,7 @@ $(function(){
       cityRow.hide();
       rowToToggle.collapse('hide');
     }
+    rowToHide.collapse('hide');
   };
 
 
