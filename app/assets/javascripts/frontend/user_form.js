@@ -240,7 +240,9 @@ $(function(){
         },
         results: function (data, page) {
           var more = page < data.pages;
-          toggleMessage("." + options.type +"-not-found", data.items.length, 1);
+          if($elem.val() === '') {
+            toggleMessage("." + options.type +"-not-found", data.items.length, 1);
+          }
           return {
             results: data.items,
             more: more
