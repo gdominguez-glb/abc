@@ -289,31 +289,35 @@ $(function(){
   var cityField = $('#spree_user_school_district_attributes_city');
   var countryField = $('#spree_user_school_district_attributes_country_id');
   var schoolRow = $('#rowSchoolSelect');
+  var districtRow = $('#rowDistrictSelect');
 
-  // var checkStateCityFilled = function() {
-  //   var selectedUs = parseInt(countryField.val()) === parseInt(window.us_country_id);
-  //   return (
-  //     (stateField.val() !== '' || !selectedUs) &&
-  //       cityField.val() !== '');
-  // };
+  var checkCountryStateFilled = function() {
+    var selectedUs = parseInt(countryField.val()) === parseInt(window.us_country_id);
+    return (stateField.val() !== '' || !selectedUs);
+  };
 
-  // var updateSchoolField = function() {
-  //     if(checkStateCityFilled()) {
-  //         schoolRow.show();
-  //     } else {
-  //         schoolRow.hide();
-  //     }
-  // };
+  var updateSchoolDistrictField = function() {
+    var schoolDistrictType = $("input[name='spree_user[school_district_attributes][place_type]']:checked").val();
+    var rowToToggle;
+    if(schoolDistrictType === 'school') {
+      rowToToggle = schoolRow;
+    } else {
+      rowToToggle = districtRow;
+    }
+    if(checkCountryStateFilled()) {
+      rowToToggle.show();
+    } else {
+      rowToToggle.hide();
+    }
+  };
 
-  // $(document).ready(function() {
-  //     updateSchoolField();
-  // });
+  updateSchoolDistrictField();
 
-  // stateField.change(function() {
-  //     updateSchoolField();
-  // });
+  stateField.change(function() {
+    updateSchoolDistrictField();
+  });
 
-  // cityField.keyup(function() {
-  //     updateSchoolField();
-  // });
+  cityField.keyup(function() {
+    updateSchoolDistrictField();
+  });
 });
