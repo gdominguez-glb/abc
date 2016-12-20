@@ -20,12 +20,9 @@
         </div>
       <% end %>
       <% reset_cycle("classes") %>
+      <% if products.respond_to?(:num_pages) %>
+        <%= paginate products, theme: 'twitter-bootstrap-3', pagination_class: 'pagination-sm' %>
+      <% end %>
     </div>
   <% end %>
-
-  <div class="col-sm-offset-2 col-md-offset-3 col-md-8 text-right">
-    <% if products.respond_to?(:num_pages) %>
-      <%= paginate products, theme: 'twitter-bootstrap-3' %>
-    <% end %>
-  </div>
 <% end %>
