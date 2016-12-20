@@ -11,7 +11,7 @@ Spree::User.class_eval do
   serialize :interested_subjects, Array
 
   validates_format_of :password, with: /\A\S*\z/, message: "can't include spaces", if: :password_required?
-  validates :school_district, presence: true, if: -> { school_district_required? && is_in_usa? }
+  validates :school_district, presence: true, if: -> { school_district_required? }
   validates :title, presence: true, on: :create
   validates :zip_code, presence: true, on: :create, if: :is_in_usa?
   validates :interested_subjects, presence: true, on: :create
@@ -333,6 +333,6 @@ Spree::User.class_eval do
 
   private
   def is_in_usa?
-    ip_location == 'US'
+    self.ip_location == 'US'
   end
 end
