@@ -93,10 +93,10 @@ $(function(){
 
     switch(selectionId) {
       case "spree_user_school_district_attributes_place_type_district":
-        showControls("district", "school");
+        //showControls("district", "school");
         break;
       default:
-        showControls("school", "district");
+        //showControls("school", "district");
       break;
     }
   });
@@ -240,7 +240,9 @@ $(function(){
         },
         results: function (data, page) {
           var more = page < data.pages;
-          toggleMessage("." + options.type +"-not-found", data.items.length, 1);
+          if($elem.val() === '') {
+            toggleMessage("." + options.type +"-not-found", data.items.length, 1);
+          }
           return {
             results: data.items,
             more: more
@@ -301,11 +303,14 @@ $(function(){
   var updateSchoolDistrictField = function() {
     var schoolDistrictType = $("input[name='spree_user[school_district_attributes][place_type]']:checked").val();
     var rowToToggle;
+    var rowToHide;
 
     if(schoolDistrictType === 'school') {
       rowToToggle = schoolRow;
+      rowToHide = districtRow;
     } else {
       rowToToggle = districtRow;
+      rowToHide = schoolRow;
     }
     if(checkCountryStateFilled()) {
       cityRow.show();
@@ -314,6 +319,7 @@ $(function(){
       cityRow.hide();
       rowToToggle.collapse('hide');
     }
+    rowToHide.collapse('hide');
   };
 
 

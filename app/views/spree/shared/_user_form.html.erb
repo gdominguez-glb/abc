@@ -154,7 +154,7 @@
     <div class="col-md-6">
       <div class="form-group">
         <label>Select a District</label>
-        <%= f.hidden_field :district_id, class: 'form-control' %>
+        <%= f.hidden_field :district_id, class: 'form-control', value: default_school_district_id_value(f.object.school_district, 'district', f.object.district_id) %>
       </div>
     </div>
       <div class="col-md-6">
@@ -168,7 +168,7 @@
     <div class="col-md-6">
       <div class="form-group">
         <label>Select a School</label>
-        <%= f.hidden_field :school_id, class: 'form-control' %>
+        <%= f.hidden_field :school_id, class: 'form-control', value: default_school_district_id_value(f.object.school_district, 'school', f.object.school_id) %>
       </div>
     </div>
     <div class="col-md-6">
@@ -182,7 +182,7 @@
 
   <div class="input-group add-district-field collapse fade" id="rowAddDistrict">
     <%= f.fields_for :school_district do |school_district_form| %>
-      <%= school_district_form.text_field :name, class: 'form-control school-district-control', placeholder: 'New District Name', readonly: true %>
+      <%= school_district_form.text_field :name, class: 'form-control school-district-control', placeholder: 'New District Name', readonly: false %>
     <% end %>
     <span class="input-group-btn">
       <button type="button" class="btn btn-danger" id="closeAddDistrict"><i class="mi">close</i></button>
@@ -192,7 +192,7 @@
   <div class="input-group add-school-field collapse fade" id="rowAddSchool">
     <% f.object.school_district ||= SchoolDistrict.new(place_type: 'school') %>
     <%= f.fields_for :school_district do |school_district_form| %>
-      <%= school_district_form.text_field :name, class: 'form-control school-district-control', placeholder: 'New School Name', readonly: true %>
+      <%= school_district_form.text_field :name, class: 'form-control school-district-control', placeholder: 'New School Name', readonly: false %>
     <% end %>
     <span class="input-group-btn">
       <button type="button" class="btn btn-danger" id="closeAddSchool"><i class="mi">close</i></button>
