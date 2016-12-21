@@ -18,6 +18,31 @@
   @media screen and (min-width: $screen-sm-min) {
     padding: $b-space-l $b-space-xl;
   }
+
+  &.card-media {
+    padding: 0;
+  }
+}
+
+.card-media--content {
+  padding: $b-space-l;
+
+  @media screen and (min-width: $screen-sm-min) {
+    padding: $b-space-l $b-space-xl;
+  }
+}
+
+.card-video {
+  position: relative;
+  min-height: 175px;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: 0;
+  background-size: cover;
+
+  .video-link-icon {
+    display: block;
+  }
 }
 
 .card-link {
@@ -25,12 +50,19 @@
   text-transform: none;
   @extend .serif;
 
-  &:hover {
+  &:hover,
+  &:focus,
+  &:active {
+    outline: none;
     text-decoration: none;
     color: inherit;
 
     .card {
       background-color: darken($c-absolute, 5%);
+    }
+
+    .video-link-icon {
+      color: darken($c-absolute, 5%);
     }
   }
 }
@@ -47,7 +79,7 @@
   border-top-color: $c-energized-primary;
 }
 
-.card-curriculum {
+.card-meta {
   margin-bottom: $b-space-s;
   font-size: .80em;
   font-weight: bold;

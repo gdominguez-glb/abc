@@ -32,6 +32,9 @@
         <% else %>
           <%= Spree.t(:no_products_found) %>
         <% end %>
+        <% if paginated_products.respond_to?(:num_pages) %>
+          <%= paginate paginated_products, theme: 'twitter-bootstrap-3', pagination_class: 'pagination-sm' %>
+        <% end %>
       </div>
     <% else %>
       <!-- Remove when store_redesign flipper is removed -->
@@ -45,6 +48,9 @@
             <% end %>
           </div>
           <% reset_cycle("classes") %>
+          <% if paginated_products.respond_to?(:num_pages) %>
+            <%= paginate paginated_products, theme: 'twitter-bootstrap-3', pagination_class: 'pagination-sm margin-top--l' %>
+          <% end %>
         </div>
       <% end %>
       <div data-hook="products_search_results_heading">
@@ -59,12 +65,6 @@
         <% end %>
       </div>
     <% end %>
-
-    <div class="col-sm-offset-2 col-md-offset-3 col-md-8 text-right">
-        <% if paginated_products.respond_to?(:num_pages) %>
-          <%= paginate paginated_products, theme: 'twitter-bootstrap-3' %>
-        <% end %>
-    </div>
   </div>
 </div>
 

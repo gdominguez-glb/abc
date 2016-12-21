@@ -11,7 +11,7 @@ Spree::User.class_eval do
   serialize :interested_subjects, Array
 
   validates_format_of :password, with: /\A\S*\z/, message: "can't include spaces", if: :password_required?
-  validates :school_district, presence: true, if: :school_district_required?
+  validates :school_district, presence: true, if: -> { school_district_required? }
   validates :title, presence: true, on: :create
   validates :zip_code, presence: true, on: :create, if: :is_in_usa?
   validates :interested_subjects, presence: true, on: :create
@@ -117,8 +117,6 @@ Spree::User.class_eval do
   def grade_option
     settings[:grade_option]
   end
-
-  validates :school_district, presence: true, if: :require_shool_district?
 
   # add any other characters you'd like to disallow inside the [ brackets ]
   # metacharacters [, \, ^, $, ., |, ?, *, +, (, and ) need to be escaped with a \
@@ -233,10 +231,6 @@ Spree::User.class_eval do
     Spree::ProductDistribution.assign_distributions(self)
   end
 
-  def require_shool_district?
-    ['Teacher', 'Administrative Assistant', 'Administrator'].include?(self.title)
-  end
-
   def managed_products
     @managed_products ||= begin
       product_ids = managed_licensed_products.pluck(:product_id) + product_distributions.pluck(:product_id)
@@ -339,6 +333,6 @@ Spree::User.class_eval do
 
   private
   def is_in_usa?
-    ip_location == 'US'
+    self.ip_location == 'US'
   end
 end
