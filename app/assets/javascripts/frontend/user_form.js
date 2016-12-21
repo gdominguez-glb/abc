@@ -308,9 +308,13 @@ $(function(){
     if(schoolDistrictType === 'school') {
       rowToToggle = schoolRow;
       rowToHide = districtRow;
+      $('#rowAddSchool').find('input[name="spree_user[school_district_attributes][name]"]').prop('disabled', false);
+      $('#rowAddDistrict').find('input[name="spree_user[school_district_attributes][name]"]').prop('disabled', true);
     } else {
       rowToToggle = districtRow;
       rowToHide = schoolRow;
+      $('#rowAddSchool').find('input[name="spree_user[school_district_attributes][name]"]').prop('disabled', true);
+      $('#rowAddDistrict').find('input[name="spree_user[school_district_attributes][name]"]').prop('disabled', false);
     }
     if(checkCountryStateFilled()) {
       cityRow.show();
@@ -319,6 +323,7 @@ $(function(){
       cityRow.hide();
       rowToToggle.collapse('hide');
     }
+
     rowToHide.collapse('hide');
   };
 
