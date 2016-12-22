@@ -71,6 +71,7 @@ namespace :cms do
   resources :help_items
   resources :contacts, only: [:index, :destroy, :edit, :update]
   resources :recommendations
+  resources :whats_news
   resources :medium_publications do
     collection do
       post :trigger_medium_importer
@@ -122,5 +123,4 @@ namespace :cms do
   resources :curriculum_shops
   resources :custom_csses
   resources :vanity_urls
-
 end
