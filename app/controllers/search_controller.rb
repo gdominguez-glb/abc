@@ -1,6 +1,6 @@
 class SearchController < ApplicationController
   def index
-    @result = Page.search(params[:query], generate_search_options)
+    @result = Page.unarchive.search(params[:query], generate_search_options)
   end
 
   def generate_search_options
