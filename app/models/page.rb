@@ -9,7 +9,7 @@ class Page < ActiveRecord::Base
   searchkick callbacks: :async
 
   def should_index?
-    self.visible?
+    self.visible? && !self.archived
   end
 
   def search_data
