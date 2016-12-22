@@ -64,6 +64,7 @@
   line-height: initial;
 
   .media {
+    margin-bottom: $b-space-xl;
     padding: 0;
     line-height: initial;
     color: $c-positive-secondary;
@@ -85,6 +86,17 @@
   .media-body {
     border-bottom: 1px solid $c-firm-primary;
   }
+
+  .btn {
+    margin-bottom: $b-space-xl;
+    padding: 0;
+    color: $c-positive-secondary;
+    text-decoration: none;
+
+    &:hover {
+      color: $c-positive-primary;
+    }
+  }
 }
 
 // -------------------------------------
@@ -97,5 +109,13 @@
 
   @media screen and (min-width: $screen-xs-min) {
     display: table-cell;
+  }
+}
+
+.media-object {
+  margin: 0 auto $b-space;
+
+  @media screen and (min-width: $screen-sm-min) {
+    margin: initial;
   }
 }
