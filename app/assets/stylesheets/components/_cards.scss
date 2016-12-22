@@ -45,6 +45,14 @@
   }
 }
 
+.card-image {
+  min-height: 175px;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: 0;
+  background-size: cover;
+}
+
 .card-link {
   font-weight: normal;
   text-transform: none;
@@ -69,14 +77,26 @@
 
 .card-math {
   border-top-color: $c-balanced;
+
+  &.card-media {
+    background-color: $c-balanced;
+  }
 }
 
 .card-english {
   border-top-color: $c-positive-primary;
+
+  &.card-media {
+    background-color: $c-positive-primary;
+  }
 }
 
 .card-history {
   border-top-color: $c-energized-primary;
+
+  &.card-media {
+    background-color: $c-energized-primary;
+  }
 }
 
 .card-meta {
