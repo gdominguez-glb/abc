@@ -65,10 +65,11 @@
 
   .media {
     padding: 0;
+    line-height: initial;
     color: $c-positive-secondary;
     background-color: transparent;
     box-shadow: initial;
-    line-height: initial;
+    list-style-type: none;
 
     &:last-child {
       .media-body {
