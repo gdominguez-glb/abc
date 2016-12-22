@@ -6,23 +6,95 @@
 // *************************************
 
 // -------------------------------------
-//   Default Media Object
-//
-//	 Styleguide 14.0
+//   Core Media Rules
 // -------------------------------------
 
-.media-left {
+.media {
+  margin: 0 0 $b-space;
+  padding: $b-space-l;
+  color: $c-absolute;
+  background-color: $c-positive-secondary;
+  border-radius: 2px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .175);
+}
+
+.media-meta {
+  margin-bottom: $b-space-s;
+  font-size: .80em;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+
+  @extend .sans-serif;
+
+  @media screen and (min-width: $screen-sm-min) {
+    font-size: .9em;
+  }
+}
+
+.media-heading {
+  line-height: 1.1em;
+}
+
+// -------------------------------------
+//   Modifiers
+// -------------------------------------
+
+.media-math {
+  color: $c-positive-secondary;
+  background-color: $c-balanced;
+}
+
+.media-english {
+  color: $c-positive-secondary;
+  background-color: $c-positive-primary;
+}
+
+.media-history {
+  color: $c-positive-secondary;
+  background-color: $c-energized-primary;
+}
+
+// -------------------------------------
+//   Media Lists
+// -------------------------------------
+
+.media-list.media-list {
+  margin: 0;
+  line-height: initial;
+
+  .media {
+    padding: 0;
+    color: $c-positive-secondary;
+    background-color: transparent;
+    box-shadow: initial;
+    line-height: initial;
+
+    &:last-child {
+      .media-body {
+        border-bottom: 0;
+      }
+    }
+  }
+
+  .media-object {
+    max-width: 100px;
+  }
+
+  .media-body {
+    border-bottom: 1px solid $c-firm-primary;
+  }
+}
+
+// -------------------------------------
+//   Mobile Fixes
+// -------------------------------------
+
+.media-left,
+.media-right {
   display: block;
 
   @media screen and (min-width: $screen-xs-min) {
     display: table-cell;
-  }
-}
-
-.media-object {
-  margin: 0 auto 10px;
-
-  @media screen and (min-width: $screen-xs-min) {
-    margin: auto;
   }
 }
