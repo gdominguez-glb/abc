@@ -1,10 +1,10 @@
-<%= form_for([:cms, @what_new], class: 'form') do |f| %>
-  <% if @what_new.errors.any? %>
+<%= form_for([:cms, @whats_new], class: 'form') do |f| %>
+  <% if @whats_new.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@what_new.errors.count, "error") %> prohibited this whatsnew from being saved:</h2>
+      <h2><%= pluralize(@whats_new.errors.count, "error") %> prohibited this whatsnew from being saved:</h2>
 
       <ul>
-      <% @what_new.errors.full_messages.each do |message| %>
+      <% @whats_new.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -37,7 +37,7 @@
             <label>User Role</label>
             <div class="select-container dark-select block">
               <span>Select Role</span>
-              <%= f.select :user_title, options_for_select(Spree::User::USER_TITLES, @what_new.user_title), { prompt: 'Select title' }, class: 'form-control' %>
+              <%= f.select :user_title, options_for_select(Spree::User::USER_TITLES, @whats_new.user_title), { prompt: 'Select title' }, class: 'form-control' %>
             </div>
           </div>
         </div>
@@ -47,6 +47,14 @@
           <div class="form-group">
             <label>Zip Codes (Seperate by comma)</label>
             <%= f.text_field :zip_codes, class: 'form-control' %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="form-group">
+            <label>Url</label>
+            <%= f.text_field :url, class: 'form-control' %>
           </div>
         </div>
       </div>
@@ -78,7 +86,7 @@
       <div class="form-group">
         <label>Products</label>
         <div>
-          <%= f.hidden_field :product_ids, style: 'width: 100%;', value: @what_new.product_ids.join(','), class: 'form-control', id: 'product_ids' %>
+          <%= f.hidden_field :product_ids, style: 'width: 100%;', value: @whats_new.product_ids.join(','), class: 'form-control', id: 'product_ids' %>
         </div>
       </div>
       <div class="checkbox margin-bottom--xl">

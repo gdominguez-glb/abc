@@ -35,7 +35,7 @@
           <ul class="nav nav-sidebar list-group">
             <%= active_link_to "Dashboard Notifications", '/cms/notification_triggers', class: 'list-group-item' %>
             <%= active_link_to "Recommendations", '/cms/recommendations', class: 'list-group-item' %>
-            <%= (active_link_to "What's new?", '/cms/what_news', class: 'list-group-item') if $flipper[:whats_new].enabled? %>
+            <%= (active_link_to "What's new?", '/cms/whats_news', class: 'list-group-item') if $flipper[:dashboard_redesign].enabled? %>
           </ul>
         </div>
       </div>

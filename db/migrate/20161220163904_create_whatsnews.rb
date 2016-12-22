@@ -1,6 +1,6 @@
 class CreateWhatsnews < ActiveRecord::Migration
   def change
-    create_table :what_news do |t|
+    create_table :whats_news do |t|
       t.string :title
       t.string :url
       t.string :call_to_action_button_text

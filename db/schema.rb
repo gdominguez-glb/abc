@@ -424,11 +424,6 @@ ActiveRecord::Schema.define(version: 20161220164125) do
     t.integer "recommendation_id"
   end
 
-  create_table "products_what_news", force: :cascade do |t|
-    t.integer "product_id"
-    t.integer "what_new_id"
-  end
-
   create_table "products_whats_news", force: :cascade do |t|
     t.integer "product_id"
     t.integer "whats_new_id"
@@ -1767,8 +1762,8 @@ ActiveRecord::Schema.define(version: 20161220164125) do
     t.boolean  "tour_showed_licenses",                   default: false
     t.boolean  "tour_showed_licenses_users",             default: false
     t.boolean  "accepted_terms",                         default: false
-    t.text     "grades"
     t.string   "zip_code"
+    t.text     "grades"
   end
 
   add_index "spree_users", ["deleted_at"], name: "index_spree_users_on_deleted_at", using: :btree
@@ -1911,7 +1906,7 @@ ActiveRecord::Schema.define(version: 20161220164125) do
     t.datetime "updated_at",   null: false
   end
 
-  create_table "what_news", force: :cascade do |t|
+  create_table "whats_news", force: :cascade do |t|
     t.string   "title"
     t.string   "url"
     t.string   "call_to_action_button_text"
@@ -1926,21 +1921,6 @@ ActiveRecord::Schema.define(version: 20161220164125) do
     t.text     "zip_codes"
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
-  end
-
-  create_table "whats_news", force: :cascade do |t|
-    t.string   "title"
-    t.string   "url"
-    t.string   "call_to_action_button_text"
-    t.string   "call_to_action_button_link"
-    t.string   "call_to_action_button_target"
-    t.boolean  "display"
-    t.string   "user_title"
-    t.integer  "views"
-    t.integer  "clicks"
-    t.text     "zip_codes"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
   end
 
 end

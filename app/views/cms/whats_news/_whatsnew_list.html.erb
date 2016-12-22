@@ -13,20 +13,20 @@
     </tr>
     </thead>
     <tbody>
-    <% @what_news.each do |whatsnew| %>
+    <% @whats_news.each do |whatsnew| %>
         <tr>
           <td><%= whatsnew.title %></td>
-          <td><%= link_to 'Edit', edit_cms_what_new_path(whatsnew), class: 'btn btn-default' %></td>
+          <td><%= link_to 'Edit', edit_cms_whats_new_path(whatsnew), class: 'btn btn-default' %></td>
           <td><%= whatsnew.subject %></td>
           <td><%= whatsnew.user_title %></td>
           <td><%= whatsnew.zip_codes %></td>
           <td><%= whatsnew.views %></td>
           <td><%= whatsnew.clicks %></td>
           <td><%= whatsnew.display %></td>
-          <td><%= link_to 'Delete', cms_what_new_path(whatsnew), data: { method: :delete, confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+          <td><%= link_to 'Delete', cms_whats_new_path(whatsnew), data: { method: :delete, confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
         </tr>
     <% end %>
     </tbody>
   </table>
 </div>
-<%= paginate @what_news %>
+<%= paginate @whats_news %>

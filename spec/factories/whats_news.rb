@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :what_new do
+  factory :whats_new do
     title "MyString"
     url "MyString"
     call_to_action_button_text "MyString"
