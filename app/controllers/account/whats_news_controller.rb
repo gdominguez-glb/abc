@@ -1,4 +1,4 @@
-class WhatsNewsController < Account::BaseController
+class Account::WhatsNewsController < Account::BaseController
   def show
     whats_new = WhatsNew.find(params[:id])
     whats_new.increase_clicks!

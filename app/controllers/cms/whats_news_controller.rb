@@ -2,7 +2,7 @@ class Cms::WhatsNewsController < Cms::BaseController
   before_action :set_whats_new, only: [:edit, :update, :destroy]
 
   def index
-    @whats_news = WhatsNew.page(params[:page]).per(params[:per_page])
+    @whats_news = WhatsNew.latest.page(params[:page]).per(params[:per_page])
   end
 
   def new
