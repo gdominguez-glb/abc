@@ -27,6 +27,12 @@
       </div>
       <div class="col-sm-6">
         <div class="form-group">
+          <%= f.label :meta_description %>
+          <%= f.text_field :description, class: 'form-control' %>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
           <%= f.label 'Unique Url' %>
           <%= f.text_field :slug, class: 'form-control' %>
           <small class="help-block">URL should be entered without leading slash. See the permalink at top of the page for an example of how the full URL can be accessed on the site.</small>

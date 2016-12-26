@@ -2,55 +2,101 @@
 
   <%= render partial: 'notifications', locals: { notifications: @notifications } %>
 
-  <div class="row">
-    <div class="col-md-6">
-      <h2>My Dashboard</h2>
-    </div>
-    <div class="col-sm-4 col-md-2">
-      <% if $flipper[:coupon_code].enabled? %>
-        <%= link_to new_account_coupon_code_path, class: 'btn btn-sm btn-default margin-top--sm-min margin-bottom--m btn-block hide', id: 'new-coupon-code-btn', remote: true do %>
-          Product Key
+  <% if $flipper[:dashboard_redesign].enabled? %>
+    <div class="row">
+      <div class="col-md-6">
+        <h2>My Dashboard</h2>
+      </div>
+      <div class="col-sm-4 col-md-2">
+        <% if $flipper[:coupon_code].enabled? %>
+          <%= link_to new_account_coupon_code_path, class: 'btn btn-sm btn-default margin-top--sm-min margin-bottom--m btn-block hide', id: 'new-coupon-code-btn', remote: true do %>
+            Product Key
+          <% end %>
         <% end %>
+      </div>
+      <div class="col-sm-4 col-md-2">
+        <a href="/" class="btn btn-sm btn-default margin-top--sm-min margin-bottom--m btn-block js-get-dashboard-tour hide" id="show-tour-btn">
+          Tour
+        </a>
+      </div>
+      <div class="col-sm-4 col-md-2">
+        <a href="/contact" class="btn btn-sm btn-default margin-top--sm-min margin-bottom--m margin-right--reset btn-block">
+          Contact Us
+        </a>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <%= render 'recent_resources_new' %>
+      </div>
+      <div class="col-sm-6">
+        <%= render 'twitter_new' %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <%= render 'recommends_new' %>
+      </div>
+      <div class="col-sm-6">
+        <%= render 'whats_new' %>        
+      </div>
+    </div>
+
+  <% else %>
+
+    <div class="row">
+      <div class="col-md-6">
+        <h2>My Dashboard</h2>
+      </div>
+      <div class="col-sm-4 col-md-2">
+        <% if $flipper[:coupon_code].enabled? %>
+          <%= link_to new_account_coupon_code_path, class: 'btn btn-sm btn-default margin-top--sm-min margin-bottom--m btn-block hide', id: 'new-coupon-code-btn', remote: true do %>
+            Product Key
+          <% end %>
+        <% end %>
+      </div>
+      <div class="col-sm-4 col-md-2">
+        <a href="/" class="btn btn-sm btn-default margin-top--sm-min margin-bottom--m btn-block js-get-dashboard-tour hide" id="show-tour-btn">
+          Tour
+        </a>
+      </div>
+      <div class="col-sm-4 col-md-2">
+        <a href="/contact" class="btn btn-sm btn-default margin-top--sm-min margin-bottom--m margin-right--reset btn-block">
+          Contact Us
+        </a>
+      </div>
+    </div>
+
+    <div class="row">
+      <% if @my_products.length == 0 %>
+        <div class="col-sm-12">
+          <div class="jumbotron">
+            <h2>You haven’t checked out any products yet!</h2>
+            <%= link_to 'Visit Store', account_shop_of_interest_path, class: 'btn btn-default' %>
+          </div>
+        </div>
+      <% else %>
+        <div class="my-products-container">
+          <div class="js-my-products" style="width: 321px; height: 269px; position: absolute; bottom: 0; z-index: 0;"></div>
+          <%= render 'my_products' %>
+        </div>
       <% end %>
     </div>
-    <div class="col-sm-4 col-md-2">
-      <a href="/" class="btn btn-sm btn-default margin-top--sm-min margin-bottom--m btn-block js-get-dashboard-tour hide" id="show-tour-btn">
-        Tour
-      </a>
-    </div>
-    <div class="col-sm-4 col-md-2">
-      <a href="/contact" class="btn btn-sm btn-default margin-top--sm-min margin-bottom--m margin-right--reset btn-block">
-        Contact Us
-      </a>
-    </div>
-  </div>
 
-  <div class="row">
-    <% if @my_products.length == 0 %>
-      <div class="col-sm-12">
-        <div class="jumbotron">
-          <h2>You haven’t checked out any products yet!</h2>
-          <%= link_to 'Visit Store', account_shop_of_interest_path, class: 'btn btn-default' %>
+    <div class="row">
+      <div class="recommends col-md-7">
+        <%= render 'recommends' %>
+      </div>
+      <% if code = current_spree_user.twitter_list_code %>
+        <div class="twitter-feed-container col-md-5">
+          <%= render partial: 'twitter', locals: { code: code } %>
         </div>
-      </div>
-    <% else %>
-      <div class="my-products-container">
-        <div class="js-my-products" style="width: 321px; height: 269px; position: absolute; bottom: 0; z-index: 0;"></div>
-        <%= render 'my_products' %>
-      </div>
-    <% end %>
-  </div>
-
-  <div class="row">
-    <div class="recommends col-md-7">
-      <%= render 'recommends' %>
+      <% end %>
     </div>
-    <% if code = current_spree_user.twitter_list_code %>
-      <div class="twitter-feed-container col-md-5">
-        <%= render partial: 'twitter', locals: { code: code } %>
-      </div>
-    <% end %>
-  </div>
+
+  <% end %>
 
 </div>
 

@@ -92,4 +92,11 @@ class ApplicationController < ActionController::Base
       klass.find(id).set_list_position(position.to_i + 1)
     end
   end
+
+  def set_page_meta_tags(page)
+    if page.description.present?
+      set_meta_tags description: page.description
+    end
+  end
+
 end

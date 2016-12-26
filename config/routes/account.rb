@@ -17,6 +17,7 @@ namespace :account do
 
   resources :reminders, only: [:new, :create]
   resources :recommendations, only: [:show]
+  resources :whats_news, only: [:show]
 
   resources :licenses do
     collection do
