@@ -300,6 +300,12 @@ $(function(){
     return (stateField.val() !== '' || !selectedUs);
   };
 
+  var toggleSchoolAndDistrictRows = function(districtBoolean) {
+    var schoolBoolean = !districtBoolean;
+    $('#rowAddSchool').find('input[name="spree_user[school_district_attributes][name]"]').prop('disabled', schoolBoolean);
+    $('#rowAddDistrict').find('input[name="spree_user[school_district_attributes][name]"]').prop('disabled', districtBoolean);
+  };
+
   var updateSchoolDistrictField = function() {
     var schoolDistrictType = $("input[name='spree_user[school_district_attributes][place_type]']:checked").val();
     var rowToToggle;
@@ -308,13 +314,11 @@ $(function(){
     if(schoolDistrictType === 'school') {
       rowToToggle = schoolRow;
       rowToHide = districtRow;
-      $('#rowAddSchool').find('input[name="spree_user[school_district_attributes][name]"]').prop('disabled', false);
-      $('#rowAddDistrict').find('input[name="spree_user[school_district_attributes][name]"]').prop('disabled', true);
+      toggleSchoolAndDistrictRows(true);
     } else {
       rowToToggle = districtRow;
       rowToHide = schoolRow;
-      $('#rowAddSchool').find('input[name="spree_user[school_district_attributes][name]"]').prop('disabled', true);
-      $('#rowAddDistrict').find('input[name="spree_user[school_district_attributes][name]"]').prop('disabled', false);
+      toggleSchoolAndDistrictRows(false);
     }
     if(checkCountryStateFilled()) {
       cityRow.show();

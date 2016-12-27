@@ -1,11 +1,11 @@
-<h4 class="recommends-title js-recommends">What's new?</h4>
+<h4>What's New</h4>
 
 <% @whats_news.each do |whats_new| %>
-  <div>Title: <%= whats_new.title %></div>
-  <div>CTA Text: <%= whats_new.call_to_action_button_text %></div>
-  <div>CTA Link: <%= whats_new.call_to_action_button_link %></div>
-  <div>CTA Target: <%= whats_new.call_to_action_button_target %></div>
-  <div>User title: <%= whats_new.user_title %></div>
-  <div>Subject: <%= whats_new.subject %></div>
-  <div>Real link in call to action: <%= link_to whats_new.call_to_action_button_text, account_whats_new_path(whats_new), class: 'btn btn-link', target: whats_new.call_to_action_button_target %></div>
+<div class="card card-insert-curriculum-class">
+  <h4 class="card-title"><%= whats_new.title %></h4>
+  <p>(CMS needs description input)</p>
+  <%= link_to account_whats_new_path(whats_new), class: 'btn btn-link', target: whats_new.call_to_action_button_target do %>
+    <%= whats_new.call_to_action_button_text %> <i class="mi md-24">chevron_right</i>
+  <% end %>
+</div>
 <% end %>

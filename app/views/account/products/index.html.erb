@@ -1,4 +1,4 @@
-<div class="wrapper account-page">
+<div class="account-page">
 
   <%= render partial: 'notifications', locals: { notifications: @notifications } %>
 
@@ -31,7 +31,9 @@
         <%= render 'recent_resources_new' %>
       </div>
       <div class="col-sm-6">
-        <%= render 'twitter_new' %>
+        <% if code = current_spree_user.twitter_list_code %>
+          <%= render partial: 'twitter_new', locals: { code: code } %>
+        <% end %>
       </div>
     </div>
 
@@ -40,7 +42,7 @@
         <%= render 'recommends_new' %>
       </div>
       <div class="col-sm-6">
-        <%= render 'whats_new' %>        
+        <%= render 'whats_new' %>
       </div>
     </div>
 

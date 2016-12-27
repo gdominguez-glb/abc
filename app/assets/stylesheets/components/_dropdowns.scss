@@ -19,6 +19,10 @@
   background-color: $c-absolute;
   border-radius: 2px;
   transition: none;
+
+  &.btn-sm {
+    padding: $b-space-s 30px $b-space-s $b-space;
+  }
 }
 
 .dropdown-md-mi.dropdown-md-mi.dropdown-md-mi {
@@ -26,6 +30,11 @@
   top: $b-space;
   right: $b-space;
   color: $c-firm-primary;
+
+  .btn-sm & {
+    top: 3px;
+    right: 3px;
+  }
 }
 
 .dropdown-md-menu.dropdown-md-menu {
