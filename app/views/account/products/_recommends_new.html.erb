@@ -2,39 +2,19 @@
 
 <div class="swiper-container margin-bottom--l">
   <div class="swiper-wrapper">
-    <div class="swiper-slide">
-      <div class="card card-media card-math">
-        <div class="card-image" style="background-image: url('https://s3.greatminds.org/documents/attachments/000/000/291/large/classroom_view_copy1.jpg?1470061231')" height="175px"></div>
-        <div class="card-media--content">
-          <div class="card-meta">Math</div>
-          <h4 class="card-title">Eureka Math in Spanish</h4>
-          <p>Student Edition workbooks, Teacher Editions, and Packets are available for grades K-8 in Spanish. Contact our sales team for more information.</p>
-          <button class="btn btn-primary">Contact Sales</button>
+    <% @recommendations.each do |recommendation| %>
+      <div class="swiper-slide">
+        <div class="card card-media card-<%= recommendation.subject.downcase %>">
+          <div class="card-image" style="background-image: url('<!-- CMS needs image url input -->')" height="175px"></div>
+          <div class="card-media--content">
+            <div class="card-meta"><%= recommendation.subject %></div>
+            <h4 class="card-title"><%= recommendation.title %></h4>
+            <p><%= recommendation.sub_header %></p>
+            <%= link_to recommendation.call_to_action_button_text, account_recommendation_path(recommendation), class: 'btn btn-primary', target: recommendation.call_to_action_button_target %>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="swiper-slide">
-      <div class="card card-media card-english">
-        <div class="card-image" style="background-image: url('https://s3.greatminds.org/documents/attachments/000/000/291/large/classroom_view_copy1.jpg?1470061231')" height="175px"></div>
-        <div class="card-media--content">
-          <div class="card-meta">English</div>
-          <h4 class="card-title">Eureka Math in Spanish</h4>
-          <p>Student Edition workbooks, Teacher Editions, and Packets are available for grades K-8 in Spanish. Contact our sales team for more information. Student Edition workbooks, Teacher Editions, and Packets are available for grades K-8 in Spanish. Contact our sales team for more information.</p>
-          <button class="btn btn-primary">Contact Sales</button>
-        </div>
-      </div>
-    </div>
-    <div class="swiper-slide">
-      <div class="card card-media card-history">
-        <div class="card-image" style="background-image: url('https://s3.greatminds.org/documents/attachments/000/000/291/large/classroom_view_copy1.jpg?1470061231')" height="175px"></div>
-        <div class="card-media--content">
-          <div class="card-meta">History</div>
-          <h4 class="card-title">Eureka Math in Spanish</h4>
-          <p>Student Edition workbooks, Teacher Editions, and Packets are available for grades K-8 in Spanish. Contact our sales team for more information. Student Edition workbooks, Teacher Editions, and Packets are available for grades K-8 in Spanish. Contact our sales team for more information. Student Edition workbooks, Teacher Editions, and Packets are available for grades K-8 in Spanish. Contact our sales team for more information. Student Edition workbooks, Teacher Editions, and Packets are available for grades K-8 in Spanish. Contact our sales team for more information.</p>
-          <button class="btn btn-primary">Contact Sales</button>
-        </div>
-      </div>
-    </div>
+    <% end %>
   </div>
   <div class="swiper-pagination-wrapper">
     <div class="swiper-button-prev">
