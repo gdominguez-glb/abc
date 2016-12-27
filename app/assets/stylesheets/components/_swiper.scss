@@ -11,11 +11,14 @@
   &.swiper-container-horizontal {
     .swiper-pagination-wrapper {
       position: absolute;
-      bottom: $b-space-m;
-      left: $b-space-m;
+      top: 200px;
+      right: $b-space-m;
       z-index: 10;
 
       @media screen and (min-width: $screen-sm-min) {
+        top: initial;
+        right: initial;
+        bottom: $b-space-m;
         left: $b-space-xl;
       }
     }
