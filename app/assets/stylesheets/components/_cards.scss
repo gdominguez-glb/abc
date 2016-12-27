@@ -22,6 +22,16 @@
   &.card-media {
     padding: 0;
   }
+
+  .btn-link {
+    padding: 0;
+    text-decoration: none;
+    color: $c-positive-secondary;
+
+    &:hover {
+      color: $c-positive-primary;
+    }
+  }
 }
 
 .card-media--content {
