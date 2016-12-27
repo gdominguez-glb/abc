@@ -145,7 +145,7 @@ class SchoolDistrict < ActiveRecord::Base
     return matches if matches.present?
     return none if sfo.Name.blank?
     state = state_from_salesforce_object(sfo)
-    where(name: sfo.Name, state_id: state)
+    where(name: sfo.Name, state_id: state, city: sfo.BillingCity)
   end
 
   def self.local_object_match_sfo?(local_object, sfo)

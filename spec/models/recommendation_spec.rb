@@ -8,6 +8,8 @@ RSpec.describe Recommendation, type: :model do
 
   it { should have_and_belong_to_many(:products).class_name('Spree::Product') }
 
+  let(:recommendation) { FactoryGirl.create(:recommendation) }
+
   describe ".with_subject" do
     it "return recommendation with subject" do
       recommendation = create(:recommendation, subject: 'Math')
@@ -42,6 +44,30 @@ RSpec.describe Recommendation, type: :model do
     it "icon image url" do
       recommendation = create(:recommendation, subject: 'Math', icon: 'BLOG')
       expect(recommendation.icon_image).to eq("recommendations/BLOG.png")
+    end
+  end
+
+  describe '#concerns' do
+    context '#clickable' do
+      it 'should increase clicks' do
+        recommendation.increase_clicks!
+        expect(recommendation.clicks).to eq(1)
+      end
+    end
+
+    context '#viewable' do
+      it 'should increase views' do
+        recommendation.increase_views!
+        expect(recommendation.views).to eq(1)
+      end
+    end
+
+    context '#displayable' do
+      it 'should return displayed recommendations' do
+        FactoryGirl.create_list(:recommendation, 3, display: true)
+        FactoryGirl.create_list(:recommendation, 2, display: false)
+        expect(Recommendation.displayable.count).to eq(3)
+      end
     end
   end
 end

@@ -1,28 +1,20 @@
 <h4>What's New</h4>
 
 <ul class="media-list">
+  <% @whats_news.each do |whats_new| %>
   <li class="media">
     <div class="media-left">
       <a href="#">
-        <img class="media-object" src="http://s3.greatminds.org.s3.amazonaws.com/spree/images/92/large/Wheatley_cover_generic.jpg?1462375727" alt="...">
+        <img class="media-object" src="http://s3.greatminds.org.s3.amazonaws.com/spree/images/92/large/Wheatley_cover_generic.jpg?1462375727" alt="..."> <!--CMS needs image uploader -->
       </a>
     </div>
     <div class="media-body">
-      <h4 class="media-heading">Wit &amp; Wisdom Wins Exemplar Rating</h4>
-      <p>A module of Wit &amp; Wisdom has been dubbed an exemplar by EQuIP.</p>
-      <button type="button" class="btn btn-link">Read Review <i class="mi md-24">chevron_right</i></button>
+      <h4 class="media-heading"><%= whats_new.title %></h4>
+      <p>(CMS needs description input)</p>
+      <% link_to account_whats_new_path(whats_new), class: 'btn btn-link', target: whats_new.call_to_action_button_target do %>
+        <%= whats_new.call_to_action_button_text %> <i class="mi md-24">chevron_right</i>
+      <% end %>
     </div>
   </li>
-  <li class="media">
-    <div class="media-left">
-      <a href="#">
-        <img class="media-object" src="http://s3.greatminds.org.s3.amazonaws.com/spree/images/92/large/Wheatley_cover_generic.jpg?1462375727" alt="...">
-      </a>
-    </div>
-    <div class="media-body">
-      <h4 class="media-heading">The Unanimous Choice by all Teachers for all Grade Levels was Eureka Math</h4>
-      <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi commodo, ipsum sed pharetra gravida, orci magna rhoncus neque, id pulvinar odio lorem non turpis.</p>
-      <button class="btn btn-link">Read Review <i class="mi md-24">chevron_right</i></button>
-    </div>
-  </li>
+  <% end %>
 </ul>
