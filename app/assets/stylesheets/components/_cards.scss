@@ -45,6 +45,24 @@
   }
 }
 
+.card-image {
+  min-height: 175px;
+  text-align: center;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: 0;
+  background-size: cover;
+
+  img {
+    margin-bottom: $b-space-l;
+  }
+
+  .mi {
+    font-size: 200px;
+    color: $c-energized-secondary;
+  }
+}
+
 .card-link {
   font-weight: normal;
   text-transform: none;
@@ -67,18 +85,6 @@
   }
 }
 
-.card-math {
-  border-top-color: $c-balanced;
-}
-
-.card-english {
-  border-top-color: $c-positive-primary;
-}
-
-.card-history {
-  border-top-color: $c-energized-primary;
-}
-
 .card-meta {
   margin-bottom: $b-space-s;
   font-size: .80em;
@@ -90,19 +96,6 @@
 
   @media screen and (min-width: $screen-sm-min) {
     font-size: .9em;
-  }
-}
-
-.card-image {
-  text-align: center;
-
-  img {
-    margin-bottom: $b-space-l;
-  }
-
-  .mi {
-    font-size: 200px;
-    color: $c-energized-secondary;
   }
 }
 
@@ -119,4 +112,39 @@
     font-size: inherit;
     line-height: inherit;
   }
+}
+
+// -------------------------------------
+//   Modifiers
+// -------------------------------------
+
+.card-math {
+  border-top-color: $c-balanced;
+
+  &.card-media {
+    background-color: $c-balanced;
+  }
+}
+
+.card-english {
+  border-top-color: $c-positive-primary;
+
+  &.card-media {
+    background-color: $c-positive-primary;
+  }
+}
+
+.card-history {
+  border-top-color: $c-energized-primary;
+
+  &.card-media {
+    background-color: $c-energized-primary;
+  }
+}
+
+.card--twitter {
+  margin-bottom: $b-space;
+  background-color: $c-absolute;
+  border-radius: 2px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .175);
 }

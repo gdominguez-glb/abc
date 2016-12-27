@@ -1,1 +1,40 @@
-Recommended for You
+<h4>Recommended for You</h4>
+
+<div class="swiper-container margin-bottom--l">
+  <div class="swiper-wrapper">
+    <% @recommendations.each do |recommendation| %>
+      <div class="swiper-slide">
+        <div class="card card-media card-<%= recommendation.subject.downcase %>">
+          <div class="card-image" style="background-image: url('<!-- CMS needs image url input -->')" height="175px"></div>
+          <div class="card-media--content">
+            <div class="card-meta"><%= recommendation.subject %></div>
+            <h4 class="card-title"><%= recommendation.title %></h4>
+            <p><%= recommendation.sub_header %></p>
+            <%= link_to recommendation.call_to_action_button_text, account_recommendation_path(recommendation), class: 'btn btn-primary', target: recommendation.call_to_action_button_target %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="swiper-pagination-wrapper">
+    <div class="swiper-button-prev">
+      <i class="mi md-24">chevron_left</i>
+    </div>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-next">
+      <i class="mi md-24">chevron_right</i>
+    </div>
+  </div>
+</div>
+
+<script>
+  var mySwiper = new Swiper ('.swiper-container', {
+    direction: 'horizontal',
+    loop: true,
+    autoHeight: true,
+    pagination: '.swiper-pagination',
+    paginationClickable: true,
+    nextButton: '.swiper-button-next',
+    prevButton: '.swiper-button-prev'
+  });
+</script>

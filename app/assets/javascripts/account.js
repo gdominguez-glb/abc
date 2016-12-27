@@ -17,6 +17,7 @@
 // Shepherd requires Tether
 //= require tether
 //= require shepherd
+//= require swiper
 
 // App
 //= require_tree ./account

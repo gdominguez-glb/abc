@@ -1,0 +1,65 @@
+// *************************************
+//
+//   Swiper
+//   Swiper component overrides
+//   http://idangero.us/swiper/#.WFv-p7aeUo8
+//
+// *************************************
+
+.swiper-container {
+
+  &.swiper-container-horizontal {
+    .swiper-pagination-wrapper {
+      position: absolute;
+      top: 200px;
+      right: $b-space-m;
+      z-index: 10;
+
+      @media screen and (min-width: $screen-sm-min) {
+        top: initial;
+        right: initial;
+        bottom: $b-space-m;
+        left: $b-space-xl;
+      }
+    }
+
+    .swiper-pagination-bullets {
+      display: inline-block;
+      position: initial;
+      width: initial;
+      vertical-align: middle;
+    }
+
+    .swiper-pagination-bullet {
+      margin: 0 $b-space-s;
+    }
+  }
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    display: inline-block;
+    position: initial;
+    width: 24px;
+    height: 24px;
+    margin-top: initial;
+    background-image: none;
+  }
+
+  .swiper-pagination-bullet {
+    width: $b-space;
+    height: $b-space;
+    border: 2px solid $c-positive-secondary;
+    background: transparent;
+    opacity: initial;
+  }
+
+  .swiper-pagination-bullet-active {
+    background: $c-positive-secondary;
+  }
+
+  .card {
+    margin-bottom: 0;
+    padding-bottom: $b-space-xl;
+    box-shadow: none;
+  }
+}
