@@ -47,10 +47,20 @@
 
 .card-image {
   min-height: 175px;
+  text-align: center;
   background-color: transparent;
   background-repeat: no-repeat;
   background-position: 0;
   background-size: cover;
+
+  img {
+    margin-bottom: $b-space-l;
+  }
+
+  .mi {
+    font-size: 200px;
+    color: $c-energized-secondary;
+  }
 }
 
 .card-link {
@@ -74,6 +84,39 @@
     }
   }
 }
+
+.card-meta {
+  margin-bottom: $b-space-s;
+  font-size: .80em;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+
+  @extend .sans-serif;
+
+  @media screen and (min-width: $screen-sm-min) {
+    font-size: .9em;
+  }
+}
+
+.card-title {
+  line-height: 1.2em;
+}
+
+.card-text {
+  margin-bottom: $b-space-m;
+  font-size: .9em;
+  line-height: 1.55em;
+
+  p {
+    font-size: inherit;
+    line-height: inherit;
+  }
+}
+
+// -------------------------------------
+//   Modifiers
+// -------------------------------------
 
 .card-math {
   border-top-color: $c-balanced;
@@ -99,44 +142,9 @@
   }
 }
 
-.card-meta {
-  margin-bottom: $b-space-s;
-  font-size: .80em;
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: .1em;
-
-  @extend .sans-serif;
-
-  @media screen and (min-width: $screen-sm-min) {
-    font-size: .9em;
-  }
-}
-
-.card-image {
-  text-align: center;
-
-  img {
-    margin-bottom: $b-space-l;
-  }
-
-  .mi {
-    font-size: 200px;
-    color: $c-energized-secondary;
-  }
-}
-
-.card-title {
-  line-height: 1.2em;
-}
-
-.card-text {
-  margin-bottom: $b-space-m;
-  font-size: .9em;
-  line-height: 1.55em;
-
-  p {
-    font-size: inherit;
-    line-height: inherit;
-  }
+.card--twitter {
+  margin-bottom: $b-space;
+  border-radius: 2px;
+  background-color: $c-absolute;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .175);
 }
