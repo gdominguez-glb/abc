@@ -40,7 +40,7 @@ class Cms::WhatsNewsController < Cms::BaseController
   end
 
   def whats_new_params
-    _params = params.require(:whats_new).permit(:title, :subject, :display, :url, :call_to_action_button_text, :call_to_action_button_link, :call_to_action_button_target, :product_ids, :user_title, :zip_codes)
+    _params = params.require(:whats_new).permit(:title, :sub_header, :subject, :display, :url, :call_to_action_button_text, :call_to_action_button_link, :call_to_action_button_target, :product_ids, :user_title, :zip_codes)
     _params[:product_ids] = _params[:product_ids].split(',')
     _params
   end
