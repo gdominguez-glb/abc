@@ -86,7 +86,8 @@ function initEditor() {
   $('.rich-editor').trumbowyg({
     fullscreenable: false,
     closable: false,
-    removeformatPasted: true,
+    removeformatPasted: false,
+    semantic: false,
     btns: ['bold', 'italic', 'underline', 'strikethrough', '|', 'formatting', '|', 'unorderedList', 'orderedList', '|', 'link', '|', 'viewHTML', 'removeformat']
   });
 }
