@@ -117,7 +117,7 @@
 <%= content_for :javascripts do %>
   <%= javascript_tag do %>
     $(function() {
-      <% if $flipper[:store_redesign].enabled? %>
+      <% if $flipper[:video_redesign].enabled? %>
         var filterItems = $('#categoryFilters .dropdown-md-link');
       <% else %>
         var filterItems = $('#categoryFilters .list-group-item');
@@ -131,7 +131,7 @@
 
       filterItems.each(function() {
         if ( $(this).hasClass('active') ) {
-          <% if $flipper[:store_redesign].enabled? %>
+          <% if $flipper[:video_redesign].enabled? %>
             $(this).closest('.dropdown-md').addClass('dropdown-md-relative-open');
             $(this).closest('.dropdown-md-menu').addClass('block');
           <% else %>
