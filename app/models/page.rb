@@ -79,6 +79,19 @@ class Page < ActiveRecord::Base
     new_page
   end
 
+  def archive_and_unvisible!
+    archive!
+    unvisible!
+  end
+
+  def visible!
+    update(visible: true)
+  end
+
+  def unvisible!
+    update(visible: false)
+  end
+
   private
 
   def generate_page_from_tiles
