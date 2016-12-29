@@ -37,7 +37,7 @@ class Cms::RecommendationsController < Cms::BaseController
   private
 
   def recommendation_params
-    _params = params.require(:recommendation).permit(:title, :sub_header, :subject, :display, :call_to_action_button_text, :call_to_action_button_link, :call_to_action_button_target, :icon, :product_ids, :user_title, :position, :zip_codes)
+    _params = params.require(:recommendation).permit(:title, :sub_header, :subject, :display, :call_to_action_button_text, :call_to_action_button_link, :call_to_action_button_target, :icon, :image_url, :product_ids, :user_title, :position, :zip_codes)
     _params[:product_ids] = _params[:product_ids].split(',')
     _params
   end
