@@ -102,7 +102,7 @@ module Cms
     end
 
     def archive
-      @page.archive!
+      @page.archive_and_unvisible!
       redirect_to archived_cms_pages_path, notice: 'Archived page successfully!'
     end
 

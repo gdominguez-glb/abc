@@ -316,7 +316,7 @@ Spree::User.class_eval do
 
   def accessible_products
     @accessible_products ||= begin
-                               _product_ids = products.pluck(:id)
+                               _product_ids = products.where("spree_licensed_products.quantity > 0").pluck(:id)
                                _part_ids = Spree::Part.where(bundle_id: _product_ids).pluck(:product_id)
                                Spree::Product.where(id: _product_ids+_part_ids)
                              end
