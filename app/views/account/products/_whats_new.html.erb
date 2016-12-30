@@ -3,7 +3,9 @@
 <% @whats_news.each do |whats_new| %>
 <div class="card card-insert-curriculum-class">
   <h4 class="card-title"><%= whats_new.title %></h4>
-  <p>(CMS needs description input)</p>
+  <div class="card-text">
+    <p><%= whats_new.sub_header %></p>    
+  </div>
   <%= link_to account_whats_new_path(whats_new), class: 'btn btn-link', target: whats_new.call_to_action_button_target do %>
     <%= whats_new.call_to_action_button_text %> <i class="mi md-24">chevron_right</i>
   <% end %>

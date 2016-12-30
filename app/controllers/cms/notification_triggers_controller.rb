@@ -32,7 +32,7 @@ class Cms::NotificationTriggersController < Cms::BaseController
   private
 
   def notification_trigger_params
-    _params = params.require(:notification_trigger).permit(
+    _params = [
       :target_type,
       :single_user_id,
       :user_ids,
@@ -46,8 +46,8 @@ class Cms::NotificationTriggersController < Cms::BaseController
       :product_id,
       :curriculum_id,
       :zip_codes
-    )
-    _params[:user_ids] = _params[:user_ids].split(',')
-    _params
+    ]
+
+    require_params(:notification_trigger, _params, :user_ids)
   end
 end
