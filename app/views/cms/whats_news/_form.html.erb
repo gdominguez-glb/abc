@@ -28,7 +28,7 @@
             <label>Subject</label>
             <div class="select-container dark-select block">
               <span>Select Subject</span>
-              <%= f.collection_select :subject, Curriculum.all, :name, :name, { prompt: 'Select subject' }, class: 'form-control' %>
+              <%= f.select :subject, options_for_select(['Global'] + Curriculum.all.map(&:name), @whats_new.subject), {}, class: 'form-control' %>
             </div>
           </div>
         </div>
@@ -37,7 +37,7 @@
             <label>User Role</label>
             <div class="select-container dark-select block">
               <span>Select Role</span>
-              <%= f.select :user_title, options_for_select(Spree::User::USER_TITLES, @whats_new.user_title), { prompt: 'Select title' }, class: 'form-control' %>
+              <%= f.select :user_title, options_for_select(['Global'] + Spree::User::USER_TITLES, @whats_new.user_title), {}, class: 'form-control' %>
             </div>
           </div>
         </div>
