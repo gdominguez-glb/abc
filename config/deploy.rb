@@ -56,14 +56,11 @@ namespace :deploy do
       end
     end
   end
-
   desc "clear pagespeed cache"
   task :clear_pagespeed_cache do
     on roles(:web) do
       as :deploy do
-        if test("[ -f /var/ngx_pagespeed_cache ]")
-          execute "touch /var/ngx_pagespeed_cache/cache.flush"
-        end
+        execute "if test -d /var/ngx_pagespeed_cache/; then touch /var/ngx_pagespeed_cache/cache.flush; fi;"
       end
     end
   end
