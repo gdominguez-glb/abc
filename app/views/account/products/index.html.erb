@@ -3,7 +3,7 @@
   <%= render partial: 'notifications', locals: { notifications: @notifications } %>
 
   <% if $flipper[:dashboard_redesign].enabled? %>
-    <div class="row">
+    <div class="row margin-bottom--l">
       <div class="col-md-6">
         <h2>My Dashboard</h2>
       </div>
@@ -26,7 +26,7 @@
       </div>
     </div>
 
-    <div class="row">
+    <div class="row margin-bottom--l">
       <div class="col-sm-6">
         <%= render 'recent_resources_new' %>
       </div>

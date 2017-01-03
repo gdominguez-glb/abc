@@ -56,6 +56,18 @@ namespace :deploy do
       end
     end
   end
+  desc "clear pagespeed cache"
+  task :clear_pagespeed_cache do
+    on roles(:web) do
+      as :deploy do
+        begin
+          execute "if test -d /var/ngx_pagespeed_cache/; then touch /var/ngx_pagespeed_cache/cache.flush; fi;"
+        rescue
+          puts "Fail to clear pagespeed cache"
+        end
+      end
+    end
+  end
 
   # after :restart, :clear_cache do
   #   on roles(:web), in: :groups, limit: 3, wait: 10 do
@@ -80,3 +92,4 @@ end
 after "deploy:finished", 'deploy:unicorn_restart'
 after "deploy:finished", 'sidekiq:restart'
 after "deploy:finished", 'deploy:sitemap:create'
+after "deploy:finished", 'deploy:clear_pagespeed_cache'
