@@ -9,6 +9,12 @@
 //   Material Design-Inspired Dropdown
 // -------------------------------------
 
+.dropdown-md {
+  &.open {
+    z-index: 1001;
+  }
+}
+
 .dropdown-md-btn.dropdown-md-btn.dropdown-md-btn,
 .dropdown-md-btn.dropdown-md-btn.dropdown-md-btn:hover {
   border: 1px solid $c-firm-primary;

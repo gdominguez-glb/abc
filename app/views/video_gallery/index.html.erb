@@ -132,8 +132,18 @@
       filterItems.each(function() {
         if ( $(this).hasClass('active') ) {
           <% if $flipper[:video_redesign].enabled? %>
-            $(this).closest('.dropdown-md').addClass('dropdown-md-relative-open');
-            $(this).closest('.dropdown-md-menu').addClass('block');
+            var dropdownMd = $(this).closest('.dropdown-md');
+            var dropdownMdMenu = $(this).closest('.dropdown-md-menu');
+            var btnHeight = dropdownMd.find('.dropdown-md-btn').height();
+            var topOffset = btnHeight + 37;
+            var marginOffset = btnHeight + 22;
+
+            dropdownMdMenu.css({
+              'position': 'relative',
+              'display': 'block',
+              'top': '-' + topOffset + 'px',
+              'margin-bottom': '-' + marginOffset + 'px'
+            });
           <% else %>
             $(this).closest('.panel-collapse').collapse('show');
           <% end %>
