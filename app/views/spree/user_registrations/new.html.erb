@@ -5,7 +5,7 @@
   </div>
   <div id="new-customer" data-hook="login" class="margin-top--reset">
     <%= render :partial => 'spree/shared/error_messages', :locals => { :target => @user } %>
-    <%= form_for resource, :as => :spree_user, :url => spree.registration_path(@user) do |f| %>
+    <%= form_for resource, :as => :spree_user, :url => '/store/signup' do |f| %>
       <div data-hook="signup_inside_form">
         <%= render :partial => 'spree/shared/user_form', :locals => { :f => f } %>
         <div class="row">

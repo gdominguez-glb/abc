@@ -46,9 +46,7 @@ Rails.application.routes.draw do
                          }
 
   devise_scope :spree_user do
-    get 'become/:id', action: 'become',
-                      controller: 'spree/user_sessions', as: 'become'
-
+    get 'become/:id', action: 'become', controller: 'spree/user_sessions', as: 'become'
     get '/store/signup/:title/:interest', action: :new, controller: 'spree/user_registrations', as: :custom
   end
 
