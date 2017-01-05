@@ -13,7 +13,7 @@
 
     <% taxonomies.where.not(name: 'I am a...').each do |taxonomy| %>
         <% next unless ['Subject', 'Grade'].include?(taxonomy.name) %>
-        <div class="dropdown dropdown-md dropdown-md-relative clear">
+        <div class="dropdown dropdown-md clear">
           <button class="btn btn-default btn-block dropdown-toggle dropdown-md-btn margin-bottom--m" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
             <%= taxonomy.name %>
             <i class="dropdown-md-mi mi md-24 toggle-arrow">keyboard_arrow_down</i>

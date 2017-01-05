@@ -9,6 +9,12 @@
 //   Material Design-Inspired Dropdown
 // -------------------------------------
 
+.dropdown-md {
+  &.open {
+    z-index: 1001;
+  }
+}
+
 .dropdown-md-btn.dropdown-md-btn.dropdown-md-btn,
 .dropdown-md-btn.dropdown-md-btn.dropdown-md-btn:hover {
   border: 1px solid $c-firm-primary;
@@ -48,6 +54,12 @@
 }
 
 .dropdown-md-item {
+  &:first-child {
+    .dropdown-md-link {
+      border-top-left-radius: 2px;
+      border-top-right-radius: 2px;
+    }
+  }
   &:last-child {
     .dropdown-md-link {
       border-bottom-left-radius: 2px;
@@ -73,18 +85,5 @@
     .dropdown-md-mi {
       color: $c-absolute;
     }
-  }
-}
-
-.dropdown-md-relative-open,
-.dropdown-md-relative.open {
-  .dropdown-md-btn {
-    margin-bottom: 0 !important;
-  }
-
-  .dropdown-md-menu {
-    position: relative;
-    top: -42px;
-    margin-bottom: -27px;
   }
 }
