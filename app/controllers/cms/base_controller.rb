@@ -27,8 +27,8 @@ class Cms::BaseController < ApplicationController
     @current_ability ||= CmsAbility.new(current_spree_user)
   end
 
-  def require_params(name, params, to_split)
-    _params = params.require(name).permit(params)
+  def require_params(name, params_, to_split)
+    _params = params.require(name).permit(params_)
     _params[to_split] = _params[to_split].split(',')
     _params
   end
