@@ -204,4 +204,13 @@
 
 <script type="text/javascript">
   window.us_country_id = '<%= us_country.id %>';
+
+  $(document).ready(function() {
+    var interest = <%= params.try(:[], :interest) == 'math' ? '1' : params.try(:[], :interest) == 'english' ? '2' : '0' %>;
+    <%= '$("#spree_user_title").val("Parent").change();'.html_safe if params.try(:[], :title) == 'parent' %>
+
+    <% unless params[:interest].nil? %>
+      $('#spree_user_interested_subjects').val([interest]).change();
+    <% end %>
+  });
 </script>
