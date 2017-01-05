@@ -54,6 +54,12 @@
 }
 
 .dropdown-md-item {
+  &:first-child {
+    .dropdown-md-link {
+      border-top-left-radius: 2px;
+      border-top-right-radius: 2px;
+    }
+  }
   &:last-child {
     .dropdown-md-link {
       border-bottom-left-radius: 2px;
