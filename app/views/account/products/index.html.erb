@@ -24,10 +24,10 @@
     </div>
 
     <div class="row margin-bottom--l">
-      <div class="col-sm-6">
+      <div class="col-sm-6 col-md-7">
         <%= render 'recent_resources_new' %>
       </div>
-      <div class="col-sm-6">
+      <div class="col-sm-6 col-md-5">
         <% if code = current_spree_user.twitter_list_code %>
           <%= render partial: 'twitter_new', locals: { code: code } %>
         <% end %>
@@ -35,10 +35,10 @@
     </div>
 
     <div class="row">
-      <div class="col-sm-6">
+      <div class="col-sm-6 col-md-7">
         <%= render 'recommends_new' %>
       </div>
-      <div class="col-sm-6">
+      <div class="col-sm-6 col-md-5">
         <%= render 'whats_new' %>
       </div>
     </div>
