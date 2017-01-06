@@ -36,6 +36,27 @@
     }
   }
 
+  &.swiper-container--media-left {
+    @media screen and (min-width: $screen-md-min) {
+      .swiper-pagination-wrapper {
+        left: $b-space-l;
+      }
+
+      .swiper-button-prev,
+      .swiper-button-next {
+        display: none;
+      }
+
+      .swiper-pagination-bullet {
+        border: 1px solid $c-absolute;
+      }
+
+      .swiper-pagination-bullet-active {
+        background-color: $c-absolute;
+      }
+    }
+  }
+
   .swiper-button-prev,
   .swiper-button-next {
     display: inline-block;
@@ -49,7 +70,7 @@
   .swiper-pagination-bullet {
     width: $b-space;
     height: $b-space;
-    border: 2px solid $c-positive-secondary;
+    border: 1px solid $c-positive-secondary;
     background: transparent;
     opacity: initial;
   }

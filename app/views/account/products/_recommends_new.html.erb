@@ -1,11 +1,9 @@
-<h4>Recommended for You</h4>
-
-<div class="swiper-container margin-bottom--l">
+<div class="swiper-container swiper-container--media-left margin-bottom--l">
   <div class="swiper-wrapper">
     <% @recommendations.each do |recommendation| %>
       <div class="swiper-slide">
-        <div class="card card-media card-<%= recommendation.subject.downcase %>">
-          <div class="card-image" style="background-image: url('<%= recommendation.image_url %>')" height="175px"></div>
+        <div class="card card-media card-<%= recommendation.subject.downcase %> card--media-left">
+          <div class="card-image" style="background-image: url('<%= recommendation.image_url %>')"></div>
           <div class="card-media--content">
             <div class="card-meta"><%= recommendation.subject %></div>
             <h4 class="card-title"><%= recommendation.title %></h4>
