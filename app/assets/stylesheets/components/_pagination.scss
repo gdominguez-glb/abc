@@ -7,29 +7,28 @@
 //
 // *************************************
 
-// -------------------------------------
-//   Pagination Active & Disabled States
-//
-//   Styleguide 10.1
-// -------------------------------------
-
-// -------------------------------------
-//   Pagination Sizes
-//
-//   Styleguide 10.2
-// -------------------------------------
-
 .pagination.pagination {
   margin: 0 0 $b-space-l;
+  border-radius: 2px;
+  box-shadow: 0 2px 7px rgba(0, 0, 0, .175);
+
+  // -------------------------------------
+  //   Pagination Active & Disabled States
+  //
+  //   Styleguide 10.1
+  // -------------------------------------
 
   li {
-    a {
-      color: $c-positive-secondary;
+    a,
+    &.disabled a {
+      border: 1px solid $c-firm-primary;
+      color: $c-firm-primary;
 
       &:hover,
       &:active,
       &:focus {
         color: lighten($c-positive-secondary, 5%);
+        background-color: $c-positive-highlight;
       }
     }
 
@@ -48,15 +47,31 @@
         }
       }
     }
+
+    &:first-child {
+      border-bottom-left-radius: 2px;
+      border-top-left-radius: 2px;
+    }
+
+    &:last-child {
+      border-bottom-right-radius: 2px;
+      border-top-right-radius: 2px;
+    }
+
   }
 
+  // -------------------------------------
+  //   Pagination Responsive Display
+  // -------------------------------------
+
   .first,
+  .last,
   .prev,
-  .next_page,
-  .last {
+  .next,
+  .next_page {
     display: none;
 
-    @media screen and (min-width: $screen-sm-min) {
+    @media screen and (min-width: $screen-md-min) {
       display: inline;
     }
   }

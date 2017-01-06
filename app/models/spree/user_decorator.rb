@@ -316,15 +316,24 @@ Spree::User.class_eval do
 
   def accessible_products
     @accessible_products ||= begin
-                               _product_ids = products.pluck(:id)
+                               _product_ids = products.where("spree_licensed_products.quantity > 0").pluck(:id)
                                _part_ids = Spree::Part.where(bundle_id: _product_ids).pluck(:product_id)
                                Spree::Product.where(id: _product_ids+_part_ids)
                              end
   end
 
   def recommendation_ids_to_exclude
+    ids_to_exclude(Recommendation)
+  end
+
+  def whats_new_ids_to_exclude
+    ids_to_exclude(WhatsNew)
+  end
+
+  def ids_to_exclude(model)
     return [] if accessible_products.blank?
-    @ids_to_exclude ||= Recommendation.joins('join products_recommendations on products_recommendations.recommendation_id = recommendations.id').where("products_recommendations.product_id in (?)", accessible_products.map(&:id)).pluck(:id).uniq
+    table_name = model.name.underscore.pluralize
+    @ids_to_exclude ||= model.joins("join products_#{table_name} on products_#{table_name}.#{table_name.singularize}_id = #{table_name}.id").where("products_#{table_name}.product_id in (?)", accessible_products.map(&:id)).pluck(:id).uniq
   end
 
   def bought_free_trial_product?(product, exclude_order)

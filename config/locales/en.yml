@@ -33,6 +33,10 @@ en:
   salesforce_field_note: (To be used in conjunction with the "For Sale" checkbox)
   district_not_listed: District Not Listed
   school_not_listed: School Not Listed
+  views:
+    pagination:
+      previous: "&lsaquo;"
+      next: "&rsaquo;"
   spree:
     available_on: For Sale Date
     purchase_from_partner: "Visit Site"
@@ -95,4 +99,3 @@ en:
         page_id: 'Curriculum'
       vanity_url:
         url: 'Vanity Url'
-

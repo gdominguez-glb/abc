@@ -31,7 +31,7 @@ class LicensesUpdater
   def must_have_enough_quantity
     distributions_iterator do |distribution, quantity|
       add_quantity = quantity - distribution.quantity
-      if add_quantity > 0 && add_quantity > user.licensed_products.where(product_id: distribution.product_id).sum(:quantity)
+      if (quantity > distribution.distributed_licensed_product.quantity) || (add_quantity > 0 && add_quantity > user.licensed_products.where(product_id: distribution.product_id).sum(:quantity))
         self.errors.add(:base, "Invalid licenses quantity")
       end
     end

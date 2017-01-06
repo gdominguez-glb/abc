@@ -15,7 +15,7 @@ class Account::ResourcesController < Account::BaseController
     end
 
     @nav_name = 'My Resources'
-    @my_products = spree_current_user.products_in_dashboard
+    @my_products = spree_current_user.accessible_products.where('spree_products.product_type != ?', 'bundle')
 
     filter_by_preferences
     @my_products = filter_by_taxons(Spree::Product, @my_products, params[:taxon_ids])

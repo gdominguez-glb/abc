@@ -9,7 +9,7 @@ class Page < ActiveRecord::Base
   searchkick callbacks: :async
 
   def should_index?
-    self.visible?
+    self.visible? && !self.archived
   end
 
   def search_data
@@ -77,6 +77,19 @@ class Page < ActiveRecord::Base
     new_page.draft_status = :draft
     new_page.visible = false
     new_page
+  end
+
+  def archive_and_unvisible!
+    archive!
+    unvisible!
+  end
+
+  def visible!
+    update(visible: true)
+  end
+
+  def unvisible!
+    update(visible: false)
   end
 
   private

@@ -11,6 +11,7 @@
 /log/*.log
 /tmp
 /.idea
+/clear
 
 .env
 /config/database.yml

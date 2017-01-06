@@ -11,8 +11,8 @@
   <h4 class="text-left bh4">I am a:</h4>
 
   <% @taxonomies.where(name: 'I am a...').each do |taxonomy| %>
-    <div class="dropdown dropdown-md dropdown-md-relative clear">
-      <button class="btn btn-default btn-block dropdown-toggle dropdown-md-btn" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    <div class="dropdown dropdown-md">
+      <button class="btn btn-default btn-block dropdown-toggle dropdown-md-btn margin-bottom--m" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
         Role
         <i class="dropdown-md-mi mi md-24 toggle-arrow">keyboard_arrow_down</i>
       </button>
@@ -23,7 +23,7 @@
   <h4 class="text-left bh4">Looking for:</h4>
 
   <% @taxonomies.where.not(name: 'I am a...').each do |taxonomy| %>
-    <div class="dropdown dropdown-md dropdown-md-relative clear">
+    <div class="dropdown dropdown-md">
       <button class="btn btn-default btn-block dropdown-toggle dropdown-md-btn margin-bottom--m" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
         <%= taxonomy.name %>
         <i class="dropdown-md-mi mi md-24 toggle-arrow">keyboard_arrow_down</i>
@@ -33,4 +33,4 @@
   <% end %>
 
 </nav>
-<a id="removeAllFilters" href="/store/?remove_all=1" class="btn btn-danger btn-block collapse clear">Remove All</a>
+<a id="removeAllFilters" href="/store/?remove_all=1" class="btn btn-danger btn-block collapse">Remove All</a>
