@@ -9,7 +9,7 @@ module DashboardFilterable
       filter_conds << "(zip_codes like :zip_code)" if zip_code.present?
 
       if filter_conds.present?
-        where(filter_conds.join(" or "), subject: subjects + ['Global'], user_title: [user_title, 'Global'], zip_code: "%#{zip_code}%")
+        where(filter_conds.join(" and "), subject: subjects + ['Global'], user_title: [user_title, 'Global'], zip_code: "%#{zip_code}%")
       else
         where('1=1')
       end
