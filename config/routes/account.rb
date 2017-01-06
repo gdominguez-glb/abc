@@ -2,6 +2,7 @@ namespace :account do
   root to: 'root#index'
 
   get 'products', to: 'products#index'
+  get 'products/:id/launch', to: 'products#launch', as: :launch_product
   get 'resources', to: 'resources#index'
 
   get 'history', to: 'history#index'

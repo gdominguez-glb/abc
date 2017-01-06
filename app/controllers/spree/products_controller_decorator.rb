@@ -1,5 +1,5 @@
 Spree::ProductsController.class_eval do
-  include ProductTaxonsFilter
+  include ProductTaxonsFilter, ProductRedirectable
 
   before_action :authenticate_user!, only: [:launch, :terms, :agree_terms, :find_launch_product]
   before_action :find_launch_product, only: [:launch, :terms, :agree_terms]
@@ -9,9 +9,7 @@ Spree::ProductsController.class_eval do
   end
 
   def launch
-    path = path_to_redirect_for_product(@product)
-    (redirect_to terms_product_path(@product) and return) if @product.has_license_text? && !current_spree_user.agree_term_of_product?(@product)
-    redirect_to (path ? path : main_app.root_path)
+    launch_product(@product)
   end
 
   def terms
@@ -20,16 +18,6 @@ Spree::ProductsController.class_eval do
   def agree_terms
     current_spree_user.product_agreements.find_or_create_by(product: @product)
     redirect_to launch_product_path(@product)
-  end
-
-  def path_to_redirect_for_product(product)
-    if product.product_type == 'inkling'
-      main_app.inkling_code_path(product)
-    elsif product.library_product?
-      main_app.library_path(product)
-    elsif product.access_url.present?
-      product.parsed_access_url
-    end
   end
 
   def find_launch_product
