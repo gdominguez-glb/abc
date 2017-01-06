@@ -19,8 +19,7 @@ class Account::ProductsController < Account::BaseController
   end
 
   def launch
-    activity = Activity.find_or_create_by(user: spree_current_user, title: 'Overview', item_id: @product.id, item_type: 'Spree::Product', action: :launch_resource)
-    activity.update(updated_at: Time.now)
+    spree_current_user.update_log_activity_product(@product)
     launch_product(@product)
   end
 

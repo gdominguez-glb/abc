@@ -5,6 +5,8 @@ Spree::CheckoutController.class_eval do
 
   # override to custom page after complete order
   def completion_route(custom_params = nil)
+    @order.products.each{ |product| spree_current_user.update_log_activity_product(product) } unless @order.products.nil?
+
     if @order.all_digitals? && @order.license_admin_email.blank?
       flash.notice = "You now have access to these products!"
     end

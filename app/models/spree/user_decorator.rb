@@ -340,6 +340,11 @@ Spree::User.class_eval do
     product.purchase_once? && Spree::LicensedProduct.where(user_id: self.id, product_id: product.id).where.not(order_id: exclude_order.try(:id)).exists?
   end
 
+  def update_log_activity_product(product)
+    activity = Activity.find_or_create_by(user: self, title: 'Overview', item_id: product.id, item_type: 'Spree::Product', action: :launch_resource)
+    activity.update(updated_at: Time.now)
+  end
+
   private
   def is_in_usa?
     self.ip_location == 'US'
