@@ -322,12 +322,12 @@ Spree::User.class_eval do
                              end
   end
 
-  def recommendation_ids_to_exclude
-    ids_to_exclude(Recommendation)
+  def recommendations_ids_to_exclude
+    @recommendations_to_exclude ||= ids_to_exclude(Recommendation)
   end
 
-  def whats_new_ids_to_exclude
-    ids_to_exclude(WhatsNew)
+  def whats_news_ids_to_exclude
+    @whats_news_to_exclude ||= ids_to_exclude(WhatsNew)
   end
 
   def ids_to_exclude(model)
