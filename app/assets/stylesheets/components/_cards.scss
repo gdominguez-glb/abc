@@ -60,7 +60,7 @@
   text-align: center;
   background-color: transparent;
   background-repeat: no-repeat;
-  background-position: 0;
+  background-position: 50%;
   background-size: cover;
 
   img {
@@ -158,4 +158,31 @@
   background-color: $c-absolute;
   border-radius: 2px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, .175);
+}
+
+.card--media-left.card--media-left.card--media-left {
+  @media screen and (min-width: $screen-md-min) {
+    @include display-flex;
+
+    padding-bottom: 0;
+    border-top: 0;
+
+    .card-title {
+      font-size: 1.4em;
+    }
+
+    .card-image {
+      @include flex(1);
+
+      min-height: initial;
+      padding: 40px 30px;
+    }
+
+    .card-media--content {
+      @include flex(1);
+
+      padding: 40px 30px;
+      font-size: .85em;
+    }
+  }
 }

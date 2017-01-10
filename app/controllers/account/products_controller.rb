@@ -1,4 +1,8 @@
 class Account::ProductsController < Account::BaseController
+
+  include ProductRedirectable
+  before_action :set_product, only: [:launch]
+
   def index
     @nav_name = 'My Resources'
 
@@ -12,6 +16,11 @@ class Account::ProductsController < Account::BaseController
   def shop_of_interest
     shops = current_spree_user.interested_shops
     redirect_to(shops.count == 1 ? shops.first.url : '/store')
+  end
+
+  def launch
+    spree_current_user.update_log_activity_product(@product)
+    launch_product(@product)
   end
 
   private
@@ -51,5 +60,9 @@ class Account::ProductsController < Account::BaseController
 
   def load_taxons
     @grade_taxons = Spree::Taxonomy.find_by(name: 'Grade').root.children rescue []
+  end
+
+  def set_product
+    @product = Spree::Product.find(params[:id])
   end
 end

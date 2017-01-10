@@ -6,10 +6,10 @@ module DashboardFilterable
       filter_conds = []
       filter_conds << "(subject in (:subject))" if subjects.present?
       filter_conds << "(user_title in (:user_title))" if user_title.present?
-      filter_conds << "(zip_codes like :zip_code)" if zip_code.present?
+      filter_conds << "(zip_codes like :zip_code OR zip_codes = '')" if zip_code.present?
 
       if filter_conds.present?
-        where(filter_conds.join(" or "), subject: subjects + ['Global'], user_title: [user_title, 'Global'], zip_code: "%#{zip_code}%")
+        where(filter_conds.join(" and "), subject: subjects + ['Global'], user_title: [user_title, 'Global'], zip_code: "%#{zip_code}%")
       else
         where('1=1')
       end
