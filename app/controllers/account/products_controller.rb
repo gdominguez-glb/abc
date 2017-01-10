@@ -45,9 +45,10 @@ class Account::ProductsController < Account::BaseController
 
   def load_dashboard_data(model)
     data = model.displayable_random.limit(3)
-    if current_spree_user.ids_to_exclude(model).present?
-      data = data.where.not(id: current_spree_user.ids_to_exclude(model))
+    if current_spree_user.send("#{model.table_name}_ids_to_exclude").present?
+      data = data.where.not(id: current_spree_user.send("#{model.table_name}_ids_to_exclude"))
     end
+
     data = data.filter_by_subject_or_user_title_or_zip_code(current_spree_user.interested_curriculums, current_spree_user.title, current_spree_user.zip_code)
     data.each{ |d| d.increase_views! }
     data
