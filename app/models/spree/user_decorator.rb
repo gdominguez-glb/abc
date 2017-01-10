@@ -333,7 +333,7 @@ Spree::User.class_eval do
   def ids_to_exclude(model)
     return [] if accessible_products.blank?
     table_name = model.name.underscore.pluralize
-    @ids_to_exclude ||= model.joins("join products_#{table_name} on products_#{table_name}.#{table_name.singularize}_id = #{table_name}.id").where("products_#{table_name}.product_id in (?)", accessible_products.map(&:id)).pluck(:id).uniq
+    model.joins("join products_#{table_name} on products_#{table_name}.#{table_name.singularize}_id = #{table_name}.id").where("products_#{table_name}.product_id in (?)", accessible_products.map(&:id)).pluck(:id).uniq
   end
 
   def bought_free_trial_product?(product, exclude_order)
