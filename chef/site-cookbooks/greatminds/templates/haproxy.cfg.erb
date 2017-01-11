@@ -21,12 +21,6 @@ defaults
     errorfile 503 /etc/haproxy/errors/503.http
     errorfile 504 /etc/haproxy/errors/504.http
 
-    stats enable
-    stats hide-version
-    stats refresh 30s
-    stats show-node
-    stats auth greatminds:intridea4gm
-    stats uri /haproxy?stats
 
 frontend http-frontend
     mode    http
@@ -36,6 +30,12 @@ frontend http-frontend
     mode http
     bind *:80
     default_backend http-backend
+    stats enable
+    stats hide-version
+    stats refresh 30s
+    stats show-node
+    stats auth greatminds:intridea4gm
+    stats uri /haproxy?stats
 
 backend http-backend
     mode http
@@ -52,8 +52,9 @@ frontend https-frontend
     default_backend https-backend
 
 backend https-backend
+    listen ssl 172.31.51.251:443
     mode tcp
     balance roundrobin
     option ssl-hello-chk
-    server app-1 172.31.51.27:443 check inter 9000 rise 2 fall 5
-    server app-2 172.31.0.166:443 check inter 9000 rise 2 fall 5
+    server app-1 172.31.51.27:443 check send-proxy
+    server app-2 172.31.0.166:443 check send-proxy

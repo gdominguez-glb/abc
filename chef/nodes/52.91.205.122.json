@@ -48,6 +48,7 @@
   "elasticsearch_url": "172.31.61.66",
   "app_server": "true",
   "memcached_server": "true",
+  "memcached_url": "172.31.51.27",
   "ssl": {
     "ssl_certificate": "/etc/ssl/wild_greatminds_org_combined.pem",
     "ssl_certificate_key": "/etc/ssl/greatminds_org.key"
