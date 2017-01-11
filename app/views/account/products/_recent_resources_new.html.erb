@@ -1,10 +1,19 @@
 <div class="row">
-  <div class="col-sm-8">
-    <h4 class="margin-bottom--l">Recent Resources</h4>
+  <div class="col-xs-12 col-lg-5">
+    <h4>Recent Resources</h4>
   </div>
-  <div class="col-sm-4 text-right">
+
+  <div class="col-xs-7 col-lg-4">
+    <% if $flipper[:coupon_code].enabled? %>
+      <%= link_to new_account_coupon_code_path, class: 'btn btn-sm btn-default btn-block margin-bottom--xl hide', id: 'new-coupon-code-btn', remote: true do %>
+        Product Key
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="col-xs-5 col-lg-3">
     <div class="dropdown dropdown-md">
-      <button class="btn btn-default btn-sm dropdown-toggle dropdown-md-btn margin-bottom" type="button" data-toggle="dropdown" aria-haspopup="true" arie-expanded="true">
+      <button class="btn btn-default btn-sm btn-block dropdown-toggle dropdown-md-btn margin-bottom--xl" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
         Refine
         <i class="dropdown-md-mi mi md-24 toggle-arrow">keyboard_arrow_down</i>
       </button>
