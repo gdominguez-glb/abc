@@ -534,6 +534,14 @@
   }
 }
 
+.padding-right--b--sm-min {
+  padding-right: $b-space !important;
+
+  @media screen and (min-width: $screen-sm-min) {
+    padding-right: 0 !important;
+  }
+}
+
 // ----- Border ----- //
 
 .border-bottom--firm-primary {
