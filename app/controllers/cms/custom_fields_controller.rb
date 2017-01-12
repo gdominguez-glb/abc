@@ -7,6 +7,7 @@ class Cms::CustomFieldsController < Cms::BaseController
 
   def new
     @custom_field = CustomField.new
+    @custom_field.custom_field_options.build
   end
 
   def create
