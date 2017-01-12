@@ -41,7 +41,9 @@
     <% end %>
 <% end %>
 
-<div class="well text-center">
-  <h4 class="bh5 margin-bottom--reset">You have <%= products.total_count %> resources</h4>
-  <h4 class="bh5 margin-bottom--reset">Explore more in the shop</h4>
-</div>
+<% if products.total_count < 4 %>
+  <div class="well text-center">
+    <h4 class="bh5 margin-bottom--reset">You have <%= products.total_count %> resources</h4>
+    <h4 class="bh5 margin-bottom--reset">Explore more in the <%= link_to "shop", "/store" %></h4>
+  </div>
+<% end %>
