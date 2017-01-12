@@ -15,9 +15,7 @@ class Account::ResourcesController < Account::BaseController
     end
 
     @nav_name = 'My Resources'
-    @my_products = spree_current_user.accessible_products.select('spree_products.*, COALESCE(activities.updated_at, null) AS activities_update_at')
-                       .joins("LEFT JOIN activities ON (activities.item_id = spree_products.id AND action = 'launch_resource' AND item_type = 'Spree::Product' AND user_id = #{spree_current_user.id})")
-                       .where('spree_products.product_type != ?', 'bundle').order('activities_update_at DESC NULLS LAST')
+    @my_products = spree_current_user.my_resources
 
     filter_by_preferences
 

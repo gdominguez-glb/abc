@@ -345,6 +345,12 @@ Spree::User.class_eval do
     activity.update(updated_at: Time.now)
   end
 
+  def my_resources
+    accessible_products.select('spree_products.*, COALESCE(activities.updated_at, null) AS activities_update_at')
+        .joins("LEFT JOIN activities ON (activities.item_id = spree_products.id AND action = 'launch_resource' AND item_type = 'Spree::Product' AND user_id = #{self.id})")
+        .where('spree_products.product_type != ?', 'bundle').order('activities_update_at DESC NULLS LAST')
+  end
+
   private
   def is_in_usa?
     self.ip_location == 'US'

@@ -32,21 +32,16 @@
   </div>
 </div>
 
-<a href="#" class="card-link">
-  <div class="card card-english">
-    <div class="card-meta">English</div>
-    <h4 class="card-title">Grade 1 Digital Teacher Edition</h4>
-  </div>
-</a>
-
-<a href="#" class="card-link">
-  <div class="card card-math">
-    <div class="card-meta">Math</div>
-    <h4 class="card-title">Grades 3-5: Solving Word Problems with Tape Diagrams</h4>
-  </div>
-</a>
+<% products.each do |product| %>
+    <%= link_to account_launch_product_url(product.id), class: 'card-link' do %>
+      <div class="card <%= card_type_class(product) %>">
+        <div class="card-meta"><%= product.curriculum.try(:name) %></div>
+        <h4 class="card-title"><%= product.name %></h4>
+      </div>
+    <% end %>
+<% end %>
 
 <div class="well text-center">
-  <h4 class="bh5 margin-bottom--reset">You have 2 resources</h4>
+  <h4 class="bh5 margin-bottom--reset">You have <%= products.total_count %> resources</h4>
   <h4 class="bh5 margin-bottom--reset">Explore more in the shop</h4>
 </div>
