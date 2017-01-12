@@ -1,5 +1,8 @@
 class Cms::WhatsNewsController < Cms::BaseController
+  include WhatsnewRecommendationSharable
+
   before_action :set_whats_new, only: [:edit, :update, :destroy]
+  before_action -> { sanatize_role_params(:whats_new) }, only: [:create, :update]
 
   def index
     @whats_news = WhatsNew.latest.page(params[:page]).per(params[:per_page])

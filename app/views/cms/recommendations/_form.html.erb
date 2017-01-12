@@ -36,10 +36,7 @@
         <div class="col-sm-3">
           <div class="form-group">
             <label>User Role</label>
-            <div class="select-container dark-select block">
-              <span>Select Role</span>
-              <%= f.select :user_title, options_for_select(Spree::User::USER_TITLES, @recommendation.user_title), { prompt: 'Select title' }, class: 'form-control' %>
-            </div>
+            <%= f.select :user_title, options_for_select(['Global'] + Spree::User::USER_TITLES, (@recommendation.user_title.split(',') rescue [])) , {}, class: 'form-control', multiple: true, placeholder: "Select one or more"  %>
           </div>
         </div>
       </div>
@@ -112,3 +109,7 @@
   <%= f.submit class: 'btn btn-success btn-block-xs' %>
 <% end %>
 <%= render 'cms/shared/products_autocomplete' %>
+
+<script type="text/javascript" charset="utf-8">
+  $('#recommendation_user_title').select2();
+</script>
