@@ -1,0 +1,41 @@
+<%= form_for [:cms, @custom_field], class: 'form' do |f| %>
+  <div class="panel panel-primary">
+    <div class="panel-heading padding-top--s padding-bottom--s">
+      <h3 class="panel-title panel-title--s">Custom Field </h3>
+    </div>
+    <div class="panel-body">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <label for="">Salesforce Field Name</label>
+        <%= f.text_field :salesforce_field_name, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <label>Field Type</label>
+        <%= f.select :field_type, options_for_select(CustomField::FIELD_TYPES, f.object.field_type), { include_blank: false }, class: 'form-control' %>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <label>Select Subject</label>
+          <%= f.collection_select :subject, Curriculum.all, :name, :name, { prompt: 'Select subject' }, class: 'form-control' %>
+        </div>
+        <div class="col-md-6">
+          <label>Title</label>
+          <%= f.select :user_title, options_for_select(Spree::User::USER_TITLES, f.object.user_title), { prompt: 'Select title' }, class: 'form-control' %>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="name">Description</label>
+        <%= f.text_area :description, class: 'form-control' %>
+      </div>
+      <div class="checkbox margin-bottom--xl">
+        <label>
+          <%= f.check_box :display %> Visible
+        </label>
+      </div>
+    </div>
+  </div>
+  <%= f.submit class: 'btn btn-success btn-block-xs' %>
+<% end %>
