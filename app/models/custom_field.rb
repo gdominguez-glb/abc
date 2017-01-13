@@ -15,6 +15,8 @@ class CustomField < ActiveRecord::Base
   has_many :custom_field_options
   accepts_nested_attributes_for :custom_field_options, allow_destroy: true, reject_if: proc { |attributes| attributes['label'].blank? }
 
+  has_many :custom_field_values
+
   def set_subjects_and_user_titles
     self.subjects ||= (self.subject || '').split(',')
     self.user_titles ||= (self.user_title || '').split(',')
