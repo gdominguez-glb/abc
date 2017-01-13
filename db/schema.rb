@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170113024526) do
+ActiveRecord::Schema.define(version: 20170113183513) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -1792,8 +1792,10 @@ ActiveRecord::Schema.define(version: 20170113024526) do
     t.boolean  "tour_showed_licenses",                   default: false
     t.boolean  "tour_showed_licenses_users",             default: false
     t.boolean  "accepted_terms",                         default: false
-    t.string   "zip_code"
     t.text     "grades"
+    t.string   "zip_code"
+    t.string   "city",                                   default: ""
+    t.string   "state",                                  default: ""
   end
 
   add_index "spree_users", ["deleted_at"], name: "index_spree_users_on_deleted_at", using: :btree

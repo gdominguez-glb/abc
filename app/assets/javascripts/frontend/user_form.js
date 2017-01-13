@@ -84,8 +84,15 @@ $(function(){
     resetSchoolDistrictName();
   });
 
-  $("#spree_user_school_district_attributes_city").change(function(){
+  var schoolDistrictAttributesCity = $("#spree_user_school_district_attributes_city");
+
+  schoolDistrictAttributesCity.change(function(){
     checkStateAndCityForName();
+
+  });
+
+  schoolDistrictAttributesCity.keyup(function(){
+    $('#user_city_value').val($(this).val());
   });
 
   $(document).on('change', '#schoolDistrictSelect input', function (e) {
