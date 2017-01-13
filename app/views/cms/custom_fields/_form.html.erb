@@ -30,11 +30,11 @@
       <div class="row">
         <div class="col-md-6">
           <label>Select Subject</label>
-          <%= f.collection_select :subject, Curriculum.all, :name, :name, { prompt: 'Select subject' }, class: 'form-control' %>
+          <%= f.collection_select :subjects, Curriculum.all, :name, :name, {}, class: 'form-control', multiple: true %>
         </div>
         <div class="col-md-6">
           <label>Title</label>
-          <%= f.select :user_title, options_for_select(Spree::User::USER_TITLES, f.object.user_title), { prompt: 'Select title' }, class: 'form-control' %>
+          <%= f.select :user_titles, options_for_select(Spree::User::USER_TITLES, f.object.user_titles), { }, class: 'form-control', multiple: true %>
         </div>
       </div>
       <div class="form-group">
