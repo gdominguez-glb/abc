@@ -18,6 +18,20 @@ Spree::User.class_eval do
 
   belongs_to :delegate_for_user, class_name: 'Spree::User', foreign_key: :delegate_user_id
 
+  has_many :custom_field_values
+  accepts_nested_attributes_for :custom_field_values
+
+  def init_custom_fields
+    CustomField.displayable.each do |custom_field|
+      if self.new_record?
+        self.custom_field_values << CustomFieldValue.new(custom_field: custom_field) if self.custom_field_values.find{|cfv| cfv.custom_field_id == custom_field.id}.nil?
+      elsif self.persisted?
+        custom_field_value = CustomFieldValue.find_or_initialize_by(custom_field_id: custom_field.id, user_id: self.id)
+        self.custom_field_values << custom_field_value if custom_field_value.new_record?
+      end
+    end
+  end
+
   def school_district_required?
     ['Teacher', 'Administrator', 'Administrative Assistant'].include?(self.title)
   end
