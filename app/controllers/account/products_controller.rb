@@ -6,7 +6,7 @@ class Account::ProductsController < Account::BaseController
   def index
     @nav_name = 'My Resources'
 
-    @my_products = filter_by_grade_taxon(current_spree_user.products_in_dashboard).to_a.uniq(&:id)
+    @my_products = spree_current_user.my_resources.page(1).per(4)
 
     load_recommendations
     load_notifications

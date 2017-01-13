@@ -123,4 +123,9 @@ namespace :cms do
   resources :curriculum_shops
   resources :custom_csses
   resources :vanity_urls
+  resources :custom_fields do
+    collection do
+      post :update_positions
+    end
+  end
 end

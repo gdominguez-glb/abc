@@ -1,5 +1,8 @@
 class Cms::RecommendationsController < Cms::BaseController
+  include WhatsnewRecommendationSharable
+
   before_action :find_recommendation, except: [:index, :new, :create]
+  before_action -> { sanatize_role_params(:recommendation) }, only: [:create, :update]
 
   def index
     @recommendations = Recommendation.page(params[:page]).per(params[:per_page])
