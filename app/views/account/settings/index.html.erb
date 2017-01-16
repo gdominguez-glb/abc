@@ -101,6 +101,9 @@
       <%= f.text_field :phone, class: 'form-control', placeholder: '123-123-1234' %>
     </div>
   </div>
+
+  <%= render partial: 'spree/shared/custom_field_values_form', locals: { f: f }  %>
+
   <div class="school-district-details collapse">
     <h2>Let's get some specifics about your school</h2>
 
