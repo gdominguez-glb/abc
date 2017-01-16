@@ -13,7 +13,7 @@
         <% elsif custom_field.field_type == 'select' %>
           <div class="select-container dark-select block">
             <span>Select your <%= custom_field.name %></span>
-            <%= custom_field_value_form.select :value, options_for_select(custom_field.custom_field_options.map{|op| [op.label, op.value] }), { prompt: "Select your #{custom_field.name}" }, class: 'form-control'  %>
+            <%= custom_field_value_form.select :value, options_for_select(custom_field.custom_field_options.map{|op| [op.label, op.value] }, custom_field_value_form.object.value), { prompt: "Select your #{custom_field.name}" }, class: 'form-control'  %>
           </div>
         <% elsif custom_field.field_type == 'multiple_select' %>
           <%= custom_field_value_form.select :values, options_for_select(custom_field.custom_field_options.map{|op| [op.label, op.value] }, custom_field_value_form.object.values), {}, class: 'form-control multiple-select-custom-field', multiple: true, placeholder: 'Select one or more'  %>
