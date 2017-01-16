@@ -83,12 +83,19 @@ Spree::User.class_eval do
     attrs.merge!({'Phone' => self.phone}) if self.phone.present?
     attrs.merge!(sf_address(ship_address, 'Mailing')) if ship_address.present?
     attrs.merge!(sf_address(bill_address, 'Other')) if bill_address.present?
+    attrs.merge!(custom_field_values_for_salesforce)
     attrs
   end
 
   def new_attributes_for_salesforce
     school_district.try(:salesforce_reference).try(:reload)
     super
+  end
+
+  def custom_field_values_for_salesforce
+    Hash[self.custom_field_values.includes(:custom_field).map{|cfv|
+      [cfv.custom_field.salesforce_field_name, cfv.value]
+    }]
   end
 
   # Provides a means to bypass creation in Salesforce.  For example, this is
