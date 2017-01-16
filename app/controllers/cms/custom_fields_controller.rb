@@ -21,6 +21,7 @@ class Cms::CustomFieldsController < Cms::BaseController
   end
 
   def edit
+    @custom_field.custom_field_options.build
   end
 
   def update
