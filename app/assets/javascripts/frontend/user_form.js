@@ -97,6 +97,13 @@ function itemMatched(items, selectedItems) {
   return false;
 }
 
+function handleCustomFields() {
+  $("#spree_user_interested_subjects, #spree_user_title").change(function(){
+    toggleCustomFieldValues();
+  });
+  toggleCustomFieldValues();
+}
+
 $(function(){
   $('.multiple-select-custom-field').select2();
 
@@ -130,10 +137,8 @@ $(function(){
     checkStateAndCityForName();
   });
 
-  $("#spree_user_interested_subjects, #spree_user_title").change(function(){
-    toggleCustomFieldValues();
-  });
-  toggleCustomFieldValues();
+
+  handleCustomFields();
 
   $(document).on('change', '#schoolDistrictSelect input', function (e) {
     var selectionId = e.currentTarget.id;

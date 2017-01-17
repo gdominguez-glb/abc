@@ -12,6 +12,6 @@ class CustomFieldValue < ActiveRecord::Base
   end
 
   def handle_multiple_values
-    self.value = (self.values || []).join(',') if self.custom_field.field_type == 'multiple_select'
+    self.value = (self.values || []).reject(&:blank?).join(',') if self.custom_field.field_type == 'multiple_select'
   end
 end

@@ -22,14 +22,15 @@ Spree::User.class_eval do
   accepts_nested_attributes_for :custom_field_values
 
   def init_custom_fields
-    CustomField.displayable.each do |custom_field|
-      if self.new_record?
-        self.custom_field_values << CustomFieldValue.new(custom_field: custom_field) if self.custom_field_values.find{|cfv| cfv.custom_field_id == custom_field.id}.nil?
-      elsif self.persisted?
-        custom_field_value = CustomFieldValue.find_or_initialize_by(custom_field_id: custom_field.id, user_id: self.id)
-        self.custom_field_values << custom_field_value if custom_field_value.new_record?
-      end
+    CustomField.for_user(self).each do |custom_field|
+      custom_field_value = CustomFieldValue.find_by(custom_field_id: custom_field.id, user_id: self.id)
+      self.custom_field_values.build(custom_field_id: custom_field.id) if custom_field_value.blank?
     end
+  end
+
+  def filled_custom_fields?
+    init_custom_fields
+    self.custom_field_values.map(&:persisted?).all?
   end
 
   def school_district_required?
