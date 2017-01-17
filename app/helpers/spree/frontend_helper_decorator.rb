@@ -25,6 +25,10 @@ Spree::FrontendHelper.class_eval do
     end
   end
 
+  def card_type_class_video(video)
+    "card-#{video.type_taxon_name.split(' ').join('-').downcase}"
+  end
+
   def display_product_price_tag?(product)
     return false if product.partner_product? || product.get_in_touch_product? || (product.group_product? && !product.free_group_product?)
     return true

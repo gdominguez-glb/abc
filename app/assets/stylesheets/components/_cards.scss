@@ -129,7 +129,8 @@
 //   Modifiers
 // -------------------------------------
 
-.card-math {
+.card-math,
+.card-intro {
   border-top-color: $c-balanced;
 
   &.card-media {
@@ -137,7 +138,8 @@
   }
 }
 
-.card-english {
+.card-english,
+.card-navigator {
   border-top-color: $c-positive-primary;
 
   &.card-media {
@@ -145,7 +147,8 @@
   }
 }
 
-.card-history {
+.card-history,
+.card-teach-eureka {
   border-top-color: $c-energized-primary;
 
   &.card-media {
