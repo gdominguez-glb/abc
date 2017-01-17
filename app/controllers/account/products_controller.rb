@@ -40,11 +40,12 @@ class Account::ProductsController < Account::BaseController
   end
 
   def load_whats_news
-    @whats_news = load_dashboard_data(WhatsNew)
+    @whats_news = load_dashboard_data(WhatsNew, {limit: 2})
   end
 
-  def load_dashboard_data(model)
-    data = model.displayable_random.limit(3)
+  def load_dashboard_data(model, options = {})
+    options[:limit] ||= 3
+    data = model.displayable_random.limit(options[:limit])
     if current_spree_user.send("#{model.table_name}_ids_to_exclude").present?
       data = data.where.not(id: current_spree_user.send("#{model.table_name}_ids_to_exclude"))
     end
