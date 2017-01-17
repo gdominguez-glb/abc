@@ -26,8 +26,9 @@ Spree::FrontendHelper.class_eval do
   end
 
   def card_type_class_video(video)
-    return "card-#{video.type_taxon_name.split(' ').join('-').downcase}" if video.try(:type_taxon_name)
-    ""
+    if video.try(:type_taxon_name)
+      "card-#{video.type_taxon_name.split(' ').join('-').downcase}"
+    end
   end
 
   def display_product_price_tag?(product)
