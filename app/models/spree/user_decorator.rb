@@ -23,14 +23,15 @@ Spree::User.class_eval do
   accepts_nested_attributes_for :custom_field_values
 
   def init_custom_fields
-    CustomField.displayable.each do |custom_field|
-      if self.new_record?
-        self.custom_field_values << CustomFieldValue.new(custom_field: custom_field) if self.custom_field_values.find{|cfv| cfv.custom_field_id == custom_field.id}.nil?
-      elsif self.persisted?
-        custom_field_value = CustomFieldValue.find_or_initialize_by(custom_field_id: custom_field.id, user_id: self.id)
-        self.custom_field_values << custom_field_value if custom_field_value.new_record?
-      end
+    CustomField.for_user(self).each do |custom_field|
+      custom_field_value = CustomFieldValue.find_by(custom_field_id: custom_field.id, user_id: self.id)
+      self.custom_field_values.build(custom_field_id: custom_field.id) if custom_field_value.blank?
     end
+  end
+
+  def filled_custom_fields?
+    init_custom_fields
+    self.custom_field_values.map(&:persisted?).all?
   end
 
   def school_district_required?
@@ -87,12 +88,19 @@ Spree::User.class_eval do
     attrs.merge!({'Phone' => self.phone}) if self.phone.present?
     attrs.merge!(sf_address(ship_address, 'Mailing')) if ship_address.present?
     attrs.merge!(sf_address(bill_address, 'Other')) if bill_address.present?
+    attrs.merge!(custom_field_values_for_salesforce)
     attrs
   end
 
   def new_attributes_for_salesforce
     school_district.try(:salesforce_reference).try(:reload)
     super
+  end
+
+  def custom_field_values_for_salesforce
+    Hash[self.custom_field_values.includes(:custom_field).map{|cfv|
+      [cfv.custom_field.salesforce_field_name, cfv.value]
+    }]
   end
 
   # Provides a means to bypass creation in Salesforce.  For example, this is

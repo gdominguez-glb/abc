@@ -114,6 +114,12 @@
 
       $('#new-coupon-code-btn').removeClass('hide');
       $('#show-tour-btn').removeClass('hide');
+
+      <% if $flipper[:expanding_user_profiles].enabled? %>
+        <% if !current_spree_user.filled_custom_fields? %>
+          $.get('/account/additional_information/edit');
+        <% end %>
+      <% end %>
     });
   <% end %>
 <% end %>

@@ -57,7 +57,56 @@ $(document).on("change", "#spree_user_district_id, #spree_user_school_id", funct
   }
 });
 
+function selectedSubjects() {
+  var subjects = [];
+  $.each($("select#spree_user_interested_subjects option:selected"), function(i, el){
+    subjects.push($(el).text());
+  });
+  return subjects;
+}
+
+function selectedUserTitle() {
+  return $('#spree_user_title').val();
+}
+
+function toggleCustomFieldValues() {
+  var subjects = selectedSubjects();
+  var title = selectedUserTitle();
+
+  $.each($('.custom-field-wrapper'), function(i, field){
+    var fieldSubjects = $(field).attr('data-subjects').split(',');
+    var fieldTitles = $(field).attr('data-user-titles').split(',');
+    if(itemMatched(fieldSubjects, subjects) && itemMatched(fieldTitles, [title])) {
+      $(field).removeClass('hide');
+    } else {
+      $(field).addClass('hide');
+    }
+  });
+}
+
+function itemMatched(items, selectedItems) {
+  if(items.length === 0){
+    return true;
+  }
+
+  for(var i=0; i < selectedItems.length; i ++){
+    if(items.indexOf(selectedItems[i]) !== -1) {
+      return true;
+    }
+  }
+  return false;
+}
+
+function handleCustomFields() {
+  $("#spree_user_interested_subjects, #spree_user_title").change(function(){
+    toggleCustomFieldValues();
+  });
+  toggleCustomFieldValues();
+}
+
 $(function(){
+  $('.multiple-select-custom-field').select2();
+
   bindClickAddLink(".add-school-link", "#rowAddSchool");
   bindClickAddLink(".add-district-link", "#rowAddDistrict");
 
@@ -94,6 +143,9 @@ $(function(){
   schoolDistrictAttributesCity.keyup(function(){
     $('#user_city_value').val($(this).val());
   });
+
+
+  handleCustomFields();
 
   $(document).on('change', '#schoolDistrictSelect input', function (e) {
     var selectionId = e.currentTarget.id;
