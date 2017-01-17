@@ -83,8 +83,8 @@ Spree::User.class_eval do
               'Curriculum_of_Interest__c' => interested_curriculums.join(';') }
 
 
-    attrs.merge!({'BillingCity' => self.city}) if self.city.present?
-    attrs.merge!({'BillingState' => self.state}) if self.state.present?
+    # attrs.merge!({'BillingCity' => self.city}) if self.city.present?
+    # attrs.merge!({'BillingState' => self.state}) if self.state.present?
     attrs.merge!({'Phone' => self.phone}) if self.phone.present?
     attrs.merge!(sf_address(ship_address, 'Mailing')) if ship_address.present?
     attrs.merge!(sf_address(bill_address, 'Other')) if bill_address.present?
