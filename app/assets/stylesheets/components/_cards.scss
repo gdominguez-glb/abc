@@ -130,7 +130,9 @@
 // -------------------------------------
 
 .card-math,
-.card-intro {
+.card-teach-eureka,
+.card-eureka-k-5-pd-toolkit,
+.card-navigator {
   border-top-color: $c-balanced;
 
   &.card-media {
@@ -138,8 +140,7 @@
   }
 }
 
-.card-english,
-.card-navigator {
+.card-english {
   border-top-color: $c-positive-primary;
 
   &.card-media {
@@ -147,8 +148,7 @@
   }
 }
 
-.card-history,
-.card-teach-eureka {
+.card-history {
   border-top-color: $c-energized-primary;
 
   &.card-media {
