@@ -53,6 +53,8 @@ namespace :account do
     end
   end
 
+  resource :additional_information, only: [:edit, :update]
+
   get 'tour/dashboard', to: 'tour#dashboard'
   get 'tour/licenses', to: 'tour#licenses'
   get 'tour/licenses_users', to: 'tour#licenses_users'
