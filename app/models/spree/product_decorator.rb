@@ -35,10 +35,9 @@ Spree::Product.class_eval do
   end
 
   belongs_to :video_group, class_name: 'Spree::VideoGroup'
-
   has_one :inkling_code, class_name: 'Spree::InklingCode'
-
   has_and_belongs_to_many :grades, class_name: 'Spree::Grade', join_table: :spree_grades_products
+  has_many :activities, as: :item
 
   ## spree bundles
   parts_habtm = select("#{Spree::Product.quoted_table_name}.*")

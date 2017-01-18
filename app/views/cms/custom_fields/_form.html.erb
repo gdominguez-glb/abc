@@ -1,0 +1,117 @@
+<%= form_for [:cms, @custom_field], class: 'form' do |f| %>
+  <% if @custom_field.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@custom_field.errors.count, "error") %> prohibited this custom_field from being saved:</h2>
+
+      <ul>
+        <% @custom_field.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="panel panel-primary">
+    <div class="panel-heading padding-top--s padding-bottom--s">
+      <h3 class="panel-title panel-title--s">Custom Field </h3>
+    </div>
+    <div class="panel-body">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <label for="">Salesforce Field Name</label>
+        <%= f.text_field :salesforce_field_name, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <label>Field Type</label>
+        <%= f.select :field_type, options_for_select(CustomField::FIELD_TYPES, f.object.field_type), { include_blank: false }, class: 'form-control' %>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <label>Select Subject</label>
+          <%= f.collection_select :subjects, Curriculum.all, :name, :name, {}, class: 'form-control', multiple: true %>
+        </div>
+        <div class="col-md-6">
+          <label>Title</label>
+          <%= f.select :user_titles, options_for_select(Spree::User::USER_TITLES, f.object.user_titles), { }, class: 'form-control', multiple: true %>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="name">Description</label>
+        <%= f.text_area :description, class: 'form-control' %>
+      </div>
+      <div class="checkbox margin-bottom--xl">
+        <label>
+          <%= f.check_box :display %> Visible
+        </label>
+      </div>
+
+      <div id="custom-field-options-wrapper" class="<%= 'hide' if !['select', 'multiple_select'].include?(@custom_field.field_type) %>">
+        <p>Select Options</p>
+        <button class="btn btn-default" id="add-new-option">Add Option</button>
+        <hr/>
+        <%= f.fields_for :custom_field_options do |option_form| %>
+          <div class="row <%= 'new-field-option-wrapper' if option_form.object.new_record? %>">
+            <div class="col-md-5">
+              <div class="form-group">
+                <label>Label</label>
+                <%= option_form.text_field :label, class: "form-control option-label-input" %>
+              </div>
+            </div>
+            <div class="col-md-5">
+              <div class="form-group">
+                <label>Value</label>
+                <%= option_form.text_field :value, class: "form-control option-value-input" %>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <% if option_form.object.persisted? %>
+                <div class="form-group">
+                  <label>Delete</label>
+                  <%= option_form.check_box :_destroy, class: 'form-control' %>
+                </div>
+              <% else %>
+                <span class="remove-new-field"><%= mi.close %></span>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <%= f.submit class: 'btn btn-success btn-block-xs' %>
+<% end %>
+
+<%= content_for :javascripts do %>
+  <script type="text/javascript">
+   $(function(){
+     var newOptionHtml = $($('.new-field-option-wrapper')[0]).clone();
+     $('#add-new-option').click(function(e){
+       e.preventDefault();
+       var newHtml = newOptionHtml.clone();
+       var timestamp = Number(new Date());
+       newHtml.find('.option-label-input').attr('name', 'custom_field[custom_field_options_attributes]['+timestamp+'][label]');
+       newHtml.find('.option-label-input').attr('id', 'custom_field_custom_field_options_attributes_'+timestamp+'_label');
+
+       newHtml.find('.option-value-input').attr('name', 'custom_field[custom_field_options_attributes]['+timestamp+'][value]');
+       newHtml.find('.option-value-input').attr('id', 'custom_field_custom_field_options_attributes_'+timestamp+'_value');
+
+       $('#custom-field-options-wrapper').append(newHtml);
+       $(this).blur();
+     });
+     $('body').on('click', '.remove-new-field', function(){
+       $(this).closest('.new-field-option-wrapper').remove();
+     });
+     $('#custom_field_field_type').change(function(){
+       var fieldTypeValue = $(this).val();
+       console.log(fieldTypeValue)
+       if(fieldTypeValue == 'select' || fieldTypeValue == 'multiple_select') {
+         $('#custom-field-options-wrapper').removeClass('hide');
+       } else {
+         $('#custom-field-options-wrapper').addClass('hide');
+       }
+     });
+   });
+  </script>
+<% end %>

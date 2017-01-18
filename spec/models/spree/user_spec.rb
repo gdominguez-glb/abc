@@ -73,7 +73,7 @@ RSpec.describe Spree::User do
     it "return twitter code based on curriculum" do
       user.interested_subjects = [math.id, english.id]
 
-      expect(user.twitter_list_code).to eq("<a class=\"twitter-timeline\" href=\"https://twitter.com/GreatMindsEd/lists/math-english\" data-widget-id=\"652520444122165248\">Tweets from https://twitter.com/GreatMindsEd/lists/math-english</a>\n<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+\"://platform.twitter.com/widgets.js\";fjs.parentNode.insertBefore(js,fjs);}}(document,\"script\",\"twitter-wjs\");</script>\n")
+      expect(user.twitter_list_code).to eq("<a class=\"twitter-timeline\" href=\"https://twitter.com/GreatMindsEd/lists/math-english\" data-widget-id=\"652520444122165248\" data-chrome=\"noheader\">Tweets from https://twitter.com/GreatMindsEd/lists/math-english</a>\n<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+\"://platform.twitter.com/widgets.js\";fjs.parentNode.insertBefore(js,fjs);}}(document,\"script\",\"twitter-wjs\");</script>\n")
     end
   end
 

@@ -15,13 +15,12 @@ class Account::ResourcesController < Account::BaseController
     end
 
     @nav_name = 'My Resources'
-    @my_products = spree_current_user.accessible_products.where('spree_products.product_type != ?', 'bundle')
+    @my_products = spree_current_user.my_resources
 
     filter_by_preferences
+
     @my_products = filter_by_taxons(Spree::Product, @my_products, params[:taxon_ids])
-
-    @my_products = @my_products.search_by_text(params[:q]).distinct.reorder('spree_products.id').page(params[:page]).per(10)
-
+    @my_products = @my_products.search_by_text(params[:q]).distinct.page(params[:page]).per(10)
     @taxonomies = Spree::Taxonomy.show_in_store.includes(root: :children)
   end
 
