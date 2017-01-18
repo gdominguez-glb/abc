@@ -6,7 +6,11 @@ class Account::ProductsController < Account::BaseController
   def index
     @nav_name = 'My Resources'
 
-    @my_products = spree_current_user.my_resources.page(1).per(4)
+    if $flipper[:dashboard_redesign].enabled?
+      @my_products = spree_current_user.my_resources.page(1).per(4)
+    else
+      @my_products = filter_by_grade_taxon(current_spree_user.products_in_dashboard).to_a.uniq(&:id)
+    end
 
     load_recommendations
     load_notifications
