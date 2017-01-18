@@ -7,7 +7,7 @@
           <div class="card-media--content">
             <div class="card-meta"><%= recommendation.subject %></div>
             <h4 class="card-title"><%= recommendation.title %></h4>
-            <p><%= recommendation.sub_header %></p>
+            <p><%= truncate(recommendation.sub_header, length: 75, escape: false) rescue '' %></p>
             <%= link_to recommendation.call_to_action_button_text, account_recommendation_path(recommendation), class: 'btn btn-primary', target: recommendation.call_to_action_button_target %>
           </div>
         </div>
