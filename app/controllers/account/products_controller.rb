@@ -2,12 +2,14 @@ class Account::ProductsController < Account::BaseController
 
   include ProductRedirectable
   before_action :set_product, only: [:launch]
+  before_action :set_curriculum, only: [:index]
 
   def index
     @nav_name = 'My Resources'
 
     if $flipper[:dashboard_redesign].enabled?
       @my_products = spree_current_user.my_resources.page(1).per(4)
+      @my_products = filter_by_curriculum(@my_products, @curriculum) unless @curriculum.nil?
     else
       @my_products = filter_by_grade_taxon(current_spree_user.products_in_dashboard).to_a.uniq(&:id)
     end
@@ -70,5 +72,13 @@ class Account::ProductsController < Account::BaseController
 
   def set_product
     @product = Spree::Product.find(params[:id])
+  end
+
+  def set_curriculum
+    @curriculum = Curriculum.find_by(id: params.try(:[], :curriculum_id))
+  end
+
+  def filter_by_curriculum(products, curriculum)
+    products = products.where(curriculum_id: curriculum.id)
   end
 end
