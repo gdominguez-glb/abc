@@ -5,6 +5,7 @@ RSpec.describe HomeController, type: :controller do
   let(:home_page) { create(:page, title: 'Home page', slug: '/') }
 
   describe "GET 'index'" do
+    before { Rails.cache.clear }
     it "success" do
       home_page
       get :index
