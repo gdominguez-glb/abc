@@ -51,9 +51,7 @@ Spree::UserRegistrationsController.class_eval do
       school_district_attributes: [:name, :state_id, :country_id, :city, :place_type],
       interested_subjects: [],
       grades: []
-    ).tap do |whitelisted|
-      whitelisted[:custom_field_values_attributes] = params[:spree_user][:custom_field_values_attributes] if $flipper[:expanding_user_profiles].enabled? && params[:spree_user][:custom_field_values_attributes].present?
-    end
+    )
     process_school_district_param(new_params)
     new_params
   end
