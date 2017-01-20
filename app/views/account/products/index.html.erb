@@ -13,7 +13,7 @@
 
     <div class="row margin-bottom--l">
       <div class="col-sm-6 col-md-7 js-recent-resources">
-        <%= render 'recent_resources_new' %>
+        <%= render partial: 'recent_resources_new', locals: {products: @my_products} %>
       </div>
       <div class="col-sm-6 col-md-5">
         <% if code = current_spree_user.twitter_list_code %>
@@ -114,6 +114,12 @@
 
       $('#new-coupon-code-btn').removeClass('hide');
       $('#show-tour-btn').removeClass('hide');
+
+      <% if $flipper[:expanding_user_profiles].enabled? %>
+        <% if !current_spree_user.filled_custom_fields? %>
+          $.get('/account/additional_information/edit');
+        <% end %>
+      <% end %>
     });
   <% end %>
 <% end %>

@@ -38,6 +38,11 @@
 
   &.swiper-container--media-left {
     @media screen and (min-width: $screen-md-min) {
+      .swiper-slide {
+        @include display-flex;
+        @include flex-direction(column);
+      }
+
       .swiper-pagination-wrapper {
         left: $b-space-l;
       }
@@ -81,7 +86,6 @@
 
   .card {
     margin-bottom: 0;
-    padding-bottom: $b-space-xl;
     box-shadow: none;
   }
 }

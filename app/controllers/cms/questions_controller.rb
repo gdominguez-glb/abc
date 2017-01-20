@@ -74,7 +74,7 @@ class Cms::QuestionsController < Cms::BaseController
   end
 
   def find_question
-    @question = Question.find(params[:id])
+    @question = Question.find_by(slug: params[:id])
   end
 
   def set_search_form

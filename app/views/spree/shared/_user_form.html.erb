@@ -73,6 +73,7 @@
       </div>
     </div>
   </div>
+
   <hr />
 </fieldset>
 
@@ -198,6 +199,8 @@
       <button type="button" class="btn btn-danger" id="closeAddSchool"><i class="mi">close</i></button>
     </span>
   </div>
+
+  <%= f.hidden_field :city, id: 'user_city_value', value: '' %>
 
 </div>
 <div data-hook="signup_below_password_fields"></div>

@@ -129,7 +129,10 @@
 //   Modifiers
 // -------------------------------------
 
-.card-math {
+.card-math,
+.card-teach-eureka,
+.card-eureka-k-5-pd-toolkit,
+.card-navigator {
   border-top-color: $c-balanced;
 
   &.card-media {
@@ -161,9 +164,12 @@
 }
 
 .card--media-left.card--media-left.card--media-left {
+
   @media screen and (min-width: $screen-md-min) {
     @include display-flex;
+    @include flex(1);
 
+    height: 280px;
     padding-bottom: 0;
     border-top: 0;
 
@@ -179,7 +185,10 @@
     }
 
     .card-media--content {
+      @include display-flex;
       @include flex(1);
+      @include flex-direction(column);
+      @include justify-content(center);
 
       padding: 40px 30px;
       font-size: .85em;
