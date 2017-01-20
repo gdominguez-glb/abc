@@ -12,33 +12,29 @@
   </div>
 
   <div class="col-xs-5 col-lg-3">
-    <div class="dropdown dropdown-md">
+    <div class="dropdown dropdown-md <%= 'open' if Curriculum.visibles.map(&:id).include? params[:curriculum_id].to_i %>">
       <button class="btn btn-default btn-sm btn-block dropdown-toggle dropdown-md-btn margin-bottom--xl" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
         Refine
         <i class="dropdown-md-mi mi md-24 toggle-arrow">keyboard_arrow_down</i>
       </button>
       <ul class="dropdown-menu dropdown-md-menu">
-        <li class="dropdown-md-item">
-          <a href="/" class="dropdown-md-link">Refine item 1</a>
-        </li>
-        <li class="dropdown-md-item">
-          <a href="/" class="dropdown-md-link">Refine item 2</a>
-        </li>
-        <li class="dropdown-md-item">
-          <a href="/" class="dropdown-md-link">Refine item 3</a>
-        </li>
+        <% Curriculum.visibles.each do |curriculum| %>
+          <li class="dropdown-md-item <%= ('active' if params[:curriculum_id] == curriculum.id.to_s)%> ">
+            <%= link_to curriculum.name, "#{account_products_url}?curriculum_id=#{curriculum.id}" %>
+          </li>
+        <% end %>
       </ul>
     </div>
   </div>
 </div>
 
 <% products.each do |product| %>
-    <%= link_to account_launch_product_url(product.id), class: 'card-link' do %>
-      <div class="card <%= card_type_class(product) %>">
-        <div class="card-meta"><%= product.curriculum.try(:name) %></div>
-        <h4 class="card-title"><%= product.name %></h4>
-      </div>
-    <% end %>
+  <%= link_to account_launch_product_url(product.id), class: 'card-link' do %>
+    <div class="card <%= card_type_class(product) %>">
+      <div class="card-meta"><%= product.curriculum.try(:name) %></div>
+      <h4 class="card-title"><%= product.name %></h4>
+    </div>
+  <% end %>
 <% end %>
 
 <% if products.total_count < 4 %>

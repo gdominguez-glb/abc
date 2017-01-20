@@ -17,6 +17,8 @@ class CustomField < ActiveRecord::Base
 
   has_many :custom_field_values
 
+  scope :effective, -> { where('effect_at < :now and :now < expire_at', now: Time.now) }
+
   def set_subjects_and_user_titles
     self.subjects ||= (self.subject || '').split(',')
     self.user_titles ||= (self.user_title || '').split(',')
@@ -25,5 +27,12 @@ class CustomField < ActiveRecord::Base
   def handle_subjects_and_user_titles
     self.subject = self.subjects.reject(&:blank?).join(',')
     self.user_title = self.user_titles.reject(&:blank?).join(',')
+  end
+
+  def self.for_user(user)
+    CustomField.displayable.effective.to_a.select do |custom_field|
+      (custom_field.subjects.blank? || (custom_field.subjects & user.interested_curriculums).present?) &&
+        (custom_field.user_titles.blank? || custom_field.user_titles.include?(user.title))
+    end
   end
 end
