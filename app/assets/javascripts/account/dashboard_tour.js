@@ -3,7 +3,7 @@ function startDashboardTour(flipperDashboardRedesign, flipperMyResources) {
 
   //title, text, attachTo, showCancelLink, buttons
 
-  if(flipperDashboardRedesign == true) {
+  if (flipperDashboardRedesign === true) {
     tour = tour.addStep('recent-resources', window.shepherdHelper.stepFactory(
       tour,
       'Recent Resources',
@@ -11,7 +11,7 @@ function startDashboardTour(flipperDashboardRedesign, flipperMyResources) {
       '.js-recent-resources right')
     );
 
-    if(flipperMyResources == true) {
+    if (flipperMyResources === true) {
       tour = tour.addStep('resources', window.shepherdHelper.stepFactory(
         tour,
         'My Resources',
