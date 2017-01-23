@@ -1,9 +1,9 @@
-function startDashboardTour() {
+function startDashboardTour(flipperDashboardRedesign, flipperMyResources) {
   var tour = new Shepherd.Tour({ defaults: { classes: 'shepherd-theme-arrows', scrollTo: true } });
 
   //title, text, attachTo, showCancelLink, buttons
 
-  <% if $flipper[:dashboard_redesign].enabled? %>
+  if(flipperDashboardRedesign == true) {
     tour = tour.addStep('recent-resources', window.shepherdHelper.stepFactory(
       tour,
       'Recent Resources',
@@ -11,14 +11,14 @@ function startDashboardTour() {
       '.js-recent-resources right')
     );
 
-    <% if $flipper[:my_resources].enabled? %>
+    if(flipperMyResources == true) {
       tour = tour.addStep('resources', window.shepherdHelper.stepFactory(
         tour,
         'My Resources',
         'Here you can find all digital resources you have access to.',
         '.js-my-resource-link bottom')
       );
-    <% end %>
+    }
 
     tour = tour.addStep('video_gallery', window.shepherdHelper.stepFactory(
       tour,
@@ -48,7 +48,7 @@ function startDashboardTour() {
       '.js-product-key top')
     );
 
-  <% else %>
+   } else {
 
     tour = tour.addStep('dashboard', window.shepherdHelper.stepFactory(
       tour,
@@ -80,7 +80,7 @@ function startDashboardTour() {
       '.js-video-gallery-link bottom')
     );
 
-  <% end %>
+  }
 
   tour = tour.addStep('store', window.shepherdHelper.stepFactory(
     tour,
