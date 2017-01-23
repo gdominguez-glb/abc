@@ -6,7 +6,7 @@ namespace :order do
 
     if to.present? && spree_order.present?
       Spree::LicensedProduct.where(order_id: spree_order.id).update_all(user_id: to.id)
-      spree_order.update(user_id: to.id)
+      spree_order.update(user_id: to.id, email: ENV['to_email'])
       puts 'Order successfully transferred'
     end
 
