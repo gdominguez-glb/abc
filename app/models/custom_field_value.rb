@@ -7,6 +7,8 @@ class CustomFieldValue < ActiveRecord::Base
   after_initialize :init_multiple_values
   before_save :handle_multiple_values
 
+  scope :displayable, -> { joins(:custom_field).where(custom_fields: { display: true }) }
+
   def init_multiple_values
     self.values ||= (self.value || '').split(',')
   end
