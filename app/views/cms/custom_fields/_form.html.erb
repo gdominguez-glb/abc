@@ -90,7 +90,7 @@
       </div>
     </div>
   </div>
-  <%= f.submit class: 'btn btn-success btn-block-xs' %>
+  <%= f.submit class: 'btn btn-success btn-block-xs', data: { disable_with: "Submitting..." } %>
 <% end %>
 
 <%= content_for :javascripts do %>

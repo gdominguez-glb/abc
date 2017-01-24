@@ -9,6 +9,8 @@ class CustomField < ActiveRecord::Base
 
   attr_accessor :subjects, :user_titles
 
+  validate :must_have_salesforce_field
+
   after_initialize :set_subjects_and_user_titles
   before_save :handle_subjects_and_user_titles
 
@@ -33,6 +35,19 @@ class CustomField < ActiveRecord::Base
     CustomField.displayable.effective.to_a.select do |custom_field|
       (custom_field.subjects.blank? || (custom_field.subjects & user.interested_curriculums).present?) &&
         (custom_field.user_titles.blank? || custom_field.user_titles.include?(user.title))
+    end
+  end
+
+  private
+
+  def must_have_salesforce_field
+    begin
+      sf_field_info = GmSalesforce::Client.instance.column_info('Contact', self.salesforce_field_name)
+      if sf_field_info.nil?
+        self.errors.add(:salesforce_field_name, "Salesforce field name doesn't match in salesforce")
+      end
+    rescue
+      self.errors.add(:salesforce_field_name, "Failed to pull field info from salesforce")
     end
   end
 end
