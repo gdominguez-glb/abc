@@ -58,7 +58,7 @@
       </div>
 
       <div id="custom-field-options-wrapper" class="<%= 'hide' if !['select', 'multiple_select'].include?(@custom_field.field_type) %>">
-        <p>Select Options</p>
+        <p>Select Options (Options will be loaded from salesforce automatically)</p>
         <button class="btn btn-default" id="add-new-option">Add Option</button>
         <hr/>
         <%= f.fields_for :custom_field_options do |option_form| %>

@@ -14,10 +14,12 @@ class CustomField < ActiveRecord::Base
   after_initialize :set_subjects_and_user_titles
   before_save :handle_subjects_and_user_titles
 
-  has_many :custom_field_options
+  after_commit :load_picklist_values
+
+  has_many :custom_field_options, dependent: :destroy
   accepts_nested_attributes_for :custom_field_options, allow_destroy: true, reject_if: proc { |attributes| attributes['label'].blank? }
 
-  has_many :custom_field_values
+  has_many :custom_field_values, dependent: :destroy
 
   scope :effective, -> { where('effect_at < :now and :now < expire_at', now: Time.now) }
 
@@ -48,6 +50,20 @@ class CustomField < ActiveRecord::Base
       end
     rescue
       self.errors.add(:salesforce_field_name, "Failed to pull field info from salesforce")
+    end
+  end
+
+  def load_picklist_values
+    begin
+      if ['select', 'multiple_select'].include?(self.field_type)
+        sf_field_info = GmSalesforce::Client.instance.column_info('Contact', self.salesforce_field_name)
+        sf_field_info.picklistValues.each do |pick_list_value|
+          field_option = self.custom_field_options.find_or_initialize_by(label: pick_list_value.label)
+          field_option.update(value: pick_list_value.value)
+        end
+        self.custom_field_options.where.not(label: sf_field_info.picklistValues.map(&:label)).delete_all
+      end
+    rescue
     end
   end
 end
