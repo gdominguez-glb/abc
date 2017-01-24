@@ -12,7 +12,6 @@
           <%= render partial: 'spree/shared/custom_field_values_form', locals: { f: f } %>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           <%= f.submit 'Submit', class: 'btn btn-primary', data: { disable_with: 'Submitting...' } %>
         </div>
       <% end %>
