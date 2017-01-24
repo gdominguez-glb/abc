@@ -8,9 +8,9 @@
     </div>
     <div class="collapse navbar-collapse dashboard-nav js-dashboard-nav-sections" id="sub-nav">
       <ul>
-        <%= active_link_to "My Dashboard", main_app.account_products_path, wrap_tag: :li, class: 'my-resource-link' %>
-        <%= active_link_to 'My Resources', main_app.account_resources_path, wrap_tag: :li, class: 'my-resource-link' if $flipper[:my_resources].enabled? %>
-        <%= active_link_to "Video Gallery", '/video_gallery', wrap_tag: :li, class: 'video-gallery-link' %>
+        <%= active_link_to "My Dashboard", main_app.account_products_path, wrap_tag: :li, class: 'my-dashboard-link js-my-dashboard-link' %>
+        <%= active_link_to 'My Resources', main_app.account_resources_path, wrap_tag: :li, class: 'my-resource-link js-my-resource-link' if $flipper[:my_resources].enabled? %>
+        <%= active_link_to "Video Gallery", '/video_gallery', wrap_tag: :li, class: 'video-gallery-link js-video-gallery-link' %>
         <% if spree_current_user.has_admin_role? %>
           <%= active_link_to "Store Admin", '/store/admin', wrap_tag: :li %>
         <% elsif current_spree_user.has_csr_role?%>

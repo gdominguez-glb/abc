@@ -20,6 +20,7 @@ RSpec.describe Spree::UserRegistrationsController, type: :controller do
           zip_code: '10000',
           interested_subjects: [curriculum.id],
           school_district_attributes: {},
+          custom_field_values_attributes: {},
           school_id: '',
           district_id: ''
         }
@@ -32,6 +33,7 @@ RSpec.describe Spree::UserRegistrationsController, type: :controller do
       it "render new" do
         spree_post :create, spree_user: {
           school_district_attributes: {},
+          custom_field_values_attributes: {},
           school_id: '',
           district_id: ''
         }

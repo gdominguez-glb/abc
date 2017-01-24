@@ -1,0 +1,20 @@
+<div class="modal fade" tabindex="-1" role="dialog" id="edit-additional-info-modal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Additional Information Requests</h4>
+      </div>
+      <%= form_for @user, as: :spree_user, url: account_additional_information_path, method: :put, remote: true, authenticity_token: true do |f| %>
+        <%= f.collection_select :interested_subjects, Curriculum.visibles, :id, :name, { include_hidden: false, multiple: true }, { class: 'form-control hide', tabindex: 7, multiple: 'multiple' } %>
+        <%= f.select :title, options_for_select(USER_TITLES, f.object.title), { prompt: 'Please select your role' }, { class: 'form-control hide', tabindex: 9 } %>
+        <div class="modal-body">
+          <%= render partial: 'spree/shared/custom_field_values_form', locals: { f: f } %>
+        </div>
+        <div class="modal-footer">
+          <%= f.submit 'Submit', class: 'btn btn-primary', data: { disable_with: 'Submitting...' } %>
+        </div>
+      <% end %>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

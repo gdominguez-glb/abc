@@ -16,7 +16,7 @@
     </div>
     <div class="panel-body">
       <div class="form-group">
-        <label for="name">Name</label>
+        <label forn="name">Name</label>
         <%= f.text_field :name, class: 'form-control' %>
       </div>
       <div class="form-group">
@@ -26,6 +26,16 @@
       <div class="form-group">
         <label>Field Type</label>
         <%= f.select :field_type, options_for_select(CustomField::FIELD_TYPES, f.object.field_type), { include_blank: false }, class: 'form-control' %>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <label>Effect at</label>
+          <%= f.text_field :effect_at, class: 'form-control datetime-picker' %>
+        </div>
+        <div class="col-md-6">
+          <label>Expire at</label>
+          <%= f.text_field :expire_at, class: 'form-control datetime-picker' %>
+        </div>
       </div>
       <div class="row">
         <div class="col-md-6">
@@ -112,6 +122,32 @@
          $('#custom-field-options-wrapper').addClass('hide');
        }
      });
+     var datetime_pickers = $('.datetime-picker');
+
+     datetime_pickers.datetimepicker({
+       format: 'YYYY-MM-DD HH:mm:ss',
+     });
+
+     // convert datetimepicker icons to material design
+     datetime_pickers.on('dp.show', function(e) {
+       $('.glyphicon-chevron-left').addClass('mi md-24').text('chevron_left');
+       $('.glyphicon-chevron-right').addClass('mi md-24').text('chevron_right');
+       $('.glyphicon-chevron-down').addClass('mi md-24').text('keyboard_arrow_down');
+       $('.glyphicon-chevron-up').addClass('mi md-24').text('keyboard_arrow_up');
+       $('.glyphicon-time').addClass('mi').text('access_time');
+       $('.glyphicon-calendar').addClass('mi').text('date_range');
+
+       $('.bootstrap-datetimepicker-widget [data-action="togglePicker"]').on('click', function(e) {
+         var icon = $(this).find('.glyphicon');
+         if ( icon.hasClass('glyphicon-time') ) {
+           icon.addClass('mi').text('date_range');
+         } else  {
+           icon.addClass('mi').text('access_time');
+         }
+       });
+     });
+
+     $("#custom_field_subjects, #custom_field_user_titles").select2();
    });
   </script>
 <% end %>
