@@ -175,6 +175,13 @@
               </div>
             </div>
 
+            <div class="col-sm-6 dependent-field hidden" data-name="Desired Training city">
+              <div class="form-group">
+                <label>Desired Training city</label>
+                <%= f.text_field :desired_training_city, size: 20, maxlength: 80, class: 'form-control', placeholder: 'Desired Training city' %>
+              </div>
+            </div>
+
             <div class="col-sm-6 dependent-field hidden" data-name="Items purchased">
               <div class="form-group">
                 <label>Items purchased</label>
@@ -384,6 +391,7 @@
         "Returning Customer",
         "Desired Dates",
         "Desired Training topic",
+        "Desired Training city",
         "Grade bands",
         "Size of Training Groups",
         "Interested in hosting events"
@@ -515,6 +523,38 @@
       } else {
         $('#topicDropdown').find('[data-topic-hash="'+ hash.replace('#', '') +'"]').trigger('click');
       }
+
+      var hidden_professional_math = [
+        { name: 'Desired Dates' },
+        { name: 'Desired Training topic' },
+        { name: 'Size of Training Groups' },
+        { name: 'Interested in hosting events' },
+      ];
+
+      var visible_professional_math = [
+        { name: 'Desired Training city' },
+      ];
+
+      var fullyToggle = function(visibles, hidden) {
+        _.each(visibles, function(m, i){ $('[data-name="'+m.name+'"]').removeClass('hidden'); });
+        _.each(hidden, function(m, i){ $('[data-name="'+m.name+'"]').addClass('hidden'); });
+      };
+
+      var updateProfessionalDevelopment = function(e) {
+        if(window.location.hash !== '#professional-development') {
+          return false;
+        }
+
+        if($(e).val() === 'Math') {
+          fullyToggle(visible_professional_math, hidden_professional_math);
+        } else {
+          fullyToggle(hidden_professional_math, visible_professional_math);
+        }
+      }
+
+      $('#contact_form_curriculum').change(function() {
+        updateProfessionalDevelopment(this);
+      });
     });
   <% end %>
 <% end %>
