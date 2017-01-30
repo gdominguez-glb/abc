@@ -23,5 +23,10 @@ Deface::Override.new(
         <%= error_message_on :taxonomy, :top_level_in_video, :class => 'error-message' %>
         <%= check_box :taxonomy, :top_level_in_video, :class => 'form-control' %>
       <% end %>
+      <%= f.field_container :show_in_event_pages, class: ['form-group'] do %>
+        <%= f.label :show_in_event_pages, 'Show in event pages' %>
+        <%= error_message_on :taxonomy, :show_in_event_pages, :class => 'error-message' %>
+        <%= check_box :taxonomy, :show_in_event_pages, :class => 'form-control' %>
+      <% end %>
     HTML
 )
