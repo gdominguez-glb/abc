@@ -17,6 +17,12 @@ RSpec.describe RegonlineEvent, type: :model do
     end
   end
 
+  describe "#filter_grade_bands constant" do
+    it 'should return the filter_grade_bands constant' do
+      expect(RegonlineEvent::FILTER_GRADE_BANDS).to eq(["PK", "K-2", "3-5", "6-8", "9-12"])
+    end
+  end
+
   describe "#to_partial_path" do
     it "set default partial path" do
       expect(RegonlineEvent.new.to_partial_path).to eq('events/event')

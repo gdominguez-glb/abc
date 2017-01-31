@@ -6,6 +6,5 @@ FactoryGirl.define do
     show_in_store false
     show_in_video false
     top_level_in_video false
-    show_in_event_pages false
   end
 end

@@ -10,6 +10,8 @@ class RegonlineEvent < ActiveRecord::Base
   scope :with_filter, ->(filter) { where('client_event_id ilike ?', "%#{filter}%") }
   scope :sorted, -> { order('start_date asc') }
 
+  FILTER_GRADE_BANDS = ["PK", "K-2", "3-5", "6-8", "9-12"].freeze
+
   def full_address
     [location_name, city, state, country].reject(&:blank?).join(',')
   end
