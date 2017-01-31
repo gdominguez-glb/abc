@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170130173025) do
+ActiveRecord::Schema.define(version: 20170131131541) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -1680,7 +1680,6 @@ ActiveRecord::Schema.define(version: 20170130173025) do
     t.boolean  "show_in_store",                  default: true
     t.boolean  "show_in_video",                  default: true
     t.boolean  "top_level_in_video",             default: false
-    t.boolean  "show_in_event_pages",            default: false
   end
 
   add_index "spree_taxonomies", ["position"], name: "index_spree_taxonomies_on_position", using: :btree

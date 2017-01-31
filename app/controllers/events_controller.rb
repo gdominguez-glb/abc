@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_filter :set_taxonomies, only: [:list]
+  before_filter :set_grade_bands_param, only: [:list]
 
   def index
     @events = RegonlineEvent.displayable.sorted.page(params[:page])
@@ -74,19 +74,15 @@ class EventsController < ApplicationController
     event_trainings
   end
 
-  def set_taxonomies
-    params[:taxon_ids] ||= []
-    @taxonomies = Spree::Taxonomy.show_in_event_pages.includes(root: :children)
+  def set_grade_bands_param
+    params[:grade_bands] ||= []
   end
 
   def filter_by_taxon_ids
-    return if params[:taxon_ids].nil?
-    translations = {"P-2 GB" => "PK", "PK-2 GB" => "K-2","3-5 GB" => "3-5", "6-8 GB" => "6-8", "9-12 GB" => "9-12"}
-    taxons = Spree::Taxon.where(id: params[:taxon_ids]).map(&:name)
+    return if params[:grade_bands].nil?
 
     filters_conds = []
-    taxons.each do |name|
-      name = translations[name] unless translations[name].nil?
+    params[:grade_bands].each do |name|
       filters_conds << "(grade_bands  LIKE '%#{name}%')"
     end
 

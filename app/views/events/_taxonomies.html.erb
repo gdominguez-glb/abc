@@ -1,16 +1,25 @@
 <nav id="categoryFilters" class="panel-group" data-hook>
-
   <h4 class="text-left bh4">Looking for:</h4>
-
-  <% @taxonomies.where.not(name: 'I am a...').each do |taxonomy| %>
-      <div class="dropdown dropdown-md">
-        <button class="btn btn-default btn-block dropdown-toggle dropdown-md-btn margin-bottom--m" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-          <%= taxonomy.name %>
-          <i class="dropdown-md-mi mi md-24 toggle-arrow">keyboard_arrow_down</i>
-        </button>
-        <%= gm_taxons_tree(taxonomy.root, @taxon, taxonomy.allow_multiple_taxons_selected) %>
-      </div>
-  <% end %>
-
+  <div class="dropdown dropdown-md">
+    <button class="btn btn-default btn-block dropdown-toggle dropdown-md-btn margin-bottom--m" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Grade Band
+      <i class="dropdown-md-mi mi md-24 toggle-arrow">keyboard_arrow_down</i>
+    </button>
+    <ul class="dropdown-menu dropdown-md-menu">
+      <% RegonlineEvent::FILTER_GRADE_BANDS.each do |grade| %>
+        <% active = params.try(:[], :grade_bands).include? grade %>
+        <% link = {r: 1} %>
+        <% link = params.merge(grade_bands: params[:grade_bands] + [grade]) unless active %>
+        <li class="dropdown-md-item">
+          <%= link_to link, class: "dropdown-md-link #{'active' if active}" do %>
+            <%= grade %>
+            <% if active %>
+              <i class="mi dropdown-md-mi">close</i>
+            <% end %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 </nav>
 <a id="removeAllFilters" href="/store/?remove_all=1" class="btn btn-danger btn-block collapse">Remove All</a>
