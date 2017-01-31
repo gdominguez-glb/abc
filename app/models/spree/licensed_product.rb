@@ -14,8 +14,7 @@ class Spree::LicensedProduct < ActiveRecord::Base
 
   def self.attributes_from_salesforce_object(sfo)
     sfo_data = super(sfo)
-    sfo_data.merge!(fulfillment_at: sfo.InstallDate,
-                    expire_at: sfo.UsageEndDate,
+    sfo_data.merge!(expire_at: sfo.UsageEndDate,
                     quantity: sfo.Quantity)
     sfo_data
   end
