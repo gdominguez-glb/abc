@@ -8,7 +8,7 @@ class ContactForm
 
   attr_accessor :topic, :first_name, :last_name, :email, :phone, :role, :school_district_name, :school_district_type,
     :country, :state, :curriculum, :grade, :school_district_size, :title_1, :returning_customer, :tax_exempt, :tax_exempt_id, :desired_dates,
-    :desired_training_topic, :items_purchased, :description, :school_district, :grade_bands, :training_groups_size, :interested_in_hosting_events,
+    :desired_training_topic, :desired_training_city, :items_purchased, :description, :school_district, :grade_bands, :training_groups_size, :interested_in_hosting_events,
     :related_grade_module_unit_lession
 
   validates_length_of :first_name, :last_name, :phone, maximum: 40
@@ -108,6 +108,7 @@ class ContactForm
       'State' => self.state,
       'Curriculum__c' => self.curriculum,
       'Session_Preference__c' => self.desired_training_topic,
+      'Desired_Training_City__c' => self.desired_training_city,
       'X1st_Date_Preference__c' => (self.desired_dates.blank? ? nil : self.desired_dates),
       'Grade_Training_Request__c' => (self.grade_bands || []).join(';'),
       'Size_of_Training_Groups__c' => self.training_groups_size,

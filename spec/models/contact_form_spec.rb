@@ -66,7 +66,7 @@ RSpec.describe ContactForm do
       allow(contact_form).to receive(:lead_pd_request_record_type_id).and_return('')
       allow(contact_form).to receive(:pd_lead_queue_id).and_return('')
 
-      expect(contact_form.pd_attributes.keys.sort).to eq(["Comments__c", "Country", "Curriculum__c", "Description", "Grade_Training_Request__c", "Interested_in_hosting_an_open_enrollment__c", "OwnerId", "RecordTypeId", "Request_Date__c", "Session_Preference__c", "Size_of_Training_Groups__c", "State", "X1st_Date_Preference__c"])
+      expect(contact_form.pd_attributes.keys.sort).to eq(["Comments__c", "Country", "Curriculum__c", "Description", "Desired_Training_City__c", "Grade_Training_Request__c", "Interested_in_hosting_an_open_enrollment__c", "OwnerId", "RecordTypeId", "Request_Date__c", "Session_Preference__c", "Size_of_Training_Groups__c", "State", "X1st_Date_Preference__c"])
     end
   end
 
