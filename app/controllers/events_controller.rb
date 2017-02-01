@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_filter :set_grade_bands_param, only: [:list]
+  before_filter :set_grade_bands_param, only: [:curriculum, :list]
 
   def index
     @events = RegonlineEvent.displayable.sorted.page(params[:page])
@@ -26,6 +26,7 @@ class EventsController < ApplicationController
     raise ActiveRecord::RecordNotFound.new('events not exist') if @event_page.blank?
     @events        = @event_page.events.displayable.sorted.page(params[:page])
 
+    filter_by_taxon_ids
     filter_by_zipcode
   end
 
