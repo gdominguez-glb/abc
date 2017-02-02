@@ -4,6 +4,7 @@
       <tr>
         <th>Vanity Url</th>
         <th>Redirect Url</th>
+        <th>Category</th>
         <th>Tags</th>
         <th colspan="2"></th>
       </tr>
@@ -14,6 +15,7 @@
         <tr>
           <td><%= vanity_url.url %></td>
           <td><%= vanity_url.redirect_url %></td>
+          <td><%= vanity_url.category %></td>
           <td><%= vanity_url.tag_list.sort.join(', ') %></td>
           <td>
             <%= link_to 'Edit', edit_cms_vanity_url_path(vanity_url) %>
