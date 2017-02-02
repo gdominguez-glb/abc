@@ -24,7 +24,7 @@
           </div>
           <div class="form-group">
             <label>Category</label>
-            <%= f.text_field :category, class: 'form-control' %>
+            <%= f.select :category, Document::UP_VAN, {}, class: 'form-control' %>
           </div>
           <div class="form-group">
             <label>Tags (seperate by comma)</label>

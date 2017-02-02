@@ -4,6 +4,8 @@ RSpec.describe Document, type: :model do
   it { should validate_presence_of(:name) }
   it { should validate_presence_of(:category) }
 
+  it_behaves_like "categorizable"
+
   before(:each) do
     allow_any_instance_of(Paperclip::Attachment).to receive(:save).and_return(true)
   end

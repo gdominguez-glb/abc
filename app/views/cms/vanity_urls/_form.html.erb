@@ -38,6 +38,12 @@
         </div>
         <div class="col-sm-12">
           <div class="form-group">
+            <label>Category</label>
+            <%= f.select :category, VanityUrl::UP_VAN, {}, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="form-group">
             <%= f.label :tags %>
             <%= f.text_field :tag_list, value: @vanity_url.tag_list.join(','), class: 'form-control', placeholder: 'Separate by comma' %>
           </div>

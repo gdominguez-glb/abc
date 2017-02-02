@@ -7,21 +7,27 @@
     </div>
     <%= form_tag cms_vanity_urls_path, method: :get, class: 'form' do %>
       <div class="row">
-        <div class="col-lg-4">
+        <div class="col-lg-3">
           <label>Search By Url</label>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-3">
+          <label>Search By Category</label>
+        </div>
+        <div class="col-lg-3">
           <label>Search By Tag</label>
         </div>
       </div>
       <div class="row">
-        <div class="col-lg-4">
+        <div class="col-lg-3">
           <%= text_field_tag :url_q, params[:url_q], class: 'form-control margin-right--reset margin-bottom--s--sm-min' %>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-3">
+          <%= text_field_tag :category, params[:category], class: 'form-control margin-bottom--s--sm-min' %>
+        </div>
+        <div class="col-lg-3">
           <%= text_field_tag :tag_q, params[:tag_q], class: 'form-control margin-right--reset margin-bottom--s--sm-min' %>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-3">
           <%= submit_tag 'Search', class: 'btn btn-primary btn-block margin-bottom--s--sm-min' %>
         </div>
       </div>
