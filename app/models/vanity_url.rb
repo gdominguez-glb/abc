@@ -1,4 +1,6 @@
 class VanityUrl < ActiveRecord::Base
+  include Categorizable
+
   validates :url, presence: true, uniqueness: true, url: true
   validates :redirect_url, presence: true, url: true
 

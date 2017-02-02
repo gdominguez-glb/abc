@@ -16,7 +16,7 @@ class Document < ActiveRecord::Base
   validates_presence_of :name, :category
   validates_attachment :attachment, presence: true, content_type: { content_type: /\A*\Z/ }
 
-  include Taggable
+  include Categorizable, Taggable
 
   activate_taggble DocumentTag, DocumentTagging
 
