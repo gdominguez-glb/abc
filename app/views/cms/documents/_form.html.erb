@@ -31,9 +31,15 @@
             <%= f.text_field :tag_list, class: 'form-control', value: f.object.tags.map(&:name).join(',') %>
           </div>
           <div class="form-group">
-            <label>File</label>
-            <%= f.file_field :attachment %>
+            <span class="btn btn-default btn-block" onclick="FileEvent.simulateClick('#document_attachment')">Select file</span>
           </div>
+        </div>
+        <div class="col-md-12">
+          <p class="hint">Current file: <span class="document-current-file"><%= @document.attachment.present? ? @document.attachment.original_filename : 'no file chosen' %></span></p>
+        </div>
+        <div class="form-group hide">
+          <label>File</label>
+          <%= f.file_field :attachment, onchange: "FileEvent.fillWithName('.document-current-file', '#document_attachment')" %>
         </div>
       </div>
     </div>
