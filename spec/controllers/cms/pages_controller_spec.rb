@@ -142,10 +142,28 @@ RSpec.describe Cms::PagesController, type: :controller do
     end
   end
 
+  describe "POST 'unarchive'" do
+    it 'unarchive page' do
+      post :unarchive, id: page.id
+      expect(response).to redirect_to(published_cms_pages_path)
+      expect(page.reload.archived?).to eq(false)
+      expect(page.reload.archived_at).to be_nil
+    end
+  end
+
   describe "GET 'preview'" do
     it "preview page" do
       get :preview, id: page.id
       expect(response).to render_template('preview', 'application')
+    end
+  end
+
+  describe "POST 'copy_page'" do
+    context '#copy_page' do
+      it 'should redirect to the new page' do
+        post :copy_page, id: page.id
+        expect(response).to redirect_to(edit_cms_page_path(Page.order(created_at: :desc).first))
+      end
     end
   end
 end
