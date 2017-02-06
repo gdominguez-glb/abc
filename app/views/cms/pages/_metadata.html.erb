@@ -79,7 +79,7 @@
       <div class="col-sm-6">
         <div class="checkbox">
           <%= f.label :show_in_nav do %>
-            <%= f.check_box :show_in_nav %> Show in Nav
+            <%= f.check_box :show_in_nav, {checked: @page.new_record? ? false : @page.show_in_nav} %> Show in Nav
           <% end %>
           <small class="help-block">Checked this will make this page display under top nav.</small>
         </div>
