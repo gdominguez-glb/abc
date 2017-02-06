@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe BlogController, type: :controller do
+  include SearchHelper
+
   let(:global_medium_publication)  { create(:medium_publication, title: 'Eureka Blog', blog_type: 'global', slug: 'global-blog') }
   let(:global_post) { create(:post, medium_publication: global_medium_publication) }
 
@@ -21,11 +23,16 @@ RSpec.describe BlogController, type: :controller do
   end
 
   describe "GET 'global_post'" do
-    it "success" do
+    it "should return success" do
       get :global_post, slug: global_medium_publication.slug, id: global_post.slug
 
       expect(response).to be_success
       expect(assigns(:post)).to eq(global_post)
+    end
+
+    it "should redirect to post with id" do
+      get :global_post, slug: global_medium_publication.slug, id: global_post.id
+      expect(response).to redirect_to(post_link(global_post))
     end
   end
 
@@ -45,6 +52,11 @@ RSpec.describe BlogController, type: :controller do
 
       expect(response).to be_success
       expect(assigns(:post)).to eq(math_post)
+    end
+
+    it "should redirect to post with id" do
+      get :global_post, page_slug: page.slug, slug: math_medium_publication.slug, id: math_post.id
+      expect(response).to redirect_to(post_link(math_post))
     end
   end
 end
