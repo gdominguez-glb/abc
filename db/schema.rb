@@ -413,6 +413,22 @@ ActiveRecord::Schema.define(version: 20170210152853) do
 
   add_index "oauth_applications", ["uid"], name: "index_oauth_applications_on_uid", unique: true, using: :btree
 
+  create_table "opportunities", force: :cascade do |t|
+    t.string   "salesforce_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "opportunity_attachments", force: :cascade do |t|
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
+    t.integer  "opportunity_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
   create_table "pages", force: :cascade do |t|
     t.string   "title"
     t.text     "seo_content"
