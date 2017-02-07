@@ -113,19 +113,7 @@ RSpec.describe Spree::FrontendHelper, type: :helper do
 
     it "return nil for partner product" do
       product = create(:product, product_type: 'partner')
-      expect(helper.product_display_price(product)).to eq(nil)
-    end
-  end
-
-  describe "#empty_or_free" do
-    it 'should return empty if product type is get_in_touch' do
-      product = create(:product, product_type: "get_in_touch", get_in_touch_url: "http://www.fake.com")
-      expect(helper.empty_or_free(product)).to eq('')
-    end
-
-    it 'should return free if product_type is not get in touch' do
-      free_product = create(:product, price: 0)
-      expect(helper.empty_or_free(free_product)).to eq('FREE')
+      expect(helper.product_display_price(product)).to eq('')
     end
   end
 
