@@ -33,6 +33,22 @@ RSpec.describe Spree::FrontendHelper, type: :helper do
     end
   end
 
+  describe "#card_type_class_video" do
+    it 'should return the class video if it has a video_group' do
+      video = create(:spree_video, video_group_name: 'VG 1')
+      expect(helper.card_type_class_video(video)).to eq("card-vg-1")
+    end
+
+    it 'should return the class video if it has a type_taxon_name' do
+      video = create(:spree_video)
+      taxonomy  = create(:taxonomy, name: "Type")
+      taxon = create(:taxon, taxonomy: taxonomy, name: 'Grade')
+      video.taxons << taxon
+      video.save!
+      expect(helper.card_type_class_video(video)).to eq("card-grade")
+    end
+  end
+
   describe "#display_product_price_tag?" do
     it "return false for partner product" do
       product = create(:product, product_type: 'partner')
@@ -73,6 +89,13 @@ RSpec.describe Spree::FrontendHelper, type: :helper do
       helper.extend(Spree::Core::ControllerHelpers::Store)
     end
 
+    context "get in touch" do
+      it 'should return empty if product is get_in_touch' do
+        product = create(:product, product_type: "get_in_touch", get_in_touch_url: "http://www.fake.com")
+        expect(helper.product_display_price(product)).to eq('')
+      end
+    end
+
     context "FREE" do
       it 'return free for free product' do
         free_product = create(:product, price: 0)
@@ -90,7 +113,37 @@ RSpec.describe Spree::FrontendHelper, type: :helper do
 
     it "return nil for partner product" do
       product = create(:product, product_type: 'partner')
-      expect(helper.product_display_price(product)).to eq(nil)
+      expect(helper.product_display_price(product)).to eq('')
+    end
+  end
+
+  describe "#show_store_welcome_message" do
+    it 'should set showed_welcome_message session to 1' do
+      session[:showed_welcome_message] = nil
+      helper.show_store_welcome_message
+      expect(session[:showed_welcome_message]).to eq("1")
+    end
+
+    it 'should render welcome popup' do
+      session[:showed_welcome_message] = nil
+      expect(helper.show_store_welcome_message).to render_template("spree/shared/_welcome_message")
+    end
+
+    it 'should return nothing if showed_welcome_message is eq to 1' do
+      session[:showed_welcome_message] = "1"
+      expect(helper.show_store_welcome_message).to eq("")
+    end
+  end
+
+  describe "#default_school_district_id_value" do
+    it 'should return not listed' do
+      school = create(:school_district)
+      expect(helper.default_school_district_id_value(school, SchoolDistrict.place_types[:school], "default")).to eq("#notListed")
+    end
+
+    it 'should return default value' do
+      school = create(:school_district)
+      expect(helper.default_school_district_id_value(school, "", "default")).to eq("default")
     end
   end
 end

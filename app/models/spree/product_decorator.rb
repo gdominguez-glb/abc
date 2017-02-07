@@ -95,7 +95,7 @@ Spree::Product.class_eval do
   end
 
   def free_group_product?
-    self.group_items.map(&:free?).all?
+    group_product? && self.group_items.map(&:free?).all?
   end
 
   def partner_product?
@@ -108,6 +108,10 @@ Spree::Product.class_eval do
 
   def library_product?
     self.product_type == 'library'
+  end
+
+  def no_price?
+    get_in_touch_product? || group_product? || partner_product?
   end
 
   validates :access_url, format: { with: URI.regexp }, allow_blank: true
