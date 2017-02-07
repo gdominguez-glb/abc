@@ -36,14 +36,10 @@ Spree::FrontendHelper.class_eval do
   end
 
   def product_display_price(product)
-    return empty_or_free(product) if product.get_in_touch_product? || product.group_product? && product.free_group_product?
-    price = display_price(product) unless product.group_product? || product.partner_product?
+    return 'FREE' if product.free_group_product?
+    return '' if product.no_price?
+    price = display_price(product)
     price == "$0.00" ? "FREE" : price
-  end
-
-  def empty_or_free(product)
-    return "" if product.get_in_touch_product?
-    "FREE"
   end
 
   def show_store_welcome_message
