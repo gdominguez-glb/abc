@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
   def show
     @page          = cache [:page_slug, params[:slug]], expires_in: 2.hours do
-      Page.unarchive.find_by(slug: params[:slug])
+      Page.published.unarchive.find_by(slug: params[:slug])
     end
 
     redirect_to not_found_path and return if @page.nil?
