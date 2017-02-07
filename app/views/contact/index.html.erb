@@ -242,33 +242,14 @@
               <%= f.submit 'Submit', class: 'btn btn-success btn-block' %>
             </div>
           </div>
-
         </div>
 
         <div class="col-sm-4 col-lg-3">
-          <div class="margin-bottom--xl margin-left--sm-min--xl">
-            <h6>Great Minds</h6>
-            <ul class="list-style-none">
-              <li>55 M Street SE</li>
-              <li>Suite 340</li>
-              <li>Washington D.C. 20003</li>
-              <li>Phone: 202-223-1854</li>
-              <li>Fax: 202-449-9504</li>
-            </ul>
-          </div>
-          <div class="margin-bottom--xl margin-left--sm-min--xl">
-            <h6>Sales Inquiries</h6>
-            <ul class="list-style-none">
-              <li>Phone: 1-844-853-1010</li>
-              <li>E-mail: sales@greatminds.org</li>
-            </ul>
-          </div>
+          <%= render 'shared/contact_info' %>
         </div>
       </div>
     <% end %>
-
   </div>
-
 </div>
 
 <%= content_for :javascripts do %>
