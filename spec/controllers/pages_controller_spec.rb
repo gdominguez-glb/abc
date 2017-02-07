@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe PagesController, type: :controller do
 
-  let(:page) { create(:page, title: 'ABC', slug: 'abc', layout: nil) }
+  let(:page) { create(:page, title: 'ABC', slug: 'abc', layout: nil, publish_status: :published) }
 
   describe "not exist page" do
     it "redirect to not found" do
