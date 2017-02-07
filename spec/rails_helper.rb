@@ -5,6 +5,7 @@ require File.expand_path('../../config/environment', __FILE__)
 require 'rspec/rails'
 require 'webmock/rspec'
 require 'devise'
+require 'paperclip/matchers'
 
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -43,10 +44,15 @@ RSpec.configure do |config|
     DatabaseCleaner.clean_with(:truncation)
   end
 
+  # Paperclip matchers
+  config.include Paperclip::Shoulda::Matchers
+
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
   config.use_transactional_fixtures = true
+
+  config.include ActionDispatch::TestProcess
 
   # Require all model concerns
   Dir[Rails.root.join("spec/models/concerns/*.rb")].each {|f| require f}
