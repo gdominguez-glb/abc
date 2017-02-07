@@ -7,7 +7,7 @@ class ContactController < ApplicationController
   end
 
   def create
-    @contact_form = ContactForm.new(contact_form_params)
+    @contact_form = ContactForm.new(contact_form_params.merge(referral: session[:utm]))
     if @contact_form.valid?
       @contact_form.perform
       flash[:notice] = "Thanks for reaching out. We will be in touch shortly."

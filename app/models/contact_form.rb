@@ -9,7 +9,7 @@ class ContactForm
   attr_accessor :topic, :first_name, :last_name, :email, :phone, :role, :school_district_name, :school_district_type,
     :country, :state, :curriculum, :grade, :school_district_size, :title_1, :returning_customer, :tax_exempt, :tax_exempt_id, :desired_dates,
     :desired_training_topic, :desired_training_city, :items_purchased, :description, :school_district, :grade_bands, :training_groups_size, :interested_in_hosting_events,
-    :related_grade_module_unit_lession
+    :related_grade_module_unit_lession, :referral
 
   validates_length_of :first_name, :last_name, :phone, maximum: 40
 
@@ -27,6 +27,9 @@ class ContactForm
 
   def create_lead_object
     attrs = lead_common_attributes
+    if $flipper[:lead_campagin_tracking].enabled?
+      attrs.merge!('Lead_Referral__c' => self.referral)
+    end
     if self.topic == 'Sales/Purchasing'
       attrs.merge!(sales_attributes)
     elsif self.topic == 'Professional Development'
