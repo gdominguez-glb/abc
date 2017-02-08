@@ -2,28 +2,32 @@ require 'rails_helper'
 
 RSpec.describe Opportunity, type: :model do
   let(:opportunity){ FactoryGirl.build(:opportunity) }
+  let(:opportunity_with_attachment){ FactoryGirl.build(:opportunity_with_attachment) }
 
-  before(:each){ opportunity.attachments.build(FactoryGirl.attributes_for(:opportunity_attachment)) }
-  before(:each){ allow_any_instance_of(Opportunity).to receive(:salesforce_exists?).and_return(true) }
+  before(:each){ allow_any_instance_of(GmSalesforce::Client).to receive(:find).and_return(true) }
+  before(:each){ allow_any_instance_of(Paperclip::Attachment).to receive(:save).and_return(true) }
 
   it { should validate_presence_of :salesforce_id }
+  it { should have_many :attachments }
 
   describe "#salesforce_exists?" do
-    it 'should mock method and return true' do
-      expect(opportunity.valid?).to be_truthy
+    it 'should not allow invalid object if it doesnt exist in salesforce' do
+      allow_any_instance_of(GmSalesforce::Client).to receive(:find).and_return(false)
+      expect(opportunity_with_attachment.valid?).to be_falsey
+    end
+
+    it 'should allow valid object if it exists in salesforce' do
+      expect(opportunity_with_attachment.valid?).to be_truthy
     end
   end
 
   describe "#has_attachments?" do
-    context "should validate that the opportunity has at least one attachment" do
-      it "#one_attachment" do
-        expect(opportunity.valid?).to be_truthy
-      end
+    it 'should not allow to save if opportunity doesnt have any attachment' do
+      expect(opportunity.valid?).to be_falsey
+    end
 
-      it "#no_attachment" do
-        op = FactoryGirl.build(:opportunity)
-        expect(op.valid?).to be_falsey
-      end
+    it 'should allow to save objet if it has at lest one attachment' do
+      expect(opportunity_with_attachment.valid?).to be_truthy
     end
   end
 end
