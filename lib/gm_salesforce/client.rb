@@ -19,7 +19,7 @@ module GmSalesforce
         security_token: Spree::Config[:salesforce_security_token],
         client_id: Spree::Config[:salesforce_client_id],
         client_secret: Spree::Config[:salesforce_client_secret],
-        api_version: '32.0'
+        api_version: '38.0'
       }
     end
 
@@ -31,6 +31,10 @@ module GmSalesforce
       end
 
       Restforce.new sf_params
+    end
+
+    def column_info(sobject_name, column_name)
+      capture_net_errors { client.describe(sobject_name).fields.find{|field| field.name == column_name || field.label == column_name } }
     end
 
     def self.date_to_salesforce(date)

@@ -8,6 +8,9 @@ class ApplicationController < ActionController::Base
   before_action :accepted_terms
   skip_before_action :accepted_terms, only: [:logout]
 
+
+  before_action :track_campaign_lead
+
   if Rails.env.qa? || Rails.env.staging? || Rails.env.production?
     def default_url_options(options={})
       options.merge({ protocol: "https" })
@@ -99,4 +102,9 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def track_campaign_lead
+    if params[:utm_campaign].present? && params[:utm_content].present?
+      session[:utm] = "#{params[:utm_campaign]},#{params[:utm_content]}"
+    end
+  end
 end

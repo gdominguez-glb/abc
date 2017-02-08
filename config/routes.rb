@@ -139,9 +139,8 @@ Rails.application.routes.draw do
   end
 
   resources :download_jobs, only: [:show]
-
   resources :newsletters, only: [:index, :create]
-
+  resources :opportunities, only: [:index, :create]
   resources :school_districts, only: [:index, :show]
 
   get 'not-found', to: 'pages#not_found', as: :not_found
