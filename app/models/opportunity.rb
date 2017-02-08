@@ -10,7 +10,9 @@ class Opportunity < ActiveRecord::Base
 
   private
   def salesforce_exists?
-    GmSalesforce::Client.instance.find('Opportunity', salesforce_id).present?
+    unless GmSalesforce::Client.instance.find('Opportunity', salesforce_id).present?
+      raise
+    end
   rescue
     errors[:base] << "This opportunity doesn't exist, please provide a valid opportunity ID"
   end

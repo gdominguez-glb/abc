@@ -4,9 +4,7 @@ RSpec.describe OpportunitiesController, type: :controller do
 
   before(:each){ allow_any_instance_of(Opportunity).to receive(:salesforce_exists?).and_return(true) }
   before(:each){ allow_any_instance_of(OpportunityAttachment).to receive(:skip_salesforce_sync?).and_return(true) }
-  before(:each) do
-    allow_any_instance_of(Paperclip::Attachment).to receive(:save).and_return(true)
-  end
+  before(:each){ allow_any_instance_of(Paperclip::Attachment).to receive(:save).and_return(true) }
 
   let(:valid_attributes) { { salesforce_id: "012238fkaj2", attachments_attributes: [{file: Rack::Test::UploadedFile.new("#{Rails.root}/spec/support/fixtures/image.png", 'image/png')}] } }
   let(:invalid_attributes) { { salesforce_id: "" } }
