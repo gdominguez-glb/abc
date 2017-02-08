@@ -49,7 +49,7 @@ describe GmSalesforce do
     let(:sobject_cols) { %w(Id Name BillingState BillingCountry).join(',') }
     let(:sf_response) { sf_fixture('sf_account_find_all_response') }
     let(:sf_sobject_column_data) do
-      sf_fixture('sf_account_find_all_column_data')
+      sf_fixture('sf_account_find_all_column_data').strip
     end
 
     before do
