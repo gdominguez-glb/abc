@@ -56,3 +56,70 @@ a.list-group-item {
     letter-spacing: normal;
   }
 }
+
+// -------------------------------------
+//   Event List Groups
+//
+//   Styleguide 14.2
+// -------------------------------------
+
+.list-group-event {
+  @extend .sans-serif;
+
+  .list-group-event-title {
+    border-bottom: 1px solid $c-positive-highlight;
+    text-align: center;
+    text-transform: capitalize;
+    color: $c-absolute;
+    background-color: $c-positive-secondary;
+    border-radius: 4px;
+  }
+
+  .list-group-event-details {
+    margin-bottom: $b-space;
+    text-align: center;
+
+    @media screen and (min-width: $screen-sm-min) {
+      margin-bottom: 0;
+    }
+  }
+
+  .list-group-event-date {
+    font-size: 1.5em;
+    line-height: 1em;
+    font-weight: bold;
+  }
+
+  .list-group-event-meta {
+    font-size: .8em;
+  }
+
+  .list-group-event-meta-title {
+    display: block;
+    font-weight: bold;
+  }
+
+  .list-group-event-meta-link {
+    font-weight: normal;
+    text-transform: capitalize;
+  }
+}
+
+// -------------------------------------
+//   Contextual Classes
+// -------------------------------------
+
+.list-group-item-success {
+  border: 1px solid $c-balanced-subdue;
+  color: $c-balanced-subdue;
+  background-color: $c-balanced;
+
+  &.list-group-item-link {
+    color: $c-balanced-subdue;
+
+    &:hover {
+      color: $c-balanced-subdue;
+      background-color: $c-balanced-highlight;
+    }
+  }
+}
