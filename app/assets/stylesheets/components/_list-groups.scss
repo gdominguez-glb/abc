@@ -75,6 +75,13 @@ a.list-group-item {
     border-radius: 4px;
   }
 
+  .list-group-event-title-link {
+    &:hover {
+      text-decoration: none;
+      color: $c-absolute;
+    }
+  }
+
   .list-group-event-details {
     margin-bottom: $b-space;
     text-align: center;
@@ -84,8 +91,12 @@ a.list-group-item {
     }
   }
 
+  .list-group-event-details-item {
+    border: 1px solid $c-positive-secondary;
+  }
+
   .list-group-event-date {
-    font-size: 1.5em;
+    font-size: 1.3em;
     line-height: 1em;
     font-weight: bold;
   }
@@ -120,6 +131,21 @@ a.list-group-item {
     &:hover {
       color: $c-balanced-subdue;
       background-color: $c-balanced-highlight;
+    }
+  }
+}
+
+.list-group-item-info {
+  border: 1px solid $c-positive-secondary;
+  color: $c-positive-secondary;
+  background-color: $c-positive-primary;
+
+  &.list-group-item-link {
+    color: $c-positive-secondary;
+
+    &:hover {
+      color: $c-positive-secondary;
+      background-color: darken($c-positive-primary, 10%);
     }
   }
 }

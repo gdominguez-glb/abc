@@ -1,42 +1,48 @@
-<div class="list-group-item">
-  <h4 class="margin-bottom--reset">
-    <%= link_to event.title.html_safe, "http://regonline.com/#{event.regonline_id}", target: '_blank' %>
+<div class="list-group-item list-group-event-item">
+  <h4 class="list-group-event-title">
+    <%= link_to event.title.html_safe, "http://regonline.com/#{event.regonline_id}", target: '_blank', class: 'list-group-event-title-link' %>
   </h4>
 
   <div class="row">
 
     <% if event.start_date.present? %>
-      <div class="col-md-6">
-        <small class="block margin-bottom">
+      <div class="col-sm-3">
+        <div class="list-group list-group-event-details">
           <% if event.start_date.present? && event.end_date.present? %>
-            <%= date_range(event.start_date, event.end_date, format: :short) %><br />
+            <div class="list-group-item list-group-event-details-item">
+              <div class="list-group-event-date">
+                <%= date_range(event.start_date, event.end_date, format: :short) %><br />
+              </div>
+            </div>
           <% end %>
-        </small>
-
-        <% if event.download_url.present? %>
-          <small class="block"><%= link_to "Event Details", event.download_url, class: 'btn btn-info margin-bottom', target: '_blank' %></small>
-        <% end %>
+          <% if event.download_url.present? %>
+            <%= link_to event.download_url, class: 'list-group-item list-group-item-link list-group-item-info', target: '_blank' do %>
+              Event Details <i class="mi md-18">open_in_new</i>
+            <% end %>
+          <% end %>
+        </div>
       </div>
     <% end %>
 
-    <div class="col-md-6">
+    <div class="col-sm-9">
       <% if event.grade_bands.present? %>
-        <small class="block margin-bottom">Grade Bands:<br />
-          <strong class="sans-serif"><%= event.grade_bands %></strong>
-        </small>
+        <div class="list-group-event-meta">
+          <span class="list-group-event-meta-title">Grade Bands:</span><%= event.grade_bands %>
+        </div>
       <% end %>
 
       <% if event.session_types.present? %>
-        <small class="block margin-bottom">Session types:<br />
+        <div class="list-group-event-meta">
+          <span class="list-group-event-meta-title">Session types:</span>
           <% event.event_trainings.each_with_index do |event_training, index| %>
             <% next if event_training.training_type_category.nil? %>
             <% if event_training.training_type_category.is_default? %>
-              <%= link_to event_training.title, events_trainings_path(anchor: "event-#{event_training.title_to_slug}", category: event_training.category) %><br />
+              <%= link_to event_training.title, events_trainings_path(anchor: "event-#{event_training.title_to_slug}", category: event_training.category) %>,
             <% else %>
-              <%= link_to event_training.title, parent_events_trainings_path(parent_slug: event_training.training_type_category.slug, anchor: "event-#{event_training.title_to_slug}", category: event_training.category) %><br />
+              <%= link_to event_training.title, parent_events_trainings_path(parent_slug: event_training.training_type_category.slug, anchor: "event-#{event_training.title_to_slug}", category: event_training.category) %>,
             <% end %>
           <% end %>
-        </small>
+        </div>
       <% end %>
     </div>
   </div>
