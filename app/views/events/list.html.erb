@@ -1,13 +1,13 @@
 <div class="row">
-  <div class="col-sm-4 col-md-3 margin-top--xxl margin-bottom--xl">
-    <%= render partial: 'events/taxonomies' %>
-  </div>
-  <div class="col-sm-8 col-md-9 margin-top--xxl margin-bottom--xl">
+  <div class="col-sm-10 col-sm-offset-1 margin-top--xxl margin-bottom--xl">
     <div class="events-page">
       <div class="row margin-bottom">
         <div class="col-sm-12">
           <h2 class="text-center"><%= @event_page.title.present? ? @event_page.title : 'Upcoming training' %></h2>
           <p><%= @event_page.description.html_safe rescue '' %></p>
+        </div>
+        <div class="col-sm-6 col-sm-offset-6 col-md-3 col-md-offset-9">
+          <%= render partial: 'events/taxonomies' %>
         </div>
       </div>
       <%= render 'events_list' %>
