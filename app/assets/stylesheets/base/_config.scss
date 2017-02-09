@@ -62,6 +62,8 @@ $c-positive-highlight:            $snow;
 $c-positive-subdue:               lighten($navy, 15%);
 
 $c-balanced:                      $lime;
+$c-balanced-highlight:            lighten($lime, 15%);
+$c-balanced-subdue:               darken($lime, 55%);
 
 $c-energized-primary:             $tangerine;
 $c-energized-secondary:           $coral;
