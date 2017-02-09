@@ -77,8 +77,8 @@ a.list-group-item {
 
   .list-group-event-title-link {
     &:hover {
-      color: $c-absolute;
       text-decoration: none;
+      color: $c-absolute;
     }
   }
 
