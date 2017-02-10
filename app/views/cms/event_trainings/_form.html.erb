@@ -12,6 +12,14 @@
   <% end %>
 
   <div class="row">
+    <div class="col-sm-12">
+      <div class="form-group">
+        <%= f.label "Sub header" %>
+        <%= f.select :event_training_header_id, options_for_select(@training_type_category.event_training_headers.collect{|h| [h.name, h.id]}), { prompt: 'Select Header' }, class: 'form-control' %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
     <div class="col-sm-6">
       <div class="form-group">
         <%= f.label :title %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170202194629) do
+ActiveRecord::Schema.define(version: 20170210152853) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -192,6 +192,16 @@ ActiveRecord::Schema.define(version: 20170202194629) do
     t.datetime "archived_at"
   end
 
+  create_table "event_training_headers", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "position",                  default: 0
+    t.integer  "training_type_category_id"
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+  end
+
+  add_index "event_training_headers", ["training_type_category_id"], name: "index_event_training_headers_on_training_type_category_id", using: :btree
+
   create_table "event_trainings", force: :cascade do |t|
     t.string   "title"
     t.text     "content"
@@ -201,6 +211,7 @@ ActiveRecord::Schema.define(version: 20170202194629) do
     t.integer  "position",                  default: 0
     t.string   "category"
     t.integer  "training_type_category_id"
+    t.integer  "event_training_header_id"
   end
 
   create_table "famis_products", force: :cascade do |t|
@@ -1794,8 +1805,8 @@ ActiveRecord::Schema.define(version: 20170202194629) do
     t.boolean  "tour_showed_licenses",                   default: false
     t.boolean  "tour_showed_licenses_users",             default: false
     t.boolean  "accepted_terms",                         default: false
-    t.string   "zip_code"
     t.text     "grades"
+    t.string   "zip_code"
     t.string   "city",                                   default: ""
     t.string   "state",                                  default: ""
   end

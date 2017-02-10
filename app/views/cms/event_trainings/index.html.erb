@@ -4,6 +4,7 @@
 <div class="col-md-9">
   <h2>Training Session Types</h2>
   <%= link_to 'New training session type', new_cms_training_type_category_event_training_path(@training_type_category), class: 'btn btn-primary margin-bottom--xl' %>
+  <%= link_to 'Manage sub headers', cms_training_type_category_event_training_headers_path(@training_type_category), class: 'btn btn-primary margin-bottom--xl' %>
   <div class="table-responsive">
     <table class="table table-hover event-trainings-list">
       <thead>
@@ -17,15 +18,22 @@
       </thead>
 
       <tbody>
-        <% @event_trainings.each do |event_training| %>
-          <tr data-id="<%= event_training.id %>">
-            <td><%= event_training.title %></td>
-            <td><%= event_training.position %></td>
-            <td><%= event_training.category %></td>
-            <td><%= event_training.training_type %></td>
-            <td><%= link_to 'Edit', edit_cms_training_type_category_event_training_path(@training_type_category, event_training) %></td>
-            <td><%= link_to 'Destroy', [:cms, @training_type_category, event_training], method: :delete, data: { confirm: 'Are you sure?' }, class: 'text--danger' %></td>
-          </tr>
+        <% @event_trainings.each do |event_training_header| %>
+          <% if event_training_header.event_trainings.count > 0 %>
+            <tr>
+              <th colspan="6"><strong><%= event_training_header.name ||= "No header" %></strong></th>
+            </tr>
+          <% end %>
+          <% event_training_header.event_trainings.each do |event_training| %>
+            <tr data-id="<%= event_training.id %>">
+              <td><%= event_training.title %></td>
+              <td><%= event_training.position %></td>
+              <td><%= event_training.category %></td>
+              <td><%= event_training.training_type %></td>
+              <td><%= link_to 'Edit', edit_cms_training_type_category_event_training_path(@training_type_category, event_training) %></td>
+              <td><%= link_to 'Destroy', [:cms, @training_type_category, event_training], method: :delete, data: { confirm: 'Are you sure?' }, class: 'text--danger' %></td>
+            </tr>
+          <% end %>
         <% end %>
       </tbody>
     </table>
