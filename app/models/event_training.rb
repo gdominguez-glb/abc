@@ -2,6 +2,7 @@ class EventTraining < ActiveRecord::Base
   validates_presence_of :title, :content
 
   belongs_to :training_type_category
+  belongs_to :event_training_header
 
   CATEGORIES = ['english', 'math']
 
