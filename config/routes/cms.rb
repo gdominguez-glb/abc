@@ -89,6 +89,7 @@ namespace :cms do
   end
   resources :curriculums
   resources :training_type_categories do
+    resources :event_training_headers
     resources :event_trainings do
       collection do
         post :update_positions
