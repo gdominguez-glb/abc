@@ -21,7 +21,7 @@ RSpec.describe Opportunity, type: :model do
     end
   end
 
-  describe "#has_attachments?" do
+  describe "#validate_attachment" do
     it 'should not allow to save if opportunity doesnt have any attachment' do
       expect(opportunity.valid?).to be_falsey
     end
