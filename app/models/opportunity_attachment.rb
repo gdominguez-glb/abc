@@ -11,6 +11,8 @@ class OpportunityAttachment < ActiveRecord::Base
   do_not_validate_attachment_file_type :file
   validates_attachment_presence :file
 
+  attr_accessor :category
+
   def self.sobject_name
     'Attachment'
   end

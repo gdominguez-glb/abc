@@ -21,6 +21,6 @@ class OpportunitiesController < ApplicationController
   private
 
   def opportunity_params
-    params.require(:opportunity).permit(:salesforce_id, attachments_attributes: [:file])
+    params.require(:opportunity).permit(:salesforce_id, :skip_tax_exemption, attachments_attributes: [:file, :category])
   end
 end
