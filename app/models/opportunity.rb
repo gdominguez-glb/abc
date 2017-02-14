@@ -4,9 +4,10 @@ class Opportunity < ActiveRecord::Base
 
   validates :salesforce_id, presence: true
   validate :salesforce_exists?
-  validate :has_attachments?
+  validate :validate_attachments?
 
-  accepts_nested_attributes_for :attachments
+  accepts_nested_attributes_for :attachments, reject_if: proc { |a| a['file'].blank? }
+  attr_accessor :skip_tax_exemption
 
   private
   def salesforce_exists?
@@ -17,8 +18,17 @@ class Opportunity < ActiveRecord::Base
     errors[:base] << "This opportunity doesn't exist, please provide a valid opportunity ID"
   end
 
-  def has_attachments?
-    errors[:base] << "You need to attach at least one file" if self.attachments.blank?
+  def validate_attachments?
+    if self.try(:skip_tax_exemption) == "1"
+      has_purchase = false
+      self.attachments.each do |a|
+        has_purchase = true if a.category == "purchase"
+      end
+
+      return errors[:base] << "You need to provide purchase order file" unless has_purchase
+    else
+      return errors[:base] << "You need to attach both files" if self.attachments.to_a.size < 2
+    end
   end
 
 end
