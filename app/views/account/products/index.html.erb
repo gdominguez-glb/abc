@@ -116,7 +116,7 @@
       $('#show-tour-btn').removeClass('hide');
 
       <% if $flipper[:expanding_user_profiles].enabled? %>
-        <% if !current_spree_user.filled_custom_fields? %>
+        <% if !current_spree_user.filled_custom_fields? && session.try(:[], :visited_times) <= 1%>
           $.get('/account/additional_information/edit');
         <% end %>
       <% end %>
