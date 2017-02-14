@@ -31,7 +31,7 @@ Spree::User.class_eval do
 
   def filled_custom_fields?
     init_custom_fields
-    self.custom_field_values.map(&:persisted?).all?
+    self.custom_field_values.map(&:persisted?).all? && self.custom_field_values.map(&:value).all?{|c| c.present?}
   end
 
   def school_district_required?
