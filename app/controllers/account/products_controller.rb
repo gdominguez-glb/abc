@@ -3,6 +3,7 @@ class Account::ProductsController < Account::BaseController
   include ProductRedirectable
   before_action :set_product, only: [:launch]
   before_action :set_curriculum, only: [:index]
+  before_action :set_visited_times, only: [:index]
 
   def index
     @nav_name = 'My Resources'
@@ -80,5 +81,10 @@ class Account::ProductsController < Account::BaseController
 
   def filter_by_curriculum(products, curriculum)
     products = products.where(curriculum_id: curriculum.id)
+  end
+
+  def set_visited_times
+    session[:visited_times] ||= 0
+    session[:visited_times] += 1
   end
 end
