@@ -27,6 +27,10 @@
     text-align: left;
   }
 
+  // -------------------------------------
+  //   Video Modal
+  // -------------------------------------
+
   &.video-play-modal {
     .modal-dialog {
       @include translate(-50%, -200%);
@@ -136,6 +140,66 @@
     max-width: 200px;
     margin: 0 0 20px 20px;
   }
+}
+
+// -------------------------------------
+//   Jumbotron Modal
+//
+//   Styleguide 17.1
+// -------------------------------------
+
+.modal-jumbotron-dialog {
+  @media screen and (min-width: $screen-sm-min) {
+    width: 500px;
+  }
+}
+
+.modal-jumbotron-content {
+  @include box-shadow(0 5px 15px rgba(0, 0, 0, .2));
+
+  border: 0;
+}
+
+.modal-jumbotron-header {
+  min-height: 100px;
+  margin-bottom: 30px;
+  padding: 50px $b-space-m 0;
+  color: $c-absolute;
+  background-color: $c-positive-secondary;
+  background-repeat: no-repeat;
+  background-position: 0 20%;
+  background-size: cover;
+
+  @media screen and (min-width: $screen-sm-min) {
+    padding: 50px 50px 0;
+  }
+
+  .close {
+    top: $b-space;
+    right: $b-space-m;
+    font-size: $b-space-l;
+    font-weight: normal;
+    color: $c-absolute;
+    opacity: 1;
+
+    &:hover {
+      opacity: .75;
+    }
+  }
+}
+
+.modal-jumbotron-title {
+  margin-bottom: $b-space;
+}
+
+.modal-jumbotron-body {
+  padding-top: 0;
+}
+
+.modal-jumbotron-footer {
+  padding: 0 $b-space-m 30px;
+  border-top: 0;
+  text-align: center;
 }
 
 // -------------------------------------
