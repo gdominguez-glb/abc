@@ -89,6 +89,16 @@
 
 <%= content_for :javascripts do %>
   <%= javascript_tag do %>
+    function checkDashboard() {
+    <% if !current_spree_user.tour_showed_dashboard? %>
+      getDashboardTour();
+    <% end %>
+    }
+
+    function getDashboardTour() {
+      $.get('/account/tour/dashboard');
+    }
+
     $(function(){
       var url = "/account/save_grade_option";
       $("#grade_option").change(function(e){
@@ -99,11 +109,7 @@
         });
       });
 
-      function getDashboardTour() {
-        $.get('/account/tour/dashboard');
-      }
-
-      <% unless current_spree_user.tour_showed_dashboard? %>
+      <% if !current_spree_user.tour_showed_dashboard? && !($flipper[:expanding_user_profiles].enabled? && !current_spree_user.filled_custom_fields? && session.try(:[], :visited_times) <= 1) %>
         getDashboardTour();
       <% end %>
 

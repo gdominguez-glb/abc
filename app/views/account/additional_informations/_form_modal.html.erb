@@ -2,7 +2,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" onclick="checkDashboard()">&times;</span></button>
         <h4 class="modal-title">Additional Information Requests</h4>
       </div>
       <%= form_for @user, as: :spree_user, url: account_additional_information_path, method: :put, remote: true, authenticity_token: true do |f| %>
