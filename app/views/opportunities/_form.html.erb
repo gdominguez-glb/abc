@@ -16,6 +16,10 @@
       <label for="">Opportunity ID</label>
       <%= f.text_field :salesforce_id, class: 'form-control', placeholder: "Opportunity ID" %>
     </div>
+    <div class="form-group col-sm-12">
+      <label for="">PO Number</label>
+      <%= f.text_field :po_number, class: 'form-control', placeholder: "PO Number" %>
+    </div>
     <div class="form-group col-sm-6" id="label-0">
       <span class="btn btn-default btn-block" onclick="FileEvent.simulateClick('#opportunity_attachment_0')">Purchase order</span>
       <p class="hint">Current file: <span class="opportunity-attachment-0">no file chosen</span></p>
