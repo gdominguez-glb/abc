@@ -5,6 +5,7 @@ RSpec.describe Opportunity, type: :model do
   let(:opportunity_with_attachment){ FactoryGirl.build(:opportunity_with_attachment) }
 
   before(:each){ allow_any_instance_of(GmSalesforce::Client).to receive(:find).and_return(true) }
+  before(:each){ allow_any_instance_of(GmSalesforce::Client).to receive(:update).and_return(true) }
   before(:each){ allow_any_instance_of(Paperclip::Attachment).to receive(:save).and_return(true) }
 
   it { should validate_presence_of :salesforce_id }
