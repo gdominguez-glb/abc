@@ -8,6 +8,7 @@ RSpec.describe OpportunityAttachment, type: :model do
 
   before(:each){ allow_any_instance_of(OpportunityAttachment).to receive(:skip_salesforce_sync?).and_return(true) }
   before(:each){ allow_any_instance_of(GmSalesforce::Client).to receive(:find).and_return(true) }
+  before(:each){ allow_any_instance_of(GmSalesforce::Client).to receive(:update).and_return(true) }
   before(:each){ allow_any_instance_of(Paperclip::Attachment).to receive(:save).and_return(true) }
   before(:each){ allow_any_instance_of(Kernel).to receive(:open).and_return("http://falsy") }
 
