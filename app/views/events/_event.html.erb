@@ -28,11 +28,12 @@
 
       <% if event.session_types.present? %>
         <small class="block margin-bottom">Session types:<br />
-          <% event.event_trainings.each_with_index do |event_traning, index| %>
-            <% if event_traning.training_type_category.is_default? %>
-              <%= link_to event_traning.title, events_trainings_path(anchor: "event-#{event_traning.title_to_slug}", category: event_traning.category) %><br />
+          <% event.event_trainings.each_with_index do |event_training, index| %>
+            <% next if event_training.training_type_category.nil? %>
+            <% if event_training.training_type_category.is_default? %>
+              <%= link_to event_training.title, events_trainings_path(anchor: "event-#{event_training.title_to_slug}", category: event_training.category) %><br />
             <% else %>
-              <%= link_to event_traning.title, parent_events_trainings_path(parent_slug: event_training.training_type_category.slug, anchor: "event-#{event_training.title_to_slug}", category: event_training.category) %><br />
+              <%= link_to event_training.title, parent_events_trainings_path(parent_slug: event_training.training_type_category.slug, anchor: "event-#{event_training.title_to_slug}", category: event_training.category) %><br />
             <% end %>
           <% end %>
         </small>

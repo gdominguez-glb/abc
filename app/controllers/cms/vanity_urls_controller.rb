@@ -10,6 +10,9 @@ class Cms::VanityUrlsController < Cms::BaseController
     if params[:tag_q].present?
       @vanity_urls = @vanity_urls.tagged_with(params[:tag_q])
     end
+    if params[:category].present?
+      @vanity_urls = @vanity_urls.where("category ilike ?", "%#{params[:category]}%")
+    end
   end
 
   def new
@@ -47,7 +50,7 @@ class Cms::VanityUrlsController < Cms::BaseController
   private
 
   def vanity_url_params
-    params.require(:vanity_url).permit(:url, :redirect_url, :tag_list, :base_domain, :url_path)
+    params.require(:vanity_url).permit(:url, :redirect_url, :tag_list, :base_domain, :url_path, :category)
   end
 
 end

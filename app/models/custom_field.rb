@@ -12,10 +12,10 @@ class CustomField < ActiveRecord::Base
   after_initialize :set_subjects_and_user_titles
   before_save :handle_subjects_and_user_titles
 
-  has_many :custom_field_options
+  has_many :custom_field_options, dependent: :destroy
   accepts_nested_attributes_for :custom_field_options, allow_destroy: true, reject_if: proc { |attributes| attributes['label'].blank? }
 
-  has_many :custom_field_values
+  has_many :custom_field_values, dependent: :destroy
 
   scope :effective, -> { where('effect_at < :now and :now < expire_at', now: Time.now) }
 

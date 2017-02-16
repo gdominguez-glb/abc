@@ -1,4 +1,6 @@
 class EventsController < ApplicationController
+  before_filter :set_grade_bands_param, only: [:curriculum, :list]
+
   def index
     @events = RegonlineEvent.displayable.sorted.page(params[:page])
     filter_by_zipcode
@@ -24,6 +26,7 @@ class EventsController < ApplicationController
     raise ActiveRecord::RecordNotFound.new('events not exist') if @event_page.blank?
     @events        = @event_page.events.displayable.sorted.page(params[:page])
 
+    filter_by_taxon_ids
     filter_by_zipcode
   end
 
@@ -32,26 +35,27 @@ class EventsController < ApplicationController
     raise ActiveRecord::RecordNotFound.new('events not exist') if @event_page.blank?
     @events     = @event_page.events.displayable.sorted.page(params[:page])
 
+    filter_by_taxon_ids
     filter_by_zipcode
   end
 
   def trainings
     @training_type_category = TrainingTypeCategory.default_category
-    @event_trainings = @training_type_category.event_trainings.order(:position)
+    @event_trainings = @training_type_category.event_training_by_header
     @event_trainings = filter_by_category(@event_trainings)
   end
 
   def trainings_by_parent
     @training_type_category = TrainingTypeCategory.find_by(slug: params[:parent_slug])
     raise ActiveRecord::RecordNotFound.new('event training category not exist') if @training_type_category.blank?
-    @event_trainings = @training_type_category.event_trainings.order(:position)
+    @event_trainings = @training_type_category.event_training_by_header
     @event_trainings = filter_by_category(@event_trainings)
     render template: 'events/trainings'
   end
 
   def trainings_by_category
     @training_type_category = TrainingTypeCategory.default_category
-    @event_trainings = @training_type_category.event_trainings.by_category(params[:category]).order(:position)
+    @event_trainings = @training_type_category.event_training_by_header
     @event_trainings = filter_by_category(@event_trainings)
     render template: 'events/trainings'
   end
@@ -66,8 +70,29 @@ class EventsController < ApplicationController
 
   def filter_by_category(event_trainings)
     if params[:category].present?
-      event_trainings = event_trainings.by_category(params[:category])
+      event_trainings.each do |eth|
+        copy = []
+        eth.event_trainings.each do |et|
+          copy.push(et) if et.category == params[:category]
+        end
+        eth.event_trainings = copy
+      end
     end
     event_trainings
+  end
+
+  def set_grade_bands_param
+    params[:grade_bands] ||= []
+  end
+
+  def filter_by_taxon_ids
+    return if params[:grade_bands].nil?
+
+    filters_conds = []
+    params[:grade_bands].each do |name|
+      filters_conds << "(grade_bands  LIKE '%#{name}%')"
+    end
+
+    @events = @events.where(filters_conds.join(" OR "))
   end
 end

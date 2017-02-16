@@ -2,8 +2,10 @@ class Cms::EventTrainingsController < Cms::BaseController
   before_action :set_training_type_category
   before_action :set_event_training, only: [:show, :edit, :update, :destroy]
 
+  include EventTraininable
+
   def index
-    @event_trainings = @training_type_category.event_trainings.order(:position)
+    @event_trainings = @training_type_category.event_training_by_header
   end
 
   def new
@@ -12,19 +14,11 @@ class Cms::EventTrainingsController < Cms::BaseController
 
   def create
     @event_training = EventTraining.new(event_training_params.merge(training_type_category_id: @training_type_category.id))
-    if @event_training.save
-      redirect_to cms_training_type_category_event_trainings_path(@training_type_category), notice: 'Event training created successfully'
-    else
-      render :new
-    end
+    process_create(@event_training, cms_training_type_category_event_trainings_path(@training_type_category))
   end
 
   def update
-    if @event_training.update(event_training_params)
-      redirect_to cms_training_type_category_event_trainings_path(@training_type_category), notice: 'Update event training successfully'
-    else
-      render :edit
-    end
+    process_update(@event_training, cms_training_type_category_event_trainings_path(@training_type_category), event_training_params)
   end
 
   def destroy
@@ -40,7 +34,7 @@ class Cms::EventTrainingsController < Cms::BaseController
   private
 
   def event_training_params
-    params.require(:event_training).permit(:title, :content, :training_type, :position, :category)
+    params.require(:event_training).permit(:title, :content, :training_type, :position, :category, :event_training_header_id)
   end
 
   def set_training_type_category

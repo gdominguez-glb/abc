@@ -5,7 +5,7 @@ shared_context 'mock_salesforce' do
   end
   let(:base_sf_url) { 'https://test.salesforce.com/services' }
   let(:sf_accept_encoding) { 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3' }
-  let(:sf_api_version) { '32.0' }
+  let(:sf_api_version) { '38.0' }
 
   let(:salesforce_client_id) { 'client_id' }
   let(:salesforce_client_secret) { 'client_secret' }

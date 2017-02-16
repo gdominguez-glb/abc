@@ -13,6 +13,13 @@
   &.open {
     z-index: 1001;
   }
+
+  .custom-activated {
+    display: block;
+    position: relative;
+    top: -57px !important;
+    margin-bottom: -42px !important;
+  }
 }
 
 .dropdown-md-btn.dropdown-md-btn.dropdown-md-btn,
