@@ -1,4 +1,5 @@
 class Account::SettingsController < Account::BaseController
+  include CustomFieldValuesUpdatable
   include SchoolDistrictParamProcessor
 
   def index
@@ -17,6 +18,7 @@ class Account::SettingsController < Account::BaseController
       render :index and return
     end
     if spree_current_user.update(user_params)
+      update_custom_field_values(spree_current_user) if $flipper[:expanding_user_profiles].enabled?
       sign_in(:spree_user, spree_current_user, bypass: true)
       redirect_to '/account/settings', notice: "Saved profile successfully"
     else
@@ -68,9 +70,7 @@ class Account::SettingsController < Account::BaseController
       :zip_code,
       school_district_attributes: [:name, :country_id, :state_id, :city, :place_type],
       interested_subjects: []
-    ).tap do |whitelisted|
-      whitelisted[:custom_field_values_attributes] = params[:spree_user][:custom_field_values_attributes] if $flipper[:expanding_user_profiles].enabled?
-    end
+    )
     process_school_district_param(_params)
     _params
   end
