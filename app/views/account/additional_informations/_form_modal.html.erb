@@ -3,7 +3,7 @@
     <div class="modal-content modal-jumbotron-content">
       <div class="modal-header modal-jumbotron-header" style="background-image: url('https://s3.greatminds.org/documents/attachments/000/000/291/small/classroom_view_copy1.jpg?1470061231')">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title modal-jumbotron-title">Additional Information Request</h4>
+        <h4 class="modal-title modal-jumbotron-title">Complete your profile<br />in order for us <br />to better meet your needs</h4>
       </div>
       <%= form_for @user, as: :spree_user, url: account_additional_information_path, method: :put, remote: true, authenticity_token: true do |f| %>
         <%= f.collection_select :interested_subjects, Curriculum.visibles, :id, :name, { include_hidden: false, multiple: true }, { class: 'form-control hide', tabindex: 7, multiple: 'multiple' } %>
