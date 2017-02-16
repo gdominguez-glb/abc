@@ -148,6 +148,14 @@
 //   Styleguide 17.1
 // -------------------------------------
 
+.modal-jumbotron {
+  @media screen and (min-width: $screen-sm-min) {
+    @include display-flex('important');
+    @include flex-direction(column);
+    @include justify-content(center);
+  }
+}
+
 .modal-jumbotron-dialog {
   @media screen and (min-width: $screen-sm-min) {
     width: 500px;
