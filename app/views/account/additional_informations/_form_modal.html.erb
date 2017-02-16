@@ -1,17 +1,17 @@
-<div class="modal fade" tabindex="-1" role="dialog" id="edit-additional-info-modal">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
+<div class="modal modal-jumbotron fade" tabindex="-1" role="dialog" id="edit-additional-info-modal">
+  <div class="modal-dialog modal-jumbotron-dialog" role="document">
+    <div class="modal-content modal-jumbotron-content">
+      <div class="modal-header modal-jumbotron-header" style="background-image: url('https://s3.greatminds.org/documents/attachments/000/000/291/small/classroom_view_copy1.jpg?1470061231')">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" onclick="checkDashboard()">&times;</span></button>
-        <h4 class="modal-title">Additional Information Requests</h4>
+        <h4 class="modal-title modal-jumbotron-title">Additional Information Request</h4>
       </div>
       <%= form_for @user, as: :spree_user, url: account_additional_information_path, method: :put, remote: true, authenticity_token: true do |f| %>
         <%= f.collection_select :interested_subjects, Curriculum.visibles, :id, :name, { include_hidden: false, multiple: true }, { class: 'form-control hide', tabindex: 7, multiple: 'multiple' } %>
         <%= f.select :title, options_for_select(USER_TITLES, f.object.title), { prompt: 'Please select your role' }, { class: 'form-control hide', tabindex: 9 } %>
-        <div class="modal-body">
+        <div class="modal-body modal-jumbotron-body">
           <%= render partial: 'spree/shared/custom_field_values_form', locals: { f: f } %>
         </div>
-        <div class="modal-footer">
+        <div class="modal-footer modal-jumbotron-footer">
           <%= f.submit 'Submit', class: 'btn btn-primary', data: { disable_with: 'Submitting...' } %>
         </div>
       <% end %>
