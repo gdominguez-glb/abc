@@ -79,7 +79,7 @@ select {
   }
 
   &.success {
-    border: 1px solid darken($c-balanced-primary, 25%);
+    border: 1px solid $c-balanced-secondary;
     color: $c-positive-secondary;
     background-color: $c-balanced-primary !important;
   }
