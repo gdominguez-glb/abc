@@ -176,7 +176,7 @@ section {
 
     &.image-bg {
       .video-title {
-        color: $c-balanced;
+        color: $c-balanced-primary;
       }
     }
 
@@ -301,7 +301,7 @@ section {
 
 .green-bg {
   color: $c-positive-secondary;
-  background: $c-balanced;
+  background: $c-balanced-primary;
 
   &.image-bg {
     color: $c-absolute;

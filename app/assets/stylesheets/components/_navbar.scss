@@ -87,7 +87,7 @@
     }
 
     [data-page='math'] & {
-      background-color: $c-balanced;
+      background-color: $c-balanced-primary;
 
       @media screen and (min-width: $screen-sm-min) {
         background-color: transparent;
@@ -122,7 +122,7 @@
 
           @media screen and (min-width: $screen-sm-min) {
             border: 0;
-            color: $c-balanced;
+            color: $c-balanced-primary;
             background: transparent;
           }
 
@@ -145,11 +145,11 @@
           }
 
           [data-page='math'] & {
-            border-bottom: 1px solid darken($c-balanced, 25%);
-            background-color: darken($c-balanced, 5%);
+            border-bottom: 1px solid darken($c-balanced-primary, 25%);
+            background-color: darken($c-balanced-primary, 5%);
 
             @media screen and (min-width: $screen-sm-min) {
-              color: $c-balanced;
+              color: $c-balanced-primary;
             }
           }
 
@@ -197,7 +197,7 @@
               }
 
               [data-page='math'] & {
-                border-bottom: 1px solid darken($c-balanced, 25%);
+                border-bottom: 1px solid darken($c-balanced-primary, 25%);
               }
 
               &:hover,
@@ -228,7 +228,7 @@
         }
 
         [data-page='math'] & {
-          border-bottom: 1px solid darken($c-balanced, 25%);
+          border-bottom: 1px solid darken($c-balanced-primary, 25%);
         }
 
         &:hover,
@@ -255,12 +255,12 @@
 
           &:hover,
           &:focus, {
-            color: $c-balanced;
+            color: $c-balanced-primary;
 
             [data-page='english'] &,
             [data-page='history'] &,
             [data-page='math'] & {
-              color: $c-balanced;
+              color: $c-balanced-primary;
             }
           }
         }
@@ -289,7 +289,7 @@
           > a {
             &:hover,
             &:focus {
-              color: $c-balanced;
+              color: $c-balanced-primary;
             }
           }
         }
@@ -320,7 +320,7 @@
         }
 
         [data-page='math'] & {
-          border-bottom: 1px solid darken($c-balanced, 25%);
+          border-bottom: 1px solid darken($c-balanced-primary, 25%);
 
         }
 
@@ -409,7 +409,7 @@
       }
 
       [data-page='math'] & {
-        background-color: $c-balanced;
+        background-color: $c-balanced-primary;
       }
 
       @media screen and (min-width: $screen-sm-min) {
@@ -590,7 +590,7 @@
 
       &:hover {
         @media screen and (min-width: $screen-sm-min) {
-          color: $c-balanced;
+          color: $c-balanced-primary;
         }
       }
 
@@ -607,7 +607,7 @@
           color: $c-positive-secondary;
 
           @media screen and (min-width: $screen-sm-min) {
-            color: $c-balanced;
+            color: $c-balanced-primary;
           }
         }
       }

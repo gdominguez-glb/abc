@@ -101,7 +101,7 @@
 
       &.active,
       &:hover {
-        color: $c-balanced;
+        color: $c-balanced-primary;
         background: lighten($c-positive-secondary, 3%);
       }
     }

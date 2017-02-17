@@ -43,7 +43,7 @@
 }
 
 .alert-success {
-  @include alert-variant($c-balanced, darken($c-balanced, 25%), $c-positive-secondary);
+  @include alert-variant($c-balanced-primary, darken($c-balanced-primary, 25%), $c-positive-secondary);
 }
 
 .alert-info {
