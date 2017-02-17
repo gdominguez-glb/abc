@@ -420,3 +420,10 @@
   top: 4px;
   color: $c-positive-secondary !important;
 }
+
+.new_event_training,
+.edit_event_training {
+  .form-group {
+    font-family: inherit !important;
+  }
+}
