@@ -67,12 +67,8 @@
   }
 }
 
-// Colors
-//
-// Easily make use of two color schemes: grayscale and semantic. Grayscale colors provide quick access to commonly used shades of black while semantic include various colors assigned to meaningful contextual values such as brand primary color, success, info, warning, and danger.
-
 // -------------------------------------
-//   Gray Scale
+//   Positive
 //
 //   Styleguide 1.0
 // -------------------------------------
@@ -82,50 +78,104 @@
   width: 100px;
   height: 100px;
 
-  &.gray-darker {
-    background-color: $c-stable-subdue;
+  &.positive-primary {
+    background-color: $c-positive-primary;
   }
 
-  &.gray-dark {
-    background-color: $c-stable-secondary;
+  &.positive-secondary {
+    background-color: $c-positive-secondary;
   }
 
-  &.gray {
-    background-color: $c-stable-primary;
+  &.positive-accent {
+    background-color: $c-positive-accent;
   }
 
-  &.gray-light {
-    background-color: $c-firm-primary;
+  &.positive-highlight {
+    background-color: $c-positive-highlight;
   }
 
-  &.gray-lighter {
-    background-color: $c-firm-accent;
+  &.positive-subdue {
+    background-color: $c-positive-subdue;
   }
 
 // -------------------------------------
-//   Color Palette
+//   Balanced
 //
 //   Styleguide 1.0.1
 // -------------------------------------
 
-  &.brand-primary {
-    background-color: $c-positive-secondary;
-  }
-
-  &.brand-success {
+  &.balanced-primary {
     background-color: $c-balanced;
   }
 
-  &.brand-info {
-    background-color: $c-positive-primary;
+  &.balanced-highlight {
+    background-color: $c-balanced-highlight;
   }
 
-  &.brand-warning {
+  &.balanced-subdue {
+    background-color: $c-balanced-subdue;
+  }
+
+// -------------------------------------
+//   Energized
+//
+//   Styleguide 1.0.2
+// -------------------------------------
+
+  &.energized-primary {
     background-color: $c-energized-primary;
   }
 
-  &.brand-danger {
+  &.energized-secondary {
+    background-color: $c-energized-secondary;
+  }
+
+  &.energized-highlight {
     background-color: $c-energized-highlight;
+  }
+
+// -------------------------------------
+//   Firm
+//
+//   Styleguide 1.0.3
+// -------------------------------------
+
+  &.firm-primary {
+    background-color: $c-firm-primary;
+  }
+
+  &.firm-secondary {
+    background-color: $c-firm-secondary;
+  }
+
+  &.firm-accent {
+    background-color: $c-firm-accent;
+  }
+
+  &.firm-highlight {
+    background-color: $c-firm-highlight;
+  }
+
+  &.firm-subdue {
+    background-color: $c-firm-subdue;
+  }
+
+// -------------------------------------
+//   Stable
+//
+//   Styleguide 1.0.4
+// -------------------------------------
+
+  &.stable-primary {
+    background-color: $c-stable-primary;
+  }
+
+  &.stable-secondary {
+    background-color: $c-stable-secondary;
+  }
+
+  &.stable-subdue {
+    background-color: $c-stable-subdue;
   }
 }
 
