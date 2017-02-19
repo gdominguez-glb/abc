@@ -12,7 +12,13 @@ class EventTraining < ActiveRecord::Base
     title.parameterize
   end
 
-  searchkick callbacks: :async
+  searchkick merge_mappings: true, mappings: {
+    event_tranining: {
+      properties: {
+        content: {type: "string", index: "not_analyzed", ignore_above: 256}
+      }
+    }
+  }, callbacks: :async
 
   acts_as_list scope: :training_type_category
 
