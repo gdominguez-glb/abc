@@ -72,7 +72,7 @@
       $('#notification_trigger_target_type').change(function(e){
         var target = $(this).val();
         $('.target-input').addClass('hidden');
-        $("[data-input='"+ target +"']").removeClass('hidden');
+        $("[data-input*='"+ target +"']").removeClass('hidden');
       });
       $('#notification_trigger_target_type').trigger('change');
 
@@ -83,7 +83,7 @@
         'form.new_notification_trigger #notification_trigger_school_district_admin_user_id',
         'form.new_notification_trigger #notification_trigger_user_type',
         'form.new_notification_trigger #notification_trigger_curriculum_id',
-	'form.new_notification_trigger #notification_trigger_product_id',
+	      'form.new_notification_trigger #notification_trigger_product_id',
         'form.new_notification_trigger #notification_trigger_zip_codes',
       ]
       $(changedInputs.join(', ')).change(function(){

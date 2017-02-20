@@ -52,20 +52,20 @@
           </div>
         </div>
         <div class="col-sm-6">
-          <div class="form-group hidden target-input" data-input="user_type">
+          <div class="form-group hidden target-input" data-input="zip_codes user_type curriculum_users">
             <%= f.label :user_type %>
             <div class="select-container dark-select block">
               <span>User Type</span>
-              <%= f.select :user_type, USER_TITLES, {}, class: 'form-control' %>
+              <%= f.select :user_type, USER_TITLES, { include_blank: 'Select' }, class: 'form-control' %>
             </div>
           </div>
         </div>
         <div class="col-sm-6">
-          <div class="form-group hidden target-input" data-input="curriculum_users">
+          <div class="form-group hidden target-input" data-input="zip_codes user_type curriculum_users">
             <%= f.label :curriculum %>
             <div class="select-container dark-select block">
               <span>Curriculum</span>
-              <%= f.collection_select :curriculum_id, Curriculum.visibles, :id, :name, {}, class: 'form-control' %>
+              <%= f.collection_select :curriculum_id, Curriculum.visibles, :id, :name, { include_blank: 'Select' }, class: 'form-control' %>
             </div>
           </div>
         </div>
