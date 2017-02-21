@@ -2,6 +2,9 @@ $('body').append("<%= escape_javascript(render 'form_modal') %>");
 $('#edit-additional-info-modal').modal('show');
 $('#edit-additional-info-modal').on('hidden.bs.modal', function (e) {
   $('#edit-additional-info-modal').remove();
+  if(typeof checkDashboard !== "undefined") {
+    checkDashboard();
+  }
 });
 $('#edit-additional-info-modal .multiple-select-custom-field').select2();
 handleCustomFields(); // call method in user_form.js
