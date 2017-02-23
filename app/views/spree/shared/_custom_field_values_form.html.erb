@@ -2,8 +2,9 @@
 <div class="row">
   <div class="col-sm-8 col-sm-offset-2">
     <%= f.fields_for :custom_field_values do |custom_field_value_form| %>
-      <%= custom_field_value_form.hidden_field :custom_field_id %>
       <% custom_field = custom_field_value_form.object.custom_field %>
+      <% next unless custom_field.display? %>
+      <%= custom_field_value_form.hidden_field :custom_field_id %>
       <div class="custom-field-wrapper" data-subjects="<%= custom_field.subject %>" data-user-titles="<%= custom_field.user_title %>">
         <div class="form-group">
           <label><%= custom_field.name %></label>
