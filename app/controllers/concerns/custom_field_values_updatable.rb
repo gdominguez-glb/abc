@@ -11,6 +11,8 @@ module CustomFieldValuesUpdatable
       custom.assign_attributes(value: attr[:value], values: attr[:values], custom_field_id: attr[:custom_field_id], user_id: user.id)
       custom.save!
     end
+
+    user.save
   end
 
   def sanatize_attr(attr)
