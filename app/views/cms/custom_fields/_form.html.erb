@@ -63,16 +63,22 @@
         <hr/>
         <%= f.fields_for :custom_field_options do |option_form| %>
           <div class="row <%= 'new-field-option-wrapper' if option_form.object.new_record? %>">
-            <div class="col-md-5">
+            <div class="col-md-4">
               <div class="form-group">
                 <label>Label</label>
                 <%= option_form.text_field :label, class: "form-control option-label-input" %>
               </div>
             </div>
-            <div class="col-md-5">
+            <div class="col-md-4">
               <div class="form-group">
                 <label>Value</label>
                 <%= option_form.text_field :value, class: "form-control option-value-input" %>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="form-group">
+                <label>Position</label>
+                <%= option_form.number_field :position, class: "form-control option-value-input" %>
               </div>
             </div>
             <div class="col-md-2">
