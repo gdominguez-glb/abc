@@ -98,7 +98,7 @@ Spree::User.class_eval do
   end
 
   def custom_field_values_for_salesforce
-    Hash[self.custom_field_values.includes(:custom_field).map{|cfv|
+    Hash[self.custom_field_values.displayable.map{|cfv|
       [cfv.custom_field.salesforce_field_name, cfv.value]
     }]
   end

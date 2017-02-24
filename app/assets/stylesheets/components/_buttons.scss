@@ -82,11 +82,11 @@
   }
 
   &.btn-info {
-    @include button-variant($c-absolute, $c-positive-primary, darken($c-positive-primary, 5%));
+    @include button-variant($c-positive-secondary, $c-positive-primary, $c-positive-secondary);
   }
 
   &.btn-success {
-    @include button-variant($c-positive-secondary, $c-balanced, $c-positive-secondary);
+    @include button-variant($c-positive-secondary, $c-balanced-primary, $c-positive-secondary);
   }
 
   &.btn-danger {

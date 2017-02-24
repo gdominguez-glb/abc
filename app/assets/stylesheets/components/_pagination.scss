@@ -61,9 +61,7 @@
   }
 
   // -------------------------------------
-  //   Pagination Responsive Display
-  //
-  //   Styleguide 10.2
+  //   Pagination Responsive States
   // -------------------------------------
 
   .first,
@@ -81,4 +79,14 @@
   .panel & {
     margin: $b-space-s 0 0 $b-space-s;
   }
+}
+
+// -------------------------------------
+//   Pagination Sizes
+//
+//   Styleguide 10.2
+// -------------------------------------
+
+.needs-a-rule {
+  color: red;
 }

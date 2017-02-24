@@ -61,7 +61,8 @@ $c-positive-accent:               $steel;
 $c-positive-highlight:            $snow;
 $c-positive-subdue:               lighten($navy, 15%);
 
-$c-balanced:                      $lime;
+$c-balanced-primary:              $lime;
+$c-balanced-secondary:            darken($lime, 25%);
 $c-balanced-highlight:            lighten($lime, 15%);
 $c-balanced-subdue:               darken($lime, 55%);
 

@@ -33,6 +33,10 @@ module GmSalesforce
       Restforce.new sf_params
     end
 
+    def column_info(sobject_name, column_name)
+      capture_net_errors { client.describe(sobject_name).fields.find{|field| field.name == column_name || field.label == column_name } }
+    end
+
     def self.date_to_salesforce(date)
       return nil if date.blank?
       date.as_json.gsub(/Z\Z/, '+0000')
