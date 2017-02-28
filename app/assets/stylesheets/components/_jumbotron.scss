@@ -18,7 +18,9 @@
   border-radius: 2px;
 
   p {
-    font-size: .85em;
+    margin-bottom: $b-space-m;
+    font-size: 1em;
+    line-height: 1.4em;
   }
 
   .btn-dismiss {
@@ -47,4 +49,11 @@
     text-decoration: none;
     color: $c-absolute;
   }
+}
+
+.jumbotron-title.jumbotron-title {
+  margin-bottom: $b-space;
+  font-size: 3em;
+  line-height: 1em;
+  letter-spacing: 0;
 }
