@@ -48,26 +48,3 @@
     color: $c-absolute;
   }
 }
-
-// -------------------------------------
-//   Success Jumbotron
-//
-//   Styleguide 12.2
-// -------------------------------------
-
-.jumbotron-success {
-  border: 0;
-  color: $c-positive-secondary;
-  background-color: $c-balanced-primary;
-}
-
-// -------------------------------------
-//   Info Jumbotron
-//
-//   Styleguide 12.3
-// -------------------------------------
-
-.jumbotron-info {
-  border: 0;
-  background-color: $c-positive-primary;
-}
