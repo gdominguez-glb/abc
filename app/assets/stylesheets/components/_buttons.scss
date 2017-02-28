@@ -73,10 +73,6 @@
     }
   }
 
-  &.btn-transparent {
-    background: transparent;
-  }
-
   &.btn-primary {
     @include button-variant($c-absolute, $c-positive-secondary, darken($c-positive-secondary, 5%));
   }
@@ -111,6 +107,17 @@
 
     &:focus {
       outline: none;
+    }
+  }
+
+  &.btn-transparent {
+    border-color: $c-absolute;
+    color: $c-absolute;
+    background: transparent;
+
+    &:hover {
+      color: $c-positive-secondary;
+      background-color: $c-absolute;
     }
   }
 
