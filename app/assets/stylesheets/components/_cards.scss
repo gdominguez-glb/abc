@@ -68,6 +68,12 @@
   }
 }
 
+// -------------------------------------
+//   Image Card
+//
+//   Styleguide 18.4
+// -------------------------------------
+
 .card-image {
   min-height: 175px;
   text-align: center;
@@ -87,7 +93,7 @@
 }
 
 // -------------------------------------
-//   Link Cards
+//   Link Card
 //   Cards where the entire card is the CTA.
 //
 //   Styleguide 18.1
@@ -121,17 +127,14 @@
   font-size: .80em;
   font-weight: bold;
   text-transform: uppercase;
-  letter-spacing: .1em;
+  letter-spacing: 0;
 
   @extend .sans-serif;
-
-  @media screen and (min-width: $screen-sm-min) {
-    font-size: .9em;
-  }
 }
 
 .card-title {
   line-height: 1.2em;
+  letter-spacing: 0;
 }
 
 .card-text {
@@ -177,6 +180,10 @@
   &.card-media {
     background-color: $c-energized-primary;
   }
+}
+
+.card--no-border {
+  border-top: 0;
 }
 
 .card--twitter {
