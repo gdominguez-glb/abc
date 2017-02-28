@@ -15,27 +15,41 @@
 <% end %>
 
 <%= kss_block '12.2' do %>
-<div class="jumbotron jumbotron-background" style="background-image: url('https://s3.greatminds.org/documents/attachments/000/000/037/large/HS_boy.jpg?1458617395')">
-  <div class="row">
-    <div class="col-sm-9">
-      <h1 class="jumbotron-title">Lorem ipsum</h1>
-      <p>Phasellus aliquet commodo auctor. Nam aliquet tincidunt purus, in tempus turpis interdum vitae.</p>
+<div class="container">
+  <div class="jumbotron jumbotron-background" style="background-image: url('https://s3.greatminds.org/documents/attachments/000/000/037/large/HS_boy.jpg?1458617395')">
+    <div class="row">
+      <div class="col-sm-12">
+        <h1 class="jumbotron-title">Lorem ipsum</h1>
+      </div>
     </div>
-    <div class="col-sm-3">
-      Search
+    <div class="row">
+      <div class="col-sm-9">
+        <p>Phasellus aliquet commodo auctor. Nam aliquet tincidunt purus, in tempus turpis interdum vitae.</p>
+      </div>
+      <div class="col-sm-3">
+        <label for="transparentInputGroup1">Search</label>
+        <div class="input-group input-group-transparent margin-bottom--reset">
+          <input type="text" class="form-control input-group-transparent-input" id="transparentInputGroup1" placeholder="Transparent Input Group with Addon">
+          <span class="input-group-btn input-group-transparent-btn">
+            <button type="button" class="btn btn-default btn-transparent input-group-transparent-btn"><i class="mi">search</i></button>
+          </span>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 <% end %>
 
 <%= kss_block '12.3' do %>
-<div class="jumbotron jumbotron-background" style="background-image: url('https://s3.greatminds.org/documents/attachments/000/000/037/large/HS_boy.jpg?1458617395')">
-  <div class="row">
-    <div class="col-sm-8 col-sm-offset-2 text-center">
-      <a class="btn btn-primary btn-transparent btn-sm margin-bottom--l" href="#" role="button">Back</a>
-      <h1 class="jumbotron-title">Lorem ipsum <br /> dolor sit amet</h1>
-      <hr class="jumbotron-divider" />
-      <span class="jumbotron-byline">Ut: Lorem Ipsum</span>
+<div class="container">
+  <div class="jumbotron jumbotron-background" style="background-image: url('https://s3.greatminds.org/documents/attachments/000/000/037/large/HS_boy.jpg?1458617395')">
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2 text-center">
+        <a class="btn btn-primary btn-transparent btn-sm margin-bottom--l" href="#" role="button">Back</a>
+        <h1 class="jumbotron-title">Lorem ipsum <br /> dolor sit amet</h1>
+        <hr class="jumbotron-divider" />
+        <span class="jumbotron-byline">Ut: Lorem Ipsum</span>
+      </div>
     </div>
   </div>
 </div>
