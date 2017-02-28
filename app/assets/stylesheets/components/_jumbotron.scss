@@ -18,7 +18,9 @@
   border-radius: 2px;
 
   p {
-    font-size: .85em;
+    margin-bottom: $b-space-m;
+    font-size: 1em;
+    line-height: 1.4em;
   }
 
   .btn-dismiss {
@@ -50,24 +52,54 @@
 }
 
 // -------------------------------------
-//   Success Jumbotron
+//   Background Jumbotron
+//   This example demonstrates how to use the grid in a jumbotron,
+//   for instances where the jumbotron content needs to align with
+//   content in other components.
 //
 //   Styleguide 12.2
 // -------------------------------------
 
-.jumbotron-success {
+.jumbotron-background.jumbotron-background {
   border: 0;
-  color: $c-positive-secondary;
-  background-color: $c-balanced-primary;
+  color: $c-absolute;
+  background-color: $c-positive-secondary;
+  background-repeat: no-repeat;
+  background-position: 0 40%;
+  background-size: cover;
+  border-radius: 0;
+
+  // -------------------------------------
+  //   Background Jumbotron - Centered
+  //   This example demonstrates how to center grid content in a jumbotron,
+  //   and also shows a blog-style button, divider and byline.
+  //
+  //   Styleguide 12.3
+  // -------------------------------------
+
+  .text-center {
+    text-align: center;
+  }
 }
 
-// -------------------------------------
-//   Info Jumbotron
-//
-//   Styleguide 12.3
-// -------------------------------------
 
-.jumbotron-info {
-  border: 0;
-  background-color: $c-positive-primary;
+.jumbotron-title.jumbotron-title {
+  margin-bottom: $b-space;
+  font-size: 3em;
+  line-height: 1em;
+  letter-spacing: 0;
+}
+
+.jumbotron-divider {
+  width: 70px;
+  margin: $b-space-l auto;
+  color: $c-firm-secondary;
+}
+
+.jumbotron-byline {
+  @extend .sans-serif;
+
+  font-size: .85em;
+  font-weight: bold;
+  text-transform: uppercase;
 }

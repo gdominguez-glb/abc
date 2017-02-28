@@ -73,10 +73,6 @@
     }
   }
 
-  &.btn-transparent {
-    background: transparent;
-  }
-
   &.btn-primary {
     @include button-variant($c-absolute, $c-positive-secondary, darken($c-positive-secondary, 5%));
   }
@@ -111,6 +107,23 @@
 
     &:focus {
       outline: none;
+    }
+  }
+
+  // -------------------------------------
+  //   Transparent Button
+  //
+  //   Styleguide 5.1
+  // -------------------------------------
+
+  &.btn-transparent {
+    border-color: $c-absolute;
+    color: $c-absolute;
+    background: transparent;
+
+    &:hover {
+      color: $c-positive-secondary;
+      background-color: $c-absolute;
     }
   }
 
@@ -149,7 +162,7 @@
 // -------------------------------------
 //   Button Sizes
 //
-//   Styleguide 5.1
+//   Styleguide 5.2
 // -------------------------------------
 
 .btn-sm {
@@ -163,7 +176,7 @@
 // -------------------------------------
 //   Button Groups
 //
-//   Styleguide 5.2
+//   Styleguide 5.3
 // -------------------------------------
 
 .btn-group {
@@ -214,7 +227,7 @@
 // -------------------------------------
 //   Dropdowns
 //
-//   Styleguide 5.3
+//   Styleguide 5.4
 // -------------------------------------
 
 .dropdown-menu {
