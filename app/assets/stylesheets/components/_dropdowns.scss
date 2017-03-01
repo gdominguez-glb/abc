@@ -57,7 +57,7 @@
   margin-top: 0;
   border: 1px solid $c-firm-primary;
   border-radius: 2px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, .175);
+  box-shadow: $b-box-shadow-m;
 }
 
 .dropdown-md-item {

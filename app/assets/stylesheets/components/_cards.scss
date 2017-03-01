@@ -20,7 +20,7 @@
   border-top: 9px solid $c-positive-secondary;
   text-align: left;
   background-color: $c-absolute;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, .175);
+  box-shadow: $b-box-shadow-m;
 
   @media screen and (min-width: $screen-sm-min) {
     padding: $b-space-l $b-space-xl;
@@ -190,7 +190,7 @@
   margin-bottom: $b-space;
   background-color: $c-absolute;
   border-radius: 2px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, .175);
+  box-shadow: $b-box-shadow-s;
 }
 
 .card--media-left.card--media-left.card--media-left {

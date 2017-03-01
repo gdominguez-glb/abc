@@ -10,7 +10,7 @@
 .pagination.pagination {
   margin: 0 0 $b-space-l;
   border-radius: 2px;
-  box-shadow: 0 2px 7px rgba(0, 0, 0, .175);
+  box-shadow: $b-box-shadow-s;
 
   // -------------------------------------
   //   Pagination Active & Disabled States

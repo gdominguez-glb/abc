@@ -7,7 +7,7 @@
 // *************************************
 
 .swiper-container {
-  box-shadow: 0 4px 10px rgba(0, 0, 0, .175);
+  box-shadow: $b-box-shadow-m;
 
   &.swiper-container-horizontal {
     .swiper-pagination-wrapper {
