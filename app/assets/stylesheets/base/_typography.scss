@@ -9,13 +9,13 @@
 // -------------------------------------
 //   Font Families
 //
-//   Styleguide 3.1
+//   Styleguide 3.0
 // -------------------------------------
 
 // -------------------------------------
 //   Headlines
 //
-//   Styleguide 3.2
+//   Styleguide 3.1
 // -------------------------------------
 
 body {
@@ -118,7 +118,7 @@ p {
 // -------------------------------------
 //   Body Copy with Links
 //
-//   Styleguide 3.3
+//   Styleguide 3.2
 // -------------------------------------
 
 html,
@@ -147,33 +147,87 @@ table {
 }
 
 // -------------------------------------
-//   Lead Copy
+//   Body Copy with Initial Letter
 //
-//   Default Bootstrap Lead
-//
-//   Styleguide 3.4
+//   Styleguide 3.2.1
 // -------------------------------------
 
-// -------------------------------------
-//   Contextual Copy
-//
-//   Uses Bootstrap's $brand-{context} coloring. Will update if "$brand" color variables are updated
-//
-//   Styleguide 3.5
-// -------------------------------------
+.initial-letter {
+  &:first-child {
+    &::first-letter {
+      float: left;
+      padding: 8px 10px 4px 0;
+      font-size: 75px;
+      line-height: 60px;
+    }
+  }
+}
 
 // -------------------------------------
 //   Blockquote
 //
 //   Uses Bootstrap's standard block quote styling
 //
-//   Styleguide 3.6.1
+//   Styleguide 3.3
 // -------------------------------------
 
-blockquote {
-  footer {
-    background: transparent;
+.blockquote {
+  padding: $b-space-m 0 0;
+  border-top: 1px solid $c-firm-secondary;
+  border-right: 0;
+  border-left: 0;
+  font-style: italic;
+
+  p {
+    margin-bottom: $b-space-l;
+    font-size: 1.2em;
+    line-height: 1.5em;
+    color: $c-positive-secondary;
   }
+
+  footer {
+    @extend .sans-serif;
+
+    font-weight: bold;
+    text-transform: uppercase;
+    color: $c-positive-secondary;
+    background: transparent;
+    font-style: normal;
+
+    &::before {
+      content: '';
+    }
+  }
+}
+
+.blockquote-reverse.blockquote-reverse {
+  footer {
+    &::after {
+      content: '';
+    }
+  }
+
+  .blockquote-attribution {
+    float: right;
+  }
+}
+
+.blockquote-attribution-icon {
+  @extend .serif;
+
+  display: inline-block;
+  float: left;
+  width: $b-space-l;
+  height: $b-space-l;
+  margin-right: $b-space;
+  padding-left: 4px;
+  font-size: 2em;
+  line-height: 1.3em;
+  font-weight: normal;
+  text-align: left;
+  color: $c-absolute;
+  background-color: $c-positive-secondary;
+  border-radius: 50%;
 }
 
 // -------------------------------------
@@ -181,7 +235,7 @@ blockquote {
 //
 //   Uses Bootstrap's standard block quote styling
 //
-//   Styleguide 3.6.2
+//   Styleguide 3.3.1
 // -------------------------------------
 
 
@@ -190,7 +244,7 @@ blockquote {
 //
 //   Uses Bootstrap's standard block quote styling
 //
-//   Styleguide 3.6.3
+//   Styleguide 3.3.2
 // -------------------------------------
 
 a {
