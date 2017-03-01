@@ -21,13 +21,12 @@
   li {
     a,
     &.disabled a {
-      border: 1px solid $c-firm-primary;
-      color: $c-firm-primary;
+      border: 1px solid $c-firm-secondary;
+      color: $c-positive-secondary;
 
       &:hover,
       &:active,
       &:focus {
-        color: lighten($c-positive-secondary, 5%);
         background-color: $c-positive-highlight;
       }
     }
@@ -41,9 +40,9 @@
         &:hover,
         &:active,
         &:focus {
-          border-color: lighten($c-positive-secondary, 5%);
+          border-color: $c-positive-subdue;
           color: $c-absolute;
-          background-color: lighten($c-positive-secondary, 5%);
+          background-color: $c-positive-subdue;
         }
       }
     }
