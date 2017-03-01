@@ -171,10 +171,63 @@ table {
 //   Styleguide 3.3
 // -------------------------------------
 
-blockquote {
-  footer {
-    background: transparent;
+.blockquote {
+  padding: $b-space-m 0 0;
+  border-top: 1px solid $c-firm-secondary;
+  border-right: 0;
+  border-left: 0;
+  font-style: italic;
+
+  p {
+    margin-bottom: $b-space-l;
+    font-size: 1.2em;
+    line-height: 1.5em;
+    color: $c-positive-secondary;
   }
+
+  footer {
+    @extend .sans-serif;
+
+    font-weight: bold;
+    text-transform: uppercase;
+    color: $c-positive-secondary;
+    background: transparent;
+    font-style: normal;
+
+    &::before {
+      content: '';
+    }
+  }
+}
+
+.blockquote-reverse.blockquote-reverse {
+  footer {
+    &::after {
+      content: '';
+    }
+  }
+
+  .blockquote-attribution {
+    float: right;
+  }
+}
+
+.blockquote-attribution-icon {
+  @extend .serif;
+
+  display: inline-block;
+  float: left;
+  width: $b-space-l;
+  height: $b-space-l;
+  margin-right: $b-space;
+  padding-left: 4px;
+  font-size: 2em;
+  line-height: 1.3em;
+  font-weight: normal;
+  text-align: left;
+  color: $c-absolute;
+  background-color: $c-positive-secondary;
+  border-radius: 50%;
 }
 
 // -------------------------------------

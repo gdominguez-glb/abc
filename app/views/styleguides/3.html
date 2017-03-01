@@ -45,21 +45,29 @@
 <% end %>
 
 <%= kss_block '3.3' do %>
-<blockquote>
+<blockquote class="blockquote">
   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
 </blockquote>
 <% end %>
 
 <%= kss_block '3.3.1' do %>
-<blockquote>
+<blockquote class="blockquote">
   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-  <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
+  <footer>
+    <div class="blockquote-attribution">
+      <span class="blockquote-attribution-icon">&ldquo;</span> Lorem ipsum
+    </div>
+  </footer>
 </blockquote>
 <% end %>
 
 <%= kss_block '3.3.2' do %>
-<blockquote class="blockquote-reverse">
+<blockquote class="blockquote blockquote-reverse">
   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-  <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
+  <footer>
+    <div class="blockquote-attribution">
+      <span class="blockquote-attribution-icon">&ldquo;</span> Lorem ipsum
+    </div>
+  </footer>
 </blockquote>
 <% end %>
