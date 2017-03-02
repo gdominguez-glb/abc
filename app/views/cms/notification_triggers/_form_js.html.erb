@@ -44,6 +44,8 @@
       set_users_select($('#notification_trigger_user_ids'), true);
       set_users_select($('#notification_trigger_school_district_admin_user_id'), false);
 
+      $("#notification_trigger_product_ids").select2();
+
       var datetime_pickers = $('.datetime-picker');
 
       datetime_pickers.datetimepicker({
@@ -83,7 +85,8 @@
         'form.new_notification_trigger #notification_trigger_school_district_admin_user_id',
         'form.new_notification_trigger #notification_trigger_user_type',
         'form.new_notification_trigger #notification_trigger_curriculum_id',
-	      'form.new_notification_trigger #notification_trigger_product_id',
+        'form.new_notification_trigger #notification_trigger_product_id',
+        'form.new_notification_trigger #notification_trigger_product_ids',
         'form.new_notification_trigger #notification_trigger_zip_codes',
       ]
       $(changedInputs.join(', ')).change(function(){

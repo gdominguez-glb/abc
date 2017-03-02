@@ -45,7 +45,8 @@ class Cms::NotificationTriggersController < Cms::BaseController
       :dashboard,
       :product_id,
       :curriculum_id,
-      :zip_codes
+      :zip_codes,
+      product_ids: []
     ]
 
     require_params(:notification_trigger, _params, :user_ids)

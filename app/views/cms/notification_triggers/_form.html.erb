@@ -97,6 +97,15 @@
             </div>
           </div>
         </div>
+        <div class="col-sm-6">
+          <div class="form-group hidden target-input" data-input="products">
+            <%= f.label :products %>
+            <div class="">
+              <span>Select Products</span>
+              <%= f.collection_select :product_ids, Spree::Product.where(individual_sale: true).all, :id, :name, {}, class: 'form-control', multiple: true %>
+            </div>
+          </div>
+        </div>
         <div class="col-sm-12">
           <div class="form-group">
             <div class="checkbox">

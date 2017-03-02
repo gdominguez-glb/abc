@@ -1,5 +1,6 @@
 class NotificationTrigger < ActiveRecord::Base
   serialize :user_ids, Array
+  serialize :product_ids, Array
 
   validates_presence_of :target_type, :content, :notify_at
   validates_presence_of :school_district_admin_user, if: ->(nt) { nt.school_district_target? }
@@ -21,6 +22,7 @@ class NotificationTrigger < ActiveRecord::Base
     :every,
     :curriculum_users,
     :product,
+    :products,
     :zip_codes
   ]
 
@@ -57,6 +59,8 @@ class NotificationTrigger < ActiveRecord::Base
       self.curriculum_id.present? ? Spree::User.with_curriculum(self.curriculum) : []
     elsif self.product_target?
       find_product_target_users(self.product_id)
+    elsif self.products_target?
+      find_products_target_users(self.product_ids)
     elsif self.zip_codes_target?
       find_zip_codes_target_users(self.zip_codes)
     end
@@ -70,10 +74,15 @@ class NotificationTrigger < ActiveRecord::Base
 
   def find_product_target_users(product_id)
     return [] if product_id.blank?
+    find_products_target_users([product_id])
+  end
+
+  def find_products_target_users(product_ids)
+    return [] if product_ids.blank?
     user_ids = []
-    product = Spree::Product.find(product_id)
-    bundles = Spree::Part.where(product_id: product_id).map(&:bundle)
-    products = [product, bundles].flatten.compact
+    products = Spree::Product.where(id: product_ids)
+    bundles = Spree::Part.where(product_id: product_ids).map(&:bundle)
+    products = [products, bundles].flatten.compact
     Spree::User.joins(:licensed_products).where(spree_licensed_products: { product_id: products.map(&:id) })
   end
 
