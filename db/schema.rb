@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170302041618) do
+ActiveRecord::Schema.define(version: 20170302074607) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -91,9 +91,10 @@ ActiveRecord::Schema.define(version: 20170302041618) do
     t.integer  "custom_field_id"
     t.string   "value"
     t.string   "label"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.integer  "position",        default: 0
+    t.boolean  "display",         default: true
   end
 
   create_table "custom_field_values", force: :cascade do |t|
