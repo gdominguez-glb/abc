@@ -3,9 +3,13 @@
 //   Pagination
 //   Bootstrap pagination overrides
 //
-//   Styleguide 10.0
-//
 // *************************************
+
+// -------------------------------------
+//   Basic pagination
+//
+//   Styleguide 10.0
+// -------------------------------------
 
 .pagination.pagination {
   margin: 0 0 $b-space-l;
@@ -13,9 +17,9 @@
   box-shadow: $b-box-shadow-s;
 
   // -------------------------------------
-  //   Pagination Active & Disabled States
+  //   Basic Pagination Active & Disabled States
   //
-  //   Styleguide 10.1
+  //   Styleguide 10.0.1
   // -------------------------------------
 
   li {
@@ -81,9 +85,9 @@
 }
 
 // -------------------------------------
-//   Pagination Sizes
+//   Basic Pagination Sizes
 //
-//   Styleguide 10.2
+//   Styleguide 10.0.2
 // -------------------------------------
 
 .needs-a-rule {
