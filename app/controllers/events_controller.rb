@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_filter :set_grade_bands_param, only: [:curriculum, :list]
+  before_filter :set_filters_param, only: [:curriculum, :list]
 
   def index
     @events = RegonlineEvent.displayable.sorted.page(params[:page])
@@ -26,7 +26,7 @@ class EventsController < ApplicationController
     raise ActiveRecord::RecordNotFound.new('events not exist') if @event_page.blank?
     @events        = @event_page.events.displayable.sorted.page(params[:page])
 
-    filter_by_taxon_ids
+    filter_events
     filter_by_zipcode
   end
 
@@ -35,7 +35,7 @@ class EventsController < ApplicationController
     raise ActiveRecord::RecordNotFound.new('events not exist') if @event_page.blank?
     @events     = @event_page.events.displayable.sorted.page(params[:page])
 
-    filter_by_taxon_ids
+    filter_events
     filter_by_zipcode
   end
 
@@ -81,18 +81,23 @@ class EventsController < ApplicationController
     event_trainings
   end
 
-  def set_grade_bands_param
+  def set_filters_param
     params[:grade_bands] ||= []
+    params[:curriculums] ||= []
   end
 
-  def filter_by_taxon_ids
-    return if params[:grade_bands].nil?
+  def filter_events
+    return if params[:grade_bands].blank? && params[:curriculums].blank?
 
-    filters_conds = []
-    params[:grade_bands].each do |name|
-      filters_conds << "(grade_bands  LIKE '%#{name}%')"
+    @events = @events.where(construct_filter_conds('grade_bands')) if params[:grade_bands].present?
+    @events = @events.where(construct_filter_conds('curriculums')) if params[:curriculums].present?
+  end
+
+  def construct_filter_conds(filter_name)
+    conds = []
+    params[filter_name].each do |name|
+      conds << "(#{filter_name}  LIKE '%#{name}%')"
     end
-
-    @events = @events.where(filters_conds.join(" OR "))
+    conds.join(' or ')
   end
 end
