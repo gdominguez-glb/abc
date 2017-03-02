@@ -29,6 +29,8 @@ class Cms::RegonlineEventsController < Cms::BaseController
   end
 
   def event_params
-    params.require(:regonline_event).permit(:title, :display, :download_url, :grade_bands, :description, :invisible_at, session_types: [])
+    _params = params.require(:regonline_event).permit(:title, :display, :download_url, :grade_bands, :description, :invisible_at, session_types: [], curriculums: [])
+    _params[:curriculums] = _params[:curriculums].reject(&:blank?).join(',')
+    _params
   end
 end

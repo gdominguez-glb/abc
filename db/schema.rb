@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170302003513) do
+ActiveRecord::Schema.define(version: 20170302041618) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -550,6 +550,7 @@ ActiveRecord::Schema.define(version: 20170302003513) do
     t.text     "session_types"
     t.boolean  "display",                                    default: false
     t.date     "invisible_at"
+    t.string   "curriculums"
   end
 
   create_table "salesforce_references", force: :cascade do |t|
