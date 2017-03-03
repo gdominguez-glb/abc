@@ -83,7 +83,7 @@ class NotificationTrigger < ActiveRecord::Base
     products = Spree::Product.where(id: product_ids)
     bundles = Spree::Part.where(product_id: product_ids).map(&:bundle)
     products = [products, bundles].flatten.compact
-    Spree::User.joins(:licensed_products).where(spree_licensed_products: { product_id: products.map(&:id) })
+    Spree::User.joins(:licensed_products).where(spree_licensed_products: { product_id: products.map(&:id) }).distinct
   end
 
   def find_zip_codes_target_users(zip_codes)
