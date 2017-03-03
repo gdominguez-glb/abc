@@ -11,8 +11,6 @@ class OpportunityAttachment < ActiveRecord::Base
   do_not_validate_attachment_file_type :file
   validates_attachment_presence :file
 
-  attr_accessor :category
-
   def self.sobject_name
     'Attachment'
   end
@@ -20,9 +18,14 @@ class OpportunityAttachment < ActiveRecord::Base
   def attributes_for_salesforce
     {
       'ParentId' => self.opportunity.salesforce_id,
-      'Name' => self.file.original_filename,
-      'Description' => self.file.original_filename,
+      'Name' => name_for_sf,
+      'Description' => name_for_sf,
       'Body' => Base64::encode64(open(self.file.url){|f| f.read})
     }
+  end
+
+  def name_for_sf
+    return self.file.original_filename if self.category != 'tax'
+    "#{self.opportunity.sf_account_name} Sales Tax Exemption Certificate"
   end
 end
