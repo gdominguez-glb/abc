@@ -87,7 +87,7 @@ select {
 }
 
 .form-control-sm {
-  padding: 5px 15px 4px;
+  padding: $b-space-s $b-space-m 4px;
 }
 
 .form-control[readonly] {
@@ -97,7 +97,7 @@ select {
 .input-group {
 
   input {
-    padding: 10px;
+    padding: $b-space;
   }
 
   &.collapse {
@@ -172,14 +172,14 @@ select {
 }
 
 .radio {
-  margin: 0 0 10px;
+  margin: 0 0 $b-space;
 
   label + label {
-    margin-left: 5px;
+    margin-left: $b-space-s;
   }
 
   .form-inline & {
-    margin: 0 10px 10px 0;
+    margin: 0 $b-space $b-space 0;
   }
 }
 
@@ -188,8 +188,8 @@ select {
 
   display: block;
   position: relative;
-  margin-bottom: 15px;
-  padding: 10px 36px 10px 15px;
+  margin-bottom: $b-space-m;
+  padding: $b-space 36px $b-space $b-space-m;
   border: 1px solid $c-positive-secondary;
   font-family: 'Karla', sans-serif;
   font-size: 14px;
@@ -205,14 +205,14 @@ select {
 
   @media screen and (min-width: $screen-xs-min) {
     display: inline-block;
-    margin-bottom: 30px;
+    margin-bottom: ($b-space-m * 2);
   }
 
   &::after {
     display: inline-block;
     position: absolute;
     top: 19px;
-    right: 10px;
+    right: $b-space;
     width: 0;
     height: 0;
     border-top: 4px dashed;
@@ -248,12 +248,12 @@ select {
 
   &.block {
     display: block;
-    padding: 10px 30px 10px 15px;
+    padding: $b-space ($b-space-m * 2) $b-space $b-space-m;
   }
 
   + .select-container {
     @media screen and (min-width: $screen-xs-min) {
-      margin-left: 10px;
+      margin-left: $b-space;
     }
   }
 
@@ -262,14 +262,14 @@ select {
 .inline-input {
   display: inline-block;
   width: auto;
-  margin: 0 5px;
+  margin: 0 $b-space-s;
 }
 
 .has-icon-addon {
   position: relative;
 
   input {
-    padding-left: 50px;
+    padding-left: ($b-space * 5);
 
     &:focus {
 
@@ -285,7 +285,7 @@ select {
 
     position: absolute;
     top: 50%;
-    left: 5px;
+    left: $b-space-s;
     width: 1.5em;
     padding: 0 0 0 $b-space-s;
     border-right: 2px solid;
@@ -299,7 +299,7 @@ select {
     .select2-choices,
     .select2-choice {
       height: 42px;
-      padding: 9px 15px 8px;
+      padding: 9px $b-space-m 8px;
       background: transparent;
       background-image: none;
 
@@ -313,7 +313,7 @@ select {
       }
 
       .select2-search-choice {
-        margin: 0 0 0 5px;
+        margin: 0 0 0 $b-space-s;
       }
     }
 
@@ -362,7 +362,7 @@ select {
 
 .select2-search {
   input {
-    padding: 10px 20px;
+    padding: $b-space $b-space-l;
     border: 0;
     background-image: none !important;
   }
@@ -385,7 +385,7 @@ select {
   }
 
   .select2-result {
-    padding: 10px 20px;
+    padding: $b-space $b-space-l;
     font-size: 13px;
     text-transform: uppercase;
 
