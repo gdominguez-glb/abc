@@ -14,14 +14,14 @@
 .btn {
   @include transition(all, .3s);
 
-  padding: 10px 30px;
+  padding: $b-space ($b-space-m * 2);
   font-family: 'Karla', sans-serif;
   text-transform: uppercase;
   text-decoration: none;
   letter-spacing: .15em;
 
   @media screen and (min-width: $screen-sm-min) {
-    margin-right: 5px;
+    margin-right: $b-space-s;
   }
 
   &.btn-default {
@@ -50,7 +50,7 @@
     }
 
     &.dropdown-toggle {
-      padding: 10px 30px 10px 15px;
+      padding: $b-space ($b-space-m * 2) $b-space $b-space-m;
       border: 1px solid $c-positive-secondary;
       text-align: left;
       color: $c-positive-secondary;
@@ -144,7 +144,7 @@
 }
 
 .btn-block {
-  margin-bottom: 30px;
+  margin-bottom: ($b-space-m * 2);
 }
 
 .btn-block-xs {
@@ -200,7 +200,7 @@
   .caret {
     position: absolute;
     top: 18px;
-    right: 10px;
+    right: $b-space;
   }
 
   &.fixed-width {
@@ -267,7 +267,7 @@
     }
 
     > a {
-      padding: 10px 20px;
+      padding: $b-space $b-space-l;
       white-space: normal;
 
       @media screen and (min-width: $screen-sm-min) {
@@ -297,6 +297,6 @@
   .caret {
     position: absolute;
     top: 18px;
-    right: 10px;
+    right: $b-space;
   }
 }
