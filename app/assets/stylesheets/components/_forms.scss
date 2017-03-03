@@ -57,12 +57,13 @@ select {
 
 .form-control {
   height: auto;
-  padding: 10px 15px;
+  padding: $b-space $b-space-m;
   border: 1px solid $c-positive-secondary;
   font-size: .9em;
   line-height: 1.4em;
   background-color: $c-firm-highlight;
   box-shadow: none;
+  border-radius: $b-border-radius;
 
   @include input-placeholder {
     color: $c-firm-primary;
@@ -117,6 +118,7 @@ select {
 .input-group-addon {
   border-color: $c-positive-secondary;
   color: $c-positive-secondary;
+  border-radius: $b-border-radius;
 }
 
 .input-group-btn {
