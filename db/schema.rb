@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170302074607) do
+ActiveRecord::Schema.define(version: 20170303012213) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -362,6 +362,7 @@ ActiveRecord::Schema.define(version: 20170302074607) do
     t.integer  "product_id"
     t.datetime "expire_at"
     t.text     "zip_codes"
+    t.text     "product_ids"
   end
 
   create_table "notifications", force: :cascade do |t|
@@ -430,6 +431,7 @@ ActiveRecord::Schema.define(version: 20170302074607) do
     t.integer  "opportunity_id"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+    t.string   "category"
   end
 
   create_table "pages", force: :cascade do |t|
@@ -550,6 +552,7 @@ ActiveRecord::Schema.define(version: 20170302074607) do
     t.text     "session_types"
     t.boolean  "display",                                    default: false
     t.date     "invisible_at"
+    t.string   "curriculums"
   end
 
   create_table "salesforce_references", force: :cascade do |t|

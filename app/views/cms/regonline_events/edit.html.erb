@@ -20,6 +20,10 @@
         <%= f.text_field :grade_bands, class: 'form-control' %>
       </div>
       <div class="form-group">
+        <label>Curriculums</label>
+        <%= f.select :curriculums, options_for_select(RegonlineEvent::FILTER_CURRICULUMS, (f.object.curriculums || '').split(',')), {}, class: 'form-control', multiple: true %>
+      </div>
+      <div class="form-group">
         <label>Session Types</label>
         <%= f.collection_select :session_types, EventTraining.all, :id, :title_with_category, { include_hidden: false }, class: 'form-control', multiple: true, placeholder: 'Set session type' %>
       </div>
@@ -46,6 +50,7 @@
   <script type="text/javascript">
     $(function(){
       $('#regonline_event_session_types').select2();
+      $('#regonline_event_curriculums').select2();
       $("#regonline_event_invisible_at").datetimepicker({format: 'YYYY-MM-DD'});
     });
   </script>

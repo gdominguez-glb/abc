@@ -3,31 +3,40 @@
 //   Pagination
 //   Bootstrap pagination overrides
 //
-//   Styleguide 10.0
-//
 // *************************************
+
+// -------------------------------------
+//   Basic pagination
+//
+//   Styleguide 10.0
+// -------------------------------------
 
 .pagination.pagination {
   margin: 0 0 $b-space-l;
   border-radius: 2px;
-  box-shadow: 0 2px 7px rgba(0, 0, 0, .175);
+  box-shadow: $b-box-shadow-s;
 
   // -------------------------------------
-  //   Pagination Active & Disabled States
+  //   Basic Pagination Active & Disabled States
   //
-  //   Styleguide 10.1
+  //   Styleguide 10.0.1
+  // -------------------------------------
+
+  // -------------------------------------
+  //   Basic Pagination Sizes
+  //
+  //   Styleguide 10.0.2
   // -------------------------------------
 
   li {
     a,
     &.disabled a {
-      border: 1px solid $c-firm-primary;
-      color: $c-firm-primary;
+      border: 1px solid $c-firm-secondary;
+      color: $c-positive-secondary;
 
       &:hover,
       &:active,
       &:focus {
-        color: lighten($c-positive-secondary, 5%);
         background-color: $c-positive-highlight;
       }
     }
@@ -41,9 +50,9 @@
         &:hover,
         &:active,
         &:focus {
-          border-color: lighten($c-positive-secondary, 5%);
+          border-color: $c-positive-subdue;
           color: $c-absolute;
-          background-color: lighten($c-positive-secondary, 5%);
+          background-color: $c-positive-subdue;
         }
       }
     }
@@ -82,11 +91,66 @@
 }
 
 // -------------------------------------
-//   Pagination Sizes
+//   Blog Pagination
 //
-//   Styleguide 10.2
+//   Styleguide 10.1
 // -------------------------------------
 
-.needs-a-rule {
-  color: red;
+.pagination-blog {
+  color: $c-absolute;
+  background-color: $c-positive-secondary;
+
+  .blog-title {
+    line-height: 1.2em;
+
+    a {
+      color: $c-absolute;
+      &:hover,
+      &:focus {
+        color: $c-absolute;
+      }
+    }
+  }
+
+  .blog-meta {
+    @extend .sans-serif;
+
+    margin-bottom: 20px;
+    font-size: .8em;
+    text-transform: uppercase;
+  }
+
+  hr {
+    display: none;
+    color: $c-positive-accent;
+
+    @media screen and (min-width: $screen-sm-min) {
+      display: block;
+    }
+  }
+}
+
+.pagination-blog-prev {
+  padding: 30px 12px;
+  background-color: lighten($c-positive-secondary, 2%);
+
+  @media screen and (min-width: $screen-sm-min) {
+    padding: 40px 20px 40px 64px;
+  }
+}
+
+.pagination-blog-next {
+  padding: 30px 12px;
+  background-color: $c-positive-secondary;
+
+  @media screen and (min-width: $screen-sm-min) {
+    padding: 40px 64px 40px 20px;
+  }
+
+  .btn {
+    @media screen and (min-width: $screen-sm-min) {
+      float: right;
+    }
+  }
+
 }

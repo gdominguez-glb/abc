@@ -12,7 +12,16 @@ class Opportunity < ActiveRecord::Base
 
   after_create :update_po_field
 
+  def sf_account_name
+    opportunity_sf_object = GmSalesforce::Client.instance.find('Opportunity', self.salesforce_id)
+    sf_account_object = GmSalesforce::Client.instance.find('Account', opportunity_sf_object.AccountId)
+    sf_account_object.Name
+  rescue
+    nil
+  end
+
   private
+
   def salesforce_exists?
     unless GmSalesforce::Client.instance.find('Opportunity', salesforce_id).present?
       raise

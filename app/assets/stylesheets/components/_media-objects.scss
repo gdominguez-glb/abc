@@ -15,7 +15,7 @@
   color: $c-absolute;
   background-color: $c-positive-secondary;
   border-radius: 2px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, .175);
+  box-shadow: $b-box-shadow-s;
 }
 
 .media-meta {

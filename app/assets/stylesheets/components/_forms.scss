@@ -125,6 +125,46 @@ select {
   }
 }
 
+// -------------------------------------
+//   Transparent Form Groups
+// -------------------------------------
+
+.form-group-transparent-label {
+  color: $c-absolute;
+}
+
+.form-group-transparent-input {
+  border-color: $c-absolute;
+  color: $c-absolute;
+  background-color: transparent;
+
+  &:focus {
+    border-color: $c-firm-secondary;
+  }
+}
+
+// -------------------------------------
+//   Transparent Input Groups
+// -------------------------------------
+
+.input-group-transparent {
+  .input-group-transparent-input {
+    border-color: $c-absolute;
+    color: $c-absolute;
+    background-color: transparent;
+
+    &:focus {
+      border-color: $c-firm-secondary;
+    }
+  }
+
+  .input-group-transparent-btn {
+    border-color: $c-absolute;
+    color: $c-absolute;
+    background-color: transparent;
+  }
+}
+
 .error {
   color: $c-energized-highlight;
 }
