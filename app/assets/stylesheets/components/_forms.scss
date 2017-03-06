@@ -208,11 +208,11 @@ select {
   position: relative;
   margin-bottom: $b-space-m;
   padding: $b-space 36px $b-space $b-space-m;
-  border: 1px solid $c-positive-secondary;
+  border: 1px solid $c-firm-primary;
   font-family: 'Karla', sans-serif;
   font-size: 14px;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: .15em;
   background: transparent;
   border-radius: $b-border-radius;
   box-shadow: none;
@@ -357,9 +357,10 @@ select {
 
     .select2-choice {
       .select2-chosen {
-        font-weight: normal;
+        font-weight: 700;
         text-align: left;
-        text-transform: capitalize;
+        text-transform: uppercase;
+        color: $c-positive-secondary;
       }
 
       .select2-arrow {
