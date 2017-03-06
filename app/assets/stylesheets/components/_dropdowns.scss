@@ -22,10 +22,15 @@
     width: auto;
   }
 
+  // -------------------------------------
+  //   Transparent Dropdown
+  //
+  //   Styleguide 7.1
+  // -------------------------------------
+
   .image-background & {
-    border: 0;
+    border: 1px solid $c-absolute;
     background: $c-transparent-highlight-9;
-    box-shadow: inset 0 0 0 1px;
 
     @media screen and (min-width: $screen-sm-min) {
       background: transparent;
@@ -84,9 +89,9 @@
 }
 
 // -------------------------------------
-//   Layover Dropdowns
+//   Overlay Dropdowns
 //
-//   Styleguide 7.1
+//   Styleguide 7.2
 // -------------------------------------
 
 .dropdown-md {
