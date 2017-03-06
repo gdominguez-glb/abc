@@ -60,6 +60,12 @@ select {
 // -------------------------------------
 
 .form-control {
+  @include input-placeholder {
+    font-weight: 700;
+    text-transform: uppercase;
+    color: $c-firm-primary;
+  }
+
   height: auto;
   padding: $b-space $b-space-m;
   border: 1px solid $c-firm-primary;
@@ -68,11 +74,6 @@ select {
   background-color: $c-absolute;
   box-shadow: none;
   border-radius: $b-border-radius;
-
-  @include input-placeholder {
-    font-weight: 700;
-    text-transform: uppercase;
-  }
 
   &:focus {
     border: 1px solid $c-positive-primary;
@@ -150,6 +151,10 @@ select {
 }
 
 .form-group-transparent-input {
+  @include input-placeholder {
+    color: $c-absolute;
+  }
+
   border-color: $c-absolute;
   color: $c-absolute;
   background-color: transparent;
@@ -165,6 +170,10 @@ select {
 
 .input-group-transparent {
   .input-group-transparent-input {
+    @include input-placeholder {
+      color: $c-absolute;
+    }
+
     border-color: $c-absolute;
     color: $c-absolute;
     background-color: transparent;
