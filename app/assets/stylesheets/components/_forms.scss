@@ -55,17 +55,23 @@ select {
   text-align: left;
 }
 
+// -------------------------------------
+//   Form Controls
+// -------------------------------------
+
 .form-control {
   height: auto;
-  padding: 10px 15px;
-  border: 1px solid $c-positive-secondary;
+  padding: $b-space $b-space-m;
+  border: 1px solid $c-firm-primary;
   font-size: .9em;
   line-height: 1.4em;
-  background-color: $c-firm-highlight;
+  background-color: $c-absolute;
   box-shadow: none;
+  border-radius: $b-border-radius;
 
   @include input-placeholder {
-    color: $c-firm-primary;
+    font-weight: 700;
+    text-transform: uppercase;
   }
 
   &:focus {
@@ -85,18 +91,27 @@ select {
   }
 }
 
+.form-control-search {
+  background: $c-absolute asset-url('icon-search-gray.png') no-repeat right $b-space-m top 50%;
+  background-size: $b-space-m $b-space-m;
+}
+
 .form-control-sm {
-  padding: 5px 15px 4px;
+  padding: $b-space-s $b-space-m 4px;
 }
 
 .form-control[readonly] {
   background: $c-firm-primary;
 }
 
+// -------------------------------------
+//   Input Groups
+// -------------------------------------
+
 .input-group {
 
   input {
-    padding: 10px;
+    padding: $b-space;
   }
 
   &.collapse {
@@ -109,19 +124,20 @@ select {
 
   .form-control {
     &:focus {
-      border-color: $c-positive-secondary;
+      border-color: $c-positive-primary;
     }
   }
 }
 
 .input-group-addon {
-  border-color: $c-positive-secondary;
+  border-color: $c-firm-primary;
   color: $c-positive-secondary;
+  border-radius: $b-border-radius;
 }
 
 .input-group-btn {
   .btn {
-    border: 1px solid $c-positive-secondary;
+    border: 1px solid $c-firm-primary;
   }
 }
 
@@ -170,31 +186,35 @@ select {
 }
 
 .radio {
-  margin: 0 0 10px;
+  margin: 0 0 $b-space;
 
   label + label {
-    margin-left: 5px;
+    margin-left: $b-space-s;
   }
 
   .form-inline & {
-    margin: 0 10px 10px 0;
+    margin: 0 $b-space $b-space 0;
   }
 }
+
+// -------------------------------------
+//   Custom Selects
+// -------------------------------------
 
 .select-container {
   @include transition(background, .3s);
 
   display: block;
   position: relative;
-  margin-bottom: 15px;
-  padding: 10px 36px 10px 15px;
-  border: 1px solid $c-positive-secondary;
+  margin-bottom: $b-space-m;
+  padding: $b-space 36px $b-space $b-space-m;
+  border: 1px solid $c-firm-primary;
   font-family: 'Karla', sans-serif;
   font-size: 14px;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: .15em;
   background: transparent;
-  border-radius: 4px;
+  border-radius: $b-border-radius;
   box-shadow: none;
 
   .form-control {
@@ -203,14 +223,14 @@ select {
 
   @media screen and (min-width: $screen-xs-min) {
     display: inline-block;
-    margin-bottom: 30px;
+    margin-bottom: ($b-space-m * 2);
   }
 
   &::after {
     display: inline-block;
     position: absolute;
     top: 19px;
-    right: 10px;
+    right: $b-space;
     width: 0;
     height: 0;
     border-top: 4px dashed;
@@ -246,12 +266,12 @@ select {
 
   &.block {
     display: block;
-    padding: 10px 30px 10px 15px;
+    padding: $b-space ($b-space-m * 2) $b-space $b-space-m;
   }
 
   + .select-container {
     @media screen and (min-width: $screen-xs-min) {
-      margin-left: 10px;
+      margin-left: $b-space;
     }
   }
 
@@ -260,14 +280,14 @@ select {
 .inline-input {
   display: inline-block;
   width: auto;
-  margin: 0 5px;
+  margin: 0 $b-space-s;
 }
 
 .has-icon-addon {
   position: relative;
 
   input {
-    padding-left: 50px;
+    padding-left: ($b-space * 5);
 
     &:focus {
 
@@ -283,7 +303,7 @@ select {
 
     position: absolute;
     top: 50%;
-    left: 5px;
+    left: $b-space-s;
     width: 1.5em;
     padding: 0 0 0 $b-space-s;
     border-right: 2px solid;
@@ -291,13 +311,17 @@ select {
   }
 }
 
+// -------------------------------------
+//   Select 2
+// -------------------------------------
+
 .select2-container {
   &.form-control {
 
     .select2-choices,
     .select2-choice {
       height: 42px;
-      padding: 9px 15px 8px;
+      padding: 9px $b-space-m 8px;
       background: transparent;
       background-image: none;
 
@@ -311,7 +335,7 @@ select {
       }
 
       .select2-search-choice {
-        margin: 0 0 0 5px;
+        margin: 0 0 0 $b-space-s;
       }
     }
 
@@ -333,9 +357,10 @@ select {
 
     .select2-choice {
       .select2-chosen {
-        font-weight: normal;
+        font-weight: 700;
         text-align: left;
-        text-transform: capitalize;
+        text-transform: uppercase;
+        color: $c-positive-secondary;
       }
 
       .select2-arrow {
@@ -350,8 +375,7 @@ select {
 .select2-drop {
   margin-top: 2px;
   background-color: $c-firm-highlight;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
+  border-radius: $b-border-radius;
 }
 
 .select2-drop-active {
@@ -360,7 +384,7 @@ select {
 
 .select2-search {
   input {
-    padding: 10px 20px;
+    padding: $b-space $b-space-l;
     border: 0;
     background-image: none !important;
   }
@@ -373,17 +397,17 @@ select {
   padding: 0;
 
   &:first-child {
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
+    border-top-left-radius: $b-border-radius;
+    border-top-right-radius: $b-border-radius;
   }
 
   &:last-child {
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: $b-border-radius;
+    border-bottom-right-radius: $b-border-radius;
   }
 
   .select2-result {
-    padding: 10px 20px;
+    padding: $b-space $b-space-l;
     font-size: 13px;
     text-transform: uppercase;
 
@@ -401,25 +425,4 @@ select {
   .select2-result-label {
     padding: 0;
   }
-}
-
-// -------------------------------------
-//   Material Design Inputs
-// -------------------------------------
-
-.input-md {
-  border: 1px solid $c-firm-primary;
-  background-color: $c-absolute;
-  border-radius: 2px;
-
-  @include input-placeholder {
-    font-weight: 700;
-    text-transform: uppercase;
-  }
-
-}
-
-.input-md-search {
-  background: $c-absolute asset-url('icon-search-gray.png') no-repeat right $b-space-m top 50%;
-  background-size: $b-space-m $b-space-m;
 }

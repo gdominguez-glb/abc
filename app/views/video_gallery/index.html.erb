@@ -11,7 +11,7 @@
             <% params[:taxon_ids].each do |taxon_id| %>
               <%= hidden_field_tag "taxon_ids[]", taxon_id %>
             <% end %>
-            <%= text_field_tag :query, params[:query], class: 'form-control input-md input-md-search margin-bottom--l', placeholder: 'Search' %>
+            <%= text_field_tag :query, params[:query], class: 'form-control form-control-search margin-bottom--l', placeholder: 'Search' %>
           <% end %>
 
           <h4 class="text-left bh4">Filter By:</h4>
