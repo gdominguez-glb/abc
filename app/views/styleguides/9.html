@@ -1,48 +1,135 @@
 <%= kss_block '9.0' do %>
-<!-- Begin Navbar -->
-<nav class="container navbar navbar-default navbar-primary nav-border-bottom">
-  <div class="navbar-header">
-    <a class="navbar-brand" href="/">
-      Great Minds
-    </a>
-    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mainNav">
-      <span class="sr-only">Toggle navigation</span>
-      <i class="material-icons icon-menu">menu</i>
-      <i class="material-icons icon-close">close</i>
-    </button>
-  </div>
-
-  <div class="collapse navbar-collapse" id="mainNav">
-    <ul class="nav navbar-nav">
-      <% Page.curriculum_nav.each do |page| %>
-        <li data-primary-nav-item="<%= "#{page.group_name}" %>">
-          <a href="<%= "/#{page.slug}" %>" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= page.group_name %> <span class="caret"></span></a>
-          <% if page.sub_pages.present? %>
-            <%= render partial: 'curriculum_dropdown', locals: { page: page } %>
-          <% end %>
-        </li>
-      <% end %>
-      <li data-primary-nav-item="shop" class="store-link <%= store_active_class %>">
-        <%= link_to "Shop", '/store', class: store_active_class %>
-      </li>
-      <li class="search-button">
-        <%= form_tag '/search', class: 'nav-search form-inline', method: :get do %>
-          <%= text_field_tag :query, nil, class: 'form-control', placeholder: 'Search'  %>
-        <% end %>
-      </li>
-    </ul>
-    <%= render 'secondary_nav' %>
-    <ul class="nav navbar-nav navbar-right">
-      <%= render partial: 'spree/shared/main_nav_bar' if store_menu? %>
-    </ul>
-  </div>
-</nav> <!-- /.navbar -->
+<table class="table">
+  <caption>Optional table caption.</caption>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Username</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>
 <% end %>
 
 <%= kss_block '9.1' do %>
-<ul class="nav nav-tabs">
-  <li role="presentation" class="active"><a href="#">Home</a></li>
-  <li role="presentation"><a href="#">Profile</a></li>
-  <li role="presentation"><a href="#">Messages</a></li>
-</ul>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Username</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>
+<% end %>
+
+<%= kss_block '9.2' do %>
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Column heading</th>
+      <th>Column heading</th>
+      <th>Column heading</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="active">
+      <th scope="row">1</th>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+    </tr>
+    <tr class="success">
+      <th scope="row">3</th>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+    </tr>
+    <tr>
+      <th scope="row">4</th>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+    </tr>
+    <tr class="info">
+      <th scope="row">5</th>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+    </tr>
+    <tr>
+      <th scope="row">6</th>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+    </tr>
+    <tr class="warning">
+      <th scope="row">7</th>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+    </tr>
+    <tr>
+      <th scope="row">8</th>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+    </tr>
+    <tr class="danger">
+      <th scope="row">9</th>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+    </tr>
+  </tbody>
+</table>
 <% end %>

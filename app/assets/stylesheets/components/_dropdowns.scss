@@ -6,9 +6,87 @@
 // *************************************
 
 // -------------------------------------
-//   Material Design-Inspired Dropdowns
+//   Basic Dropdowns
 //
-//   Styleguide 5.5
+//   Styleguide 7.0
+// -------------------------------------
+
+.dropdown-menu {
+  width: 100%;
+  padding: 0;
+  border: 1px solid $c-depleted;
+  background-color: $c-firm-highlight;
+  border-radius: $b-border-radius;
+
+  @media screen and (min-width: $screen-sm-min) {
+    width: auto;
+  }
+
+  .image-background & {
+    border: 0;
+    background: $c-transparent-highlight-9;
+    box-shadow: inset 0 0 0 1px;
+
+    @media screen and (min-width: $screen-sm-min) {
+      background: transparent;
+    }
+  }
+
+  > li {
+
+    &:first-child {
+      > a {
+        border-top-left-radius: $b-border-radius;
+        border-top-right-radius: $b-border-radius;
+      }
+    }
+
+    &:last-child {
+      > a {
+        border-bottom-left-radius: $b-border-radius;
+        border-bottom-right-radius: $b-border-radius;
+      }
+    }
+
+    > a {
+      padding: $b-space $b-space-l;
+      white-space: normal;
+
+      @media screen and (min-width: $screen-sm-min) {
+        white-space: nowrap;
+      }
+
+      &:hover {
+        background-color: darken($c-firm-highlight, 5%);
+      }
+
+      .image-background & {
+        @media screen and (min-width: $screen-sm-min) {
+          color: $c-absolute;
+
+          &:hover {
+            color: $c-depleted;
+          }
+        }
+      }
+    }
+  }
+}
+
+.dropdown-toggle {
+  position: relative;
+
+  .caret {
+    position: absolute;
+    top: 18px;
+    right: $b-space;
+  }
+}
+
+// -------------------------------------
+//   Layover Dropdowns
+//
+//   Styleguide 7.1
 // -------------------------------------
 
 .dropdown-md {

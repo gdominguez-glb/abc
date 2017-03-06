@@ -1,135 +1,125 @@
 <%= kss_block '7.0' do %>
-<table class="table">
-  <caption>Optional table caption.</caption>
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Username</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
+<div class="btn-group">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Default <span class="caret"></span></button>
+  <ul class="dropdown-menu" role="menu">
+    <li><a href="#">Action</a></li>
+    <li><a href="#">Another action</a></li>
+    <li><a href="#">Something else here</a></li>
+    <li class="divider"></li>
+    <li><a href="#">Separated link</a></li>
+  </ul>
+</div>
+<div class="btn-group">
+  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Primary <span class="caret"></span></button>
+  <ul class="dropdown-menu" role="menu">
+    <li><a href="#">Action</a></li>
+    <li><a href="#">Another action</a></li>
+    <li><a href="#">Something else here</a></li>
+    <li class="divider"></li>
+    <li><a href="#">Separated link</a></li>
+  </ul>
+</div>
+<div class="btn-group">
+  <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Success <span class="caret"></span></button>
+  <ul class="dropdown-menu" role="menu">
+    <li><a href="#">Action</a></li>
+    <li><a href="#">Another action</a></li>
+    <li><a href="#">Something else here</a></li>
+    <li class="divider"></li>
+    <li><a href="#">Separated link</a></li>
+  </ul>
+</div>
+<div class="btn-group">
+  <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Info <span class="caret"></span></button>
+  <ul class="dropdown-menu" role="menu">
+    <li><a href="#">Action</a></li>
+    <li><a href="#">Another action</a></li>
+    <li><a href="#">Something else here</a></li>
+    <li class="divider"></li>
+    <li><a href="#">Separated link</a></li>
+  </ul>
+</div>
+<div class="btn-group">
+  <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Warning <span class="caret"></span></button>
+  <ul class="dropdown-menu" role="menu">
+    <li><a href="#">Action</a></li>
+    <li><a href="#">Another action</a></li>
+    <li><a href="#">Something else here</a></li>
+    <li class="divider"></li>
+    <li><a href="#">Separated link</a></li>
+  </ul>
+</div>
+<div class="btn-group">
+  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Danger <span class="caret"></span></button>
+  <ul class="dropdown-menu" role="menu">
+    <li><a href="#">Action</a></li>
+    <li><a href="#">Another action</a></li>
+    <li><a href="#">Something else here</a></li>
+    <li class="divider"></li>
+    <li><a href="#">Separated link</a></li>
+  </ul>
+</div>
 <% end %>
 
 <%= kss_block '7.1' do %>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Username</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
-<% end %>
-
-<%= kss_block '7.2' do %>
-<table class="table">
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>Column heading</th>
-      <th>Column heading</th>
-      <th>Column heading</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr class="active">
-      <th scope="row">1</th>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-    </tr>
-    <tr class="success">
-      <th scope="row">3</th>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-    </tr>
-    <tr>
-      <th scope="row">4</th>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-    </tr>
-    <tr class="info">
-      <th scope="row">5</th>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-    </tr>
-    <tr>
-      <th scope="row">6</th>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-    </tr>
-    <tr class="warning">
-      <th scope="row">7</th>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-    </tr>
-    <tr>
-      <th scope="row">8</th>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-    </tr>
-    <tr class="danger">
-      <th scope="row">9</th>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-    </tr>
-  </tbody>
-</table>
+<div class="dropdown dropdown-md">
+  <button type="button" class="btn btn-default btn-block dropdown-toggle dropdown-md-btn" data-toggle="dropdown" aria-expanded="false">Default <i class="dropdown-md-mi mi md-24 toggle-arrow">keyboard_arrow_down</i></button>
+  <ul class="dropdown-menu dropdown-md-menu" role="menu">
+    <li class="dropdown-md-item"><a class="dropdown-md-link" href="#">Action</a></li>
+    <li class="dropdown-md-item"><a class="dropdown-md-link" href="#">Another action</a></li>
+    <li class="dropdown-md-item"><a class="dropdown-md-link" href="#">Something else here</a></li>
+    <li class="divider"></li>
+    <li class="dropdown-md-item"><a class="dropdown-md-link" href="#">Separated link</a></li>
+  </ul>
+</div>
+<div class="dropdown dropdown-md">
+  <button type="button" class="btn btn-primary btn-block dropdown-toggle dropdown-md-btn" data-toggle="dropdown" aria-expanded="false">Primary <i class="dropdown-md-mi mi md-24 toggle-arrow">keyboard_arrow_down</i></button>
+  <ul class="dropdown-menu dropdown-md-menu" role="menu">
+    <li class="dropdown-md-item"><a class="dropdown-md-link" href="#">Action</a></li>
+    <li class="dropdown-md-item"><a class="dropdown-md-link" href="#">Another action</a></li>
+    <li class="dropdown-md-item"><a class="dropdown-md-link" href="#">Something else here</a></li>
+    <li class="divider"></li>
+    <li class="dropdown-md-item"><a class="dropdown-md-link" href="#">Separated link</a></li>
+  </ul>
+</div>
+<div class="dropdown dropdown-md">
+  <button type="button" class="btn btn-success btn-block dropdown-toggle dropdown-md-btn" data-toggle="dropdown" aria-expanded="false">Success <i class="dropdown-md-mi mi md-24 toggle-arrow">keyboard_arrow_down</i></button>
+  <ul class="dropdown-menu dropdown-md-menu" role="menu">
+    <li class="dropdown-md-item"><a class="dropdown-md-link" href="#">Action</a></li>
+    <li class="dropdown-md-item"><a class="dropdown-md-link" href="#">Another action</a></li>
+    <li class="dropdown-md-item"><a class="dropdown-md-link" href="#">Something else here</a></li>
+    <li class="divider"></li>
+    <li class="dropdown-md-item"><a class="dropdown-md-link" href="#">Separated link</a></li>
+  </ul>
+</div>
+<div class="dropdown dropdown-md">
+  <button type="button" class="btn btn-info btn-block dropdown-toggle dropdown-md-btn" data-toggle="dropdown" aria-expanded="false">Info <i class="dropdown-md-mi mi md-24 toggle-arrow">keyboard_arrow_down</i></button>
+  <ul class="dropdown-menu dropdown-md-menu" role="menu">
+    <li class="dropdown-md-item"><a class="dropdown-md-link" href="#">Action</a></li>
+    <li class="dropdown-md-item"><a class="dropdown-md-link" href="#">Another action</a></li>
+    <li class="dropdown-md-item"><a class="dropdown-md-link" href="#">Something else here</a></li>
+    <li class="divider"></li>
+    <li class="dropdown-md-item"><a class="dropdown-md-link" href="#">Separated link</a></li>
+  </ul>
+</div>
+<div class="dropdown dropdown-md">
+  <button type="button" class="btn btn-warning btn-block dropdown-toggle dropdown-md-btn" data-toggle="dropdown" aria-expanded="false">Warning <i class="dropdown-md-mi mi md-24 toggle-arrow">keyboard_arrow_down</i></button>
+  <ul class="dropdown-menu dropdown-md-menu" role="menu">
+    <li class="dropdown-md-item"><a class="dropdown-md-link" href="#">Action</a></li>
+    <li class="dropdown-md-item"><a class="dropdown-md-link" href="#">Another action</a></li>
+    <li class="dropdown-md-item"><a class="dropdown-md-link" href="#">Something else here</a></li>
+    <li class="divider"></li>
+    <li class="dropdown-md-item"><a class="dropdown-md-link" href="#">Separated link</a></li>
+  </ul>
+</div>
+<div class="dropdown dropdown-md">
+  <button type="button" class="btn btn-danger btn-block dropdown-toggle dropdown-md-btn" data-toggle="dropdown" aria-expanded="false">Danger <i class="dropdown-md-mi mi md-24 toggle-arrow">keyboard_arrow_down</i></button>
+  <ul class="dropdown-menu dropdown-md-menu" role="menu">
+    <li class="dropdown-md-item"><a class="dropdown-md-link" href="#">Action</a></li>
+    <li class="dropdown-md-item"><a class="dropdown-md-link" href="#">Another action</a></li>
+    <li class="dropdown-md-item"><a class="dropdown-md-link" href="#">Something else here</a></li>
+    <li class="divider"></li>
+    <li class="dropdown-md-item"><a class="dropdown-md-link" href="#">Separated link</a></li>
+  </ul>
+</div>
 <% end %>

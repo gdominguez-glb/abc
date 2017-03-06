@@ -1,56 +1,130 @@
 <%= kss_block '12.0' do %>
-<div class="jumbotron">
-  <h1 class="jumbotron-title">Lorem ipsum <br /> dolor sit amet</h1>
-  <p>Phasellus aliquet commodo auctor. Nam aliquet tincidunt purus, in tempus turpis interdum vitae.</p>
-  <a class="btn btn-primary" href="#" role="button">Learn more</a>
-</div>
+<nav>
+  <ul class="pagination">
+    <li>
+      <a href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li>
+      <a href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+<% end %>
+
+<%= kss_block '12.0.1' do %>
+<nav>
+  <ul class="pagination">
+    <li>
+      <a href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li class="active"><a href="#">1</a></li>
+    <li class="disabled"><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li>
+      <a href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+<% end %>
+
+<%= kss_block '12.0.2' do %>
+<nav>
+  <ul class="pagination pagination-lg">
+    <li>
+      <a href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li>
+      <a href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav>
+  <ul class="pagination">
+    <li>
+      <a href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li>
+      <a href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav>
+  <ul class="pagination pagination-sm">
+    <li>
+      <a href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li>
+      <a href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
 <% end %>
 
 <%= kss_block '12.1' do %>
-<div class="jumbotron jumbotron-primary">
-  <h1 class="jumbotron-title">Lorem ipsum <br /> dolor sit amet</h1>
-  <p>Phasellus aliquet commodo auctor. Nam aliquet tincidunt purus, in tempus turpis interdum vitae.</p>
-  <a class="btn btn-success" href="#" role="button">Learn more</a>
-</div>
-<% end %>
-
-<%= kss_block '12.2' do %>
-<div class="container">
-  <div class="jumbotron jumbotron-background" style="background-image: url('https://s3.greatminds.org/documents/attachments/000/000/037/large/HS_boy.jpg?1458617395')">
-    <div class="row">
-      <div class="col-sm-12">
-        <h1 class="jumbotron-title">Lorem ipsum</h1>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-9">
-        <p>Phasellus aliquet commodo auctor. Nam aliquet tincidunt purus, in tempus turpis interdum vitae.</p>
-      </div>
-      <div class="col-sm-3">
-        <label for="transparentInputGroup1">Search</label>
-        <div class="input-group input-group-transparent margin-bottom--reset">
-          <input type="text" class="form-control input-group-transparent-input" id="transparentInputGroup1" placeholder="Transparent Input Group with Addon">
-          <span class="input-group-btn input-group-transparent-btn">
-            <button type="button" class="btn btn-default btn-transparent input-group-transparent-btn"><i class="mi">search</i></button>
-          </span>
-        </div>
-      </div>
-    </div>
+<div class="container pagination-blog">
+<div class="row">
+  <div class="col-sm-6 pagination-blog-prev">
+    <h3 class="blog-title">
+      <a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a>
+    </h3>
+    <div class="blog-meta">Ut: Lorem Ipsum</div>
+    <hr />
+    <a href="#" class="btn btn-sm btn-default btn-transparent">
+      <i class="mi md-18">chevron_left</i> Previous
+    </a>
+  </div>
+  <div class="col-sm-6 pagination-blog-next">
+    <h3 class="blog-title">
+      <a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit</a>
+    </h3>
+    <div class="blog-meta">Ut: Lorem Ipsum</div>
+    <hr />
+    <a href="#" class="btn btn-sm btn-default btn-transparent">
+      Next <i class="mi md-18">chevron_right</i>
+    </a>
   </div>
 </div>
-<% end %>
-
-<%= kss_block '12.3' do %>
-<div class="container">
-  <div class="jumbotron jumbotron-background" style="background-image: url('https://s3.greatminds.org/documents/attachments/000/000/037/large/HS_boy.jpg?1458617395')">
-    <div class="row">
-      <div class="col-sm-8 col-sm-offset-2 text-center">
-        <a class="btn btn-primary btn-transparent btn-sm margin-bottom--l" href="#" role="button">Back</a>
-        <h1 class="jumbotron-title">Lorem ipsum <br /> dolor sit amet</h1>
-        <hr class="jumbotron-divider" />
-        <span class="jumbotron-byline">Ut: Lorem Ipsum</span>
-      </div>
-    </div>
-  </div>
 </div>
 <% end %>
