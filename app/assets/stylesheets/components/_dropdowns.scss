@@ -80,11 +80,26 @@
 
 .dropdown-toggle {
   position: relative;
+  padding: $b-space ($b-space-m * 2) $b-space $b-space-m;
+  border: 1px solid $c-positive-secondary;
+  text-align: left;
+  color: $c-positive-secondary;
+  background: transparent;
 
   .caret {
     position: absolute;
     top: 18px;
     right: $b-space;
+  }
+
+  .image-background & {
+    border: 1px solid $c-absolute;
+    color: $c-absolute;
+
+    &:hover {
+      color: $c-positive-secondary;
+      background-color: $c-absolute;
+    }
   }
 }
 
@@ -121,6 +136,26 @@
   &.btn-sm {
     padding: $b-space-s 30px $b-space-s $b-space;
   }
+
+  &.btn-primary {
+    @include button-variant($c-absolute, $c-positive-secondary, darken($c-positive-secondary, 5%));
+  }
+
+  &.btn-info {
+    @include button-variant($c-positive-secondary, $c-positive-primary, $c-firm-primary);
+  }
+
+  &.btn-success {
+    @include button-variant($c-positive-secondary, $c-balanced-primary, $c-firm-primary);
+  }
+
+  &.btn-warning {
+    @include button-variant($c-absolute, $c-energized-primary, $c-energized-primary);
+  }
+
+  &.btn-danger {
+    @include button-variant($c-absolute, darken($c-energized-secondary, 10%), darken($c-energized-secondary, 15%));
+  }
 }
 
 .dropdown-md-mi.dropdown-md-mi.dropdown-md-mi {
@@ -132,6 +167,17 @@
   .btn-sm & {
     top: 3px;
     right: 3px;
+  }
+
+  .btn-success &,
+  .btn-info & {
+    color: $c-positive-secondary;
+  }
+
+  .btn-primary &,
+  .btn-warning &,
+  .btn-danger & {
+    color: $c-absolute;
   }
 }
 
@@ -177,5 +223,29 @@
     .dropdown-md-mi {
       color: $c-absolute;
     }
+  }
+}
+
+// -------------------------------------
+//   Fixed Width Modifiers
+// -------------------------------------
+
+.fixed-width {
+  .btn {
+    min-width: 200px;
+  }
+
+  .dropdown-menu {
+    min-width: 200px;
+  }
+}
+
+.dropdown-contact-topic {
+  .btn {
+    min-width: 290px;
+  }
+
+  .dropdown-menu {
+    min-width: 290px;
   }
 }

@@ -50,25 +50,6 @@
       border: 1px dashed;
     }
 
-    &.dropdown-toggle {
-      padding: $b-space ($b-space-m * 2) $b-space $b-space-m;
-      border: 1px solid $c-positive-secondary;
-      text-align: left;
-      color: $c-positive-secondary;
-      background: transparent;
-
-      .image-background & {
-        border: 1px solid $c-absolute;
-        color: $c-absolute;
-
-        &:hover {
-          color: $c-positive-secondary;
-          background-color: $c-absolute;
-        }
-      }
-
-    }
-
     &[disabled] {
       background-color: $c-stable-primary;
     }
@@ -84,6 +65,10 @@
 
   &.btn-success {
     @include button-variant($c-positive-secondary, $c-balanced-primary, $c-positive-secondary);
+  }
+
+  &.btn-warning {
+    @include button-variant($c-absolute, $c-energized-primary, $c-energized-primary);
   }
 
   &.btn-danger {
@@ -202,25 +187,5 @@
     position: absolute;
     top: 18px;
     right: $b-space;
-  }
-
-  &.fixed-width {
-    .btn {
-      min-width: 200px;
-    }
-
-    .dropdown-menu {
-      min-width: 200px;
-    }
-  }
-
-  &.dropdown-contact-topic {
-    .btn {
-      min-width: 290px;
-    }
-
-    .dropdown-menu {
-      min-width: 290px;
-    }
   }
 }
