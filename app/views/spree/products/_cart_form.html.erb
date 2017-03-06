@@ -33,7 +33,7 @@
               <br/>
               <% if @product.product_type != "partner" %>
                 <label class="block margin-bottom--m">Quantity:</label>
-                <div class="select-container dark-select dropdown-md-btn margin-bottom--s inline-block">
+                <div class="select-container dark-select dropdown-ol-btn margin-bottom--s inline-block">
                   <span>1</span>
                   <%= select_tag  :quantity, options_for_select(1..@product.max_quantity_to_purchase), :class => 'form-control' %>
                 </div>
