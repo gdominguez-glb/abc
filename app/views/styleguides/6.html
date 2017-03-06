@@ -1,112 +1,49 @@
 <%= kss_block '6.0' do %>
-<form>
-  <div class="form-group">
-    <label for="standardInput1">Standard Input</label>
-    <input type="text" class="form-control" id="standardInput1" placeholder="Standard input">
-  </div>
-  <div class="form-group">
-    <label for="searchInput1">Search Input</label>
-    <input type="text" class="form-control form-control-search" id="searchInput1" placeholder="Search input">
-  </div>
-  <div class="form-group form-group-transparent">
-    <div style="padding: 10px; background-color: #07212d;">
-      <label for="transparentInput1" class="form-group-transparent-label">Transparent Input</label>
-      <input type="text" class="form-control form-group-transparent-input" id="transparentInput1" placeholder="Transparent input">
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="smallInput1">Small Input</label>
-    <input type="text" class="form-control form-control-sm" id="smallInput1" placeholder="Small input">
-  </div>
-  <div class="form-group">
-    <label for="inputGroup1">Input Groups</label>
-    <div class="input-group">
-      <span class="input-group-addon">Addon</span>
-      <input type="text" class="form-control" id="inputGroup1" placeholder="Input Group Addon">
-    </div>
-    <div class="input-group">
-      <input type="text" class="form-control" id="inputGroupBtn1" placeholder="Input Group Button">
-      <span class="input-group-btn">
-        <button type="button" class="btn btn-default"><i class="mi">close</i></button>
-      </span>
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="transparentInputGroup1">Transparent Input Group</label>
-    <div style="padding: 10px; background-color: #07212d;">
-      <div class="input-group input-group-transparent margin-bottom--reset">
-        <input type="text" class="form-control input-group-transparent-input" id="transparentInputGroup1" placeholder="Transparent Input Group with Addon">
-        <span class="input-group-btn input-group-transparent-btn">
-          <button type="button" class="btn btn-default btn-transparent input-group-transparent-btn"><i class="mi">search</i></button>
-        </span>
-      </div>
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="exampleInputFile">File input</label>
-    <input type="file" id="exampleInputFile">
-  </div>
-  <label>Radio Buttons</label>
-  <div class="radio">
-    <label>
-      <input type="radio" name="optionsRadios" id="optionsRadios1"> Radio 1
-    </label>
-  </div>
-  <div class="radio">
-    <label>
-      <input type="radio" name="optionsRadios" id="optionsRadios2"> Radio 2
-    </label>
-  </div>
-  <label>Checkboxes</label>
-  <div class="checkbox">
-    <label>
-      <input type="checkbox"> Checkbox 1
-    </label>
-  </div>
-  <div class="checkbox">
-    <label>
-      <input type="checkbox"> Checkbox 2
-    </label>
-  </div>
-  <label>Selects</label>
-  <div class="form-group">
-    <div class="select-container">
-      <span>Select Option</span>
-      <select class="form-control" name="">
-        <option value="1">Option 1</option>
-        <option value="2">Option 2</option>
-        <option value="3">Option 3</option>
-      </select>
-    </div>
-  </div>
-  <div class="form-group">
-    <div class="select-container dark-select">
-      <span>Dark Select Option</span>
-      <select class="form-control" name="">
-        <option value="1">Option 1</option>
-        <option value="2">Option 2</option>
-        <option value="3">Option 3</option>
-      </select>
-    </div>
-  </div>
-  <label>Select 2</label>
-  <div class="form-group">
-    <select class="form-control js-select2" name="">
-      <option value="1">Option 1</option>
-      <option value="2">Option 2</option>
-      <option value="3">Option 3</option>
-    </select>
-  </div>
-  <label>Select 2 Multiple</label>
-  <div class="form-group">
-    <select class="form-control js-select2" multiple name="">
-      <option value="1">Option 1</option>
-      <option value="2">Option 2</option>
-      <option value="3">Option 3</option>
-    </select>
-  </div>
-</form>
-<script>
-  $('.js-select2').select2();
-</script>
+<!-- Standard button -->
+<button type="button" class="btn btn-default">Default</button>
+<!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+<button type="button" class="btn btn-primary">Primary</button>
+<!-- Indicates a successful or positive action -->
+<button type="button" class="btn btn-success">Success</button>
+<!-- Contextual button for informational alert messages -->
+<button type="button" class="btn btn-info">Info</button>
+<!-- Indicates caution should be taken with this action -->
+<button type="button" class="btn btn-warning">Warning</button>
+<!-- Indicates a dangerous or potentially negative action -->
+<button type="button" class="btn btn-danger">Danger</button>
+<!-- Deemphasize a button by making it look like a link while maintaining button behavior -->
+<button type="button" class="btn btn-link">Link</button>
+<% end %>
+
+<%= kss_block '6.1' do %>
+<div style="padding: 10px; background-color: #07212d;">
+  <button type="button" class="btn btn-primary btn-transparent">Transparent Button</button>
+</div>
+<% end %>
+
+<%= kss_block '6.2' do %>
+<div class="margin-bottom">
+  <button type="button" class="btn btn-primary btn-lg">Large button</button>
+  <button type="button" class="btn btn-default btn-lg">Large button</button>
+</div>
+<div class="margin-bottom">
+  <button type="button" class="btn btn-primary">Default button</button>
+  <button type="button" class="btn btn-default">Default button</button>
+</div>
+<div class="margin-bottom">
+  <button type="button" class="btn btn-primary btn-sm">Small button</button>
+  <button type="button" class="btn btn-default btn-sm">Small button</button>
+</div>
+<div class="margin-bottom">
+  <button type="button" class="btn btn-primary btn-xs">Extra small button</button>
+  <button type="button" class="btn btn-default btn-xs">Extra small button</button>
+</div>
+<% end %>
+
+<%= kss_block '6.3' do %>
+<div class="btn-group">
+  <button type="button" class="btn btn-default">Left</button>
+  <button type="button" class="btn btn-default">Middle</button>
+  <button type="button" class="btn btn-default">Right</button>
+</div>
 <% end %>
