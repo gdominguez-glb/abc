@@ -114,6 +114,23 @@
     z-index: 1001;
   }
 
+  // -------------------------------------
+  //   Relative Overlay Dropdown
+  //
+  //   Styleguide 7.3
+  // -------------------------------------
+
+  &.dropdown-ol-relative {
+    &.open {
+      .dropdown-ol-menu {
+        display: block;
+        position: relative;
+        top: -42px;
+        margin-bottom: -42px;
+      }
+    }
+  }
+
   .custom-activated {
     display: block;
     position: relative;
@@ -227,7 +244,7 @@
 }
 
 // -------------------------------------
-//   Fixed Width Modifiers
+//   Width Modifiers
 // -------------------------------------
 
 .fixed-width {
