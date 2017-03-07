@@ -62,6 +62,16 @@ class Spree::CouponCode < ActiveRecord::Base
   end
 
   def generate_coupon_code_order
-    Spree::Order.create(coupon_code_id: self.id, source: :coupon_code_order, state: 'complete', school_district_id: self.school_district_id, email: 'web.admin@greatminds.net')
+    order = Spree::Order.new(
+      coupon_code_id: self.id,
+      source: :coupon_code_order,
+      state: 'complete',
+      school_district_id: self.school_district_id,
+      email: 'web.admin@greatminds.net'
+    )
+    if self.sync_specified_order? && self.sf_order_id.present?
+      order.build_salesforce_reference(id_in_salesforce: self.sf_order_id)
+    end
+    order.save
   end
 end

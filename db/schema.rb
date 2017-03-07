@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170303012213) do
+ActiveRecord::Schema.define(version: 20170307011828) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -697,8 +697,10 @@ ActiveRecord::Schema.define(version: 20170303012213) do
     t.integer  "total_quantity"
     t.integer  "used_quantity"
     t.integer  "school_district_id"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.string   "sf_order_id"
+    t.boolean  "sync_specified_order"
   end
 
   create_table "spree_coupon_codes_products", id: false, force: :cascade do |t|
