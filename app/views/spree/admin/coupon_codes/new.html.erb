@@ -22,6 +22,14 @@
           <label>Total Quantity</label>
           <%= f.text_field :total_quantity, class: 'form-control' %>
         </div>
+        <div class="form-group">
+          <label>Would you like to sync the assets to an existing order?</label>
+          <%= f.select :sync_specified_order, [['Yes', 1], ['No', 0]], { prompt: 'Choose Option' }, class: 'form-control' %>
+        </div>
+        <div class="form-group hide" id="sf_order_id_field">
+          <label>SF Order ID (sync assets to the specify order, Optional)</label>
+          <%= f.text_field :sf_order_id, class: 'form-control' %>
+        </div>
       </div>
     </div>
     <div class="form-actions" data-hook="buttons">
@@ -95,5 +103,13 @@
           return product.name;
         }
      });
+
+    $('#coupon_code_sync_specified_order').change(function(){
+      if($(this).val() == '1') {
+        $('#sf_order_id_field').removeClass('hide');
+      } else {
+        $('#sf_order_id_field').addClass('hide');
+      }
+    });
   });
 </script>
