@@ -20,23 +20,23 @@
       <label for="">PO Number</label>
       <%= f.text_field :po_number, class: 'form-control', placeholder: "PO Number" %>
     </div>
+    <div class="form-group col-sm-12">
+      <%= f.label :skip_tax_exemption do %>
+        <%= f.check_box :skip_tax_exemption %>
+        If sales tax is included on PO, please check box
+      <% end %>
+    </div>
     <div class="form-group col-sm-6" id="label-0">
-      <span class="btn btn-default btn-block" onclick="FileEvent.simulateClick('#opportunity_attachment_0')">Purchase order</span>
+      <span class="btn btn-default btn-block margin-bottom--s" onclick="FileEvent.simulateClick('#opportunity_attachment_0')">Purchase order</span>
       <p class="hint">Current file: <span class="opportunity-attachment-0">no file chosen</span></p>
       <input class="hide" type="file" name="opportunity[attachments_attributes][0][file]" id="opportunity_attachment_0" onchange="FileEvent.fillWithName('.opportunity-attachment-0', '#opportunity_attachment_0')" />
       <input type="hidden" name="opportunity[attachments_attributes][0][category]" value="purchase" />
     </div>
     <div class="form-group col-sm-6" id="label-1">
-      <span class="btn btn-default btn-block" onclick="FileEvent.simulateClick('#opportunity_attachment_1')">Tax Exemption Form</span>
+      <span class="btn btn-default btn-block margin-bottom--s" onclick="FileEvent.simulateClick('#opportunity_attachment_1')">Tax Exemption Form</span>
       <p class="hint">Current file: <span class="opportunity-attachment-1">no file chosen</span></p>
       <input class="hide" type="file" name="opportunity[attachments_attributes][1][file]" id="opportunity_attachment_1" onchange="FileEvent.fillWithName('.opportunity-attachment-1', '#opportunity_attachment_1')" />
       <input type="hidden" name="opportunity[attachments_attributes][1][category]" value="tax" />
-    </div>
-    <div class="form-group col-sm-12">
-      <%= f.label :skip_tax_exemption do %>
-        <%= f.check_box :skip_tax_exemption %>
-        If sales tax is included on PO, please check box
-    <% end %>
     </div>
   </div>
 
