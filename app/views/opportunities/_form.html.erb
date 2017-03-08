@@ -12,31 +12,44 @@
   </div>
 
   <div class="row">
-    <div class="form-group col-sm-12">
-      <label for="">Opportunity ID</label>
-      <%= f.text_field :salesforce_id, class: 'form-control', placeholder: "Opportunity ID" %>
+    <div class="col-sm-12">
+      <p>Thank you for choosing Great Minds for your educational needs. We look forward to processing your order shortly. Please submit your order per the prompts below. If you have any questions or concerns while submitting your order, please feel free to contact our Order Processing team at 202-823-4324.</p>
     </div>
-    <div class="form-group col-sm-12">
-      <label for="">PO Number</label>
-      <%= f.text_field :po_number, class: 'form-control', placeholder: "PO Number" %>
+    <div class="col-sm-6">
+      <div class="form-group">
+        <label for="">Opportunity ID</label>
+        <%= f.text_field :salesforce_id, class: 'form-control', placeholder: "Opportunity ID" %>
+      </div>
     </div>
-    <div class="form-group col-sm-6" id="label-0">
-      <span class="btn btn-default btn-block" onclick="FileEvent.simulateClick('#opportunity_attachment_0')">Purchase order</span>
-      <p class="hint">Current file: <span class="opportunity-attachment-0">no file chosen</span></p>
-      <input class="hide" type="file" name="opportunity[attachments_attributes][0][file]" id="opportunity_attachment_0" onchange="FileEvent.fillWithName('.opportunity-attachment-0', '#opportunity_attachment_0')" />
-      <input type="hidden" name="opportunity[attachments_attributes][0][category]" value="purchase" />
+    <div class="col-sm-6">
+      <div class="form-group">
+        <label for="">PO Number</label>
+        <%= f.text_field :po_number, class: 'form-control', placeholder: "PO Number" %>
+      </div>
     </div>
-    <div class="form-group col-sm-6" id="label-1">
-      <span class="btn btn-default btn-block" onclick="FileEvent.simulateClick('#opportunity_attachment_1')">Tax Exemption Form</span>
-      <p class="hint">Current file: <span class="opportunity-attachment-1">no file chosen</span></p>
-      <input class="hide" type="file" name="opportunity[attachments_attributes][1][file]" id="opportunity_attachment_1" onchange="FileEvent.fillWithName('.opportunity-attachment-1', '#opportunity_attachment_1')" />
-      <input type="hidden" name="opportunity[attachments_attributes][1][category]" value="tax" />
+    <div class="col-sm-12">
+      <div class="form-group">
+        <%= f.label :skip_tax_exemption do %>
+          <%= f.check_box :skip_tax_exemption, class: 'js-skip-tax-exemption' %>
+          If sales tax is included on PO, please check box
+        <% end %>
+      </div>
     </div>
-    <div class="form-group col-sm-12">
-      <%= f.label :skip_tax_exemption do %>
-        <%= f.check_box :skip_tax_exemption %>
-        If sales tax is included on PO, please check box
-    <% end %>
+    <div class="col-sm-6 js-label-0 transition-all">
+      <div class="form-group" id="label-0">
+        <span class="btn btn-default btn-block margin-bottom--s" onclick="FileEvent.simulateClick('#opportunity_attachment_0')">Purchase order</span>
+        <p class="hint">Current file: <span class="opportunity-attachment-0">no file chosen</span></p>
+        <input class="hide" type="file" name="opportunity[attachments_attributes][0][file]" id="opportunity_attachment_0" onchange="FileEvent.fillWithName('.opportunity-attachment-0', '#opportunity_attachment_0')" />
+        <input type="hidden" name="opportunity[attachments_attributes][0][category]" value="purchase" />
+      </div>
+    </div>
+    <div class="col-sm-6 js-label-1">
+      <div class="form-group" id="label-1">
+        <span class="btn btn-default btn-block margin-bottom--s" onclick="FileEvent.simulateClick('#opportunity_attachment_1')">Tax Exemption Form</span>
+        <p class="hint">Current file: <span class="opportunity-attachment-1">no file chosen</span></p>
+        <input class="hide" type="file" name="opportunity[attachments_attributes][1][file]" id="opportunity_attachment_1" onchange="FileEvent.fillWithName('.opportunity-attachment-1', '#opportunity_attachment_1')" />
+        <input type="hidden" name="opportunity[attachments_attributes][1][category]" value="tax" />
+      </div>
     </div>
   </div>
 
@@ -47,15 +60,15 @@
 
 <script type="text/javascript" charset="utf-8">
   var analizeSkip = function() {
-    if($('#opportunity_skip_tax_exemption').is(':checked')) {
-      $('#label-1').hide();
-      $('#label-0').removeClass('col-sm-6').addClass('col-sm-12');
+    if($('.js-skip-tax-exemption').is(':checked')) {
+      $('.js-label-1').hide();
+      $('.js-label-0').removeClass('col-sm-6').addClass('col-sm-12');
       $('#opportunity_attachment_1').val('');
       $('.opportunity-attachment-1').html('no file chosen');
     } else {
-      $('#label-0').addClass('col-sm-6').removeClass('col-sm-12');
+      $('.js-label-0').addClass('col-sm-6').removeClass('col-sm-12');
       setTimeout(function() {
-        $('#label-1').show();
+        $('.js-label-1').show();
       }, 400);
     }
   };
@@ -63,7 +76,7 @@
   analizeSkip();
 
   $(document).on('ready load', function() {
-    $('#opportunity_skip_tax_exemption').on('change', function() {
+    $('.js-skip-tax-exemption').on('change', function() {
       analizeSkip();
     });
   });
