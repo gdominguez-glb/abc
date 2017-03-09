@@ -4,18 +4,19 @@ sections:
   2: Responsive Grid
   3: Typography
   4: Iconography
-  5: Buttons
-  6: Forms
-  7: Tables
-  8: Alerts
-  9: Navigation
-  10: Pagination
-  11: Badges
-  12: Jumbotron
-  13: Thumbnails
-  14: List group
-  15: Panels
-  16: Wells
-  17: Modal
-  18: Cards
-  19: Images
+  5: Images
+  6: Buttons
+  7: Dropdowns
+  8: Forms
+  9: Tables
+  10: Alerts
+  11: Navigation
+  12: Pagination
+  13: Badges
+  14: Jumbotron
+  15: Thumbnails
+  16: List group
+  17: Panels
+  18: Wells
+  19: Modal
+  20: Cards

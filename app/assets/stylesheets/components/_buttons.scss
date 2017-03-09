@@ -8,20 +8,21 @@
 // -------------------------------------
 //   Base Button Styling
 //
-//   Styleguide 5.0
+//   Styleguide 6.0
 // -------------------------------------
 
 .btn {
   @include transition(all, .3s);
 
-  padding: 10px 30px;
+  padding: $b-space ($b-space-m * 2);
   font-family: 'Karla', sans-serif;
   text-transform: uppercase;
   text-decoration: none;
   letter-spacing: .15em;
+  border-radius: $b-border-radius;
 
   @media screen and (min-width: $screen-sm-min) {
-    margin-right: 5px;
+    margin-right: $b-space-s;
   }
 
   &.btn-default {
@@ -49,25 +50,6 @@
       border: 1px dashed;
     }
 
-    &.dropdown-toggle {
-      padding: 10px 30px 10px 15px;
-      border: 1px solid $c-positive-secondary;
-      text-align: left;
-      color: $c-positive-secondary;
-      background: transparent;
-
-      .image-background & {
-        border: 1px solid $c-absolute;
-        color: $c-absolute;
-
-        &:hover {
-          color: $c-positive-secondary;
-          background-color: $c-absolute;
-        }
-      }
-
-    }
-
     &[disabled] {
       background-color: $c-stable-primary;
     }
@@ -83,6 +65,10 @@
 
   &.btn-success {
     @include button-variant($c-positive-secondary, $c-balanced-primary, $c-positive-secondary);
+  }
+
+  &.btn-warning {
+    @include button-variant($c-absolute, $c-energized-primary, $c-energized-primary);
   }
 
   &.btn-danger {
@@ -113,7 +99,7 @@
   // -------------------------------------
   //   Transparent Button
   //
-  //   Styleguide 5.1
+  //   Styleguide 6.1
   // -------------------------------------
 
   &.btn-transparent {
@@ -144,7 +130,7 @@
 }
 
 .btn-block {
-  margin-bottom: 30px;
+  margin-bottom: ($b-space-m * 2);
 }
 
 .btn-block-xs {
@@ -162,7 +148,7 @@
 // -------------------------------------
 //   Button Sizes
 //
-//   Styleguide 5.2
+//   Styleguide 6.2
 // -------------------------------------
 
 .btn-sm {
@@ -176,7 +162,7 @@
 // -------------------------------------
 //   Button Groups
 //
-//   Styleguide 5.3
+//   Styleguide 6.3
 // -------------------------------------
 
 .btn-group {
@@ -200,103 +186,6 @@
   .caret {
     position: absolute;
     top: 18px;
-    right: 10px;
-  }
-
-  &.fixed-width {
-    .btn {
-      min-width: 200px;
-    }
-
-    .dropdown-menu {
-      min-width: 200px;
-    }
-  }
-
-  &.dropdown-contact-topic {
-    .btn {
-      min-width: 290px;
-    }
-
-    .dropdown-menu {
-      min-width: 290px;
-    }
-  }
-}
-
-// -------------------------------------
-//   Dropdowns
-//
-//   Styleguide 5.4
-// -------------------------------------
-
-.dropdown-menu {
-  width: 100%;
-  padding: 0;
-  border: 1px solid $c-depleted;
-  background-color: $c-firm-highlight;
-
-  @media screen and (min-width: $screen-sm-min) {
-    width: auto;
-  }
-
-  .image-background & {
-    border: 0;
-    background: $c-transparent-highlight-9;
-    box-shadow: inset 0 0 0 1px;
-
-    @media screen and (min-width: $screen-sm-min) {
-      background: transparent;
-    }
-  }
-
-  > li {
-
-    &:first-child {
-      > a {
-        border-top-left-radius: 4px;
-        border-top-right-radius: 4px;
-      }
-    }
-
-    &:last-child {
-      > a {
-        border-bottom-left-radius: 4px;
-        border-bottom-right-radius: 4px;
-      }
-    }
-
-    > a {
-      padding: 10px 20px;
-      white-space: normal;
-
-      @media screen and (min-width: $screen-sm-min) {
-        white-space: nowrap;
-      }
-
-      &:hover {
-        background-color: darken($c-firm-highlight, 5%);
-      }
-
-      .image-background & {
-        @media screen and (min-width: $screen-sm-min) {
-          color: $c-absolute;
-
-          &:hover {
-            color: $c-depleted;
-          }
-        }
-      }
-    }
-  }
-}
-
-.dropdown-toggle {
-  position: relative;
-
-  .caret {
-    position: absolute;
-    top: 18px;
-    right: 10px;
+    right: $b-space;
   }
 }

@@ -6,12 +6,129 @@
 // *************************************
 
 // -------------------------------------
-//   Material Design-Inspired Dropdown
+//   Basic Dropdowns
+//
+//   Styleguide 7.0
 // -------------------------------------
 
-.dropdown-md {
+.dropdown-menu {
+  width: 100%;
+  padding: 0;
+  border: 1px solid $c-depleted;
+  background-color: $c-firm-highlight;
+  border-radius: $b-border-radius;
+
+  @media screen and (min-width: $screen-sm-min) {
+    width: auto;
+  }
+
+  // -------------------------------------
+  //   Transparent Dropdown
+  //
+  //   Styleguide 7.1
+  // -------------------------------------
+
+  .image-background & {
+    border: 1px solid $c-absolute;
+    background: $c-transparent-highlight-9;
+
+    @media screen and (min-width: $screen-sm-min) {
+      background: transparent;
+    }
+  }
+
+  > li {
+
+    &:first-child {
+      > a {
+        border-top-left-radius: $b-border-radius;
+        border-top-right-radius: $b-border-radius;
+      }
+    }
+
+    &:last-child {
+      > a {
+        border-bottom-left-radius: $b-border-radius;
+        border-bottom-right-radius: $b-border-radius;
+      }
+    }
+
+    > a {
+      padding: $b-space $b-space-l;
+      white-space: normal;
+
+      @media screen and (min-width: $screen-sm-min) {
+        white-space: nowrap;
+      }
+
+      &:hover {
+        background-color: darken($c-firm-highlight, 5%);
+      }
+
+      .image-background & {
+        @media screen and (min-width: $screen-sm-min) {
+          color: $c-absolute;
+
+          &:hover {
+            color: $c-depleted;
+          }
+        }
+      }
+    }
+  }
+}
+
+.dropdown-toggle {
+  position: relative;
+  padding: $b-space ($b-space-m * 2) $b-space $b-space-m;
+  border: 1px solid $c-positive-secondary;
+  text-align: left;
+  color: $c-positive-secondary;
+  background: transparent;
+
+  .caret {
+    position: absolute;
+    top: 18px;
+    right: $b-space;
+  }
+
+  .image-background & {
+    border: 1px solid $c-absolute;
+    color: $c-absolute;
+
+    &:hover {
+      color: $c-positive-secondary;
+      background-color: $c-absolute;
+    }
+  }
+}
+
+// -------------------------------------
+//   Overlay Dropdowns
+//
+//   Styleguide 7.2
+// -------------------------------------
+
+.dropdown-ol {
   &.open {
     z-index: 1001;
+  }
+
+  // -------------------------------------
+  //   Relative Overlay Dropdown
+  //
+  //   Styleguide 7.3
+  // -------------------------------------
+
+  &.dropdown-ol-relative {
+    &.open {
+      .dropdown-ol-menu {
+        display: block;
+        position: relative;
+        top: -42px;
+        margin-bottom: -42px;
+      }
+    }
   }
 
   .custom-activated {
@@ -22,8 +139,8 @@
   }
 }
 
-.dropdown-md-btn.dropdown-md-btn.dropdown-md-btn,
-.dropdown-md-btn.dropdown-md-btn.dropdown-md-btn:hover {
+.dropdown-ol-btn.dropdown-ol-btn.dropdown-ol-btn,
+.dropdown-ol-btn.dropdown-ol-btn.dropdown-ol-btn:hover {
   border: 1px solid $c-firm-primary;
   font-weight: 700;
   letter-spacing: .05em;
@@ -36,9 +153,29 @@
   &.btn-sm {
     padding: $b-space-s 30px $b-space-s $b-space;
   }
+
+  &.btn-primary {
+    @include button-variant($c-absolute, $c-positive-secondary, darken($c-positive-secondary, 5%));
+  }
+
+  &.btn-info {
+    @include button-variant($c-positive-secondary, $c-positive-primary, $c-firm-primary);
+  }
+
+  &.btn-success {
+    @include button-variant($c-positive-secondary, $c-balanced-primary, $c-firm-primary);
+  }
+
+  &.btn-warning {
+    @include button-variant($c-absolute, $c-energized-primary, $c-energized-primary);
+  }
+
+  &.btn-danger {
+    @include button-variant($c-absolute, darken($c-energized-secondary, 10%), darken($c-energized-secondary, 15%));
+  }
 }
 
-.dropdown-md-mi.dropdown-md-mi.dropdown-md-mi {
+.dropdown-ol-mi.dropdown-ol-mi.dropdown-ol-mi {
   position: absolute;
   top: $b-space;
   right: $b-space;
@@ -48,9 +185,20 @@
     top: 3px;
     right: 3px;
   }
+
+  .btn-success &,
+  .btn-info & {
+    color: $c-positive-secondary;
+  }
+
+  .btn-primary &,
+  .btn-warning &,
+  .btn-danger & {
+    color: $c-absolute;
+  }
 }
 
-.dropdown-md-menu.dropdown-md-menu {
+.dropdown-ol-menu.dropdown-ol-menu {
   top: 0;
   width: 100%;
   min-width: initial;
@@ -60,22 +208,22 @@
   box-shadow: $b-box-shadow-m;
 }
 
-.dropdown-md-item {
+.dropdown-ol-item {
   &:first-child {
-    .dropdown-md-link {
+    .dropdown-ol-link {
       border-top-left-radius: 2px;
       border-top-right-radius: 2px;
     }
   }
   &:last-child {
-    .dropdown-md-link {
+    .dropdown-ol-link {
       border-bottom-left-radius: 2px;
       border-bottom-right-radius: 2px;
     }
   }
 }
 
-.dropdown-md-link.dropdown-md-link {
+.dropdown-ol-link.dropdown-ol-link {
   position: relative;
   padding: $b-space $b-space-m;
   font-weight: 700;
@@ -89,8 +237,32 @@
     color: $c-absolute;
     background-color: $c-positive-secondary;
 
-    .dropdown-md-mi {
+    .dropdown-ol-mi {
       color: $c-absolute;
     }
+  }
+}
+
+// -------------------------------------
+//   Width Modifiers
+// -------------------------------------
+
+.fixed-width {
+  .btn {
+    min-width: 200px;
+  }
+
+  .dropdown-menu {
+    min-width: 200px;
+  }
+}
+
+.dropdown-contact-topic {
+  .btn {
+    min-width: 290px;
+  }
+
+  .dropdown-menu {
+    min-width: 290px;
   }
 }

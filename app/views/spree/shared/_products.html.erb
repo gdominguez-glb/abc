@@ -73,7 +73,7 @@
   <%= javascript_tag do %>
     $(function() {
       <% if $flipper[:store_redesign].enabled? %>
-        var filterItems = $('#categoryFilters .dropdown-md-link');
+        var filterItems = $('#categoryFilters .dropdown-ol-link');
       <% else %>
         var filterItems = $('#categoryFilters .list-group-item');
       <% end %>
@@ -87,9 +87,9 @@
       filterItems.each(function() {
         if ( $(this).hasClass('active') ) {
           <% if $flipper[:store_redesign].enabled? %>
-            var dropdownMd = $(this).closest('.dropdown-md');
-            var dropdownMdMenu = $(this).closest('.dropdown-md-menu');
-            var btnHeight = dropdownMd.find('.dropdown-md-btn').height();
+            var dropdownMd = $(this).closest('.dropdown-ol');
+            var dropdownMdMenu = $(this).closest('.dropdown-ol-menu');
+            var btnHeight = dropdownMd.find('.dropdown-ol-btn').height();
             var topOffset = btnHeight + 37;
             var marginOffset = btnHeight + 22;
 

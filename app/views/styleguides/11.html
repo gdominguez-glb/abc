@@ -1,7 +1,48 @@
 <%= kss_block '11.0' do %>
-<a href="#">Inbox <span class="badge">42</span></a>
+<!-- Begin Navbar -->
+<nav class="container navbar navbar-default navbar-primary nav-border-bottom">
+  <div class="navbar-header">
+    <a class="navbar-brand" href="/">
+      Great Minds
+    </a>
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mainNav">
+      <span class="sr-only">Toggle navigation</span>
+      <i class="material-icons icon-menu">menu</i>
+      <i class="material-icons icon-close">close</i>
+    </button>
+  </div>
 
-<button class="btn btn-primary margin-left" type="button">
-  Messages <span class="badge">4</span>
-</button>
+  <div class="collapse navbar-collapse" id="mainNav">
+    <ul class="nav navbar-nav">
+      <% Page.curriculum_nav.each do |page| %>
+        <li data-primary-nav-item="<%= "#{page.group_name}" %>">
+          <a href="<%= "/#{page.slug}" %>" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= page.group_name %> <span class="caret"></span></a>
+          <% if page.sub_pages.present? %>
+            <%= render partial: 'curriculum_dropdown', locals: { page: page } %>
+          <% end %>
+        </li>
+      <% end %>
+      <li data-primary-nav-item="shop" class="store-link <%= store_active_class %>">
+        <%= link_to "Shop", '/store', class: store_active_class %>
+      </li>
+      <li class="search-button">
+        <%= form_tag '/search', class: 'nav-search form-inline', method: :get do %>
+          <%= text_field_tag :query, nil, class: 'form-control', placeholder: 'Search'  %>
+        <% end %>
+      </li>
+    </ul>
+    <%= render 'secondary_nav' %>
+    <ul class="nav navbar-nav navbar-right">
+      <%= render partial: 'spree/shared/main_nav_bar' if store_menu? %>
+    </ul>
+  </div>
+</nav> <!-- /.navbar -->
+<% end %>
+
+<%= kss_block '11.1' do %>
+<ul class="nav nav-tabs">
+  <li role="presentation" class="active"><a href="#">Home</a></li>
+  <li role="presentation"><a href="#">Profile</a></li>
+  <li role="presentation"><a href="#">Messages</a></li>
+</ul>
 <% end %>
