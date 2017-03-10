@@ -70,6 +70,10 @@
   @include rotate(-180deg);
 }
 
+.transition-all {
+  @include transition(all, .3s);
+}
+
 // -------------------------------------
 //   Forms
 // -------------------------------------
@@ -83,7 +87,7 @@
 // -------------------------------------
 
 .text--success {
-  color: $c-balanced !important;
+  color: $c-balanced-primary !important;
 }
 
 .text--info {

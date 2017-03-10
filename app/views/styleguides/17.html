@@ -1,18 +1,53 @@
 <%= kss_block '17.0' do %>
-<div class="modal collapse in" tabindex="-1" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title">Modal title</h4>
-      </div>
-      <div class="modal-body">
-        <p>One fine body&hellip;</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+<div class="panel panel-default">
+  <div class="panel-body">
+    Basic panel example
+  </div>
+</div>
+<% end %>
+
+<%= kss_block '17.1' do %>
+<div class="panel panel-default panel-collapsible max-300">
+  <div class="panel-heading">
+    <h4 class="panel-title">
+      <a href="#collapseGroup" data-toggle="collapse" class="collapsed">Collapsible panel</a>
+    </h4>
+  </div>
+  <div id="collapseGroup" class="panel-collapse collapse" aria-expanded="true">
+    <ul class="list-group"><a class="list-group-item" href="/store/?taxon_ids%5B%5D=227">Red</a>
+      <a class="list-group-item" href="/store/?taxon_ids%5B%5D=255">Orange</a>
+      <a class="list-group-item" href="/store/?taxon_ids%5B%5D=274">Yellow</a>
+      <a class="list-group-item" href="/store/?taxon_ids%5B%5D=296">Green</a>
+      <a class="list-group-item" href="/store/?taxon_ids%5B%5D=298">Blue</a>
+      <a class="list-group-item" href="/store/?taxon_ids%5B%5D=299">Purple</a>
+      <a class="list-group-item" href="/store/?taxon_ids%5B%5D=308">General</a>
+      <a class="list-group-item" href="/store/?taxon_ids%5B%5D=310">Navigator</a>
+      <a class="list-group-item" href="/store/?taxon_ids%5B%5D=334">Teach Eureka</a></ul>
+  </div>
+</div>
+<% end %>
+
+<%= kss_block '17.2' do %>
+<div class="panel panel-default">
+  <div class="panel-heading">Panel heading without title</div>
+  <div class="panel-body">
+    Panel content
+  </div>
+</div>
+<% end %>
+
+<%= kss_block '17.3' do %>
+<div class="panel panel-primary margin-bottom">
+  <div class="panel-heading">Primary panel</div>
+  <div class="panel-body">
+    Panel content
+  </div>
+</div>
+
+<div class="panel panel-info">
+  <div class="panel-heading">Info panel</div>
+  <div class="panel-body">
+    Panel content
+  </div>
+</div>
 <% end %>

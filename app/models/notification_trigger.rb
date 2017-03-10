@@ -1,5 +1,6 @@
 class NotificationTrigger < ActiveRecord::Base
   serialize :user_ids, Array
+  serialize :product_ids, Array
 
   validates_presence_of :target_type, :content, :notify_at
   validates_presence_of :school_district_admin_user, if: ->(nt) { nt.school_district_target? }
@@ -21,6 +22,7 @@ class NotificationTrigger < ActiveRecord::Base
     :every,
     :curriculum_users,
     :product,
+    :products,
     :zip_codes
   ]
 
@@ -45,14 +47,20 @@ class NotificationTrigger < ActiveRecord::Base
       [self.school_district_admin_user.to_users]
     elsif self.group_users_target?
       self.group_users
+    elsif self.user_type_target? && self.curriculum_id.present?
+      self.user_type.present? ? Spree::User.with_curriculum(self.curriculum).where(title: self.user_type) : []
     elsif self.user_type_target?
-      Spree::User.send("with_#{self.user_type.downcase}_title")
+      self.user_type.present? ? Spree::User.where(title: self.user_type) : []
     elsif self.every_target?
       Spree::User.where("1 = 1")
+    elsif self.curriculum_users_target? && self.user_type.present?
+      self.curriculum_id.present? ? Spree::User.with_curriculum(self.curriculum).where(title: self.user_type) : []
     elsif self.curriculum_users_target?
-      Spree::User.with_curriculum(self.curriculum)
+      self.curriculum_id.present? ? Spree::User.with_curriculum(self.curriculum) : []
     elsif self.product_target?
       find_product_target_users(self.product_id)
+    elsif self.products_target?
+      find_products_target_users(self.product_ids)
     elsif self.zip_codes_target?
       find_zip_codes_target_users(self.zip_codes)
     end
@@ -66,14 +74,22 @@ class NotificationTrigger < ActiveRecord::Base
 
   def find_product_target_users(product_id)
     return [] if product_id.blank?
+    find_products_target_users([product_id])
+  end
+
+  def find_products_target_users(product_ids)
+    return [] if product_ids.blank?
     user_ids = []
-    product = Spree::Product.find(product_id)
-    bundles = Spree::Part.where(product_id: product_id).map(&:bundle)
-    products = [product, bundles].flatten.compact
-    Spree::User.joins(:licensed_products).where(spree_licensed_products: { product_id: products.map(&:id) })
+    products = Spree::Product.where(id: product_ids)
+    bundles = Spree::Part.where(product_id: product_ids).map(&:bundle)
+    products = [products, bundles].flatten.compact
+    Spree::User.joins(:licensed_products).where(spree_licensed_products: { product_id: products.map(&:id) }).distinct
   end
 
   def find_zip_codes_target_users(zip_codes)
-    Spree::User.where(zip_code: zip_codes.split(',').map(&:strip))
+    users = Spree::User.where(zip_code: zip_codes.split(',').map(&:strip))
+    users = users.where(title: self.user_type) if self.user_type.present?
+    users = users.with_curriculum(self.curriculum) if self.curriculum_id.present?
+    users
   end
 end

@@ -398,7 +398,7 @@
 }
 
 .select2-drop-active.select2-drop-active.select2-drop-active {
-  border: 1px solid $c-positive-secondary;
+  border: 1px solid $c-firm-primary;
 }
 
 .select2-result-label.select2-result-label.select2-result-label {
@@ -419,4 +419,11 @@
 .select2-search-choice-close.select2-search-choice-close.select2-search-choice-close.select2-search-choice-close {
   top: 4px;
   color: $c-positive-secondary !important;
+}
+
+.new_event_training,
+.edit_event_training {
+  .form-group {
+    font-family: inherit !important;
+  }
 }

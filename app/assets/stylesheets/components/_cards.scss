@@ -6,6 +6,13 @@
 //
 // *************************************
 
+// -------------------------------------
+//   Basic Card
+//   Cards with a button CTA.
+//
+//   Styleguide 20.0
+// -------------------------------------
+
 .card {
   display: block;
   margin-bottom: $b-space-l;
@@ -13,11 +20,17 @@
   border-top: 9px solid $c-positive-secondary;
   text-align: left;
   background-color: $c-absolute;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, .175);
+  box-shadow: $b-box-shadow-m;
 
   @media screen and (min-width: $screen-sm-min) {
     padding: $b-space-l $b-space-xl;
   }
+
+  // -------------------------------------
+  //   Video Card
+  //
+  //   Styleguide 20.3
+  // -------------------------------------
 
   &.card-media {
     padding: 0;
@@ -55,6 +68,12 @@
   }
 }
 
+// -------------------------------------
+//   Image Card
+//
+//   Styleguide 20.4
+// -------------------------------------
+
 .card-image {
   min-height: 175px;
   text-align: center;
@@ -72,6 +91,13 @@
     color: $c-energized-secondary;
   }
 }
+
+// -------------------------------------
+//   Link Card
+//   Cards where the entire card is the CTA.
+//
+//   Styleguide 20.1
+// -------------------------------------
 
 .card-link {
   font-weight: normal;
@@ -101,17 +127,14 @@
   font-size: .80em;
   font-weight: bold;
   text-transform: uppercase;
-  letter-spacing: .1em;
+  letter-spacing: 0;
 
   @extend .sans-serif;
-
-  @media screen and (min-width: $screen-sm-min) {
-    font-size: .9em;
-  }
 }
 
 .card-title {
   line-height: 1.2em;
+  letter-spacing: 0;
 }
 
 .card-text {
@@ -126,7 +149,9 @@
 }
 
 // -------------------------------------
-//   Modifiers
+//   Contextual Cards
+//
+//   Styleguide 20.2
 // -------------------------------------
 
 .card-math,
@@ -134,10 +159,10 @@
 .card-eureka-k-5-pd-toolkit,
 .card-intro,
 .card-navigator {
-  border-top-color: $c-balanced;
+  border-top-color: $c-balanced-primary;
 
   &.card-media {
-    background-color: $c-balanced;
+    background-color: $c-balanced-primary;
   }
 }
 
@@ -157,11 +182,15 @@
   }
 }
 
+.card--no-border {
+  border-top: 0;
+}
+
 .card--twitter {
   margin-bottom: $b-space;
   background-color: $c-absolute;
   border-radius: 2px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, .175);
+  box-shadow: $b-box-shadow-s;
 }
 
 .card--media-left.card--media-left.card--media-left {

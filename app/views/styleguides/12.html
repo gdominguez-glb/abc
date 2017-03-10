@@ -1,23 +1,130 @@
 <%= kss_block '12.0' do %>
-<div class="jumbotron">
-  <h1>Hello, world!</h1>
-  <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-  <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
-</div>
+<nav>
+  <ul class="pagination">
+    <li>
+      <a href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li>
+      <a href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+<% end %>
+
+<%= kss_block '12.0.1' do %>
+<nav>
+  <ul class="pagination">
+    <li>
+      <a href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li class="active"><a href="#">1</a></li>
+    <li class="disabled"><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li>
+      <a href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+<% end %>
+
+<%= kss_block '12.0.2' do %>
+<nav>
+  <ul class="pagination pagination-lg">
+    <li>
+      <a href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li>
+      <a href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav>
+  <ul class="pagination">
+    <li>
+      <a href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li>
+      <a href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav>
+  <ul class="pagination pagination-sm">
+    <li>
+      <a href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li>
+      <a href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
 <% end %>
 
 <%= kss_block '12.1' do %>
-<div class="jumbotron jumbotron-success">
-  <h1>Hello, world!</h1>
-  <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-  <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+<div class="container pagination-blog">
+<div class="row">
+  <div class="col-sm-6 pagination-blog-prev">
+    <h3 class="blog-title">
+      <a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a>
+    </h3>
+    <div class="blog-meta">Ut: Lorem Ipsum</div>
+    <hr />
+    <a href="#" class="btn btn-sm btn-default btn-transparent">
+      <i class="mi md-18">chevron_left</i> Previous
+    </a>
+  </div>
+  <div class="col-sm-6 pagination-blog-next">
+    <h3 class="blog-title">
+      <a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit</a>
+    </h3>
+    <div class="blog-meta">Ut: Lorem Ipsum</div>
+    <hr />
+    <a href="#" class="btn btn-sm btn-default btn-transparent">
+      Next <i class="mi md-18">chevron_right</i>
+    </a>
+  </div>
 </div>
-<% end %>
-
-<%= kss_block '12.2' do %>
-<div class="jumbotron jumbotron-info">
-  <h1>Hello, world!</h1>
-  <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-  <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
 </div>
 <% end %>

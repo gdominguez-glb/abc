@@ -9,11 +9,19 @@
 //   Vendor Prefixes
 // -------------------------------------
 
-@mixin display-flex() {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+@mixin display-flex($important: '') {
+  @if ($important == '') {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  @if ($important == 'important') {
+    display: -webkit-box !important;
+    display: -webkit-flex !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+  }
 }
 
 @mixin flex($val) {

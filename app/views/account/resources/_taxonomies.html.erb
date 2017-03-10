@@ -4,17 +4,17 @@
         <% params[:taxon_ids].each do |taxon_id| %>
             <%= hidden_field_tag 'taxon_ids[]', taxon_id %>
         <% end  %>
-        <%= text_field_tag :q, params[:q], class: "form-control input-md input-md-search margin-bottom--l", placeholder: "Search" %>
+        <%= text_field_tag :q, params[:q], class: "form-control form-control-search margin-bottom--l", placeholder: "Search" %>
     <% end %>
 
     <h4 class="text-left bh4">Looking for:</h4>
 
     <% taxonomies.where.not(name: 'I am a...').each do |taxonomy| %>
         <% next unless ['Subject', 'Grade'].include?(taxonomy.name) %>
-        <div class="dropdown dropdown-md clear">
-          <button class="btn btn-default btn-block dropdown-toggle dropdown-md-btn margin-bottom--m" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        <div class="dropdown dropdown-ol clear">
+          <button class="btn btn-default btn-block dropdown-toggle dropdown-ol-btn margin-bottom--m" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
             <%= taxonomy.name %>
-            <i class="dropdown-md-mi mi md-24 toggle-arrow">keyboard_arrow_down</i>
+            <i class="dropdown-ol-mi mi md-24 toggle-arrow">keyboard_arrow_down</i>
           </button>
           <%= gm_taxons_tree(taxonomy.root, nil, taxonomy.allow_multiple_taxons_selected) %>
         </div>

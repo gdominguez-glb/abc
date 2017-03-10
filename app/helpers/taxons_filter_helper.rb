@@ -7,7 +7,7 @@ module TaxonsFilterHelper
     feature_flipper ||= :store_redesign
 
     if $flipper[feature_flipper].enabled?
-      ul_class = "dropdown-menu dropdown-md-menu"
+      ul_class = "dropdown-menu dropdown-ol-menu"
     else
       ul_class = "list-group"
     end
@@ -31,10 +31,10 @@ module TaxonsFilterHelper
 
   def generate_selected_taxon_item(taxon, feature_flipper)
     if $flipper[feature_flipper].enabled?
-      content_tag :li, class: "dropdown-md-item" do
-        concat(content_tag(:a, href: remove_taxon_link(taxon), class: "dropdown-md-link active") do
+      content_tag :li, class: "dropdown-ol-item" do
+        concat(content_tag(:a, href: remove_taxon_link(taxon), class: "dropdown-ol-link active") do
                  concat(taxon.name)
-                 concat('<i class="mi dropdown-md-mi">close</i>'.html_safe)
+                 concat('<i class="mi dropdown-ol-mi">close</i>'.html_safe)
         end)
       end
     else
@@ -47,8 +47,8 @@ module TaxonsFilterHelper
   def generate_normal_taxon_item(taxon, sibling_ids, allow_multiple_taxons_selected, feature_flipper)
     taxon_ids = generate_taxon_ids_param(taxon, params[:taxon_ids], sibling_ids, allow_multiple_taxons_selected)
     if $flipper[feature_flipper].enabled?
-      content_tag :li, class: "dropdown-md-item" do
-        link_to(taxon.name, params.merge(taxon_ids: taxon_ids), class: 'dropdown-md-link')
+      content_tag :li, class: "dropdown-ol-item" do
+        link_to(taxon.name, params.merge(taxon_ids: taxon_ids), class: 'dropdown-ol-link')
       end
     else
       link_to(taxon.name, params.merge(taxon_ids: taxon_ids), class: 'list-group-item')

@@ -61,7 +61,8 @@ $c-positive-accent:               $steel;
 $c-positive-highlight:            $snow;
 $c-positive-subdue:               lighten($navy, 15%);
 
-$c-balanced:                      $lime;
+$c-balanced-primary:              $lime;
+$c-balanced-secondary:            darken($lime, 25%);
 $c-balanced-highlight:            lighten($lime, 15%);
 $c-balanced-subdue:               darken($lime, 55%);
 
@@ -89,41 +90,55 @@ $c-transparent-highlight-5:       rgba(255, 255, 255, .5);
 $c-transparent-highlight-9:       rgba(255, 255, 255, .9);
 
 // -------------------------------------
+//   Box Shadow
+// -------------------------------------
+
+$b-box-shadow-s:                   0 2px 8px rgba(0, 0, 0, .175);
+$b-box-shadow-m:                   0 4px 10px rgba(0, 0, 0, .175);
+
+// -------------------------------------
+//   Border Radius
+// -------------------------------------
+
+$b-border-radius:                  2px;
+
+// -------------------------------------
 //   Bootstrap Variables
 // -------------------------------------
 
-$border-radius-value:             4px;
+//not used?
+$border-radius-value:              4px;
 
-$panel-default-text:              $c-positive-secondary;
-$panel-default-border:            $c-positive-secondary;
-$panel-default-heading-bg:        $c-firm-highlight;
+$panel-default-text:               $c-positive-secondary;
+$panel-default-border:             $c-positive-secondary;
+$panel-default-heading-bg:         $c-firm-highlight;
 
-$panel-primary-text:              $c-absolute;
-$panel-primary-border:            $c-positive-secondary;
-$panel-primary-heading-bg:        $c-positive-secondary;
+$panel-primary-text:               $c-absolute;
+$panel-primary-border:             $c-positive-secondary;
+$panel-primary-heading-bg:         $c-positive-secondary;
 
-$panel-info-text:                 $c-depleted;
-$panel-info-border:               darken($c-firm-accent, 1%);
-$panel-info-heading-bg:           darken($c-firm-accent, 1%);
+$panel-info-text:                  $c-depleted;
+$panel-info-border:                darken($c-firm-accent, 1%);
+$panel-info-heading-bg:            darken($c-firm-accent, 1%);
 
-$panel-info-alt-text:             $c-depleted;
-$panel-info-alt-border:           $c-firm-secondary;
-$panel-info-alt-heading-bg:       $c-firm-secondary;
+$panel-info-alt-text:              $c-depleted;
+$panel-info-alt-border:            $c-firm-secondary;
+$panel-info-alt-heading-bg:        $c-firm-secondary;
 
 // -------------------------------------
 //   Assorted
 // -------------------------------------
 
-$popover-outline:                 $coral;
-$transition-timing:               .3s;
-$large-bp:                        1182px;
+$popover-outline:                  $coral;
+$transition-timing:                .3s;
+$large-bp:                         1182px;
 
 // -------------------------------------
 //   Sizes
 // -------------------------------------
 
-$b-space-s:                       5px;
-$b-space:                         10px;
-$b-space-m:                       15px;
-$b-space-l:                       20px;
-$b-space-xl:                      40px;
+$b-space-s:                        5px;
+$b-space:                          10px;
+$b-space-m:                        15px;
+$b-space-l:                        20px;
+$b-space-xl:                       40px;

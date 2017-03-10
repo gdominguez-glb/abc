@@ -1,0 +1,57 @@
+// *************************************
+//
+//   Images
+//   Image Styles
+//
+// *************************************
+
+// -------------------------------------
+//   Blog Images
+// -------------------------------------
+
+// -------------------------------------
+//   Square blog image, left aligned
+//   Blog image examples use grid to more accurately
+//   represent actual display
+//
+//   Styleguide 5.0.1
+// -------------------------------------
+
+// -------------------------------------
+//   Square blog image, right aligned
+//
+//   Styleguide 5.0.2
+// -------------------------------------
+
+.img-blog-square {
+  max-width: 100%;
+  margin-bottom: $b-space-l;
+
+  &.img-blog-square-left {
+    @media screen and (min-width: $screen-sm-min) {
+      float: left;
+      max-width: 280px;
+      margin-right: $b-space-l;
+    }
+  }
+
+
+  &.img-blog-square-right {
+    @media screen and (min-width: $screen-sm-min) {
+      float: right;
+      max-width: 280px;
+      margin-left: $b-space-l;
+    }
+  }
+}
+
+// -------------------------------------
+//   Full width blog image
+//
+//   Styleguide 5.0.3
+// -------------------------------------
+
+.img-blog-full {
+  max-width: 100%;
+  margin-bottom: $b-space-l;
+}
