@@ -1829,8 +1829,8 @@ ActiveRecord::Schema.define(version: 20170307011828) do
     t.boolean  "tour_showed_licenses",                   default: false
     t.boolean  "tour_showed_licenses_users",             default: false
     t.boolean  "accepted_terms",                         default: false
-    t.string   "zip_code"
     t.text     "grades"
+    t.string   "zip_code"
     t.string   "city",                                   default: ""
     t.string   "state",                                  default: ""
   end
