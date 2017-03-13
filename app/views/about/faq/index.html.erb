@@ -9,7 +9,8 @@
     <div class="panel-group">
 
     <% @faq_categories.each do |faq_category| %>
-      <div class="panel panel-default panel-collapsible" id="faq<%= faq_category.name %>">
+      <% slug = faq_category.name.gsub(/[^0-9A-Za-z]/, '').underscore.split('_').join('-') %>
+      <div class="panel panel-default panel-collapsible" id="<%= slug %>">
         <div class="panel-heading">
           <h4 class="panel-title">
             <a data-toggle="collapse" href="#collapse<%= faq_category.name.gsub(/[^0-9A-Za-z]/, '') %>"><%= faq_category.name %></a>
@@ -28,3 +29,7 @@
     </div>
   </div>
 </div>
+
+<%= content_for :javascripts do %>
+  <%= render 'shared/expand_collapsables' %>
+<% end %>

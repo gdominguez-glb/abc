@@ -34,12 +34,5 @@
 </div>
 
 <%= content_for :javascripts do %>
-  <script type="text/javascript">
-    $(function(){
-      var anchor = window.location.hash;
-      if (anchor) {
-        $(anchor).find('[data-toggle="collapse"]').trigger('click');
-      }
-    });
-  </script>
+  <%= render 'shared/expand_collapsables' %>
 <% end %>
