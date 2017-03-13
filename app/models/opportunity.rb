@@ -44,7 +44,7 @@ class Opportunity < ActiveRecord::Base
   end
 
   def update_po_field
-    GmSalesforce::Client.instance.update('Opportunity', {'Id' => salesforce_id, 'PO__c'  => self.po_number})
+    GmSalesforce::Client.instance.update('Opportunity', {'Id' => salesforce_id, 'PO__c'  => self.po_number, "Probability" => 83, "StageName" => "Order Under Review"})
   rescue
     nil
   end
