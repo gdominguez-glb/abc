@@ -3,20 +3,27 @@ module Medium
     def scrape_publications
       puts 'start importing posts from medium'
       MediumPublication.find_each do |publication|
-        begin
-          publication_data = request_data_from_medium(publication.url + '/latest')
-          publication_data['payload']['posts'].each do |post|
-            print '.'
-            import_post_from_medium(publication, post)
-          end
-          remove_deleted_posts(publication, publication_data['payload']['posts'])
-        rescue
-          puts
-          puts 'failed to import posts from medium'
-        end
+        scrape!(publication)
       end
       puts
       puts 'finished'
+    end
+
+    def scrape!(publication, limit = nil)
+      begin
+        url = publication.url + '/latest'
+        url = url + "?limit=#{limit}" unless limit.nil?
+
+        publication_data = request_data_from_medium(url)
+        publication_data['payload']['posts'].each do |post|
+          print '.'
+          import_post_from_medium(publication, post)
+        end
+        remove_deleted_posts(publication, publication_data['payload']['posts'])
+      rescue
+        puts
+        puts 'failed to import posts from medium'
+      end
     end
 
     def import_post_from_medium(publication, post_json)
