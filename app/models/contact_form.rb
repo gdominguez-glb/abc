@@ -56,8 +56,8 @@ class ContactForm
 
   def lead_common_attributes
     {
-      'FirstName' => self.first_name,
-      'LastName' => self.last_name,
+      'FirstName' => self.first_name.try(:capitalize),
+      'LastName' => self.last_name.try(:capitalize),
       'Title' => self.role,
       'Email' => self.email,
       'Phone' => self.phone,
@@ -69,8 +69,8 @@ class ContactForm
 
   def case_common_attributes
     {
-      'First_Name__c' => self.first_name,
-      'Last_Name__c'  => self.last_name,
+      'First_Name__c' => self.first_name.try(:capitalize),
+      'Last_Name__c'  => self.last_name.try(:capitalize),
       'Role__c'     => self.role,
       'Email__c'     => self.email,
       'Phone__c'     => self.phone,

@@ -71,8 +71,8 @@ Spree::User.class_eval do
   end
 
   def attributes_for_salesforce
-    attrs = { 'FirstName' => first_name,
-              'LastName' => last_name,
+    attrs = { 'FirstName' => first_name.try(:capitalize),
+              'LastName' => last_name.try(:capitalize),
               'AccountId' => school_district.try(:id_in_salesforce),
               'Contact_Type__c' => title,
               'Web_Front_End_Email__c' => email,
