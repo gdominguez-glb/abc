@@ -1,12 +1,12 @@
 <nav id="categoryFilters" class="panel-group margin-bottom--reset" data-hook>
   <div class="row">
     <div class="col-md-6">
-      <div class="dropdown dropdown-ol">
+      <div class="dropdown dropdown-curriculums dropdown-ol <%= 'open' if (RegonlineEvent::FILTER_CURRICULUMS & params.try(:[], :curriculums)).present? %>">
         <button class="btn btn-default btn-block dropdown-toggle dropdown-ol-btn margin-bottom--reset" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Curriculum
           <i class="dropdown-ol-mi mi md-24 toggle-arrow">keyboard_arrow_down</i>
         </button>
-        <ul class="dropdown-menu dropdown-ol-menu <%= 'custom-activated' if (RegonlineEvent::FILTER_CURRICULUMS & params.try(:[], :curriculums)).present? %>">
+        <ul class="dropdown-menu dropdown-ol-menu">
           <% RegonlineEvent::FILTER_CURRICULUMS.each do |curriculum| %>
             <% active = params.try(:[], :curriculums).include?(curriculum) %>
             <% link = params.merge(curriculums: params[:curriculums] - [curriculum]) %>
@@ -24,12 +24,12 @@
       </div>
     </div>
     <div class="col-md-6">
-      <div class="dropdown dropdown-ol">
+      <div class="dropdown dropdown-grade-bands dropdown-ol <%= 'open' if (RegonlineEvent::FILTER_GRADE_BANDS & params.try(:[], :grade_bands)).present? %>">
         <button class="btn btn-default btn-block dropdown-toggle dropdown-ol-btn margin-bottom--reset" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Grade Band
           <i class="dropdown-ol-mi mi md-24 toggle-arrow">keyboard_arrow_down</i>
         </button>
-        <ul class="dropdown-menu dropdown-ol-menu <%= 'custom-activated' if (RegonlineEvent::FILTER_GRADE_BANDS & params.try(:[], :grade_bands)).present? %>">
+        <ul class="dropdown-menu dropdown-ol-menu">
           <% RegonlineEvent::FILTER_GRADE_BANDS.each do |grade| %>
             <% active = params.try(:[], :grade_bands).include? grade %>
             <% link = params.merge(grade_bands: params[:grade_bands] - [grade]) %>
@@ -48,3 +48,16 @@
     </div>
   </div>
 </nav>
+
+<script type="text/javascript" charset="utf-8">
+  <% if (RegonlineEvent::FILTER_CURRICULUMS & params.try(:[], :curriculums)).present? %>
+    $('.dropdown-curriculums').on('hide.bs.dropdown', function () {
+      return false;
+    });
+  <% end %>
+  <% if (RegonlineEvent::FILTER_GRADE_BANDS & params.try(:[], :grade_bands)).present? %>
+    $('.dropdown-grade-bands').on('hide.bs.dropdown', function () {
+      return false;
+    });
+  <% end %>
+</script>
