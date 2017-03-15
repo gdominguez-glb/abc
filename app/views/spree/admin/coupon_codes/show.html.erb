@@ -22,3 +22,20 @@
     </tbody>
   </table>
 </div>
+
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Schools</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @coupon_code.school_lists.each do |school| %>
+        <tr>
+          <td><%= school %></td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

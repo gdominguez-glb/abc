@@ -18,6 +18,17 @@
               </div>
             <% end %>
           </div>
+
+          <div class="row">
+            <% @coupon_code.school_lists.each do |school| %>
+                <div class="col-sm-3">
+                  <%= radio_button_tag :school_name, school, false, class: "thumbnail--coupon-code--trigger" %>
+                  <label class="thumbnail thumbnail--coupon-code" for="<%= "#{sanitize_to_id("school_name")}_#{sanitize_to_id(school)}" %>">
+                    <%= school %>
+                  </label>
+                </div>
+            <% end %>
+          </div>
         </div>
         <div class="modal-footer text-left">
           <%= submit_tag 'Select', class: 'btn btn-primary', data: { disable_with: 'Submitting...' } %>
