@@ -7,12 +7,14 @@
     <thead>
       <tr>
         <th>Email</th>
+        <th>School</th>
       </tr>
     </thead>
     <tbody>
-      <% @emails.each do |email| %>
+      <% @data.each do |d| %>
         <tr>
-          <td><%= email %></td>
+          <td><%= d.first %></td>
+          <td><%= d.try(:[], 1) %></td>
         </tr>
       <% end %>
     </tbody>
