@@ -2,13 +2,14 @@ module Spree
   module LicensesManager
     class CouponCodeLicenser
 
-      attr_accessor :code, :user, :product_id, :grade_id
+      attr_accessor :code, :user, :product_id, :grade_id, :school_name
 
       def initialize(opts={})
         @code       = Spree::CouponCode.find_by(code: opts[:code])
         @user       = opts[:user]
         @product_id = opts[:product_id]
         @grade_id   = opts[:grade_id]
+        @school_name = opts[:school_name]
       end
 
       def code_available?
@@ -32,7 +33,7 @@ module Spree
 
         _used_code_before = used_code_before?
 
-        common_attrs = { email: @user.email, user_id: @user.id, coupon_code: @code, quantity: 1, order: @code.order }
+        common_attrs = { email: @user.email, user_id: @user.id, coupon_code: @code, quantity: 1, order: @code.order, school_name_from_coupon: @school_name }
         products_to_assign.each do |product|
           Spree::LicensedProduct.find_or_create_by({ product_id: product.id }.merge(common_attrs))
         end

@@ -12,6 +12,9 @@ class Spree::CouponCode < ActiveRecord::Base
   before_validation :generate_code, on: :create
   after_commit :generate_coupon_code_order, on: :create
 
+  attr_accessor :schools_xls
+  serialize :school_lists, Array
+
   def grades_to_select
     sql = <<-SQL
       select distinct(spree_grades.*) from spree_grades
