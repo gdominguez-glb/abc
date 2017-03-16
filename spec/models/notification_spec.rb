@@ -46,13 +46,4 @@ RSpec.describe Notification, type: :model do
       expect(notification.reload.read).to eq(true)
     end
   end
-
-  describe "log activity" do
-    it "create activity on notification user" do
-      notification
-      activity = user.activities.last
-      expect(activity.title).to eq(notification.content)
-      expect(activity.item).to eq(notification)
-    end
-  end
 end
