@@ -27,6 +27,10 @@ module UserRolable
     spree_roles.where(id: Spree::Role.vanity_admin.id).count > 0
   end
 
+  def has_pd_role?
+    spree_roles.where(id: Spree::Role.pd.id).count > 0
+  end
+
   def has_hr_role?
     spree_roles.where(id: Spree::Role.hr.id).count > 0
   end

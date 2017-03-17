@@ -64,35 +64,37 @@
     </div>
   <% end %>
 
-  <div class="panel-group margin-bottom--reset">
-    <div class="panel panel-default panel-collapsible margin-bottom--s">
-      <div class="panel-heading">
-        <h3 class="panel-title filter-title">
-          <a data-toggle="collapse" data-target="#cmsFooter" class="collapsed">
-            Footer Content
-            <i class="mi md-24 toggle-arrow">keyboard_arrow_up</i>
-          </a>
-        </h3>
-      </div>
-      <div id="cmsFooter" class="panel-collapse collapse">
-        <ul class="nav nav-sidebar list-group">
-          <% if current_spree_user.admin? %>
-            <%= active_link_to "Footer", '/cms/footer_titles', class: 'list-group-item' %>
-          <% end %>
-          <% if current_spree_user.admin? || current_spree_user.has_hr_role? %>
+  <% if current_spree_user.admin? || current_spree_user.has_hr_role? %>
+    <div class="panel-group margin-bottom--reset">
+      <div class="panel panel-default panel-collapsible margin-bottom--s">
+        <div class="panel-heading">
+          <h3 class="panel-title filter-title">
+            <a data-toggle="collapse" data-target="#cmsFooter" class="collapsed">
+              Footer Content
+              <i class="mi md-24 toggle-arrow">keyboard_arrow_up</i>
+            </a>
+          </h3>
+        </div>
+        <div id="cmsFooter" class="panel-collapse collapse">
+          <ul class="nav nav-sidebar list-group">
+            <% if current_spree_user.admin? %>
+              <%= active_link_to "Footer", '/cms/footer_titles', class: 'list-group-item' %>
+            <% end %>
+
             <%= active_link_to "Staff", '/cms/staffs', class: 'list-group-item' %>
             <%= active_link_to "Careers", '/cms/jobs', class: 'list-group-item' %>
-          <% end %>
-          <% if current_spree_user.admin? %>
-            <%= active_link_to "Medium Publications (Blog)", '/cms/medium_publications', class: 'list-group-item' %>
-            <%= active_link_to "Contact Topics", '/cms/contact_topics', class: 'list-group-item' %>
-          <% end %>
-        </ul>
+
+            <% if current_spree_user.admin? %>
+              <%= active_link_to "Medium Publications (Blog)", '/cms/medium_publications', class: 'list-group-item' %>
+              <%= active_link_to "Contact Topics", '/cms/contact_topics', class: 'list-group-item' %>
+            <% end %>
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
+  <% end %>
 
-  <% if current_spree_user.admin? || current_spree_user.has_vanity_admin_role? %>
+  <% if current_spree_user.admin? || current_spree_user.has_vanity_admin_role? || current_spree_user.has_pd_role? %>
     <div class="panel-group margin-bottom--reset">
       <div class="panel panel-default panel-collapsible margin-bottom--s">
         <div class="panel-heading">
@@ -108,10 +110,10 @@
             <% if current_spree_user.admin? %>
               <%= active_link_to "Link Uploads", '/cms/link_files', class: 'list-group-item' %>
             <% end %>
-            <% if current_spree_user.admin? || current_spree_user.has_vanity_admin_role? %>
+            <% if current_spree_user.admin? || current_spree_user.has_vanity_admin_role? || current_spree_user.has_pd_role? %>
               <%= active_link_to "Vanity Url", '/cms/vanity_urls', class: 'list-group-item' %>
             <% end %>
-            <% if current_spree_user.admin? %>
+            <% if current_spree_user.admin? || current_spree_user.has_pd_role? %>
               <%= active_link_to "Uploads", '/cms/documents', class: 'list-group-item' %>
             <% end %>
           </ul>
@@ -142,7 +144,7 @@
     </div>
   <% end %>
 
-  <% if current_spree_user.admin? %>
+  <% if current_spree_user.admin? || current_spree_user.has_pd_role? %>
     <div class="panel-group margin-bottom--reset">
       <div class="panel panel-default panel-collapsible margin-bottom--s">
         <div class="panel-heading">
@@ -156,7 +158,9 @@
         <div id="cmsPD2" class="panel-collapse collapse">
           <ul class="nav nav-sidebar list-group">
             <%= active_link_to "Event Pages", '/cms/event_pages', class: 'list-group-item' %>
-            <%= active_link_to "Training Session Types", '/cms/training_type_categories', class: 'list-group-item' %>
+            <% if current_spree_user.admin? %>
+              <%= active_link_to "Training Session Types", '/cms/training_type_categories', class: 'list-group-item' %>
+            <% end %>
           </ul>
         </div>
       </div>
