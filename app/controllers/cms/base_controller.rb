@@ -12,7 +12,13 @@ class Cms::BaseController < ApplicationController
   end
 
   def authenticate_vanity_admin_in_cms!
-    if !(current_spree_user.admin? || current_spree_user.has_vanity_admin_role?)
+    if !(current_spree_user.admin? || current_spree_user.has_vanity_admin_role? || current_spree_user.has_pd_role?)
+      redirect_to root_path and return
+    end
+  end
+
+  def authenticate_pd_access_in_cms!
+    if !(current_spree_user.admin? || current_spree_user.has_pd_role?)
       redirect_to root_path and return
     end
   end

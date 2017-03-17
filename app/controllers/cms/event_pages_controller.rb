@@ -1,5 +1,7 @@
 class Cms::EventPagesController < Cms::BaseController
   before_action :set_event_page, only: [:show, :edit, :update, :destroy, :publish, :preview, :archive, :unarchive]
+  skip_before_action :authenticate_admin_in_cms!
+  before_action :authenticate_pd_access_in_cms!
 
   def index
     redirect_to published_cms_event_pages_path

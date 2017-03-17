@@ -1,6 +1,7 @@
 class Cms::DocumentsController < Cms::BaseController
   before_action :find_document, only: [:show, :edit, :destroy, :update]
-  layout 'cms_admin'
+  skip_before_action :authenticate_admin_in_cms!
+  before_action :authenticate_pd_access_in_cms!
 
   def index
     @documents = Document.includes(:tags).page(params[:page]).per(params[:per_page])
