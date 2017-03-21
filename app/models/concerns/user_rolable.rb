@@ -36,6 +36,6 @@ module UserRolable
   end
 
   def can_see_cms?
-    has_admin_role? || has_vanity_admin_role? || has_hr_role?
+    has_admin_role? || has_vanity_admin_role? || has_hr_role? || has_pd_role?
   end
 end
