@@ -1,3 +1,4 @@
+<% color = params.try(:[], :curriculums).include?("English") ? "background-color: #7CC7F1;" : params.try(:[], :curriculums).include?("Math") ? "background-color: #CCFF63;" : "" %>
 <div class="list-group-item">
   <h4 class="margin-bottom--reset">
     <%= link_to event.title.html_safe, "http://regonline.com/#{event.regonline_id}", target: '_blank' %>
@@ -14,7 +15,7 @@
         </small>
 
         <% if event.download_url.present? %>
-          <small class="block"><%= link_to "Event Details", event.download_url, class: 'btn btn-info margin-bottom', target: '_blank' %></small>
+          <small class="block"><%= link_to "Event Details", event.download_url, class: 'btn btn-info margin-bottom', style: "#{color}", target: '_blank' %></small>
         <% end %>
       </div>
     <% end %>
