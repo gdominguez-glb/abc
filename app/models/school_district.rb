@@ -128,7 +128,7 @@ class SchoolDistrict < ActiveRecord::Base
   end
 
   def attributes_for_salesforce
-    sf_attrs = { 'Name' => name,
+    sf_attrs = { 'Name' => name.titleize,
       'RecordTypeId' => salesforce_record_type_id,
       'BillingState' => state.try(:abbr),
       'BillingCity' => city,
