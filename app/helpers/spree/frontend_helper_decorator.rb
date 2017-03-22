@@ -62,7 +62,7 @@ Spree::FrontendHelper.class_eval do
 
   def event_color_class(event_page)
     curriculum = event_page.page.try(:group_name) || ""
-    return "#7CC7F1" if ["", "English"].include? curriculum
+    return "#7CC7F1" if ["", "english"].include? curriculum.try(:downcase)
     "#CCFF63"
   end
 end
