@@ -1,5 +1,10 @@
-<div class="list-group-item">
-  <h4 class="margin-bottom--reset">
+<div class="card card-<%= event.curriculums.try(:downcase) || "general" %>">
+  <% if event.curriculums.present? %>
+    <div class="card-meta">
+      <%= event.curriculums %>
+    </div>
+  <% end %>
+  <h4 class="card-title">
     <%= link_to event.title.html_safe, "http://regonline.com/#{event.regonline_id}", target: '_blank' %>
   </h4>
 
@@ -14,7 +19,7 @@
         </small>
 
         <% if event.download_url.present? %>
-          <small class="block"><%= link_to "Event Details", event.download_url, class: 'btn btn-info margin-bottom', target: '_blank' %></small>
+          <small class="block"><%= link_to "Event Details", event.download_url, class: 'btn btn-primary margin-bottom', target: '_blank' %></small>
         <% end %>
       </div>
     <% end %>
@@ -40,5 +45,4 @@
       <% end %>
     </div>
   </div>
-
 </div>
