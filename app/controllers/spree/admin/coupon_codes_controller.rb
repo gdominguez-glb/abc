@@ -29,7 +29,7 @@ class Spree::Admin::CouponCodesController < Spree::Admin::ResourceController
   def coupon_code_params
     _params = params.require(:coupon_code).permit(:total_quantity, :school_district_id, :product_ids, :code, :sync_specified_order, :sf_order_id)
     _params[:product_ids] = _params[:product_ids].split(',')
-    _params[:school_lists] = params[:coupon_code][:school_lists] unless params[:coupon_code][:school_lists].nil?
+    _params[:school_lists] = params[:coupon_code][:school_lists].blank? ? [] : params[:coupon_code][:school_lists]
     _params
   end
 
