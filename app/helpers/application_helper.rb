@@ -24,7 +24,7 @@ module ApplicationHelper
   def cms_root_for_user(user)
     if user.admin?
       '/cms'
-    elsif user.has_vanity_admin_role?
+    elsif user.has_vanity_admin_role? || user.has_pd_role?
       '/cms/vanity_urls'
     elsif user.has_hr_role?
       '/cms/jobs'

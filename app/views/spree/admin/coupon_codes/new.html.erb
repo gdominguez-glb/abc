@@ -15,6 +15,11 @@
           <%= f.text_field :school_district_id, class: 'form-control' %>
         </div>
         <div class="form-group">
+          <label>Upload list of schools</label>
+          <%= f.file_field :schools_xls %>
+          <%= f.hidden_field :school_lists %>
+        </div>
+        <div class="form-group">
           <label>Products</label>
           <%= f.text_field :product_ids, class: 'form-control' %>
         </div>
@@ -66,10 +71,10 @@
           }
         },
         formatResult: function (product) {
-          return product.name;
+          return product.internal_name;
         },
         formatSelection: function (product) {
-          return product.name;
+          return product.internal_name;
         }
      });
 

@@ -27,11 +27,15 @@ module UserRolable
     spree_roles.where(id: Spree::Role.vanity_admin.id).count > 0
   end
 
+  def has_pd_role?
+    spree_roles.where(id: Spree::Role.pd.id).count > 0
+  end
+
   def has_hr_role?
     spree_roles.where(id: Spree::Role.hr.id).count > 0
   end
 
   def can_see_cms?
-    has_admin_role? || has_vanity_admin_role? || has_hr_role?
+    has_admin_role? || has_vanity_admin_role? || has_hr_role? || has_pd_role?
   end
 end

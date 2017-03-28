@@ -78,8 +78,9 @@ Spree::Product.class_eval do
   scope :salesforceable, -> { where.not(sf_id_product: [nil, ''])}
   scope :unarchive, -> { where(archived: false) }
   scope :sort_group_first, -> { order("case product_type when 'group' then 1 else 2 end").order('position asc') }
-  scope :search_by_text, ->(q) { where("spree_products.name ilike :q or spree_products.short_description ilike :q", q: "%#{q}%") if q.present? }
+  scope :search_by_text, ->(q) { where("spree_products.name ilike :q or spree_products.short_description ilike :q or spree_products.meta_text ilike :q", q: "%#{q}%") if q.present? }
 
+  after_save :update_meta_text
   after_save :add_video_group_taxon
 
   def parts?
@@ -258,5 +259,15 @@ Spree::Product.class_eval do
 
   def license_text_for_terms
     license_text.present? ? license_text : (parent_bundle && parent_bundle.license_text)
+  end
+
+  def update_meta_text_from_group_items
+    update(meta_text: self.group_items.pluck(:name).join(', '))
+  end
+
+  def update_meta_text
+    group_parent_products.each do |p|
+      p.update_meta_text_from_group_items
+    end
   end
 end

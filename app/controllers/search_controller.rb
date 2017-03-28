@@ -1,4 +1,6 @@
 class SearchController < ApplicationController
+  before_action :set_session_material, only: [:index]
+
   def index
     @result = Page.search(params[:query], generate_search_options)
   end
@@ -29,5 +31,10 @@ class SearchController < ApplicationController
     else
       redirect_to spree.product_path(product)
     end
+  end
+
+  private
+  def set_session_material
+    session[:material_products] = []
   end
 end

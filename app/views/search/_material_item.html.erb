@@ -1,4 +1,8 @@
-<% link = material_link(item) %>
+<%
+  return if item.product.id.present? && session[:material_products].include?(item.product.id)
+  session[:material_products].push(item.product.id) unless item.product.id.nil?
+  link = material_link(item)
+%>
 <% if link %>
   <%= link_to link.html_safe, class: 'list-group-item' do %>
     <h4 class="margin-bottom--reset"><%= item.name %></h4>
