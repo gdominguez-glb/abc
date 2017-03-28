@@ -87,6 +87,7 @@
             <% if current_spree_user.admin? %>
               <%= active_link_to "Medium Publications (Blog)", '/cms/medium_publications', class: 'list-group-item' %>
               <%= active_link_to "Contact Topics", '/cms/contact_topics', class: 'list-group-item' %>
+              <%= active_link_to "Blog (New)", '/cms/blogs', class: 'list-group-item' if $flipper[:blog_redesign].enabled? %>
             <% end %>
           </ul>
         </div>

@@ -77,6 +77,7 @@ namespace :cms do
       post :trigger_medium_importer
     end
   end
+  resources :blogs
   resources :contact_topics do
     collection do
       post :update_positions
