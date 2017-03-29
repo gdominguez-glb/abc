@@ -5,6 +5,8 @@ class Article < ActiveRecord::Base
   publishable name: :body
 
   belongs_to :blog
+  belongs_to :user, class_name: 'Spree::User'
+
   validates_presence_of :title, :body_draft, :slug
 
   has_attached_file :jumbotron_background, path: "/:class/:attachment/:id_partition/:style/:filename"

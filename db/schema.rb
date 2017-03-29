@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170329002930) do
+ActiveRecord::Schema.define(version: 20170329003823) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 20170329002930) do
     t.string   "jumbotron_background_content_type"
     t.integer  "jumbotron_background_file_size"
     t.datetime "jumbotron_background_updated_at"
+    t.integer  "user_id"
   end
 
   create_table "blogs", force: :cascade do |t|
