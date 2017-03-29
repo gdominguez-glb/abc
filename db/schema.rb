@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170329013132) do
+ActiveRecord::Schema.define(version: 20170329140826) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -453,9 +453,11 @@ ActiveRecord::Schema.define(version: 20170329013132) do
 
   create_table "opportunities", force: :cascade do |t|
     t.string   "salesforce_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.string   "po_number"
+    t.string   "opportunity_id_sf"
+    t.text     "data"
   end
 
   create_table "opportunity_attachments", force: :cascade do |t|

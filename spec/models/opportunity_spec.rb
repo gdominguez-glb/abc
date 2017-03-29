@@ -6,6 +6,7 @@ RSpec.describe Opportunity, type: :model do
 
   before(:each){ allow_any_instance_of(GmSalesforce::Client).to receive(:find).and_return(true) }
   before(:each){ allow_any_instance_of(GmSalesforce::Client).to receive(:update).and_return(true) }
+  before(:each){ allow_any_instance_of(GmSalesforce::Client).to receive(:query).and_return([Struct.new(:Opp_Id__c).new("00618000004YYXdAAO")]) }
   before(:each){ allow_any_instance_of(Paperclip::Attachment).to receive(:save).and_return(true) }
 
   it { should validate_presence_of :salesforce_id }
@@ -13,7 +14,7 @@ RSpec.describe Opportunity, type: :model do
 
   describe "#salesforce_exists?" do
     it 'should not allow invalid object if it doesnt exist in salesforce' do
-      allow_any_instance_of(GmSalesforce::Client).to receive(:find).and_return(false)
+      allow_any_instance_of(GmSalesforce::Client).to receive(:query).and_return([Struct.new(:Opp_Id__c).new(nil)])
       expect(opportunity_with_attachment.valid?).to be_falsey
     end
 
