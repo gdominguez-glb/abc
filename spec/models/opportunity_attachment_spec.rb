@@ -9,6 +9,7 @@ RSpec.describe OpportunityAttachment, type: :model do
   before(:each){ allow_any_instance_of(OpportunityAttachment).to receive(:skip_salesforce_sync?).and_return(true) }
   before(:each){ allow_any_instance_of(GmSalesforce::Client).to receive(:find).and_return(true) }
   before(:each){ allow_any_instance_of(GmSalesforce::Client).to receive(:update).and_return(true) }
+  before(:each){ allow_any_instance_of(GmSalesforce::Client).to receive(:query).and_return([Struct.new(:Opp_Id__c).new("00618000004YYXdAAO")]) }
   before(:each){ allow_any_instance_of(Paperclip::Attachment).to receive(:save).and_return(true) }
   before(:each){ allow_any_instance_of(Kernel).to receive(:open).and_return("http://falsy") }
 
@@ -22,7 +23,7 @@ RSpec.describe OpportunityAttachment, type: :model do
     it 'should return the hash for salesforce' do
       attachment = opportunity.attachments.first
       expect(attachment.attributes_for_salesforce).to eq({
-       'ParentId' => attachment.opportunity.salesforce_id,
+       'ParentId' => attachment.opportunity.opportunity_id_sf,
        'Name' => attachment.file.original_filename,
        'Description' => attachment.file.original_filename,
        'Body' => Base64::encode64(open(attachment.file.url){|f| f.read})

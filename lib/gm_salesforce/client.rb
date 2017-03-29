@@ -37,6 +37,10 @@ module GmSalesforce
       capture_net_errors { client.describe(sobject_name).fields.find{|field| field.name == column_name || field.label == column_name } }
     end
 
+    def query(q)
+      capture_net_errors { client.query(q) }
+    end
+
     def self.date_to_salesforce(date)
       return nil if date.blank?
       date.as_json.gsub(/Z\Z/, '+0000')
