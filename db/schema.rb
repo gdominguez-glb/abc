@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170328092814) do
+ActiveRecord::Schema.define(version: 20170329002930) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,14 +40,18 @@ ActiveRecord::Schema.define(version: 20170328092814) do
     t.string   "title"
     t.text     "body"
     t.text     "body_draft"
-    t.integer  "publish_status", default: 0
-    t.integer  "draft_status",   default: 0
+    t.integer  "publish_status",                    default: 0
+    t.integer  "draft_status",                      default: 0
     t.datetime "archived_at"
-    t.boolean  "archived",       default: false
-    t.boolean  "display",        default: false
+    t.boolean  "archived",                          default: false
+    t.boolean  "display",                           default: false
     t.string   "slug"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.datetime "created_at",                                        null: false
+    t.datetime "updated_at",                                        null: false
+    t.string   "jumbotron_background_file_name"
+    t.string   "jumbotron_background_content_type"
+    t.integer  "jumbotron_background_file_size"
+    t.datetime "jumbotron_background_updated_at"
   end
 
   create_table "blogs", force: :cascade do |t|
