@@ -1,0 +1,14 @@
+<%= render 'cms_nav' %>
+
+<div class="col-md-9">
+  <%= render partial: 'search_bar', locals: { selected_state: 'published' } %>
+
+  <div class="panel panel-primary">
+    <div class="panel-heading padding-top--s padding-bottom--s">
+      <h3 class="panel-title panel-title--s">All Published Posts</h3>
+    </div>
+    <%= render partial: 'article_list', locals: { state: 'published' } %>
+  </div>
+
+</div>
+
