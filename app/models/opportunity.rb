@@ -16,7 +16,7 @@ class Opportunity < ActiveRecord::Base
   after_create :update_po_field
 
   def sf_account_name
-    opportunity_sf_object = GmSalesforce::Client.instance.find('Opportunity', self.salesforce_id)
+    opportunity_sf_object = GmSalesforce::Client.instance.find('Opportunity', self.opportunity_id_sf)
     sf_account_object = GmSalesforce::Client.instance.find('Account', opportunity_sf_object.AccountId)
     sf_account_object.Name
   rescue
