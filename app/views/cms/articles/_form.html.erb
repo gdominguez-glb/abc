@@ -1,0 +1,76 @@
+<%= form_for([:cms, @blog, @article], class: 'form') do |f| %>
+  <% if @article.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h2>
+
+      <ul>
+        <% @article.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="panel panel-primary">
+    <div class="panel-heading padding-top--s padding-bottom--s">
+      <h3 class="panel-title panel-title--s">Blog Post</h3>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <%= f.label :title %>
+            <%= f.text_field :title, class: 'form-control' %>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label 'Unique url (Slug)' %>
+        <%= f.text_field :slug, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label 'Jumbotron Background Image' %>
+        <%= f.file_field :jumbotron_background %>
+        <% if @article.jumbotron_background.exists? %>
+          <%= image_tag @article.jumbotron_background, width: 100 %>
+        <% end %>
+      </div>
+      <div class="form-group">
+        <%= f.label "Body" %>
+        <%= f.text_area :body_draft, class: "form-control rich-editor" %>
+      </div>
+      <div class="form-group">
+        <div class="checkbox">
+          <%= f.label :display do %>
+            <%= f.check_box :display %> Display
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <span class="label label-english margin-bottom">Status: <%= cms_display_status(@article) %></span>
+
+  <div class="row">
+    <% if @article.persisted? %>
+      <div class="col-sm-3">
+        <%= link_to 'Preview', preview_cms_blog_article_path(@blog, @article), class: 'btn btn-default btn-block margin-bottom--s--sm-min', target: '_blank' %>
+      </div>
+    <% end %>
+    <div class="col-sm-3">
+      <%= f.submit 'Save Draft', class: 'btn btn-primary btn-block margin-bottom--s--sm-min' %>
+    </div>
+    <div class="col-sm-3">
+      <% if @article.persisted? %>
+        <%= link_to 'Publish', publish_cms_blog_article_path(@blog, @article), class: 'btn btn-success btn-block margin-bottom--s--sm-min', data: { method: :post, confirm: 'Are you sure to publish? (Make sure you save the draft first)' } %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+<%= content_for :javascripts do %>
+  <script type="text/javascript">
+   $(function(){
+   });
+  </script>
+<% end %>
