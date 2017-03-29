@@ -17,7 +17,7 @@ class OpportunityAttachment < ActiveRecord::Base
 
   def attributes_for_salesforce
     {
-      'ParentId' => self.opportunity.salesforce_id,
+      'ParentId' => self.opportunity.opportunity_id_sf,
       'Name' => name_for_sf,
       'Description' => name_for_sf,
       'Body' => Base64::encode64(open(self.file.url){|f| f.read})

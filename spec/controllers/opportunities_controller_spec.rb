@@ -6,6 +6,7 @@ RSpec.describe OpportunitiesController, type: :controller do
   before(:each){ allow_any_instance_of(OpportunityAttachment).to receive(:skip_salesforce_sync?).and_return(true) }
   before(:each){ allow_any_instance_of(Paperclip::Attachment).to receive(:save).and_return(true) }
   before(:each){ allow_any_instance_of(GmSalesforce::Client).to receive(:update).and_return(true) }
+  before(:each){ allow_any_instance_of(GmSalesforce::Client).to receive(:query).and_return([Struct.new(:Opp_Id__c).new("00618000004YYXdAAO")]) }
 
 
   let(:valid_attributes) do
