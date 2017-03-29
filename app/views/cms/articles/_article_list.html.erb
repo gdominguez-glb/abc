@@ -4,6 +4,7 @@
       <tr>
         <th>Title</th>
         <th>Author</th>
+        <th>Publish Date</th>
         <th>Unique Url</th>
         <th>Visible</th>
         <th>Status</th>
@@ -16,6 +17,7 @@
         <tr>
           <td><%= article.title %></td>
           <td><%= article.user.try(:full_name) %></td>
+          <td><%= article.publish_date %></td>
           <td><%= article.slug %></td>
           <td><%= article.display ? 'Yes' : 'No' %></td>
           <td><span class="label label-english"><%= cms_display_status(article) %></span></td>
