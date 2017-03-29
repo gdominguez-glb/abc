@@ -7,15 +7,15 @@ class Cms::ArticlesController < Cms::BaseController
   end
 
   def published
-    @articles = Article.published.unarchive.page(params[:page])
+    @articles = @blog.articles.published.unarchive.page(params[:page])
   end
 
   def drafts
-    @articles = Article.draft.unarchive.page(params[:page])
+    @articles = @blog.articles.draft.unarchive.page(params[:page])
   end
 
   def archived
-    @articles = Article.archived.page(params[:page])
+    @articles = @blog.articles.archived.page(params[:page])
   end
 
   def new
@@ -23,7 +23,7 @@ class Cms::ArticlesController < Cms::BaseController
   end
 
   def create
-    @article = @blog.articles.build(article_params)
+    @article = @blog.articles.build(article_params.merge(user: current_spree_user))
     if @article.save
       redirect_to edit_cms_blog_article_path(@blog, @article), notice: 'Post created successfully'
     else
@@ -50,22 +50,22 @@ class Cms::ArticlesController < Cms::BaseController
 
   def destroy
     @article.destroy
-    redirect_to cms_blog_articles_path(@blog), notice: 'Destroy event page successfully'
+    redirect_to cms_blog_articles_path(@blog), notice: 'Destroy post successfully'
   end
 
   def publish
     @article.publish!
-    redirect_to cms_blog_articles_path(@blog), notice: 'Event page published successfully'
+    redirect_to cms_blog_articles_path(@blog), notice: 'Blog post published successfully'
   end
 
   def archive
     @article.archive!
-    redirect_to archived_cms_blog_articles_path(@blog), notice: 'Event page archived successfully'
+    redirect_to archived_cms_blog_articles_path(@blog), notice: 'Blog post archived successfully'
   end
 
   def unarchive
     @article.unarchive!
-    redirect_to cms_blog_articles_path(@blog), notice: 'Event page un-archived successfully'
+    redirect_to cms_blog_articles_path(@blog), notice: 'Blog post un-archived successfully'
   end
 
   private
