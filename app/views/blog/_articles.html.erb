@@ -1,0 +1,27 @@
+<% articles.in_groups_of(3, false).each do |group| %>
+  <div class="row">
+    <% group.each do |article| %>
+      <div class="col-sm-4">
+        <div class="card-link">
+          <div class="card card-media card--no-border">
+            <%# <p><%= article.published_at.strftime('%b %d %Y') rescue nil %1></p> %>
+            <div class="card-image" style="background-image: url('<%= article.jumbotron_background.url %>')"></div>
+            <div class="card-media--content">
+              <h4 class="card-title">
+                <% if blog_type == 'global' %>
+                  <%= link_to article.title, global_post_path(slug: blog.slug, id: article.slug) %>
+                <% else %>
+                  <%= link_to article.title, curriculum_post_path(page_slug: group_page.slug, slug: blog.slug, id: article.slug) %>
+                <% end %>
+              </h4>
+              <div class="card-text">
+                <%= truncate_html(article.body, length: 130) %>
+              </div>
+              <div class="card-meta">By: <%= article.user.try(:full_name) %></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>

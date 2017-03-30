@@ -34,7 +34,7 @@
             <%= f.label :blog_type %>
             <div class="select-container dark-select block">
               <span>Select Blog Type</span>
-              <%= f.select :blog_type, Blog.blog_types, {}, class: 'form-control' %>
+              <%= f.select :blog_type, Blog.blog_types.keys, {}, class: 'form-control' %>
             </div>
           </div>
         </div>
@@ -45,6 +45,15 @@
               <span>Select Curriculum</span>
               <%= f.collection_select :page_id, Page.show_in_top_navigation, :id, :group_name, { prompt: true }, class: 'form-control' %>
             </div>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="form-group">
+            <%= f.label 'Jumbotron Background Image' %>
+            <%= f.file_field :jumbotron_background %>
+            <% if @blog.jumbotron_background.exists? %>
+              <%= image_tag @blog.jumbotron_background, width: 100 %>
+            <% end %>
           </div>
         </div>
         <div class="col-sm-12">

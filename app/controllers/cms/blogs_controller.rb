@@ -41,6 +41,6 @@ class Cms::BlogsController < Cms::BaseController
   end
 
   def blog_params
-    params.require(:blog).permit(:title, :blog_type, :page_id, :position, :display, :slug, :header, :description)
+    params.require(:blog).permit!
   end
 end

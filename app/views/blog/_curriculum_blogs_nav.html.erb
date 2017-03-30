@@ -1,0 +1,7 @@
+<ul class="nav nav-tabs margin-bottom--m">
+  <% blogs.each do |blog| %>
+    <li role="presentation">
+      <%= active_link_to blog.title, curriculum_blog_path(page_slug: page.slug, slug: blog.slug) %>
+    </li>
+  <% end %>
+</ul>

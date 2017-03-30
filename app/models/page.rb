@@ -23,6 +23,7 @@ class Page < ActiveRecord::Base
   belongs_to :curriculum
 
   has_many :medium_publications
+  has_many :blogs
   has_many :event_pages, ->{ where(display: true) }
 
   has_one :shop, class_name: 'CurriculumShop', foreign_key: :page_id
