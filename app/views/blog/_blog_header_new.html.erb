@@ -1,8 +1,27 @@
-<div class="blog-section-description">
-  <% if blog.header.present? %>
-    <h2 class="blog-section-title text-center"><%= blog.header %></h2>
-  <% end %>
-  <% if blog.description.present? %>
-    <p><%= blog.description.html_safe %></p>
-  <% end %>
+<div class="jumbotron jumbotron-background" style="background-image: url('https://s3-staging.greatminds.org/documents/attachments/000/000/194/original/A38Q9808.jpg?1463596915')">
+  <div class="row">
+    <div class="col-sm-11 col-sm-offset-1">
+        <% if blog.header.present? %>
+          <h1 class="jumbotron-title"><%= blog.header %></h1>
+        <% else %>
+          <h1 class="jumbotron-title"><%= @blog_title %></h1>
+        <% end %>
+      </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-1">
+      <% if blog.description.present? %>
+        <p><%= blog.description.html_safe %></p>
+      <% end %>
+    </div>
+    <div class="col-sm-3">
+      <label for="transparentInputGroup1">Search Article</label>
+      <div class="input-group input-group-transparent margin-bottom--reset">
+        <input type="text" class="form-control input-group-transparent-input" id="transparentInputGroup1" placeholder="">
+        <span class="input-group-btn input-group-transparent-btn">
+          <button type="button" class="btn btn-default btn-transparent input-group-transparent-btn"><i class="mi">search</i></button>
+        </span>
+      </div>
+    </div>
+  </div>
 </div>
