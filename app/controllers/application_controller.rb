@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   skip_before_action :accepted_terms, only: [:logout]
 
 
-  before_action :track_campaign_lead
+  before_action :track_campaign
 
   if Rails.env.qa? || Rails.env.staging? || Rails.env.production?
     def default_url_options(options={})
@@ -102,7 +102,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def track_campaign_lead
+  def track_campaign
     if params[:utm_campaign].present? && params[:utm_content].present?
       session[:utm] = "#{params[:utm_campaign]},#{params[:utm_content]}"
     end
