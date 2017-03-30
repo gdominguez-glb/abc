@@ -15,7 +15,7 @@
                 <% end %>
               </h4>
               <div class="card-text">
-                <%#= raw article.preview_content %>
+                <%= truncate_html(article.body, length: 130) %>
               </div>
               <div class="card-meta">By: <%= article.user.try(:full_name) %></div>
             </div>

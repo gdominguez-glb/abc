@@ -17,7 +17,7 @@
     <%= link_to curriculum_blog_path(page_slug: @group_page.slug, slug: @article.blog.slug), class: "previous-page btn btn-default margin-bottom--l" do %>
       <i class="mi">keyboard_arrow_left</i> Back
     <% end %>
-    <div class="post-view">
+    <div class="post-view initial-letter">
       <%= render 'article' %>
     </div>
   </div>

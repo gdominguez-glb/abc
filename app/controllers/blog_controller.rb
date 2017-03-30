@@ -16,7 +16,7 @@ class BlogController < ApplicationController
     else
       load_global_publication
       load_posts
-      @publication_title = @medoium_publication.title
+      @publication_title = @medium_publication.title
     end
   end
 
