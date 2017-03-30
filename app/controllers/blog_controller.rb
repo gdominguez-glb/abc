@@ -81,7 +81,6 @@ class BlogController < ApplicationController
     @sub_nav_items = Page.show_in_sub_navigation(@group_page.group_name)
   end
 
-
   include SearchHelper
   def find_post
     post_with_id = Post.find_by(id: params[:id])
@@ -113,7 +112,7 @@ class BlogController < ApplicationController
   end
 
   def load_articles
-    @articles = @blog.articles.displayable.published.page(params[:page])
+    @articles = @blog.articles.displayable.published.search_by_text(params[:q]).page(params[:page])
   end
 
   def find_article

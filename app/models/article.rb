@@ -15,4 +15,5 @@ class Article < ActiveRecord::Base
   validates_attachment_presence :jumbotron_background
 
   scope :sorted, -> { order('publish_date desc') }
+  scope :search_by_text, ->(q) { where("title ilike ?", "%#{q}%") if q.present?  }
 end
