@@ -80,6 +80,7 @@ Spree::User.class_eval do
               'Email' => email,
               'DoNotCall' => !allow_communication,
               'MailingPostalCode' => zip_code,
+              'Contact_Referral__c' => referral,
               'Curriculum_of_Interest__c' => interested_curriculums.join(';') }
 
 
