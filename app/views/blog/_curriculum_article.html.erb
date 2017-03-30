@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="jumbotron jumbotron-background" style="background-image: url('https://s3.greatminds.org/documents/attachments/000/000/037/large/HS_boy.jpg?1458617395')">
+  <div class="jumbotron jumbotron-background" style="background-image: url('<%= @article.jumbotron_background.url %>')">
     <div class="row">
       <div class="col-sm-8 col-sm-offset-2 text-center">
         <%= link_to curriculum_blog_path(page_slug: @group_page.slug, slug: @article.blog.slug), class: "btn btn-primary btn-transparent btn-sm margin-bottom--l" do %>

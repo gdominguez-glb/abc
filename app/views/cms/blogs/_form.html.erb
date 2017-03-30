@@ -49,6 +49,15 @@
         </div>
         <div class="col-sm-12">
           <div class="form-group">
+            <%= f.label 'Jumbotron Background Image' %>
+            <%= f.file_field :jumbotron_background %>
+            <% if @blog.jumbotron_background.exists? %>
+              <%= image_tag @blog.jumbotron_background, width: 100 %>
+            <% end %>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="form-group">
             <%= f.label "Blog Unique url" %>
             <%= f.text_field :slug, class: 'form-control' %>
             <small class="help-block">This should be entered with no leading slash. The URL will differ, depending on the "Blog Type" and "Curriculum Page" selections in the above dropdowns.</small>

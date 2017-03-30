@@ -5,7 +5,7 @@
         <div class="card-link">
           <div class="card card-media card--no-border">
             <%# <p><%= article.published_at.strftime('%b %d %Y') rescue nil %1></p> %>
-            <div class="card-image" style="background-image: url('https://s3-staging.greatminds.org/documents/attachments/000/000/194/original/A38Q9808.jpg?1463596915')"></div>
+            <div class="card-image" style="background-image: url('<%= article.jumbotron_background.url %>')"></div>
             <div class="card-media--content">
               <h4 class="card-title">
                 <% if blog_type == 'global' %>
