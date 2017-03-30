@@ -1,24 +1,27 @@
-<% articles.each do |article| %>
-  <div class="article">
-    <%# <p><%= article.published_at.strftime('%b %d %Y') rescue nil %1></p> %>
-    <h2 class="blog-post-title">
-      <% if blog_type == 'global' %>
-        <%= link_to article.title, global_post_path(slug: blog.slug, id: article.slug) %>
-      <% else %>
-        <%= link_to article.title, curriculum_post_path(page_slug: group_page.slug, slug: blog.slug, id: article.slug) %>
-      <% end %>
-    </h2>
-    <p>
-      <%#= raw article.preview_content %>
-    </p>
-    <% if blog_type == 'global' %>
-      <%= link_to global_post_path(slug: blog.slug, id: article.slug), class: "btn btn-default btn-block-xs margin-bottom--xl" do %>
-        Read More <i class="mi">keyboard_arrow_right</i>
-      <% end %>
-    <% else %>
-      <%= link_to curriculum_post_path(page_slug: group_page.slug, slug: blog.slug, id: article.slug), class: "btn btn-default btn-block-xs margin-bottom--xl" do %>
-        Read More <i class="mi">keyboard_arrow_right</i>
-      <% end %>
+<% articles.in_groups_of(3, false).each do |group| %>
+  <div class="row">
+    <% group.each do |article| %>
+      <div class="col-sm-4">
+        <div class="card-link">
+          <div class="card card-media card--no-border">
+            <%# <p><%= article.published_at.strftime('%b %d %Y') rescue nil %1></p> %>
+            <div class="card-image" style="background-image: url('https://s3-staging.greatminds.org/documents/attachments/000/000/194/original/A38Q9808.jpg?1463596915')"></div>
+            <div class="card-media--content">
+              <h4 class="card-title">
+                <% if blog_type == 'global' %>
+                  <%= link_to article.title, global_post_path(slug: blog.slug, id: article.slug) %>
+                <% else %>
+                  <%= link_to article.title, curriculum_post_path(page_slug: group_page.slug, slug: blog.slug, id: article.slug) %>
+                <% end %>
+              </h4>
+              <div class="card-text">
+                <%#= raw article.preview_content %>
+              </div>
+              <div class="card-meta">By: <%= article.user.try(:full_name) %></div>
+            </div>
+          </div>
+        </div>
+      </div>
     <% end %>
   </div>
 <% end %>
