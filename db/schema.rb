@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170330063531) do
+ActiveRecord::Schema.define(version: 20170330143158) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -1878,6 +1878,7 @@ ActiveRecord::Schema.define(version: 20170330063531) do
     t.text     "grades"
     t.string   "city",                                   default: ""
     t.string   "state",                                  default: ""
+    t.string   "referral"
   end
 
   add_index "spree_users", ["deleted_at"], name: "index_spree_users_on_deleted_at", using: :btree
