@@ -1,0 +1,10 @@
+<div class="row">
+  <div class="col-sm-10 col-sm-offset-1 margin-top--xxl margin-bottom--xl">
+    <%= link_to global_blog_path(slug: @article.blog.slug), class: "previous-page btn btn-default margin-bottom--l" do %>
+      <i class="mi">keyboard_arrow_left</i> Back
+    <% end %>
+    <div class="post-view">
+      <%= render 'article' %>
+    </div>
+  </div>
+</div>

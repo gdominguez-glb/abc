@@ -34,7 +34,7 @@
             <%= f.label :blog_type %>
             <div class="select-container dark-select block">
               <span>Select Blog Type</span>
-              <%= f.select :blog_type, Blog.blog_types, {}, class: 'form-control' %>
+              <%= f.select :blog_type, Blog.blog_types.keys, {}, class: 'form-control' %>
             </div>
           </div>
         </div>

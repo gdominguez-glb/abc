@@ -1,10 +1,14 @@
-<div class="row">
-  <div class="col-sm-10 col-sm-offset-1 margin-top--xxl margin-bottom--xl">
-    <%= link_to curriculum_blog_path(page_slug: @group_page.slug, slug: @post.medium_publication.slug), class: "previous-page btn btn-default margin-bottom--l" do %>
-      <i class="mi">keyboard_arrow_left</i> Back
-    <% end %>
-    <div class="post-view">
-      <%= render 'post' %>
+<% if $flipper[:blog_redesign].enabled? %>
+  <%= render 'curriculum_post_new' %>
+<% else %>
+  <div class="row">
+    <div class="col-sm-10 col-sm-offset-1 margin-top--xxl margin-bottom--xl">
+      <%= link_to curriculum_blog_path(page_slug: @group_page.slug, slug: @post.medium_publication.slug), class: "previous-page btn btn-default margin-bottom--l" do %>
+        <i class="mi">keyboard_arrow_left</i> Back
+      <% end %>
+      <div class="post-view">
+        <%= render 'post' %>
+      </div>
     </div>
   </div>
-</div>
+<% end %>

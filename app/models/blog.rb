@@ -2,6 +2,7 @@ class Blog < ActiveRecord::Base
   include Displayable
 
   validates_presence_of :title, :slug
+  validates_uniqueness_of :slug
 
   enum blog_type: { global: 0, curriculum: 1 }
   scope :sorted, ->{ order('position asc') }

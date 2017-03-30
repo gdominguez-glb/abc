@@ -1,0 +1,8 @@
+<div class="blog-section-description">
+  <% if blog.header.present? %>
+    <h2 class="blog-section-title text-center"><%= blog.header %></h2>
+  <% end %>
+  <% if blog.description.present? %>
+    <p><%= blog.description.html_safe %></p>
+  <% end %>
+</div>
