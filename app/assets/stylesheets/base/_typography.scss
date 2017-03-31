@@ -152,7 +152,7 @@ table {
 //   Styleguide 3.2.1
 // -------------------------------------
 
-.initial-letter > p:first-of-type {
+.initial-letter:first-of-type {
   &::first-letter {
     float: left;
     padding: 8px 10px 4px 0;
