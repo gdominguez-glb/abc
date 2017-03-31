@@ -13,10 +13,7 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-sm-10 col-sm-offset-1 margin-top--xxl margin-bottom--xl">
-    <%= link_to curriculum_blog_path(page_slug: @group_page.slug, slug: @article.blog.slug), class: "previous-page btn btn-default margin-bottom--l" do %>
-      <i class="mi">keyboard_arrow_left</i> Back
-    <% end %>
+  <div class="col-sm-10 col-sm-offset-1 margin-top--xl margin-bottom--xl">
     <div class="post-view initial-letter">
       <%= render 'article' %>
     </div>
