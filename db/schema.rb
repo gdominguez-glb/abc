@@ -12,6 +12,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 20170330143158) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -32,6 +33,45 @@ ActiveRecord::Schema.define(version: 20170330143158) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.text     "content_draft"
+  end
+
+  create_table "articles", force: :cascade do |t|
+    t.integer  "blog_id"
+    t.string   "title"
+    t.text     "body"
+    t.text     "body_draft"
+    t.integer  "publish_status",                    default: 0
+    t.integer  "draft_status",                      default: 0
+    t.datetime "archived_at"
+    t.boolean  "archived",                          default: false
+    t.boolean  "display",                           default: false
+    t.string   "slug"
+    t.datetime "created_at",                                        null: false
+    t.datetime "updated_at",                                        null: false
+    t.string   "jumbotron_background_file_name"
+    t.string   "jumbotron_background_content_type"
+    t.integer  "jumbotron_background_file_size"
+    t.datetime "jumbotron_background_updated_at"
+    t.integer  "user_id"
+    t.date     "publish_date"
+    t.datetime "published_at"
+  end
+
+  create_table "blogs", force: :cascade do |t|
+    t.string   "title"
+    t.integer  "blog_type"
+    t.integer  "position"
+    t.boolean  "display"
+    t.string   "slug"
+    t.string   "header"
+    t.text     "description"
+    t.integer  "page_id"
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.string   "jumbotron_background_file_name"
+    t.string   "jumbotron_background_content_type"
+    t.integer  "jumbotron_background_file_size"
+    t.datetime "jumbotron_background_updated_at"
   end
 
   create_table "contact_topics", force: :cascade do |t|

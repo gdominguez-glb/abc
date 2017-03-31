@@ -17,9 +17,17 @@
           <% if @group_page && @group_page.shop %>
             <li><%= link_to @group_page.shop.title, @group_page.shop.url  %></li>
           <% end %>
-          <% if @group_page && publication = @group_page.medium_publications.sorted.first %>
-            <%= active_link_to 'Blog', curriculum_blog_path(page_slug: @group_page.slug, slug: publication.slug), wrap_tag: :li, active: /#{@group_page.slug}\/blog/ %>
+
+          <% if $flipper[:blog_redesign].enabled? %>
+            <% if @group_page && blog = @group_page.blogs.displayable.sorted.first %>
+              <%= active_link_to 'Blog', curriculum_blog_path(page_slug: @group_page.slug, slug: blog.slug), wrap_tag: :li, active: /#{@group_page.slug}\/blog/ %>
+            <% end %>
+          <% else %>
+            <% if @group_page && publication = @group_page.medium_publications.sorted.first %>
+              <%= active_link_to 'Blog', curriculum_blog_path(page_slug: @group_page.slug, slug: publication.slug), wrap_tag: :li, active: /#{@group_page.slug}\/blog/ %>
+            <% end %>
           <% end %>
+
           <% if @group_page && event_page = @group_page.available_event_pages.first %>
             <%= active_link_to 'Events', curriculum_events_path(page_slug: @group_page.slug, slug: event_page.slug), wrap_tag: :li, active: /#{@group_page.slug}\/events\/#{event_page.slug}/ %>
           <% end %>

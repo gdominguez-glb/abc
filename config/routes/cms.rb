@@ -77,6 +77,22 @@ namespace :cms do
       post :trigger_medium_importer
     end
   end
+  resources :blogs do
+    resources :articles do
+      collection do
+        get :published
+        get :drafts
+        get :archived
+        get :search
+      end
+      member do
+        post :publish
+        get :preview
+        post :archive
+        post :unarchive
+      end
+    end
+  end
   resources :contact_topics do
     collection do
       post :update_positions

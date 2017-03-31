@@ -152,14 +152,12 @@ table {
 //   Styleguide 3.2.1
 // -------------------------------------
 
-.initial-letter {
-  &:first-child {
-    &::first-letter {
-      float: left;
-      padding: 8px 10px 4px 0;
-      font-size: 75px;
-      line-height: 60px;
-    }
+.initial-letter > p:first-of-type {
+  &::first-letter {
+    float: left;
+    padding: 8px 10px 4px 0;
+    font-size: 75px;
+    line-height: 60px;
   }
 }
 

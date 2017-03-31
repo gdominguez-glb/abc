@@ -8,21 +8,22 @@ class Notification < ActiveRecord::Base
 
   def mark_as_read!
     update(read: true)
+    log_activity(:read)
   end
 
-  after_create :log_activity
 
-  def log_activity
+  def mark_as_viewed!
+    update(viewed: true)
+    log_activity(:viewed)
+  end
+
+  def log_activity(action)
     if self.user
       self.user.log_activity(
         title: self.content,
         item: self,
-        action: :create
+        action: action
       )
     end
-  end
-
-  def mark_as_viewed!
-    update(viewed: true)
   end
 end

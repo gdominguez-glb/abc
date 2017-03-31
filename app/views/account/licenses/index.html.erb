@@ -22,8 +22,8 @@
         <p class="sans-serif"><strong>1. Select product to assign</strong></p>
         <% selected_option = current_spree_user.managed_products_options.find{|o| o[1] == params[:licenses_ids] } %>
         <%= f.hidden_field :licenses_ids, :value => selected_option.nil? ? "" : selected_option[1] %>
-        <div class="btn-group btn-block margin-bottom--reset licenses-dropdown" id="licensesDropdown">
-          <button type="button" class="btn btn-default dropdown-toggle licenses-dropdown-button" data-toggle="dropdown">
+        <div class="btn-group btn-block dropdown-ol margin-bottom--reset licenses-dropdown" id="licensesDropdown">
+          <button type="button" class="btn btn-default dropdown-toggle dropdown-ol-btn licenses-dropdown-button" data-toggle="dropdown">
             <span class="licenses-dropdown-selection">
               <% if selected_option %>
                 <%= selected_option[0] %>
@@ -31,11 +31,11 @@
                 Select a Product
               <% end %>
             </span>
-            <span class="caret"></span>
+            <i class="dropdown-ol-mi mi md-24 toggle-arrow">keyboard_arrow_down</i>
           </button>
-          <ul class="dropdown-menu btn-block js-licenses-dropdown width--100pct">
+          <ul class="dropdown-menu dropdown-ol-menu btn-block js-licenses-dropdown width--100pct">
             <% current_spree_user.managed_products_options.each do |product| %>
-              <li><a href="#" class="whitespace--reset" data-product="<%= product[1] %>"><%= product[0] %></a></li>
+              <li class="dropdown-ol-item"><a href="#" class="whitespace--reset dropdown-ol-link" data-product="<%= product[1] %>"><%= product[0] %></a></li>
             <% end %>
           </ul>
         </div>
