@@ -146,4 +146,16 @@ RSpec.describe Spree::FrontendHelper, type: :helper do
       expect(helper.default_school_district_id_value(school, "", "default")).to eq("default")
     end
   end
+
+  describe "#stronger_truncate_html" do
+    it 'should close unclosed tags' do
+      var = "<p><a href='/fake'>Dummy"
+      expect(stronger_truncate_html(var, length: 130)).to eq("<p><a href=\"/fake\">Dummy</a></p>")
+    end
+
+    it 'should cut string and close unclosed tags' do
+      var = "<p><a href='/fake'>Dummy Text about what it's going on</a></p>"
+      expect(stronger_truncate_html(var, length: 24)).to eq("<p><a href=\"/fake\">Dummy Text about what...</a></p>")
+    end
+  end
 end
