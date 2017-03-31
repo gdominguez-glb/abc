@@ -41,7 +41,7 @@
       </div>
       <div class="form-group">
         <%= f.label "Body" %>
-        <%= f.text_area :body_draft, class: "form-control rich-editor" %>
+        <%= f.text_area :body_draft, class: "form-control body-editor" %>
       </div>
       <div class="form-group">
         <div class="checkbox">
@@ -75,6 +75,13 @@
 <%= content_for :javascripts do %>
   <script type="text/javascript">
    $(function(){
+     $('.body-editor').trumbowyg({
+       fullscreenable: false,
+       closable: false,
+       removeformatPasted: false,
+       semantic: false,
+       btns: ['bold', 'italic', 'underline', 'strikethrough', '|', 'formatting', '|', 'unorderedList', 'orderedList', '|', 'link', 'insertImage', '|', 'viewHTML', 'removeformat']
+     });
      $("#article_publish_date").datetimepicker({format: 'YYYY-MM-DD'});
    });
   </script>
