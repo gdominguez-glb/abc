@@ -2,6 +2,7 @@
   <div class="row">
     <% group.each do |article| %>
       <div class="col-sm-4">
+        <% #TODO Refactor %>
         <% url = blog_type == 'global' ? global_post_path(slug: blog.slug, id: article.slug) : curriculum_post_path(page_slug: group_page.slug, slug: blog.slug, id: article.slug) %>
         <%= link_to url, class: "card-link" do %>
           <div class="card card-media card--no-border">
