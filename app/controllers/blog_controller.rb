@@ -21,6 +21,8 @@ class BlogController < ApplicationController
   end
 
   def global_post
+    @blog_type = 'global'
+
     if $flipper[:blog_redesign].enabled?
       load_global_blog
       find_article
@@ -42,6 +44,8 @@ class BlogController < ApplicationController
   end
 
   def curriculum_post
+    @blog_type = 'curriculum'
+
     if $flipper[:blog_redesign].enabled?
       load_curriculum_blog
       find_article
