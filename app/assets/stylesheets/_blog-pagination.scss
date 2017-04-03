@@ -1,0 +1,15 @@
+.posts-pagination {
+  margin-top: $b-space-xl;
+  padding-top: $b-space-xl;
+  border-top: 1px solid $c-firm-secondary;
+  text-align: center;
+
+  .pagination {
+    box-shadow: none;
+
+    li a {
+      background-color: transparent;
+    }
+
+  }
+}
