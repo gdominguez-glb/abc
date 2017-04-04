@@ -112,7 +112,7 @@ class BlogController < ApplicationController
   end
 
   def load_articles
-    @articles = @blog.articles.displayable.published.search_by_text(params[:q]).page(params[:page])
+    @articles = @blog.articles.displayable.published.search_by_text(params[:q]).page(params[:page]).per(9)
   end
 
   def find_article
