@@ -40,7 +40,9 @@
 //= require jquery-sortable
 //= require picturefill
 //= require slick.min
+
 //= require trumbowyg
+//= require trumbowyg/plugins/imagetext
 
 // App
 //= require_tree ./global
@@ -93,6 +95,7 @@ function initEditor() {
 }
 
 $(document).ready(function() {
+  $.trumbowyg.svgPath = '/icons.svg';
   var nav = $('.navbar-primary');
   var subnav = nav.find('.subnav')[0];
 

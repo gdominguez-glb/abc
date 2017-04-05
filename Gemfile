@@ -107,6 +107,8 @@ gem "flipper-ui"
 
 gem "dalli" # memcache
 
+gem 'trumbowyg_rails'
+
 gem 'sitemap_generator', require: false
 
 group :development do
