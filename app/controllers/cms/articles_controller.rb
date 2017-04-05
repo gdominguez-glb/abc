@@ -7,15 +7,15 @@ class Cms::ArticlesController < Cms::BaseController
   end
 
   def published
-    @articles = @blog.articles.published.unarchive.page(params[:page])
+    @articles = @blog.articles.published.unarchive.sorted.page(params[:page])
   end
 
   def drafts
-    @articles = @blog.articles.draft.unarchive.page(params[:page])
+    @articles = @blog.articles.draft.unarchive.sorted.page(params[:page])
   end
 
   def archived
-    @articles = @blog.articles.archived.page(params[:page])
+    @articles = @blog.articles.archived.sorted.page(params[:page])
   end
 
   def new
