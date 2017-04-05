@@ -42,7 +42,7 @@
 //= require slick.min
 
 //= require trumbowyg
-//= require trumbowyg/plugins/imagetext
+//= require trumbowyg/plugins/imageclasses
 
 // App
 //= require_tree ./global
