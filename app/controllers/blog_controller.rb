@@ -120,6 +120,6 @@ class BlogController < ApplicationController
   end
 
   def find_article
-    @article = @blog.articles.displayable.published.find_by(slug: params[:id])
+    @article = @blog.articles.displayable.published.sorted.find_by(slug: params[:id])
   end
 end
