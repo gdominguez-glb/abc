@@ -7,7 +7,7 @@
         <%= link_to url, class: "card-link" do %>
           <div class="card card-media card--no-border">
             <%# <p><%= article.published_at.strftime('%b %d %Y') rescue nil %1></p> %>
-            <div class="card-image" style="background-image: url('<%= article.jumbotron_background.url %>')"></div>
+            <div class="card-image" style="background-image: url('<%= article.jumbotron_background_file_name %>')"></div>
             <div class="card-media--content">
               <h4 class="card-title"><%= article.title %></h4>
               <div class="card-text">

@@ -10,10 +10,6 @@ class Article < ActiveRecord::Base
   validates_presence_of :title, :body_draft, :slug
   validates_uniqueness_of :slug
 
-  has_attached_file :jumbotron_background, path: "/:class/:attachment/:id_partition/:style/:filename"
-  validates_attachment_content_type :jumbotron_background, content_type: /\Aimage\/.*\z/
-  validates_attachment_presence :jumbotron_background
-
   scope :sorted, -> { order('publish_date desc') }
   scope :search_by_text, ->(q) { where("title ilike ?", "%#{q}%") if q.present?  }
 

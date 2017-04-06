@@ -33,11 +33,8 @@
         <%= f.text_field :slug, class: 'form-control' %>
       </div>
       <div class="form-group">
-        <%= f.label 'Jumbotron Background Image' %>
-        <%= f.file_field :jumbotron_background %>
-        <% if @article.jumbotron_background.exists? %>
-          <%= image_tag @article.jumbotron_background, width: 100 %>
-        <% end %>
+        <%= f.label 'Jumbotron Background Image Url' %>
+        <%= f.text_field :jumbotron_background_file_name, class: "form-control" %>
       </div>
       <div class="form-group">
         <%= f.label "Body" %>
