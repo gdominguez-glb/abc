@@ -25,7 +25,7 @@ class Account::LicensesController < Account::BaseController
                                  .group('first_name, last_name').order('first_name ASC, last_name ASC')
     if params[:query].present?
       @product_distributions = @product_distributions.
-        where("spree_product_distributions.email ilike :query or spree_users.email ilike :query or spree_users.first_name ilike :query or spree_users.last_name ilike :query", query: "%#{params[:query]}%")
+        where("spree_product_distributions.email ilike :query or spree_users.email ilike :query or spree_users.first_name ilike :query or spree_users.last_name ilike :query", query: "%#{params[:query].strip}%")
     end
 
     @product_distributions = @product_distributions.page(params[:page])
