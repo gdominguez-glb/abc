@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="jumbotron jumbotron-background" style="background-image: url('<%= @article.jumbotron_background.url %>')">
+  <div class="jumbotron jumbotron-background" style="background-image: url('<%= @article.jumbotron_background_file_name %>')">
     <div class="row">
       <div class="col-sm-8 col-sm-offset-2 text-center">
         <%= link_to global_blog_path(slug: @article.blog.slug), class: "btn btn-primary btn-transparent btn-sm margin-bottom--l" do %>
