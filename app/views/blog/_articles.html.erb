@@ -1,23 +1,15 @@
-<% articles.in_groups_of(3, false).each do |group| %>
-  <div class="row">
-    <% group.each do |article| %>
-      <div class="col-sm-4">
-        <% #TODO Refactor %>
-        <% url = blog_type == 'global' ? global_post_path(slug: blog.slug, id: article.slug) : curriculum_post_path(page_slug: group_page.slug, slug: blog.slug, id: article.slug) %>
-        <%= link_to url, class: "card-link" do %>
-          <div class="card card-media card--no-border">
-            <%# <p><%= article.published_at.strftime('%b %d %Y') rescue nil %1></p> %>
-            <div class="card-image" style="background-image: url('<%= article.jumbotron_background_file_name %>')"></div>
-            <div class="card-media--content">
-              <h4 class="card-title"><%= article.title %></h4>
-              <div class="card-text">
-                <%= stronger_truncate_html(article.body, length: 130) %>
-              </div>
-              <div class="card-meta">By: <%= article.user.try(:full_name) %></div>
-            </div>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
+<% articles.each do |article| %>
+<% #TODO Refactor %>
+<% url = blog_type == 'global' ? global_post_path(slug: blog.slug, id: article.slug) : curriculum_post_path(page_slug: group_page.slug, slug: blog.slug, id: article.slug) %>
+  <%= link_to url, class: "card card-flex card-media card--no-border card-link" do %>
+    <%# <p><%= article.published_at.strftime('%b %d %Y') rescue nil %1></p> %>
+    <div class="card-image" style="background-image: url('<%= article.jumbotron_background_file_name %>')"></div>
+      <div class="card-media--content">
+        <h4 class="card-title"><%= article.title %></h4>
+        <div class="card-text">
+          <%= stronger_truncate_html(article.body, length: 130) %>
+        </div>
+        <div class="card-meta">By: <%= article.user.try(:full_name) %></div>
+    </div>
+  <% end %>
 <% end %>
