@@ -49,11 +49,8 @@
         </div>
         <div class="col-sm-12">
           <div class="form-group">
-            <%= f.label 'Jumbotron Background Image' %>
-            <%= f.file_field :jumbotron_background %>
-            <% if @blog.jumbotron_background.exists? %>
-              <%= image_tag @blog.jumbotron_background, width: 100 %>
-            <% end %>
+            <%= f.label 'Jumbotron Background Image Url' %>
+            <%= f.text_field :jumbotron_background_file_name, class: "form-control" %>
           </div>
         </div>
         <div class="col-sm-12">
