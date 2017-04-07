@@ -30,10 +30,11 @@ class Article < ActiveRecord::Base
   end
 
   def related_article(next_prev = :next)
-    duck = next_prev == :next ? ">" : "<"
-    which = next_prev == :next ? :first : :last
+    duck = next_prev == :next ? ">=" : "<="
+    which = next_prev == :next ? :last : :first
     self.blog.articles.displayable.published
-        .where("publish_date #{duck} ?", self.created_at)
+        .sorted
+        .where("publish_date #{duck} ?", self.publish_date)
         .where.not(id: self.id)
         .send(which)
   end
