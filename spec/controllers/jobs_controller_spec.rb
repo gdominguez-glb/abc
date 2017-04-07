@@ -8,17 +8,14 @@ RSpec.describe JobsController, type: :controller do
 
     it "be success" do
       get :index
-      expect(response).to be_success
-      expect(assigns(:careers_page)).to eq(careers_page)
-      expect(assigns(:jobs)).to eq([job])
+      expect(response).to redirect_to("https://greatminds.recruitee.com/#/")
     end
   end
 
   describe "GET 'show'" do
     it "success" do
       get :show, id: job.id
-      expect(response).to be_success
-      expect(assigns(:job)).to eq(job)
+      expect(response).to redirect_to("https://greatminds.recruitee.com/#/")
     end
   end
 end
