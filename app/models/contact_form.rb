@@ -21,8 +21,19 @@ class ContactForm
     if ['Sales/Purchasing', 'Professional Development'].include?(self.topic)
       create_lead_object
     elsif ["Existing Order Support", "Curriculum Support", "Technical Support", "Parent Support", "Content Error", "General and Other"].include?(self.topic)
+      send_notification_to_ww_errors_email if is_english_content_error?
       create_case_object
     end
+  end
+
+  def is_english_content_error?
+    self.topic == 'Content Error' && self.curriculum == 'English'
+  end
+
+  def send_notification_to_ww_errors_email
+    contact_error_info = self.instance_variables.inject({}){|attrs, ivar| attrs[ivar.to_s.gsub('@', '')] = instance_variable_get(ivar); attrs }
+    contact_error_info.delete('errors')
+    ContentErrorMailer.notify(contact_error_info).deliver_later
   end
 
   def create_lead_object
