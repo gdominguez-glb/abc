@@ -14,6 +14,10 @@ module AutocompleteByName
       collection = collection.where(name: params[:name])
     end
 
+    if params[:id]
+      collection = collection.where(id: params[:id])
+    end
+
     render json: {
       count: collection.count,
       total_count: collection.total_count,
