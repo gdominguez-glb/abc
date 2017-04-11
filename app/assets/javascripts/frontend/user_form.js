@@ -390,6 +390,9 @@ $(function(){
     rowToHide.collapse('hide');
   };
 
+  countryField.change(function() {
+    updateSchoolDistrictField();
+  });
 
   placeTypeField.change(function(){
     updateSchoolDistrictField();
