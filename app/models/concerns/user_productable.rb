@@ -87,8 +87,10 @@ module UserProductable
   end
 
   def my_resources
+    top_activity_ids = self.activities.where(action: ['buy', 'launch_resource'], item_type: 'Spree::Product').select('distinct(activities.id) as id, updated_at').order('updated_at desc').map(&:id)
+    top_activity_ids_conds = top_activity_ids.count > 0 ? "AND activities.id in (#{top_activity_ids.join(',')})" : ''
     accessible_products.select('spree_products.*, COALESCE(activities.updated_at, null) AS activities_update_at')
-        .joins("LEFT JOIN activities ON (activities.item_id = spree_products.id AND action = 'launch_resource' AND item_type = 'Spree::Product' AND user_id = #{self.id})")
+        .joins("LEFT JOIN activities ON (activities.item_id = spree_products.id AND action in ('buy', 'launch_resource') AND item_type = 'Spree::Product' AND user_id = #{self.id}) #{top_activity_ids_conds}")
         .where('spree_products.product_type != ?', 'bundle').order('activities_update_at DESC NULLS LAST')
   end
 
