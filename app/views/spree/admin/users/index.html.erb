@@ -103,7 +103,7 @@
       multiple: false,
       initSelection: function (element, callback) {
         var url = Spree.url('/store/admin/school_districts', {
-          ids: element.val(),
+          id: element.val(),
           token: Spree.api_key
         });
         return $.getJSON(url, null, function (data) {
