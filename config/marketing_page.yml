@@ -113,7 +113,7 @@ marketing_templates:
             <!--[if IE 9]><video style="display: none;"><![endif]-->
             <source srcset="<%= image_url.gsub(/original/, 'small') if image_url %>" media="(min-width: 361px)">
             <!--[if IE 9]></video><![endif]-->
-            <img srcset="<%= image_url.gsub(/original/, 'thumb') if image_url %>" alt="alt here" >
+            <img srcset="<%= image_url.gsub(/original/, 'thumb') if image_url %>" alt="<%= alt_text rescue nil %>" >
           </picture>
         </div>
         <div class="col-sm-6">
@@ -182,7 +182,7 @@ marketing_templates:
             <!--[if IE 9]><video style="display: none;"><![endif]-->
             <source srcset="<%= image_url.gsub(/original/, 'small') if image_url %>" media="(min-width: 361px)">
             <!--[if IE 9]></video><![endif]-->
-            <img srcset="<%= image_url.gsub(/original/, 'thumb') if image_url %>" alt="alt here" >
+            <img srcset="<%= image_url.gsub(/original/, 'thumb') if image_url %>" alt="<%= alt_text rescue nil %>" >
           </picture>
         </div>
       </section>
@@ -231,7 +231,7 @@ marketing_templates:
               <!--[if IE 9]><video style="display: none;"><![endif]-->
               <source srcset="<%= image_url.gsub(/original/, 'small') if image_url %>" media="(min-width: 361px)">
               <!--[if IE 9]></video><![endif]-->
-              <img srcset="<%= image_url.gsub(/original/, 'thumb') if image_url %>" alt="alt here"  class="img-responsive margin-bottom--xl--sm-min">
+              <img srcset="<%= image_url.gsub(/original/, 'thumb') if image_url %>" alt="<%= alt_text rescue nil %>"  class="img-responsive margin-bottom--xl--sm-min">
             </picture>
           </div>
         </div>
@@ -261,7 +261,7 @@ marketing_templates:
               <!--[if IE 9]><video style="display: none;"><![endif]-->
               <source srcset="<%= image_url.gsub(/original/, 'small') if image_url %>" media="(min-width: 361px)">
               <!--[if IE 9]></video><![endif]-->
-              <img srcset="<%= image_url.gsub(/original/, 'thumb') if image_url %>" alt="alt here"  class="img-responsive margin-bottom--xl--sm-min">
+              <img srcset="<%= image_url.gsub(/original/, 'thumb') if image_url %>" alt="<%= alt_text rescue nil %>"  class="img-responsive margin-bottom--xl--sm-min">
             </picture>
           </div>
         </div>
@@ -305,7 +305,7 @@ marketing_templates:
               <!--[if IE 9]><video style="display: none;"><![endif]-->
               <source srcset="<%= image_url.gsub(/original/, 'small') if image_url %>" media="(min-width: 361px)">
               <!--[if IE 9]></video><![endif]-->
-              <img srcset="<%= image_url.gsub(/original/, 'thumb') if image_url %>" alt="alt here"  class="img-responsive">
+              <img srcset="<%= image_url.gsub(/original/, 'thumb') if image_url %>" alt="<%= alt_text rescue nil %>"  class="img-responsive">
             </picture>
           </div>
         </div>
@@ -335,7 +335,7 @@ marketing_templates:
               <!--[if IE 9]><video style="display: none;"><![endif]-->
               <source srcset="<%= image_url.gsub(/original/, 'small') if image_url %>" media="(min-width: 361px)">
               <!--[if IE 9]></video><![endif]-->
-              <img srcset="<%= image_url.gsub(/original/, 'thumb') if image_url %>" alt="alt here"  class="img-responsive">
+              <img srcset="<%= image_url.gsub(/original/, 'thumb') if image_url %>" alt="<%= alt_text rescue nil %>"  class="img-responsive">
             </picture>
           </div>
         </div>
@@ -351,7 +351,7 @@ marketing_templates:
               <!--[if IE 9]><video style="display: none;"><![endif]-->
               <source srcset="<%= image_url.gsub(/original/, 'small') if image_url %>" media="(min-width: 361px)">
               <!--[if IE 9]></video><![endif]-->
-              <img srcset="<%= image_url.gsub(/original/, 'thumb') if image_url %>" alt="alt here"  class="img-responsive img-shadow margin-bottom--xl--sm-min">
+              <img srcset="<%= image_url.gsub(/original/, 'thumb') if image_url %>" alt="<%= alt_text rescue nil %>"  class="img-responsive img-shadow margin-bottom--xl--sm-min">
             </picture>
           </div>
         </div>
@@ -395,7 +395,7 @@ marketing_templates:
               <!--[if IE 9]><video style="display: none;"><![endif]-->
               <source srcset="<%= image_url.gsub(/original/, 'small') if image_url %>" media="(min-width: 361px)">
               <!--[if IE 9]></video><![endif]-->
-              <img srcset="<%= image_url.gsub(/original/, 'thumb') if image_url %>" alt="alt here"  class="img-responsive img-shadow">
+              <img srcset="<%= image_url.gsub(/original/, 'thumb') if image_url %>" alt="<%= alt_text rescue nil %>"  class="img-responsive img-shadow">
             </picture>
           </div>
         </div>
@@ -411,7 +411,7 @@ marketing_templates:
               <!--[if IE 9]><video style="display: none;"><![endif]-->
               <source srcset="<%= image_url.gsub(/original/, 'small') if image_url %>" media="(min-width: 361px)">
               <!--[if IE 9]></video><![endif]-->
-              <img srcset="<%= image_url.gsub(/original/, 'thumb') if image_url %>" alt="alt here"  class="img-responsive img-book margin-bottom--xl--sm-min">
+              <img srcset="<%= image_url.gsub(/original/, 'thumb') if image_url %>" alt="<%= alt_text rescue nil %>"  class="img-responsive img-book margin-bottom--xl--sm-min">
             </picture>
           </div>
         </div>
@@ -455,7 +455,7 @@ marketing_templates:
               <!--[if IE 9]><video style="display: none;"><![endif]-->
               <source srcset="<%= image_url.gsub(/original/, 'small') if image_url %>" media="(min-width: 361px)">
               <!--[if IE 9]></video><![endif]-->
-              <img srcset="<%= image_url.gsub(/original/, 'thumb') if image_url %>" alt="alt here"  class="img-responsive img-book">
+              <img srcset="<%= image_url.gsub(/original/, 'thumb') if image_url %>" alt="<%= alt_text rescue nil %>"  class="img-responsive img-book">
             </picture>
           </div>
         </div>
