@@ -181,12 +181,17 @@ Spree::Order.class_eval do
   def log_purchase_activity!
     return unless self.user
     self.products.each do |product|
-      self.user.log_activity(
-        item: product,
-        title: product.name,
-        action: 'buy'
-      )
+      log_buy_activity_for_product(product)
+      product.parts.each do |p| log_buy_activity_for_product(p) end
     end
+  end
+
+  def log_buy_activity_for_product(product)
+    self.user.log_activity(
+      item: product,
+      title: product.name,
+      action: 'buy'
+    )
   end
 
   def has_license_products?
