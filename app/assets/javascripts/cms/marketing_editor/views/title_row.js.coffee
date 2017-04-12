@@ -31,6 +31,8 @@ class MarketingEditorApp.Views.TileRowView extends Backbone.View
           @model.set($(el).attr('data-name'), 0)
       else
         @model.set($(el).attr('data-name'), $(el).val())
+        if $(el).attr('data-name') == 'image_url'
+          @setAltText(el)
     )
 
   fieldsOfRowType: (rowType)->
@@ -38,3 +40,10 @@ class MarketingEditorApp.Views.TileRowView extends Backbone.View
 
   customSelectChanged: (e)->
     $(e.target).siblings('span').text($(e.target).val())
+
+  setAltText: (el)->
+    url = $(el).val()
+    url_parts = $.parseParams(url)
+    if url_parts['alt']?
+      alt_text = url_parts['alt']
+      $(el).closest('.col-sm-6').next('.col-sm-6').find('[data-name="alt_text"]').val(alt_text)
