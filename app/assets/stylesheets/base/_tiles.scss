@@ -266,7 +266,7 @@ section {
 
   @media screen and (min-width: $screen-sm-min) {
     @include display-flex;
-    @include align-items(center);  
+    @include align-items(center);
   }
 }
 
@@ -276,12 +276,12 @@ section {
   @include align-items(center);
   max-height: 400px;
   overflow: hidden;
-  padding: 0!important;
+  padding: 0 !important;
 
   @media screen and (min-width: $screen-sm-min) {
     max-height: 600px;
 
-    img { 
+    img {
       min-height: 600px;
     }
   }
