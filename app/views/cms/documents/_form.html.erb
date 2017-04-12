@@ -31,6 +31,10 @@
             <%= f.text_field :tag_list, class: 'form-control', value: f.object.tags.map(&:name).join(',') %>
           </div>
           <div class="form-group">
+            <label>Alt Text (only need for images)</label>
+            <%= f.text_field :alt_text, class: 'form-control' %>
+          </div>
+          <div class="form-group">
             <span class="btn btn-default btn-block" onclick="FileEvent.simulateClick('#document_attachment')">Select file</span>
           </div>
         </div>

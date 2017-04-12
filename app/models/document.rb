@@ -28,4 +28,15 @@ class Document < ActiveRecord::Base
     # attachment_content_type == "image/png"
     @attachment_remote_url = url_value
   end
+
+  def image?
+    ["image/jpeg", "image/png"].include?( attachment.content_type )
+  end
+
+  require 'uri'
+  def image_url
+    uri =  URI.parse(attachment.url)
+    uri.query = [uri.query, {alt: self.alt_text}.to_param].compact.join('&')
+    uri.to_s
+  end
 end
