@@ -62,6 +62,18 @@
           <%= f.text_field :layout, class: 'form-control' %>
         </div>
       </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <%= label "page[seo_data][title]", "Seo Title" %>
+          <%= text_field "page[seo_data]", "title", value: @page.seo_data.try(:[], :title), class: "form-control" %>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <%= label "page[seo_data][description]", "Seo Description" %>
+          <%= text_field "page[seo_data]", "description", value: @page.seo_data.try(:[], :description), class: "form-control" %>
+        </div>
+      </div>
       <div class="col-sm-12">
         <div class="form-group">
           <%= f.label :body %>

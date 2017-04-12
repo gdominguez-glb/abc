@@ -141,7 +141,7 @@ module Cms
     # Never trust parameters from the scary internet, only allow the white list
     # through.
     def page_params
-      params.require(:page).permit(:title, :seo_content, :slug, :group_name,
+      params.require(:page).permit({seo_data: [:title, :description]}, :title, :seo_content, :slug, :group_name,
                                    :keywords, :description,
                                    :sub_group_name, :position, :layout, :body_draft,
                                    :visible, :curriculum_id, :group_root,
