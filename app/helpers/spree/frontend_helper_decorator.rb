@@ -1,4 +1,5 @@
 Spree::FrontendHelper.class_eval do
+  include TruncateHtmlHelper
 
   def flash_messages(opts = {})
     ignore_types = ["order_completed"].concat(Array(opts[:ignore_types]).map(&:to_s) || [])
@@ -58,5 +59,20 @@ Spree::FrontendHelper.class_eval do
     else
       default_value
     end
+  end
+
+  def event_color_class(event_page)
+    curriculum = event_page.page.try(:group_name) || ""
+    return "#7CC7F1" if ["", "english"].include? curriculum.try(:downcase)
+    "#CCFF63"
+  end
+
+  def stronger_truncate_html(html, options = {})
+    var = truncate_html(html, options)
+    to_remove = ["\n", "<html>", "</html>", "<body>", "</body>", "<head>", "</head>"]
+    var = Nokogiri.HTML5(var).to_html
+    to_remove.each{|tag| var.remove!(tag)}
+
+    var.html_safe
   end
 end

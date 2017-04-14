@@ -7,6 +7,14 @@
   }
 }
 
+.dropdown-menu .active a {
+  background-color: $c-positive-secondary;
+
+  &:hover {
+    background-color: $c-positive-secondary;
+  }
+}
+
 .products {
   margin-bottom: 60px;
 }

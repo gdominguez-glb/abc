@@ -41,6 +41,10 @@ class Cms::EventPagesController < Cms::BaseController
     end
   end
 
+  def preview
+    @events = @event_page.events.displayable.sorted.page(params[:page])
+  end
+
   def destroy
     @event_page.destroy
     redirect_to cms_event_pages_path, notice: 'Destroy event page successfully'

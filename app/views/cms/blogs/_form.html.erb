@@ -1,0 +1,106 @@
+<%= form_for([:cms, @blog], class: 'form') do |f| %>
+  <% if @blog.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@blog.errors.count, "error") %> prohibited this blog from being saved:</h2>
+
+      <ul>
+      <% @blog.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="panel panel-primary">
+    <div class="panel-heading padding-top--s padding-bottom--s">
+      <h3 class="panel-title panel-title--s">Blog</h3>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <%= f.label :title %>
+            <%= f.text_field :title, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <%= f.label :position %>
+            <%= f.number_field :position, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <%= f.label :blog_type %>
+            <div class="select-container dark-select block">
+              <span>Select Blog Type</span>
+              <%= f.select :blog_type, Blog.blog_types.keys, {}, class: 'form-control' %>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group curriculum-input <%= 'hidden' if @blog.blog_type != 'curriculum' %>">
+            <%= f.label "Curriculum Page" %>
+            <div class="select-container dark-select block">
+              <span>Select Curriculum</span>
+              <%= f.collection_select :page_id, Page.show_in_top_navigation, :id, :group_name, { prompt: true }, class: 'form-control' %>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="form-group">
+            <%= f.label 'Jumbotron Background Image Url' %>
+            <%= f.text_field :jumbotron_background_file_name, class: "form-control" %>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="form-group">
+            <%= f.label "Blog Unique url" %>
+            <%= f.text_field :slug, class: 'form-control' %>
+            <small class="help-block">This should be entered with no leading slash. The URL will differ, depending on the "Blog Type" and "Curriculum Page" selections in the above dropdowns.</small>
+            <small class="help-block">For example, say you enter 'report' (without the quotes).<br />
+            If you have selected "Global" as the blog type, the resulting URL will be: /updates/global/report<br />
+            If you have selected "Curriculum", and "Math", the resulting URL will be: /math/blog/report</small>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="form-group">
+            <%= f.label "Header" %>
+            <%= f.text_field :header, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="form-group">
+            <%= f.label "Description (Copy under header)" %>
+            <%= f.text_area :description, class: 'form-control rich-editor' %>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <div class="checkbox">
+            <%= f.label :display do %>
+              <%= f.check_box :display %> Display
+            <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%= f.submit class: 'btn btn-success btn-block-xs', data: { disable_with: 'Submitting...' } %>
+<% end %>
+<%= content_for :javascripts do %>
+  <%= javascript_tag do %>
+    $(function(){
+      $("#blog_blog_type").change(function(){
+        var blog_type = $(this).val();
+        if (blog_type == 'curriculum') {
+          $('.curriculum-input').removeClass('hidden');
+        } else {
+          $('.curriculum-input').addClass('hidden');
+        }
+      })
+    })
+  <% end %>
+<% end %>

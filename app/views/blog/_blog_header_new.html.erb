@@ -1,0 +1,30 @@
+<div class="jumbotron jumbotron-background" style="background-image: url('<%= blog.jumbotron_background_file_name %>')">
+  <div class="row">
+    <div class="col-sm-11 col-sm-offset-1">
+        <% if blog.header.present? %>
+          <h1 class="jumbotron-title"><%= blog.header %></h1>
+        <% else %>
+          <h1 class="jumbotron-title"><%= @blog_title %></h1>
+        <% end %>
+      </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-1">
+      <% if blog.description.present? %>
+        <p><%= blog.description.html_safe %></p>
+      <% end %>
+    </div>
+    <div class="col-sm-3">
+      <%= form_tag '', method: :get do %>
+        <div class="input-group input-group-transparent margin-bottom--reset">
+
+          <%= text_field_tag :q, params[:q], class: 'form-control input-group-transparent-input', id: 'transparentInputGroup1' %>
+          <span class="input-group-btn input-group-transparent-btn">
+            <button type="submit" class="btn btn-default btn-transparent input-group-transparent-btn"><i class="mi">search</i></button>
+          </span>
+
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

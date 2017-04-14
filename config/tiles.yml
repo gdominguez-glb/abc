@@ -80,6 +80,9 @@
   - :name: image_url
     :label: Image Url
     :input_type: text
+  - :name: alt_text
+    :label: Image Alt Text
+    :input_type: text
 - :name: 50/50 Full-Bleed Image Left, Half Height
   :fields:
   - :name: title
@@ -111,6 +114,9 @@
       - Open in New Tab
   - :name: image_url
     :label: Image Url
+    :input_type: text
+  - :name: alt_text
+    :label: Image Alt Text
     :input_type: text
 - :name: 50/50 Full-Bleed Image Right
   :fields:
@@ -156,6 +162,9 @@
   - :name: image_url
     :label: Image Url
     :input_type: text
+  - :name: alt_text
+    :label: Image Alt Text
+    :input_type: text
 - :name: 50/50 Full-Bleed Image Right, Half Height
   :fields:
   - :name: title
@@ -187,6 +196,9 @@
       - Open in New Tab
   - :name: image_url
     :label: Image Url
+    :input_type: text
+  - :name: alt_text
+    :label: Image Alt Text
     :input_type: text
 - :name: 50/50 Content Image Left
   :fields:
@@ -220,6 +232,9 @@
   - :name: image_url
     :label: Image Url
     :input_type: text
+  - :name: alt_text
+    :label: Image Alt Text
+    :input_type: text
 - :name: 50/50 Content Image Left, Half Height
   :fields:
   - :name: title
@@ -251,6 +266,9 @@
       - Open in New Tab
   - :name: image_url
     :label: Image Url
+    :input_type: text
+  - :name: alt_text
+    :label: Image Alt Text
     :input_type: text
 - :name: 50/50 Content Image Right
   :fields:
@@ -284,6 +302,9 @@
   - :name: image_url
     :label: Image Url
     :input_type: text
+  - :name: alt_text
+    :label: Image Alt Text
+    :input_type: text
 - :name: 50/50 Content Image Right, Half Height
   :fields:
   - :name: title
@@ -315,6 +336,9 @@
       - Open in New Tab
   - :name: image_url
     :label: Image Url
+    :input_type: text
+  - :name: alt_text
+    :label: Image Alt Text
     :input_type: text
 - :name: 50/50 Content Image Shadow Left
   :fields:
@@ -348,6 +372,9 @@
   - :name: image_url
     :label: Image Url
     :input_type: text
+  - :name: alt_text
+    :label: Image Alt Text
+    :input_type: text
 - :name: 50/50 Content Image Shadow Right
   :fields:
   - :name: title
@@ -379,6 +406,9 @@
       - Open in New Tab
   - :name: image_url
     :label: Image Url
+    :input_type: text
+  - :name: alt_text
+    :label: Image Alt Text
     :input_type: text
 - :name: 50/50 Content Image Book Left
   :fields:
@@ -412,6 +442,9 @@
   - :name: image_url
     :label: Image Url
     :input_type: text
+  - :name: alt_text
+    :label: Image Alt Text
+    :input_type: text
 - :name: 50/50 Content Image Book Right
   :fields:
   - :name: title
@@ -444,6 +477,9 @@
   - :name: image_url
     :label: Image Url
     :input_type: text
+  - :name: alt_text
+    :label: Image Alt Text
+    :input_type: text
 - :name: Image Background, Full Width Text
   :fields:
   - :name: black_overlay
@@ -469,6 +505,9 @@
       - Open in New Tab
   - :name: image_url
     :label: Image Url
+    :input_type: text
+  - :name: alt_text
+    :label: Image Alt Text
     :input_type: text
 - :name: Image Background, Full Width Text, Half Height
   :fields:

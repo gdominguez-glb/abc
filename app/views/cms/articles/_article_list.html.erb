@@ -1,0 +1,37 @@
+<div class="table-responsive">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Publish Date</th>
+        <th>Unique Url</th>
+        <th>Visible</th>
+        <th>Status</th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @articles.each do |article| %>
+        <tr>
+          <td><%= article.title %></td>
+          <td><%= article.user.try(:full_name) %></td>
+          <td><%= article.publish_date %></td>
+          <td><%= article.slug %></td>
+          <td><%= article.display ? 'Yes' : 'No' %></td>
+          <td><span class="label label-english"><%= cms_display_status(article) %></span></td>
+          <td><%= link_to 'Edit', edit_cms_blog_article_path(@blog, article) %></td>
+          <td>
+            <% if article.archived? %>
+              <%= link_to 'Un-Archive', unarchive_cms_blog_article_path(@blog, article), method: :post, data: { confirm: 'Are you sure?' }, class: 'text--danger' %>
+            <% else %>
+              <%= link_to 'Archive', archive_cms_blog_article_path(@blog, article), method: :post, data: { confirm: 'Are you sure?' }, class: 'text--danger' %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<%= paginate @articles %>

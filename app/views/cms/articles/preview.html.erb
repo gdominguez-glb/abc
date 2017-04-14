@@ -1,0 +1,23 @@
+<div class="page">
+  <div class="row">
+  <div class="jumbotron jumbotron-background" style="background-image: url('<%= @article.jumbotron_background_file_name %>')">
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2 text-center">
+        <a class="btn btn-primary btn-transparent btn-sm margin-bottom--l">
+          <i class="mi">keyboard_arrow_left</i> GO BACK
+        </a>
+        <h1 class="jumbotron-title"><%= @article.title %></h1>
+        <hr class="jumbotron-divider" />
+        <span class="jumbotron-byline">By: <%= @article.user.try(:full_name) %></span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-10 col-sm-offset-1 margin-top--l margin-bottom--xl">
+    <div class="post-view initial-letter">
+      <%= @article.body_draft.html_safe rescue nil %>
+    </div>
+  </div>
+</div>
+</div>

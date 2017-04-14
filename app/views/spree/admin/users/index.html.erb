@@ -46,12 +46,20 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-sm-12">
+        <div class="col-sm-6">
           <div class="form-group">
             <%= f.label 'School/District' %>
             <%= f.text_field :school_district_id_eq, :class => 'form-control' %>
           </div>
         </div>
+
+        <div class="col-sm-6">
+          <div class="form-group">
+            <%= f.label 'Interested Curriculums' %>
+            <%= f.select :interested_subjects_cont, options_for_select(Curriculum.all.map{|m| [m.name, m.id]}, (params[:q][:interested_subjects_cont] rescue nil)), { include_blank: 'Select curriculum' }, class: "form-control input-medium" %>
+          </div>
+        </div>
+
       </div>
       <div data-hook="admin_users_index_search_buttons" class="form-actions">
         <%= button Spree.t(:search), 'search' %>
@@ -95,7 +103,7 @@
       multiple: false,
       initSelection: function (element, callback) {
         var url = Spree.url('/store/admin/school_districts', {
-          ids: element.val(),
+          id: element.val(),
           token: Spree.api_key
         });
         return $.getJSON(url, null, function (data) {

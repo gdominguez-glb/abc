@@ -18,7 +18,7 @@
         <h4 class="card-title"><%= product.name %></h4>
       <% end %>
       <div class="card-text">
-        <%= truncate(product.short_description, length: 150, escape: false) rescue '' %>
+        <%= stronger_truncate_html(product.short_description, length: 150, escape: false) rescue '' %>
       </div>
     </div>
   <% end %>

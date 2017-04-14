@@ -1,0 +1,32 @@
+<div class="row pagination-blog">
+  <% if @article.has_prev_article? %>
+    <div class="col-sm-6 pagination-blog-prev">
+      <% #TODO Refactor %>
+      <% url = @blog_type == 'global' ? global_post_path(slug: @article.prev_article.blog.slug, id: @article.prev_article.slug) : curriculum_post_path(page_slug: @group_page.slug, slug: @article.prev_article.blog.slug, id: @article.prev_article.slug) %>
+      <h3 class="blog-title">
+        <a href="<%= url %>"><%= @article.prev_article.title %></a>
+      </h3>
+      <div class="blog-meta">By: <%= @article.prev_article.user.full_name %></div>
+      <hr />
+      <a href="<%= url %>" class="btn btn-sm btn-default btn-transparent">
+        <i class="mi md-18">chevron_left</i> Previous
+      </a>
+    </div>
+  <% else %>
+    <div class="col-sm-6"></div>
+  <% end %>
+  <div class="col-sm-6 pagination-blog-next">
+    <% if @article.has_next_article? %>
+      <% #TODO Refactor %>
+      <% url = @blog_type == 'global' ? global_post_path(slug: @article.next_article.blog.slug, id: @article.next_article.slug) : curriculum_post_path(page_slug: @group_page.slug, slug: @article.next_article.blog.slug, id: @article.next_article.slug) %>
+      <h3 class="blog-title">
+        <a href="<%= url %>"><%= @article.next_article.title %></a>
+      </h3>
+      <div class="blog-meta">By: <%= @article.next_article.user.full_name %></div>
+      <hr />
+      <a href="<%= url %>" class="btn btn-sm btn-default btn-transparent">
+        Next <i class="mi md-18">chevron_right</i>
+      </a>
+    <% end %>
+  </div>
+</div>
