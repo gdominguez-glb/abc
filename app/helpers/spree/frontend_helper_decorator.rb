@@ -68,10 +68,10 @@ Spree::FrontendHelper.class_eval do
   end
 
   def stronger_truncate_html(html, options = {})
-    var = truncate_html(html, options)
-    to_remove = ["\n", "<html>", "</html>", "<body>", "</body>", "<head>", "</head>"]
-    var = Nokogiri.HTML5(var).to_html
-    to_remove.each{|tag| var.remove!(tag)}
+    var = Nokogiri.HTML5(truncate_html(html, options))
+    var.search("img").each {|src| src.remove}
+    var = var.to_html
+    ["\n", "<html>", "</html>", "<body>", "</body>", "<head>", "</head>"].each{ |tag| var.remove!(tag) }
 
     var.html_safe
   end
