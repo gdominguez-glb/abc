@@ -40,6 +40,13 @@
     right: 10px;
     z-index: 1000;
   }
+
+  .btn {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    margin-top: -14px;
+  }
 }
 
 .alert-success {
@@ -56,6 +63,24 @@
 
 .alert-danger {
   @include alert-variant($c-energized-highlight, darken($c-energized-highlight, 25%), $c-absolute);
+}
+
+.alert-dismissible {
+  @include alert-variant($c-absolute, $c-positive-secondary, $c-positive-secondary);
+  border-left: 10px solid $c-positive-secondary;
+  padding-right: 135px;
+}
+
+.alert-math {
+  border-color: $c-balanced-primary;
+}
+
+.alert-english {
+  border-color: $c-positive-primary;
+}
+
+.alert-history {
+  border-color: $c-energized-primary;
 }
 
 .alert-fullwidth {
