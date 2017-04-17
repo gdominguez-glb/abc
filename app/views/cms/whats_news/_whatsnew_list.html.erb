@@ -1,5 +1,5 @@
 <div class="table-responsive">
-  <table class="table table-hover">
+  <table class="table table-hover" style="width: 140%; max-width: 140%;">
     <thead>
     <tr>
       <th colspan="2">Title</th>
@@ -9,6 +9,7 @@
       <th>Views</th>
       <th>Clicks</th>
       <th>Display</th>
+      <th>Created At</th>
       <th colspan="2"></th>
     </tr>
     </thead>
@@ -23,6 +24,7 @@
           <td><%= whatsnew.views %></td>
           <td><%= whatsnew.clicks %></td>
           <td><%= whatsnew.display %></td>
+          <td><%= whatsnew.created_at.strftime('%F %H:%M') %></td>
           <td><%= link_to 'Delete', cms_whats_new_path(whatsnew), data: { method: :delete, confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
         </tr>
     <% end %>
