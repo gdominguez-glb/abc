@@ -18,7 +18,7 @@
         <i class="dropdown-ol-mi mi md-24 toggle-arrow">keyboard_arrow_down</i>
       </button>
       <ul class="dropdown-menu dropdown-ol-menu">
-        <% Curriculum.visibles.each do |curriculum| %>
+        <% Curriculum.visibles.where.not(name: "Science").each do |curriculum| %>
           <li class="dropdown-ol-item <%= ('active' if params[:curriculum_id] == curriculum.id.to_s)%> ">
             <%= link_to curriculum.name, "#{account_products_url}?curriculum_id=#{curriculum.id}" %>
           </li>
