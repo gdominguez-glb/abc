@@ -7,6 +7,7 @@ class PagesController < ApplicationController
     redirect_to not_found_path and return if @page.nil?
 
     @page_title    = @page.title
+    @seo_title = @page.seo_data.try(:[], :title)
     @group_page    = cache [@page, :group_page], expires_in: 2.hours do
       Page.find_by(group_name: @page.group_name, group_root: true)
     end

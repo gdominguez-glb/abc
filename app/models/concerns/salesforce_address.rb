@@ -9,7 +9,7 @@ module SalesforceAddress
       "#{prefix}City" => addr.city,
       "#{prefix}State" => addr.state.try(:abbr),
       "#{prefix}PostalCode" => addr.zipcode,
-      "#{prefix}Country" => addr.country.try(:iso3)
+      "#{prefix}Country" => addr.country.try(:iso)
     }
   end
 
@@ -24,7 +24,7 @@ module SalesforceAddress
     end
 
     def parse_state_and_country(sfo, type)
-      country = Spree::Country.find_by(iso3: sfo.send("#{type}Country"))
+      country = Spree::Country.where('iso = :iso or iso3 = :iso', iso: sfo.send("#{type}Country")).first
       state_criteria = { abbr: sfo.send("#{type}State") }
       state_criteria.merge!(country: country) if country.present?
       state = Spree::State.find_by(state_criteria)
