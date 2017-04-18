@@ -49,7 +49,7 @@ SitemapGenerator::Sitemap.create do
   end
 
   Question.displayable.find_each do |question|
-    add about_qa_path(id: question.slug)
+    add qa_path(id: question.slug)
   end
 
   EventPage.global.each do |event_page|

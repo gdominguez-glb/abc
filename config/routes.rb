@@ -106,6 +106,9 @@ Rails.application.routes.draw do
   draw :account
   draw :cms
 
+  get 'faq', to: 'faq#index'
+  get 'faq/:id', to: 'faq#qa', as: :qa
+
   namespace :api do
     get 'user/info', to: 'user#info'
   end

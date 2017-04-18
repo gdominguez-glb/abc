@@ -1,4 +1,4 @@
-class About::FaqController < About::BaseController
+class FaqController < About::BaseController
   def index
     @faq_categories = FaqCategory.displayable.includes(:questions).order('position asc')
     @page_title = 'FAQs'
@@ -7,7 +7,7 @@ class About::FaqController < About::BaseController
   def qa
     question_with_id = Question.find_by(id: params[:id])
     if question_with_id.present?
-      redirect_to about_qa_path(id: question_with_id.slug) and return
+      redirect_to qa_path(id: question_with_id.slug) and return
     end
     @question = Question.find_by(slug: params[:id])
 
