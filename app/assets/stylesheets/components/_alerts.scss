@@ -69,6 +69,7 @@
   @include alert-variant($c-absolute, $c-positive-secondary, $c-positive-secondary);
   padding-right: 135px;
   border-left: 10px solid $c-positive-secondary;
+  box-shadow: $b-box-shadow-s;
 }
 
 .alert-math {
