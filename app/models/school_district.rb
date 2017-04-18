@@ -131,7 +131,7 @@ class SchoolDistrict < ActiveRecord::Base
     sf_attrs = { 'Name' => name.titleize,
       'RecordTypeId' => salesforce_record_type_id,
       'BillingState' => state.try(:abbr),
-      'PersonMailingCity' => city,
+      'BillingCity' => city,
       'Website_ID__c' => id,
       'BillingCountry' => country.try(:iso) }
     if Rails.env.production?
