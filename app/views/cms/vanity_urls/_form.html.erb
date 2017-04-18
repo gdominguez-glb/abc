@@ -22,7 +22,7 @@
             <%= f.label :vanity_url %>
             <div class="row">
               <div class="col-md-3">
-                <%= f.select :base_domain, options_for_select(VanityUrl::BASE_DOMAINS), {}, class: 'form-control' %>
+                <%= f.select :base_domain, options_for_select(VanityUrl::BASE_DOMAINS, @vanity_url.base_domain), {}, class: 'form-control' %>
               </div>
               <div class="col-md-9">
                 <%= f.text_field :url_path, class: 'form-control  col-md-9', placeholder: '/this-is-vanity-url' %>
