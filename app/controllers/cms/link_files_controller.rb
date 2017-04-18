@@ -23,6 +23,7 @@ class Cms::LinkFilesController < Cms::BaseController
 
   def update
     if @link_file.update(link_file_params)
+      LinkFileInvalidatorWorker.perform_async(@link_file.id)
       redirect_to cms_link_files_path, notice: "Updated link upload successfully"
     else
       render :edit
