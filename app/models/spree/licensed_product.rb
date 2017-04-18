@@ -169,6 +169,9 @@ class Spree::LicensedProduct < ActiveRecord::Base
   end
 
   def set_activity
-    user.update_log_activity_product(product) unless user.nil?
+    return if user.nil?
+
+    user.update_log_activity_product(product)
+    product.parts.each { |part| user.update_log_activity_product(part) }
   end
 end
