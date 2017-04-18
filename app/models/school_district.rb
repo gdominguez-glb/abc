@@ -107,7 +107,7 @@ class SchoolDistrict < ActiveRecord::Base
   def self.attributes_from_salesforce_object(sfo)
     sfo_data = super(sfo)
     sfo_data.merge!(name: sfo.Name,
-                    city: sfo.BillingCity,
+                    city: sfo.PersonMailingCity,
                     sf_verified: sfo.Verified__c,
                     skip_city_validation: true,
                     place_type: place_type_from_salesforce_object(sfo))
@@ -131,7 +131,7 @@ class SchoolDistrict < ActiveRecord::Base
     sf_attrs = { 'Name' => name.titleize,
       'RecordTypeId' => salesforce_record_type_id,
       'BillingState' => state.try(:abbr),
-      'BillingCity' => city,
+      'PersonMailingCity' => city,
       'Website_ID__c' => id,
       'BillingCountry' => country.try(:iso) }
     if Rails.env.production?
@@ -145,7 +145,7 @@ class SchoolDistrict < ActiveRecord::Base
     return matches if matches.present?
     return none if sfo.Name.blank?
     state = state_from_salesforce_object(sfo)
-    where(name: sfo.Name, state_id: state, city: sfo.BillingCity)
+    where(name: sfo.Name, state_id: state, city: sfo.PersonMailingCity)
   end
 
   def self.local_object_match_sfo?(local_object, sfo)
