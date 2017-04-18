@@ -139,7 +139,7 @@ RSpec.describe SchoolDistrict, type: :model do
         "Name" => "School A",
         "RecordTypeId" => "school_123",
         "BillingState" => state.abbr,
-        "PersonMailingCity" => "New York",
+        "BillingCity" => "New York",
         "Website_ID__c" => school.id,
         "BillingCountry" => "US"
       })
