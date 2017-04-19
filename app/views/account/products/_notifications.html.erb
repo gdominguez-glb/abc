@@ -1,5 +1,5 @@
 <% notifications.each do |notification| %>
-  <div class="alert alert-info alert-dismissible" role="alert" id="notification-<%= notification.id %>">
+  <div class="alert alert-info alert-dismissible <%= notification_card_class(notification) %>" role="alert" id="notification-<%= notification.id %>">
     <%= button_to read_account_notification_path(notification), class: 'btn btn-danger btn-xs', remote: true, data: { method: :post } do %>
       <span aria-hidden="true">CLOSE</span>
     <% end %>

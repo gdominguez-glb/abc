@@ -75,4 +75,9 @@ Spree::FrontendHelper.class_eval do
 
     var.html_safe
   end
+
+  def notification_card_class(notification)
+    curriculum_type = notification.notification_trigger.curriculum_type.try(:downcase) || "info"
+    "alert-#{curriculum_type}"
+  end
 end
