@@ -45,6 +45,7 @@ class Cms::NotificationTriggersController < Cms::BaseController
       :dashboard,
       :product_id,
       :curriculum_id,
+      :curriculum_type,
       :zip_codes,
       product_ids: []
     ]
