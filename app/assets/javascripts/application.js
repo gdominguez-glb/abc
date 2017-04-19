@@ -129,7 +129,7 @@ $(document).ready(function() {
   initEditor();
 
   var tiles = $('section.row');
-  tiles.find('div:empty, p:empty, br').remove();
+  tiles.find('div:empty, p:empty').remove();
   tiles.find('span, font').contents().unwrap();
 
   $('#turn-off-browser-warning-btn').click(function(){
