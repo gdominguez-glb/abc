@@ -37,6 +37,10 @@
         <%= f.text_field :jumbotron_background_file_name, class: "form-control" %>
       </div>
       <div class="form-group">
+        <%= f.label 'Created by' %>
+        <%= f.text_field :created_by, class: "form-control" %>
+      </div>
+      <div class="form-group">
         <%= f.label "Body" %>
         <%= f.text_area :body_draft, class: "form-control body-editor" %>
       </div>
