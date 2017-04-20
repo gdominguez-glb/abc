@@ -10,7 +10,7 @@ qa:
   - http://qa.eurmath.link
 
 staging:
-  - https://qa.greatminds.org
+  - https://staging.greatminds.org
   - http://staging.witeng.link
   - http://staging.eurmath.link
 
