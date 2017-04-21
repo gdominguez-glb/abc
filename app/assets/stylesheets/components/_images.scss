@@ -30,7 +30,7 @@
   &.img-blog-square-left {
     @media screen and (min-width: $screen-sm-min) {
       float: left;
-      max-width: 280px;
+      max-width: 375px;
       margin-right: $b-space-l;
     }
   }
@@ -39,7 +39,7 @@
   &.img-blog-square-right {
     @media screen and (min-width: $screen-sm-min) {
       float: right;
-      max-width: 280px;
+      max-width: 375px;
       margin-left: $b-space-l;
     }
   }
