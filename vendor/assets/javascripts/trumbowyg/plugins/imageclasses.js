@@ -23,6 +23,10 @@
                     label: 'Image Link',
                     required: true
                   },
+                  captionable: {
+                    label: 'Image Caption',
+                    required: false
+                  },
                   image_left: {
                     label: 'Image on left',
                     required: false,
@@ -49,9 +53,17 @@
                   } else {
                     img.addClass(imageFull);
                   }
+
                   var node = img.get(0);
                   trumbowyg.range.deleteContents();
+
+                  if(values.captionable) {
+                    var caption = $("<figcaption class='image_caption'>" + values.captionable + "</figcaption>");
+                    trumbowyg.range.insertNode(caption.get(0));
+                  }
+
                   trumbowyg.range.insertNode(node);
+
                   return true;
                 }
               );
