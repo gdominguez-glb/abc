@@ -52,6 +52,7 @@
 // -------------------------------------
 
 .img-blog-full {
+  display: block;
   max-width: 100%;
-  margin-bottom: $b-space-l;
+  margin: 0 auto $b-space-l;
 }
