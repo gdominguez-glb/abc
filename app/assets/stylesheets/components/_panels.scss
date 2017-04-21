@@ -231,6 +231,18 @@
   }
 }
 
+.panel-form {
+  padding: $b-space-l;
+  border: 5px solid $c-positive-secondary;
+  background: transparent;
+
+  &::after {
+    display: block;
+    clear: both;
+    content: '';
+  }
+}
+
 // -------------------------------------
 //   Panel Modifiers
 // -------------------------------------
