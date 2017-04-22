@@ -5,6 +5,7 @@ class MaterialsController < ApplicationController
 
   def download
     log_activity(@material, "Download #{@material.name}")
+    redirect_to not_found_path and return if @material.material_files.count == 0
 
     respond_to do |format|
       format.html {
@@ -73,6 +74,7 @@ class MaterialsController < ApplicationController
 
   def set_material
     @material = Spree::Material.find(params[:id])
+    redirect_to not_found_path and return if @material.product.blank?
     if !(@material.product.free? || current_spree_user.accessible_products.where(id: @material.product_id).exists?)
       flash[:error] = "Your're not allowed to view the file."
       redirect_to root_path and return
