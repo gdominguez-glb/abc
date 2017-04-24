@@ -36,7 +36,7 @@
 
   .close {
     position: absolute;
-    top: 5px;
+    top: 14px;
     right: 10px;
     z-index: 1000;
   }
@@ -68,8 +68,17 @@
 .alert-dismissible {
   @include alert-variant($c-absolute, $c-positive-secondary, $c-positive-secondary);
   padding-right: 135px;
+  border-top: 0;
+  border-right: 0;
+  border-bottom: 0;
   border-left: 10px solid $c-positive-secondary;
-  box-shadow: $b-box-shadow-s;
+  border-radius: 0;
+  box-shadow: $b-box-shadow-m;
+
+  .close {
+    color: $c-energized-primary;
+    opacity: 1;
+  }
 }
 
 .alert-math {
