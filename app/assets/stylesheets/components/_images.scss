@@ -56,3 +56,42 @@
   max-width: 100%;
   margin: 0 auto $b-space-l;
 }
+
+// -------------------------------------
+//   Figure Styles for blog images
+//
+//   Styleguide 5.0.4
+// -------------------------------------
+
+.figure-blog {
+  &--left {
+    @media screen and (min-width: $screen-sm-min) {
+      float: left;
+      max-width: 375px;
+      margin-right: $b-space-l;
+    }
+  }
+
+  &--right {
+    @media screen and (min-width: $screen-sm-min) {
+      float: right;
+      max-width: 375px;
+      margin-left: $b-space-l;
+    }
+  }
+
+  &--full {
+    width: 100%;
+
+    &::before {
+      display: table;
+      clear: both;
+      content: '';
+    }
+
+    img {
+      display: block;
+      margin: 0 auto;
+    }
+  }
+}
