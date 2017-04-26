@@ -231,9 +231,13 @@
   }
 }
 
+// -------------------------------------
+//   Panel within a form
+// -------------------------------------
+
 .panel-form {
   padding: $b-space-l;
-  border: 5px solid $c-positive-secondary;
+  border: 5px solid $c-positive-highlight;
   background: transparent;
 
   &::after {
