@@ -13,7 +13,7 @@
 
   <div class="row">
     <div class="col-sm-12">
-      <p>Thank you for choosing Great Minds for your educational needs. We look forward to processing your order shortly. Please submit your order per the prompts below. If you have any questions or concerns while submitting your order, please feel free to contact our Order Processing team at 202-823-4324.</p>
+      <p>Thank you for choosing Great Minds for your educational needs. We look forward to processing your order shortly. Please submit your order per the prompts below. If you have any questions or concerns while submitting your order, please feel free to contact our Order Processing team by emailing ordertracking@greatminds.org or calling 202-823-4324.</p>
     </div>
     <div class="col-sm-6">
       <div class="form-group">
@@ -28,21 +28,23 @@
       </div>
     </div>
     <div class="col-sm-12">
-      <div class="form-group">
-        <label for="">Name</label>
-        <%= f.text_field :name, class: 'form-control', placeholder: "Name" %>
-      </div>
-    </div>
-    <div class="col-sm-6">
-      <div class="form-group">
-        <label for="">Email</label>
-        <%= f.text_field :email, class: 'form-control', placeholder: "Email" %>
-      </div>
-    </div>
-    <div class="col-sm-6">
-      <div class="form-group">
-        <label for="">Phone Number</label>
-        <%= f.text_field :phone_number, class: 'form-control', placeholder: "Phone Number" %>
+      <div class="panel panel-form">
+        <h3>Purchasing Department Contact</h3>
+        <div class="col-sm-12">
+          <div class="form-group">
+            <%= f.text_field :name, class: 'form-control', placeholder: "Name" %>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <%= f.text_field :email, class: 'form-control', placeholder: "Email" %>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <%= f.text_field :phone_number, class: 'form-control', placeholder: "Phone Number" %>
+          </div>
+        </div>
       </div>
     </div>
     <div class="col-sm-12">
