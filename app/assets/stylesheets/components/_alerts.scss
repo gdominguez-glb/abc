@@ -76,7 +76,11 @@
   box-shadow: $b-box-shadow-m;
 
   .close {
-    color: $c-energized-primary;
+    font-family: 'Karla', sans-serif;
+    font-size: 15px;
+    right: 25px;
+    top: 18px;
+    color: $c-energized-secondary;
     opacity: 1;
   }
 }
