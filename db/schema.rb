@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170420133207) do
+ActiveRecord::Schema.define(version: 20170426011959) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -1271,6 +1271,7 @@ ActiveRecord::Schema.define(version: 20170420133207) do
     t.boolean  "is_beta",              default: false
     t.string   "internal_name"
     t.text     "meta_text"
+    t.boolean  "leaving_site_warning", default: true
   end
 
   add_index "spree_products", ["available_on"], name: "index_spree_products_on_available_on", using: :btree
