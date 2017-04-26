@@ -90,8 +90,9 @@
      $('.body-editor').trumbowyg({
        fullscreenable: false,
        closable: false,
-       removeformatPasted: false,
-       semantic: false,
+       removeformatPasted: true,
+       semantic: true,
+       autogrow: true,
        btns: ['bold', 'italic', 'underline', 'strikethrough', '|', 'formatting', '|', 'imageClasses', '|', 'unorderedList', 'orderedList', '|', 'link', '|', 'viewHTML', 'removeformat']
      });
      $("#article_publish_date").datetimepicker({format: 'YYYY-MM-DD'});
