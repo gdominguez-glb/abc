@@ -236,6 +236,15 @@
     </div>
   </div>
 
+  <% if @product.partner_product?  %>
+  <div>
+    <div class="form-group field">
+      <%= f.label :Leaving_site_warning %>
+      <%= f.check_box :leaving_site_warning, class: 'form-control' %>
+      <p class="help-block">This decide whether to display the leaving site warning popup.</p>
+    </div>
+  </div>
+  <% end %>
   <div data-hook="admin_product_form_additional_fields">
     <% unless @product.parts? %>
       <div data-hook="admin_product_form_can_be_part">
