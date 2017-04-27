@@ -1,6 +1,7 @@
 class Cms::NotificationTriggersController < Cms::BaseController
   def index
-    @notification_triggers = NotificationTrigger.order(created_at: :desc).page(params[:page])
+    @q = NotificationTrigger.ransack(params[:q])
+    @notification_triggers = @q.result.order(created_at: :desc).page(params[:page])
   end
 
   def new
