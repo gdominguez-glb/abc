@@ -1,7 +1,16 @@
 <div class="panel panel-primary">
   <div class="panel-body panel-body--padding">
     <div class="row">
-      <div class="col-lg-12 text-right">
+      <div class="col-lg-6">
+        <%= search_form_for @q, url: '', class: 'inline' do |f| %>
+          <div class="form-group">
+            <%= f.label :target_type %>
+            <%= f.select :target_type_eq, options_for_select(NotificationTrigger::TARGET_TYPES, f.object.target_type_eq), { include_blank: 'All' }, class: 'form-control', style: 'display: inline; width: 150px;' %>
+            <%= submit_tag 'Search', class: 'btn btn-primary btn-block-xs margin-bottom--s--sm-min margin-right--reset' %>
+          </div>
+        <% end %>
+      </div>
+      <div class="col-lg-6 text-right">
         <div class="form-inline">
           <%= link_to 'New notification', new_cms_notification_trigger_path, class: 'btn btn-success btn-block-xs' %>
         </div>
