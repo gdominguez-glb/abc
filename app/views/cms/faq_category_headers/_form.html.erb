@@ -1,0 +1,31 @@
+<%= form_for([:cms, @faq_category_header], class: 'form') do |f| %>
+  <% if @faq_category_header.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@faq_category_header.errors.count, "error") %> prohibited this event_training from being saved:</h2>
+
+      <ul>
+      <% @faq_category_header.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="form-group">
+        <%= f.label :position %>
+        <%= f.number_field :position, class: 'form-control' %>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.submit class: 'btn btn-success' %>
+  </div>
+<% end %>

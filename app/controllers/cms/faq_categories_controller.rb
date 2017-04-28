@@ -2,7 +2,7 @@ class Cms::FaqCategoriesController < Cms::BaseController
   before_action :find_faq_category, except: [:index, :new, :create, :update_positions]
 
   def index
-    @faq_categories = FaqCategory.order('position asc')
+    @faq_category_headers = FaqCategoryHeader.list_all
   end
 
   def new
@@ -46,6 +46,6 @@ class Cms::FaqCategoriesController < Cms::BaseController
   end
 
   def faq_category_params
-    params.require(:faq_category).permit(:name, :display)
+    params.require(:faq_category).permit(:name, :display, :faq_category_header_id)
   end
 end

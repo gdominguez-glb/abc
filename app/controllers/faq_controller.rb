@@ -1,6 +1,6 @@
 class FaqController < About::BaseController
   def index
-    @faq_categories = FaqCategory.displayable.includes(:questions).order('position asc')
+    @faq_category_headers = FaqCategoryHeader.list_all(true)
     @page_title = 'FAQs'
   end
 

@@ -1,0 +1,30 @@
+<%= render 'cms_nav' %>
+
+<div class="col-md-9">
+  <h2>Faq Category Headers</h2>
+  <%= link_to 'New header', new_cms_faq_category_header_path(@training_type_category), class: 'btn btn-primary margin-bottom--xl' %>
+  <div class="table-responsive">
+    <table class="table table-hover event-trainings-list">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Position</th>
+          <th colspan="2"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @faq_category_headers.each do |faq_category_header| %>
+          <tr data-id="<%= faq_category_header.id %>">
+            <td><%= faq_category_header.name %></td>
+            <td><%= faq_category_header.position %></td>
+            <td><%= link_to 'Edit', edit_cms_faq_category_header_path(faq_category_header) %></td>
+            <td><%= link_to 'Destroy', [:cms, faq_category_header], method: :delete, data: { confirm: 'Are you sure?' }, class: 'text--danger' %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <%= link_to 'Back to Faq Categories', cms_faq_categories_path(@training_type_category), class: 'btn btn-primary' %>
+</div>

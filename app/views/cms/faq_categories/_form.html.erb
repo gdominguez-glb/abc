@@ -8,6 +8,10 @@
         <label for="name">Name</label>
         <%= f.text_field :name, class: 'form-control' %>
       </div>
+      <div class="form-group">
+        <label for="name">Faq Category Header</label>
+        <%= f.select :faq_category_header_id, options_for_select(FaqCategoryHeader.all.collect{|h| [h.name, h.id]}), { prompt: 'Select Header' }, class: 'form-control' %>
+      </div>
       <div class="checkbox margin-bottom--xl">
         <label>
           <%= f.check_box :display %> Visible
