@@ -1,4 +1,4 @@
-module EventTraininable
+module ModelProcessable
   extend ActiveSupport::Concerns
 
   def process_create(model, redirect)
