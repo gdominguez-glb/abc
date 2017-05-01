@@ -112,6 +112,7 @@ class Spree::LicensedProduct < ActiveRecord::Base
   attr_accessor :lifetime_product
 
   before_create :set_licenses_date_range
+  after_create :set_activity
 
   include EmailAssignment
   assign_user_from_email :user, :email
@@ -167,4 +168,10 @@ class Spree::LicensedProduct < ActiveRecord::Base
     end
   end
 
+  def set_activity
+    return if user.nil?
+
+    user.update_log_activity_product(product)
+    product.parts.each { |part| user.update_log_activity_product(part) }
+  end
 end

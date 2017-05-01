@@ -29,6 +29,10 @@ class Article < ActiveRecord::Base
     prev_article.present?
   end
 
+  def user_name
+    created_by || user.try(:full_name)
+  end
+
   def related_article(next_prev = :next)
     duck = next_prev == :prev ? ">=" : "<="
     which = next_prev == :prev ? :last : :first

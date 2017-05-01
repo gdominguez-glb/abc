@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="col-sm-10 col-sm-offset-1 margin-bottom--xxl">
+
+    <div class="page-header">
+      <h2>Frequently Asked Questions</h2>
+      <p>Click any section to view questions.</p>
+    </div>
+
+    <div class="panel-group">
+
+    <% @faq_category_headers.each do |faq_category_header| %>
+      <h3><%= faq_category_header.try(:name) if faq_category_header.faq_categories.count > 0 %></h3>
+
+      <% faq_category_header.faq_categories.each do |faq_category| %>
+        <% slug = faq_category.name.gsub(/[^0-9A-Za-z]/, '').underscore.split('_').join('-') %>
+        <div class="panel panel-default panel-collapsible" id="<%= slug %>">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" href="#collapse<%= faq_category.name.gsub(/[^0-9A-Za-z]/, '') %>"><%= faq_category.name %></a>
+            </h4>
+          </div>
+          <div id="collapse<%= faq_category.name.gsub(/[^0-9A-Za-z]/, '') %>" class="panel-collapse collapse">
+            <div class="list-group">
+              <% faq_category.questions.displayable.published.each do |question| %>
+                  <%= link_to question.title, qa_path(id: question.slug), class: 'list-group-item' %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+
+    </div>
+  </div>
+</div>
+
+<%= content_for :javascripts do %>
+  <%= render 'shared/expand_collapsables' %>
+<% end %>

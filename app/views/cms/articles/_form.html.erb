@@ -37,6 +37,10 @@
         <%= f.text_field :jumbotron_background_file_name, class: "form-control" %>
       </div>
       <div class="form-group">
+        <%= f.label 'Created by' %>
+        <%= f.text_field :created_by, class: "form-control" %>
+      </div>
+      <div class="form-group">
         <%= f.label "Body" %>
         <%= f.text_area :body_draft, class: "form-control body-editor" %>
       </div>
@@ -86,8 +90,8 @@
      $('.body-editor').trumbowyg({
        fullscreenable: false,
        closable: false,
-       removeformatPasted: false,
-       semantic: false,
+       removeformatPasted: true,
+       semantic: true,
        btns: ['bold', 'italic', 'underline', 'strikethrough', '|', 'formatting', '|', 'imageClasses', '|', 'unorderedList', 'orderedList', '|', 'link', '|', 'viewHTML', 'removeformat']
      });
      $("#article_publish_date").datetimepicker({format: 'YYYY-MM-DD'});

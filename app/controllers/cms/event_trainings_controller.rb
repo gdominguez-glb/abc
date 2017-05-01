@@ -2,7 +2,7 @@ class Cms::EventTrainingsController < Cms::BaseController
   before_action :set_training_type_category
   before_action :set_event_training, only: [:show, :edit, :update, :destroy]
 
-  include EventTraininable
+  include ModelProcessable
 
   def index
     @event_trainings = @training_type_category.event_training_by_header

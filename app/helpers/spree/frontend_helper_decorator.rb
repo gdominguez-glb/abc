@@ -68,11 +68,16 @@ Spree::FrontendHelper.class_eval do
   end
 
   def stronger_truncate_html(html, options = {})
-    var = truncate_html(html, options)
-    to_remove = ["\n", "<html>", "</html>", "<body>", "</body>", "<head>", "</head>"]
-    var = Nokogiri.HTML5(var).to_html
-    to_remove.each{|tag| var.remove!(tag)}
+    var = Nokogiri.HTML5(truncate_html(html, options))
+    var.search("img", "h1", "h2", "h3", "h4", "h5", "h6").each {|src| src.remove}
+    var = var.to_html
+    ["\n", "<html>", "</html>", "<body>", "</body>", "<head>", "</head>"].each{ |tag| var.remove!(tag) }
 
     var.html_safe
+  end
+
+  def notification_card_class(notification)
+    curriculum_type = notification.notification_trigger.curriculum_type.try(:downcase) || "info"
+    "alert-#{curriculum_type}"
   end
 end

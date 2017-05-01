@@ -1,7 +1,7 @@
 <% notifications.each do |notification| %>
-  <div class="alert alert-info alert-dismissible" role="alert" id="notification-<%= notification.id %>">
+  <div class="alert alert-dismissible <%= notification_card_class(notification) %>" role="alert" id="notification-<%= notification.id %>">
     <%= link_to read_account_notification_path(notification), class: 'close', remote: true, data: { method: :post } do %>
-      <span aria-hidden="true">&times;</span>
+      <span aria-hidden="true">CLOSE</span>
     <% end %>
     <%= raw notification.content %>
   </div>

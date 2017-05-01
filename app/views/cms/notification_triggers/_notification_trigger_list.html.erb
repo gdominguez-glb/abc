@@ -4,6 +4,8 @@
       <tr>
         <th>Target</th>
         <th>Content</th>
+        <th>Curriculum</th>
+        <th>User Type</th>
         <th>Notify at</th>
         <th>Expire at</th>
         <th>Status</th>
@@ -16,6 +18,8 @@
         <tr>
           <td><%= notification_trigger.target_type %></td>
           <td><%= notification_trigger.content %></td>
+          <td><%= notification_trigger.curriculum.try(:name) %></td>
+          <td><%= notification_trigger.user_type %></td>
           <td><%= notification_trigger.notify_at %></td>
           <td><%= notification_trigger.expire_at %></td>
           <td><%= notification_trigger.status %></td>

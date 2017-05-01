@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170426011959) do
+ActiveRecord::Schema.define(version: 20170428181727) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 20170426011959) do
     t.integer  "user_id"
     t.date     "publish_date"
     t.datetime "published_at"
+    t.string   "created_by"
   end
 
   create_table "blogs", force: :cascade do |t|
@@ -272,9 +273,17 @@ ActiveRecord::Schema.define(version: 20170426011959) do
   create_table "faq_categories", force: :cascade do |t|
     t.string   "name"
     t.integer  "position"
-    t.boolean  "display",    default: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.boolean  "display",                default: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.integer  "faq_category_header_id"
+  end
+
+  create_table "faq_category_headers", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "position",   default: 0
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "footer_links", force: :cascade do |t|
@@ -403,6 +412,7 @@ ActiveRecord::Schema.define(version: 20170426011959) do
     t.datetime "expire_at"
     t.text     "zip_codes"
     t.text     "product_ids"
+    t.string   "curriculum_type"
   end
 
   create_table "notifications", force: :cascade do |t|

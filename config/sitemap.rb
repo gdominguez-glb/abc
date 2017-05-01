@@ -1,5 +1,5 @@
 SitemapGenerator::Sitemap.default_host = 'https://greatminds.org'
-SitemapGenerator::Sitemap.create do
+SitemapGenerator::Sitemap.create(compress: false) do
   Page.curriculum_nav.each do |curriculum_page|
     add "/#{curriculum_page.slug}"
     curriculum_page.sub_pages.each do |sub_page|
@@ -52,10 +52,7 @@ SitemapGenerator::Sitemap.create do
   end
 
   Question.displayable.find_each do |question|
-    begin
-      add about_qa_path(id: question.slug)
-    rescue
-    end
+    add qa_path(id: question.slug)
   end
 
   EventPage.global.each do |event_page|

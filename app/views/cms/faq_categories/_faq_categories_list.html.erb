@@ -8,16 +8,23 @@
     </tr>
   </thead>
   <tbody>
-    <% @faq_categories.each do |faq_category| %>
-      <tr data-id="<%= faq_category.id %>">
-        <td><%= mi.swap_vert %></td>
-        <td><%= faq_category.name %></td>
-        <td><%= faq_category.display? ? 'Yes' : 'No' %></td>
-        <td>
-          <%= link_to 'Edit', edit_cms_faq_category_path(faq_category), class: 'btn btn-default' %>
-          <%= link_to 'Delete', cms_faq_category_path(faq_category), class: 'btn btn-danger', data: { confirm: 'Are you sure?', method: :delete } %>
-        </td>
-      </tr>
+    <% @faq_category_headers.each do |faq_category_header| %>
+      <% if faq_category_header.faq_categories.count > 0 %>
+        <tr>
+          <th colspan="6"><strong><%= faq_category_header.name ||= "No header" %></strong></th>
+        </tr>
+      <% end %>
+      <% faq_category_header.faq_categories.each do |faq_category| %>
+        <tr data-id="<%= faq_category.id %>">
+          <td><%= mi.swap_vert %></td>
+          <td><%= faq_category.name %></td>
+          <td><%= faq_category.display? ? 'Yes' : 'No' %></td>
+          <td>
+            <%= link_to 'Edit', edit_cms_faq_category_path(faq_category), class: 'btn btn-default' %>
+            <%= link_to 'Delete', cms_faq_category_path(faq_category), class: 'btn btn-danger', data: { confirm: 'Are you sure?', method: :delete } %>
+          </td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>

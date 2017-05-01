@@ -107,7 +107,7 @@ class SchoolDistrict < ActiveRecord::Base
   def self.attributes_from_salesforce_object(sfo)
     sfo_data = super(sfo)
     sfo_data.merge!(name: sfo.Name,
-                    city: sfo.BillingCity,
+                    city: (sfo.ShippingCity || sfo.BillingCity),
                     sf_verified: sfo.Verified__c,
                     skip_city_validation: true,
                     place_type: place_type_from_salesforce_object(sfo))
@@ -145,7 +145,7 @@ class SchoolDistrict < ActiveRecord::Base
     return matches if matches.present?
     return none if sfo.Name.blank?
     state = state_from_salesforce_object(sfo)
-    where(name: sfo.Name, state_id: state, city: sfo.BillingCity)
+    where(name: sfo.Name, state_id: state, city: (sfo.ShippingCity || sfo.BillingCity))
   end
 
   def self.local_object_match_sfo?(local_object, sfo)

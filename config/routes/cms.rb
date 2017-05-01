@@ -48,6 +48,7 @@ namespace :cms do
       post :update_positions
     end
   end
+  resources :faq_category_headers
   resources :staffs do
     collection do
       get :trustees

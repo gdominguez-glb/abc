@@ -36,9 +36,16 @@
 
   .close {
     position: absolute;
-    top: 5px;
+    top: 14px;
     right: 10px;
     z-index: 1000;
+  }
+
+  .btn {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    margin-top: -14px;
   }
 }
 
@@ -56,6 +63,38 @@
 
 .alert-danger {
   @include alert-variant($c-energized-highlight, darken($c-energized-highlight, 25%), $c-absolute);
+}
+
+.alert-dismissible {
+  @include alert-variant($c-absolute, $c-positive-secondary, $c-positive-secondary);
+  padding-right: 135px;
+  border-top: 0;
+  border-right: 0;
+  border-bottom: 0;
+  border-left: 10px solid $c-positive-secondary;
+  border-radius: 0;
+  box-shadow: $b-box-shadow-m;
+
+  .close {
+    font-family: 'Karla', sans-serif;
+    font-size: 15px;
+    right: 25px;
+    top: 18px;
+    color: $c-energized-secondary;
+    opacity: 1;
+  }
+}
+
+.alert-math {
+  border-color: $c-balanced-primary;
+}
+
+.alert-english {
+  border-color: $c-positive-primary;
+}
+
+.alert-history {
+  border-color: $c-energized-primary;
 }
 
 .alert-fullwidth {
