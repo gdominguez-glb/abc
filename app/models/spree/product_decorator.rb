@@ -270,4 +270,12 @@ Spree::Product.class_eval do
       p.update_meta_text_from_group_items
     end
   end
+
+  def duplicate_extra(product)
+    self.sf_id_product = nil
+    self.sf_id_pricebook = nil
+    self.price = 0
+    self.master.sku = ''
+    self.inkling_code = product.inkling_code.dup if product.inkling_code
+  end
 end
