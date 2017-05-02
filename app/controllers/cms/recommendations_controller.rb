@@ -37,6 +37,10 @@ class Cms::RecommendationsController < Cms::BaseController
     redirect_to cms_recommendations_path, notice: 'Delete successfully'
   end
 
+  def preview
+    @recommendations = Recommendation.where(id: params[:id])
+  end
+
   private
 
   def recommendation_params

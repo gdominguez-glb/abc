@@ -113,6 +113,11 @@
   </div>
 
   <%= f.submit class: 'btn btn-success btn-block-xs' %>
+
+  <% unless @recommendation.new_record? %>
+    <%= link_to "Preview", preview_cms_recommendation_path(@recommendation), class: "btn btn-default btn-block-xs" %>
+  <% end %>
+
 <% end %>
 <%= render 'cms/shared/products_autocomplete' %>
 
