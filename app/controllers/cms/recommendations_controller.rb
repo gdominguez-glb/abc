@@ -52,6 +52,7 @@ class Cms::RecommendationsController < Cms::BaseController
       :call_to_action_button_text,
       :call_to_action_button_link,
       :call_to_action_button_target,
+      :expire_at,
       :icon,
       :image_url,
       :product_ids,
