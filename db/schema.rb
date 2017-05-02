@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170428181727) do
+ActiveRecord::Schema.define(version: 20170502083730) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -577,6 +577,7 @@ ActiveRecord::Schema.define(version: 20170428181727) do
     t.integer  "clicks",                       default: 0
     t.string   "zip_codes"
     t.text     "image_url"
+    t.boolean  "image_contain"
   end
 
   create_table "regonline_events", force: :cascade do |t|

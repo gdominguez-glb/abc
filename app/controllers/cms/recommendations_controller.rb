@@ -53,7 +53,8 @@ class Cms::RecommendationsController < Cms::BaseController
       :product_ids,
       :user_title,
       :position,
-      :zip_codes
+      :zip_codes,
+      :image_contain
     ]
 
     require_params(:recommendation, _params, :product_ids)

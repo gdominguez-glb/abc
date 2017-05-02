@@ -3,7 +3,7 @@
     <% @recommendations.each do |recommendation| %>
       <div class="swiper-slide">
         <div class="card card-media card-<%= recommendation.subject.downcase %> card--media-left">
-          <div class="card-image <%# if contain image is checked add class card-image--contain %>" style="background-image: url('<%= recommendation.image_url %>')"></div>
+          <div class="card-image <%= 'card-image--contain' if recommendation.image_contain? %>" style="background-image: url('<%= recommendation.image_url %>')"></div>
           <div class="card-media--content">
             <div class="card-meta"><%= recommendation.subject %></div>
             <h4 class="card-title"><%= recommendation.title %></h4>
