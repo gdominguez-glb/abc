@@ -6,6 +6,7 @@
         <th>Category</th>
         <th>Tags</th>
         <th>File</th>
+        <th>Created At</th>
         <th colspan="4"></th>
       </tr>
     </thead>
@@ -17,6 +18,9 @@
           <td><%= document.tags.map(&:name).join(',') %></td>
           <td>
             <%= document.attachment_file_name %>
+          </td>
+          <td>
+            <%= document.created_at.strftime("%F %H:%M") %>
           </td>
           <td>
             <%= link_to 'Edit', edit_cms_document_path(document), class: 'btn btn-default btn-sm' %>
