@@ -58,6 +58,8 @@ class Account::ProductsController < Account::BaseController
     end
 
     data = data.filter_by_subject_or_user_title_or_zip_code(current_spree_user.interested_curriculums, current_spree_user.title, current_spree_user.zip_code)
+    data = data.unexpired if model == Recommendation
+
     data.each{ |d| d.increase_views! }
     data
   end
