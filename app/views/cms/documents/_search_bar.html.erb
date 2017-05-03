@@ -13,7 +13,10 @@
         </div>
         <div class="col-sm-3">
           <label>Category</label>
-          <%= text_field_tag :category, params[:category], class: 'form-control margin-bottom--s--sm-min' %>
+          <div class="select-container block">
+            <span>Category</span>
+            <%= select_tag "category", "<option>Parent</option><option>Marketing</option><option>Blog</option><option>Data</option><option>Product</option><option>Product Image</option><option>PD</option><option>Report</option><option>Press</option><option>Social Media</option><option>Conference</option><option>Other</option>".html_safe, include_blank: true, class: 'form-control margin-bottom--s--sm-min' %>
+          </div>
         </div>
         <div class="col-sm-3">
           <label>Tags</label>
