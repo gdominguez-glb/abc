@@ -94,6 +94,9 @@ class EventsController < ApplicationController
   end
 
   def construct_filter_conds(filter_name)
+    if params[filter_name].is_a?(Hash)
+      params[filter_name] = params[filter_name].values
+    end
     conds = []
     params[filter_name].each do |name|
       conds << "(#{filter_name}  LIKE '%#{name}%')"
