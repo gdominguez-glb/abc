@@ -1,10 +1,11 @@
 class Cms::RecommendationsController < Cms::BaseController
   include WhatsnewRecommendationSharable
 
-  before_action :find_recommendation, except: [:index, :new, :create]
+  before_action :find_recommendation, except: [:index, :new, :create, :search]
   before_action -> { sanatize_role_params(:recommendation) }, only: [:create, :update]
 
   def index
+    @recommendation = Recommendation.new
     @recommendations = Recommendation.page(params[:page]).per(params[:per_page])
   end
 
@@ -39,6 +40,22 @@ class Cms::RecommendationsController < Cms::BaseController
 
   def preview
     @recommendations = Recommendation.where(id: params[:id])
+  end
+
+  def search
+    @recommendation = Recommendation.new({
+      title: params[:recommendation][:title],
+      subject: params[:recommendation][:subject],
+      user_title: params[:recommendation][:user_title]
+    })
+
+    @recommendations = Recommendation
+                        .search_by_title(params[:recommendation][:title])
+                        .with_subject(params[:recommendation][:subject])
+                        .search_by_user_title(params[:recommendation][:user_title])
+
+    @recommendations = @recommendations.page(params[:page]).per(params[:per_page])
+    render :index
   end
 
   private

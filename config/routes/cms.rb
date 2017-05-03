@@ -75,6 +75,10 @@ namespace :cms do
     member do
       get :preview
     end
+
+    collection do
+      get :search
+    end
   end
   resources :whats_news
   resources :medium_publications do
