@@ -15,10 +15,10 @@
             <%= f.text_field :title, class: "form-control", placeholder: "Title" %>
           </div>
           <div class="col-sm-3 form-group">
-            <%= f.collection_select :subject, Curriculum.all, :name, :name, { prompt: 'Select subject' }, class: 'form-control' %>
+            <%= f.collection_select :subject, Curriculum.all, :name, :name, { include_blank: 'Select subject' }, class: 'form-control' %>
           </div>
           <div class="col-sm-3 form-group">
-            <%= f.select :user_title, options_for_select(Spree::User::USER_TITLES) , {prompt: "Select user title"}, class: 'form-control' %>
+            <%= f.select :user_title, options_for_select(Spree::User::USER_TITLES, f.object.user_title), {include_blank: "Select user title"}, class: 'form-control' %>
           </div>
           <div class="col-sm-3 form-group">
             <%= f.submit "Search", class: "btn btn-primary" %>
