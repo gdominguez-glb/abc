@@ -4,7 +4,7 @@ RSpec.describe Spree::HomeController, type: :controller do
   routes { Spree::Core::Engine.routes }
 
   describe "GET 'index'" do
-    let!(:product) { create(:product, individual_sale: true, for_sale: true, available_on: 1.days.ago) }
+    let!(:product) { create(:product, show_in_storefront: true, individual_sale: true, for_sale: true, available_on: 1.days.ago) }
     let!(:store_taxonomy) { create(:taxonomy, show_in_store: true, show_in_video: false) }
     let!(:video_taxonomy) { create(:taxonomy, show_in_store: false, show_in_video: true) }
 
