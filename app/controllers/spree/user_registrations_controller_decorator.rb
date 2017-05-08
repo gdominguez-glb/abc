@@ -4,7 +4,7 @@ Spree::UserRegistrationsController.class_eval do
 
   # override to remove flash message on sign up
   def create
-    @user = build_resource(spree_user_params.merge(referral: session[:utm]))
+    @user = build_resource(spree_user_params.merge(referral: session[:utm], google_recaptcha_required: true, google_recaptcha: params["g-recaptcha-response"]))
     resource_saved = resource.save
     yield resource if block_given?
     if resource_saved

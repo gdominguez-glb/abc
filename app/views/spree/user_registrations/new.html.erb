@@ -9,6 +9,11 @@
       <div data-hook="signup_inside_form">
         <%= render :partial => 'spree/shared/user_form', :locals => { :f => f } %>
         <div class="row">
+          <div class="col-md-8 col-md-offset-2 form-group" style="text-align: center;">
+            <div style="display: inline-block">
+              <div class="g-recaptcha" data-sitekey="6LepaSAUAAAAABvxvd3fsQVNxlIcuuHSVprFekgV"></div>
+            </div>
+          </div>
           <div class="col-md-6 col-md-offset-3">
             <%= f.submit Spree.t(:create), :class => 'btn btn-lg btn-success btn-block margin-bottom--s', :id => 'btnCreate' %>
           </div>
