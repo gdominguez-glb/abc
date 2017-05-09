@@ -18,6 +18,13 @@
           <% end %>
         </small>
 
+        <% if event.deadline_date.present? %>
+          <span class="block margin-bottom">
+            <strong>Registration Deadline: </strong>
+            <%= event.deadline_date.strftime('%b %d, %Y') %>
+          </span>
+        <% end %>
+
         <% if event.download_url.present? %>
           <small class="block"><%= link_to "Event Details", event.download_url, class: 'btn btn-primary margin-bottom', target: '_blank' %></small>
         <% end %>
