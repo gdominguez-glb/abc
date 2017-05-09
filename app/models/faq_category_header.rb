@@ -8,9 +8,11 @@ class FaqCategoryHeader < ActiveRecord::Base
   end
 
   class << self
-    def list_all(displayable = false)
+    def list_all(displayable = nil)
       headers = self.all.order(:position).to_a
-      headers_no_mapped = FaqCategory.all.order(:position).where(faq_category_header_id: nil).where(display: displayable)
+      headers_no_mapped = FaqCategory.order(:position).where(faq_category_header_id: nil)
+      headers_no_mapped = headers_no_mapped.where(display: displayable) unless displayable.nil?
+
       s = Struct.new(:name, :faq_categories).new(nil, headers_no_mapped)
       headers.push(s)
       headers
