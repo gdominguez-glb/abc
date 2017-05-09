@@ -12,6 +12,10 @@
         <%= f.text_field :title, class: 'form-control' %>
       </div>
       <div class="form-group">
+        <label>Deadline Date</label>
+        <%= f.text_field :deadline_date, class: 'form-control' %>
+      </div>
+      <div class="form-group">
         <label>Download Url</label>
         <%= f.text_field :download_url, class: 'form-control' %>
       </div>
@@ -52,6 +56,7 @@
       $('#regonline_event_session_types').select2();
       $('#regonline_event_curriculums').select2();
       $("#regonline_event_invisible_at").datetimepicker({format: 'YYYY-MM-DD'});
+      $("#regonline_event_deadline_date").datetimepicker({format: 'YYYY-MM-DD'});
     });
   </script>
 <% end %>
