@@ -109,6 +109,8 @@ gem "dalli" # memcache
 
 gem 'trumbowyg_rails'
 
+gem 'paperclip-compression'
+
 gem 'sitemap_generator', require: false
 
 group :development do
