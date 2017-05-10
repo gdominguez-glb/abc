@@ -80,4 +80,10 @@ Spree::FrontendHelper.class_eval do
     curriculum_type = notification.notification_trigger.curriculum_type.try(:downcase) || "info"
     "alert-#{curriculum_type}"
   end
+
+  def remove_unneccesary_keys(string)
+    to_remove = ["Google recaptcha "]
+    to_remove.each {|s| string.gsub!(s, "")}
+    string
+  end
 end
