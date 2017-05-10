@@ -1,5 +1,5 @@
 class FaqCategoryHeader < ActiveRecord::Base
-  has_many :faq_categories
+  has_many :faq_categories, -> { order("position") }
 
   before_destroy :update_faq_categories
 
