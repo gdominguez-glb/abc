@@ -7,6 +7,6 @@ module RobotConfirmable
   end
 
   def google_recaptcha_form
-    errors.add(:google_recaptcha, "You need to validate that you are not a robot") unless Google::Recaptcha.status(google_recaptcha)[:success]
+    errors.add(:google_recaptcha, "You need to validate that you are not a robot.") unless Google::Recaptcha.status(google_recaptcha)[:success]
   end
 end
