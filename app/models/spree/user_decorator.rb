@@ -1,8 +1,9 @@
 require 'mailchimp'
 
 Spree::User.class_eval do
-  include RailsSettings::Extend
   include ActivityLogger
+  include RailsSettings::Extend
+  include RobotConfirmable
   include SalesforceAccess, SalesforceAddress
   include UserProductable, UserRolable
 
@@ -16,7 +17,6 @@ Spree::User.class_eval do
   validates :zip_code, presence: true, on: :create, if: :is_in_usa?
   validates :interested_subjects, presence: true, on: :create
   before_create :set_city_and_state, if: :school_district_required?
-  validate :is_human?, on: :create
 
   belongs_to :delegate_for_user, class_name: 'Spree::User', foreign_key: :delegate_user_id
 
@@ -160,7 +160,7 @@ Spree::User.class_eval do
   has_many :download_jobs
   has_many :bookmarks
 
-  attr_accessor :school_id, :district_id, :ip_location, :google_recaptcha, :google_recaptcha_required
+  attr_accessor :school_id, :district_id, :ip_location
 
   accepts_nested_attributes_for :school_district, reject_if: proc { |attributes| attributes['name'].blank? }
 
@@ -246,10 +246,5 @@ Spree::User.class_eval do
 
   def set_city_and_state
     self.state = self.try(:school_district).try(:state).try(:name)
-  end
-
-  def is_human?
-    return unless google_recaptcha_required.present?
-    errors.add(:google_recaptcha, "You need to validate that you are not a robot") unless Google::Recaptcha.status(google_recaptcha)[:success]
   end
 end
