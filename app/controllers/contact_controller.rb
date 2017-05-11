@@ -7,7 +7,7 @@ class ContactController < ApplicationController
   end
 
   def create
-    @contact_form = ContactForm.new(contact_form_params.merge(referral: session[:utm]))
+    @contact_form = ContactForm.new(contact_form_params.merge(referral: session[:utm], google_recaptcha_required: true, google_recaptcha: params["g-recaptcha-response"]))
     if @contact_form.valid?
       @contact_form.perform
       flash[:notice] = "Thanks for reaching out. We will be in touch shortly."
