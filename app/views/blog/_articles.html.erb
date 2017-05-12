@@ -9,7 +9,9 @@
         <div class="card-text">
           <%= stronger_truncate_html(article.body, length: 150) %>
         </div>
-        <div class="card-meta">By: <%= article.user_name %></div>
-    </div>
+        <% if article.user_name.present? %>
+          <div class="card-meta">By: <%= article.user_name %></div>
+        <% end %>
+      </div>
   <% end %>
 <% end %>

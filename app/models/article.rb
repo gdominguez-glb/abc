@@ -30,7 +30,7 @@ class Article < ActiveRecord::Base
   end
 
   def user_name
-    created_by || user.try(:full_name)
+    created_by
   end
 
   def related_article(next_prev = :next)
