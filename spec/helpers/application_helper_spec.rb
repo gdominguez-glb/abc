@@ -63,21 +63,4 @@ RSpec.describe ApplicationHelper, type: :helper do
       expect(helper.cms_root_for_user(user)).to eq('/cms/jobs')
     end
   end
-
-  describe "#is_live_mode?" do
-    it "should return false if env is development" do
-      allow(Rails).to receive(:env).and_return(ActiveSupport::StringInquirer.new("development"))
-      expect(helper.is_live_mode?).to be_falsey
-    end
-
-    it "should return true if env is staging" do
-      allow(Rails).to receive(:env).and_return(ActiveSupport::StringInquirer.new("staging"))
-      expect(helper.is_live_mode?).to be_truthy
-    end
-
-    it "should return true if env is production" do
-      allow(Rails).to receive(:env).and_return(ActiveSupport::StringInquirer.new("production"))
-      expect(helper.is_live_mode?).to be_truthy
-    end
-  end
 end
