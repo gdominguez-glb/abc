@@ -80,17 +80,22 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="form-group">
-        <label>Icon</label>
-        <div class="select-container dark-select block">
-          <span>Icon</span>
-          <%= f.select :icon, Recommendation::ICONS, {}, class: 'form-control' %>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <%= f.label :expire_at %>
+            <%= f.text_field :expire_at, class: 'form-control datetime-picker' %>
+            <p class="hint">Won't display in dashboard if expired.</p>
+          </div>
         </div>
       </div>
       <div class="form-group">
         <label>Image URL</label>
         <%= f.text_field :image_url, class: 'form-control' %>
+      </div>
+      <div class="checkbox margin-bottom--xl">
+        <label>
+          <%= f.check_box :image_contain %> Contain Image
+        </label>
       </div>
       <div class="form-group">
         <label>Products</label>
@@ -107,9 +112,20 @@
   </div>
 
   <%= f.submit class: 'btn btn-success btn-block-xs' %>
+
+  <% unless @recommendation.new_record? %>
+    <%= link_to "Preview", preview_cms_recommendation_path(@recommendation), class: "btn btn-default btn-block-xs" %>
+  <% end %>
+
 <% end %>
 <%= render 'cms/shared/products_autocomplete' %>
 
 <script type="text/javascript" charset="utf-8">
   $('#recommendation_user_title').select2();
+
+  var datetime_pickers = $('.datetime-picker');
+
+  datetime_pickers.datetimepicker({
+    format: 'YYYY-MM-DD HH:mm:ss',
+  });
 </script>

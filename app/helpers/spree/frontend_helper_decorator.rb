@@ -69,7 +69,7 @@ Spree::FrontendHelper.class_eval do
 
   def stronger_truncate_html(html, options = {})
     var = Nokogiri.HTML5(truncate_html(html, options))
-    var.search("img", "h1", "h2", "h3", "h4", "h5", "h6").each {|src| src.remove}
+    var.search("img", "h1", "h2", "h3", "h4", "h5", "h6","figure").each {|src| src.remove}
     var = var.to_html
     ["\n", "<html>", "</html>", "<body>", "</body>", "<head>", "</head>"].each{ |tag| var.remove!(tag) }
 
@@ -79,5 +79,11 @@ Spree::FrontendHelper.class_eval do
   def notification_card_class(notification)
     curriculum_type = notification.notification_trigger.curriculum_type.try(:downcase) || "info"
     "alert-#{curriculum_type}"
+  end
+
+  def remove_unneccesary_keys(string)
+    to_remove = ["Google recaptcha "]
+    to_remove.each {|s| string.gsub!(s, "")}
+    string
   end
 end

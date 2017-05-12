@@ -1,11 +1,29 @@
 <div class="panel panel-primary">
   <div class="panel-body panel-body--padding">
     <div class="row">
-      <div class="col-lg-12 text-right">
+      <div class="col-sm-12 text-right">
         <div class="form-inline">
           <%= link_to 'New Recommendation', new_cms_recommendation_path, class: 'btn btn-success btn-block-xs' %>
         </div>
       </div>
+    </div>
+  </div>
+  <div class="panel-body panel-body--padding recommendations-search">
+    <div class="row">
+      <%= form_for @recommendation, url: search_cms_recommendations_path, method: :get do |f| %>
+          <div class="col-sm-3 form-group">
+            <%= f.text_field :title, class: "form-control", placeholder: "Title" %>
+          </div>
+          <div class="col-sm-3 form-group">
+            <%= f.collection_select :subject, Curriculum.all, :name, :name, { include_blank: 'Select subject' }, class: 'form-control' %>
+          </div>
+          <div class="col-sm-3 form-group">
+            <%= f.select :user_title, options_for_select(Spree::User::USER_TITLES, f.object.user_title), {include_blank: "Select user title"}, class: 'form-control' %>
+          </div>
+          <div class="col-sm-3 form-group">
+            <%= f.submit "Search", class: "btn btn-primary" %>
+          </div>
+      <% end %>
     </div>
   </div>
 </div>

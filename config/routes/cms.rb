@@ -71,7 +71,15 @@ namespace :cms do
   end
   resources :help_items
   resources :contacts, only: [:index, :destroy, :edit, :update]
-  resources :recommendations
+  resources :recommendations do
+    member do
+      get :preview
+    end
+
+    collection do
+      get :search
+    end
+  end
   resources :whats_news
   resources :medium_publications do
     collection do

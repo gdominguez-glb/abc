@@ -5,11 +5,12 @@
         <th colspan="2">Title</th>
         <th>Subject</th>
         <th>Role</th>
-	<th>Zip Codes</th>
-	<th>Views</th>
-	<th>Clicks</th>
+        <th>Zip Codes</th>
+        <th>Views</th>
+        <th>Clicks</th>
         <th>Display</th>
         <th>Created At</th>
+        <th>Expire At</th>
         <th colspan="2"></th>
       </tr>
     </thead>
@@ -25,6 +26,7 @@
           <td><%= recommendation.clicks %></td>
           <td><%= recommendation.display %></td>
           <td><%= recommendation.created_at.strftime('%F %H:%M') %></td>
+          <td><%= recommendation.expire_at %></td>
           <td><%= link_to 'Delete', cms_recommendation_path(recommendation), data: { method: :delete, confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
         </tr>
       <% end %>

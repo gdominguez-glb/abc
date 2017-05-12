@@ -34,3 +34,6 @@ hightail_password: ''
 mailchimp_api_key: '4e6818c68fc256c11636a406bbcb3527-us11'
 
 MEMCACACHED_URL: 'localhost'
+
+google_recaptcha_public: "6LepaSAUAAAAABvxvd3fsQVNxlIcuuHSVprFekgV"
+google_recaptcha_secret: "6LepaSAUAAAAAHXFbafpbP77e9-97MewN_zQ9NSK"

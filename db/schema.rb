@@ -577,6 +577,8 @@ ActiveRecord::Schema.define(version: 20170508234527) do
     t.integer  "clicks",                       default: 0
     t.string   "zip_codes"
     t.text     "image_url"
+    t.boolean  "image_contain"
+    t.datetime "expire_at"
   end
 
   create_table "regonline_events", force: :cascade do |t|
@@ -1270,7 +1272,7 @@ ActiveRecord::Schema.define(version: 20170508234527) do
     t.boolean  "for_sale",             default: false
     t.string   "sf_id_product"
     t.string   "sf_id_pricebook"
-    t.boolean  "show_in_storefront",   default: true
+    t.boolean  "show_in_storefront",   default: false
     t.boolean  "purchase_once",        default: false
     t.text     "short_description"
     t.string   "get_in_touch_url"

@@ -10,7 +10,14 @@ class Document < ActiveRecord::Base
         small:  "720x720>",
         medium: "1080x1080>",
         large: "1440x1440>"
-      } : {}  }
+    } : {}  },
+    convert_options: {
+          :medium => "-quality 80 -interlace Plane",
+          :thumb => "-quality 80 -interlace Plane",
+          :medium => "-quality 80 -interlace Plane",
+          :large => "-quality 80 -interlace Plane"
+    },
+    :processors => [:thumbnail, :compression]
   }
 
   validates_presence_of :name, :category

@@ -15,7 +15,7 @@
         </tr>
       <% end %>
       <% faq_category_header.faq_categories.each do |faq_category| %>
-        <tr data-id="<%= faq_category.id %>">
+        <tr class="faq-to-map" data-id="<%= faq_category.id %>">
           <td><%= mi.swap_vert %></td>
           <td><%= faq_category.name %></td>
           <td><%= faq_category.display? ? 'Yes' : 'No' %></td>
@@ -33,7 +33,7 @@
   <%= javascript_tag do %>
     function updatePositions() {
       var data = {}
-      $.each($(".contact-topics-list tbody tr"), function(index, element) {
+      $.each($(".contact-topics-list tbody tr.faq-to-map"), function(index, element) {
         data[$(element).attr('data-id')] = index;
       });
       $.ajax({

@@ -6,6 +6,8 @@ RSpec.describe Spree::UserRegistrationsController, type: :controller do
   before { @request.env['devise.mapping'] = Devise.mappings[:spree_user] }
   let(:curriculum) { create(:curriculum, name: 'Math') }
 
+  before(:each){ allow(Google::Recaptcha).to receive(:status).and_return({:success => true}) }
+
   describe "'POST' create" do
     context "correct params" do
       it "create user and redirect to terms" do

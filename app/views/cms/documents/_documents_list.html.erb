@@ -6,6 +6,7 @@
         <th>Category</th>
         <th>Tags</th>
         <th>File</th>
+        <th>Created At</th>
         <th colspan="4"></th>
       </tr>
     </thead>
@@ -19,13 +20,19 @@
             <%= document.attachment_file_name %>
           </td>
           <td>
+            <%= document.created_at.strftime("%F %H:%M") %>
+          </td>
+          <td>
             <%= link_to 'Edit', edit_cms_document_path(document), class: 'btn btn-default btn-sm' %>
           </td>
           <td>
             <%= link_to 'Download', document.attachment.url, class: 'btn btn-default btn-sm', target: '_blank' %>
           </td>
           <td>
-            <a class="btn btn-default copy-download-url-button btn-sm" data-clipboard-text="<%= document.image? ? document.image_url : document.attachment.url %>">Copy Url</a>
+            <a class="btn btn-default copy-download-url-button btn-sm margin-bottom" data-clipboard-text="<%= document.image? ? document.image_url : document.attachment.url %>">Copy Url</a>
+            <% if document.image? %>
+              <a class="btn btn-default copy-download-url-button btn-sm" title="Use this url when use the image outside the tiles editor" data-clipboard-text="<%= document.attachment.url(:large) %>">Copy Compressed Url</a>
+            <% end %>
           </td>
           <td>
             <%= link_to 'Delete', cms_document_path(document), class: 'btn btn-danger btn-sm', data: { method: :delete, confirm: "Are you sure?" } %>

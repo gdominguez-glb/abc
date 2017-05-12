@@ -1,8 +1,9 @@
 require 'mailchimp'
 
 Spree::User.class_eval do
-  include RailsSettings::Extend
   include ActivityLogger
+  include RailsSettings::Extend
+  include RobotConfirmable
   include SalesforceAccess, SalesforceAddress
   include UserProductable, UserRolable
 

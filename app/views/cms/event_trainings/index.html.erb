@@ -25,7 +25,7 @@
             </tr>
           <% end %>
           <% event_training_header.event_trainings.each do |event_training| %>
-            <tr data-id="<%= event_training.id %>">
+            <tr class="event-to-map" data-id="<%= event_training.id %>">
               <td><%= event_training.title %></td>
               <td><%= event_training.position %></td>
               <td><%= event_training.category %></td>
@@ -46,7 +46,7 @@
     var url ="<%= update_positions_cms_training_type_category_event_trainings_path(@training_type_category) %>"
     function updatePositions() {
       var data = {}
-      $.each($(".event-trainings-list tbody tr"), function(index, element) {
+      $.each($(".event-trainings-list tbody tr.event-to-map"), function(index, element) {
         data[$(element).attr('data-id')] = index;
       });
       $.ajax({

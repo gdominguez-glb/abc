@@ -437,11 +437,16 @@ GEM
       wmi-lite (~> 1.0)
     open_uri_redirections (0.2.1)
     orm_adapter (0.5.0)
+    os (0.9.6)
     paperclip (4.2.1)
       activemodel (>= 3.0.0)
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
       mime-types
+    paperclip-compression (0.3.7)
+      os (~> 0.9.6)
+      paperclip (>= 3.3)
+      ruby-imagespec (~> 0.3.1)
     paranoia (2.1.1)
       activerecord (~> 4.0)
     pg (0.18.1)
@@ -553,6 +558,7 @@ GEM
       builder (< 4)
       rspec (>= 2, < 4)
       rspec-core (!= 2.12.0)
+    ruby-imagespec (0.3.1)
     ruby-ole (1.2.11.8)
     rubyzip (1.0.0)
     safe_yaml (1.0.4)
@@ -797,6 +803,7 @@ DEPENDENCIES
   newrelic_rpm
   nkss-rails!
   open_uri_redirections
+  paperclip-compression
   pg
   phantomjs (~> 1.9.8)
   pry
@@ -837,3 +844,9 @@ DEPENDENCIES
   wistia-api
   zeroclipboard-rails
   zip-zip
+
+RUBY VERSION
+   ruby 2.1.6p336
+
+BUNDLED WITH
+   1.13.6
