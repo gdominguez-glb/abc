@@ -4,8 +4,8 @@
   <title>Great Minds</title>
   <%= favicon_link_tag 'favicon-128.png' %>
   <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application', async: is_live_mode? %>
-  <%= javascript_include_tag 'cms', async: is_live_mode? %>
+  <%= javascript_include_tag 'application' %>
+  <%= javascript_include_tag 'cms' %>
   <%= render 'google_fonts_inline' %>
   <%= csrf_meta_tags %>
 </head>

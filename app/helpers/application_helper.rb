@@ -54,8 +54,4 @@ module ApplicationHelper
 
     var
   end
-
-  def is_live_mode?
-    Rails.env.production? || Rails.env.staging?
-  end
 end
