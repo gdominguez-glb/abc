@@ -6,7 +6,9 @@
       <h3 class="blog-title">
         <a href="<%= url %>"><%= @article.prev_article.title %></a>
       </h3>
-      <div class="blog-meta">By: <%= @article.prev_article.user_name %></div>
+      <% if @article.prev_article.user_name.present? %>
+        <div class="blog-meta">By: <%= @article.prev_article.user_name %></div>
+      <% end %>
       <hr />
       <a href="<%= url %>" class="btn btn-sm btn-default btn-transparent">
         <i class="mi md-18">chevron_left</i> Previous
@@ -22,8 +24,10 @@
       <h3 class="blog-title">
         <a href="<%= url %>"><%= @article.next_article.title %></a>
       </h3>
-      <div class="blog-meta">By: <%= @article.next_article.user_name %></div>
-      <hr />
+        <% if @article.next_article.user_name.present? %>
+          <div class="blog-meta">By: <%= @article.next_article.user_name %></div>
+        <% end %>
+        <hr />
       <a href="<%= url %>" class="btn btn-sm btn-default btn-transparent">
         Next <i class="mi md-18">chevron_right</i>
       </a>
