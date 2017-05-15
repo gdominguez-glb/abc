@@ -7,7 +7,6 @@ Rails.application.config.assets.version = '1.0'
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 Rails.application.config.assets.precompile += %w( styleguide.css )
 Rails.application.config.assets.precompile += %w( styleguide-extras.css )
-Rails.application.config.assets.precompile += %w( critical.js )
 Rails.application.config.assets.precompile += %w( frontend.js )
 Rails.application.config.assets.precompile += %w( account.js )
 Rails.application.config.assets.precompile += %w( cms.js )
