@@ -23,7 +23,8 @@ class NotificationTrigger < ActiveRecord::Base
     :curriculum_users,
     :product,
     :products,
-    :zip_codes
+    :zip_codes,
+    :sign_up_segments
   ]
 
   TARGET_TYPES.each do |target_type|
@@ -63,6 +64,8 @@ class NotificationTrigger < ActiveRecord::Base
       find_products_target_users(self.product_ids)
     elsif self.zip_codes_target?
       find_zip_codes_target_users(self.zip_codes)
+    elsif self.sign_up_segments?
+      find_segmented_users
     end
   end
 
@@ -88,6 +91,15 @@ class NotificationTrigger < ActiveRecord::Base
 
   def find_zip_codes_target_users(zip_codes)
     users = Spree::User.where(zip_code: zip_codes.split(',').map(&:strip))
+    users = users.where(title: self.user_type) if self.user_type.present?
+    users = users.with_curriculum(self.curriculum) if self.curriculum_id.present?
+    users
+  end
+
+  def find_segmented_users
+    return [] if sign_up_started_at.blank? || sign_up_ended_at.blank?
+
+    users = Spree::User.where("created_at >= ?", sign_up_started_at).where("created_at <= ?", sign_up_ended_at)
     users = users.where(title: self.user_type) if self.user_type.present?
     users = users.with_curriculum(self.curriculum) if self.curriculum_id.present?
     users
