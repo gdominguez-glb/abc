@@ -48,6 +48,8 @@ class Cms::NotificationTriggersController < Cms::BaseController
       :curriculum_id,
       :curriculum_type,
       :zip_codes,
+      :sign_up_started_at,
+      :sign_up_ended_at,
       product_ids: []
     ]
 
