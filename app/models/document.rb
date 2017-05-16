@@ -46,4 +46,22 @@ class Document < ActiveRecord::Base
     uri.query = [uri.query, {alt: self.alt_text}.to_param].compact.join('&')
     uri.to_s
   end
+
+  require 'rake/pathmap'
+  def create_copy!
+    copy_doc = self.dup
+    copy_doc_name = self.name + ' (copy)'
+    copy_attachment_file_name = self.attachment_file_name.pathmap "%X-copy%x"
+    copy_doc.name = copy_doc_name
+
+    tmp_file_name = Rails.root.join('tmp', copy_attachment_file_name)
+    file = File.new(tmp_file_name, 'wb')
+    file.write open(self.attachment.url(:original)).read
+    file.close
+
+    copy_doc.attachment = File.new(tmp_file_name)
+    copy_doc.save!
+
+    FileUtils.rm(tmp_file_name)
+  end
 end

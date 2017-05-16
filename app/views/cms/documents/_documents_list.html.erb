@@ -7,7 +7,7 @@
         <th>Tags</th>
         <th>File</th>
         <th>Created At</th>
-        <th colspan="4"></th>
+        <th colspan="5"></th>
       </tr>
     </thead>
     <tbody>
@@ -33,6 +33,9 @@
             <% if document.image? %>
               <a class="btn btn-default copy-download-url-button btn-sm" title="Use this url when use the image outside the tiles editor" data-clipboard-text="<%= document.attachment.url(:large) %>">Copy Compressed Url</a>
             <% end %>
+          </td>
+          <td>
+            <%= link_to 'Duplicate', copy_doc_cms_document_path(document), data: { method: :post, confirm: 'Are you sure to duplicate this file?' }, class: 'btn btn-default btn-sm' %>
           </td>
           <td>
             <%= link_to 'Delete', cms_document_path(document), class: 'btn btn-danger btn-sm', data: { method: :delete, confirm: "Are you sure?" } %>

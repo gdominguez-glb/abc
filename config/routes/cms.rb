@@ -41,7 +41,11 @@ namespace :cms do
     end
     resources :regonline_events, only: [:index, :edit, :update]
   end
-  resources :documents
+  resources :documents do
+    member do
+      post :copy_doc
+    end
+  end
   resources :link_files
   resources :faq_categories do
     collection do
