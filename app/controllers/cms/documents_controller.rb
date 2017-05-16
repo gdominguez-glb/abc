@@ -1,5 +1,5 @@
 class Cms::DocumentsController < Cms::BaseController
-  before_action :find_document, only: [:show, :edit, :destroy, :update]
+  before_action :find_document, only: [:show, :edit, :destroy, :update, :copy_doc]
   skip_before_action :authenticate_admin_in_cms!
   before_action :authenticate_pd_access_in_cms!
 
@@ -35,6 +35,11 @@ class Cms::DocumentsController < Cms::BaseController
   def destroy
     @document.destroy
     redirect_to cms_documents_path, notice: "Deleted document successfully"
+  end
+
+  def copy_doc
+    @document.create_copy!
+    redirect_to cms_documents_path, notice: "Duplicated document successfully"
   end
 
   protected
