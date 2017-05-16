@@ -6,6 +6,16 @@
   </div>
   <div id="<%= data['position'] %>" class="panel-body panel-collapse collapse in">
     <div class="row">
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label>Row type</label>
+          <select class="form-control update-row-type">
+            <% MarketingEditorApp.tilesDefinitions.forEach(function(key, index){ %>
+              <option <%= data.rowType === key.name ? 'selected="selected"' : ''%> value="<%= key.name %>"><%= key.name %></option>
+            <% }) %>
+          </select>
+        </div>
+      </div>
       <div class="col-sm-6">
         <div class="form-group">
           <label>Position</label>

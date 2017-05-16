@@ -4,6 +4,7 @@ class MarketingEditorApp.Views.TileRowView extends Backbone.View
 
   events:
     'click .remove-row-btn': 'removeRow'
+    'change .update-row-type': 'updateRowType',
     'change': 'valueChanged'
     'change .select-container select': 'customSelectChanged'
 
@@ -21,6 +22,18 @@ class MarketingEditorApp.Views.TileRowView extends Backbone.View
     @model.destroy()
     if @parentView && @parentView.tilesChanged?
       @parentView.tilesChanged()
+
+  updateRowType: ->
+    newType = @$('.update-row-type').val()
+    row = new MarketingEditorApp.Models.RowModel(@model.attributes)
+    row.attributes.rowType = newType
+
+    @parentView.rows.add(row)
+    rowView = new MarketingEditorApp.Views.TileRowView(model: row, parentView: @parentView)
+    @$el.after(rowView.render().el)
+    @parentView.initEditor()
+
+    this.removeRow()
 
   valueChanged: ->
     $.each(@$('[data-name]'), (index, el)=>
