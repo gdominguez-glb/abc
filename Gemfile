@@ -113,6 +113,8 @@ gem 'paperclip-compression'
 
 gem 'sitemap_generator', require: false
 
+gem 'dropbox_api', require: false
+
 group :development do
   gem 'quiet_assets'
   gem 'letter_opener'
