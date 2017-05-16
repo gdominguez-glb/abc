@@ -5,7 +5,7 @@ RSpec.describe Recommendation, type: :model do
   it { should validate_presence_of(:sub_header) }
   it { should validate_presence_of(:call_to_action_button_text) }
   it { should validate_presence_of(:call_to_action_button_link) }
-  it { should validate_length_of(:sub_header).is_at_most(75) }
+  it { should validate_length_of(:sub_header).is_at_most(85) }
 
   it { should have_and_belong_to_many(:products).class_name('Spree::Product') }
 
