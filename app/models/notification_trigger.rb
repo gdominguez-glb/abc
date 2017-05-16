@@ -64,7 +64,7 @@ class NotificationTrigger < ActiveRecord::Base
       find_products_target_users(self.product_ids)
     elsif self.zip_codes_target?
       find_zip_codes_target_users(self.zip_codes)
-    elsif self.sign_up_segments?
+    elsif self.sign_up_segments_target?
       find_segmented_users
     end
   end
