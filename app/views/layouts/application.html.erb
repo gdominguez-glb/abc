@@ -6,6 +6,7 @@
     <META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8">
     <%= favicon_link_tag 'favicon-128.png' %>
     <%= display_meta_tags %>
+    <%= canonical_tag if controller_name == 'blog' %>
     <script>
       function loadCSS( href, before, media, callback ){
         "use strict";
