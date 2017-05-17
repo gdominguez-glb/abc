@@ -855,9 +855,3 @@ DEPENDENCIES
   wistia-api
   zeroclipboard-rails
   zip-zip
-
-RUBY VERSION
-   ruby 2.1.6p336
-
-BUNDLED WITH
-   1.13.6
