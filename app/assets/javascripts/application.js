@@ -10,9 +10,6 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 
-// Polyfills First
-//= require global/polyfills
-
 // Gems
 //= require jquery
 //= require jquery_ujs

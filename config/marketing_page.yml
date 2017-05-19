@@ -34,44 +34,46 @@ marketing_templates:
         </div>
       </div>
       <script>
-        var imageList = [];
-        imageList.push('<%= background_image_url if background_image_url %>');
-        <% if background_image_2_url.present? %> imageList.push('<%= background_image_2_url if background_image_2_url %>'); <% end %>
-        <% if background_image_3_url.present? %> imageList.push('<%= background_image_3_url if background_image_3_url %>'); <% end %>
+        window.onload = function() {
+          var imageList = [];
+          imageList.push('<%= background_image_url if background_image_url %>');
+          <% if background_image_2_url.present? %> imageList.push('<%= background_image_2_url if background_image_2_url %>'); <% end %>
+          <% if background_image_3_url.present? %> imageList.push('<%= background_image_3_url if background_image_3_url %>'); <% end %>
 
-        // change the background image url with each page load
-        var backgroundImageUrl = imageList[Math.floor(Math.random() * (imageList.length - 0)) + 0];
+          // change the background image url with each page load
+          var backgroundImageUrl = imageList[Math.floor(Math.random() * (imageList.length - 0)) + 0];
 
-        var breakpointList = [
-          window.matchMedia("(max-width: 360px)"),
-          window.matchMedia("(min-width: 361px) and (max-width: 767px)"),
-          window.matchMedia("(min-width: 768px)")
-        ]
+          var breakpointList = [
+            window.matchMedia("(max-width: 360px)"),
+            window.matchMedia("(min-width: 361px) and (max-width: 767px)"),
+            window.matchMedia("(min-width: 768px)")
+          ]
 
-        function queryWatcher(mql) {
-          var backgroundSplit = backgroundImageUrl.split('/');
+          function queryWatcher(mql) {
+            var backgroundSplit = backgroundImageUrl.split('/');
 
-          if (breakpointList[0].matches) {
-            backgroundImageUrl = backgroundImageUrl.replace(backgroundSplit[backgroundSplit.length - 2], 'thumb');
+            if (breakpointList[0].matches) {
+              backgroundImageUrl = backgroundImageUrl.replace(backgroundSplit[backgroundSplit.length - 2], 'thumb');
+            }
+            if (breakpointList[1].matches) {
+              backgroundImageUrl = backgroundImageUrl.replace(backgroundSplit[backgroundSplit.length - 2], 'small');
+            }
+            if (breakpointList[2].matches) {
+              backgroundImageUrl = backgroundImageUrl.replace(backgroundSplit[backgroundSplit.length - 2], 'large');
+            }
+
+            $('#tileRoleSelectorHero<%= position %>').css('background-image', 'url(' + backgroundImageUrl + ')');
           }
-          if (breakpointList[1].matches) {
-            backgroundImageUrl = backgroundImageUrl.replace(backgroundSplit[backgroundSplit.length - 2], 'small');
-          }
-          if (breakpointList[2].matches) {
-            backgroundImageUrl = backgroundImageUrl.replace(backgroundSplit[backgroundSplit.length - 2], 'large');
-          }
 
-          $('#tileRoleSelectorHero<%= position %>').css('background-image', 'url(' + backgroundImageUrl + ')');
-        }
-
-        if (matchMedia) {
-          for (var i = 0; i < breakpointList.length; i++) {
-            queryWatcher(breakpointList[i]); // call it manually on initial page load
-            breakpointList[i].addListener(queryWatcher); // call it any time a media query matches
+          if (matchMedia) {
+            for (var i = 0; i < breakpointList.length; i++) {
+              queryWatcher(breakpointList[i]); // call it manually on initial page load
+              breakpointList[i].addListener(queryWatcher); // call it any time a media query matches
+            }
+          } else {
+            // fallback to required, full size image
+            $('#tileRoleSelectorHero<%= position %>').css('background-image', 'url(' + imageList[0] + ')');
           }
-        } else {
-          // fallback to required, full size image
-          $('#tileRoleSelectorHero<%= position %>').css('background-image', 'url(' + imageList[0] + ')');
         }
       </script>
 

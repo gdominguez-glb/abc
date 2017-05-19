@@ -52,7 +52,7 @@
           </div>
         </div>
         <div class="col-sm-6">
-          <div class="form-group hidden target-input" data-input="zip_codes user_type curriculum_users">
+          <div class="form-group hidden target-input" data-input="zip_codes user_type curriculum_users sign_up_segments">
             <%= f.label :user_type %>
             <div class="select-container dark-select block">
               <span>User Type</span>
@@ -61,12 +61,24 @@
           </div>
         </div>
         <div class="col-sm-6">
-          <div class="form-group hidden target-input" data-input="zip_codes user_type curriculum_users">
+          <div class="form-group hidden target-input" data-input="zip_codes user_type curriculum_users sign_up_segments">
             <%= f.label :curriculum, "User Curriculum" %>
             <div class="select-container dark-select block">
               <span>Curriculum</span>
               <%= f.collection_select :curriculum_id, Curriculum.visibles, :id, :name, { include_blank: 'Select' }, class: 'form-control' %>
             </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group hidden target-input" data-input="sign_up_segments">
+            <%= f.label :sign_up_started_at, "Signed up from" %>
+            <%= f.text_field :sign_up_started_at, class: 'form-control datetime-picker' %>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group hidden target-input" data-input="sign_up_segments">
+            <%= f.label :sign_up_ended_at, "Signed up to" %>
+            <%= f.text_field :sign_up_ended_at, class: 'form-control datetime-picker' %>
           </div>
         </div>
         <div class="col-sm-6">

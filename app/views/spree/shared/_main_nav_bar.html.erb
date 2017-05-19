@@ -32,9 +32,11 @@
     &nbsp;
   </li>
   <script>
-    if(typeof Spree !== 'undefined') {
-      Spree.fetch_cart()
-    } else {
-      Gm.fetch_cart()
-    }
+    window.onload = function() {
+      if(typeof Spree !== 'undefined') {
+        Spree.fetch_cart()
+      } else {
+        Gm.fetch_cart()
+      }
+    };
   </script>

@@ -88,8 +88,11 @@
         'form.new_notification_trigger #notification_trigger_product_id',
         'form.new_notification_trigger #notification_trigger_product_ids',
         'form.new_notification_trigger #notification_trigger_zip_codes',
+        'form.new_notification_trigger #notification_trigger_sign_up_segments',
+        'form.new_notification_trigger #notification_trigger_sign_up_started_at',
+        'form.new_notification_trigger #notification_trigger_sign_up_ended_at',
       ]
-      $(changedInputs.join(', ')).change(function(){
+      $(changedInputs.join(', ')).on('change dp.change', function(){
         getTargetUsersCount();
       });
 

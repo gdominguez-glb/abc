@@ -7,7 +7,7 @@
       </div>
       <%= form_for([:admin, @download_page, @download_product]) do |f| %>
         <div class="modal-body">
-            <%= f.collection_select :product_id, @products, :id, :name, {}, class: 'form-control' %>
+          <%= f.collection_select :product_id, @products, :id, :internal_name, {}, class: 'form-control' %>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

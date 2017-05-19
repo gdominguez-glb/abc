@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe WhatsNew, type: :model do
 
   it { should validate_presence_of :title }
+  it { should validate_length_of(:sub_header).is_at_most(168) }
 
   let(:whats_new) { FactoryGirl.create(:whats_new) }
 
