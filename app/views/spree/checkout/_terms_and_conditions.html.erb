@@ -18,8 +18,10 @@
 </div>
 <%= button_tag Spree.t(:save_and_continue), :class => 'continue btn btn-success btn-block-xs disabled term-continue-button margin-bottom', :disabled => true %>
 
+<% content_for :javascripts do %>
 <script type="text/javascript">
   $(function() {
     scrollHandler('order[terms_and_conditions]', true);
   });
 </script>
+<% end %>
