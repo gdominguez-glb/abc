@@ -87,26 +87,28 @@
   </div>
 <% end %>
 
-<script type="text/javascript" charset="utf-8">
-  var analizeSkip = function() {
-    if($('.js-skip-tax-exemption').is(':checked')) {
-      $('.js-label-1').hide();
-      $('.js-label-0').removeClass('col-sm-6').addClass('col-sm-12');
-      $('#opportunity_attachment_1').val('');
-      $('.opportunity-attachment-1').html('no file chosen');
-    } else {
-      $('.js-label-0').addClass('col-sm-6').removeClass('col-sm-12');
-      setTimeout(function() {
-        $('.js-label-1').show();
-      }, 400);
-    }
-  };
+<%= content_for :javascripts do %>
+  <script type="text/javascript" charset="utf-8">
+    var analizeSkip = function() {
+      if($('.js-skip-tax-exemption').is(':checked')) {
+        $('.js-label-1').hide();
+        $('.js-label-0').removeClass('col-sm-6').addClass('col-sm-12');
+        $('#opportunity_attachment_1').val('');
+        $('.opportunity-attachment-1').html('no file chosen');
+      } else {
+        $('.js-label-0').addClass('col-sm-6').removeClass('col-sm-12');
+        setTimeout(function() {
+          $('.js-label-1').show();
+        }, 400);
+      }
+    };
 
-  analizeSkip();
+    analizeSkip();
 
-  $(document).on('ready load', function() {
-    $('.js-skip-tax-exemption').on('change', function() {
-      analizeSkip();
+    $(document).on('ready load', function() {
+      $('.js-skip-tax-exemption').on('change', function() {
+        analizeSkip();
+      });
     });
-  });
-</script>
+  </script>
+<% end %>

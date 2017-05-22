@@ -53,8 +53,11 @@
   </div>
 </div>
 
-<%= javascript_tag do %>
-  $(document).ready(function(){
-    teamModals('#trusteeModal');
-  });
+<%= content_for :javascripts do %>
+  <%= javascript_tag do %>
+    $(document).ready(function(){
+      teamModals('#trusteeModal');
+    });
+  <% end %>
 <% end %>
+

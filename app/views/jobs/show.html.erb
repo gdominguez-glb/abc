@@ -6,10 +6,12 @@
   </div>
 </div>
 
-<script type="text/javascript">
-  $(function() {
-    var content = $('.container-content');
-    content.find('div:empty, p:empty, br').remove();
-    content.find('span, font').contents().unwrap();
-  });
-</script>
+<%= content_for :javascripts do %>
+  <script type="text/javascript">
+    $(function() {
+      var content = $('.container-content');
+      content.find('div:empty, p:empty, br').remove();
+      content.find('span, font').contents().unwrap();
+    });
+  </script>
+<% end %>

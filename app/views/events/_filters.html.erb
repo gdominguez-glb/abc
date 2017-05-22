@@ -49,15 +49,17 @@
   </div>
 </nav>
 
-<script type="text/javascript" charset="utf-8">
-  <% if (RegonlineEvent::FILTER_CURRICULUMS & params.try(:[], :curriculums)).present? %>
-    $('.dropdown-curriculums').on('hide.bs.dropdown', function () {
-      return false;
-    });
-  <% end %>
-  <% if (RegonlineEvent::FILTER_GRADE_BANDS & params.try(:[], :grade_bands)).present? %>
-    $('.dropdown-grade-bands').on('hide.bs.dropdown', function () {
-      return false;
-    });
-  <% end %>
-</script>
+<%= content_for :javascripts do %>
+  <script type="text/javascript" charset="utf-8">
+    <% if (RegonlineEvent::FILTER_CURRICULUMS & params.try(:[], :curriculums)).present? %>
+      $('.dropdown-curriculums').on('hide.bs.dropdown', function () {
+        return false;
+      });
+    <% end %>
+    <% if (RegonlineEvent::FILTER_GRADE_BANDS & params.try(:[], :grade_bands)).present? %>
+      $('.dropdown-grade-bands').on('hide.bs.dropdown', function () {
+        return false;
+      });
+    <% end %>
+  </script>
+<% end %>

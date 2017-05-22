@@ -54,8 +54,10 @@
   </div>
 </div>
 
-<%= javascript_tag do %>
-  $(document).ready(function(){
-    teamModals('#staffModal');
-  });
+<%= content_for :javascripts do %>
+  <%= javascript_tag do %>
+    $(document).ready(function(){
+      teamModals('#staffModal');
+    });
+  <% end %>
 <% end %>
