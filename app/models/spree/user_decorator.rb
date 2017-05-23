@@ -23,6 +23,12 @@ Spree::User.class_eval do
   has_many :custom_field_values
   accepts_nested_attributes_for :custom_field_values
 
+  has_many :subscriptions
+
+  def subscribe?(blog)
+    subscriptions.where(blog_id: blog.id).exists?
+  end
+
   def init_custom_fields
     CustomField.for_user(self).each do |custom_field|
       custom_field_value = CustomFieldValue.find_by(custom_field_id: custom_field.id, user_id: self.id)
