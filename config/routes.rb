@@ -85,6 +85,8 @@ Rails.application.routes.draw do
 
   get '/:page_slug/events/:slug',        to: 'events#curriculum',    as: :curriculum_events
 
+  post '/blog/:id/subscribe', to: 'blog#subscribe', as: :subscribe_blog
+
   get '/turn_off_browser_warning', to: 'home#turn_off_browser_warning'
   get '/decide_page_to_go', to: 'home#decide_page_to_go'
   post '/set_filter_preferences', to: 'home#set_filter_preferences'

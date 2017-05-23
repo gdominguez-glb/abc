@@ -25,6 +25,10 @@ Spree::User.class_eval do
 
   has_many :subscriptions
 
+  def subscribe!(blog)
+    subscriptions.find_or_create_by(blog_id: blog.id)
+  end
+
   def subscribe?(blog)
     subscriptions.where(blog_id: blog.id).exists?
   end

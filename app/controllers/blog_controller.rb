@@ -1,4 +1,5 @@
 class BlogController < ApplicationController
+  before_action :authenticate_user!, only: [:subscribe]
   before_action :load_curriculum_nav_info, only: [:curriculum, :curriculum_post]
   before_action :load_global_publications, only: [:global, :global_post]
   before_action :load_curriculum_publications, only: [:curriculum, :curriculum_post]
@@ -52,6 +53,12 @@ class BlogController < ApplicationController
     else
       find_post
     end
+  end
+
+  def subscribe
+    @blog = Blog.find(params[:id])
+    current_spree_user.subscribe!(@blog)
+    redirect_to :back, notice: "Successfully subscribe to #{@blog.title}!"
   end
 
   private
