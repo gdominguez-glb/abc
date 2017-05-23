@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170523005337) do
+ActiveRecord::Schema.define(version: 20170523130615) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -323,6 +323,21 @@ ActiveRecord::Schema.define(version: 20170523005337) do
     t.integer  "position",   default: 0
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+  end
+
+  create_table "in_the_news", force: :cascade do |t|
+    t.string   "call_to_action_button_link"
+    t.string   "call_to_action_button_target"
+    t.string   "call_to_action_button_text"
+    t.string   "title"
+    t.string   "author"
+    t.string   "publisher"
+    t.string   "slug"
+    t.string   "image_url"
+    t.datetime "article_date"
+    t.string   "description"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
   create_table "jobs", force: :cascade do |t|

@@ -17,4 +17,5 @@
 
 ActiveSupport::Inflector.inflections do |inflect|
   inflect.irregular 'whats_new', 'whats_news'
+  inflect.irregular 'in_the_new', 'in_the_news'
 end
