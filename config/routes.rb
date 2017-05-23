@@ -148,6 +148,7 @@ Rails.application.routes.draw do
   resources :opportunities, only: [:index, :create]
   resources :school_districts, only: [:index, :show]
 
+  get 'in-the-news', to: 'pages#in_the_news', as: :in_the_news
   get 'not-found', to: 'pages#not_found', as: :not_found
 
   constraints VanityUrlConstraint do

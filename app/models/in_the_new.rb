@@ -1,4 +1,5 @@
 class InTheNew < ActiveRecord::Base
-  validates :title, :slug, presence: true
-  validates :slug, uniqueness: true
+  include Orderable
+
+  validates :title, presence: true
 end

@@ -22,6 +22,10 @@ class PagesController < ApplicationController
     end
   end
 
+  def in_the_news
+    @in_the_news = InTheNew.latest
+  end
+
   def not_found
     render status: 404
   end
