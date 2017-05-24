@@ -61,6 +61,12 @@ class BlogController < ApplicationController
     redirect_to :back, notice: "Successfully subscribe to #{@blog.title}!"
   end
 
+  def unsubscribe
+    @blog = Blog.find(params[:id])
+    current_spree_user.unsubscribe!(@blog)
+    redirect_to :back, notice: "Successfully unsubscribe #{@blog.title}!"
+  end
+
   private
 
   def load_global_publications
