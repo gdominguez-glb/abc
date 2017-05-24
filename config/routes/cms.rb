@@ -92,6 +92,7 @@ namespace :cms do
     end
   end
   resources :blogs do
+    resources :subscribers, only: [:index]
     resources :articles do
       collection do
         get :published

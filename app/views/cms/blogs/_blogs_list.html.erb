@@ -8,7 +8,7 @@
         <th>Unique Url</th>
         <th>Position</th>
         <th>Display</th>
-        <th colspan="3"></th>
+        <th colspan="4"></th>
       </tr>
     </thead>
 
@@ -23,6 +23,9 @@
           <td><%= blog.display ? 'Yes' : 'No' %></td>
           <td>
             <%= link_to 'Posts', cms_blog_articles_path(blog) %>
+          </td>
+          <td>
+            <%= link_to "Users (#{blog.subscriptions.count})", cms_blog_subscribers_path(blog) %>
           </td>
           <td><%= link_to 'Edit', edit_cms_blog_path(blog) %></td>
           <td><%= link_to 'Destroy', [:cms, blog], method: :delete, data: { confirm: 'Are you sure?' }, class: 'text--danger' %></td>
