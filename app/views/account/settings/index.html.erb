@@ -229,6 +229,30 @@
     window.us_country_id = '<%= us_country.id %>';
   </script>
 <% end %>
+
+<% if current_spree_user.subscriptions.count > 0 %>
+  <h3>Blog Subscriptions</h3>
+
+  <div class="">
+    <table class="table table-striped">
+      <tbody>
+      <% current_spree_user.subscriptions.each do |subscription| %>
+        <tr>
+          <td>
+            <%= subscription.blog.title %>
+          </td>
+          <td>
+            <%= link_to 'Unsubscribe', unsubscribe_blog_path(subscription.blog), data: { method: :post, confirm: "Are you sure to unsubscribe from #{subscription.blog.title}"}, class: 'btn btn-primary btn-sm' %>
+          </td>
+        </tr>
+
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+
+<% end %>
+
 <script type="text/javascript">
 //<![CDATA[
   (function($){

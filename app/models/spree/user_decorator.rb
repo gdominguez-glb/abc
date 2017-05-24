@@ -29,6 +29,10 @@ Spree::User.class_eval do
     subscriptions.find_or_create_by(blog_id: blog.id)
   end
 
+  def unsubscribe!(blog)
+    subscriptions.where(blog_id: blog.id).destroy_all
+  end
+
   def subscribe?(blog)
     subscriptions.where(blog_id: blog.id).exists?
   end
