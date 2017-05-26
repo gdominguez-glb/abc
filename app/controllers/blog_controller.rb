@@ -116,6 +116,7 @@ class BlogController < ApplicationController
 
   def load_global_blog
     @blog = Blog.global.displayable.find_by(slug: params[:slug])
+    raise ActiveRecord::RecordNotFound.new('blog not exist') if @blog.blank?
   end
 
   def load_curriculum_blog
@@ -134,5 +135,6 @@ class BlogController < ApplicationController
 
   def find_article
     @article = @blog.articles.displayable.published.find_by(slug: params[:id])
+    raise ActiveRecord::RecordNotFound.new('post not exist') if @article.blank?
   end
 end
