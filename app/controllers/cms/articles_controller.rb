@@ -55,6 +55,7 @@ class Cms::ArticlesController < Cms::BaseController
 
   def publish
     @article.publish!
+    @article.send_subscription_notifications
     redirect_to cms_blog_articles_path(@blog), notice: 'Blog post published successfully'
   end
 
