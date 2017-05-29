@@ -58,7 +58,7 @@ class BlogController < ApplicationController
   def subscribe
     @blog = Blog.find(params[:id])
     current_spree_user.subscribe!(@blog)
-    redirect_to :back, notice: "Thank you for subscribing to #{@blog.title}!"
+    redirect_to :back, notice: "Thank you for subscribing to #{@blog.title}. Whenever a new blog post is published you will receive an email notifying you. If you wish to unsubscribe go to your settings and click \"Unsuscribe\" in the Blog Subscription section."
   end
 
   def unsubscribe
