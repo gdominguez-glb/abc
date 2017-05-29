@@ -23,7 +23,7 @@ Spree::User.class_eval do
   has_many :custom_field_values
   accepts_nested_attributes_for :custom_field_values
 
-  has_many :subscriptions
+  has_many :subscriptions, dependent: :destroy
 
   def subscribe!(blog)
     subscriptions.find_or_create_by(blog_id: blog.id)

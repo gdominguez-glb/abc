@@ -1,0 +1,15 @@
+<p>Dear <%= @subscription.user.full_name %>,</p>
+
+<p>
+  Thank you for subscribing to the <%= @article.blog.title %> blog. Each time a new blog is posted you will receive an email notification with the title of the new blog and a link directly to it. We hope that our blogs, composed by the writers of our curriculum, continue to assist with implementation and share useful information.
+</p>
+
+<% if @article.blog.global? %>
+  <%= link_to @article.title, global_post_url(@article.slug, slug: @article.blog.slug) %>
+<% else %>
+  <%= link_to @article.title, curriculum_post_url(@article.slug, page_slug: @article.blog.page.slug, slug: @article.blog.slug) %>
+<% end %>
+
+<p>
+  Great Minds
+</p>

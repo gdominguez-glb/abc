@@ -13,6 +13,10 @@ class Article < ActiveRecord::Base
   scope :sorted, -> { order('publish_date desc') }
   scope :search_by_text, ->(q) { where("title ilike ?", "%#{q}%") if q.present?  }
 
+  def send_subscription_notifications
+    SubscriptionWorker.perform_async(self.id)
+  end
+
   def next_article
     @next_article ||= related_article(:next)
   end
