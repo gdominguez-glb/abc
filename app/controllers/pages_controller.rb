@@ -5,6 +5,7 @@ class PagesController < ApplicationController
     end
 
     redirect_to not_found_path and return if @page.nil?
+    send(@page.render) and return if @page.render.present?
 
     @page_title    = @page.title
     @seo_title = @page.seo_data.try(:[], :title)
@@ -30,6 +31,8 @@ class PagesController < ApplicationController
     else
       @in_the_news = InTheNew.search(params[:q], order: {created_at: :desc}).results
     end
+
+    render :in_the_news
   end
 
   def not_found

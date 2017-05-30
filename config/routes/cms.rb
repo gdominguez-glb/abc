@@ -87,6 +87,8 @@ namespace :cms do
   resources :whats_news
   resources :in_the_news do
     collection do
+      get :edit_page
+      post :save_page
       get :search
     end
   end
