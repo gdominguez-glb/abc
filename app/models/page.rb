@@ -34,6 +34,7 @@ class Page < ActiveRecord::Base
 
   serialize :tiles
   serialize :seo_data, Hash
+  serialize :data, Hash
 
   scope :visibles, -> { where(visible: true).order('position ASC') }
   scope :curriculum_nav, -> { show_in_top_navigation.joins(:curriculum).where({curriculums: { visible: true }}).order('curriculums.position asc') }

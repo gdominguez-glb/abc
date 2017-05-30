@@ -1,13 +1,13 @@
 <div class="row">
-  <div class="jumbotron jumbotron-background" style="background-image: url('http://unsplash.it/1500/300')">
+  <div class="jumbotron jumbotron-background" style="background-image: url('<%= @page.data.try(:[], :jumbotron_image) %>">
     <div class="row">
       <div class="col-sm-11 col-sm-offset-1">
-          <h1 class="jumbotron-title">In the news</h1>
+          <h1 class="jumbotron-title"><%= @page.title %></h1>
         </div>
     </div>
     <div class="row">
       <div class="col-sm-8 col-sm-offset-1">
-        <p>Description for in the news (is this needed?)</p>
+        <p><%= @page.data.try(:[], :short_description) %></p>
       </div>
       <div class="col-sm-3">
         <%= form_tag '', method: :get do %>

@@ -1,5 +1,6 @@
 class Cms::InTheNewsController < Cms::BaseController
   before_action :find_in_the_news, only: [:edit, :update, :destroy]
+  before_action :find_page,  only: [:edit_page, :save_page]
 
   def index
     @in_the_new = InTheNew.new
@@ -56,10 +57,25 @@ class Cms::InTheNewsController < Cms::BaseController
     render :index
   end
 
+  def edit_page
+  end
+
+  def save_page
+    if @page.update(page_params)
+      redirect_to cms_in_the_news_path, notice: 'Updated successfully!'
+    else
+      render :edit_page
+    end
+  end
+
   private
 
   def find_in_the_news
     @in_the_new = InTheNew.find(params[:id])
+  end
+
+  def find_page
+    @page = Page.find_by(render: 'in_the_news')
   end
 
   def in_the_new_params
@@ -74,5 +90,9 @@ class Cms::InTheNewsController < Cms::BaseController
       :slug,
       :title
     )
+  end
+
+  def page_params
+    params.require(:page).permit({:data => [:jumbotron_image, :short_description]}, :title, :slug)
   end
 end
