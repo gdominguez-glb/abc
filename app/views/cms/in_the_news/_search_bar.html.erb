@@ -8,4 +8,38 @@
       </div>
     </div>
   </div>
+  <div class="panel-body panel-body--padding recommendations-search">
+    <%= form_for @in_the_new, url: search_cms_in_the_news_path, method: :get do |f| %>
+      <div class="row m-b-10">
+        <div class="col-sm-4 form-group">
+          <%= f.text_field :title, class: "form-control", placeholder: "Title" %>
+        </div>
+        <div class="col-sm-4 form-group">
+          <%= f.text_field :author, class: "form-control", placeholder: "Author" %>
+        </div>
+        <div class="col-sm-4 form-group">
+          <%= f.text_field :publisher, class: "form-control", placeholder: "Publisher" %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4 form-group">
+          <%= f.text_field :article_date, class: "form-control datetime-picker", placeholder: "Date" %>
+        </div>
+          <div class="col-sm-4 form-group">
+            <%= f.text_field :description, class: "form-control", placeholder: "Words in description" %>
+          </div>
+        <div class="col-sm-4 form-group">
+          <%= f.submit "Search", class: "btn btn-primary" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
+
+<script type="text/javascript" charset="utf-8">
+  var datetime_pickers = $('.datetime-picker');
+
+  datetime_pickers.datetimepicker({
+    format: 'YYYY-MM-DD',
+  });
+</script>

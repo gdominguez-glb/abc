@@ -11,18 +11,18 @@
   <div class="panel-body panel-body--padding recommendations-search">
     <div class="row">
       <%= form_for @recommendation, url: search_cms_recommendations_path, method: :get do |f| %>
-          <div class="col-sm-3 form-group">
-            <%= f.text_field :title, class: "form-control", placeholder: "Title" %>
-          </div>
-          <div class="col-sm-3 form-group">
-            <%= f.collection_select :subject, Curriculum.all, :name, :name, { include_blank: 'Select subject' }, class: 'form-control' %>
-          </div>
-          <div class="col-sm-3 form-group">
-            <%= f.select :user_title, options_for_select(Spree::User::USER_TITLES, f.object.user_title), {include_blank: "Select user title"}, class: 'form-control' %>
-          </div>
-          <div class="col-sm-3 form-group">
-            <%= f.submit "Search", class: "btn btn-primary" %>
-          </div>
+        <div class="col-sm-3 form-group">
+          <%= f.text_field :title, class: "form-control", placeholder: "Title" %>
+        </div>
+        <div class="col-sm-3 form-group">
+          <%= f.collection_select :subject, Curriculum.all, :name, :name, { include_blank: 'Select subject' }, class: 'form-control' %>
+        </div>
+        <div class="col-sm-3 form-group">
+          <%= f.select :user_title, options_for_select(Spree::User::USER_TITLES, f.object.user_title), {include_blank: "Select user title"}, class: 'form-control' %>
+        </div>
+        <div class="col-sm-3 form-group">
+          <%= f.submit "Search", class: "btn btn-primary" %>
+        </div>
       <% end %>
     </div>
   </div>

@@ -2,6 +2,7 @@ class Cms::InTheNewsController < Cms::BaseController
   before_action :find_in_the_news, only: [:edit, :update, :destroy]
 
   def index
+    @in_the_new = InTheNew.new
     @in_the_news = InTheNew.page(params[:page]).per(params[:per_page])
   end
 
@@ -32,6 +33,27 @@ class Cms::InTheNewsController < Cms::BaseController
   def destroy
     @in_the_new.destroy
     redirect_to cms_in_the_news_path, notice: 'Delete successfully'
+  end
+
+  def search
+    @in_the_new = InTheNew.new({
+      title: params[:in_the_new][:title],
+      author: params[:in_the_new][:author],
+      publisher: params[:in_the_new][:publisher],
+      article_date: params[:in_the_new][:article_date],
+      description: params[:in_the_new][:description],
+    })
+
+    @in_the_news = InTheNew
+                       .search_by_title(params[:in_the_new][:title])
+                       .search_by_author(params[:in_the_new][:author])
+                       .search_by_publisher(params[:in_the_new][:publisher])
+                       .search_by_article_date(params[:in_the_new][:article_date])
+                       .search_by_description(params[:in_the_new][:description])
+
+    @in_the_news = @in_the_news.page(params[:page]).per(params[:per_page])
+
+    render :index
   end
 
   private
