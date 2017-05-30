@@ -85,7 +85,11 @@ namespace :cms do
     end
   end
   resources :whats_news
-  resources :in_the_news
+  resources :in_the_news do
+    collection do
+      get :search
+    end
+  end
   resources :medium_publications do
     collection do
       post :trigger_medium_importer
