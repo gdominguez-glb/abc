@@ -5,7 +5,7 @@ class AdminNewLicensesForm
                 :payment_method_id, :payment_source_params, :admin_user, :sf_contact_id,
                 :salesforce_order_id, :salesforce_account_id, :amount, :products_quantity
 
-  #validates_presence_of :salesforce_order_id, :salesforce_account_id
+  validates_presence_of :salesforce_order_id, :salesforce_account_id
   validates_presence_of :user_id, if: -> { email.blank? }
   validates :email,
             format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i },
@@ -42,7 +42,7 @@ class AdminNewLicensesForm
 
     order.save
 
-    create_order_salesforce_reference(order) if self.salesforce_order_id.present?
+    create_order_salesforce_reference(order)
 
     process_order(order)
   end
