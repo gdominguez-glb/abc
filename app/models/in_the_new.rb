@@ -21,4 +21,8 @@ class InTheNew < ActiveRecord::Base
       created_at: created_at
     }
   end
+
+  def full_name
+    [author, publisher].reject(&:blank?).join(", ")
+  end
 end
