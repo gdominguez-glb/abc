@@ -30,7 +30,7 @@
           <div class="card-image" style="background-image: url('<%= in_the_new.image_url %>')"></div>
           <div class="card-media--content">
             <h4 class="card-title"><%= in_the_new.title %></h4>
-            <div class="card-meta"><%= in_the_new.full_name %> - <%= in_the_new.article_date %></div>
+            <div class="card-meta"><%= in_the_new.full_name %> - <%= in_the_new.article_date.strftime("%Y-%m-%d") %></div>
             <div class="card-text">
               <%= stronger_truncate_html(in_the_new.description, length: 150) %>
             </div>
