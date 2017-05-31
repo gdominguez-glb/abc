@@ -26,7 +26,7 @@ class PagesController < ApplicationController
   def in_the_news
     @in_the_news = InTheNew.latest
 
-    if params[:q].nil?
+    if params[:q].blank?
       @in_the_news = InTheNew.latest
     else
       @in_the_news = InTheNew.search(params[:q], order: {created_at: :desc}).results
