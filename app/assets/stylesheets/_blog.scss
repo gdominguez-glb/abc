@@ -2,13 +2,20 @@
   background-color: $navy;
   color: $white;
   opacity: 1;
-  border: none;
+  border: 1px solid $navy;
+  &:hover, &:focus {
+    background-color: $white;
+    color: $navy;
+    border: 1px solid $navy;
+  }
+
   &.subscribed {
     background-color: $gainsboro;
     color: $navy;
     cursor: auto;
+    border: 1px solid $gainsboro;
     &:hover, &:focus {
-      border: none;
+      border: 1px solid $gainsboro;
       background-color: $gainsboro;
       color: $navy;
     }
