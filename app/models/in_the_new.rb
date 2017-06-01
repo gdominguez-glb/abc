@@ -16,7 +16,7 @@ class InTheNew < ActiveRecord::Base
       title: title,
       author: author,
       publisher: publisher,
-      article_date: article_date,
+      article_date: article_date.strftime("%Y-%m-%d"),
       description: description,
       created_at: created_at
     }
