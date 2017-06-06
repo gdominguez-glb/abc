@@ -51,6 +51,7 @@
     <%= render 'google_fonts_inline' %>
     <%= csrf_meta_tags %>
     <meta name="google-site-verification" content="dK_DebvSLewL8S2FH_DIBQYgmNFK7tQOROn_eJHBjA0" />
+    <%= render 'facebook_pixel_code' if Rails.env.production? %>
   </head>
   <% cache [controller_name, @page] do %>
     <body class="<%= controller_name %> <%= 'with-subnav' if @sub_nav_items.present? %> <%= yield :body_class %> <%= (@page && !@page.blank_tiles?) ? 'has-tiles' : 'no-tiles' %>" data-page="<%= @page.group_name if @page.present? %>">
