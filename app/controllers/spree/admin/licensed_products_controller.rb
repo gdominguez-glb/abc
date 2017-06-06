@@ -62,6 +62,7 @@ module Spree
           :salesforce_account_id,
           :sf_contact_id,
           :enable_single_distribution,
+          :allow_fulfill_without_salesforce,
           :amount
         )
       end
