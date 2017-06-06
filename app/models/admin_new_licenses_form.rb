@@ -2,10 +2,11 @@ class AdminNewLicensesForm
   include ActiveModel::Model
 
   attr_accessor :user_id, :email, :product_ids, :fulfillment_at, :enable_single_distribution,
+                :allow_fulfill_without_salesforce,
                 :payment_method_id, :payment_source_params, :admin_user, :sf_contact_id,
                 :salesforce_order_id, :salesforce_account_id, :amount, :products_quantity
 
-  validates_presence_of :salesforce_order_id, :salesforce_account_id
+  validates_presence_of :salesforce_order_id, :salesforce_account_id, unless: :fulfill_without_salesforce?
   validates_presence_of :user_id, if: -> { email.blank? }
   validates :email,
             format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i },
@@ -22,6 +23,10 @@ class AdminNewLicensesForm
 
   def perform
     create_order
+  end
+
+  def fulfill_without_salesforce?
+    allow_fulfill_without_salesforce == "1"
   end
 
   def create_order
@@ -42,7 +47,7 @@ class AdminNewLicensesForm
 
     order.save
 
-    create_order_salesforce_reference(order)
+    create_order_salesforce_reference(order) unless fulfill_without_salesforce?
 
     process_order(order)
   end
