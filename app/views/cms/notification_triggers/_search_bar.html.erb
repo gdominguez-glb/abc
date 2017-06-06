@@ -6,6 +6,7 @@
           <div class="form-group">
             <%= f.label :target_type %>
             <%= f.select :target_type_eq, options_for_select(NotificationTrigger::TARGET_TYPES, f.object.target_type_eq), { include_blank: 'All' }, class: 'form-control', style: 'display: inline; width: 150px;' %>
+            <%= f.text_field :content_cont, class: 'form-control', placeholder: 'Search content', style: 'display: inline-block; width: 200px;' %>
             <%= submit_tag 'Search', class: 'btn btn-primary btn-block-xs margin-bottom--s--sm-min margin-right--reset' %>
           </div>
         <% end %>
