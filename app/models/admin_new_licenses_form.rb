@@ -11,7 +11,7 @@ class AdminNewLicensesForm
   validates :email,
             format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i },
             presence: true, if: -> { user_id.blank? }
-  validates_presence_of :products_quantity
+  validates_presence_of :products_quantity, :amount
 
   def products
     @products ||= Spree::Product.where(id: product_ids.split(','))
