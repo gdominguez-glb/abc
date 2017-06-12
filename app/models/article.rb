@@ -42,4 +42,12 @@ class Article < ActiveRecord::Base
         .where.not(id: self.id)
         .send(which)
   end
+
+  def public_url
+    if self.blog.blog_type == 'global'
+      Rails.application.routes.url_helpers.global_post_url(slug: self.blog.slug, id: self.slug, host: ENV['DOMAIN'])
+    else
+      Rails.application.routes.url_helpers.curriculum_post_url(page_slug: self.blog.page.slug, slug: self.blog.slug, id: self.slug, host: ENV['DOMAIN'])
+    end
+  end
 end

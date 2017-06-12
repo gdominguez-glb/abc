@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170612004900) do
+ActiveRecord::Schema.define(version: 20170612055457) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 20170612004900) do
     t.date     "publish_date"
     t.datetime "published_at"
     t.string   "created_by"
+    t.string   "mailchimp_campaign_id"
   end
 
   create_table "blogs", force: :cascade do |t|
@@ -74,7 +75,7 @@ ActiveRecord::Schema.define(version: 20170612004900) do
     t.integer  "jumbotron_background_file_size"
     t.datetime "jumbotron_background_updated_at"
     t.string   "mandrill_subscription_template_slug"
-    t.string   "mandrill_post_template_slug"
+    t.integer  "mailchimp_post_template_id"
     t.string   "mailchimp_list_id"
   end
 

@@ -21,4 +21,13 @@ class SubscriptionWorker
       MandrillSender.new.deliver_with_template(blog.mandrill_subscription_template_slug, user.email, "Subscribed to #{blog.title} successfully", { fname: user.first_name })
     end
   end
+
+  def self.unsubscribe(blog_id, user_id)
+    blog = Blog.find(blog_id)
+    user = Spree::User.find(user_id)
+
+    if blog.mailchimp_list_id.present?
+      Mailchimp.unsubscribe(blog.mailchimp_list_id, user.email)
+    end
+  end
 end
