@@ -1,0 +1,20 @@
+<div class="col-sm-10 col-sm-offset-1 margin-top--xxl margin-bottom--xl text-center">
+  <div class="row">
+    <div class="col-sm-11">
+      <picture>
+        <% img404 = 'https://s3-qa.greatminds.org/documents/attachments/000/000/029/original/gm_404_2x.png?1447939610' %>
+        <!--[if IE 9]><video style="display: none;"><![endif]-->
+        <source srcset="<%= img404.gsub /original/, 'large' %>" media="(min-width: 1081px)"></source>
+        <source srcset="<%= img404.gsub /original/, 'medium' %>" media="(min-width: 721px)"></source>
+        <source srcset="<%= img404.gsub /original/, 'small' %>" media="(min-width: 361px)"></source>
+        <!--[if IE 9]></video><![endif]-->
+        <img srcset="<%= img404.gsub /original/, 'thumb' %>" class="img-responsive">
+      </picture>
+    </div>
+  </div>
+  <p>
+    Sorry the page you're looking for doesn't exist<br />
+    <em class="small">Please click below to go back to the homepage</em>
+  </p>
+  <a href="/" class="btn btn-default">Homepage</a>
+</div>
