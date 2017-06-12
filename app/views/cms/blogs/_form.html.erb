@@ -65,6 +65,27 @@
         </div>
         <div class="col-sm-12">
           <div class="form-group">
+            <%= f.label "Mandrill Subscription template slug" %>
+            <%= f.text_field :mandrill_subscription_template_slug, class: 'form-control' %>
+            <p class="help-block">Email that send when user subscribe to this blog</p>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="form-group">
+            <%= f.label "Mandrill post template slug" %>
+            <%= f.text_field :mandrill_post_template_slug, class: 'form-control' %>
+            <p class="help-block">Email that send when there's new post published</p>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="form-group">
+            <%= f.label "Mailchimp List id" %>
+            <%= f.text_field :mailchimp_list_id, class: 'form-control' %>
+            <p class="help-block">Mailchimp List that manage the subscriptions members</p>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="form-group">
             <%= f.label "Header" %>
             <%= f.text_field :header, class: 'form-control' %>
           </div>
@@ -75,6 +96,7 @@
             <%= f.text_area :description, class: 'form-control rich-editor' %>
           </div>
         </div>
+
         <div class="col-sm-6">
           <div class="form-group">
             <div class="checkbox">

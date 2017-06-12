@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170530161801) do
+ActiveRecord::Schema.define(version: 20170612004900) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,12 +67,15 @@ ActiveRecord::Schema.define(version: 20170530161801) do
     t.string   "header"
     t.text     "description"
     t.integer  "page_id"
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.string   "jumbotron_background_file_name"
     t.string   "jumbotron_background_content_type"
     t.integer  "jumbotron_background_file_size"
     t.datetime "jumbotron_background_updated_at"
+    t.string   "mandrill_subscription_template_slug"
+    t.string   "mandrill_post_template_slug"
+    t.string   "mailchimp_list_id"
   end
 
   create_table "contact_topics", force: :cascade do |t|
