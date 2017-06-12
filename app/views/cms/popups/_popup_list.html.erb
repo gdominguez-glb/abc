@@ -1,0 +1,26 @@
+<div class="table-responsive">
+  <table class="table table-hover" style="width: 140%; max-width: 140%;">
+    <thead>
+      <tr>
+        <th colspan="2">Title</th>
+        <th>Slug</th>
+        <th>Starts at</th>
+        <th>Expires At</th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @popups.each do |popup| %>
+        <tr>
+          <td><%= popup.title %></td>
+          <td><%= link_to 'Edit', edit_cms_popup_path(popup), class: 'btn btn-default' %></td>
+          <td><%= popup.slug %></td>
+          <td><%= popup.starts_at %></td>
+          <td><%= popup.expires_at %></td>
+          <td><%= link_to 'Delete', cms_popup_path(popup), data: { method: :delete, confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<%= paginate @popups %>

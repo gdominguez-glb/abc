@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170530161801) do
+ActiveRecord::Schema.define(version: 20170612150246) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -531,6 +531,20 @@ ActiveRecord::Schema.define(version: 20170530161801) do
     t.text     "seo_data"
     t.string   "render",         default: ""
     t.text     "data"
+  end
+
+  create_table "popups", force: :cascade do |t|
+    t.string   "title"
+    t.text     "body"
+    t.string   "slug"
+    t.string   "button_link"
+    t.string   "button_text"
+    t.string   "text_color"
+    t.string   "background_color"
+    t.datetime "starts_at"
+    t.datetime "expires_at"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
   create_table "posts", force: :cascade do |t|

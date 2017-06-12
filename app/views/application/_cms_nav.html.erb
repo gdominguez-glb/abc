@@ -37,6 +37,7 @@
             <%= active_link_to "Recommendations", '/cms/recommendations', class: 'list-group-item' %>
             <%= (active_link_to "What's new?", '/cms/whats_news', class: 'list-group-item') if $flipper[:dashboard_redesign].enabled? %>
             <%= active_link_to "User Custom Fields", '/cms/custom_fields', class: 'list-group-item' if $flipper[:expanding_user_profiles].enabled? %>
+            <%= active_link_to "Popups", '/cms/popups', class: 'list-group-item' %>
           </ul>
         </div>
       </div>

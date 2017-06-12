@@ -166,4 +166,5 @@ namespace :cms do
       post :update_positions
     end
   end
+  resources :popups, except: [:show]
 end
