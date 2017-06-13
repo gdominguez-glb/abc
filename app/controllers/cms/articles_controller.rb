@@ -55,7 +55,7 @@ class Cms::ArticlesController < Cms::BaseController
 
   def publish
     @article.publish!
-    Mailchimp.delaye.create_campaign(@article.blog_id, @article.id) if @article.mailchimp_campaign_id.present?
+    Mailchimp.delaye.create_campaign(@article.blog_id, @article.id) if @article.mailchimp_campaign_id.blank?
     redirect_to cms_blog_articles_path(@blog), notice: 'Blog post published successfully'
   end
 
