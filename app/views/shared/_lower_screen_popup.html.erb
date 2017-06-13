@@ -1,11 +1,12 @@
-<div id="low_pop_up" class="block block-el-nag-block is-visible">
-  <a aria-label="Close" class="nag__dismiss" id="close_icon"><span aria-hidden="true"><i class="icon">X</i></span></a>
-  <div class="content-wrapper">
-    <div class="content">
-      <h2 style="text-align: center;">We are launching a new Grades K-5 ELA<br>curriculum in summer 2017!</h2>   </div>
+<% if @popup.present? %>
+  <div id="low_pop_up" class="block block-el-nag-block is-visible" style="background-color: <%= @popup.background_color %>">
+    <a aria-label="Close" class="nag__dismiss" id="close_icon"><span aria-hidden="true"><i class="icon">X</i></span></a>
+    <div class="content-wrapper">
+      <div class="content">
+        <h2 style="text-align: center; color: <%= @popup.text_color %>;"><%= stronger_truncate_html @popup.body %></h2>
+      </div>
+    </div>
   </div>
-</div>
-<%=content_for :javascripts do %>
   <script type="text/javascript">
     $(function() {
       $('#close_icon').click(function () {

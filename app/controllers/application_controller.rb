@@ -114,5 +114,12 @@ class ApplicationController < ActionController::Base
   def find_current_popup
     return if request.try(:path).nil?
     @popup = Popup.available.find_by(slug: request.try(:path))
+
+    if @popup.present?
+      session["popup_#{@popup.id}"] ||= 0
+      session["popup_#{@popup.id}"] += 1
+
+      @popup = nil if session["popup_#{@popup.id}"] >= 5
+    end
   end
 end
