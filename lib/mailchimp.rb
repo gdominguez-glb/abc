@@ -122,4 +122,54 @@ class Mailchimp
   def self.list_ids_by_subjects(subjects)
     subjects.map{|s| SUBJECT_LISTS[s] }.compact
   end
+
+  def self.create_campaign(blog_id, article_id)
+    blog = Blog.find(blog_id)
+    article = Article.find(article_id)
+
+    url = "#{API_ROOT}campaigns"
+    res = HTTParty.post(url,
+                        body: {
+                          type: 'regular',
+                          recipients: { list_id: blog.mailchimp_list_id },
+                          settings: { subject_line: "New post for #{blog.title}", from_name: 'GreatMinds', reply_to: 'info@greatminds.net' }
+                        }.to_json,
+                        basic_auth: auth,
+                        headers: { 'content-type' => 'application/json'}
+                       )
+    if res.success? && res.parsed_response['id'].present?
+      article.update(mailchimp_campaign_id: res.parsed_response['id'])
+      set_campaign_content(res.parsed_response['id'], article_id)
+    end
+  end
+
+
+  def self.set_campaign_content(campaign_id, article_id)
+    article = Article.find(article_id)
+    url = "#{API_ROOT}campaigns/#{campaign_id}/content"
+    res = HTTParty.put(url,
+                       body: {
+                         template: {
+                           id: article.blog.mailchimp_post_template_id,
+                           sections: {
+                             'gm_blog_title' => article.title,
+                             'gm_blog_link' => ActionController::Base.helpers.link_to(article.public_url, article.public_url)
+                           }
+                         }
+                        }.to_json,
+                        basic_auth: auth,
+                        headers: { 'content-type' => 'application/json'}
+                      )
+    if res.success?
+      send_campaign(campaign_id)
+    end
+  end
+
+  def self.send_campaign(campaign_id)
+    url = "#{API_ROOT}campaigns/#{campaign_id}/actions/send"
+    res = HTTParty.post(url,
+                        basic_auth: auth,
+                        headers: { 'content-type' => 'application/json'}
+                       )
+  end
 end
