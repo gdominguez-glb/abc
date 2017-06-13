@@ -10,7 +10,7 @@ class ContactForm
   attr_accessor :topic, :first_name, :last_name, :email, :phone, :role, :school_district_name, :school_district_type,
     :country, :state, :curriculum, :grade, :school_district_size, :title_1, :returning_customer, :tax_exempt, :tax_exempt_id, :desired_dates,
     :desired_training_topic, :desired_training_city, :items_purchased, :description, :school_district, :grade_bands, :training_groups_size, :interested_in_hosting_events,
-    :related_grade_module_unit_lession, :referral
+    :related_grade_module_unit_lession, :referral, :postal_code
 
   validates_length_of :first_name, :last_name, :phone, maximum: 40
 
@@ -102,7 +102,8 @@ class ContactForm
       'Title_1__c' => self.title_1,
       'Returning_Customer__c' => self.returning_customer,
       'Description' => self.description,
-      'LeadSource' => "Web-Sales"
+      'LeadSource' => "Web-Sales",
+      'PostalCode' => self.postal_code
     }
   end
 
