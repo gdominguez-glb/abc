@@ -34,14 +34,14 @@
           <div class="form-group">
             <label>Color Text</label>
             <%= f.text_field :text_color, class: 'form-control' %>
-            <p class="hint">i.e., "#FF000", "red", "rgba(33, 22, 81, 0.85)"</p>
+            <p class="hint">i.e., "#FF000", "red", "rgba(33, 22, 81, 0.85)", default: white</p>
           </div>
         </div>
         <div class="col-sm-6">
-          <div class="form-group">
-            <label>Background color</label>
-            <%= f.text_field :background_color, class: 'form-control' %>
-            <p class="hint">i.e., "#FF000", "red", "rgba(33, 22, 81, 0.85)"</p>
+          <label>Background color</label>
+          <div class="select-container" style="width: 100%">
+            <span>Background color</span>
+            <%= f.select :background_color, [["Math", "rgba(204, 255, 99, 0.85)"], ["English", "rgba(124, 199, 241, 0.85)"], ["History", "rgba(255, 140, 0, 0.85)"]], class: 'form-control' %>
           </div>
         </div>
         <div class="col-sm-6">

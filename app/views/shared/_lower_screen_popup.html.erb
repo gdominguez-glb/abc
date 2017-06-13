@@ -1,9 +1,9 @@
-<% if @popup.present? %>
-  <div id="low_pop_up" class="block block-el-nag-block is-visible" style="background-color: <%= @popup.background_color %>">
-    <a aria-label="Close" class="nag__dismiss" id="close_icon"><span aria-hidden="true"><i class="icon">X</i></span></a>
+<% if @popup_print.present? %>
+  <div id="low_pop_up" class="block block-el-nag-block is-visible" style="background-color: <%= @popup_print.background_color %>">
+    <a aria-label="Close" class="nag__dismiss" id="close_icon"><span aria-hidden="true"><i class="icon" style="color: <%= @popup_print.text_color %>;">X</i></span></a>
     <div class="content-wrapper">
       <div class="content">
-        <h2 style="text-align: center; color: <%= @popup.text_color %>;"><%= stronger_truncate_html @popup.body %></h2>
+        <h2 style="text-align: center; color: <%= @popup_print.text_color %>;"><%= @popup_print.body.html_safe %></h2>
       </div>
     </div>
   </div>
