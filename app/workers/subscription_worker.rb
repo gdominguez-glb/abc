@@ -18,7 +18,7 @@ class SubscriptionWorker
 
     # send email on the subscription through mandrill template
     if blog.mandrill_subscription_template_slug.present?
-      MandrillSender.new.deliver_with_template(blog.mandrill_subscription_template_slug, user.email, "Subscribed to #{blog.title} successfully", { fname: user.first_name })
+      MandrillSender.new.deliver_with_template(blog.mandrill_subscription_template_slug, user.email, "Subscribed to #{blog.title}", { fname: user.first_name })
     end
   end
 
