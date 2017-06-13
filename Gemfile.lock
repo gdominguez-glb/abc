@@ -409,6 +409,7 @@ GEM
     multi_json (1.11.0)
     multi_xml (0.5.5)
     multipart-post (1.2.0)
+    mysql2 (0.3.18)
     nenv (0.2.0)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
@@ -809,6 +810,7 @@ DEPENDENCIES
   mediaelement_rails
   meta-tags
   momentjs-rails (>= 2.9.0)
+  mysql2
   newrelic_rpm
   nkss-rails!
   open_uri_redirections
@@ -853,9 +855,3 @@ DEPENDENCIES
   wistia-api
   zeroclipboard-rails
   zip-zip
-
-RUBY VERSION
-   ruby 2.1.6p336
-
-BUNDLED WITH
-   1.13.6

@@ -57,7 +57,7 @@ RSpec.describe ContactForm do
 
   describe "#sales_attributes" do
     it "include specify sales attributes" do
-      expect(contact_form.sales_attributes.keys.sort).to eq(["Country", "Curriculum__c", "Description", "LeadSource", "Returning_Customer__c", "State", "Title_1__c"])
+      expect(contact_form.sales_attributes.keys.sort).to eq(["Country", "Curriculum__c", "Description", "LeadSource", "PostalCode", "Returning_Customer__c", "State", "Title_1__c"])
     end
   end
 

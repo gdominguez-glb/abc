@@ -72,6 +72,8 @@
       </div>
     </div>
 
+    <%= render 'shared/lower_screen_popup' %>
+
     <% cache :footer, expires_in: 2.hours do %>
       <%= render 'footer' %>
     <% end %>

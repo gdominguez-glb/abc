@@ -13,10 +13,6 @@ class Article < ActiveRecord::Base
   scope :sorted, -> { order('publish_date desc') }
   scope :search_by_text, ->(q) { where("title ilike ?", "%#{q}%") if q.present?  }
 
-  def send_subscription_notifications
-    SubscriptionWorker.perform_async(self.id)
-  end
-
   def next_article
     @next_article ||= related_article(:next)
   end
@@ -45,5 +41,13 @@ class Article < ActiveRecord::Base
         .where("publish_date #{duck} ?", self.publish_date)
         .where.not(id: self.id)
         .send(which)
+  end
+
+  def public_url
+    if self.blog.blog_type == 'global'
+      Rails.application.routes.url_helpers.global_post_url(slug: self.blog.slug, id: self.slug, host: ENV['DOMAIN'])
+    else
+      Rails.application.routes.url_helpers.curriculum_post_url(page_slug: self.blog.page.slug, slug: self.blog.slug, id: self.slug, host: ENV['DOMAIN'])
+    end
   end
 end

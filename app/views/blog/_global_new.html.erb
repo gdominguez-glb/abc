@@ -6,7 +6,7 @@
     <% if current_spree_user && current_spree_user.subscribe?(@blog) %>
       <span class="btn btn-primary blog-subscribe-btn subscribed pull-right">Subscribed</span>
     <% else %>
-      <%= link_to 'Subscribe', subscribe_blog_path(@blog), class: 'btn btn-primary blog-subscribe-btn pull-right', data: { method: :post }  %>
+      <%= link_to 'Subscribe', subscribe_blog_path(@blog), class: 'btn btn-primary blog-subscribe-btn pull-right', data: { method: :post } if @blog.mailchimp_list_id.present?  %>
     <% end %>
   </div>
 </div>
