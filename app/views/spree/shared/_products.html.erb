@@ -15,6 +15,9 @@
 
     <% if $flipper[:store_redesign].enabled? %>
       <div id="products" data-hook class="col-sm-8 col-md-offset-1 margin-bottom--xl">
+        <% if paginated_products.respond_to?(:num_pages) %>
+          <%= paginate paginated_products, theme: 'twitter-bootstrap-3' %>
+        <% end %>
         <%= show_store_welcome_message %>
         <% if products.any? %>
           <% products.in_groups_of(2, false).each do |group| %>
