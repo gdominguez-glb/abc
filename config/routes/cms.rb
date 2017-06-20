@@ -98,7 +98,11 @@ namespace :cms do
     end
   end
   resources :blogs do
-    resources :subscribers, only: [:index]
+    resources :subscribers, only: [:index] do
+      collection do
+        get :export
+      end
+    end
     resources :articles do
       collection do
         get :published

@@ -56,6 +56,7 @@
     </div>
     <%= paginate @users %>
 
-  </div>
 
+  </div>
+  <%= link_to 'Export Subscribers', export_cms_blog_subscribers_path(@blog, format: 'xlsx'), class: 'btn btn-primary' %>
 </div>
