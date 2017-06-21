@@ -107,6 +107,25 @@
           }
         });
       }
+
+      var trumboEditor = $('.trumbowyg-editor');
+      var remainingEl = $('#remaining');
+      var total = 380;
+
+      var calculateCharacters = function() {
+        var count = total - trumboEditor.text().length;
+        remainingEl.html(count);
+
+        if (count < 0) {
+          remainingEl.html(0);
+        }
+      };
+
+      calculateCharacters();
+
+      trumboEditor.on('change keypress keydown keyup', function() {
+        calculateCharacters();
+      });
     });
   <% end %>
 <% end %>
