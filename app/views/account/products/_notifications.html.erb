@@ -3,6 +3,6 @@
     <%= link_to read_account_notification_path(notification), class: 'close', remote: true, data: { method: :post } do %>
       <span aria-hidden="true">CLOSE</span>
     <% end %>
-    <%= stronger_truncate_html(raw notification.content) %>
+    <%= stronger_truncate_html((raw notification.content), length: 380) %>
   </div>
 <% end %>
