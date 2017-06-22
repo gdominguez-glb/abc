@@ -58,5 +58,5 @@
 
 
   </div>
-  <%= link_to 'Export Subscribers', export_cms_blog_subscribers_path(@blog, format: 'xlsx'), class: 'btn btn-primary' %>
+  <%= link_to 'Export Subscribers', export_cms_blog_subscribers_path(@blog, q: params[:q], format: 'xlsx'), class: 'btn btn-primary' %>
 </div>

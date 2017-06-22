@@ -7,7 +7,7 @@ class Cms::SubscribersController < Cms::BaseController
   end
 
   def export
-    @users = @blog.users
+    @users = @blog.users.search(params[:q]).result
     respond_to do |format|
       format.xlsx {}
     end
