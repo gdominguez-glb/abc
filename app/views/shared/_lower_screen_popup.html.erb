@@ -1,0 +1,21 @@
+<% if @popup_print.present? %>
+  <div id="low_pop_up" class="block block-el-nag-block is-visible" style="background-color: <%= @popup_print.background_color %>">
+    <a aria-label="Close" class="nag__dismiss" id="close_icon"><span aria-hidden="true"><i class="icon" style="color: <%= @popup_print.text_color %>;">X</i></span></a>
+    <div class="content-wrapper">
+      <div class="content">
+        <h2 style="text-align: center; color: <%= @popup_print.text_color %>;"><%= @popup_print.body.html_safe %></h2>
+        <div class="content-footer text-center">
+          <a href="<%= @popup_print.button_link %>" type="button" class="btn btn-primary btn-transparent"><%= @popup_print.button_text %></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    $(function() {
+      $('#close_icon').click(function () {
+        $('#low_pop_up').removeClass('is-visible');
+      });
+    });
+  </script>
+<% end %>

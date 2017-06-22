@@ -123,6 +123,13 @@
               </div>
             </div>
 
+            <div class="col-sm-6 dependent-field hidden" data-name="PostalCode">
+              <div class="form-group">
+                <label>Zip Code</label>
+                <%= f.text_field :postal_code, size: 20, class: 'form-control', maxlength: 80, placeholder: 'Zip Code' %>
+              </div>
+            </div>
+
             <div class="col-sm-6 dependent-field hidden" data-name="Curriculum">
               <label>Curriculum</label>
               <div class="select-container dark-select block">
@@ -367,6 +374,7 @@
         "Curriculum",
         "Format",
         "Country",
+        "PostalCode",
         "Curriculum",
         "Grade",
         "School or District Size",
@@ -387,6 +395,7 @@
           { name: 'Title 1' },
           { name: 'Returning Customer' },
           { name: 'Description' },
+          { name: 'PostalCode' },
         ],
         'Existing Order Support': [
           { name: 'Country' },

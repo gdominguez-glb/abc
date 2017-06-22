@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170515164112) do
+ActiveRecord::Schema.define(version: 20170612150246) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 20170515164112) do
     t.date     "publish_date"
     t.datetime "published_at"
     t.string   "created_by"
+    t.string   "mailchimp_campaign_id"
   end
 
   create_table "blogs", force: :cascade do |t|
@@ -67,12 +68,15 @@ ActiveRecord::Schema.define(version: 20170515164112) do
     t.string   "header"
     t.text     "description"
     t.integer  "page_id"
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.string   "jumbotron_background_file_name"
     t.string   "jumbotron_background_content_type"
     t.integer  "jumbotron_background_file_size"
     t.datetime "jumbotron_background_updated_at"
+    t.string   "mandrill_subscription_template_slug"
+    t.integer  "mailchimp_post_template_id"
+    t.string   "mailchimp_list_id"
   end
 
   create_table "contact_topics", force: :cascade do |t|
@@ -325,6 +329,21 @@ ActiveRecord::Schema.define(version: 20170515164112) do
     t.datetime "updated_at",                 null: false
   end
 
+  create_table "in_the_news", force: :cascade do |t|
+    t.string   "call_to_action_button_link"
+    t.string   "call_to_action_button_target"
+    t.string   "call_to_action_button_text"
+    t.string   "title"
+    t.string   "author"
+    t.string   "publisher"
+    t.string   "slug"
+    t.string   "image_url"
+    t.datetime "article_date"
+    t.string   "description"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
   create_table "jobs", force: :cascade do |t|
     t.string   "title"
     t.text     "content"
@@ -514,6 +533,22 @@ ActiveRecord::Schema.define(version: 20170515164112) do
     t.boolean  "archived",       default: false
     t.datetime "archived_at"
     t.text     "seo_data"
+    t.string   "render",         default: ""
+    t.text     "data"
+  end
+
+  create_table "popups", force: :cascade do |t|
+    t.string   "title"
+    t.text     "body"
+    t.string   "slug"
+    t.string   "button_link"
+    t.string   "button_text"
+    t.string   "text_color"
+    t.string   "background_color"
+    t.datetime "starts_at"
+    t.datetime "expires_at"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
   create_table "posts", force: :cascade do |t|
@@ -2001,6 +2036,21 @@ ActiveRecord::Schema.define(version: 20170515164112) do
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
     t.integer  "staff_type",           default: 0
+  end
+
+  create_table "subscription_notifications", force: :cascade do |t|
+    t.integer  "subscription_id"
+    t.integer  "article_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  create_table "subscriptions", force: :cascade do |t|
+    t.integer  "blog_id"
+    t.integer  "user_id"
+    t.integer  "subscribe_status"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
   create_table "taggings", force: :cascade do |t|

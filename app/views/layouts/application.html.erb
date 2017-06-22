@@ -72,14 +72,15 @@
       </div>
     </div>
 
+
     <% cache :footer, expires_in: 2.hours do %>
       <%= render 'footer' %>
     <% end %>
-
     <div class="overlay"></div>
     <%= javascript_include_tag 'application' %>
     <%= javascript_include_tag 'frontend' %>
     <%= yield :javascripts %>
     <%= render 'jira_ticket' %>
+    <%= render 'shared/lower_screen_popup' %>
   </body>
 </html>

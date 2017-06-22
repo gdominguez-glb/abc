@@ -1,0 +1,49 @@
+.block-el-nag-block {
+  background-color: rgba(33,22,81,0.95);
+  bottom: -500px;
+  left: 0;
+  color: #fff;
+  padding-bottom: 30px;
+  position: fixed;
+  transition: bottom 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0s;
+  right: 0;
+  z-index: 9999;
+  width: auto;
+  margin: 0 auto;
+
+  @media screen and (min-width: 1440px) {
+    width: 1440px;
+  }
+
+  &.is-visible {
+    bottom: -30px;
+
+    .icon {
+      font-family: "EL Icon", arial;
+      font-weight: normal;
+      font-style: normal;
+      vertical-align: middle;
+    }
+
+    .content-wrapper {
+      overflow: hidden;
+
+      .content {
+        padding: 20px;
+        width: 100%;
+      }
+    }
+  }
+
+  .nag__dismiss{
+    color: #fff;
+    cursor: pointer;
+    font-size: 20px;
+    line-height: 1;
+    opacity: .8;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    z-index: 1;
+  }
+}

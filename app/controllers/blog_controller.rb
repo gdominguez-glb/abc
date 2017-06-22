@@ -1,4 +1,5 @@
 class BlogController < ApplicationController
+  before_action :authenticate_user!, only: [:subscribe]
   before_action :load_curriculum_nav_info, only: [:curriculum, :curriculum_post]
   before_action :load_global_publications, only: [:global, :global_post]
   before_action :load_curriculum_publications, only: [:curriculum, :curriculum_post]
@@ -52,6 +53,18 @@ class BlogController < ApplicationController
     else
       find_post
     end
+  end
+
+  def subscribe
+    @blog = Blog.find(params[:id])
+    current_spree_user.subscribe!(@blog)
+    redirect_to :back, notice: "Thank you for subscribing to #{@blog.title}. Whenever a new blog post is published you will receive an email notifying you. If you wish to unsubscribe, go to your settings and click \"Unsuscribe\" in the Blog Subscription section."
+  end
+
+  def unsubscribe
+    @blog = Blog.find(params[:id])
+    current_spree_user.unsubscribe!(@blog)
+    redirect_to :back, notice: "Successfully unsubscribe #{@blog.title}!"
   end
 
   private

@@ -1,0 +1,42 @@
+<div class="row">
+  <div class="jumbotron jumbotron-background" style="background-image: url('<%= @page.data.try(:[], :jumbotron_image) %>">
+    <div class="row">
+      <div class="col-sm-11 col-sm-offset-1">
+          <h1 class="jumbotron-title"><%= @page.title %></h1>
+        </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-1">
+        <p><%= @page.data.try(:[], :short_description) %></p>
+      </div>
+      <div class="col-sm-3">
+        <%= form_tag '', method: :get do %>
+          <div class="input-group input-group-transparent margin-bottom--reset">
+            <%= text_field_tag :q, params[:q], class: 'form-control input-group-transparent-input', id: 'transparentInputGroup1' %>
+            <span class="input-group-btn input-group-transparent-btn">
+              <button type="submit" class="btn btn-default btn-transparent input-group-transparent-btn"><i class="mi">search</i></button>
+            </span>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-10 col-sm-offset-1 margin-top--xl margin-bottom--xl">
+    <div class="posts flex">
+      <% @in_the_news.each do |in_the_new| %>
+        <a href="<%= in_the_new.call_to_action_button_link %>" class="card card-flex card-media card--no-border card-link">
+          <div class="card-image" style="background-image: url('<%= in_the_new.image_url %>')"></div>
+          <div class="card-media--content">
+            <h4 class="card-title"><%= in_the_new.title %></h4>
+            <div class="card-meta"><%= in_the_new.full_name %> - <%= in_the_new.article_date.strftime("%Y-%m-%d") %></div>
+            <div class="card-text">
+              <%= stronger_truncate_html(in_the_new.description, length: 150, remove_link: true) %>
+            </div>
+          </div>
+        </a>
+      <% end %>
+    </div>
+  </div>
+</div>

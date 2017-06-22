@@ -8,8 +8,9 @@ class ApplicationController < ActionController::Base
   before_action :accepted_terms
   skip_before_action :accepted_terms, only: [:logout]
 
-
   before_action :track_campaign
+
+  before_action :find_current_popup
 
   if Rails.env.qa? || Rails.env.staging? || Rails.env.production?
     def default_url_options(options={})
@@ -107,6 +108,18 @@ class ApplicationController < ActionController::Base
   def track_campaign
     if params[:utm_campaign].present? && params[:utm_content].present?
       session[:utm] = "#{params[:utm_campaign]},#{params[:utm_content]}"
+    end
+  end
+
+  def find_current_popup
+    return if request.try(:path).nil?
+    @popup_print = Popup.available.find_by(slug: request.try(:path))
+
+    if @popup_print.present?
+      session["popup_#{@popup_print.id}"] ||= 0
+      session["popup_#{@popup_print.id}"] += 1
+
+      @popup_print = nil if session["popup_#{@popup_print.id}"] >= 5
     end
   end
 end

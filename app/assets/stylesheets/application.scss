@@ -77,7 +77,8 @@
 'components/tables',
 'components/thumbnails',
 'components/wells',
-'components/popovers';
+'components/popovers',
+'components/lower_screen_popup';
 
 // -------------------------------------
 //   Page-specific (todo: remove)
@@ -87,6 +88,7 @@
 '404-page',
 'account',
 'license-mgmt',
+'blog',
 'blog-pagination',
 'blog-articles',
 'vendor/mediaelement_import',

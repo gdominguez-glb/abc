@@ -1,0 +1,7 @@
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "Subscribers_#{@blog.title}") do |sheet|
+  sheet.add_row ['Email', 'Name', 'User Type', 'Interested Curriculums']
+  @users.each do |user|
+    sheet.add_row [user.email, user.full_name, user.title, user.interested_curriculums.join(',')]
+  end
+end

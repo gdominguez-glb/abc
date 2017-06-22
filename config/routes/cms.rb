@@ -85,12 +85,24 @@ namespace :cms do
     end
   end
   resources :whats_news
+  resources :in_the_news do
+    collection do
+      get :edit_page
+      post :save_page
+      get :search
+    end
+  end
   resources :medium_publications do
     collection do
       post :trigger_medium_importer
     end
   end
   resources :blogs do
+    resources :subscribers, only: [:index] do
+      collection do
+        get :export
+      end
+    end
     resources :articles do
       collection do
         get :published
@@ -158,4 +170,5 @@ namespace :cms do
       post :update_positions
     end
   end
+  resources :popups, except: [:show]
 end
