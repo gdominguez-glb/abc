@@ -12,17 +12,17 @@
             <div id="product-images" class="product-images" data-hook="product_images">
               <div id="main-image" class="panel panel-default" data-hook>
                 <div class="panel-body text-center">
-                  <%= render :partial => 'image', locals: { image: @product.images.first } %>
+                  <%= render :partial => 'spree/products/image', locals: { image: @product.images.first } %>
                 </div>
               </div>
             </div>
 
             <div data-hook="product_properties">
-              <%= render :partial => 'properties' %>
+              <%= render :partial => 'spree/products/properties' %>
             </div>
 
             <div data-hook="promotions">
-              <%= render :partial => 'promotions' %>
+              <%= render :partial => 'spree/products/promotions' %>
             </div>
           </div>
         </div>
@@ -83,7 +83,7 @@
                 </div>
               <% else %>
                 <div id="cart-form" data-hook="cart_form">
-                  <%= render :partial => 'cart_form' %>
+                  <%= render :partial => 'spree/products/cart_form' %>
                 </div>
               <% end %>
             </div>
@@ -105,17 +105,17 @@
             <div id="product-images" class="product-images" data-hook="product_images">
               <div id="main-image" class="panel panel-default" data-hook>
                 <div class="panel-body text-center">
-                  <%= render :partial => 'image', locals: { image: @product.images.first } %>
+                  <%= render :partial => 'spree/products/image', locals: { image: @product.images.first } %>
                 </div>
               </div>
             </div>
 
             <div data-hook="product_properties">
-              <%= render :partial => 'properties' %>
+              <%= render :partial => 'spree/products/properties' %>
             </div>
 
             <div data-hook="promotions">
-              <%= render :partial => 'promotions' %>
+              <%= render :partial => 'spree/products/promotions' %>
             </div>
           </div>
         </div>
