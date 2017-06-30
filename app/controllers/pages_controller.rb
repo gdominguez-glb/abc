@@ -7,9 +7,9 @@ class PagesController < ApplicationController
     redirect_to not_found_path and return if @page.nil?
     send(@page.render) and return if @page.render.present?
 
-    @page_title    = @page.title
+    @page_title = @page.title
     @seo_title = @page.seo_data.try(:[], :title)
-    @group_page    = cache [@page, :group_page], expires_in: 2.hours do
+    @group_page = cache [@page, :group_page], expires_in: 2.hours do
       Page.find_by(group_name: @page.group_name, group_root: true)
     end
     @sub_nav_items = cache [@page, :sub_nav_items], expires_in: 2.hours do
@@ -38,5 +38,4 @@ class PagesController < ApplicationController
   def not_found
     render status: 404
   end
-
 end

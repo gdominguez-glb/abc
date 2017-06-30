@@ -28,11 +28,6 @@
       <h6 class="section-lead footer-title"><span class="footer-title-no-link">Connect</span></h6>
       <ul>
         <li>
-          <a href="https://www.facebook.com/GreatMindsNonProfit/" class="footer-link" target="_blank">
-            <%= material_icon.share.css_class('footer-social-icon') %> Facebook
-          </a>
-        </li>
-        <li>
           <a href="/contact" class="footer-link">
             <%= material_icon.person.css_class('footer-social-icon') %> Contact
           </a>
@@ -44,6 +39,20 @@
         </li>
       </ul>
     </div>
+    <% if (footer_social_links = build_footer_social_links(@group_page)).present? %>
+      <div class="col-sm-2 footer-section">
+        <h6 class="section-lead footer-title"><span class="footer-title-no-link">Social Media</span></h6>
+        <ul>
+          <% footer_social_links.each do |social| %>
+            <li>
+              <a class="footer-link" href="<%= social[:link] %>">
+                <%= social[:title] %>
+              </a>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
   </div>
 
   <div class="row">
