@@ -1,0 +1,1 @@
+FOOTER_SOCIAL_MEDIA = YAML.load_file(Rails.root.join('config/footer_social_media.yml'))
