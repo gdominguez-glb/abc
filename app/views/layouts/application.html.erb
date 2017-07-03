@@ -73,9 +73,7 @@
     </div>
 
 
-    <% cache :footer, expires_in: 2.hours do %>
-      <%= render 'footer' %>
-    <% end %>
+    <%= render 'footer' %>
     <div class="overlay"></div>
     <%= javascript_include_tag 'application' %>
     <%= javascript_include_tag 'frontend' %>
