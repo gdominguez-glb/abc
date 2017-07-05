@@ -89,18 +89,21 @@ class EventsController < ApplicationController
   def filter_events
     return if params[:grade_bands].blank? && params[:curriculums].blank?
 
-    @events = @events.where(construct_filter_conds('grade_bands')) if params[:grade_bands].present?
-    @events = @events.where(construct_filter_conds('curriculums')) if params[:curriculums].present?
+    @events = construct_filter_relation(@events, 'grade_bands') if params[:grade_bands].present?
+    @events = construct_filter_relation(@events, 'curriculums') if params[:curriculums].present?
   end
 
-  def construct_filter_conds(filter_name)
+  def construct_filter_relation(relation, filter_name)
     if params[filter_name].is_a?(Hash)
       params[filter_name] = params[filter_name].values
     end
     conds = []
     params[filter_name].each do |name|
-      conds << "(#{filter_name}  LIKE '%#{name}%')"
+      conds << "(#{filter_name}  LIKE ?)"
     end
-    conds.join(' or ')
+    if conds.count > 0
+      relation = relation.where(conds.join(' or '), *(params[filter_name].map{|n| "%#{n}%"}))
+    end
+    relation
   end
 end
