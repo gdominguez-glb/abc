@@ -26,7 +26,7 @@
         </div>
 
         <div class="col-sm-8 col-md-offset-1 margin-bottom--xl">
-
+          <%= paginate @videos, theme: 'twitter-bootstrap-3' %>
           <% cache [:teach_eureka_viewing_guide, params[:taxon_ids].join('_')], expires_in: 2.hours do %>
             <% if teach_eureka_selected? && document = Document.find_by(attachment_file_name: "teach_eureka-viewing_guide.pdf") %>
               <p>
