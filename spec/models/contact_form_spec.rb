@@ -45,7 +45,7 @@ RSpec.describe ContactForm do
 
   describe "#case_common_attributes" do
     it "include specify common attributes for cases" do
-      expect(contact_form.case_common_attributes.keys.sort).to eq(["Curriculum__c", "Email__c", "First_Name__c", "General_Details__c", "General__c", "Last_Name__c", "Phone__c", "Role__c", "School_District_Name__c", "School_District__c"])
+      expect(contact_form.case_common_attributes.keys.sort).to eq(["ContactId", "Curriculum__c", "Email__c", "First_Name__c", "General_Details__c", "General__c", "Last_Name__c", "Phone__c", "Role__c", "School_District_Name__c", "School_District__c"])
     end
   end
 
