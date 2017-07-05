@@ -1,24 +1,20 @@
 math:
   - :link: https://www.facebook.com/eurekamathofficial/
-    :icon: facebook-square
     :title: Facebook
   - :link: https://twitter.com/eureka_math
-    :icon: twitter-square
     :title: Twitter
   - :link: https://www.pinterest.com/eurekamath0130/
-    :icon: pinterest-square
     :title: Pinterest
 english:
   - :link: https://www.facebook.com/witwisdomenglish/
-    :icon: facebook-square
     :title: Facebook
   - :link: https://twitter.com/WitWisdomELA
-    :icon: twitter-square
     :title: Twitter
 history:
+  - :link: https://twitter.com/Alexandria_Plan
+    :title: Twitter
+default:
   - :link: https://www.facebook.com/GreatMindsNonProfit/
-    :icon: facebook-square
     :title: Facebook
   - :link: https://twitter.com/GreatMindsEd
-    :icon: twitter-square
     :title: Twitter
