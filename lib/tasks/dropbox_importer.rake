@@ -1,6 +1,8 @@
 require 'dropbox_api'
 
 namespace :dropbox_importer do
+
+  # how to use this task: https://www.dropbox.com/s/8s5mvml7rw5f6h1/dropbox_tour.mov?dl=0
   desc "Import pdf/materials from dropbox folder"
   task import: :environment do
     CLIENT_ID = 'xb7ktq1kva7srmw'
@@ -32,6 +34,11 @@ namespace :dropbox_importer do
       file.close
 
       product = Spree::Product.find_by(name: entry.name.gsub('.zip', ''))
+
+      if ENV['check'].present?
+        puts "#{entry.name.gsub('.zip', '')} Not found in products." if product.nil?
+        next
+      end
 
       next if product.nil?
 
