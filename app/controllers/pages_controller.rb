@@ -24,12 +24,12 @@ class PagesController < ApplicationController
   end
 
   def in_the_news
-    @in_the_news = InTheNew.latest
+    @in_the_news = InTheNew.latest_by_article_date
 
     if params[:q].blank?
-      @in_the_news = InTheNew.latest
+      @in_the_news = InTheNew.latest_by_article_date
     else
-      @in_the_news = InTheNew.search(params[:q], order: {created_at: :desc}).results
+      @in_the_news = InTheNew.search(params[:q], order: {article_date: :desc}).results
     end
 
     render :in_the_news
