@@ -61,6 +61,7 @@
           <th class="text-center">
             <%= sort_link @search, :master_default_price_amount, Spree.t(:master_price), {}, {title: 'admin_products_listing_price_title'} %>
           </th>
+          <th>Active</th>
           <th data-hook="admin_products_index_header_actions" class="actions"></th>
         </tr>
       </thead>
@@ -72,6 +73,7 @@
               <td><%= link_to product.name, edit_admin_product_path(product) %></td>
               <td><%= link_to product.internal_name, edit_admin_product_path(product) %></td>
               <td class="text-center"><%= product.display_price.to_html rescue '' %></td>
+              <td class="active-circle text-center"><%= product.is_in_store? ? content_tag(:span) : '' %></td>
               <td class="actions actions-3 text-right" data-hook="admin_products_index_row_actions">
                 <%= link_to_edit product, no_text: true, class: 'edit' if can?(:edit, product) && !product.deleted? %>
                 <%= link_to_clone product, no_text: true, class: 'clone' if can?(:clone, product) %>
