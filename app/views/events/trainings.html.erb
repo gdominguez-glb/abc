@@ -19,10 +19,10 @@
         <div class="panel panel-default panel-collapsible" id="event-<%= event_training.title_to_slug %>">
           <div class="panel-heading">
             <h4 class="panel-title">
-              <a data-toggle="collapse" href="#collapse<%= event_training.title_to_slug %>"><%= event_training.title %></a>
+              <a class="serif" data-toggle="collapse" href="#collapse<%= event_training.title_to_slug %>"><%= event_training.title %></a>
             </h4>
           </div>
-          <div id="collapse<%= event_training.title_to_slug %>" class="panel-collapse collapse padding-top padding-left padding-right">
+          <div id="collapse<%= event_training.title_to_slug %>" class="panel-collapse panel-collapse--serif collapse padding-top padding-left padding-right">
             <p>
                <%= event_training.content.html_safe rescue nil %>
             </p>
