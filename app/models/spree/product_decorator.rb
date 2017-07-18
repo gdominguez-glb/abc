@@ -292,6 +292,7 @@ Spree::Product.class_eval do
   def single_in_store?
     return self.show_in_storefront &&
       self.available_on.present? && self.available_on <= Time.now &&
+      !self.expired? &&
       self.deleted_at.nil?
   end
 end
