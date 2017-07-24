@@ -75,6 +75,17 @@
         var target = $(this).val();
         $('.target-input').addClass('hidden');
         $("[data-input*='"+ target +"']").removeClass('hidden');
+
+        if (target === "product_expiration") {
+          $('#notification_trigger_notify_at').parent().parent().addClass('hide');
+          $('#notification_trigger_expire_at').parent().parent().addClass('hide');
+          $('.content-box-w').addClass('hide');
+
+        } else {
+          $('#notification_trigger_notify_at').parent().parent().removeClass('hide');
+          $('#notification_trigger_expire_at').parent().parent().removeClass('hide');
+          $('.content-box-w').removeClass('hide');
+        }
       });
       $('#notification_trigger_target_type').trigger('change');
 
