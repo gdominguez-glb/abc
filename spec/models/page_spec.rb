@@ -210,25 +210,4 @@ RSpec.describe Page, type: :model do
       expect(page.visible).to be_falsey
     end
   end
-
-  describe "#callbacks" do
-    describe "after_create" do
-      context '#append_curriculum_to_slug' do
-        it 'should append my-name to the curricum slug' do
-          page_c = create(:page, curriculum: create(:curriculum, name: "my-name"), slug: "some-random")
-          expect(page_c.slug).to eq('my-name/some-random')
-        end
-
-        it 'should not append if curriculum name is the same that slug' do
-          page_c = create(:page, curriculum: create(:curriculum, name: "my-name"), slug: "my-name")
-          expect(page_c.slug).to eq('my-name')
-        end
-
-        it 'should not append if curriculum name is already appended to slug' do
-          page_c = create(:page, curriculum: create(:curriculum, name: "my-name"), slug: "my-name/some-random")
-          expect(page_c.slug).to eq('my-name/some-random')
-        end
-      end
-    end
-  end
 end
