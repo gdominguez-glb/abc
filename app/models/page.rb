@@ -56,7 +56,6 @@ class Page < ActiveRecord::Base
 
 
   before_save :lowercase_group_name
-  before_save :append_curriculum_to_slug
   #before_save :generate_page_from_tiles
 
   TILES = YAML.load_file(Rails.root.join('config/tiles.yml'))
@@ -118,10 +117,5 @@ class Page < ActiveRecord::Base
 
   def lowercase_group_name
     self.group_name = self.group_name.strip.downcase if self.group_name.present?
-  end
-
-  def append_curriculum_to_slug
-    return if curriculum.nil? || curriculum.name.downcase == slug || slug.starts_with?("#{curriculum.name.downcase}/")
-    self.slug = "#{curriculum.name.downcase}/#{slug}"
   end
 end
