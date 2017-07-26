@@ -8,7 +8,7 @@ Spree::CheckoutController.class_eval do
     @order.products.each{ |product| spree_current_user.update_log_activity_product(product) } unless @order.products.nil?
 
     if @order.all_digitals? && @order.license_admin_email.blank?
-      flash.notice = "You now have access to these products!"
+      add_notices(@order)
     end
     if @order.free?
       @order.single_purchase? ? main_app.account_products_path : main_app.account_root_path
@@ -40,5 +40,13 @@ Spree::CheckoutController.class_eval do
 
   def require_adoption_pricing_state?(state_name)
     ['Louisiana', 'Tennessee'].include?(state_name)
+  end
+
+  def add_notices(order)
+    flash["notice"] = ["You now have access to these products!"]
+
+    order.products.each do |product|
+      flash["notice"] << "Your #{product.name} will expire on #{product.expiration_date.strftime("%Y-%m-%d")}" if product.expiration_date.present?
+    end if order.products.present? # i don't know if this conditional it's necessary
   end
 end

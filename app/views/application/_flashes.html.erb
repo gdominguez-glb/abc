@@ -1,6 +1,11 @@
 <% flash.each do |key, value| %>
   <% next if key.to_s == 'order_completed' %>
-  <div class="flash alert alert-dismissible alert-<%= key %>"><%= value %>
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  </div>
+  <% value = value.is_a?(String) ? [value] : value %>
+
+  <% value.each do |v| %>
+    <div class="flash alert alert-dismissible alert-<%= key %>" style="position: relative;">
+      <%= v %>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    </div>
+  <% end %>
 <% end %>
