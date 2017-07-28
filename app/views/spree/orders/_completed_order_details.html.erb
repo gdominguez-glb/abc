@@ -47,7 +47,7 @@
 
   <thead data-hook>
     <tr class="active" data-hook="order_details_line_items_headers">
-      <th colspan="2"><%= Spree.t(:item) %></th>
+      <th colspan="3"><%= Spree.t(:item) %></th>
       <th class="price"><%= Spree.t(:price) %></th>
       <th class="qty"><%= Spree.t(:qty) %></th>
       <th class="total"><span><%= Spree.t(:total) %></span></th>
@@ -69,6 +69,11 @@
           <%= truncated_product_description(item.variant.product) %>
           <%= "(" + item.variant.options_text + ")" unless item.variant.option_values.empty? %>
         </td>
+        <% if item.expiration_date.exists? %>
+          <td class="alert alert-table">Expires <% item.expiration_date.strftime("%Y-%m-%d") %></td>
+        <% else %>
+          <td></td>
+        <%end %>
         <td data-hook="order_item_price" class="lead text-primary price"><span><%= item.single_money.to_html %></span></td>
         <td data-hook="order_item_qty" class="order-qty"><%= item.quantity %></td>
         <td data-hook="order_item_total" class="lead text-primary total"><span><%= item.display_amount.to_html %></span></td>
