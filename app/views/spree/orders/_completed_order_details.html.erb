@@ -69,11 +69,11 @@
           <%= truncated_product_description(item.variant.product) %>
           <%= "(" + item.variant.options_text + ")" unless item.variant.option_values.empty? %>
         </td>
-        <% if item.expiration_date.exists? %>
-          <td class="alert alert-table">Expires <% item.expiration_date.strftime("%Y-%m-%d") %></td>
+        <% if item.variant.product.expiration_date.present? %>
+          <td class="alert alert-table">Expires <%= item.variant.product.expiration_date.strftime("%Y-%m-%d") %></td>
         <% else %>
           <td></td>
-        <%end %>
+        <% end %>
         <td data-hook="order_item_price" class="lead text-primary price"><span><%= item.single_money.to_html %></span></td>
         <td data-hook="order_item_qty" class="order-qty"><%= item.quantity %></td>
         <td data-hook="order_item_total" class="lead text-primary total"><span><%= item.display_amount.to_html %></span></td>
