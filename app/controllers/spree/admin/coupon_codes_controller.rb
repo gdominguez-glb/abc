@@ -1,17 +1,27 @@
 class Spree::Admin::CouponCodesController < Spree::Admin::ResourceController
   before_action :process_schools_xls, only: [:create]
+  before_action :set_payment_methods, only: [:new, :create]
 
   def index
     @q = Spree::CouponCode.ransack(params[:q])
     @coupon_codes = @q.result.order('created_at desc').page(params[:page])
   end
 
+  def new
+    @admin_new_coupon_code_form = AdminNewCouponCodeForm.new
+    @order = Spree::Order.new
+  end
+
   def create
-    @coupon_code = Spree::CouponCode.new(coupon_code_params)
-    if @coupon_code.save
+    @admin_new_coupon_code_form = AdminNewCouponCodeForm.new(coupon_code_params.merge(
+                                                              products_quantity: params[:products],
+                                                              payment_source_params: params[:payment_source]
+                                                            ))
+    @order = Spree::Order.new
+    if @admin_new_coupon_code_form.perform
       redirect_to admin_coupon_codes_path, notice: 'Product Key generated successfully.'
     else
-      flash[:error] = @coupon_code.errors.full_messages.join(', ')
+      flash[:error] = @admin_new_coupon_code_form.coupon_code.errors.full_messages.join(', ')
       render :new
     end
   end
@@ -27,8 +37,7 @@ class Spree::Admin::CouponCodesController < Spree::Admin::ResourceController
   end
 
   def coupon_code_params
-    _params = params.require(:coupon_code).permit(:total_quantity, :school_district_id, :product_ids, :code, :sync_specified_order, :sf_order_id)
-    _params[:product_ids] = _params[:product_ids].split(',')
+    _params = params.require(:coupon_code).permit(:total_quantity, :school_district_id, :product_ids, :code, :sync_specified_order, :sf_order_id, :admin_email, :amount, :payment_method_id, :payment_source)
     _params[:school_lists] = params[:coupon_code][:school_lists].blank? ? [] : params[:coupon_code][:school_lists]
     _params
   end
@@ -43,5 +52,9 @@ class Spree::Admin::CouponCodesController < Spree::Admin::ResourceController
     params[:coupon_code][:school_lists] = roo.to_a.flatten.drop(1)
   rescue
     params[:coupon_code][:school_lists] = []
+  end
+
+  def set_payment_methods
+    @payment_methods = Spree::PaymentMethod.where(name: ['Purchase Order', 'Credit Card']).available(:back_end)
   end
 end

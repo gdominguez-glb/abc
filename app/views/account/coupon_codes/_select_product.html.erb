@@ -9,7 +9,7 @@
         <div class="modal-body">
           <label class="margin-bottom--l">Please select the product you wish to redeem...</label>
           <div class="row">
-            <% @coupon_code.products.each do |product| %>
+            <% @coupon_code.available_products.each do |product| %>
               <div class="col-sm-3">
                 <%= radio_button_tag :product_id, product.id, false, class: "thumbnail--coupon-code--trigger" %>
                 <label class="thumbnail thumbnail--coupon-code" for="product_id_<%= product.id %>">
