@@ -81,8 +81,8 @@ class NotificationTrigger < ActiveRecord::Base
   def send_notifications
     if self.product_expiration_target?
       product = Spree::Product.find(self.product_id)
-      NotificationWorker.perform_at(product.expiration_date - 30.days, self.id, "There are 30 of days left on your (Name of product) subscription.")
-      NotificationWorker.perform_at(product.expiration_date - 60.days, self.id, "There are 60 of days left on your (Name of product) subscription.")
+      NotificationWorker.perform_at(product.expiration_date - 30.days, self.id, "There are 30 of days left on your #{self.product.name} subscription.")
+      NotificationWorker.perform_at(product.expiration_date - 60.days, self.id, "There are 60 of days left on your #{self.product.name} subscription.")
     else
       NotificationWorker.perform_at(self.notify_at, self.id)
     end
