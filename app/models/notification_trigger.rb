@@ -81,8 +81,12 @@ class NotificationTrigger < ActiveRecord::Base
   def send_notifications
     if self.product_expiration_target?
       product = Spree::Product.find(self.product_id)
-      NotificationWorker.perform_at(product.expiration_date - 30.days, self.id, "There are 30 of days left on your #{self.product.name} subscription.")
-      NotificationWorker.perform_at(product.expiration_date - 60.days, self.id, "There are 60 of days left on your #{self.product.name} subscription.")
+
+      NotificationWorker.perform_at(product.expiration_date - 60.days, self.id, "There are 60 of days left on your #{self.product.name} subscription.") \
+        if product.expiration_date > 60.days.since
+
+      days = (product.expiration_date.to_date - DateTime.now).to_i
+      NotificationWorker.perform_at(product.expiration_date - 30.days, self.id, "There are #{days} of #{"day".pluralize(days)} left on your #{self.product.name} subscription.")
     else
       NotificationWorker.perform_at(self.notify_at, self.id)
     end
@@ -124,6 +128,7 @@ class NotificationTrigger < ActiveRecord::Base
 
   def product_should_have_expiration
     product = Spree::Product.find_by(id: self.product_id)
-    errors.add(:product, "should have an expiration date") if product.try(:expiration_date).nil?
+    errors.add(:product, "should have an expiration date") and return if product.try(:expiration_date).nil?
+    errors.add(:product, "is already expired") if product.try(:expiration_date) <= Date.today
   end
 end
