@@ -13,7 +13,7 @@ module Spree
       end
 
       def code_available?
-        @code && @code.available?
+        @code && @code.available_products.count > 0
       end
 
       def already_activated?
@@ -31,15 +31,15 @@ module Spree
         return { success: false, message: 'No products to activate' } if products_to_assign.empty?
         return { success: false, message: 'Already activated the product key with this product' } if already_activated?
 
-        _used_code_before = used_code_before?
-
         common_attrs = { email: @user.email, user_id: @user.id, coupon_code: @code, quantity: 1, order: @code.order, school_name_from_coupon: @school_name }
         products_to_assign.each do |product|
-          Spree::LicensedProduct.find_or_create_by({ product_id: product.id }.merge(common_attrs))
+          licensed_product = Spree::LicensedProduct.find_or_initialize_by({ product_id: product.id }.merge(common_attrs))
+          if licensed_product.new_record?
+            licensed_product.save
+            @code.coupon_code_products.find_by(product_id: product).try(:increase_used_quantity!)
+          end
         end
-
-        code.increase_used_quantity! if !_used_code_before
-
+ 
         return { success: true, message: 'Licenses activate successfully' }
       end
 

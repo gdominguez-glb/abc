@@ -39,9 +39,4 @@ RSpec.describe Spree::CouponCode, type: :model do
     coupon_code = create(:spree_coupon_code, school_district: school_district, products: [product], total_quantity: 10, code: 'CUSTOM_CODE')
     expect(coupon_code.code).to eq('CUSTOM_CODE')
   end
-
-  it "generate a coupon code order" do
-    expect(coupon_code.order).not_to be_nil
-    expect(coupon_code.order.coupon_code_order?).to eq(true)
-  end
 end

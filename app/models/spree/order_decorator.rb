@@ -228,7 +228,7 @@ Spree::Order.class_eval do
 
   def finalize_order
     create_in_salesforce
-    create_licensed_products!
+    create_licensed_products! if !self.coupon_code_order?
     self.user.update_salesforce if self.user && (self.bill_address || self.ship_address)
     log_purchase_activity!
   end
