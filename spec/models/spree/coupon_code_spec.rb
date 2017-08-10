@@ -6,8 +6,6 @@ RSpec.describe Spree::CouponCode, type: :model do
   it { should have_many(:products).class_name('Spree::Product') }
   it { should have_one(:order).class_name('Spree::Order') }
 
-  it { should validate_presence_of(:total_quantity) }
-
   let(:product) { create(:product) }
   let(:school_district) { create(:school_district) }
   let(:coupon_code) { create(:spree_coupon_code, school_district: school_district, products: [product], total_quantity: 10) }
