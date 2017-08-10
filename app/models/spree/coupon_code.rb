@@ -7,7 +7,7 @@ class Spree::CouponCode < ActiveRecord::Base
 
   has_one :order, class_name: 'Spree::Order'
 
-  validates_presence_of :total_quantity, :code
+  validates_presence_of :code
   validates_uniqueness_of :code, if:  Proc.new { |cc| cc.code.present? }
 
   before_validation :generate_code, on: :create

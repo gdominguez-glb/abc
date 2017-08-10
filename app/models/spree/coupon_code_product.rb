@@ -8,6 +8,7 @@ class Spree::CouponCodeProduct < ActiveRecord::Base
 
   def increase_used_quantity!
     self.update_column(:used_quantity, self.used_quantity + 1)
+    self.coupon_code.update_column(:used_quantity, (self.coupon_code.used_quantity || 0) + 1)
   end
 
 end

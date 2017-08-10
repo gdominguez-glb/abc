@@ -4,7 +4,7 @@ class AdminNewCouponCodeForm
 
   attr_accessor :code, :admin_email, :school_district_id, :schools_xls, :school_lists, :product_ids, :total_quantity, :sync_specified_order, :sf_order_id, :amount, :payment_method_id, :products_quantity, :payment_source_params, :coupon_code
 
-  validates_presence_of :total_quantity, :admin_email, :school_district_id, :products_quantity
+  validates_presence_of :admin_email, :school_district_id, :products_quantity
 
   def perform
     build_coupon_code
@@ -20,7 +20,8 @@ class AdminNewCouponCodeForm
       total_quantity: self.total_quantity,
       school_district_id: self.school_district_id,
       sync_specified_order: self.sync_specified_order,
-      sf_order_id: self.sf_order_id
+      sf_order_id: self.sf_order_id,
+      total_quantity: 0
     )
   end
 
@@ -30,6 +31,7 @@ class AdminNewCouponCodeForm
         product_id: product_id,
         quantity: quantity
       )
+      @coupon_code.total_quantity += quantity.to_i
     end
   end
 
