@@ -40,6 +40,7 @@ namespace :cms do
       post :unarchive
     end
     resources :regonline_events, only: [:index, :edit, :update]
+    resources :regonline_event_headers
   end
   resources :documents do
     member do

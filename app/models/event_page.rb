@@ -4,6 +4,7 @@ class EventPage < ActiveRecord::Base
   include Publishable
   publishable name: :description
 
+  has_many :regonline_event_headers
   belongs_to :page
 
   enum event_page_type: { global: 0, curriculum: 1 }
