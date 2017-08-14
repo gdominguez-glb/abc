@@ -636,7 +636,7 @@ marketing_templates:
             <% else %>
               <% button_target = '_blank' %>
             <% end %>
-            <a class="btn btn-default btn-block-xs" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+            <a class="btn btn-default btn-block-xs" href="<%= button_link %>" target="<%= button_target %>" <% if button_type.present? && button_type == 'Remote' %> data-remote='true' <% end %> ><%= button_title %></a>
           <% end %>
         </div>
       </section>

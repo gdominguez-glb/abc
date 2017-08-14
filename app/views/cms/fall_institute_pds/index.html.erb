@@ -1,0 +1,33 @@
+<%= render 'cms_nav' %>
+
+<div class="col-md-9">
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Role</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Prefered Contact</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @fall_institute_pds.each do |fall_institute_pd| %>
+          <tr>
+            <td><%= fall_institute_pd.first_name %></td>
+            <td><%= fall_institute_pd.last_name %></td>
+            <td><%= fall_institute_pd.role %></td>
+            <td><%= fall_institute_pd.email %></td>
+            <td><%= fall_institute_pd.phone %></td>
+            <td><%= fall_institute_pd.preferred_contact %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <%= paginate @fall_institute_pds %>
+
+  <%= link_to 'Export As Xlsx', cms_fall_institute_pds_path(format: 'xlsx'), class: 'btn btn-primary'  %>
+</div>

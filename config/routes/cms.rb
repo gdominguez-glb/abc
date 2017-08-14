@@ -171,4 +171,5 @@ namespace :cms do
     end
   end
   resources :popups, except: [:show]
+  resources :fall_institute_pds, only: [:index]
 end

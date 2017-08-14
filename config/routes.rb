@@ -148,6 +148,7 @@ Rails.application.routes.draw do
   resources :newsletters, only: [:index, :create]
   resources :opportunities, only: [:index, :create]
   resources :school_districts, only: [:index, :show]
+  resources :fall_institute_pds, only: [:new, :create]
 
   get 'not-found', to: 'pages#not_found', as: :not_found
 
