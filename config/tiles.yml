@@ -616,6 +616,13 @@
     :input_options:
       - Open in Same Tab
       - Open in New Tab
+  - :name: button_type
+    :label: Button Type
+    :input_type: select
+    :input_options:
+      - Normal
+      - Remote
+  - :name: button_type
 - :name: 2-Column Text
   :fields:
   - :name: background_color_1
