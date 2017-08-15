@@ -4,7 +4,7 @@ class Cms::RegonlineEventsController < Cms::BaseController
 
   def index
     @q = @event_page.events.ransack(params[:q])
-    @events = @q.result.order('display desc, start_date asc').page(params[:page])
+    @events = @q.result.includes(:regonline_event_header).order('regonline_event_headers.position, display desc, start_date asc').page(params[:page])
   end
 
   def edit

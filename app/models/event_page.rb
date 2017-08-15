@@ -12,6 +12,14 @@ class EventPage < ActiveRecord::Base
   validates_presence_of :title, :slug
   validates_presence_of :page_id, if:  Proc.new { |ep| ep.curriculum? }
 
+  def by_header
+    headers = self.regonline_event_headers.order(:position).to_a
+    et_no_mapped = self.events.sorted.where(regonline_event_header_id: nil)
+    s = Struct.new(:name, :events).new(nil, et_no_mapped)
+    headers.push(s)
+    headers
+  end
+
   def events
     RegonlineEvent.with_filter(self.regonline_filter)
   end

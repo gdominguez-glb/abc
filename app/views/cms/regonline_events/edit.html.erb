@@ -13,7 +13,10 @@
       </div>
       <div class="form-group">
         <label for="name">Header</label>
-        <%= f.select :regonline_event_header_id, options_for_select(@event_page.regonline_event_headers.all.collect{|h| [h.name, h.id]}), { prompt: 'Select Header' }, class: 'form-control' %>
+        <%= f.select :regonline_event_header_id,
+            options_for_select(@event_page.regonline_event_headers.all.collect{|h| [h.name, h.id]}, @event.regonline_event_header_id),
+            { :include_blank => true },
+            class: 'form-control'%>
       </div>
       <div class="form-group">
         <label>Deadline Date</label>
