@@ -4,7 +4,7 @@ class Cms::RegonlineEventsController < Cms::BaseController
 
   def index
     @q = @event_page.events.ransack(params[:q])
-    @events = @q.result.order('display desc, start_date asc').page(params[:page])
+    @events = @q.result.includes(:regonline_event_header).order('regonline_event_headers.position, display desc, start_date asc').page(params[:page])
   end
 
   def edit
@@ -29,7 +29,9 @@ class Cms::RegonlineEventsController < Cms::BaseController
   end
 
   def event_params
-    _params = params.require(:regonline_event).permit(:title, :display, :download_url, :grade_bands, :description, :invisible_at, :deadline_date, session_types: [], curriculums: [])
+    _params = params.require(:regonline_event).permit(:title, :display,
+      :download_url, :grade_bands, :description, :invisible_at, :regonline_event_header_id,
+      :deadline_date, session_types: [], curriculums: [])
     _params[:curriculums] = _params[:curriculums].reject(&:blank?).join(',')
     _params
   end

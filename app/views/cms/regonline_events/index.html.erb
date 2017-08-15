@@ -11,6 +11,7 @@
                 <%= f.select :curriculums_cont, options_for_select(RegonlineEvent::FILTER_CURRICULUMS, (f.object.curriculums_cont)), { include_blank: 'All Curriculums' }, class: 'form-control' %>
                 <%= f.text_field :title_cont, class: 'form-control margin-bottom--s--sm-min', placeholder: 'Search Events' %>
                 <%= submit_tag 'Search', class: 'btn btn-primary btn-block-xs margin-bottom--s--sm-min margin-right--reset' %>
+                <%= link_to "Manage Event Headers", cms_event_page_regonline_event_headers_path(@event_page), class: 'btn btn-success btn-block-xs' %>
               </div>
             <% end %>
           </div>
@@ -28,6 +29,7 @@
         <thead>
           <tr>
             <th>Title</th>
+            <th>Header</th>
             <th>Date</th>
             <th>Curriculums</th>
             <th>Visible</th>
@@ -38,6 +40,7 @@
           <% @events.each do |event| %>
             <tr>
               <td><%= event.title.html_safe %></td>
+              <td><%= event.regonline_event_header.name rescue '' %></td>
               <td><%= date_range(event.start_date, event.end_date, format: :short) if event.start_date.present? && event.end_date.present? %></td>
               <td><%= event.curriculums %></td>
               <td><%= event.display? ? 'Yes' : 'No' %></td>

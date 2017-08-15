@@ -12,6 +12,13 @@
         <%= f.text_field :title, class: 'form-control' %>
       </div>
       <div class="form-group">
+        <label for="name">Header</label>
+        <%= f.select :regonline_event_header_id,
+            options_for_select(@event_page.regonline_event_headers.all.collect{|h| [h.name, h.id]}, @event.regonline_event_header_id),
+            { :include_blank => true },
+            class: 'form-control'%>
+      </div>
+      <div class="form-group">
         <label>Deadline Date</label>
         <%= f.text_field :deadline_date, class: 'form-control' %>
       </div>

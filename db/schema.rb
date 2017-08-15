@@ -629,6 +629,14 @@ ActiveRecord::Schema.define(version: 20170814072522) do
     t.datetime "expire_at"
   end
 
+  create_table "regonline_event_headers", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "position"
+    t.integer  "event_page_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
   create_table "regonline_events", force: :cascade do |t|
     t.string   "regonline_id"
     t.string   "title"
@@ -644,20 +652,23 @@ ActiveRecord::Schema.define(version: 20170814072522) do
     t.string   "location_building"
     t.string   "location_address1"
     t.string   "location_address2"
-    t.decimal  "latitude",          precision: 10, scale: 6
-    t.decimal  "longitude",         precision: 10, scale: 6
-    t.datetime "created_at",                                                 null: false
-    t.datetime "updated_at",                                                 null: false
+    t.decimal  "latitude",                  precision: 10, scale: 6
+    t.decimal  "longitude",                 precision: 10, scale: 6
+    t.datetime "created_at",                                                         null: false
+    t.datetime "updated_at",                                                         null: false
     t.string   "client_event_id"
     t.text     "description"
     t.string   "download_url"
     t.string   "grade_bands"
     t.text     "session_types"
-    t.boolean  "display",                                    default: false
+    t.boolean  "display",                                            default: false
     t.date     "invisible_at"
     t.string   "curriculums"
     t.date     "deadline_date"
+    t.integer  "regonline_event_header_id"
   end
+
+  add_index "regonline_events", ["regonline_event_header_id"], name: "index_regonline_events_on_regonline_event_header_id", using: :btree
 
   create_table "salesforce_references", force: :cascade do |t|
     t.string   "id_in_salesforce",                 limit: 20
@@ -2121,4 +2132,5 @@ ActiveRecord::Schema.define(version: 20170814072522) do
     t.text     "sub_header"
   end
 
+  add_foreign_key "regonline_events", "regonline_event_headers"
 end
