@@ -14,7 +14,7 @@ class EventPage < ActiveRecord::Base
 
   def by_header
     headers = self.regonline_event_headers.order(:position).to_a
-    et_no_mapped = self.events.sorted.where(regonline_event_header_id: nil)
+    et_no_mapped = self.events.displayable.sorted.where(regonline_event_header_id: nil)
     s = Struct.new(:name, :events).new(nil, et_no_mapped)
     headers.push(s)
     headers
