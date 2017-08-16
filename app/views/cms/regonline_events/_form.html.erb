@@ -1,0 +1,77 @@
+<%= form_for [:cms, @event_page, @event] do |f| %>
+  <div class="col-md-9">
+    <div class="panel panel-primary">
+      <div class="panel-heading padding-top--s padding-bottom--s">
+        <h3 class="panel-title panel-title--s"><%= @event.new_record? ? 'Create' : 'Edit' %> Event</h3>
+      </div>
+      <div class="panel-body">
+        <div class="form-group">
+          <label>Title</label>
+          <%= f.text_field :title, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <label for="name">Header</label>
+          <%= f.select :regonline_event_header_id,
+          options_for_select(@event_page.regonline_event_headers.all.collect{|h| [h.name, h.id]}, @event.regonline_event_header_id),
+            { :include_blank => true },
+            class: 'form-control'%>
+        </div>
+        <div class="form-group">
+          <label>Deadline Date</label>
+          <%= f.text_field :deadline_date, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <label>Start Date</label>
+          <%= f.text_field :start_date, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <label>Deadline Date</label>
+          <%= f.text_field :end_date, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <label>Download Url</label>
+          <%= f.text_field :download_url, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <label>Grade Bands</label>
+          <%= f.text_field :grade_bands, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <label>Curriculums</label>
+          <%= f.select :curriculums, options_for_select(RegonlineEvent::FILTER_CURRICULUMS, (f.object.curriculums || '').split(',')), {}, class: 'form-control', multiple: true %>
+        </div>
+        <div class="form-group">
+          <label>Session Types</label>
+          <%= f.collection_select :session_types, EventTraining.all, :id, :title_with_category, { include_hidden: false }, class: 'form-control', multiple: true, placeholder: 'Set session type' %>
+        </div>
+        <div class="form-group">
+          <label>Visible</label>
+          <%= f.check_box :display, class: 'form-control' %>
+        </div>
+        <div class="form-group" style="position:relative;">
+          <label>Invisible Date</label>
+          <%= f.text_field :invisible_at, class: 'form-control datetime-picker' %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-3">
+        <%= f.submit "Save", class: 'btn btn-success btn-block margin-bottom--s--sm-min' %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<%= content_for :javascripts do %>
+  <script type="text/javascript">
+   $(function(){
+     $('#regonline_event_session_types').select2();
+     $('#regonline_event_curriculums').select2();
+     $("#regonline_event_invisible_at").datetimepicker({format: 'YYYY-MM-DD'});
+     $("#regonline_event_deadline_date").datetimepicker({format: 'YYYY-MM-DD'});
+     $("#regonline_event_start_date").datetimepicker({format: 'YYYY-MM-DD'});
+     $("#regonline_event_end_date").datetimepicker({format: 'YYYY-MM-DD'});
+   });
+  </script>
+<% end %>

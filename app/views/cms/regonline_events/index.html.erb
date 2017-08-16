@@ -12,6 +12,7 @@
                 <%= f.text_field :title_cont, class: 'form-control margin-bottom--s--sm-min', placeholder: 'Search Events' %>
                 <%= submit_tag 'Search', class: 'btn btn-primary btn-block-xs margin-bottom--s--sm-min margin-right--reset' %>
                 <%= link_to "Manage Event Headers", cms_event_page_regonline_event_headers_path(@event_page), class: 'btn btn-success btn-block-xs' %>
+                <%= link_to 'Create Event', new_cms_event_page_regonline_event_path(@event_page), class: 'btn btn-success btn-sm'  %>
               </div>
             <% end %>
           </div>
