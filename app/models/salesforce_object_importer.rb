@@ -14,7 +14,7 @@ class SalesforceObjectImporter
     if !import_all
       params.concat([
         client.columns(@sobject_name).join(','),
-        "LastModifiedDate > #{GmSalesforce::Client.date_to_salesforce(6.hours.ago)}"
+        "LastModifiedDate > #{GmSalesforce::Client.date_to_salesforce(130.minutes.ago)}"
       ])
     end
 
