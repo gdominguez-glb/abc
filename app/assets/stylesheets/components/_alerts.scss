@@ -65,6 +65,13 @@
   @include alert-variant($c-energized-highlight, darken($c-energized-highlight, 25%), $c-absolute);
 }
 
+.alert-table {
+  border: none;
+  color: $c-absolute;
+  background: #f00;
+  border-radius: 0;
+}
+
 .alert-dismissible {
   @include alert-variant($c-absolute, $c-positive-secondary, $c-positive-secondary);
   padding-right: 135px;

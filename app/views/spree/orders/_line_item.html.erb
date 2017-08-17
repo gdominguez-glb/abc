@@ -18,6 +18,11 @@
         </span>
       <% end %>
     </td>
+    <% if line_item.variant.product.expiration_date.present? %>
+      <td class="alert alert-table">Expires <%= line_item.variant.product.expiration_date.strftime("%m/%d/%Y") %></td>
+    <% else %>
+      <td></td>
+    <% end %>
     <td class="lead text-primary cart-item-price" data-hook="cart_item_price">
       <%= line_item.single_money.to_html %>
     </td>

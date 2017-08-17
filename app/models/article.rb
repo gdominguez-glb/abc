@@ -11,7 +11,7 @@ class Article < ActiveRecord::Base
   validates_uniqueness_of :slug
 
   scope :sorted, -> { order('publish_date desc') }
-  scope :search_by_text, ->(q) { where("title ilike ?", "%#{q}%") if q.present?  }
+  scope :search_by_text, ->(q) { where("(title ilike :q) or (body ilike :q) or (created_by ilike :q)", q: "%#{q}%") if q.present?  }
 
   def next_article
     @next_article ||= related_article(:next)

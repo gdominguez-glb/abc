@@ -278,4 +278,21 @@ Spree::Product.class_eval do
     self.master.sku = ''
     self.inkling_code = product.inkling_code.dup if product.inkling_code
   end
+
+  def is_in_store?
+    if group_parent_products.count > 0
+      group_parent_products.each do |parent_product|
+        return true if parent_product.single_in_store?
+      end
+    end
+
+    return single_in_store?
+  end
+
+  def single_in_store?
+    return self.show_in_storefront &&
+      self.available_on.present? && self.available_on <= Time.now &&
+      !self.expired? &&
+      self.deleted_at.nil?
+  end
 end

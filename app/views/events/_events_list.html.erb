@@ -1,4 +1,5 @@
-<%= render partial: 'events/event', collection: @events %>
+<% events ||= @events %>
+<%= render partial: 'events/event', collection: events %>
 <div class="hidden">
   <%= paginate @events %>
 </div>

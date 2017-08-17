@@ -1,0 +1,6 @@
+console.log('show modal');
+$('body').append("<%= escape_javascript(render 'form') %>");
+$('#fall-institute-pd-modal').modal('show');
+$('#fall-institute-pd-modal').on('hidden.bs.modal', function (e) {
+  $('#fall-institute-pd-modal').remove();
+})

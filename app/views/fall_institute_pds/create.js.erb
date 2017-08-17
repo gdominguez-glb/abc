@@ -1,0 +1,10 @@
+<% if @fall_institute_pd.valid? %>
+$('#fall-institute-pd-modal').modal('hide');
+$('body').append("<%= escape_javascript(render 'success') %>");
+$('#pd-success-modal').modal('show');
+$('#pd-success-modal').on('hidden.bs.modal', function (e) {
+  $('#pd-success-modal').remove();
+})
+<% else %>
+  alert("<%= raw @fall_institute_pd.errors.full_messages.join(' ') %>");
+<% end %>

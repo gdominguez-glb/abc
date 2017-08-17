@@ -10,7 +10,24 @@
           <p class="margin-bottom--reset"><%= @event_page.description.html_safe rescue '' %></p>
         </div>
       </div>
-      <%= render 'events_list' %>
+
+      <% if @event_page.by_header.count == 1 %>
+          <%= render 'events_list' %>
+      <% else %>
+        <div class="row margin-bottom">
+          <% @event_page.by_header.each_with_index do |header, index| %>
+            <% next if header.events.displayable.sorted.count == 0 %>
+            <div class="col-sm-6 <%= @event_page.by_header.count == index + 1 && (index + 1) % 2 != 0 ? 'col-sm-12' : '' %>">
+              <h3><%= header.try(:name) %></h3>
+
+              <% events = header.events.displayable.sorted %>
+              <% events = controller.send(:construct_filter_relation, events, "grade_bands") if params[:grade_bands].present? %>
+              <% events = controller.send(:construct_filter_relation, events, "curriculums") if params[:curriculums].present? %>
+              <%= render 'events_list', events: events %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

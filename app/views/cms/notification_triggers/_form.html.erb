@@ -107,7 +107,7 @@
           </div>
         </div>
         <div class="col-sm-6">
-          <div class="form-group hidden target-input" data-input="product">
+          <div class="form-group hidden target-input" data-input="product product_expiration">
             <%= f.label :product %>
             <div class="select-container dark-select block">
               <span>Select Product</span>
@@ -146,7 +146,7 @@
       <div class="alert alert-warning">
         <small><i class="mi">warning</i> Please note: If you are embedding a URL you can use an HTML link (like this: &lt;a href="//www.example.com"&gt;link &lt;/a&gt;) but please be sure to prefix with "<strong>//</strong>".</small>
       </div>
-      <div class="form-group">
+      <div class="form-group content-box-w">
         <%= f.label :content %>
         <%= f.text_area :content, class: 'form-control rich-editor' %>
         <p class="hint">Remaining characters: <span id="remaining"></span></p>

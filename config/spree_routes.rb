@@ -79,6 +79,7 @@ spree_routes_overrides = Proc.new do
       member do
         post :archive
         post :unarchive
+        get :preview
       end
       resources :materials do
         collection do

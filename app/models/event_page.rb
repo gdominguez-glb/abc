@@ -4,12 +4,21 @@ class EventPage < ActiveRecord::Base
   include Publishable
   publishable name: :description
 
+  has_many :regonline_event_headers
   belongs_to :page
 
   enum event_page_type: { global: 0, curriculum: 1 }
 
   validates_presence_of :title, :slug
   validates_presence_of :page_id, if:  Proc.new { |ep| ep.curriculum? }
+
+  def by_header
+    headers = self.regonline_event_headers.order(:position).to_a
+    et_no_mapped = self.events.displayable.sorted.where(regonline_event_header_id: nil)
+    s = Struct.new(:name, :events).new(nil, et_no_mapped)
+    headers.push(s)
+    headers
+  end
 
   def events
     RegonlineEvent.with_filter(self.regonline_filter)

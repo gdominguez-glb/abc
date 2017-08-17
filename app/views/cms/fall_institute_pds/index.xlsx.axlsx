@@ -1,0 +1,7 @@
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "PD (Fall Institute)") do |sheet|
+  sheet.add_row ['First Name', 'Last Name', 'Role', 'Email', 'Phone', 'Preferred Contact']
+  @fall_institute_pds.each do |pd|
+    sheet.add_row [pd.first_name, pd.last_name, pd.role, pd.email, pd.phone, pd.preferred_contact]
+  end
+end

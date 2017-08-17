@@ -39,7 +39,8 @@ namespace :cms do
       post :archive
       post :unarchive
     end
-    resources :regonline_events, only: [:index, :edit, :update]
+    resources :regonline_events, only: [:index, :new, :create, :edit, :update]
+    resources :regonline_event_headers
   end
   resources :documents do
     member do
@@ -171,4 +172,5 @@ namespace :cms do
     end
   end
   resources :popups, except: [:show]
+  resources :fall_institute_pds, only: [:index]
 end

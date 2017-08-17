@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170612150246) do
+ActiveRecord::Schema.define(version: 20170816002205) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -237,6 +237,7 @@ ActiveRecord::Schema.define(version: 20170612150246) do
     t.datetime "published_at"
     t.boolean  "archived",          default: false
     t.datetime "archived_at"
+    t.boolean  "hide_dropdown",     default: false
   end
 
   create_table "event_training_headers", force: :cascade do |t|
@@ -259,6 +260,17 @@ ActiveRecord::Schema.define(version: 20170612150246) do
     t.string   "category"
     t.integer  "training_type_category_id"
     t.integer  "event_training_header_id"
+  end
+
+  create_table "fall_institute_pds", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "role"
+    t.string   "email"
+    t.string   "phone"
+    t.string   "preferred_contact"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
   create_table "famis_products", force: :cascade do |t|
@@ -618,6 +630,14 @@ ActiveRecord::Schema.define(version: 20170612150246) do
     t.datetime "expire_at"
   end
 
+  create_table "regonline_event_headers", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "position"
+    t.integer  "event_page_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
   create_table "regonline_events", force: :cascade do |t|
     t.string   "regonline_id"
     t.string   "title"
@@ -633,20 +653,23 @@ ActiveRecord::Schema.define(version: 20170612150246) do
     t.string   "location_building"
     t.string   "location_address1"
     t.string   "location_address2"
-    t.decimal  "latitude",          precision: 10, scale: 6
-    t.decimal  "longitude",         precision: 10, scale: 6
-    t.datetime "created_at",                                                 null: false
-    t.datetime "updated_at",                                                 null: false
+    t.decimal  "latitude",                  precision: 10, scale: 6
+    t.decimal  "longitude",                 precision: 10, scale: 6
+    t.datetime "created_at",                                                         null: false
+    t.datetime "updated_at",                                                         null: false
     t.string   "client_event_id"
     t.text     "description"
     t.string   "download_url"
     t.string   "grade_bands"
     t.text     "session_types"
-    t.boolean  "display",                                    default: false
+    t.boolean  "display",                                            default: false
     t.date     "invisible_at"
     t.string   "curriculums"
     t.date     "deadline_date"
+    t.integer  "regonline_event_header_id"
   end
+
+  add_index "regonline_events", ["regonline_event_header_id"], name: "index_regonline_events_on_regonline_event_header_id", using: :btree
 
   create_table "salesforce_references", force: :cascade do |t|
     t.string   "id_in_salesforce",                 limit: 20
@@ -797,11 +820,13 @@ ActiveRecord::Schema.define(version: 20170612150246) do
     t.text     "school_lists"
   end
 
-  create_table "spree_coupon_codes_products", id: false, force: :cascade do |t|
-    t.integer  "coupon_code_id", null: false
-    t.integer  "product_id",     null: false
+  create_table "spree_coupon_codes_products", force: :cascade do |t|
+    t.integer  "coupon_code_id",             null: false
+    t.integer  "product_id",                 null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "quantity",       default: 0
+    t.integer  "used_quantity",  default: 0
   end
 
   create_table "spree_credit_cards", force: :cascade do |t|
@@ -2108,4 +2133,5 @@ ActiveRecord::Schema.define(version: 20170612150246) do
     t.text     "sub_header"
   end
 
+  add_foreign_key "regonline_events", "regonline_event_headers"
 end

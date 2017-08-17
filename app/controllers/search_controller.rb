@@ -9,7 +9,6 @@ class SearchController < ApplicationController
     options = { index_name: [
       Spree::Product.searchkick_index.name,
       Page.searchkick_index.name,
-      Post.searchkick_index.name,
       EventPage.searchkick_index.name,
       EventTraining.searchkick_index.name,
       Job.searchkick_index.name,

@@ -3,10 +3,11 @@ class Spree::CouponCode < ActiveRecord::Base
 
   has_many :coupon_code_products, class_name: 'Spree::CouponCodeProduct'
   has_many :products, -> { order("spree_coupon_codes_products.created_at asc") }, through: :coupon_code_products
+  has_many :available_products, -> { where('spree_coupon_codes_products.used_quantity < spree_coupon_codes_products.quantity').order("spree_coupon_codes_products.created_at asc") }, through: :coupon_code_products, source: :product
 
   has_one :order, class_name: 'Spree::Order'
 
-  validates_presence_of :total_quantity, :code
+  validates_presence_of :code
   validates_uniqueness_of :code, if:  Proc.new { |cc| cc.code.present? }
 
   before_validation :generate_code, on: :create
@@ -65,6 +66,7 @@ class Spree::CouponCode < ActiveRecord::Base
   end
 
   def generate_coupon_code_order
+    return if self.order
     order = Spree::Order.new(
       coupon_code_id: self.id,
       source: :coupon_code_order,

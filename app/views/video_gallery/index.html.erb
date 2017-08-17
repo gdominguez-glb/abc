@@ -5,7 +5,7 @@
     <div class="col-sm-10 col-sm-offset-1 margin-top--xxl margin-bottom--xl">
       <div class="row">
         <div class="col-sm-4 col-md-3">
-          <h3 class="text-left">My Videos (<%= @videos.length %>)</h3>
+          <h3 class="text-left">My Videos (<%= @videos.total_count %>)</h3>
 
           <%= form_tag '', method: :get do %>
             <% params[:taxon_ids].each do |taxon_id| %>
@@ -26,7 +26,7 @@
         </div>
 
         <div class="col-sm-8 col-md-offset-1 margin-bottom--xl">
-
+          <%= paginate @videos, theme: 'twitter-bootstrap-3' %>
           <% cache [:teach_eureka_viewing_guide, params[:taxon_ids].join('_')], expires_in: 2.hours do %>
             <% if teach_eureka_selected? && document = Document.find_by(attachment_file_name: "teach_eureka-viewing_guide.pdf") %>
               <p>

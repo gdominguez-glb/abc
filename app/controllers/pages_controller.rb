@@ -7,9 +7,9 @@ class PagesController < ApplicationController
     redirect_to not_found_path and return if @page.nil?
     send(@page.render) and return if @page.render.present?
 
-    @page_title    = @page.title
+    @page_title = @page.title
     @seo_title = @page.seo_data.try(:[], :title)
-    @group_page    = cache [@page, :group_page], expires_in: 2.hours do
+    @group_page = cache [@page, :group_page], expires_in: 2.hours do
       Page.find_by(group_name: @page.group_name, group_root: true)
     end
     @sub_nav_items = cache [@page, :sub_nav_items], expires_in: 2.hours do
@@ -24,12 +24,12 @@ class PagesController < ApplicationController
   end
 
   def in_the_news
-    @in_the_news = InTheNew.latest
+    @in_the_news = InTheNew.latest_by_article_date
 
     if params[:q].blank?
-      @in_the_news = InTheNew.latest
+      @in_the_news = InTheNew.latest_by_article_date
     else
-      @in_the_news = InTheNew.search(params[:q], order: {created_at: :desc}).results
+      @in_the_news = InTheNew.search(params[:q], order: {article_date: :desc}).results
     end
 
     render :in_the_news
@@ -38,5 +38,4 @@ class PagesController < ApplicationController
   def not_found
     render status: 404
   end
-
 end
