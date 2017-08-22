@@ -1,0 +1,7 @@
+<% if @coupon_code.update(code: params[:code]) %>
+alert("Updated Successfully");
+$('#edit-code-modal').modal('hide');
+window.location.reload(true);
+<% else %>
+  alert("<%= raw @coupon_code.errors.full_messages.join(',') %>");
+<% end %>

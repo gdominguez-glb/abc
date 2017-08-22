@@ -1,0 +1,5 @@
+$('body').append("<%= escape_javascript(render 'edit_code_modal') %>");
+$('#edit-code-modal').modal('show');
+$('#edit-code-modal').on('hidden.bs.modal', function (e) {
+  $('#edit-code-modal').remove();
+});

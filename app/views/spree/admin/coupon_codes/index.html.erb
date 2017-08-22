@@ -20,7 +20,7 @@
   <table class="table">
     <thead>
       <tr>
-        <th>Key</th>
+        <th style="min-width: 135px;">Key</th>
         <th>School/District</th>
         <th>Products</th>
         <th>Total Quantity</th>
@@ -31,7 +31,12 @@
     <tbody>
       <% @coupon_codes.each do |coupon_code| %>
         <tr>
-          <td><%= link_to coupon_code.code, spree.admin_coupon_code_path(coupon_code) %></td>
+          <td class="code-cell">
+            <%= link_to coupon_code.code, spree.admin_coupon_code_path(coupon_code) %>
+            <%= link_to spree.edit_code_admin_coupon_code_path(coupon_code), class: 'edit-link', remote: true, title: "Change the code" do %>
+              <span class="icon icon-edit"></span>
+            <% end %>
+          </td>
           <td><%= coupon_code.school_district.try(:name) %></td>
           <td><%= coupon_code.products.map(&:name).join(', ') %></td>
           <td><%= coupon_code.total_quantity %></td>
@@ -44,3 +49,12 @@
 </div>
 
 <%= paginate @coupon_codes %>
+
+<style>
+ .code-cell .edit-link {
+   display: none;
+ }
+ .code-cell:hover .edit-link {
+   display: inline-block;
+ }
+</style>

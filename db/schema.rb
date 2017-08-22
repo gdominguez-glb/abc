@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170816002205) do
+ActiveRecord::Schema.define(version: 20170822015122) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -672,7 +672,7 @@ ActiveRecord::Schema.define(version: 20170816002205) do
   add_index "regonline_events", ["regonline_event_header_id"], name: "index_regonline_events_on_regonline_event_header_id", using: :btree
 
   create_table "salesforce_references", force: :cascade do |t|
-    t.string   "id_in_salesforce",                 limit: 20
+    t.string   "id_in_salesforce",                 limit: 30
     t.integer  "local_object_id",                             null: false
     t.string   "local_object_type",                limit: 50, null: false
     t.datetime "last_modified_in_salesforce_at"

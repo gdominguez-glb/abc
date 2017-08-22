@@ -10,6 +10,8 @@ spree_routes_overrides = Proc.new do
     resources :coupon_codes do
       member do
         get :breakdown
+        get :edit_code
+        post :update_code
       end
     end
 
