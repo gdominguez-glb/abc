@@ -1,6 +1,7 @@
 class Spree::Admin::CouponCodesController < Spree::Admin::ResourceController
   before_action :process_schools_xls, only: [:create]
   before_action :set_payment_methods, only: [:new, :create]
+  before_action :find_coupon_code, only: [:breakdown, :edit_code, :update_code]
 
   def index
     @q = Spree::CouponCode.ransack(params[:q])
@@ -31,9 +32,14 @@ class Spree::Admin::CouponCodesController < Spree::Admin::ResourceController
   end
 
   def breakdown
-    @coupon_code = Spree::CouponCode.find(params[:id])
     @product = @coupon_code.products.find(params[:product_id])
     @data = Spree::LicensedProduct.where(coupon_code_id: @coupon_code.id, product_id: @product.id).pluck(:email, :school_name_from_coupon)
+  end
+
+  def edit_code
+  end
+
+  def update_code
   end
 
   def coupon_code_params
@@ -43,6 +49,10 @@ class Spree::Admin::CouponCodesController < Spree::Admin::ResourceController
   end
 
   private
+
+  def find_coupon_code
+    @coupon_code = Spree::CouponCode.find(params[:id])
+  end
 
   def process_schools_xls
     return if params[:coupon_code][:schools_xls].nil?

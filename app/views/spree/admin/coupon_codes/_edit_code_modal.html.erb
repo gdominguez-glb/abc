@@ -1,0 +1,22 @@
+<div class="modal fade" tabindex="-1" role="dialog" id="edit-code-modal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Change Product Key Code</h4>
+      </div>
+      <%= form_tag spree.update_code_admin_coupon_code_path(@coupon_code), remote: true, authenticity_token: true do %>
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Code</label>
+            <%= text_field_tag :code, @coupon_code.code, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          <%= button_tag 'Update Code', class: "btn btn-primary", data: { disable_with: 'Saving' } %>
+        </div>
+      <% end %>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
