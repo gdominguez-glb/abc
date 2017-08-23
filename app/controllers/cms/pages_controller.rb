@@ -144,7 +144,7 @@ module Cms
       params.require(:page).permit({seo_data: [:title, :description]}, :title, :seo_content, :slug, :group_name,
                                    :keywords, :description,
                                    :sub_group_name, :position, :layout, :body_draft,
-                                   :visible, :curriculum_id, :group_root,
+                                   :visible, :curriculum_id, :group_root, :hubspot,
                                    :show_in_nav, :show_in_footer, tiles: {})
     end
   end
