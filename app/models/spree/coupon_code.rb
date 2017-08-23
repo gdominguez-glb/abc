@@ -27,7 +27,19 @@ class Spree::CouponCode < ActiveRecord::Base
   end
 
   def available?
-    (used_quantity || 0) < total_quantity
+    if self.old_coupon_code?
+      return (used_quantity || 0) < total_quantity
+    else
+      return self.available_products.count > 0
+    end
+  end
+
+  def old_coupon_code?
+    self.created_at < Date.new(2017, 8, 17)
+  end
+
+  def products_to_activate
+    self.old_coupon_code? ? self.products : self.available_products
   end
 
   def products_of_grade(grade_id)
