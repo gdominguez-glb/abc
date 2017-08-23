@@ -56,6 +56,7 @@
   <% cache [controller_name, @page] do %>
     <body class="<%= controller_name %> <%= 'with-subnav' if @sub_nav_items.present? %> <%= yield :body_class %> <%= (@page && !@page.blank_tiles?) ? 'has-tiles' : 'no-tiles' %>" data-page="<%= @page.group_name if @page.present? %>">
   <% end %>
+    <%= yield :body_top %>
 
     <%= render 'google_tag_manager' if Rails.env.production? %>
     <%= render 'browser_detect' %>

@@ -45,7 +45,7 @@ module ApplicationHelper
   end
 
   def seo_title
-    return @seo_title unless @seo_title.nil?
+    return @seo_title unless @seo_title.blank?
 
     var = "Great Minds"
     unless @page_title.nil?
