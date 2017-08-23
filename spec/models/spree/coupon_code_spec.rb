@@ -11,6 +11,10 @@ RSpec.describe Spree::CouponCode, type: :model do
   let(:coupon_code) { create(:spree_coupon_code, school_district: school_district, products: [product], total_quantity: 10) }
 
   describe "#available?" do
+    before(:each) do
+      coupon_code.created_at = Date.new(2017, 7, 1)
+    end
+
     it "available when used quantity is less than total quantity" do
       coupon_code.used_quantity = 0
       expect(coupon_code.available?).to eq(true)
