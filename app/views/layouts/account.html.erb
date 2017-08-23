@@ -12,6 +12,7 @@
     <%= csrf_meta_tags %>
   </head>
   <body class="<%= controller_name %> <%= yield :body_class %> <%= 'with-subnav' if @sub_nav_items.present? %>">
+    <%= yield :body_top %>
 
     <div id="wrap" class="<%= 'empty-state' if @video_products.blank? %>">
       <%= render 'header' %>
