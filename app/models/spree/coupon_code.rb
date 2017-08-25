@@ -11,6 +11,8 @@ class Spree::CouponCode < ActiveRecord::Base
   validates_uniqueness_of :code, if:  Proc.new { |cc| cc.code.present? }
 
   before_validation :generate_code, on: :create
+  before_validation :upcase_code, on: :update
+
   after_commit :generate_coupon_code_order, on: :create
 
   attr_accessor :schools_xls
@@ -75,6 +77,10 @@ class Spree::CouponCode < ActiveRecord::Base
         break random
       end
     end
+  end
+
+  def upcase_code
+    self.code = self.code.upcase
   end
 
   def generate_coupon_code_order
