@@ -8,7 +8,7 @@
     <%= render partial: 'spree/shared/head' %>
   </head>
   <body class="<%= body_class %> spree-store" id="<%= @body_id || 'default' %>" data-hook="body">
-
+    <%= render 'shared/hubspot' %>
     <%= render 'google_tag_manager' if Rails.env.production? %>
     <%= render partial: 'spree/shared/google_analytics.js' %>
     <%= render partial: 'spree/shared/header' %>
