@@ -36,11 +36,7 @@ module Spree
           licensed_product = Spree::LicensedProduct.find_or_initialize_by({ product_id: product.id }.merge(common_attrs))
           if licensed_product.new_record?
             licensed_product.save
-            if @code.old_coupon_code?
-              @code.increase_used_quantity!
-            else
-              @code.coupon_code_products.find_by(product_id: product).try(:increase_used_quantity!)
-            end
+            @code.increase_used_quantity!
           end
         end
  

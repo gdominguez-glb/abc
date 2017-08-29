@@ -1,4 +1,4 @@
-<% if @coupon_code.update(code: params[:code]) %>
+<% if @coupon_code.update(code: params[:code], total_quantity: params[:total_quantity]) %>
 alert("Updated Successfully");
 $('#edit-code-modal').modal('hide');
 window.location.reload(true);
