@@ -11,6 +11,10 @@
             <label>Code</label>
             <%= text_field_tag :code, @coupon_code.code, class: 'form-control' %>
           </div>
+          <div class="form-group">
+            <label>Total Quantity</label>
+            <%= text_field_tag :total_quantity, @coupon_code.total_quantity, class: 'form-control' %>
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>

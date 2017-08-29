@@ -8,7 +8,6 @@ class AdminNewCouponCodeForm
 
   def perform
     build_coupon_code
-    build_coupon_code_products
     build_order
     success = @coupon_code.save
     complete_order if success
@@ -23,18 +22,8 @@ class AdminNewCouponCodeForm
       school_district_id: self.school_district_id,
       sync_specified_order: self.sync_specified_order,
       sf_order_id: self.sf_order_id,
-      total_quantity: 0
+      product_ids: (self.product_ids.split(','))
     )
-  end
-
-  def build_coupon_code_products
-    self.products_quantity.each do |product_id, quantity|
-      @coupon_code.coupon_code_products.build(
-        product_id: product_id,
-        quantity: quantity
-      )
-      @coupon_code.total_quantity += quantity.to_i
-    end
   end
 
   def build_order
@@ -51,6 +40,12 @@ class AdminNewCouponCodeForm
     add_line_items(order)
     if self.sync_specified_order == '1' && self.sf_order_id.present?
       order.build_salesforce_reference(id_in_salesforce: self.sf_order_id)
+    end
+  end
+
+  def add_line_items(order)
+    @coupon_code.products.each do |product|
+      order.line_items.build(quantity: 1, variant: product.master)
     end
   end
 
