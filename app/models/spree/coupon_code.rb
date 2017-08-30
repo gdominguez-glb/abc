@@ -44,6 +44,14 @@ class Spree::CouponCode < ActiveRecord::Base
     self.old_coupon_code? ? self.products : self.available_products
   end
 
+  def old_coupon_code?
+    self.created_at < Date.new(2017, 8, 17)
+  end
+
+  def products_to_activate
+    self.products
+  end
+
   def products_of_grade(grade_id)
     sql = <<-SQL
       select distinct(spree_products.*) from spree_products

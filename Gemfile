@@ -171,3 +171,6 @@ gem 'capistrano-sidekiq', github: 'seuros/capistrano-sidekiq'
 gem 'unicorn', '~> 4.8.3'
 
 gem 'newrelic_rpm'
+
+gem "hubspot-ruby"
+

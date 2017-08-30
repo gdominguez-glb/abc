@@ -61,8 +61,10 @@
   <% end %>
 </div>
 
-<%= javascript_tag do %>
-  $(document).ready(function(){
-    $('.js-tooltip-trigger').tooltip();
-  });
+<%= content_for :javascripts do %>
+  <%= javascript_tag do %>
+   $(document).ready(function(){
+     $('.js-tooltip-trigger').tooltip();
+   });
+  <% end %>
 <% end %>

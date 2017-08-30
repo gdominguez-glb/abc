@@ -15,7 +15,6 @@ class Spree::Admin::CouponCodesController < Spree::Admin::ResourceController
 
   def create
     @admin_new_coupon_code_form = AdminNewCouponCodeForm.new(coupon_code_params.merge(
-                                                              products_quantity: params[:products],
                                                               payment_source_params: params[:payment_source]
                                                             ))
     @order = Spree::Order.new

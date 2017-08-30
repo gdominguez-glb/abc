@@ -23,34 +23,13 @@
           <%= f.file_field :schools_xls %>
           <%= f.hidden_field :school_lists %>
         </div>
-        <div class="row">
-          <div class="col-md-4">
-            <div data-hook="admin_licensed_product_form_product_id" class="form-group">
-              <label>Select Product</label>
-              <%= select_tag :product_id, options_from_collection_for_select(Spree::Product.order(:name), :id, :internal_name), prompt: 'Select Product', class: 'form-control'  %>
-            </div>
-          </div>
-          <div class="col-md-2">
-            <div data-hook="admin_licensed_product_form_quantity" class="form-group">
-              <label>Quanity</label>
-              <%= text_field_tag :quantity, nil, class: 'form-control' %>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <button class="btn btn-primary" style="margin-top: 26px;" id="add-product-btn">Add Product</button>
-          </div>
+        <div class="form-group">
+          <label>Total Quantity</label>
+          <%= f.text_field :total_quantity, class: 'form-control' %>
         </div>
-
-        <div class="row" id="products-container" style="padding-left: 20px;">
-          <p>
-            Products:
-          </p>
-          <% (params[:products] || {}).each do |product_id, quantity| %>
-            <% product = Spree::Product.find(product_id) %>
-            <div class='product-item'>
-              <span><%= product.name %></span>/<%= quantity %><input type='hidden' name='products[<%= product_id %>]' value='<%= quantity %>'><button class='btn btn-default remove-product'>Remove</button>
-            </div>
-          <% end %>
+        <div class="form-group">
+          <label>Products</label>
+          <%= f.text_field :product_ids, class: 'form-control' %>
         </div>
 
         <div class="form-group">
@@ -90,6 +69,39 @@
 <script type="text/javascript">
   $(function(){
 
+    $("#coupon_code_product_ids").select2({
+      placeholder: "Select product",
+      multiple: true,
+      ajax: {
+        url: '/storeapi/products',
+        datatype: 'json',
+        data: function (term, page) {
+          return {
+            per_page: 50,
+            page: page,
+            without_children: true,
+            q: {
+              name_cont: term
+            },
+            token: Spree.api_key
+          };
+        },
+        results: function (data, page) {
+          var more = page < data.pages;
+          return {
+            results: data['products'],
+            more: more
+          };
+        }
+      },
+      formatResult: function (product) {
+        return product.internal_name;
+      },
+      formatSelection: function (product) {
+        return product.internal_name;
+      }
+    });
+    
      $("#coupon_code_school_district_id").select2({
         placeholder: "Select school/district",
         multiple: false,
@@ -143,31 +155,6 @@
     }
 
     togglePaymentMethod($('#coupon_code_payment_method_id').val());
-
-    $('#product_id').select2();
-
-    var productHTML = "<div class='product-item'><span>PRODUCT_NAME</span>/QUANTITY<input type='hidden' name='products[PRODUCT_ID]' value='QUANTITY'><button class='btn btn-default remove-product'>Remove</button></div>";
-    $('#add-product-btn').click(function(e){
-      e.preventDefault();
-      var html = productHTML;
-      var productId = $('#product_id').val();
-      var productName = $('#product_id option:selected').text();
-      var quantity = $('#quantity').val();
-      if (!productId || !quantity) {
-        alert('Please choose product and enter quantity!');
-        return;
-      }
-      html = html.replace('PRODUCT_NAME', productName);
-      html = html.replace(/QUANTITY/g, quantity);
-      html = html.replace('PRODUCT_ID', productId);
-      $('#products-container').append(html);
-      $('#product_id').select2('val', null);
-      $('#quantity').val('');
-    });
-
-    $(document).on('click', '.remove-product', function(e){
-      $(this).closest('.product-item').remove();
-    });
 
     $(".cardNumber").payment('formatCardNumber');
     $(".cardExpiry").payment('formatCardExpiry');

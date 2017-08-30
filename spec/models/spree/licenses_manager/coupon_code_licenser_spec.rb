@@ -5,10 +5,7 @@ RSpec.describe Spree::LicensesManager::CouponCodeLicenser do
   let!(:grade) { create(:spree_grade, name: 'PK') }
   let!(:product_a) { create(:product, grades: [grade]) }
   let!(:product_b) { create(:product) }
-  let!(:coupon_code) { create(:spree_coupon_code, total_quantity: 10) }
-  let!(:coupon_code_product_a) { create(:spree_coupon_code_product, coupon_code: coupon_code, product: product_a, quantity: 10) }
-  let!(:coupon_code_product_b) { create(:spree_coupon_code_product, coupon_code: coupon_code, product: product_b, quantity: 10) }
-
+  let!(:coupon_code) { create(:spree_coupon_code, total_quantity: 10, products: [product_a, product_b]) }
 
   context "Activate with product_id" do
     before(:each) do
@@ -28,7 +25,7 @@ RSpec.describe Spree::LicensesManager::CouponCodeLicenser do
     end
 
     it "increase used quantity" do
-      expect(coupon_code_product_b.reload.used_quantity).to eq(1)
+      expect(coupon_code.reload.used_quantity).to eq(1)
     end
   end
 
@@ -50,7 +47,7 @@ RSpec.describe Spree::LicensesManager::CouponCodeLicenser do
     end
 
     it "increase used quantity" do
-      expect(coupon_code_product_a.reload.used_quantity).to eq(1)
+      expect(coupon_code.reload.used_quantity).to eq(1)
     end
   end
 end
