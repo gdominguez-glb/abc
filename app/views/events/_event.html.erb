@@ -26,7 +26,7 @@
         <% end %>
 
         <% if event.download_url.present? %>
-          <small class="block"><%= link_to "Event Details", event.download_url, class: 'btn btn-primary margin-bottom', target: '_blank' %></small>
+          <small class="block" id="event-detail-unique-<%= event.id %>"><%= link_to "Event Details", event.download_url, class: 'btn btn-primary margin-bottom', target: '_blank' %></small>
         <% end %>
       </div>
     <% end %>
