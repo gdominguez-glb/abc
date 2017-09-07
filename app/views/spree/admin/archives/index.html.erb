@@ -2,6 +2,15 @@
   <%= 'Archived Products' %>
 <% end %>
 
+<div class="form-inline">
+  <%= form_tag admin_archives_path, method: :get do %>
+    <div class="form-group margin-bottom--reset">
+      <%= text_field_tag :q, params[:q], class: 'form-control margin-bottom--s--sm-min' %>
+      <%= submit_tag 'Search', class: 'btn btn-primary btn-block-xs margin-bottom--s--sm-min margin-right--reset' %>
+    </div>
+  <% end %>
+</div>
+
 <% if @archived_products.any? %>
   <div id="list-archived-products" data-hook>
       <table class="table sortable">
