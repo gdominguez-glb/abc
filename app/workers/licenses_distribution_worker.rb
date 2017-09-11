@@ -1,6 +1,8 @@
 class LicensesDistributionWorker
   include Sidekiq::Worker
 
+  sidekiq_options queue: :licenses
+
   def perform(user_id, all_licenses_ids, all_emails, licenses_number)
     user = Spree::User.find(user_id)
     licensed_products = user.licensed_products.where(id: all_licenses_ids)

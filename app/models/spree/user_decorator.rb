@@ -272,12 +272,12 @@ Spree::User.class_eval do
       receive_newsletter_and_updates: self.allow_communication ? "Yes" : "No",
       subject_s_you_are_interested_in: self.interested_curriculums,
       role: self.title,
-      is_this_a_school_or_a_district_: self.try(:school_district).try(:place_type) == "school" ? "This is a school" : "This is multiple schools/distict",
-      select_country: self.try(:school_district).try(:country).try(:name),
+      is_this_a_school_or_a_district_: self.school_district_required? ? (self.try(:school_district).try(:place_type) == "school" ? "This is a school" : "This is multiple schools/distict") : "",
+      select_country: self.school_district_required? ? self.try(:school_district).try(:country).try(:name) : "",
       state_select: self.try(:school_district).try(:state).try(:name),
       city: self.try(:school_district).try(:city),
-      select_a_school: self.try(:school_district).try(:name),
-      select_a_district: self.try(:school_district).try(:name)
+      select_a_school: self.school_district_required? && self.try(:school_district).try(:place_type) == "school" ? self.try(:school_district).try(:name) : "",
+      select_a_district: self.school_district_required? && self.try(:school_district).try(:place_type) != "school" ? self.try(:school_district).try(:name) : "",
     })
   end
 end
