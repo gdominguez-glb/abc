@@ -31,6 +31,10 @@ module UserRolable
     spree_roles.where(id: Spree::Role.pd.id).count > 0
   end
 
+  def has_account_sales_role?
+    spree_roles.where(id: Spree::Role.account_sales.id).count > 0
+  end
+
   def has_hr_role?
     spree_roles.where(id: Spree::Role.hr.id).count > 0
   end
