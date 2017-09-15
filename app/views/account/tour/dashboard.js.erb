@@ -5,5 +5,5 @@ $('#tour-intro-modal').on('hidden.bs.modal', function (e) {
 });
 $('#start-tour-btn').click(function(){
   $('#tour-intro-modal').modal('hide');
-  startDashboardTour(<%= true %>, <%= $flipper[:my_resources].enabled? %>);
+  startDashboardTour(<%= true %>, <%= true %>);
 });
