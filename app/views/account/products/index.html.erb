@@ -2,86 +2,33 @@
 
   <%= render partial: 'notifications', locals: { notifications: @notifications } %>
 
-  <% if $flipper[:dashboard_redesign].enabled? %>
-    <div class="row">
-      <div class="col-sm-12 text-right--sm-min">
-        <a href="/" class="btn btn-sm btn-block-xs margin-right--reset margin-bottom--m padding-right--b--sm-min js-get-dashboard-tour hide" id="show-tour-btn">
-          Tour This Page <i class="mi md-24">chevron_right</i>
-        </a>
-      </div>
+  <div class="row">
+    <div class="col-sm-12 text-right--sm-min">
+      <a href="/" class="btn btn-sm btn-block-xs margin-right--reset margin-bottom--m padding-right--b--sm-min js-get-dashboard-tour hide" id="show-tour-btn">
+        Tour This Page <i class="mi md-24">chevron_right</i>
+      </a>
     </div>
+  </div>
 
-    <div class="row margin-bottom--l">
-      <div class="col-sm-6 col-md-7 js-recent-resources">
-        <%= render partial: 'recent_resources_new', locals: {products: @my_products} %>
-      </div>
-      <div class="col-sm-6 col-md-5">
-        <% if code = current_spree_user.twitter_list_code %>
-          <%= render partial: 'twitter_new', locals: { code: code } %>
-        <% end %>
-      </div>
+  <div class="row margin-bottom--l">
+    <div class="col-sm-6 col-md-7 js-recent-resources">
+      <%= render partial: 'recent_resources_new', locals: {products: @my_products} %>
     </div>
-
-    <div class="row">
-      <div class="col-sm-6 col-md-7 js-recommends">
-        <%= render 'recommends_new' %>
-      </div>
-      <div class="col-sm-6 col-md-5 js-whats-new">
-        <%= render 'whats_new' %>
-      </div>
-    </div>
-
-  <% else %>
-
-    <div class="row">
-      <div class="col-md-6">
-        <h2>My Dashboard</h2>
-      </div>
-      <div class="col-sm-4 col-md-2">
-        <%= link_to new_account_coupon_code_path, class: 'btn btn-sm btn-default margin-top--sm-min margin-bottom--m btn-block hide', id: 'new-coupon-code-btn', remote: true do %>
-          Product Key
-        <% end %>
-      </div>
-      <div class="col-sm-4 col-md-2">
-        <a href="/" class="btn btn-sm btn-default margin-top--sm-min margin-bottom--m btn-block js-get-dashboard-tour hide" id="show-tour-btn">
-          Tour
-        </a>
-      </div>
-      <div class="col-sm-4 col-md-2">
-        <a href="/contact" class="btn btn-sm btn-default margin-top--sm-min margin-bottom--m margin-right--reset btn-block">
-          Contact Us
-        </a>
-      </div>
-    </div>
-
-    <div class="row">
-      <% if @my_products.length == 0 %>
-        <div class="col-sm-12">
-          <div class="jumbotron">
-            <h2>You haven’t checked out any products yet!</h2>
-            <%= link_to 'Visit Store', account_shop_of_interest_path, class: 'btn btn-default' %>
-          </div>
-        </div>
-      <% else %>
-        <div class="my-products-container">
-          <div class="js-my-products" style="width: 321px; height: 269px; position: absolute; bottom: 0; z-index: 0;"></div>
-          <%= render 'my_products' %>
-        </div>
-      <% end %>
-    </div>
-
-    <div class="row">
-      <div class="recommends col-md-7">
-        <%= render 'recommends' %>
-      </div>
+    <div class="col-sm-6 col-md-5">
       <% if code = current_spree_user.twitter_list_code %>
-        <div class="twitter-feed-container col-md-5">
-          <%= render partial: 'twitter', locals: { code: code } %>
-        </div>
+        <%= render partial: 'twitter_new', locals: { code: code } %>
       <% end %>
     </div>
+  </div>
 
-  <% end %>
+  <div class="row">
+    <div class="col-sm-6 col-md-7 js-recommends">
+      <%= render 'recommends_new' %>
+    </div>
+    <div class="col-sm-6 col-md-5 js-whats-new">
+      <%= render 'whats_new' %>
+    </div>
+  </div>
 
 </div>
 

@@ -8,12 +8,8 @@ class Account::ProductsController < Account::BaseController
   def index
     @nav_name = 'My Resources'
 
-    if $flipper[:dashboard_redesign].enabled?
-      @my_products = spree_current_user.my_resources.page(1).per(4)
-      @my_products = filter_by_curriculum(@my_products, @curriculum) unless @curriculum.nil?
-    else
-      @my_products = filter_by_grade_taxon(current_spree_user.products_in_dashboard).to_a.uniq(&:id)
-    end
+    @my_products = spree_current_user.my_resources.page(1).per(4)
+    @my_products = filter_by_curriculum(@my_products, @curriculum) unless @curriculum.nil?
 
     load_recommendations
     load_notifications
