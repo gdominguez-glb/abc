@@ -28,9 +28,7 @@ class ContactForm
 
   def create_lead_object
     attrs = lead_common_attributes
-    if $flipper[:lead_campagin_tracking].enabled?
-      attrs.merge!('Lead_Referral__c' => self.referral)
-    end
+    attrs.merge!('Lead_Referral__c' => self.referral)
     if self.topic == 'Sales/Purchasing'
       attrs.merge!(sales_attributes)
     elsif self.topic == 'Professional Development'
