@@ -10,7 +10,7 @@
   </div>
   <%# <% selected_taxons = taxonomy.root.children.where(id: params[:taxon_ids]) %1> %>
   <div id="collapse<%= taxonomy.name.gsub(/[^0-9A-Za-z]/, '') %>" class="panel-collapse collapse">
-    <%= gm_taxons_tree(taxonomy.root, @taxon, taxonomy.allow_multiple_taxons_selected, :video_redesign) %>
+    <%= gm_taxons_tree(taxonomy.root, @taxon, taxonomy.allow_multiple_taxons_selected) %>
   </div>
 </div>
 <% end %>
