@@ -10,49 +10,31 @@ class BlogController < ApplicationController
   
   def global
     @blog_type = 'global'
-    if $flipper[:blog_redesign].enabled?
-      load_global_blog
-      load_articles
-      @blog_title = @blog.title
-    else
-      load_global_publication
-      load_posts
-      @publication_title = @medium_publication.title
-    end
+
+    load_global_blog
+    load_articles
+    @blog_title = @blog.title
   end
 
   def global_post
     @blog_type = 'global'
 
-    if $flipper[:blog_redesign].enabled?
-      load_global_blog
-      find_article
-    else
-      find_post
-    end
+    load_global_blog
+    find_article
   end
 
   def curriculum
     @blog_type = 'curriculum'
 
-    if $flipper[:blog_redesign].enabled?
-      load_curriculum_blog
-      load_articles
-    else
-      load_curriculum_publication
-      load_posts
-    end
+    load_curriculum_blog
+    load_articles
   end
 
   def curriculum_post
     @blog_type = 'curriculum'
 
-    if $flipper[:blog_redesign].enabled?
-      load_curriculum_blog
-      find_article
-    else
-      find_post
-    end
+    load_curriculum_blog
+    find_article
   end
 
   def subscribe

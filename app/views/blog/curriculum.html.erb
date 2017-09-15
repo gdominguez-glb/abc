@@ -1,17 +1,1 @@
-<% if $flipper[:blog_redesign].enabled? %>
-  <%= render 'curriculum_new' %>
-<% else %>
-  <%= content_for :body_class, 'with-subnav' %>
-  <div class="row">
-    <div class="col-sm-10 col-sm-offset-1 margin-top--xxl margin-bottom--xl">
-      <%= render partial: 'curriculum_publications_nav', locals: { page: @group_page, publications: @curriculum_publications } %>
-      <%= render partial: 'blog_header', locals: { medium_publication: @medium_publication } %>
-      <div class="posts">
-        <%= render partial: 'posts', locals: { posts: @posts, blog_type: @blog_type, group_page: @group_page, publication: @medium_publication } %>
-      </div>
-      <div class="posts-pagination">
-        <%= render partial: 'load_more_link', locals: { posts: @posts } %>
-      </div>
-    </div>
-  </div>
-<% end %>
+<%= render 'curriculum_new' %>
