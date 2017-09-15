@@ -1,7 +1,2 @@
-<% if $flipper[:blog_redesign].enabled? %>
-  $('.posts').append("<%= escape_javascript((render partial: 'articles', locals: { articles: @articles, blog_type: @blog_type, group_page: @group_page, blog: @blog })) %>");
-  $('.posts-pagination').html("<%= escape_javascript((render partial: 'load_more_link_new', locals: { articles: @articles })) %>");
-<% else %>
-  $('.posts').append("<%= escape_javascript((render partial: 'posts', locals: { posts: @posts, blog_type: @blog_type, group_page: @group_page, publication: @medium_publication })) %>");
-  $('.posts-pagination').html("<%= escape_javascript((render partial: 'load_more_link', locals: { posts: @posts })) %>");
-<% end %>
+$('.posts').append("<%= escape_javascript((render partial: 'articles', locals: { articles: @articles, blog_type: @blog_type, group_page: @group_page, blog: @blog })) %>");
+$('.posts-pagination').html("<%= escape_javascript((render partial: 'load_more_link_new', locals: { articles: @articles })) %>");
