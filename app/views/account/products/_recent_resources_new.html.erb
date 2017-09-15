@@ -4,10 +4,8 @@
   </div>
 
   <div class="col-xs-7 col-lg-4">
-    <% if $flipper[:coupon_code].enabled? %>
-      <%= link_to new_account_coupon_code_path, class: 'btn btn-sm btn-default btn-block margin-bottom--xl hide js-product-key', id: 'new-coupon-code-btn', remote: true do %>
-        Product Key
-      <% end %>
+    <%= link_to new_account_coupon_code_path, class: 'btn btn-sm btn-default btn-block margin-bottom--xl hide js-product-key', id: 'new-coupon-code-btn', remote: true do %>
+      Product Key
     <% end %>
   </div>
 
