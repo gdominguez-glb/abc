@@ -1,40 +1,26 @@
 <div class="group-products">
   <div class="row">
     <div class="col-md-10 col-md-offset-1">
-      <% if $flipper[:store_redesign].enabled? %>
-        <h2 class="bh6 margin-bottom--reset text-left">
-          <%= @product_group.curriculum.try(:name) || 'General' %>
-        </h2>
-      <% end %>
+      <h2 class="bh6 margin-bottom--reset text-left">
+        <%= @product_group.curriculum.try(:name) || 'General' %>
+      </h2>
       <h2 class="text-left lh4"><%= @product_group.name %></h2>
-      <% if $flipper[:store_redesign].enabled? %>
-        <div class="margin-bottom--l border-bottom--firm-accent">
-          <div class="js-read-more overflow--hidden height--100">
-            <div class="js-read-more-full">
-              <%= @product_group.description.html_safe rescue '' %>
-            </div>
+      <div class="margin-bottom--l border-bottom--firm-accent">
+        <div class="js-read-more overflow--hidden height--100">
+          <div class="js-read-more-full">
+            <%= @product_group.description.html_safe rescue '' %>
           </div>
-          <button class="btn btn-link-alt btn-link--stable js-read-more-btn none">Read <span class="js-read-more-btn-text">More</span><span class="js-read-less-btn-text none">Less</span> <i class="mi md-24 js-read-more-arrow">keyboard_arrow_down</i></button>
         </div>
-      <% else %>
-        <p class="text-left"><%= @product_group.description.html_safe rescue '' %></p>
-      <% end %>
+        <button class="btn btn-link-alt btn-link--stable js-read-more-btn none">Read <span class="js-read-more-btn-text">More</span><span class="js-read-less-btn-text none">Less</span> <i class="mi md-24 js-read-more-arrow">keyboard_arrow_down</i></button>
+      </div>
     </div>
     <div class="col-xs-12">
-      <% if $flipper[:store_redesign].enabled? %>
-        <% @products.in_groups_of(3, false).each do |group| %>
-          <div class="row display-flex--md-min">
-            <% group.each do |product| %>
-              <div class="col-md-4 display-flex--md-min flex-column--md-min">
-                <%= render partial: 'spree/shared/product_group', locals: { product: product } %>
-              </div>
-            <% end %>
-          </div>
-        <% end %>
-      <% else %>
-        <div class="row">
-          <% @products.each do |product| %>
-            <%= render partial: 'spree/shared/product', locals: { product: product } %>
+      <% @products.in_groups_of(3, false).each do |group| %>
+        <div class="row display-flex--md-min">
+          <% group.each do |product| %>
+            <div class="col-md-4 display-flex--md-min flex-column--md-min">
+              <%= render partial: 'spree/shared/product_group', locals: { product: product } %>
+            </div>
           <% end %>
         </div>
       <% end %>
@@ -43,7 +29,7 @@
 </div>
 <%= render partial: 'spree/shared/partner_modal' %>
 
-<% if $flipper[:store_redesign].enabled? %>
+<% content_for :javascripts do %>
   <%= javascript_tag do %>
     $(function() {
       function readMoreCheck() {
