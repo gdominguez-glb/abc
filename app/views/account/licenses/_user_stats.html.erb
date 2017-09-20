@@ -1,5 +1,9 @@
 <tr class="user-details" id="user-stats-tr-<%= @user.id %>">
-  <td></td>
+  <td>
+    <% if @user.to_users.where.not(spree_product_distributions: { to_user_id: @user.id }).count > 0 %>
+      <%= link_to 'Distribution', secondary_user_stats_account_licenses_path(user_id: @user.id), class: 'btn btn-sm distribution-stats-btn', 'data-user-id' => @user.id %>
+    <% end %>
+  </td>
   <td colspan='7'>
     <div class="row user-stats-wrapper">
       <div class="col-xs-3 col-xs-offset-9 col-md-3 col-md-offset-0">

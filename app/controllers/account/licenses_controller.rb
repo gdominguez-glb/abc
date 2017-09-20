@@ -39,6 +39,11 @@ class Account::LicensesController < Account::BaseController
     @user = current_spree_user.to_users.find_by(id: params[:user_id])
   end
 
+  def secondary_user_stats
+    @from_user = current_spree_user.to_users.find_by(id: params[:user_id])
+    @users = @from_user.to_users.where.not(spree_product_distributions: { to_user_id: @from_user.id })
+  end
+
   def licenses_stats
     @licenses_ids = params[:licenses_ids]
     @licenses_ids = @licenses_ids.split(',') unless @licenses_ids.nil?

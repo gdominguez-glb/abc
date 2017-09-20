@@ -61,8 +61,22 @@
         var user_id = $tr.attr('data-user-id');
         var url = $(this).attr('href');
         var $user_tr = $("#user-stats-tr-"+user_id);
+        var $secondary_user_tr = $('.user-details[data-parent-id="'+user_id+'"]');
         if ($user_tr.length > 0) {
           $user_tr.remove()
+          $secondary_user_tr.remove();
+        } else {
+          $.get(url);
+        }
+      });
+
+      $(document).on( "click", ".distribution-stats-btn", function(e) {
+        e.preventDefault();
+        var user_id = $(this).attr('data-user-id');
+        var url = $(this).attr('href');
+        var $secondary_user_tr = $('.user-details[data-parent-id="'+user_id+'"]');
+        if($secondary_user_tr.length > 0) {
+          $secondary_user_tr.remove();
         } else {
           $.get(url);
         }
