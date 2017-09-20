@@ -28,6 +28,7 @@ namespace :account do
       post :select_users
       get :edit_select_users
       get :user_stats
+      get :secondary_user_stats
       get :licenses_stats
       get :edit_user_licenses
       post :update_user_licenses
