@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170822015122) do
+ActiveRecord::Schema.define(version: 20170922011311) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,12 @@ ActiveRecord::Schema.define(version: 20170822015122) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "activities", ["action"], name: "index_activities_on_action", using: :btree
+  add_index "activities", ["item_id"], name: "index_activities_on_item_id", using: :btree
+  add_index "activities", ["item_type"], name: "index_activities_on_item_type", using: :btree
+  add_index "activities", ["updated_at"], name: "index_activities_on_updated_at", using: :btree
+  add_index "activities", ["user_id"], name: "index_activities_on_user_id", using: :btree
 
   create_table "answers", force: :cascade do |t|
     t.integer  "question_id"
@@ -458,6 +464,11 @@ ActiveRecord::Schema.define(version: 20170822015122) do
     t.datetime "expire_at"
     t.boolean  "viewed",                  default: false
   end
+
+  add_index "notifications", ["created_at"], name: "index_notifications_on_created_at", using: :btree
+  add_index "notifications", ["expire_at"], name: "index_notifications_on_expire_at", using: :btree
+  add_index "notifications", ["read"], name: "index_notifications_on_read", using: :btree
+  add_index "notifications", ["user_id"], name: "index_notifications_on_user_id", using: :btree
 
   create_table "oauth_access_grants", force: :cascade do |t|
     t.integer  "resource_owner_id", null: false
