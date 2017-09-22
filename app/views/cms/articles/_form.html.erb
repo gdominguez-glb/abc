@@ -29,6 +29,11 @@
         <%= f.text_field :publish_date, class: 'form-control' %>
       </div>
       <div class="form-group">
+        <%= f.label 'External link' %>
+        <%= f.text_field :external_link, class: 'form-control' %>
+        <p>If present, slug and body are not needed</p>
+      </div>
+      <div class="form-group">
         <%= f.label 'Unique url (Slug)' %>
         <%= f.text_field :slug, class: 'form-control' %>
       </div>
@@ -40,7 +45,7 @@
         <%= f.label 'Created by' %>
         <%= f.text_field :created_by, class: "form-control" %>
       </div>
-      <div class="form-group">
+      <div class="form-group body-form-group">
         <%= f.label "Body" %>
         <%= f.text_area :body_draft, class: "form-control body-editor" %>
       </div>
@@ -95,6 +100,24 @@
        btns: ['bold', 'italic', 'underline', 'strikethrough', '|', 'formatting', '|', 'imageClasses', '|', 'unorderedList', 'orderedList', '|', 'link', '|', 'viewHTML', 'removeformat']
      });
      $("#article_publish_date").datetimepicker({format: 'YYYY-MM-DD'});
+
+     var externalLink = $('#article_external_link');
+
+     var hideOrShow = function() {
+       if (externalLink.val().length > 0) {
+         $('#article_slug').parent().hide();
+         $('.body-form-group').hide();
+       } else {
+         $('#article_slug').parent().show();
+         $('.body-form-group').show();
+       }
+     };
+
+     hideOrShow();
+
+     externalLink.on('keyup kewdown change', function() {
+       hideOrShow()
+     });
    });
   </script>
 <% end %>

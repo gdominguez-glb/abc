@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170922011311) do
+ActiveRecord::Schema.define(version: 20170922222010) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 20170922011311) do
     t.datetime "published_at"
     t.string   "created_by"
     t.string   "mailchimp_campaign_id"
+    t.string   "external_link"
   end
 
   create_table "blogs", force: :cascade do |t|
