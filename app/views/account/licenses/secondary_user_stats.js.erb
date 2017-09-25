@@ -1,0 +1,2 @@
+$('.user-details[data-parent-id=<%= @from_user.id %>]').remove();
+$("#user-stats-tr-<%= @from_user.id %>").after("<%= escape_javascript(render 'secondary_user_stats') %>")

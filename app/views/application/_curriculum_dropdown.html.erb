@@ -3,8 +3,8 @@
   <% page.sub_pages.each do |sub_page| %>
     <li><%= active_link_to sub_page.title, "/#{sub_page.slug}" %></li>
   <% end %>
-  <% if page && publication = page.medium_publications.sorted.first %>
-    <%= active_link_to 'Blog', main_app.curriculum_blog_path(page_slug: page.slug, slug: publication.slug), wrap_tag: :li, active: /#{page.slug}\/blog/ %>
+  <% if page && blog = page.blogs.sorted.first %>
+    <%= active_link_to 'Blog', main_app.curriculum_blog_path(page_slug: page.slug, slug: blog.slug), wrap_tag: :li, active: /#{page.slug}\/blog/ %>
   <% end %>
   <% if page && event_page = page.available_event_pages.first %>
     <%= active_link_to 'Events', main_app.curriculum_events_path(page_slug: page.slug, slug: event_page.slug), wrap_tag: :li, active: /#{page.slug}\/events\/#{event_page.slug}/ %>

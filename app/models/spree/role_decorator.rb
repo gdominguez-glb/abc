@@ -26,4 +26,8 @@ Spree::Role.class_eval do
   def self.pd
     Spree::Role.find_or_create_by(name: 'pd')
   end
+
+  def self.account_sales
+    Spree::Role.find_or_create_by(name: 'account_sales')
+  end
 end

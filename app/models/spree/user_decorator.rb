@@ -174,7 +174,7 @@ Spree::User.class_eval do
   has_many :download_jobs
   has_many :bookmarks
 
-  attr_accessor :school_id, :district_id, :ip_location
+  attr_accessor :school_id, :district_id, :ip_location, :hubspot_cookie
 
   accepts_nested_attributes_for :school_district, reject_if: proc { |attributes| attributes['name'].blank? }
 
@@ -278,6 +278,10 @@ Spree::User.class_eval do
       city: self.try(:school_district).try(:city),
       select_a_school: self.school_district_required? && self.try(:school_district).try(:place_type) == "school" ? self.try(:school_district).try(:name) : "",
       select_a_district: self.school_district_required? && self.try(:school_district).try(:place_type) != "school" ? self.try(:school_district).try(:name) : "",
+      hs_context: {
+        "ipAddress" => self.ip_location,
+        "hutk" => self.hubspot_cookie
+      }
     })
   end
 end

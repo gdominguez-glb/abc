@@ -4,13 +4,13 @@
       <% #TODO Refactor %>
       <% url = @blog_type == 'global' ? global_post_path(slug: @article.prev_article.blog.slug, id: @article.prev_article.slug) : curriculum_post_path(page_slug: @group_page.slug, slug: @article.prev_article.blog.slug, id: @article.prev_article.slug) %>
       <h3 class="blog-title">
-        <a href="<%= url %>"><%= @article.prev_article.title %></a>
+        <a href="<%= (@article.prev_article.external_link.present? ? @article.prev_article.external_link : url) %>"><%= @article.prev_article.title %></a>
       </h3>
       <% if @article.prev_article.user_name.present? %>
         <div class="blog-meta">By: <%= @article.prev_article.user_name %></div>
       <% end %>
       <hr />
-      <a href="<%= url %>" class="btn btn-sm btn-default btn-transparent">
+      <a href="<%= (@article.prev_article.external_link.present? ? @article.prev_article.external_link : url) %>" class="btn btn-sm btn-default btn-transparent">
         <i class="mi md-18">chevron_left</i> Previous
       </a>
     </div>
@@ -22,13 +22,13 @@
       <% #TODO Refactor %>
       <% url = @blog_type == 'global' ? global_post_path(slug: @article.next_article.blog.slug, id: @article.next_article.slug) : curriculum_post_path(page_slug: @group_page.slug, slug: @article.next_article.blog.slug, id: @article.next_article.slug) %>
       <h3 class="blog-title">
-        <a href="<%= url %>"><%= @article.next_article.title %></a>
+        <a href="<%= (@article.next_article.external_link.present? ? @article.next_article.external_link : url) %>"><%= @article.next_article.title %></a>
       </h3>
         <% if @article.next_article.user_name.present? %>
           <div class="blog-meta">By: <%= @article.next_article.user_name %></div>
         <% end %>
         <hr />
-      <a href="<%= url %>" class="btn btn-sm btn-default btn-transparent">
+      <a href="<%= (@article.next_article.external_link.present? ? @article.next_article.external_link : url) %>" class="btn btn-sm btn-default btn-transparent">
         Next <i class="mi md-18">chevron_right</i>
       </a>
     <% end %>

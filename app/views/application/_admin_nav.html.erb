@@ -13,7 +13,7 @@
         <%= active_link_to "Video Gallery", '/video_gallery', wrap_tag: :li, class: 'video-gallery-link js-video-gallery-link' %>
         <% if spree_current_user.has_admin_role? %>
           <%= active_link_to "Store Admin", '/store/admin', wrap_tag: :li %>
-        <% elsif current_spree_user.has_csr_role?%>
+        <% elsif current_spree_user.has_csr_role? || current_spree_user.has_account_sales_role? %>
           <%= active_link_to "Store Admin", '/store/admin/users', wrap_tag: :li %>
         <% end %>
         <%= active_link_to "Bookmarks", '/account/bookmarks', wrap_tag: :li, class: 'hide' %>
