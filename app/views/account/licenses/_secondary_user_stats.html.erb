@@ -1,6 +1,14 @@
+<tr class="user-details" data-parent-id="<%= @from_user.id%>">
+  <td>
+    Distributed
+  </td>
+  <td colspan="7"></td>
+</tr>
 <% @users.each do |user|  %>
   <tr class="user-details" data-parent-id="<%= @from_user.id%>">
     <td>
+      <p>User:</p>
+      <p><%= user.full_name %></p>
     </td>
     <td colspan='7'>
       <div class="row user-stats-wrapper">
@@ -9,15 +17,21 @@
           <%# <p>Exp: Auguest 20, 2015</p> %>
           <p><%= user.email %></p>
         </div>
-        <div class="col-xs-3 col-xs-offset-9 col-md-3 col-md-offset-0">
+        <div class="col-xs-2 col-xs-offset-8 col-md-2 col-md-offset-0">
+          <% Spree::ProductDistribution.from_user_to_email(@from_user, user.email).each do |_product_distribution| %>
+            <% next if _product_distribution.quantity == 0 %>
+            <%= _product_distribution.product.name %>(x<%= _product_distribution.quantity %>)
+          <% end %>
+        </div>
+        <div class="col-xs-2 col-xs-offset-8 col-md-2 col-md-offset-0">
           <p>5 Day Log In</p>
           <h6><%= user.logins_in_last_days(5) %>x</h6>
         </div>
-        <div class="col-xs-3 col-xs-offset-9 col-md-3 col-md-offset-0">
+        <div class="col-xs-2 col-xs-offset-8 col-md-2 col-md-offset-0">
           <p>10 Day Log In</p>
           <h6><%= user.logins_in_last_days(10) %>x</h6>
         </div>
-        <div class="col-xs-3 col-xs-offset-9 col-md-3 col-md-offset-0">
+        <div class="col-xs-2 col-xs-offset-8 col-md-2 col-md-offset-0">
           <p>Monthly Log In</p>
           <h6><%= user.logins_in_last_days(30) %>x</h6>
         </div>
