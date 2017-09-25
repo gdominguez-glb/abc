@@ -114,7 +114,9 @@ class Spree::Video < ActiveRecord::Base
   end
 
   def type_taxon_name
-    taxons.joins(:taxonomy).where(spree_taxonomies: { name: 'Type' }).first.name rescue nil
+    #taxons.joins(:taxonomy).where(spree_taxonomies: { name: 'Type' }).first.name rescue nil
+    # refactor the code with following to reduce query since we already eager load the taxons/taxonomy
+    taxons.find{|taxon| taxon.taxonomy.name == 'Type' }.name rescue nil
   end
 
   private
