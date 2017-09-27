@@ -10,7 +10,7 @@ class Article < ActiveRecord::Base
   validates_presence_of :title
   validates_presence_of :body_draft, :slug, if: proc { |a| a.external_link.blank? }
 
-  validates_uniqueness_of :slug
+  validates_uniqueness_of :slug, allow_blank: proc { |a| a.external_link.present? }
 
   scope :sorted, -> { order('publish_date desc') }
   scope :search_by_text, ->(q) { where("(title ilike :q) or (body ilike :q) or (created_by ilike :q)", q: "%#{q}%") if q.present?  }
