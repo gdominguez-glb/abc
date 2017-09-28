@@ -7,8 +7,8 @@ class AccountSalesAbility
     end
 
     if user.has_account_sales_role?
-      can [:admin, :read], Spree::Order
-      can [:admin, :read], Spree::User
+      can :manage, Spree::Order
+      can :manage, Spree::User
     end
   end
 end
