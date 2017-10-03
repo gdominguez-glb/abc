@@ -10,9 +10,9 @@
     <%= javascript_include_tag 'account' %>
     <%= render 'google_fonts_inline' %>
     <%= csrf_meta_tags %>
+    <%= render 'shared/hubspot' %>
   </head>
   <body class="<%= controller_name %> <%= yield :body_class %> <%= 'with-subnav' if @sub_nav_items.present? %>">
-    <%= render 'shared/hubspot' %>
     <div id="wrap" class="<%= 'empty-state' if @video_products.blank? %>">
       <%= render 'header' %>
       <div class="container container-content">
