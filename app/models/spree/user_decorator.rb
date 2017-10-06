@@ -278,7 +278,7 @@ Spree::User.class_eval do
       city: self.try(:school_district).try(:city),
       select_a_school: self.school_district_required? && self.try(:school_district).try(:place_type) == "school" ? self.try(:school_district).try(:name) : "",
       select_a_district: self.school_district_required? && self.try(:school_district).try(:place_type) != "school" ? self.try(:school_district).try(:name) : "",
-      hs_context: {ipAddress: self.remote_ip, hutk: self.hubspot_cookie}
+      hs_context: {ipAddress: self.remote_ip, hutk: self.hubspot_cookie}.to_json
     })
   end
 end
