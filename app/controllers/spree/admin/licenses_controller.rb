@@ -1,6 +1,8 @@
 module Spree
   module Admin
     class LicensesController < BaseController
+      include ::AuthorizeAccountSales
+
       before_action :find_user
       before_action :find_license, only: [:edit, :update]
 
@@ -15,6 +17,10 @@ module Spree
         @licensed_product.update(license_params)
         @licensed_product.product_distribution.update(quantity: @licensed_product.quantity) if @licensed_product.product_distribution
         redirect_to admin_user_licenses_path(@user), notice: 'Update license successfully'
+      end
+
+      def model_class
+        Spree::LicensedProduct
       end
 
       private

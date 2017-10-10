@@ -559,6 +559,7 @@ ActiveRecord::Schema.define(version: 20170922222010) do
     t.text     "seo_data"
     t.string   "render",         default: ""
     t.text     "data"
+    t.boolean  "hubspot"
   end
 
   create_table "popups", force: :cascade do |t|

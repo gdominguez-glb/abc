@@ -50,7 +50,7 @@ Spree::UserSessionsController.class_eval do
   protected
 
   def require_admin
-    return if spree_current_user.admin? || current_spree_user.has_csr_role?
+    return if spree_current_user.admin? || current_spree_user.has_csr_role? || current_spree_user.has_account_sales_role?
     redirect_to main_app.account_root_path, notice: t('error_messages.permission_denied')
   end
 
