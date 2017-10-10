@@ -11,7 +11,6 @@ class AccountSalesAbility
     if user.has_account_sales_role?
       can :manage, Spree::Order
       can :manage, Spree::User
-      can :manage, Spree::LicensedProduct
     end
   end
 end
