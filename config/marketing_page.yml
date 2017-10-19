@@ -78,6 +78,12 @@ marketing_templates:
       </script>
 
   -
+    name: 'Testimonials (Header, video, text)'
+    content: ''
+  -
+    name: 'Testimonials (Header, image, text, link)'
+    content: ''
+  -
     name: 'Video Hero'
     content: !xml |
       <style>

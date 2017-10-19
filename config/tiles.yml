@@ -16,6 +16,37 @@
   - :name: title_highlight
     :label: Title Highlight
     :input_type: text
+
+- :name: Testimonials (Header, image, text, link)
+  :fields:
+    - :name: testimonial_header
+      :label: Header
+      :input_type: text
+    - :name: testimonial_image_url
+      :label: Image url
+      :input_type: text
+    - :name: testimonial_text
+      :label: Text
+      :input_type: text
+    - :name: testimonial_link_url
+      :label: Link Url
+      :input_type: text
+    - :name: testimonial_link_text
+      :label: Link Text
+      :input_type: text
+
+- :name: Testimonials (Header, video, text)
+  :fields:
+    - :name: testimonial_header_2
+      :label: Header
+      :input_type: text
+    - :name: testimonial_video_url_2
+      :label: Video link
+      :input_type: text
+    - :name: testimonial_text_2
+      :label: Text
+      :input_type: text
+
 - :name: Video Hero
   :fields:
   - :name: title
