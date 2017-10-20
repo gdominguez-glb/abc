@@ -112,7 +112,7 @@ class Mailchimp
     case user.title
     when 'Teacher', 'Parent'
       [ LISTS["General Great Minds Updates"] ] + list_ids_by_subjects(user.interested_curriculums)
-    when 'Administrator', 'Administrative Assistant'
+    when 'Administrator', 'Administrative Assistant', 'School Administration', 'District Administration'
       LISTS.values
     else
       [ LISTS["General Great Minds Updates"] ]

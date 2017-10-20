@@ -12,7 +12,7 @@ function shouldShowDistrict(userRole) {
   var visibleFields = {};
   visibleFields.showDistrictDetails = false;
 
-  if (userRole === 'Teacher' || userRole === 'Administrator' || userRole === 'Administrative Assistant') {
+  if (userRole === 'Teacher' || userRole === 'School Administration' || userRole === 'District Administration') {
     visibleFields.showDistrictDetails = true;
   }
 
@@ -20,7 +20,7 @@ function shouldShowDistrict(userRole) {
 }
 
 function shouldShowPhone(userRole) {
-  if (userRole === 'Administrator' || userRole === 'Administrative Assistant') {
+  if (userRole === 'School Administration' || userRole === 'District Administration') {
     return true;
   }
   return false;

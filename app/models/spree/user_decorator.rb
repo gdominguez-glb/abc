@@ -187,7 +187,13 @@ Spree::User.class_eval do
   end
 
   if !defined?(USER_TITLES)
-    USER_TITLES = ['Teacher', 'Administrator', 'Parent', 'Administrative Assistant', 'Homeschooler'].freeze
+    USER_TITLES = [
+      'Teacher',
+      'Parent',
+      'School Administration',
+      'District Administration',
+      'Homeschooler'
+    ].freeze
 
     USER_TITLES.each do |title|
       scope "with_#{title.downcase}_title", -> { where(title: title) }
