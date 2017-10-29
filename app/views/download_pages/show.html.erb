@@ -24,8 +24,11 @@
     <%= javascript_tag do %>
       $(function() {
         <% if params[:opened_product_id].present? %>
-          var pos = $("[data-product-id='<%= params[:opened_product_id] %>']").offset().top;
-          $('body, html').animate({scrollTop: pos});
+          var $targetEl = $("[data-product-id='<%= params[:opened_product_id] %>']");
+          if ($targetEl.length > 0) {
+            var pos = $targetEl.offset().top;
+            $('body, html').animate({scrollTop: pos});
+          }
         <% end %>
 
         function trackProductMaterial(product_id, material_id) {
