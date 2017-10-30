@@ -17,34 +17,88 @@
     :label: Title Highlight
     :input_type: text
 
-- :name: Testimonials (Header, image, text, link)
+- :name: Testimonials
   :fields:
-    - :name: testimonial_header
-      :label: Header
+    - :name: background_color
+      :label: Background Color
+      :input_type: select
+      :input_options:
+        - green
+        - blue
+        - cream
+        - orange
+        - light-blue   
+    - :name: testimonial_header_1
+      :label: Header 1
       :input_type: text
-    - :name: testimonial_image_url
-      :label: Image url
+    - :name: testimonial_image_url_1
+      :label: Image url 1
       :input_type: text
-    - :name: testimonial_text
-      :label: Text
+    - :name: testimonial_video_url_1
+      :label: Video link 1
       :input_type: text
-    - :name: testimonial_link_url
-      :label: Link Url
+    - :name: testimonial_text_1
+      :label: Text 1
+      :input_type: text_area
+    - :name: testimonial_link_url_1
+      :label: Link Url 1
       :input_type: text
-    - :name: testimonial_link_text
-      :label: Link Text
+    - :name: testimonial_link_text_1
+      :label: Link Text 1
       :input_type: text
-
-- :name: Testimonials (Header, video, text)
-  :fields:
     - :name: testimonial_header_2
-      :label: Header
+      :label: Header 2
+      :input_type: text
+    - :name: testimonial_image_url_2
+      :label: Image url 2
       :input_type: text
     - :name: testimonial_video_url_2
-      :label: Video link
+      :label: Video link 2
       :input_type: text
     - :name: testimonial_text_2
-      :label: Text
+      :label: Text 2
+      :input_type: text_area
+    - :name: testimonial_link_url_2
+      :label: Link Url 2
+      :input_type: text
+    - :name: testimonial_link_text_2
+      :label: Link Text 2
+      :input_type: text
+    - :name: testimonial_header_3
+      :label: Header 3
+      :input_type: text
+    - :name: testimonial_image_url_3
+      :label: Image url 3
+      :input_type: text
+    - :name: testimonial_video_url_3
+      :label: Video link 3
+      :input_type: text
+    - :name: testimonial_text_3
+      :label: Text 3
+      :input_type: text_area
+    - :name: testimonial_link_url_3
+      :label: Link Url 3
+      :input_type: text
+    - :name: testimonial_link_text_3
+      :label: Link Text 3
+      :input_type: text
+    - :name: testimonial_header_4
+      :label: Header 4
+      :input_type: text
+    - :name: testimonial_image_url_4
+      :label: Image url 4
+      :input_type: text
+    - :name: testimonial_video_url_4
+      :label: Video link 4
+      :input_type: text
+    - :name: testimonial_text_4
+      :label: Text 4
+      :input_type: text_area
+    - :name: testimonial_link_url_4
+      :label: Link Url 4
+      :input_type: text
+    - :name: testimonial_link_text_4
+      :label: Link Text 4
       :input_type: text
 
 - :name: Video Hero

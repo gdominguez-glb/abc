@@ -78,11 +78,82 @@ marketing_templates:
       </script>
 
   -
-    name: 'Testimonials (Header, video, text)'
-    content: ''
-  -
-    name: 'Testimonials (Header, image, text, link)'
-    content: ''
+    name: 'Testimonials'
+    content: !xml |
+      <section class="row row-content-4col <%= background_color %>-bg">
+        <div class="col-sm-6 col-md-3">
+          <h6><%= testimonial_header_1 %></h6>
+          <% if testimonial_video_url_1.present? && testimonial_image_url_1.present? %>
+            <a class="card_link" href="testimonial_video_url_1">
+              <div class="card-video" style="background-image: url('<%= testimonial_image_url_1 %>')">
+                <i class="mi md-48 video-link-icon">play_circle_outline</i>
+              </div>
+            </a>
+          <% else %>
+            <% if testimonial_image_url_1.present? %>
+              <img class="img-blog-full" src="<%= testimonial_image_url_1 %>" alt="<%= testimonial_image_alt_1 %>">
+            <% end %>
+          <% end %>
+          <p><%= testimonial_text_1 %></p>
+          <% if testimonial_link_url_1? && testimonial_link_text_1.present? %>
+            <a class="btn btn-default btn-block-xs" href="<%= testimonial_link_url_1 %>" target="_blank"><%= testimonial_link_text_1 %></a>
+          <% end %>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <h6><%= testimonial_header_2 %></h6>
+          <% if testimonial_video_url_2.present? && testimonial_image_url_2.present? %>
+            <a class="card_link" href="testimonial_video_url_2">
+              <div class="card-video" style="background-image: url('<%= testimonial_image_url_2 %>')">
+                <i class="mi md-48 video-link-icon">play_circle_outline</i>
+              </div>
+            </a>
+          <% else %>
+            <% if testimonial_image_url_2.present? %>
+              <img class="img-blog-full" src="<%= testimonial_image_url_2 %>" alt="<%= testimonial_image_alt_2 %>">
+            <% end %>
+          <% end %>
+          <p><%= testimonial_text_2 %></p>
+          <% if testimonial_link_url_2? && testimonial_link_text_2.present? %>
+            <a class="btn btn-default btn-block-xs" href="<%= testimonial_link_url_2 %>" target="_blank"><%= testimonial_link_text_2 %></a>
+          <% end %>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <h6><%= testimonial_header_3 %></h6>
+          <% if testimonial_video_url_3.present? && testimonial_image_url_3.present? %>
+            <a class="card_link" href="testimonial_video_url_3">
+              <div class="card-video" style="background-image: url('<%= testimonial_image_url_3 %>')">
+                <i class="mi md-48 video-link-icon">play_circle_outline</i>
+              </div>
+            </a>
+          <% else %>
+            <% if testimonial_image_url_3.present? %>
+              <img class="img-blog-full" src="<%= testimonial_image_url_3 %>" alt="<%= testimonial_image_alt_3 %>">
+            <% end %>
+          <% end %>
+          <p><%= testimonial_text_3 %></p>
+          <% if testimonial_link_url_3? && testimonial_link_text_3.present? %>
+            <a class="btn btn-default btn-block-xs" href="<%= testimonial_link_url_3 %>" target="_blank"><%= testimonial_link_text_3 %></a>
+          <% end %>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <h6><%= testimonial_header_1 %></h6>
+          <% if testimonial_video_url_1.present? && testimonial_image_url_1.present? %>
+            <a class="card_link" href="testimonial_video_url_1">
+              <div class="card-video" style="background-image: url('<%= testimonial_image_url_1 %>')">
+                <i class="mi md-48 video-link-icon">play_circle_outline</i>
+              </div>
+            </a>
+          <% else %>
+            <% if testimonial_image_url_4.present? %>
+              <img class="img-blog-full" src="<%= testimonial_image_url_4 %>" alt="<%= testimonial_image_alt_4 %>">
+            <% end %>
+          <% end %>
+          <p><%= testimonial_text_4 %></p>
+          <% if testimonial_link_url_4? && testimonial_link_text_4.present? %>
+            <a class="btn btn-default btn-block-xs" href="<%= testimonial_link_url_4 %>" target="_blank"><%= testimonial_link_text_4 %></a>
+          <% end %>
+        </div>
+      </section>
   -
     name: 'Video Hero'
     content: !xml |
