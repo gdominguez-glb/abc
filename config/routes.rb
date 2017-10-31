@@ -85,8 +85,6 @@ Rails.application.routes.draw do
 
   get '/:page_slug/events/:slug',        to: 'events#curriculum',    as: :curriculum_events
 
-  get '/math/pd', to: 'events#math_pd'
-
   post '/blog/:id/subscribe', to: 'blog#subscribe', as: :subscribe_blog
   post '/blog/:id/unsubscribe', to: 'blog#unsubscribe', as: :unsubscribe_blog
 
