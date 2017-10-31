@@ -60,20 +60,6 @@ class EventsController < ApplicationController
     render template: 'events/trainings'
   end
 
-  def math_pd
-    @math_page = Page.find_by(slug: 'math')
-    @group_page = Page.find_by(group_name: 'math', group_root: true)
-    @sub_nav_items = cache [@math_page, :sub_nav_items], expires_in: 2.hours do
-      Page.show_in_sub_navigation(@math_page.group_name)
-    end
-    @event_page = EventPage.find_by(slug: 'upcoming-pd-institutes')
-    raise ActiveRecord::RecordNotFound.new('events not exist') if @event_page.blank?
-    @events     = @event_page.events.displayable.sorted.page(params[:page])
-
-    filter_events
-    filter_by_zipcode
-  end
-
   private
 
   def filter_by_zipcode

@@ -19,7 +19,7 @@
           <% end %>
 
           <% if @group_page && @group_page.slug == "math" %>
-            <%= active_link_to "PD", "/math/pd", active: (request.path == "/math/pd"), wrap_tag: :li %>
+            <%= active_link_to "PD", "/events/l/upcoming-pd-institutes", active: (request.path == "/events/l/upcoming-pd-institutes"), wrap_tag: :li %>
           <% end %>
 
           <% if @group_page && blog = @group_page.blogs.displayable.first %>
