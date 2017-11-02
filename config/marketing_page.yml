@@ -95,7 +95,7 @@ marketing_templates:
             <% end %>
           <% end %>
           <p><%= testimonial_text_1 %></p>
-          <% if testimonial_link_url_1? && testimonial_link_text_1.present? %>
+          <% if testimonial_link_url_1.present? && testimonial_link_text_1.present? %>
             <a class="btn btn-default btn-block-xs" href="<%= testimonial_link_url_1 %>" target="_blank"><%= testimonial_link_text_1 %></a>
           <% end %>
         </div>
@@ -113,7 +113,7 @@ marketing_templates:
             <% end %>
           <% end %>
           <p><%= testimonial_text_2 %></p>
-          <% if testimonial_link_url_2? && testimonial_link_text_2.present? %>
+          <% if testimonial_link_url_2.present? && testimonial_link_text_2.present? %>
             <a class="btn btn-default btn-block-xs" href="<%= testimonial_link_url_2 %>" target="_blank"><%= testimonial_link_text_2 %></a>
           <% end %>
         </div>
@@ -131,7 +131,7 @@ marketing_templates:
             <% end %>
           <% end %>
           <p><%= testimonial_text_3 %></p>
-          <% if testimonial_link_url_3? && testimonial_link_text_3.present? %>
+          <% if testimonial_link_url_3.present? && testimonial_link_text_3.present? %>
             <a class="btn btn-default btn-block-xs" href="<%= testimonial_link_url_3 %>" target="_blank"><%= testimonial_link_text_3 %></a>
           <% end %>
         </div>
@@ -149,7 +149,7 @@ marketing_templates:
             <% end %>
           <% end %>
           <p><%= testimonial_text_4 %></p>
-          <% if testimonial_link_url_4? && testimonial_link_text_4.present? %>
+          <% if testimonial_link_url_4.present? && testimonial_link_text_4.present? %>
             <a class="btn btn-default btn-block-xs" href="<%= testimonial_link_url_4 %>" target="_blank"><%= testimonial_link_text_4 %></a>
           <% end %>
         </div>
