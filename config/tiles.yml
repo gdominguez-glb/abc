@@ -34,6 +34,9 @@
     - :name: testimonial_image_url_1
       :label: Image url 1
       :input_type: text
+    - :name: testimonial_image_alt_1
+      :label: Image Alt 1
+      :input_type: text  
     - :name: testimonial_video_url_1
       :label: Video link 1
       :input_type: text
@@ -51,6 +54,9 @@
       :input_type: text
     - :name: testimonial_image_url_2
       :label: Image url 2
+      :input_type: text
+    - :name: testimonial_image_alt_2
+      :label: Image Alt 2
       :input_type: text
     - :name: testimonial_video_url_2
       :label: Video link 2
@@ -70,6 +76,9 @@
     - :name: testimonial_image_url_3
       :label: Image url 3
       :input_type: text
+    - :name: testimonial_image_alt_3
+      :label: Image Alt 3
+      :input_type: text
     - :name: testimonial_video_url_3
       :label: Video link 3
       :input_type: text
@@ -87,6 +96,9 @@
       :input_type: text
     - :name: testimonial_image_url_4
       :label: Image url 4
+      :input_type: text
+    - :name: testimonial_image_alt_4
+      :label: Image Alt 4
       :input_type: text
     - :name: testimonial_video_url_4
       :label: Video link 4
