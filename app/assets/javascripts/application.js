@@ -37,6 +37,7 @@
 //= require jquery-sortable
 //= require picturefill
 //= require slick.min
+//= require jquery.mask.min
 
 //= require trumbowyg
 //= require trumbowyg/plugins/imageclasses
