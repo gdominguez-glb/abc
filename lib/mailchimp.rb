@@ -127,19 +127,23 @@ class Mailchimp
     blog = Blog.find(blog_id)
     article = Article.find(article_id)
 
-    url = "#{API_ROOT}campaigns"
-    res = HTTParty.post(url,
-                        body: {
-                          type: 'regular',
-                          recipients: { list_id: blog.mailchimp_list_id },
-                          settings: { subject_line: "New post for #{blog.title}", from_name: 'GreatMinds', reply_to: 'info@greatminds.net' }
-                        }.to_json,
-                        basic_auth: auth,
-                        headers: { 'content-type' => 'application/json'}
-                       )
-    if res.success? && res.parsed_response['id'].present?
-      article.update(mailchimp_campaign_id: res.parsed_response['id'])
-      set_campaign_content(res.parsed_response['id'], article_id)
+    if article.mailchimp_campaign_id.present?
+      set_campaign_content(article.mailchimp_campaign_id, article_id)
+    else
+      url = "#{API_ROOT}campaigns"
+      res = HTTParty.post(url,
+                          body: {
+                            type: 'regular',
+                            recipients: { list_id: blog.mailchimp_list_id },
+                            settings: { subject_line: "New post for #{blog.title}", from_name: 'GreatMinds', reply_to: 'info@greatminds.net' }
+                          }.to_json,
+                          basic_auth: auth,
+                          headers: { 'content-type' => 'application/json'}
+                         )
+      if res.success? && res.parsed_response['id'].present?
+        article.update(mailchimp_campaign_id: res.parsed_response['id'])
+        set_campaign_content(res.parsed_response['id'], article_id)
+      end
     end
   end
 
