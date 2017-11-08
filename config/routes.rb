@@ -119,6 +119,7 @@ Rails.application.routes.draw do
   get '/:page_slug/events', to: 'events#page', as: :page_events
 
   get '/download_pages/:slug', to: 'download_pages#show', as: :download_page
+  get '/testimonials_video/:wistia_video_id', to: 'pages#testimonials_video', as: :testimonials_video
 
   resources :inkling_codes, only: [:show]
   resources :libraries, only: [:show] do

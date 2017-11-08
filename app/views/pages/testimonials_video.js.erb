@@ -1,0 +1,5 @@
+$('body').append("<%= escape_javascript(render 'testimonials_video_modal') %>");
+$('#testimonials-video-modal').on('hidden.bs.modal', function (e) {
+  $('#testimonials-video-modal').remove();
+});
+$('#testimonials-video-modal').modal('show');

@@ -38,4 +38,8 @@ class PagesController < ApplicationController
   def not_found
     render status: 404
   end
+
+  def testimonials_video
+    @wistia_hashed_id = params[:wisitia_video_id]
+  end
 end
