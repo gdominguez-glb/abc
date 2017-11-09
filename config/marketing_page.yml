@@ -166,6 +166,181 @@ marketing_templates:
           </div>
         </div>
       </section>
+      <a href='#' class="testimonial-show-more-link">Show More</a>
+      <section class="row row-content-4col <%= background_color %>-bg text-left testimonial-more-section hide">
+        <div class="col-sm-6 col-md-3">
+          <div class="testimonial">
+            <h4><%= testimonial_header_5 %></h4>
+            <article class="testimonial__article">
+              <% if testimonial_video_id_5.present? && testimonial_image_url_5.present? %>
+                <a class="testimonial__video" href="/testimonials_video/<%= testimonial_video_id_5 %>" data-remote='true'>
+                  <img src="<%= testimonial_image_url_5 %>" alt="<%= testimonial_image_alt_5 %>" />
+                  <i class="mi md-48 video-link-icon">play_circle_outline</i>
+                </a>
+              <% else %>
+                <% if testimonial_image_url_5.present? %>
+                  <img class="testimonial__image" src="<%= testimonial_image_url_5 %>" alt="<%= testimonial_image_alt_5 %>" />
+                <% end %>
+              <% end %>
+              <p><%= testimonial_text_5 %></p>
+            </article>
+            <% if testimonial_link_url_5.present? && testimonial_link_text_5.present? %>
+              <a class="btn btn-default btn-block-xs" href="<%= testimonial_link_url_5 %>" target="_blank"><%= testimonial_link_text_5 %></a>
+            <% end %>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <div class="testimonial">
+            <h4><%= testimonial_header_6 %></h4>
+            <article class="testimonial__article">
+              <% if testimonial_video_id_6.present? && testimonial_image_url_6.present? %>
+                <a class="testimonial__video" href="/testimonials_video/<%= testimonial_video_id_6 %>" data-remote='true'>
+                  <img src="<%= testimonial_image_url_6 %>" alt="<%= testimonial_image_alt_6 %>" />
+                  <i class="mi md-48 video-link-icon">play_circle_outline</i>
+                </a>
+              <% else %>
+                <% if testimonial_image_url_6.present? %>
+                  <img class="testimonial__image" src="<%= testimonial_image_url_6 %>" alt="<%= testimonial_image_alt_6 %>" />
+                <% end %>
+              <% end %>
+              <p><%= testimonial_text_6 %></p>
+            </article>
+            <% if testimonial_link_url_6.present? && testimonial_link_text_6.present? %>
+              <a class="btn btn-default btn-block-xs" href="<%= testimonial_link_url_6 %>" target="_blank"><%= testimonial_link_text_6 %></a>
+            <% end %>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <div class="testimonial">
+            <h4><%= testimonial_header_7 %></h4>
+            <article class="testimonial__article">
+              <% if testimonial_video_id_7.present? && testimonial_image_url_7.present? %>
+                <a class="testimonial__video" href="/testimonials_video/<%= testimonial_video_id_7 %>" data-remote='true'>
+                  <img src="<%= testimonial_image_url_7 %>" alt="<%= testimonial_image_alt_7 %>" />
+                  <i class="mi md-48 video-link-icon">play_circle_outline</i>
+                </a>
+              <% else %>
+                <% if testimonial_image_url_7.present? %>
+                  <img class="testimonial__image" src="<%= testimonial_image_url_7 %>" alt="<%= testimonial_image_alt_7 %>" />
+                <% end %>
+              <% end %>
+              <p><%= testimonial_text_7 %></p>
+            </article>
+            <% if testimonial_link_url_7.present? && testimonial_link_text_7.present? %>
+              <a class="btn btn-default btn-block-xs" href="<%= testimonial_link_url_7 %>" target="_blank"><%= testimonial_link_text_7 %></a>
+            <% end %>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <div class="testimonial">
+            <h4><%= testimonial_header_8 %></h4>
+            <article class="testimonial__article">
+              <% if testimonial_video_id_8.present? && testimonial_image_url_8.present? %>
+                <a class="testimonial__video" href="/testimonials_video/<%= testimonial_video_id_8 %>" data-remote='true'>
+                  <img src="<%= testimonial_image_url_8 %>" alt="<%= testimonial_image_alt_8 %>" />
+                  <i class="mi md-48 video-link-icon">play_circle_outline</i>
+                </a>
+              <% else %>
+                <% if testimonial_image_url_8.present? %>
+                  <img class="testimonial__image" src="<%= testimonial_image_url_8 %>" alt="<%= testimonial_image_alt_8 %>" />
+                <% end %>
+              <% end %>
+              <p><%= testimonial_text_8 %></p>
+            </article>
+            <% if testimonial_link_url_8.present? && testimonial_link_text_8.present? %>
+              <a class="btn btn-default btn-block-xs" href="<%= testimonial_link_url_8 %>" target="_blank"><%= testimonial_link_text_8 %></a>
+            <% end %>
+          </div>
+        </div>
+      </section>
+      <section class="row row-content-4col <%= background_color %>-bg text-left testimonial-more-section hide">
+        <div class="col-sm-6 col-md-3">
+          <div class="testimonial">
+            <h4><%= testimonial_header_9 %></h4>
+            <article class="testimonial__article">
+              <% if testimonial_video_id_9.present? && testimonial_image_url_9.present? %>
+                <a class="testimonial__video" href="/testimonials_video/<%= testimonial_video_id_9 %>" data-remote='true'>
+                  <img src="<%= testimonial_image_url_9 %>" alt="<%= testimonial_image_alt_9 %>" />
+                  <i class="mi md-48 video-link-icon">play_circle_outline</i>
+                </a>
+              <% else %>
+                <% if testimonial_image_url_9.present? %>
+                  <img class="testimonial__image" src="<%= testimonial_image_url_9 %>" alt="<%= testimonial_image_alt_9 %>" />
+                <% end %>
+              <% end %>
+              <p><%= testimonial_text_9 %></p>
+            </article>
+            <% if testimonial_link_url_9.present? && testimonial_link_text_9.present? %>
+              <a class="btn btn-default btn-block-xs" href="<%= testimonial_link_url_9 %>" target="_blank"><%= testimonial_link_text_9 %></a>
+            <% end %>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <div class="testimonial">
+            <h4><%= testimonial_header_10 %></h4>
+            <article class="testimonial__article">
+              <% if testimonial_video_id_10.present? && testimonial_image_url_10.present? %>
+                <a class="testimonial__video" href="/testimonials_video/<%= testimonial_video_id_10 %>" data-remote='true'>
+                  <img src="<%= testimonial_image_url_10 %>" alt="<%= testimonial_image_alt_10 %>" />
+                  <i class="mi md-48 video-link-icon">play_circle_outline</i>
+                </a>
+              <% else %>
+                <% if testimonial_image_url_10.present? %>
+                  <img class="testimonial__image" src="<%= testimonial_image_url_10 %>" alt="<%= testimonial_image_alt_10 %>" />
+                <% end %>
+              <% end %>
+              <p><%= testimonial_text_10 %></p>
+            </article>
+            <% if testimonial_link_url_10.present? && testimonial_link_text_10.present? %>
+              <a class="btn btn-default btn-block-xs" href="<%= testimonial_link_url_10 %>" target="_blank"><%= testimonial_link_text_10 %></a>
+            <% end %>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <div class="testimonial">
+            <h4><%= testimonial_header_11 %></h4>
+            <article class="testimonial__article">
+              <% if testimonial_video_id_11.present? && testimonial_image_url_11.present? %>
+                <a class="testimonial__video" href="/testimonials_video/<%= testimonial_video_id_11 %>" data-remote='true'>
+                  <img src="<%= testimonial_image_url_11 %>" alt="<%= testimonial_image_alt_11 %>" />
+                  <i class="mi md-48 video-link-icon">play_circle_outline</i>
+                </a>
+              <% else %>
+                <% if testimonial_image_url_11.present? %>
+                  <img class="testimonial__image" src="<%= testimonial_image_url_11 %>" alt="<%= testimonial_image_alt_11 %>" />
+                <% end %>
+              <% end %>
+              <p><%= testimonial_text_11 %></p>
+            </article>
+            <% if testimonial_link_url_11.present? && testimonial_link_text_11.present? %>
+              <a class="btn btn-default btn-block-xs" href="<%= testimonial_link_url_11 %>" target="_blank"><%= testimonial_link_text_11 %></a>
+            <% end %>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <div class="testimonial">
+            <h4><%= testimonial_header_12 %></h4>
+            <article class="testimonial__article">
+              <% if testimonial_video_id_12.present? && testimonial_image_url_12.present? %>
+                <a class="testimonial__video" href="/testimonials_video/<%= testimonial_video_id_12 %>" data-remote='true'>
+                  <img src="<%= testimonial_image_url_12 %>" alt="<%= testimonial_image_alt_12 %>" />
+                  <i class="mi md-48 video-link-icon">play_circle_outline</i>
+                </a>
+              <% else %>
+                <% if testimonial_image_url_12.present? %>
+                  <img class="testimonial__image" src="<%= testimonial_image_url_12 %>" alt="<%= testimonial_image_alt_12 %>" />
+                <% end %>
+              <% end %>
+              <p><%= testimonial_text_12 %></p>
+            </article>
+            <% if testimonial_link_url_12.present? && testimonial_link_text_12.present? %>
+              <a class="btn btn-default btn-block-xs" href="<%= testimonial_link_url_12 %>" target="_blank"><%= testimonial_link_text_12 %></a>
+            <% end %>
+          </div>
+        </div>
+      </section>
+      <a href='#' class='testimonial-show-less-link hide'>Show Less</a>
+
   -
     name: 'Video Hero'
     content: !xml |
