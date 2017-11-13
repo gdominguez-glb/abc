@@ -276,7 +276,7 @@ Spree::User.class_eval do
       lastname: self.last_name,
       email: self.email,
       zip: self.zip_code,
-      subject_curriculum_role: self.hubspot_curriculum_interests,
+      subject_curriculum_role: hubspot_curriculum_interests,
       jobtitle: self.title,
       country: self.school_district_required? ? self.try(:school_district).try(:country).try(:name) : "",
       state: self.try(:school_district).try(:state).try(:name),
