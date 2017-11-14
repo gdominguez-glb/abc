@@ -281,7 +281,7 @@ Spree::User.class_eval do
       country: self.school_district_required? ? self.try(:school_district).try(:country).try(:name) : "",
       state: self.try(:school_district).try(:state).try(:name),
       city: self.try(:school_district).try(:city),
-      company_name: self.try(:school_district).try(:name),
+      company: self.try(:school_district).try(:name),
       hs_context: {ipAddress: self.remote_ip, hutk: self.hubspot_cookie}.to_json
     })
   end
