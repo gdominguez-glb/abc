@@ -338,8 +338,10 @@ marketing_templates:
             <% end %>
           </div>
         </div>
+        <div class="clear text-center padding-top--m padding-bottom--m">
+          <a href='javascript:void(0)' class='testimonial-show-less-link btn btn-default hide'>Show Less</a>
+        </div>
       </section>
-      <a href='#' class='testimonial-show-less-link hide'>Show Less</a>
 
   -
     name: 'Video Hero'
