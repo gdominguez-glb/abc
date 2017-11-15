@@ -1,0 +1,37 @@
+.testimonial {
+  margin-bottom: $b-space-xl;
+
+  &__article {
+    :after {
+      content: '';
+      display: table;
+      clear: both;
+    }
+  }
+
+  &__video {
+    position: relative;
+    float: right;
+    width: 50%;
+    margin-left: $b-space-l;
+    margin-bottom: $b-space-m;
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .video-link-icon {
+      display: block;
+    }
+  }
+
+  &__image {
+    display: block;
+    float: right;
+    max-width: 50%;
+    margin-left: $b-space-l;
+    margin-bottom: $b-space-m;
+  }
+
+}

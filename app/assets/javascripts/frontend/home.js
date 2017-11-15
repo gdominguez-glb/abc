@@ -50,4 +50,16 @@ $(document).ready(function() {
     });
   });
 
+  $('.testimonial-show-more-link').click(function(){
+    $(this).addClass('hide');
+    $(this).closest('section').next('.testimonial-more-section').removeClass('hide');
+    $(this).closest('section').next('.testimonial-more-section').next('.testimonial-more-section').removeClass('hide');
+    $(this).closest('section').next().next().find('.testimonial-show-less-link').removeClass('hide');
+  });
+  $('.testimonial-show-less-link').click(function(){
+    $(this).addClass('hide');
+    $(this).closest('section').addClass('hide');
+    $(this).closest('section').prev('.testimonial-more-section').addClass('hide');
+    $(this).closest('section').prev().prev().find('.testimonial-show-more-link').removeClass('hide');
+  });
 });

@@ -16,6 +16,271 @@
   - :name: title_highlight
     :label: Title Highlight
     :input_type: text
+
+- :name: Testimonials
+  :fields:
+    - :name: background_color
+      :label: Background Color
+      :input_type: select
+      :input_options:
+        - green
+        - blue
+        - cream
+        - orange
+        - light-blue   
+    - :name: testimonial_header_1
+      :label: Header 1
+      :input_type: text
+    - :name: testimonial_image_url_1
+      :label: Image url 1
+      :input_type: text
+    - :name: testimonial_image_alt_1
+      :label: Image Alt 1
+      :input_type: text  
+    - :name: testimonial_video_id_1
+      :label: Wistia video id 1
+      :input_type: text
+    - :name: testimonial_text_1
+      :label: Text 1
+      :input_type: text_area
+    - :name: testimonial_link_url_1
+      :label: Link Url 1
+      :input_type: text
+    - :name: testimonial_link_text_1
+      :label: Link Text 1
+      :input_type: text
+    - :name: testimonial_header_2
+      :label: Header 2
+      :input_type: text
+    - :name: testimonial_image_url_2
+      :label: Image url 2
+      :input_type: text
+    - :name: testimonial_image_alt_2
+      :label: Image Alt 2
+      :input_type: text
+    - :name: testimonial_video_id_2
+      :label: Wistia video id 2
+      :input_type: text
+    - :name: testimonial_text_2
+      :label: Text 2
+      :input_type: text_area
+    - :name: testimonial_link_url_2
+      :label: Link Url 2
+      :input_type: text
+    - :name: testimonial_link_text_2
+      :label: Link Text 2
+      :input_type: text
+    - :name: testimonial_header_3
+      :label: Header 3
+      :input_type: text
+    - :name: testimonial_image_url_3
+      :label: Image url 3
+      :input_type: text
+    - :name: testimonial_image_alt_3
+      :label: Image Alt 3
+      :input_type: text
+    - :name: testimonial_video_id_3
+      :label: Wistia video id 3
+      :input_type: text
+    - :name: testimonial_text_3
+      :label: Text 3
+      :input_type: text_area
+    - :name: testimonial_link_url_3
+      :label: Link Url 3
+      :input_type: text
+    - :name: testimonial_link_text_3
+      :label: Link Text 3
+      :input_type: text
+    - :name: testimonial_header_4
+      :label: Header 4
+      :input_type: text
+    - :name: testimonial_image_url_4
+      :label: Image url 4
+      :input_type: text
+    - :name: testimonial_image_alt_4
+      :label: Image Alt 4
+      :input_type: text
+    - :name: testimonial_video_id_4
+      :label: Wistia video id 4
+      :input_type: text
+    - :name: testimonial_text_4
+      :label: Text 4
+      :input_type: text_area
+    - :name: testimonial_link_url_4
+      :label: Link Url 4
+      :input_type: text
+    - :name: testimonial_link_text_4
+      :label: Link Text 4
+      :input_type: text
+    - :name: testimonial_header_5
+      :label: Header 5
+      :input_type: text
+    - :name: testimonial_image_url_5
+      :label: Image url 5
+      :input_type: text
+    - :name: testimonial_image_alt_5
+      :label: Image Alt 5
+      :input_type: text
+    - :name: testimonial_video_id_5
+      :label: Wistia video id 5
+      :input_type: text
+    - :name: testimonial_text_5
+      :label: Text 5
+      :input_type: text_area
+    - :name: testimonial_link_url_5
+      :label: Link Url 5
+      :input_type: text
+    - :name: testimonial_link_text_5
+      :label: Link Text 5
+      :input_type: text
+    - :name: testimonial_header_6
+      :label: Header 6
+      :input_type: text
+    - :name: testimonial_image_url_6
+      :label: Image url 6
+      :input_type: text
+    - :name: testimonial_image_alt_6
+      :label: Image Alt 6
+      :input_type: text
+    - :name: testimonial_video_id_6
+      :label: Wistia video id 6
+      :input_type: text
+    - :name: testimonial_text_6
+      :label: Text 6
+      :input_type: text_area
+    - :name: testimonial_link_url_6
+      :label: Link Url 6
+      :input_type: text
+    - :name: testimonial_link_text_6
+      :label: Link Text 6
+      :input_type: text
+    - :name: testimonial_header_7
+      :label: Header 7
+      :input_type: text
+    - :name: testimonial_image_url_7
+      :label: Image url 7
+      :input_type: text
+    - :name: testimonial_image_alt_7
+      :label: Image Alt 7
+      :input_type: text
+    - :name: testimonial_video_id_7
+      :label: Wistia video id 7
+      :input_type: text
+    - :name: testimonial_text_7
+      :label: Text 7
+      :input_type: text_area
+    - :name: testimonial_link_url_7
+      :label: Link Url 7
+      :input_type: text
+    - :name: testimonial_link_text_7
+      :label: Link Text 7
+      :input_type: text
+    - :name: testimonial_header_8
+      :label: Header 8
+      :input_type: text
+    - :name: testimonial_image_url_8
+      :label: Image url 8
+      :input_type: text
+    - :name: testimonial_image_alt_8
+      :label: Image Alt 8
+      :input_type: text
+    - :name: testimonial_video_id_8
+      :label: Wistia video id 8
+      :input_type: text
+    - :name: testimonial_text_8
+      :label: Text 8
+      :input_type: text_area
+    - :name: testimonial_link_url_8
+      :label: Link Url 8
+      :input_type: text
+    - :name: testimonial_link_text_8
+      :label: Link Text 8
+      :input_type: text
+    - :name: testimonial_header_9
+      :label: Header 9
+      :input_type: text
+    - :name: testimonial_image_url_9
+      :label: Image url 9
+      :input_type: text
+    - :name: testimonial_image_alt_9
+      :label: Image Alt 9
+      :input_type: text
+    - :name: testimonial_video_id_9
+      :label: Wistia video id 9
+      :input_type: text
+    - :name: testimonial_text_9
+      :label: Text 9
+      :input_type: text_area
+    - :name: testimonial_link_url_9
+      :label: Link Url 9
+      :input_type: text
+    - :name: testimonial_link_text_9
+      :label: Link Text 9
+      :input_type: text
+    - :name: testimonial_header_10
+      :label: Header 10
+      :input_type: text
+    - :name: testimonial_image_url_10
+      :label: Image url 10
+      :input_type: text
+    - :name: testimonial_image_alt_10
+      :label: Image Alt 10
+      :input_type: text
+    - :name: testimonial_video_id_10
+      :label: Wistia video id 10
+      :input_type: text
+    - :name: testimonial_text_10
+      :label: Text 10
+      :input_type: text_area
+    - :name: testimonial_link_url_10
+      :label: Link Url 10
+      :input_type: text
+    - :name: testimonial_link_text_10
+      :label: Link Text 10
+      :input_type: text
+    - :name: testimonial_header_11
+      :label: Header 11
+      :input_type: text
+    - :name: testimonial_image_url_11
+      :label: Image url 11
+      :input_type: text
+    - :name: testimonial_image_alt_11
+      :label: Image Alt 11
+      :input_type: text
+    - :name: testimonial_video_id_11
+      :label: Wistia video id 11
+      :input_type: text
+    - :name: testimonial_text_11
+      :label: Text 11
+      :input_type: text_area
+    - :name: testimonial_link_url_11
+      :label: Link Url 11
+      :input_type: text
+    - :name: testimonial_link_text_11
+      :label: Link Text 11
+      :input_type: text        
+    - :name: testimonial_header_12
+      :label: Header 12
+      :input_type: text
+    - :name: testimonial_image_url_12
+      :label: Image url 12
+      :input_type: text
+    - :name: testimonial_image_alt_12
+      :label: Image Alt 12
+      :input_type: text
+    - :name: testimonial_video_id_12
+      :label: Wistia video id 12
+      :input_type: text
+    - :name: testimonial_text_12
+      :label: Text 12
+      :input_type: text_area
+    - :name: testimonial_link_url_12
+      :label: Link Url 12
+      :input_type: text
+    - :name: testimonial_link_text_12
+      :label: Link Text 12
+      :input_type: text        
+
 - :name: Video Hero
   :fields:
   - :name: title

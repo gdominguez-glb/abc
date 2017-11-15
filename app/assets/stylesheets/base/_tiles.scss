@@ -156,6 +156,29 @@ section {
       }
     }
   }
+
+  &.row-content-4col {
+    padding-left: 15px;
+    padding-right: 15px;
+
+     [class*='col-'] {
+      padding: 0 15px;
+
+       &:first-child {
+          padding: 0 15px;
+       }
+
+       &:nth-child(3) {
+        @media (max-width: $screen-md-min) and (min-width: $screen-sm-min) {
+            clear: both;
+          }
+        }
+
+       &:last-child {
+          padding: 0 15px;
+       }
+     }
+  }
 }
 
 .row-video-hero {
