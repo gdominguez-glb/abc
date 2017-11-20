@@ -11,14 +11,15 @@
 
   &__video {
     position: relative;
-    float: right;
-    width: 50%;
-    margin-left: $b-space-l;
+    display: block;
+    width: 100%;
     margin-bottom: $b-space-m;
 
     img {
       display: block;
       max-width: 100%;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .video-link-icon {
@@ -28,9 +29,9 @@
 
   &__image {
     display: block;
-    float: right;
-    max-width: 50%;
-    margin-left: $b-space-l;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
     margin-bottom: $b-space-m;
   }
 
