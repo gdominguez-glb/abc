@@ -190,8 +190,7 @@ Spree::User.class_eval do
     USER_TITLES = [
       'Teacher',
       'Parent',
-      'School Administrator',
-      'District Administrator',
+      'School/District Administration',
       'Curriculum Administration',
       'Homeschooler'
     ].freeze

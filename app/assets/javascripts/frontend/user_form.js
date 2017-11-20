@@ -12,7 +12,7 @@ function shouldShowDistrict(userRole) {
   var visibleFields = {};
   visibleFields.showDistrictDetails = false;
 
-  if (userRole === 'Teacher' || userRole === 'School Administrator' || userRole === 'District Administrator' || userRole === 'Curriculum Administration') {
+  if (userRole === 'Teacher' || userRole === 'School/District Administration' || userRole === 'Curriculum Administration') {
     visibleFields.showDistrictDetails = true;
   }
 
@@ -20,20 +20,10 @@ function shouldShowDistrict(userRole) {
 }
 
 function shouldShowPhone(userRole) {
-  if (userRole === 'School Administrator' || userRole === 'District Administrator' || userRole === 'Curriculum Administration') {
+  if (userRole === 'School/District Administration' || userRole === 'Curriculum Administration') {
     return true;
   }
   return false;
-}
-
-function toggleDistrict(userRole) {
-  if (userRole === 'Curriculum Administration' || userRole === 'District Administrator' ) {
-    $("#spree_user_school_district_attributes_place_type_school").prop('checked', false);
-    $("#spree_user_school_district_attributes_place_type_district").prop('checked', true);
-  } else if (userRole === 'School Administrator') {
-    $("#spree_user_school_district_attributes_place_type_district").prop('checked', false);
-    $("#spree_user_school_district_attributes_place_type_school").prop('checked', true);
-  }
 }
 
 $(document).on("change", "#spree_user_title", function(){
@@ -55,7 +45,6 @@ $(document).on("change", "#spree_user_title", function(){
     $('#phone-field').val(null);
   }
 
-  toggleDistrict(userRole);
 });
 
 $(document).on("change", "#spree_user_district_id, #spree_user_school_id", function(e) {
