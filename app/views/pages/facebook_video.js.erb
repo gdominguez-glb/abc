@@ -1,0 +1,5 @@
+$('body').append("<%= escape_javascript(render 'facebook_video_modal') %>");
+$('#facebook-video-modal').on('hidden.bs.modal', function (e) {
+  $('#facebook-video-modal').remove();
+});
+$('#facebook-video-modal').modal('show');

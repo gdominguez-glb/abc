@@ -42,4 +42,8 @@ class PagesController < ApplicationController
   def testimonials_video
     @wistia_hashed_id = params[:wisitia_video_id]
   end
+
+  def facebook_video
+    @facebook_video_url = params[:url]
+  end
 end
