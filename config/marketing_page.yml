@@ -963,3 +963,72 @@ marketing_templates:
           <% end %>
         </div>
       </section>
+
+  -
+    name: '3-Column Facebook Video Text'
+    content: !xml |
+      <section class="row row-content-3col <%= background_color %>-bg text-left">
+        <div class="col-sm-4">
+          <div class="facebook">
+            <h4><%= facebook_header_1 %></h4>
+            <article class="facebook__article">
+              <p><%= facebook_text_1 %></p>
+              <% if facebook_video_url_1.present? && facebook_image_url_1.present? %>
+                <a class="facebook__video" href="javascript:void(0)" data-video-url="<%= facebook_video_url_1 %>" data-remote='true'>
+                  <img src="<%= facebook_image_url_1 %>" alt="<%= facebook_image_alt_1 %>" />
+                  <i class="mi md-48 video-link-icon">play_circle_outline</i>
+                </a>
+              <% else %>
+                <% if facebook_image_url_1.present? %>
+                  <img class="facebook__image" src="<%= facebook_image_url_1 %>" alt="<%= facebook_image_alt_1 %>" />
+                <% end %>
+              <% end %>
+            </article>
+            <% if facebook_link_url_1.present? && facebook_link_text_1.present? %>
+              <a class="btn btn-default btn-block-xs" href="javascript:void(0)" data-video-url="<%= facebook_link_url_1 %>" target="_blank"><%= facebook_link_text_1 %></a>
+            <% end %>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="facebook">
+            <h4><%= facebook_header_2 %></h4>
+            <article class="facebook__article">
+              <p><%= facebook_text_2 %></p>
+              <% if facebook_video_url_2.present? && facebook_image_url_2.present? %>
+                <a class="facebook__video" href="javascript:void(0)" data-video-url="<%= facebook_video_url_2 %>" data-remote='true'>
+                  <img src="<%= facebook_image_url_2 %>" alt="<%= facebook_image_alt_2 %>" />
+                  <i class="mi md-48 video-link-icon">play_circle_outline</i>
+                </a>
+              <% else %>
+                <% if facebook_image_url_2.present? %>
+                  <img class="facebook__image" src="<%= facebook_image_url_2 %>" alt="<%= facebook_image_alt_2 %>" />
+                <% end %>
+              <% end %>
+            </article>
+            <% if facebook_link_url_2.present? && facebook_link_text_2.present? %>
+              <a class="btn btn-default btn-block-xs" href="javascript:void(0)" data-video-url="<%= facebook_link_url_2 %>" target="_blank"><%= facebook_link_text_2 %></a>
+            <% end %>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="facebook">
+            <h4><%= facebook_header_3 %></h4>
+            <article class="facebook__article">
+              <p><%= facebook_text_3 %></p>
+              <% if facebook_video_url_3.present? && facebook_image_url_3.present? %>
+                <a class="facebook__video" href="javascript:void(0)" data-video-url="<%= facebook_video_url_3 %>" data-remote='true'>
+                  <img src="<%= facebook_image_url_3 %>" alt="<%= facebook_image_alt_3 %>" />
+                  <i class="mi md-48 video-link-icon">play_circle_outline</i>
+                </a>
+              <% else %>
+                <% if facebook_image_url_3.present? %>
+                  <img class="facebook__image" src="<%= facebook_image_url_3 %>" alt="<%= facebook_image_alt_3 %>" />
+                <% end %>
+              <% end %>
+            </article>
+            <% if facebook_link_url_3.present? && facebook_link_text_3.present? %>
+              <a class="btn btn-default btn-block-xs" href="javascript:void(0)" data-video-url="<%= facebook_link_url_3 %>" target="_blank"><%= facebook_link_text_3 %></a>
+            <% end %>
+          </div>
+        </div>
+      </section>

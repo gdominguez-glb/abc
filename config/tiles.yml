@@ -981,3 +981,78 @@
     :input_options:
       - Open in Same Tab
       - Open in New Tab
+
+- :name: 3-Column Facebook Video Text
+  :fields:
+  - :name: background_color
+    :label: Background Color
+    :input_type: select
+    :input_options:
+      - green
+      - blue
+      - cream
+      - orange
+      - light-blue   
+  - :name: facebook_header_1
+    :label: Header 1
+    :input_type: text
+  - :name: facebook_image_url_1
+    :label: Image url 1
+    :input_type: text
+  - :name: facebook_image_alt_1
+    :label: Image Alt 1
+    :input_type: text  
+  - :name: facebook_video_url_1
+    :label: Facebook video url 1
+    :input_type: text
+  - :name: facebook_text_1
+    :label: Text 1
+    :input_type: text_area
+  - :name: facebook_link_url_1
+    :label: Link Url 1
+    :input_type: text
+  - :name: facebook_link_text_1
+    :label: Link Text 1
+    :input_type: text
+  - :name: facebook_header_2
+    :label: Header 2
+    :input_type: text
+  - :name: facebook_image_url_2
+    :label: Image url 2
+    :input_type: text
+  - :name: facebook_image_alt_2
+    :label: Image Alt 2
+    :input_type: text
+  - :name: facebook_video_url_2
+    :label: Facebook video url 2
+    :input_type: text
+  - :name: facebook_text_2
+    :label: Text 2
+    :input_type: text_area
+  - :name: facebook_link_url_2
+    :label: Link Url 2
+    :input_type: text
+  - :name: facebook_link_text_2
+    :label: Link Text 2
+    :input_type: text
+  - :name: facebook_header_3
+    :label: Header 3
+    :input_type: text
+  - :name: facebook_image_url_3
+    :label: Image url 3
+    :input_type: text
+  - :name: facebook_image_alt_3
+    :label: Image Alt 3
+    :input_type: text
+  - :name: facebook_video_url_3
+    :label: Facebook video url 3
+    :input_type: text
+  - :name: facebook_text_3
+    :label: Text 3
+    :input_type: text_area
+  - :name: facebook_link_url_3
+    :label: Link Url 3
+    :input_type: text
+  - :name: facebook_link_text_3
+    :label: Link Text 3
+    :input_type: text

@@ -62,4 +62,10 @@ $(document).ready(function() {
     $(this).closest('section').prev('.testimonial-more-section').addClass('hide');
     $(this).closest('section').prev().prev().find('.testimonial-show-more-link').removeClass('hide');
   });
+
+  $('.facebook__video').click(function(e){
+    e.preventDefault();
+    var video_url = $(this).attr('data-video-url');
+    $.get('/facebook_video', { url: video_url });
+  });
 });
