@@ -6,6 +6,8 @@ class SchoolDistrict < ActiveRecord::Base
   belongs_to :country, class_name: 'Spree::Country'
   has_many :users, class_name: 'Spree::User'
 
+  before_save :sanitize_state
+
   validates :name, presence: true
   validates :state_id, presence: true, if: Proc.new{ |school_district|
     !school_district.unaffiliated? && school_district.country.try(:name) == 'United States'
@@ -179,5 +181,11 @@ class SchoolDistrict < ActiveRecord::Base
 
   def name_in_option
     [ name, city ].reject(&:blank?).join(' - ')
+  end
+
+  def sanitize_state
+    if self.country.try(:name) != 'United States'
+      self.state = nil
+    end
   end
 end
