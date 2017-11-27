@@ -96,7 +96,15 @@
             <%= f.text_area :description, class: 'form-control rich-editor' %>
           </div>
         </div>
-
+        <div class="col-sm-6">
+          <div class="form-group">
+            <div class="checkbox">
+              <%= f.label :enable_notification do %>
+                <%= f.check_box :enable_notification %> Enable Notification
+              <% end %>
+            </div>
+          </div>
+        </div>
         <div class="col-sm-6">
           <div class="form-group">
             <div class="checkbox">
