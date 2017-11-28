@@ -63,7 +63,7 @@ class ContactForm
       'Type__c' => self.school_district_type,
       'Company' => self.school_district_name,
       'Curriculum__c' => self.curriculum,
-      'Address' => self.school_street_address
+      'Address' => { 'street' => self.school_street_address }
     }
   end
 
