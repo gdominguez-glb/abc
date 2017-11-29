@@ -144,10 +144,10 @@ marketing_templates:
             <% end %>
           </div>
         </div>
-        <div class="clear text-center padding-top--m padding-bottom--m">
-          <a href='javascript:void(0)' class="testimonial-show-more-link btn btn-default">Show More</a>
-        </div>
       </section>
+      <div class="clear text-center padding-bottom--m <%= background_color %>-bg">
+        <a href='javascript:void(0)' class="testimonial-show-more-link btn btn-default">Show More</a>
+      </div>
       <section class="row row-content-3col <%= background_color %>-bg text-left testimonial-more-section hide">  
         <div class="col-sm-4">
           <div class="testimonial">
@@ -277,10 +277,10 @@ marketing_templates:
             <% end %>
           </div>
         </div>
-        <div class="clear text-center padding-top--m padding-bottom--m">
-          <a href='javascript:void(0)' class='testimonial-show-less-link btn btn-default hide'>Show Less</a>
-        </div>
       </section>
+      <div class="clear text-center padding-bottom--xl <%= background_color %>-bg">
+        <a href='javascript:void(0)' class='testimonial-show-less-link btn btn-default hide'>Show Less</a>
+      </div>
 
   -
     name: 'Video Hero'
