@@ -54,7 +54,7 @@ class ContactForm
   end
 
   def lead_common_attributes
-    {
+    _attrs = {
       'FirstName' => self.first_name.try(:capitalize),
       'LastName' => self.last_name.try(:capitalize),
       'Title' => self.role,
@@ -62,9 +62,12 @@ class ContactForm
       'Phone' => self.phone,
       'Type__c' => self.school_district_type,
       'Company' => self.school_district_name,
-      'Curriculum__c' => self.curriculum,
-      'Address' => { 'street' => self.school_street_address }
+      'Curriculum__c' => self.curriculum
     }
+    if self.school_street_address.present?
+      _attrs.merge!({'Address' => { 'street' => self.school_street_address }})
+    end
+    _attrs
   end
 
   def case_common_attributes
