@@ -65,7 +65,7 @@ class ContactForm
       'Curriculum__c' => self.curriculum
     }
     if self.school_street_address.present?
-      _attrs.merge!({'Address' => { 'street' => self.school_street_address }})
+      _attrs.merge!({'Street' => self.school_street_address })
     end
     _attrs
   end
