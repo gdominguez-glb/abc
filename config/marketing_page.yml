@@ -86,8 +86,8 @@ marketing_templates:
             <h4><%= testimonial_header_1 %></h4>
             <article class="testimonial__article">
               <p><%= testimonial_text_1 %></p>
-              <% if testimonial_video_id_1.present? && testimonial_image_url_1.present? %>
-                <a class="testimonial__video" href="/testimonials_video/<%= testimonial_video_id_1 %>" data-remote='true'>
+              <% if testimonial_video_url_1.present? && testimonial_image_url_1.present? %>
+                <a class="testimonial__video facebook__video" href="javascript:void(0)" data-video-url="<%= testimonial_video_url_1 %>" data-remote='true'>
                   <img src="<%= testimonial_image_url_1 %>" alt="<%= testimonial_image_alt_1 %>" />
                   <i class="mi md-48 video-link-icon">play_circle_outline</i>
                 </a>
@@ -107,8 +107,8 @@ marketing_templates:
             <h4><%= testimonial_header_2 %></h4>
             <article class="testimonial__article">
               <p><%= testimonial_text_2 %></p>
-              <% if testimonial_video_id_2.present? && testimonial_image_url_2.present? %>
-                <a class="testimonial__video" href="/testimonials_video/<%= testimonial_video_id_2 %>" data-remote='true'>
+              <% if testimonial_video_url_2.present? && testimonial_image_url_2.present? %>
+                <a class="testimonial__video facebook__video" href="javascript:void(0)" data-video-url="<%= testimonial_video_url_2 %>" data-remote='true'>
                   <img src="<%= testimonial_image_url_2 %>" alt="<%= testimonial_image_alt_2 %>" />
                   <i class="mi md-48 video-link-icon">play_circle_outline</i>
                 </a>
@@ -128,8 +128,8 @@ marketing_templates:
             <h4><%= testimonial_header_3 %></h4>
             <article class="testimonial__article">
               <p><%= testimonial_text_3 %></p>
-              <% if testimonial_video_id_3.present? && testimonial_image_url_3.present? %>
-                <a class="testimonial__video" href="/testimonials_video/<%= testimonial_video_id_3 %>" data-remote='true'>
+              <% if testimonial_video_url_3.present? && testimonial_image_url_3.present? %>
+                <a class="testimonial__video facebook__video" href="javascript:void(0)" data-video-url="<%= testimonial_video_url_3 %>" data-remote='true'>
                   <img src="<%= testimonial_image_url_3 %>" alt="<%= testimonial_image_alt_3 %>" />
                   <i class="mi md-48 video-link-icon">play_circle_outline</i>
                 </a>
@@ -154,8 +154,8 @@ marketing_templates:
             <h4><%= testimonial_header_4 %></h4>
             <article class="testimonial__article">
               <p><%= testimonial_text_4 %></p>
-              <% if testimonial_video_id_4.present? && testimonial_image_url_4.present? %>
-                <a class="testimonial__video" href="/testimonials_video/<%= testimonial_video_id_4 %>" data-remote='true'>
+              <% if testimonial_video_url_4.present? && testimonial_image_url_4.present? %>
+                <a class="testimonial__video facebook__video" href="javascript:void(0)" data-video-url="<%= testimonial_video_url_4 %>" data-remote='true'>
                   <img src="<%= testimonial_image_url_4 %>" alt="<%= testimonial_image_alt_4 %>" />
                   <i class="mi md-48 video-link-icon">play_circle_outline</i>
                 </a>
@@ -175,8 +175,8 @@ marketing_templates:
             <h4><%= testimonial_header_5 %></h4>
             <article class="testimonial__article">
               <p><%= testimonial_text_5 %></p>
-              <% if testimonial_video_id_5.present? && testimonial_image_url_5.present? %>
-                <a class="testimonial__video" href="/testimonials_video/<%= testimonial_video_id_5 %>" data-remote='true'>
+              <% if testimonial_video_url_5.present? && testimonial_image_url_5.present? %>
+                <a class="testimonial__video facebook__video" href="javascript:void(0)" data-video-url="<%= testimonial_video_url_5 %>" data-remote='true'>
                   <img src="<%= testimonial_image_url_5 %>" alt="<%= testimonial_image_alt_5 %>" />
                   <i class="mi md-48 video-link-icon">play_circle_outline</i>
                 </a>
@@ -196,8 +196,8 @@ marketing_templates:
             <h4><%= testimonial_header_6 %></h4>
             <article class="testimonial__article">
               <p><%= testimonial_text_6 %></p>
-              <% if testimonial_video_id_6.present? && testimonial_image_url_6.present? %>
-                <a class="testimonial__video" href="/testimonials_video/<%= testimonial_video_id_6 %>" data-remote='true'>
+              <% if testimonial_video_url_6.present? && testimonial_image_url_6.present? %>
+                <a class="testimonial__video facebook__video" href="javascript:void(0)" data-video-url="<%= testimonial_video_url_6 %>" data-remote='true'>
                   <img src="<%= testimonial_image_url_6 %>" alt="<%= testimonial_image_alt_6 %>" />
                   <i class="mi md-48 video-link-icon">play_circle_outline</i>
                 </a>
@@ -219,8 +219,8 @@ marketing_templates:
             <h4><%= testimonial_header_7 %></h4>
             <article class="testimonial__article">
               <p><%= testimonial_text_7 %></p>
-              <% if testimonial_video_id_7.present? && testimonial_image_url_7.present? %>
-                <a class="testimonial__video" href="/testimonials_video/<%= testimonial_video_id_7 %>" data-remote='true'>
+              <% if testimonial_video_url_7.present? && testimonial_image_url_7.present? %>
+                <a class="testimonial__video facebook__video" href="javascript:void(0)" data-video-url="<%= testimonial_video_url_7 %>" data-remote='true'>
                   <img src="<%= testimonial_image_url_7 %>" alt="<%= testimonial_image_alt_7 %>" />
                   <i class="mi md-48 video-link-icon">play_circle_outline</i>
                 </a>
@@ -240,8 +240,8 @@ marketing_templates:
             <h4><%= testimonial_header_8 %></h4>
             <article class="testimonial__article">
               <p><%= testimonial_text_8 %></p>
-              <% if testimonial_video_id_8.present? && testimonial_image_url_8.present? %>
-                <a class="testimonial__video" href="/testimonials_video/<%= testimonial_video_id_8 %>" data-remote='true'>
+              <% if testimonial_video_url_8.present? && testimonial_image_url_8.present? %>
+                <a class="testimonial__video facebook__video" href="javascript:void(0)" data-video-url="<%= testimonial_video_url_8 %>" data-remote='true'>
                   <img src="<%= testimonial_image_url_8 %>" alt="<%= testimonial_image_alt_8 %>" />
                   <i class="mi md-48 video-link-icon">play_circle_outline</i>
                 </a>
@@ -261,8 +261,8 @@ marketing_templates:
             <h4><%= testimonial_header_9 %></h4>
             <article class="testimonial__article">
               <p><%= testimonial_text_9 %></p>
-              <% if testimonial_video_id_9.present? && testimonial_image_url_9.present? %>
-                <a class="testimonial__video" href="/testimonials_video/<%= testimonial_video_id_9 %>" data-remote='true'>
+              <% if testimonial_video_url_9.present? && testimonial_image_url_9.present? %>
+                <a class="testimonial__video facebook__video" href="javascript:void(0)" data-video-url="<%= testimonial_video_url_9 %>" data-remote='true'>
                   <img src="<%= testimonial_image_url_9 %>" alt="<%= testimonial_image_alt_9 %>" />
                   <i class="mi md-48 video-link-icon">play_circle_outline</i>
                 </a>
