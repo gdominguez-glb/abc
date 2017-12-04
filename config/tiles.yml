@@ -37,8 +37,8 @@
     - :name: testimonial_image_alt_1
       :label: Image Alt 1
       :input_type: text  
-    - :name: testimonial_video_id_1
-      :label: Wistia video id 1
+    - :name: testimonial_video_url_1
+      :label: Facebook video url 1
       :input_type: text
     - :name: testimonial_text_1
       :label: Text 1
@@ -58,8 +58,8 @@
     - :name: testimonial_image_alt_2
       :label: Image Alt 2
       :input_type: text
-    - :name: testimonial_video_id_2
-      :label: Wistia video id 2
+    - :name: testimonial_video_url_2
+      :label: Facebook video url 2
       :input_type: text
     - :name: testimonial_text_2
       :label: Text 2
@@ -79,8 +79,8 @@
     - :name: testimonial_image_alt_3
       :label: Image Alt 3
       :input_type: text
-    - :name: testimonial_video_id_3
-      :label: Wistia video id 3
+    - :name: testimonial_video_url_3
+      :label: Facebook video url 3
       :input_type: text
     - :name: testimonial_text_3
       :label: Text 3
@@ -100,8 +100,8 @@
     - :name: testimonial_image_alt_4
       :label: Image Alt 4
       :input_type: text
-    - :name: testimonial_video_id_4
-      :label: Wistia video id 4
+    - :name: testimonial_video_url_4
+      :label: Facebook video url 4
       :input_type: text
     - :name: testimonial_text_4
       :label: Text 4
@@ -121,8 +121,8 @@
     - :name: testimonial_image_alt_5
       :label: Image Alt 5
       :input_type: text
-    - :name: testimonial_video_id_5
-      :label: Wistia video id 5
+    - :name: testimonial_video_url_5
+      :label: Facebook video url 5
       :input_type: text
     - :name: testimonial_text_5
       :label: Text 5
@@ -142,8 +142,8 @@
     - :name: testimonial_image_alt_6
       :label: Image Alt 6
       :input_type: text
-    - :name: testimonial_video_id_6
-      :label: Wistia video id 6
+    - :name: testimonial_video_url_6
+      :label: Facebook video url 6
       :input_type: text
     - :name: testimonial_text_6
       :label: Text 6
@@ -163,8 +163,8 @@
     - :name: testimonial_image_alt_7
       :label: Image Alt 7
       :input_type: text
-    - :name: testimonial_video_id_7
-      :label: Wistia video id 7
+    - :name: testimonial_video_url_7
+      :label: Facebook video url 7
       :input_type: text
     - :name: testimonial_text_7
       :label: Text 7
@@ -184,8 +184,8 @@
     - :name: testimonial_image_alt_8
       :label: Image Alt 8
       :input_type: text
-    - :name: testimonial_video_id_8
-      :label: Wistia video id 8
+    - :name: testimonial_video_url_8
+      :label: Facebook video url 8
       :input_type: text
     - :name: testimonial_text_8
       :label: Text 8
@@ -205,8 +205,8 @@
     - :name: testimonial_image_alt_9
       :label: Image Alt 9
       :input_type: text
-    - :name: testimonial_video_id_9
-      :label: Wistia video id 9
+    - :name: testimonial_video_url_9
+      :label: Facebook video url 9
       :input_type: text
     - :name: testimonial_text_9
       :label: Text 9
