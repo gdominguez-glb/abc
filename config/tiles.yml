@@ -43,6 +43,9 @@
     - :name: testimonial_text_1
       :label: Text 1
       :input_type: text_area
+    - :name: testimonial_bottom_text_1
+      :label: Bottom Text 1
+      :input_type: text_area
     - :name: testimonial_link_url_1
       :label: Link Url 1
       :input_type: text
@@ -63,6 +66,9 @@
       :input_type: text
     - :name: testimonial_text_2
       :label: Text 2
+      :input_type: text_area
+    - :name: testimonial_bottom_text_2
+      :label: Bottom Text 2
       :input_type: text_area
     - :name: testimonial_link_url_2
       :label: Link Url 2
@@ -85,6 +91,9 @@
     - :name: testimonial_text_3
       :label: Text 3
       :input_type: text_area
+    - :name: testimonial_bottom_text_3
+      :label: Bottom Text 3
+      :input_type: text_area
     - :name: testimonial_link_url_3
       :label: Link Url 3
       :input_type: text
@@ -105,6 +114,9 @@
       :input_type: text
     - :name: testimonial_text_4
       :label: Text 4
+      :input_type: text_area
+    - :name: testimonial_bottom_text_4
+      :label: Bottom Text 4
       :input_type: text_area
     - :name: testimonial_link_url_4
       :label: Link Url 4
@@ -127,6 +139,9 @@
     - :name: testimonial_text_5
       :label: Text 5
       :input_type: text_area
+    - :name: testimonial_bottom_text_5
+      :label: Bottom Text 5
+      :input_type: text_area
     - :name: testimonial_link_url_5
       :label: Link Url 5
       :input_type: text
@@ -147,6 +162,9 @@
       :input_type: text
     - :name: testimonial_text_6
       :label: Text 6
+      :input_type: text_area
+    - :name: testimonial_bottom_text_6
+      :label: Bottom Text 6
       :input_type: text_area
     - :name: testimonial_link_url_6
       :label: Link Url 6
@@ -169,6 +187,9 @@
     - :name: testimonial_text_7
       :label: Text 7
       :input_type: text_area
+    - :name: testimonial_bottom_text_7
+      :label: Bottom Text 7
+      :input_type: text_area
     - :name: testimonial_link_url_7
       :label: Link Url 7
       :input_type: text
@@ -190,6 +211,9 @@
     - :name: testimonial_text_8
       :label: Text 8
       :input_type: text_area
+    - :name: testimonial_bottom_text_8
+      :label: Bottom Text 8
+      :input_type: text_area
     - :name: testimonial_link_url_8
       :label: Link Url 8
       :input_type: text
@@ -210,6 +234,9 @@
       :input_type: text
     - :name: testimonial_text_9
       :label: Text 9
+      :input_type: text_area
+    - :name: testimonial_bottom_text_9
+      :label: Bottom Text 9
       :input_type: text_area
     - :name: testimonial_link_url_9
       :label: Link Url 9
