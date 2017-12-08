@@ -96,6 +96,9 @@ marketing_templates:
                   <img class="testimonial__image" src="<%= testimonial_image_url_1 %>" alt="<%= testimonial_image_alt_1 %>" />
                 <% end %>
               <% end %>
+              <% if testimonial_bottom_text_1.present? %>
+                <p><%= testimonial_bottom_text_1 %></p>
+              <% end %>
             </article>
             <% if testimonial_link_url_1.present? && testimonial_link_text_1.present? %>
               <a class="btn btn-default btn-block-xs" href="<%= testimonial_link_url_1 %>" target="_blank"><%= testimonial_link_text_1 %></a>
@@ -117,6 +120,9 @@ marketing_templates:
                   <img class="testimonial__image" src="<%= testimonial_image_url_2 %>" alt="<%= testimonial_image_alt_2 %>" />
                 <% end %>
               <% end %>
+              <% if testimonial_bottom_text_2.present? %>
+                <p><%= testimonial_bottom_text_2 %></p>
+              <% end %>
             </article>
             <% if testimonial_link_url_2.present? && testimonial_link_text_2.present? %>
               <a class="btn btn-default btn-block-xs" href="<%= testimonial_link_url_2 %>" target="_blank"><%= testimonial_link_text_2 %></a>
@@ -137,6 +143,9 @@ marketing_templates:
                 <% if testimonial_image_url_3.present? %>
                   <img class="testimonial__image" src="<%= testimonial_image_url_3 %>" alt="<%= testimonial_image_alt_3 %>" />
                 <% end %>
+              <% end %>
+              <% if testimonial_bottom_text_3.present? %>
+                <p><%= testimonial_bottom_text_3 %></p>
               <% end %>
             </article>
             <% if testimonial_link_url_3.present? && testimonial_link_text_3.present? %>
@@ -164,6 +173,9 @@ marketing_templates:
                   <img class="testimonial__image" src="<%= testimonial_image_url_4 %>" alt="<%= testimonial_image_alt_4 %>" />
                 <% end %>
               <% end %>
+              <% if testimonial_bottom_text_4.present? %>
+                <p><%= testimonial_bottom_text_4 %></p>
+              <% end %>
             </article>
             <% if testimonial_link_url_4.present? && testimonial_link_text_4.present? %>
               <a class="btn btn-default btn-block-xs" href="<%= testimonial_link_url_4 %>" target="_blank"><%= testimonial_link_text_4 %></a>
@@ -185,6 +197,9 @@ marketing_templates:
                   <img class="testimonial__image" src="<%= testimonial_image_url_5 %>" alt="<%= testimonial_image_alt_5 %>" />
                 <% end %>
               <% end %>
+              <% if testimonial_bottom_text_5.present? %>
+                <p><%= testimonial_bottom_text_5 %></p>
+              <% end %>
             </article>
             <% if testimonial_link_url_5.present? && testimonial_link_text_5.present? %>
               <a class="btn btn-default btn-block-xs" href="<%= testimonial_link_url_5 %>" target="_blank"><%= testimonial_link_text_5 %></a>
@@ -205,6 +220,9 @@ marketing_templates:
                 <% if testimonial_image_url_6.present? %>
                   <img class="testimonial__image" src="<%= testimonial_image_url_6 %>" alt="<%= testimonial_image_alt_6 %>" />
                 <% end %>
+              <% end %>
+              <% if testimonial_bottom_text_6.present? %>
+                <p><%= testimonial_bottom_text_6 %></p>
               <% end %>
             </article>
             <% if testimonial_link_url_6.present? && testimonial_link_text_6.present? %>
@@ -229,6 +247,9 @@ marketing_templates:
                   <img class="testimonial__image" src="<%= testimonial_image_url_7 %>" alt="<%= testimonial_image_alt_7 %>" />
                 <% end %>
               <% end %>
+              <% if testimonial_bottom_text_7.present? %>
+                <p><%= testimonial_bottom_text_7 %></p>
+              <% end %>
             </article>
             <% if testimonial_link_url_7.present? && testimonial_link_text_7.present? %>
               <a class="btn btn-default btn-block-xs" href="<%= testimonial_link_url_7 %>" target="_blank"><%= testimonial_link_text_7 %></a>
@@ -250,6 +271,9 @@ marketing_templates:
                   <img class="testimonial__image" src="<%= testimonial_image_url_8 %>" alt="<%= testimonial_image_alt_8 %>" />
                 <% end %>
               <% end %>
+              <% if testimonial_bottom_text_8.present? %>
+                <p><%= testimonial_bottom_text_8 %></p>
+              <% end %>
             </article>
             <% if testimonial_link_url_8.present? && testimonial_link_text_8.present? %>
               <a class="btn btn-default btn-block-xs" href="<%= testimonial_link_url_8 %>" target="_blank"><%= testimonial_link_text_8 %></a>
@@ -270,6 +294,9 @@ marketing_templates:
                 <% if testimonial_image_url_9.present? %>
                   <img class="testimonial__image" src="<%= testimonial_image_url_9 %>" alt="<%= testimonial_image_alt_9 %>" />
                 <% end %>
+              <% end %>
+              <% if testimonial_bottom_text_9.present? %>
+                <p><%= testimonial_bottom_text_9 %></p>
               <% end %>
             </article>
             <% if testimonial_link_url_9.present? && testimonial_link_text_9.present? %>
