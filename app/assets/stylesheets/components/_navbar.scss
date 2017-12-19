@@ -294,6 +294,15 @@
           }
         }
 
+        &[data-primary-nav-item='in-the-news'] {
+          > a {
+            &:hover,
+            &:focus {
+              color: $coral;
+            }
+          }
+        }
+
         &[data-primary-nav-item='shop'] {
           > a {
             &:hover,
