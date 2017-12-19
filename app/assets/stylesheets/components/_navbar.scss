@@ -301,6 +301,11 @@
               color: $coral;
             }
           }
+          &.active {
+            > a {
+              color: $coral;
+            }
+          }
         }
 
         &[data-primary-nav-item='shop'] {
