@@ -59,6 +59,10 @@
     @include button-variant($c-absolute, $c-positive-secondary, darken($c-positive-secondary, 5%));
   }
 
+  &.btn-secondary {
+    @include button-variant($c-positive-secondary, $c-firm-subdue, $c-positive-secondary);
+  }
+
   &.btn-info {
     @include button-variant($c-positive-secondary, $c-positive-primary, $c-positive-secondary);
   }
