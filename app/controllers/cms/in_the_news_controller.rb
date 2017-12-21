@@ -88,7 +88,8 @@ class Cms::InTheNewsController < Cms::BaseController
       :image_url,
       :publisher,
       :slug,
-      :title
+      :title,
+      :stick_to_top
     )
   end
 
