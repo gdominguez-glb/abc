@@ -155,7 +155,7 @@ marketing_templates:
         </div>
       </section>
       <div class="row clear text-center padding-bottom--m <%= background_color %>-bg">
-        <a href='javascript:void(0)' class="testimonial-show-more-link btn btn-secondary">Show More</a>
+        <a href='javascript:void(0)' class="testimonial-show-more-link btn btn-default">Show More</a>
       </div>
       <section class="row row-content-3col <%= background_color %>-bg text-left testimonial-more-section padding-bottom padding-top--l hide">  
         <div class="col-sm-4">
@@ -306,7 +306,7 @@ marketing_templates:
         </div>
       </section>
       <div class="row clear text-center padding-bottom--xl <%= background_color %>-bg">
-        <a href='javascript:void(0)' class='testimonial-show-less-link btn btn-secondary hide'>Show Less</a>
+        <a href='javascript:void(0)' class='testimonial-show-less-link btn btn-default hide'>Show Less</a>
       </div>
 
   -
