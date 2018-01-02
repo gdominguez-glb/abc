@@ -35,6 +35,10 @@ class PagesController < ApplicationController
     render :in_the_news
   end
 
+  def data_stories
+    render :data_stories
+  end
+
   def not_found
     render status: 404
   end
