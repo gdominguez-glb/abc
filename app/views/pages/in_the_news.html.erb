@@ -29,7 +29,7 @@
   <div class="col-sm-10 col-sm-offset-1 margin-top--xl margin-bottom--xl">
     <div class="posts flex">
       <% @in_the_news.each do |in_the_new| %>
-        <a href="<%= in_the_new.call_to_action_button_link %>" class="card card-flex card-media card--no-border card-link">
+        <a href="<%= in_the_new.call_to_action_button_link %>" class="card card-flex card-media card--no-border card-link" target="_blank">
           <div class="card-image" style="background-image: url('<%= in_the_new.image_url %>')"></div>
           <div class="card-media--content">
             <h4 class="card-title"><%= in_the_new.title %></h4>
