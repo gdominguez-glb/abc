@@ -93,6 +93,11 @@ namespace :cms do
       get :search
     end
   end
+  resources :data_stories, only: [:index] do
+    collection do
+      post :save_page
+    end
+  end
   resources :medium_publications do
     collection do
       post :trigger_medium_importer
