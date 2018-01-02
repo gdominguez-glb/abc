@@ -4,7 +4,7 @@ class Cms::InTheNewsController < Cms::BaseController
 
   def index
     @in_the_new = InTheNew.new
-    @in_the_news = InTheNew.page(params[:page]).per(params[:per_page])
+    @in_the_news = InTheNew.latest_by_article_date.page(params[:page]).per(params[:per_page])
   end
 
   def new
@@ -66,6 +66,12 @@ class Cms::InTheNewsController < Cms::BaseController
     else
       render :edit_page
     end
+  end
+
+  def update_positions
+    InTheNew.where(stick_to_top: false).update_all(position: nil)
+    update_positions_with_klass(InTheNew.where(stick_to_top: true))
+    render nothing: true
   end
 
   private
