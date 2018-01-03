@@ -1,5 +1,5 @@
 <div class="table-responsive">
-  <table class="table table-hover" style="width: 140%; max-width: 140%;">
+  <table class="table table-hover in-the-news-list" style="width: 140%; max-width: 140%;">
     <thead>
       <tr>
         <th colspan="2">Title</th>
@@ -12,7 +12,7 @@
     </thead>
     <tbody>
       <% @in_the_news.each do |in_the_new| %>
-        <tr>
+        <tr class="<%= 'stick-item' if in_the_new.stick_to_top? %>" data-id="<%= in_the_new.id %>">
           <td><%= in_the_new.title %></td>
           <td><%= link_to 'Edit', edit_cms_in_the_new_path(in_the_new), class: 'btn btn-default' %></td>
           <td><%= in_the_new.slug %></td>
@@ -26,3 +26,36 @@
   </table>
 </div>
 <%= paginate @in_the_news %>
+
+<style>
+ .stick-item {
+   background: #eee;
+ }
+</style>
+<%= content_for :javascripts do %>
+  <%= javascript_tag do %>
+   function updatePositions() {
+     var data = {}
+     $.each($(".in-the-news-list tbody tr.stick-item"), function(index, element) {
+       data[$(element).attr('data-id')] = index;
+     });
+     $.ajax({
+       url: '/cms/in_the_news/update_positions',
+       type: 'POST',
+       data: { positions: data }
+     })
+   }
+   $(function(){
+     $(".in-the-news-list").sortable({
+       containerSelector: 'table',
+       itemPath: '> tbody',
+       itemSelector: 'tr.stick-item',
+       placeholder: '<tr class="placeholder"/>',
+       onDrop: function  (item, container, _super) {
+         _super(item);
+         updatePositions();
+       }
+     })
+   });
+  <% end %>
+<% end %>

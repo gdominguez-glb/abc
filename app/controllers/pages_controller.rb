@@ -35,7 +35,19 @@ class PagesController < ApplicationController
     render :in_the_news
   end
 
+  def data_stories
+    render :data_stories
+  end
+
   def not_found
     render status: 404
+  end
+
+  def testimonials_video
+    @wistia_hashed_id = params[:wisitia_video_id]
+  end
+
+  def facebook_video
+    @facebook_video_url = params[:url]
   end
 end

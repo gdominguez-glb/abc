@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170922222010) do
+ActiveRecord::Schema.define(version: 20180102012002) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 20170922222010) do
     t.string   "created_by"
     t.string   "mailchimp_campaign_id"
     t.string   "external_link"
+    t.boolean  "campaign_created",                  default: false
   end
 
   create_table "blogs", force: :cascade do |t|
@@ -75,8 +76,8 @@ ActiveRecord::Schema.define(version: 20170922222010) do
     t.string   "header"
     t.text     "description"
     t.integer  "page_id"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",                                         null: false
+    t.datetime "updated_at",                                         null: false
     t.string   "jumbotron_background_file_name"
     t.string   "jumbotron_background_content_type"
     t.integer  "jumbotron_background_file_size"
@@ -84,6 +85,7 @@ ActiveRecord::Schema.define(version: 20170922222010) do
     t.string   "mandrill_subscription_template_slug"
     t.integer  "mailchimp_post_template_id"
     t.string   "mailchimp_list_id"
+    t.boolean  "enable_notification",                 default: true
   end
 
   create_table "contact_topics", force: :cascade do |t|
@@ -359,8 +361,10 @@ ActiveRecord::Schema.define(version: 20170922222010) do
     t.string   "image_url"
     t.datetime "article_date"
     t.string   "description"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
+    t.boolean  "stick_to_top",                 default: false
+    t.integer  "position",                     default: 0
   end
 
   create_table "jobs", force: :cascade do |t|

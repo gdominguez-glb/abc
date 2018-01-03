@@ -12,7 +12,7 @@ function shouldShowDistrict(userRole) {
   var visibleFields = {};
   visibleFields.showDistrictDetails = false;
 
-  if (userRole === 'Teacher' || userRole === 'Administrator' || userRole === 'Administrative Assistant') {
+  if (userRole === 'Teacher' || userRole === 'School/District Administration' || userRole === 'Curriculum Administration') {
     visibleFields.showDistrictDetails = true;
   }
 
@@ -20,7 +20,7 @@ function shouldShowDistrict(userRole) {
 }
 
 function shouldShowPhone(userRole) {
-  if (userRole === 'Administrator' || userRole === 'Administrative Assistant') {
+  if (userRole === 'School/District Administration' || userRole === 'Curriculum Administration') {
     return true;
   }
   return false;
@@ -44,6 +44,7 @@ $(document).on("change", "#spree_user_title", function(){
     $('#phone-field').addClass('hide');
     $('#phone-field').val(null);
   }
+
 });
 
 $(document).on("change", "#spree_user_district_id, #spree_user_school_id", function(e) {

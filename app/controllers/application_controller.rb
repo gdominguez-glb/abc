@@ -98,7 +98,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_page_meta_tags(page)
-    if page.seo_data.try(:[], :description)
+    if page.seo_data.try(:[], :description).present?
       set_meta_tags description: page.seo_data.try(:[], :description)
     elsif page.description.present?
       set_meta_tags description: page.description

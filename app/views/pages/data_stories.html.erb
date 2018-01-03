@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="jumbotron jumbotron-background" style="background-image: url('<%= @page.data.try(:[], :jumbotron_image) %>">
+    <div class="row">
+      <div class="col-sm-11 col-sm-offset-1">
+        <h1 class="jumbotron-title"><%= @page.title %></h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-1">
+        <p><%= @page.data.try(:[], :short_description) %></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= render 'blogs_sub_nav' %>
+
+<div class="row">
+  <div class="col-sm-8 col-sm-offset-1">
+    <%= @page.body.html_safe %>
+  </div>
+</div>
+
+<% cache @page, expires_in: 2.hours do %>
+  <% if @page.custom_css %>
+    <style type="text/css">
+     <%= @page.custom_css.content.html_safe %>
+    </style>
+  <% end %>
+  <% CustomCss.global_css.each do |custom_css| %>
+    <style type="text/css">
+     <%= custom_css.content %>
+    </style>
+  <% end %>
+<% end %>

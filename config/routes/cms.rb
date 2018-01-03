@@ -91,6 +91,12 @@ namespace :cms do
       get :edit_page
       post :save_page
       get :search
+      post :update_positions
+    end
+  end
+  resources :data_stories, only: [:index] do
+    collection do
+      post :save_page
     end
   end
   resources :medium_publications do

@@ -23,6 +23,9 @@
           </li>
         <% end %>
       <% end %>
+      <li data-primary-nav-item="in-the-news" class="<%= 'active' if params[:slug] == 'in-the-news' %>">
+        <a href="/news">News</a>
+      </li>
       <li data-primary-nav-item="shop" class="store-link js-store-link <%= store_active_class %>">
         <%= link_to "Shop", '/store', class: store_active_class %>
       </li>

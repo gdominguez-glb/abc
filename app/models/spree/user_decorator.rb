@@ -187,7 +187,13 @@ Spree::User.class_eval do
   end
 
   if !defined?(USER_TITLES)
-    USER_TITLES = ['Teacher', 'Administrator', 'Parent', 'Administrative Assistant', 'Homeschooler'].freeze
+    USER_TITLES = [
+      'Teacher',
+      'Parent',
+      'School/District Administration',
+      'Curriculum Administration',
+      'Homeschooler'
+    ].freeze
 
     USER_TITLES.each do |title|
       scope "with_#{title.downcase}_title", -> { where(title: title) }
@@ -268,17 +274,30 @@ Spree::User.class_eval do
       firstname: self.first_name,
       lastname: self.last_name,
       email: self.email,
-      zip_code: self.zip_code,
-      receive_newsletter_and_updates: self.allow_communication ? "Yes" : "No",
-      subject_s_you_are_interested_in: self.interested_curriculums,
-      role: self.title,
-      is_this_a_school_or_a_district_: self.school_district_required? ? (self.try(:school_district).try(:place_type) == "school" ? "This is a school" : "This is multiple schools/distict") : "",
-      select_country: self.school_district_required? ? self.try(:school_district).try(:country).try(:name) : "",
-      state_select: self.try(:school_district).try(:state).try(:name),
+      zip: self.zip_code,
+      subject_curriculum_role: hubspot_curriculum_interests,
+      jobtitle: self.title,
+      country: self.try(:school_district).try(:country).try(:name),
+      state: self.try(:school_district).try(:state).try(:name),
       city: self.try(:school_district).try(:city),
-      select_a_school: self.school_district_required? && self.try(:school_district).try(:place_type) == "school" ? self.try(:school_district).try(:name) : "",
-      select_a_district: self.school_district_required? && self.try(:school_district).try(:place_type) != "school" ? self.try(:school_district).try(:name) : "",
+      company: self.try(:school_district).try(:name),
       hs_context: {ipAddress: self.remote_ip, hutk: self.hubspot_cookie}.to_json
     })
+  end
+
+  def hubspot_curriculum_interests
+    self.interested_curriculums.map { |c|
+      if c == 'Math'
+        'Math'
+      elsif c == 'English'
+        'English/Humanities'
+      elsif c == 'History'
+        'Other'
+      elsif c == 'Science'
+        'Sciences'
+      else
+        'Other'
+      end
+    }
   end
 end

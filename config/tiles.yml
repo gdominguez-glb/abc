@@ -16,6 +16,235 @@
   - :name: title_highlight
     :label: Title Highlight
     :input_type: text
+
+- :name: Testimonials
+  :fields:
+    - :name: background_color
+      :label: Background Color
+      :input_type: select
+      :input_options:
+        - green
+        - blue
+        - cream
+        - orange
+        - light-blue   
+    - :name: testimonial_header_1
+      :label: Header 1
+      :input_type: text
+    - :name: testimonial_image_url_1
+      :label: Image url 1
+      :input_type: text
+    - :name: testimonial_image_alt_1
+      :label: Image Alt 1
+      :input_type: text  
+    - :name: testimonial_video_url_1
+      :label: Facebook video url 1
+      :input_type: text
+    - :name: testimonial_text_1
+      :label: Text 1
+      :input_type: text_area
+    - :name: testimonial_bottom_text_1
+      :label: Bottom Text 1
+      :input_type: text_area
+    - :name: testimonial_link_url_1
+      :label: Link Url 1
+      :input_type: text
+    - :name: testimonial_link_text_1
+      :label: Link Text 1
+      :input_type: text
+    - :name: testimonial_header_2
+      :label: Header 2
+      :input_type: text
+    - :name: testimonial_image_url_2
+      :label: Image url 2
+      :input_type: text
+    - :name: testimonial_image_alt_2
+      :label: Image Alt 2
+      :input_type: text
+    - :name: testimonial_video_url_2
+      :label: Facebook video url 2
+      :input_type: text
+    - :name: testimonial_text_2
+      :label: Text 2
+      :input_type: text_area
+    - :name: testimonial_bottom_text_2
+      :label: Bottom Text 2
+      :input_type: text_area
+    - :name: testimonial_link_url_2
+      :label: Link Url 2
+      :input_type: text
+    - :name: testimonial_link_text_2
+      :label: Link Text 2
+      :input_type: text
+    - :name: testimonial_header_3
+      :label: Header 3
+      :input_type: text
+    - :name: testimonial_image_url_3
+      :label: Image url 3
+      :input_type: text
+    - :name: testimonial_image_alt_3
+      :label: Image Alt 3
+      :input_type: text
+    - :name: testimonial_video_url_3
+      :label: Facebook video url 3
+      :input_type: text
+    - :name: testimonial_text_3
+      :label: Text 3
+      :input_type: text_area
+    - :name: testimonial_bottom_text_3
+      :label: Bottom Text 3
+      :input_type: text_area
+    - :name: testimonial_link_url_3
+      :label: Link Url 3
+      :input_type: text
+    - :name: testimonial_link_text_3
+      :label: Link Text 3
+      :input_type: text
+    - :name: testimonial_header_4
+      :label: Header 4
+      :input_type: text
+    - :name: testimonial_image_url_4
+      :label: Image url 4
+      :input_type: text
+    - :name: testimonial_image_alt_4
+      :label: Image Alt 4
+      :input_type: text
+    - :name: testimonial_video_url_4
+      :label: Facebook video url 4
+      :input_type: text
+    - :name: testimonial_text_4
+      :label: Text 4
+      :input_type: text_area
+    - :name: testimonial_bottom_text_4
+      :label: Bottom Text 4
+      :input_type: text_area
+    - :name: testimonial_link_url_4
+      :label: Link Url 4
+      :input_type: text
+    - :name: testimonial_link_text_4
+      :label: Link Text 4
+      :input_type: text
+    - :name: testimonial_header_5
+      :label: Header 5
+      :input_type: text
+    - :name: testimonial_image_url_5
+      :label: Image url 5
+      :input_type: text
+    - :name: testimonial_image_alt_5
+      :label: Image Alt 5
+      :input_type: text
+    - :name: testimonial_video_url_5
+      :label: Facebook video url 5
+      :input_type: text
+    - :name: testimonial_text_5
+      :label: Text 5
+      :input_type: text_area
+    - :name: testimonial_bottom_text_5
+      :label: Bottom Text 5
+      :input_type: text_area
+    - :name: testimonial_link_url_5
+      :label: Link Url 5
+      :input_type: text
+    - :name: testimonial_link_text_5
+      :label: Link Text 5
+      :input_type: text
+    - :name: testimonial_header_6
+      :label: Header 6
+      :input_type: text
+    - :name: testimonial_image_url_6
+      :label: Image url 6
+      :input_type: text
+    - :name: testimonial_image_alt_6
+      :label: Image Alt 6
+      :input_type: text
+    - :name: testimonial_video_url_6
+      :label: Facebook video url 6
+      :input_type: text
+    - :name: testimonial_text_6
+      :label: Text 6
+      :input_type: text_area
+    - :name: testimonial_bottom_text_6
+      :label: Bottom Text 6
+      :input_type: text_area
+    - :name: testimonial_link_url_6
+      :label: Link Url 6
+      :input_type: text
+    - :name: testimonial_link_text_6
+      :label: Link Text 6
+      :input_type: text
+    - :name: testimonial_header_7
+      :label: Header 7
+      :input_type: text
+    - :name: testimonial_image_url_7
+      :label: Image url 7
+      :input_type: text
+    - :name: testimonial_image_alt_7
+      :label: Image Alt 7
+      :input_type: text
+    - :name: testimonial_video_url_7
+      :label: Facebook video url 7
+      :input_type: text
+    - :name: testimonial_text_7
+      :label: Text 7
+      :input_type: text_area
+    - :name: testimonial_bottom_text_7
+      :label: Bottom Text 7
+      :input_type: text_area
+    - :name: testimonial_link_url_7
+      :label: Link Url 7
+      :input_type: text
+    - :name: testimonial_link_text_7
+      :label: Link Text 7
+      :input_type: text
+    - :name: testimonial_header_8
+      :label: Header 8
+      :input_type: text
+    - :name: testimonial_image_url_8
+      :label: Image url 8
+      :input_type: text
+    - :name: testimonial_image_alt_8
+      :label: Image Alt 8
+      :input_type: text
+    - :name: testimonial_video_url_8
+      :label: Facebook video url 8
+      :input_type: text
+    - :name: testimonial_text_8
+      :label: Text 8
+      :input_type: text_area
+    - :name: testimonial_bottom_text_8
+      :label: Bottom Text 8
+      :input_type: text_area
+    - :name: testimonial_link_url_8
+      :label: Link Url 8
+      :input_type: text
+    - :name: testimonial_link_text_8
+      :label: Link Text 8
+      :input_type: text
+    - :name: testimonial_header_9
+      :label: Header 9
+      :input_type: text
+    - :name: testimonial_image_url_9
+      :label: Image url 9
+      :input_type: text
+    - :name: testimonial_image_alt_9
+      :label: Image Alt 9
+      :input_type: text
+    - :name: testimonial_video_url_9
+      :label: Facebook video url 9
+      :input_type: text
+    - :name: testimonial_text_9
+      :label: Text 9
+      :input_type: text_area
+    - :name: testimonial_bottom_text_9
+      :label: Bottom Text 9
+      :input_type: text_area
+    - :name: testimonial_link_url_9
+      :label: Link Url 9
+      :input_type: text
+    - :name: testimonial_link_text_9
+      :label: Link Text 9
+      :input_type: text
+
 - :name: Video Hero
   :fields:
   - :name: title
@@ -779,3 +1008,78 @@
     :input_options:
       - Open in Same Tab
       - Open in New Tab
+
+- :name: 3-Column Facebook Video Text
+  :fields:
+  - :name: background_color
+    :label: Background Color
+    :input_type: select
+    :input_options:
+      - green
+      - blue
+      - cream
+      - orange
+      - light-blue   
+  - :name: facebook_header_1
+    :label: Header 1
+    :input_type: text
+  - :name: facebook_image_url_1
+    :label: Image url 1
+    :input_type: text
+  - :name: facebook_image_alt_1
+    :label: Image Alt 1
+    :input_type: text  
+  - :name: facebook_video_url_1
+    :label: Facebook video url 1
+    :input_type: text
+  - :name: facebook_text_1
+    :label: Text 1
+    :input_type: text_area
+  - :name: facebook_link_url_1
+    :label: Link Url 1
+    :input_type: text
+  - :name: facebook_link_text_1
+    :label: Link Text 1
+    :input_type: text
+  - :name: facebook_header_2
+    :label: Header 2
+    :input_type: text
+  - :name: facebook_image_url_2
+    :label: Image url 2
+    :input_type: text
+  - :name: facebook_image_alt_2
+    :label: Image Alt 2
+    :input_type: text
+  - :name: facebook_video_url_2
+    :label: Facebook video url 2
+    :input_type: text
+  - :name: facebook_text_2
+    :label: Text 2
+    :input_type: text_area
+  - :name: facebook_link_url_2
+    :label: Link Url 2
+    :input_type: text
+  - :name: facebook_link_text_2
+    :label: Link Text 2
+    :input_type: text
+  - :name: facebook_header_3
+    :label: Header 3
+    :input_type: text
+  - :name: facebook_image_url_3
+    :label: Image url 3
+    :input_type: text
+  - :name: facebook_image_alt_3
+    :label: Image Alt 3
+    :input_type: text
+  - :name: facebook_video_url_3
+    :label: Facebook video url 3
+    :input_type: text
+  - :name: facebook_text_3
+    :label: Text 3
+    :input_type: text_area
+  - :name: facebook_link_url_3
+    :label: Link Url 3
+    :input_type: text
+  - :name: facebook_link_text_3
+    :label: Link Text 3
+    :input_type: text

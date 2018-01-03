@@ -50,4 +50,20 @@ $(document).ready(function() {
     });
   });
 
+  $('.testimonial-show-more-link').click(function(){
+    $(this).addClass('hide');
+    $(this).parent().nextUntil('div').removeClass('hide');
+    $(this).parent().siblings('div').children().removeClass('hide');
+  });
+  $('.testimonial-show-less-link').click(function(){
+    $(this).addClass('hide');
+    $(this).parent().prevUntil('div').addClass('hide');
+    $(this).parent().siblings('div').children().removeClass('hide');
+  });
+
+  $('.facebook__video').click(function(e){
+    e.preventDefault();
+    var video_url = $(this).attr('data-video-url');
+    $.get('/facebook_video', { url: video_url });
+  });
 });
