@@ -28,6 +28,7 @@ class BlogController < ApplicationController
 
     load_curriculum_blog
     load_articles
+    @blog_title = @blog.title
   end
 
   def curriculum_post
