@@ -24,7 +24,7 @@
 //= require bootstrap/popover
 //= require mediaelement_rails
 //= require select2
-//= require zeroclipboard
+//= require clipboard
 
 // Datetimepicker requires Moment
 //= require moment

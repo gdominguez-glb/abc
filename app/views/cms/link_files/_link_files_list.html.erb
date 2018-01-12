@@ -36,17 +36,11 @@
 <%= paginate @link_files %>
 <%= content_for :javascripts do %>
   <%= javascript_tag do %>
-    $(function() {
-      var client = new ZeroClipboard( $('.copy-download-url-button') );
-      client.on( 'ready', function(event) {
-        client.on( 'copy', function(event) {
-          event.clipboardData.setData('text/plain', $(event.target).attr('data-url'));
-        });
-
-        client.on( 'aftercopy', function(event) {
-          alert('Copied to your clipboard');
-        });
-      });
-    });
+   $(function() {
+     var clipboard = new Clipboard('.copy-download-url-button');
+     clipboard.on('success', function(e) {
+       alert("Copied to your clipboard!");
+     });
+   });
   <% end %>
 <% end %>

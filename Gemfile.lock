@@ -759,8 +759,6 @@ GEM
     wistia-api (0.2.3)
       activeresource (>= 2.3.8)
     wmi-lite (1.0.0)
-    zeroclipboard-rails (0.1.0)
-      railties (>= 3.1)
     zip-zip (0.3)
       rubyzip (>= 1.0.0)
 
@@ -857,5 +855,4 @@ DEPENDENCIES
   webmock
   whenever
   wistia-api
-  zeroclipboard-rails
   zip-zip
