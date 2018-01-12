@@ -45,16 +45,7 @@
 </div>
 
 <%= javascript_tag do %>
-  $(function() {
-    var client = new ZeroClipboard( $('.copy-download-page-url-button') );
-    client.on( 'ready', function(event) {
-      client.on( 'copy', function(event) {
-        event.clipboardData.setData('text/plain', $(event.target).attr('data-url'));
-      });
-
-      client.on( 'aftercopy', function(event) {
-        alert('Copied to your clipboard');
-      });
-    });
-  });
+ $(function() {
+   var clipboard = new Clipboard('.copy-download-page-url-button');
+ });
 <% end %>
