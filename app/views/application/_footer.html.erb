@@ -6,7 +6,8 @@
       <div class="col-sm-2 footer-section">
         <h6 class="section-lead footer-title">
           <% if footer_title.link.present? %>
-            <%= link_to footer_title.title, footer_title.link, :class => 'footer-title-link' %>
+            <% title_target = footer_title.title == 'Careers' ? '_blank' : '_self' %>
+            <%= link_to footer_title.title, footer_title.link, :class => 'footer-title-link', target: title_target %>
           <% else %>
             <%= footer_title.title %>
           <% end %>
@@ -14,7 +15,7 @@
         <ul>
           <% footer_title.footer_links.each do |link| %>
             <li>
-              <% if link.name == 'FAQ' %>
+              <% if ['Job Openings', 'FAQ'].include?(link.name) %>
                 <%= link_to link.name, link.link, :target => '_blank', :class => 'footer-link' %>
               <% else %>
                 <%= link_to link.name, link.link, :class => 'footer-link' %>
@@ -45,7 +46,7 @@
         <ul>
           <% footer_social_links.each do |social| %>
             <li>
-              <a class="footer-link" href="<%= social[:link] %>">
+              <a class="footer-link" href="<%= social[:link] %>" target="_blank">
                 <%= social[:title] %>
               </a>
             </li>
