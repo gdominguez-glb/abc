@@ -1012,7 +1012,7 @@ marketing_templates:
               <% end %>
             </article>
             <% if facebook_link_url_1.present? && facebook_link_text_1.present? %>
-              <a class="btn btn-default btn-block-xs" href="javascript:void(0)" data-video-url="<%= facebook_link_url_1 %>" target="_blank"><%= facebook_link_text_1 %></a>
+              <a class="btn btn-default btn-block-xs" href="<%= facebook_link_url_1 %>" target="_blank"><%= facebook_link_text_1 %></a>
             <% end %>
           </div>
         </div>
@@ -1033,7 +1033,7 @@ marketing_templates:
               <% end %>
             </article>
             <% if facebook_link_url_2.present? && facebook_link_text_2.present? %>
-              <a class="btn btn-default btn-block-xs" href="javascript:void(0)" data-video-url="<%= facebook_link_url_2 %>" target="_blank"><%= facebook_link_text_2 %></a>
+              <a class="btn btn-default btn-block-xs" href="<%= facebook_link_url_2 %>" target="_blank"><%= facebook_link_text_2 %></a>
             <% end %>
           </div>
         </div>
@@ -1054,7 +1054,7 @@ marketing_templates:
               <% end %>
             </article>
             <% if facebook_link_url_3.present? && facebook_link_text_3.present? %>
-              <a class="btn btn-default btn-block-xs" href="javascript:void(0)" data-video-url="<%= facebook_link_url_3 %>" target="_blank"><%= facebook_link_text_3 %></a>
+              <a class="btn btn-default btn-block-xs" href="<%= facebook_link_url_3 %>" target="_blank"><%= facebook_link_text_3 %></a>
             <% end %>
           </div>
         </div>
