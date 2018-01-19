@@ -9,7 +9,7 @@
     <% product_url = url %>
   <% end %>
 
-  <%= link_to product_url, class: 'card-link display-flex--md-min flex-column--md-min flex-1--md-min max-width--md-min--300 center--lg-min--block' do %>
+  <%= link_to product_url, class: 'card-link display-flex--md-min flex-column--md-min flex-1--md-min max-width--md-min--300' do %>
     <div class="card <%= card_type_class(product) %> flex-1--md-min">
       <% cache(@taxon.present? ? [I18n.locale, current_currency, @taxon, product] : [I18n.locale, current_currency, product]) do %>
         <div class="card-image">
