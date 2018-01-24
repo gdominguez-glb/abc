@@ -7,7 +7,8 @@ class Article < ActiveRecord::Base
   belongs_to :blog
   belongs_to :user, class_name: 'Spree::User'
 
-  validates_presence_of :title
+  validates :title, presence: true, length: { maximum: 67 }
+
   validates_presence_of :body_draft, :slug, if: proc { |a| a.external_link.blank? }
 
   validates_uniqueness_of :slug, allow_blank: proc { |a| a.external_link.present? }

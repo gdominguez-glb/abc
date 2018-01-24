@@ -45,6 +45,11 @@
         <%= f.label 'Created by' %>
         <%= f.text_field :created_by, class: "form-control" %>
       </div>
+      <div class="form-group">
+        <%= f.label "Preview" %>
+        <%= f.text_area :preview, class: "form-control preview-editor", row: 5 %>
+        <p>(<span id="preview-character-count">0</span>)</p>
+      </div>
       <div class="form-group body-form-group">
         <%= f.label "Body" %>
         <%= f.text_area :body_draft, class: "form-control body-editor" %>
@@ -90,8 +95,22 @@
 </div>
 
 <%= content_for :javascripts do %>
+  <style>
+   .red {
+     color: red;
+   }
+  </style>
   <script type="text/javascript">
    $(function(){
+     function updatePreviewCharacterCount() {
+       var text = $('.preview-editor').trumbowyg('html').replace(/<[^>]*>/g, "");
+       var count = text.length;
+       $('#preview-character-count').text(count);
+       $('#preview-character-count').removeClass('red');
+       if (count > 121) {
+         $('#preview-character-count').addClass('red');
+       }
+     }
      $('.body-editor').trumbowyg({
        fullscreenable: false,
        closable: false,
@@ -99,6 +118,16 @@
        semantic: true,
        btns: ['bold', 'italic', 'underline', 'strikethrough', '|', 'formatting', '|', 'imageClasses', '|', 'unorderedList', 'orderedList', '|', 'link', '|', 'viewHTML', 'removeformat']
      });
+     $('.preview-editor').trumbowyg({
+       fullscreenable: false,
+       closable: false,
+       removeformatPasted: true,
+       semantic: true,
+       btns: ['bold', 'italic', 'underline', 'strikethrough', '|', 'formatting', '|', 'imageClasses', '|', 'unorderedList', 'orderedList', '|', 'link', '|', 'viewHTML', 'removeformat']
+     }).on('tbwchange', function(e){
+       updatePreviewCharacterCount();
+     });
+     updatePreviewCharacterCount();
      $("#article_publish_date").datetimepicker({format: 'YYYY-MM-DD'});
 
      var externalLink = $('#article_external_link');

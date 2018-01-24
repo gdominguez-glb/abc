@@ -1,6 +1,8 @@
 class InTheNew < ActiveRecord::Base
   include Orderable
 
+  validates :title, presence: true, length: { maximum: 67 }
+
   scope :search_by_title, ->(q) { where("title ilike ?", "%#{q}%") if q.present? }
   scope :search_by_author, ->(q) { where("author ilike ?", "%#{q}%") if q.present? }
   scope :search_by_publisher, ->(q) { where("publisher ilike ?", "%#{q}%") if q.present? }

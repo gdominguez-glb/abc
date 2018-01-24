@@ -7,7 +7,7 @@
       <div class="card-media--content">
         <h4 class="card-title"><%= article.title %></h4>
         <div class="card-text">
-          <%= stronger_truncate_html(article.body, length: 150, remove_link: true) %>
+          <%= raw article.preview %>
         </div>
         <% if article.user_name.present? %>
           <div class="card-meta">By: <%= article.user_name %></div>

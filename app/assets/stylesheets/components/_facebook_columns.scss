@@ -1,0 +1,38 @@
+.facebook {
+  margin-bottom: $b-space-xl;
+
+  &__article {
+    :after {
+      content: '';
+      display: table;
+      clear: both;
+    }
+  }
+
+  &__video {
+    position: relative;
+    display: block;
+    width: 100%;
+    margin-bottom: 25px;
+
+    img {
+      display: block;
+      max-width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .video-link-icon {
+      display: block;
+    }
+  }
+
+  &__image {
+    display: block;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 25px;
+  }
+
+}

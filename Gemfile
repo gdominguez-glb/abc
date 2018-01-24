@@ -32,8 +32,6 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 gem "figaro"
 
-gem 'zeroclipboard-rails'
-
 gem 'aws-sdk', '< 2.0'
 
 gem 'active_link_to'
