@@ -276,7 +276,7 @@ Spree::User.class_eval do
       email: self.email,
       zip: self.zip_code,
       subject_curriculum_role: hubspot_curriculum_interests,
-      jobtitle: self.title,
+      role: self.title,
       country: self.try(:school_district).try(:country).try(:name),
       state: self.try(:school_district).try(:state).try(:name),
       city: self.try(:school_district).try(:city),
