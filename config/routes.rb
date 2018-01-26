@@ -114,6 +114,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     get 'user/info', to: 'user#info'
+    post 'data/sync', to: 'data#sync'
   end
 
   get '/:page_slug/events', to: 'events#page', as: :page_events

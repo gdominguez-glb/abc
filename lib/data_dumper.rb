@@ -1,5 +1,7 @@
 class DataDumper
 
+  ACCESS_TOKEN = 'f4321ec0e619ce04b180124f78be'
+
   MODELS_TO_DUMP = [Page]
 
   class << self

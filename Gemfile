@@ -45,6 +45,7 @@ gem 'sidekiq'
 gem "mediaelement_rails"
 
 gem 'httparty', require: false
+gem 'rest-client', require: false # for file upload
 
 gem 'restforce', '~> 2.3'
 
