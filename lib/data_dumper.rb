@@ -4,11 +4,11 @@ class DataDumper
 
   class << self
 
-    def dump
+    def dump(file_path)
       cmd = nil
       tables = MODELS_TO_DUMP.map {|klass| "-t #{klass.table_name}" }.join(' ')
       with_config do |app, host, db, user, password|
-        cmd = "PGPASSWORD=#{password} pg_dump --host #{host} --username #{user} --verbose --data-only #{tables} #{db} > #{Rails.root}/db/#{app}_data.sql"
+        cmd = "PGPASSWORD=#{password} pg_dump --host #{host} --username #{user} --verbose --data-only #{tables} #{db} > #{file_path}"
       end
       puts cmd
       `#{cmd}`
