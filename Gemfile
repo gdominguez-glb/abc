@@ -33,6 +33,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem "figaro"
 
 gem 'aws-sdk', '< 2.0'
+gem 'aws-sdk-s3'
 
 gem 'active_link_to'
 gem 'kaminari'

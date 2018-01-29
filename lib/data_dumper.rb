@@ -2,11 +2,9 @@ class DataDumper
 
   ACCESS_TOKEN = 'f4321ec0e619ce04b180124f78be'
 
-  # pages, footer, staff, news, data stories, faqs, in the news, data stories
-
   MODELS_TO_DUMP = [Page, FooterLink, FooterTitle, Staff, InTheNew]
 
-  # TODO: copy s3 files from prod to staging
+  S3_FILES = [ [Staff, :picture] ]
 
   class << self
 
@@ -36,7 +34,21 @@ class DataDumper
         cmd = "PGPASSWORD=#{password} psql --username #{user} --host #{host} --dbname=#{db}  < #{dump_file_path}"
       end
       `#{cmd}`
+
+      copy_s3_files
+
       puts "Done."
+    end
+
+    def copy_s3_files
+      puts "Start to copy s3 files from production to staging."
+      S3_FILES.each do |klass, field|
+        klass.each do |record|
+          path = record.send(field).send(:path)
+          copy_s3_file(path)
+        end
+      end
+      puts "Finished copy s3 files."
     end
 
     def with_config
@@ -47,5 +59,22 @@ class DataDumper
             ActiveRecord::Base.connection_config[:password]
     end
 
+    def copy_s3_file(file_path)
+      AWS.config(
+        :access_key_id => ENV['aws_access_key_id'],
+        :secret_access_key => ENV['aws_secret_access_key'],
+        :max_retries => 3
+      )
+
+      bucket_from_info = {:name => 's3.greatminds.org', :endpoint => 's3.amazonaws.com'}
+      bucket_to_info = {:name => 's3-staging.greatminds.org',   :endpoint => 's3.amazonaws.com'}
+
+      s3_interface_from = AWS::S3.new(:s3_endpoint => bucket_from_info[:endpoint])
+      bucket_from       = s3_interface_from.buckets[bucket_from_info[:name]]
+
+      s3_interface_to   = AWS::S3.new(:s3_endpoint => bucket_to_info[:endpoint])
+      bucket_to         = s3_interface_to.buckets[bucket_to_info[:name]]
+      bucket_to.objects[file_path].copy_from(file_path, {:bucket => bucket_from})
+    end
   end
 end
