@@ -2,7 +2,11 @@ class DataDumper
 
   ACCESS_TOKEN = 'f4321ec0e619ce04b180124f78be'
 
-  MODELS_TO_DUMP = [Page]
+  # pages, footer, staff, news, data stories, faqs, in the news, data stories
+
+  MODELS_TO_DUMP = [Page, FooterLink, FooterTitle, Staff, InTheNew]
+
+  # TODO: copy s3 files from prod to staging
 
   class << self
 
