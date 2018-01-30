@@ -1,5 +1,6 @@
 spree_routes_overrides = Proc.new do
   namespace :admin do
+    post "general_settings/sync_staging", to: "general_settings#sync_staging", as: :sync_staging
     resources :download_pages do
       resources :download_products do
         collection do
