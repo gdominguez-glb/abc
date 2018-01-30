@@ -101,6 +101,26 @@
             </div>
           </div>
 
+          <% if Rails.env.production? || Rails.env.development? %>
+            <%#-------------------------------------------------%>
+            <%# Sync marketing data from production to staging  %>
+            <%#-------------------------------------------------%>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h1 class="panel-title">Sync marketing pages to Staging </h1>
+              </div>
+
+              <div class="panel-body">
+                <div class="clear-cache-warning alert alert-warning">
+                  Sync marketing pages to staging will override current marketings pages data in staging
+                </div>
+                <div data-hook="general_settings_clear_cache">
+                  <%= link_to 'Sync Marketing Pages to Staging', spree.admin_sync_staging_path, class: 'btn btn-primary', data: { method: :post, confirm: 'Are you sure to sync marketing pages to staging?' } %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+
         </div>
         <div class="col-md-6">
 

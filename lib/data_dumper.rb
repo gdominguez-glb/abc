@@ -1,3 +1,5 @@
+require 'aws-sdk-s3'
+
 class DataDumper
 
   ACCESS_TOKEN = 'f4321ec0e619ce04b180124f78be'
@@ -42,7 +44,8 @@ class DataDumper
 
     def copy_s3_files
       puts "Start to copy s3 files from production to staging."
-      S3_FILES.each do |klass, field|
+      S3_FILES.each do |klass_field|
+        klass, field = klass_field
         klass.each do |record|
           path = record.send(field).send(:path)
           copy_s3_file(path)
