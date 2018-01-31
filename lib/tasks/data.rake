@@ -108,4 +108,19 @@ namespace :data do
       p.serialize('lead_contacts.xlsx')
     end
   end
+
+  desc "Export salesforce fields"
+  task export_salesforce_fields: :environment do
+    Axlsx::Package.new do |p|
+      p.workbook.add_worksheet(:name => "Salesforce field mapping") do |sheet|
+        [Spree::LicensedProduct, Spree::Order, Spree::LineItem, Spree::User, SchoolDistrict].each do |klass|
+          sheet.add_row [klass.name]
+          sheet.add_row (klass.last || klass.new).attributes_for_salesforce.keys
+          sheet.add_row []
+          sheet.add_row []
+        end
+      end
+      p.serialize('salesforce_fields_mapping.xlsx')
+    end
+  end
 end
