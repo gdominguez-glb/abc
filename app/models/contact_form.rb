@@ -130,7 +130,7 @@ class ContactForm
   end
 
   def lead_pd_request_record_type_id
-    RecordType.find_in_salesforce_by_name_and_object_type('PD Request', 'Lead').try('Id')
+    RecordType.find_in_salesforce_by_name_and_object_type('PD Sales', 'Lead').try('Id')
   end
 
   def pd_lead_queue_id
