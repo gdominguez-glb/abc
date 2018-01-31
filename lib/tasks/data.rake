@@ -93,7 +93,7 @@ namespace :data do
           "Size_of_Training_Groups__c", "Interested_in_hosting_an_open_enrollment__c", "Request_Date__c",
           "RecordTypeId", "OwnerId", "Comments__c", "CreatedAt"]
         Contact.find_each do |contact|
-          if contact.message && !contact.message.keys.include?('Email') # only lead has Email column
+          if contact.message && contact.message.keys.include?('Email') # only lead has Email column
             m = contact.message
             sheet.add_row [
               m['FirstName'], m['LastName'], m['Title'], m['Email'], m['Phone'], (m['Type__c'] || m['School_or_District__c']), (m['Company'] || m['School_District__c']), m['Curriculum__c'],
