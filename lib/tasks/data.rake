@@ -81,4 +81,31 @@ namespace :data do
       admin.save
       admin.generate_spree_api_key!
   end
+
+  desc "Export contacts with sf leads"
+  task export_leads_contact: :environment do
+    Axlsx::Package.new do |p|
+      p.workbook.add_worksheet(:name => "Lead Contacts") do |sheet|
+        sheet.add_row [
+          "FirstName", "LastName", "Role", "Email", "Phone", "School/District", "School District Name", "Curriculum",
+          "Street", "Country", "State", "Title_1", "Returning Customer", "Description", "Lead Source", "PostalCode",
+          "Session_Preference__c", "Desired_Training_City__c", "X1st_Date_Preference__c", "Grade_Training_Request__c",
+          "Size_of_Training_Groups__c", "Interested_in_hosting_an_open_enrollment__c", "Request_Date__c",
+          "RecordTypeId", "OwnerId", "Comments__c", "CreatedAt"]
+        Contact.find_each do |contact|
+          if contact.message && !contact.message.keys.include?('Email') # only lead has Email column
+            m = contact.message
+            sheet.add_row [
+              m['FirstName'], m['LastName'], m['Title'], m['Email'], m['Phone'], (m['Type__c'] || m['School_or_District__c']), (m['Company'] || m['School_District__c']), m['Curriculum__c'],
+              m['Street'], m['Country'], m['State'], m['Title_1__c'], m['Returning_Customer__c'], m['Description'], m['LeadSource'], m['PostalCode'],
+              m['Session_Preference__c'], m['Desired_Training_City__c'], m['X1st_Date_Preference__c'], m['Grade_Training_Request__c'],
+              m['Size_of_Training_Groups__c'], m['Interested_in_hosting_an_open_enrollment__c'], m['Request_Date__c'],
+              m['RecordTypeId'], m['OwnerId'], m['Comments__c'], contact.created_at.strftime('%F %H:%M')
+            ]
+          end
+        end
+      end
+      p.serialize('lead_contacts.xlsx')
+    end
+  end
 end
