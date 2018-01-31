@@ -60,6 +60,7 @@ class ContactForm
       'Title' => self.role,
       'Email' => self.email,
       'Phone' => self.phone,
+      'Company' => self.school_district_name,
       'School_or_District__c' => self.school_district_type,
       'School_District__c' => self.school_district_name,
       'Curriculum__c' => self.curriculum
