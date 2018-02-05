@@ -61,7 +61,7 @@ $(document).ready(function() {
     $(this).parent().siblings('div').children().removeClass('hide');
   });
 
-  $('.facebook__video').click(function(e){
+  $('body').on('click', '.facebook__video', function(e){
     e.preventDefault();
     var video_url = $(this).attr('data-video-url');
     $.get('/facebook_video', { url: video_url });

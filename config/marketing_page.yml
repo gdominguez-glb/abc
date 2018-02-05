@@ -80,7 +80,7 @@ marketing_templates:
   -
     name: 'Testimonials'
     content: !xml |
-      <section class="row row-content-3col <%= background_color %>-bg text-left padding-bottom">
+      <section class="row row-content-3col <%= background_color %>-bg text-left padding-bottom" data-testimonial-section="1">
         <div class="col-sm-4">
           <div class="testimonial">
             <h4><%= testimonial_header_1 %></h4>
@@ -157,7 +157,7 @@ marketing_templates:
       <div class="row clear text-center padding-bottom--m <%= background_color %>-bg">
         <a href='javascript:void(0)' class="testimonial-show-more-link btn btn-primary">Show More</a>
       </div>
-      <section class="row row-content-3col <%= background_color %>-bg text-left testimonial-more-section padding-bottom padding-top--l hide">  
+      <section class="row row-content-3col <%= background_color %>-bg text-left testimonial-more-section padding-bottom padding-top--l hide" data-testimonial-section="2">
         <div class="col-sm-4">
           <div class="testimonial">
             <h4><%= testimonial_header_4 %></h4>
@@ -231,7 +231,7 @@ marketing_templates:
           </div>
         </div>
       </section>
-      <section class="row row-content-3col <%= background_color %>-bg text-left testimonial-more-section padding-top--l hide">
+      <section class="row row-content-3col <%= background_color %>-bg text-left testimonial-more-section padding-top--l hide" data-testimonial-section="3">
         <div class="col-sm-4">
           <div class="testimonial">
             <h4><%= testimonial_header_7 %></h4>
