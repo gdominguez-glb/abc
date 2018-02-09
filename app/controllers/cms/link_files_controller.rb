@@ -12,6 +12,10 @@ class Cms::LinkFilesController < Cms::BaseController
   end
 
   def create
+    if params[:link_file].blank?
+      flash[:error] = "Please upload a file to continue."
+      redirect_to new_cms_link_file_path and return
+    end
     @link_files = build_link_files
     @link_files.each {|lf| lf.save }
 

@@ -3,6 +3,7 @@ class HomeController < ApplicationController
     @page = Rails.cache.fetch(:home_page, expires_in: 2.hours) do
       Page.find_by(slug: '/')
     end
+    rotate_testimonials_index
     set_page_meta_tags(@page)
     respond_to :html
   end
@@ -16,5 +17,14 @@ class HomeController < ApplicationController
     session[:filter_role] = params[:role]
     session[:filter_curriculum] = params[:curriculum]
     render nothing: true
+  end
+
+  def rotate_testimonials_index
+    if cookies[:testimonial_index].blank?
+      cookies[:testimonial_index] = 1
+    else
+      cookies[:testimonial_index] = cookies[:testimonial_index].to_i + 1
+    end
+    cookies[:testimonial_index] = 1 if cookies[:testimonial_index] > 3
   end
 end

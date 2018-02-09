@@ -1,1 +1,17 @@
 <%= @page.body.html_safe %>
+
+<%= content_for :javascripts do %>
+  <script type="text/javascript">
+   $(function(){
+     var htmls = []
+     htmls.push($('[data-testimonial-section=1]').html());
+     htmls.push($('[data-testimonial-section=2]').html());
+     htmls.push($('[data-testimonial-section=3]').html());
+     var testimonial_index = <%= cookies[:testimonial_index] %>;
+     var rotate_arrays = <%= raw [1, 2, 3].rotate((cookies[:testimonial_index].to_i - 1)).to_json %>;
+     for(var i=0; i < rotate_arrays.length; i++) {
+       $('[data-testimonial-section='+(i+1)+']').html(htmls[ rotate_arrays[i] - 1 ]);
+     }
+   });
+  </script>
+<% end %>

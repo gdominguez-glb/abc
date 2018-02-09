@@ -230,6 +230,7 @@ Spree::Order.class_eval do
     create_in_salesforce
     create_licensed_products! if !self.coupon_code_order?
     self.user.update_salesforce if self.user && (self.bill_address || self.ship_address)
+    check_trial_purchase_for_hubspot_event
     log_purchase_activity!
   end
 
@@ -275,6 +276,11 @@ Spree::Order.class_eval do
     self.update!
   end
 
+  def check_trial_purchase_for_hubspot_event
+    if line_items.any?{ |item| item.product.name == "Eureka Digital Suite - 30 Day Trial" }
+      HubspotCustomEventWorker.perform_async(self.user.email) if self.user && self.user.email.present?
+    end
+  end
 end
 
 Spree::Order.state_machine.after_transition to: :complete, do: :finalize_order
