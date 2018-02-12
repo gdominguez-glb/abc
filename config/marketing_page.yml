@@ -83,7 +83,7 @@ marketing_templates:
       <section class="row row-content-3col <%= background_color %>-bg text-left padding-bottom" data-testimonial-section="1">
         <div class="col-sm-4">
           <div class="testimonial">
-            <h4><%= testimonial_header_1 %></h4>
+            <h6><%= testimonial_header_1 %></h6>
             <article class="testimonial__article">
               <p><%= testimonial_text_1 %></p>
               <% if testimonial_video_url_1.present? && testimonial_image_url_1.present? %>
@@ -107,7 +107,7 @@ marketing_templates:
         </div>
         <div class="col-sm-4">
           <div class="testimonial">
-            <h4><%= testimonial_header_2 %></h4>
+            <h6><%= testimonial_header_2 %></h6>
             <article class="testimonial__article">
               <p><%= testimonial_text_2 %></p>
               <% if testimonial_video_url_2.present? && testimonial_image_url_2.present? %>
@@ -131,7 +131,7 @@ marketing_templates:
         </div>
         <div class="col-sm-4">
           <div class="testimonial">
-            <h4><%= testimonial_header_3 %></h4>
+            <h6><%= testimonial_header_3 %></h6>
             <article class="testimonial__article">
               <p><%= testimonial_text_3 %></p>
               <% if testimonial_video_url_3.present? && testimonial_image_url_3.present? %>
@@ -160,7 +160,7 @@ marketing_templates:
       <section class="row row-content-3col <%= background_color %>-bg text-left testimonial-more-section padding-bottom padding-top--l hide" data-testimonial-section="2">
         <div class="col-sm-4">
           <div class="testimonial">
-            <h4><%= testimonial_header_4 %></h4>
+            <h6><%= testimonial_header_4 %></h6>
             <article class="testimonial__article">
               <p><%= testimonial_text_4 %></p>
               <% if testimonial_video_url_4.present? && testimonial_image_url_4.present? %>
@@ -184,7 +184,7 @@ marketing_templates:
         </div>
         <div class="col-sm-4">
           <div class="testimonial">
-            <h4><%= testimonial_header_5 %></h4>
+            <h6><%= testimonial_header_5 %></h6>
             <article class="testimonial__article">
               <p><%= testimonial_text_5 %></p>
               <% if testimonial_video_url_5.present? && testimonial_image_url_5.present? %>
@@ -208,7 +208,7 @@ marketing_templates:
         </div>
         <div class="col-sm-4">
           <div class="testimonial">
-            <h4><%= testimonial_header_6 %></h4>
+            <h6><%= testimonial_header_6 %></h6>
             <article class="testimonial__article">
               <p><%= testimonial_text_6 %></p>
               <% if testimonial_video_url_6.present? && testimonial_image_url_6.present? %>
@@ -234,7 +234,7 @@ marketing_templates:
       <section class="row row-content-3col <%= background_color %>-bg text-left testimonial-more-section padding-top--l hide" data-testimonial-section="3">
         <div class="col-sm-4">
           <div class="testimonial">
-            <h4><%= testimonial_header_7 %></h4>
+            <h6><%= testimonial_header_7 %></h6>
             <article class="testimonial__article">
               <p><%= testimonial_text_7 %></p>
               <% if testimonial_video_url_7.present? && testimonial_image_url_7.present? %>
@@ -258,7 +258,7 @@ marketing_templates:
         </div>
         <div class="col-sm-4">
           <div class="testimonial">
-            <h4><%= testimonial_header_8 %></h4>
+            <h6><%= testimonial_header_8 %></h6>
             <article class="testimonial__article">
               <p><%= testimonial_text_8 %></p>
               <% if testimonial_video_url_8.present? && testimonial_image_url_8.present? %>
@@ -282,7 +282,7 @@ marketing_templates:
         </div>
         <div class="col-sm-4">
           <div class="testimonial">
-            <h4><%= testimonial_header_9 %></h4>
+            <h6><%= testimonial_header_9 %></h6>
             <article class="testimonial__article">
               <p><%= testimonial_text_9 %></p>
               <% if testimonial_video_url_9.present? && testimonial_image_url_9.present? %>
@@ -997,7 +997,7 @@ marketing_templates:
       <section class="row row-content-3col <%= background_color %>-bg text-left">
         <div class="col-sm-4">
           <div class="facebook">
-            <h4><%= facebook_header_1 %></h4>
+            <h6><%= facebook_header_1 %></h6>
             <article class="facebook__article">
               <p><%= facebook_text_1 %></p>
               <% if facebook_video_url_1.present? && facebook_image_url_1.present? %>
@@ -1018,7 +1018,7 @@ marketing_templates:
         </div>
         <div class="col-sm-4">
           <div class="facebook">
-            <h4><%= facebook_header_2 %></h4>
+            <h6><%= facebook_header_2 %></h6>
             <article class="facebook__article">
               <p><%= facebook_text_2 %></p>
               <% if facebook_video_url_2.present? && facebook_image_url_2.present? %>
@@ -1039,7 +1039,7 @@ marketing_templates:
         </div>
         <div class="col-sm-4">
           <div class="facebook">
-            <h4><%= facebook_header_3 %></h4>
+            <h6><%= facebook_header_3 %></h6>
             <article class="facebook__article">
               <p><%= facebook_text_3 %></p>
               <% if facebook_video_url_3.present? && facebook_image_url_3.present? %>
