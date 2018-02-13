@@ -192,7 +192,9 @@ Spree::User.class_eval do
       'Parent',
       'School/District Administration',
       'Curriculum Administration',
-      'Homeschooler'
+      'Curriculum Specialist/Coach',
+      'TOSA',
+      'Homeschooler',
     ].freeze
 
     USER_TITLES.each do |title|
