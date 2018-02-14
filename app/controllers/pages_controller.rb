@@ -7,6 +7,9 @@ class PagesController < ApplicationController
     redirect_to not_found_path and return if @page.nil?
     send(@page.render) and return if @page.render.present?
 
+    if @page.slug == 'math/pd'
+      redirect_to 'http://gm.greatminds.org/math/pd' and return
+    end
     @page_title = @page.title
     @seo_title = @page.seo_data.try(:[], :title)
     @group_page = cache [@page, :group_page], expires_in: 2.hours do
