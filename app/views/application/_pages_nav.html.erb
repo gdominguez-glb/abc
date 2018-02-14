@@ -12,7 +12,13 @@
         <% cache [@group_page, request.path], expires_in: 2.hours do %>
           <%= active_link_to @group_page.title, "/#{@group_page.slug}", active: (request.path == "/#{@group_page.slug}"), wrap_tag: :li if @group_page %>
           <% @sub_nav_items.each do |page| %>
-            <%= active_link_to page.title, "/#{page.slug}", wrap_tag: :li %>
+            <% if page.slug == 'math/pd' %>
+              <li>
+                <%= link_to page.title, 'http://gm.greatminds.org/math/pd' %>
+              </li>
+            <% else %>
+              <%= active_link_to page.title, "/#{page.slug}", wrap_tag: :li %>
+            <% end %>
           <% end %>
           <% if @group_page && @group_page.shop %>
             <li><%= link_to @group_page.shop.title, @group_page.shop.url  %></li>
