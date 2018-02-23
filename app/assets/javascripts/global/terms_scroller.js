@@ -10,7 +10,7 @@ function scrollHandler(checkboxToWatch, agreeRequired) {
     });
   }
 
-  if ( $('.terms_and_conditions_text').get(0).scrollHeight === ($('.terms_and_conditions_text').innerHeight()) ) {
+  if ( isHeightEqual($('.terms_and_conditions_text').get(0).scrollHeight, $('.terms_and_conditions_text').innerHeight()) ) {
     setTimeout(function() {
       scrolledToBottom = true;
       activateContinueButton();
@@ -54,7 +54,7 @@ function scrollHandler(checkboxToWatch, agreeRequired) {
     // fix issues that in some browser the height could be float number which cause equal off
     var isEqual;
 
-    if (Math.abs(heightOne - heightTwo) < 2) {
+    if (Math.abs(heightOne - heightTwo) < 10) {
       isEqual = true;
     } else {
       isEqual = false;
