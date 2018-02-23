@@ -31,7 +31,7 @@ class ContactController < ApplicationController
   def contact_form_params
     params.require(:contact_form).permit(
       :topic, :support_type, :first_name, :last_name, :email, :phone, :role, :postal_code,
-      :school_district_name, :school_district_type, :country, :state, :curriculum,
+      :school_district_name, :school_district_type, :country, :state, :city, :curriculum,
       :grade, :school_district_size, :title_1, :returning_customer, :tax_exempt, :school_street_address,
       :tax_exempt_id, :desired_dates, :desired_training_topic, :desired_training_city,
       :items_purchased, :format, :description, :school_district, :training_groups_size,
