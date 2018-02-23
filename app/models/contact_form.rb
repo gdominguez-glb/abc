@@ -8,7 +8,7 @@ class ContactForm
   ROLES = ["Teacher", "Parent",  "Administrator", "Other"]
 
   attr_accessor :topic, :first_name, :last_name, :email, :phone, :role, :school_district_name, :school_district_type,
-    :country, :state, :curriculum, :grade, :school_district_size, :title_1, :returning_customer, :tax_exempt, :tax_exempt_id, :desired_dates,
+    :country, :state, :city, :curriculum, :grade, :school_district_size, :title_1, :returning_customer, :tax_exempt, :tax_exempt_id, :desired_dates,
     :desired_training_topic, :desired_training_city, :items_purchased, :description, :school_district, :grade_bands, :training_groups_size, :interested_in_hosting_events, :school_street_address,
     :related_grade_module_unit_lession, :referral, :postal_code, :user_id
 
@@ -63,7 +63,8 @@ class ContactForm
       'Company' => self.school_district_name,
       'School_or_District__c' => self.school_district_type,
       'School_District__c' => self.school_district_name,
-      'Curriculum__c' => self.curriculum
+      'Curriculum__c' => self.curriculum,
+      'City' => self.city
     }
     if self.school_street_address.present?
       _attrs.merge!({'Street' => self.school_street_address })
