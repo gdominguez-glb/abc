@@ -277,8 +277,13 @@ Spree::Order.class_eval do
   end
 
   def check_trial_purchase_for_hubspot_event
-    if line_items.any?{ |item| item.product.name == "Eureka Digital Suite - 30 Day Trial" }
-      HubspotCustomEventWorker.perform_async(self.user.email) if self.user && self.user.email.present?
+    if self.user && self.user.email.present?
+      if line_items.any?{ |item| item.product.name == "Eureka Digital Suite - 30 Day Trial" }
+        HubspotCustomEventWorker.perform_async("Eureka Digital Suite - 30 Day Trial Purchase", self.user.email)
+      end
+      if line_items.any?{ |item| item.product.name == "Math Night Resource Pack" }
+        HubspotCustomEventWorker.perform_async("Eureka Math Night Product Check Out", self.user.email)
+      end
     end
   end
 end
