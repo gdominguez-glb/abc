@@ -1,10 +1,11 @@
 class NewslettersController < ApplicationController
   def index
-    @page_title = 'Newsletter'
-    @newsletter = Newsletter.new(role: 'Parent', state: current_spree_user.try(:state_name))
-    if current_spree_user
-      @newsletter.set_attribtues_from_user(current_spree_user)
-    end
+    redirect_to 'http://gm.greatminds.org/great-minds-mailing-preferences' and return
+    # @page_title = 'Newsletter'
+    # @newsletter = Newsletter.new(role: 'Parent', state: current_spree_user.try(:state_name))
+    # if current_spree_user
+    #   @newsletter.set_attribtues_from_user(current_spree_user)
+    # end
   end
 
   def create
