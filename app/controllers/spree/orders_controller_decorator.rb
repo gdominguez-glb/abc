@@ -88,4 +88,26 @@ Spree::OrdersController.class_eval do
   def completed
     @order = current_spree_user.orders.find_by(number: params[:id])
   end
+
+  def free_product
+    if !try_spree_current_user
+      session['spree_user_return_to'] = request.referrer
+      redirect_to spree.login_path and return
+    end
+
+    product = Spree::Product.find(params[:product_id])
+    if !product.free?
+      flash[:error] = 'Only work for free product'
+      redirect_to :back and return
+    end
+
+    if current_spree_user.accessible_products.include?(product)
+      flash[:error] = "Already have #{product.name} in your dashboard."
+      redirect_to :back and return
+    end
+
+    FreeProductOrder.new(try_spree_current_user, product).save
+    redirect_to main_app.account_products_path, notice: "Successfully added #{product.name} to dashboard."
+  end
 end
+

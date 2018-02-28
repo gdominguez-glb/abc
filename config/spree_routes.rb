@@ -121,6 +121,7 @@ spree_routes_overrides = Proc.new do
   post '/products/:id/agree_terms', to: 'products#agree_terms', as: :agree_terms_product
   get '/products/group/:id', to: 'products#group', as: :group_product
   get '/orders/:id/completed', to: 'orders#completed', as: :completed_order
+  post '/orders/free_product', to: 'orders#free_product', as: :free_product_order
 end
 if Rails.env.development?
   Spree::Core::Engine.add_routes(&spree_routes_overrides)
