@@ -9,7 +9,7 @@ class NotificationTrigger < ActiveRecord::Base
   validate :product_should_have_expiration, if: ->(nt) { nt.product_expiration_target? }
 
 
-  has_many :notifications, dependent: :destroy
+  has_many :notifications, dependent: :delete_all
 
   belongs_to :single_user, class_name: 'Spree::User'
   belongs_to :school_district_admin_user, class_name: 'Spree::User'
