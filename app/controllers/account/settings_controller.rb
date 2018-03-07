@@ -58,7 +58,6 @@ class Account::SettingsController < Account::BaseController
       :last_name,
       :email,
       :password,
-      :allow_communication,
       :title,
       :manual_title,
       :school_district_id,

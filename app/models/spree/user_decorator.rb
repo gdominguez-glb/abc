@@ -230,7 +230,8 @@ Spree::User.class_eval do
     TWITTER_LISTS[ interested_curriculums.sort.join('_') ] || TWITTER_LISTS['English_History_Math']
   end
 
-  after_commit :subscribe_list, on: [:create, :update]
+  # move to hubspot
+  # after_commit :subscribe_list, on: [:create, :update]
 
   def subscribe_list
     if self.allow_communication?
