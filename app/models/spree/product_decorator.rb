@@ -277,6 +277,28 @@ Spree::Product.class_eval do
     self.price = 0
     self.master.sku = ''
     self.inkling_code = product.inkling_code.dup if product.inkling_code
+    duplicate_library_leafs(product) if product.library_leafs.exists?
+  end
+
+  def duplicate_library_leafs(product)
+    self.library_leafs = product.library_leafs.map do |library_leaf|
+      library_leaf.dup.tap do |new_leaf|
+        new_leaf.created_at = nil
+        new_leaf.updated_at = nil
+        new_leaf.library_items = library_leaf.library_items.map { |library_item| duplicate_library_item(library_item) }
+      end
+    end
+  end
+
+  def duplicate_library_item(library_item)
+    new_library_item = library_item.dup
+    new_library_item.created_at = nil
+    new_library_item.updated_at = nil
+    new_library_item.assign_attributes(
+      :cover => library_item.cover.clone,
+      :attachment => library_item.attachment.clone
+    )
+    new_library_item
   end
 
   def is_in_store?
