@@ -1,0 +1,5 @@
+$('body').append("<%= escape_javascript(render 'delete_free_product_modal') %>");
+$('#delete-free-product-modal').modal('show');
+$('#delete-free-product-modal').on('hidden.bs.modal', function (e) {
+  $('#delete-free-product-modal').remove();
+});

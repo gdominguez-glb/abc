@@ -32,7 +32,7 @@
       <div class="card-meta"><%= product.curriculum.try(:name) %></div>
       <h4 class="card-title"><%= product.name %></h4>
       <% if product.free? %>
-        <span class="card-delete free-product-delete-btn"><i class="mi md-18">clear</i></span>
+        <span class="card-delete free-product-delete-btn" data-product-id="<%= product.id %>"><i class="mi md-18">clear</i></span>
       <% end %>
     </div>
   <% end %>

@@ -26,6 +26,15 @@ class Account::ProductsController < Account::BaseController
     launch_product(@product)
   end
 
+  def remove_free_product_modal
+    @product = Spree::Product.find(params[:id])
+  end
+
+  def remove_free_product
+    @product = Spree::Product.find(params[:id])
+    Spree::LicensesManager::DeleteFreeProduct.new(current_spree_user, @product).delete!
+  end
+
   private
 
   def filter_by_grade_taxon(products)
