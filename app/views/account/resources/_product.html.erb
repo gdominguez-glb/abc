@@ -9,6 +9,9 @@
       <% cache(@taxon.present? ? [I18n.locale, current_currency, @taxon, product] : [I18n.locale, current_currency, product]) do %>
         <h4 class="card-title"><%= product.name %></h4>
       <% end %>
+      <% if product.free? %>
+        <span class="card-delete free-product-delete-btn" data-product-id="<%= product.id %>"><i class="mi md-18">clear</i></span>
+      <% end %>
     </div>
   <% end %>
 </div>
