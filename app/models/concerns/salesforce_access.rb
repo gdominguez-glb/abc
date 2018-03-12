@@ -163,6 +163,7 @@ module SalesforceAccess
   # Note: This only updates if there is a corresponding cached record from
   # Salesforce
   def update_salesforce(fields = nil, background = true, force = false)
+    return {} if !Spree::Config[:salesforce_enabled]
     return {} if !force && !should_update_salesforce?
     # TODO: Handle both modified case
     sfo = cached_salesforce_object
@@ -219,6 +220,7 @@ module SalesforceAccess
 
   # Schedules the create of a new record in Salesforce into ActiveJob
   def create_in_salesforce(fields = nil, background = true)
+    return {} if !Spree::Config[:salesforce_enabled]
     return {} unless should_create_salesforce?
     # TODO: Handle both modified case
     attributes_to_create = new_attributes_for_salesforce

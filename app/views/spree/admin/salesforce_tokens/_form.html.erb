@@ -2,6 +2,12 @@
   <div class="row">
 
     <div class="col-md-6">
+      <div class="form-group">
+        <%= label_tag :salesforce_enabled do %>
+          <%= preference_field_tag(:salesforce_enabled, Spree::Config[:salesforce_enabled], type: :boolean)%>
+          Salesforce Enabled
+        <% end %>
+      </div>
       <fieldset>
         <legend>App Id/secret</legend>
 

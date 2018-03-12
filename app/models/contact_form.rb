@@ -31,6 +31,8 @@ class ContactForm
     attrs.merge!('Lead_Referral__c' => self.referral)
     if self.topic == 'Sales/Purchasing'
       attrs.merge!(sales_attributes)
+      # Delivery the info via email if salesforce is not enabled
+      LeadContactMailer.notify(sales_attributes).deliver_later if !Spree::Config[:salesforce_enabled]
     elsif self.topic == 'Professional Development'
       attrs.merge!(pd_attributes)
     end
@@ -131,7 +133,11 @@ class ContactForm
   end
 
   def lead_pd_request_record_type_id
-    RecordType.find_in_salesforce_by_name_and_object_type('PD Sales', 'Lead').try('Id')
+    Rails.cache.fetch(:lead_pd_request_record_type_id) do
+      RecordType.find_in_salesforce_by_name_and_object_type('PD Sales', 'Lead').try('Id')
+    end
+  rescue
+    nil
   end
 
   def pd_lead_queue_id
