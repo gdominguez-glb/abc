@@ -2,6 +2,8 @@ namespace :salesforce do
 
   desc 'Synchronize with Salesforce'
   task sync: :environment do
+    return if !Spree::Config[:salesforce_enabled]
+
     classes = { 'Account' => SchoolDistrict,
                 'Contact' => Spree::User,
                 'PricebookEntry' => Spree::Product }
@@ -14,6 +16,8 @@ namespace :salesforce do
 
   desc 'Cleanup salesforce reference not exists in salesforce'
   task cleanup: :environment do
+    return if !Spree::Config[:salesforce_enabled]
+
     sf_client = GmSalesforce::Client.instance.client
 
     cleanup_deleted_accounts(sf_client)

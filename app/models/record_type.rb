@@ -32,7 +32,7 @@ class RecordType < ActiveRecord::Base
   def self.find_in_salesforce_by_name_and_object_type(name, object_type)
     return nil if name.blank? || object_type.blank?
     hash = Rails.cache.fetch(
-      "#{sobject_name}/#{object_type}/#{name}", expires_in: 1.day) do
+      "#{sobject_name}/#{object_type}/#{name}") do
       query_salesforce_by_name_and_object_type(name, object_type)
     end
     hash && Hashie::Mash.new(hash)
