@@ -134,7 +134,11 @@ class ContactForm
   end
 
   def lead_pd_request_record_type_id
-    RecordType.find_in_salesforce_by_name_and_object_type('PD Sales', 'Lead').try('Id')
+    Rails.cache.fetch(:lead_pd_request_record_type_id) do
+      RecordType.find_in_salesforce_by_name_and_object_type('PD Sales', 'Lead').try('Id')
+    end
+  rescue
+    nil
   end
 
   def pd_lead_queue_id
