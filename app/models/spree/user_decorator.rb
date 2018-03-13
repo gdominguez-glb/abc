@@ -284,6 +284,7 @@ Spree::User.class_eval do
       state: self.try(:school_district).try(:state).try(:name),
       city: self.try(:school_district).try(:city),
       company: self.try(:school_district).try(:name),
+      receive_newsletter_and_updates: self.allow_communication?,
       hs_context: {ipAddress: self.remote_ip, hutk: self.hubspot_cookie}.to_json
     })
   end
