@@ -54,6 +54,9 @@ select {
   margin-bottom: $b-space-m * 2;
   text-align: left;
 }
+.form-group-without-label {
+  padding-top: 26px;
+}
 
 // -------------------------------------
 //   Form Controls

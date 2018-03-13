@@ -230,7 +230,8 @@ Spree::User.class_eval do
     TWITTER_LISTS[ interested_curriculums.sort.join('_') ] || TWITTER_LISTS['English_History_Math']
   end
 
-  after_commit :subscribe_list, on: [:create, :update]
+  # move to hubspot
+  # after_commit :subscribe_list, on: [:create, :update]
 
   def subscribe_list
     if self.allow_communication?
@@ -283,6 +284,7 @@ Spree::User.class_eval do
       state: self.try(:school_district).try(:state).try(:name),
       city: self.try(:school_district).try(:city),
       company: self.try(:school_district).try(:name),
+      receive_newsletter_and_updates: self.allow_communication?,
       hs_context: {ipAddress: self.remote_ip, hutk: self.hubspot_cookie}.to_json
     })
   end
