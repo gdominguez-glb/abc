@@ -1,6 +1,6 @@
 class NewslettersController < ApplicationController
   def index
-    newsletter_url = "http://gm.greatminds.org/great-minds-subscription-preferences"
+    newsletter_url = "http://gm.greatminds.org/great-minds-newsletters"
     if current_spree_user
       newsletter_url += "?#{ { email: current_spree_user.email }.to_param }"
     end
