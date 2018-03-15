@@ -49,3 +49,10 @@ end
 every 1.days do
   rbenv_rake "searchkick:reindex:all"
 end
+
+every 1.day, at: '8:00am' do
+  rbenv_rake "contacts:send_sales_contacts"
+end
+every 1.day, at: '2:00pm' do
+  rbenv_rake "contacts:send_sales_contacts"
+end
