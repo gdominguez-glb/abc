@@ -63,4 +63,37 @@ namespace :salesforce do
     end
   end
 
+  desc "Resync school_districts/users/orders/licenses after salesforce back"
+  task resync_salesforce: :environment do
+    if !Spree::Config[:salesforce_enabled]
+      puts "Salesforce is still disabled"
+      return
+    end
+
+    time_point = ENV['start_time'].present? ? Time.parse(ENV['start_time']) : Time.parse('2018-03-18 00:00:00')
+
+    SchoolDistrict.where('created_at > ?', time_point).each do |school_district|
+      if school_district.id_in_salesforce.blank?
+        school_district.create_in_salesforce(nil, false)
+      end
+    end
+
+    Spree::User.where('created_at > ?', time_point).each do |user|
+      if user.id_in_salesforce.blank?
+        user.create_in_salesforce(nil, false)
+      end
+    end
+
+    Spree::Order.where('created_at > ?', time_point).each do |order|
+      if order.completed? && order.id_in_salesforce.blank?
+        order.create_in_salesforce(nil, false)
+      end
+    end
+
+    Spree::LicensedProduct.where('created_at > ?', time_point).each do |licensed_product|
+      if licensed_product.id_in_salesforce.blank?
+        licensed_product.create_in_salesforce(nil, false)
+      end
+    end
+  end
 end
