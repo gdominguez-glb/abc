@@ -8,8 +8,9 @@ class Account::ProductsController < Account::BaseController
   def index
     @nav_name = 'My Resources'
 
-    @my_products = spree_current_user.my_resources.page(1).per(4)
-    @my_products = filter_by_curriculum(@my_products, @curriculum) unless @curriculum.nil?
+    @pinned_products = spree_current_user.pinned_products.map(&:product)
+    @my_products     = spree_current_user.my_resources.page(1).per(4)
+    @my_products     = filter_by_curriculum(@my_products, @curriculum) unless @curriculum.nil?
 
     load_recommendations
     load_notifications
@@ -33,6 +34,16 @@ class Account::ProductsController < Account::BaseController
   def remove_free_product
     @product = Spree::Product.find(params[:id])
     Spree::LicensesManager::DeleteFreeProduct.new(current_spree_user, @product).delete!
+  end
+
+  def pin_product
+    product = Spree::Product.find(params[:id])
+    spree_current_user.pin_product(product)
+  end
+
+  def unpin_product
+    product = Spree::Product.find(params[:id])
+    spree_current_user.unpin_product(product)
   end
 
   private
