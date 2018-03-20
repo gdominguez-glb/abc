@@ -36,14 +36,30 @@ class Account::ProductsController < Account::BaseController
     Spree::LicensesManager::DeleteFreeProduct.new(current_spree_user, @product).delete!
   end
 
+  def pin_product_modal
+    @product = Spree::Product.find(params[:id])
+  end
+
   def pin_product
-    product = Spree::Product.find(params[:id])
-    spree_current_user.pin_product(product)
+    if spree_current_user.pinned_products.count < 4
+      product = Spree::Product.find(params[:id])
+      spree_current_user.pin_product(product)
+    else
+      flash[:notice] = "You can only pin no more than 4 products in dashboard."
+    end
+
+    redirect_to account_products_path
+  end
+
+  def unpin_product_modal
+    @product = Spree::Product.find(params[:id])
   end
 
   def unpin_product
     product = Spree::Product.find(params[:id])
     spree_current_user.unpin_product(product)
+
+    redirect_to account_products_path
   end
 
   private
