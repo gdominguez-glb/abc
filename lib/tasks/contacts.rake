@@ -30,4 +30,19 @@ namespace :contacts do
     LeadContactMailer.notify(Rails.root.join(file_name)).deliver_now
   end
 
+  desc "Sync contacts data to salesforce"
+  task sync_to_salesforce: :environment do
+    # 10 am EST on March 18th and turned it on at 515 pm EST on March 21st.
+    Time.zone = 'Eastern Time (US & Canada)'
+    from_time = Time.zone.parse('2018-03-18 10:00:00 am')
+    to_time   = Time.zone.parse('2018-03-21 05:15 pm')
+
+    Contact.where('created_at between ? and ?', from_time, to_time).each do |contact|
+      if ['Sales/Purchasing', 'Professional Development'].include?(contact.topic)
+        ContactWorker.new.perform('Lead', contact.message)
+      elsif ["Existing Order Support", "Curriculum Support", "Technical Support", "Parent Support", "Content Error", "General and Other"].include?(contact.topic)
+        ContactWorker.new.perform('Case', contact.message)
+      end
+    end
+  end
 end
