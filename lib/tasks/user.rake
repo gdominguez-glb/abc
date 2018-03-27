@@ -21,9 +21,9 @@ namespace :user do
     puts "Start to export users to excel: users_data.xlsx"
     Axlsx::Package.new do |p|
       p.workbook.add_worksheet(:name => "Users") do |sheet|
-        sheet.add_row ['Id', 'First Name', 'Last Name', 'Email', 'Type']
-        Spree::User.find_each do |user|
-          sheet.add_row [user.id, user.first_name, user.last_name, user.email, user.title]
+        sheet.add_row ['Id', 'First Name', 'Last Name', 'Email', 'Roles']
+        Spree::User.includes(:spree_roles).find_each do |user|
+          sheet.add_row [user.id, user.first_name, user.last_name, user.email, user.spree_roles.map(&:name).map(&:titleize).join(', ')]
 
           users_count += 1
           if users_count % 100 == 0
