@@ -12,7 +12,7 @@ function shouldShowDistrict(userRole) {
   var visibleFields = {};
   visibleFields.showDistrictDetails = false;
 
-  if (userRole === 'Teacher' || userRole === 'School/District Administration' || userRole === 'Curriculum Administration') {
+  if (userRole === 'Teacher' || userRole === 'School/District Administration' || userRole === 'Curriculum Administration' || userRole === 'TOSA' || userRole === 'Curriculum Specialist/Coach') {
     visibleFields.showDistrictDetails = true;
   }
 
