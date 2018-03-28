@@ -80,6 +80,15 @@
                   <% end %>
                 </div>
               </div>
+            <% elsif @product.free? %>
+              <div class="row">
+                <div class="col-md-5">
+                  <%= form_tag spree.free_product_order_path do %>
+                    <%= hidden_field_tag :product_id, @product.id %>
+                    <%= button_tag 'Add to Dashboard', class: 'btn btn-danger--alt btn--md', type: :submit %>
+                  <% end %>
+                </div>
+              </div>
             <% else %>
               <div id="cart-form" data-hook="cart_form">
                 <%= render :partial => 'spree/products/cart_form' %>
