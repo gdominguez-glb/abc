@@ -8,8 +8,9 @@ class Account::ProductsController < Account::BaseController
   def index
     @nav_name = 'My Resources'
 
-    @my_products = spree_current_user.my_resources.page(1).per(4)
-    @my_products = filter_by_curriculum(@my_products, @curriculum) unless @curriculum.nil?
+    @pinned_products = spree_current_user.pinned_products.map(&:product)
+    @my_products     = spree_current_user.my_resources.page(1).per(4)
+    @my_products     = filter_by_curriculum(@my_products, @curriculum) unless @curriculum.nil?
 
     load_recommendations
     load_notifications
@@ -24,6 +25,41 @@ class Account::ProductsController < Account::BaseController
   def launch
     spree_current_user.update_log_activity_product(@product)
     launch_product(@product)
+  end
+
+  def remove_free_product_modal
+    @product = Spree::Product.find(params[:id])
+  end
+
+  def remove_free_product
+    @product = Spree::Product.find(params[:id])
+    Spree::LicensesManager::DeleteFreeProduct.new(current_spree_user, @product).delete!
+  end
+
+  def pin_product_modal
+    @product = Spree::Product.find(params[:id])
+  end
+
+  def pin_product
+    if spree_current_user.pinned_products.count < 4
+      product = Spree::Product.find(params[:id])
+      spree_current_user.pin_product(product)
+    else
+      flash[:notice] = "You can only pin no more than 4 products in dashboard."
+    end
+
+    redirect_to account_products_path
+  end
+
+  def unpin_product_modal
+    @product = Spree::Product.find(params[:id])
+  end
+
+  def unpin_product
+    product = Spree::Product.find(params[:id])
+    spree_current_user.unpin_product(product)
+
+    redirect_to account_products_path
   end
 
   private

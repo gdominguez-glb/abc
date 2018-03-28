@@ -11,6 +11,7 @@ module UserProductable
     has_many :product_distributions, foreign_key: :from_user_id, class_name: 'Spree::ProductDistribution'
     has_many :product_tracks
     has_many :product_agreements, class_name: 'Spree::ProductAgreement'
+    has_many :pinned_products, class_name: 'Spree::PinnedProduct'
   end
 
   def part_products
@@ -114,5 +115,17 @@ module UserProductable
 
   def has_active_license_on?(product)
     licensed_products.where(product_id: product.id).exists?
+  end
+
+  def pinned_product?(product)
+    pinned_products.map(&:product_id).include?(product.id)
+  end
+
+  def pin_product(product)
+    pinned_products.find_or_create_by(product_id: product.id)
+  end
+
+  def unpin_product(product)
+    pinned_products.where(product_id: product.id).delete_all
   end
 end

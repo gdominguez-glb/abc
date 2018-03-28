@@ -1,0 +1,5 @@
+$('body').append("<%= escape_javascript(render 'unpin_product_modal') %>");
+$('#unpin-product-modal').modal('show');
+$('#unpin-product-modal').on('hidden.bs.modal', function (e) {
+  $('#unpin-product-modal').remove();
+});

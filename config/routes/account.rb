@@ -3,6 +3,16 @@ namespace :account do
 
   get 'products', to: 'products#index'
   get 'products/:id/launch', to: 'products#launch', as: :launch_product
+
+  get 'products/:id/remove_free_product_modal', to: 'products#remove_free_product_modal', as: :remove_free_product_modal
+  post 'products/:id/remove_free_product', to: 'products#remove_free_product', as: :remove_free_product
+
+  post 'products/:id/pin_product_modal', to: 'products#pin_product_modal', as: :pin_product_modal
+  post 'products/:id/pin_product', to: 'products#pin_product', as: :pin_product
+
+  post 'products/:id/unpin_product_modal', to: 'products#unpin_product_modal', as: :unpin_product_modal
+  post 'products/:id/unpin_product', to: 'products#unpin_product', as: :unpin_product
+
   get 'resources', to: 'resources#index'
 
   get 'history', to: 'history#index'
