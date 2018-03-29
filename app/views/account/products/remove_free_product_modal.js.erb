@@ -1,5 +1,13 @@
-$('body').append("<%= escape_javascript(render 'delete_free_product_modal') %>");
-$('#delete-free-product-modal').modal('show');
-$('#delete-free-product-modal').on('hidden.bs.modal', function (e) {
-  $('#delete-free-product-modal').remove();
-});
+<% if current_spree_user.pinned_product?(@product) %>
+  $('body').append("<%= escape_javascript(render 'delete_pinned_product_modal') %>");
+  $('#delete-pinned-product-modal').modal('show');
+  $('#delete-pinned-product-modal').on('hidden.bs.modal', function (e) {
+    $('#delete-pinned-product-modal').remove();
+  });
+<% else %>
+  $('body').append("<%= escape_javascript(render 'delete_free_product_modal') %>");
+  $('#delete-free-product-modal').modal('show');
+  $('#delete-free-product-modal').on('hidden.bs.modal', function (e) {
+    $('#delete-free-product-modal').remove();
+  });
+<% end %>
