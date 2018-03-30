@@ -41,7 +41,7 @@ class Account::ProductsController < Account::BaseController
   end
 
   def pin_product
-    if spree_current_user.pinned_products.count < 4
+    if spree_current_user.pinned_products.count < 3
       product = Spree::Product.find(params[:id])
       spree_current_user.pin_product(product)
     else
