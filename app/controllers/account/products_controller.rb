@@ -45,7 +45,7 @@ class Account::ProductsController < Account::BaseController
       product = Spree::Product.find(params[:id])
       spree_current_user.pin_product(product)
     else
-      flash[:notice] = "You can only pin no more than 4 products in dashboard."
+      flash[:notice] = "You can not pin more than 3 resources to your dashboard."
     end
 
     redirect_to account_products_path
