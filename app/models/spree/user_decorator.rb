@@ -25,6 +25,10 @@ Spree::User.class_eval do
 
   has_many :subscriptions, dependent: :destroy
 
+  def need_to_accept_updated_terms?
+    accepted_terms? && !accepted_terms_2018?
+  end
+
   def subscribe!(blog)
     subscriptions.find_or_create_by(blog_id: blog.id)
   end
