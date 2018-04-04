@@ -16,7 +16,7 @@
             <div class="margin-top--s">
               <%= check_box_tag :accept_terms %> <%= label_tag(:accept_terms, Spree.t('terms_and_conditions.checkbox')) %>
             </div>
-            <%= button_tag (spree_current_user.need_to_accept_updated_terms? ? "I Accept the Terms and Conditions" : Spree.t(:save_and_continue)), :class => 'continue btn btn-success btn-block-xs disabled term-continue-button margin-bottom', :disabled => true %>
+            <%= button_tag (spree_current_user.need_to_accept_updated_terms? ? "Submit" : Spree.t(:save_and_continue)), :class => 'continue btn btn-success btn-block-xs disabled term-continue-button margin-bottom', :disabled => true %>
           <% end %>
         </div>
       <% end %>
