@@ -77,7 +77,9 @@ class BlogController < ApplicationController
   end
 
   def load_curriculum_nav_info
-    @group_page    = Page.show_in_top_navigation.find_by(slug: params[:page_slug])
+    @group_page    = (
+      Page.show_in_top_navigation.find_by(slug: params[:page_slug]) || Page.show_in_top_navigation.find_by(slug: params[:page_slug].downcase)
+    )
     @sub_nav_items = Page.show_in_sub_navigation(@group_page.group_name)
   end
 
