@@ -171,6 +171,10 @@ Spree::Product.class_eval do
     ]
   end
 
+  def can_be_delete_as_free?
+    free? && free_deletable?
+  end
+
   def free?
     price == 0
   end
