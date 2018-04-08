@@ -308,6 +308,16 @@
         <%= f.check_box :is_beta, class: 'form-control' %>
       </div>
     </div>
+
+    <% if @product.free? %>
+      <div>
+        <div class="form-group field">
+          <%= f.label :free_deletable %>
+          <%= f.check_box :free_deletable, class: 'form-control' %>
+        </div>
+      </div>
+    <% end %>
+
   </div>
 
 </div>
