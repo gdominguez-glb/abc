@@ -5,8 +5,9 @@ SitemapGenerator::Sitemap.create(compress: false) do
     curriculum_page.sub_pages.each do |sub_page|
       add "/#{sub_page.slug}"
     end
-    if publication = curriculum_page.medium_publications.sorted.first
-      add curriculum_blog_path(page_slug: curriculum_page.slug, slug: publication.slug)
+
+    if blog = curriculum_page.blogs.sorted.first
+      add curriculum_blog_path(page_slug: curriculum_page.slug, slug: blog.slug)
     end
     if event_page = curriculum_page.available_event_pages.first
       add curriculum_events_path(page_slug: curriculum_page.slug, slug: event_page.slug)
@@ -38,12 +39,16 @@ SitemapGenerator::Sitemap.create(compress: false) do
     end
   end
 
-  MediumPublication.displayable.each do |publication|
-    publication.posts.find_each do |post|
-      if publication.blog_type == 'global'
-        add global_post_path(slug: publication.slug, id: post.slug)
+  Blog.global.each do |blog|
+    add global_blog_path(slug: blog.slug)
+  end
+
+  Blog.displayable.each do |blog|
+    blog.articles.find_each do |article|
+      if blog.global?
+        add global_post_path(slug: blog.slug, id: article.slug)
       else
-        add curriculum_post_path(page_slug: publication.page.slug, slug: publication.slug, id: post.slug)
+        add curriculum_post_path(page_slug: blog.page.slug, slug: blog.slug, id: article.slug)
       end
     end
   end
