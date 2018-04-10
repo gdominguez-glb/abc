@@ -3,9 +3,9 @@ class FreeProductOrder
 
   attr_accessor :order
 
-  def initialize(user, product)
+  def initialize(user, products)
     @user = user
-    @product = product
+    @products = products
   end
 
   def save
@@ -16,8 +16,9 @@ class FreeProductOrder
       fulfillment_at: Time.now,
       school_district: @user.school_district
     )
-    @order.line_items << Spree::LineItem.new(variant: @product.master, quantity: 1)
-
+    @products.each do |product|
+      @order.line_items << Spree::LineItem.new(variant: product.master, quantity: 1)
+    end
     @order.save
 
     process_order(@order)
