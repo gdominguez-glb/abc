@@ -106,7 +106,7 @@ Spree::OrdersController.class_eval do
       redirect_to :back and return
     end
 
-    FreeProductOrder.new(try_spree_current_user, product).save
+    FreeProductOrder.new(try_spree_current_user, [product]).save
     redirect_to main_app.account_products_path, notice: "Successfully added #{product.name} to dashboard."
   end
 end

@@ -13,6 +13,7 @@ Spree::UserRegistrationsController.class_eval do
 
         sign_up(resource_name, resource)
         SignUpNotifier.delay.notify(@user.id)
+        Spree::LicensesManager::AutoAssignFreeProducts.new(@user).assign!
         session[:spree_user_signup] = true
         respond_with resource, location: after_sign_up_path_for(resource)
       else
