@@ -120,7 +120,7 @@
             <%= f.label :products %>
             <div class="">
               <span>Select Products</span>
-              <%= f.collection_select :product_ids, Spree::Product.where(individual_sale: true).all, :id, :name, {}, class: 'form-control', multiple: true %>
+              <%= f.collection_select :product_ids, Spree::Product.where(individual_sale: true).all, :id, :internal_name, {}, class: 'form-control', multiple: true %>
             </div>
           </div>
         </div>
