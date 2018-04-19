@@ -60,7 +60,9 @@
 
       $('.js-get-dashboard-tour').on('click', function(e) {
         e.preventDefault();
-        getDashboardTour();
+        if($('.shepherd-open.shepherd-enabled').length == 0) {
+          getDashboardTour();
+        }
       });
 
       $('#new-coupon-code-btn').removeClass('hide');
