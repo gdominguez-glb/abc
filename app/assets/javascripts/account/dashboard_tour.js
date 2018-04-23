@@ -23,7 +23,7 @@ function startDashboardTour(flipperDashboardRedesign, flipperMyResources) {
     tour = tour.addStep('recent-resources', window.shepherdHelper.stepFactory(
       tour,
       'Delete Free Resources',
-      'Click the X icon to delete free products from your dashboard. Free products can be found in Library if accidentially deleted',
+      'Click the X icon to delete free products from your dashboard. Free products can be found in Library if accidentally deleted',
       '.card-delete bottom')
     );
   }
@@ -45,7 +45,7 @@ function startDashboardTour(flipperDashboardRedesign, flipperMyResources) {
   tour = tour.addStep('settings', window.shepherdHelper.stepFactory(
     tour,
     'Settings',
-    'Click here to update your profile, change your subscription preferences, and change your password.',
+    'Click here to update your profile, and change your subscription preferences or password.'
     '.js-settings-link bottom')
   );
 
