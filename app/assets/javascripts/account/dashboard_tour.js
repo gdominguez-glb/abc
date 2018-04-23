@@ -45,7 +45,7 @@ function startDashboardTour(flipperDashboardRedesign, flipperMyResources) {
   tour = tour.addStep('settings', window.shepherdHelper.stepFactory(
     tour,
     'Settings',
-    'Click here to update your profile, and change your subscription preferences or password.'
+    "Click here to update your profile, and change your subscription preferences or password.",
     '.js-settings-link bottom')
   );
 
