@@ -265,6 +265,13 @@
       - cream
       - orange
       - light-blue
+
+- :name: Loop Background Video
+  :fields:
+  - :name: wistia_video_id
+    :label: Wistia Video Id
+    :input_type: text
+
 - :name: 50/50 Full-Bleed Image Left
   :fields:
   - :name: title
