@@ -247,6 +247,13 @@ section {
   }
 }
 
+.row-video-left .row-img-full-content {
+  @media screen and (min-width: $screen-sm-min) {
+    min-height: auto;
+    padding: 0 0;
+  }
+}
+
 .col-img-full {
   min-height: 400px;
   background-position: 50%;
