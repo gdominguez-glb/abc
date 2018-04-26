@@ -31,3 +31,13 @@
   }
 
 }
+.btn.testimonial-show-more-link, .btn.testimonial-show-less-link {
+    color: $navy;
+    background-color: $cream;
+    border-color: $navy;
+    &:hover {
+        color: $cream;
+        background-color: $navy;
+        border-color: $cream;
+    }
+}
