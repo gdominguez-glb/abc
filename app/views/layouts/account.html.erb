@@ -28,5 +28,6 @@
     <%= render 'footer' %>
     <div class="overlay"></div>
     <%= render 'shared/lower_screen_popup' %>
+    <%= render 'new_feature_video' if !spree_current_user.showed_2018_new_feature_tour? %>
   </body>
 </html>
