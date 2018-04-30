@@ -68,5 +68,6 @@ namespace :account do
 
   get 'tour/dashboard', to: 'tour#dashboard'
   get 'tour/licenses', to: 'tour#licenses'
+  get 'tour/new_2018_feature', to: 'tour#new_2018_feature'
   get 'tour/licenses_users', to: 'tour#licenses_users'
 end
