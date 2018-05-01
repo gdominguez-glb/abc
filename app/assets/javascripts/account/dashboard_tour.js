@@ -72,7 +72,7 @@ function startDashboardTour(flipperDashboardRedesign, flipperMyResources) {
 
   tour = tour.addStep('store', window.shepherdHelper.stepFactory(
     tour,
-    'Shop',
+    'Resources',
     'Looking for more great resources? You can find them here.',
     '.js-store-link bottom',
     false,
