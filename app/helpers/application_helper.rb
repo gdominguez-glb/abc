@@ -1,7 +1,7 @@
 module ApplicationHelper
   def store_active_class
-    return '' if request.fullpath !~ /^\/store/
-    return '' if request.fullpath == '/store/login'
+    return '' if request.fullpath !~ /^\/resources/
+    return '' if request.fullpath == '/resources/login'
     'active'
   end
 

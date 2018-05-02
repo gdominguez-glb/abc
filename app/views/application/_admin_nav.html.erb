@@ -12,9 +12,9 @@
         <%= active_link_to 'My Resources', main_app.account_resources_path, wrap_tag: :li, class: 'my-resource-link js-my-resource-link' %>
         <%= active_link_to "Video Gallery", '/video_gallery', wrap_tag: :li, class: 'video-gallery-link js-video-gallery-link' %>
         <% if spree_current_user.has_admin_role? %>
-          <%= active_link_to "Store Admin", '/store/admin', wrap_tag: :li %>
+          <%= active_link_to "Resources Admin", '/resources/admin', wrap_tag: :li %>
         <% elsif current_spree_user.has_csr_role? || current_spree_user.has_account_sales_role? %>
-          <%= active_link_to "Store Admin", '/store/admin/users', wrap_tag: :li %>
+          <%= active_link_to "Resources Admin", '/resources/admin/users', wrap_tag: :li %>
         <% end %>
         <%= active_link_to "Bookmarks", '/account/bookmarks', wrap_tag: :li, class: 'hide' %>
         <%= active_link_to "History", '/account/history', wrap_tag: :li, class: 'hide' %>
