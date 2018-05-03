@@ -49,7 +49,7 @@ var Gm;
 Gm = {
   fetch_cart: function() {
     $.ajax({
-        url: '/store/cart_link',
+        url: '/resources/cart_link',
         type: 'GET',
         success: function(result) {
           $("#link-to-cart").html(result);

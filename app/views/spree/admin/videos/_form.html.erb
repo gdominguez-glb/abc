@@ -42,7 +42,7 @@
       placeholder: "Select video group name",
       multiple: false,
       initSelection: function (element, callback) {
-        var url = Spree.url('/store/admin/video_groups', {
+        var url = Spree.url('/resources/admin/video_groups', {
           name: element.val(),
           token: Spree.api_key
         });
@@ -51,7 +51,7 @@
         });
       },
       ajax: {
-        url: '/store/admin/video_groups',
+        url: '/resources/admin/video_groups',
         datatype: 'json',
         data: function (term, page) {
           return {

@@ -12,7 +12,7 @@ class CustomIndexPage
       CustomIndexPage.new(title: 'Meet the trustees', description: "Team trustees #{build_team_trustees_content}", feature: 'team', id: 'team_trustees_page', url: '/team/trustees'),
       CustomIndexPage.new(title: 'Join the great minds team', description: "Jobs careers #{build_careers_content}", feature: 'careers', id: 'jobs', url: '/careers'),
       CustomIndexPage.new(title: 'Frequently asked questions', description: "FAQ Click any section to view questions. #{build_faq_content}", feature: 'faq', id: 'faq', url: '/about/faq'),
-      CustomIndexPage.new(title: 'Store', description: "Shop Products", feature: 'store', id: 'store', url: '/store'),
+      CustomIndexPage.new(title: 'Resources', description: "Shop Products", feature: 'resources', id: 'resources', url: '/resources'),
       CustomIndexPage.new(title: 'Contact', description: "Contact", feature: 'contact', id: 'contact', url: '/contact')
     ])
   end

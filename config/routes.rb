@@ -32,7 +32,7 @@ Rails.application.routes.draw do
 
   use_doorkeeper
 
-  mount Spree::Core::Engine, at: '/store'
+  mount Spree::Core::Engine, at: '/resources'
 
   devise_for :spree_user,
              class_name: 'Spree::User',
@@ -47,7 +47,7 @@ Rails.application.routes.draw do
 
   devise_scope :spree_user do
     get 'become/:id', action: 'become', controller: 'spree/user_sessions', as: 'become'
-    get '/store/signup/:title/:interest', action: :new, controller: 'spree/user_registrations', as: :custom
+    get '/resources/signup/:title/:interest', action: :new, controller: 'spree/user_registrations', as: :custom
   end
 
   get 'terms-of-service', to: 'terms_of_service#display', as: :display_terms
@@ -163,5 +163,5 @@ Rails.application.routes.draw do
     get '*slug', to: 'wit_eng#show', as: :wit_eng_link, :constraints => { :slug => /[^\/]+/ }
   end
 
-  get '*slug', to: 'pages#show', as: :page, constraints: lambda { |request| !(request.path =~ /\/(assets|store).*/) }
+  get '*slug', to: 'pages#show', as: :page, constraints: lambda { |request| !(request.path =~ /\/(assets|resources).*/) }
 end

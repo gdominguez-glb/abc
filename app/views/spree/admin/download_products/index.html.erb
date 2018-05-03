@@ -26,7 +26,7 @@
       data[$(element).attr('data-id')] = index;
     });
     $.ajax({
-      url: '/store/admin/download_pages/<%= @download_page.id %>/download_products/update_positions',
+      url: '/resources/admin/download_pages/<%= @download_page.id %>/download_products/update_positions',
       type: 'POST',
       data: { positions: data }
     })

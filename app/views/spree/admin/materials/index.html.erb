@@ -35,7 +35,7 @@
           left_id = $next.attr('data-material-id');
         }
         var currentId = $(el).attr('data-material-id');
-        var url = "/store/admin/products/" + productId + "/materials/" + currentId + "/update_position";
+        var url = "/resources/admin/products/" + productId + "/materials/" + currentId + "/update_position";
         $.ajax({
           url: url,
           type: 'POST',

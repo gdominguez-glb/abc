@@ -19,7 +19,7 @@ class Account::ProductsController < Account::BaseController
 
   def shop_of_interest
     shops = current_spree_user.interested_shops
-    redirect_to(shops.count == 1 ? shops.first.url : '/store')
+    redirect_to(shops.count == 1 ? shops.first.url : '/resources')
   end
 
   def launch

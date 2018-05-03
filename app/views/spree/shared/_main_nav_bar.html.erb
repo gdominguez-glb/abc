@@ -17,14 +17,14 @@
 
   <% if spree_current_user %>
     <li>
-      <%= active_link_to "Logout", '/store/logout' %>
+      <%= active_link_to "Logout", '/resources/logout' %>
     </li>
   <% else %>
     <li>
-      <%= active_link_to "Login", '/store/login' %>
+      <%= active_link_to "Login", '/resources/login' %>
     </li>
     <li>
-      <%= active_link_to "Sign up", '/store/signup' %>
+      <%= active_link_to "Sign up", '/resources/signup' %>
     </li>
   <% end %>
 
