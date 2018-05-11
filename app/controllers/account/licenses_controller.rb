@@ -19,20 +19,12 @@ class Account::LicensesController < Account::BaseController
   end
 
   def users
-    @product_distributions = current_spree_user.product_distributions.where('quantity > 0').select('to_user_id, spree_product_distributions.email').group('to_user_id, spree_product_distributions.email')
-    @product_distributions = @product_distributions
-                                 .joins("left join spree_users on spree_product_distributions.to_user_id = spree_users.id")
-                                 .group('first_name, last_name').order('first_name ASC, last_name ASC')
-    if params[:query].present?
-      @product_distributions = @product_distributions.
-        where("spree_product_distributions.email ilike :query or spree_users.email ilike :query or spree_users.first_name ilike :query or spree_users.last_name ilike :query", query: "%#{params[:query].strip}%")
-    end
-
+    load_product_distributions
     @product_distributions = @product_distributions.page(params[:page])
   end
 
   def export_users
-    @emails = current_spree_user.product_distributions.pluck(:email).uniq
+    load_product_distributions
   end
 
   def user_stats
@@ -93,5 +85,16 @@ class Account::LicensesController < Account::BaseController
 
   def set_emails_to_choose
     @emails = current_spree_user.product_distributions.pluck(:email).uniq
+  end
+
+  def load_product_distributions
+    @product_distributions = current_spree_user.product_distributions.where('quantity > 0').select('to_user_id, spree_product_distributions.email').group('to_user_id, spree_product_distributions.email')
+    @product_distributions = @product_distributions
+                                 .joins("left join spree_users on spree_product_distributions.to_user_id = spree_users.id")
+                                 .group('first_name, last_name').order('first_name ASC, last_name ASC')
+    if params[:query].present?
+      @product_distributions = @product_distributions.
+        where("spree_product_distributions.email ilike :query or spree_users.email ilike :query or spree_users.first_name ilike :query or spree_users.last_name ilike :query", query: "%#{params[:query].strip}%")
+    end
   end
 end
