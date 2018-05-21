@@ -44,6 +44,8 @@ namespace :account do
       post :update_user_licenses
       post :cancel_invitation
       post :revoke_all
+      post :send_invitation
+      post :send_login_reminder
     end
   end
 
