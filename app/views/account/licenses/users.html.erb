@@ -39,6 +39,8 @@
         <td>
           <% if product_distribution.to_user %>
             <a href="<%= user_stats_account_licenses_path(user_id: product_distribution.to_user.id)  %>" class="btn btn-primary btn-sm user-details-btn">Details</a>
+          <% else %>
+            <%= link_to 'Send Invitation', send_invitation_account_licenses_path(email: product_distribution.email), class: 'btn btn-danger btn-sm', data: { method: :post, confirm: 'Are you sure to send invitation to this user again?' }, remote: true  %>
           <% end %>
         </td>
       </tr>

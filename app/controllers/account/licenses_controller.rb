@@ -77,6 +77,15 @@ class Account::LicensesController < Account::BaseController
     Spree::LicensesManager::DistributionRevoker.new(distribution).revoke
   end
 
+  def send_invitation
+    distributions =  Spree::ProductDistribution.where(from_user_id: current_spree_user.id, email: params[:email])
+    ReminderMailer.invitation_remind(current_spree_user, params[:email], distributions.map(&:product).map(&:name)).deliver_later
+  end
+
+  def send_login_reminder
+    ReminderMailer.login_remind(current_spree_user, params[:email]).deliver_later
+  end
+
   private
 
   def assign_licenses_params
