@@ -24,6 +24,10 @@
             <li><%= link_to @group_page.shop.title, @group_page.shop.url  %></li>
           <% end %>
 
+          <% if @group_page && @group_page.slug == "english" %>
+            <li><a href="https://ww.greatminds.org/english/pd">PD</a></li>
+          <% end %>
+
           <% if @group_page && blog = @group_page.blogs.displayable.first %>
             <%= active_link_to 'Blog', curriculum_blog_path(page_slug: @group_page.slug, slug: blog.slug), wrap_tag: :li, active: /#{@group_page.slug}\/blog\/#{blog.slug}/ %>
 
