@@ -46,6 +46,8 @@ namespace :account do
       post :revoke_all
       post :send_invitation
       post :send_login_reminder
+      get :bulk_revoke_modal
+      post :bulk_revoke
     end
   end
 

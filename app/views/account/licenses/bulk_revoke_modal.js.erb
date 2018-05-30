@@ -1,0 +1,5 @@
+$('body').append("<%= escape_javascript(render 'bulk_revoke_modal') %>");
+$('#bulk-revoke-modal').modal('show');
+$('#bulk-revoke-modal').on('hidden.bs.modal', function (e) {
+  $('#bulk-revoke-modal').remove();
+})

@@ -86,6 +86,16 @@ class Account::LicensesController < Account::BaseController
     ReminderMailer.login_remind(current_spree_user, params[:email]).deliver_later
   end
 
+  def bulk_revoke_modal
+    @user = current_spree_user.to_users.find_by(id: params[:user_id])
+  end
+
+  def bulk_revoke
+    flash[:notice] = "Licenses revoked successfully"
+    distributions = current_spree_user.product_distributions.where(to_user_id: params[:user_id])
+    Spree::LicensesManager::BulkDistributionRevoker.new(distributions).revoke
+  end
+
   private
 
   def assign_licenses_params
