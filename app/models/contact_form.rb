@@ -2,7 +2,7 @@ class ContactForm
   include ActiveModel::Model
   include RobotConfirmable
 
-  TOPICS = ["Sales/Purchasing", "Existing Order Support", "Professional Development", "Curriculum Support", "Technical Support", "Parent Support", "Content Error", "General and Other"]
+  TOPICS = ["Sales/Purchasing", "Existing Order Support", "Professional Development", "Curriculum Support", "Technical Support", "Parent Support", "Content Error", "General and Other", "Affirm Digital Assessments"]
   TOPICS_HASH = TOPICS.inject({}) {|result, topic| result[topic] = topic.gsub(' ', '-').underscore.dasherize.gsub('/', '-'); result }
 
   ROLES = ["Teacher", "Parent",  "Administrator", "Other"]
@@ -21,7 +21,7 @@ class ContactForm
   def perform
     if ['Sales/Purchasing', 'Professional Development'].include?(self.topic)
       create_lead_object
-    elsif ["Existing Order Support", "Curriculum Support", "Technical Support", "Parent Support", "Content Error", "General and Other"].include?(self.topic)
+    elsif ["Existing Order Support", "Curriculum Support", "Technical Support", "Parent Support", "Content Error", "General and Other", "Affirm Digital Assessments"].include?(self.topic)
       create_case_object
     end
   end
@@ -40,7 +40,7 @@ class ContactForm
 
   def create_case_object
     attrs = case_common_attributes
-    if self.topic == 'General and Other'
+    if self.topic == 'General and Other' || self.topic == 'Affirm Digital Assessments'
       attrs.merge!(general_attributes)
     elsif ["Existing Order Support", "Curriculum Support", "Technical Support", "Parent Support", "Content Error"].include?(self.topic)
       attrs.merge!(support_attributes)
@@ -94,7 +94,7 @@ class ContactForm
       'Description' => self.description,
       'status' => 'new',
       'Priority' => 'Medium',
-      'Subject' => 'General',
+      'Subject' => self.topic,
       'Origin' => 'web'
     }
   end
@@ -179,6 +179,6 @@ class ContactForm
   private
 
   def require_description?
-    ['General and Other', 'Existing Order Support', 'Parent Support', 'Technical Support'].include?(self.topic)
+    ['General and Other', 'Existing Order Support', 'Parent Support', 'Technical Support', 'Affirm Digital Assessments'].include?(self.topic)
   end
 end
