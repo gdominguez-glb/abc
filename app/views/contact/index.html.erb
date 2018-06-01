@@ -283,7 +283,7 @@
       function requireDescription() {
         var topic = $('input[name="contact_form[topic]"]').val();
 
-        if (topic == 'General' || topic == 'Existing Order Support' || topic == 'Parent Support' || topic == 'Curriculum Support' || topic == 'Content Error' || topic == 'Technical Support' || topic == 'Sales/Purchasing') {
+        if (topic == 'General' || topic == 'Existing Order Support' || topic == 'Parent Support' || topic == 'Curriculum Support' || topic == 'Content Error' || topic == 'Technical Support' || topic == 'Sales/Purchasing' || topic == 'Affirm Digital Assessments' || topic == 'General and Other') {
           return true;
         }
         return false;
@@ -450,6 +450,10 @@
           { name: 'Description' }
         ],
         'General and Other': [
+          { name: 'Description', required: true },
+          { name: 'Country' }
+        ],
+        'Affirm Digital Assessments': [
           { name: 'Description', required: true },
           { name: 'Country' }
         ],
