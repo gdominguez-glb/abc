@@ -107,7 +107,7 @@ class Account::LicensesController < Account::BaseController
   end
 
   def load_product_distributions
-    @product_distributions = current_spree_user.product_distributions.where('quantity > 0').select('to_user_id, spree_product_distributions.email').group('to_user_id, spree_product_distributions.email')
+    @product_distributions = current_spree_user.product_distributions.where('quantity > 0 and (expire_at is null or expire_at > ?)', Time.now).select('to_user_id, spree_product_distributions.email').group('to_user_id, spree_product_distributions.email')
     @product_distributions = @product_distributions
                                  .joins("left join spree_users on spree_product_distributions.to_user_id = spree_users.id")
                                  .group('first_name, last_name').order('first_name ASC, last_name ASC')
