@@ -1,8 +1,13 @@
+require 'process_helper'
+
 namespace :salesforce do
 
   desc 'Synchronize with Salesforce'
   task sync: :environment do
     return if !Spree::Config[:salesforce_enabled]
+    exist_pid = ProcessHelper.read_pid('salesforce.sync')
+    next if exist_pid.present? && ProcessHelper.pid_still_running?(exist_pid)
+    ProcessHelper.write_pid('salesforce.sync', Process.pid)
 
     classes = { 'Account' => SchoolDistrict,
                 'Contact' => Spree::User,
