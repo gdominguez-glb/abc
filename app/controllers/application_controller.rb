@@ -75,7 +75,6 @@ class ApplicationController < ActionController::Base
   end
 
   def accepted_updated_terms
-    return true # Rollback this before new terms is ready
     if spree_current_user && spree_current_user.need_to_accept_updated_terms?
       session['spree_user_return_to'] = request.referrer
       redirect_to main_app.display_terms_url
