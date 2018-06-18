@@ -1,0 +1,5 @@
+$("body").append("<%= escape_javascript(render 'new_2018_feature_modal') %>");
+$("#new-feature-video-modal").modal("show");
+$('#new-feature-video-modal').on('hidden.bs.modal', function (e) {
+  $('#new-feature-video-modal').remove();
+});

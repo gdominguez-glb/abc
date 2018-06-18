@@ -274,6 +274,26 @@
         <% end %>
       </div>
     <% end %>
+    <% if @product.free? %>
+      <div data-hook="admin_product_form_auto_add_on_sign_up">
+        <%= f.field_container :auto_add_on_sign_up do %>
+          <%= f.check_box :auto_add_on_sign_up %>
+          <%= f.label :auto_add_on_sign_up, 'Automatically add product(Free) to users dashboard on sign up' %>
+        <% end %>
+      </div>
+      <div>
+        <%= f.field_container :interested_curriculum do %>
+          <%= f.label "Interested Subjects" %>
+          <%= f.collection_select :interested_curriculum_id, Curriculum.visibles, :id, :name, { include_blank: 'Select interested subjects' }, class: 'form-control select2' %>
+        <% end %>
+      </div>
+      <div>
+        <%= f.field_container :role do %>
+          <%= f.label "Role" %>
+          <%= f.select :title, options_for_select(USER_TITLES, f.object.title), { prompt: 'Please select your role' }, { class: 'form-control', tabindex: 6 } %>
+        <% end %>
+      </div>
+    <% end %>
     <div data-hook='admin_product_form_license_text'>
       <div class='form-group field' id='product_license_text_field'>
         <%= f.label :license_text %>
@@ -300,6 +320,16 @@
         <%= f.check_box :is_beta, class: 'form-control' %>
       </div>
     </div>
+
+    <% if @product.free? %>
+      <div>
+        <div class="form-group field">
+          <%= f.label :free_deletable %>
+          <%= f.check_box :free_deletable, class: 'form-control' %>
+        </div>
+      </div>
+    <% end %>
+
   </div>
 
 </div>

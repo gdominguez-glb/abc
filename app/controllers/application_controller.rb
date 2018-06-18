@@ -74,6 +74,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def accepted_updated_terms
+    if spree_current_user && spree_current_user.need_to_accept_updated_terms?
+      session['spree_user_return_to'] = request.referrer
+      redirect_to main_app.display_terms_url
+    end
+  end
+
   def authenticate_user!
     if spree_current_user.blank?
       redirect_to spree.login_path, notice: "Please log in first."

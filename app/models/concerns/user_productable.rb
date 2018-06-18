@@ -11,6 +11,7 @@ module UserProductable
     has_many :product_distributions, foreign_key: :from_user_id, class_name: 'Spree::ProductDistribution'
     has_many :product_tracks
     has_many :product_agreements, class_name: 'Spree::ProductAgreement'
+    has_many :pinned_products, class_name: 'Spree::PinnedProduct'
   end
 
   def part_products
@@ -94,9 +95,10 @@ module UserProductable
     recent_query = self.activities.where(action: ['buy', 'launch_resource'], item_type: 'Spree::Product').select('max(activities.updated_at) as updated_at, item_id').group('item_id').order('updated_at desc').to_sql
     top_activity_ids = Activity.where(user_id: self.id, item_type: 'Spree::Product').joins("join (#{recent_query}) q on q.item_id = activities.item_id and q.updated_at = activities.updated_at").pluck(:id)
     top_activity_ids_conds = top_activity_ids.count > 0 ? "AND activities.id in (#{top_activity_ids.join(',')})" : ''
-    accessible_products.select('spree_products.*, COALESCE(activities.updated_at, null) AS activities_update_at')
-        .joins("LEFT JOIN activities ON (activities.item_id = spree_products.id AND action in ('buy', 'launch_resource') AND item_type = 'Spree::Product' AND user_id = #{self.id}) #{top_activity_ids_conds}")
-        .where('spree_products.product_type != ?', 'bundle').order('activities_update_at DESC NULLS LAST')
+    accessible_products.select('spree_products.*, COALESCE(activities.updated_at, null) AS activities_update_at, spree_pinned_products.id as pinned_id').
+      joins("LEFT JOIN activities ON (activities.item_id = spree_products.id AND action in ('buy', 'launch_resource') AND item_type = 'Spree::Product' AND user_id = #{self.id}) #{top_activity_ids_conds}").
+      joins("LEFT JOIN spree_pinned_products on spree_pinned_products.product_id = spree_products.id and spree_pinned_products.user_id = #{self.id}").
+      where('spree_products.product_type != ?', 'bundle').order('spree_pinned_products.id desc nulls last, activities_update_at DESC NULLS LAST')
   end
 
   def bought_free_trial_product?(product, exclude_order)
@@ -114,5 +116,17 @@ module UserProductable
 
   def has_active_license_on?(product)
     licensed_products.where(product_id: product.id).exists?
+  end
+
+  def pinned_product?(product)
+    pinned_products.map(&:product_id).include?(product.id)
+  end
+
+  def pin_product(product)
+    pinned_products.find_or_create_by(product_id: product.id)
+  end
+
+  def unpin_product(product)
+    pinned_products.where(product_id: product.id).delete_all
   end
 end

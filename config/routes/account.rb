@@ -3,6 +3,16 @@ namespace :account do
 
   get 'products', to: 'products#index'
   get 'products/:id/launch', to: 'products#launch', as: :launch_product
+
+  get 'products/:id/remove_free_product_modal', to: 'products#remove_free_product_modal', as: :remove_free_product_modal
+  post 'products/:id/remove_free_product', to: 'products#remove_free_product', as: :remove_free_product
+
+  post 'products/:id/pin_product_modal', to: 'products#pin_product_modal', as: :pin_product_modal
+  post 'products/:id/pin_product', to: 'products#pin_product', as: :pin_product
+
+  post 'products/:id/unpin_product_modal', to: 'products#unpin_product_modal', as: :unpin_product_modal
+  post 'products/:id/unpin_product', to: 'products#unpin_product', as: :unpin_product
+
   get 'resources', to: 'resources#index'
 
   get 'history', to: 'history#index'
@@ -34,6 +44,10 @@ namespace :account do
       post :update_user_licenses
       post :cancel_invitation
       post :revoke_all
+      post :send_invitation
+      post :send_login_reminder
+      get :bulk_revoke_modal
+      post :bulk_revoke
     end
   end
 
@@ -58,5 +72,6 @@ namespace :account do
 
   get 'tour/dashboard', to: 'tour#dashboard'
   get 'tour/licenses', to: 'tour#licenses'
+  get 'tour/new_2018_feature', to: 'tour#new_2018_feature'
   get 'tour/licenses_users', to: 'tour#licenses_users'
 end

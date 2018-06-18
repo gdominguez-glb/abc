@@ -1,0 +1,18 @@
+<div class="modal collapse in" tabindex="-1" role="dialog" id="pin-product-modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Pin Product</h4>
+      </div>
+      <%= form_tag account_pin_product_path(id: @product.id), authenticity_token: true do  %>
+        <div class="modal-body">
+          <p>Would you like to pin <%= @product.name %> to your dashboard?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" aria-label="Close">Cancel</button>
+          <%= submit_tag "Yes", class: 'btn btn-primary', data: { disable_with: 'Pinning...' } %>
+        </div>
+      <% end %>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

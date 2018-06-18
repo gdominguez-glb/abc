@@ -13,7 +13,8 @@
       <th>School/District</th>
       <th>Product License(s)</th>
       <th>Last Active</th>
-      <th colspan='2'></th>
+      <th style="width: 240px;"></th>
+      <th style="width: 170px"></th>
     </tr>
   </thead>
   <tbody>
@@ -32,6 +33,7 @@
         <td>
           <% if product_distribution.to_user %>
             <%= link_to 'Edit Licenses', edit_user_licenses_account_licenses_path(user_id: product_distribution.to_user.id), class: 'btn btn-default btn-sm', remote: true %>
+            <%= link_to 'Revoke', bulk_revoke_modal_account_licenses_path(user_id: product_distribution.to_user.id), class: 'btn btn-default btn-sm', remote: true %>
           <% else %>
             <%= link_to 'Cancel Invitation', cancel_invitation_account_licenses_path(email: product_distribution.email), class: 'btn btn-default btn-sm', data: { confirm: 'Are you sure to cancel this license?', method: :post } %>
           <% end %>
@@ -39,6 +41,8 @@
         <td>
           <% if product_distribution.to_user %>
             <a href="<%= user_stats_account_licenses_path(user_id: product_distribution.to_user.id)  %>" class="btn btn-primary btn-sm user-details-btn">Details</a>
+          <% else %>
+            <%= link_to 'Send Invitation', send_invitation_account_licenses_path(email: product_distribution.email), class: 'btn btn-danger btn-sm', data: { method: :post, confirm: 'Are you sure to send invitation to this user again?' }, remote: true  %>
           <% end %>
         </td>
       </tr>

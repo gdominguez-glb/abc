@@ -1,0 +1,10 @@
+$('#delete-free-product-modal').modal('hide');
+$('body').append("<%= escape_javascript(render 'deleted_product_confirm_modal') %>");
+$('#deleted-product-confirm-modal').modal('show');
+$('#deleted-product-confirm-modal').on('hidden.bs.modal', function (e) {
+  $('#delete-free-product-modal').remove();
+});
+$('#deleted-product-confirm-modal .continue-btn').click(function(e){
+  $('#deleted-product-confirm-modal').modal('hide');
+  window.location.reload(true);
+});

@@ -339,6 +339,15 @@ marketing_templates:
       </section>
 
   -
+    name: 'Loop Background Video'
+    content: !xml |
+      <section id="loopVideo<%= position %>" class="row row-loop-background-video">
+        <div class="embed-responsive embed-responsive-16by46">
+          <iframe src="//fast.wistia.net/embed/iframe/<%= wistia_video_id %>" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" id="wistia-iframe" name="wistia_embed" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+        </div>
+      </section>
+
+  -
     name: '50/50 Full-Bleed Image Left'
     content: !xml |
       <section class="row row-tile-new <%= background_color %>-bg">

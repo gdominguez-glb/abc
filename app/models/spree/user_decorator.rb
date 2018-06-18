@@ -25,6 +25,10 @@ Spree::User.class_eval do
 
   has_many :subscriptions, dependent: :destroy
 
+  def need_to_accept_updated_terms?
+    accepted_terms? && !accepted_terms_2018?
+  end
+
   def subscribe!(blog)
     subscriptions.find_or_create_by(blog_id: blog.id)
   end
@@ -230,7 +234,8 @@ Spree::User.class_eval do
     TWITTER_LISTS[ interested_curriculums.sort.join('_') ] || TWITTER_LISTS['English_History_Math']
   end
 
-  after_commit :subscribe_list, on: [:create, :update]
+  # move to hubspot
+  # after_commit :subscribe_list, on: [:create, :update]
 
   def subscribe_list
     if self.allow_communication?

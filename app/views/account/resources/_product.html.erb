@@ -9,6 +9,16 @@
       <% cache(@taxon.present? ? [I18n.locale, current_currency, @taxon, product] : [I18n.locale, current_currency, product]) do %>
         <h4 class="card-title"><%= product.name %></h4>
       <% end %>
+      <div class="card-buttons">
+        <% if spree_current_user.pinned_product?(product) %>
+          <span class="card-pin unpin-product-btn" data-product-id="<%= product.id %>"><%= image_tag('pinned.png', width: '18') %></span>
+        <% else %>
+          <span class="card-pin pin-product-btn" data-product-id="<%= product.id %>"><%= image_tag('pin.png', width: '18') %></span>
+        <% end %>
+        <% if product.can_be_delete_as_free? %>
+          <span class="card-delete free-product-delete-btn" data-product-id="<%= product.id %>"><i class="mi md-18">clear</i></span>
+        <% end %>
+      </div>
     </div>
   <% end %>
 </div>

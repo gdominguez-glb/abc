@@ -3,6 +3,7 @@ Spree::ProductsController.class_eval do
 
   before_action :authenticate_user!, only: [:launch, :terms, :agree_terms, :find_launch_product]
   before_action :find_launch_product, only: [:launch, :terms, :agree_terms]
+  before_action :accepted_updated_terms
 
   def index
     @products = products_list_with_taxons_filter

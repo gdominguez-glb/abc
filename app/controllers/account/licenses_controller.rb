@@ -77,6 +77,25 @@ class Account::LicensesController < Account::BaseController
     Spree::LicensesManager::DistributionRevoker.new(distribution).revoke
   end
 
+  def send_invitation
+    distributions =  Spree::ProductDistribution.where(from_user_id: current_spree_user.id, email: params[:email])
+    ReminderMailer.invitation_remind(current_spree_user, params[:email], distributions.map(&:product).map(&:name)).deliver_later
+  end
+
+  def send_login_reminder
+    ReminderMailer.login_remind(current_spree_user, params[:email]).deliver_later
+  end
+
+  def bulk_revoke_modal
+    @user = current_spree_user.to_users.find_by(id: params[:user_id])
+  end
+
+  def bulk_revoke
+    flash[:notice] = "Licenses revoked successfully"
+    distributions = current_spree_user.product_distributions.where(to_user_id: params[:user_id])
+    Spree::LicensesManager::BulkDistributionRevoker.new(distributions).revoke
+  end
+
   private
 
   def assign_licenses_params
@@ -88,7 +107,7 @@ class Account::LicensesController < Account::BaseController
   end
 
   def load_product_distributions
-    @product_distributions = current_spree_user.product_distributions.where('quantity > 0').select('to_user_id, spree_product_distributions.email').group('to_user_id, spree_product_distributions.email')
+    @product_distributions = current_spree_user.product_distributions.where('quantity > 0 and (expire_at is null or expire_at > ?)', Time.now).select('to_user_id, spree_product_distributions.email').group('to_user_id, spree_product_distributions.email')
     @product_distributions = @product_distributions
                                  .joins("left join spree_users on spree_product_distributions.to_user_id = spree_users.id")
                                  .group('first_name, last_name').order('first_name ASC, last_name ASC')

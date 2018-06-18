@@ -22,3 +22,4 @@
 // App
 //= require_tree ./account
 //= require frontend/user_form
+//= require frontend/products

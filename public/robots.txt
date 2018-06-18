@@ -4,12 +4,12 @@
 # User-agent: *
 # Disallow: /
 User-agent: *
-Disallow: /store/checkout
-Disallow: /store/cart
-Disallow: /store/orders
-Disallow: /store/user
-Disallow: /store/account
-Disallow: /store/api
-Disallow: /store/password
+Disallow: /resources/checkout
+Disallow: /resources/cart
+Disallow: /resources/orders
+Disallow: /resources/user
+Disallow: /resources/account
+Disallow: /resources/api
+Disallow: /resources/password
 
 Sitemap: /sitemap.xml.gz

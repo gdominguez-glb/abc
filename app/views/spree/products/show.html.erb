@@ -1,11 +1,11 @@
 <% @body_id = 'product-details' %>
 
-<% cache [I18n.locale, current_currency, @product] do %>
 
-  <div data-hook="product_show" itemscope itemtype="http://schema.org/Product">
 
-    <div class="row">
+<div data-hook="product_show" itemscope itemtype="http://schema.org/Product">
 
+  <div class="row">
+    <% cache [I18n.locale, current_currency, @product, :image_and_attributes] do %>
       <div class="col-md-5" data-hook="product_left_part">
         <div data-hook="product_left_part_wrap">
           <div id="product-images" class="product-images" data-hook="product_images">
@@ -25,13 +25,17 @@
           </div>
         </div>
       </div>
+    <% end %>
 
-      <div class="col-md-7" data-hook="product_right_part">
-        <div class="card <%= card_type_class(@product) %>" data-hook="product_right_part_wrap">
-          <div class="card-meta">
-            <%= @product.curriculum.try(:name) || 'General' %>
-          </div>
-          <div id="product-description" data-hook="product_description" class="product-description">
+    <div class="col-md-7" data-hook="product_right_part">
+
+      <div class="card <%= card_type_class(@product) %>" data-hook="product_right_part_wrap">
+
+        <div class="card-meta">
+          <%= @product.curriculum.try(:name) || 'General' %>
+        </div>
+        <div id="product-description" data-hook="product_description" class="product-description">
+          <% cache [I18n.locale, current_currency, @product, :meta] do %>
             <h2 class="product-title card-title" itemprop="name"><%= @product.name %></h2>
             <% if @product.price_in(current_currency) and !@product.price.nil? %>
               <%# if display_product_price_tag?(@product) %>
@@ -63,36 +67,48 @@
             <div class="padding-bottom card-text" itemprop="description" data-hook="description">
               <%= product_description(@product) rescue Spree.t(:product_has_no_description) %>
             </div>
+          <% end %>
 
-            <% if @product.get_in_touch_product? %>
-              <div class='row'>
-                <div class="col-md-5">
-                  <%= link_to Spree.t(:get_in_touch), @product.get_in_touch_url, target: '_blank', class: 'btn btn-danger--alt btn--md product-btn-primary' %>
-                </div>
+          <% if @product.get_in_touch_product? %>
+            <div class='row'>
+              <div class="col-md-5">
+                <%= link_to Spree.t(:get_in_touch), @product.get_in_touch_url, target: '_blank', class: 'btn btn-danger--alt btn--md product-btn-primary' %>
               </div>
-            <% elsif @product.partner_product? %>
-              <div class="row">
-                <div class="col-md-5">
-                  <% if @product.leaving_site_warning? %>
-                    <%= link_to Spree.t(:purchase_from_partner), @product.redirect_url, target: '_blank', class: 'btn btn-danger--alt btn--md product-btn-primary', :data => { :toggle => 'modal', :redirect => @product.redirect_url, :target => '.partner-modal' } %>
-                  <% else %>
-                    <%= link_to Spree.t(:purchase_from_partner), @product.redirect_url, target: '_blank', class: 'btn btn-danger--alt btn--md product-btn-primary' %>
+            </div>
+          <% elsif @product.partner_product? %>
+            <div class="row">
+              <div class="col-md-5">
+                <% if @product.leaving_site_warning? %>
+                  <%= link_to Spree.t(:purchase_from_partner), @product.redirect_url, target: '_blank', class: 'btn btn-danger--alt btn--md product-btn-primary', :data => { :toggle => 'modal', :redirect => @product.redirect_url, :target => '.partner-modal' } %>
+                <% else %>
+                  <%= link_to Spree.t(:purchase_from_partner), @product.redirect_url, target: '_blank', class: 'btn btn-danger--alt btn--md product-btn-primary' %>
+                <% end %>
+              </div>
+            </div>
+          <% elsif @product.free? %>
+            <div class="row">
+              <div class="col-md-5">
+                <% if spree_current_user && spree_current_user.has_active_license_on?(@product) %>
+                  <%= link_to 'Show in Dashboard', main_app.account_products_path, class: 'btn btn-danger--alt btn--md' %>
+                <% else %>
+                  <%= form_tag spree.free_product_order_path do %>
+                    <%= hidden_field_tag :product_id, @product.id %>
+                    <%= button_tag 'Add to Dashboard', class: 'btn btn-danger--alt btn--md', type: :submit %>
                   <% end %>
-                </div>
+                <% end %>
               </div>
-            <% else %>
-              <div id="cart-form" data-hook="cart_form">
-                <%= render :partial => 'spree/products/cart_form' %>
-              </div>
-            <% end %>
-          </div>
-
+            </div>
+          <% else %>
+            <div id="cart-form" data-hook="cart_form">
+              <%= render :partial => 'spree/products/cart_form' %>
+            </div>
+          <% end %>
         </div>
+
       </div>
-
     </div>
-  </div>
 
-<% end %>
+  </div>
+</div>
 
 <%= render partial: 'spree/shared/partner_modal' %>
