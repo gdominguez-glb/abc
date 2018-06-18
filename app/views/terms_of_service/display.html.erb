@@ -1,23 +1,30 @@
 <div class="col-sm-10 col-sm-offset-1 margin-top--xxl margin-bottom--xl">
   <div class="row">
     <div class="col-md-12">
-      <%= form_tag accept_terms_path do %>
-        <div class="terms_and_conditions_box">
-          <% if spree_current_user.need_to_accept_updated_terms? %>
-            <h4>Great Minds Terms of Service has changed, please read the new terms below. If you accept the terms click "Accept Terms of Service" below.</h4>
-          <% else %>
-            <h4>Terms of Service for Use of This Website</h4>
-          <% end %>
-          <div class="alert alert-info"><i class="mi">info_outline</i> Scroll through and accept the terms to continue.</div>
-          <div class="terms_and_conditions_text">
-            <%= render 'term_text' %>
-          </div>
-          <% if spree_current_user && (!spree_current_user.accepted_terms? || spree_current_user.need_to_accept_updated_terms?)%>
-            <div class="margin-top--s">
-              <%= check_box_tag :accept_terms %> <%= label_tag(:accept_terms, Spree.t('terms_and_conditions.checkbox')) %>
+      <% if spree_current_user && (!spree_current_user.accepted_terms? || spree_current_user.need_to_accept_updated_terms?) %>
+        <%= form_tag accept_terms_path do %>
+          <div class="terms_and_conditions_box">
+            <% if spree_current_user.need_to_accept_updated_terms? %>
+              <h4>Great Minds Terms of Service has changed, please read the new terms below. If you accept the terms click "Accept Terms of Service" below.</h4>
+            <% else %>
+              <h4>Terms of Service for Use of This Website</h4>
+            <% end %>
+            <div class="alert alert-info"><i class="mi">info_outline</i> Scroll through and accept the terms to continue.</div>
+            <div class="terms_and_conditions_text">
+              <%= render 'term_text' %>
             </div>
-            <%= button_tag (spree_current_user.need_to_accept_updated_terms? ? "Submit" : Spree.t(:save_and_continue)), :class => 'continue btn btn-success btn-block-xs disabled term-continue-button margin-bottom', :disabled => true %>
-          <% end %>
+            <% if spree_current_user && (!spree_current_user.accepted_terms? || spree_current_user.need_to_accept_updated_terms?)%>
+              <div class="margin-top--s">
+                <%= check_box_tag :accept_terms %> <%= label_tag(:accept_terms, Spree.t('terms_and_conditions.checkbox')) %>
+              </div>
+              <%= button_tag (spree_current_user.need_to_accept_updated_terms? ? "Submit" : Spree.t(:save_and_continue)), :class => 'continue btn btn-success btn-block-xs disabled term-continue-button margin-bottom', :disabled => true %>
+            <% end %>
+          </div>
+        <% end %>
+      <% else %>
+        <div class="terms_and_conditions_text" style="height: auto; overflow: auto;">
+          <h4>Terms of Service for Use of This Website</h4>
+          <%= render 'term_text' %>
         </div>
       <% end %>
     </div>
