@@ -1,0 +1,10 @@
+<strong><%= Spree.t(:roles) %></strong>
+<% Spree::Role.roles_options.each do |role| %>
+  <div class="checkbox">
+    <%= label_tag "user_spree_role_#{role.name}" do %>
+      <%= check_box_tag 'user[spree_role_ids][]', role.id, @user.spree_roles.include?(role), :id => "user_spree_role_#{role.name}" %>
+      <%= role.name %> <%= '(Internal)' if role.is_internal? %>
+    <% end %>
+  </div>
+<% end %>
+<%= hidden_field_tag 'user[spree_role_ids][]', '' %>

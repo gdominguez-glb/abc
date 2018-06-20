@@ -30,4 +30,12 @@ Spree::Role.class_eval do
   def self.account_sales
     Spree::Role.find_or_create_by(name: 'account_sales')
   end
+
+  def is_internal?
+    ['vanity admin', 'csr', 'hr', 'pd', 'account_sales', 'admin'].include?(self.name)
+  end
+
+  def self.roles_options
+    [user, school_admin, vanity_admin, csr, hr, pd, account_sales, admin]
+  end
 end
