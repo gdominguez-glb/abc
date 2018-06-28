@@ -2,6 +2,8 @@ class Account::LicensesController < Account::BaseController
   before_action :authenticate_school_admin!
   before_action :set_emails_to_choose, only: [:index, :assign]
 
+  helper_method :user_last_active, :user_5_days_logins, :user_10_days_logins, :user_month_logins
+
   def index
     @assign_licenses_form = AssignLicensesForm.new(total: 0)
   end
@@ -24,7 +26,11 @@ class Account::LicensesController < Account::BaseController
   end
 
   def export_users
-    load_product_distributions
+    distributsions = current_spree_user.product_distributions.includes(:product, to_user: [:school_district])
+    @distributsions_data = distributsions.group_by(&:email)
+    activities_scope = Activity.where(user_id: distributsions.map(&:to_user_id).compact.uniq)
+    @last_activites_data = activities_scope.select('max(created_at) as created_at, user_id').group('user_id')
+    @activities_data = activities_scope.where('created_at > ?', 10.days.ago).select(:created_at, :user_id).order(created_at: :desc)
   end
 
   def user_stats
@@ -108,12 +114,38 @@ class Account::LicensesController < Account::BaseController
 
   def load_product_distributions
     @product_distributions = current_spree_user.product_distributions.where('quantity > 0 and (expire_at is null or expire_at > ?)', Time.now).select('to_user_id, spree_product_distributions.email').group('to_user_id, spree_product_distributions.email')
-    @product_distributions = @product_distributions
-                                 .joins("left join spree_users on spree_product_distributions.to_user_id = spree_users.id")
-                                 .group('first_name, last_name').order('first_name ASC, last_name ASC')
+    @product_distributions = @product_distributions.joins("left join spree_users on spree_product_distributions.to_user_id = spree_users.id").group('first_name, last_name').order('first_name ASC, last_name ASC')
     if params[:query].present?
       @product_distributions = @product_distributions.
         where("spree_product_distributions.email ilike :query or spree_users.email ilike :query or spree_users.first_name ilike :query or spree_users.last_name ilike :query", query: "%#{params[:query].strip}%")
     end
+  end
+
+  def user_last_active(activities_data, user)
+    return nil if user.nil?
+    activities_data.first.created_at.strftime('%b %-d. %Y')
+  rescue
+    nil
+  end
+
+  def user_5_days_logins(activities_data, user)
+    return nil if user.nil?
+    activities_data.select{|d| d.created_at > 5.days.ago && d.action == 'login' }.count
+  rescue
+    nil
+  end
+
+  def user_10_days_logins(activities_data, user)
+    return nil if user.nil?
+    activities_data.select{|d| d.created_at > 10.days.ago && d.action == 'login' }.count
+  rescue
+    nil
+  end
+
+  def user_month_logins(activities_data, user)
+    return nil if user.nil?
+    activities_data.select{|d| d.created_at > 30.days.ago && d.action == 'login' }.count
+  rescue
+    nil
   end
 end

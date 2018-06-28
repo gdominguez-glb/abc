@@ -1,21 +1,21 @@
 wb = xlsx_package.workbook
 wb.add_worksheet(name: "Users") do |sheet|
   sheet.add_row ['User', 'Email', 'School/District', 'Product Licenses', 'Joined date', 'Last Active', '5 - Day Logins', '10 - Day Logins', 'Monthly Logins', 'Signed Up']
-  @product_distributions.each do |product_distribution|
-    licenses = Spree::ProductDistribution.from_user_to_email(current_spree_user, product_distribution.email).map { |_product_distribution|
-      _product_distribution.quantity == 0 ? nil : "#{_product_distribution.product.name}(x#{_product_distribution.quantity})"
-    }.join(',')
+  @distributsions_data.each do |email, pds|
+    to_user = pds.first.to_user
+    last_activities = @last_activites_data.select{|d| d.user_id == to_user.try(:id) }
+    activities = @activities_data.select{|d| d.user_id == to_user.try(:id) }
     sheet.add_row [
-      (product_distribution.to_user.full_name rescue nil),
-      (product_distribution.to_user.try(:email) || product_distribution.email),
-      (product_distribution.to_user.school_district.place_type rescue nil),
-      licenses,
-      (product_distribution.to_user.created_at.strftime("%b %-d, %Y") rescue nil),
-      (product_distribution.to_user.last_active_date.strftime("%b %-d, %Y") rescue nil),
-      (product_distribution.to_user.logins_in_last_days(5) rescue nil),
-      (product_distribution.to_user.logins_in_last_days(10) rescue nil),
-      (product_distribution.to_user.logins_in_last_days(30) rescue nil),
-      (product_distribution.to_user ? 'Yes' : 'No')
+      (to_user.full_name rescue nil),
+      (to_user.try(:email) || email),
+      (to_user.school_district.place_type rescue nil),
+      (pds.map {|pd| "#{pd.product.name}(x#{pd.quantity})"}.join('/')),
+      (to_user.created_at.strftime("%b %-d, %Y") rescue nil),
+      user_last_active(last_activities, to_user),
+      user_5_days_logins(activities, to_user),
+      user_10_days_logins(activities, to_user),
+      user_month_logins(activities, to_user),
+      (to_user ? 'Yes' : 'No')
     ]
   end
 end
