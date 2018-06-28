@@ -26,7 +26,7 @@ class Account::LicensesController < Account::BaseController
   end
 
   def export_users
-    distributsions = current_spree_user.product_distributions.includes(:product, to_user: [:school_district])
+    distributsions = current_spree_user.product_distributions.where('quantity > 0 and (expire_at is null or expire_at > ?)', Time.now).includes(:product, to_user: [:school_district])
     @distributsions_data = distributsions.group_by(&:email)
     activities_scope = Activity.where(user_id: distributsions.map(&:to_user_id).compact.uniq)
     @last_activites_data = activities_scope.select('max(created_at) as created_at, user_id').group('user_id')
