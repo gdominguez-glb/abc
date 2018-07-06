@@ -1,5 +1,5 @@
 class DownloadPage < ActiveRecord::Base
-  validates_presence_of :title, :description
+  validates_presence_of :title
   validates :slug, presence: true, uniqueness: true
 
   has_many :download_products, ->{ order(:position) }
