@@ -43,6 +43,8 @@ Spree::Product.class_eval do
   parts_habtm = select("#{Spree::Product.quoted_table_name}.*")
                   .select("#{Spree::Part.quoted_table_name}.id AS part_id")
 
+  has_many :raw_parts, class_name: 'Spree::Part', foreign_key: :bundle_id
+
   has_and_belongs_to_many :parts, -> { parts_habtm },
                           class_name: 'Spree::Product',
                           join_table: 'spree_parts',
@@ -307,9 +309,7 @@ Spree::Product.class_eval do
   end
 
   def duplicate_parts(product)
-    self.parts = product.parts.map do |part|
-      part.dup
-    end
+    self.raw_parts = product.raw_parts.map { |part| part.dup }
   end
 
   def is_in_store?
