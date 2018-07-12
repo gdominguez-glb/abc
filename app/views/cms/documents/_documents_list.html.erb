@@ -3,6 +3,7 @@
     <thead>
       <tr>
         <th>Name</th>
+        <th></th>
         <th>Category</th>
         <th>Tags</th>
         <th>File</th>
@@ -14,6 +15,9 @@
       <% @documents.each do |document| %>
         <tr>
           <td><%= document.name %></td>
+          <td>
+            <%= image_tag(document.attachment.url, width: '50') if document.image? %>
+          </td>
           <td><%= document.category %></td>
           <td><%= document.tags.map(&:name).join(',') %></td>
           <td>
