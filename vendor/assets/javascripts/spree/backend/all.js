@@ -55,4 +55,21 @@ $(document).ready(function() {
   nav.find('[data-primary-nav-item="'+ currentPage +'"]').addClass('active');
 
   initEditor();
+
+  $("#clear_cache_btn").click(function(){
+    $.ajax({
+      type: 'POST',
+      url: '/resources/admin/general_settings/clear_cache',
+      success: function() {
+        show_flash('success', 'Cache was flushed')
+      },
+      error: function(msg) {
+        if(msg.resonseJSON["error"]) {
+          show_flash('error', msg.responseJSON["error"])
+        } else {
+          show_flash('error', "There was a problem while flushing cache.")
+        }
+      }
+    })
+  });
 });
