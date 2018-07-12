@@ -46,7 +46,7 @@ module UserProductable
       .distributable
       .fulfillmentable
       .includes(:product)
-      .reject { |lp| lp.product.present? && lp.product.archived? }
+      .reject { |lp| (lp.product.nil? || lp.product.archived?) }
       .group_by { |lp| format_name_with_expire_date(lp) }
       .map { |key, licenses| [key, licenses.map(&:id).sort.join(',')] }
   end
