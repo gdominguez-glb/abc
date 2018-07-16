@@ -303,6 +303,15 @@
   background: $c-absolute;
 }
 
+#privacy-policy-text {
+    p.underline {
+        text-decoration: underline;
+    }
+    ul {
+        list-style-type: disc;
+        padding-left: 50px;
+    }
+}
 
 // Store
 body[data-hook="body"] {
