@@ -129,4 +129,8 @@ module UserProductable
   def unpin_product(product)
     pinned_products.where(product_id: product.id).delete_all
   end
+
+  def inkling_connect_licenses
+    @inkling_products ||= Spree::LicensedProduct.where(user_id: self.id).joins(:product).where(spree_products: { product_type: 'inkling_connect' })
+  end
 end

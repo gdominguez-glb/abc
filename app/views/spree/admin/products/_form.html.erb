@@ -321,6 +321,13 @@
       </div>
     </div>
 
+    <div data-hook='admin_product_form_inkling_id'>
+      <div class='form-group field' id='product_inkling_id_field'>
+        <%= f.label :inkling_id, 'Inkling ID' %>
+        <%= f.text_field :inkling_id, class: 'form-control' %>
+      </div>
+    </div>
+
     <% if @product.free? %>
       <div>
         <div class="form-group field">

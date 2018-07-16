@@ -41,3 +41,8 @@ google_recaptcha_secret: "6LepaSAUAAAAAHXFbafpbP77e9-97MewN_zQ9NSK"
 hubspot_api_key:
 hubspot_portal_id:
 hubspot_signup_guid:
+
+INKLING_SFTP_SERVER: ''
+INKLING_SFTP_USERNAME: ''
+INKLING_SFTP_PASSWORD: ''
+INKLING_SFTP_PATH: ''

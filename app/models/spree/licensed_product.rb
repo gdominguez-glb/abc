@@ -8,6 +8,10 @@ class Spree::LicensedProduct < ActiveRecord::Base
 
   include SalesforceAccess
 
+  def expired?
+    self.expire_at && self.expire_at < Time.now
+  end
+
   def self.sobject_name
     'Asset'
   end
@@ -113,6 +117,7 @@ class Spree::LicensedProduct < ActiveRecord::Base
 
   before_create :set_licenses_date_range
   after_create :set_activity
+  after_update :check_inkling_connect
 
   include EmailAssignment
   assign_user_from_email :user, :email
@@ -173,5 +178,11 @@ class Spree::LicensedProduct < ActiveRecord::Base
 
     user.update_log_activity_product(product)
     product.parts.each { |part| user.update_log_activity_product(part) }
+  end
+
+  def check_inkling_connect
+    if self.product.inkling_connect_product? && self.user.present?
+      InklingConnectWorker.perform_async(self.user.id)
+    end
   end
 end

@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-md-12">
+    <h3>In order to access your <%= @product.name %> please read the instructions below. Please read all of the instructions before taking any actions.</h3>
+    <p>If this is your first time signing in to Inkling:</p>
+    <p>Step 1: Once you have read the instructions click "I Understand and am ready to proceed"</p>
+    <p>Step 2: You will be sent to an Inkling sign in page.</p>
+    <p>Step 3: In the username field type in the email that you used to sign up for your GreatMinds.org account with. If you do not remember which email you used to sign up, go to your SETTINGS (link that opens in new tab).</p>
+    <p>Step 4: In the password field, type in greatminds123. After typing this in click submit.</p>
+    <p>Step 5: Once logged in, you will be directed to create your own password. (waiting on Adam response)</p>
+    <p>Step 6: You will be sent to a menu where you can access your <%= @product.name %></p>
+    <p>You will be automatically signed in to Inkling for the next 30 days after completing these steps. After 30 days you will be asked to log in with your email and password again.</p>
+
+    <h3>If you have already created an Inkling account before</h3>
+    <p>Step 1: Once you have read the instructions click "I Understand and am ready to proceed"</p>
+    <p>Step 2: You will be sent to an Inkling sign in page.</p>
+    <p>Step 3: In the username field type in the email that you used to sign up for your GreatMinds.org account with. If you do not remember which email you used to sign up, go to your SETTINGS (link that opens in new tab).</p>
+    <p>Step 4: In the password field, type in greatminds123. After typing this in click submit.</p>
+    <p>Step 5: You will be sent to a menu where you can access your <%= @product.name %></p>
+
+    <a href="<%= ENV['INKLING_CONNECT_HOST'] %>" class="btn btn-primary">I UNDERSTAND AND AM READY TO PROCEED</a>
+  </div>
+</div>

@@ -114,6 +114,10 @@ Spree::Product.class_eval do
     self.product_type == 'library'
   end
 
+  def inkling_connect_product?
+    self.product_type == 'inkling_connect'
+  end
+
   def no_price?
     get_in_touch_product? || group_product? || partner_product?
   end
@@ -130,6 +134,7 @@ Spree::Product.class_eval do
                       message: ' must be the 18-character Salesforce ID' },
             unless: :free?
   validates_presence_of :get_in_touch_url, if: Proc.new{|product| product.product_type == 'get_in_touch' }
+  validates_presence_of :inkling_id, if: Proc.new{|product| product.product_type == 'inkling_connect' }
 
   validates_presence_of :available_on, if: Proc.new{|product| product.for_sale? }
 
@@ -168,6 +173,7 @@ Spree::Product.class_eval do
       'group',
       'partner',
       'inkling',
+      'inkling_connect',
       'get_in_touch',
       'library',
       'other'

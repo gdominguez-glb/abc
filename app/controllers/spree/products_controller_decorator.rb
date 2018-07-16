@@ -2,7 +2,7 @@ Spree::ProductsController.class_eval do
   include ProductTaxonsFilter, ProductRedirectable
 
   before_action :authenticate_user!, only: [:launch, :terms, :agree_terms, :find_launch_product]
-  before_action :find_launch_product, only: [:launch, :terms, :agree_terms]
+  before_action :find_launch_product, only: [:launch, :terms, :agree_terms, :inkling]
   before_action :accepted_updated_terms
 
   def index
@@ -50,5 +50,8 @@ Spree::ProductsController.class_eval do
     @variants = @product.variants_including_master.active(current_currency).includes([:option_values, :images])
     @product_properties = @product.product_properties.includes(:property)
     @taxon = Spree::Taxon.find(params[:taxon_id]) if params[:taxon_id]
+  end
+
+  def inkling
   end
 end

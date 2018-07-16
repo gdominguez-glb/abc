@@ -117,6 +117,7 @@ spree_routes_overrides = Proc.new do
   patch '/simple_cart', :to => 'orders#update_simple_cart', :as => :update_simple_cart
   get '/add_products_to_cart', to: 'orders#add_products_to_cart', as: :add_products_to_cart
   get '/products/:id/launch', to: 'products#launch', as: :launch_product
+  get '/products/:id/inkling', to: 'products#inkling', as: :inkling_product
   get '/products/:id/terms', to: 'products#terms', as: :terms_product
   post '/products/:id/agree_terms', to: 'products#agree_terms', as: :agree_terms_product
   get '/products/group/:id', to: 'products#group', as: :group_product

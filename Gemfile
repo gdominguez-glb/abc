@@ -114,6 +114,7 @@ gem 'paperclip-compression'
 gem 'sitemap_generator', require: false
 
 gem 'dropbox_api', require: false
+gem 'net-sftp', '2.1.3.rc2', require: false
 
 group :development do
   gem 'quiet_assets'
