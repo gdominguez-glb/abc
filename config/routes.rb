@@ -53,6 +53,8 @@ Rails.application.routes.draw do
   get 'terms-of-service', to: 'terms_of_service#display', as: :display_terms
   post 'terms-of-service', to: 'terms_of_service#accept', as: :accept_terms
 
+  get 'privacy-policy', to: 'pages#privacy_policy'
+
   get 'famis/:record_id', to: 'famis#show'
 
   get 'contact', to: 'contact#index'

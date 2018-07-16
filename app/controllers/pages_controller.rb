@@ -42,6 +42,9 @@ class PagesController < ApplicationController
     render :data_stories
   end
 
+  def privacy_policy
+  end
+
   def not_found
     render status: 404
   end
