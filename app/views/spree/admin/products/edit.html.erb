@@ -4,6 +4,7 @@
       <div class="col-md-6 col-md-offset-6">
         <%= button_link_to Spree.t(:new_product), new_object_url, { :class => "btn-success btn-block", :icon => 'add', :id => 'admin_new_product' } %>
         <%= button_link_to "Preview", preview_admin_product_url(@product), { :class => "btn-success btn-block", :icon => 'add', :id => 'admin_preview_product' } %>
+        <%= button_link_to "Clone", clone_object_url(@product), class: 'btn btn-success btn-block', icon: 'clone' if can?(:clone, @product) %>
       </div>
     </div>
   <% end %>

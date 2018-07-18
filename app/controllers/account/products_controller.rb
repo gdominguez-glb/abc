@@ -8,7 +8,7 @@ class Account::ProductsController < Account::BaseController
   def index
     @nav_name = 'My Resources'
 
-    @pinned_products = spree_current_user.pinned_products.map(&:product)
+    @pinned_products = spree_current_user.pinned_products.map(&:product).select{|product| spree_current_user.accessible_products.include?(product) }
     @my_products     = spree_current_user.my_resources.page(1).per(4)
     @my_products     = filter_by_curriculum(@my_products, @curriculum) unless @curriculum.nil?
 

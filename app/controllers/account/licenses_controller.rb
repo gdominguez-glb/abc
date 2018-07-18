@@ -26,7 +26,10 @@ class Account::LicensesController < Account::BaseController
   end
 
   def export_users
-    distributsions = current_spree_user.product_distributions.where('quantity > 0 and (expire_at is null or expire_at > ?)', Time.now).includes(:product, to_user: [:school_district])
+    distributsions = current_spree_user.product_distributions.
+                       joins(:product).
+                       where("spree_products.expiration_date > ? or spree_products.expiration_date is null", Time.now).
+                       where('spree_product_distributions.quantity > 0 and (spree_product_distributions.expire_at is null or spree_product_distributions.expire_at > ?)', Time.now).includes(:product, to_user: [:school_district])
     @distributsions_data = distributsions.group_by(&:email)
     activities_scope = Activity.where(user_id: distributsions.map(&:to_user_id).compact.uniq)
     @last_activites_data = activities_scope.select('max(created_at) as created_at, user_id').group('user_id')
@@ -113,8 +116,16 @@ class Account::LicensesController < Account::BaseController
   end
 
   def load_product_distributions
-    @product_distributions = current_spree_user.product_distributions.where('quantity > 0 and (expire_at is null or expire_at > ?)', Time.now).select('to_user_id, spree_product_distributions.email').group('to_user_id, spree_product_distributions.email')
-    @product_distributions = @product_distributions.joins("left join spree_users on spree_product_distributions.to_user_id = spree_users.id").group('first_name, last_name').order('first_name ASC, last_name ASC')
+    @product_distributions = current_spree_user.product_distributions.
+                               joins(:product).
+                               where("spree_products.expiration_date > ? or spree_products.expiration_date is null", Time.now).
+                               where('spree_product_distributions.quantity > 0 and (spree_product_distributions.expire_at is null or spree_product_distributions.expire_at > ?)', Time.now).
+                               select('spree_product_distributions.to_user_id, spree_product_distributions.email').
+                               group('spree_product_distributions.to_user_id, spree_product_distributions.email')
+    @product_distributions = @product_distributions.
+                               joins("left join spree_users on spree_product_distributions.to_user_id = spree_users.id").
+                               group('spree_users.first_name, spree_users.last_name').
+                               order('spree_users.first_name ASC, spree_users.last_name ASC')
     if params[:query].present?
       @product_distributions = @product_distributions.
         where("spree_product_distributions.email ilike :query or spree_users.email ilike :query or spree_users.first_name ilike :query or spree_users.last_name ilike :query", query: "%#{params[:query].strip}%")

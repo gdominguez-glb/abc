@@ -89,7 +89,7 @@
             <div class="row">
               <div class="col-md-5">
                 <% if spree_current_user && spree_current_user.has_active_license_on?(@product) %>
-                  <%= link_to 'Show in Dashboard', main_app.account_products_path, class: 'btn btn-danger--alt btn--md' %>
+                  <%= link_to 'Open Resource', main_app.account_launch_product_url(@product.id), class: 'btn btn-danger--alt btn--md' %>
                 <% else %>
                   <%= form_tag spree.free_product_order_path do %>
                     <%= hidden_field_tag :product_id, @product.id %>

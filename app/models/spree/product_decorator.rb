@@ -43,6 +43,8 @@ Spree::Product.class_eval do
   parts_habtm = select("#{Spree::Product.quoted_table_name}.*")
                   .select("#{Spree::Part.quoted_table_name}.id AS part_id")
 
+  has_many :raw_parts, class_name: 'Spree::Part', foreign_key: :bundle_id
+
   has_and_belongs_to_many :parts, -> { parts_habtm },
                           class_name: 'Spree::Product',
                           join_table: 'spree_parts',
@@ -282,6 +284,7 @@ Spree::Product.class_eval do
     self.master.sku = ''
     self.inkling_code = product.inkling_code.dup if product.inkling_code
     duplicate_library_leafs(product) if product.library_leafs.exists?
+    duplicate_parts(product) if product.product_type == 'bundle'
   end
 
   def duplicate_library_leafs(product)
@@ -303,6 +306,10 @@ Spree::Product.class_eval do
       :attachment => library_item.attachment.clone
     )
     new_library_item
+  end
+
+  def duplicate_parts(product)
+    self.raw_parts = product.raw_parts.map { |part| part.dup }
   end
 
   def is_in_store?
