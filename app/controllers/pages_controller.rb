@@ -10,6 +10,9 @@ class PagesController < ApplicationController
     if @page.slug == 'math/pd'
       redirect_to 'http://gm.greatminds.org/math/pd' and return
     end
+    if @page.slug == 'english/pd'
+      redirect_to 'https://ww.greatminds.org/english/pd' and return
+    end
     @page_title = @page.title
     @seo_title = @page.seo_data.try(:[], :title)
     @group_page = cache [@page, :group_page], expires_in: 2.hours do
