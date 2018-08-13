@@ -98,7 +98,7 @@ module UserProductable
     accessible_products.select('spree_products.*, COALESCE(activities.updated_at, null) AS activities_update_at, spree_pinned_products.id as pinned_id').
       joins("LEFT JOIN activities ON (activities.item_id = spree_products.id AND action in ('buy', 'launch_resource') AND item_type = 'Spree::Product' AND user_id = #{self.id}) #{top_activity_ids_conds}").
       joins("LEFT JOIN spree_pinned_products on spree_pinned_products.product_id = spree_products.id and spree_pinned_products.user_id = #{self.id}").
-      where('spree_products.product_type != ?', 'bundle').order('spree_pinned_products.id desc nulls last, activities_update_at DESC NULLS LAST')
+      where('spree_products.product_type not in (?)', ['bundle', 'group']).order('spree_pinned_products.id desc nulls last, activities_update_at DESC NULLS LAST')
   end
 
   def bought_free_trial_product?(product, exclude_order)
