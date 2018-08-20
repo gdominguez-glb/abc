@@ -32,6 +32,11 @@ Rails.application.routes.draw do
 
   use_doorkeeper
 
+  get '/saml/auth' => 'saml_idp#new'
+  get '/saml/metadata' => 'saml_idp#show'
+  post '/saml/auth' => 'saml_idp#create'
+  match '/saml/logout' => 'saml_idp#logout', via: [:get, :post, :delete]
+
   mount Spree::Core::Engine, at: '/resources'
 
   devise_for :spree_user,

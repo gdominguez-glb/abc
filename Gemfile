@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.1.6'
+ruby '2.2.0'
 
 gem 'rails', '4.2.0'
 # Use postgresql as the database for Active Record
@@ -60,6 +60,8 @@ gem 'searchkick'
 gem 'select2-rails'
 
 gem 'doorkeeper'
+
+gem 'saml_idp', '~> 0.7.2'
 
 gem 'roo', '1.13.2'
 

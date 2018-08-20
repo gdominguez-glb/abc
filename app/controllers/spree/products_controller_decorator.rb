@@ -52,6 +52,24 @@ Spree::ProductsController.class_eval do
     @taxon = Spree::Taxon.find(params[:taxon_id]) if params[:taxon_id]
   end
 
+  helper_method :saml_acs_url
+
+  include SamlIdp::Controller
   def inkling
+    @saml_response = encode_response(spree_current_user, { audience_uri: saml_audience_url, issuer_uri: "#{request.base_url}/saml/auth" })
+    render :template => "saml_idp/idp/saml_post", :layout => false
+    return
+  end
+
+  def saml_acs_url
+    "https://api.inkling.com/saml/v2/acs/e3151cc5af6f491889865b7c408b0525"
+  end
+
+  def saml_audience_url
+    'https://api.inkling.com/saml/v2/metadata/e3151cc5af6f491889865b7c408b0525'
+  end
+
+  def saml_request_id
+    nil
   end
 end

@@ -285,6 +285,55 @@ Spree::User.class_eval do
     model.joins("join products_#{table_name} on products_#{table_name}.#{table_name.singularize}_id = #{table_name}.id").where("products_#{table_name}.product_id in (?)", accessible_products.map(&:id)).pluck(:id).uniq
   end
 
+  def asserted_attributes
+    {
+      'FirstName': { getter: :first_name },
+      'LastName': { getter: :last_name },
+      'username': { getter: :email },
+      'Email': {
+        getter: :email,
+        name_format: Saml::XML::Namespaces::Formats::NameId::EMAIL_ADDRESS,
+        name_id_format: Saml::XML::Namespaces::Formats::NameId::EMAIL_ADDRESS
+      }
+    }.merge(inkling_products_asserted_attributes)
+  end
+
+  def inkling_products_asserted_attributes
+    return all_inkling_products_attributes if self.email.downcase == 'web.admin@greatminds.net'
+    licenses = self.inkling_connect_licenses
+    licenses.inject({}) do |result, license|
+      value = (license.quantity > 0 && !license.expired?) ? '1' : '0'
+      inkling_attribute_name = "inkling_#{license.product.inkling_id.downcase}".to_sym
+
+      # in case there's duplicate licenses records after revoke and distribute multiple times
+      if self.respond_to?(inkling_attribute_name) && self.send(inkling_attribute_name) == '1'
+        value = '1'
+      end
+
+      self.define_singleton_method(inkling_attribute_name) do
+        value
+      end
+      result[license.product.inkling_id] = {
+        getter: inkling_attribute_name
+      }
+      result
+    end
+  end
+
+  def all_inkling_products_attributes
+    inkling_ids = Spree::Product.where(product_type: 'inkling_connect').pluck(:inkling_id).uniq
+    inkling_ids.inject({}) do |result, inkling_id|
+      inkling_attribute_name = "inkling_#{inkling_id.underscore}".to_sym
+      self.define_singleton_method(inkling_attribute_name) do
+        '1'
+      end
+      result[inkling_id] = {
+        getter: inkling_attribute_name
+      }
+      result
+    end
+  end
+
   private
   def is_in_usa?
     self.ip_location == 'US'

@@ -12,7 +12,7 @@ set :deploy_to, '/var/www/greatminds'
 
 
 set :rbenv_type, :user # or :system, depends on your rbenv setup
-set :rbenv_ruby, '2.1.6'
+set :rbenv_ruby, '2.2.0'
 
 # Default value for :scm is :git
 # set :scm, :git
