@@ -160,6 +160,19 @@ Spree::User.class_eval do
     end
   end
 
+  def salesforce_create_with_dup_check(attributes_to_create = {})
+    return self.class.salesforce_api.create(salesforce_sobject_name,
+                                            attributes_to_create), false
+  rescue GmSalesforce::DuplicateRecord => e
+    if e.duplicate_id == '<unknown>'
+      result = self.class.salesforce_api.client.query("Web_Front_End_Email__c = '#{self.email}'")
+      sf_id = result.first.Id rescue nil
+      return sf_id, true
+    else
+      return e.duplicate_id, true
+    end
+  end
+
   def grade_option
     settings[:grade_option]
   end
