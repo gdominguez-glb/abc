@@ -165,7 +165,7 @@ Spree::User.class_eval do
                                             attributes_to_create), false
   rescue GmSalesforce::DuplicateRecord => e
     if e.duplicate_id == '<unknown>'
-      result = self.class.salesforce_api.client.query("Web_Front_End_Email__c = '#{self.email}'")
+      result = self.class.salesforce_api.client.query("select Id from Contact where Web_Front_End_Email__c = '#{self.email}'")
       sf_id = result.first.Id rescue nil
       return sf_id, true
     else
