@@ -112,6 +112,14 @@ module GmSalesforce
     end
   end
 
+  class DuplicatesDetected < ClientError
+    register_exception(self)
+
+    def self.error_code
+      'DUPLICATES_DETECTED'
+    end
+  end
+
   # DuplicateRecord
   class DuplicateRecord < ClientError
     register_exception(self)
