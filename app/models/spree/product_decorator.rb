@@ -81,6 +81,7 @@ Spree::Product.class_eval do
   scope :unarchive, -> { where(archived: false) }
   scope :sort_group_first, -> { order("case product_type when 'group' then 1 else 2 end").order('position asc') }
   scope :search_by_text, ->(q) { where("spree_products.name ilike :q or spree_products.short_description ilike :q or spree_products.meta_text ilike :q", q: "%#{q}%") if q.present? }
+  scope :publicable, -> { where("spree_products.can_be_part = ? or spree_products.individual_sale = ? or spree_products.show_in_storefront = ? or spree_products.auto_add_on_sign_up = ?", true, true, true, true) }
 
   after_save :update_meta_text
   after_save :add_video_group_taxon

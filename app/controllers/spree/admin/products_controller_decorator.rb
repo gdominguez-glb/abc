@@ -9,7 +9,17 @@ Spree::Admin::ProductsController.class_eval do
 
   def archive
     @product = Spree::Product.find_by(slug: params[:id])
-    @product.update_columns(archived: true, archived_at: Time.now)
+    @product.update_columns(
+      archived: true,
+      archived_at: Time.now,
+      for_sale: false,
+      show_in_storefront: false,
+      for_search: false,
+      individual_sale: false,
+      can_be_part: false,
+      auto_add_on_sign_up: false
+    )
+    @product.reindex
 
     redirect_to admin_product_path(@product), notice: 'Successfully archive product'
   end
