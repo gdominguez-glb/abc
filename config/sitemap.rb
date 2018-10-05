@@ -22,7 +22,7 @@ SitemapGenerator::Sitemap.create(compress: false) do
 
   add '/store'
   spree_routes = Spree::Core::Engine.routes.url_helpers
-  Spree::Product.where(individual_sale: true).show_in_storefront.saleable.unexpire.unarchive.each do |product|
+  Spree::Product.where(individual_sale: true).saleable.unexpire.unarchive.each do |product|
     if product.group_product?
       add spree_routes.group_product_path(product)
     else

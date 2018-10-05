@@ -31,7 +31,7 @@ Spree::ProductsController.class_eval do
   end
 
   def group
-    @product_group = Spree::Product.show_in_storefront.saleable.find_by(slug: params[:id])
+    @product_group = Spree::Product.find_by(slug: params[:id])
     if @product_group.blank?
       redirect_to not_found_path and return
     end
@@ -39,15 +39,7 @@ Spree::ProductsController.class_eval do
   end
 
   def show
-    @product = @products.show_in_storefront.saleable.friendly.find(params[:id])
-
-    if @product.archived?
-      redirect_to main_app.not_found_path and return
-    end
-    if @product.group_product?
-      redirect_to spree.group_product_path(@product) and return
-    end
-
+    redirect_to spree.group_product_path(@product) if @product.group_product?
     @variants = @product.variants_including_master.active(current_currency).includes([:option_values, :images])
     @product_properties = @product.product_properties.includes(:property)
     @taxon = Spree::Taxon.find(params[:taxon_id]) if params[:taxon_id]
