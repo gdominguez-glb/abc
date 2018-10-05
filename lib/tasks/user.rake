@@ -70,4 +70,45 @@ namespace :user do
       puts "Done."
     end
   end
+
+  require 'roo'
+  desc "Import detroit users"
+  task import_detroit_users: :environment do
+    file = ENV['file']
+    raise "Missing file" if file.blank?
+
+    count = 0
+    default_password = 'gmdetroit123'
+    title = 'Teacher'
+    role = Spree::Role.user
+    state_name = 'Michigan'
+    city = 'Detroit'
+    subjects = Curriculum.visibles.pluck(:id)
+
+    xlsx = Roo::Spreadsheet.open(file)
+    xlsx.sheet(0).each(email: 'Email', first_name: 'First Name', last_name: 'Last Name', school: 'School', zipcode: 'Zipcode', role: 'Role', state: 'State', city: 'City') do |row|
+      next if row[:email] == 'Email'
+
+      school_district = SchoolDistrict.where(name: row[:school]).last
+      raise "Missing school district for: #{row[:school]}"
+
+      user = Spree::User.find_or_initialize_by(email: row[:email])
+      if user.persisted?
+        puts "User: #{user.email} exists. Skip to next"
+        next
+      end
+      user.update!(
+        title: title,
+        spree_roles: [role],
+        state: state_name,
+        city: city,
+        password: default_password,
+        interested_subjects: subjects
+      )
+      if user.persisted?
+        count += 1
+      end
+    end
+    puts "Imported users: #{count}"
+  end
 end
