@@ -330,12 +330,6 @@ Spree::Product.class_eval do
       self.deleted_at.nil?
   end
 
-  def sync_inkling_ids
-    if self.inkling_id_changed?
-      SyncInklingIdsWorker.perform_async
-    end
-  end
-
   def admin_display_name
     self.internal_name.present? ? self.internal_name : self.name
   end
