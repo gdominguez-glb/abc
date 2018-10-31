@@ -13,27 +13,29 @@
           <div class="row">
             <% library_items.each do |library_item| %>
               <div class="col-sm-3">
-                <% if library_item.inkling? %>
+                <div class="thumbnail-library-wrapper">
+                  <% if library_item.inkling? %>
 
-                  <%= link_to launch_item_library_path(@product, item_id: library_item.id), class: 'thumbnail thumbnail-library thumbnail-library-inkling' do %>
-                    <%= image_tag library_item.cover.url %>
-                    <%= material_icon.md_48.launch.css_class('thumbnail-library-icon') %>
+                    <%= link_to launch_item_library_path(@product, item_id: library_item.id), class: 'thumbnail thumbnail-library thumbnail-library-inkling' do %>
+                      <%= image_tag library_item.cover.url %>
+                      <%= material_icon.md_48.launch.css_class('thumbnail-library-icon') %>
+                    <% end %>
+
+
+                    <h3 class="thumbnail-library-item-title"><%= library_item.name %></h3>
+
+                  <% elsif library_item.pdf? %>
+
+                    <%= link_to download_item_library_path(@product, item_id: library_item.id), target: '_blank', class: 'thumbnail thumbnail-library thumbnail-library-pdf' do %>
+                      <%= image_tag library_item.cover.url %>
+                      <%= material_icon.md_48.cloud_download.css_class('thumbnail-library-icon') %>
+
+                    <% end %>
+
+                    <h3 class="thumbnail-library-item-title"><%= library_item.name %></h3>
+
                   <% end %>
-
-
-                  <h3 class="thumbnail-library-item-title"><%= library_item.name %></h3>
-
-                <% elsif library_item.pdf? %>
-
-                  <%= link_to download_item_library_path(@product, item_id: library_item.id), target: '_blank', class: 'thumbnail thumbnail-library thumbnail-library-pdf' do %>
-                    <%= image_tag library_item.cover.url %>
-                    <%= material_icon.md_48.cloud_download.css_class('thumbnail-library-icon') %>
-
-                  <% end %>
-
-                  <h3 class="thumbnail-library-item-title"><%= library_item.name %></h3>
-
-                <% end %>
+                </div>
               </div>
             <% end %>
           </div>

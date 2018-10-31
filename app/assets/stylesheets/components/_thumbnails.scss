@@ -67,10 +67,15 @@
 // -------------------------------------
 //   Library Thumbnails
 // -------------------------------------
+.thumbnail-library-wrapper {
+  padding:  2px;
+  border: 1px solid $ash;
+}
 
 .thumbnail-library {
   position: relative;
   padding: 0;
+  margin-bottom: 5px;
   border-color: transparent;
   background-color: initial;
   border-radius: 0;
