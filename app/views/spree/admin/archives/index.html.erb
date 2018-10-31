@@ -23,7 +23,7 @@
         <tbody>
           <% @archived_products.each do |archived_product| %>
             <tr>
-              <td><%= archived_product.name %></td>
+              <td><%= archived_product.admin_display_name %></td>
               <td class="actions actions-2 text-right">
                 <%= link_to 'Edit', edit_admin_product_path(archived_product), no_text: true %>
               </td>

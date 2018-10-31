@@ -2,7 +2,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Add Materials for <%= @product.name %></h4>
+        <h4 class="modal-title">Add Materials for <%= @product.admin_display_name %></h4>
       </div>
       <%= form_tag(bulk_create_admin_product_materials_path(@product, parent_id: params[:parent_id]), remote: true) do %>
         <div class="modal-body">

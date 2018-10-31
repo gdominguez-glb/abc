@@ -2,7 +2,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Add Library Leaf for <%= @product.name %></h4>
+        <h4 class="modal-title">Add Library Leaf for <%= @product.admin_display_name %></h4>
       </div>
       <%= form_for([:admin, @library_leaf.product, @library_leaf], remote: true) do |f| %>
         <div class="modal-body">

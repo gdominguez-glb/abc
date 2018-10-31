@@ -1,6 +1,6 @@
 <% content_for :page_title do %>
   <%= link_to Spree.t(:products), admin_products_path %> /
-  <%= @product.name %>
+  <%= @product.admin_display_name %>
 <% end %>
 
 <% content_for :sidebar do %>
