@@ -69,7 +69,9 @@
 // -------------------------------------
 .thumbnail-library-wrapper {
   padding:  2px;
-  border: 1px solid $ash;
+  &:hover {
+    border: 1px solid $ash;
+  }
 }
 
 .thumbnail-library {
