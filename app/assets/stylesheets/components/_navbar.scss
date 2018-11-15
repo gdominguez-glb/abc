@@ -33,6 +33,12 @@
     @media screen and (min-width: $screen-sm-min) {
       border-bottom: 3px solid $c-energized-secondary;
     }
+
+    [data-page='science'] & {
+        @media screen and (min-width: $screen-sm-min) {
+            border-bottom: 3px solid $c-science-primary;
+        }
+    }
   }
 
   // ----- Brand ----- //
