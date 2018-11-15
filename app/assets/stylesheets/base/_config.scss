@@ -82,6 +82,10 @@ $c-stable-primary:                $steel;
 $c-stable-secondary:              $smoke;
 $c-stable-subdue:                 $iron;
 
+$c-science-primary:                #835aa2;
+$c-science-secondary:             darken($c-science-primary, 25%);
+$c-science-highlight:             lighten($c-science-primary, 15%);
+
 // ----- Transparent ----- //
 
 $c-transparent-subdue-1:          rgba(0, 0, 0, .1);

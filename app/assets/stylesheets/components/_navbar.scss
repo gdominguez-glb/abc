@@ -94,6 +94,14 @@
       }
     }
 
+    [data-page='science'] & {
+      background-color: $c-science-primary;
+
+      @media screen and (min-width: $screen-sm-min) {
+        background-color: transparent;
+      }
+    }
+
     .dropdown-toggle {
       .caret {
         @media screen and (min-width: $screen-sm-min) {
@@ -153,6 +161,13 @@
             }
           }
 
+          [data-page='science'] & {
+
+            @media screen and (min-width: $screen-sm-min) {
+              color: $c-science-primary;
+            }
+          }
+
           body.spree-store & {
             @media screen and (min-width: $screen-sm-min) {
               color: $c-energized-secondary;
@@ -200,6 +215,10 @@
                 border-bottom: 1px solid $c-balanced-secondary;
               }
 
+              [data-page='science'] & {
+                border-bottom: 1px solid $c-science-secondary;
+              }
+
               &:hover,
               &:focus {
                 color: $c-absolute;
@@ -231,12 +250,17 @@
           border-bottom: 1px solid $c-balanced-secondary;
         }
 
+        [data-page='science'] & {
+          border-bottom: 1px solid $c-science-secondary;
+        }
+
         &:hover,
         &:focus {
           color: darken($c-absolute, 15%);
 
           [data-page='english'] &,
           [data-page='history'] &,
+          [data-page='science'] &,
           [data-page='math'] & {
             color: $c-positive-secondary;
           }
@@ -248,6 +272,7 @@
 
           [data-page='english'] &,
           [data-page='history'] &,
+          [data-page='science'] &,
           [data-page='math'] & {
             border-bottom: 0;
             color: $c-absolute;
@@ -259,6 +284,7 @@
 
             [data-page='english'] &,
             [data-page='history'] &,
+            [data-page='science'] &,
             [data-page='math'] & {
               color: $c-balanced-primary;
             }
@@ -290,6 +316,15 @@
             &:hover,
             &:focus {
               color: $c-balanced-primary;
+            }
+          }
+        }
+
+        &[data-primary-nav-item='science'] {
+          > a {
+            &:hover,
+            &:focus {
+              color: $c-science-primary;
             }
           }
         }
@@ -338,9 +373,15 @@
 
         }
 
+        [data-page='science'] & {
+          border-bottom: 1px solid $c-science-secondary;
+
+        }
+
         @media screen and (min-width: $screen-sm-min) {
           [data-page='english'] &,
           [data-page='history'] &,
+          [data-page='science'] &,
           [data-page='math'] & {
             border-bottom: 0;
           }
@@ -360,6 +401,7 @@
 
     [data-page='english'] &,
     [data-page='history'] &,
+    [data-page='science'] &,
     [data-page='math'] & {
       color: $c-positive-secondary;
     }
@@ -426,6 +468,10 @@
         background-color: $c-balanced-primary;
       }
 
+      [data-page='science'] & {
+        background-color: $c-science-primary;
+      }
+
       @media screen and (min-width: $screen-sm-min) {
         padding: 0 15px;
         text-align: center;
@@ -451,6 +497,7 @@
 
             [data-page='english'] &,
             [data-page='history'] &,
+            [data-page='science'] &,
             [data-page='math'] & {
               border-bottom: 2px solid $c-positive-secondary;
               color: $c-positive-secondary;
@@ -471,6 +518,7 @@
 
             [data-page='english'] &,
             [data-page='history'] &,
+            [data-page='science'] &,
             [data-page='math'] & {
               border-bottom: 2px solid $c-positive-secondary;
             }
