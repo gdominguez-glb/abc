@@ -29,7 +29,13 @@ class Account::LicensesController < Account::BaseController
     distributsions = current_spree_user.product_distributions.
                        joins(:product).
                        where("spree_products.expiration_date > ? or spree_products.expiration_date is null", Time.now).
-                       where('spree_product_distributions.quantity > 0 and (spree_product_distributions.expire_at is null or spree_product_distributions.expire_at > ?)', Time.now).includes(:product, to_user: [:school_district])
+                       where('spree_product_distributions.quantity > 0 and (spree_product_distributions.expire_at is null or spree_product_distributions.expire_at > ?)', Time.now).
+                       includes(:product, to_user: [:school_district])
+    if params[:query].present?
+      distributsions = distributsions.
+                         joins("left join spree_users on spree_product_distributions.to_user_id = spree_users.id").
+                         where("spree_product_distributions.email ilike :query or spree_users.email ilike :query or spree_users.first_name ilike :query or spree_users.last_name ilike :query", query: "%#{params[:query].strip}%")
+    end
     @distributsions_data = distributsions.group_by(&:email)
     activities_scope = Activity.where(user_id: distributsions.map(&:to_user_id).compact.uniq)
     @last_activites_data = activities_scope.select('max(created_at) as created_at, user_id').group('user_id')
