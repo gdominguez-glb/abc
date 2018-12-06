@@ -33,7 +33,6 @@ class Account::LicensesController < Account::BaseController
                        includes(:product, to_user: [:school_district])
     if params[:query].present?
       distributsions = distributsions.
-                         joins("left join spree_users on spree_product_distributions.to_user_id = spree_users.id").
                          where("spree_product_distributions.email ilike :query or spree_users.email ilike :query or spree_users.first_name ilike :query or spree_users.last_name ilike :query", query: "%#{params[:query].strip}%")
     end
     @distributsions_data = distributsions.group_by(&:email)
