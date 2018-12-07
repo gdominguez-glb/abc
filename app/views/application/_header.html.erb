@@ -15,12 +15,16 @@
     <ul class="nav navbar-nav js-main-nav">
       <% cache "header_#{request.path}".to_sym, expires_in: 2.hours do %>
         <% Page.curriculum_nav.each do |page| %>
-          <li data-primary-nav-item="<%= "#{page.group_name}" %>">
-            <a href="<%= "/#{page.slug}" %>" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= page.group_name %> <span class="caret"></span></a>
-            <% if page.sub_pages.present? %>
+          <% if page.sub_pages.present? %>
+            <li data-primary-nav-item="<%= "#{page.group_name}" %>">
+              <a href="<%= "/#{page.slug}" %>" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= page.group_name %> <span class="caret"></span></a>
               <%= render partial: 'curriculum_dropdown', locals: { page: page } %>
-            <% end %>
-          </li>
+            </li>
+          <% else %>
+            <li data-primary-nav-item="<%= "#{page.group_name}" %>">
+              <a href="<%= "/#{page.slug}" %>"><%= page.group_name %></a>
+            </li>
+          <% end %>
         <% end %>
       <% end %>
       <li data-primary-nav-item="in-the-news" class="<%= 'active' if params[:slug] == 'in-the-news' %>">

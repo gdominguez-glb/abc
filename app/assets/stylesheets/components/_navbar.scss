@@ -168,6 +168,8 @@
           }
 
           [data-page='science'] & {
+            border-bottom: 1px solid $c-science-primary;
+            background-color: darken($c-science-primary, 5%);
 
             @media screen and (min-width: $screen-sm-min) {
               color: $c-science-primary;
