@@ -11,4 +11,6 @@
 // about supported directives.
 
 //= require jquery.parse_params
+//= require trumbowyg
+//= require trumbowyg/plugins/imageclasses
 //= require_tree ./cms

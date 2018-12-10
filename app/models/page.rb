@@ -110,7 +110,7 @@ class Page < ActiveRecord::Base
     self.tiles[:rows].each do |tile|
       tile.each do |k, v|
         next unless v.is_a?(String)
-        tile[k] = sanitize(v.strip, attributes: ['href', 'target', 'title'])
+        tile[k] = sanitize(v.strip, attributes: ['href', 'target', 'title', 'class'])
       end
     end
   end

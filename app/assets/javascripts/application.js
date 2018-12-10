@@ -39,9 +39,6 @@
 //= require slick.min
 //= require jquery.mask.min
 
-//= require trumbowyg
-//= require trumbowyg/plugins/imageclasses
-
 // App
 //= require_tree ./global
 

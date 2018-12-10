@@ -109,6 +109,10 @@ p {
   color: inherit;
 }
 
+.none-transform {
+  text-transform: none !important;
+}
+
 .blog-section-title,
 .blog-post-title {
   line-height: 1.1em;
