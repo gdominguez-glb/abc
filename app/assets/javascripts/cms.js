@@ -15,4 +15,19 @@
 //= require trumbowyg/plugins/imageclasses
 //= require_tree ./cms
 
-  $.trumbowyg.svgPath = '/icons.svg';
+$.trumbowyg.svgPath = '/icons.svg';
+
+function initEditor() {
+  $('.rich-editor').trumbowyg({
+    fullscreenable: false,
+    closable: false,
+    removeformatPasted: true,
+    semantic: false,
+    btns: ['bold', 'italic', 'underline', 'strikethrough', '|', 'formatting', '|', 'unorderedList', 'orderedList', '|', 'link', '|', 'viewHTML', 'removeformat']
+  });
+}
+
+$(function(){
+  initEditor();
+})
+

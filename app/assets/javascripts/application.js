@@ -79,15 +79,7 @@ Gm = {
 };
 window.Gm = Gm;
 
-function initEditor() {
-  $('.rich-editor').trumbowyg({
-    fullscreenable: false,
-    closable: false,
-    removeformatPasted: true,
-    semantic: false,
-    btns: ['bold', 'italic', 'underline', 'strikethrough', '|', 'formatting', '|', 'unorderedList', 'orderedList', '|', 'link', '|', 'viewHTML', 'removeformat']
-  });
-}
+
 
 $(document).ready(function() {
   var nav = $('.navbar-primary');
@@ -120,7 +112,7 @@ $(document).ready(function() {
   var responsiveTables = $('.table-responsive');
   responsiveTables.after('<span class="scroll-indicator">Scroll <i class="mi">keyboard_arrow_right</i></span>');
 
-  initEditor();
+
 
   var tiles = $('section.row');
   tiles.find('div:empty, p:empty').remove();
