@@ -14,3 +14,5 @@
 //= require trumbowyg
 //= require trumbowyg/plugins/imageclasses
 //= require_tree ./cms
+
+  $.trumbowyg.svgPath = '/icons.svg';

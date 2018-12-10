@@ -90,7 +90,6 @@ function initEditor() {
 }
 
 $(document).ready(function() {
-  $.trumbowyg.svgPath = '/icons.svg';
   var nav = $('.navbar-primary');
   var subnav = nav.find('.subnav')[0];
 
