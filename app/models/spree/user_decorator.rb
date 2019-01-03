@@ -303,7 +303,7 @@ Spree::User.class_eval do
     licenses = self.inkling_connect_licenses
     licenses.inject({}) do |result, license|
       value = (license.quantity > 0 && !license.expired?) ? '1' : '0'
-      inkling_attribute_name = "inkling_#{license.product.inkling_id.downcase}".to_sym
+      inkling_attribute_name = "inkling_#{license.product.inkling_id.downcase}".gsub('-', '_').to_sym
 
       # in case there's duplicate licenses records after revoke and distribute multiple times
       if self.respond_to?(inkling_attribute_name) && self.send(inkling_attribute_name) == '1'
