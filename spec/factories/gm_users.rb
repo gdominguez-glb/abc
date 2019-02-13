@@ -7,7 +7,10 @@ FactoryGirl.define do
     password '123456'
     interested_subjects ["math"]
     skip_salesforce_create true
+    ship_address
+    bill_address
     accepted_terms true
+    accepted_terms_2018 true
     title 'Homeschooler'
     zip_code '10000'
     after(:create) do |u|
