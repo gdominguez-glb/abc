@@ -31,28 +31,6 @@ RSpec.describe Spree::Order, type: :model do
     end
   end
 
-  describe "#valid_terms_and_conditions?" do
-    it "return false if product is not licensed product" do
-      license_line_item
-      order.reload.valid_terms_and_conditions?
-      expect(order.valid?).to eq(true)
-    end
-
-    it "return false if product is licensed product but user not accept terms" do
-      order = create(:order, user: create(:gm_user), terms_and_conditions: false)
-      create(:line_item, order: order, variant: product_with_license_length.master, :price => 1.0, :quantity => 2)
-      order.reload.valid_terms_and_conditions?
-      expect(order.errors[:terms_and_conditions].empty?).to eq(false)
-    end
-
-    it "return true if product is licensed_product and user accepted terms" do
-      order = create(:order, user: create(:gm_user), terms_and_conditions: true)
-      create(:line_item, order: order, variant: product_with_license_length.master, :price => 1.0, :quantity => 2)
-      order.reload.valid_terms_and_conditions?
-      expect(order.valid?).to eq(true)
-    end
-  end
-
   describe "#log_purchase_activity!" do
     it "create activity on product purchase" do
       order = plain_line_item.order
