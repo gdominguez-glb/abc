@@ -132,6 +132,7 @@ end
 group :development, :test do
   gem 'pry'
   gem 'rspec-rails', '~> 3.2.1'
+  gem 'byebug'
 end
 
 group :test do
@@ -145,6 +146,7 @@ group :test do
 
   gem 'shoulda-matchers'
   gem 'test_after_commit'
+  gem 'capybara', '~> 2.18.0'
 end
 
 # Use ActiveModel has_secure_password
@@ -158,7 +160,6 @@ gem 'spree_gateway', github: 'spree/spree_gateway', branch: '3-0-stable'
 gem 'spree_auth_devise', github: 'spree/spree_auth_devise', branch: '3-0-stable'
 gem 'spree_digital', github: 'rociiu/spree_digital', branch: '3-0-stable'
 gem 'spree_mail_settings', github: 'spree-contrib/spree_mail_settings', branch: '3-0-stable'
-gem 'spree_better_terms_and_conditions', github: 'aleks/spree_better_terms_and_conditions'
 
 # chef gems
 group :development do
