@@ -4,7 +4,7 @@ FactoryGirl.define do
     to_user { create(:gm_user) }
     quantity 1
     email
-    product
+    licensed_product { create(:product) }
+    product { create(:product) }
   end
-
 end

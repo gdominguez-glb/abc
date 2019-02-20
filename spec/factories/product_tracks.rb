@@ -4,5 +4,4 @@ FactoryGirl.define do
     product_id 1
     material_id 1
   end
-
 end
