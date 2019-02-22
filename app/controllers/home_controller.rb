@@ -3,8 +3,10 @@ class HomeController < ApplicationController
     @page = Rails.cache.fetch(:home_page, expires_in: 2.hours) do
       Page.find_by(slug: '/')
     end
+
     rotate_testimonials_index
     set_page_meta_tags(@page)
+
     respond_to :html
   end
 

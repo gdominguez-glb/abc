@@ -38,7 +38,7 @@ class Account::LicensesController < Account::BaseController
     @distributsions_data = distributsions.group_by(&:email)
     activities_scope = Activity.where(user_id: distributsions.map(&:to_user_id).compact.uniq)
     @last_activites_data = activities_scope.select('max(created_at) as created_at, user_id').group('user_id')
-    @activities_data = activities_scope.where('created_at > ?', 10.days.ago).select(:created_at, :user_id).order(created_at: :desc)
+    @activities_data = activities_scope.where('created_at > ?', 10.days.ago).select(:created_at, :user_id, :action).order(created_at: :desc)
   end
 
   def user_stats

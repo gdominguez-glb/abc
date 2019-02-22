@@ -1,84 +1,102 @@
-# GreatMinds Store / CMS
+## Dependencies
+### Docker
+Install Docker CE following these steps [https://docs.docker.com/install/linux/docker-ce/ubuntu/](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
 
-[![Build Status](https://semaphoreci.com/api/v1/projects/204c885f-d98b-4320-8927-ee89532094ba/402649/badge.svg)](https://semaphoreci.com/int/greatminds)
+If you are using Docker in Linux, make sure that you can manage docker with a non-root user. To do so, follow these steps: [https://docs.docker.com/install/linux/linux-postinstall/](https://docs.docker.com/install/linux/linux-postinstall/)
 
-[![Code Climate](https://codeclimate.com/repos/5537ca5be30ba00665000ce2/badges/07406c2e96832b7012b3/gpa.svg)](https://codeclimate.com/repos/5537ca5be30ba00665000ce2/feed)
-
-### Rails version
-
-4.2.0
-
-### Ruby version
-
-2.1.6
-
-### Elasticsearch
-
+Make sure that docker is up and running with the following command:
 ```
-$ brew install elasticsearch
-$ elasticsearch
+docker -v
 ```
 
-### Redis
-
+You should see some output telling the current version. This is an example:
 ```
-$ brew install redis
-$ redis-server
+Docker version 18.06.1-ce, build e68fc7a
 ```
 
-### Database setup
+### Docker Compose
+Install docker-compose following these steps [https://docs.docker.com/compose/install/](https://docs.docker.com/compose/install/)
 
-1. Run the following commands to instate the app's configuration:
+Make sure that docker-compose is up and running with the following command:
+```
+docker-compose -v
+```
 
-  `$ cp config/database.yml.example config/database.yml`
+You should see some output telling the current version. This is an example:
+```
+docker-compose version 1.23.2, build 1110ad01
+```
 
-2. set application.yml for environment variables
+### Docker Machine
 
-  `$ cp config/application.yml.example config/application.yml`
+Install docker-machine only if you are on MacOS or Windows 10 following these steps: [https://docs.docker.com/machine/install-machine/](https://docs.docker.com/machine/install-machine/)
 
-3. Create the database, load the schema, and initialize the app with
-   seed data:
+### GitHub
+Set your shh access on Github with the following tutorial: [https://help.github.com/articles/connecting-to-github-with-ssh/](https://help.github.com/articles/connecting-to-github-with-ssh/)
 
-    `$ bundle exec rake db:create && bundle exec rake db:migrate && bundle exec rake db:seed`
+## Environment configuration
 
-### Init Site Pages
+### Source Code
 
-`$ bundle exec rake pages:reset`
+Get the GreatMinds source code
+#### SSH
+```
+git clone git@github.com:enelsongm/greatminds.git
+```
+#### HTTPS
+```
+git clone https://github.com/greatmindsorg/greatminds.git
+```
 
-This will ensure the default example spree data is loaded
+### Building the project
 
-Access the store at [here](http://localhost:3000/store)
+Build the project with Docker
+```
+$ cd greatminds/
+$ docker-compose build
+```
 
-And the Admin login [here](http://localhost:3000/store/admin)
+Run the following commands to generate the app's local configuration:
+```
+$ cp config/database.yml.example config/database.yml
+$ cp config/application.yml.example config/application.yml
+```
 
-    user: web.admin@greatminds.net
-    password: intridea4gm
+Add this to the `config/database.yml` on the default configuration
 
-### Start sidekiq
+```
+user: postgres
+host: db
+Password:
+```
 
-`$ bundle exec sidekiq`
+### Database Setup
 
-### QA / Staging
+```
+$ sudo docker-compose run greatminds rake db:create
+$ sudo docker-compose run -T greatminds rake db:migrate RAILS_ENV=test
+```
+We need the DB to be running in order to import a DB:
+```
+$ sudo docker-compose up
+```
+Now we are going to import a development database. Ask a developer for a dump of that database and put that into a file called database_export.pgsql in the root folder of the project. Then, with the container up, open another terminal window and run:
+```
+$ sudo docker container exec greatminds_db_1 /bin/bash -c "psql -U postgres GreatMinds_development < /home/database_export.pgsql"
+```
 
-Visit QA http://qa.greatminds.org/store/admin
-
-Visit Staging http://staging.greatminds.org/store/admin
-
-Login with
-
-    un: greatminds
-    pw: intridea4gm
-
-### Run tests with guard
-
-`$ bundle exec guard`
-
-### Livereload
-
-run `gem install foreman` (do not add to gemfile)
-run `foreman start`
-Install this [Chrome Plugin](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei?hl=en) for live reload. Don't forget to hit the livereload button when guard says `LiveReload is waiting for a browser to connect`
-
-### Scss-lint 
-
-This project uses scss-lint. Download the scss-lint integration for your text editor: https://github.com/brigade/scss-lint#editor-integration
+### Run the app
+Every time you want to make the app available, you need to run:
+```
+$ sudo docker-compose up
+```
+Then open a browser and type this url: [http://localhost:3000](http://localhost:3000)
+### Run the tests
+```
+$ sudo docker-compose run -T greatminds bundle exec guard
+```
+### Deploy
+```
+$ sudo docker-compose run greatminds bundle exec cap staging deploy
+$ sudo docker-compose run greatminds bundle exec cap production deploy
+```
