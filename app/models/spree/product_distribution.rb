@@ -10,6 +10,17 @@ class Spree::ProductDistribution < ActiveRecord::Base
 
   attr_accessor :can_be_distributed
 
+  scope :users, -> {
+    joins(:product).
+    distinct.
+    select(:to_user_id).
+    where('spree_products.expiration_date > ? or '\
+          'spree_products.expiration_date is null', Time.now).
+    where('spree_product_distributions.quantity > 0 and '\
+          '(spree_product_distributions.expire_at is null or '\
+          'spree_product_distributions.expire_at > ?)', Time.now)
+  }
+
   include EmailAssignment
   assign_user_from_email :to_user, :email
   assign_user_from_email :from_user, :from_email
