@@ -1,4 +1,5 @@
 require 'spree/testing_support/factories'
+
 FactoryGirl.modify do
   factory :product, class: 'Spree::Product' do
     skip_salesforce_create true

@@ -2,7 +2,9 @@
 
 <%= render partial: 'tabs', locals: { tab: 'users' } %>
 
-<%= link_to 'Export Users List', export_users_account_licenses_path(format: 'xlsx', query: params[:query]), class: 'btn btn-default btn-block-xs margin-bottom js-export-users-button' %>
+<%= link_to 'Export Users List',
+            export_users_account_licenses_path(format: 'csv', query: params[:query]),
+            class: 'btn btn-default btn-block-xs margin-bottom js-export-users-button' %>
 
 <div class="table-responsive js-user-table">
   <table class="table table-striped">
