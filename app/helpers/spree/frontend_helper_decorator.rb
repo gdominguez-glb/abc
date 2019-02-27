@@ -64,7 +64,7 @@ Spree::FrontendHelper.class_eval do
   def event_color_class(event_page)
     curriculum = event_page.page.try(:group_name) || ""
     return "#7CC7F1" if ["", "english"].include? curriculum.try(:downcase)
-    "#CCFF63"
+    "#7ebb52"
   end
 
   def stronger_truncate_html(html, options = {})
