@@ -11,7 +11,7 @@ $(document).ready(function(){
 
   $(".ajax-select").select2({
     containerCssClass: 'form-control',
-    placeholder: 'Type district name and select',
+    placeholder: 'Type name and select',
     initSelection: function (element, callback) {
       console.log(element);
       if ( $(element).val() !== null ) {
