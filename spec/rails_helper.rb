@@ -75,6 +75,22 @@ RSpec.configure do |config|
   config.include Devise::TestHelpers, :type => :controller
   config.extend ControllerMacros, :type => :controller
   config.include MockMandrill
+  config.include CapybaraSelect2
+  WebMock.allow_net_connect!
+
+  args = ['--no-default-browser-check', '--start-maximized']
+  caps = Selenium::WebDriver::Remote::Capabilities.chrome("chromeOptions" => {"args" => args})
+
+  Capybara.register_driver :selenium do |app|
+    Capybara::Selenium::Driver.new(
+      app,
+      browser: :remote,
+      url: "http://#{ENV['SELENIUM_HOST']}:#{ENV['SELENIUM_PORT']}/wd/hub",
+      desired_capabilities: caps
+    )
+  end
+
+  Capybara.server_host = 'greatminds'
 end
 
 TestAfterCommit.enabled = true

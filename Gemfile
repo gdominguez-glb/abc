@@ -147,6 +147,7 @@ group :test do
   gem 'shoulda-matchers'
   gem 'test_after_commit'
   gem 'capybara', '~> 2.18.0'
+  gem 'selenium-webdriver'
 end
 
 # Use ActiveModel has_secure_password
