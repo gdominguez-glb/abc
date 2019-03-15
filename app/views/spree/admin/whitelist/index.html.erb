@@ -1,0 +1,99 @@
+<% content_for :page_title do %>
+  Whitelist
+<% end %>
+
+<ul class="nav nav-tabs" role="tablist" id="white-list-tab">
+  <li class="nav-item">
+    <a class="nav-link"
+       id="school-tab-link"
+       href="#school-tab"
+       data-toggle="tab"
+       href="#school"
+       role="tab"
+       aria-controls="school"
+       aria-selected="true">School</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link"
+       href="#district-tab"
+       data-toggle="tab"
+       href="#district"
+       role="tab"
+       aria-controls="district"
+       aria-selected="true">Multiple Schools/District</a>
+  </li>
+</ul>
+<div class="tab-content">
+  <div class="tab-pane" id="school-tab" role="tabpanel">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Country</label>
+            <div>
+              <%= select_tag(:country_id,
+                             options_for_select(@country_list),
+                             class: 'form-control country-select') %>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>State</label>
+            <div>
+              <%= select_tag(:state_id,
+                             options_for_select(@us_states_list),
+                             class: 'form-control state-select') %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Select a school</label>
+            <div>
+              <%= hidden_field(:district_id, nil, class: 'ajax-select') %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="tab-pane" id="district-tab" role="tabpanel">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Country</label>
+            <div>
+              <%= select_tag(:country_id,
+                             options_for_select(@country_list),
+                             class: 'form-control country-select') %>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>State</label>
+            <div>
+              <%= select_tag(:state_id,
+                             options_for_select(@us_states_list),
+                             class: 'form-control state-select') %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Select a district</label>
+            <div>
+              <%= hidden_field(:district_id, nil, class: 'ajax-select') %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
