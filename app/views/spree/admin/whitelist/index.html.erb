@@ -1,97 +1,181 @@
 <% content_for :page_title do %>
   Whitelist
 <% end %>
-
-<ul class="nav nav-tabs" role="tablist" id="white-list-tab">
-  <li class="nav-item">
-    <a class="nav-link"
-       id="school-tab-link"
-       href="#school-tab"
-       data-toggle="tab"
-       href="#school"
-       role="tab"
-       aria-controls="school"
-       aria-selected="true">School</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link"
-       href="#district-tab"
-       data-toggle="tab"
-       href="#district"
-       role="tab"
-       aria-controls="district"
-       aria-selected="true">Multiple Schools/District</a>
-  </li>
-</ul>
-<div class="tab-content">
-  <div class="tab-pane" id="school-tab" role="tabpanel">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4">
-          <div class="form-group">
-            <label>Country</label>
-            <div>
-              <%= select_tag(:country_id,
-                             options_for_select(@country_list),
-                             class: 'form-control country-select') %>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <label>State</label>
-            <div>
-              <%= select_tag(:state_id,
-                             options_for_select(@us_states_list),
-                             class: 'form-control state-select') %>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4">
-          <div class="form-group">
-            <label>Select a school</label>
-            <div>
-              <%= hidden_field(:district_id, nil, class: 'ajax-select') %>
-            </div>
-          </div>
-        </div>
-      </div>
+<div class="container">
+  <% if @whitelist.errors.any? %>
+    <div class="alert alert-danger alert-auto-dissapear">
+      <%= @whitelist.errors.full_messages.first  %>
     </div>
-  </div>
-  <div class="tab-pane" id="district-tab" role="tabpanel">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4">
-          <div class="form-group">
-            <label>Country</label>
-            <div>
-              <%= select_tag(:country_id,
-                             options_for_select(@country_list),
-                             class: 'form-control country-select') %>
+  <% end %>
+  <div class="row">
+    <div class="col-lg-12">
+      <ul class="nav nav-tabs" role="tablist" id="white-list-tab">
+        <li class="nav-item">
+          <a class="nav-link"
+             id="school-tab-link"
+             href="#school-tab"
+             data-toggle="tab"
+             href="#school"
+             role="tab"
+             aria-controls="school"
+             aria-selected="true">School</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"
+             href="#district-tab"
+             data-toggle="tab"
+             href="#district"
+             role="tab"
+             aria-controls="district"
+             aria-selected="true">Multiple Schools/District</a>
+        </li>
+      </ul>
+      <div class="tab-content padding-top--m">
+        <div class="tab-pane" id="school-tab" role="tabpanel">
+            <div class="container">
+              <%= form_for @whitelist,
+                           url: admin_whitelist_index_path,
+                           method: 'post' do |f| %>
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label>Country</label>
+                      <div>
+                        <%= select_tag(:country_id,
+                                       options_for_select(@country_list),
+                                       class: 'form-control country-select') %>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label>State</label>
+                      <div>
+                        <%= select_tag(:state_id,
+                                       options_for_select(@us_states_list),
+                                       class: 'form-control state-select') %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label>Select a school</label>
+                      <div>
+                        <%= f.hidden_field(:school_district_id, class: 'ajax-select') %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-4 offset-md-4">
+                    <div class="form-group">
+                      <div>
+                        <%= f.submit('Add', class: 'btn btn-success btn-block') %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+              <div class="row">
+                <div class="col-md-4">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                      <th>Name</th>
+                      <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                      <% @school_whitelist.each do |school| %>
+                        <tr>
+                          <td><%= school.school_district.name %></td>
+                          <td>
+                            <%= link_to admin_whitelist_path(school.id),
+                                        method: :delete,
+                                        data: { confirm: 'Are you certain you want to delete this element?' },
+                                        class: 'btn btn-danger btn-sm delete-resource icon-link with-tip action-delete no-text' do %>
+                              <span class="icon icon-delete"></span>
+                            <% end%>
+                          </td>
+                        </tr>
+                      <% end %>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
             </div>
-          </div>
         </div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <label>State</label>
-            <div>
-              <%= select_tag(:state_id,
-                             options_for_select(@us_states_list),
-                             class: 'form-control state-select') %>
+        <div class="tab-pane" id="district-tab" role="tabpanel">
+          <%= form_for @whitelist, url: admin_whitelist_index_path, method: 'post' do |f| %>
+            <div class="container">
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label>Country</label>
+                    <div>
+                      <%= select_tag(:country_id,
+                                     options_for_select(@country_list),
+                                     class: 'form-control country-select') %>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label>State</label>
+                    <div>
+                      <%= select_tag(:state_id,
+                                     options_for_select(@us_states_list),
+                                     class: 'form-control state-select') %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label>Select a district</label>
+                    <div>
+                      <%= f.hidden_field(:school_district_id, class: 'ajax-select') %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4 offset-md-4">
+                  <%= f.submit('Add', class: 'btn btn-success btn-block') %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                  <table class="table">
+                    <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                      <% @district_whitelist.each do |school| %>
+                        <tr>
+                          <td><%= school.school_district.name %></td>
+                          <td>
+                            <%= link_to admin_whitelist_path(school.id),
+                                        method: :delete,
+                                        data: { confirm: 'Are you certain you want to delete this element?' },
+                                        class: 'btn btn-danger btn-sm delete-resource icon-link with-tip action-delete no-text' do %>
+                              <span class="icon icon-delete"></span>
+                            <% end%>
+                          </td>
+                        </tr>
+                      <% end %>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4">
-          <div class="form-group">
-            <label>Select a district</label>
-            <div>
-              <%= hidden_field(:district_id, nil, class: 'ajax-select') %>
-            </div>
-          </div>
+          <% end %>
         </div>
       </div>
     </div>

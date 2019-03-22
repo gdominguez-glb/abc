@@ -52,6 +52,7 @@ RSpec.configure do |config|
   config.include Devise::TestHelpers, :type => :controller
   config.extend ControllerMacros, :type => :controller
   config.include MockMandrill
+  config.include CapybaraSelect2
 
   config.use_transactional_fixtures = false
 
