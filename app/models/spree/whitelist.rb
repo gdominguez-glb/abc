@@ -7,4 +7,8 @@ class Spree::Whitelist < ActiveRecord::Base
                      where('school_districts.place_type = ?', 'school') }
   scope :districts, -> { joins(:school_district).
                       where('school_districts.place_type = ?', 'district') }
+
+  def self.skip_terms?(user: nil)
+    !where(school_district_id: user.school_district.id).empty?
+  end
 end
