@@ -1,8 +1,7 @@
 FactoryGirl.define do
   factory :curriculum do
-    name "MyString"
+    name "Math"
     position 1
     visible false
   end
-
 end

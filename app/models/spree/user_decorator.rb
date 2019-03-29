@@ -334,7 +334,14 @@ Spree::User.class_eval do
     end
   end
 
+  def accept_terms!
+    update accepted_terms: true,
+           accepted_terms_2018: true,
+           accepted_terms_2018_at: Time.now
+  end
+
   private
+
   def is_in_usa?
     self.ip_location == 'US'
   end

@@ -1,5 +1,4 @@
 Spree::UserRegistrationsController.class_eval do
-
   include SchoolDistrictParamProcessor
 
   # override to remove flash message on sign up
@@ -22,7 +21,12 @@ Spree::UserRegistrationsController.class_eval do
         SignUpNotifier.delay.notify(@user.id)
         Spree::LicensesManager::AutoAssignFreeProducts.new(@user).assign!
         session[:spree_user_signup] = true
-        respond_with resource, location: after_sign_up_path_for(resource)
+        if Spree::Whitelist.skip_terms?(user: resource)
+          resource.accept_terms!
+          redirect_to '/account/products'
+        else
+          respond_with resource, location: after_sign_up_path_for(resource)
+        end
       else
         set_flash_message :notice, :"signed_up_but_#{resource.inactive_message}"
         expire_data_after_sign_in!
