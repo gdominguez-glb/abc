@@ -13,7 +13,6 @@ $(document).ready(function(){
     containerCssClass: 'form-control',
     placeholder: 'Type name and select',
     initSelection: function (element, callback) {
-      console.log(element);
       if ( $(element).val() !== null ) {
         return $.getJSON("/school_districts/" + $(element).val(), null, function (data) {
           return callback(data.item);
@@ -28,7 +27,7 @@ $(document).ready(function(){
           per_page: 20,
           page: page,
           q: term,
-          type: $('li.active').eq(2).find('a').attr('aria-controls'),
+          type: $('#white-list-tab').find('li.active').find('a').attr('aria-controls'),
           country_id: $("div.active").find("#country_id option:selected").val(),
           state_id: $("div.active").find("#state_id option:selected").val()
         };
