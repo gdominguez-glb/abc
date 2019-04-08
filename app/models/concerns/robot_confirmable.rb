@@ -3,7 +3,7 @@ module RobotConfirmable
 
   included do
     attr_accessor :google_recaptcha, :google_recaptcha_required
-    validate :google_recaptcha_form, :if => :google_recaptcha_required
+    validate :google_recaptcha_form, on: :create, if: :google_recaptcha_required
   end
 
   def google_recaptcha_form
