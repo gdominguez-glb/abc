@@ -27,7 +27,8 @@
         - blue
         - cream
         - orange
-        - light-blue   
+        - light-blue
+        - purple
     - :name: testimonial_header_1
       :label: Header 1
       :input_type: text
@@ -36,7 +37,7 @@
       :input_type: text
     - :name: testimonial_image_alt_1
       :label: Image Alt 1
-      :input_type: text  
+      :input_type: text
     - :name: testimonial_video_url_1
       :label: Facebook video url 1
       :input_type: text
@@ -265,7 +266,7 @@
       - cream
       - orange
       - light-blue
-
+      - purple
 - :name: Loop Background Video
   :fields:
   - :name: wistia_video_id
@@ -289,6 +290,7 @@
       - cream
       - orange
       - light-blue
+      - purple
   - :name: button_1_title
     :label: Button 1 Title
     :input_type: text
@@ -336,6 +338,7 @@
       - cream
       - orange
       - light-blue
+      - purple
   - :name: button_title
     :label: Button Title
     :input_type: text
@@ -371,6 +374,7 @@
       - cream
       - orange
       - light-blue
+      - purple
   - :name: button_1_title
     :label: Button 1 Title
     :input_type: text
@@ -418,6 +422,7 @@
       - cream
       - orange
       - light-blue
+      - purple
   - :name: button_title
     :label: Button Title
     :input_type: text
@@ -453,6 +458,7 @@
       - cream
       - orange
       - light-blue
+      - purple
   - :name: button_title
     :label: Button Title
     :input_type: text
@@ -488,6 +494,7 @@
       - cream
       - orange
       - light-blue
+      - purple
   - :name: button_title
     :label: Button Title
     :input_type: text
@@ -523,6 +530,7 @@
       - cream
       - orange
       - light-blue
+      - purple
   - :name: button_title
     :label: Button Title
     :input_type: text
@@ -558,6 +566,7 @@
       - cream
       - orange
       - light-blue
+      - purple
   - :name: button_title
     :label: Button Title
     :input_type: text
@@ -593,6 +602,7 @@
       - cream
       - orange
       - light-blue
+      - purple
   - :name: button_title
     :label: Button Title
     :input_type: text
@@ -628,6 +638,7 @@
       - cream
       - orange
       - light-blue
+      - purple
   - :name: button_title
     :label: Button Title
     :input_type: text
@@ -663,6 +674,7 @@
       - cream
       - orange
       - light-blue
+      - purple
   - :name: button_title
     :label: Button Title
     :input_type: text
@@ -698,6 +710,7 @@
       - cream
       - orange
       - light-blue
+      - purple
   - :name: button_title
     :label: Button Title
     :input_type: text
@@ -840,6 +853,7 @@
       - cream
       - orange
       - light-blue
+      - purple
   - :name: button_title
     :label: Button Title
     :input_type: text
@@ -870,6 +884,7 @@
       - cream
       - orange
       - light-blue
+      - purple
   - :name: title_1
     :label: Title 1
     :input_type: text
@@ -897,6 +912,7 @@
       - cream
       - orange
       - light-blue
+      - purple
   - :name: title_2
     :label: Title 2
     :input_type: text
@@ -935,6 +951,7 @@
       - cream
       - orange
       - light-blue
+      - purple
   - :name: body_text
     :label: Body Text
     :input_type: text_area
@@ -961,6 +978,7 @@
       - cream
       - orange
       - light-blue
+      - purple
   - :name: title_1
     :label: Title 1
     :input_type: text
@@ -1026,7 +1044,8 @@
       - blue
       - cream
       - orange
-      - light-blue   
+      - light-blue
+      - purple
   - :name: facebook_header_1
     :label: Header 1
     :input_type: text
@@ -1035,7 +1054,7 @@
     :input_type: text
   - :name: facebook_image_alt_1
     :label: Image Alt 1
-    :input_type: text  
+    :input_type: text
   - :name: facebook_video_url_1
     :label: Facebook video url 1
     :input_type: text
