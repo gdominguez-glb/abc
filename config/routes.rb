@@ -21,6 +21,7 @@ class LinkUploadsConstraint
 end
 
 Rails.application.routes.draw do
+
   require 'sidekiq/web'
 
   authenticate :spree_user, lambda { |u| u.has_admin_role? } do
@@ -52,6 +53,7 @@ Rails.application.routes.draw do
 
   devise_scope :spree_user do
     get 'become/:id', action: 'become', controller: 'spree/user_sessions', as: 'become'
+    get 'lti', action: 'lti', controller: 'spree/user_sessions', as: 'lti'
     get '/resources/signup/:title/:interest', action: :new, controller: 'spree/user_registrations', as: :custom
   end
 
