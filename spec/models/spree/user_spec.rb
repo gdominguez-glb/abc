@@ -37,6 +37,17 @@ RSpec.describe Spree::User do
     end
   end
 
+  describe '#accept_terms!' do
+    it 'Update the fields related with terms and conditions' do
+      user = create :gm_user, accepted_terms: false, accepted_terms_2018: false
+
+      user.accept_terms!
+
+      expect(user.accepted_terms).to eq(true)
+      expect(user.accepted_terms_2018).to eq(true)
+    end
+  end
+
   describe "assign_licenses" do
     let!(:licensed_product) { create(:spree_licensed_product, email: 'john@doe.com') }
     let!(:another_licensed_product) { create(:spree_licensed_product, email: 'John@doe.com') }

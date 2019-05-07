@@ -18,6 +18,7 @@
 //= require slick.min
 //= require trumbowyg
 //= require spree/backend
+//= require spree/backend/whitelist
 //= require spree/backend/spree_digital
 //= require spree/backend/cart_decorator.js.coffee
 
