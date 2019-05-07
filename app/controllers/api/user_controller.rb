@@ -8,12 +8,6 @@ class Api::UserController < Api::BaseController
            }
   end
 
-  def create
-    render json: {
-      success: 'Success'
-    }, status: 201
-  end
-
   private
 
   def products_of_user(user)
