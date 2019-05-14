@@ -400,6 +400,15 @@ section {
   }
 }
 
+.purple-bg {
+  color: $c-science-secondary;
+  background: $c-science-primary;
+
+  &.image-bg {
+    color: $c-absolute;
+  }
+}
+
 .coral-bg {
   color: $c-absolute;
   background: $c-energized-secondary;
