@@ -4,27 +4,6 @@ describe 'Client credentials OAuth flow', type: :request do
   it 'should get access token and post to users/create' do
     app = create :application, name: 'test', scopes: 'public'
     token = create :access_token, resource_owner_id: nil, application: app
-    params = { spree_user: { first_name: 'Luis',
-                             last_name: 'Gonzalez',
-                             email: 'luiscarlos.gonzalez@gmail.com' }
-    }
-
-    headers = {
-      'Content-Type' => 'application/x-www-form-urlencoded',
-      'Authorization' => "Bearer #{token.token}"
-    }
-
-    post api_user_path, params, headers
-    data = JSON.parse(response.body)
-
-    expect(response.status).to eq(201)
-    expect(data.has_key?("spree_user")).to eq(true)
-    expect(data["spree_user"].has_key?("id")).to eq(true)
-  end
-
-  it 'should get access token and post to users/create' do
-    app = create :application, name: 'test', scopes: 'public'
-    token = create :access_token, resource_owner_id: nil, application: app
     user = create :gm_user
     params = { spree_user: { first_name: 'Luis',
                              last_name: 'Gonzalez',
@@ -44,9 +23,10 @@ describe 'Client credentials OAuth flow', type: :request do
     expect(data.has_key?("spree_user")).to eq(true)
     expect(data["spree_user"].has_key?("id")).to eq(true)
     expect(data_response['id']).to eq(user.id)
+    expect(data_response['token']).to eq(token.token)
   end
 
-  it 'should get access token and post to users/create' do
+  it 'should get error when the firstname is empty' do
     app = create :application, name: 'test', scopes: 'public'
     token = create :access_token, resource_owner_id: nil, application: app
     params = { spree_user: { first_name: '',
@@ -65,7 +45,7 @@ describe 'Client credentials OAuth flow', type: :request do
     expect(data['errors'][0]).to eq('First name can\'t be blank')
   end
 
-  it 'should get access token and post to users/create' do
+  it 'should get error when the lastname is empty' do
     app = create :application, name: 'test', scopes: 'public'
     token = create :access_token, resource_owner_id: nil, application: app
     params = { spree_user: { first_name: 'Luis',
@@ -84,7 +64,7 @@ describe 'Client credentials OAuth flow', type: :request do
     expect(data['errors'][0]).to eq('Last name can\'t be blank')
   end
 
-  it 'should get access token and post to users/create' do
+  it 'should get error when the email is empty' do
     app = create :application, name: 'test', scopes: 'public'
     token = create :access_token, resource_owner_id: nil, application: app
     params = { spree_user: { first_name: 'Luis',

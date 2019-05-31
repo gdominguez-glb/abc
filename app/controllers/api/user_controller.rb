@@ -16,13 +16,13 @@ class Api::UserController < Api::BaseController
       user.accept_terms!
 
       json_response = {
-        id: user.id
+        id: user.id,
+        token: request.headers['HTTP_AUTHORIZATION'].split(' ')[1]
       }.to_json
 
       response_string = {
         spree_user: {
-          id: Cypher.encrypt(json_response),
-          token: request.headers['HTTP_AUTHORIZATION'].split(' ')[1]
+          id: Cypher.encrypt(json_response)
         }
       }
 
