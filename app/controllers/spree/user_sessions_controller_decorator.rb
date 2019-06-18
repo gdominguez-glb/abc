@@ -32,6 +32,25 @@ Spree::UserSessionsController.class_eval do
     end
   end
 
+  def lti
+    begin
+      json_data = Cypher.decrypt spree_user_param[:id]
+    rescue ActiveSupport::MessageVerifier::InvalidSignature
+      render body: 'Invalid id', status: 500 and return
+    end
+    data = JSON.parse json_data
+
+    token = Doorkeeper::AccessToken.find_by token: data['token']
+    render body: 'Token expired', status: 500 and return if token.blank? || token.expired?
+
+    user = Spree::User.find_by id: data['id']
+    render body: 'User not found', status: 500 and return if user.blank?
+
+    sign_in user
+
+    redirect_to spree_user_param['redirect_to']
+  end
+
   # override to remove flash message
   def destroy
     signed_out = (Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name))
@@ -78,5 +97,11 @@ Spree::UserSessionsController.class_eval do
     if all_signed_out?
       respond_to_on_destroy
     end
+  end
+
+  def spree_user_param
+    params.
+      require(:spree_user).
+      permit(:id, :redirect_to)
   end
 end
