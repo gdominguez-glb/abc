@@ -13,8 +13,7 @@ class Api::UserController < Api::BaseController
     user = Spree::User.new spree_user_params if user.blank?
 
     admin = Spree::User.find_by email: 'web.admin@greatminds.net'
-    # licensed_products = admin.licensed_products.where(id: 982844)
-    licensed_products = admin.licensed_products.where(id: 602466)
+    licensed_products = admin.licensed_products.where(product_id: navigator_product_id)
 
     if user.save
       user.accept_terms!
@@ -43,9 +42,12 @@ class Api::UserController < Api::BaseController
 
   private
 
+  def navigator_product_id
+    Spree::Product.find_by(name: 'Eureka Navigator LTI').id
+  end
+
   def licensed?(user)
-    # products_of_user(user).map(&:id).include?(1005)
-    products_of_user(user).map(&:id).include?(1005)
+    products_of_user(user).map(&:id).include?(navigator_product_id)
   end
 
   def products_of_user(user)
