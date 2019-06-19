@@ -13,7 +13,8 @@ class Api::UserController < Api::BaseController
     user = Spree::User.new spree_user_params if user.blank?
 
     admin = Spree::User.find_by email: 'web.admin@greatminds.net'
-    licensed_products = admin.licensed_products.where(id: 982844)
+    # licensed_products = admin.licensed_products.where(id: 982844)
+    licensed_products = admin.licensed_products.where(id: 602466)
 
     if user.save
       user.accept_terms!
@@ -21,7 +22,7 @@ class Api::UserController < Api::BaseController
 
       Spree::LicensesManager::LicensesDistributer.new(user: admin,
                                                       licensed_products: licensed_products,
-                                                      rows: rows).execute
+                                                      rows: rows).execute unless licensed?(user)
 
       json_response = {
         id: user.id,
@@ -41,6 +42,11 @@ class Api::UserController < Api::BaseController
   end
 
   private
+
+  def licensed?(user)
+    # products_of_user(user).map(&:id).include?(1005)
+    products_of_user(user).map(&:id).include?(1005)
+  end
 
   def products_of_user(user)
     user.products.map do |product|
