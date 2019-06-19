@@ -12,8 +12,16 @@ class Api::UserController < Api::BaseController
     user = Spree::User.find_by email: spree_user_params[:email]
     user = Spree::User.new spree_user_params if user.blank?
 
+    admin = Spree::User.find_by email: 'web.admin@greatminds.net'
+    licensed_products = admin.licensed_products.where(id: 982844)
+
     if user.save
       user.accept_terms!
+      rows = [{ email: user.email, quantity: '1' }]
+
+      Spree::LicensesManager::LicensesDistributer.new(user: admin,
+                                                      licensed_products: licensed_products,
+                                                      rows: rows).execute
 
       json_response = {
         id: user.id,
