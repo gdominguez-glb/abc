@@ -1,6 +1,30 @@
 require 'rails_helper'
 
 describe 'Client credentials OAuth flow', type: :request do
+  before :each do
+    admin = create :gm_user,
+                   email: 'web.admin@greatminds.net'
+    admin.spree_roles << Spree::Role.find_or_create_by(name: 'admin')
+    admin.save
+
+    product = create :product, name: 'Eureka Navigator LTI'
+    licensed_product = create :spree_licensed_product,
+                              user: admin,
+                              product: product
+
+    first_distributor = create :gm_user,
+                                email: 'example2@example.com'
+    first_distributor.spree_roles << Spree::Role.find_or_create_by(name: 'school admin')
+    first_distributor.save
+
+    create :spree_product_distribution,
+           licensed_product: licensed_product,
+           product: product,
+           from_user: admin,
+           quantity: 1000,
+           to_user: first_distributor
+  end
+
   it 'should get access token and post to users/create' do
     app = create :application, name: 'test', scopes: 'public'
     token = create :access_token, resource_owner_id: nil, application: app
