@@ -5,8 +5,9 @@ class TeamController < ApplicationController
   end
 
   def trustees
-    @page_title = 'Trustees'
+    @page_title = 'Trustees & Adivsors'
     @trustees = Staff.displayable.trustee.order('position asc')
+    @emeritus_advisors = Staff.displayable.emeritus_advisor.order('position asc')
   end
 
   def show
