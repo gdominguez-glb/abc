@@ -49,7 +49,15 @@ class Cms::StaffsController < Cms::BaseController
   end
 
   def update_positions
-    staffs = (params[:scope] == 'trustees' ? Staff.trustee : Staff.staff)
+    case params[:scope]
+    when 'trustees'
+      staffs = Staff.trustee
+    when 'staffs'
+      staffs = Staff.staff
+    when 'emeritus_advisors'
+      staffs = Staff.emeritus_advisor
+    end
+
     update_positions_with_klass(staffs)
     render nothing: true
   end
