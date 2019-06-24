@@ -57,6 +57,7 @@ namespace :cms do
   resources :staffs do
     collection do
       get :trustees
+      get :emeritus_advisors
       post :update_positions
     end
   end
