@@ -12,8 +12,16 @@ class Api::UserController < Api::BaseController
     user = Spree::User.find_by email: spree_user_params[:email]
     user = Spree::User.new spree_user_params if user.blank?
 
+    admin = Spree::User.find_by email: 'web.admin@greatminds.net'
+    licensed_products = admin.licensed_products.where(product_id: navigator_product_id)
+
     if user.save
       user.accept_terms!
+      rows = [{ email: user.email, quantity: '1' }]
+
+      Spree::LicensesManager::LicensesDistributer.new(user: admin,
+                                                      licensed_products: licensed_products,
+                                                      rows: rows).execute unless licensed?(user)
 
       json_response = {
         id: user.id,
@@ -33,6 +41,14 @@ class Api::UserController < Api::BaseController
   end
 
   private
+
+  def navigator_product_id
+    Spree::Product.find_by(name: 'Eureka Navigator LTI').id
+  end
+
+  def licensed?(user)
+    products_of_user(user).map(&:id).include?(navigator_product_id)
+  end
 
   def products_of_user(user)
     user.products.map do |product|
