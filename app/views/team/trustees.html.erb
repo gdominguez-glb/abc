@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-sm-10 col-sm-offset-1">
     <div class="page-header">
-      <h1>Meet the Trustees</h1>
+      <h1>Meet the Trustees & Advisors</h1>
     </div>
   </div>
 </div>
@@ -27,6 +27,35 @@
                 <div class="caption">
                   <h3><%= trustee.name %></h3>
                   <p><em><%= trustee.title %></em></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-10 col-sm-offset-1">
+      <div class="row">
+        <h2 class="text-center">Emeritus Advisors</h2>
+        <% @emeritus_advisors.each do |emeritus_advisor| %>
+          <div class="col-sm-6 col-md-3 col-thumbnail">
+            <div data-toggle="modal"
+              data-target="#trusteeModal"
+              data-bio="<%= emeritus_advisor.description rescue nil %>"
+              data-title="<%= emeritus_advisor.title %>"
+              data-name="<%= emeritus_advisor.name %>">
+              <div class="thumbnail thumbnail-team thumbnail-modal js-tooltip-trigger"
+                data-toggle="tooltip"
+                title="Click for bio">
+                <% if emeritus_advisor.picture.exists? %>
+                  <%= image_tag emeritus_advisor.picture.url, class: 'img-square' %>
+                <% end %>
+                <div class="caption">
+                  <h3><%= emeritus_advisor.name %></h3>
+                  <p><em><%= emeritus_advisor.title %></em></p>
                 </div>
               </div>
             </div>

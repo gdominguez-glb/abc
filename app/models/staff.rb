@@ -1,6 +1,5 @@
 class Staff < ActiveRecord::Base
-
-  enum staff_type: { staff: 0, trustee: 1 }
+  enum staff_type: { staff: 0, trustee: 1, emeritus_advisor: 2 }
 
   include Displayable
 
@@ -15,5 +14,4 @@ class Staff < ActiveRecord::Base
   validates_attachment :picture, content_type: { content_type: /\A*\Z/ }
 
   acts_as_list
-
 end
