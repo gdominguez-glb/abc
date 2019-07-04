@@ -22,6 +22,8 @@ end
 
 Rails.application.routes.draw do
 
+  resources :domains, only: [:create, :destroy]
+
   require 'sidekiq/web'
 
   authenticate :spree_user, lambda { |u| u.has_admin_role? } do
