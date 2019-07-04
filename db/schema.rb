@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190704014101) do
+ActiveRecord::Schema.define(version: 20190709161725) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -2003,6 +2003,7 @@ ActiveRecord::Schema.define(version: 20190704014101) do
     t.boolean  "accepted_terms_2018",                      default: false
     t.datetime "accepted_terms_2018_at"
     t.boolean  "showed_2018_new_feature_tour",             default: false
+    t.boolean  "automatic_distribution",                   default: true
   end
 
   add_index "spree_users", ["deleted_at"], name: "index_spree_users_on_deleted_at", using: :btree
