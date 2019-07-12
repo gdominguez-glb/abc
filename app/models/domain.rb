@@ -6,7 +6,13 @@ class Domain < ActiveRecord::Base
   validates :school_district, presence: true
   validates :product, presence: true
 
-  def self.products_by_domain(domain: nil)
-    where(name: domain).includes(:product).map { |domain| [domain.product.name, domain.product.id] }
+  def self.products_by_domain(domain: nil, admin: admin)
+    product_distributions = admin.licensed_products
+      .where('quantity > 0')
+      .where(can_be_distributed: true).pluck(:id)
+
+    where(name: domain).where(spree_product_id: product_distributions)
+      .includes(:product)
+      .map { |domain| [domain.product.name, domain.product.id] }
   end
 end

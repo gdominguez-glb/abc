@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :domain do
     name "MyString"
-school_admin nil
+    school_district
+    product
   end
-
 end
