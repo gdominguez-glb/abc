@@ -2,12 +2,14 @@ class Api::OrderController < Api::BaseController
   def create
     @new_licenses_form = AdminNewLicensesForm.new(new_licenses_form_params.merge(
       payment_source_params: params[:payment_source],
-      products_quantity: products_quantity,
       admin_user: current_spree_user
     ))
+
+    @new_licenses_form.products_quantity = products_quantity
+
     @order = Spree::Order.new
 
-    if @new_licenses_form.valid?
+    if @new_licenses_form.errors.messages.empty?
       @new_licenses_form.perform
 
       render json: { success: true }
@@ -36,8 +38,12 @@ class Api::OrderController < Api::BaseController
   def products_quantity
     params[:products].map do |key, value|
       product = Spree::Product.find_by(sf_id_product: key)
-
-      { product.id.to_s => value }
+      if product.present?
+        { product.id.to_s => value }
+      else
+        @new_licenses_form.errors.add :base, :invalid, message: 'Product not found'
+        { key => value }
+      end
     end.reduce Hash.new, :merge
   end
 end
