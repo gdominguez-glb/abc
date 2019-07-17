@@ -64,5 +64,4 @@ class AdminNewLicensesForm
       id_in_salesforce: salesforce_account_id,
       local_object_type: 'SchoolDistrict').try(:local_object)
   end
-
 end

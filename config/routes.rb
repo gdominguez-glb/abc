@@ -124,6 +124,7 @@ Rails.application.routes.draw do
   namespace :api do
     get 'user/info', to: 'user#info'
     post 'user', to: 'user#create'
+    post 'order', to: 'order#create'
     post 'data/sync', to: 'data#sync'
   end
 
