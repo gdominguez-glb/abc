@@ -41,16 +41,6 @@ module UserProductable
     end
   end
 
-  def managed_products_options_ids
-    managed_licensed_products
-      .distributable
-      .fulfillmentable
-      .includes(:product)
-      .reject { |lp| (lp.product.nil? || lp.product.archived?) }
-      .group_by { |lp| format_name_with_expire_date(lp) }
-      .map { |key, licenses| [key, licenses.first.product.id]}
-  end
-
   def managed_products_options
     managed_licensed_products
       .distributable

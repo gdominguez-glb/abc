@@ -25,12 +25,6 @@ class Account::LicensesController < Account::BaseController
     @product_distributions = @product_distributions.page(params[:page])
   end
 
-  def domains
-    @domain = Domain.new
-    @domains = current_spree_user.school_district.domains
-    @products = current_spree_user.managed_products_options_ids
-  end
-
   def export_users
     distributsions =
       current_spree_user.product_distributions.joins(:product).

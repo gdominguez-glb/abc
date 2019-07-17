@@ -5,7 +5,6 @@ class Spree::LicensedProduct < ActiveRecord::Base
   belongs_to :product_distribution, class_name: 'Spree::ProductDistribution'
   belongs_to :admin_user, class_name: 'Spree::User'
   belongs_to :coupon_code, class_name: 'Spree::CouponCode'
-  has_many :domains
 
   include SalesforceAccess
 
