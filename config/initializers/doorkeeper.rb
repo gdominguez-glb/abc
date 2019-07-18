@@ -22,8 +22,8 @@ Doorkeeper.configure do
   # access_token_expires_in 2.hours
 
   # Assign a custom TTL for implicit grants.
-  custom_access_token_expires_in do |oauth_client|
-    oauth_client.application.name == ENV['SALES_FORCE_SYNC_APP'] ? 4.months.to_i : 2.hours.to_i
+  custom_access_token_expires_in do |app|
+    app.name == ENV['SALES_FORCE_SYNC_APP'] ? 4.months.to_i : 2.hours.to_i
   end
 
   # Use a custom class for generating the access token.
