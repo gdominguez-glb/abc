@@ -34,7 +34,6 @@ namespace :account do
     collection do
       post :assign
       get :users
-      get :domains
       get :export_users
       post :select_users
       get :edit_select_users
