@@ -5,6 +5,7 @@ class SchoolDistrict < ActiveRecord::Base
   belongs_to :state, class_name: 'Spree::State'
   belongs_to :country, class_name: 'Spree::Country'
   has_many :users, class_name: 'Spree::User'
+  has_many :domains
 
   before_save :sanitize_state
 

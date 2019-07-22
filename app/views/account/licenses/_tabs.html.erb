@@ -1,9 +1,10 @@
 <% tab ||= 'licenses' %>
 <div class="row">
-  <div class="col-sm-6">
+  <div class="col-sm-7">
     <ul class="nav nav-tabs margin-bottom--l" id="settings-tabs">
       <li role="presentation" class="<%= 'active' if tab == 'licenses' %>"><a href="/account/licenses">Licenses</a></li>
       <li role="presentation" class="<%= 'active' if tab == 'users' %>"><a href="/account/licenses/users">User Management</a></li>
+      <li role="presentation" class="<%= 'active' if tab == 'automatic' %>"><a href="/account/licenses/domains">Licenses Automatic Distribution</a></li>
     </ul>
   </div>
   <% if tab == 'licenses' %>
@@ -14,7 +15,7 @@
     </div>
   <% end %>
   <% if tab == 'users' %>
-    <div class="col-sm-6 text-right">
+    <div class="col-sm-5 text-right">
       <form action="" class="form">
         <div class="row">
           <div class="col-xs-6 col-md-3 col-md-offset-3">
