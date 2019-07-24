@@ -25,6 +25,8 @@ Spree::User.class_eval do
 
   has_many :subscriptions, dependent: :destroy
 
+  attr_accessor :licenses, :automatic_distribution
+
   def need_to_accept_updated_terms?
     accepted_terms? && !accepted_terms_2018?
   end

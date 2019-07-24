@@ -3,6 +3,9 @@ class Account::SettingsController < Account::BaseController
   include SchoolDistrictParamProcessor
 
   def index
+    domain = current_spree_user.email.split('@')[1]
+    @products_by_domain = Domain.products_by_domain(domain: domain)
+
     if current_spree_user.school_district
       if current_spree_user.school_district.school?
         current_spree_user.school_id = current_spree_user.school_district.id
@@ -67,6 +70,7 @@ class Account::SettingsController < Account::BaseController
       :district_id,
       :phone,
       :zip_code,
+      :automatic_distribution,
       school_district_attributes: [:name, :country_id, :state_id, :city, :place_type],
       interested_subjects: []
     )

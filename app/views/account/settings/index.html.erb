@@ -91,6 +91,26 @@
       </div>
     </div>
   </div>
+  <div class="row">
+    <% if @products_by_domain.count > 0 &&
+        current_spree_user.automatic_distribution? %>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="spree_user_licenses">Select license(s) to receive</label>
+          <div class="select-container dark-select block margin-bottom--reset">
+            <span>Select a license</span>
+            <%= f.select :licenses, @products_by_domain, { prompt: 'Select your licenses' }, { class: 'form-control', tabindex: 9 } %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <div class="col-sm-6">
+      <div class="form-group">
+        <%= f.check_box :automatic_distribution %>
+        <label for="spree_user_automatic_distribution">Mark this checkbox if you are not interested on receiving a license by automatic distribution.</label>
+      </div>
+    </div>
+  </div>
   <div class="row hide" id='phone-field'>
     <div class="col-sm-6">
       <label>Phone</label>
