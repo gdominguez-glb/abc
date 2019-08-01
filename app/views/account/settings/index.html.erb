@@ -97,19 +97,19 @@
       <div class="col-sm-6">
         <div class="form-group">
           <label for="spree_user_licenses">Select license(s) to receive</label>
-          <div class="select-container dark-select block margin-bottom--reset">
-            <span>Select a license</span>
-            <%= f.select :licenses, @products_by_domain, { prompt: 'Select your licenses' }, { class: 'form-control', tabindex: 9 } %>
-          </div>
+          <%= f.select :licenses, @products_by_domain, {}, multiple: 'multiple' %>
         </div>
       </div>
     <% end %>
-    <div class="col-sm-6">
-      <div class="form-group">
-        <%= f.check_box :automatic_distribution %>
-        <label for="spree_user_automatic_distribution">Mark this checkbox if you are not interested on receiving a license by automatic distribution.</label>
+
+    <% if @products_by_domain.count > 0 %>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <%= f.check_box :automatic_distribution %>
+          <label for="spree_user_automatic_distribution">Mark this checkbox if you are not interested on receiving a license by automatic distribution.</label>
+        </div>
       </div>
-    </div>
+    <% end %>
   </div>
   <div class="row hide" id='phone-field'>
     <div class="col-sm-6">
@@ -277,6 +277,7 @@
       $(".school-district-input-toggle").addClass('hidden');
       $("select[name='user[school_district_id]']").val(null);
     });
+
     $("select[name='user[school_district_id]']").change(function(){
       var value = $(this).val();
       if(value) {
@@ -284,9 +285,12 @@
         $(".school-district-input-toggle").removeClass('hidden');
       }
     });
+
     $("#user_title").change(function(e){
       toggleSchoolDistrict();
     });
+
+    $("#spree_user_licenses").select2();
 
     function toggleSchoolDistrict() {
       if(shouldShowDistrict($('#user_title').val())) {
@@ -296,7 +300,9 @@
       }
     }
 
-    $('#user_interested_subjects').select2();
+    $('#user_interested_subjects').select2({
+      theme: 'bootstrap'
+    });
     toggleSchoolDistrict();
   })(jQuery);
 //]]>

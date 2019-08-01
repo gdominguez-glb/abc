@@ -4,7 +4,8 @@ class Account::SettingsController < Account::BaseController
 
   def index
     domain = current_spree_user.email.split('@')[1]
-    @products_by_domain = Domain.products_by_domain(domain: domain)
+    @products_by_domain = Domain.products_by_domain(domain: domain,
+                                                    admin: admin)
 
     if current_spree_user.school_district
       if current_spree_user.school_district.school?
@@ -20,9 +21,14 @@ class Account::SettingsController < Account::BaseController
       flash.now[:error] = 'You must enter valid current password.'
       render :index and return
     end
+
     if spree_current_user.update(user_params)
       update_custom_field_values(spree_current_user) if $flipper[:expanding_user_profiles].enabled?
+
+      assign_licenses if user_params[:licenses].present?
+
       sign_in(:spree_user, spree_current_user, bypass: true)
+
       redirect_to '/account/settings', notice: "Saved profile successfully"
     else
       render :index
@@ -54,6 +60,11 @@ class Account::SettingsController < Account::BaseController
 
   private
 
+  def assign_licenses
+    worker = LicensesDistributionWorker.new
+    worker.perform(admin.id, licences_to_assign, [current_spree_user.email], '1')
+  end
+
   def user_params
     _params = params.require(:spree_user).permit(
       :phone,
@@ -71,6 +82,7 @@ class Account::SettingsController < Account::BaseController
       :phone,
       :zip_code,
       :automatic_distribution,
+      licenses: [],
       school_district_attributes: [:name, :country_id, :state_id, :city, :place_type],
       interested_subjects: []
     )
@@ -80,5 +92,15 @@ class Account::SettingsController < Account::BaseController
 
   def valid_password?
     current_spree_user.valid_password?(params[:current_password])
+  end
+
+  def licences_to_assign
+    user_params[:licenses].reject { |l| l.empty? }
+  end
+
+  def admin
+    Spree::User.where('email LIKE ?',
+                      "%@#{current_spree_user.email.split('@')[1]}")
+      .joins(:spree_roles).where("spree_roles.name = ?", 'admin').first
   end
 end
