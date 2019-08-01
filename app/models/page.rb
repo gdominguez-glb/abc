@@ -1,7 +1,6 @@
 require 'marketing_page_renderrer'
 
 class Page < ActiveRecord::Base
-
   include Archiveable
   include Publishable
   publishable name: :body
@@ -30,6 +29,7 @@ class Page < ActiveRecord::Base
   has_one :custom_css
 
   validates :slug, presence: true, uniqueness: true
+  validates :slug, format: { with: /\A[^\s!#$%^&*()（）=+;:'"\[\]\{\}|\\<>?,]+\z/ }
   validates_presence_of :title, :group_name
 
   serialize :tiles
