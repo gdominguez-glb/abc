@@ -5,7 +5,7 @@ module Spree
       before_action :find_license, only: [:edit, :update]
 
       def index
-        @licensed_products = Spree::LicensedProduct.unexpire.where(user_id: @user.id).includes(:product).page(params[:page])
+        @licensed_products = Spree::LicensedProduct.where(user_id: @user.id).includes(:product).page(params[:page])
       end
 
       def edit

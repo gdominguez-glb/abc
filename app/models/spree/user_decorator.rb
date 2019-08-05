@@ -25,8 +25,6 @@ Spree::User.class_eval do
 
   has_many :subscriptions, dependent: :destroy
 
-  attr_accessor :licenses
-
   def need_to_accept_updated_terms?
     accepted_terms? && !accepted_terms_2018?
   end
@@ -41,10 +39,6 @@ Spree::User.class_eval do
 
   def subscribe?(blog)
     subscriptions.where(blog_id: blog.id).exists?
-  end
-
-  def automatic_distribution?
-    !automatic_distribution
   end
 
   def init_custom_fields

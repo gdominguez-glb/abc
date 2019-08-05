@@ -12,9 +12,6 @@ RSpec.describe Page, type: :model do
   it { should have_one(:shop).class_name('CurriculumShop') }
   it { should have_one(:custom_css) }
 
-  it { should allow_value('math-uri').for(:slug) }
-  it { should_not allow_value('Math | Worng URI').for(:slug) }
-
   let(:page) { create(:page, title: 'T', body: 'B') }
 
   describe ".by_category" do

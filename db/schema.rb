@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190709161725) do
+ActiveRecord::Schema.define(version: 20190311230535) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -201,17 +201,6 @@ ActiveRecord::Schema.define(version: 20190709161725) do
     t.datetime "attachment_updated_at"
     t.string   "alt_text"
   end
-
-  create_table "domains", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "school_district_id"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
-    t.integer  "spree_product_id"
-  end
-
-  add_index "domains", ["school_district_id"], name: "index_domains_on_school_district_id", using: :btree
-  add_index "domains", ["spree_product_id"], name: "index_domains_on_spree_product_id", using: :btree
 
   create_table "download_jobs", force: :cascade do |t|
     t.integer  "user_id"
@@ -2003,7 +1992,6 @@ ActiveRecord::Schema.define(version: 20190709161725) do
     t.boolean  "accepted_terms_2018",                      default: false
     t.datetime "accepted_terms_2018_at"
     t.boolean  "showed_2018_new_feature_tour",             default: false
-    t.boolean  "automatic_distribution",                   default: true
   end
 
   add_index "spree_users", ["deleted_at"], name: "index_spree_users_on_deleted_at", using: :btree
@@ -2188,8 +2176,6 @@ ActiveRecord::Schema.define(version: 20190709161725) do
     t.text     "sub_header"
   end
 
-  add_foreign_key "domains", "school_districts"
-  add_foreign_key "domains", "spree_products"
   add_foreign_key "regonline_events", "regonline_event_headers"
   add_foreign_key "spree_whitelists", "school_districts"
 end

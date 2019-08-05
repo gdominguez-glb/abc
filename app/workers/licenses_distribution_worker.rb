@@ -10,8 +10,7 @@ class LicensesDistributionWorker
       { email: email, quantity: licenses_number.to_i }
     end
 
-    Spree::LicensesManager::LicensesDistributer.new(user: user,
-                                                    licensed_products: licensed_products,
-                                                    rows: rows).execute
+    Spree::LicensesManager::LicensesDistributer.new(user: user, licensed_products: licensed_products, rows: rows).execute
   end
+
 end
