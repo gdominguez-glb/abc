@@ -193,6 +193,14 @@
   }
 }
 
+.card-science {
+  border-top-color: $c-science-primary;
+
+  &.card-media {
+    background-color: $c-science-primary;
+  }
+}
+
 .card--no-border {
   border-top: 0;
 }
