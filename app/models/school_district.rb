@@ -136,6 +136,8 @@ class SchoolDistrict < ActiveRecord::Base
       'BillingCity' => city,
       'Website_ID__c' => id,
       'BillingCountry' => country.try(:iso) }
+    if Rails.env.production?
+      sf_attrs['Override_Owner_Assignment__c'] = true
     end
     sf_attrs
   end
