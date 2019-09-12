@@ -27,7 +27,7 @@
 </div>
 
 <% (pinned_products + (pinned_products.count >= 4 ? [] : products.select{|p| !pinned_products.include?(p) }[0..(4 - 1 - pinned_products.count)])).each do |product| %>
-  <%= link_to account_launch_product_url(product.id), class: 'card-link' do %>
+  <%= link_to account_launch_product_path(product.id), class: 'card-link' do %>
     <div class="card <%= card_type_class(product) %>">
       <div class="card-meta"><%= product.curriculum.try(:name) %></div>
       <h4 class="card-title"><%= product.name %></h4>
