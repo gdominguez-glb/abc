@@ -1,4 +1,4 @@
-<% url = spree.product_url(product, taxon_id: @taxon.try(:id)) %>
+<% url = spree.product_path(product, taxon_id: @taxon.try(:id)) %>
 <div id="product_<%= product.id %>" data-hook="products_list_item" itemscope itemtype="http://schema.org/Product" class="display-flex--lg-min flex-column--lg-min flex-1--lg-min">
 
   <% if product.group_product? %>
