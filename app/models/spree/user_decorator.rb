@@ -356,12 +356,12 @@ Spree::User.class_eval do
       lastname: self.last_name,
       email: self.email,
       zip: self.zip_code,
-      subject_curriculum_role: hubspot_curriculum_interests,
-      role: self.title,
+      subject_s_you_are_interested_in: hubspot_curriculum_interests,
+      role_drop_down: self.title,
       country: self.try(:school_district).try(:country).try(:name),
-      state: self.try(:school_district).try(:state).try(:name),
+      state_select: self.try(:school_district).try(:state).try(:name),
       city: self.try(:school_district).try(:city),
-      company: self.try(:school_district).try(:name),
+      school_name: self.try(:school_district).try(:name),
       receive_newsletter_and_updates: self.allow_communication?,
       hs_context: {ipAddress: self.remote_ip, hutk: self.hubspot_cookie}.to_json
     })
