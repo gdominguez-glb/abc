@@ -139,6 +139,7 @@ Spree::Order.class_eval do
   def skip_salesforce_sync?
     return true if cc_process?
     return true if state != 'complete'
+    return true if free_digital_order?
     false
   end
 
@@ -209,7 +210,7 @@ Spree::Order.class_eval do
       product.digital_delivery? && product.free?
     end
   end
-
+                                
   def validate_terms_and_conditions
     if has_license_products? && terms_and_conditions != true
       self.errors[:terms_and_conditions] << Spree.t('terms_and_conditions.must_be_accepted')
@@ -276,14 +277,26 @@ Spree::Order.class_eval do
     self.update!
   end
 
-  def check_trial_purchase_for_hubspot_event
+def check_trial_purchase_for_hubspot_event
     if self.user && self.user.email.present?
       if line_items.any?{ |item| item.product.name == "Eureka Digital Suite - 30 Day Trial" }
         HubspotCustomEventWorker.perform_async("Eureka Digital Suite - 30 Day Trial Purchase", self.user.email)
       end
-      if line_items.any?{ |item| item.product.name == "Math Night Resource Pack" }
+     if line_items.any?{ |item| item.product.name == "Math Night Resource Pack" }
         HubspotCustomEventWorker.perform_async("Eureka Math Night Product Check Out", self.user.email)
+      end  
+      if line_items.any?{ |item| item.product.name == "Eureka Basic Curriculum Files" }
+        HubspotCustomEventWorker.perform_async("Eureka Basic Curriculum Check Out", self.user.email)
       end
+      if line_items.any?{ |item| item.product.name == "Eureka Math Teacher Resource Pack" }
+        HubspotCustomEventWorker.perform_async("Eureka Math Teacher Resource Pack Check Out", self.user.email)
+      end
+      if line_items.any?{ |item| item.product.name == "Wit & Wisdom Teacher Resource Pack" }
+        HubspotCustomEventWorker.perform_async("Wit & Wisdom Teacher Resource Pack Check Out", self.user.email)
+      end
+      if line_items.any?{ |item| item.product.name == "PHD Science Teacher Resource Pack" }
+        HubspotCustomEventWorker.perform_async("PHD Science Teacher Resource Pack Check Out", self.user.email)
+      end  
     end
   end
 end
