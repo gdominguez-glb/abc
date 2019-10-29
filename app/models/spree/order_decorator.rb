@@ -139,6 +139,7 @@ Spree::Order.class_eval do
   def skip_salesforce_sync?
     return true if cc_process?
     return true if state != 'complete'
+    return true if free_digital_order?
     false
   end
 
