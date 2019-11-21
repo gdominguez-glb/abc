@@ -1,0 +1,6 @@
+<% if @flipbook_leaf.valid? %>
+  $("#new-flipbook-leaf-modal").modal('hide');
+  $('#flipbook-leafs').append("<%= escape_javascript(render partial: 'flipbook_item', locals: { flipbook_leaf: @flipbook_leaf }) %>")
+<% else %>
+  alert('Must enter name!')
+<% end %>

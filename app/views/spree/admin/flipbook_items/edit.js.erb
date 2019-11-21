@@ -1,0 +1,8 @@
+$('#flipbook-items-modal').modal('hide');
+$('#flipbook-items-modal').on('hidden.bs.modal', function (e) {
+  $('body').append("<%= escape_javascript(render 'edit_modal') %>");
+  $('#edit-flipbook-item-modal').modal('show');
+  $('#edit-flipbook-item-modal').on('hidden.bs.modal', function (e) {
+    $('#edit-flipbook-item-modal').remove();
+  });
+});

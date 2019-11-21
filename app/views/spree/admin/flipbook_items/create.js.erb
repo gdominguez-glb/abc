@@ -1,0 +1,11 @@
+<% if @flipbook_item.save %>
+  <%
+    @flipbook_items = @flipbook_leaf.flipbook_items.order(:position)
+    @flipbook_item = @flipbook_leaf.flipbook_items.new
+  %>
+  $('.modal.in').html("<%= escape_javascript(render 'dialog') %>");
+  <%= render 'modal_js' %>
+<% else %>
+  alert('Must enter name and upload file or enter inkling code.')
+<% end %>
+

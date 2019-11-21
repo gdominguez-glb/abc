@@ -1,0 +1,39 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title">Files for <%= @flipbook_leaf.name %></h4>
+    </div>
+    <div class="modal-body">
+
+      <%= render 'item_form' %>
+
+      <div class="table-responsive">
+        <table class="table" style="min-width: 100%;" id="flipbook-items-list-<%= @flipbook_leaf.id %>">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Type</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @flipbook_items.each do |flipbook_item| %>
+              <% next if flipbook_item.new_record? %>
+              <tr data-id="<%= flipbook_item.id %>">
+                <td><%= flipbook_item.name %> </td>
+                <td><%= flipbook_item.item_type %></td>
+                <td>
+                  <%= link_to 'Edit', spree.edit_admin_product_flipbook_leaf_flipbook_item_path(@flipbook_leaf.product, @flipbook_leaf, flipbook_item), class: 'btn btn-default btn-sm', remote: true %>
+                  <%= link_to 'Delete', spree.admin_product_flipbook_leaf_flipbook_item_path(@flipbook_leaf.product, @flipbook_leaf, flipbook_item), class: 'btn btn-default btn-sm', remote: true, data: { confirm: 'Are you sure?', method: :delete } %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </div>
+  </div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->

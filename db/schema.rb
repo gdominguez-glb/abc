@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190311230535) do
+ActiveRecord::Schema.define(version: 20191119091852) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -908,6 +908,32 @@ ActiveRecord::Schema.define(version: 20190311230535) do
   end
 
   add_index "spree_digitals", ["variant_id"], name: "index_spree_digitals_on_variant_id", using: :btree
+
+  create_table "spree_flipbook_items", force: :cascade do |t|
+    t.integer  "flipbook_leaf_id"
+    t.string   "name"
+    t.integer  "position"
+    t.text     "inkling_code"
+    t.integer  "item_type"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.string   "cover_file_name"
+    t.string   "cover_content_type"
+    t.integer  "cover_file_size"
+    t.datetime "cover_updated_at"
+    t.string   "attachment_file_name"
+    t.string   "attachment_content_type"
+    t.integer  "attachment_file_size"
+    t.datetime "attachment_updated_at"
+  end
+
+  create_table "spree_flipbook_leafs", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "product_id"
+    t.integer  "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "spree_gateways", force: :cascade do |t|
     t.string   "type"
