@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="col-sm-10 col-sm-offset-1 margin-top--xl margin-bottom--xl">
+    <p>
+      <%= link_to account_products_path, :class => 'btn btn-default' do %>
+        <i class="mi">keyboard_arrow_left</i> Back to dashboard
+      <% end %>
+    </p>
+    <% @flipbook_leafs.each do |flipbook_leaf| %>
+      <h2 class="thumbnail-library-leaf-title"><%= flipbook_leaf.name %></h2>
+
+      <div class="well">
+        <% flipbook_leaf.flipbook_items.each_slice(4) do |flipbook_items| %>
+          <div class="row">
+            <% flipbook_items.each do |flipbook_item| %>
+              <div class="col-sm-3">
+                <div class="thumbnail-library-wrapper">
+                  <% if flipbook_item.issuu? %>
+
+                    <%= link_to launch_item_flipbook_path(@product, item_id: flipbook_item.id), class: 'thumbnail thumbnail-library thumbnail-library-inkling' do %>
+                      <%= image_tag flipbook_item.cover.url %>
+                      <%= material_icon.md_48.launch.css_class('thumbnail-library-icon') %>
+                    <% end %>
+
+
+                    <h3 class="thumbnail-library-item-title"><%= flipbook_item.name %></h3>
+
+                  <% elsif flipbook_item.pdf? %>
+
+                    <%= link_to download_item_flipbook_path(@product, item_id: flipbook_item.id), target: '_blank', class: 'thumbnail thumbnail-library thumbnail-library-pdf' do %>
+                      <%= image_tag flipbook_item.cover.url %>
+                      <%= material_icon.md_48.cloud_download.css_class('thumbnail-library-icon') %>
+
+                    <% end %>
+
+                    <h3 class="thumbnail-library-item-title"><%= flipbook_item.name %></h3>
+
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+
+    <% end %>
+  </div>
+</div>

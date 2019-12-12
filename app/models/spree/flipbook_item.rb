@@ -7,7 +7,7 @@ class Spree::FlipbookItem < ActiveRecord::Base
 
   acts_as_list scope: :flipbook_leaf
 
-  enum item_type: [ :inkling, :pdf ]
+  enum item_type: %i[issuu pdf]
 
   has_attached_file :cover, {
     path:           '/:class/:attachment/:id_partition/:style/:filename',

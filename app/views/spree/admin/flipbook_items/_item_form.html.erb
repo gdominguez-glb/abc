@@ -7,14 +7,14 @@
     <label>Choose Image to upload</label>
     <%= f.file_field :cover %>
   </div>
-  <% @flipbook_item.item_type ||= 'inkling' %>
+  <% @flipbook_item.item_type ||= 'issuu' %>
   <div class="form-group">
     <label>Type</label>
-    <%= f.select :item_type, options_for_select(['inkling', 'pdf'], f.object.item_type), {}, class: 'form-control' %>
+    <%= f.select :item_type, options_for_select(['issuu', 'pdf'], f.object.item_type), {}, class: 'form-control' %>
   </div>
-  <div class="form-group inkling-code-wraper <%= 'hide' if !@flipbook_item.inkling? %>">
-    <label>Inkling Code</label>
-    <%= f.text_area :inkling_code, class: 'form-control' %>
+  <div class="form-group inkling-code-wraper <%= 'hide' if !@flipbook_item.issuu? %>">
+    <label>Issuu Code</label>
+    <%= f.text_area :issuu_code, class: 'form-control' %>
   </div>
   <div class="form-group pdf-wraper  <%= 'hide' if !@flipbook_item.pdf? %>"">
     <label>Choose Pdf to upload</label>

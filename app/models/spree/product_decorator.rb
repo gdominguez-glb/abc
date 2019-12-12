@@ -123,6 +123,10 @@ Spree::Product.class_eval do
     self.product_type == 'library'
   end
 
+  def flipbook_product?
+    product_type == 'flipbook'
+  end
+
   def inkling_connect_product?
     self.product_type == 'inkling_connect'
   end
