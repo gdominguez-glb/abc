@@ -47,14 +47,14 @@
     width: 165px;
     padding: 0;
     text-indent: -9999px;
-    background: transparent asset-url('logo-half.png') no-repeat 50% 50%;
+    background: transparent asset-url('logo-half.svg') no-repeat 50% 50%;
     background-size: 150px 35px;
 
     @media screen and (min-width: $screen-sm-min) {
       position: relative;
       height: 109px;
       margin-left: 50px;
-      background: transparent asset-url('logo-full.png') no-repeat 50% 50%;
+      background: transparent asset-url('logo-full.svg') no-repeat 50% 50%;
       background-size: 155px 109px;
     }
   }
