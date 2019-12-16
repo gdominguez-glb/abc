@@ -142,6 +142,13 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :flipbooks, only: [:show] do
+    member do
+      get '/launch/:item_id', action: :launch, as: :launch_item
+      get '/download/:item_id', action: :download, as: :download_item
+    end
+  end
+
   resources :materials do
     collection do
       post :download_all

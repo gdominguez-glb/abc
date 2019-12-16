@@ -58,6 +58,15 @@ Spree::Product.class_eval do
                           join_table: 'spree_group_items',
                           foreign_key: 'group_id'
 
+  has_many :materials
+  has_many :material_import_jobs
+  has_many :download_products
+  has_many :download_pages, through: :download_products
+  has_many :library_leafs, -> { order(:position) }
+  has_many :library_items, through: :library_leafs
+  has_many :flipbook_leafs, -> { order(:position) }
+  has_many :flipbook_items, through: :flipbook_leafs
+
   scope :search_can_be_part, lambda { |query|
     where = "LOWER(#{Spree::Product.quoted_table_name}.name) LIKE ?"
     like  = "%#{query.downcase}%"
@@ -112,6 +121,10 @@ Spree::Product.class_eval do
 
   def library_product?
     self.product_type == 'library'
+  end
+
+  def flipbook_product?
+    product_type == 'flipbook'
   end
 
   def inkling_connect_product?
@@ -176,7 +189,8 @@ Spree::Product.class_eval do
       'inkling_connect',
       'get_in_touch',
       'library',
-      'other'
+      'other',
+      'flipbook'
     ]
   end
 

@@ -106,6 +106,16 @@ spree_routes_overrides = Proc.new do
           end
         end
       end
+      resources :flipbook_leafs do
+        collection do
+          post :update_position
+        end
+        resources :flipbook_items do
+          collection do
+            post :update_position
+          end
+        end
+      end
       resource :inkling_code
     end
 

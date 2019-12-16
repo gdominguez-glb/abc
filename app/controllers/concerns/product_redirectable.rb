@@ -8,6 +8,8 @@ module ProductRedirectable
       spree.inkling_product_path(product)
     elsif product.library_product?
       main_app.library_path(product)
+    elsif product.flipbook_product?
+      main_app.flipbook_path(product)
     elsif product.access_url.present?
       product.parsed_access_url
     end
