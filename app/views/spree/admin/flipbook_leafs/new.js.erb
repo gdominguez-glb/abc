@@ -1,0 +1,5 @@
+$("body").append("<%= escape_javascript(render 'modal_form') %>")
+$('#new-flipbook-leaf-modal').modal('show')
+$('#new-flipbook-leaf-modal').on('hidden.bs.modal', function (e) {
+  $('#new-flipbook-leaf-modal').remove();
+})

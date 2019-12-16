@@ -1,0 +1,6 @@
+<% if @flipbook_leaf.valid? %>
+  $("[data-id='<%= @flipbook_leaf.id %>']").replaceWith("<%= escape_javascript(render partial: 'flipbook_item', locals: { flipbook_leaf: @flipbook_leaf }) %>")
+  $("#new-flipbook-leaf-modal").modal('hide');
+<% else %>
+  alert('Must enter name!')
+<% end %>

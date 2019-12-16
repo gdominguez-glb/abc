@@ -1,0 +1,9 @@
+<li class='list-group-item' data-id="<%= flipbook_leaf.id %>">
+  <%= flipbook_leaf.name %>
+
+  <div class="actions pull-right">
+    <%= link_to 'Edit', spree.edit_admin_product_flipbook_leaf_path(@product, flipbook_leaf), class: 'btn btn-default btn-sm', remote: true %>
+    <%= link_to 'Delete', spree.admin_product_flipbook_leaf_path(@product, flipbook_leaf), class: 'btn btn-default btn-sm', remote: true, data: { confirm: 'Are you sure to delete this library leaf?', method: :delete } %>
+    <%= link_to 'Items', spree.admin_product_flipbook_leaf_flipbook_items_path(@product, flipbook_leaf), class: 'btn btn-default btn-sm', remote: true %>
+  </div>
+</li>

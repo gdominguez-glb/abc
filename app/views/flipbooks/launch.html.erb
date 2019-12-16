@@ -1,0 +1,12 @@
+<div class="row no-gutter">
+  <div class="col-sm-9 col-sm-offset-1 margin-top--m">
+    <%= link_to spree.launch_product_path(@product), class: 'btn btn-default margin-bottom--m' do %>
+      <i class="mi">keyboard_arrow_left</i> Back to Flipbook
+    <% end %>
+  </div>
+  <div class="col-sm-12">
+    <div class="embed-responsive embed-responsive-4by4">
+      <%= @flipbook_item.issuu_code.html_safe %>
+    </div>
+  </div>
+</div>
