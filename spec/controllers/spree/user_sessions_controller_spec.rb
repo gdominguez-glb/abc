@@ -76,4 +76,114 @@ RSpec.describe Spree::UserSessionsController, type: :controller do
       expect(controller.current_spree_user).to eq(nil)
     end
   end
+
+  describe 'GET lti' do
+    before { @request.env["devise.mapping"] = Devise.mappings[:spree_user] }
+
+    before :each do
+      @app = create :application, name: 'test', scopes: 'public'
+      @token = create :access_token, resource_owner_id: nil, application: @app
+    end
+
+    it 'decrypt and create a session to access Eureka' do
+      user = create :gm_user
+
+      json_response = {
+        id: user.id,
+        token: @token.token
+      }.to_json
+
+      parameters = {
+        spree_user: {
+          id: Cypher.encrypt(json_response),
+          redirect_to: 'https://staging.eureka.greatminds.org'
+        }
+      }
+
+      get :lti, parameters
+
+      expect(subject).to redirect_to('https://staging.eureka.greatminds.org')
+    end
+
+    it 'fail when the user doesn\'t exists' do
+      json_response = {
+        id: 129395729,
+        token: @token.token
+      }.to_json
+
+      parameters = {
+        spree_user: {
+          id: Cypher.encrypt(json_response),
+          redirect_to: 'https://staging.eureka.greatminds.org'
+        }
+      }
+
+      get :lti, parameters
+
+      expect(response.status).to eq(500)
+      expect(response.body).to eq('User not found')
+    end
+
+    it 'fail when the id isnt valid' do
+      parameters = {
+        spree_user: {
+          id: 'invalid string',
+          redirect_to: 'https://staging.eureka.greatminds.org',
+          token: @token.token
+        }
+      }
+
+      get :lti, parameters
+
+      expect(response.status).to eq(500)
+      expect(response.body).to eq('Invalid id')
+    end
+
+    it 'fail when the token is invalid' do
+      user = create :gm_user
+
+      json_response = {
+        id: user.id,
+        token: 'invalid token'
+      }.to_json
+
+      parameters = {
+        spree_user: {
+          id: Cypher.encrypt(json_response),
+          redirect_to: 'https://staging.eureka.greatminds.org'
+        }
+      }
+
+      get :lti, parameters
+
+      expect(response.status).to eq(500)
+      expect(response.body).to eq('Token expired')
+    end
+
+    it 'fail when the token is expired' do
+      token = create :access_token,
+                     resource_owner_id: nil,
+                     application: @app,
+                     expires_in: 1
+      sleep 1
+      user = create :gm_user
+
+      json_response = {
+        id: user.id,
+        token: token.token
+      }.to_json
+
+      parameters = {
+        spree_user: {
+          id: Cypher.encrypt(json_response),
+          redirect_to: 'https://staging.eureka.greatminds.org'
+        }
+      }
+
+      get :lti, parameters
+
+      expect(response.status).to eq(500)
+      expect(response.body).to eq('Token expired')
+    end
+  end
 end

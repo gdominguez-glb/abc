@@ -1,0 +1,36 @@
+<%= render :partial => 'spree/admin/shared/product_tabs', :locals => {:current => "flipbook"} %>
+
+<% content_for :page_title do %>
+  Flipbook
+<% end %>
+
+<%= button_link_to 'New Flipbook Leaf', new_object_url, { :class => "btn-success", :icon => 'add', :id => 'admin_new_product_flipbook_leaf', remote: true } %>
+
+<ul class="list-group" style="margin-top: 10px;" id="flipbook-leafs">
+  <% @flipbook_leafs.each do |flipbook_leaf| %>
+    <%= render partial: 'flipbook_item', locals: { flipbook_leaf: flipbook_leaf } %>
+  <% end %>
+</ul>
+
+<script type="text/javascript">
+  $(function(){
+    function updatePositions() {
+      var path = "<%= spree.update_position_admin_product_flipbook_leafs_path(@product) %>";
+      var positions = {};
+      $.each($('#flipbook-leafs li'), function(index, el){
+        positions[$(el).attr('data-id')] = index + 1;
+      });
+      $.ajax({
+        url: path,
+        type: 'POST',
+        data: { positions: positions }
+      })
+    }
+
+    $("#flipbook-leafs").sortable({
+      stop: function  (event, ui) {
+        updatePositions();
+      }
+    })
+  });
+</script>

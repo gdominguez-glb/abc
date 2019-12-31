@@ -22,9 +22,9 @@ Doorkeeper.configure do
   # access_token_expires_in 2.hours
 
   # Assign a custom TTL for implicit grants.
-  # custom_access_token_expires_in do |oauth_client|
-  #   oauth_client.application.additional_settings.implicit_oauth_expiration
-  # end
+  custom_access_token_expires_in do |app|
+    app.name == ENV['SALES_FORCE_SYNC_APP'] ? 4.months.to_i : 2.hours.to_i
+  end
 
   # Use a custom class for generating the access token.
   # https://github.com/doorkeeper-gem/doorkeeper#custom-access-token-generator
@@ -90,7 +90,7 @@ Doorkeeper.configure do
   #   http://tools.ietf.org/html/rfc6819#section-4.4.2
   #   http://tools.ietf.org/html/rfc6819#section-4.4.3
   #
-  # grant_flows %w(authorization_code client_credentials)
+  grant_flows %w(authorization_code client_credentials)
 
   # Under some circumstances you might want to have applications auto-approved,
   # so that the user skips the authorization step.

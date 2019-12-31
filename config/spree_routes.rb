@@ -71,6 +71,7 @@ spree_routes_overrides = Proc.new do
     end
 
     resources :archives
+    resources :whitelist, only: [:index, :create, :destroy]
     resource :storefront
     resources :products do
       resources :parts, only: [:index, :create, :destroy]
@@ -100,6 +101,16 @@ spree_routes_overrides = Proc.new do
           post :update_position
         end
         resources :library_items do
+          collection do
+            post :update_position
+          end
+        end
+      end
+      resources :flipbook_leafs do
+        collection do
+          post :update_position
+        end
+        resources :flipbook_items do
           collection do
             post :update_position
           end

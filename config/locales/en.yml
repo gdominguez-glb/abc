@@ -38,6 +38,12 @@ en:
       previous: "&lsaquo;"
       next: "&rsaquo;"
   spree:
+    terms_and_conditions:
+      title: 'Terms and Conditions'
+      checkbox: 'I accept the Terms and Conditions.'
+      must_be_accepted: 'must be accepted!'
+    order_state:
+      terms_and_conditions: 'Terms'
     available_on: For Sale Date
     purchase_from_partner: "Visit Site"
     purchase_order: "Purchase Order"
@@ -85,6 +91,8 @@ en:
         sf_id_product: Salesforce Product2Id
         sf_id_pricebook: Salesforce Pricebook2Id
         purchase_once: 'Trial - User may only purchase once'
+      spree/order:
+        terms_and_conditions: 'Terms and Conditions'
       spree/user:
         school_district: School/District
         title: Role

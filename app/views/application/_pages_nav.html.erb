@@ -23,9 +23,12 @@
           <% if @group_page && @group_page.shop %>
             <li><%= link_to @group_page.shop.title, @group_page.shop.url  %></li>
           <% end %>
-
+        
+          <% if @group_page && @group_page.slug == "math" %>
+            <li><a href="https://eurekamath.greatminds.org/webinar-library">Webinars</a></li>
+          <% end %>
           <% if @group_page && @group_page.slug == "english" %>
-            <li><a href="https://ww.greatminds.org/english/pd">PD</a></li>
+            <li><a href="https://greatminds.org/english/pd">Professional Development</a></li>
           <% end %>
 
           <% if @group_page && blog = @group_page.blogs.displayable.first %>

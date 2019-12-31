@@ -12,7 +12,7 @@
     <%= content_tag :li, class: ('active' if current == :images) do %>
       <%= link_to_with_icon 'picture', Spree.t(:images), spree.admin_product_images_url(@product) %>
     <% end if can?(:admin, Spree::Image) %>
-    
+
     <% if @product.product_type == 'bundle' %>
       <%= content_tag :li, class: ('active' if current == Spree.t('bundles.admin.sidebar')) do %>
         <%= link_to_with_icon 'puzzle-piece', Spree.t('bundles.admin.sidebar'), admin_product_parts_path(@product) %>
@@ -46,6 +46,12 @@
     <% if @product.product_type == 'library' %>
       <li class="<%= 'active' if current == 'Library' %>">
          <%= link_to_with_icon 'book', 'Library', admin_product_library_leafs_path(@product) %>
+      </li>
+    <% end %>
+
+    <% if @product.product_type == 'flipbook' %>
+      <li class="<%= 'active' if current == 'flipbook' %>">
+         <%= link_to_with_icon 'book', 'Flipbook', admin_product_flipbook_leafs_path(@product) %>
       </li>
     <% end %>
   </ul>

@@ -49,7 +49,7 @@ qa:
 staging:
   <<: *default_settings
   app_name: Greatminds (Staging)
-  monitor_mode: false
+  monitor_mode: true
 
 production:
   <<: *default_settings

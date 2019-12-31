@@ -26,19 +26,41 @@ class Account::LicensesController < Account::BaseController
   end
 
   def export_users
-    distributsions = current_spree_user.product_distributions.
-                       joins(:product).
-                       where("spree_products.expiration_date > ? or spree_products.expiration_date is null", Time.now).
-                       where('spree_product_distributions.quantity > 0 and (spree_product_distributions.expire_at is null or spree_product_distributions.expire_at > ?)', Time.now).
-                       includes(:product, to_user: [:school_district])
+    distributsions =
+      current_spree_user.product_distributions.joins(:product).
+      where('spree_products.expiration_date > ? or '\
+            'spree_products.expiration_date is null', Time.now).
+      where('spree_product_distributions.quantity > 0 and '\
+            '(spree_product_distributions.expire_at is null or '\
+            'spree_product_distributions.expire_at > ?)', Time.now).
+      includes(:product, to_user: [:school_district])
+
     if params[:query].present?
-      distributsions = distributsions.
-                         where("spree_product_distributions.email ilike :query or spree_users.email ilike :query or spree_users.first_name ilike :query or spree_users.last_name ilike :query", query: "%#{params[:query].strip}%")
+      distributsions =
+        distributsions.
+        where('spree_product_distributions.email ilike :query or '\
+              'spree_users.email ilike :query or '\
+              'spree_users.first_name ilike :query or '\
+              'spree_users.last_name ilike :query',
+              query: "%#{params[:query].strip}%")
     end
+
     @distributsions_data = distributsions.group_by(&:email)
-    activities_scope = Activity.where(user_id: distributsions.map(&:to_user_id).compact.uniq)
-    @last_activites_data = activities_scope.select('max(created_at) as created_at, user_id').group('user_id')
-    @activities_data = activities_scope.where('created_at > ?', 10.days.ago).select(:created_at, :user_id).order(created_at: :desc)
+
+    @last_activites_data = Activity.where(user_id: current_spree_user.product_distributions.users).
+                             select('max(created_at) as created_at, user_id').
+                             group('user_id')
+
+    @activities_data = Activity.where(user_id: current_spree_user.product_distributions.users).
+                         where('created_at > ?', 10.days.ago).
+                         select(:created_at, :user_id, :action).
+                         order(created_at: :desc)
+
+    respond_to do |format|
+      format.csv {
+        send_data csv_data, filename: 'export_users.csv'
+      }
+    end
   end
 
   def user_stats
@@ -111,6 +133,39 @@ class Account::LicensesController < Account::BaseController
   end
 
   private
+
+  def csv_data
+    CSV.generate do |csv|
+      csv << ['User', 'Email', 'School/District', 'Product Licenses',
+              'Joined date', 'Last Active', '5 - Day Logins',
+              '10 - Day Logins', 'Monthly Logins', 'Signed Up']
+
+      @distributsions_data.each do |email, pds|
+        to_user = pds.first.to_user
+
+        last_activities = @last_activites_data.select do |d|
+          d.user_id == to_user.try(:id)
+        end
+
+        activities = @activities_data.select do |d|
+          d.user_id == to_user.try(:id)
+        end
+
+        csv <<  [
+          (to_user.full_name rescue nil),
+          (to_user.try(:email) || email),
+          (to_user.school_district.place_type rescue nil),
+          (pds.map {|pd| "#{pd.product.name}(x#{pd.quantity})"}.join('/')),
+          (to_user.created_at.strftime("%b %-d, %Y") rescue nil),
+          user_last_active(last_activities, to_user),
+          user_5_days_logins(activities, to_user),
+          user_10_days_logins(activities, to_user),
+          user_month_logins(activities, to_user),
+          (to_user ? 'Yes' : 'No')
+        ]
+      end
+    end
+  end
 
   def assign_licenses_params
     params.require(:assign_licenses_form).permit(:licenses_recipients, :licenses_number, :total, :licenses_ids, :emails => [])

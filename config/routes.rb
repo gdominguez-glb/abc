@@ -21,6 +21,7 @@ class LinkUploadsConstraint
 end
 
 Rails.application.routes.draw do
+
   require 'sidekiq/web'
 
   authenticate :spree_user, lambda { |u| u.has_admin_role? } do
@@ -52,6 +53,7 @@ Rails.application.routes.draw do
 
   devise_scope :spree_user do
     get 'become/:id', action: 'become', controller: 'spree/user_sessions', as: 'become'
+    get 'lti', action: 'lti', controller: 'spree/user_sessions', as: 'lti'
     get '/resources/signup/:title/:interest', action: :new, controller: 'spree/user_registrations', as: :custom
   end
 
@@ -121,6 +123,8 @@ Rails.application.routes.draw do
 
   namespace :api do
     get 'user/info', to: 'user#info'
+    post 'user', to: 'user#create'
+    post 'order', to: 'order#create'
     post 'data/sync', to: 'data#sync'
   end
 
@@ -132,6 +136,13 @@ Rails.application.routes.draw do
 
   resources :inkling_codes, only: [:show]
   resources :libraries, only: [:show] do
+    member do
+      get '/launch/:item_id', action: :launch, as: :launch_item
+      get '/download/:item_id', action: :download, as: :download_item
+    end
+  end
+
+  resources :flipbooks, only: [:show] do
     member do
       get '/launch/:item_id', action: :launch, as: :launch_item
       get '/download/:item_id', action: :download, as: :download_item

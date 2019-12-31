@@ -1,0 +1,29 @@
+$('#flipbook-items-modal').modal('show')
+$('#flipbook-items-modal').on('hidden.bs.modal', function (e) {
+  $('#flipbook-items-modal').remove();
+});
+
+$('#flipbook-items-modal #flipbook_item_item_type').change(function(){
+  if ( $(this).val() == 'issuu' ) {
+    $('#flipbook-items-modal .inkling-code-wraper').removeClass('hide');
+    $('#flipbook-items-modal .pdf-wraper').addClass('hide');
+  } else {
+    $('#flipbook-items-modal .inkling-code-wraper').addClass('hide');
+    $('#flipbook-items-modal .pdf-wraper').removeClass('hide');
+  }
+});
+
+var updatePositionUrl = "<%= spree.update_position_admin_product_flipbook_leaf_flipbook_items_path(@flipbook_leaf.product, @flipbook_leaf) %>"
+$("#flipbook-items-list-<%= @flipbook_leaf.id %> tbody").sortable({
+  stop: function  (event, ui) {
+    var positions = {};
+    $.each($("#flipbook-items-list-<%= @flipbook_leaf.id %> tbody tr"), function(index, el){
+      positions[$(el).attr('data-id')] = index + 1;
+    });
+    $.ajax({
+      url: updatePositionUrl,
+      type: 'POST',
+      data: { positions: positions }
+    })
+  }
+})

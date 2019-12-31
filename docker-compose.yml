@@ -1,0 +1,36 @@
+version: '3.7'
+
+services:
+  selenium:
+    image: selenium/standalone-chrome-debug:3.141.59-krypton
+    ports: ['4444:4444', '5900:5900']
+    logging:
+      driver: none
+  redis:
+    image: redis:3.0.0
+  elastic:
+    image: elasticsearch:1.5.2
+  db:
+    image: postgres:9.3.10
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data
+      - .:/home
+  greatminds:
+    build: .
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    volumes:
+      - .:/home
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+      - redis
+      - elastic
+      - selenium
+    environment:
+      - REDIS_URL=redis://redis:6379/0
+      - ELASTICSEARCH_URL=elastic://elastic:9200/0
+      - SELENIUM_HOST=selenium
+      - SELENIUM_PORT=4444
+      - TEST_APP_HOST=greatminds
+      - TEST_PORT=3000

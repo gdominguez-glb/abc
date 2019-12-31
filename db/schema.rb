@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180117022740) do
+ActiveRecord::Schema.define(version: 20191212212018) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -564,7 +564,6 @@ ActiveRecord::Schema.define(version: 20180117022740) do
     t.text     "seo_data"
     t.string   "render",         default: ""
     t.text     "data"
-    t.boolean  "hubspot"
   end
 
   create_table "popups", force: :cascade do |t|
@@ -909,6 +908,32 @@ ActiveRecord::Schema.define(version: 20180117022740) do
   end
 
   add_index "spree_digitals", ["variant_id"], name: "index_spree_digitals_on_variant_id", using: :btree
+
+  create_table "spree_flipbook_items", force: :cascade do |t|
+    t.integer  "flipbook_leaf_id"
+    t.string   "name"
+    t.integer  "position"
+    t.text     "issuu_code"
+    t.integer  "item_type"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.string   "cover_file_name"
+    t.string   "cover_content_type"
+    t.integer  "cover_file_size"
+    t.datetime "cover_updated_at"
+    t.string   "attachment_file_name"
+    t.string   "attachment_content_type"
+    t.integer  "attachment_file_size"
+    t.datetime "attachment_updated_at"
+  end
+
+  create_table "spree_flipbook_leafs", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "product_id"
+    t.integer  "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "spree_gateways", force: :cascade do |t|
     t.string   "type"
@@ -1256,6 +1281,16 @@ ActiveRecord::Schema.define(version: 20180117022740) do
   add_index "spree_payments", ["payment_method_id"], name: "index_spree_payments_on_payment_method_id", using: :btree
   add_index "spree_payments", ["source_id", "source_type"], name: "index_spree_payments_on_source_id_and_source_type", using: :btree
 
+  create_table "spree_pinned_products", force: :cascade do |t|
+    t.integer  "product_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "spree_pinned_products", ["product_id"], name: "index_spree_pinned_products_on_product_id", using: :btree
+  add_index "spree_pinned_products", ["user_id"], name: "index_spree_pinned_products_on_user_id", using: :btree
+
   create_table "spree_preferences", force: :cascade do |t|
     t.text     "value"
     t.string   "key"
@@ -1321,7 +1356,7 @@ ActiveRecord::Schema.define(version: 20180117022740) do
   add_index "spree_product_properties", ["property_id"], name: "index_spree_product_properties_on_property_id", using: :btree
 
   create_table "spree_products", force: :cascade do |t|
-    t.string   "name",                 default: "",    null: false
+    t.string   "name",                     default: "",    null: false
     t.text     "description"
     t.datetime "available_on"
     t.datetime "deleted_at"
@@ -1330,9 +1365,9 @@ ActiveRecord::Schema.define(version: 20180117022740) do
     t.string   "meta_keywords"
     t.integer  "tax_category_id"
     t.integer  "shipping_category_id"
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
-    t.boolean  "promotionable",        default: true
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+    t.boolean  "promotionable",            default: true
     t.string   "meta_title"
     t.integer  "license_length"
     t.text     "license_text"
@@ -1344,25 +1379,30 @@ ActiveRecord::Schema.define(version: 20180117022740) do
     t.datetime "expiration_date"
     t.string   "access_url"
     t.string   "learn_more_url"
-    t.boolean  "is_grades_product",    default: false
-    t.boolean  "can_be_part",          default: false, null: false
-    t.boolean  "individual_sale",      default: true,  null: false
+    t.boolean  "is_grades_product",        default: false
+    t.boolean  "can_be_part",              default: false, null: false
+    t.boolean  "individual_sale",          default: true,  null: false
     t.integer  "video_group_id"
     t.datetime "fulfillment_date"
-    t.boolean  "for_sale",             default: false
+    t.boolean  "for_sale",                 default: false
     t.string   "sf_id_product"
     t.string   "sf_id_pricebook"
-    t.boolean  "show_in_storefront",   default: false
-    t.boolean  "purchase_once",        default: false
+    t.boolean  "show_in_storefront",       default: false
+    t.boolean  "purchase_once",            default: false
     t.text     "short_description"
     t.string   "get_in_touch_url"
-    t.boolean  "archived",             default: false
+    t.boolean  "archived",                 default: false
     t.datetime "archived_at"
     t.integer  "position"
-    t.boolean  "is_beta",              default: false
+    t.boolean  "is_beta",                  default: false
     t.string   "internal_name"
     t.text     "meta_text"
-    t.boolean  "leaving_site_warning", default: true
+    t.boolean  "leaving_site_warning",     default: true
+    t.boolean  "auto_add_on_sign_up",      default: false
+    t.boolean  "free_deletable",           default: false
+    t.string   "title"
+    t.integer  "interested_curriculum_id"
+    t.string   "inkling_id"
   end
 
   add_index "spree_products", ["available_on"], name: "index_spree_products_on_available_on", using: :btree
@@ -1922,15 +1962,15 @@ ActiveRecord::Schema.define(version: 20180117022740) do
   add_index "spree_trackers", ["active"], name: "index_spree_trackers_on_active", using: :btree
 
   create_table "spree_users", force: :cascade do |t|
-    t.string   "encrypted_password",         limit: 128
-    t.string   "password_salt",              limit: 128
+    t.string   "encrypted_password",           limit: 128
+    t.string   "password_salt",                limit: 128
     t.string   "email"
     t.string   "remember_token"
     t.string   "persistence_token"
     t.string   "reset_password_token"
     t.string   "perishable_token"
-    t.integer  "sign_in_count",                          default: 0,     null: false
-    t.integer  "failed_attempts",                        default: 0,     null: false
+    t.integer  "sign_in_count",                            default: 0,     null: false
+    t.integer  "failed_attempts",                          default: 0,     null: false
     t.datetime "last_request_at"
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
@@ -1943,9 +1983,9 @@ ActiveRecord::Schema.define(version: 20180117022740) do
     t.string   "unlock_token"
     t.datetime "locked_at"
     t.datetime "reset_password_sent_at"
-    t.datetime "created_at",                                             null: false
-    t.datetime "updated_at",                                             null: false
-    t.string   "spree_api_key",              limit: 48
+    t.datetime "created_at",                                               null: false
+    t.datetime "updated_at",                                               null: false
+    t.string   "spree_api_key",                limit: 48
     t.datetime "remember_created_at"
     t.datetime "deleted_at"
     t.string   "confirmation_token"
@@ -1962,19 +2002,22 @@ ActiveRecord::Schema.define(version: 20180117022740) do
     t.string   "preference_video_player"
     t.string   "title"
     t.string   "phone"
-    t.boolean  "allow_communication",                    default: true
+    t.boolean  "allow_communication",                      default: true
     t.text     "interested_subjects"
     t.integer  "delegate_user_id"
-    t.boolean  "tour_showed_dashboard",                  default: false
+    t.boolean  "tour_showed_dashboard",                    default: false
     t.string   "manual_title"
-    t.boolean  "tour_showed_licenses",                   default: false
-    t.boolean  "tour_showed_licenses_users",             default: false
-    t.boolean  "accepted_terms",                         default: false
+    t.boolean  "tour_showed_licenses",                     default: false
+    t.boolean  "tour_showed_licenses_users",               default: false
+    t.boolean  "accepted_terms",                           default: false
     t.string   "zip_code"
     t.text     "grades"
-    t.string   "city",                                   default: ""
-    t.string   "state",                                  default: ""
+    t.string   "city",                                     default: ""
+    t.string   "state",                                    default: ""
     t.string   "referral"
+    t.boolean  "accepted_terms_2018",                      default: false
+    t.datetime "accepted_terms_2018_at"
+    t.boolean  "showed_2018_new_feature_tour",             default: false
   end
 
   add_index "spree_users", ["deleted_at"], name: "index_spree_users_on_deleted_at", using: :btree
@@ -2041,6 +2084,14 @@ ActiveRecord::Schema.define(version: 20180117022740) do
     t.integer  "lesson_order"
     t.integer  "custom_order"
   end
+
+  create_table "spree_whitelists", force: :cascade do |t|
+    t.integer  "school_district_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "spree_whitelists", ["school_district_id"], name: "index_spree_whitelists_on_school_district_id", using: :btree
 
   create_table "spree_zone_members", force: :cascade do |t|
     t.integer  "zoneable_id"
@@ -2152,4 +2203,5 @@ ActiveRecord::Schema.define(version: 20180117022740) do
   end
 
   add_foreign_key "regonline_events", "regonline_event_headers"
+  add_foreign_key "spree_whitelists", "school_districts"
 end
