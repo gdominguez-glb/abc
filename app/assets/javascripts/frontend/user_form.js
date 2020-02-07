@@ -12,7 +12,7 @@ function shouldShowDistrict(userRole) {
   var visibleFields = {};
   visibleFields.showDistrictDetails = false;
 
-  if (userRole === 'Teacher' || userRole === 'School/District Administration' || userRole === 'Curriculum Administration' || userRole === 'TOSA' || userRole === 'Curriculum Specialist/Coach') {
+  if (userRole === 'Teacher' || userRole === 'School Administration' || userRole === 'District Administration' || userRole === 'Curriculum Administration' || userRole === 'TOSA' || userRole === 'Curriculum Specialist/Coach') {
     visibleFields.showDistrictDetails = true;
   }
 
@@ -20,7 +20,7 @@ function shouldShowDistrict(userRole) {
 }
 
 function shouldShowPhone(userRole) {
-  if (userRole === 'School/District Administration' || userRole === 'Curriculum Administration') {
+  if (userRole === 'School Administration' || userRole === 'District Administration' || userRole === 'Curriculum Administration') {
     return true;
   }
   return false;
