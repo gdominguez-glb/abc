@@ -212,7 +212,8 @@ Spree::User.class_eval do
     USER_TITLES = [
       'Teacher',
       'Parent',
-      'School/District Administration',
+      'School Administration',
+      'District Administration',
       'Curriculum Administration',
       'Curriculum Specialist/Coach',
       'TOSA',
