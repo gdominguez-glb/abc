@@ -212,9 +212,9 @@ Spree::User.class_eval do
     USER_TITLES = [
       'Teacher',
       'Parent',
-      'School Administration',
-      'District Administration',
-      'Curriculum Administration',
+      'School Administrator',
+      'District Administrator',
+      'Curriculum Administrator',
       'Curriculum Specialist/Coach',
       'TOSA',
       'Homeschooler',
@@ -368,6 +368,26 @@ Spree::User.class_eval do
     })
   end
 
+  def hubspot_roles
+    self.title { |c| 
+      if c == 'Teacher'
+        'Teacher'
+      elsif c == 'Parent'
+        'Parent'
+      elsif c == School Administrator
+        'School Administrator'
+      elsif c == 'District Administrator'
+        'School/District Administration'
+      elsif c == 'Curriculum Administrator'
+        'Curriculum Administrator'
+      elsif c == 'Curriculum Specialist/Coach'
+        'Curriculum Specialist/Coach'
+      elsif c ==  'TOSA'
+        'TOSA'
+      elsif c  == 'Homeschooler'
+        'Homeschooler'
+  end    
+    
   def hubspot_curriculum_interests
     self.interested_curriculums.map { |c|
       if c == 'Math'
