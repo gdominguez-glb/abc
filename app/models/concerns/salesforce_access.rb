@@ -172,14 +172,12 @@ module SalesforceAccess
     attributes_to_update.slice! fields if fields.present?
     return {} if attributes_to_update.blank?
     if background
-      SalesforceJob.perform_later(salesforce_reference.id,
-                                  attributes_to_update)
+      #TODO: We need to call background job for this.
     else
       update_record_in_salesforce(attributes_to_update)
     end
     attributes_to_update
   end
-
   # Does the work of updating an existing record in Salesforce with the
   # specified attributes for the SObject corresponding to this instance.  Also
   # updates the related salesforce_reference record in the local database
@@ -228,7 +226,7 @@ module SalesforceAccess
     return {} if attributes_to_create.blank?
     ref = salesforce_reference || create_salesforce_reference(object_properties: {})
     if background
-      SalesforceJob.perform_later(ref.id, attributes_to_create, 'create')
+      #TODO: We need to call background job for this.
     else
       create_new_record_in_salesforce(attributes_to_create)
     end
