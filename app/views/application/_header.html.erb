@@ -33,6 +33,9 @@
       <li data-primary-nav-item="shop" class="store-link js-store-link <%= store_active_class %>">
         <%= link_to "Resources", '/resources', class: store_active_class %>
       </li>
+      <li data-primary-nav-item="Request a Quote" class="<%= 'active' if params[:slug] == 'request-a-quote' %>">
+        <a href="/contact#sales">Request a Quote</a>
+      </li>
       <li class="search-button">
         <%= form_tag '/search', class: 'nav-search form-inline', method: :get do %>
           <%= text_field_tag :query, nil, class: 'form-control', placeholder: 'Search'  %>
