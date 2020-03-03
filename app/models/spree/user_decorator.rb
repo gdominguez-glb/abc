@@ -374,7 +374,7 @@ Spree::User.class_eval do
         'Teacher'
       elsif c == 'Parent'
         'Parent'
-      elsif c == School Administrator
+      elsif c == 'School Administrator'
         'School Administrator'
       elsif c == 'District Administrator'
         'School/District Administration'
