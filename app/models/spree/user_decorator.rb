@@ -369,7 +369,7 @@ Spree::User.class_eval do
   end
 
   def hubspot_roles
-    self.title { |c| 
+    self.title do |c|
       if c == 'Teacher'
         'Teacher'
       elsif c == 'Parent'
@@ -386,8 +386,10 @@ Spree::User.class_eval do
         'TOSA'
       elsif c  == 'Homeschooler'
         'Homeschooler'
-  end    
-    
+      end
+    end
+  end
+
   def hubspot_curriculum_interests
     self.interested_curriculums.map { |c|
       if c == 'Math'
