@@ -212,9 +212,9 @@ Spree::User.class_eval do
     USER_TITLES = [
       'Teacher',
       'Parent',
-      'School Administration',
-      'District Administration',
-      'Curriculum Administration',
+      'School Administrator',
+      'District Administrator',
+      'Curriculum Administrator',
       'Curriculum Specialist/Coach',
       'TOSA',
       'Homeschooler',
@@ -366,6 +366,28 @@ Spree::User.class_eval do
       receive_newsletter_and_updates: self.allow_communication?,
       hs_context: {ipAddress: self.remote_ip, hutk: self.hubspot_cookie}.to_json
     })
+  end
+
+  def hubspot_roles
+    self.title do |c|
+      if c == 'Teacher'
+        'Teacher'
+      elsif c == 'Parent'
+        'Parent'
+      elsif c == 'School Administrator'
+        'School Administrator'
+      elsif c == 'District Administrator'
+        'School/District Administration'
+      elsif c == 'Curriculum Administrator'
+        'Curriculum Administrator'
+      elsif c == 'Curriculum Specialist/Coach'
+        'Curriculum Specialist/Coach'
+      elsif c ==  'TOSA'
+        'TOSA'
+      elsif c  == 'Homeschooler'
+        'Homeschooler'
+      end
+    end
   end
 
   def hubspot_curriculum_interests
