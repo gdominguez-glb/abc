@@ -1,4 +1,60 @@
 ---
+- :name: Slider
+  :fields:
+  - :name: title_1
+    :label: Slide 1 Title
+    :input_type: text
+  - :name: tagline_1
+    :label: Slide 1 Tagline
+    :input_type: text
+  - :name: description_1
+    :label: Slide 1 Description
+    :input_type: text_area
+  - :name: button_text_1
+    :label: Slide 1 Button Text
+    :input_type: text
+  - :name: button_link_1
+    :label: Slide 1 Button link
+    :input_type: text
+  - :name: slide_image_1
+    :label: Slide 1 Slide Image
+    :input_type: text
+  - :name: title_2
+    :label: Slide 2 Title
+    :input_type: text
+  - :name: tagline_2
+    :label: Slide 2 Tagline
+    :input_type: text
+  - :name: description_2
+    :label: Slide 2 Description
+    :input_type: text_area
+  - :name: button_text_2
+    :label: Slide 2 Button Text
+    :input_type: text
+  - :name: button_link_2
+    :label: Slide 2 Button link
+    :input_type: text
+  - :name: slide_image_2
+    :label: Slide 2 Slide Image
+    :input_type: text
+  - :name: title_3
+    :label: Slide 3 Title
+    :input_type: text
+  - :name: tagline_3
+    :label: Slide 3 Tagline
+    :input_type: text
+  - :name: description_3
+    :label: Slide 3 Description
+    :input_type: text_area
+  - :name: button_text_3
+    :label: Slide 3 Button Text
+    :input_type: text
+  - :name: button_link_3
+    :label: Slide 3 Button link
+    :input_type: text
+  - :name: slide_image_3
+    :label: Slide 3 Slide Image
+    :input_type: text
 - :name: Role/Curriculum Selector Hero
   :fields:
   - :name: background_image_url
