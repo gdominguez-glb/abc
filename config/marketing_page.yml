@@ -80,7 +80,7 @@ marketing_templates:
   -
     name: 'Testimonials'
     content: !xml |
-      <section class="row row-content-3col <%= background_color %>-bg text-left padding-bottom" data-testimonial-section="1">
+      <section class="row row-content-3col <%= background_color %>-bg text-left padding-bottom testimonial-container" data-testimonial-section="1">
         <div class="col-sm-4">
           <div class="testimonial">
             <h6><%= testimonial_header_1 %></h6>
@@ -329,7 +329,7 @@ marketing_templates:
           }
         }
       </style>
-      <section id="tileVideoHero<%= position %>" class="row row-video-hero <%= 'image-bg' if background_image_url.present? %> <%= background_color %>-bg">
+      <section id="tileVideoHero<%= position %>" class="test row row-video-hero <%= 'image-bg' if background_image_url.present? %> <%= background_color %>-bg">
         <div class="col-xs-12">
           <h3 class="video-title"><%= title %></h3>
           <div class="embed-responsive embed-responsive-16by9">

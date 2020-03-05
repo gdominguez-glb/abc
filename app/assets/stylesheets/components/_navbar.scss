@@ -47,15 +47,15 @@
     width: 165px;
     padding: 0;
     text-indent: -9999px;
-    background: transparent asset-url('logo-half.svg') no-repeat 50% 50%;
+    background: transparent asset-url('GM_logo.png') no-repeat 50% 50%;
     background-size: 150px 35px;
 
     @media screen and (min-width: $screen-sm-min) {
       position: relative;
       height: 109px;
       margin-left: 50px;
-      background: transparent asset-url('logo-full.svg') no-repeat 50% 50%;
-      background-size: 155px 109px;
+      background: transparent asset-url('GM_logo.png') no-repeat 50% 50%;
+      background-size: 102px 69px;
     }
   }
 
@@ -163,7 +163,8 @@
             background-color: darken($c-balanced-primary, 5%);
 
             @media screen and (min-width: $screen-sm-min) {
-              color: $c-balanced-primary;
+              // color: $c-balanced-primary;
+              color: $math-primary-color;
             }
           }
 
@@ -474,7 +475,8 @@
       }
 
       [data-page='math'] & {
-        background-color: $c-balanced-primary;
+        // background-color: $c-balanced-primary;
+        background-color: $math-primary-color;
       }
 
       [data-page='science'] & {
@@ -593,7 +595,7 @@
 
     @media screen and (min-width: $screen-sm-min) {
       position: absolute;
-      top: 0;
+      top: 6px;
       right: 30px;
       width: auto;
       text-transform: uppercase;
@@ -692,14 +694,14 @@
     padding: 0 10px;
 
     @media screen and (min-width: $screen-sm-min) {
-      padding: 62px 0 0;
+      padding: 60px 0 0;
     }
 
     .form-control {
       width: 30px;
       padding: 9px 15px;
       border: 0;
-      background: transparent asset-url('icon-search-white.png') no-repeat 50% 50%;
+      background: transparent asset-url('icon-search-blue.png') no-repeat 50% 50%;
       background-size: 15px 15px;
       box-shadow: none;
 
@@ -743,7 +745,7 @@
 
   .navbar-toggle {
     border: 0;
-    color: $c-absolute;
+    // color: $c-absolute;
 
     &:hover,
     &:focus {
@@ -781,6 +783,34 @@
 
       .icon-close {
         opacity: 0;
+      }
+    }
+  }
+
+  /************* UPADATED CSS *****************/
+  
+  &.navbar-updated {
+    background: #fff;
+    .navbar-nav {
+      li {
+        a {
+          color: $primary-text-color;
+          font-size: 12px;
+          font-weight: bold;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: normal;
+          letter-spacing: 0.1px;
+          border: none;
+        }
+      }
+      &.navbar-right {
+        li {
+          a {
+            color: $text-link-color;
+            letter-spacing: -0.17px;
+          }
+        }
       }
     }
   }
