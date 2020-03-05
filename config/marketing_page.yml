@@ -336,6 +336,27 @@ marketing_templates:
       </div>
 
   -
+    name: '25/75 Hero Image Right'
+    content: !xml |
+      <div class="banner-container">
+        <div class="content-section">
+          <div class="new-icon">
+            <img src="<%= icon %>" />
+          </div>
+          <div class="content-title">
+            <h3><%= title %></h3>
+            <p><%= description %></p>
+            <a href="<%= button_link %>" class="btn btn-primary blue">
+              <%= button_text %>
+            </a>
+          </div>
+        </div>
+        <div class="img-section">
+          <img src="<%= image %>" />
+        </div>
+      </div>
+
+  -
     name: 'Video Hero'
     content: !xml |
       <style>
