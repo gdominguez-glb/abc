@@ -246,6 +246,27 @@
       :label: Link Text 9
       :input_type: text
 
+- :name: 25/75 Hero Image Right
+  :fields:
+  - :name: icon
+    :label: Icon Image
+    :input_type: text
+  - :name: title
+    :label: Title
+    :input_type: text_area
+  - :name: description
+    :label: Description
+    :input_type: text_area
+  - :name: button_text
+    :label: Button text
+    :input_type: text
+  - :name: button_link
+    :label: Button Link
+    :input_type: text
+  - :name: image
+    :label: Image
+    :input_type: text
+
 - :name: Video Hero
   :fields:
   - :name: title
