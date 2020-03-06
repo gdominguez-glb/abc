@@ -55,6 +55,70 @@
   - :name: slide_image_3
     :label: Slide 3 Slide Image
     :input_type: text
+
+- :name: Product List
+  :fields:
+  - :name: subject_1
+    :label: Subject 1
+    :input_type: text
+  - :name: product_name_1
+    :label: Product Name 1
+    :input_type: text
+  - :name: image_1
+    :label: Image 1
+    :input_type: text
+  - :name: link_1
+    :label: Link 1
+    :input_type: text
+  - :name: subject_2
+    :label: Subject 2
+    :input_type: text
+  - :name: product_name_2
+    :label: Product Name 2
+    :input_type: text
+  - :name: image_2
+    :label: Image 2
+    :input_type: text
+  - :name: link_2
+    :label: Link 2
+    :input_type: text
+  - :name: subject_3
+    :label: Subject 3
+    :input_type: text
+  - :name: product_name_3
+    :label: Product Name 3
+    :input_type: text
+  - :name: image_3
+    :label: Image 3
+    :input_type: text
+  - :name: link_3
+    :label: Link 3
+    :input_type: text
+  - :name: subject_4
+    :label: Subject 4
+    :input_type: text
+  - :name: product_name_4
+    :label: Product Name 4
+    :input_type: text
+  - :name: image_4
+    :label: Image 4
+    :input_type: text
+  - :name: link_4
+    :label: Link 4
+    :input_type: text
+  - :name: subject_5
+    :label: Subject 5
+    :input_type: text
+  - :name: product_name_5
+    :label: Product Name 5
+    :input_type: text
+  - :name: image_5
+    :label: Image 5
+    :input_type: text
+  - :name: link_5
+    :label: Link 5
+    :input_type: text
+
 - :name: Role/Curriculum Selector Hero
   :fields:
   - :name: background_image_url
