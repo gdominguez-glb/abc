@@ -61,6 +61,16 @@
   - :name: subject_1
     :label: Subject 1
     :input_type: text
+  - :name: color_1
+    :label: Color 1
+    :input_type: select
+    :input_options:
+      - green
+      - blue
+      - cream
+      - orange
+      - light-blue
+      - purple
   - :name: product_name_1
     :label: Product Name 1
     :input_type: text
@@ -73,6 +83,16 @@
   - :name: subject_2
     :label: Subject 2
     :input_type: text
+  - :name: color_2
+    :label: Color 2
+    :input_type: select
+    :input_options:
+      - green
+      - blue
+      - cream
+      - orange
+      - light-blue
+      - purple
   - :name: product_name_2
     :label: Product Name 2
     :input_type: text
@@ -85,6 +105,16 @@
   - :name: subject_3
     :label: Subject 3
     :input_type: text
+  - :name: color_3
+    :label: Color 3
+    :input_type: select
+    :input_options:
+      - green
+      - blue
+      - cream
+      - orange
+      - light-blue
+      - purple
   - :name: product_name_3
     :label: Product Name 3
     :input_type: text
@@ -97,6 +127,16 @@
   - :name: subject_4
     :label: Subject 4
     :input_type: text
+  - :name: color_4
+    :label: Color 4
+    :input_type: select
+    :input_options:
+      - green
+      - blue
+      - cream
+      - orange
+      - light-blue
+      - purple
   - :name: product_name_4
     :label: Product Name 4
     :input_type: text
@@ -109,6 +149,16 @@
   - :name: subject_5
     :label: Subject 5
     :input_type: text
+  - :name: color_5
+    :label: Color 5
+    :input_type: select
+    :input_options:
+      - green
+      - blue
+      - cream
+      - orange
+      - light-blue
+      - purple
   - :name: product_name_5
     :label: Product Name 5
     :input_type: text
