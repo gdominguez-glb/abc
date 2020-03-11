@@ -39,6 +39,9 @@ $iron:                            #222;
 
 $cream:                           #fff9ea;
 
+$background-grey:                 #f4f4f4;
+$text-black:                      #0b212c;
+
 // *************************************
 //
 //   Variable Naming:
@@ -148,3 +151,18 @@ $b-space:                          10px;
 $b-space-m:                        15px;
 $b-space-l:                        20px;
 $b-space-xl:                       40px;
+
+// -------------------------------------
+//   Fonts
+// -------------------------------------
+
+@font-face {
+  font-family: "CircularStd";
+  src: url("CircularStd-Medium.eot");
+  src: url("CircularStd-Medium.eot?#iefix") format("embedded-opentype"),
+       url("CircularStd-Medium.woff2") format("woff2"),
+       url("CircularStd-Medium.woff") format("woff"),
+       url("CircularStd-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}

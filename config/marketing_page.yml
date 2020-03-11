@@ -29,49 +29,49 @@ marketing_templates:
   -
     name: 'Product List'
     content: !xml |
-      <div class="product-section">
-        <div class="products">
+      <div class="product-list clearfix row">
+        <div class="product-list__product col-lg-2">
           <a href="<%= link_1 %>">
-            <h4 class="subject-name"><%= subject_1 %></h4>
-            <h3 class="product-title"><%= product_name_1 %></h3>
-            <div class="product-img">
+            <h4 class="product-list__product--subject product-list__product--subject--color--<%= color_1 %>"><%= subject_1 %></h4>
+            <h3 class="product-list__product--title"><%= product_name_1 %></h3>
+            <div class="product-list__product--img">
               <img src="<%= image_1 %>" />
             </div>
           </a>
         </div>
-        <div class="products">
+        <div class="product-list__product col-lg-2">
           <a href="<%= link_2 %>">
-            <h4 class="subject-name"><%= subject_2 %></h4>
-            <h3 class="product-title"><%= product_name_2 %></h3>
-            <div class="product-img">
+            <h4 class="product-list__product--subject product-list__product--subject--color--<%= color_2 %>"><%= subject_2 %></h4>
+            <h3 class="product-list__product--title"><%= product_name_2 %></h3>
+            <div class="product-list__product--img">
               <img src="<%= image_2 %>" />
             </div>
           </a>
         </div>
-        <div class="products">
+        <div class="product-list__product col-lg-2">
           <a href="<%= link_3 %>">
-            <h4 class="subject-name"><%= subject_3 %></h4>
-            <h3 class="product-title"><%= product_name_3 %></h3>
-            <div class="product-img">
+            <h4 class="product-list__product--subject product-list__product--subject--color--<%= color_3 %>"><%= subject_3 %></h4>
+            <h3 class="product-list__product--title"><%= product_name_3 %></h3>
+            <div class="product-list__product--img">
               <img src="<%= image_3 %>" />
             </div>
           </a>
         </div>
-        <div class="products">
+        <div class="product-list__product col-lg-2">
           <a href="<%= link_4 %>">
-            <h4 class="subject-name"><%= subject_4 %></h4>
-            <h3 class="product-title"><%= product_name_4 %></h3>
-            <div class="product-img">
+            <h4 class="product-list__product--subject product-list__product--subject--color--<%= color_4 %>"><%= subject_4 %></h4>
+            <h3 class="product-list__product--title"><%= product_name_4 %></h3>
+            <div class="product-list__product--img">
               <img src="<%= image_4 %>" />
             </div>
           </a>
         </div>
-        <div class="products">
+        <div class="product-list__product col-lg-2">
           <a href="<%= link_5 %>">
-            <h4 class="subject-name"><%= subject_5 %></h4>
-            <h3 class="product-title"><%= product_name_5 %></h3>
-            <div class="product-img">
-              <img src="<%= image_4 %>" />
+            <h4 class="product-list__product--subject product-list__product--subject--color--<%= color_5 %>"><%= subject_5 %></h4>
+            <h3 class="product-list__product--title"><%= product_name_5 %></h3>
+            <div class="product-list__product--img">
+              <img src="<%= image_5 %>" />
             </div>
           </a>
         </div>

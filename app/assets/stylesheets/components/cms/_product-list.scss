@@ -1,0 +1,69 @@
+.product-list {
+  text-align: center;
+
+  &__product {
+    background-color: $background-grey;
+    display: inline-block;
+    float: none;
+    height: 303px;
+    margin: 15px;
+    padding: 12px 6px;
+    width: 209px;
+
+    &--subject {
+      font-family: "CircularStd";
+      font-size: 14px;
+      font-stretch: normal;
+      font-style: normal;
+      font-weight: bold;
+      letter-spacing: 0.3px;
+      line-height: 1.54;
+      text-align: center;
+
+      &--color--green {
+        color: $c-balanced-primary;
+      }
+
+      &--color--purple {
+        color: $c-science-primary;
+      }
+
+      &--color--orange {
+        color: $c-energized-primary;
+      }
+
+      &--color--light-blue {
+        color: $c-positive-primary;
+      }
+
+      &--color--cream {
+        color: $cream;
+      }
+    }
+
+    &--title {
+      color: $text-black;
+      font-family: "CircularStd";
+      font-size: 20px;
+      font-stretch: normal;
+      font-style: normal;
+      font-weight: 500;
+      height: 52px;
+      letter-spacing: normal;
+      line-height: 1.35;
+      text-align: center;
+      text-transform: capitalize;
+    }
+
+    &--img {
+      height: 201px;
+      margin: auto;
+      width: 148px;
+
+      img {
+        height: 201px;
+        width: 148px;
+      }
+    }
+  }
+}
