@@ -329,7 +329,7 @@ marketing_templates:
           }
         }
       </style>
-      <section id="tileVideoHero<%= position %>" class="test row row-video-hero <%= 'image-bg' if background_image_url.present? %> <%= background_color %>-bg">
+      <section id="tileVideoHero<%= position %>" class="row row-video-hero <%= 'image-bg' if background_image_url.present? %> <%= background_color %>-bg">
         <div class="col-xs-12">
           <h3 class="video-title"><%= title %></h3>
           <div class="embed-responsive embed-responsive-16by9">

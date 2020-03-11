@@ -1,54 +1,7 @@
-// $base-bg-color: #f9f9f9;
-// $secondary-bg-color: #153055;
-
-// // Icon colors
-$icon-color: #0b212c;
-// $icon-hover-color: #0b1b30;
-// $icon-disabled-color: #d5d9e0;
-
-// // Active inactive state colors
-// $required: #EA7882;
-// $active-color: #37e074;
-// $inactive-color: #f96f68;
-// $disabled-color: #a2a2a2;
-
-// // Border colors
-// $stroke-color: #dddddd;
-// $secondary-stroke-color: #909dae;
-// $dark-blue-border: #112644;
-// $active-border-color: #70ceb0;
-
-// // Button colors
-// $primary-button-bg: #153055;
-// $primary-button-hover-bg: #0b1b30;
-// $primary-button-disabled-bg: #d1d1d1;
-// $secondary-button-bg: #c6dadd;
-// $secondary-button-hover-bg: #9dc5cb;
-// $secondary-button-disabled-bg: #656a70;
-// $transperent-button-hover-bg: #0b1b30;
-// $transperent-button-disabled-bg: #eeeeee;
-// $red-button-bg: #ff3a4d;
-// $red-button-hover-bg: #fb162c;
-// $red-button-disabled-bg: #fdb6bd; 
-
-// // Text colors
+// Text colors
 $primary-text-color: #0b212c;
-// $secondary-text-color: #858b8d;
-// $sub-text-color: #8a97aa;
+$copy-right-color: rgba(11, 33, 44, 0.33);
 $text-link-color: #0f526f;
-
-$GM-navy: #0B212C;
-$GM-blue: #0F526F;
-$GM-light-blue: #7CC7F1;
-$GM-grey: #F4F4F4;
-$GM-white: #ffffff;
-$GM-cream: #FFFAEA;
-$GM-orange: #FF8415;
-$GM-purple: #835AA2;
-$GM-math-primary: #CCFF64;
-$GM-math-secondary: #FF5B35;
-
-$base-bg-color: $GM-white;
 $math-primary-color: #ff5b34;
 
 
@@ -70,6 +23,7 @@ $math-primary-color: #ff5b34;
 
 $black:                           #000;
 $white:                           #fff;
+$base-bg-color: $white;
 
 // Greens
 $lime:                            #7ebb52;

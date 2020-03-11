@@ -16,7 +16,8 @@
   height: 50px;
   margin-bottom: 0;
   border: 0;
-  background: $c-positive-secondary;
+  // background: $c-positive-secondary;
+  background: $white;
 
   a {
     letter-spacing: 2px;
@@ -29,17 +30,6 @@
     border-radius: 0;
   }
 
-  &.nav-border-bottom {
-    @media screen and (min-width: $screen-sm-min) {
-      border-bottom: 3px solid $c-energized-secondary;
-    }
-
-    [data-page='science'] & {
-        @media screen and (min-width: $screen-sm-min) {
-            border-bottom: 3px solid $c-science-primary;
-        }
-    }
-  }
 
   // ----- Brand ----- //
 
@@ -47,14 +37,14 @@
     width: 165px;
     padding: 0;
     text-indent: -9999px;
-    background: transparent asset-url('GM_logo.png') no-repeat 50% 50%;
+    background: transparent asset-url("GM_logo.png") no-repeat 50% 50%;
     background-size: 150px 35px;
 
     @media screen and (min-width: $screen-sm-min) {
       position: relative;
       height: 109px;
       margin-left: 50px;
-      background: transparent asset-url('GM_logo.png') no-repeat 50% 50%;
+      background: transparent asset-url("GM_logo.png") no-repeat 50% 50%;
       background-size: 102px 69px;
     }
   }
@@ -240,14 +230,15 @@
 
       > a {
         border-bottom: 1px solid darken($c-energized-secondary, 5%);
-        color: $c-absolute;
-
-        [data-page='english'] &,
-        [data-page='history'] &,
-        [data-page='math'] & {
-          color: $c-positive-secondary;
-        }
-
+        color: $primary-text-color;
+        font-size: 12px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: 0.1px;
+        border: 0;
+        
         [data-page='english'] & {
           border-bottom: 1px solid darken($c-positive-primary, 5%);
         }
@@ -285,7 +276,7 @@
           [data-page='science'] &,
           [data-page='math'] & {
             border-bottom: 0;
-            color: $c-absolute;
+            // color: $c-absolute;
           }
 
           &:hover,
@@ -593,12 +584,19 @@
     font-weight: bold;
     letter-spacing: 2px;
 
+    li {
+      a {
+        color: $text-link-color;
+        letter-spacing: -0.17px;
+      }
+    }
+
     @media screen and (min-width: $screen-sm-min) {
       position: absolute;
-      top: 6px;
       right: 30px;
-      width: auto;
       text-transform: uppercase;
+      top: 6px;
+      width: auto;
 
       li {
         &:first-child {
@@ -701,7 +699,7 @@
       width: 30px;
       padding: 9px 15px;
       border: 0;
-      background: transparent asset-url('icon-search-blue.png') no-repeat 50% 50%;
+      background: transparent asset-url("icon-search-blue.png") no-repeat 50% 50%;
       background-size: 15px 15px;
       box-shadow: none;
 
@@ -724,7 +722,7 @@
         background-size: 15px 15px;
 
         @media screen and (min-width: $screen-sm-min) {
-          background: transparent asset-url('icon-search-white.png') no-repeat 50% 50%;
+          background: transparent asset-url("icon-search-blue.png") no-repeat 50% 50%;
           background-size: 15px 15px;
         }
 
@@ -783,34 +781,6 @@
 
       .icon-close {
         opacity: 0;
-      }
-    }
-  }
-
-  /************* UPADATED CSS *****************/
-  
-  &.navbar-updated {
-    background: #fff;
-    .navbar-nav {
-      li {
-        a {
-          color: $primary-text-color;
-          font-size: 12px;
-          font-weight: bold;
-          font-stretch: normal;
-          font-style: normal;
-          line-height: normal;
-          letter-spacing: 0.1px;
-          border: none;
-        }
-      }
-      &.navbar-right {
-        li {
-          a {
-            color: $text-link-color;
-            letter-spacing: -0.17px;
-          }
-        }
       }
     }
   }
