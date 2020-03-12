@@ -158,7 +158,7 @@ marketing_templates:
   -
     name: 'Testimonials'
     content: !xml |
-      <section class="row row-content-3col <%= background_color %>-bg text-left padding-bottom" data-testimonial-section="1">
+      <section class="row row-content-3col <%= background_color %>-bg text-left padding-bottom testimonial-container" data-testimonial-section="1">
         <div class="col-sm-4">
           <div class="testimonial">
             <h6><%= testimonial_header_1 %></h6>

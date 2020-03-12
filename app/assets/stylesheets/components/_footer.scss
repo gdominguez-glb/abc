@@ -8,7 +8,83 @@
 .footer {
   padding: $b-space-xl $b-space-l;
   font-size: 1em;
-  background: $c-balanced-primary;
+  .footer-section {
+    padding-left: 50px;
+
+    &.no-padding {
+      padding-left: 0;
+    }
+
+    .logo-footer {
+      position: relative;
+      height: 115px;
+      background: transparent asset-url('GM_logo.png') no-repeat 50% 50%;
+      background-size: 150px 92px;
+      display: block;
+      margin-top: -5px;
+    }
+
+    .footer-title {
+      color: $primary-text-color;
+      font-size: 12px;
+      font-stretch: normal;
+      font-style: normal;
+      font-weight: bold;
+      letter-spacing: 1.5px;
+      line-height: 2;
+      margin-bottom: 5px;
+    }
+
+    .footer-link {
+      font-size: 10px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 2.4;
+      letter-spacing: 1.25px;
+      color: $primary-text-color;
+    }
+  }
+
+  @media screen and (max-width: $screen-sm-min) { 
+    .footer-section {
+      padding-left: 12px;
+
+      &.no-padding {
+        padding-left: 12px;
+      }
+
+      .logo-footer {
+        background-size: contain;
+        margin-top: -18px;
+      }
+    }
+  }
+  
+  .col-sm-offset-1 {
+    display: none;
+  }
+
+  .footer-attribution {
+    color: $copy-right-color;
+    font-size: 12px;
+    font-stretch: normal;
+    font-style: normal;
+    font-weight: normal;
+    letter-spacing: normal;
+    line-height: normal;
+    height: 15px;
+    
+    .footer-copyright {
+      margin: 0;
+    }
+    
+    .footer-terms {
+      margin: 0;
+      text-decoration: none;
+      text-transform: none;
+    }
+  }
 }
 
 .footer-section {
@@ -103,7 +179,7 @@
 
   margin: 0 $b-space;
   font-weight: bold;
-  text-transform: uppercase;
+  // text-transform: uppercase;
   letter-spacing: 2px;
 }
 
