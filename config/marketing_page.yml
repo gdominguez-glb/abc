@@ -1,4 +1,5 @@
 marketing_templates:
+
   -
     name: 'Slider'
     content: !xml |
@@ -1031,29 +1032,23 @@ marketing_templates:
           }
         }
       </style>
-      <section id="tileVideoLeft<%= position %>" class="row row-img-full row-video-left <%= 'image-bg' if background_image_url.present? %> <%= background_color %>-bg">
-        <div class="row-img-full-content">
-          <div class="col-sm-6 col-centered-content margin-bottom--xl--sm-min">
-            <div class="vertical-center">
-              <div class="embed-responsive embed-responsive-16by9">
-                <iframe src="//fast.wistia.net/embed/iframe/<%= wistia_video_id %>" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" id="wistia-iframe" name="wistia_embed"  webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-              </div>
-            </div>
+      <section id="tileVideoLeft<%= position %>" class="video-left-text-right row <%= 'image-bg' if background_image_url.present? %> <%= background_color %>-bg">
+        <div class="col-sm-6">
+          <div class="embed-responsive embed-responsive-16by9">
+            <iframe src="//fast.wistia.net/embed/iframe/<%= wistia_video_id %>" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" id="wistia-iframe" name="wistia_embed"  webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
           </div>
-          <div class="col-sm-6 col-centered-content">
-            <div class="vertical-center">
-              <h6><%= title %></h6>
-              <p><%= body_text %></p>
-              <% if button_title.present? && button_link.present? %>
-                <% if button_target == 'Open in Same Tab' %>
-                  <% button_target = '_self' %>
-                <% else %>
-                  <% button_target = '_blank' %>
-                <% end %>
-                <a class="btn btn-default btn-block-xs" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
-              <% end %>
-            </div>
-          </div>
+        </div>
+        <div class="col-sm-6">
+          <h6 class="video-left-text-right__title"><%= title %></h6>
+          <p class="video-left-text-right__body"><%= body_text %></p>
+          <% if button_title.present? && button_link.present? %>
+            <% if button_target == 'Open in Same Tab' %>
+              <% button_target = '_self' %>
+            <% else %>
+              <% button_target = '_blank' %>
+            <% end %>
+            <a class="video-left-text-right__btn btn btn-default btn-block-xs" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+          <% end %>
         </div>
       </section>
 
