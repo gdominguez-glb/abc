@@ -1,6 +1,14 @@
 marketing_templates:
 
   -
+    name: 'Page Title'
+    content: !xml |
+      <div class="page-title clearfix row">
+        <h1 class="page-title__text">
+          <%= page_title %>
+        </h1>
+      </div>
+  -
     name: 'Slider'
     content: !xml |
       <div class="demo-slider">

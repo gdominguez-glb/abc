@@ -1,0 +1,23 @@
+.page-title {
+  $pt: &;
+  margin-bottom: 31px;
+  padding-left: 52px;
+
+  &__text {
+    color: $primary-text-color;
+    font-family: CircularStd;
+    font-size: 60px;
+    font-stretch: normal;
+    font-style: normal;
+    font-weight: 900;
+    height: 134px;
+    letter-spacing: normal;
+    line-height: 1.1;
+    text-transform: none;
+    width: 760px;
+
+    #{$pt}--blue {
+      color: $powder;
+    }
+  }
+}
