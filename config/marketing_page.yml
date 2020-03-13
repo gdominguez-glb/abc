@@ -4,9 +4,9 @@ marketing_templates:
     name: 'Page Title'
     content: !xml |
       <div class="page-title clearfix row">
-        <div class="page-title__text">
+        <h1 class="page-title__text">
           <%= page_title %>
-        </div>
+        </h1>
       </div>
   -
     name: 'Slider'
