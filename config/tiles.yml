@@ -56,6 +56,12 @@
     :label: Slide 3 Slide Image
     :input_type: text
 
+- :name: Page Title
+  :fields:
+  - :name: page_title
+    :label: Page Title
+    :input_type: text_area
+
 - :name: Product List
   :fields:
   - :name: subject_1
