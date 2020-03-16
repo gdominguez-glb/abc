@@ -10,6 +10,12 @@
     padding: 12px 6px;
     width: 209px;
 
+    a {
+      &:hover {
+        text-decoration: none;
+      }
+    }
+
     &--subject {
       font-family: "CircularStd";
       font-size: 14px;
@@ -18,6 +24,7 @@
       font-weight: bold;
       letter-spacing: 0.3px;
       line-height: 1.54;
+      min-height: 21px;
       text-align: center;
 
       &--color--green {
@@ -51,6 +58,7 @@
       height: 52px;
       letter-spacing: normal;
       line-height: 1.35;
+      min-height: 27px;
       text-align: center;
       text-transform: capitalize;
     }
