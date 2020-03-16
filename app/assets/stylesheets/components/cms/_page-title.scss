@@ -1,7 +1,9 @@
 .page-title {
   $pt: &;
-  margin-bottom: 31px;
-  padding-left: 52px;
+  padding-bottom: 31px;
+  padding-left: 50px;
+  padding-top: 20px;
+  background: $white;
 
   &__text {
     color: $primary-text-color;
