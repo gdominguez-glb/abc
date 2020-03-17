@@ -399,20 +399,20 @@ marketing_templates:
   -
     name: '25/75 Hero Image Right'
     content: !xml |
-      <div class="banner-container">
-        <div class="content-section">
-          <div class="new-icon">
+      <div class="row banner-container">
+        <div class="banner-container__content col-sm-4">
+          <div class="banner-container__icon">
             <img src="<%= icon %>" />
           </div>
-          <div class="content-title">
+          <div class="banner-container__title">
             <h3><%= title %></h3>
             <p><%= description %></p>
-            <a href="<%= button_link %>" class="btn btn-primary blue">
+            <a href="<%= button_link %>" class="btn btn-primary banner-container__btn banner-container__btn--blue">
               <%= button_text %>
             </a>
           </div>
         </div>
-        <div class="img-section">
+        <div class="banner-container__img col-sm-8">
           <img src="<%= image %>" />
         </div>
       </div>
