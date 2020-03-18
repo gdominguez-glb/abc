@@ -556,6 +556,12 @@
     :input_type: text
 - :name: 50/50 Full-Bleed Image Right
   :fields:
+  - :name: image_url_1
+    :label: Image Url 1
+    :input_type: text
+  - :name: image_alt_1
+    :label: Image Alt Text 1
+    :input_type: text
   - :name: title
     :label: Title
     :input_type: text
@@ -570,6 +576,7 @@
       - blue
       - cream
       - orange
+      - dark-orange
       - light-blue
       - purple
   - :name: button_1_title
@@ -596,11 +603,11 @@
     :input_options:
       - Open in Same Tab
       - Open in New Tab
-  - :name: image_url
-    :label: Image Url
+  - :name: image_url_2
+    :label: Image Url 2
     :input_type: text
-  - :name: alt_text
-    :label: Image Alt Text
+  - :name: alt_text_2
+    :label: Image Alt Text 2
     :input_type: text
 - :name: 50/50 Full-Bleed Image Right, Half Height
   :fields:
