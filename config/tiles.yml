@@ -1082,6 +1082,8 @@
       - orange
       - light-blue
       - purple
+      - white
+      - grey
   - :name: title_1
     :label: Title 1
     :input_type: text
@@ -1094,6 +1096,14 @@
   - :name: button_link_1
     :label: Button Link 1
     :input_type: text
+  - :name: button_color_1
+    :label: Button Color 1
+    :input_type: select
+    :input_options:
+      - eureka-math-2
+      - wheatley-blue
+      - phd-purple
+      - alexandria-orange
   - :name: button_target_1
     :label: Button Target 1
     :input_type: select
@@ -1110,6 +1120,8 @@
       - orange
       - light-blue
       - purple
+      - white
+      - grey
   - :name: title_2
     :label: Title 2
     :input_type: text
@@ -1122,6 +1134,14 @@
   - :name: button_link_2
     :label: Button Link 2
     :input_type: text
+  - :name: button_color_2
+    :label: Button Color 2
+    :input_type: select
+    :input_options:
+      - eureka-math-2
+      - wheatley-blue
+      - phd-purple
+      - alexandria-orange
   - :name: button_target_2
     :label: Button Target 2
     :input_type: select
