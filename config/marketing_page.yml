@@ -517,10 +517,13 @@ marketing_templates:
   -
     name: '50/50 Full-Bleed Image Right'
     content: !xml |
-      <section class="row row-tile-new <%= background_color %>-bg">
-        <div class="col-sm-6">
-          <h6><%= title %></h6>
-          <p><%= body_text %></p>
+      <section class="tile-container row row-tile-new <%= background_color %>-bg">
+        <div class="tile-container__content col-sm-6">
+          <% if image_url_1.present? %>
+            <img class="tile-container__icon image_url_1" src="<%= image_url_1 %>" alt="<%= image_alt_1 %>" />
+          <% end %>
+          <h6 class="tile-container__title"><%= title %></h6>
+          <p class="tile-container__para"><%= body_text %></p>
           <% if button_1_title.present? && button_1_link.present? %>
             <a class="btn btn-default btn-block-xs margin-bottom--m" href="<%= button_1_link %>" target="<%= button_1_target %>"><%= button_1_title %></a>
           <% end %>
@@ -528,12 +531,12 @@ marketing_templates:
             <a class="btn btn-default btn-block-xs margin-bottom--m" href="<%= button_2_link %>" target="<%= button_2_target %>"><%= button_2_title %></a>
           <% end %>
         </div>
-        <div class="col-sm-6 img-full-new">
+        <div class="tile-container__image col-sm-6 img-full-new">
           <picture>
             <!--[if IE 9]><video style="display: none;"><![endif]-->
-            <source srcset="<%= image_url.gsub(/original/, 'small') if image_url %>" media="(min-width: 361px)">
+            <source srcset="<%= image_url_2.gsub(/original/, 'small') if image_url_2 %>" media="(min-width: 361px)">
             <!--[if IE 9]></video><![endif]-->
-            <img srcset="<%= image_url.gsub(/original/, 'thumb') if image_url %>" alt="<%= alt_text rescue nil %>" >
+            <img srcset="<%= image_url_2.gsub(/original/, 'thumb') if image_url_2 %>" alt="<%= alt_text rescue nil %>" >
           </picture>
         </div>
       </section>
