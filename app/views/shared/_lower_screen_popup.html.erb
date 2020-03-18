@@ -3,7 +3,7 @@
     <a aria-label="Close" class="nag__dismiss" id="close_icon"><span aria-hidden="true"><i class="icon" style="color: <%= @popup_print.text_color %>;">X</i></span></a>
     <div class="content-wrapper">
       <div class="content">
-        <h2 style="text-align: center; color: <%= @popup_print.text_color %>;"><%= @popup_print.body.html_safe %></h2>
+        <p style="text-align: center; color: <%= @popup_print.text_color %>;"><%= @popup_print.body.html_safe %></p>
         <div class="content-footer text-center">
           <a href="<%= @popup_print.button_link %>" type="button" class="btn btn-primary btn-transparent"><%= @popup_print.button_text %></a>
         </div>
