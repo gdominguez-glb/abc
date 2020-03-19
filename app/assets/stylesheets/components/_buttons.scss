@@ -13,36 +13,52 @@
 
 .btn {
   @include transition(all, .3s);
-
-  padding: $b-space ($b-space-m * 2);
+  border-radius: 0;
   font-family: 'Karla', sans-serif;
-  text-transform: uppercase;
+  font-size: 12px;
+  font-stretch: normal;
+  font-style: normal;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+  line-height: 2;
+  padding: 10px 20px;
   text-decoration: none;
-  letter-spacing: .15em;
-  border-radius: $b-border-radius;
+  text-transform: uppercase;
 
   @media screen and (min-width: $screen-sm-min) {
     margin-right: $b-space-s;
   }
 
   &.btn-default {
-    border: 1px solid $c-positive-secondary;
-    color: $c-positive-secondary;
     background-color: transparent;
+    border: 1px solid $transperent-button-border;
+    color: $text-link-color;
 
     &:hover {
-      color: $c-absolute;
-      background-color: $c-positive-secondary;
+      background-color: $transperent-button-hover-bg;
+      color: $white;
     }
 
-    .blue-bg &,
-    .image-bg & {
-      border-color: $c-absolute;
-      color: $c-absolute;
+    .blue-bg & {
+      background-color: $white;
+      border-color: $white;
+      color: $text-link-color;
 
       &:hover {
-        color: $c-positive-secondary;
-        background-color: $c-absolute;
+        background-color: transparent;
+        border-color: $white;
+        color: $white;
+      }
+    }
+
+    .image-bg & {
+      border-color: $white;
+      color: $white;
+
+      &:hover {
+        background-color: $transperent-button-hover-bg;
+        border-color: $transperent-button-border;
+        color: $white;
       }
     }
 
@@ -53,30 +69,158 @@
     &[disabled] {
       background-color: $c-stable-primary;
     }
+
+    &--red {
+      @include button-variant($primary-text-color, transparent, $button-red);
+
+      &:hover {
+        @include button-variant($white, $button-red, $button-red);
+      }
+    }
+
+    &--blue {
+      @include button-variant($primary-text-color, transparent, $button-blue);
+
+      &:hover {
+        @include button-variant($white, $button-blue, $button-blue);
+      }
+    }
+
+    &--purple {
+      @include button-variant($primary-text-color, transparent, $button-purple);
+
+      &:hover {
+        @include button-variant($white, $button-purple, $button-purple);
+      }
+    }
+
+    &--orange {
+      @include button-variant($primary-text-color, transparent, $button-orange);
+
+      &:hover {
+        @include button-variant($white, $button-orange, $button-orange);
+      }
+    }
   }
 
   &.btn-primary {
-    @include button-variant($c-absolute, $c-positive-secondary, darken($c-positive-secondary, 5%));
+    @include button-variant($white, $primary-button-bg, $primary-button-bg);
+
+    &:hover {
+      @include button-variant($text-link-color, $primary-button-hover-bg, $primary-button-bg);
+    }
+
+    &--red {
+      @include button-variant($white, $button-red, $button-red);
+
+      &:hover {
+        @include button-variant($primary-text-color, transparent, $button-red);
+      }
+    }
+
+    &--blue {
+      @include button-variant($white, $button-blue, $button-blue);
+
+      &:hover {
+        @include button-variant($primary-text-color, transparent, $button-blue);
+      }
+    }
+
+    &--purple {
+      @include button-variant($white, $button-purple, $button-purple);
+
+      &:hover {
+        @include button-variant($primary-text-color, transparent, $button-purple);
+      }
+    }
+
+    &--orange {
+      @include button-variant($white, $button-orange, $button-orange);
+
+      &:hover {
+        @include button-variant($primary-text-color, transparent, $button-orange);
+      }
+    }
+  }
+
+  &.btn-secondary {
+    @include button-variant($text-link-color, $white, $white);
+
+    &:hover {
+      @include button-variant($white, transparent, $white);
+    }
+
+    &--red {
+      @include button-variant($button-red, $white, $white);
+
+      &:hover {
+        @include button-variant($white, transparent, $white);
+      }
+    }
+
+    &--blue {
+      @include button-variant($button-blue, $white, $white);
+
+      &:hover {
+        @include button-variant($white, transparent, $white);
+      }
+    }
+
+    &--purple {
+      @include button-variant($button-purple, $white, $white);
+
+      &:hover {
+        @include button-variant($white, transparent, $white);
+      }
+    }
+
+    &--orange {
+      @include button-variant($button-orange, $white, $white);
+
+      &:hover {
+        @include button-variant($white, transparent, $white);
+      }
+    }
   }
 
   &.btn-info {
-    @include button-variant($c-positive-secondary, $c-positive-primary, $c-positive-secondary);
+    @include button-variant($white, $button-blue, $button-blue);
+
+    &:hover {
+      @include button-variant($primary-text-color, transparent, $button-blue);
+    }
   }
 
   &.btn-success {
-    @include button-variant($c-positive-secondary, $c-balanced-primary, $c-positive-secondary);
+    @include button-variant($white, $c-balanced-primary, $c-balanced-primary);
+
+    &:hover {
+      @include button-variant($primary-text-color, transparent, $c-balanced-primary);
+    }
   }
 
   &.btn-warning {
-    @include button-variant($c-absolute, $c-energized-primary, $c-energized-primary);
+    @include button-variant($white, $button-orange, $button-orange);
+
+    &:hover {
+      @include button-variant($primary-text-color, transparent, $button-orange);
+    }
   }
 
   &.btn-danger {
-    @include button-variant($c-absolute, darken($c-energized-secondary, 10%), darken($c-energized-secondary, 15%));
+    @include button-variant($white, $button-red, $button-red);
+
+    &:hover {
+      @include button-variant($primary-text-color, transparent, $button-red);
+    }
   }
 
   &.btn-danger--alt {
-    @include button-variant($c-absolute, $c-energized-secondary, $c-energized-secondary);
+    @include button-variant($white, $button-red, $button-red);
+
+    &:hover {
+      @include button-variant($primary-text-color, transparent, $button-red);
+    }
   }
 
   &.btn-link {

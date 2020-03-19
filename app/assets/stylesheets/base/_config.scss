@@ -165,6 +165,24 @@ $b-space-m:                        15px;
 $b-space-l:                        20px;
 $b-space-xl:                       40px;
 
+
+// -------------------------------------
+//   Buttons
+// -------------------------------------
+$primary-button-bg: $primary;
+$primary-button-hover-bg: $white;
+$button-red: #ff5b35;
+$button-blue: #7cc7f1;
+$button-purple: #835aa2;
+$button-orange: #ff8c00;
+
+$secondary-button-bg: $white;
+$secondary-button-hover-bg: none;
+
+$transperent-button-bg: none;
+$transperent-button-hover-bg: #0f526f;
+$transperent-button-border: #0f526f;
+
 // -------------------------------------
 //   Fonts
 // -------------------------------------

@@ -28,26 +28,6 @@
         font-weight: normal;
         line-height: 1.5;
       }
-
-      #{$bc}__btn {
-        background-color: $primary;
-        border-color: $primary;
-        border-radius: 0;
-        color: $white;
-        font-size: 12px;
-        font-stretch: normal;
-        font-style: normal;
-        font-weight: bold;
-        letter-spacing: 1.5px;
-        line-height: 2;
-        margin-top: 5px;
-        padding: 10px 20px;
-        text-align: center;
-        
-        &--blue {
-        color: $white;
-        }
-      }
     }
   }
 
