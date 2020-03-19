@@ -1006,7 +1006,7 @@ marketing_templates:
             <% else %>
               <% button_target_1 = '_blank' %>
             <% end %>
-            <a class="btn btn-default btn-default-<%= button_color_1 %> btn-block-xs" href="<%= button_link_1 %>" target="<%= button_target_1 %>"><%= button_title_1 %></a>
+            <a class="btn btn-default btn-default--<%= button_color_1 %> btn-block-xs" href="<%= button_link_1 %>" target="<%= button_target_1 %>"><%= button_title_1 %></a>
           <% end %>
         </div>
         <div class="col-sm-6 <%= background_color_2 %>-bg">
@@ -1018,7 +1018,7 @@ marketing_templates:
             <% else %>
               <% button_target_2 = '_blank' %>
             <% end %>
-            <a class="btn btn-default btn-default-<%= button_color_2 %> btn-block-xs" href="<%= button_link_2 %>" target="<%= button_target_2 %>"><%= button_title_2 %></a>
+            <a class="btn btn-default btn-default--<%= button_color_2 %> btn-block-xs" href="<%= button_link_2 %>" target="<%= button_target_2 %>"><%= button_title_2 %></a>
           <% end %>
         </div>
       </section>
