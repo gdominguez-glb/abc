@@ -422,14 +422,15 @@ section {
   background: $c-energized-secondary;
 }
 
-.white-bg {
-  color: $primary-text-color;
-  background: $c-absolute;
+.grey-bg {
+  background: $background-grey;
 }
 
-.grey-bg {
+// -------------------------------------
+//   Text Color
+// -------------------------------------
+.navy-blue-text {
   color: $primary-text-color;
-  background: $background-grey;
 }
 
 // -------------------------------------
