@@ -399,20 +399,20 @@ marketing_templates:
   -
     name: '25/75 Hero Image Right'
     content: !xml |
-      <div class="banner-container">
-        <div class="content-section">
-          <div class="new-icon">
+      <div class="row banner-container">
+        <div class="banner-container__content col-sm-4">
+          <div class="banner-container__icon">
             <img src="<%= icon %>" />
           </div>
-          <div class="content-title">
+          <div class="banner-container__title">
             <h3><%= title %></h3>
             <p><%= description %></p>
-            <a href="<%= button_link %>" class="btn btn-primary blue">
+            <a href="<%= button_link %>" class="btn btn-primary banner-container__btn banner-container__btn--blue">
               <%= button_text %>
             </a>
           </div>
         </div>
-        <div class="img-section">
+        <div class="banner-container__img col-sm-8">
           <img src="<%= image %>" />
         </div>
       </div>
@@ -517,10 +517,13 @@ marketing_templates:
   -
     name: '50/50 Full-Bleed Image Right'
     content: !xml |
-      <section class="row row-tile-new <%= background_color %>-bg">
-        <div class="col-sm-6">
-          <h6><%= title %></h6>
-          <p><%= body_text %></p>
+      <section class="tile-container row row-tile-new <%= background_color %>-bg">
+        <div class="tile-container__content col-sm-6">
+          <% if image_url_1.present? %>
+            <img class="tile-container__icon image_url_1" src="<%= image_url_1 %>" alt="<%= image_alt_1 %>" />
+          <% end %>
+          <h6 class="tile-container__title"><%= title %></h6>
+          <p class="tile-container__para"><%= body_text %></p>
           <% if button_1_title.present? && button_1_link.present? %>
             <a class="btn btn-default btn-block-xs margin-bottom--m" href="<%= button_1_link %>" target="<%= button_1_target %>"><%= button_1_title %></a>
           <% end %>
@@ -528,12 +531,12 @@ marketing_templates:
             <a class="btn btn-default btn-block-xs margin-bottom--m" href="<%= button_2_link %>" target="<%= button_2_target %>"><%= button_2_title %></a>
           <% end %>
         </div>
-        <div class="col-sm-6 img-full-new">
+        <div class="tile-container__image col-sm-6 img-full-new">
           <picture>
             <!--[if IE 9]><video style="display: none;"><![endif]-->
-            <source srcset="<%= image_url.gsub(/original/, 'small') if image_url %>" media="(min-width: 361px)">
+            <source srcset="<%= image_url_2.gsub(/original/, 'small') if image_url_2 %>" media="(min-width: 361px)">
             <!--[if IE 9]></video><![endif]-->
-            <img srcset="<%= image_url.gsub(/original/, 'thumb') if image_url %>" alt="<%= alt_text rescue nil %>" >
+            <img srcset="<%= image_url_2.gsub(/original/, 'thumb') if image_url_2 %>" alt="<%= alt_text rescue nil %>" >
           </picture>
         </div>
       </section>
@@ -1056,6 +1059,32 @@ marketing_templates:
               <% button_target = '_blank' %>
             <% end %>
             <a class="video-left-text-right__btn btn btn-default btn-block-xs" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+          <% end %>
+        </div>
+      </section>
+
+  -
+    name: 'Product Presentation'
+    content: !xml |
+      <section id="product-presentation tileImageLeft<%= position %>" class="image-left-text-right row <%= background_color %>-bg">
+        <div class="product-presentation__image col-sm-6">
+          <div class="embed-responsive embed-responsive-16by9">
+            <% if image_url_1.present? %>
+              <img class="product-presentation__icon image_url_1" src="<%= image_url_1 %>" alt="<%= image_alt_1 %>" />
+            <% end %>
+          </div>
+        </div>
+        <div class="product-presentation__content col-sm-6">
+          <% if image_url_2.present? %>
+            <img class="product-presentation__icon image_url_2" src="<%= image_url_2 %>" alt="<%= image_alt_1 %>" />
+          <% end %>
+          <h6 class="product-presentation__title"><%= title %></h6>
+          <p class="product-presentation__para"><%= body_text %></p>
+          <% if button_1_title.present? && button_1_link.present? %>
+            <a class="btn btn-default btn-block-xs margin-bottom--m" href="<%= button_1_link %>" target="<%= button_1_target %>"><%= button_1_title %></a>
+          <% end %>
+          <% if button_2_title.present? && button_2_link.present? %>
+            <a class="btn btn-default btn-block-xs margin-bottom--m" href="<%= button_2_link %>" target="<%= button_2_target %>"><%= button_2_title %></a>
           <% end %>
         </div>
       </section>

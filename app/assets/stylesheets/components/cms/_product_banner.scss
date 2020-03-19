@@ -1,0 +1,44 @@
+.banner-container {
+  background: $white;
+  height: 440px;
+  padding: 0 55px;
+  $bc: &;
+
+  &__content {
+    background: $background-grey;
+    height: 440px;
+    padding: 50px 50px 50px 40px;
+    width: 424px;
+
+    #{$bc}__title {
+      color: $primary-text-color;
+      font-stretch: normal;
+      font-style: normal;
+      letter-spacing: normal;
+
+      h3 {
+        font-size: 24px;
+        font-style: italic;
+        font-weight: normal;
+        line-height: 1.42;
+      }
+
+      p {
+        font-size: 16px;
+        font-weight: normal;
+        line-height: 1.5;
+      }
+    }
+  }
+
+  &__img {
+    height: 440px;
+    padding: 0;
+    width: 906px;
+
+    img {
+      height: 100%;
+      width: 100%;
+    }
+  }
+}
