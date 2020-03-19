@@ -1092,7 +1092,7 @@ marketing_templates:
   -
     name: '3-Column Text'
     content: !xml |
-      <section class="row row-content-3col <%= background_color %>-bg">
+      <section class="row row-content-3col <%= background_color %>-bg navy-blue-text">
         <div class="col-sm-4">
           <h6><%= title_1 %></h6>
           <p><%= body_text_1 %></p>
@@ -1102,7 +1102,7 @@ marketing_templates:
             <% else %>
               <% button_target_1 = '_blank' %>
             <% end %>
-            <a class="btn btn-default btn-block-xs" href="<%= button_link_1 %>" target="<%= button_target_1 %>"><%= button_title_1 %></a>
+            <a class="btn btn-default btn-default--<%= button_color_1 %> btn-block-xs" href="<%= button_link_1 %>" target="<%= button_target_1 %>"><%= button_title_1 %></a>
           <% end %>
         </div>
         <div class="col-sm-4">
@@ -1114,7 +1114,7 @@ marketing_templates:
             <% else %>
               <% button_target_2 = '_blank' %>
             <% end %>
-            <a class="btn btn-default btn-block-xs" href="<%= button_link_2 %>" target="<%= button_target_2 %>"><%= button_title_2 %></a>
+            <a class="btn btn-default btn-default--<%= button_color_2 %> btn-block-xs" href="<%= button_link_2 %>" target="<%= button_target_2 %>"><%= button_title_2 %></a>
           <% end %>
         </div>
         <div class="col-sm-4">
@@ -1126,7 +1126,7 @@ marketing_templates:
             <% else %>
               <% button_target_3 = '_blank' %>
             <% end %>
-            <a class="btn btn-default btn-block-xs" href="<%= button_link_3 %>" target="<%= button_target_3 %>"><%= button_title_3 %></a>
+            <a class="btn btn-default btn-default--<%= button_color_3 %> btn-block-xs" href="<%= button_link_3 %>" target="<%= button_target_3 %>"><%= button_title_3 %></a>
           <% end %>
         </div>
       </section>
