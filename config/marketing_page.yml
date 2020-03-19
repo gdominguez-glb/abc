@@ -1068,7 +1068,7 @@ marketing_templates:
     content: !xml |
       <section id="product-presentation tileImageLeft<%= position %>" class="image-left-text-right row <%= background_color %>-bg">
         <div class="product-presentation__image col-sm-6">
-          <div class="embed-responsive embed-responsive-16by9">
+          <div class="product-presentation__embed embed-responsive embed-responsive-16by9">
             <% if image_url_1.present? %>
               <img class="product-presentation__icon image_url_1" src="<%= image_url_1 %>" alt="<%= image_alt_1 %>" />
             <% end %>

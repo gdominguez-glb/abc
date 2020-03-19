@@ -35,6 +35,11 @@
   &__image {
     height: 100%;
 
+    #{$tc}__embed {
+      height: 344px;
+      width: 606px;
+    }
+
     img {
       display: block;
       height: auto;
