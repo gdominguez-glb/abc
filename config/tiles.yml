@@ -424,8 +424,8 @@
 
 - :name: 25/75 Hero Image Right
   :fields:
-  - :name: icon
-    :label: Icon Image
+  - :name: banner_icon_text
+    :label: Icon Text
     :input_type: text
   - :name: title
     :label: Title
