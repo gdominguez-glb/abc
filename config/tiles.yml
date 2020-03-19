@@ -1257,10 +1257,10 @@
     :label: Button Color 1
     :input_type: select
     :input_options:
-      - eureka-math-2
-      - wheatley-blue
-      - phd-purple
-      - alexandria-orange
+      - red
+      - blue
+      - purple
+      - orange
   - :name: button_target_1
     :label: Button Target 1
     :input_type: select
@@ -1283,10 +1283,10 @@
     :label: Button Color 2
     :input_type: select
     :input_options:
-      - eureka-math-2
-      - wheatley-blue
-      - phd-purple
-      - alexandria-orange
+      - red
+      - blue
+      - purple
+      - orange
   - :name: button_target_2
     :label: Button Target 2
     :input_type: select
@@ -1309,10 +1309,10 @@
     :label: Button Color 3
     :input_type: select
     :input_options:
-      - eureka-math-2
-      - wheatley-blue
-      - phd-purple
-      - alexandria-orange
+      - red
+      - blue
+      - purple
+      - orange
   - :name: button_target_3
     :label: Button Target 3
     :input_type: select
