@@ -402,12 +402,12 @@ marketing_templates:
       <div class="row banner-container">
         <div class="banner-container__content col-sm-4">
           <div class="banner-container__icon">
-            <img src="<%= icon %>" />
+            <span><%= banner_icon_text %></span>
           </div>
           <div class="banner-container__title">
             <h3><%= title %></h3>
             <p><%= description %></p>
-            <a href="<%= button_link %>" class="btn btn-primary banner-container__btn banner-container__btn--blue">
+            <a href="<%= button_link %>" class="btn btn-primary">
               <%= button_text %>
             </a>
           </div>
