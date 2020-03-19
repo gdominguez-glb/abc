@@ -997,7 +997,7 @@ marketing_templates:
     name: '2-Column Text'
     content: !xml |
       <section class="row row-content-2col">
-        <div class="col-sm-12">
+        <div class="col-sm-12 sub-head-container">
           <div class="sub-head clearfix">
             <div class="sub-head__rectangle"> </div>
             <h4 class="sub-head__text"><%= sub_head %></h4>

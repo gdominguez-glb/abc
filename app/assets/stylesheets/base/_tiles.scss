@@ -111,6 +111,7 @@ section {
 
     @media screen and (min-width: $screen-sm-min) {
       @include display-flex;
+      flex-wrap: wrap;
     }
 
     [class*='col-'] {
@@ -452,18 +453,20 @@ section {
   max-height: 750px;
 }
 
+.sub-head-container {
+  padding: 60px 20px 0 80px;
+  background: #f4f4f4;
+}
+
 .sub-head {
   position: relative;
   margin-bottom: 50px;
   float: left;
+  padding-right: 20px;
+  padding-bottom: 10px;
 
   &__text {
-    position: absolute;
-    bottom: 0;
     margin: 0;
-    width: 133px;
-    height: 27px;
-    font-family: CircularStd;
     font-size: 20px;
     font-weight: 500;
     font-stretch: normal;
@@ -471,11 +474,16 @@ section {
     line-height: 1.2;
     letter-spacing: normal;
     color: #0b212c;
+    z-index: 1;
+    position: relative;
   }
 
   &__rectangle {
-    width: 155px;
     height: 13px;
     background-color: #e7e7e7;
+    position: absolute;
+    width: 100%;
+    z-index: 0;
+    margin-top: 12px;
   }
 }
