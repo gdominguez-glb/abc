@@ -1092,7 +1092,7 @@ marketing_templates:
   -
     name: '3-Column Text'
     content: !xml |
-      <section class="row row-content-3col <%= background_color %>-bg">
+      <section class="row row-content-3col <%= background_color %>-bg navy-blue-text">
         <div class="col-sm-4">
           <h6><%= title_1 %></h6>
           <p><%= body_text_1 %></p>

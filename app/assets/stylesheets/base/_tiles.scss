@@ -423,8 +423,14 @@ section {
 }
 
 .grey-bg {
-  color: $primary-text-color;
   background: $background-grey;
+}
+
+// -------------------------------------
+//   Text Color
+// -------------------------------------
+.navy-blue-text {
+  color: $primary-text-color;
 }
 
 // -------------------------------------
