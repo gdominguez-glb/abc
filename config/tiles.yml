@@ -1171,6 +1171,62 @@
     :input_options:
       - Open in Same Tab
       - Open in New Tab
+- :name: Product Presentation
+  :fields:
+  - :name: image_url_1
+    :label: Image Url 1
+    :input_type: text
+  - :name: image_alt_1
+    :label: Image Alt Text 1
+    :input_type: text
+  - :name: title
+    :label: Title
+    :input_type: text_area
+  - :name: body_text
+    :label: Body Text
+    :input_type: text_area
+  - :name: background_color
+    :label: Background Color
+    :input_type: select
+    :input_options:
+      - white
+      - green
+      - blue
+      - cream
+      - orange
+      - dark-orange
+      - light-blue
+      - purple
+  - :name: button_1_title
+    :label: Button 1 Title
+    :input_type: text
+  - :name: button_1_link
+    :label: Button 1 Link
+    :input_type: text
+  - :name: button_1_target
+    :label: Button 1 Target
+    :input_type: select
+    :input_options:
+      - Open in Same Tab
+      - Open in New Tab
+  - :name: button_2_title
+    :label: Button 2 Title
+    :input_type: text
+  - :name: button_2_link
+    :label: Button 2 Link
+    :input_type: text
+  - :name: button_2_target
+    :label: Button 2 Target
+    :input_type: select
+    :input_options:
+      - Open in Same Tab
+      - Open in New Tab
+  - :name: image_url_2
+    :label: Image Url 2
+    :input_type: text
+  - :name: alt_text_2
+    :label: Image Alt Text 2
+    :input_type: text
 - :name: 3-Column Text
   :fields:
   - :name: background_color

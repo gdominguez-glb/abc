@@ -1064,6 +1064,32 @@ marketing_templates:
       </section>
 
   -
+    name: 'Product Presentation'
+    content: !xml |
+      <section id="product-presentation tileImageLeft<%= position %>" class="image-left-text-right row <%= background_color %>-bg">
+        <div class="product-presentation__image col-sm-6">
+          <div class="embed-responsive embed-responsive-16by9">
+            <% if image_url_1.present? %>
+              <img class="product-presentation__icon image_url_1" src="<%= image_url_1 %>" alt="<%= image_alt_1 %>" />
+            <% end %>
+          </div>
+        </div>
+        <div class="product-presentation__content col-sm-6">
+          <% if image_url_2.present? %>
+            <img class="product-presentation__icon image_url_2" src="<%= image_url_2 %>" alt="<%= image_alt_1 %>" />
+          <% end %>
+          <h6 class="product-presentation__title"><%= title %></h6>
+          <p class="product-presentation__para"><%= body_text %></p>
+          <% if button_1_title.present? && button_1_link.present? %>
+            <a class="btn btn-default btn-block-xs margin-bottom--m" href="<%= button_1_link %>" target="<%= button_1_target %>"><%= button_1_title %></a>
+          <% end %>
+          <% if button_2_title.present? && button_2_link.present? %>
+            <a class="btn btn-default btn-block-xs margin-bottom--m" href="<%= button_2_link %>" target="<%= button_2_target %>"><%= button_2_title %></a>
+          <% end %>
+        </div>
+      </section>
+
+  -
     name: '3-Column Text'
     content: !xml |
       <section class="row row-content-3col <%= background_color %>-bg">
