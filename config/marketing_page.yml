@@ -997,29 +997,37 @@ marketing_templates:
     name: '2-Column Text'
     content: !xml |
       <section class="row row-content-2col">
-        <div class="col-sm-6 <%= background_color_1 %>-bg navy-blue-text">
-          <h6><%= title_1 %></h6>
-          <p><%= body_text_1 %></p>
-          <% if button_title_1.present? && button_link_1.present? %>
-            <% if button_target_1 == 'Open in Same Tab' %>
-              <% button_target_1 = '_self' %>
-            <% else %>
-              <% button_target_1 = '_blank' %>
-            <% end %>
-            <a class="btn btn-default btn-default--<%= button_color_1 %> btn-block-xs" href="<%= button_link_1 %>" target="<%= button_target_1 %>"><%= button_title_1 %></a>
-          <% end %>
+        <div class="col-sm-12">
+          <div class="sub-head clearfix">
+            <div class="sub-head__rectangle"> </div>
+            <h4 class="sub-head__text"><%= sub_head %></h4>
+          </div>
         </div>
-        <div class="col-sm-6 <%= background_color_2 %>-bg navy-blue-text">
-          <h6><%= title_2 %></h6>
-          <p><%= body_text_2 %></p>
-          <% if button_title_2.present? && button_link_2.present? %>
-            <% if button_target_2 == 'Open in Same Tab' %>
-              <% button_target_2 = '_self' %>
-            <% else %>
-              <% button_target_2 = '_blank' %>
+        <div class="clearfix">
+          <div class="col-sm-6 <%= background_color_1 %>-bg navy-blue-text">
+            <h6><%= title_1 %></h6>
+            <p><%= body_text_1 %></p>
+            <% if button_title_1.present? && button_link_1.present? %>
+              <% if button_target_1 == 'Open in Same Tab' %>
+                <% button_target_1 = '_self' %>
+              <% else %>
+                <% button_target_1 = '_blank' %>
+              <% end %>
+              <a class="btn btn-default btn-default--<%= button_color_1 %> btn-block-xs" href="<%= button_link_1 %>" target="<%= button_target_1 %>"><%= button_title_1 %></a>
             <% end %>
-            <a class="btn btn-default btn-default--<%= button_color_2 %> btn-block-xs" href="<%= button_link_2 %>" target="<%= button_target_2 %>"><%= button_title_2 %></a>
-          <% end %>
+          </div>
+          <div class="col-sm-6 <%= background_color_2 %>-bg navy-blue-text">
+            <h6><%= title_2 %></h6>
+            <p><%= body_text_2 %></p>
+            <% if button_title_2.present? && button_link_2.present? %>
+              <% if button_target_2 == 'Open in Same Tab' %>
+                <% button_target_2 = '_self' %>
+              <% else %>
+                <% button_target_2 = '_blank' %>
+              <% end %>
+              <a class="btn btn-default btn-default--<%= button_color_2 %> btn-block-xs" href="<%= button_link_2 %>" target="<%= button_target_2 %>"><%= button_title_2 %></a>
+            <% end %>
+          </div>
         </div>
       </section>
 

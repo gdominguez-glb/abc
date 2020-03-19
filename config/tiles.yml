@@ -1079,6 +1079,9 @@
   - :name: button_type
 - :name: 2-Column Text
   :fields:
+  - :name: sub_head
+    :label: Sub Heading
+    :input_type: text
   - :name: background_color_1
     :label: Background Color 1
     :input_type: select
