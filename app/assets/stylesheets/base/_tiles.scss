@@ -126,8 +126,16 @@ section {
         padding-bottom: 60px;
 
         @media screen and (min-width: $screen-sm-min) {
-          padding-top: 84px;
-          padding-bottom: 84px;
+          padding-top: 40px;
+          padding-bottom: 40px;
+        }
+        
+        &.sub-head {
+          @media screen and (min-width: $screen-sm-min) {
+            padding: 60px 20px 0 80px;
+          }
+
+          padding: 60px 20px 0 80px;
         }
 
         .btn {
@@ -453,37 +461,37 @@ section {
   max-height: 750px;
 }
 
-.sub-head-container {
+.sub-head {
+  $sh: &;
   padding: 60px 20px 0 80px;
   background: #f4f4f4;
-}
 
-.sub-head {
-  position: relative;
-  margin-bottom: 50px;
-  float: left;
-  padding-right: 20px;
-  padding-bottom: 10px;
-
-  &__text {
-    margin: 0;
-    font-size: 20px;
-    font-weight: 500;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.2;
-    letter-spacing: normal;
-    color: #0b212c;
-    z-index: 1;
+  &__container {
     position: relative;
-  }
-
-  &__rectangle {
-    height: 13px;
-    background-color: #e7e7e7;
-    position: absolute;
-    width: 100%;
-    z-index: 0;
-    margin-top: 12px;
+    float: left;
+    padding-right: 20px;
+    padding-bottom: 10px;
+  
+    #{$sh}__text {
+      margin: 0;
+      font-size: 20px;
+      font-weight: 500;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.2;
+      letter-spacing: normal;
+      color: #0b212c;
+      z-index: 1;
+      position: relative;
+    }
+  
+    #{$sh}__rectangle {
+      height: 13px;
+      background-color: #e7e7e7;
+      position: absolute;
+      width: 100%;
+      z-index: 0;
+      margin-top: 12px;
+    }
   }
 }
