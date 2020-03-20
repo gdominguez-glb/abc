@@ -122,12 +122,12 @@ section {
 
       &:first-child,
       &:last-child {
-        padding-top: 60px;
         padding-bottom: 60px;
+        padding-top: 60px;
 
         @media screen and (min-width: $screen-sm-min) {
-          padding-top: 40px;
           padding-bottom: 40px;
+          padding-top: 40px;
         }
         
         &.sub-head {
@@ -473,25 +473,25 @@ section {
     padding-bottom: 10px;
   
     #{$sh}__text {
-      margin: 0;
+      color: $primary-text-color;
       font-size: 20px;
-      font-weight: 500;
       font-stretch: normal;
       font-style: normal;
-      line-height: 1.2;
+      font-weight: 500;
       letter-spacing: normal;
-      color: #0b212c;
-      z-index: 1;
+      line-height: 1.2;
+      margin: 0;
       position: relative;
+      z-index: 1;
     }
   
     #{$sh}__rectangle {
+      background-color: $sub-head-bg;
       height: 13px;
-      background-color: #e7e7e7;
+      margin-top: 12px;
       position: absolute;
       width: 100%;
       z-index: 0;
-      margin-top: 12px;
     }
   }
 }
