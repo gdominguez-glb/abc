@@ -7,6 +7,11 @@
     #{$tc}__icon {
       height: 66px;
       width: 166px;
+
+      &--left {
+        height: 126px;
+        width: 196px;
+      }
     }
 
     #{$tc}__title {
