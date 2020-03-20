@@ -6,7 +6,7 @@
 // *************************************
 
 .footer {
-  padding: $b-space-xl $b-space-l;
+  padding: 40px 26px;
   font-size: 1em;
   .footer-section {
     padding-left: 50px;
@@ -18,10 +18,10 @@
     .logo-footer {
       position: relative;
       height: 115px;
-      background: transparent asset-url('GM_logo.png') no-repeat 50% 50%;
-      background-size: 150px 92px;
+      background: transparent asset-url('Great-Minds-Logo.svg') no-repeat 50% 50%;
+      background-size: 102px 69px;
       display: block;
-      margin-top: -5px;
+      margin-top: -15px;
     }
 
     .footer-title {
@@ -73,7 +73,7 @@
     font-weight: normal;
     letter-spacing: normal;
     line-height: normal;
-    height: 15px;
+    margin-top: 135px;
     
     .footer-copyright {
       margin: 0;
