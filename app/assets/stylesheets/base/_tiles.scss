@@ -155,6 +155,10 @@ section {
         }
       }
     }
+
+    .tile-content {
+      padding-top: 60px;
+    }
   }
 
   &.row-content-4col {
@@ -450,4 +454,38 @@ section {
 .post-image {
   max-width: 100% !important;
   max-height: 750px;
+}
+
+.sub-head {
+  $sh: &;
+  padding: 60px 20px 0 80px;
+
+  &__container {
+    position: relative;
+    float: left;
+    padding-right: 20px;
+    padding-bottom: 10px;
+  
+    #{$sh}__text {
+      color: $primary-text-color;
+      font-size: 20px;
+      font-stretch: normal;
+      font-style: normal;
+      font-weight: 500;
+      letter-spacing: normal;
+      line-height: 1.2;
+      margin: 0;
+      position: relative;
+      z-index: 1;
+    }
+  
+    #{$sh}__rectangle {
+      background-color: $sub-head-bg;
+      height: 13px;
+      margin-top: 12px;
+      position: absolute;
+      width: 100%;
+      z-index: 0;
+    }
+  }
 }
