@@ -1249,6 +1249,9 @@
     :input_type: text
 - :name: 3-Column Text
   :fields:
+  - :name: sub_head
+    :label: Sub Heading
+    :input_type: text
   - :name: background_color
     :label: Background Color
     :input_type: select
