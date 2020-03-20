@@ -111,6 +111,7 @@ section {
 
     @media screen and (min-width: $screen-sm-min) {
       @include display-flex;
+      flex-wrap: wrap;
     }
 
     [class*='col-'] {
@@ -121,12 +122,20 @@ section {
 
       &:first-child,
       &:last-child {
-        padding-top: 60px;
         padding-bottom: 60px;
+        padding-top: 60px;
 
         @media screen and (min-width: $screen-sm-min) {
-          padding-top: 84px;
-          padding-bottom: 84px;
+          padding-bottom: 40px;
+          padding-top: 40px;
+        }
+        
+        &.sub-head {
+          @media screen and (min-width: $screen-sm-min) {
+            padding: 60px 20px 0 80px;
+          }
+
+          padding: 60px 20px 0 80px;
         }
 
         .btn {
