@@ -464,14 +464,13 @@ section {
 .sub-head {
   $sh: &;
   padding: 60px 20px 0 80px;
-  background: #f4f4f4;
 
   &__container {
-    position: relative;
     float: left;
-    padding-right: 20px;
     padding-bottom: 10px;
-  
+    padding-right: 20px;
+    position: relative;
+
     #{$sh}__text {
       color: $primary-text-color;
       font-size: 20px;
@@ -484,7 +483,7 @@ section {
       position: relative;
       z-index: 1;
     }
-  
+
     #{$sh}__rectangle {
       background-color: $sub-head-bg;
       height: 13px;
