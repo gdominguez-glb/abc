@@ -37,14 +37,15 @@
     width: 165px;
     padding: 0;
     text-indent: -9999px;
-    background: transparent asset-url("GM_logo.png") no-repeat 50% 50%;
+    background: transparent asset-url("Great-Minds-Logo.svg") no-repeat 50% 50%;
     background-size: 150px 35px;
+    //background-size: 70%;
 
     @media screen and (min-width: $screen-sm-min) {
       position: relative;
       height: 109px;
-      margin-left: 35px;
-      background: transparent asset-url("GM_logo.png") no-repeat 50% 50%;
+      margin-left: 19px;
+      background: transparent asset-url("Great-Minds-Logo.svg") no-repeat 50% 50%;
       background-size: 102px 69px;
     }
   }
@@ -593,7 +594,7 @@
 
     @media screen and (min-width: $screen-sm-min) {
       position: absolute;
-      right: 30px;
+      right: 35px;
       text-transform: uppercase;
       top: 6px;
       width: auto;
