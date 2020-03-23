@@ -1201,6 +1201,56 @@
     :input_options:
       - Open in Same Tab
       - Open in New Tab
+- :name: 50/50 Partial Image Right
+  :fields:
+  - :name: sub_head
+    :label: Sub Heading
+    :input_type: text
+  - :name: background_color
+    :label: Background Color
+    :input_type: select
+    :input_options:
+      - green
+      - blue
+      - cream
+      - orange
+      - light-blue
+      - purple
+      - white
+      - grey
+  - :name: title
+    :label: Title 1
+    :input_type: text
+  - :name: body_text
+    :label: Body Text
+    :input_type: text_area
+  - :name: button_title
+    :label: Button Title
+    :input_type: text
+  - :name: button_link
+    :label: Button Link
+    :input_type: text
+  - :name: button_color
+    :label: Button Color
+    :input_type: select
+    :input_options:
+      - red
+      - blue
+      - purple
+      - orange
+      - dark-orange
+  - :name: button_target
+    :label: Button Target
+    :input_type: select
+    :input_options:
+      - Open in Same Tab
+      - Open in New Tab
+  - :name: image_url
+    :label: Image Url
+    :input_type: text
+  - :name: image_alt
+    :label: Image Alt Text
+    :input_type: text
 - :name: 2-Column Video Left, Text Right
   :fields:
   - :name: title
