@@ -34,9 +34,12 @@
     border: 1px solid $transperent-button-border;
     color: $text-link-color;
 
-    &:hover {
+    &:hover,
+    &:active {
       background-color: $transperent-button-hover-bg;
+      box-shadow: none;
       color: $white;
+      text-decoration: none;
     }
 
     .blue-bg & {
@@ -44,10 +47,13 @@
       border-color: $white;
       color: $text-link-color;
 
-      &:hover {
+      &:hover,
+      &:active {
         background-color: transparent;
         border-color: $white;
+        box-shadow: none;
         color: $white;
+        text-decoration: none;
       }
     }
 
@@ -55,9 +61,11 @@
       border-color: $white;
       color: $white;
 
-      &:hover {
+      &:hover,
+      &:active {
         background-color: $transperent-button-hover-bg;
         border-color: $transperent-button-border;
+        box-shadow: none;
         color: $white;
       }
     }
@@ -114,8 +122,13 @@
   &.btn-primary {
     @include button-variant($white, $primary-button-bg, $primary-button-bg);
 
-    &:hover {
-      @include button-variant($text-link-color, $primary-button-hover-bg, $primary-button-bg);
+    &:hover,
+    &:active {
+      background: transparent;
+      border-color: $primary-button-bg;
+      box-shadow: none;
+      color: $text-link-color;
+      text-decoration: none;
     }
 
     &--red {
@@ -162,8 +175,11 @@
   &.btn-secondary {
     @include button-variant($text-link-color, $white, $white);
 
-    &:hover {
+    &:hover,
+    &:active {
       @include button-variant($white, transparent, $white);
+      box-shadow: none;
+      text-decoration: none;
     }
 
     &--red {
