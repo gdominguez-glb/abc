@@ -170,9 +170,7 @@ marketing_templates:
       <section class="row row-content-3col <%= background_color %>-bg text-left padding-bottom testimonial-container" data-testimonial-section="1">
         <div class="col-sm-4">
           <div class="testimonial">
-            <h6><%= testimonial_header_1 %></h6>
             <article class="testimonial__article">
-              <p><%= testimonial_text_1 %></p>
               <% if testimonial_video_url_1.present? && testimonial_image_url_1.present? %>
                 <a class="testimonial__video facebook__video" href="javascript:void(0)" data-video-url="<%= testimonial_video_url_1 %>" data-remote='true'>
                   <img src="<%= testimonial_image_url_1 %>" alt="<%= testimonial_image_alt_1 %>" />
@@ -183,6 +181,8 @@ marketing_templates:
                   <img class="testimonial__image" src="<%= testimonial_image_url_1 %>" alt="<%= testimonial_image_alt_1 %>" />
                 <% end %>
               <% end %>
+              <h6><%= testimonial_header_1 %></h6>
+              <p><%= testimonial_text_1 %></p>
               <% if testimonial_bottom_text_1.present? %>
                 <p><%= testimonial_bottom_text_1 %></p>
               <% end %>
@@ -194,9 +194,7 @@ marketing_templates:
         </div>
         <div class="col-sm-4">
           <div class="testimonial">
-            <h6><%= testimonial_header_2 %></h6>
             <article class="testimonial__article">
-              <p><%= testimonial_text_2 %></p>
               <% if testimonial_video_url_2.present? && testimonial_image_url_2.present? %>
                 <a class="testimonial__video facebook__video" href="javascript:void(0)" data-video-url="<%= testimonial_video_url_2 %>" data-remote='true'>
                   <img src="<%= testimonial_image_url_2 %>" alt="<%= testimonial_image_alt_2 %>" />
@@ -207,6 +205,8 @@ marketing_templates:
                   <img class="testimonial__image" src="<%= testimonial_image_url_2 %>" alt="<%= testimonial_image_alt_2 %>" />
                 <% end %>
               <% end %>
+              <h6><%= testimonial_header_2 %></h6>
+              <p><%= testimonial_text_2 %></p>
               <% if testimonial_bottom_text_2.present? %>
                 <p><%= testimonial_bottom_text_2 %></p>
               <% end %>
@@ -218,9 +218,7 @@ marketing_templates:
         </div>
         <div class="col-sm-4">
           <div class="testimonial">
-            <h6><%= testimonial_header_3 %></h6>
             <article class="testimonial__article">
-              <p><%= testimonial_text_3 %></p>
               <% if testimonial_video_url_3.present? && testimonial_image_url_3.present? %>
                 <a class="testimonial__video facebook__video" href="javascript:void(0)" data-video-url="<%= testimonial_video_url_3 %>" data-remote='true'>
                   <img src="<%= testimonial_image_url_3 %>" alt="<%= testimonial_image_alt_3 %>" />
@@ -231,6 +229,8 @@ marketing_templates:
                   <img class="testimonial__image" src="<%= testimonial_image_url_3 %>" alt="<%= testimonial_image_alt_3 %>" />
                 <% end %>
               <% end %>
+              <h6><%= testimonial_header_3 %></h6>
+              <p><%= testimonial_text_3 %></p>
               <% if testimonial_bottom_text_3.present? %>
                 <p><%= testimonial_bottom_text_3 %></p>
               <% end %>
@@ -247,9 +247,7 @@ marketing_templates:
       <section class="row row-content-3col <%= background_color %>-bg text-left testimonial-more-section padding-bottom padding-top--l hide" data-testimonial-section="2">
         <div class="col-sm-4">
           <div class="testimonial">
-            <h6><%= testimonial_header_4 %></h6>
             <article class="testimonial__article">
-              <p><%= testimonial_text_4 %></p>
               <% if testimonial_video_url_4.present? && testimonial_image_url_4.present? %>
                 <a class="testimonial__video facebook__video" href="javascript:void(0)" data-video-url="<%= testimonial_video_url_4 %>" data-remote='true'>
                   <img src="<%= testimonial_image_url_4 %>" alt="<%= testimonial_image_alt_4 %>" />
@@ -260,6 +258,8 @@ marketing_templates:
                   <img class="testimonial__image" src="<%= testimonial_image_url_4 %>" alt="<%= testimonial_image_alt_4 %>" />
                 <% end %>
               <% end %>
+              <h6><%= testimonial_header_4 %></h6>
+              <p><%= testimonial_text_4 %></p>
               <% if testimonial_bottom_text_4.present? %>
                 <p><%= testimonial_bottom_text_4 %></p>
               <% end %>
@@ -271,9 +271,7 @@ marketing_templates:
         </div>
         <div class="col-sm-4">
           <div class="testimonial">
-            <h6><%= testimonial_header_5 %></h6>
             <article class="testimonial__article">
-              <p><%= testimonial_text_5 %></p>
               <% if testimonial_video_url_5.present? && testimonial_image_url_5.present? %>
                 <a class="testimonial__video facebook__video" href="javascript:void(0)" data-video-url="<%= testimonial_video_url_5 %>" data-remote='true'>
                   <img src="<%= testimonial_image_url_5 %>" alt="<%= testimonial_image_alt_5 %>" />
@@ -284,6 +282,8 @@ marketing_templates:
                   <img class="testimonial__image" src="<%= testimonial_image_url_5 %>" alt="<%= testimonial_image_alt_5 %>" />
                 <% end %>
               <% end %>
+              <h6><%= testimonial_header_5 %></h6>
+              <p><%= testimonial_text_5 %></p>
               <% if testimonial_bottom_text_5.present? %>
                 <p><%= testimonial_bottom_text_5 %></p>
               <% end %>
@@ -295,9 +295,7 @@ marketing_templates:
         </div>
         <div class="col-sm-4">
           <div class="testimonial">
-            <h6><%= testimonial_header_6 %></h6>
             <article class="testimonial__article">
-              <p><%= testimonial_text_6 %></p>
               <% if testimonial_video_url_6.present? && testimonial_image_url_6.present? %>
                 <a class="testimonial__video facebook__video" href="javascript:void(0)" data-video-url="<%= testimonial_video_url_6 %>" data-remote='true'>
                   <img src="<%= testimonial_image_url_6 %>" alt="<%= testimonial_image_alt_6 %>" />
@@ -308,6 +306,8 @@ marketing_templates:
                   <img class="testimonial__image" src="<%= testimonial_image_url_6 %>" alt="<%= testimonial_image_alt_6 %>" />
                 <% end %>
               <% end %>
+              <h6><%= testimonial_header_6 %></h6>
+              <p><%= testimonial_text_6 %></p>
               <% if testimonial_bottom_text_6.present? %>
                 <p><%= testimonial_bottom_text_6 %></p>
               <% end %>
@@ -321,9 +321,7 @@ marketing_templates:
       <section class="row row-content-3col <%= background_color %>-bg text-left testimonial-more-section padding-top--l hide" data-testimonial-section="3">
         <div class="col-sm-4">
           <div class="testimonial">
-            <h6><%= testimonial_header_7 %></h6>
             <article class="testimonial__article">
-              <p><%= testimonial_text_7 %></p>
               <% if testimonial_video_url_7.present? && testimonial_image_url_7.present? %>
                 <a class="testimonial__video facebook__video" href="javascript:void(0)" data-video-url="<%= testimonial_video_url_7 %>" data-remote='true'>
                   <img src="<%= testimonial_image_url_7 %>" alt="<%= testimonial_image_alt_7 %>" />
@@ -334,6 +332,8 @@ marketing_templates:
                   <img class="testimonial__image" src="<%= testimonial_image_url_7 %>" alt="<%= testimonial_image_alt_7 %>" />
                 <% end %>
               <% end %>
+              <h6><%= testimonial_header_7 %></h6>
+              <p><%= testimonial_text_7 %></p>
               <% if testimonial_bottom_text_7.present? %>
                 <p><%= testimonial_bottom_text_7 %></p>
               <% end %>
@@ -345,9 +345,7 @@ marketing_templates:
         </div>
         <div class="col-sm-4">
           <div class="testimonial">
-            <h6><%= testimonial_header_8 %></h6>
             <article class="testimonial__article">
-              <p><%= testimonial_text_8 %></p>
               <% if testimonial_video_url_8.present? && testimonial_image_url_8.present? %>
                 <a class="testimonial__video facebook__video" href="javascript:void(0)" data-video-url="<%= testimonial_video_url_8 %>" data-remote='true'>
                   <img src="<%= testimonial_image_url_8 %>" alt="<%= testimonial_image_alt_8 %>" />
@@ -358,6 +356,8 @@ marketing_templates:
                   <img class="testimonial__image" src="<%= testimonial_image_url_8 %>" alt="<%= testimonial_image_alt_8 %>" />
                 <% end %>
               <% end %>
+              <h6><%= testimonial_header_8 %></h6>
+              <p><%= testimonial_text_8 %></p>
               <% if testimonial_bottom_text_8.present? %>
                 <p><%= testimonial_bottom_text_8 %></p>
               <% end %>
@@ -369,9 +369,7 @@ marketing_templates:
         </div>
         <div class="col-sm-4">
           <div class="testimonial">
-            <h6><%= testimonial_header_9 %></h6>
             <article class="testimonial__article">
-              <p><%= testimonial_text_9 %></p>
               <% if testimonial_video_url_9.present? && testimonial_image_url_9.present? %>
                 <a class="testimonial__video facebook__video" href="javascript:void(0)" data-video-url="<%= testimonial_video_url_9 %>" data-remote='true'>
                   <img src="<%= testimonial_image_url_9 %>" alt="<%= testimonial_image_alt_9 %>" />
@@ -382,6 +380,8 @@ marketing_templates:
                   <img class="testimonial__image" src="<%= testimonial_image_url_9 %>" alt="<%= testimonial_image_alt_9 %>" />
                 <% end %>
               <% end %>
+              <h6><%= testimonial_header_9 %></h6>
+              <p><%= testimonial_text_9 %></p>
               <% if testimonial_bottom_text_9.present? %>
                 <p><%= testimonial_bottom_text_9 %></p>
               <% end %>

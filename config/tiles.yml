@@ -199,6 +199,7 @@
       :label: Background Color
       :input_type: select
       :input_options:
+        - white
         - green
         - blue
         - cream
