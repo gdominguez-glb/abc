@@ -128,14 +128,19 @@ section {
         @media screen and (min-width: $screen-sm-min) {
           padding-bottom: 60px;
           padding-top: 30px;
+
+          .col_container__content {
+            padding-top: 100px;
+            padding-left: 80px;
+          }
         }
-        
+
         &.sub-head {
           @media screen and (min-width: $screen-sm-min) {
-            padding: 60px 20px 0 80px;
+            padding: 60px 20px 0 0;
           }
 
-          padding: 60px 20px 0 80px;
+          padding: 60px 20px 0 0;
         }
 
         .btn {
@@ -163,10 +168,6 @@ section {
           padding-left: 24px;
         }
       }
-    }
-
-    .tile-content {
-      padding-top: 60px;
     }
   }
 
@@ -467,7 +468,7 @@ section {
 
 .sub-head {
   $sh: &;
-  padding: 60px 20px 0 80px;
+  padding: 60px 20px 0 0;
 
   &__container {
     float: left;
@@ -496,5 +497,30 @@ section {
       width: 100%;
       z-index: 0;
     }
+  }
+}
+
+.col_container {
+  padding-top: 0;
+  $cc: &;
+
+  #{$cc}__content {
+    padding-left: 80px !important;
+    padding-top: 60px !important;
+
+    &:first-child {
+      padding-top: 0 !important;
+    }
+
+    h6 {
+      clear: both;
+      margin-top: 70px;
+    }
+  }
+
+  #{$cc}__image {
+    padding-bottom: 40px;
+    padding-right: 45px;
+    padding-top: 40px;
   }
 }
