@@ -1164,18 +1164,6 @@
     :input_options:
       - Open in Same Tab
       - Open in New Tab
-  - :name: background_color_2
-    :label: Background Color 2
-    :input_type: select
-    :input_options:
-      - green
-      - blue
-      - cream
-      - orange
-      - light-blue
-      - purple
-      - white
-      - grey
   - :name: title_2
     :label: Title 2
     :input_type: text
@@ -1279,6 +1267,15 @@
   - :name: button_title
     :label: Button Title
     :input_type: text
+  - :name: button_color
+    :label: Button Color
+    :input_type: select
+    :input_options:
+      - red
+      - blue
+      - purple
+      - orange
+      - dark-orange
   - :name: button_link
     :label: Button Link
     :input_type: text
@@ -1457,7 +1454,6 @@
     :input_options:
       - Open in Same Tab
       - Open in New Tab
-
 - :name: 3-Column Facebook Video Text
   :fields:
   - :name: background_color
