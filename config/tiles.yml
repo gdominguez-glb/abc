@@ -1271,11 +1271,14 @@
     :label: Button Color
     :input_type: select
     :input_options:
-      - red
+      - white
+      - green
       - blue
-      - purple
+      - cream
       - orange
       - dark-orange
+      - light-blue
+      - purple
   - :name: button_link
     :label: Button Link
     :input_type: text
