@@ -519,8 +519,8 @@ section {
   }
 
   #{$cc}__image {
-    padding-bottom: 40px;
-    padding-right: 45px;
-    padding-top: 40px;
+    padding-bottom: 40px !important;
+    padding-right: 45px !important;
+    padding-top: 40px !important;
   }
 }
