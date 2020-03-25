@@ -24,23 +24,17 @@
 
 .slider__slide h5 {
   color: $text-link-color;
+  font-family: CircularStd-bold;
   font-size: 12px;
   font-stretch: normal;
   font-style: normal;
   font-weight: bold;
   letter-spacing: normal;
   line-height: 2;
-  width: 730px;
 }
 
 .slider__first-slide p {
   color: $primary-text-color;
-  font-size: 16px;
-  font-stretch: normal;
-  font-style: normal;
-  font-weight: normal;
-  letter-spacing: normal;
-  line-height: 1.38;
   max-width: 223px;
 }
 
@@ -52,11 +46,6 @@
 
 .slider__second-slide p {
   max-width: 223px;
-  font-size: 16px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.38;
   letter-spacing: normal;
 }
 
@@ -68,12 +57,6 @@
 
 .slider__third-slide p {
   color: $primary-text-color;
-  font-size: 16px;
-  font-stretch: normal;
-  font-style: normal;
-  font-weight: normal;
-  letter-spacing: normal;
-  line-height: 1.38;
   max-width: 223px;
 }
 
@@ -105,13 +88,6 @@
 
 .slider__first-slide h3 {
   color: $primary-text-color;
-  font-size: 24px;
-  font-stretch: normal;
-  font-style: normal;
-  font-weight: 500;
-  letter-spacing: normal;
-  line-height: 1.25;
-  text-transform: none;
   width: 163px;
 }
 
@@ -127,13 +103,6 @@
 
 .slider__second-slide h3 {
   color: $white;
-  font-size: 24px;
-  font-stretch: normal;
-  font-style: normal;
-  font-weight: 500;
-  letter-spacing: normal;
-  line-height: 1.25;
-  text-transform: none;
   width: 163px;
 }
 
@@ -158,13 +127,6 @@
 
 .slider__third-slide h3 {
   color: $primary-text-color;
-  font-size: 24px;
-  font-stretch: normal;
-  font-style: normal;
-  font-weight: 500;
-  letter-spacing: normal;
-  line-height: 1.25;
-  text-transform: none;
   width: 163px;
 }
 
@@ -191,7 +153,28 @@
 }
 
 .slider__content {
-  bottom: 50px;
+  top: 60px;
   padding: 20px;
   position: absolute;
+
+  h3 {
+    font-family: CircularStd-medium;
+    font-size: 24px;
+    font-stretch: normal;
+    font-style: normal;
+    font-weight: 500;
+    letter-spacing: normal;
+    line-height: 1.25;
+    text-transform: none;
+  }
+
+  p {
+    font-family: CircularStd-book;
+    font-size: 16px;
+    font-stretch: normal;
+    font-style: normal;
+    font-weight: normal;
+    letter-spacing: normal;
+    line-height: 1.38;
+  }
 }
