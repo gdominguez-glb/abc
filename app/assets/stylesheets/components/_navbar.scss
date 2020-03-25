@@ -232,6 +232,7 @@
       > a {
         border-bottom: 1px solid darken($c-energized-secondary, 5%);
         color: $primary-text-color;
+        font-family: "CircularStd-bold";
         font-size: 12px;
         font-weight: bold;
         font-stretch: normal;
@@ -511,7 +512,6 @@
         @media screen and (min-width: $screen-sm-min) {
           padding: 3px 0 1px;
           border-bottom: 2px solid transparent;
-          font-family: 'Lora', serif;
           font-size: .8em;
           font-weight: normal;
           text-transform: capitalize;
@@ -553,7 +553,6 @@
 
   .subnav-name {
     padding: 5px 0;
-    font-family: 'Karla', sans-serif;
     font-weight: bold;
     text-transform: uppercase;
   }
@@ -581,7 +580,6 @@
   // ----- Cart Navigation Items ----- //
 
   .navbar-right {
-    font-family: Karla, sans-serif;
     font-weight: bold;
     letter-spacing: 2px;
 
