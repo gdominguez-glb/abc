@@ -14,30 +14,42 @@ marketing_templates:
     content: !xml |
       <div class="slider">
         <div class="slider__slide slider__first-slide active">
-          <img src="<%= slide_image_1 %>" />
+          <% if slide_image_1.present? %>
+            <img src="<%= slide_image_1 %>" />
+          <% end %>
           <div class="slider__content">
             <h5><%= tagline_1 %></h5>
             <h3><%= title_1 %></h3>
             <p><%= description_1 %></p>
-            <a href="<%= button_link_1 %>" class="btn btn-primary"><%= button_text_1 %></a>
+            <% if button_link_1.present? && button_text_1.present? %>
+              <a href="<%= button_link_1 %>" class="btn btn-primary"><%= button_text_1 %></a>
+            <% end %>
           </div>
         </div>
         <div class="slider__slide slider__second-slide">
-          <img src="<%= slide_image_2 %>" />
+          <% if slide_image_2.present? %>
+            <img src="<%= slide_image_2 %>" />
+          <% end %>
           <div class="slider__content">
             <h5><%= tagline_2 %></h5>
             <h3><%= title_2 %></h3>
             <p><%= description_2 %></p>
-            <a href="<%= button_link_2 %>" class="btn btn-primary"><%= button_text_2 %></a>
+            <% if button_link_2.present? &&  button_text_2.present? %>
+              <a href="<%= button_link_2 %>" class="btn btn-primary"><%= button_text_2 %></a>
+            <% end %>
           </div>
         </div>
         <div class="slider__slide slider__third-slide">
-          <img src="<%= slide_image_3 %>" />
+          <% if slide_image_2.present? %>
+            <img src="<%= slide_image_3 %>" />
+          <% end %>
           <div class="slider__content">
             <h5><%= tagline_3 %></h5>
             <h3><%= title_3 %></h3>
             <p><%= description_3 %></p>
-            <a href="<%= button_link_3 %>" class="btn btn-primary"><%= button_text_3 %></a>
+            <% if button_link_3.present? && button_text_3.present? %>
+              <a href="<%= button_link_3 %>" class="btn btn-primary"><%= button_text_3 %></a>
+            <% end %>
           </div>
         </div>
       </div>
