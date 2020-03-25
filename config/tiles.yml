@@ -71,15 +71,14 @@
     :label: Color 1
     :input_type: select
     :input_options:
-      - green
-      - blue
-      - cream
-      - orange
+      - dark-orange
       - light-blue
       - purple
+      - orange
+      - navy-blue
   - :name: product_name_1
     :label: Product Name 1
-    :input_type: text
+    :input_type: text_area
   - :name: image_1
     :label: Image 1
     :input_type: text
@@ -93,15 +92,14 @@
     :label: Color 2
     :input_type: select
     :input_options:
-      - green
-      - blue
-      - cream
-      - orange
+      - dark-orange
       - light-blue
       - purple
+      - orange
+      - navy-blue
   - :name: product_name_2
     :label: Product Name 2
-    :input_type: text
+    :input_type: text_area
   - :name: image_2
     :label: Image 2
     :input_type: text
@@ -115,15 +113,14 @@
     :label: Color 3
     :input_type: select
     :input_options:
-      - green
-      - blue
-      - cream
-      - orange
+      - dark-orange
       - light-blue
       - purple
+      - orange
+      - navy-blue
   - :name: product_name_3
     :label: Product Name 3
-    :input_type: text
+    :input_type: text_area
   - :name: image_3
     :label: Image 3
     :input_type: text
@@ -137,15 +134,14 @@
     :label: Color 4
     :input_type: select
     :input_options:
-      - green
-      - blue
-      - cream
-      - orange
+      - dark-orange
       - light-blue
       - purple
+      - orange
+      - navy-blue
   - :name: product_name_4
     :label: Product Name 4
-    :input_type: text
+    :input_type: text_area
   - :name: image_4
     :label: Image 4
     :input_type: text
@@ -159,15 +155,14 @@
     :label: Color 5
     :input_type: select
     :input_options:
-      - green
-      - blue
-      - cream
-      - orange
+      - dark-orange
       - light-blue
       - purple
+      - orange
+      - navy-blue
   - :name: product_name_5
     :label: Product Name 5
-    :input_type: text
+    :input_type: text_area
   - :name: image_5
     :label: Image 5
     :input_type: text
