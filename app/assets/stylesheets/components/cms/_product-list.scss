@@ -1,5 +1,22 @@
 .product-list {
+  padding-top: 30px;
   text-align: center;
+
+  &__heading {
+    color: $primary-text-color;
+    font-family: CircularStd;
+    font-size: 36px;
+    font-stretch: normal;
+    font-style: normal;
+    font-weight: normal;
+    height: 100px;
+    letter-spacing: normal;
+    line-height: 1.11;
+    margin-bottom: 0px;
+    padding-left: 130px;
+    text-align: left;
+    width: 956px;
+  }
 
   &__product {
     background-color: $background-grey;
@@ -27,8 +44,16 @@
       min-height: 21px;
       text-align: center;
 
-      &--color--green {
-        color: $c-balanced-primary;
+      &__background {
+        background: linear-gradient(transparent 60%, rgba(195, 195, 195, 0.4) 50%) no-repeat;
+      }
+
+      &--color--dark-orange {
+        color: $dark-orange;
+      }
+
+      &--color--light-blue {
+        color: $powder;
       }
 
       &--color--purple {
@@ -36,15 +61,11 @@
       }
 
       &--color--orange {
-        color: $c-energized-primary;
+        color: $alexandria-orange;
       }
 
-      &--color--light-blue {
-        color: $c-positive-primary;
-      }
-
-      &--color--cream {
-        color: $cream;
+      &--color--navy-blue {
+        color: $text-black;
       }
     }
 

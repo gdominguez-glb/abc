@@ -486,6 +486,7 @@ section {
       line-height: 1.2;
       margin: 0;
       position: relative;
+      text-transform: capitalize;
       z-index: 1;
     }
 
@@ -515,6 +516,7 @@ section {
     h6 {
       clear: both;
       margin-top: 70px;
+      text-transform: capitalize;
     }
   }
 
