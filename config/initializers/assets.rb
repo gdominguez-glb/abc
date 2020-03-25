@@ -10,3 +10,4 @@ Rails.application.config.assets.precompile += %w( styleguide-extras.css )
 Rails.application.config.assets.precompile += %w( frontend.js )
 Rails.application.config.assets.precompile += %w( account.js )
 Rails.application.config.assets.precompile += %w( cms.js )
+Rails.application.config.assets.precompile << /\.(?:svg|eot|woff|ttf)\z/
