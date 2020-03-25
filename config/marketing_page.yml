@@ -8,30 +8,37 @@ marketing_templates:
           <%= page_title %>
         </h1>
       </div>
+
   -
     name: 'Slider'
     content: !xml |
-      <div class="demo-slider">
-        <div id="one" class="box one active">
+      <div class="slider">
+        <div class="slider__slide slider__first-slide active">
           <img src="<%= slide_image_1 %>" />
-          <h5><%= tagline_1 %></h5>
-          <h3><%= title_1 %></h3>
-          <p><%= description_1 %></p>
-          <a href="<%= button_link_1 %>" class="btn"><%= button_text_1 %></a>
+          <div class="slider__content">
+            <h5><%= tagline_1 %></h5>
+            <h3><%= title_1 %></h3>
+            <p><%= description_1 %></p>
+            <a href="<%= button_link_1 %>" class="btn btn-primary"><%= button_text_1 %></a>
+          </div>
         </div>
-        <div id="two" class="box two">
+        <div class="slider__slide slider__second-slide">
           <img src="<%= slide_image_2 %>" />
-          <h5><%= tagline_2 %></h5>
-          <h3><%= title_2 %></h3>
-          <p><%= description_2 %></p>
-          <a href="<%= button_link_2 %>" class="btn"><%= button_text_2 %></a>
+          <div class="slider__content">
+            <h5><%= tagline_2 %></h5>
+            <h3><%= title_2 %></h3>
+            <p><%= description_2 %></p>
+            <a href="<%= button_link_2 %>" class="btn btn-primary"><%= button_text_2 %></a>
+          </div>
         </div>
-        <div id="three" class="box three">
+        <div class="slider__slide slider__third-slide">
           <img src="<%= slide_image_3 %>" />
-          <h5><%= tagline_3 %></h5>
-          <h3><%= title_3 %></h3>
-          <p><%= description_3 %></p>
-          <a href="<%= button_link_3 %>" class="btn"><%= button_text_3 %></a>
+          <div class="slider__content">
+            <h5><%= tagline_3 %></h5>
+            <h3><%= title_3 %></h3>
+            <p><%= description_3 %></p>
+            <a href="<%= button_link_3 %>" class="btn btn-primary"><%= button_text_3 %></a>
+          </div>
         </div>
       </div>
 
