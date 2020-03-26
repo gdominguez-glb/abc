@@ -179,6 +179,7 @@ select {
     border-color: $c-absolute;
     color: $c-absolute;
     background-color: transparent;
+    padding: 12px 10px;
 
     &:focus {
       border-color: $c-firm-secondary;
