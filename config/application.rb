@@ -63,6 +63,10 @@ module GreatMinds
     end
 
     config.active_job.queue_adapter = :sidekiq
-    config.action_view.sanitized_allowed_tags = ['h1', 'h2', 'h3', 'h4', 'br', 'strong', 'em', 'i', 'u', 'a', 'b', 'ul', 'li', 'ol', 'blockquote', 'strike', 'span']
+    config.action_view.sanitized_allowed_tags = ['h1', 'h2', 'h3', 'h4', 'h5',
+                                                 'h6', 'br', 'strong', 'em',
+                                                 'i', 'u', 'a', 'b', 'ul', 'li',
+                                                 'ol', 'blockquote', 'strike',
+                                                 'span', 'sup', 'sub', 'del']
   end
 end
