@@ -58,7 +58,9 @@ marketing_templates:
     name: 'Product List'
     content: !xml |
       <div class="product-list clearfix row">
-        <p class="product-list__heading">Our Products go beyond the marketing statement here about quality of curricula and dedication.</p>
+        <p class="product-list__heading">
+          Our materials integrate texts from classic literature, history, art, science, and music, transforming skill-building lessons into explorations of the wider world. 
+        </p>
         <div class="product-list__product col-lg-2">
           <a href="<%= link_1 %>">
             <h4 class="product-list__product--subject product-list__product--subject--color--<%= color_1 %>">
