@@ -1319,6 +1319,7 @@
     :label: Button Color 1
     :input_type: select
     :input_options:
+      - green
       - red
       - blue
       - purple
@@ -1340,6 +1341,7 @@
     :label: Button Color 2
     :input_type: select
     :input_options:
+      - green
       - red
       - blue
       - purple
