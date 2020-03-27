@@ -117,6 +117,13 @@
         @include button-variant($white, $button-dark-orange, $button-dark-orange);
       }
     }
+    &--green {
+      @include button-variant($primary-text-color, transparent, $button-green);
+
+      &:hover {
+        @include button-variant($white, $button-green, $button-green);
+      }
+    }
   }
 
   &.btn-primary {
@@ -170,6 +177,14 @@
         @include button-variant($primary-text-color, transparent, $button-dark-orange);
       }
     }
+
+    &--green {
+      @include button-variant($white, $button-green, $button-green);
+
+      &:hover {
+        @include button-variant($primary-text-color, transparent, $button-green);
+      }
+    }
   }
 
   &.btn-secondary {
@@ -216,6 +231,14 @@
 
     &--dark-orange {
       @include button-variant($dark-orange, $white, $white);
+
+      &:hover {
+        @include button-variant($white, transparent, $white);
+      }
+    }
+
+    &--green {
+      @include button-variant($button-green, $white, $white);
 
       &:hover {
         @include button-variant($white, transparent, $white);
