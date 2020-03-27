@@ -71,11 +71,15 @@
     :label: Color 1
     :input_type: select
     :input_options:
+      - white
+      - green
+      - blue
+      - cream
+      - orange
       - dark-orange
       - light-blue
       - purple
-      - orange
-      - navy-blue
+      - grey
   - :name: product_name_1
     :label: Product Name 1
     :input_type: text_area
@@ -92,11 +96,15 @@
     :label: Color 2
     :input_type: select
     :input_options:
+      - white
+      - green
+      - blue
+      - cream
+      - orange
       - dark-orange
       - light-blue
       - purple
-      - orange
-      - navy-blue
+      - grey
   - :name: product_name_2
     :label: Product Name 2
     :input_type: text_area
@@ -113,11 +121,15 @@
     :label: Color 3
     :input_type: select
     :input_options:
+      - white
+      - green
+      - blue
+      - cream
+      - orange
       - dark-orange
       - light-blue
       - purple
-      - orange
-      - navy-blue
+      - grey
   - :name: product_name_3
     :label: Product Name 3
     :input_type: text_area
@@ -134,11 +146,15 @@
     :label: Color 4
     :input_type: select
     :input_options:
+      - white
+      - green
+      - blue
+      - cream
+      - orange
       - dark-orange
       - light-blue
       - purple
-      - orange
-      - navy-blue
+      - grey
   - :name: product_name_4
     :label: Product Name 4
     :input_type: text_area
@@ -155,11 +171,15 @@
     :label: Color 5
     :input_type: select
     :input_options:
+      - white
+      - green
+      - blue
+      - cream
+      - orange
       - dark-orange
       - light-blue
       - purple
-      - orange
-      - navy-blue
+      - grey
   - :name: product_name_5
     :label: Product Name 5
     :input_type: text_area
@@ -199,6 +219,7 @@
         - blue
         - cream
         - orange
+        - dark-orange
         - light-blue
         - purple
     - :name: testimonial_header_1
@@ -454,12 +475,15 @@
     :label: Background Color
     :input_type: select
     :input_options:
+      - white
       - green
       - blue
       - cream
       - orange
+      - dark-orange
       - light-blue
       - purple
+      - grey
 - :name: Loop Background Video
   :fields:
   - :name: wistia_video_id
@@ -484,6 +508,7 @@
     :label: Background Color
     :input_type: select
     :input_options:
+      - white
       - green
       - blue
       - cream
@@ -491,6 +516,7 @@
       - dark-orange
       - light-blue
       - purple
+      - grey
   - :name: button_1_title
     :label: Button 1 Title
     :input_type: text
@@ -501,11 +527,15 @@
     :label: Button Color 1
     :input_type: select
     :input_options:
-      - red
+      - white
+      - green
       - blue
-      - purple
+      - cream
       - orange
       - dark-orange
+      - light-blue
+      - purple
+      - grey
   - :name: button_1_target
     :label: Button 1 Target
     :input_type: select
@@ -522,11 +552,15 @@
     :label: Button Color 2
     :input_type: select
     :input_options:
-      - red
+      - white
+      - green
       - blue
-      - purple
+      - cream
       - orange
       - dark-orange
+      - light-blue
+      - purple
+      - grey
   - :name: button_2_target
     :label: Button 2 Target
     :input_type: select
@@ -551,12 +585,15 @@
     :label: Background Color
     :input_type: select
     :input_options:
+      - white
       - green
       - blue
       - cream
       - orange
+      - dark-orange
       - light-blue
       - purple
+      - grey
   - :name: button_title
     :label: Button Title
     :input_type: text
@@ -593,6 +630,7 @@
     :label: Background Color
     :input_type: select
     :input_options:
+      - white
       - green
       - blue
       - cream
@@ -600,6 +638,7 @@
       - dark-orange
       - light-blue
       - purple
+      - grey
   - :name: button_1_title
     :label: Button 1 Title
     :input_type: text
@@ -610,11 +649,15 @@
     :label: Button Color 1
     :input_type: select
     :input_options:
-      - red
+      - white
+      - green
       - blue
-      - purple
+      - cream
       - orange
       - dark-orange
+      - light-blue
+      - purple
+      - grey
   - :name: button_1_target
     :label: Button 1 Target
     :input_type: select
@@ -631,11 +674,15 @@
     :label: Button Color 2
     :input_type: select
     :input_options:
-      - red
+      - white
+      - green
       - blue
-      - purple
+      - cream
       - orange
       - dark-orange
+      - light-blue
+      - purple
+      - grey
   - :name: button_2_target
     :label: Button 2 Target
     :input_type: select
@@ -660,12 +707,15 @@
     :label: Background Color
     :input_type: select
     :input_options:
+      - white
       - green
       - blue
       - cream
       - orange
+      - dark-orange
       - light-blue
       - purple
+      - grey
   - :name: button_title
     :label: Button Title
     :input_type: text
@@ -696,12 +746,15 @@
     :label: Background Color
     :input_type: select
     :input_options:
+      - white
       - green
       - blue
       - cream
       - orange
+      - dark-orange
       - light-blue
       - purple
+      - grey
   - :name: button_title
     :label: Button Title
     :input_type: text
@@ -732,12 +785,15 @@
     :label: Background Color
     :input_type: select
     :input_options:
+      - white
       - green
       - blue
       - cream
       - orange
+      - dark-orange
       - light-blue
       - purple
+      - grey
   - :name: button_title
     :label: Button Title
     :input_type: text
@@ -768,12 +824,15 @@
     :label: Background Color
     :input_type: select
     :input_options:
+      - white
       - green
       - blue
       - cream
       - orange
+      - dark-orange
       - light-blue
       - purple
+      - grey
   - :name: button_title
     :label: Button Title
     :input_type: text
@@ -804,12 +863,15 @@
     :label: Background Color
     :input_type: select
     :input_options:
+      - white
       - green
       - blue
       - cream
       - orange
+      - dark-orange
       - light-blue
       - purple
+      - grey
   - :name: button_title
     :label: Button Title
     :input_type: text
@@ -840,12 +902,15 @@
     :label: Background Color
     :input_type: select
     :input_options:
+      - white
       - green
       - blue
       - cream
       - orange
+      - dark-orange
       - light-blue
       - purple
+      - grey
   - :name: button_title
     :label: Button Title
     :input_type: text
@@ -876,12 +941,15 @@
     :label: Background Color
     :input_type: select
     :input_options:
+      - white
       - green
       - blue
       - cream
       - orange
+      - dark-orange
       - light-blue
       - purple
+      - grey
   - :name: button_title
     :label: Button Title
     :input_type: text
@@ -912,12 +980,15 @@
     :label: Background Color
     :input_type: select
     :input_options:
+      - white
       - green
       - blue
       - cream
       - orange
+      - dark-orange
       - light-blue
       - purple
+      - grey
   - :name: button_title
     :label: Button Title
     :input_type: text
@@ -948,12 +1019,15 @@
     :label: Background Color
     :input_type: select
     :input_options:
+      - white
       - green
       - blue
       - cream
       - orange
+      - dark-orange
       - light-blue
       - purple
+      - grey
   - :name: button_title
     :label: Button Title
     :input_type: text
@@ -1091,12 +1165,15 @@
     :label: Background Color
     :input_type: select
     :input_options:
+      - white
       - green
       - blue
       - cream
       - orange
+      - dark-orange
       - light-blue
       - purple
+      - grey
   - :name: button_title
     :label: Button Title
     :input_type: text
@@ -1125,13 +1202,14 @@
     :label: Background Color 1
     :input_type: select
     :input_options:
+      - white
       - green
       - blue
       - cream
       - orange
+      - dark-orange
       - light-blue
       - purple
-      - white
       - grey
   - :name: title_1
     :label: Title 1
@@ -1149,10 +1227,15 @@
     :label: Button Color 1
     :input_type: select
     :input_options:
-      - red
+      - white
+      - green
       - blue
-      - purple
+      - cream
       - orange
+      - dark-orange
+      - light-blue
+      - purple
+      - grey
   - :name: button_target_1
     :label: Button Target 1
     :input_type: select
@@ -1175,10 +1258,15 @@
     :label: Button Color 2
     :input_type: select
     :input_options:
-      - red
+      - white
+      - green
       - blue
-      - purple
+      - cream
       - orange
+      - dark-orange
+      - light-blue
+      - purple
+      - grey
   - :name: button_target_2
     :label: Button Target 2
     :input_type: select
@@ -1194,13 +1282,14 @@
     :label: Background Color
     :input_type: select
     :input_options:
+      - white
       - green
       - blue
       - cream
       - orange
+      - dark-orange
       - light-blue
       - purple
-      - white
       - grey
   - :name: title
     :label: Title 1
@@ -1218,11 +1307,15 @@
     :label: Button Color
     :input_type: select
     :input_options:
-      - red
+      - white
+      - green
       - blue
-      - purple
+      - cream
       - orange
       - dark-orange
+      - light-blue
+      - purple
+      - grey
   - :name: button_target
     :label: Button Target
     :input_type: select
@@ -1250,12 +1343,15 @@
     :label: Background Color
     :input_type: select
     :input_options:
+      - white
       - green
       - blue
       - cream
       - orange
+      - dark-orange
       - light-blue
       - purple
+      - grey
   - :name: body_text
     :label: Body Text
     :input_type: text_area
@@ -1274,6 +1370,7 @@
       - dark-orange
       - light-blue
       - purple
+      - grey
   - :name: button_link
     :label: Button Link
     :input_type: text
@@ -1309,6 +1406,7 @@
       - dark-orange
       - light-blue
       - purple
+      - grey
   - :name: button_1_title
     :label: Button 1 Title
     :input_type: text
@@ -1319,12 +1417,15 @@
     :label: Button Color 1
     :input_type: select
     :input_options:
+      - white
       - green
-      - red
       - blue
-      - purple
+      - cream
       - orange
       - dark-orange
+      - light-blue
+      - purple
+      - grey
   - :name: button_1_target
     :label: Button 1 Target
     :input_type: select
@@ -1341,12 +1442,15 @@
     :label: Button Color 2
     :input_type: select
     :input_options:
+      - white
       - green
-      - red
       - blue
-      - purple
+      - cream
       - orange
       - dark-orange
+      - light-blue
+      - purple
+      - grey
   - :name: button_2_target
     :label: Button 2 Target
     :input_type: select
@@ -1368,13 +1472,14 @@
     :label: Background Color
     :input_type: select
     :input_options:
+      - white
       - green
       - blue
       - cream
       - orange
+      - dark-orange
       - light-blue
       - purple
-      - white
       - grey
   - :name: title_1
     :label: Title 1
@@ -1392,10 +1497,15 @@
     :label: Button Color 1
     :input_type: select
     :input_options:
-      - red
+      - white
+      - green
       - blue
-      - purple
+      - cream
       - orange
+      - dark-orange
+      - light-blue
+      - purple
+      - grey
   - :name: button_target_1
     :label: Button Target 1
     :input_type: select
@@ -1418,10 +1528,15 @@
     :label: Button Color 2
     :input_type: select
     :input_options:
-      - red
+      - white
+      - green
       - blue
-      - purple
+      - cream
       - orange
+      - dark-orange
+      - light-blue
+      - purple
+      - grey
   - :name: button_target_2
     :label: Button Target 2
     :input_type: select
@@ -1444,10 +1559,15 @@
     :label: Button Color 3
     :input_type: select
     :input_options:
-      - red
+      - white
+      - green
       - blue
-      - purple
+      - cream
       - orange
+      - dark-orange
+      - light-blue
+      - purple
+      - grey
   - :name: button_target_3
     :label: Button Target 3
     :input_type: select
@@ -1460,12 +1580,15 @@
     :label: Background Color
     :input_type: select
     :input_options:
+      - white
       - green
       - blue
       - cream
       - orange
+      - dark-orange
       - light-blue
       - purple
+      - grey
   - :name: facebook_header_1
     :label: Header 1
     :input_type: text
