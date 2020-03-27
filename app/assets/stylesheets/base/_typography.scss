@@ -77,7 +77,14 @@ h6 {
     font-size: 1.25em;
 
     section.row & {
-      font-size: 1.125em;
+      font-family: "CircularStd-medium";
+      font-size: 24px;
+      font-stretch: normal;
+      font-style: normal;
+      font-weight: 500;
+      letter-spacing: normal;
+      line-height: 1.25;
+      text-transform: capitalize;
     }
   }
 }
@@ -91,10 +98,6 @@ h6 {
   margin: 0 0 10px;
   font-weight: bold;
   text-transform: uppercase;
-
-  section.row & {
-    letter-spacing: .2em;
-  }
 }
 
 h1,
@@ -130,7 +133,7 @@ body {
 
 p {
   margin: 0 0 15px;
-  line-height: 1.76em;
+  line-height: 1.38;
 }
 
 p,

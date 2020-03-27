@@ -503,8 +503,8 @@
             [data-page='history'] &,
             [data-page='science'] &,
             [data-page='math'] & {
-              border-bottom: 2px solid $c-positive-secondary;
-              color: $c-positive-secondary;
+              border-bottom: 2px solid $white;
+              color: $white;
             }
           }
         }
@@ -512,8 +512,10 @@
         @media screen and (min-width: $screen-sm-min) {
           padding: 3px 0 1px;
           border-bottom: 2px solid transparent;
-          font-size: .8em;
+          color: $white;
+          font-size: 12px;
           font-weight: normal;
+          letter-spacing: normal;
           text-transform: capitalize;
 
           &.active {
@@ -523,7 +525,7 @@
             [data-page='history'] &,
             [data-page='science'] &,
             [data-page='math'] & {
-              border-bottom: 2px solid $c-positive-secondary;
+              border-bottom: 2px solid $white;
             }
           }
         }
