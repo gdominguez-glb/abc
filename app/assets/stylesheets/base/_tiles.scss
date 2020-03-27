@@ -388,8 +388,8 @@ section {
 }
 
 .green-bg {
-  color: $c-positive-secondary;
   background: $c-balanced-primary;
+  color: $white;
 
   &.image-bg {
     color: $c-absolute;
@@ -406,8 +406,8 @@ section {
 }
 
 .orange-bg {
-  color: $c-positive-secondary;
   background: $c-energized-primary;
+  color: $white;
 
   &.image-bg {
     color: $c-absolute;
@@ -423,8 +423,8 @@ section {
 }
 
 .purple-bg {
-  color: $c-science-secondary;
   background: $c-science-primary;
+  color: $white;
 
   &.image-bg {
     color: $c-absolute;
