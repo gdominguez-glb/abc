@@ -2,11 +2,6 @@
 $primary-text-color: #0b212c;
 $copy-right-color: rgba(11, 33, 44, 0.33);
 $text-link-color: #0f526f;
-$math-primary-color: #ff5b34;
-
-
-
-
 
 // *************************************
 //
@@ -23,25 +18,30 @@ $math-primary-color: #ff5b34;
 
 $black:                           #000;
 $white:                           #fff;
+$grey:                            #f4f4f4;
 $base-bg-color: $white;
 
 // Greens
 $lime:                            #7ebb52;
+$math-primary-color:              $lime;
 
 // Blues
-$navy:                            #07212d;
+//$navy:                            #07212d;
+$navy:                            #0b212c;
+$blue:                            #0f526f;
+$light-blue:                      #7cc7f1;
 $powder:                          #7cc7f1;
 
 // Oranges
 $coral:                           #ff5b34;
-$tangerine:                       #ff8c00;
+$tangerine:                       #ff8415;
 $sherbert:                        #f0ad4e;
 $dark-orange:                     #ff5b35;
 $alexandria-orange:               #FF8415;
 
 // Grays
 $offwhite:                        #f8f8f8;
-$sand:                            #FFFAE5;
+$sand:                            #fffaea;
 $gainsboro:                       #eee;
 $snow:                            #e2e7e9;
 $ash:                             #c5c5c5;
@@ -50,7 +50,8 @@ $steel:                           #46565c;
 $smoke:                           #333;
 $iron:                            #222;
 
-$cream:                           #fff9ea;
+$cream:                           #fffaea;
+$purple:                          #835aa2;
 
 $background-grey:                 #f4f4f4;
 $text-black:                      #0b212c;
