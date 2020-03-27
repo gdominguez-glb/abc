@@ -8,7 +8,7 @@
 server 'staging.greatminds.org', user: 'deploy', roles: %w{web app db search worker}
 
 
-set :branch, 'master'
+set :branch, 'hotfix/webstore-cookie'
 set :rails_env, 'staging'                  # If the environment differs from the stage name
 
 # role-based syntax
