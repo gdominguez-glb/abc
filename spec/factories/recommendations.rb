@@ -5,5 +5,4 @@ FactoryGirl.define do
     call_to_action_button_text "MyString"
     call_to_action_button_link "MyString"
   end
-
 end
