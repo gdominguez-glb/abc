@@ -25,7 +25,9 @@ class Api::UserController < Api::BaseController
 
       json_response = {
         id: user.id,
-        token: request.headers['HTTP_AUTHORIZATION'].split(' ')[1]
+        token: request.headers['HTTP_AUTHORIZATION'].split(' ')[1],
+        school_district: user.school_district.name,
+        school_district_id: user.school_district.id
       }.to_json
 
       response_string = {
@@ -57,10 +59,9 @@ class Api::UserController < Api::BaseController
   end
 
   def spree_user_params
-    params.
-      require(:spree_user).
-      permit(:first_name, :last_name, :email).
-      merge(default_params)
+    params.require(:spree_user)
+          .permit(:first_name, :last_name, :email, :title, :school_district_id)
+          .merge(default_params)
   end
 
   def default_params
@@ -69,7 +70,6 @@ class Api::UserController < Api::BaseController
     {
       password: password,
       password_confirmation: password,
-      title: 'Mr',
       interested_subjects: ['Math'],
     }
   end
