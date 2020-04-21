@@ -86,6 +86,10 @@
       text-transform: none;
     }
   }
+  .footer__content {
+    display: flex;
+    justify-content: center;
+  }
 }
 
 .footer-section {

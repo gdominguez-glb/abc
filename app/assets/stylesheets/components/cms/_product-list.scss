@@ -23,8 +23,58 @@
     float: none;
     height: 303px;
     margin: 15px;
+    overflow: hidden;
     padding: 12px 6px;
+    position: relative;
     width: 209px;
+
+    .btn {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -36px;
+      padding: 5px 0;
+      margin: 0;
+
+      &.btn--purple {
+        background: $c-science-primary;
+        color: $white;
+      }
+
+      &.btn--dark-orange {
+        background: $dark-orange;
+        color: $white;
+      }
+
+      &.btn--light-blue {
+        background: $powder;
+        color: $white;
+      }
+
+      &.btn--green {
+        background: $lime;
+        color: $white;
+      }
+
+      &.btn--orange {
+        background: $alexandria-orange;
+        color: $white;
+      }
+
+      &.btn--navy-blue {
+        background: $text-black;
+        color: $white;
+      }
+    }
+
+    &:hover {
+      // height: 340px;
+      box-shadow: 2px 4px 8px 2px rgba(0, 0, 0, 0.17);
+      background-color: #ffffff;
+      .btn {
+        bottom: 0;
+      }
+    }
 
     a {
       &:hover {
