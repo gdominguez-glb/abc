@@ -41,6 +41,23 @@
         color: $white;
       }
 
+      &.btn--blue {
+        background: $blue;
+        color: $white;
+      }
+
+      &.btn--cream {
+        background: $cream;
+      }
+
+      &.btn--grey {
+        background: $grey;
+      }
+
+      &.btn--white {
+        background: $white;
+      }
+
       &.btn--dark-orange {
         background: $dark-orange;
         color: $white;
