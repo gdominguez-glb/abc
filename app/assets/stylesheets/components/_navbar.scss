@@ -230,7 +230,8 @@
       }
 
       > a {
-        border-bottom: 1px solid darken($c-energized-secondary, 5%);
+        border: 0;
+        border-bottom: 1px solid darken($c-energized-secondary, 15%);
         color: $primary-text-color;
         font-family: "CircularStd-bold";
         font-size: 12px;
@@ -239,7 +240,6 @@
         font-style: normal;
         line-height: normal;
         letter-spacing: 0.1px;
-        border: 0;
         
         [data-page='english'] & {
           border-bottom: 1px solid darken($c-positive-primary, 5%);
@@ -357,7 +357,7 @@
       }
 
       &.search-button {
-        border-bottom: 1px solid darken($c-energized-secondary, 5%);
+        border-bottom: 1px solid darken($c-energized-secondary, 15%);
 
         @media screen and (min-width: $screen-sm-min) {
           border: 0;
