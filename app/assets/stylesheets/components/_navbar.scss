@@ -238,7 +238,8 @@
       }
 
       > a {
-        border-bottom: 1px solid darken($c-energized-secondary, 5%);
+        border: 0;
+        border-bottom: 1px solid darken($c-energized-secondary, 15%);
         color: $c-absolute;
 
         [data-page='english'] &,
@@ -363,7 +364,7 @@
       }
 
       &.search-button {
-        border-bottom: 1px solid darken($c-energized-secondary, 5%);
+        border-bottom: 1px solid darken($c-energized-secondary, 15%);
 
         @media screen and (min-width: $screen-sm-min) {
           border: 0;
