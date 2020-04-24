@@ -55,9 +55,7 @@ RSpec.describe Spree::Admin::ProductsController, type: :controller do
       get :preview, id: group_product.slug
       expect(response).to have_http_status(:ok)
     end
-  end
 
-  describe 'GET preview' do
     it 'should preview a product' do
       get :preview, id: product.slug
       expect(response).to have_http_status(:ok)
