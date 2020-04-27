@@ -6,15 +6,29 @@ RSpec.describe DownloadPagesController, type: :controller do
   describe "without login" do
     it "redirect user without login" do
       get :show, slug: 'abc-download'
-      expect(response).to redirect_to('/store/login')
+      expect(response).to redirect_to('/resources/login')
     end
   end
 
   describe "with login" do
     let(:user) { create(:gm_user) }
     let!(:product) { create(:product) }
-    let!(:download_product) { create(:download_product, product: product, download_page: download_page) }
-    let!(:licensed_product) { create(:spree_licensed_product, user: user, product: product, quantity: 1, can_be_distributed: false) }
+    let!(:download_product) do
+      create(
+        :download_product,
+        product: product,
+        download_page: download_page
+      )
+    end
+    let!(:licensed_product) do
+      create(
+        :spree_licensed_product,
+        user: user,
+        product: product,
+        quantity: 1,
+        can_be_distributed: false
+      )
+    end
 
     before(:each) do
       @request.env["devise.mapping"] = Devise.mappings[:spree_user]

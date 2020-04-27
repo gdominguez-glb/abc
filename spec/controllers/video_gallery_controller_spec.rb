@@ -59,14 +59,13 @@ RSpec.describe VideoGalleryController, type: :controller do
     it 'Should redirect to product path' do
       user = create :gm_user
       video_group = create(:spree_video_group, name: 'Teach Eureka')
-      create(:product, video_group: video_group)
+      product = create(:product, video_group: video_group)
       video = create :spree_video, title: 'name', video_group_id: video_group.id
 
       sign_in :spree_user, user
 
       get :unlock, id: video.id
-
-      expect(response.headers['Location']).to include('products/product-1')
+      expect(response.headers['Location']).to include("products/#{product.slug}")
     end
 
     it 'Should load notice for product no available' do
