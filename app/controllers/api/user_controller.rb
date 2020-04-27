@@ -12,6 +12,8 @@ class Api::UserController < Api::BaseController
     user = Spree::User.find_by email: spree_user_params[:email]
     user = Spree::User.new spree_user_params if user.blank?
 
+    user.update(spree_user_params)
+
     admin = Spree::User.find_by email: 'web.admin@greatminds.net'
     licensed_products = admin.licensed_products.where(product_id: navigator_product_id)
 
