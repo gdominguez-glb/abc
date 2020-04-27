@@ -85,6 +85,63 @@ describe 'Client credentials OAuth flow', type: :request do
     expect(data_response['school_district_id']).to eq(district.id)
   end
 
+  it 'should get access token and post to users/create for mcps existing users without a district' do
+    app = create :application, name: 'test', scopes: 'public'
+    token = create :access_token, resource_owner_id: nil, application: app
+    district = create :school_district, name: 'mcps'
+    user = create :gm_user, school_district: nil
+    params = {
+      spree_user: {
+        first_name: 'Luis',
+        last_name: 'Gonzalez',
+        email: user.email,
+        title: 'Teacher',
+        school_district_id: district.id
+      }
+    }
+
+    headers = {
+      'Content-Type' => 'application/x-www-form-urlencoded',
+      'Authorization' => "Bearer #{token.token}"
+    }
+
+    post api_user_path, params, headers
+    data = JSON.parse(response.body)
+    data_response = JSON.parse Cypher.decrypt data['spree_user']['id']
+
+    expect(response.status).to eq(201)
+    expect(data.key?('spree_user')).to eq(true)
+    expect(data['spree_user'].key?('id')).to eq(true)
+    expect(data_response['token']).to eq(token.token)
+    expect(data_response['school_district']).to eq('mcps')
+    expect(data_response['school_district_id']).to eq(district.id)
+  end
+
+  it 'should get error when the school_district_name is empty and the user exists' do
+    app = create :application, name: 'test', scopes: 'public'
+    token = create :access_token, resource_owner_id: nil, application: app
+    user = create :gm_user, school_district: nil
+    params = {
+      spree_user: {
+        first_name: 'Luis',
+        last_name: 'Gonzalez',
+        email: user.email,
+        title: 'Teacher',
+        school_district_id: ''
+      }
+    }
+
+    headers = {
+      'Content-Type' => 'application/x-www-form-urlencoded',
+      'Authorization' => "Bearer #{token.token}"
+    }
+
+    post api_user_path, params, headers
+    data = JSON.parse(response.body)
+
+    expect(data['errors'][0]).to eq('School/District can\'t be blank')
+  end
+
   it 'should get access token and post to users/create for new port new users' do
     app = create :application, name: 'test', scopes: 'public'
     token = create :access_token, resource_owner_id: nil, application: app
