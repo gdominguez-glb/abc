@@ -889,6 +889,7 @@ DEPENDENCIES
   selenium-webdriver
   shoulda-matchers
   sidekiq
+  simplecov
   sinatra
   sitemap_generator
   spree (= 3.0.0)
