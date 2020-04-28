@@ -149,6 +149,7 @@ group :test do
   gem 'capybara', '~> 2.18.0'
   gem 'selenium-webdriver'
   gem 'capybara-select-2'
+  gem 'simplecov', require: false
 end
 
 # Use ActiveModel has_secure_password
