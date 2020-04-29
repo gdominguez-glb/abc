@@ -14,17 +14,5 @@
         <p><%= blog.description.html_safe %></p>
       <% end %>
     </div>
-    <div class="col-sm-3">
-      <%= form_tag '', method: :get do %>
-        <div class="input-group input-group-transparent margin-bottom--reset">
-
-          <%= text_field_tag :q, params[:q], class: 'form-control input-group-transparent-input', id: 'transparentInputGroup1' %>
-          <span class="input-group-btn input-group-transparent-btn">
-            <button type="submit" class="btn btn-default btn-transparent input-group-transparent-btn"><i class="mi">search</i></button>
-          </span>
-
-        </div>
-      <% end %>
-    </div>
   </div>
 </div>
