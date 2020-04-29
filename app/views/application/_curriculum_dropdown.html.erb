@@ -1,15 +1,5 @@
 <ul class="dropdown-menu">
   <li><%= active_link_to page.title, "/#{page.slug}" %></li>
-  <% page.sub_pages.each do |sub_page| %>
-    <li>
-      <% if sub_page.slug == 'math/pd' %>
-        <%= link_to sub_page.title, 'http://gm.greatminds.org/math/pd' %>
-      <% else %>
-        <%= active_link_to sub_page.title, "/#{sub_page.slug}" %>
-      <% end %>
-    </li>
-  <% end %>
-
   <% if page.slug == "english" %>
     <li><a href="https://greatminds.org/english/pd">PD</a></li>
     <%= active_link_to "Case Studies", "/english/blog/case-studies", active: (request.path == "/english/blog/case-studies"), wrap_tag: :li %>
