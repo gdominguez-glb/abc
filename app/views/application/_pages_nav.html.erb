@@ -11,6 +11,15 @@
       <ul>
         <% cache [@group_page, request.path], expires_in: 2.hours do %>
           <%= active_link_to @group_page.title, "/#{@group_page.slug}", active: (request.path == "/#{@group_page.slug}"), wrap_tag: :li if @group_page %>
+          <% @sub_nav_items.each do |page| %>
+            <% if page.slug == 'math/pd' %>
+              <li>
+                <%= link_to page.title, 'https://greatminds.org/math/pd' %>
+              </li>
+            <% else %>
+              <%= active_link_to page.title, "/#{page.slug}", wrap_tag: :li %>
+            <% end %>
+          <% end %>
           <% if @group_page && @group_page.shop %>
             <li><%= link_to @group_page.shop.title, @group_page.shop.url  %></li>
           <% end %>
@@ -27,11 +36,9 @@
               <%= active_link_to bl.title, curriculum_blog_path(page_slug: @group_page.slug, slug: bl.slug), wrap_tag: :li, active: /#{@group_page.slug}\/blog\/#{bl.slug}/ %>
             <% end %>
           <% end %>
-
           <% if @group_page && @group_page.slug == "english" %>
             <%= active_link_to "Case Studies", "/english/blog/case-studies", active: (request.path == "/english/blog/case-studies"), wrap_tag: :li %>
           <% end %>
-
           <% if @group_page && event_page = @group_page.available_event_pages.first %>
             <%= active_link_to 'Events', curriculum_events_path(page_slug: @group_page.slug, slug: event_page.slug), wrap_tag: :li, active: /#{@group_page.slug}\/events\/#{event_page.slug}/ %>
           <% end %>
