@@ -1,9 +1,4 @@
 <ul class="nav nav-tabs margin-bottom--m">
-  <% blogs.each do |blog| %>
-    <li role="presentation">
-      <%= active_link_to blog.title, curriculum_blog_path(page_slug: page.slug, slug: blog.slug) %>
-    </li>
-  <% end %>
   <li class="pull-right">
     <% if current_spree_user && current_spree_user.subscribe?(@blog) %>
       <span class="btn btn-primary blog-subscribe-btn subscribed">Subscribed</span>
