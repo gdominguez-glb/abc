@@ -16,7 +16,6 @@ describe 'resource library' do
 
   it 'search resource by name', js: true do
     visit 'account/resources'
-
     fill_in 'q', with: 'EUREKA NAVIGATOR LTI'
     page.execute_script("$('#search_resource').submit();")
 
@@ -65,7 +64,7 @@ describe 'resource library' do
              can_be_distributed: false
 
     create :spree_product_distribution,
-           icensed_product: licensed_product1,
+           licensed_product: licensed_product1,
            product: product,
            from_user: @user,
            to_user: @second_distributor
