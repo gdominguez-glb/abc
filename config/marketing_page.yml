@@ -80,7 +80,7 @@ marketing_templates:
   -
     name: 'Testimonials'
     content: !xml |
-      <section class="row row-content-3col <%= background_color %>-bg text-left padding-bottom" data-testimonial-section="1">
+      <section id="tile_<%= position %>" class="row row-content-3col <%= background_color %>-bg text-left padding-bottom" data-testimonial-section="1">
         <div class="col-sm-4">
           <div class="testimonial">
             <h6><%= testimonial_header_1 %></h6>
@@ -350,7 +350,7 @@ marketing_templates:
   -
     name: '50/50 Full-Bleed Image Left'
     content: !xml |
-      <section class="row row-tile-new <%= background_color %>-bg">
+      <section id="tile_<%= position %>" class="row row-tile-new <%= background_color %>-bg">
         <div class="col-sm-6 img-full-new">
           <picture>
             <!--[if IE 9]><video style="display: none;"><![endif]-->
@@ -386,7 +386,7 @@ marketing_templates:
           }
         }
       </style>
-      <section class="row half-height <%= background_color %>-bg">
+      <section id="tile_<%= position %>" class="row half-height <%= background_color %>-bg">
         <div id="tileImgLeftHalf<%= position %>" class="col-sm-6 col-img-full">
         </div>
         <div class="col-sm-6 col-centered-content">
@@ -409,7 +409,7 @@ marketing_templates:
   -
     name: '50/50 Full-Bleed Image Right'
     content: !xml |
-      <section class="row row-tile-new <%= background_color %>-bg">
+      <section id="tile_<%= position %>" class="row row-tile-new <%= background_color %>-bg">
         <div class="col-sm-6">
           <h6><%= title %></h6>
           <p><%= body_text %></p>
@@ -445,7 +445,7 @@ marketing_templates:
           }
         }
       </style>
-      <section class="row half-height <%= background_color %>-bg">
+      <section id="tile_<%= position %>" class="row half-height <%= background_color %>-bg">
         <div class="col-sm-6 col-centered-content">
           <div class="vertical-center">
             <h6><%= title %></h6>
@@ -467,7 +467,7 @@ marketing_templates:
   -
     name: '50/50 Content Image Left'
     content: !xml |
-      <section class="row <%= background_color %>-bg">
+      <section id="tile_<%= position %>" class="row <%= background_color %>-bg">
         <div class="col-sm-6 col-centered-content">
           <div class="vertical-center">
             <picture>
@@ -497,7 +497,7 @@ marketing_templates:
   -
     name: '50/50 Content Image Left, Half Height'
     content: !xml |
-      <section class="row half-height <%= background_color %>-bg">
+      <section id="tile_<%= position %>" class="row half-height <%= background_color %>-bg">
         <div class="col-sm-6 col-centered-content">
           <div class="vertical-center">
             <picture>
@@ -527,7 +527,7 @@ marketing_templates:
   -
     name: '50/50 Content Image Right'
     content: !xml |
-      <section class="row <%= background_color %>-bg">
+      <section id="tile_<%= position %>" class="row <%= background_color %>-bg">
         <div class="col-sm-6 col-centered-content">
           <div class="vertical-center">
             <h6><%= title %></h6>
@@ -557,7 +557,7 @@ marketing_templates:
   -
     name: '50/50 Content Image Right, Half Height'
     content: !xml |
-      <section class="row half-height <%= background_color %>-bg">
+      <section id="tile_<%= position %>" class="row half-height <%= background_color %>-bg">
         <div class="col-sm-6 col-centered-content">
           <div class="vertical-center">
             <h6><%= title %></h6>
@@ -587,7 +587,7 @@ marketing_templates:
   -
     name: '50/50 Content Image Shadow Left'
     content: !xml |
-      <section class="row <%= background_color %>-bg">
+      <section id="tile_<%= position %>" class="row <%= background_color %>-bg">
         <div class="col-sm-6 col-centered-content">
           <div class="vertical-center">
             <picture>
@@ -617,7 +617,7 @@ marketing_templates:
   -
     name: '50/50 Content Image Shadow Right'
     content: !xml |
-      <section class="row <%= background_color %>-bg">
+      <section id="tile_<%= position %>" class="row <%= background_color %>-bg">
         <div class="col-sm-6 col-centered-content">
           <div class="vertical-center">
             <h6><%= title %></h6>
@@ -647,7 +647,7 @@ marketing_templates:
   -
     name: '50/50 Content Image Book Left'
     content: !xml |
-      <section class="row <%= background_color %>-bg">
+      <section id="tile_<%= position %>" class="row <%= background_color %>-bg">
         <div class="col-sm-6 col-centered-content">
           <div class="vertical-center">
             <picture>
@@ -677,7 +677,7 @@ marketing_templates:
   -
     name: '50/50 Content Image Book Right'
     content: !xml |
-      <section class="row <%= background_color %>-bg">
+      <section id="tile_<%= position %>" class="row <%= background_color %>-bg">
         <div class="col-sm-6 col-centered-content">
           <div class="vertical-center">
             <h6><%= title %></h6>
@@ -867,7 +867,7 @@ marketing_templates:
   -
     name: 'Full Width Text'
     content: !xml |
-      <section class="row row-content-full <%= background_color %>-bg">
+      <section id="tile_<%= position %>" class="row row-content-full <%= background_color %>-bg">
         <div class="col-sm-12">
           <h6><%= title %></h6>
           <p><%= body_text %></p>
@@ -885,7 +885,7 @@ marketing_templates:
   -
     name: '2-Column Text'
     content: !xml |
-      <section class="row row-content-2col">
+      <section id="tile_<%= position %>" class="row row-content-2col">
         <div class="col-sm-6 <%= background_color_1 %>-bg">
           <h6><%= title_1 %></h6>
           <p><%= body_text_1 %></p>
@@ -961,7 +961,7 @@ marketing_templates:
   -
     name: '3-Column Text'
     content: !xml |
-      <section class="row row-content-3col <%= background_color %>-bg">
+      <section id="tile_<%= position %>" class="row row-content-3col <%= background_color %>-bg">
         <div class="col-sm-4">
           <h6><%= title_1 %></h6>
           <p><%= body_text_1 %></p>
@@ -1003,7 +1003,7 @@ marketing_templates:
   -
     name: '3-Column Facebook Video Text'
     content: !xml |
-      <section class="row row-content-3col <%= background_color %>-bg text-left">
+      <section id="tile_<%= position %>" class="row row-content-3col <%= background_color %>-bg text-left">
         <div class="col-sm-4">
           <div class="facebook">
             <h6><%= facebook_header_1 %></h6>
