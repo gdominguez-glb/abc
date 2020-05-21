@@ -1,9 +1,6 @@
 class NewslettersController < ApplicationController
   def index
     newsletter_url = "http://gm.greatminds.org/great-minds-newsletters"
-    if current_spree_user
-      newsletter_url += "?#{ { email: current_spree_user.email }.to_param }"
-    end
     redirect_to newsletter_url and return
     # @page_title = 'Newsletter'
     # @newsletter = Newsletter.new(role: 'Parent', state: current_spree_user.try(:state_name))
