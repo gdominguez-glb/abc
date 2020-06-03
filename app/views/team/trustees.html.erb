@@ -11,27 +11,28 @@
   <div class="row">
     <div class="col-sm-10 col-sm-offset-1">
       <div class="row">
-        <% @trustees.each do |trustee| %>
-          <div class="col-sm-6 col-md-3 col-thumbnail">
-            <div data-toggle="modal"
-              data-target="#trusteeModal"
-              data-bio="<%= trustee.description rescue nil %>"
-              data-title="<%= trustee.title %>"
-              data-name="<%= trustee.name %>">
-              <div class="thumbnail thumbnail-team thumbnail-modal js-tooltip-trigger"
-                data-toggle="tooltip"
-                title="Click for bio">
-                <% if trustee.picture.exists? %>
-                  <%= image_tag trustee.picture.url, class: 'img-square' %>
-                <% end %>
-                <div class="caption">
-                  <h3><%= trustee.name %></h3>
-                  <p><em><%= trustee.title %></em></p>
+        <h2 class="text-center">Great Minds Board of Trustees</h2>
+          <% @trustees.each do |trustee| %>
+            <div class="col-sm-6 col-md-3 col-thumbnail">
+              <div data-toggle="modal"
+                data-target="#trusteeModal"
+                data-bio="<%= trustee.description rescue nil %>"
+                data-title="<%= trustee.title %>"
+                data-name="<%= trustee.name %>">
+                <div class="thumbnail thumbnail-team thumbnail-modal js-tooltip-trigger"
+                  data-toggle="tooltip"
+                  title="Click for bio">
+                  <% if trustee.picture.exists? %>
+                    <%= image_tag trustee.picture.url, class: 'img-square' %>
+                  <% end %>
+                  <div class="caption">
+                    <h3><%= trustee.name %></h3>
+                    <p><em><%= trustee.title %></em></p>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        <% end %>
+          <% end %>
       </div>
     </div>
   </div>
