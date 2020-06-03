@@ -58,6 +58,7 @@ namespace :cms do
     collection do
       get :trustees
       get :emeritus_advisors
+      get :pbc_board
       post :update_positions
     end
   end

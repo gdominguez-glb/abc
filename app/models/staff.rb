@@ -1,5 +1,5 @@
 class Staff < ActiveRecord::Base
-  enum staff_type: { staff: 0, trustee: 1, emeritus_advisor: 2 }
+  enum staff_type: { staff: 0, trustee: 1, emeritus_advisor: 2 pbc_board: 3 }
 
   include Displayable
 
