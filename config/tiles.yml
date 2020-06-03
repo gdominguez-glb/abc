@@ -954,6 +954,60 @@
   - :name: alt_text
     :label: Image Alt Text
     :input_type: text
+- :name: SubNav
+  :fields:
+  - :name: title
+    :label: Title
+    :input_type: text
+  - :name: body_text
+    :label: Body Text
+    :input_type: text_area
+  - :name: background_color
+    :label: Background Color
+    :input_type: select
+    :input_options:
+      - green
+      - blue
+      - cream
+      - orange
+      - light-blue
+      - purple
+  - :name: button_title
+    :label: Button Title
+    :input_type: text
+  - :name: button_link
+    :label: Button Link
+    :input_type: text
+  - :name: button_target
+    :label: Button Target
+    :input_type: select
+    :input_options:
+      - Open in Same Tab
+      - Open in New Tab
+  - :name: image_url
+    :label: Image Url
+    :input_type: text
+  - :name: alt_text
+    :label: Image Alt Text
+    :input_type: text
+  - :name: sub_nav_text_1
+    :label: SubNav Url Text 1
+    :input_type: text
+  - :name: sub_nav_url_1
+    :label: SubNav Url
+    :input_type: text
+  - :name: sub_nav_text_2
+    :label: SubNav Url Text 2
+    :input_type: text
+  - :name: sub_nav_url_2
+    :label: SubNav Url 2
+    :input_type: text
+  - :name: sub_nav_text_3
+    :label: SubNav Url Text 3
+    :input_type: text
+  - :name: sub_nav_url_3
+    :label: SubNav Url 3
+    :input_type: text
 - :name: 50/50 Content Image Left
   :fields:
   - :name: title

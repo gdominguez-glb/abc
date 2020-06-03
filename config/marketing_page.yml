@@ -659,6 +659,56 @@ marketing_templates:
       </section>
 
   -
+    name: 'SubNav'
+    content: !xml |
+      <section id="tile_<%= position %>" class="row <%= background_color %>-bg">
+        <div class="col-sm-6 col-centered-content">
+          <div class="col-sm-10 col-sm-offset-1">
+            <ul class="nav nav-tabs margin-bottom--m">
+              <% if sub_nav_url_1.present? && sub_nav_text_1.present?%>
+                <li>
+                  <a href="<%= sub_nav_url_1 %>"><%= sub_nav_text_1 %></a>
+                </li>
+              <% end %>
+              <% if sub_nav_url_2.present? && sub_nav_text_2.present?%>
+                <li>
+                  <a href="<%= sub_nav_url_2 %>"><%= sub_nav_text_2 %></a>
+                </li>
+              <% end %>
+              <% if sub_nav_url_3.present? && sub_nav_text_3.present?%>
+                <li>
+                  <a href="<%= sub_nav_url_3 %>"><%= sub_nav_text_3 %></a>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+
+          <div class="vertical-center">
+            <picture>
+              <!--[if IE 9]><video style="display: none;"><![endif]-->
+              <source srcset="<%= image_url.gsub(/original/, 'small') if image_url %>" media="(min-width: 361px)">
+              <!--[if IE 9]></video><![endif]-->
+              <img srcset="<%= image_url.gsub(/original/, 'thumb') if image_url %>" alt="<%= alt_text rescue nil %>"  class="img-responsive margin-bottom--xl--sm-min">
+            </picture>
+          </div>
+        </div>
+        <div class="col-sm-6 col-centered-content">
+          <div class="vertical-center">
+            <h6><%= title %></h6>
+            <p><%= body_text %></p>
+            <% if button_title.present? && button_link.present? %>
+              <% if button_target == 'Open in Same Tab' %>
+                <% button_target = '_self' %>
+              <% else %>
+                <% button_target = '_blank' %>
+              <% end %>
+              <a class="btn btn-default btn-block-xs" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+            <% end %>
+          </div>
+        </div>
+      </section>
+
+  -
     name: '50/50 Content Image Left, Half Height'
     content: !xml |
       <section id="tile_<%= position %>" class="row half-height <%= background_color %>-bg">
