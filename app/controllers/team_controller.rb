@@ -8,6 +8,7 @@ class TeamController < ApplicationController
     @page_title = 'Trustees & Adivsors'
     @trustees = Staff.displayable.trustee.order('position asc')
     @emeritus_advisors = Staff.displayable.emeritus_advisor.order('position asc')
+    @pbc_board = Staff.displayable.pbc_board.order('position asc')
   end
 
   def show

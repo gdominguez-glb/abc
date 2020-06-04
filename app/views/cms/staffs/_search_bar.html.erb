@@ -13,6 +13,11 @@
                         trustees_cms_staffs_path,
                         class: (selected_state == 'trustees' ? 'active' : '') %>
           </li>
+           <li>
+            <%= link_to 'PBC Board',
+                        emeritus_advisors_cms_staffs_path,
+                        class: (selected_state == 'pbc_board' ? 'active' : '') %>
+          </li>
           <li>
             <%= link_to 'Emeritus Advisors',
                         emeritus_advisors_cms_staffs_path,
