@@ -26,7 +26,9 @@ describe 'Admin License Management' do
 
     visit '/account/licenses'
 
-    page.execute_script("$('#assign_licenses_form_licenses_ids').val(1);")
+    page.execute_script(
+      "$('#assign_licenses_form_licenses_ids').val(1);"
+    )
     page.execute_script(
       "$('#assign_licenses_form_licenses_recipients')." \
       "val('example2@example.com');"
@@ -38,7 +40,8 @@ describe 'Admin License Management' do
       'and will have them distributed' \
       'shortly. To change licenses, use?' \
       'the USER MANAGEMENT tab below.' \
-      'Assign additional licenses by clicking SELECT PRODUCT below.'
+      'Assign additional licenses by' \
+      'clicking SELECT PRODUCT below.'
     )
 
     visit 'resources/logout'
