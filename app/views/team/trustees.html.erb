@@ -15,7 +15,7 @@
           <h2 class="text-center">Great Minds Board of Trustees</h2>
         <% end %>
         <% @trustees.each do |trustee| %>
-          <div class="col-sm-6 col-md-3 col-thumbnail">
+          <div class="col-sm-6 col-md-3">
             <div data-toggle="modal"
               data-target="#trusteeModal"
               data-bio="<%= trustee.description rescue nil %>"
@@ -47,7 +47,7 @@
           <h2 class="text-center">Great Minds PBC Board of Directors</h2>
         <% end %>
         <% @pbc_board.each do |pbc_board| %>
-          <div class="col-sm-6 col-md-3 col-thumbnail">
+          <div class="col-sm-6 col-md-3">
             <div data-toggle="modal"
               data-target="#trusteeModal"
               data-bio="<%= pbc_board.description rescue nil %>"
@@ -76,7 +76,7 @@
           <h2 class="text-center">Emeritus Advisors</h2>
         <% end %>
         <% @emeritus_advisors.each do |emeritus_advisor| %>
-          <div class="col-sm-6 col-md-3 col-thumbnail">
+          <div class="col-sm-6 col-md-3">
             <div data-toggle="modal"
               data-target="#trusteeModal"
               data-bio="<%= emeritus_advisor.description rescue nil %>"

@@ -60,6 +60,8 @@ class Cms::StaffsController < Cms::BaseController
       staffs = Staff.staff
     when 'emeritus_advisors'
       staffs = Staff.emeritus_advisor
+    when 'pbc_board'
+      staffs = Staff.pbc_board
     end
 
     update_positions_with_klass(staffs)
