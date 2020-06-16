@@ -6,6 +6,8 @@ module Cms::StaffsHelper
       'Trustee'
     elsif staff_type == 'emeritus_advisors'
       'Emeritus Advisor'
+    elsif staff_type == 'pbc_board'
+      'PBC Board'
     end
   end
 end
