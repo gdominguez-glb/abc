@@ -25,13 +25,15 @@ describe 'Client credentials OAuth flow', type: :request do
            to_user: first_distributor
   end
 
-  it 'should get access token and post to users/create' do
+  it 'should get access token and post to users/create for mcps new users' do
     app = create :application, name: 'test', scopes: 'public'
     token = create :access_token, resource_owner_id: nil, application: app
-    user = create :gm_user
+    district = create :school_district, name: 'mcps'
     params = { spree_user: { first_name: 'Luis',
                              last_name: 'Gonzalez',
-                             email: user.email }
+                             email: 'random@example.com',
+                             title: 'Teacher',
+                             school_district_id: district.id }
     }
 
     headers = {
@@ -41,21 +43,145 @@ describe 'Client credentials OAuth flow', type: :request do
 
     post api_user_path, params, headers
     data = JSON.parse(response.body)
-    data_response = JSON.parse Cypher.decrypt data["spree_user"]["id"]
+    data_response = JSON.parse Cypher.decrypt data['spree_user']['id']
 
     expect(response.status).to eq(201)
-    expect(data.has_key?("spree_user")).to eq(true)
-    expect(data["spree_user"].has_key?("id")).to eq(true)
-    expect(data_response['id']).to eq(user.id)
+    expect(data.key?('spree_user')).to eq(true)
+    expect(data['spree_user'].key?('id')).to eq(true)
     expect(data_response['token']).to eq(token.token)
+    expect(data_response['school_district']).to eq('mcps')
+    expect(data_response['school_district_id']).to eq(district.id)
+  end
+
+  it 'should get access token and post to users/create for mcps existing users' do
+    app = create :application, name: 'test', scopes: 'public'
+    token = create :access_token, resource_owner_id: nil, application: app
+    district = create :school_district, name: 'mcps'
+    user = create :gm_user, title: 'Teacher', school_district: district
+    params = {
+      spree_user: {
+        first_name: 'Luis',
+        last_name: 'Gonzalez',
+        email: user.email,
+        title: 'Teacher',
+        school_district_id: district.id
+      }
+    }
+
+    headers = {
+      'Content-Type' => 'application/x-www-form-urlencoded',
+      'Authorization' => "Bearer #{token.token}"
+    }
+
+    post api_user_path, params, headers
+    data = JSON.parse(response.body)
+    data_response = JSON.parse Cypher.decrypt data['spree_user']['id']
+
+    expect(response.status).to eq(201)
+    expect(data.key?('spree_user')).to eq(true)
+    expect(data['spree_user'].key?('id')).to eq(true)
+    expect(data_response['token']).to eq(token.token)
+    expect(data_response['school_district']).to eq('mcps')
+    expect(data_response['school_district_id']).to eq(district.id)
+  end
+
+  it 'should get access token and post to users/create for mcps existing users without a district' do
+    app = create :application, name: 'test', scopes: 'public'
+    token = create :access_token, resource_owner_id: nil, application: app
+    district = create :school_district, name: 'mcps'
+    user = create :gm_user, school_district: nil
+    params = {
+      spree_user: {
+        first_name: 'Luis',
+        last_name: 'Gonzalez',
+        email: user.email,
+        title: 'Teacher',
+        school_district_id: district.id
+      }
+    }
+
+    headers = {
+      'Content-Type' => 'application/x-www-form-urlencoded',
+      'Authorization' => "Bearer #{token.token}"
+    }
+
+    post api_user_path, params, headers
+    data = JSON.parse(response.body)
+    data_response = JSON.parse Cypher.decrypt data['spree_user']['id']
+
+    expect(response.status).to eq(201)
+    expect(data.key?('spree_user')).to eq(true)
+    expect(data['spree_user'].key?('id')).to eq(true)
+    expect(data_response['token']).to eq(token.token)
+    expect(data_response['school_district']).to eq('mcps')
+    expect(data_response['school_district_id']).to eq(district.id)
+  end
+
+  it 'should get error when the school_district_name is empty and the user exists' do
+    app = create :application, name: 'test', scopes: 'public'
+    token = create :access_token, resource_owner_id: nil, application: app
+    user = create :gm_user, school_district: nil
+    params = {
+      spree_user: {
+        first_name: 'Luis',
+        last_name: 'Gonzalez',
+        email: user.email,
+        title: 'Teacher',
+        school_district_id: ''
+      }
+    }
+
+    headers = {
+      'Content-Type' => 'application/x-www-form-urlencoded',
+      'Authorization' => "Bearer #{token.token}"
+    }
+
+    post api_user_path, params, headers
+    data = JSON.parse(response.body)
+
+    expect(data['errors'][0]).to eq('School/District can\'t be blank')
+  end
+
+  it 'should get access token and post to users/create for new port new users' do
+    app = create :application, name: 'test', scopes: 'public'
+    token = create :access_token, resource_owner_id: nil, application: app
+    district = create :school_district, name: 'new port'
+    params = {
+      spree_user: {
+        first_name: 'Luis',
+        last_name: 'Gonzalez',
+        email: 'random@example.com',
+        title: 'Teacher',
+        school_district_id: district.id
+      }
+    }
+
+    headers = {
+      'Content-Type' => 'application/x-www-form-urlencoded',
+      'Authorization' => "Bearer #{token.token}"
+    }
+
+    post api_user_path, params, headers
+    data = JSON.parse(response.body)
+    data_response = JSON.parse Cypher.decrypt data['spree_user']['id']
+
+    expect(response.status).to eq(201)
+    expect(data.key?('spree_user')).to eq(true)
+    expect(data['spree_user'].key?('id')).to eq(true)
+    expect(data_response['token']).to eq(token.token)
+    expect(data_response['school_district']).to eq('new port')
+    expect(data_response['school_district_id']).to eq(district.id)
   end
 
   it 'should get error when the firstname is empty' do
     app = create :application, name: 'test', scopes: 'public'
     token = create :access_token, resource_owner_id: nil, application: app
+    district = create :school_district, name: 'new port'
     params = { spree_user: { first_name: '',
                              last_name: 'Gonzalez',
-                             email: 'luiscarlos.gonzalez@gmail.com' }
+                             title: 'Teacher',
+                             email: 'luiscarlos.gonzalez@gmail.com',
+                             school_district_id: district.id }
     }
 
     headers = {
@@ -72,9 +198,12 @@ describe 'Client credentials OAuth flow', type: :request do
   it 'should get error when the lastname is empty' do
     app = create :application, name: 'test', scopes: 'public'
     token = create :access_token, resource_owner_id: nil, application: app
+    district = create :school_district, name: 'new port'
     params = { spree_user: { first_name: 'Luis',
                              last_name: '',
-                             email: 'luiscarlos.gonzalez@gmail.com' }
+                             title: 'Teacher',
+                             email: 'luiscarlos.gonzalez@gmail.com',
+                             school_district_id: district.id }
     }
 
     headers = {
@@ -105,6 +234,78 @@ describe 'Client credentials OAuth flow', type: :request do
     data = JSON.parse(response.body)
 
     expect(data['errors'][0]).to eq('Email can\'t be blank')
+  end
+
+  it 'should get error when the school_district_name is empty' do
+    app = create :application, name: 'test', scopes: 'public'
+    token = create :access_token, resource_owner_id: nil, application: app
+    params = {
+      spree_user: {
+        first_name: 'Luis',
+        last_name: 'Gonzalez',
+        email: 'luiscarlos.gonzalez@gmail.com',
+        title: 'Teacher',
+        school_district_id: ''
+      }
+    }
+
+    headers = {
+      'Content-Type' => 'application/x-www-form-urlencoded',
+      'Authorization' => "Bearer #{token.token}"
+    }
+
+    post api_user_path, params, headers
+    data = JSON.parse(response.body)
+
+    expect(data['errors'][0]).to eq('School/District can\'t be blank')
+  end
+
+  it 'should get error when the school_district_name doesn\'t exists' do
+    app = create :application, name: 'test', scopes: 'public'
+    token = create :access_token, resource_owner_id: nil, application: app
+    params = {
+      spree_user: {
+        first_name: 'Luis',
+        last_name: 'Gonzalez',
+        email: 'luiscarlos.gonzalez@gmail.com',
+        title: 'Teacher',
+        school_district_id: '999'
+      }
+    }
+
+    headers = {
+      'Content-Type' => 'application/x-www-form-urlencoded',
+      'Authorization' => "Bearer #{token.token}"
+    }
+
+    post api_user_path, params, headers
+    data = JSON.parse(response.body)
+
+    expect(data['errors'][0]).to eq('School/District can\'t be blank')
+  end
+
+  it 'should get error when the title is empty' do
+    app = create :application, name: 'test', scopes: 'public'
+    token = create :access_token, resource_owner_id: nil, application: app
+    params = {
+      spree_user: {
+        first_name: 'Luis',
+        last_name: 'Gonzalez',
+        email: 'luiscarlos.gonzalez@gmail.com',
+        title: '',
+        school_district_id: '999'
+      }
+    }
+
+    headers = {
+      'Content-Type' => 'application/x-www-form-urlencoded',
+      'Authorization' => "Bearer #{token.token}"
+    }
+
+    post api_user_path, params, headers
+    data = JSON.parse(response.body)
+
+    expect(data['errors'][0]).to eq('Role can\'t be blank')
   end
 
   it 'should use invalid token and recieve a no authorize request' do

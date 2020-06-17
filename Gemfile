@@ -178,3 +178,5 @@ gem 'newrelic_rpm'
 
 gem "hubspot-ruby"
 
+gem 'rack', '1.6.13'
+
