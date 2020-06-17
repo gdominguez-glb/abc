@@ -20,6 +20,7 @@
 
 body {
   font-size: 16px;
+  font-family: "CircularStd-book";
 }
 
 h1 {
@@ -76,7 +77,14 @@ h6 {
     font-size: 1.25em;
 
     section.row & {
-      font-size: 1.125em;
+      font-family: "CircularStd-medium";
+      font-size: 24px;
+      font-stretch: normal;
+      font-style: normal;
+      font-weight: 500;
+      letter-spacing: normal;
+      line-height: 1.25;
+      text-transform: capitalize;
     }
   }
 }
@@ -87,16 +95,9 @@ h3,
 h4,
 h5,
 h6 {
-  @extend .sans-serif;
-
   margin: 0 0 10px;
   font-weight: bold;
   text-transform: uppercase;
-  letter-spacing: .1em;
-
-  section.row & {
-    letter-spacing: .2em;
-  }
 }
 
 h1,
@@ -128,12 +129,11 @@ p {
 html,
 body {
   font: 100% / 1.5;
-  font-family: 'Lora', serif;
 }
 
 p {
   margin: 0 0 15px;
-  line-height: 1.76em;
+  line-height: 1.38;
 }
 
 p,
@@ -188,7 +188,7 @@ table {
   }
 
   footer {
-    @extend .sans-serif;
+    //@extend .sans-serif;
 
     font-weight: bold;
     text-transform: uppercase;
@@ -250,7 +250,7 @@ table {
 // -------------------------------------
 
 a {
-  @extend .sans-serif;
+  //@extend .sans-serif;
   @include transition(all, .3s);
 
   font-weight: bold;
@@ -310,7 +310,6 @@ ol {
     margin: 0;
 
     li {
-      font-size: .95em;
       line-height: 1.5em;
       list-style-type: none;
     }
@@ -328,11 +327,11 @@ hr {
 }
 
 .serif {
-  font-family: 'Lora', serif;
+  font-family: "CircularStd-book";
 }
 
 .sans-serif {
-  font-family: 'Karla', sans-serif;
+  font-family: "CircularStd-book";
 }
 
 .bold {

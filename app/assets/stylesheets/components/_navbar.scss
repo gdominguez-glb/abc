@@ -16,7 +16,8 @@
   height: 50px;
   margin-bottom: 0;
   border: 0;
-  background: $c-positive-secondary;
+  // background: $c-positive-secondary;
+  background: $white;
 
   a {
     letter-spacing: 2px;
@@ -29,17 +30,6 @@
     border-radius: 0;
   }
 
-  &.nav-border-bottom {
-    @media screen and (min-width: $screen-sm-min) {
-      border-bottom: 3px solid $c-energized-secondary;
-    }
-
-    [data-page='science'] & {
-        @media screen and (min-width: $screen-sm-min) {
-            border-bottom: 3px solid $c-science-primary;
-        }
-    }
-  }
 
   // ----- Brand ----- //
 
@@ -47,15 +37,16 @@
     width: 165px;
     padding: 0;
     text-indent: -9999px;
-    background: transparent asset-url('logo-half.svg') no-repeat 50% 50%;
+    background: transparent asset-url("Great-Minds-Logo.svg") no-repeat 50% 50%;
     background-size: 150px 35px;
+    //background-size: 70%;
 
     @media screen and (min-width: $screen-sm-min) {
       position: relative;
       height: 109px;
-      margin-left: 50px;
-      background: transparent asset-url('logo-full.svg') no-repeat 50% 50%;
-      background-size: 155px 109px;
+      margin-left: 19px;
+      background: transparent asset-url("Great-Minds-Logo.svg") no-repeat 50% 50%;
+      background-size: 102px 69px;
     }
   }
 
@@ -163,7 +154,8 @@
             background-color: darken($c-balanced-primary, 5%);
 
             @media screen and (min-width: $screen-sm-min) {
-              color: $c-balanced-primary;
+              // color: $c-balanced-primary;
+              color: $math-primary-color;
             }
           }
 
@@ -240,13 +232,14 @@
       > a {
         border: 0;
         border-bottom: 1px solid darken($c-energized-secondary, 15%);
-        color: $c-absolute;
-
-        [data-page='english'] &,
-        [data-page='history'] &,
-        [data-page='math'] & {
-          color: $c-positive-secondary;
-        }
+        color: $primary-text-color;
+        font-family: "CircularStd-bold";
+        font-size: 12px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: 0.1px;
 
         [data-page='english'] & {
           border-bottom: 1px solid darken($c-positive-primary, 5%);
@@ -285,7 +278,7 @@
           [data-page='science'] &,
           [data-page='math'] & {
             border-bottom: 0;
-            color: $c-absolute;
+            // color: $c-absolute;
           }
 
           &:hover,
@@ -475,7 +468,8 @@
       }
 
       [data-page='math'] & {
-        background-color: $c-balanced-primary;
+        // background-color: $c-balanced-primary;
+        background-color: $math-primary-color;
       }
 
       [data-page='science'] & {
@@ -509,8 +503,8 @@
             [data-page='history'] &,
             [data-page='science'] &,
             [data-page='math'] & {
-              border-bottom: 2px solid $c-positive-secondary;
-              color: $c-positive-secondary;
+              border-bottom: 2px solid $white;
+              color: $white;
             }
           }
         }
@@ -518,9 +512,10 @@
         @media screen and (min-width: $screen-sm-min) {
           padding: 3px 0 1px;
           border-bottom: 2px solid transparent;
-          font-family: 'Lora', serif;
-          font-size: .8em;
+          color: $white;
+          font-size: 12px;
           font-weight: normal;
+          letter-spacing: normal;
           text-transform: capitalize;
 
           &.active {
@@ -530,7 +525,7 @@
             [data-page='history'] &,
             [data-page='science'] &,
             [data-page='math'] & {
-              border-bottom: 2px solid $c-positive-secondary;
+              border-bottom: 2px solid $white;
             }
           }
         }
@@ -560,7 +555,6 @@
 
   .subnav-name {
     padding: 5px 0;
-    font-family: 'Karla', sans-serif;
     font-weight: bold;
     text-transform: uppercase;
   }
@@ -588,16 +582,22 @@
   // ----- Cart Navigation Items ----- //
 
   .navbar-right {
-    font-family: Karla, sans-serif;
     font-weight: bold;
     letter-spacing: 2px;
 
+    li {
+      a {
+        color: $text-link-color;
+        letter-spacing: -0.17px;
+      }
+    }
+
     @media screen and (min-width: $screen-sm-min) {
       position: absolute;
-      top: 0;
-      right: 30px;
-      width: auto;
+      right: 35px;
       text-transform: uppercase;
+      top: 6px;
+      width: auto;
 
       li {
         &:first-child {
@@ -693,14 +693,14 @@
     padding: 0 10px;
 
     @media screen and (min-width: $screen-sm-min) {
-      padding: 62px 0 0;
+      padding: 60px 0 0;
     }
 
     .form-control {
       width: 30px;
       padding: 9px 15px;
       border: 0;
-      background: transparent asset-url('icon-search-white.png') no-repeat 50% 50%;
+      background: transparent asset-url("icon-search-blue.png") no-repeat 50% 50%;
       background-size: 15px 15px;
       box-shadow: none;
 
@@ -723,7 +723,7 @@
         background-size: 15px 15px;
 
         @media screen and (min-width: $screen-sm-min) {
-          background: transparent asset-url('icon-search-white.png') no-repeat 50% 50%;
+          background: transparent asset-url("icon-search-blue.png") no-repeat 50% 50%;
           background-size: 15px 15px;
         }
 
@@ -744,7 +744,7 @@
 
   .navbar-toggle {
     border: 0;
-    color: $c-absolute;
+    // color: $c-absolute;
 
     &:hover,
     &:focus {

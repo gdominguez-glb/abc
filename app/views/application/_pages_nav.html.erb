@@ -7,7 +7,7 @@
         <%= mi.more_vert %>
       </button>
     </div>
-    <div class="collapse navbar-collapse" id="sub-nav">
+    <div class="collapse navbar-collapse updated-navbar-collapse" id="sub-nav">
       <ul>
         <% cache [@group_page, request.path], expires_in: 2.hours do %>
           <%= active_link_to @group_page.title, "/#{@group_page.slug}", active: (request.path == "/#{@group_page.slug}"), wrap_tag: :li if @group_page %>

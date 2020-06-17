@@ -1,4 +1,195 @@
 ---
+- :name: Slider
+  :fields:
+  - :name: title_1
+    :label: Slide 1 Title
+    :input_type: text
+  - :name: tagline_1
+    :label: Slide 1 Tagline
+    :input_type: text
+  - :name: description_1
+    :label: Slide 1 Description
+    :input_type: text_area
+  - :name: button_text_1
+    :label: Slide 1 Button Text
+    :input_type: text
+  - :name: button_link_1
+    :label: Slide 1 Button link
+    :input_type: text
+  - :name: slide_image_1
+    :label: Slide 1 Slide Image
+    :input_type: text
+  - :name: title_2
+    :label: Slide 2 Title
+    :input_type: text
+  - :name: tagline_2
+    :label: Slide 2 Tagline
+    :input_type: text
+  - :name: description_2
+    :label: Slide 2 Description
+    :input_type: text_area
+  - :name: button_text_2
+    :label: Slide 2 Button Text
+    :input_type: text
+  - :name: button_link_2
+    :label: Slide 2 Button link
+    :input_type: text
+  - :name: slide_image_2
+    :label: Slide 2 Slide Image
+    :input_type: text
+  - :name: title_3
+    :label: Slide 3 Title
+    :input_type: text
+  - :name: tagline_3
+    :label: Slide 3 Tagline
+    :input_type: text
+  - :name: description_3
+    :label: Slide 3 Description
+    :input_type: text_area
+  - :name: button_text_3
+    :label: Slide 3 Button Text
+    :input_type: text
+  - :name: button_link_3
+    :label: Slide 3 Button link
+    :input_type: text
+  - :name: slide_image_3
+    :label: Slide 3 Slide Image
+    :input_type: text
+
+- :name: Page Title
+  :fields:
+  - :name: page_title
+    :label: Page Title
+    :input_type: text_area
+
+- :name: Product List
+  :fields:
+  - :name: subject_1
+    :label: Subject 1
+    :input_type: text
+  - :name: color_1
+    :label: Color 1
+    :input_type: select
+    :input_options:
+      - white
+      - green
+      - blue
+      - cream
+      - orange
+      - dark-orange
+      - light-blue
+      - purple
+      - grey
+  - :name: product_name_1
+    :label: Product Name 1
+    :input_type: text_area
+  - :name: image_1
+    :label: Image 1
+    :input_type: text
+  - :name: link_1
+    :label: Link 1
+    :input_type: text
+  - :name: subject_2
+    :label: Subject 2
+    :input_type: text
+  - :name: color_2
+    :label: Color 2
+    :input_type: select
+    :input_options:
+      - white
+      - green
+      - blue
+      - cream
+      - orange
+      - dark-orange
+      - light-blue
+      - purple
+      - grey
+  - :name: product_name_2
+    :label: Product Name 2
+    :input_type: text_area
+  - :name: image_2
+    :label: Image 2
+    :input_type: text
+  - :name: link_2
+    :label: Link 2
+    :input_type: text
+  - :name: subject_3
+    :label: Subject 3
+    :input_type: text
+  - :name: color_3
+    :label: Color 3
+    :input_type: select
+    :input_options:
+      - white
+      - green
+      - blue
+      - cream
+      - orange
+      - dark-orange
+      - light-blue
+      - purple
+      - grey
+  - :name: product_name_3
+    :label: Product Name 3
+    :input_type: text_area
+  - :name: image_3
+    :label: Image 3
+    :input_type: text
+  - :name: link_3
+    :label: Link 3
+    :input_type: text
+  - :name: subject_4
+    :label: Subject 4
+    :input_type: text
+  - :name: color_4
+    :label: Color 4
+    :input_type: select
+    :input_options:
+      - white
+      - green
+      - blue
+      - cream
+      - orange
+      - dark-orange
+      - light-blue
+      - purple
+      - grey
+  - :name: product_name_4
+    :label: Product Name 4
+    :input_type: text_area
+  - :name: image_4
+    :label: Image 4
+    :input_type: text
+  - :name: link_4
+    :label: Link 4
+    :input_type: text
+  - :name: subject_5
+    :label: Subject 5
+    :input_type: text
+  - :name: color_5
+    :label: Color 5
+    :input_type: select
+    :input_options:
+      - white
+      - green
+      - blue
+      - cream
+      - orange
+      - dark-orange
+      - light-blue
+      - purple
+      - grey
+  - :name: product_name_5
+    :label: Product Name 5
+    :input_type: text_area
+  - :name: image_5
+    :label: Image 5
+    :input_type: text
+  - :name: link_5
+    :label: Link 5
+    :input_type: text
+
 - :name: Role/Curriculum Selector Hero
   :fields:
   - :name: background_image_url
@@ -23,10 +214,12 @@
       :label: Background Color
       :input_type: select
       :input_options:
+        - white
         - green
         - blue
         - cream
         - orange
+        - dark-orange
         - light-blue
         - purple
     - :name: testimonial_header_1
@@ -246,6 +439,27 @@
       :label: Link Text 9
       :input_type: text
 
+- :name: 25/75 Hero Image Right
+  :fields:
+  - :name: banner_icon_text
+    :label: Icon Text
+    :input_type: text
+  - :name: title
+    :label: Title
+    :input_type: text_area
+  - :name: description
+    :label: Description
+    :input_type: text_area
+  - :name: button_text
+    :label: Button text
+    :input_type: text
+  - :name: button_link
+    :label: Button Link
+    :input_type: text
+  - :name: image
+    :label: Image
+    :input_type: text
+
 - :name: Video Hero
   :fields:
   - :name: title
@@ -261,12 +475,15 @@
     :label: Background Color
     :input_type: select
     :input_options:
+      - white
       - green
       - blue
       - cream
       - orange
+      - dark-orange
       - light-blue
       - purple
+      - grey
 - :name: Loop Background Video
   :fields:
   - :name: wistia_video_id
@@ -275,6 +492,12 @@
 
 - :name: 50/50 Full-Bleed Image Left
   :fields:
+  - :name: image_url_1
+    :label: Image Url 1
+    :input_type: text
+  - :name: image_alt_1
+    :label: Image Alt Text 1
+    :input_type: text
   - :name: title
     :label: Title
     :input_type: text
@@ -285,18 +508,34 @@
     :label: Background Color
     :input_type: select
     :input_options:
+      - white
       - green
       - blue
       - cream
       - orange
+      - dark-orange
       - light-blue
       - purple
+      - grey
   - :name: button_1_title
     :label: Button 1 Title
     :input_type: text
   - :name: button_1_link
     :label: Button 1 Link
     :input_type: text
+  - :name: button_color_1
+    :label: Button Color 1
+    :input_type: select
+    :input_options:
+      - white
+      - green
+      - blue
+      - cream
+      - orange
+      - dark-orange
+      - light-blue
+      - purple
+      - grey
   - :name: button_1_target
     :label: Button 1 Target
     :input_type: select
@@ -309,16 +548,29 @@
   - :name: button_2_link
     :label: Button 2 Link
     :input_type: text
+  - :name: button_color_2
+    :label: Button Color 2
+    :input_type: select
+    :input_options:
+      - white
+      - green
+      - blue
+      - cream
+      - orange
+      - dark-orange
+      - light-blue
+      - purple
+      - grey
   - :name: button_2_target
     :label: Button 2 Target
     :input_type: select
     :input_options:
       - Open in Same Tab
       - Open in New Tab
-  - :name: image_url
-    :label: Image Url
+  - :name: image_url_2
+    :label: Image Url 2
     :input_type: text
-  - :name: alt_text
+  - :name: alt_text_2
     :label: Image Alt Text
     :input_type: text
 - :name: 50/50 Full-Bleed Image Left, Half Height
@@ -333,12 +585,15 @@
     :label: Background Color
     :input_type: select
     :input_options:
+      - white
       - green
       - blue
       - cream
       - orange
+      - dark-orange
       - light-blue
       - purple
+      - grey
   - :name: button_title
     :label: Button Title
     :input_type: text
@@ -359,6 +614,12 @@
     :input_type: text
 - :name: 50/50 Full-Bleed Image Right
   :fields:
+  - :name: image_url_1
+    :label: Image Url 1
+    :input_type: text
+  - :name: image_alt_1
+    :label: Image Alt Text 1
+    :input_type: text
   - :name: title
     :label: Title
     :input_type: text
@@ -369,18 +630,34 @@
     :label: Background Color
     :input_type: select
     :input_options:
+      - white
       - green
       - blue
       - cream
       - orange
+      - dark-orange
       - light-blue
       - purple
+      - grey
   - :name: button_1_title
     :label: Button 1 Title
     :input_type: text
   - :name: button_1_link
     :label: Button 1 Link
     :input_type: text
+  - :name: button_color_1
+    :label: Button Color 1
+    :input_type: select
+    :input_options:
+      - white
+      - green
+      - blue
+      - cream
+      - orange
+      - dark-orange
+      - light-blue
+      - purple
+      - grey
   - :name: button_1_target
     :label: Button 1 Target
     :input_type: select
@@ -393,17 +670,30 @@
   - :name: button_2_link
     :label: Button 2 Link
     :input_type: text
+  - :name: button_color_2
+    :label: Button Color 2
+    :input_type: select
+    :input_options:
+      - white
+      - green
+      - blue
+      - cream
+      - orange
+      - dark-orange
+      - light-blue
+      - purple
+      - grey
   - :name: button_2_target
     :label: Button 2 Target
     :input_type: select
     :input_options:
       - Open in Same Tab
       - Open in New Tab
-  - :name: image_url
-    :label: Image Url
+  - :name: image_url_2
+    :label: Image Url 2
     :input_type: text
-  - :name: alt_text
-    :label: Image Alt Text
+  - :name: alt_text_2
+    :label: Image Alt Text 2
     :input_type: text
 - :name: 50/50 Full-Bleed Image Right, Half Height
   :fields:
@@ -417,12 +707,15 @@
     :label: Background Color
     :input_type: select
     :input_options:
+      - white
       - green
       - blue
       - cream
       - orange
+      - dark-orange
       - light-blue
       - purple
+      - grey
   - :name: button_title
     :label: Button Title
     :input_type: text
@@ -453,12 +746,15 @@
     :label: Background Color
     :input_type: select
     :input_options:
+      - white
       - green
       - blue
       - cream
       - orange
+      - dark-orange
       - light-blue
       - purple
+      - grey
   - :name: button_title
     :label: Button Title
     :input_type: text
@@ -489,12 +785,15 @@
     :label: Background Color
     :input_type: select
     :input_options:
+      - white
       - green
       - blue
       - cream
       - orange
+      - dark-orange
       - light-blue
       - purple
+      - grey
   - :name: button_title
     :label: Button Title
     :input_type: text
@@ -525,12 +824,15 @@
     :label: Background Color
     :input_type: select
     :input_options:
+      - white
       - green
       - blue
       - cream
       - orange
+      - dark-orange
       - light-blue
       - purple
+      - grey
   - :name: button_title
     :label: Button Title
     :input_type: text
@@ -561,12 +863,15 @@
     :label: Background Color
     :input_type: select
     :input_options:
+      - white
       - green
       - blue
       - cream
       - orange
+      - dark-orange
       - light-blue
       - purple
+      - grey
   - :name: button_title
     :label: Button Title
     :input_type: text
@@ -597,12 +902,15 @@
     :label: Background Color
     :input_type: select
     :input_options:
+      - white
       - green
       - blue
       - cream
       - orange
+      - dark-orange
       - light-blue
       - purple
+      - grey
   - :name: button_title
     :label: Button Title
     :input_type: text
@@ -633,12 +941,15 @@
     :label: Background Color
     :input_type: select
     :input_options:
+      - white
       - green
       - blue
       - cream
       - orange
+      - dark-orange
       - light-blue
       - purple
+      - grey
   - :name: button_title
     :label: Button Title
     :input_type: text
@@ -669,12 +980,15 @@
     :label: Background Color
     :input_type: select
     :input_options:
+      - white
       - green
       - blue
       - cream
       - orange
+      - dark-orange
       - light-blue
       - purple
+      - grey
   - :name: button_title
     :label: Button Title
     :input_type: text
@@ -705,12 +1019,15 @@
     :label: Background Color
     :input_type: select
     :input_options:
+      - white
       - green
       - blue
       - cream
       - orange
+      - dark-orange
       - light-blue
       - purple
+      - grey
   - :name: button_title
     :label: Button Title
     :input_type: text
@@ -848,12 +1165,15 @@
     :label: Background Color
     :input_type: select
     :input_options:
+      - white
       - green
       - blue
       - cream
       - orange
+      - dark-orange
       - light-blue
       - purple
+      - grey
   - :name: button_title
     :label: Button Title
     :input_type: text
@@ -875,16 +1195,22 @@
   - :name: button_type
 - :name: 2-Column Text
   :fields:
+  - :name: sub_head
+    :label: Sub Heading
+    :input_type: text
   - :name: background_color_1
     :label: Background Color 1
     :input_type: select
     :input_options:
+      - white
       - green
       - blue
       - cream
       - orange
+      - dark-orange
       - light-blue
       - purple
+      - grey
   - :name: title_1
     :label: Title 1
     :input_type: text
@@ -897,22 +1223,25 @@
   - :name: button_link_1
     :label: Button Link 1
     :input_type: text
+  - :name: button_color_1
+    :label: Button Color 1
+    :input_type: select
+    :input_options:
+      - white
+      - green
+      - blue
+      - cream
+      - orange
+      - dark-orange
+      - light-blue
+      - purple
+      - grey
   - :name: button_target_1
     :label: Button Target 1
     :input_type: select
     :input_options:
       - Open in Same Tab
       - Open in New Tab
-  - :name: background_color_2
-    :label: Background Color 2
-    :input_type: select
-    :input_options:
-      - green
-      - blue
-      - cream
-      - orange
-      - light-blue
-      - purple
   - :name: title_2
     :label: Title 2
     :input_type: text
@@ -925,12 +1254,80 @@
   - :name: button_link_2
     :label: Button Link 2
     :input_type: text
+  - :name: button_color_2
+    :label: Button Color 2
+    :input_type: select
+    :input_options:
+      - white
+      - green
+      - blue
+      - cream
+      - orange
+      - dark-orange
+      - light-blue
+      - purple
+      - grey
   - :name: button_target_2
     :label: Button Target 2
     :input_type: select
     :input_options:
       - Open in Same Tab
       - Open in New Tab
+- :name: 50/50 Partial Image Right
+  :fields:
+  - :name: sub_head
+    :label: Sub Heading
+    :input_type: text
+  - :name: background_color
+    :label: Background Color
+    :input_type: select
+    :input_options:
+      - white
+      - green
+      - blue
+      - cream
+      - orange
+      - dark-orange
+      - light-blue
+      - purple
+      - grey
+  - :name: title
+    :label: Title 1
+    :input_type: text
+  - :name: body_text
+    :label: Body Text
+    :input_type: text_area
+  - :name: button_title
+    :label: Button Title
+    :input_type: text
+  - :name: button_link
+    :label: Button Link
+    :input_type: text
+  - :name: button_color
+    :label: Button Color
+    :input_type: select
+    :input_options:
+      - white
+      - green
+      - blue
+      - cream
+      - orange
+      - dark-orange
+      - light-blue
+      - purple
+      - grey
+  - :name: button_target
+    :label: Button Target
+    :input_type: select
+    :input_options:
+      - Open in Same Tab
+      - Open in New Tab
+  - :name: image_url
+    :label: Image Url
+    :input_type: text
+  - :name: image_alt
+    :label: Image Alt Text
+    :input_type: text
 - :name: 2-Column Video Left, Text Right
   :fields:
   - :name: title
@@ -946,18 +1343,34 @@
     :label: Background Color
     :input_type: select
     :input_options:
+      - white
       - green
       - blue
       - cream
       - orange
+      - dark-orange
       - light-blue
       - purple
+      - grey
   - :name: body_text
     :label: Body Text
     :input_type: text_area
   - :name: button_title
     :label: Button Title
     :input_type: text
+  - :name: button_color
+    :label: Button Color
+    :input_type: select
+    :input_options:
+      - white
+      - green
+      - blue
+      - cream
+      - orange
+      - dark-orange
+      - light-blue
+      - purple
+      - grey
   - :name: button_link
     :label: Button Link
     :input_type: text
@@ -967,18 +1380,107 @@
     :input_options:
       - Open in Same Tab
       - Open in New Tab
-- :name: 3-Column Text
+- :name: Product Presentation
   :fields:
+  - :name: image_url_1
+    :label: Image Url 1
+    :input_type: text
+  - :name: image_alt_1
+    :label: Image Alt Text 1
+    :input_type: text
+  - :name: title
+    :label: Title
+    :input_type: text_area
+  - :name: body_text
+    :label: Body Text
+    :input_type: text_area
   - :name: background_color
     :label: Background Color
     :input_type: select
     :input_options:
+      - white
       - green
       - blue
       - cream
       - orange
+      - dark-orange
       - light-blue
       - purple
+      - grey
+  - :name: button_1_title
+    :label: Button 1 Title
+    :input_type: text
+  - :name: button_1_link
+    :label: Button 1 Link
+    :input_type: text
+  - :name: button_color_1
+    :label: Button Color 1
+    :input_type: select
+    :input_options:
+      - white
+      - green
+      - blue
+      - cream
+      - orange
+      - dark-orange
+      - light-blue
+      - purple
+      - grey
+  - :name: button_1_target
+    :label: Button 1 Target
+    :input_type: select
+    :input_options:
+      - Open in Same Tab
+      - Open in New Tab
+  - :name: button_2_title
+    :label: Button 2 Title
+    :input_type: text
+  - :name: button_2_link
+    :label: Button 2 Link
+    :input_type: text
+  - :name: button_color_2
+    :label: Button Color 2
+    :input_type: select
+    :input_options:
+      - white
+      - green
+      - blue
+      - cream
+      - orange
+      - dark-orange
+      - light-blue
+      - purple
+      - grey
+  - :name: button_2_target
+    :label: Button 2 Target
+    :input_type: select
+    :input_options:
+      - Open in Same Tab
+      - Open in New Tab
+  - :name: image_url_2
+    :label: Image Url 2
+    :input_type: text
+  - :name: alt_text_2
+    :label: Image Alt Text 2
+    :input_type: text
+- :name: 3-Column Text
+  :fields:
+  - :name: sub_head
+    :label: Sub Heading
+    :input_type: text
+  - :name: background_color
+    :label: Background Color
+    :input_type: select
+    :input_options:
+      - white
+      - green
+      - blue
+      - cream
+      - orange
+      - dark-orange
+      - light-blue
+      - purple
+      - grey
   - :name: title_1
     :label: Title 1
     :input_type: text
@@ -991,6 +1493,19 @@
   - :name: button_link_1
     :label: Button Link 1
     :input_type: text
+  - :name: button_color_1
+    :label: Button Color 1
+    :input_type: select
+    :input_options:
+      - white
+      - green
+      - blue
+      - cream
+      - orange
+      - dark-orange
+      - light-blue
+      - purple
+      - grey
   - :name: button_target_1
     :label: Button Target 1
     :input_type: select
@@ -1009,6 +1524,19 @@
   - :name: button_link_2
     :label: Button Link 2
     :input_type: text
+  - :name: button_color_2
+    :label: Button Color 2
+    :input_type: select
+    :input_options:
+      - white
+      - green
+      - blue
+      - cream
+      - orange
+      - dark-orange
+      - light-blue
+      - purple
+      - grey
   - :name: button_target_2
     :label: Button Target 2
     :input_type: select
@@ -1027,25 +1555,40 @@
   - :name: button_link_3
     :label: Button Link 3
     :input_type: text
+  - :name: button_color_3
+    :label: Button Color 3
+    :input_type: select
+    :input_options:
+      - white
+      - green
+      - blue
+      - cream
+      - orange
+      - dark-orange
+      - light-blue
+      - purple
+      - grey
   - :name: button_target_3
     :label: Button Target 3
     :input_type: select
     :input_options:
       - Open in Same Tab
       - Open in New Tab
-
 - :name: 3-Column Facebook Video Text
   :fields:
   - :name: background_color
     :label: Background Color
     :input_type: select
     :input_options:
+      - white
       - green
       - blue
       - cream
       - orange
+      - dark-orange
       - light-blue
       - purple
+      - grey
   - :name: facebook_header_1
     :label: Header 1
     :input_type: text

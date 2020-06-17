@@ -1,3 +1,8 @@
+// Text colors
+$primary-text-color: #0b212c;
+$copy-right-color: rgba(11, 33, 44, 0.33);
+$text-link-color: #0f526f;
+
 // *************************************
 //
 //   Config
@@ -13,22 +18,30 @@
 
 $black:                           #000;
 $white:                           #fff;
+$grey:                            #f4f4f4;
+$base-bg-color: $white;
 
 // Greens
 $lime:                            #7ebb52;
+$math-primary-color:              $lime;
 
 // Blues
-$navy:                            #07212d;
+//$navy:                            #07212d;
+$navy:                            #0b212c;
+$blue:                            #0f526f;
+$light-blue:                      #7cc7f1;
 $powder:                          #7cc7f1;
 
 // Oranges
-$coral:                           #ff5b34;
-$tangerine:                       #ff8c00;
+$coral:                           #ff5b35;
+$tangerine:                       #ff8415;
 $sherbert:                        #f0ad4e;
+$dark-orange:                     #ff5b35;
+$alexandria-orange:               #FF8415;
 
 // Grays
 $offwhite:                        #f8f8f8;
-$sand:                            #FFFAE5;
+$sand:                            #fffaea;
 $gainsboro:                       #eee;
 $snow:                            #e2e7e9;
 $ash:                             #c5c5c5;
@@ -37,7 +50,13 @@ $steel:                           #46565c;
 $smoke:                           #333;
 $iron:                            #222;
 
-$cream:                           #fff9ea;
+$cream:                           #fffaea;
+$purple:                          #835aa2;
+
+$background-grey:                 #f4f4f4;
+$text-black:                      #0b212c;
+$primary:                         #0f526f;
+$sub-head-bg:                     #e7e7e7;
 
 // *************************************
 //
@@ -148,3 +167,89 @@ $b-space:                          10px;
 $b-space-m:                        15px;
 $b-space-l:                        20px;
 $b-space-xl:                       40px;
+
+
+// -------------------------------------
+//   Buttons
+// -------------------------------------
+$primary-button-bg: $primary;
+$primary-button-hover-bg: $white;
+$button-red: #ff5b35;
+$button-green: #7ebb52;
+$button-blue: #7cc7f1;
+$button-purple: #835aa2;
+$button-orange: #ff8c00;
+$button-dark-orange: #ff5b35;
+
+$secondary-button-bg: $white;
+$secondary-button-hover-bg: none;
+
+$transperent-button-bg: none;
+$transperent-button-hover-bg: #0f526f;
+$transperent-button-border: #0f526f;
+
+// -------------------------------------
+//   Fonts
+// -------------------------------------
+
+//@font-face {
+//  font-family: "CircularStd";
+//  src: url("CircularStd-Medium.eot");
+//  src: url("CircularStd-Medium.eot?#iefix") format("embedded-opentype"),
+//       url("CircularStd-Medium.woff2") format("woff2"),
+//       url("CircularStd-Medium.woff") format("woff"),
+//       url("CircularStd-Medium.ttf") format("truetype");
+//  font-weight: 500;
+//  font-style: normal;
+//}
+
+@font-face {
+  font-family: "CircularStd-black";
+  src: url(font-path("CircularXXWeb-Black.otf"));
+  src: url(font-path("CircularXXWeb-Black.otf?#iefix")) format("embedded-opentype"),
+       url(font-path("CircularXXWeb-Black.woff2")) format("woff2"),
+       url(font-path("CircularXXWeb-Black.woff")) format("woff"),
+       url(font-path("CircularXXWeb-Black.ttf")) format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "CircularStd-bold";
+  src: url(font-path("CircularXXWeb-Bold.otf"));
+  src: url(font-path("CircularXXWeb-Bold.otf?#iefix")) format("embedded-opentype"),
+       url(font-path("CircularXXWeb-Bold.woff2")) format("woff2"),
+       url(font-path("CircularXXWeb-Bold.woff")) format("woff"),
+       url(font-path("CircularXXWeb-Bold.ttf")) format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "CircularStd-book";
+  src: url(font-path("CircularXXWeb-Book.otf"));
+  src: url(font-path("CircularXXWeb-Book.otf?#iefix")) format("embedded-opentype"),
+       url(font-path("CircularXXWeb-Book.woff2")) format("woff2"),
+       url(font-path("CircularXXWeb-Book.woff")) format("woff"),
+       url(font-path("CircularXXWeb-Book.ttf")) format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "CircularStd-italic";
+  src: url(font-path("CircularXXWeb-Italic.otf"));
+  src: url(font-path("CircularXXWeb-Italic.otf?#iefix")) format("embedded-opentype"),
+       url(font-path("CircularXXWeb-Italic.woff2")) format("woff2"),
+       url(font-path("CircularXXWeb-Italic.woff")) format("woff"),
+       url(font-path("CircularXXWeb-Italic.ttf")) format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "CircularStd-medium";
+  src: url(font-path("CircularXXWeb-Medium.otf"));
+  src: url(font-path("CircularXXWeb-Medium.otf?#iefix")) format("embedded-opentype"),
+       url(font-path("CircularXXWeb-Medium.woff2")) format("woff2"),
+       url(font-path("CircularXXWeb-Medium.woff")) format("woff"),
+       url(font-path("CircularXXWeb-Medium.ttf")) format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}

@@ -1,0 +1,180 @@
+.slider {
+  margin: 10px;
+  overflow: hidden;
+}
+
+.slider__slide {
+  float: left;
+  height: 440px;
+  margin: 1%;
+  position: relative;
+  transition: width 1s;
+  width: 19%;
+}
+
+.slider__slide img {
+  width: 0;
+  height: 100%;
+}
+
+.slider__slide.active img {
+  height: 100%;
+  width: 100%;
+}
+
+.slider__slide h5 {
+  color: $text-link-color;
+  font-family: CircularStd-bold;
+  font-size: 12px;
+  font-stretch: normal;
+  font-style: normal;
+  font-weight: bold;
+  letter-spacing: normal;
+  line-height: 2;
+}
+
+.slider__first-slide p {
+  color: $primary-text-color;
+  max-width: 223px;
+}
+
+.slider__first-slide.active {
+  p {
+    max-width: 318px;
+  }
+}
+
+.slider__second-slide p {
+  max-width: 223px;
+  letter-spacing: normal;
+}
+
+.slider__second-slide.active {
+  p {
+    max-width: 318px;
+  }
+}
+
+.slider__third-slide p {
+  color: $primary-text-color;
+  max-width: 223px;
+}
+
+.slider__third-slide.active {
+  p {
+    max-width: 318px;
+  }
+}
+
+.slider__slide.active {
+  width: 56%;
+}
+
+.slider__first-slide {
+  background: $powder;
+
+  a {
+    display: none;
+  }
+}
+
+.slider__first-slide {
+  background: $powder;
+
+  a {
+    display: none;
+  }
+}
+
+.slider__first-slide h3 {
+  color: $primary-text-color;
+  width: 163px;
+}
+
+.slider__first-slide.active {
+  h3 {
+    max-width: 318px;
+  }
+
+  a {
+    display: inline-block;
+  }
+}
+
+.slider__second-slide h3 {
+  color: $white;
+  width: 163px;
+}
+
+.slider__second-slide.active {
+  h3 {
+    max-width: 318px;
+  }
+
+  a {
+    display: inline-block;
+  }
+}
+
+.slider__second-slide {
+  background: $text-link-color;
+  color: $white;
+
+  a {
+    display: none;
+  }
+}
+
+.slider__third-slide h3 {
+  color: $primary-text-color;
+  width: 163px;
+}
+
+.slider__third-slide.active {
+  h3 {
+    max-width: 318px;
+  }
+
+  a {
+    display: inline-block;
+  }
+}
+
+.slider__second-slide h5 {
+  color: $white;
+}
+
+.slider__third-slide {
+  background: $background-grey;
+
+  a {
+    display: none;
+  }
+}
+
+.slider__content {
+  top: 60px;
+  padding: 20px;
+  position: absolute;
+
+  h3 {
+    font-family: CircularStd-medium;
+    font-size: 24px;
+    font-stretch: normal;
+    font-style: normal;
+    font-weight: 500;
+    letter-spacing: normal;
+    line-height: 1.25;
+    text-transform: none;
+  }
+
+  p {
+    font-family: CircularStd-book;
+    font-size: 16px;
+    font-stretch: normal;
+    font-style: normal;
+    font-weight: normal;
+    letter-spacing: normal;
+    line-height: 1.38;
+  }
+}
