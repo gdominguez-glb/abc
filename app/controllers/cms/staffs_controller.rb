@@ -2,7 +2,7 @@ class Cms::StaffsController < Cms::BaseController
   skip_before_action :authenticate_admin_in_cms!
   before_action :authenticate_hr_admin_in_cms!
 
-  before_action :find_staff, except: [:index, :new, :create, :update_positions, :trustees, :emeritus_advisors]
+  before_action :find_staff, except: [:index, :new, :create, :update_positions, :trustees, :emeritus_advisors, :pbc_board]
 
   def index
     @staffs = Staff.staff.order('position asc')
@@ -16,6 +16,10 @@ class Cms::StaffsController < Cms::BaseController
     @staffs = Staff.emeritus_advisor.order('position asc')
   end
 
+  def pbc_board
+    @staffs = Staff.pbc_board.order('position asc')
+  end
+  
   def new
     @staff = Staff.new
     if params[:state] == 'trustees'
@@ -56,6 +60,8 @@ class Cms::StaffsController < Cms::BaseController
       staffs = Staff.staff
     when 'emeritus_advisors'
       staffs = Staff.emeritus_advisor
+    when 'pbc_board'
+      staffs = Staff.pbc_board
     end
 
     update_positions_with_klass(staffs)

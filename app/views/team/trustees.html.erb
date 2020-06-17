@@ -11,8 +11,11 @@
   <div class="row">
     <div class="col-sm-10 col-sm-offset-1">
       <div class="row">
+        <% if @trustees.present? %>
+          <h2 class="text-center">Great Minds Board of Trustees</h2>
+        <% end %>
         <% @trustees.each do |trustee| %>
-          <div class="col-sm-6 col-md-3 col-thumbnail">
+          <div class="col-sm-6 col-md-3">
             <div data-toggle="modal"
               data-target="#trusteeModal"
               data-bio="<%= trustee.description rescue nil %>"
@@ -36,12 +39,44 @@
     </div>
   </div>
 
+
   <div class="row">
     <div class="col-sm-10 col-sm-offset-1">
       <div class="row">
-        <h2 class="text-center">Emeritus Advisors</h2>
+        <% if @pbc_board.present? %>
+          <h2 class="text-center">Great Minds PBC Board of Directors</h2>
+        <% end %>
+        <% @pbc_board.each do |pbc_board| %>
+          <div class="col-sm-6 col-md-3">
+            <div data-toggle="modal"
+              data-target="#trusteeModal"
+              data-bio="<%= pbc_board.description rescue nil %>"
+              data-title="<%= pbc_board.title %>"
+              data-name="<%= pbc_board.name %>">
+              <div class="thumbnail thumbnail-team thumbnail-modal js-tooltip-trigger" data-toggle="tooltip" title="Click for bio">
+                <% if pbc_board.picture.exists? %>
+                  <%= image_tag pbc_board.picture.url, class: 'img-square' %>
+                <% end %>
+                <div class="caption">
+                  <h3><%= pbc_board.name %></h3>
+                  <p><em><%= pbc_board.title %></em></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-10 col-sm-offset-1">
+      <div class="row">
+        <% if @emeritus_advisors.present? %>
+          <h2 class="text-center">Emeritus Advisors</h2>
+        <% end %>
         <% @emeritus_advisors.each do |emeritus_advisor| %>
-          <div class="col-sm-6 col-md-3 col-thumbnail">
+          <div class="col-sm-6 col-md-3">
             <div data-toggle="modal"
               data-target="#trusteeModal"
               data-bio="<%= emeritus_advisor.description rescue nil %>"
