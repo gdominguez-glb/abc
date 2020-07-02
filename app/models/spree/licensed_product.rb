@@ -1,4 +1,4 @@
-class Spree::LicensedProduct < ActiveRecord::Base
+class Spree::LicensedProduct < ApplicationRecord
   belongs_to :product, class_name: 'Spree::Product'
   belongs_to :order, class_name: 'Spree::Order'
   belongs_to :user, class_name: 'Spree::User'

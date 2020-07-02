@@ -1,4 +1,4 @@
-class Spree::Video < ActiveRecord::Base
+class Spree::Video < ApplicationRecord
   include Taxonable
 
   has_attached_file :screenshot, {

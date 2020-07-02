@@ -1,4 +1,4 @@
-class MediumPublication < ActiveRecord::Base
+class MediumPublication < ApplicationRecord
   include Displayable
 
   validates_presence_of :title, :url, :slug

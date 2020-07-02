@@ -1,4 +1,4 @@
-class Spree::LibraryItem < ActiveRecord::Base
+class Spree::LibraryItem < ApplicationRecord
   belongs_to :library_leaf, class_name: 'Spree::LibraryLeaf'
 
   validates_presence_of :name

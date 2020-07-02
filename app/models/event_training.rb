@@ -1,4 +1,4 @@
-class EventTraining < ActiveRecord::Base
+class EventTraining < ApplicationRecord
   validates_presence_of :title, :content
 
   belongs_to :training_type_category

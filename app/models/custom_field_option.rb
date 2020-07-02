@@ -1,4 +1,4 @@
-class CustomFieldOption < ActiveRecord::Base
+class CustomFieldOption < ApplicationRecord
   include Displayable
 
   belongs_to :custom_field

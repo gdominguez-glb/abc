@@ -1,4 +1,4 @@
-class Spree::MaterialImportJob < ActiveRecord::Base
+class Spree::MaterialImportJob < ApplicationRecord
   belongs_to :user, class_name: 'Spree::User'
   belongs_to :product, class_name: 'Spree::Product'
 

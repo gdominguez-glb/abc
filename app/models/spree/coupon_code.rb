@@ -1,4 +1,4 @@
-class Spree::CouponCode < ActiveRecord::Base
+class Spree::CouponCode < ApplicationRecord
   belongs_to :school_district
 
   has_many :coupon_code_products, class_name: 'Spree::CouponCodeProduct'

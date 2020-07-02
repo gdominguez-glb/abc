@@ -1,4 +1,4 @@
-FROM ruby:2.4.2
+FROM ruby:2.6.3
 
 RUN apt-get update && \
   apt-get install -y --no-install-recommends \
@@ -6,7 +6,7 @@ RUN apt-get update && \
   curl \
   gnupg2 \
   libpq-dev \
-  libmysqlclient-dev \
+  default-libmysqlclient-dev \
   nodejs \
   graphviz \
   && rm -rf /var/lib/apt/lists/*

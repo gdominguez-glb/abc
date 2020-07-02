@@ -1,5 +1,4 @@
 version: '3.7'
-
 services:
   selenium:
     image: selenium/standalone-chrome-debug:3.141.59-krypton
@@ -12,16 +11,18 @@ services:
     image: elasticsearch:1.5.2
   db:
     image: postgres:9.3.10
+    ports:
+      - '5432:5432'
     volumes:
       - ./tmp/db:/var/lib/postgresql/data
       - .:/home
   greatminds:
     build: .
-    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    command: bash -c "while !</dev/tcp/db/5432; do sleep 1; done; rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     stdin_open: true
     tty: true
     volumes:
-      - .:/home
+      - greatminds-sync:/home:nocopy
     ports:
       - "3000:3000"
     depends_on:
@@ -36,3 +37,7 @@ services:
       - SELENIUM_PORT=4444
       - TEST_APP_HOST=greatminds
       - TEST_PORT=3000
+      - SPREE_USE_PAPERCLIP=true
+volumes:
+  greatminds-sync:
+    external: true

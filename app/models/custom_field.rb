@@ -1,4 +1,4 @@
-class CustomField < ActiveRecord::Base
+class CustomField < ApplicationRecord
   include Displayable
 
   FIELD_TYPES = ['short_text', 'long_text', 'select', 'multiple_select'].freeze

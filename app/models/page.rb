@@ -1,6 +1,6 @@
 require 'marketing_page_renderrer'
 
-class Page < ActiveRecord::Base
+class Page < ApplicationRecord
 
   include Archiveable
   include Publishable

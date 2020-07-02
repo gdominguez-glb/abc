@@ -1,4 +1,4 @@
-class SubscriptionNotification < ActiveRecord::Base
+class SubscriptionNotification < ApplicationRecord
   belongs_to :subscription
   belongs_to :article
 

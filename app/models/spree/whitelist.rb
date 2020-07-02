@@ -1,4 +1,4 @@
-class Spree::Whitelist < ActiveRecord::Base
+class Spree::Whitelist < ApplicationRecord
   belongs_to :school_district
 
   validates :school_district_id, presence: true

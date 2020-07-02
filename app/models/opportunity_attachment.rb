@@ -1,4 +1,4 @@
-class OpportunityAttachment < ActiveRecord::Base
+class OpportunityAttachment < ApplicationRecord
   include SalesforceAccess
 
   belongs_to :opportunity

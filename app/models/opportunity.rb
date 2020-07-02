@@ -1,6 +1,6 @@
-class Opportunity < ActiveRecord::Base
+class Opportunity < ApplicationRecord
 
-  has_many :attachments, class_name: OpportunityAttachment
+  has_many :attachments, class_name: 'OpportunityAttachment'
 
   validates :salesforce_id, presence: true
   validates :po_number, presence: true

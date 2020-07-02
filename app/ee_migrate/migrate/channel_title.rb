@@ -1,5 +1,5 @@
 module Migrate
-  class ChannelTitle < ActiveRecord::Base
+  class ChannelTitle < ApplicationRecord
     establish_connection "#{Rails.env}_migrate"
     self.table_name = 'exp_channel_titles'
     self.primary_key = 'entry_id'

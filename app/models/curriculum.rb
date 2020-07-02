@@ -1,4 +1,4 @@
-class Curriculum < ActiveRecord::Base
+class Curriculum < ApplicationRecord
   validates_presence_of :name
 
   has_many :pages

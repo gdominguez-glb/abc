@@ -1,4 +1,4 @@
-class Recommendation < ActiveRecord::Base
+class Recommendation < ApplicationRecord
 
   include Viewable, Clickable, Displayable, DashboardFilterable
   validates_presence_of :title, :sub_header, :call_to_action_button_text, :call_to_action_button_link

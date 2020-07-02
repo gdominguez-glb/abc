@@ -1,4 +1,4 @@
-class Spree::CouponCodeProduct < ActiveRecord::Base
+class Spree::CouponCodeProduct < ApplicationRecord
   self.table_name = "spree_coupon_codes_products"
   
   belongs_to :product, class_name: 'Spree::Product'

@@ -1,4 +1,4 @@
-class Question < ActiveRecord::Base
+class Question < ApplicationRecord
   include Archiveable
   include Displayable
   include Publishable

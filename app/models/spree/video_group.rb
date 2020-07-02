@@ -1,4 +1,4 @@
-class Spree::VideoGroup < ActiveRecord::Base
+class Spree::VideoGroup < ApplicationRecord
   has_many :videos, class_name: 'Spree::Video'
   has_many :products, class_name: 'Spree::Product'
 

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Spree::FlipbookLeaf < ActiveRecord::Base
+class Spree::FlipbookLeaf < ApplicationRecord
   belongs_to :product, class_name: 'Spree::Product'
 
   validates_presence_of :name
