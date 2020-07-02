@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
-ruby '2.2.0'
+ruby '2.4.2'
 
-gem 'rails', '4.2.0'
+gem 'rails', '4.2.10'
 # Use postgresql as the database for Active Record
 gem 'pg'
 
@@ -172,7 +172,7 @@ gem 'capistrano', '~> 3.4.0'
 gem 'capistrano-rbenv', '~> 2.0'
 gem 'capistrano-bundler', '~> 1.1.2'
 gem 'capistrano-rails', '~> 1.1'
-gem 'capistrano-sidekiq', github: 'seuros/capistrano-sidekiq'
+# gem 'capistrano-sidekiq', github: 'seuros/capistrano-sidekiq'
 
 gem 'unicorn', '~> 4.8.3'
 
