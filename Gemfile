@@ -45,7 +45,7 @@ gem "figaro"
 gem 'aws-sdk', '< 2.0'
 gem 'aws-sdk-s3', require: false
 
-gem 'active_link_to'
+gem 'active_link_to', '1.0.3'
 gem 'kaminari', '< 1.2.0', '>= 1.0.1'
 gem 'acts-as-taggable-on', '~> 6.0'
 
@@ -87,6 +87,7 @@ gem 'geocoder'
 gem 'time_will_tell'
 
 gem 'haml'
+gem 'nkss-rails', github: 'nadarei/nkss-rails'
 
 gem "material_icons", github: 'rociiu/material_icons'
 
@@ -136,7 +137,6 @@ group :development do
   gem 'guard'
   gem 'guard-rspec', require: false
   gem 'guard-livereload', '~> 2.4', require: false
-  gem 'web-console', '~> 2.3.0'
 end
 
 group :development, :test do
