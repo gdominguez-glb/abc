@@ -374,8 +374,16 @@ section {
 // -------------------------------------
 
 .blue-bg {
-  color: $c-absolute;
   background: $c-positive-secondary;
+  color: $c-absolute;
+
+  &.navy-blue-text {
+    color: $c-absolute;
+  }
+
+  .navy-blue-text {
+    color: $c-absolute;
+  }
 }
 
 .cream-bg {
