@@ -1,8 +1,8 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :job do
-    title "MyString"
-    content "MyText"
-    display false
+    title { "MyString" }
+    content { "MyText" }
+    display { false }
   end
 
 end

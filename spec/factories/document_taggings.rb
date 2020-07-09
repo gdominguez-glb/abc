@@ -1,7 +1,6 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :document_tagging do
     document nil
-tag nil
+    tag nil
   end
-
 end

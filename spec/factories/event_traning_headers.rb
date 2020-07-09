@@ -1,8 +1,7 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :event_traning_header do
-    name "MyString"
-position ""
-training_category_type nil
+    name { "MyString" }
+    position { "" }
+    training_category_type nil
   end
-
 end
