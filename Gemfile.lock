@@ -1,4 +1,15 @@
 GIT
+  remote: https://github.com/nadarei/nkss-rails.git
+  revision: 8f5e27e98115daad591ac871a50a7c5ffa966d3e
+  specs:
+    nkss-rails (0.0.2)
+      bluecloth
+      ffaker
+      haml
+      kss
+      rails (>= 3.2.0)
+
+GIT
   remote: https://github.com/rociiu/material_icons.git
   revision: 1462541ca1971ee79b9bb188982332ac97c1f4d9
   specs:
@@ -60,9 +71,8 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.3)
-    active_link_to (1.0.5)
+    active_link_to (1.0.3)
       actionpack
-      addressable
     activejob (5.2.4.3)
       activesupport (= 5.2.4.3)
       globalid (>= 0.3.6)
@@ -143,6 +153,7 @@ GEM
       rack (>= 0.9.0)
     binding_of_caller (0.8.0)
       debug_inspector (>= 0.0.1)
+    bluecloth (2.2.0)
     bootsnap (1.4.6)
       msgpack (~> 1.0)
     bootstrap-sass (3.4.1)
@@ -360,6 +371,7 @@ GEM
       activerecord
       kaminari-core (= 1.0.1)
     kaminari-core (1.0.1)
+    kss (0.5.0)
     launchy (2.5.0)
       addressable (~> 2.7)
     letter_opener (1.7.0)
@@ -770,11 +782,6 @@ GEM
       tzinfo
     warden (1.2.8)
       rack (>= 2.0.6)
-    web-console (2.3.0)
-      activemodel (>= 4.0)
-      binding_of_caller (>= 0.7.2)
-      railties (>= 4.0)
-      sprockets-rails (>= 2.0, < 4.0)
     webmock (3.8.3)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
@@ -795,7 +802,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  active_link_to
+  active_link_to (= 1.0.3)
   acts-as-taggable-on (~> 6.0)
   aws-sdk (< 2.0)
   aws-sdk-s3
@@ -848,6 +855,7 @@ DEPENDENCIES
   mysql2
   net-sftp (= 2.1.3.rc2)
   newrelic_rpm
+  nkss-rails!
   open_uri_redirections
   paperclip-compression
   pg
@@ -889,7 +897,6 @@ DEPENDENCIES
   uglifier (>= 1.3.0)
   validate_url
   vcr (~> 2.9.3)
-  web-console (~> 2.3.0)
   webmock
   whenever
   wistia-api
@@ -899,4 +906,4 @@ RUBY VERSION
    ruby 2.6.3p62
 
 BUNDLED WITH
-   1.16.3
+   1.17.2
