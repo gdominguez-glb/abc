@@ -48,11 +48,12 @@ class Api::UserController < Api::BaseController
   private
 
   def product_id
-    Spree::Product.where(id: product_id_param['product_id']).pluck(:id)
+    return Spree::Product.where(id: product_id_param['product_id']).pluck(:id) if product_id_param['product_id'].present?
+    [Spree::Product.find_by(name: 'Eureka Navigator LTI').id]
   end
 
   def licensed?(user)
-    products_of_user(user).map(&:id).include?(product_id)
+    user.products.where(id: product_id).present?
   end
 
   def products_of_user(user)
