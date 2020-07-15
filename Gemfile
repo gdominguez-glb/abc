@@ -69,8 +69,6 @@ gem 'searchkick', '~> 1.1', '>= 1.1.2'
 
 gem 'select2-rails', '~> 3.5.0'
 
-gem 'doorkeeper'
-
 gem 'saml_idp', '~> 0.7.2'
 
 gem 'roo', '1.13.2'
