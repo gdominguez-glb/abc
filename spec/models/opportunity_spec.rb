@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Opportunity, type: :model do
   let(:opportunity) { FactoryBot.build(:opportunity) }
-  let(:opportunity_with_attachment) { FactoryBot.build(:opportunity_with_attachment) }
+  let(:opportunity_with_attachment)
+    { FactoryBot.build(:opportunity_with_attachment) }
 
   before(:each){ allow_any_instance_of(GmSalesforce::Client).to receive(:find).and_return(true) }
   before(:each){ allow_any_instance_of(GmSalesforce::Client).to receive(:update).and_return(true) }

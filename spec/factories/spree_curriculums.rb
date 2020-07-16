@@ -5,6 +5,6 @@ FactoryBot.define do
     name { 'MyString' }
     description { 'MyText' }
     position { 1 }
-    deleted_at { "2015-04-28 15:09:55" }
+    deleted_at { '2015-04-28 15:09:55' }
   end
 end

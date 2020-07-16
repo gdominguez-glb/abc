@@ -7,7 +7,7 @@ FactoryBot.define do
     email
     school_district
     password { '123456' }
-    interested_subjects { ["math"] }
+    interested_subjects { ['math'] }
     skip_salesforce_create { true }
     ship_address
     bill_address

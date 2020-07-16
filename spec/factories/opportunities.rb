@@ -11,7 +11,8 @@ FactoryBot.define do
     phone_number { 'Another' }
 
     factory :opportunity_with_attachment do
-      after(:build){ |attachment| attachment.attachments << FactoryBot.build(:opportunity_attachment) }
+      after(:build) { |attachment| attachment.attachments <<
+                      FactoryBot.build(:opportunity_attachment) }
     end
   end
 end

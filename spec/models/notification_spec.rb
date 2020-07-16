@@ -22,7 +22,7 @@ RSpec.describe Notification, type: :model do
 
       it 'should return unexpired notifications' do
         non_expirable_x = FactoryBot.create(:notification,
-                                            expire_at: 5.minutes.since)
+                                             expire_at: 5.minutes.since)
         FactoryBot.create(:notification,expire_at: 10.minutes.since)
         nilable = FactoryBot.create(:notification, expire_at: nil)
         FactoryBot.create(:notification, expire_at: 5.minutes.ago)
@@ -35,8 +35,8 @@ RSpec.describe Notification, type: :model do
       end
 
       it 'should return nothing' do
-        (0..5).each { |minutes|
-          FactoryBot.create(:notification, expire_at: minutes.minutes.ago) }
+        (0..5).each { |minutes| FactoryBot.create(:notification,
+                                                   expire_at: minutes.minutes.ago) }
         expect(Notification.unexpire.count).to eq(0)
       end
     end
