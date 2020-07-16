@@ -1,10 +1,11 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :event_page do
-    title { "MyString" }
+    title { 'MyString' }
     page_id { 1 }
     display { false }
-    regonline_filter { "MyString" }
-    slug { "MyString" }
+    regonline_filter { 'MyString' }
+    slug { 'MyString' }
   end
-
 end

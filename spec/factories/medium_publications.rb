@@ -1,9 +1,10 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :medium_publication do
-    title { "MyString" }
-    url { "MyString" }
-    slug { "my-string" }
+    title { 'MyString' }
+    url { 'MyString' }
+    slug { 'my-string' }
     display { true }
   end
-
 end

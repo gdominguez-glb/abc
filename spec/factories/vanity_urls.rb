@@ -5,5 +5,4 @@ FactoryBot.define do
     url { 'http://test.foo/abc' }
     redirect_url { 'http://test.foo/a/c' }
   end
-
 end

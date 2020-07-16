@@ -9,8 +9,7 @@ RSpec.describe Spree::LicensesManager::OrderLicenser do
     before(:each) do
       Spree::Cart::AddItem.call(order: order,
                                 variant: product.master,
-                                quantity: 10
-                                )
+                                quantity: 10)
       Spree::LicensesManager::OrderLicenser.new(order).execute
     end
 
@@ -35,8 +34,7 @@ RSpec.describe Spree::LicensesManager::OrderLicenser do
     before(:each) do
       Spree::Cart::AddItem.call(order: order,
                                 variant: product.master,
-                                quantity: 1
-                                )
+                                quantity: 1)
       Spree::LicensesManager::OrderLicenser.new(order).execute
     end
 
@@ -59,8 +57,7 @@ RSpec.describe Spree::LicensesManager::OrderLicenser do
     before(:each) do
       Spree::Cart::AddItem.call(order: order,
                                 variant: product.master,
-                                quantity: 1
-                                )
+                                quantity: 1)
       Spree::LicensesManager::OrderLicenser.new(order).execute
     end
 

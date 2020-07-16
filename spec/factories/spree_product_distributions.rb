@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :spree_product_distribution, :class => 'Spree::ProductDistribution' do
     from_user { create(:gm_user) }

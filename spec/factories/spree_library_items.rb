@@ -1,9 +1,10 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :spree_library_item, :class => 'Spree::LibraryItem' do
-    name { "MyString" }
+    name { 'MyString' }
     position { 1 }
-    inkling_code { "MyText" }
-    item_type { "MyString" }
+    inkling_code { 'MyText' }
+    item_type { 'MyString' }
   end
-
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :gm_user, class: Spree::User do
     first_name { 'John' }

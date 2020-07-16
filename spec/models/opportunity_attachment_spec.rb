@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe OpportunityAttachment, type: :model do
-  let(:opportunity){ FactoryBot.create(:opportunity_with_attachment) }
+  let(:opportunity) { FactoryBot.create(:opportunity_with_attachment) }
 
   it { should have_attached_file :file }
   it { should validate_attachment_presence :file }

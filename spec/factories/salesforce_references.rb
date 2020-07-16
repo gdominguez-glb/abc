@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :salesforce_reference do
     sequence(:id_in_salesforce)  { |n| n.to_s }

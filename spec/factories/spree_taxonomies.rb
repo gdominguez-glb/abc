@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :spree_taxonomy, class: 'Spree::Taxonomy' do
     name { 'Dummy taxon' }

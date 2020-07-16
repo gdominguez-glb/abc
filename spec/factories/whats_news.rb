@@ -13,5 +13,4 @@ FactoryBot.define do
     clicks { 0 }
     zip_codes { 'MyText' }
   end
-
 end

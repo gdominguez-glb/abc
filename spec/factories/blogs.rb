@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :blog do
     title { 'MyString' }
@@ -9,5 +11,4 @@ FactoryBot.define do
     description { 'MyText' }
     page_id { 1 }
   end
-
 end

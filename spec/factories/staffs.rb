@@ -6,5 +6,4 @@ FactoryBot.define do
     description { 'MyText' }
     position { 1 }
   end
-
 end

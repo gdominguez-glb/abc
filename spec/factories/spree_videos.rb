@@ -7,5 +7,4 @@ FactoryBot.define do
     product_id { 1 }
     is_free { false }
   end
-
 end
