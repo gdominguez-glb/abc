@@ -51,7 +51,7 @@ gem 'acts-as-taggable-on', '~> 6.0'
 
 gem 'sinatra', :require => nil
 
-gem 'sidekiq'
+gem 'sidekiq', '5.2.7' #6.1.0
 
 gem "mediaelement_rails"
 
