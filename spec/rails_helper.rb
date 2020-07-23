@@ -119,5 +119,3 @@ RSpec.configure do |config|
     )
   end
 end
-
-TestAfterCommit.enabled = true

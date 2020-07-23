@@ -1,9 +1,10 @@
-FactoryGirl.define do
-  factory :help_item do
-    title "MyString"
-    content "MyText"
-    display false
-    position 1
-  end
+# frozen_string_literal: true
 
+FactoryBot.define do
+  factory :help_item do
+    title { 'MyString' }
+    content { 'MyText' }
+    display { false }
+    position { 1 }
+  end
 end

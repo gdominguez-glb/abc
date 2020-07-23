@@ -146,8 +146,8 @@ end
 group :test do
   gem 'codeclimate-test-reporter', require: nil
 
-  gem 'database_cleaner', '~> 1.4.1'
-  gem 'factory_girl_rails', '~> 4.5.0'
+  gem 'database_cleaner', '~> 1.7'
+  gem 'factory_bot_rails', '~> 4.11', '>= 4.11.1'
   gem 'phantomjs', '~> 1.9.8'
   gem 'webmock'
   gem 'vcr', '~> 2.9.3'

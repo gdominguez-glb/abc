@@ -213,7 +213,7 @@ GEM
     css_parser (1.7.1)
       addressable
     dalli (2.7.10)
-    database_cleaner (1.4.1)
+    database_cleaner (1.8.5)
     debug_inspector (0.0.3)
     declarative (0.0.20)
     declarative-builder (0.1.0)
@@ -271,10 +271,10 @@ GEM
       activesupport (>= 4.0, < 7)
     excon (0.75.0)
     execjs (2.7.0)
-    factory_girl (4.5.0)
+    factory_bot (4.11.1)
       activesupport (>= 3.0.0)
-    factory_girl_rails (4.5.0)
-      factory_girl (~> 4.5.0)
+    factory_bot_rails (4.11.1)
+      factory_bot (~> 4.11.1)
       railties (>= 3.0.0)
     faraday (1.0.0)
       multipart-post (>= 1.2, < 3)
@@ -821,10 +821,11 @@ DEPENDENCIES
   codeclimate-test-reporter
   coffee-rails (~> 4.2)
   dalli
-  database_cleaner (~> 1.4.1)
+  database_cleaner (~> 1.7)
+  doorkeeper
   dropbox_api
   exception_notification
-  factory_girl_rails (~> 4.5.0)
+  factory_bot_rails (~> 4.11, >= 4.11.1)
   figaro
   flipper
   flipper-redis

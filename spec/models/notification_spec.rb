@@ -15,16 +15,17 @@ RSpec.describe Notification, type: :model do
 
     context 'should validate #unexpire' do
       it 'should return notifications with nil value' do
-        nil_notification = FactoryGirl.create(:notification, expire_at: nil)
-        non_expirable_notification = FactoryGirl.create(:notification, expire_at: 10.minutes.since)
+        nil_notification = FactoryBot.create(:notification, expire_at: nil)
+        FactoryBot.create(:notification, expire_at: 10.minutes.since)
         expect(Notification.unexpire.first).to eq(nil_notification)
       end
 
       it 'should return unexpired notifications' do
-        non_expirable_x = FactoryGirl.create(:notification, expire_at: 5.minutes.since)
-        non_expirable_y = FactoryGirl.create(:notification, expire_at: 10.minutes.since)
-        nilable = FactoryGirl.create(:notification, expire_at: nil)
-        expirable = FactoryGirl.create(:notification, expire_at: 5.minutes.ago)
+        non_expirable_x = FactoryBot.create(:notification,
+                                             expire_at: 5.minutes.since)
+        FactoryBot.create(:notification,expire_at: 10.minutes.since)
+        nilable = FactoryBot.create(:notification, expire_at: nil)
+        FactoryBot.create(:notification, expire_at: 5.minutes.ago)
 
         notifications = Notification.unexpire
 
@@ -34,7 +35,8 @@ RSpec.describe Notification, type: :model do
       end
 
       it 'should return nothing' do
-        (0..5).each { |minutes| FactoryGirl.create(:notification, expire_at: minutes.minutes.ago) }
+        (0..5).each { |minutes| FactoryBot.create(:notification,
+                                                   expire_at: minutes.minutes.ago) }
         expect(Notification.unexpire.count).to eq(0)
       end
     end
