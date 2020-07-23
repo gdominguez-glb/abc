@@ -51,7 +51,7 @@ gem 'acts-as-taggable-on', '~> 6.0'
 
 gem 'sinatra', :require => nil
 
-gem 'sidekiq'
+gem 'sidekiq', '5.2.7' #6.1.0
 
 gem "mediaelement_rails"
 
@@ -68,8 +68,6 @@ gem "rails-settings-cached", "~> 0.5.5"
 gem 'searchkick', '~> 1.1', '>= 1.1.2'
 
 gem 'select2-rails', '~> 3.5.0'
-
-gem 'doorkeeper'
 
 gem 'saml_idp', '~> 0.7.2'
 
@@ -178,9 +176,8 @@ gem 'capistrano', '~> 3.10'
 gem 'capistrano-rbenv', '~> 2.0'
 gem 'capistrano-bundler', '~> 1.1'
 gem 'capistrano-rails', '~> 1.5'
-gem 'capistrano-sidekiq', github: 'seuros/capistrano-sidekiq'
-
-# gem 'unicorn', '~> 4.8.3'
+gem 'capistrano-sidekiq'
+gem 'sitemap_generator'
 
 gem 'newrelic_rpm'
 

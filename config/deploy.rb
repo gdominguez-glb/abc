@@ -1,5 +1,5 @@
 # config valid only for current version of Capistrano
-lock '3.4.0'
+lock '3.14.1'
 
 set :application, 'greatminds'
 set :repo_url, 'git@github.com:greatmindsorg/greatminds.git'
@@ -91,5 +91,5 @@ end
 
 after "deploy:finished", 'deploy:unicorn_restart'
 after "deploy:finished", 'sidekiq:restart'
-after "deploy:finished", 'deploy:sitemap:create'
+after "deploy:finished", 'sitemap:create'
 after "deploy:finished", 'deploy:clear_pagespeed_cache'
