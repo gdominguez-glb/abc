@@ -18,16 +18,16 @@
     <li><a href="https://eurekamath.greatminds.org/webinar-library">Webinars</a></li>
   <% end %>
   <% if group_page && blog = group_page.blogs.displayable.first %>
-    <%= active_link_to 'Blog', curriculum_blog_path(page_slug: group_page.slug, slug: blog.slug), wrap_tag: :li, active: /#{group_page.slug}\/blog\/#{blog.slug}/ %>
+    <%= active_link_to 'Blog', main_app.curriculum_blog_path(page_slug: group_page.slug, slug: blog.slug), wrap_tag: :li, active: /#{group_page.slug}\/blog\/#{blog.slug}/ %>
     <% # we need to check if this is totally ok, maybe, we need to add a new section for create extra subnav links %>
     <% if (bl = group_page.blogs.displayable.last) != blog && group_page.slug == "math" %>
-      <%= active_link_to bl.title, curriculum_blog_path(page_slug: group_page.slug, slug: bl.slug), wrap_tag: :li, active: /#{group_page.slug}\/blog\/#{bl.slug}/ %>
+      <%= active_link_to bl.title, main_app.curriculum_blog_path(page_slug: group_page.slug, slug: bl.slug), wrap_tag: :li, active: /#{group_page.slug}\/blog\/#{bl.slug}/ %>
     <% end %>
   <% end %>
   <% if group_page && group_page.slug == "english" %>
     <%= active_link_to "Case Studies", "/english/blog/case-studies", active: (request.path == "/english/blog/case-studies"), wrap_tag: :li %>
   <% end %>
   <% if group_page && event_page = group_page.available_event_pages.first %>
-    <%= active_link_to 'Events', curriculum_events_path(page_slug: group_page.slug, slug: event_page.slug), wrap_tag: :li, active: /#{group_page.slug}\/events\/#{event_page.slug}/ %>
+    <%= active_link_to 'Events', main_app.curriculum_events_path(page_slug: group_page.slug, slug: event_page.slug), wrap_tag: :li, active: /#{group_page.slug}\/events\/#{event_page.slug}/ %>
   <% end %>
 </ul>
