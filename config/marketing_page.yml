@@ -1008,9 +1008,8 @@ marketing_templates:
         }
       </style>
       <section id="tileImgBgTextRight<%= position %>" class="row row-img-full image-bg">
-        <div class="row-img-full-content <%= 'black-overlay' if (black_overlay.to_i == 1 rescue nil) %>">
-          <div class="col-sm-6"></div>
-          <div class="col-sm-6 col-centered-content">
+        <div class="clearfix row-img-full-content <%= 'black-overlay' if (black_overlay.to_i == 1 rescue nil) %>">
+          <div class="col-sm-6 col-centered-content pull-right">
             <div class="vertical-center">
               <h6><%= title %></h6>
               <p><%= body_text %></p>
