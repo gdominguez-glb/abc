@@ -27,6 +27,8 @@ require 'capistrano/rails'
 require 'capistrano/sidekiq'
 
 require "whenever/capistrano"
+
+require 'capistrano/puma'
 require 'capistrano/sitemap_generator'
 
 # Load custom tasks from `lib/capistrano/tasks` if you have any defined

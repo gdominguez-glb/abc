@@ -177,6 +177,7 @@ gem 'capistrano-rbenv', '~> 2.0'
 gem 'capistrano-bundler', '~> 1.1'
 gem 'capistrano-rails', '~> 1.5'
 gem 'capistrano-sidekiq'
+gem 'capistrano3-puma'
 gem 'sitemap_generator'
 
 gem 'newrelic_rpm'
