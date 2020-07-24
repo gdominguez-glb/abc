@@ -14,16 +14,17 @@ class Api::UserController < Api::BaseController
 
     user.update(spree_user_params)
 
-    admin = Spree::User.find_by email: 'web.admin@greatminds.net'
-    licensed_products = admin.licensed_products.where(product_id: navigator_product_id)
-
     if user.save
       user.accept_terms!
-      rows = [{ email: user.email, quantity: '1' }]
+      rows = [{ email: user.email, quantity: licensed_products.count }]
 
-      Spree::LicensesManager::LicensesDistributer.new(user: admin,
-                                                      licensed_products: licensed_products,
-                                                      rows: rows).execute unless licensed?(user)
+      licensed_products.each do |licensed_product|
+        unless licensed?(user)
+          Spree::LicensesManager::LicensesDistributer.new(user: admin,
+                                                          licensed_products: [licensed_product],
+                                                          rows: rows).execute
+        end
+      end
 
       json_response = {
         id: user.id,
@@ -46,12 +47,13 @@ class Api::UserController < Api::BaseController
 
   private
 
-  def navigator_product_id
-    Spree::Product.find_by(name: 'Eureka Navigator LTI').id
+  def product_id
+    return Spree::Product.where(id: product_id_param['product_id']).pluck(:id) if product_id_param['product_id'].present?
+    [Spree::Product.find_by(name: 'Eureka Navigator LTI').id]
   end
 
   def licensed?(user)
-    products_of_user(user).map(&:id).include?(navigator_product_id)
+    user.products.where(id: product_id).present?
   end
 
   def products_of_user(user)
@@ -66,6 +68,11 @@ class Api::UserController < Api::BaseController
           .merge(default_params)
   end
 
+  def product_id_param
+    params.require(:spree_user)
+          .permit(product_id: [])
+  end
+
   def default_params
     password = Digest::SHA256.hexdigest rand().to_s
 
@@ -74,5 +81,14 @@ class Api::UserController < Api::BaseController
       password_confirmation: password,
       interested_subjects: ['Math'],
     }
+  end
+
+  def licensed_products
+    return admin.licensed_products.where(product_id: product_id) unless product_id.empty?
+    admin.licensed_products.where(product_id: Spree::Product.find_by(name: 'Eureka Navigator LTI').id)
+  end
+
+  def admin
+    Spree::User.find_by email: 'web.admin@greatminds.net'
   end
 end
