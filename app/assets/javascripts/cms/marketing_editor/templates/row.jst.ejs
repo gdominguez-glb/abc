@@ -35,7 +35,11 @@
           <div class="col-sm-12">
             <div class="form-group">
               <label>
-                <input type="checkbox" class="title-input" data-name="<%= fields[i].name %>" value="1" <% if(data[fields[i].name] == 1) {%>checked<%}%>/>
+                <% if(fields[i].data_attr == 'featured_image') { %>
+                  <input type="checkbox" class="featured-img-title-input" data-name="<%= fields[i].name %>" value="<%= fields[i].value %>" />
+                <% } else { %>
+                  <input type="checkbox" class="title-input" data-name="<%= fields[i].name %>" value="1" <%if(data[fields[i].name] == 1) {%>checked<%}%>/>
+                <% } %>
                 <%= fields[i].label %>
               </label>
             </div>

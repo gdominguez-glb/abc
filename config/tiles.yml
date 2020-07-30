@@ -614,6 +614,11 @@
     :input_type: text
 - :name: 50/50 Full-Bleed Image Right
   :fields:
+  - :name: featured_image_url_1
+    :data_attr: featured_image
+    :label: Featured Image URL 1
+    :input_type: checkbox
+    :value: unchecked
   - :name: image_url_1
     :label: Image Url 1
     :input_type: text

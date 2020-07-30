@@ -572,7 +572,8 @@ marketing_templates:
       <section id="tile_<%= position %>" class="tile-container row row-tile-new <%= background_color %>-bg">
         <div class="tile-container__content col-sm-6">
           <% if image_url_1.present? %>
-            <img class="tile-container__icon image_url_1" src="<%= image_url_1 %>" alt="<%= image_alt_1 %>" />
+            <img class="tile-container__icon image_url_1" src="<%= image_url_1 %>" alt="<%= image_alt_1 %>" data_attr="featured_image" fatured_img="<%= 'featured-image' if (featured_image_url_1.to_i == 1 rescue nil) %>" />
+            
           <% end %>
           <h6 class="tile-container__title"><%= title %></h6>
           <p class="tile-container__para"><%= body_text %></p>
