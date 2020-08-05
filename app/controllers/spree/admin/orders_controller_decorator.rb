@@ -36,9 +36,9 @@ Spree::Admin::OrdersController.class_eval do
     # lazyoading other models here (via includes) may result in an invalid query
     # e.g. SELECT  DISTINCT DISTINCT "spree_orders".id, "spree_orders"."created_at" AS alias_0 FROM "spree_orders"
     # see https://github.com/spree/spree/pull/3919
-    @orders = @search.result(distinct: true).
-                      page(params[:page]).
-                      per(params[:per_page] || Spree::Config[:admin_orders_per_page])
+    @orders = @search.result(distinct: true).page(params[:page])
+                                            .per(params[:per_page] ||
+                Spree::Config[:admin_orders_per_page])
 
     # Restore dates
     params[:q][:created_at_gt] = created_at_gt
