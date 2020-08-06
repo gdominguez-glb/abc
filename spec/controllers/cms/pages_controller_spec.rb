@@ -87,12 +87,12 @@ RSpec.describe Cms::PagesController, type: :controller do
 
   describe "POST 'create'" do
     it "success" do
-      post :create, params: { page: {title: 'a', slug: 'b', group_name: 'c' } }
+      post :create, params: { page: { title: 'a', slug: 'b', group_name: 'c' } }
       expect(response).to be_redirect
     end
 
     it "fail" do
-      post :create, params: { page: {title: '' } }
+      post :create, params: { page: { title: '' } }
       expect(response).to render_template(:new)
     end
   end

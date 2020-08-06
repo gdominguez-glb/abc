@@ -162,7 +162,7 @@ RSpec.describe Spree::ProductsController, type: :controller do
     end
 
     it 'should redirect if the product was archived' do
-      get :show, params: {i d: archived_product.id }
+      get :show, params: { id: archived_product.id }
 
       expect(response).to redirect_to('/not-found')
     end

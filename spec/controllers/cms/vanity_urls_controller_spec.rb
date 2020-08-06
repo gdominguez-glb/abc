@@ -86,7 +86,8 @@ RSpec.describe Cms::VanityUrlsController, type: :controller do
     end
 
     it "fail with invalid params" do
-      put :update, params: { id: vanity_url.id, vanity_url: { redirect_url: '' } }
+      put :update, params: { id: vanity_url.id,
+                             vanity_url: { redirect_url: '' } }
       expect(response).to render_template(:edit)
     end
   end

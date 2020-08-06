@@ -12,7 +12,7 @@ RSpec.describe BlogController, type: :controller do
 
   describe "GET 'global'" do
     it "success" do
-      get :global, params: {slug: global_blog.slug}
+      get :global, params: { slug: global_blog.slug }
 
       expect(response).to be_success
       expect(assigns(:blog_type)).to eq('global')
@@ -23,7 +23,8 @@ RSpec.describe BlogController, type: :controller do
 
   describe "GET 'global_post'" do
     it "should return success" do
-      get :global_post, params: {slug: global_blog.slug, id: global_post.slug}
+      get :global_post, params: { slug: global_blog.slug,
+                                  id: global_post.slug }
 
       expect(response).to be_success
       expect(assigns(:article)).to eq(global_post)
@@ -32,7 +33,8 @@ RSpec.describe BlogController, type: :controller do
 
   describe "GET 'curriculum'" do
     it "success" do
-      get :curriculum, params: {page_slug: page.slug, slug: curriculum_blog.slug}
+      get :curriculum, params: { page_slug: page.slug,
+                                 slug: curriculum_blog.slug }
 
       expect(response).to be_success
       expect(assigns(:blog_type)).to eq('curriculum')
@@ -42,7 +44,9 @@ RSpec.describe BlogController, type: :controller do
 
   describe "GET 'curriculum_post'" do
     it "success" do
-      get :curriculum_post, params: {page_slug: page.slug, slug: curriculum_blog.slug, id: curriculum_post.slug}
+      get :curriculum_post, params: { page_slug: page.slug,
+                                      slug: curriculum_blog.slug,
+                                      id: curriculum_post.slug }
 
       expect(response).to be_success
       expect(assigns(:article)).to eq(curriculum_post)
