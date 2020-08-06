@@ -38,7 +38,7 @@ describe 'Client credentials OAuth flow', type: :request do
       'Authorization' => "Bearer #{@token.token}"
     }
 
-    post api_order_path, params, headers
+    post api_order_path, params: params, headers: headers
     expect(response.status).to eq(200)
 
     LicensesDistributionWorker.drain
@@ -83,7 +83,7 @@ describe 'Client credentials OAuth flow', type: :request do
       'Authorization' => "Bearer #{@token.token}"
     }
 
-    post api_order_path, params, headers
+    post api_order_path, params: params, headers: headers
     data = JSON.parse(response.body)
 
     expect(data['base'].first).to eq('Product not found')
@@ -120,7 +120,7 @@ describe 'Client credentials OAuth flow', type: :request do
       'Authorization' => "Bearer #{@token.token}"
     }
 
-    post api_order_path, params, headers
+    post api_order_path, params: params, headers: headers
     expect(response.status).to eq(200)
 
     LicensesDistributionWorker.drain
