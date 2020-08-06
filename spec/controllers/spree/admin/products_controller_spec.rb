@@ -34,7 +34,7 @@ RSpec.describe Spree::Admin::ProductsController, type: :controller do
 
   describe 'POST archive' do
     it 'should archive a product' do
-      post :archive, id: product.slug
+      post :archive, params: {id: product.slug}
       expect(response).to redirect_to(admin_product_path(product))
       expect(product.reload.archived).to be_truthy
       expect(controller).to set_flash[:notice].to('Successfully archive product')
@@ -43,7 +43,7 @@ RSpec.describe Spree::Admin::ProductsController, type: :controller do
 
   describe 'POST unarchive' do
     it 'should unarchive a product' do
-      post :unarchive, id: product.slug
+      post :unarchive, params: {id: product.slug}
       expect(response).to redirect_to(admin_product_path(product))
       expect(product.reload.archived).to be_falsey
       expect(controller).to set_flash[:notice].to('Successfully un-archive product')
@@ -52,14 +52,14 @@ RSpec.describe Spree::Admin::ProductsController, type: :controller do
 
   describe 'GET preview' do
     it 'should preview a group type product' do
-      get :preview, id: group_product.slug
+      get :preview, params: {id: group_product.slug}
       expect(response).to have_http_status(:ok)
     end
   end
 
   describe 'GET preview' do
     it 'should preview a product' do
-      get :preview, id: product.slug
+      get :preview, params: {id: product.slug}
       expect(response).to have_http_status(:ok)
     end
   end

@@ -8,19 +8,19 @@ RSpec.describe Spree::UserSessionsController, type: :controller do
       login_admin
 
       it 'becomes user' do
-        get :become, id: regular_user.id
+        get :become, params: {id: regular_user.id}
         expect(response).to redirect_to '/account'
         expect(flash[:notice]).to eq "Now logged in as #{regular_user.email}"
       end
 
       it "redirect if user not exist" do
-        get :become, id: 100000
+        get :become, params: {id: 100000}
         expect(response).to redirect_to '/account'
         expect(flash[:notice]).to eq "Could not find user"
       end
 
       it "redirect if try to become self" do
-        get :become, id: controller.current_spree_user.id
+        get :become, params: {id: controller.current_spree_user.id}
         expect(response).to redirect_to '/account'
         expect(flash[:notice]).to eq "Already logged in as #{controller.current_spree_user.email}"
       end
@@ -29,7 +29,7 @@ RSpec.describe Spree::UserSessionsController, type: :controller do
         another_admin = create(:gm_user)
         another_admin.spree_roles << Spree::Role.admin
 
-        get :become, id: another_admin.id
+        get :become, params: {id: another_admin.id}
         expect(response).to redirect_to '/account'
         expect(flash[:notice]).to eq "Cannot change to admin"
       end
@@ -39,7 +39,7 @@ RSpec.describe Spree::UserSessionsController, type: :controller do
       login_user
 
       it 'prevents becoming another user' do
-        get :become, id: regular_user.id
+        get :become, params: {id: regular_user.id}
         expect(response).to redirect_to '/account'
         expect(flash[:notice]).to eq 'Permission denied'
       end

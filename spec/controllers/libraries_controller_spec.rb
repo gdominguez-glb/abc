@@ -5,7 +5,7 @@ RSpec.describe LibrariesController, type: :controller do
 
   describe "without login" do
     it "redirect without login" do
-      get :show, id: product.slug
+      get :show, params: {id: product.slug}
       expect(response).to redirect_to('/store/login')
     end
   end
@@ -19,7 +19,7 @@ RSpec.describe LibrariesController, type: :controller do
 
     describe "without access" do
       it "redirect without access" do
-        get :show, id: product.slug
+        get :show, params: {id: product.slug}
         expect(response).to redirect_to('/')
       end
     end
@@ -27,7 +27,7 @@ RSpec.describe LibrariesController, type: :controller do
     describe "with access" do
       it "show product library" do
         create(:spree_licensed_product, user: user, product: product, quantity: 1, can_be_distributed: false)
-        get :show, id: product.slug
+        get :show, params: {id: product.slug}
         expect(response).to be_success
         expect(assigns(:product)).to eq(product)
         expect(assigns(:library_leafs)).not_to be_nil

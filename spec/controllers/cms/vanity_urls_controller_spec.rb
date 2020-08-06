@@ -59,21 +59,21 @@ RSpec.describe Cms::VanityUrlsController, type: :controller do
     it "post with valid params" do
       expect(VanityUrl).to receive(:new).and_return(@vanity_url)
       expect(@vanity_url).to receive(:save).and_return(true)
-      post :create, vanity_url: { url: '/abc' }
+      post :create, params: {vanity_url: { url: '/abc' }}
       expect(response).to redirect_to('/cms/vanity_urls')
     end
 
     it "post with invalid params" do
       expect(VanityUrl).to receive(:new).and_return(@vanity_url)
       expect(@vanity_url).to receive(:save).and_return(false)
-      post :create, vanity_url: { url: '/abc' }
+      post :create, params: {vanity_url: { url: '/abc' }}
       expect(response).to render_template(:new)
     end
   end
 
   describe "GET 'edit'" do
     it "success" do
-      get :edit, id: vanity_url.id
+      get :edit, params: {id: vanity_url.id}
       expect(response).to be_success
       expect(assigns(:vanity_url)).to eq(vanity_url)
     end
@@ -81,19 +81,19 @@ RSpec.describe Cms::VanityUrlsController, type: :controller do
 
   describe "PUT 'update'" do
     it "success with redirect" do
-      put :update, id: vanity_url.id, vanity_url: { url: '/abc' }
+      put :update, params: {id: vanity_url.id, vanity_url: { url: '/abc' }}
       expect(response).to redirect_to('/cms/vanity_urls')
     end
 
     it "fail with invalid params" do
-      put :update, id: vanity_url.id, vanity_url: { redirect_url: '' }
+      put :update, params: {id: vanity_url.id, vanity_url: { redirect_url: '' }}
       expect(response).to render_template(:edit)
     end
   end
 
   describe "DELETE 'destroy'" do
     it 'delete vanity url' do
-      delete :destroy, id: vanity_url.id
+      delete :destroy, params: {id: vanity_url.id}
       expect(response).to redirect_to('/cms/vanity_urls')
     end
   end
