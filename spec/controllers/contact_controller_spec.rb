@@ -13,7 +13,7 @@ RSpec.describe ContactController, type: :controller do
       allow_any_instance_of(ContactForm).to receive(:valid?).and_return(true)
       allow_any_instance_of(ContactForm).to receive(:perform)
 
-      post :create, params: {contact_form: { first_name: 'John' }}
+      post :create, params: { contact_form: { first_name: 'John' } }
       expect(response).to redirect_to(root_path)
       expect(flash[:notice]).to eq("Thanks for reaching out. We will be in touch shortly.")
     end
@@ -21,7 +21,7 @@ RSpec.describe ContactController, type: :controller do
     it "render index when fail to submit" do
       allow_any_instance_of(ContactForm).to receive(:valid?).and_return(false)
 
-      post :create, params: {contact_form: { first_name: 'John' }}
+      post :create, params: { contact_form: { first_name: 'John' } }
       expect(response).to render_template(:index)
     end
   end

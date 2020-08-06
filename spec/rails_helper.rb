@@ -40,7 +40,6 @@ require 'spree/testing_support/factories'
 require 'spree/testing_support/preferences'
 require 'spree/testing_support/controller_requests'
 
-
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
     with.test_framework :rspec

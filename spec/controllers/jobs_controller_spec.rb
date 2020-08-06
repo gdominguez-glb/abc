@@ -14,7 +14,7 @@ RSpec.describe JobsController, type: :controller do
 
   describe "GET 'show'" do
     it "success" do
-      get :show, params: {id: job.id}
+      get :show, params: { id: job.id }
       expect(response).to redirect_to("https://greatminds.recruitee.com/#/")
     end
   end
