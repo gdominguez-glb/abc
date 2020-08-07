@@ -26,7 +26,7 @@ RSpec.describe OpportunitiesController, type: :controller do
 
   describe "GET #index" do
     it "assigns all opportunities as @opportunities" do
-      get :index, {}, valid_session
+      get :index, params: {}, session: valid_session
       expect(assigns(:opportunity)).to be_a_new(Opportunity)
     end
   end
@@ -35,31 +35,31 @@ RSpec.describe OpportunitiesController, type: :controller do
     context "with valid params" do
       it "creates a new Opportunity" do
         expect {
-          post :create, {:opportunity => valid_attributes}, valid_session
+          post :create, params: { :opportunity => valid_attributes }, session: valid_session
         }.to change(Opportunity, :count).by(1)
       end
 
       it "assigns a newly created opportunity as @opportunity" do
-        post :create, {:opportunity => valid_attributes}, valid_session
+        post :create, params: { :opportunity => valid_attributes }, session: valid_session
         assigns(:opportunity).errors.full_messages.each {|m| pp m}
         expect(assigns(:opportunity)).to be_a(Opportunity)
         expect(assigns(:opportunity)).to be_persisted
       end
 
       it "redirects to the created opportunity" do
-        post :create, {:opportunity => valid_attributes}, valid_session
+        post :create, params: { :opportunity => valid_attributes }, session: valid_session
         expect(response).to redirect_to(opportunities_path)
       end
     end
 
     context "with invalid params" do
       it "assigns a newly created but unsaved opportunity as @opportunity" do
-        post :create, {:opportunity => invalid_attributes}, valid_session
+        post :create, params: { :opportunity => invalid_attributes }, session: valid_session
         expect(assigns(:opportunity)).to be_a_new(Opportunity)
       end
 
       it "re-renders the 'new' template" do
-        post :create, {:opportunity => invalid_attributes}, valid_session
+        post :create, params: { :opportunity => invalid_attributes }, session: valid_session
         expect(response).to render_template("index")
       end
     end
