@@ -8,19 +8,19 @@ RSpec.describe Spree::UserSessionsController, type: :controller do
       login_admin
 
       it 'becomes user' do
-        get :become, params: {id: regular_user.id}
+        get :become, params: { id: regular_user.id }
         expect(response).to redirect_to '/account'
         expect(flash[:notice]).to eq "Now logged in as #{regular_user.email}"
       end
 
       it "redirect if user not exist" do
-        get :become, params: {id: 100000}
+        get :become, params: { id: 100000 }
         expect(response).to redirect_to '/account'
         expect(flash[:notice]).to eq "Could not find user"
       end
 
       it "redirect if try to become self" do
-        get :become, params: {id: controller.current_spree_user.id}
+        get :become, params: { id: controller.current_spree_user.id }
         expect(response).to redirect_to '/account'
         expect(flash[:notice]).to eq "Already logged in as #{controller.current_spree_user.email}"
       end
@@ -29,7 +29,7 @@ RSpec.describe Spree::UserSessionsController, type: :controller do
         another_admin = create(:gm_user)
         another_admin.spree_roles << Spree::Role.admin
 
-        get :become, params: {id: another_admin.id}
+        get :become, params: { id: another_admin.id }
         expect(response).to redirect_to '/account'
         expect(flash[:notice]).to eq "Cannot change to admin"
       end
@@ -39,7 +39,7 @@ RSpec.describe Spree::UserSessionsController, type: :controller do
       login_user
 
       it 'prevents becoming another user' do
-        get :become, params: {id: regular_user.id}
+        get :become, params: { id: regular_user.id }
         expect(response).to redirect_to '/account'
         expect(flash[:notice]).to eq 'Permission denied'
       end
@@ -93,15 +93,10 @@ RSpec.describe Spree::UserSessionsController, type: :controller do
         token: @token.token
       }.to_json
 
-      parameters = {
-        spree_user: {
+
+      get :lti, params: { spree_user: {
           id: Cypher.encrypt(json_response),
-          redirect_to: 'https://staging.eureka.greatminds.org'
-        }
-      }
-
-      get :lti, parameters
-
+          redirect_to: 'https://staging.eureka.greatminds.org' }}
       expect(subject).to redirect_to('https://staging.eureka.greatminds.org')
     end
 
@@ -111,29 +106,21 @@ RSpec.describe Spree::UserSessionsController, type: :controller do
         token: @token.token
       }.to_json
 
-      parameters = {
-        spree_user: {
-          id: Cypher.encrypt(json_response),
-          redirect_to: 'https://staging.eureka.greatminds.org'
-        }
-      }
 
-      get :lti, parameters
+      get :lti, params: { spree_user: {
+          id: Cypher.encrypt(json_response),
+          redirect_to: 'https://staging.eureka.greatminds.org' }}
 
       expect(response.status).to eq(500)
       expect(response.body).to eq('User not found')
     end
 
     it 'fail when the id isnt valid' do
-      parameters = {
-        spree_user: {
+
+      get :lti, params: { spree_user: {
           id: 'invalid string',
           redirect_to: 'https://staging.eureka.greatminds.org',
-          token: @token.token
-        }
-      }
-
-      get :lti, parameters
+          token: @token.token }}
 
       expect(response.status).to eq(500)
       expect(response.body).to eq('Invalid id')
@@ -147,14 +134,9 @@ RSpec.describe Spree::UserSessionsController, type: :controller do
         token: 'invalid token'
       }.to_json
 
-      parameters = {
-        spree_user: {
+      get :lti, params: { spree_user: {
           id: Cypher.encrypt(json_response),
-          redirect_to: 'https://staging.eureka.greatminds.org'
-        }
-      }
-
-      get :lti, parameters
+          redirect_to: 'https://staging.eureka.greatminds.org' }}
 
       expect(response.status).to eq(500)
       expect(response.body).to eq('Token expired')
@@ -173,14 +155,9 @@ RSpec.describe Spree::UserSessionsController, type: :controller do
         token: token.token
       }.to_json
 
-      parameters = {
-        spree_user: {
+      get :lti, params: { spree_user: {
           id: Cypher.encrypt(json_response),
-          redirect_to: 'https://staging.eureka.greatminds.org'
-        }
-      }
-
-      get :lti, parameters
+          redirect_to: 'https://staging.eureka.greatminds.org' }}
 
       expect(response.status).to eq(500)
       expect(response.body).to eq('Token expired')
