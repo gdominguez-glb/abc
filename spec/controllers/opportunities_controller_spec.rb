@@ -36,13 +36,13 @@ RSpec.describe OpportunitiesController, type: :controller do
       it "creates a new Opportunity" do
         expect {
           post :create, params: { opportunity: valid_attributes },
-          session: valid_session
+                        session: valid_session
         }.to change(Opportunity, :count).by(1)
       end
 
       it "assigns a newly created opportunity as @opportunity" do
         post :create, params: { opportunity: valid_attributes },
-        session: valid_session
+                      session: valid_session
         assigns(:opportunity).errors.full_messages.each {|m| pp m}
         expect(assigns(:opportunity)).to be_a(Opportunity)
         expect(assigns(:opportunity)).to be_persisted
@@ -50,7 +50,7 @@ RSpec.describe OpportunitiesController, type: :controller do
 
       it "redirects to the created opportunity" do
         post :create, params: { opportunity: valid_attributes },
-        session: valid_session
+                      session: valid_session
         expect(response).to redirect_to(opportunities_path)
       end
     end
@@ -58,13 +58,13 @@ RSpec.describe OpportunitiesController, type: :controller do
     context "with invalid params" do
       it "assigns a newly created but unsaved opportunity as @opportunity" do
         post :create, params: { opportunity: invalid_attributes },
-        session: valid_session
+                      session: valid_session
         expect(assigns(:opportunity)).to be_a_new(Opportunity)
       end
 
       it "re-renders the 'new' template" do
         post :create, params: { opportunity: invalid_attributes },
-        session: valid_session
+                      session: valid_session
         expect(response).to render_template("index")
       end
     end
