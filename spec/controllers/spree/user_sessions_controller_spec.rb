@@ -95,8 +95,9 @@ RSpec.describe Spree::UserSessionsController, type: :controller do
 
 
       get :lti, params: { spree_user: {
-          id: Cypher.encrypt(json_response),
-          redirect_to: 'https://staging.eureka.greatminds.org' }}
+                          id: Cypher.encrypt(json_response),
+                          redirect_to: 'https://staging.eureka.greatminds.org' }
+                        }
       expect(subject).to redirect_to('https://staging.eureka.greatminds.org')
     end
 
@@ -108,19 +109,20 @@ RSpec.describe Spree::UserSessionsController, type: :controller do
 
 
       get :lti, params: { spree_user: {
-          id: Cypher.encrypt(json_response),
-          redirect_to: 'https://staging.eureka.greatminds.org' }}
+                          id: Cypher.encrypt(json_response),
+                          redirect_to: 'https://staging.eureka.greatminds.org' }
+                        }
 
       expect(response.status).to eq(500)
       expect(response.body).to eq('User not found')
     end
 
     it 'fail when the id isnt valid' do
-
       get :lti, params: { spree_user: {
-          id: 'invalid string',
-          redirect_to: 'https://staging.eureka.greatminds.org',
-          token: @token.token }}
+                          id: 'invalid string',
+                          redirect_to: 'https://staging.eureka.greatminds.org',
+                          token: @token.token }
+                        }
 
       expect(response.status).to eq(500)
       expect(response.body).to eq('Invalid id')
@@ -135,8 +137,9 @@ RSpec.describe Spree::UserSessionsController, type: :controller do
       }.to_json
 
       get :lti, params: { spree_user: {
-          id: Cypher.encrypt(json_response),
-          redirect_to: 'https://staging.eureka.greatminds.org' }}
+                          id: Cypher.encrypt(json_response),
+                          redirect_to: 'https://staging.eureka.greatminds.org' }
+                        }
 
       expect(response.status).to eq(500)
       expect(response.body).to eq('Token expired')
@@ -156,8 +159,9 @@ RSpec.describe Spree::UserSessionsController, type: :controller do
       }.to_json
 
       get :lti, params: { spree_user: {
-          id: Cypher.encrypt(json_response),
-          redirect_to: 'https://staging.eureka.greatminds.org' }}
+                          id: Cypher.encrypt(json_response),
+                          redirect_to: 'https://staging.eureka.greatminds.org' }
+                        }
 
       expect(response.status).to eq(500)
       expect(response.body).to eq('Token expired')
