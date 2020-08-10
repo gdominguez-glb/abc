@@ -6,14 +6,14 @@ RSpec.describe PagesController, type: :controller do
 
   describe "not exist page" do
     it "redirect to not found" do
-      get :show, slug: 'not-found'
+      get :show, params: { slug: 'not-found' }
       expect(response).to redirect_to('/not-found')
     end
   end
 
   describe "exist page" do
     it "success" do
-      get :show, slug: page.slug
+      get :show, params: { slug: page.slug }
       expect(response).to be_success
       expect(assigns(:page)).to eq(page)
       expect(assigns(:page_title)).to eq(page.title)

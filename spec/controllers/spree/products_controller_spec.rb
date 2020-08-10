@@ -103,21 +103,21 @@ RSpec.describe Spree::ProductsController, type: :controller do
 
   describe 'GET launch' do
     it 'redirect to terms if have agree to license' do
-      get :launch, id: product.slug
+      get :launch, params: { id: product.slug }
 
       expect(response).to redirect_to(terms_product_path(product))
     end
 
     it 'redirect to access url if agree to license' do
       product_agreement
-      get :launch, id: product.slug
+      get :launch, params: { id: product.slug }
 
       expect(response).to redirect_to("http://google.com/download_page/1?opened_product_id=#{product.id}")
     end
 
     it 'redirect to inkling page for inlinking product' do
       inkling_product_agreement
-      get :launch, id: inkling_product.slug
+      get :launch, params: { id: inkling_product.slug }
 
       expect(response).to be_redirect
     end
@@ -125,7 +125,7 @@ RSpec.describe Spree::ProductsController, type: :controller do
 
   describe 'POST agree_terms' do
     before(:each) do
-      get :agree_terms, id: product.slug
+      get :agree_terms, params: { id: product.slug }
     end
 
     it 'agree to product license' do
@@ -139,7 +139,7 @@ RSpec.describe Spree::ProductsController, type: :controller do
 
   describe 'GET group' do
     it 'show group items of product' do
-      get :group, id: product.slug
+      get :group, params: { id: product.slug }
 
       expect(response).to be_success
       expect(assigns(:product_group)).to eq(product)
@@ -155,20 +155,20 @@ RSpec.describe Spree::ProductsController, type: :controller do
 
   describe 'GET show' do
     it 'should display a product' do
-      get :show, id: product.id
+      get :show, params: { id: product.id} 
       expect(response).to be_success
       expect(assigns(:product)).not_to be_nil
       expect(response).to render_template(:show)
     end
 
     it 'should redirect if the product was archived' do
-      get :show, id: archived_product.id
+      get :show, params: { id: archived_product.id }
 
       expect(response).to redirect_to('/not-found')
     end
 
     it 'should redirect if the product was in a group' do
-      get :show, id: group_product.id
+      get :show, params: { id: group_product.id }
 
       expect(response).to redirect_to('/resources/products/group/product-e')
     end

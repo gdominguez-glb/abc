@@ -5,7 +5,7 @@ RSpec.describe DownloadPagesController, type: :controller do
 
   describe "without login" do
     it "redirect user without login" do
-      get :show, slug: 'abc-download'
+      get :show, params: { slug: 'abc-download' }
       expect(response).to redirect_to('/store/login')
     end
   end
@@ -22,7 +22,7 @@ RSpec.describe DownloadPagesController, type: :controller do
     end
 
     it "success" do
-      get :show, slug: 'abc-download'
+      get :show, params: { slug: 'abc-download' }
       expect(response).to be_success
       expect(assigns(:download_page)).to eq(download_page)
       expect(assigns(:products)).to eq([product])
@@ -30,7 +30,7 @@ RSpec.describe DownloadPagesController, type: :controller do
     end
 
     it "redirect to not found if downlaod page not exists" do
-      get :show, slug: 'non-exist-download-page'
+      get :show, params: { slug: 'non-exist-download-page' }
       expect(response).to redirect_to('/not-found')
     end
   end

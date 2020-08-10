@@ -6,7 +6,7 @@ RSpec.describe InklingCodesController, type: :controller do
 
   describe "non login" do
     it "redirect without login" do
-      get :show, id: product.slug
+      get :show, params: { id: product.slug }
       expect(response).to redirect_to('/store/login')
     end
   end
@@ -20,7 +20,7 @@ RSpec.describe InklingCodesController, type: :controller do
 
     describe "without access" do
       it "redirect without access" do
-        get :show, id: product.slug
+        get :show, params: { id: product.slug }
         expect(response).to redirect_to('/')
       end
     end
@@ -28,7 +28,7 @@ RSpec.describe InklingCodesController, type: :controller do
     describe "with access" do
       it "success" do
         create(:spree_licensed_product, user: user, product: product, quantity: 1, can_be_distributed: false)
-        get :show, id: product.slug
+        get :show, params: { id: product.slug }
         expect(response).to be_success
         expect(assigns(:inkling_code)).to eq(inkling_code)
       end
