@@ -15,7 +15,7 @@ marketing_templates:
       <div id="tile_<%= position %>" class="slider">
         <div class="slider__slide slider__first-slide active">
           <% if slide_image_1.present? %>
-            <img src="<%= slide_image_1 %>" />
+            <img src="<%= slide_image_1 %>" featured_img="<%= 'featured-image' if (featured_image_text_1 == 'checked' rescue nil) %>" />
           <% end %>
           <div class="slider__content">
             <h5><%= tagline_1 %></h5>
@@ -28,7 +28,7 @@ marketing_templates:
         </div>
         <div class="slider__slide slider__second-slide">
           <% if slide_image_2.present? %>
-            <img src="<%= slide_image_2 %>" />
+            <img src="<%= slide_image_2 %>" featured_img="<%= 'featured-image' if (featured_image_text_2 == 'checked' rescue nil) %>" />
           <% end %>
           <div class="slider__content">
             <h5><%= tagline_2 %></h5>
@@ -41,7 +41,7 @@ marketing_templates:
         </div>
         <div class="slider__slide slider__third-slide">
           <% if slide_image_2.present? %>
-            <img src="<%= slide_image_3 %>" />
+            <img src="<%= slide_image_3 %>" featured_img="<%= 'featured-image' if (featured_image_text_3 == 'checked' rescue nil) %>" />
           <% end %>
           <div class="slider__content">
             <h5><%= tagline_3 %></h5>
@@ -72,7 +72,7 @@ marketing_templates:
               <%= product_name_1 %>&nbsp;<sup>&reg;</sup>
             </h3>
             <div class="product-list__product--img">
-              <img src="<%= image_1 %>" />
+              <img src="<%= image_1 %>" featured_img="<%= 'featured-image' if (featured_image_text_1 == 'checked' rescue nil) %>" />
             </div>
           </a>
           <a href="<%= link_1 %>" class="btn btn--<%= color_1 %>">Learn More</a>
@@ -86,7 +86,7 @@ marketing_templates:
               <%= product_name_2 %>&nbsp;<sup>&reg;</sup>
             </h3>
             <div class="product-list__product--img">
-              <img src="<%= image_2 %>" />
+              <img src="<%= image_2 %>" featured_img="<%= 'featured-image' if (featured_image_text_2 == 'checked' rescue nil) %>" />
             </div>
           </a>
           <a href="<%= link_2 %>" class="btn btn--<%= color_2 %>">Learn More</a>
@@ -100,7 +100,7 @@ marketing_templates:
               <%= product_name_3 %>&nbsp;<sup>&reg;</sup>
             </h3>
             <div class="product-list__product--img">
-              <img src="<%= image_3 %>" />
+              <img src="<%= image_3 %>" featured_img="<%= 'featured-image' if (featured_image_text_3 == 'checked' rescue nil) %>" />
             </div>
           </a>
           <a href="<%= link_3 %>" class="btn btn--<%= color_3 %>">Learn More</a>
@@ -114,7 +114,7 @@ marketing_templates:
               <%= product_name_4 %>&nbsp;<sup>&reg;</sup>
             </h3>
             <div class="product-list__product--img">
-              <img src="<%= image_4 %>" />
+              <img src="<%= image_4 %>" featured_img="<%= 'featured-image' if (featured_image_text_4 == 'checked' rescue nil) %>" />
             </div>
           </a>
           <a href="<%= link_4 %>" class="btn btn--<%= color_4 %>">Learn More</a>
@@ -128,7 +128,7 @@ marketing_templates:
               <%= product_name_5 %>&nbsp;<sup>&reg;</sup>
             </h3>
             <div class="product-list__product--img">
-              <img src="<%= image_5 %>" />
+              <img src="<%= image_5 %>" featured_img="<%= 'featured-image' if (featured_image_text_5 == 'checked' rescue nil) %>" />
             </div>
           </a>
           <a href="<%= link_5 %>" class="btn btn--<%= color_5 %>">Learn More</a>
@@ -222,12 +222,12 @@ marketing_templates:
             <article class="testimonial__article">
               <% if testimonial_video_url_1.present? && testimonial_image_url_1.present? %>
                 <a class="testimonial__video facebook__video" href="javascript:void(0)" data-video-url="<%= testimonial_video_url_1 %>" data-remote='true'>
-                  <img src="<%= testimonial_image_url_1 %>" alt="<%= testimonial_image_alt_1 %>" />
+                  <img src="<%= testimonial_image_url_1 %>" alt="<%= testimonial_image_alt_1 %>" featured_img="<%= 'featured-image' if (featured_image_text_1 == 'checked' rescue nil) %>" />
                   <i class="mi md-48 video-link-icon">play_circle_outline</i>
                 </a>
               <% else %>
                 <% if testimonial_image_url_1.present? %>
-                  <img class="testimonial__image" src="<%= testimonial_image_url_1 %>" alt="<%= testimonial_image_alt_1 %>" />
+                  <img class="testimonial__image" src="<%= testimonial_image_url_1 %>" alt="<%= testimonial_image_alt_1 %>" featured_img="<%= 'featured-image' if (featured_image_text_1 == 'checked' rescue nil) %>" />
                 <% end %>
               <% end %>
               <h6><%= testimonial_header_1 %></h6>
@@ -246,12 +246,12 @@ marketing_templates:
             <article class="testimonial__article">
               <% if testimonial_video_url_2.present? && testimonial_image_url_2.present? %>
                 <a class="testimonial__video facebook__video" href="javascript:void(0)" data-video-url="<%= testimonial_video_url_2 %>" data-remote='true'>
-                  <img src="<%= testimonial_image_url_2 %>" alt="<%= testimonial_image_alt_2 %>" />
+                  <img src="<%= testimonial_image_url_2 %>" alt="<%= testimonial_image_alt_2 %>" featured_img="<%= 'featured-image' if (featured_image_text_2 == 'checked' rescue nil) %>" />
                   <i class="mi md-48 video-link-icon">play_circle_outline</i>
                 </a>
               <% else %>
                 <% if testimonial_image_url_2.present? %>
-                  <img class="testimonial__image" src="<%= testimonial_image_url_2 %>" alt="<%= testimonial_image_alt_2 %>" />
+                  <img class="testimonial__image" src="<%= testimonial_image_url_2 %>" alt="<%= testimonial_image_alt_2 %>" featured_img="<%= 'featured-image' if (featured_image_text_2 == 'checked' rescue nil) %>" />
                 <% end %>
               <% end %>
               <h6><%= testimonial_header_2 %></h6>
@@ -270,12 +270,12 @@ marketing_templates:
             <article class="testimonial__article">
               <% if testimonial_video_url_3.present? && testimonial_image_url_3.present? %>
                 <a class="testimonial__video facebook__video" href="javascript:void(0)" data-video-url="<%= testimonial_video_url_3 %>" data-remote='true'>
-                  <img src="<%= testimonial_image_url_3 %>" alt="<%= testimonial_image_alt_3 %>" />
+                  <img src="<%= testimonial_image_url_3 %>" alt="<%= testimonial_image_alt_3 %>" featured_img="<%= 'featured-image' if (featured_image_text_3 == 'checked' rescue nil) %>" />
                   <i class="mi md-48 video-link-icon">play_circle_outline</i>
                 </a>
               <% else %>
                 <% if testimonial_image_url_3.present? %>
-                  <img class="testimonial__image" src="<%= testimonial_image_url_3 %>" alt="<%= testimonial_image_alt_3 %>" />
+                  <img class="testimonial__image" src="<%= testimonial_image_url_3 %>" alt="<%= testimonial_image_alt_3 %>" featured_img="<%= 'featured-image' if (featured_image_text_3 == 'checked' rescue nil) %>" />
                 <% end %>
               <% end %>
               <h6><%= testimonial_header_3 %></h6>
@@ -299,12 +299,12 @@ marketing_templates:
             <article class="testimonial__article">
               <% if testimonial_video_url_4.present? && testimonial_image_url_4.present? %>
                 <a class="testimonial__video facebook__video" href="javascript:void(0)" data-video-url="<%= testimonial_video_url_4 %>" data-remote='true'>
-                  <img src="<%= testimonial_image_url_4 %>" alt="<%= testimonial_image_alt_4 %>" />
+                  <img src="<%= testimonial_image_url_4 %>" alt="<%= testimonial_image_alt_4 %>" featured_img="<%= 'featured-image' if (featured_image_text_4 == 'checked' rescue nil) %>" />
                   <i class="mi md-48 video-link-icon">play_circle_outline</i>
                 </a>
               <% else %>
                 <% if testimonial_image_url_4.present? %>
-                  <img class="testimonial__image" src="<%= testimonial_image_url_4 %>" alt="<%= testimonial_image_alt_4 %>" />
+                  <img class="testimonial__image" src="<%= testimonial_image_url_4 %>" alt="<%= testimonial_image_alt_4 %>" featured_img="<%= 'featured-image' if (featured_image_text_4 == 'checked' rescue nil) %>" />
                 <% end %>
               <% end %>
               <h6><%= testimonial_header_4 %></h6>
@@ -323,12 +323,12 @@ marketing_templates:
             <article class="testimonial__article">
               <% if testimonial_video_url_5.present? && testimonial_image_url_5.present? %>
                 <a class="testimonial__video facebook__video" href="javascript:void(0)" data-video-url="<%= testimonial_video_url_5 %>" data-remote='true'>
-                  <img src="<%= testimonial_image_url_5 %>" alt="<%= testimonial_image_alt_5 %>" />
+                  <img src="<%= testimonial_image_url_5 %>" alt="<%= testimonial_image_alt_5 %>" featured_img="<%= 'featured-image' if (featured_image_text_5 == 'checked' rescue nil) %>" />
                   <i class="mi md-48 video-link-icon">play_circle_outline</i>
                 </a>
               <% else %>
                 <% if testimonial_image_url_5.present? %>
-                  <img class="testimonial__image" src="<%= testimonial_image_url_5 %>" alt="<%= testimonial_image_alt_5 %>" />
+                  <img class="testimonial__image" src="<%= testimonial_image_url_5 %>" alt="<%= testimonial_image_alt_5 %>" featured_img="<%= 'featured-image' if (featured_image_text_5 == 'checked' rescue nil) %>" />
                 <% end %>
               <% end %>
               <h6><%= testimonial_header_5 %></h6>
@@ -347,12 +347,12 @@ marketing_templates:
             <article class="testimonial__article">
               <% if testimonial_video_url_6.present? && testimonial_image_url_6.present? %>
                 <a class="testimonial__video facebook__video" href="javascript:void(0)" data-video-url="<%= testimonial_video_url_6 %>" data-remote='true'>
-                  <img src="<%= testimonial_image_url_6 %>" alt="<%= testimonial_image_alt_6 %>" />
+                  <img src="<%= testimonial_image_url_6 %>" alt="<%= testimonial_image_alt_6 %>" featured_img="<%= 'featured-image' if (featured_image_text_6 == 'checked' rescue nil) %>" />
                   <i class="mi md-48 video-link-icon">play_circle_outline</i>
                 </a>
               <% else %>
                 <% if testimonial_image_url_6.present? %>
-                  <img class="testimonial__image" src="<%= testimonial_image_url_6 %>" alt="<%= testimonial_image_alt_6 %>" />
+                  <img class="testimonial__image" src="<%= testimonial_image_url_6 %>" alt="<%= testimonial_image_alt_6 %>" featured_img="<%= 'featured-image' if (featured_image_text_6 == 'checked' rescue nil) %>" />
                 <% end %>
               <% end %>
               <h6><%= testimonial_header_6 %></h6>
@@ -373,12 +373,12 @@ marketing_templates:
             <article class="testimonial__article">
               <% if testimonial_video_url_7.present? && testimonial_image_url_7.present? %>
                 <a class="testimonial__video facebook__video" href="javascript:void(0)" data-video-url="<%= testimonial_video_url_7 %>" data-remote='true'>
-                  <img src="<%= testimonial_image_url_7 %>" alt="<%= testimonial_image_alt_7 %>" />
+                  <img src="<%= testimonial_image_url_7 %>" alt="<%= testimonial_image_alt_7 %>" featured_img="<%= 'featured-image' if (featured_image_text_7 == 'checked' rescue nil) %>" />
                   <i class="mi md-48 video-link-icon">play_circle_outline</i>
                 </a>
               <% else %>
                 <% if testimonial_image_url_7.present? %>
-                  <img class="testimonial__image" src="<%= testimonial_image_url_7 %>" alt="<%= testimonial_image_alt_7 %>" />
+                  <img class="testimonial__image" src="<%= testimonial_image_url_7 %>" alt="<%= testimonial_image_alt_7 %>" featured_img="<%= 'featured-image' if (featured_image_text_7 == 'checked' rescue nil) %>" />
                 <% end %>
               <% end %>
               <h6><%= testimonial_header_7 %></h6>
@@ -397,12 +397,12 @@ marketing_templates:
             <article class="testimonial__article">
               <% if testimonial_video_url_8.present? && testimonial_image_url_8.present? %>
                 <a class="testimonial__video facebook__video" href="javascript:void(0)" data-video-url="<%= testimonial_video_url_8 %>" data-remote='true'>
-                  <img src="<%= testimonial_image_url_8 %>" alt="<%= testimonial_image_alt_8 %>" />
+                  <img src="<%= testimonial_image_url_8 %>" alt="<%= testimonial_image_alt_8 %>" featured_img="<%= 'featured-image' if (featured_image_text_8 == 'checked' rescue nil) %>" />
                   <i class="mi md-48 video-link-icon">play_circle_outline</i>
                 </a>
               <% else %>
                 <% if testimonial_image_url_8.present? %>
-                  <img class="testimonial__image" src="<%= testimonial_image_url_8 %>" alt="<%= testimonial_image_alt_8 %>" />
+                  <img class="testimonial__image" src="<%= testimonial_image_url_8 %>" alt="<%= testimonial_image_alt_8 %>" featured_img="<%= 'featured-image' if (featured_image_text_8 == 'checked' rescue nil) %>" />
                 <% end %>
               <% end %>
               <h6><%= testimonial_header_8 %></h6>
@@ -421,12 +421,12 @@ marketing_templates:
             <article class="testimonial__article">
               <% if testimonial_video_url_9.present? && testimonial_image_url_9.present? %>
                 <a class="testimonial__video facebook__video" href="javascript:void(0)" data-video-url="<%= testimonial_video_url_9 %>" data-remote='true'>
-                  <img src="<%= testimonial_image_url_9 %>" alt="<%= testimonial_image_alt_9 %>" />
+                  <img src="<%= testimonial_image_url_9 %>" alt="<%= testimonial_image_alt_9 %>" featured_img="<%= 'featured-image' if (featured_image_text_9 == 'checked' rescue nil) %>" />
                   <i class="mi md-48 video-link-icon">play_circle_outline</i>
                 </a>
               <% else %>
                 <% if testimonial_image_url_9.present? %>
-                  <img class="testimonial__image" src="<%= testimonial_image_url_9 %>" alt="<%= testimonial_image_alt_9 %>" />
+                  <img class="testimonial__image" src="<%= testimonial_image_url_9 %>" alt="<%= testimonial_image_alt_9 %>" featured_img="<%= 'featured-image' if (featured_image_text_9 == 'checked' rescue nil) %>" />
                 <% end %>
               <% end %>
               <h6><%= testimonial_header_9 %></h6>
@@ -462,7 +462,7 @@ marketing_templates:
           </div>
         </div>
         <div class="banner-container__img col-sm-8">
-          <img src="<%= image %>" />
+          <img src="<%= image %>" featured_img="<%= 'featured-image' if (featured_image_text_1 == 'checked' rescue nil) %>" />
         </div>
       </div>
 
@@ -513,12 +513,12 @@ marketing_templates:
             <!--[if IE 9]><video style="display: none;"><![endif]-->
             <source srcset="<%= image_url_2.gsub(/original/, 'small') if image_url_2 %>" media="(min-width: 361px)">
             <!--[if IE 9]></video><![endif]-->
-            <img srcset="<%= image_url_2.gsub(/original/, 'thumb') if image_url_2 %>" alt="<%= alt_text rescue nil %>" >
+            <img srcset="<%= image_url_2.gsub(/original/, 'thumb') if image_url_2 %>" alt="<%= alt_text rescue nil %>"  featured_img="<%= 'featured-image' if (featured_image_text_2 == 'checked' rescue nil) %>">
           </picture>
         </div>
         <div class="tile-container__content col-sm-6">
           <% if image_url_1.present? %>
-            <img class="tile-container__icon tile-container__icon--left image_url_1" src="<%= image_url_1 %>" alt="<%= image_alt_1 %>" />
+            <img class="tile-container__icon tile-container__icon--left image_url_1" src="<%= image_url_1 %>" alt="<%= image_alt_1 %>" featured_img="<%= 'featured-image' if (featured_image_text_1 == 'checked' rescue nil) %>" />
           <% end %>
           <h6 class="tile-container__title"><%= title %></h6>
           <p class="tile-container__para"><%= body_text %></p>
@@ -572,7 +572,7 @@ marketing_templates:
       <section id="tile_<%= position %>" class="tile-container row row-tile-new <%= background_color %>-bg">
         <div class="tile-container__content col-sm-6">
           <% if image_url_1.present? %>
-            <img class="tile-container__icon image_url_1" src="<%= image_url_1 %>" alt="<%= image_alt_1 %>" data_attr="featured_image" fatured_img="<%= 'featured-image' if (featured_image_url_1.to_i == 1 rescue nil) %>" />
+            <img class="tile-container__icon image_url_1" src="<%= image_url_1 %>" alt="<%= image_alt_1 %>" data_attr="featured_image" featured_img="<%= 'featured-image' if (featured_image_text_1 == 'checked' rescue nil) %>" />
             
           <% end %>
           <h6 class="tile-container__title"><%= title %></h6>
@@ -589,7 +589,7 @@ marketing_templates:
             <!--[if IE 9]><video style="display: none;"><![endif]-->
             <source srcset="<%= image_url_2.gsub(/original/, 'small') if image_url_2 %>" media="(min-width: 361px)">
             <!--[if IE 9]></video><![endif]-->
-            <img srcset="<%= image_url_2.gsub(/original/, 'thumb') if image_url_2 %>" alt="<%= alt_text rescue nil %>" >
+            <img srcset="<%= image_url_2.gsub(/original/, 'thumb') if image_url_2 %>" alt="<%= alt_text rescue nil %>" featured_img="<%= 'featured-image' if (featured_image_text_2 == 'checked' rescue nil) %>">
           </picture>
         </div>
       </section>
@@ -638,7 +638,7 @@ marketing_templates:
               <!--[if IE 9]><video style="display: none;"><![endif]-->
               <source srcset="<%= image_url.gsub(/original/, 'small') if image_url %>" media="(min-width: 361px)">
               <!--[if IE 9]></video><![endif]-->
-              <img srcset="<%= image_url.gsub(/original/, 'thumb') if image_url %>" alt="<%= alt_text rescue nil %>"  class="img-responsive margin-bottom--xl--sm-min">
+              <img srcset="<%= image_url.gsub(/original/, 'thumb') if image_url %>" alt="<%= alt_text rescue nil %>"  class="img-responsive margin-bottom--xl--sm-min" featured_img="<%= 'featured-image' if (featured_image_text_1 == 'checked' rescue nil) %>">
             </picture>
           </div>
         </div>
@@ -668,7 +668,7 @@ marketing_templates:
               <!--[if IE 9]><video style="display: none;"><![endif]-->
               <source srcset="<%= image_url.gsub(/original/, 'small') if image_url %>" media="(min-width: 361px)">
               <!--[if IE 9]></video><![endif]-->
-              <img srcset="<%= image_url.gsub(/original/, 'thumb') if image_url %>" alt="<%= alt_text rescue nil %>"  class="img-responsive margin-bottom--xl--sm-min">
+              <img srcset="<%= image_url.gsub(/original/, 'thumb') if image_url %>" alt="<%= alt_text rescue nil %>"  class="img-responsive margin-bottom--xl--sm-min" featured_img="<%= 'featured-image' if (featured_image_text_1 == 'checked' rescue nil) %>">
             </picture>
           </div>
         </div>
@@ -712,7 +712,7 @@ marketing_templates:
               <!--[if IE 9]><video style="display: none;"><![endif]-->
               <source srcset="<%= image_url.gsub(/original/, 'small') if image_url %>" media="(min-width: 361px)">
               <!--[if IE 9]></video><![endif]-->
-              <img srcset="<%= image_url.gsub(/original/, 'thumb') if image_url %>" alt="<%= alt_text rescue nil %>"  class="img-responsive">
+              <img srcset="<%= image_url.gsub(/original/, 'thumb') if image_url %>" alt="<%= alt_text rescue nil %>"  class="img-responsive" featured_img="<%= 'featured-image' if (featured_image_text_1 == 'checked' rescue nil) %>">
             </picture>
           </div>
         </div>
@@ -742,7 +742,7 @@ marketing_templates:
               <!--[if IE 9]><video style="display: none;"><![endif]-->
               <source srcset="<%= image_url.gsub(/original/, 'small') if image_url %>" media="(min-width: 361px)">
               <!--[if IE 9]></video><![endif]-->
-              <img srcset="<%= image_url.gsub(/original/, 'thumb') if image_url %>" alt="<%= alt_text rescue nil %>"  class="img-responsive">
+              <img srcset="<%= image_url.gsub(/original/, 'thumb') if image_url %>" alt="<%= alt_text rescue nil %>"  class="img-responsive" featured_img="<%= 'featured-image' if (featured_image_text_1 == 'checked' rescue nil) %>">
             </picture>
           </div>
         </div>
@@ -758,7 +758,7 @@ marketing_templates:
               <!--[if IE 9]><video style="display: none;"><![endif]-->
               <source srcset="<%= image_url.gsub(/original/, 'small') if image_url %>" media="(min-width: 361px)">
               <!--[if IE 9]></video><![endif]-->
-              <img srcset="<%= image_url.gsub(/original/, 'thumb') if image_url %>" alt="<%= alt_text rescue nil %>"  class="img-responsive img-shadow margin-bottom--xl--sm-min">
+              <img srcset="<%= image_url.gsub(/original/, 'thumb') if image_url %>" alt="<%= alt_text rescue nil %>"  class="img-responsive img-shadow margin-bottom--xl--sm-min" featured_img="<%= 'featured-image' if (featured_image_text_1 == 'checked' rescue nil) %>">
             </picture>
           </div>
         </div>
@@ -802,7 +802,7 @@ marketing_templates:
               <!--[if IE 9]><video style="display: none;"><![endif]-->
               <source srcset="<%= image_url.gsub(/original/, 'small') if image_url %>" media="(min-width: 361px)">
               <!--[if IE 9]></video><![endif]-->
-              <img srcset="<%= image_url.gsub(/original/, 'thumb') if image_url %>" alt="<%= alt_text rescue nil %>"  class="img-responsive img-shadow">
+              <img srcset="<%= image_url.gsub(/original/, 'thumb') if image_url %>" alt="<%= alt_text rescue nil %>"  class="img-responsive img-shadow" featured_img="<%= 'featured-image' if (featured_image_text_1 == 'checked' rescue nil) %>">
             </picture>
           </div>
         </div>
@@ -818,7 +818,7 @@ marketing_templates:
               <!--[if IE 9]><video style="display: none;"><![endif]-->
               <source srcset="<%= image_url.gsub(/original/, 'small') if image_url %>" media="(min-width: 361px)">
               <!--[if IE 9]></video><![endif]-->
-              <img srcset="<%= image_url.gsub(/original/, 'thumb') if image_url %>" alt="<%= alt_text rescue nil %>"  class="img-responsive img-book margin-bottom--xl--sm-min">
+              <img srcset="<%= image_url.gsub(/original/, 'thumb') if image_url %>" alt="<%= alt_text rescue nil %>"  class="img-responsive img-book margin-bottom--xl--sm-min" featured_img="<%= 'featured-image' if (featured_image_text_1 == 'checked' rescue nil) %>">
             </picture>
           </div>
         </div>
@@ -862,7 +862,7 @@ marketing_templates:
               <!--[if IE 9]><video style="display: none;"><![endif]-->
               <source srcset="<%= image_url.gsub(/original/, 'small') if image_url %>" media="(min-width: 361px)">
               <!--[if IE 9]></video><![endif]-->
-              <img srcset="<%= image_url.gsub(/original/, 'thumb') if image_url %>" alt="<%= alt_text rescue nil %>"  class="img-responsive img-book">
+              <img srcset="<%= image_url.gsub(/original/, 'thumb') if image_url %>" alt="<%= alt_text rescue nil %>"  class="img-responsive img-book" featured_img="<%= 'featured-image' if (featured_image_text_1 == 'checked' rescue nil) %>">
             </picture>
           </div>
         </div>
@@ -1112,7 +1112,7 @@ marketing_templates:
                 <!--[if IE 9]><video style="display: none;"><![endif]-->
                 <source srcset="<%= image_url.gsub(/original/, 'small') if image_url %>" media="(min-width: 361px)">
                 <!--[if IE 9]></video><![endif]-->
-                <img srcset="<%= image_url.gsub(/original/, 'thumb') if image_url %>" alt="<%= alt_text rescue nil %>"  class="img-responsive">
+                <img srcset="<%= image_url.gsub(/original/, 'thumb') if image_url %>" alt="<%= alt_text rescue nil %>"  class="img-responsive" featured_img="<%= 'featured-image' if (featured_image_text_1 == 'checked' rescue nil) %>">
               </picture>
             </div>
           </div>
@@ -1166,13 +1166,13 @@ marketing_templates:
         <div class="product-presentation__image col-sm-6">
           <picture>
             <% if image_url_1.present? %>
-              <img class="product-presentation__icon image_url_1" src="<%= image_url_1 %>" alt="<%= image_alt_1 %>" />
+              <img class="product-presentation__icon image_url_1" src="<%= image_url_1 %>" alt="<%= image_alt_1 %>" featured_img="<%= 'featured-image' if (featured_image_text_1 == 'checked' rescue nil) %>" />
             <% end %>
           </picture>
         </div>
         <div class="product-presentation__content col-sm-6">
           <% if image_url_2.present? %>
-            <img class="product-presentation__icon image_url_2" src="<%= image_url_2 %>" alt="<%= image_alt_1 %>" />
+            <img class="product-presentation__icon image_url_2" src="<%= image_url_2 %>" alt="<%= image_alt_1 %>" featured_img="<%= 'featured-image' if (featured_image_text_2 == 'checked' rescue nil) %>" />
           <% end %>
           <h6 class="product-presentation__title"><%= title %></h6>
           <p class="product-presentation__para"><%= body_text %></p>
@@ -1246,12 +1246,12 @@ marketing_templates:
               <p><%= facebook_text_1 %></p>
               <% if facebook_video_url_1.present? && facebook_image_url_1.present? %>
                 <a class="facebook__video" href="javascript:void(0)" data-video-url="<%= facebook_video_url_1 %>" data-remote='true'>
-                  <img src="<%= facebook_image_url_1 %>" alt="<%= facebook_image_alt_1 %>" />
+                  <img src="<%= facebook_image_url_1 %>" alt="<%= facebook_image_alt_1 %>" featured_img="<%= 'featured-image' if (featured_image_text_1 == 'checked' rescue nil) %>" />
                   <i class="mi md-48 video-link-icon">play_circle_outline</i>
                 </a>
               <% else %>
                 <% if facebook_image_url_1.present? %>
-                  <img class="facebook__image" src="<%= facebook_image_url_1 %>" alt="<%= facebook_image_alt_1 %>" />
+                  <img class="facebook__image" src="<%= facebook_image_url_1 %>" alt="<%= facebook_image_alt_1 %>" featured_img="<%= 'featured-image' if (featured_image_text_1 == 'checked' rescue nil) %>" />
                 <% end %>
               <% end %>
             </article>
@@ -1267,12 +1267,12 @@ marketing_templates:
               <p><%= facebook_text_2 %></p>
               <% if facebook_video_url_2.present? && facebook_image_url_2.present? %>
                 <a class="facebook__video" href="javascript:void(0)" data-video-url="<%= facebook_video_url_2 %>" data-remote='true'>
-                  <img src="<%= facebook_image_url_2 %>" alt="<%= facebook_image_alt_2 %>" />
+                  <img src="<%= facebook_image_url_2 %>" alt="<%= facebook_image_alt_2 %>" featured_img="<%= 'featured-image' if (featured_image_text_2 == 'checked' rescue nil) %>" />
                   <i class="mi md-48 video-link-icon">play_circle_outline</i>
                 </a>
               <% else %>
                 <% if facebook_image_url_2.present? %>
-                  <img class="facebook__image" src="<%= facebook_image_url_2 %>" alt="<%= facebook_image_alt_2 %>" />
+                  <img class="facebook__image" src="<%= facebook_image_url_2 %>" alt="<%= facebook_image_alt_2 %>" featured_img="<%= 'featured-image' if (featured_image_text_2 == 'checked' rescue nil) %>" />
                 <% end %>
               <% end %>
             </article>
@@ -1288,12 +1288,12 @@ marketing_templates:
               <p><%= facebook_text_3 %></p>
               <% if facebook_video_url_3.present? && facebook_image_url_3.present? %>
                 <a class="facebook__video" href="javascript:void(0)" data-video-url="<%= facebook_video_url_3 %>" data-remote='true'>
-                  <img src="<%= facebook_image_url_3 %>" alt="<%= facebook_image_alt_3 %>" />
+                  <img src="<%= facebook_image_url_3 %>" alt="<%= facebook_image_alt_3 %>" featured_img="<%= 'featured-image' if (featured_image_text_3 == 'checked' rescue nil) %>" />
                   <i class="mi md-48 video-link-icon">play_circle_outline</i>
                 </a>
               <% else %>
                 <% if facebook_image_url_3.present? %>
-                  <img class="facebook__image" src="<%= facebook_image_url_3 %>" alt="<%= facebook_image_alt_3 %>" />
+                  <img class="facebook__image" src="<%= facebook_image_url_3 %>" alt="<%= facebook_image_alt_3 %>" featured_img="<%= 'featured-image' if (featured_image_text_3 == 'checked' rescue nil) %>" />
                 <% end %>
               <% end %>
             </article>
