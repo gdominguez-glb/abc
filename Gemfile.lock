@@ -835,7 +835,6 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   dalli
   database_cleaner (~> 1.7)
-  doorkeeper
   dropbox_api
   exception_notification
   factory_bot_rails (~> 4.11, >= 4.11.1)
