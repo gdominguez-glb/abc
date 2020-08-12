@@ -9,7 +9,7 @@ gem 'rails', '~> 5.2.0'
 gem 'puma', '~> 3.11'
 
 # Use postgresql as the database for Active Record
-gem 'pg'
+gem 'pg', '0.18.1'
 
 gem 'mysql2'
 
@@ -51,7 +51,7 @@ gem 'acts-as-taggable-on', '~> 6.0'
 
 gem 'sinatra', :require => nil
 
-gem 'sidekiq', '5.2.7' #6.1.0
+gem 'sidekiq', '3.3.4'
 
 gem "mediaelement_rails"
 
@@ -85,7 +85,7 @@ gem 'geocoder'
 gem 'time_will_tell'
 
 gem 'haml'
-gem 'nkss-rails', github: 'nadarei/nkss-rails'
+# gem 'nkss-rails', github: 'nadarei/nkss-rails'
 
 gem "material_icons", github: 'rociiu/material_icons'
 
@@ -173,9 +173,10 @@ gem 'spree_mail_settings', github: 'spree-contrib/spree_mail_settings'
 
 
 gem 'capistrano', '~> 3.10'
+gem 'capistrano-bundler', require: false
+gem 'capistrano-rails', require: false
+gem 'capistrano3-puma'
 gem 'capistrano-rbenv', '~> 2.0'
-gem 'capistrano-bundler', '~> 1.1'
-gem 'capistrano-rails', '~> 1.5'
 gem 'capistrano-sidekiq'
 gem 'sitemap_generator'
 
