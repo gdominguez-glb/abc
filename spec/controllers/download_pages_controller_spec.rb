@@ -59,7 +59,7 @@ RSpec.describe DownloadPagesController, type: :controller do
 
       sign_in :spree_user, user
 
-      get :show, slug: 'abc-download'
+      get :show, params: { slug: 'abc-download' }
 
       expect(response).to be_success
       expect(response).to render_template('show')

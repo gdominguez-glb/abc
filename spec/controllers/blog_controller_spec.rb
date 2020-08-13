@@ -109,7 +109,7 @@ RSpec.describe BlogController, type: :controller do
     it 'should subscribe the blog' do
       @request.env['HTTP_REFERER'] = '/cms/event_pages/published'
       post :subscribe,
-           id: curriculum_blog.id
+           params: { id: curriculum_blog.id }
 
       notice_msg =
         "Thank you for subscribing to #{curriculum_blog.title}. "\
@@ -125,7 +125,7 @@ RSpec.describe BlogController, type: :controller do
     it 'should unsubscribe the blog' do
       @request.env['HTTP_REFERER'] = '/cms/event_pages/published'
       post :unsubscribe,
-           id: curriculum_blog.id
+           params: { id: curriculum_blog.id }
 
       notice_msg =
         "Successfully unsubscribe #{curriculum_blog.title}"

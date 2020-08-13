@@ -34,7 +34,7 @@ RSpec.describe VideoGalleryController, type: :controller do
 
       sign_in :spree_user, user
 
-      get :index, query: 'name'
+      get :index, params: { query: 'name' }
 
       expect(assigns(:videos)).not_to be_empty
       expect(assigns(:videos).count).to eq(1)
@@ -49,7 +49,7 @@ RSpec.describe VideoGalleryController, type: :controller do
 
       sign_in :spree_user, user
 
-      xhr :get, :play, id: video.id, format: :js
+      xhr :get, :play, params: { id: video.id }, format: :js
 
       expect(subject).to render_template('video_gallery/play')
     end
@@ -64,7 +64,7 @@ RSpec.describe VideoGalleryController, type: :controller do
 
       sign_in :spree_user, user
 
-      get :unlock, id: video.id
+      get :unlock, params: { id: video.id }
       expect(response.headers['Location']).to include("products/#{product.slug}")
     end
 
@@ -74,7 +74,7 @@ RSpec.describe VideoGalleryController, type: :controller do
 
       sign_in :spree_user, user
 
-      get :unlock, id: video.id
+      get :unlock, params: { id: video.id }
 
       notice = 'Not available for purchase!'
 
@@ -90,7 +90,7 @@ RSpec.describe VideoGalleryController, type: :controller do
 
       sign_in :spree_user, user
 
-      get :unlock, id: video.id
+      get :unlock, params: { id: video.id }
 
       notice = 'This product is currently in beta!'
 
@@ -104,7 +104,7 @@ RSpec.describe VideoGalleryController, type: :controller do
 
       sign_in :spree_user, user
 
-      xhr :get, :unlock, id: video.id, format: :js
+      xhr :get, :unlock, params: { id: video.id }, format: :js
 
       expect(subject).to render_template('video_gallery/unlock')
     end

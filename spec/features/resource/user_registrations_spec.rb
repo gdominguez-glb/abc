@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'User Registrations' do
   before(:each) do
     create(:curriculum, name: 'Math')
-    allow(Google::Recaptcha).to receive(:status).and_return({:success => true})
+    allow(Google::Recaptcha).to receive(:status).and_return(success: true)
   end
 
   it 'should register a user with valid params', js: true do

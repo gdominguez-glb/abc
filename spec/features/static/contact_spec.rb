@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'User Registrations' do
@@ -6,7 +8,7 @@ describe 'User Registrations' do
     user.spree_roles << Spree::Role.find_or_create_by(name: 'admin')
     user.save
 
-    allow(Google::Recaptcha).to receive(:status).and_return({:success => true})
+    allow(Google::Recaptcha).to receive(:status).and_return(success: true)
   end
 
   it 'should ask to select the topic first', js: true do

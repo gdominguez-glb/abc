@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'Video Gallery' do
@@ -18,7 +20,7 @@ describe 'Video Gallery' do
 
     visit '/video_gallery'
     # expect(page).to have_selector('div.video-card', count: 1)
-    expect(page).to have_content("MY VIDEOS (#{1})")
+    expect(page).to have_content('MY VIDEOS 1')
   end
 
   it 'should filter out the list of videos', js: true do
@@ -31,6 +33,6 @@ describe 'Video Gallery' do
     page.execute_script("$('#video_search_form').submit();")
 
     # expect(page).to have_selector('div.video-card', count: 1)
-    expect(page).to have_content("MY VIDEOS (#{1})")
+    expect(page).to have_content('MY VIDEOS 1')
   end
 end
