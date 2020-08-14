@@ -37,7 +37,7 @@ describe Api::OrderController do
   describe 'POST #create' do
     it 'responds with 200' do
       request.env['HTTP_AUTHORIZATION'] = token.token
-      params = {
+      post :create, params: {
         admin_new_licenses_form: {
           user_id: user.id,
           email: user.email,
@@ -54,9 +54,7 @@ describe Api::OrderController do
         payment_source: purchase_order.payment_source_class,
         admin_user: user,
         products: [product]
-      }
-
-      post :create, params, format: :json
+      }, format: :json
       expect(response.code).to eq('200')
     end
   end

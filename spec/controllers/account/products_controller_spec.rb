@@ -64,7 +64,7 @@ RSpec.describe Account::ProductsController, type: :controller do
     it 'redirect to product url' do
       @product = create :product, product_type: 'inkling'
 
-      get :launch, id: @product.id
+      get :launch, params: { id: @product.id }
 
       expect(response.headers['Location']).to include('/inkling_codes/product-3')
     end
@@ -72,14 +72,14 @@ RSpec.describe Account::ProductsController, type: :controller do
     it 'redirect to terms url' do
       @product = create :product, product_type: 'inkling', license_text: 'test'
 
-      get :launch, id: @product.id
+      get :launch, params: { id: @product.id }
 
       expect(response.headers['Location']).to include('/terms')
     end
 
     it 'redirect to homepage if the product doesn\'t have a path' do
       @product = create :product
-      get :launch, id: @product.id
+      get :launch, params: { id: @product.id }
 
       expect(response).to redirect_to('http://test.host/')
     end
@@ -87,7 +87,7 @@ RSpec.describe Account::ProductsController, type: :controller do
 
   describe 'GET pin_product' do
     it 'be success' do
-      get :pin_product, id: @product.id
+      get :pin_product, params: { id: @product.id }
 
       pinned_product = Spree::PinnedProduct.first
 
@@ -106,7 +106,7 @@ RSpec.describe Account::ProductsController, type: :controller do
       create :spree_pinned_product, product_id: @product3.id,
                                     user_id: @second_user.id
 
-      get :pin_product, id: @product.id
+      get :pin_product, params: { id: @product.id }
 
       msg = 'You can not pin more than 3 resources to your dashboard.'
 
@@ -120,7 +120,7 @@ RSpec.describe Account::ProductsController, type: :controller do
       create :spree_pinned_product, product_id: @product.id,
                                     user_id: @second_user.id
 
-      get :unpin_product, id: @product.id
+      get :unpin_product, params: { id: @product.id }
 
       pinned_product_count = Spree::PinnedProduct.count
 

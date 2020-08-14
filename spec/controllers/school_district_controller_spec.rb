@@ -8,14 +8,13 @@ RSpec.describe SchoolDistrictsController, type: :controller do
       create_list :school_district, 5, place_type: 'school',
                                        sf_is_deleted: false,
                                        sf_verified: true
-      params = {
-        type: 'school',
-        q: 'MyS',
-        page: 1,
-        per_page: 3
-      }
 
-      get :index, params
+      get :index, params: {
+                            type: 'school',
+                            q: 'MyS',
+                            page: 1,
+                            per_page: 3
+                          }
 
       data = JSON.parse(response.body)
 
@@ -38,15 +37,14 @@ RSpec.describe SchoolDistrictsController, type: :controller do
                                        sf_is_deleted: false,
                                        sf_verified: true,
                                        state: state2
-      params = {
-        type: 'school',
-        q: 'MyS',
-        page: 1,
-        per_page: 2,
-        state_id: state.id
-      }
 
-      get :index, params
+      get :index, params: {
+                            type: 'school',
+                            q: 'MyS',
+                            page: 1,
+                            per_page: 2,
+                            state_id: state.id
+                          }
 
       data = JSON.parse(response.body)
 
@@ -66,15 +64,14 @@ RSpec.describe SchoolDistrictsController, type: :controller do
       create_list :school_district, 5, place_type: 'school',
                                        sf_is_deleted: false,
                                        sf_verified: true
-      params = {
-        type: 'school',
-        q: 'MyS',
-        page: 1,
-        per_page: 2,
-        country_id: country.id
-      }
 
-      get :index, params
+      get :index, params: {
+                            type: 'school',
+                            q: 'MyS',
+                            page: 1,
+                            per_page: 2,
+                            country_id: country.id
+                          }
 
       data = JSON.parse(response.body)
 
@@ -91,11 +88,8 @@ RSpec.describe SchoolDistrictsController, type: :controller do
       district = create :school_district, place_type: 'school',
                                           sf_is_deleted: false,
                                           sf_verified: true
-      params = {
-        id: district.id
-      }
 
-      get :show, params
+      get :show, params: { id: district.id }
 
       data = JSON.parse(response.body)
 

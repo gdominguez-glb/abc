@@ -67,29 +67,25 @@ describe Api::UserController do
   describe 'POST #create' do
     it 'responds with 200' do
       request.env['HTTP_AUTHORIZATION'] = token.token
-      params = {
-        spree_user: {
-          first_name: 'Jon',
-          last_name: 'Doe',
-          email: 'jon_doe@greatminds.net'
-        }
-      }
-
-      post :create, params, format: :json
+      post :create, params: {
+                              spree_user: {
+                                first_name: 'Jon',
+                                last_name: 'Doe',
+                                email: 'jon_doe@greatminds.net'
+                              }
+                            }, as: :json
       expect(response.code).to eq('201')
     end
 
     it 'responds with 500 if user not found' do
       request.env['HTTP_AUTHORIZATION'] = token.token
-      params = {
-        spree_user: {
-          first_name: 'Jon',
-          last_name: 'Doe',
-          email: nil
-        }
-      }
-
-      post :create, params, format: :json
+      post :create, params: {
+                              spree_user: {
+                                first_name: 'Jon',
+                                last_name: 'Doe',
+                                email: 'jon_doe@greatminds.net'
+                              }
+                            }, as: :json
       expect(response.code).to eq('500')
     end
   end
