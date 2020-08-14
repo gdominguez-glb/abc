@@ -49,7 +49,7 @@ RSpec.describe VideoGalleryController, type: :controller do
 
       sign_in :spree_user, user
 
-      xhr :get, :play, params: { id: video.id }, format: :js
+      get :play, xhr: true, params: { id: video.id }, format: :js
 
       expect(subject).to render_template('video_gallery/play')
     end
@@ -104,7 +104,7 @@ RSpec.describe VideoGalleryController, type: :controller do
 
       sign_in :spree_user, user
 
-      xhr :get, :unlock, params: { id: video.id }, format: :js
+      get :unlock, xhr: true, params: { id: video.id }, format: :js
 
       expect(subject).to render_template('video_gallery/unlock')
     end
