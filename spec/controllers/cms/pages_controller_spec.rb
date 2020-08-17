@@ -14,7 +14,7 @@ RSpec.describe Cms::PagesController, type: :controller do
 
   describe "GET 'search'" do
     it "search pages" do
-      get :search, q: { title_or_slug_or_curriculum_name_cont: 'a' }
+      get :search, params: { q: { title_or_slug_or_curriculum_name_cont: 'a' } }
       expect(response).to be_success
       expect(assigns(:pages)).not_to be_nil
     end

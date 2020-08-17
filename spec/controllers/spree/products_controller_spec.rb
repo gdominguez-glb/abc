@@ -147,7 +147,7 @@ RSpec.describe Spree::ProductsController, type: :controller do
     end
 
     it 'redirect to not found path' do
-      get :group, id: '12357683'
+      get :group, params: { id: '12357683' }
 
       expect(response).to redirect_to('/resources/orders/populate?action=not_found&controller=pages')
     end

@@ -3,3 +3,4 @@ Sidekiq.configure_client do |config|
 end
 
 Sidekiq.default_worker_options = { retry: 1 }
+Sidekiq::Extensions.enable_delay!
