@@ -92,3 +92,8 @@ class MarketingEditorApp.Views.Editor extends Backbone.View
     ).on('tbwchange', (e)->
       $(e.target).trigger('change')
     )
+    chkboxs = $(document).find($("input[type='checkbox'].featured-img-title-input"))
+    $.each(chkboxs, (index, el)=>
+      if $("." + el.id).val() == 'checked'
+        $(el).prop('checked', true)
+    )

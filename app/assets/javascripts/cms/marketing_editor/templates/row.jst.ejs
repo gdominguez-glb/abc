@@ -24,18 +24,31 @@
       </div>
       <% for(var i=0; i<fields.length; i++) {%>
         <% if(fields[i].input_type == 'text') { %>
-          <div class="col-sm-6">
-            <div class="form-group">
-              <label><%= fields[i].label %></label>
-              <input type="text" class="form-control title-input" data-name="<%= fields[i].name %>" value="<%= data[fields[i].name] %>"/>
+          <% if(fields[i].attr == 'featured_tag') { %>
+            <div class="col-sm-12 featured-img-group">
+              <div class="form-group">
+                <label><%= fields[i].label %></label>
+                <input type="text" class="form-control title-input <%= fields[i].tag_no %>_<%= row_id%>" data-name="<%= fields[i].name %>" value="<%= data[fields[i].name] %>"/>
+              </div>
             </div>
-          </div>
+          <% } else { %>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label><%= fields[i].label %></label>
+                <input type="text" class="form-control title-input" data-name="<%= fields[i].name %>" value="<%= data[fields[i].name] %>"/>
+              </div>
+            </div>
+          <% } %>
         <% } %>
         <% if(fields[i].input_type == 'checkbox') { %>
           <div class="col-sm-12">
             <div class="form-group">
               <label>
-                <input type="checkbox" class="title-input" data-name="<%= fields[i].name %>" value="1" <% if(data[fields[i].name] == 1) {%>checked<%}%>/>
+                <% if(fields[i].attr == 'featured_tag') { %>
+                  <input type="checkbox" class="featured-img-title-input" data-name="<%= fields[i].name %>" value="<%= fields[i].value %>" id="<%= fields[i].checkbox_no %>_<%= row_id%>" />
+                <% } else { %>
+                  <input type="checkbox" class="title-input" data-name="<%= fields[i].name %>" value="1" <%if(data[fields[i].name] == 1) {%>checked<%}%>/>
+                <% } %>
                 <%= fields[i].label %>
               </label>
             </div>
