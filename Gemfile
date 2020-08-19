@@ -51,7 +51,7 @@ gem 'acts-as-taggable-on', '~> 6.0'
 
 gem 'sinatra', :require => nil
 
-gem 'sidekiq', '3.3.4'
+gem 'sidekiq', '5.2.7'
 
 gem "mediaelement_rails"
 
@@ -85,7 +85,6 @@ gem 'geocoder'
 gem 'time_will_tell'
 
 gem 'haml'
-# gem 'nkss-rails', github: 'nadarei/nkss-rails'
 
 gem "material_icons", github: 'rociiu/material_icons'
 
