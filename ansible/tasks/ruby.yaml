@@ -1,0 +1,58 @@
+- name: Install ruby package
+  apt:
+      state: present
+      update_cache: yes
+      install_recommends: no
+      pkg:
+        - autoconf 
+        - bison
+        - build-essential
+        - libssl-dev
+        - libyaml-dev 
+        - libreadline6-dev 
+        - zlib1g-dev 
+        - libncurses5-dev 
+        - libffi-dev
+        - libgdbm5 
+        - libgdbm-dev
+- name: clone git repo
+  git:
+    repo: https://github.com/rbenv/rbenv.git
+    dest: /usr/local/rbenv
+    clone: yes
+- name: export rbenv path
+  #command: echo 'export PATH="/usr/local/rbenv/bin:$PATH"' >> /home/deploy/.bashrc
+  lineinfile:
+    path:  /home/deploy/.bashrc
+    line: 'PATH="/usr/local/rbenv/bin:$PATH"'
+- name: add rbenv to path
+  file:
+    path: /usr/local/bin/rbenv
+    src: /usr/local/rbenv/bin/rbenv
+    state: link
+- name: ruby init 
+  #command: echo 'eval "$(rbenv init -)"' >> /home/deploy/.bashrc
+  lineinfile:
+    path:  /home/deploy/.bashrc
+    line: 'eval "$(rbenv init -)"'
+
+- name: clone ruby install 
+  git:
+    repo: https://github.com/rbenv/ruby-build.git
+    dest: /usr/local/rbenv/plugins/ruby-build
+    clone: yes
+
+- name: install rbenv install plugin
+  command: /usr/local/rbenv/plugins/ruby-build/install.sh
+
+- name: install ruby 2.6.3
+  command: sudo runuser -l deploy -c  '/usr/local/rbenv/bin/rbenv install 2.6.3'
+  #command: '/usr/local/rbenv/bin/rbenv install 2.6.3'
+  #become: true
+  #become_user: deploy
+
+- name: set ruby 2.6.3 gloabl
+  command: sudo runuser -l deploy -c  '/usr/local/rbenv/bin/rbenv global 2.6.3'
+
+- name: install gem bundler 
+  command: sudo runuser -l deploy -c '/home/deploy/.rbenv/shims/gem install bundler -v 1.16.1'
