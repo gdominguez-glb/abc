@@ -12,8 +12,9 @@ set :user,        'deploy'
 set :deploy_to, '/var/www/greatminds'
 
 
-set :rbenv_type, :user # or :system, depends on your rbenv setup
 set :rbenv_ruby, '2.6.3'
+set :rbenv_type, :user # or :system, depends on your rbenv setup
+set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} /usr/local/rbenv/bin/rbenv exec"
 
 set :puma_threads,    [4, 16]
 set :puma_workers,    0
