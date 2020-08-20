@@ -39,6 +39,7 @@ class DownloadPagesController < ApplicationController
     @bookmarked_material_ids = current_spree_user.bookmarks.materials.pluck(:bookmarkable_id)
   end
 
+  # TODO: Unused method we need to remove it
   def bookmarked_material?(material)
     @bookmarked_material_ids.include?(material.id)
   end

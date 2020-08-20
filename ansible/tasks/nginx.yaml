@@ -1,0 +1,81 @@
+- name: Install nginx  package
+  apt:
+      state: present
+      install_recommends: no
+      update_cache: yes
+      pkg:
+       - unzip
+       - gcc
+       - make
+       - libpcre3-dev
+       - zlib1g-dev
+       - uuid-dev
+       - build-essential  
+       - libpcre3 
+
+- name: Add Nginx repo 
+  apt_repository:
+    repo: ppa:nginx/stable
+    update_cache: yes
+
+- name: install nginx
+  apt:
+    name: nginx
+    state: present
+
+- name: check nginx version
+  shell: /usr/sbin/nginx -v 2>&1
+  register: nginxVersion
+
+
+- set_fact:
+    nginxVersion: "{{ nginxVersion.stdout.split('/').1.split(' ').0 }}"
+- fail: 
+    msg: "Error- Fail to install pagaespeed module, No nginx found "
+  when: nginxVersion == ""
+
+
+- name: download and unarchive nginx
+  unarchive:
+    src: "http://nginx.org/download/nginx-{{ nginxVersion }}.tar.gz"
+    dest: /tmp
+    remote_src: yes
+
+- name: Download and unarchive pagespeed module 
+  unarchive:
+    src: "https://github.com/apache/incubator-pagespeed-ngx/archive/v1.13.35.2-stable.tar.gz"
+    dest: /tmp
+    remote_src: yes
+
+- name: build pagespeed 
+  shell: "cd /tmp/incubator-pagespeed-ngx-1.13.35.2-stable &&
+          psol_url=https://dl.google.com/dl/page-speed/psol/1.13.35.2-stable.tar.gz &&
+          [ -e scripts/format_binary_url.sh ] && psol_url=$(scripts/format_binary_url.sh PSOL_BINARY_URL) && 
+           wget -O- ${psol_url} | tar -xz  "
+- name: build module 
+  command: ./configure --add-dynamic-module=../incubator-pagespeed-ngx-1.13.35.2-stable --with-compat
+  args:
+    chdir: "/tmp/nginx-{{ nginxVersion }}"
+- name: make module 
+  command: make modules
+  args:
+    chdir: "/tmp/nginx-{{ nginxVersion }}"
+
+- name: module directory for nginx 
+  file:
+    path: /etc/nginx/modules/
+    state: directory
+    mode: '0755'
+
+- name: copy extension to nginx modules
+  copy: remote_src=True src=/tmp/nginx-{{ nginxVersion }}/objs/ngx_pagespeed.so dest=/etc/nginx/modules/ngx_pagespeed.so
+- name: load module for nginx
+  copy:
+    dest: /etc/nginx/modules-enabled/page_speed.conf
+    content: 'load_module /etc/nginx/modules/ngx_pagespeed.so;'
+    mode: '0777'
+- name: start nginx service 
+  service: 
+    name: nginx
+    state: started 
+    enabled: yes
