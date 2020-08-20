@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'Download file' do
@@ -16,6 +18,9 @@ describe 'Download file' do
   it 'downloads an excel file', js: true do
     visit 'cms/fall_institute_pds'
 
-    expect(page).to have_link('Export As Xlsx', href: '/cms/fall_institute_pds.xlsx' )
+    expect(page).to have_link(
+      'Export As Xlsx',
+      href: '/cms/fall_institute_pds.xlsx'
+    )
   end
 end
