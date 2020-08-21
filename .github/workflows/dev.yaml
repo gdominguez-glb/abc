@@ -8,7 +8,10 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@feature/upgrade-rails-ruby
+    - name: checkot the code 
+      uses: actions/checkout@v2
+      with:
+          ref: feature/upgrade-rails-ruby
     - name: setup ruby 
       uses: actions/setup-ruby@v1
       with:
