@@ -16,7 +16,7 @@ jobs:
       uses: actions/setup-ruby@v1
       with:
         ruby-version: 2.6.3
-    - uses: miloserdow/capistrano-deploy@v3.14.1
+    - uses: miloserdow/capistrano-deploy@v1.3
       with:
         target: dev
         deploy_key: ${{ secrets.cds_dev_ssh_key }}
