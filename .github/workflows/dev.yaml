@@ -1,0 +1,20 @@
+name: Deploy Dev App 
+on:
+  push:
+    branches:
+      - feature/upgrade-rails-ruby
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@feature/upgrade-rails-ruby
+    - name: setup ruby 
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: 2.6.3
+    - uses: miloserdow/capistrano-deploy@v3.14.1
+      with:
+        target: dev
+        deploy_key: ${{ secrets.cds_dev_ssh_key }}
+
