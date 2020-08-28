@@ -75,15 +75,14 @@
     letter-spacing: normal;
     line-height: normal;
     margin-top: 135px;
-    
-    .footer-copyright {
-      margin: 0;
-    }
-    
+
     .footer-terms {
-      margin: 0;
       text-decoration: none;
       text-transform: none;
+    }
+
+    &.copyright-content {
+      margin-top: 0;
     }
   }
   .footer__content {
