@@ -1,0 +1,7 @@
+name: ruby version 2.6.3
+author: pavan
+description: custome docker container which having ruby 2.6.3 version env 
+runs:
+  using: "docker"
+  image: "Dockerfile"
+

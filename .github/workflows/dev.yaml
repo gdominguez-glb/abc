@@ -1,23 +1,37 @@
-name: Deploy Dev App 
+name: Deploy Dev App
 on:
   push:
     branches:
+      - develop
+      - staging
+      - feature/website-redesign
       - feature/upgrade-rails-ruby
+      - feature/responsive-design
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    container:
+      image: pavanyejare/ruby-2.6.3:latest
     steps:
-    - name: checkot the code 
+    - name: checkot the code
       uses: actions/checkout@v2
       with:
-          ref: feature/upgrade-rails-ruby
-    - name: setup ruby 
-      uses: actions/setup-ruby@v1
-      with:
-        ruby-version: 2.6
-    - uses: miloserdow/capistrano-deploy@v2.1
-      with:
-        target: dev
-        deploy_key: ${{ secrets.cds_dev_ssh_key }}
+          ref: feature/github-action
+
+    - name: Configure ssh Key
+      shell: bash
+      env:
+        SSH_KEY: ${{ secrets.SSH_KEY_PASS }}
+      run: ./scripts/generate_ssh.sh
+
+    - name: Configure bundler
+      run: bundle install
+
+    - name: Prepare ssh agent to deploy
+      run: ./prepare_ssh_agent.sh
+
+    - name: Deploy on dev server
+      run: |
+        /root/.rbenv/versions/2.6.3/bin/bundle exec cap dev deploy BRANCH=$GITHUB_REF
 
