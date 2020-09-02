@@ -7,6 +7,7 @@ on:
       - feature/website-redesign
       - feature/upgrade-rails-ruby
       - feature/responsive-design
+      - feature/ci-cd-with-github-action
 
 jobs:
   deploy:
@@ -23,13 +24,25 @@ jobs:
       shell: bash
       env:
         SSH_KEY: ${{ secrets.SSH_KEY_PASS }}
-      run: ./scripts/generate_ssh.sh
+      run: |
+        mkdir -p  /github/home/.ssh/
+        openssl enc -d -aes-256-cbc -md sha512 -salt -in ./.github/actions/ruby-action/ssh_key -out /github/home/.ssh/id_rsa -k "$SSH_KEY" -a -pbkdf2
+        echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+        chmod 600 /github/home/.ssh/id_rsa
 
     - name: Configure bundler
       run: bundle install
 
     - name: Prepare ssh agent to deploy
-      run: ./prepare_ssh_agent.sh
+      run: |
+        ssh-agent -a /tmp/ssh-auth.sock
+        export SSH_AUTH_SOCK="/tmp/ssh-auth.sock"
+        ssh-add /github/home/.ssh/id_rsa
+        mkdir -p /root/.ssh/
+        echo "Host *" > /root/.ssh/config
+        echo "  StrictHostKeyChecking no" >> /root/.ssh/config
+        echo "Host *" >> /etc/ssh/ssh_config
+        echo "StrictHostKeyChecking no\n\n" >> /etc/ssh/ssh_config
 
     - name: Deploy on dev server
       run: |
