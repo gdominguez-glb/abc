@@ -169,6 +169,57 @@ describe 'Client credentials OAuth flow', type: :request do
     expect(user.products.second.name).to eq('Some wit and wisdom product')
   end
 
+  it 'Prod Error' do
+    app = create :application, name: 'test', scopes: 'public'
+    token = create :access_token, resource_owner_id: nil, application: app
+    district = create :school_district, name: 'mcps'
+    admin = Spree::User.find_by email: 'web.admin@greatminds.net'
+    user = create :gm_user, title: 'Teacher', school_district: district
+
+    params = {
+      spree_user: {
+        first_name: 'Luis',
+        last_name: 'Gonzalez',
+        email: user.email,
+        title: 'Teacher',
+        school_district_id: district.id,
+        product_id: [@product1.id]
+      }
+    }
+
+    params2 = {
+      spree_user: {
+        first_name: 'Luis',
+        last_name: 'Gonzalez',
+        email: user.email,
+        title: 'Teacher',
+        school_district_id: district.id,
+        product_id: [@product1.id, @product.id]
+      }
+    }
+
+    headers = {
+      'Content-Type' => 'application/x-www-form-urlencoded',
+      'Authorization' => "Bearer #{token.token}"
+    }
+
+    post api_user_path, params, headers
+    post api_user_path, params2, headers
+    byebug
+    data = JSON.parse(response.body)
+    data_response = JSON.parse Cypher.decrypt data['spree_user']['id']
+    user = Spree::User.find_by email: 'random2@example.com'
+
+    expect(response.status).to eq(201)
+    expect(data.key?('spree_user')).to eq(true)
+    expect(data['spree_user'].key?('id')).to eq(true)
+    expect(data_response['token']).to eq(token.token)
+    expect(data_response['school_district']).to eq('mcps')
+    expect(data_response['school_district_id']).to eq(district.id)
+    expect(user.products.first.name).to eq('Eureka Navigator LTI')
+    expect(user.products.second.name).to eq('Some wit and wisdom product')
+  end
+
   it 'should get access token and post to users/create for mcps existing users' do
     app = create :application, name: 'test', scopes: 'public'
     token = create :access_token, resource_owner_id: nil, application: app
