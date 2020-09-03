@@ -11,20 +11,15 @@ class Api::UserController < Api::BaseController
   def create
     user = Spree::User.find_by email: spree_user_params[:email]
     user = Spree::User.new spree_user_params if user.blank?
-    NewRelic::Agent.record_custom_event('ACMAIntegration', params)
 
     user.update(spree_user_params)
 
     if user.save
       user.accept_terms!
       rows = [{ email: user.email, quantity: licensed_products.count }]
-      NewRelic::Agent.record_custom_event('ACMAIntegration', rows[0])
-      NewRelic::Agent.record_custom_event('ACMAIntegration', Hash[*licensed_products.as_json])
 
       licensed_products.each do |licensed_product|
-        NewRelic::Agent.record_custom_event("ACMAIntegration", { licensed_product_product_id: licensed_product.product_id })
-        NewRelic::Agent.record_custom_event('ACMAIntegration', { licensed_question: licensed?(user) })
-        unless licensed?(user)
+        unless licensed?(user, licensed_product.product_id)
           Spree::LicensesManager::LicensesDistributer.new(user: admin,
                                                           licensed_products: [licensed_product],
                                                           rows: rows).execute
@@ -57,7 +52,7 @@ class Api::UserController < Api::BaseController
     [Spree::Product.find_by(name: 'Eureka Navigator LTI').id]
   end
 
-  def licensed?(user)
+  def licensed?(user, product_id)
     user.products.where(id: product_id).present?
   end
 
