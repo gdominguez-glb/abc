@@ -28,17 +28,13 @@ module Spree
 
       def create_distribution_license(row)
         current_quantity = row[:quantity].to_i
-        NewRelic::Agent.record_custom_event('ACMAIntegration', { current_quantity: current_quantity })
 
         @licensed_products.each do |licensed_product|
-          NewRelic::Agent.record_custom_event("ACMAIntegration", { product_id: licensed_product.product_id })
           next  if licensed_product.quantity == 0
           break if current_quantity == 0
 
           quantity = (licensed_product.quantity >= current_quantity) ? current_quantity : licensed_product.quantity
-          NewRelic::Agent.record_custom_event("ACMAIntegration", { quantity: quantity })
           current_quantity -= quantity
-          NewRelic::Agent.record_custom_event("ACMAIntegration", { current_quantity: current_quantity })
 
           distribution = create_distribution({
             email:            row[:email],

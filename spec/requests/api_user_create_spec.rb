@@ -169,7 +169,7 @@ describe 'Client credentials OAuth flow', type: :request do
     expect(user.products.second.name).to eq('Some wit and wisdom product')
   end
 
-  it 'Prod Error' do
+  it 'should assign licenses for a user that already exists and have on already assigned' do
     app = create :application, name: 'test', scopes: 'public'
     token = create :access_token, resource_owner_id: nil, application: app
     district = create :school_district, name: 'mcps'
@@ -205,10 +205,9 @@ describe 'Client credentials OAuth flow', type: :request do
 
     post api_user_path, params, headers
     post api_user_path, params2, headers
-    byebug
+
     data = JSON.parse(response.body)
     data_response = JSON.parse Cypher.decrypt data['spree_user']['id']
-    user = Spree::User.find_by email: 'random2@example.com'
 
     expect(response.status).to eq(201)
     expect(data.key?('spree_user')).to eq(true)
@@ -216,8 +215,8 @@ describe 'Client credentials OAuth flow', type: :request do
     expect(data_response['token']).to eq(token.token)
     expect(data_response['school_district']).to eq('mcps')
     expect(data_response['school_district_id']).to eq(district.id)
-    expect(user.products.first.name).to eq('Eureka Navigator LTI')
-    expect(user.products.second.name).to eq('Some wit and wisdom product')
+    expect(user.products.first.name).to eq('Some wit and wisdom product')
+    expect(user.products.second.name).to eq('Eureka Navigator LTI')
   end
 
   it 'should get access token and post to users/create for mcps existing users' do
