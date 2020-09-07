@@ -587,8 +587,13 @@
 
     li {
       a {
-        color: $text-link-color;
+        color: $black;
         letter-spacing: -0.17px;
+
+        &:hover,
+        &:focus {
+          color: $slate;
+        }
       }
     }
 
