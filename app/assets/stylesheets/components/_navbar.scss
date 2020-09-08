@@ -28,6 +28,10 @@
     height: auto;
     padding: 5px 0 0;
     border-radius: 0;
+
+    &.nav-border-bottom {
+      border-bottom: 3px solid $khaki;
+    }
   }
 
 
@@ -232,7 +236,7 @@
       > a {
         border: 0;
         border-bottom: 1px solid darken($c-energized-secondary, 15%);
-        color: $primary-text-color;
+        color: $black;
         font-family: "CircularStd-bold";
         font-size: 12px;
         font-weight: bold;
@@ -479,6 +483,7 @@
       @media screen and (min-width: $screen-sm-min) {
         padding: 0 15px;
         text-align: center;
+        border-top: 3px solid $khaki;
       }
 
       li {
@@ -580,63 +585,66 @@
   }
 
   // ----- Cart Navigation Items ----- //
-
-  .navbar-right {
-    font-weight: bold;
-    letter-spacing: 2px;
-
-    li {
-      a {
-        color: $black;
-        letter-spacing: -0.17px;
-
-        &:hover,
-        &:focus {
-          color: $slate;
-        }
-      }
-    }
-
-    @media screen and (min-width: $screen-sm-min) {
-      position: absolute;
-      right: 35px;
-      text-transform: uppercase;
-      top: 6px;
-      width: auto;
+  .navbar-nav {
+    &.navbar-right {
+      font-weight: bold;
+      letter-spacing: 2px;
 
       li {
-        &:first-child {
-          a {
-            padding: 0;
+        a {
+          color: $black;
+          letter-spacing: -0.17px;
+
+          @media screen and (min-width: $screen-sm-min) {
+            &:hover,
+            &:focus {
+              color: $slate;
+            }
+          }
+        }
+      }
+
+      @media screen and (min-width: $screen-sm-min) {
+        position: absolute;
+        right: 35px;
+        text-transform: uppercase;
+        top: 6px;
+        width: auto;
+
+        li {
+          &:first-child {
+            a {
+              padding: 0;
+            }
+          }
+
+          @media screen and (min-width: $screen-sm-min) {
+            color: $c-absolute;
+            display: inline-block;
+            float: left;
+            font-size: 0.75em;
+            padding: 15px 10px;
           }
         }
 
-        @media screen and (min-width: $screen-sm-min) {
-          display: inline-block;
-          float: left;
-          padding: 15px 10px;
-          font-size: .75em;
-          color: $c-absolute;
+        > li > a {
+          @media screen and (min-width: $screen-sm-min) {
+            display: inline-block;
+            padding: 0;
+          }
         }
       }
 
-      > li > a {
+      .form-inline {
+        padding: 0;
+      }
+
+      .hello-text {
+        display: none;
+
         @media screen and (min-width: $screen-sm-min) {
           display: inline-block;
-          padding: 0;
         }
-      }
-    }
-
-    .form-inline {
-      padding: 0;
-    }
-
-    .hello-text {
-      display: none;
-
-      @media screen and (min-width: $screen-sm-min) {
-        display: inline-block;
       }
     }
   }
