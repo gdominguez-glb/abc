@@ -18,7 +18,7 @@
         </div>
       <% end %>
       <% reset_cycle("classes") %>
-      <% if products.respond_to?(:num_pages) %>
+      <% if products.respond_to?(:total_pages) %>
         <%= paginate products, theme: 'twitter-bootstrap-3' %>
       <% end %>
     </div>

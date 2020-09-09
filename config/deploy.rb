@@ -93,7 +93,7 @@ namespace :deploy do
     on roles(:web) do
       as :deploy do
         begin
-          execute 'if test -d /var/ngx_pagespeed_cache/; then touch /var/ngx_pagespeed_cache/cache.flush; fi;'
+          execute 'if test -d /var/ngx_pagespeed_cache/; then sudo touch /var/ngx_pagespeed_cache/cache.flush; fi;'
         rescue
           puts 'Fail to clear pagespeed cache'
         end
