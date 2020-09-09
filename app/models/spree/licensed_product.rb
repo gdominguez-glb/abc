@@ -117,7 +117,6 @@ class Spree::LicensedProduct < ApplicationRecord
 
   before_create :set_licenses_date_range
   after_create :set_activity
-  after_update :check_inkling_connect
 
   include EmailAssignment
   assign_user_from_email :user, :email
