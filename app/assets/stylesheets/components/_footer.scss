@@ -64,7 +64,7 @@
 }
 
 .footer-attribution {
-  margin-bottom: 0;
+  margin-bottom: 20px;
 
   @media screen and (min-width: $screen-sm-min) {
     font-size: .85em;
@@ -101,10 +101,18 @@
 .footer-copyright {
   @extend .sans-serif;
 
-  margin: 0 $b-space;
   font-weight: bold;
-  text-transform: uppercase;
   letter-spacing: 2px;
+  margin: 0 10px;
+  text-transform: uppercase;
+
+  @media screen and (max-width: $screen-sm-min) {
+    display: block;
+
+    .copyright-break {
+      display: none;
+    }
+  }
 }
 
 .footer-social-icon {
