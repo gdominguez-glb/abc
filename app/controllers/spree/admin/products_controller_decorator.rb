@@ -1,5 +1,6 @@
 Spree::Admin::ProductsController.class_eval do
   layout :resolve_layout
+  include Spree::Core::ControllerHelpers::Order
 
   def index
     session[:return_to] = request.url
