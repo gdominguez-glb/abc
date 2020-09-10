@@ -64,6 +64,9 @@ class Spree::Admin::CouponCodesController < Spree::Admin::ResourceController
   end
 
   def set_payment_methods
-    @payment_methods = Spree::PaymentMethod.where(name: ['Purchase Order', 'Credit Card']).available(:back_end)
+    @payment_methods =
+      Spree::PaymentMethod.where(
+        name: ['Purchase Order', 'Credit Card']
+      ).available_on_back_end
   end
 end
