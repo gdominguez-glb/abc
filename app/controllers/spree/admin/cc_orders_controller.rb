@@ -26,7 +26,10 @@ module Spree
       private
 
       def set_payment_methods
-        @payment_methods = Spree::PaymentMethod.where(name: ['Credit Card']).available(:back_end)
+        @payment_methods =
+          Spree::PaymentMethod.where(
+            name: ['Credit Card']
+          ).available_on_back_end
       end
 
       def cc_order_processor_params
