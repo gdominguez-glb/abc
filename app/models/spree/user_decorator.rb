@@ -190,7 +190,7 @@ Spree::User.class_eval do
 
   belongs_to :school_district
   has_many :materials, -> { uniq }, through: :products, class_name: 'Spree::Material'
-  has_many :to_users, -> { uniq }, through: :product_distributions, class_name: 'Spree::User'
+  has_many :to_users, -> { distinct }, through: :product_distributions, class_name: 'Spree::User'
   has_many :notifications
   has_many :activities
   has_many :download_jobs
