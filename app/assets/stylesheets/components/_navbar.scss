@@ -30,7 +30,7 @@
     border-radius: 0;
 
     &.nav-border-bottom {
-      border-bottom: 3px solid $khaki;
+      border-bottom: 2px solid $khaki;
     }
   }
 
@@ -63,7 +63,7 @@
 
   .navbar-nav {
     margin: 0 -15px;
-    background-color: $c-energized-secondary;
+    background-color: $beige;
     box-shadow: none;
 
     @media screen and (min-width: $screen-sm-min) {
@@ -72,32 +72,24 @@
     }
 
     [data-page='english'] & {
-      background-color: $c-positive-primary;
-
       @media screen and (min-width: $screen-sm-min) {
         background-color: transparent;
       }
     }
 
     [data-page='history'] & {
-      background-color: $c-energized-primary;
-
       @media screen and (min-width: $screen-sm-min) {
         background-color: transparent;
       }
     }
 
     [data-page='math'] & {
-      background-color: $c-balanced-primary;
-
       @media screen and (min-width: $screen-sm-min) {
         background-color: transparent;
       }
     }
 
     [data-page='science'] & {
-      background-color: $c-science-primary;
-
       @media screen and (min-width: $screen-sm-min) {
         background-color: transparent;
       }
@@ -125,9 +117,9 @@
         a,
         a:hover,
         a:focus {
-          border-bottom: 1px solid $c-energized-secondary;
-          color: $c-absolute;
-          background-color: darken($c-energized-secondary, 5%);
+          background-color: $beige;
+          border-bottom: 1px solid darken($beige, 15%);
+          color: $slate;
 
           @media screen and (min-width: $screen-sm-min) {
             border: 0;
@@ -136,27 +128,18 @@
           }
 
           [data-page='english'] & {
-            border-bottom: 1px solid $c-positive-primary;
-            background-color: darken($c-positive-primary, 5%);
-
             @media screen and (min-width: $screen-sm-min) {
               color: $c-positive-primary;
             }
           }
 
           [data-page='history'] & {
-            border-bottom: 1px solid $c-energized-primary;
-            background-color: darken($c-energized-primary, 5%);
-
             @media screen and (min-width: $screen-sm-min) {
               color: $c-energized-primary;
             }
           }
 
           [data-page='math'] & {
-            border-bottom: 1px solid $c-balanced-secondary;
-            background-color: darken($c-balanced-primary, 5%);
-
             @media screen and (min-width: $screen-sm-min) {
               // color: $c-balanced-primary;
               color: $math-primary-color;
@@ -164,9 +147,6 @@
           }
 
           [data-page='science'] & {
-            border-bottom: 1px solid $c-science-primary;
-            background-color: darken($c-science-primary, 5%);
-
             @media screen and (min-width: $screen-sm-min) {
               color: $c-science-primary;
             }
@@ -199,34 +179,21 @@
           > li {
             > a {
               padding: 10px 15px 10px 25px;
-              border-bottom: 1px solid $c-energized-secondary;
-              color: $c-absolute;
+              border-bottom: 1px solid darken($beige, 15%);
+              color: $black;
 
-              [data-page='english'] &,
-              [data-page='history'] &,
-              [data-page='math'] & {
-                color: $c-positive-secondary;
-              }
+              &.active {
+                color: $terracotta;
 
-              [data-page='english'] & {
-                border-bottom: 1px solid $c-positive-primary;
-              }
-
-              [data-page='history'] & {
-                border-bottom: 1px solid $c-energized-primary;
-              }
-
-              [data-page='math'] & {
-                border-bottom: 1px solid $c-balanced-secondary;
-              }
-
-              [data-page='science'] & {
-                border-bottom: 1px solid $c-science-secondary;
+                &:hover {
+                  color: $terracotta;
+                }
               }
 
               &:hover,
               &:focus {
-                color: $c-absolute;
+                background-color: darken($beige, 5%);
+                color: $black;
               }
             }
           }
@@ -235,7 +202,7 @@
 
       > a {
         border: 0;
-        border-bottom: 1px solid darken($c-energized-secondary, 15%);
+        border-bottom: 1px solid darken($beige, 15%);
         color: $black;
         font-family: "CircularStd-bold";
         font-size: 12px;
@@ -245,32 +212,9 @@
         line-height: normal;
         letter-spacing: 0.1px;
 
-        [data-page='english'] & {
-          border-bottom: 1px solid darken($c-positive-primary, 5%);
-        }
-
-        [data-page='history'] & {
-          border-bottom: 1px solid darken($c-energized-primary, 5%);
-        }
-
-        [data-page='math'] & {
-          border-bottom: 1px solid $c-balanced-secondary;
-        }
-
-        [data-page='science'] & {
-          border-bottom: 1px solid $c-science-secondary;
-        }
-
         &:hover,
         &:focus {
-          color: darken($c-absolute, 15%);
-
-          [data-page='english'] &,
-          [data-page='history'] &,
-          [data-page='science'] &,
-          [data-page='math'] & {
-            color: $c-positive-secondary;
-          }
+          color: $black;
         }
 
         @media screen and (min-width: $screen-sm-min) {
@@ -361,28 +305,10 @@
       }
 
       &.search-button {
-        border-bottom: 1px solid darken($c-energized-secondary, 15%);
+        border-bottom: 1px solid darken($beige, 15%);
 
         @media screen and (min-width: $screen-sm-min) {
           border: 0;
-        }
-
-        [data-page='english'] & {
-          border-bottom: 1px solid darken($c-positive-primary, 5%);
-        }
-
-        [data-page='history'] & {
-          border-bottom: 1px solid darken($c-energized-primary, 5%);
-        }
-
-        [data-page='math'] & {
-          border-bottom: 1px solid $c-balanced-secondary;
-
-        }
-
-        [data-page='science'] & {
-          border-bottom: 1px solid $c-science-secondary;
-
         }
 
         @media screen and (min-width: $screen-sm-min) {
@@ -437,23 +363,28 @@
       }
 
       .dropdown-toggle {
+        background-color: $beige;
+        border: 0;
+        border-bottom: 1px solid darken($beige, 15%);
+        color: $black;
         display: block;
         position: relative;
         padding: 10px 15px;
-        border-bottom: 1px solid #ff461b;
-        font-size: 13.6px;
-        background-color: $c-energized-secondary;
+        font-size: 12px;
+        font-family: "CircularStd-bold";
+        letter-spacing: 0.1px;
 
         &:hover,
         &:active,
         &:focus {
           text-decoration: none;
-          color: #d9d9d9;
+          color: $black;
         }
 
         &.open {
-          border-bottom: 1px solid #ff5b34;
-          background-color: #ff461b;
+          background-color: darken($beige, 5%);
+          border-bottom: 1px solid $beige;
+          color: $black;
         }
       }
     }
@@ -461,29 +392,76 @@
     .navbar-collapse {
       clear: both;
       padding: 10px 0 10px 25px;
-      background-color: $c-energized-secondary;
+      background-color: $beige;
 
       [data-page='english'] & {
-        background-color: $c-positive-primary;
+        @media screen and (min-width: $screen-sm-min) {
+          a {
+            &:hover,
+            &:active,
+            &:focus {
+              border-bottom: 2px solid $c-positive-primary;
+            }
+
+            &.active {
+              border-bottom: 2px solid $c-positive-primary;
+            }
+          }
+        }
       }
 
       [data-page='history'] & {
-        background-color: $c-energized-primary;
+        @media screen and (min-width: $screen-sm-min) {
+          a {
+            &:hover,
+            &:active,
+            &:focus {
+              border-bottom: 2px solid $c-energized-primary;
+            }
+
+            &.active {
+              border-bottom: 2px solid $c-energized-primary;
+            }
+          }
+        }
       }
 
       [data-page='math'] & {
-        // background-color: $c-balanced-primary;
-        background-color: $math-primary-color;
+        @media screen and (min-width: $screen-sm-min) {
+          a {
+            &:hover,
+            &:active,
+            &:focus {
+              border-bottom: 2px solid $c-balanced-primary;
+            }
+
+            &.active {
+              border-bottom: 2px solid $c-balanced-primary;
+            }
+          }
+        }
       }
 
       [data-page='science'] & {
-        background-color: $c-science-primary;
+        @media screen and (min-width: $screen-sm-min) {
+          a {
+            &:hover,
+            &:active,
+            &:focus {
+              border-bottom: 2px solid $c-science-primary;
+            }
+
+            &.active {
+              border-bottom: 2px solid $c-science-primary;
+            }
+          }
+        }
       }
 
       @media screen and (min-width: $screen-sm-min) {
         padding: 0 15px;
         text-align: center;
-        border-top: 3px solid $khaki;
+        border-top: 2px solid $khaki;
       }
 
       li {
@@ -500,37 +478,37 @@
         &:active,
         &:focus {
           @media screen and (min-width: $screen-sm-min) {
-            border-bottom: 2px solid $c-absolute;
+            border-bottom: 2px solid $black;
             text-decoration: none;
-            color: $c-absolute;
-
-            [data-page='english'] &,
-            [data-page='history'] &,
-            [data-page='science'] &,
-            [data-page='math'] & {
-              border-bottom: 2px solid $white;
-              color: $white;
-            }
           }
         }
 
         @media screen and (min-width: $screen-sm-min) {
           padding: 3px 0 1px;
           border-bottom: 2px solid transparent;
-          color: $white;
+          color: $black;
           font-size: 12px;
           font-weight: normal;
           letter-spacing: normal;
           text-transform: capitalize;
 
           &.active {
-            border-bottom: 2px solid $c-absolute;
+            border-bottom: 2px solid $black;
 
-            [data-page='english'] &,
-            [data-page='history'] &,
-            [data-page='science'] &,
-            [data-page='math'] & {
-              border-bottom: 2px solid $white;
+            [data-page='english'] {
+              border-bottom: 2px solid $light-blue;
+            }
+
+            [data-page='history'] {
+              border-bottom: 2px solid $alexandria-orange;
+            }
+
+            [data-page='science'] {
+              border-bottom: 2px solid $purple;
+            }
+
+            [data-page='math'] {
+              border-bottom: 2px solid $c-balanced-primary;
             }
           }
         }
@@ -542,10 +520,10 @@
         padding: 0;
 
         a {
+          background-color: darken($beige, 5%);
+          border-bottom: 1px solid $beige;
+          color: $black;
           padding: 10px 15px 10px 25px;
-          border-bottom: 1px solid #ff5b34;
-          color: #fff;
-          background-color: #ff461b;
 
           &:hover,
           &:active,
