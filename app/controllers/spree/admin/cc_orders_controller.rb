@@ -9,7 +9,7 @@ module Spree
       end
 
       def create
-        @cc_order_processor_form = CcOrderProcessorForm.new(cc_order_processor_params.merge(
+        @cc_order_processor_form = CcOrderProcessorForm.new(cc_order_processor_params.to_h.merge(
           payment_source_params: params[:payment_source],
           admin_user: current_spree_user
         ))
