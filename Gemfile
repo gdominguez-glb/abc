@@ -66,6 +66,7 @@ gem 'whenever', :require => false
 gem "rails-settings-cached", "~> 0.5.5"
 
 gem 'searchkick', '~> 1.1', '>= 1.1.2'
+# gem 'elasticsearch', '~> 6.2.0'
 
 gem 'select2-rails', '~> 3.5.0'
 
