@@ -2,22 +2,20 @@ class SearchController < ApplicationController
   before_action :set_session_material, only: [:index]
 
   def index
-    @result = Page.search(params[:query], generate_search_options)
+    @result = Searchkick.search(params[:query], generate_search_options)
   end
 
   def generate_search_options
-    options = { index_name: [
-      Spree::Product.searchkick_index.name,
-      Page.searchkick_index.name,
-      EventPage.searchkick_index.name,
-      EventTraining.searchkick_index.name,
-      Job.searchkick_index.name,
-      Question.searchkick_index.name,
-      MediumPublication.searchkick_index.name,
-      CustomIndexPage.searchkick_index.name
+    options = { models: [
+      Spree::Product,
+      Page,
+      EventPage,
+      Job,
+      Question,
+      MediumPublication
     ] }
     if current_spree_user
-      options[:index_name].concat([Spree::Material.searchkick_index.name, Spree::Video.searchkick_index.name])
+      options[:models].concat([Spree::Material, Spree::Video])
       options[:where] = { user_ids: [current_spree_user.id, -1] }
     end
     options
