@@ -38,12 +38,12 @@
 
     .footer-link {
       font-size: 10px;
-      font-weight: normal;
+      font-weight: lighter;
       font-stretch: normal;
       font-style: normal;
       line-height: 2.4;
       letter-spacing: 1.25px;
-      color: $primary-text-color;
+      color: $black;
     }
   }
 
@@ -67,7 +67,7 @@
   }
 
   .footer-attribution {
-    color: $copy-right-color;
+    color: $black;
     font-size: 12px;
     font-stretch: normal;
     font-style: normal;
@@ -79,6 +79,10 @@
     .footer-terms {
       text-decoration: none;
       text-transform: none;
+
+      &:hover {
+        color: $slate;
+      }
     }
 
     &.copyright-content {
@@ -122,12 +126,25 @@
 
 .footer-title-link,
 .footer-title-no-link {
+  color: $black;
   display: block;
   padding: $b-space ($b-space * 3);
+
+  &:hover {
+    color: $black;
+    text-decoration: underline;
+  }
 
   @media screen and (min-width: $screen-sm-min) {
     display: inline;
     padding: initial;
+  }
+}
+
+.footer-title-no-link {
+  &:hover {
+    color: $black;
+    text-decoration: none;
   }
 }
 
