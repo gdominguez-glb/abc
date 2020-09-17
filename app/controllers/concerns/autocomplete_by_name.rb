@@ -23,7 +23,7 @@ module AutocompleteByName
       total_count: collection.total_count,
       current_page: (params[:page] ? params[:page].to_i : 1),
       per_page: (params[:per_page] || Kaminari.config.default_per_page),
-      pages: collection.num_pages,
+      pages: collection.total_pages,
       collection_name => collection.map{|item| { id: item.send(id_name), name: item.send(name_field) }}
     }
   end

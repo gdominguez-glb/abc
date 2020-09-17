@@ -9,8 +9,6 @@ Spree::User.class_eval do
 
   scope :with_curriculum, ->(curriculum) { where("interested_subjects like '%?%'", curriculum.id) }
 
-  serialize :interested_subjects, Array
-
   validates_format_of :password, with: /\A\S*\z/, message: "can't include spaces", if: :password_required?
   validates :school_district, presence: true, if: :school_district_required?
   validates :title, presence: true, on: :create
@@ -404,5 +402,9 @@ Spree::User.class_eval do
         'Other'
       end
     }
+  end
+
+  def self.ransackable_attributes(auth_object=nil)
+        %w[email title interested_subjects first_name last_name school_district_id]
   end
 end
