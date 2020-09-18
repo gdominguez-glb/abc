@@ -6,7 +6,7 @@ class Job < ApplicationRecord
 
   acts_as_list
 
-  searchkick callbacks: :async, personalize: "user_ids"
+  searchkick callbacks: :async
 
   def should_index?
     display?

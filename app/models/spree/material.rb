@@ -6,7 +6,7 @@ class Spree::Material < ApplicationRecord
 
   validates_presence_of :name
 
-  searchkick callbacks: :async, personalize: "user_ids"
+  searchkick callbacks: :async
 
   LINK_ICON_OPTIONS = [['Link', 'open_in_browser'], ['Video Play', 'play_arrow']]
 
