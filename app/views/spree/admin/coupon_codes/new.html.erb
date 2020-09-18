@@ -73,7 +73,7 @@
       placeholder: "Select product",
       multiple: true,
       ajax: {
-        url: '/storeapi/products',
+        url: '/resources/api/v1/products',
         datatype: 'json',
         data: function (term, page) {
           return {
@@ -89,19 +89,19 @@
         results: function (data, page) {
           var more = page < data.pages;
           return {
-            results: data['products'],
+            results: data.products,
             more: more
           };
         }
       },
       formatResult: function (product) {
-        return product.internal_name;
+        return product.name;
       },
       formatSelection: function (product) {
-        return product.internal_name;
+        return product.name;
       }
     });
-    
+
      $("#coupon_code_school_district_id").select2({
         placeholder: "Select school/district",
         multiple: false,
