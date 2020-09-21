@@ -43,19 +43,19 @@ class BlogController < ApplicationController
   def subscribe
     @blog = Blog.find(params[:id])
     current_spree_user.subscribe!(@blog)
-    redirect_to :back, notice: t(
+    redirect_back(fallback_location: '/', notice: t(
       'controllers.blog.subscribe',
       title: @blog.title
-    )
+    ))
   end
 
   def unsubscribe
     @blog = Blog.find(params[:id])
     current_spree_user.unsubscribe!(@blog)
-    redirect_to :back, notice: t(
+    redirect_back(fallback_location: '/', notice: t(
       'controllers.blog.unsubscribe',
       title: @blog.title
-    )
+    ))
   end
 
   private

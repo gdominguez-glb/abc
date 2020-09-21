@@ -3,5 +3,5 @@
 
 server '54.159.14.213', user: 'deploy', roles: %w{web app db search worker}
 
-set :branch, 'sidekiq-version'
+set :branch, 'feature/upgrade-rails-ruby'
 set :rails_env, 'dev'
