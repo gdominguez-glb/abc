@@ -123,39 +123,8 @@
 
           @media screen and (min-width: $screen-sm-min) {
             border: 0;
-            color: $c-balanced-primary;
+            color: $slate;
             background: transparent;
-          }
-
-          [data-page='english'] & {
-            @media screen and (min-width: $screen-sm-min) {
-              color: $c-positive-primary;
-            }
-          }
-
-          [data-page='history'] & {
-            @media screen and (min-width: $screen-sm-min) {
-              color: $c-energized-primary;
-            }
-          }
-
-          [data-page='math'] & {
-            @media screen and (min-width: $screen-sm-min) {
-              // color: $c-balanced-primary;
-              color: $math-primary-color;
-            }
-          }
-
-          [data-page='science'] & {
-            @media screen and (min-width: $screen-sm-min) {
-              color: $c-science-primary;
-            }
-          }
-
-          body.spree-store & {
-            @media screen and (min-width: $screen-sm-min) {
-              color: $c-energized-secondary;
-            }
           }
 
           @media screen and (min-width: $screen-sm-min) {
@@ -231,75 +200,7 @@
 
           &:hover,
           &:focus, {
-            color: $c-balanced-primary;
-
-            [data-page='english'] &,
-            [data-page='history'] &,
-            [data-page='science'] &,
-            [data-page='math'] & {
-              color: $c-balanced-primary;
-            }
-          }
-        }
-      }
-
-      @media screen and (min-width: $screen-sm-min) {
-        &[data-primary-nav-item='english'] {
-          > a {
-            &:hover,
-            &:focus {
-              color: $c-positive-primary;
-            }
-          }
-        }
-
-        &[data-primary-nav-item='history'] {
-          > a {
-            &:hover,
-            &:focus {
-              color: $c-energized-primary;
-            }
-          }
-        }
-
-        &[data-primary-nav-item='math'] {
-          > a {
-            &:hover,
-            &:focus {
-              color: $c-balanced-primary;
-            }
-          }
-        }
-
-        &[data-primary-nav-item='science'] {
-          > a {
-            &:hover,
-            &:focus {
-              color: $c-science-primary;
-            }
-          }
-        }
-
-        &[data-primary-nav-item='in-the-news'] {
-          > a {
-            &:hover,
-            &:focus {
-              color: $coral;
-            }
-          }
-          &.active {
-            > a {
-              color: $coral;
-            }
-          }
-        }
-
-        &[data-primary-nav-item='shop'] {
-          > a {
-            &:hover,
-            &:focus {
-              color: $c-energized-secondary;
-            }
+            color: $slate;
           }
         }
       }
@@ -384,7 +285,11 @@
         &.open {
           background-color: darken($beige, 5%);
           border-bottom: 1px solid $beige;
-          color: $black;
+          color: $slate;
+        }
+
+        &.js-dashboard-nav-toggle {
+          color: $slate;
         }
       }
     }
@@ -531,6 +436,10 @@
             outline: none;
             text-decoration: none;
           }
+
+          &.active {
+            color: $terracotta;
+          }
         }
       }
     }
@@ -578,6 +487,10 @@
             &:focus {
               color: $slate;
             }
+
+            &.active {
+              color: $slate;
+            }
           }
         }
       }
@@ -607,7 +520,6 @@
 
         > li > a {
           @media screen and (min-width: $screen-sm-min) {
-            display: inline-block;
             padding: 0;
           }
         }
