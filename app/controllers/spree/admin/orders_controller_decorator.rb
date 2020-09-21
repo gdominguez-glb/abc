@@ -62,6 +62,6 @@ Spree::Admin::OrdersController.class_eval do
     else
       flash[:error] = 'Failed to change licenses for order'
     end
-    redirect_to :back
+    redirect_back(fallback_location: '/')
   end
 end
