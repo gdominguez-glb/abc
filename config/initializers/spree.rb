@@ -24,7 +24,8 @@ Paperclip::Attachment.default_options.merge!({
   s3_credentials: {
     access_key_id:     ENV['aws_access_key_id'],
     secret_access_key: ENV['aws_secret_access_key'],
-    bucket:            ENV['s3_bucket_name']
+    bucket:            ENV['s3_bucket_name'],
+    s3_region:         ENV['s3_region']
   }
 })
 
@@ -33,7 +34,8 @@ attachment_config = {
   s3_credentials: {
     access_key_id:     ENV['aws_access_key_id'],
     secret_access_key: ENV['aws_secret_access_key'],
-    bucket:            ENV['s3_bucket_name']
+    bucket:            ENV['s3_bucket_name'],
+    s3_region:         ENV['s3_region']
   },
 
   storage:        :s3,
