@@ -12,7 +12,7 @@ Spree::User.class_eval do
   validates_format_of :password, with: /\A\S*\z/, message: "can't include spaces", if: :password_required?
   validates :school_district, presence: true, if: :school_district_required?
   validates :title, presence: true, on: :create
-  validates :zip_code, presence: true, on: :create, if: :is_in_usa?
+  validates :zip_code, presence: true, on: :create
   validates :interested_subjects, presence: true, on: :create
   before_create :set_city_and_state, if: :school_district_required?
 
