@@ -20,8 +20,8 @@ class Spree::Admin::WhitelistController < Spree::Admin::BaseController
     @whitelist.destroy
 
     respond_to do |format|
-      format.js
       format.html { redirect_to admin_whitelist_index_path  }
+      format.js
     end
   end
 
