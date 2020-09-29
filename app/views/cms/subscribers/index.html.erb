@@ -9,7 +9,7 @@
             <%= search_form_for @q, url: '', method: :get do |f| %>
               <div class="col-sm-4">
                 <label>User Type</label>
-                <%= f.select :title_eq, options_for_select(Spree::User::USER_TITLES, f.object.title_eq), include_blank: 'All User Types', class: 'form-control margin-bottom--s--sm-min' %>
+                <%= f.select :title_eq, options_for_select(USER_TITLES, f.object.title_eq), include_blank: 'All User Types', class: 'form-control margin-bottom--s--sm-min' %>
               </div>
               <div class="col-sm-4">
                 <label>Interested Curriculum</label>
