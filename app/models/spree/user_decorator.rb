@@ -23,6 +23,15 @@ Spree::User.class_eval do
 
   has_many :subscriptions, dependent: :destroy
 
+  def send_reset_password_instructions_notification(token)
+    MandrillSender.new.deliver_with_template(
+      'forgot-password',
+      email,
+      'Great Minds Reset password instructions',
+      { token: token }
+    )
+  end
+
   def need_to_accept_updated_terms?
     accepted_terms? && !accepted_terms_2018?
   end
