@@ -19,7 +19,7 @@ class Api::UserController < Api::BaseController
       rows = [{ email: user.email, quantity: licensed_products.count }]
 
       licensed_products.each do |licensed_product|
-        unless licensed?(user)
+        unless licensed?(user, licensed_product.product_id)
           Spree::LicensesManager::LicensesDistributer.new(user: admin,
                                                           licensed_products: [licensed_product],
                                                           rows: rows).execute
@@ -52,7 +52,7 @@ class Api::UserController < Api::BaseController
     [Spree::Product.find_by(name: 'Eureka Navigator LTI').id]
   end
 
-  def licensed?(user)
+  def licensed?(user, product_id)
     user.products.where(id: product_id).present?
   end
 
