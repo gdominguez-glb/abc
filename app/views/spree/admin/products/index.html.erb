@@ -24,6 +24,10 @@
             <%= f.label :name_cont, Spree.t(:name) %>
             <%= f.text_field :name_cont, :size => 15, class: "form-control js-quick-search-target" %>
           </div>
+          <div class="form-group">
+            <%= f.label :product_type, Spree.t(:product_type) %>
+            <%= f.select :product_type_eq, PRODUCT_TYPES, { include_blank: 'All' }, class: "form-control" %>
+          </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
