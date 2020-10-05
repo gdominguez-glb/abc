@@ -98,6 +98,15 @@
           <%= f.error_message_on :tax_category %>
         <% end %>
       </div>
+
+      <div data-hook="admin_product_form_product_type">
+        <%= f.field_container :product_type, class: ['form-group'] do %>
+          <%= f.label :product_type, Spree.t(:product_type) %>
+          <%= f.select(:product_type, PRODUCT_TYPES, { :include_blank => Spree.t('match_choices.none') }, { :class => 'select2' }) %>
+          <%= f.error_message_on :product_type %>
+        <% end %>
+      </div>
+
     </div>
 
   </div>
