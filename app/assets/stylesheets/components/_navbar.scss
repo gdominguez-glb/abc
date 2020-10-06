@@ -482,13 +482,13 @@
           color: $black;
           letter-spacing: -0.17px;
 
+          &.active {
+            color: $slate;
+          }
+
           @media screen and (min-width: $screen-sm-min) {
             &:hover,
             &:focus {
-              color: $slate;
-            }
-
-            &.active {
               color: $slate;
             }
           }
