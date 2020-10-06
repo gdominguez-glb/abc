@@ -61,9 +61,13 @@
       }
     }
   }
-  
+
   .col-sm-offset-1 {
     display: none;
+
+    @media screen and (max-width: $screen-sm-min) {
+      display: block;
+    }
   }
 
   .footer-attribution {
@@ -74,7 +78,8 @@
     font-weight: normal;
     letter-spacing: normal;
     line-height: normal;
-    margin-top: 135px;
+    margin-top: 50px;
+    text-align: left;
 
     .footer-terms {
       text-decoration: none;
@@ -86,12 +91,23 @@
     }
 
     &.copyright-content {
-      margin-top: 0;
+      text-align: right;
+
+      @media screen and (max-width: $screen-sm-min) {
+        margin-top: 0;
+        text-align: center;
+      }
+    }
+
+    @media screen and (max-width: $screen-sm-min) {
+      text-align: center;
     }
   }
   .footer__content {
-    display: flex;
-    justify-content: center;
+    @media screen and (min-width: $screen-sm-min) {
+      display: flex;
+      justify-content: center;
+    }
   }
 }
 
@@ -107,6 +123,7 @@
 .footer-rule {
   margin-top: $b-space;
   color: $c-firm-primary;
+  margin-bottom: 0;
   opacity: .4;
 
   @media screen and (min-width: $screen-sm-min) {
@@ -126,37 +143,48 @@
 
 .footer-title-link,
 .footer-title-no-link {
+  border-bottom: 2px solid transparent;
   color: $black;
-  display: block;
-  padding: $b-space ($b-space * 3);
+  display: inline-block;
+  margin: $b-space ($b-space * 3);
 
   &:hover {
+    border-bottom: 2px solid $black;
     color: $black;
-    text-decoration: underline;
+    text-decoration: none;
   }
 
   @media screen and (min-width: $screen-sm-min) {
     display: inline;
-    padding: initial;
+    margin: initial;
   }
 }
 
 .footer-title-no-link {
+  border-bottom: 0;
+
   &:hover {
+    border-bottom: 0;
     color: $black;
     text-decoration: none;
   }
 }
 
 .footer-link {
-  display: block;
-  padding: $b-space ($b-space * 3);
+  border-bottom: 1px solid transparent;
+  display: inline-block;
   font-weight: normal;
   letter-spacing: 2px;
+  margin: $b-space ($b-space * 3);
+
+  &:hover {
+    border-bottom: 1px solid $black;
+    text-decoration: none;
+  }
 
   @media screen and (min-width: $screen-sm-min) {
     display: inline;
-    padding: initial;
+    margin: initial;
   }
 }
 
@@ -205,6 +233,7 @@
 
   @media screen and (max-width: $screen-sm-min) {
     display: block;
+    line-height: 1.76em;
 
     .copyright-break {
       display: none;
