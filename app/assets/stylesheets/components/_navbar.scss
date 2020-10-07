@@ -119,11 +119,11 @@
         a:focus {
           background-color: $beige;
           border-bottom: 1px solid darken($beige, 15%);
-          color: $slate;
+          color: $terracotta;
 
           @media screen and (min-width: $screen-sm-min) {
             border: 0;
-            color: $slate;
+            color: $terracotta;
             background: transparent;
           }
 
@@ -200,7 +200,7 @@
 
           &:hover,
           &:focus, {
-            color: $slate;
+            color: $terracotta;
           }
         }
       }
@@ -285,11 +285,11 @@
         &.open {
           background-color: darken($beige, 5%);
           border-bottom: 1px solid $beige;
-          color: $slate;
+          color: $terracotta;
         }
 
         &.js-dashboard-nav-toggle {
-          color: $slate;
+          color: $terracotta;
         }
       }
     }
@@ -483,13 +483,13 @@
           letter-spacing: -0.17px;
 
           &.active {
-            color: $slate;
+            color: $terracotta;
           }
 
           @media screen and (min-width: $screen-sm-min) {
             &:hover,
             &:focus {
-              color: $slate;
+              color: $terracotta;
             }
           }
         }
