@@ -10,16 +10,6 @@ class Spree::Video < ApplicationRecord
       :medium => "330x220" }
   }
 
-  searchkick callbacks: :async
-
-  def search_data
-    {
-      title: title,
-      description: description,
-      user_ids: find_user_ids_to_index
-    }
-  end
-
   def find_user_ids_to_index
     return [-1] if self.is_free?
     return [] if video_group.nil?
