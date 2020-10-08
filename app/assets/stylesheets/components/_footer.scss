@@ -82,6 +82,7 @@
     text-align: left;
 
     .footer-terms {
+      outline: none;
       text-decoration: none;
       text-transform: none;
 
@@ -154,6 +155,12 @@
     text-decoration: none;
   }
 
+  &:active,
+  &:focus {
+    outline: none;
+    text-decoration: none;
+  }
+
   @media screen and (min-width: $screen-sm-min) {
     display: inline;
     margin: initial;
@@ -179,6 +186,12 @@
 
   &:hover {
     border-bottom: 1px solid $black;
+    text-decoration: none;
+  }
+
+  &:active,
+  &:focus {
+    outline: none;
     text-decoration: none;
   }
 
