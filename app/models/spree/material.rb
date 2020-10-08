@@ -6,8 +6,6 @@ class Spree::Material < ApplicationRecord
 
   validates_presence_of :name
 
-  searchkick callbacks: :async
-
   LINK_ICON_OPTIONS = [['Link', 'open_in_browser'], ['Video Play', 'play_arrow']]
 
   def should_index?
