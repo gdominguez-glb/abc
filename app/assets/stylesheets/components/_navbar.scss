@@ -153,9 +153,11 @@
 
               &.active {
                 color: $terracotta;
+                background-color: $beige;
 
                 &:hover {
                   color: $terracotta;
+                  background-color: darken($beige, 5%);
                 }
               }
 
