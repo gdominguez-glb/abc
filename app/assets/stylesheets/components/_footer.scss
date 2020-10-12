@@ -157,6 +157,7 @@
 
   &:active,
   &:focus {
+    color: $black;
     outline: none;
     text-decoration: none;
   }
@@ -191,6 +192,7 @@
 
   &:active,
   &:focus {
+    color: $black;
     outline: none;
     text-decoration: none;
   }
@@ -239,7 +241,6 @@
 .footer-copyright {
   @extend .sans-serif;
 
-  font-weight: bold;
   letter-spacing: 2px;
   margin: 0 10px;
   // text-transform: uppercase;
