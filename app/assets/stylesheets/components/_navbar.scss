@@ -8,16 +8,15 @@
 // *************************************
 
 .navbar-primary {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  z-index: 1030;
-  height: 50px;
-  margin-bottom: 0;
-  border: 0;
-  // background: $c-positive-secondary;
   background: $white;
+  border: 0;
+  height: 65px;
+  left: 0;
+  margin-bottom: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 1030;
 
   a {
     letter-spacing: 2px;
@@ -39,9 +38,10 @@
 
   .navbar-brand {
     background: transparent asset-url("Great-Minds-Logo.svg") no-repeat 50% 50%;
+    height: 65px;
     padding: 0;
     text-indent: -9999px;
-    width: 75px;
+    width: 80px;
     // background-size: 150px 35px;
 
     @media screen and (min-width: $screen-sm-min) {
