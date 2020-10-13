@@ -1,5 +1,5 @@
 <ul class="dropdown-menu">
-  <li><%= active_link_to page.title, "/#{page.slug}" %></li>
+  <li><%= active_link_to page.title, "/#{page.slug}", active: (request.path == "/#{page.slug}") %></li>
   <% if page.slug == "english" %>
     <li><a href="https://greatminds.org/english/pd">PD</a></li>
     <%= active_link_to "Case Studies", "/english/blog/case-studies", active: (request.path == "/english/blog/case-studies"), wrap_tag: :li %>
