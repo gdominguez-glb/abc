@@ -10,6 +10,7 @@
 .navbar-primary {
   background: $white;
   border: 0;
+  border-radius: 0;
   height: 65px;
   left: 0;
   margin-bottom: 0;
@@ -22,7 +23,7 @@
     letter-spacing: 2px;
   }
 
-  @media screen and (min-width: $screen-sm-min) {
+  @media screen and (min-width: $navbar-breakpoint-md) {
     position: relative;
     height: auto;
     padding: 5px 0 0;
@@ -44,7 +45,7 @@
     width: 80px;
     // background-size: 150px 35px;
 
-    @media screen and (min-width: $screen-sm-min) {
+    @media screen and (min-width: $navbar-breakpoint-md) {
       background: transparent asset-url("Great-Minds-Logo.svg") no-repeat 50% 50%;
       height: 109px;
       margin-bottom: 5px;
@@ -67,38 +68,38 @@
     background-color: $beige;
     box-shadow: none;
 
-    @media screen and (min-width: $screen-sm-min) {
+    @media screen and (min-width: $navbar-breakpoint-md) {
       margin: 0 -15px 0 0;
       background-color: transparent;
     }
 
     [data-page='english'] & {
-      @media screen and (min-width: $screen-sm-min) {
+      @media screen and (min-width: $navbar-breakpoint-md) {
         background-color: transparent;
       }
     }
 
     [data-page='history'] & {
-      @media screen and (min-width: $screen-sm-min) {
+      @media screen and (min-width: $navbar-breakpoint-md) {
         background-color: transparent;
       }
     }
 
     [data-page='math'] & {
-      @media screen and (min-width: $screen-sm-min) {
+      @media screen and (min-width: $navbar-breakpoint-md) {
         background-color: transparent;
       }
     }
 
     [data-page='science'] & {
-      @media screen and (min-width: $screen-sm-min) {
+      @media screen and (min-width: $navbar-breakpoint-md) {
         background-color: transparent;
       }
     }
 
     .dropdown-toggle {
       .caret {
-        @media screen and (min-width: $screen-sm-min) {
+        @media screen and (min-width: $navbar-breakpoint-md) {
           display: none;
         }
       }
@@ -107,7 +108,7 @@
     > li {
       &:first-child {
         a {
-          @media screen and (min-width: $screen-sm-min) {
+          @media screen and (min-width: $navbar-breakpoint-md) {
             padding-left: 0;
           }
         }
@@ -122,13 +123,13 @@
           border-bottom: 1px solid darken($beige, 15%);
           color: $terracotta;
 
-          @media screen and (min-width: $screen-sm-min) {
+          @media screen and (min-width: $navbar-breakpoint-md) {
             border: 0;
             color: $terracotta;
             background: transparent;
           }
 
-          @media screen and (min-width: $screen-sm-min) {
+          @media screen and (min-width: $navbar-breakpoint-md) {
             [data-page='english'] &,
             [data-page='history'] &,
             [data-page='science'] &,
@@ -142,7 +143,7 @@
 
         .dropdown-menu {
 
-          @media screen and (min-width: $screen-sm-min) {
+          @media screen and (min-width: $navbar-breakpoint-md) {
             display: none;
           }
 
@@ -189,7 +190,7 @@
           color: $black;
         }
 
-        @media screen and (min-width: $screen-sm-min) {
+        @media screen and (min-width: $navbar-breakpoint-md) {
           border-bottom: 0;
           padding: 47px 20px 16px;
 
@@ -211,11 +212,11 @@
       &.search-button {
         border-bottom: 1px solid darken($beige, 15%);
 
-        @media screen and (min-width: $screen-sm-min) {
+        @media screen and (min-width: $navbar-breakpoint-md) {
           border: 0;
         }
 
-        @media screen and (min-width: $screen-sm-min) {
+        @media screen and (min-width: $navbar-breakpoint-md) {
           [data-page='english'] &,
           [data-page='history'] &,
           [data-page='science'] &,
@@ -254,7 +255,7 @@
       display: block;
     }
 
-    @media screen and (min-width: $screen-sm-min) {
+    @media screen and (min-width: $navbar-breakpoint-md) {
       display: block;
     }
 
@@ -262,7 +263,7 @@
       padding: 0;
       background-color: $c-energized-secondary;
 
-      @media screen and (min-width: $screen-sm-min) {
+      @media screen and (min-width: $navbar-breakpoint-md) {
         display: none;
       }
 
@@ -303,7 +304,7 @@
       background-color: $beige;
 
       [data-page='english'] & {
-        @media screen and (min-width: $screen-sm-min) {
+        @media screen and (min-width: $navbar-breakpoint-md) {
           a {
             &:hover,
             &:active,
@@ -319,7 +320,7 @@
       }
 
       [data-page='history'] & {
-        @media screen and (min-width: $screen-sm-min) {
+        @media screen and (min-width: $navbar-breakpoint-md) {
           a {
             &:hover,
             &:active,
@@ -335,7 +336,7 @@
       }
 
       [data-page='math'] & {
-        @media screen and (min-width: $screen-sm-min) {
+        @media screen and (min-width: $navbar-breakpoint-md) {
           a {
             &:hover,
             &:active,
@@ -351,7 +352,7 @@
       }
 
       [data-page='science'] & {
-        @media screen and (min-width: $screen-sm-min) {
+        @media screen and (min-width: $navbar-breakpoint-md) {
           a {
             &:hover,
             &:active,
@@ -366,14 +367,14 @@
         }
       }
 
-      @media screen and (min-width: $screen-sm-min) {
+      @media screen and (min-width: $navbar-breakpoint-md) {
         padding: 0 15px;
         text-align: center;
         border-top: 2px solid $khaki;
       }
 
       li {
-        @media screen and (min-width: $screen-sm-min) {
+        @media screen and (min-width: $navbar-breakpoint-md) {
           display: inline-block;
           padding: $b-space $b-space-m;
         }
@@ -385,13 +386,13 @@
         &:hover,
         &:active,
         &:focus {
-          @media screen and (min-width: $screen-sm-min) {
+          @media screen and (min-width: $navbar-breakpoint-md) {
             border-bottom: 2px solid $black;
             text-decoration: none;
           }
         }
 
-        @media screen and (min-width: $screen-sm-min) {
+        @media screen and (min-width: $navbar-breakpoint-md) {
           padding: 3px 0 1px;
           border-bottom: 2px solid transparent;
           color: $black;
@@ -424,7 +425,7 @@
     }
 
     .dashboard-nav {
-      @media screen and (max-width: $screen-sm-min) {
+      @media screen and (max-width: $screen-md-min) {
         padding: 0;
 
         a {
@@ -469,7 +470,7 @@
       display: none;
     }
 
-    @media screen and (min-width: $screen-sm-min) {
+    @media screen and (min-width: $navbar-breakpoint-md) {
       display: block;
     }
   }
@@ -489,7 +490,7 @@
             color: $terracotta;
           }
 
-          @media screen and (min-width: $screen-sm-min) {
+          @media screen and (min-width: $navbar-breakpoint-md) {
             &:hover,
             &:focus {
               color: $terracotta;
@@ -498,7 +499,7 @@
         }
       }
 
-      @media screen and (min-width: $screen-sm-min) {
+      @media screen and (min-width: $navbar-breakpoint-md) {
         position: absolute;
         right: 35px;
         text-transform: uppercase;
@@ -512,7 +513,7 @@
             }
           }
 
-          @media screen and (min-width: $screen-sm-min) {
+          @media screen and (min-width: $navbar-breakpoint-md) {
             color: $c-absolute;
             display: inline-block;
             float: left;
@@ -522,7 +523,7 @@
         }
 
         > li > a {
-          @media screen and (min-width: $screen-sm-min) {
+          @media screen and (min-width: $navbar-breakpoint-md) {
             padding: 0;
           }
         }
@@ -535,7 +536,7 @@
       .hello-text {
         display: none;
 
-        @media screen and (min-width: $screen-sm-min) {
+        @media screen and (min-width: $navbar-breakpoint-md) {
           display: inline-block;
         }
       }
@@ -553,7 +554,7 @@
           color: darken($c-absolute, 15%);
         }
 
-        @media screen and (min-width: $screen-sm-min) {
+        @media screen and (min-width: $navbar-breakpoint-md) {
           padding: 0;
         }
       }
@@ -567,7 +568,7 @@
       color: $c-absolute;
 
       &:hover {
-        @media screen and (min-width: $screen-sm-min) {
+        @media screen and (min-width: $navbar-breakpoint-md) {
           color: $c-balanced-primary;
         }
       }
@@ -577,14 +578,14 @@
       [data-page='math'] & {
         color: $c-positive-secondary;
 
-        @media screen and (min-width: $screen-sm-min) {
+        @media screen and (min-width: $navbar-breakpoint-md) {
           color: $c-absolute;
         }
 
         &:hover {
           color: $c-positive-secondary;
 
-          @media screen and (min-width: $screen-sm-min) {
+          @media screen and (min-width: $navbar-breakpoint-md) {
             color: $c-balanced-primary;
           }
         }
@@ -598,7 +599,7 @@
     position: relative;
     padding: 0 10px;
 
-    @media screen and (min-width: $screen-sm-min) {
+    @media screen and (min-width: $navbar-breakpoint-md) {
       padding: 35px 0 0;
     }
 
@@ -616,7 +617,7 @@
         background: $c-absolute asset-url('icon-search-gray.png') no-repeat 2% 50%;
         background-size: 15px 15px;
 
-        @media screen and (min-width: $screen-sm-min) {
+        @media screen and (min-width: $navbar-breakpoint-md) {
           background: $c-absolute asset-url('icon-search-gray.png') no-repeat 5% 50%;
           background-size: 15px 15px;
         }
@@ -628,7 +629,7 @@
         background: transparent asset-url('icon-search-blue.png') no-repeat 50% 50%;
         background-size: 15px 15px;
 
-        @media screen and (min-width: $screen-sm-min) {
+        @media screen and (min-width: $navbar-breakpoint-md) {
           background: transparent asset-url("icon-search-blue.png") no-repeat 50% 50%;
           background-size: 15px 15px;
         }
@@ -637,7 +638,7 @@
           background-color: $c-absolute;
           background-position: 2% 50%;
 
-          @media screen and (min-width: $screen-sm-min) {
+          @media screen and (min-width: $navbar-breakpoint-md) {
             background: $c-absolute asset-url('icon-search-gray.png') no-repeat 5% 50%;
             background-size: 15px 15px;
           }
@@ -657,7 +658,7 @@
       background-color: transparent;
     }
 
-    @media screen and (min-width: $screen-sm-min) {
+    @media screen and (min-width: $navbar-breakpoint-md) {
       display: none;
     }
 
@@ -692,4 +693,46 @@
     }
   }
 
+}
+
+
+@media (max-width: $screen-md-min) {
+  .navbar-header {
+    float: none;
+  }
+
+  .navbar-left,
+  .navbar-right {
+    float: none !important;
+  }
+
+  .navbar-toggle {
+    display: block !important;
+  }
+
+  .navbar-collapse.collapse {
+    display: none !important;
+  }
+
+  .navbar-nav {
+    float: none;
+  }
+
+  .navbar-nav>li {
+    float: none;
+  }
+
+  .collapse.in {
+    display: block !important;
+  }
+
+  .navbar-nav .open .dropdown-menu {
+    background-color: transparent;
+    border: 0;
+    box-shadow: none;
+    float: none;
+    margin-top: 0;
+    position: static;
+    width: auto;
+  }
 }
