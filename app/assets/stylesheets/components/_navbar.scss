@@ -206,9 +206,12 @@
             // color: $c-absolute;
           }
 
-          &:hover,
-          &:focus, {
+          &:hover {
             color: $terracotta;
+          }
+
+          &:focus {
+            color: $black;
           }
         }
       }
