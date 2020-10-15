@@ -122,11 +122,14 @@
           background-color: $beige;
           border-bottom: 1px solid darken($beige, 15%);
           color: $terracotta;
+          font-size: 14px;
+          font-weight: bold;
 
           @media screen and (min-width: $navbar-breakpoint-md) {
+            background: transparent;
             border: 0;
             color: $terracotta;
-            background: transparent;
+            font-size: 12px;
           }
 
           @media screen and (min-width: $navbar-breakpoint-md) {
@@ -178,7 +181,7 @@
         border-bottom: 1px solid darken($beige, 15%);
         color: $black;
         font-family: "CircularStd-bold";
-        font-size: 12px;
+        font-size: 14px;
         font-weight: bold;
         font-stretch: normal;
         font-style: normal;
@@ -192,6 +195,7 @@
 
         @media screen and (min-width: $navbar-breakpoint-md) {
           border-bottom: 0;
+          font-size: 12px;
           padding: 47px 20px 16px;
 
           [data-page='english'] &,
@@ -275,7 +279,7 @@
         display: block;
         position: relative;
         padding: 10px 15px;
-        font-size: 12px;
+        font-size: 14px;
         font-family: "CircularStd-bold";
         letter-spacing: 0.1px;
 
@@ -432,6 +436,8 @@
           background-color: darken($beige, 5%);
           border-bottom: 1px solid $beige;
           color: $black;
+          font-size: 14px;
+          font-weight: bold;
           padding: 10px 15px 10px 25px;
 
           &:hover,
