@@ -103,6 +103,10 @@
     @media screen and (max-width: $screen-sm-min) {
       text-align: center;
     }
+
+    &.copyright-content {
+      margin-top: 0;
+    }
   }
   .footer__content {
     @media screen and (min-width: $screen-sm-min) {

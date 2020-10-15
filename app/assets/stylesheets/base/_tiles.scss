@@ -31,6 +31,29 @@ section {
     padding: 84px 0;
   }
 
+  &.subnav {
+    padding: 20px 0 5px;
+
+    &.purple-bg {
+
+      .nav-tabs > li a {
+        opacity: 0.8;
+      }
+
+    }
+
+    &.blue-bg {
+
+      .nav-tabs > li a:hover,
+      .nav-tabs > li a:focus,
+      .nav-tabs > li a.active {
+        border-bottom: 4px solid $white;
+        color: $white;
+      }
+      
+    }
+  }
+
   h1,
   h2,
   h3,

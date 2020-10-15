@@ -1,4 +1,18 @@
 $(document).ready(function() {
+  var nav = $('.navbar-primary');
+
+  if ($(window).width() > 992) {
+    nav.find('.navbar-nav > li > a').removeAttr('data-toggle');
+  }
+
+  $( window ).resize(function() {
+    if ($(window).width() < 993) {
+      nav.find('.navbar-nav > li > a').attr('data-toggle', 'dropdown');
+    }
+    else {
+      nav.find('.navbar-nav > li > a').removeAttr('data-toggle');
+    }
+  });
 
   var pageSelection = $('#pageSelection');
   var dropdownLinks = pageSelection.find('.dropdown-menu a');
