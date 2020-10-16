@@ -87,7 +87,16 @@
       text-transform: none;
 
       &:hover {
-        color: $terracotta;
+        border-bottom: 1px solid $black;
+        color: $black;
+        text-decoration: none;
+      }
+
+      &:active,
+      &:focus {
+        color: $black;
+        outline: none;
+        text-decoration: none;
       }
     }
 
@@ -102,10 +111,6 @@
 
     @media screen and (max-width: $screen-sm-min) {
       text-align: center;
-    }
-
-    &.copyright-content {
-      margin-top: 0;
     }
   }
   .footer__content {
