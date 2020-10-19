@@ -130,7 +130,7 @@
             background: transparent;
             border: 0;
             color: $terracotta;
-            font-size: 12px;
+            font-size: 16px;
           }
 
           @media screen and (min-width: $navbar-breakpoint-md) {
@@ -196,8 +196,8 @@
 
         @media screen and (min-width: $navbar-breakpoint-md) {
           border-bottom: 0;
-          font-size: 12px;
-          padding: 47px 20px 16px;
+          font-size: 16px;
+          padding: 45px 20px 16px;
 
           [data-page='english'] &,
           [data-page='history'] &,
@@ -529,6 +529,12 @@
             float: left;
             font-size: 0.75em;
             padding: 15px 10px;
+          }
+
+          a {
+            @media screen and (min-width: $navbar-breakpoint-md) {
+              font-size: 12px;
+            }
           }
         }
 
