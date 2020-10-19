@@ -1,4 +1,7 @@
   <% if spree_current_user %>
+    <li>
+      <%= active_link_to "My Dashboard", main_app.account_products_path, class: 'link-dashboard' %>
+    </li>
 
     <% if spree_current_user.delegate_user_id? && !ghost_login? %>
       <li>
