@@ -7,7 +7,9 @@ $(document).ready(function() {
 
   $( window ).resize(function() {
     if ($(window).width() < 993) {
-      nav.find('.navbar-nav > li > a').attr('data-toggle', 'dropdown');
+      if (!nav.find('.navbar-nav > li').hasClass('not-dropdown')) {
+        nav.find('.navbar-nav > li > a').attr('data-toggle', 'dropdown');
+      };
     }
     else {
       nav.find('.navbar-nav > li > a').removeAttr('data-toggle');

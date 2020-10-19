@@ -1,7 +1,4 @@
   <% if spree_current_user %>
-    <li>
-      <%= active_link_to "My Dashboard", main_app.account_products_path, class: 'link-dashboard' %>
-    </li>
 
     <% if spree_current_user.delegate_user_id? && !ghost_login? %>
       <li>
@@ -17,14 +14,14 @@
 
   <% if spree_current_user %>
     <li>
-      <%= active_link_to "Logout", '/resources/logout' %>
+      <%= active_link_to "Logout", '/resources/logout', class: 'not-dropdown' %>
     </li>
   <% else %>
     <li>
-      <%= active_link_to "Login", '/resources/login' %>
+      <%= active_link_to "Login", '/resources/login', class: 'not-dropdown' %>
     </li>
     <li>
-      <%= active_link_to "Sign up", '/resources/signup' %>
+      <%= active_link_to "Sign up", '/resources/signup', class: 'not-dropdown' %>
     </li>
   <% end %>
 

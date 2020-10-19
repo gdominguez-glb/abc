@@ -145,7 +145,9 @@ $(document).ready(function() {
 
   $( window ).resize(function() {
     if ($(window).width() < 993) {
-      nav.find('.navbar-nav > li > a.dropdown-toggle').attr('data-toggle', 'dropdown');
+      if (!nav.find('.navbar-nav > li').hasClass('not-dropdown')) {
+        nav.find('.navbar-nav > li > a.dropdown-toggle').attr('data-toggle', 'dropdown');
+      };
     } else {
       nav.find('.navbar-nav > li > a').removeAttr('data-toggle');
       if($( ".navbar-nav > li" ).hasClass( "open" )) {
