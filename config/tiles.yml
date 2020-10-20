@@ -774,11 +774,7 @@
       - light-blue
       - purple
       - grey
-      - slate
-      - khaki
-      - beige
       - terracotta
-      - olive
       - black
   - :name: button_1_target
     :label: Button 1 Target
@@ -805,11 +801,7 @@
       - light-blue
       - purple
       - grey
-      - slate
-      - khaki
-      - beige
       - terracotta
-      - olive
       - black
   - :name: button_2_target
     :label: Button 2 Target
@@ -940,11 +932,7 @@
       - light-blue
       - purple
       - grey
-      - slate
-      - khaki
-      - beige
       - terracotta
-      - olive
       - black
   - :name: button_1_target
     :label: Button 1 Target
@@ -971,11 +959,7 @@
       - light-blue
       - purple
       - grey
-      - slate
-      - khaki
-      - beige
       - terracotta
-      - olive
       - black
   - :name: button_2_target
     :label: Button 2 Target
@@ -1716,11 +1700,7 @@
       - light-blue
       - purple
       - grey
-      - slate
-      - khaki
-      - beige
       - terracotta
-      - olive
       - black
   - :name: button_target_1
     :label: Button Target 1
@@ -1753,11 +1733,7 @@
       - light-blue
       - purple
       - grey
-      - slate
-      - khaki
-      - beige
       - terracotta
-      - olive
       - black
   - :name: button_target_2
     :label: Button Target 2
@@ -1814,11 +1790,7 @@
       - light-blue
       - purple
       - grey
-      - slate
-      - khaki
-      - beige
       - terracotta
-      - olive
       - black
   - :name: button_target
     :label: Button Target
@@ -1891,11 +1863,7 @@
       - light-blue
       - purple
       - grey
-      - slate
-      - khaki
-      - beige
       - terracotta
-      - olive
       - black
   - :name: button_link
     :label: Button Link
@@ -1968,11 +1936,7 @@
       - light-blue
       - purple
       - grey
-      - slate
-      - khaki
-      - beige
       - terracotta
-      - olive
       - black
   - :name: button_1_target
     :label: Button 1 Target
@@ -1999,11 +1963,7 @@
       - light-blue
       - purple
       - grey
-      - slate
-      - khaki
-      - beige
       - terracotta
-      - olive
       - black
   - :name: button_2_target
     :label: Button 2 Target
@@ -2076,11 +2036,7 @@
       - light-blue
       - purple
       - grey
-      - slate
-      - khaki
-      - beige
       - terracotta
-      - olive
       - black
   - :name: button_target_1
     :label: Button Target 1
@@ -2113,11 +2069,7 @@
       - light-blue
       - purple
       - grey
-      - slate
-      - khaki
-      - beige
       - terracotta
-      - olive
       - black
   - :name: button_target_2
     :label: Button Target 2
@@ -2150,11 +2102,7 @@
       - light-blue
       - purple
       - grey
-      - slate
-      - khaki
-      - beige
       - terracotta
-      - olive
       - black
   - :name: button_target_3
     :label: Button Target 3
