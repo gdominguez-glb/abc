@@ -37,6 +37,7 @@
     }
 
     .footer-link {
+      border-bottom: 1px solid $white;
       font-size: 10px;
       font-weight: lighter;
       font-stretch: normal;
@@ -44,6 +45,11 @@
       line-height: 2.4;
       letter-spacing: 1.25px;
       color: $black;
+
+      &:hover {
+        border-bottom: 1px solid $black;
+        text-decoration: none;
+      }
     }
   }
 
