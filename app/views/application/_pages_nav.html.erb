@@ -29,7 +29,7 @@
           <% end %>
 
           <% if @group_page && blog = @group_page.blogs.displayable.first %>
-            <%= active_link_to 'Blog', curriculum_blog_path(page_slug: @group_page.slug, slug: blog.slug), wrap_tag: :li, active: /#{@group_page.slug}\/blog\/#{blog.slug}/ %>
+            <%= active_link_to 'Blog', generate_blog_url(@group_page.slug, blog.slug), wrap_tag: :li, active: /#{@group_page.slug}\/blog\/#{blog.slug}/ %>
 
             <% # we need to check if this is totally ok, maybe, we need to add a new section for create extra subnav links %>
             <% if (bl = @group_page.blogs.displayable.last) != blog && @group_page.slug == "math" %>
