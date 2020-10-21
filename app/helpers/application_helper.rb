@@ -1,4 +1,5 @@
 module ApplicationHelper
+
   def store_active_class
     return '' if request.fullpath !~ /^\/resources/
     return '' if request.fullpath == '/resources/login'
@@ -54,5 +55,17 @@ module ApplicationHelper
     end
 
     var
+  end
+
+  def generate_blog_url page_slug, blog_slug
+    if page_slug == 'science' || blog_slug == 'witwisdom'
+      "#{HUBSPOT_URL}/#{blog_slug}"
+    else
+      "#{HUBSPOT_URL}/#{page_slug}/blog/#{blog_slug}"
+    end
+  end
+
+  def generate_news_url
+    "#{HUBSPOT_URL}/aha/tag/news-release"
   end
 end
