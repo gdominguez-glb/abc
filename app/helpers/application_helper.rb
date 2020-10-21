@@ -1,5 +1,4 @@
 module ApplicationHelper
-  HUBSPOT_URL = 'https://gm.greatminds.org'.freeze
 
   def store_active_class
     return '' if request.fullpath !~ /^\/resources/
