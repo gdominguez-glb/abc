@@ -16,6 +16,7 @@ $(document).ready(function() {
           $(element).find('a').removeAttr('data-toggle');
         }
       });
+      nav.find('.dropdown-menu > li > a').removeAttr('data-toggle');
     }
     else {
       nav.find('.navbar-nav > li > a').removeAttr('data-toggle');
