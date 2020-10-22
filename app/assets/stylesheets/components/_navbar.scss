@@ -390,7 +390,7 @@
       li {
         @media screen and (min-width: $navbar-breakpoint-md) {
           display: inline-block;
-          padding: $b-space $b-space-m;
+          padding: 3px 15px;
         }
       }
 
@@ -407,12 +407,13 @@
         }
 
         @media screen and (min-width: $navbar-breakpoint-md) {
-          padding: 3px 0 1px;
           border-bottom: 2px solid transparent;
           color: $black;
-          font-size: 12px;
+          font-size: 16px;
           font-weight: normal;
           letter-spacing: normal;
+          line-height: 1;
+          padding: 2px 0 2px;
           text-transform: capitalize;
 
           &.active {
