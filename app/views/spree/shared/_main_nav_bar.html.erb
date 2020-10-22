@@ -16,15 +16,15 @@
   <% end %>
 
   <% if spree_current_user %>
-    <li>
-      <%= active_link_to "Logout", '/resources/logout', class: 'not-dropdown' %>
+    <li class='not-dropdown'>
+      <%= active_link_to "Logout", '/resources/logout' %>
     </li>
   <% else %>
-    <li>
-      <%= active_link_to "Login", '/resources/login', class: 'not-dropdown' %>
+    <li class='not-dropdown'>
+      <%= active_link_to "Login", '/resources/login'%>
     </li>
-    <li>
-      <%= active_link_to "Sign up", '/resources/signup', class: 'not-dropdown' %>
+    <li class='not-dropdown'>
+      <%= active_link_to "Sign up", '/resources/signup' %>
     </li>
   <% end %>
 
