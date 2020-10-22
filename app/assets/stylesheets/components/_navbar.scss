@@ -381,6 +381,12 @@
         border-top: 6px solid $khaki;
       }
 
+      ul {
+        @media screen and (min-width: $navbar-breakpoint-md) {
+          height: 28px;
+        }
+      }
+
       li {
         @media screen and (min-width: $navbar-breakpoint-md) {
           display: inline-block;
