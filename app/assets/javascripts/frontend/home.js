@@ -9,7 +9,7 @@ $(document).ready(function() {
     if ($(window).width() < 993) {
       $.each(nav.find('.navbar-nav > li'), function(index, element){
         if (!$(element).hasClass('not-dropdown')) {
-          $(this).find('a').attr('data-toggle', 'dropdown');
+          $(element).find('a').attr('data-toggle', 'dropdown');
         }
         var my_dashboard = $(element).find('a').html();
         if(my_dashboard == 'My Dashboard') {
