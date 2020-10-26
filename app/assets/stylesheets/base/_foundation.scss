@@ -20,7 +20,7 @@ body {
   color: $c-positive-secondary;
   background: $base-bg-color;
 
-  @media screen and (min-width: $screen-sm-min) {
+  @media screen and (min-width: $navbar-breakpoint-md) {
     padding: 0;
   }
 
