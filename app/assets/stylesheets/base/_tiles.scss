@@ -50,7 +50,7 @@ section {
         border-bottom: 4px solid $white;
         color: $white;
       }
-      
+
     }
   }
 
@@ -396,26 +396,14 @@ section {
 //   Colors
 // -------------------------------------
 
-.blue-bg {
-  background: $c-positive-secondary;
-  color: $c-absolute;
-
-  &.navy-blue-text {
-    color: $c-absolute;
-  }
-
-  .navy-blue-text {
-    color: $c-absolute;
-  }
-}
-
-.cream-bg {
-  color: $c-positive-secondary;
-  background: $c-firm-subdue;
+.white-bg {
+  color: $black;
+  background: $white;
 
   &.image-bg {
     color: $c-absolute;
   }
+
 }
 
 .green-bg {
@@ -428,7 +416,7 @@ section {
 }
 
 .light-blue-bg {
-  color: $c-positive-secondary;
+  color: $black;
   background: $c-positive-primary;
 
   &.image-bg {
@@ -438,7 +426,7 @@ section {
 
 .orange-bg {
   background: $c-energized-primary;
-  color: $white;
+  color: $black;
 
   &.image-bg {
     color: $c-absolute;
@@ -460,15 +448,6 @@ section {
   &.image-bg {
     color: $c-absolute;
   }
-}
-
-.coral-bg {
-  color: $c-absolute;
-  background: $c-energized-secondary;
-}
-
-.grey-bg {
-  background: $background-grey;
 }
 
 .slate-bg {
