@@ -324,17 +324,17 @@
       :label: Background Color
       :input_type: select
       :input_options:
-        - White
-        - Green
-        - Orange
-        - Light
-        - Purple
-        - Slate
-        - Khaki
-        - Beige
-        - Terracotta
-        - Black
-        - Olive
+        - white
+        - green
+        - orange
+        - light-blue
+        - purple
+        - slate
+        - khaki
+        - beige
+        - terracotta
+        - black
+        - olive
       :label: Header 1
       :input_type: text
     - :name: testimonial_image_url_1
@@ -687,17 +687,17 @@
     :label: Background Color
     :input_type: select
     :input_options:
-      - White
-      - Green
-      - Orange
-      - Light
-      - Purple
-      - Slate
-      - Khaki
-      - Beige
-      - Terracotta
-      - Black
-      - Olive
+      - white
+      - green
+      - orange
+      - light-blue
+      - purple
+      - slate
+      - khaki
+      - beige
+      - terracotta
+      - black
+      - olive
 - :name: Loop Background Video
   :fields:
   - :name: wistia_video_id
@@ -732,17 +732,17 @@
     :label: Background Color
     :input_type: select
     :input_options:
-      - White
-      - Green
-      - Orange
-      - Light
-      - Purple
-      - Slate
-      - Khaki
-      - Beige
-      - Terracotta
-      - Black
-      - Olive
+      - white
+      - green
+      - orange
+      - light-blue
+      - purple
+      - slate
+      - khaki
+      - beige
+      - terracotta
+      - black
+      - olive
   - :name: button_1_title
     :label: Button 1 Title
     :input_type: text
@@ -825,17 +825,17 @@
     :label: Background Color
     :input_type: select
     :input_options:
-      - White
-      - Green
-      - Orange
-      - Light
-      - Purple
-      - Slate
-      - Khaki
-      - Beige
-      - Terracotta
-      - Black
-      - Olive
+      - white
+      - green
+      - orange
+      - light-blue
+      - purple
+      - slate
+      - khaki
+      - beige
+      - terracotta
+      - black
+      - olive
   - :name: button_title
     :label: Button Title
     :input_type: text
@@ -882,17 +882,17 @@
     :label: Background Color
     :input_type: select
     :input_options:
-      - White
-      - Green
-      - Orange
-      - Light
-      - Purple
-      - Slate
-      - Khaki
-      - Beige
-      - Terracotta
-      - Black
-      - Olive
+      - white
+      - green
+      - orange
+      - light-blue
+      - purple
+      - slate
+      - khaki
+      - beige
+      - terracotta
+      - black
+      - olive
   - :name: button_1_title
     :label: Button 1 Title
     :input_type: text
@@ -975,17 +975,17 @@
     :label: Background Color
     :input_type: select
     :input_options:
-      - White
-      - Green
-      - Orange
-      - Light
-      - Purple
-      - Slate
-      - Khaki
-      - Beige
-      - Terracotta
-      - Black
-      - Olive
+      - white
+      - green
+      - orange
+      - light-blue
+      - purple
+      - slate
+      - khaki
+      - beige
+      - terracotta
+      - black
+      - olive
   - :name: button_title
     :label: Button Title
     :input_type: text
@@ -1010,17 +1010,17 @@
     :label: Background Color
     :input_type: select
     :input_options:
-      - White
-      - Green
-      - Orange
-      - Light
-      - Purple
-      - Slate
-      - Khaki
-      - Beige
-      - Terracotta
-      - Black
-      - Olive
+      - white
+      - green
+      - orange
+      - light-blue
+      - purple
+      - slate
+      - khaki
+      - beige
+      - terracotta
+      - black
+      - olive
   - :name: sub_nav_url_2
     :label: SubNav Url 2
     :input_type: text
@@ -1042,17 +1042,17 @@
     :label: Background Color
     :input_type: select
     :input_options:
-      - White
-      - Green
-      - Orange
-      - Light
-      - Purple
-      - Slate
-      - Khaki
-      - Beige
-      - Terracotta
-      - Black
-      - Olive
+      - white
+      - green
+      - orange
+      - light-blue
+      - purple
+      - slate
+      - khaki
+      - beige
+      - terracotta
+      - black
+      - olive
   - :name: button_title
     :label: Button Title
     :input_type: text
@@ -1093,17 +1093,17 @@
     :label: Background Color
     :input_type: select
     :input_options:
-      - White
-      - Green
-      - Orange
-      - Light
-      - Purple
-      - Slate
-      - Khaki
-      - Beige
-      - Terracotta
-      - Black
-      - Olive
+      - white
+      - green
+      - orange
+      - light-blue
+      - purple
+      - slate
+      - khaki
+      - beige
+      - terracotta
+      - black
+      - olive
   - :name: button_title
     :label: Button Title
     :input_type: text
@@ -1144,17 +1144,17 @@
     :label: Background Color
     :input_type: select
     :input_options:
-      - White
-      - Green
-      - Orange
-      - Light
-      - Purple
-      - Slate
-      - Khaki
-      - Beige
-      - Terracotta
-      - Black
-      - Olive
+      - white
+      - green
+      - orange
+      - light-blue
+      - purple
+      - slate
+      - khaki
+      - beige
+      - terracotta
+      - black
+      - olive
   - :name: button_title
     :label: Button Title
     :input_type: text
@@ -1195,17 +1195,17 @@
     :label: Background Color
     :input_type: select
     :input_options:
-      - White
-      - Green
-      - Orange
-      - Light
-      - Purple
-      - Slate
-      - Khaki
-      - Beige
-      - Terracotta
-      - Black
-      - Olive
+      - white
+      - green
+      - orange
+      - light-blue
+      - purple
+      - slate
+      - khaki
+      - beige
+      - terracotta
+      - black
+      - olive
   - :name: button_title
     :label: Button Title
     :input_type: text
@@ -1246,17 +1246,17 @@
     :label: Background Color
     :input_type: select
     :input_options:
-      - White
-      - Green
-      - Orange
-      - Light
-      - Purple
-      - Slate
-      - Khaki
-      - Beige
-      - Terracotta
-      - Black
-      - Olive
+      - white
+      - green
+      - orange
+      - light-blue
+      - purple
+      - slate
+      - khaki
+      - beige
+      - terracotta
+      - black
+      - olive
   - :name: button_title
     :label: Button Title
     :input_type: text
@@ -1297,17 +1297,17 @@
     :label: Background Color
     :input_type: select
     :input_options:
-      - White
-      - Green
-      - Orange
-      - Light
-      - Purple
-      - Slate
-      - Khaki
-      - Beige
-      - Terracotta
-      - Black
-      - Olive
+      - white
+      - green
+      - orange
+      - light-blue
+      - purple
+      - slate
+      - khaki
+      - beige
+      - terracotta
+      - black
+      - olive
   - :name: button_title
     :label: Button Title
     :input_type: text
@@ -1348,17 +1348,17 @@
     :label: Background Color
     :input_type: select
     :input_options:
-      - White
-      - Green
-      - Orange
-      - Light
-      - Purple
-      - Slate
-      - Khaki
-      - Beige
-      - Terracotta
-      - Black
-      - Olive
+      - white
+      - green
+      - orange
+      - light-blue
+      - purple
+      - slate
+      - khaki
+      - beige
+      - terracotta
+      - black
+      - olive
   - :name: button_title
     :label: Button Title
     :input_type: text
@@ -1399,17 +1399,17 @@
     :label: Background Color
     :input_type: select
     :input_options:
-      - White
-      - Green
-      - Orange
-      - Light
-      - Purple
-      - Slate
-      - Khaki
-      - Beige
-      - Terracotta
-      - Black
-      - Olive
+      - white
+      - green
+      - orange
+      - light-blue
+      - purple
+      - slate
+      - khaki
+      - beige
+      - terracotta
+      - black
+      - olive
   - :name: button_title
     :label: Button Title
     :input_type: text
@@ -1557,17 +1557,17 @@
     :label: Background Color
     :input_type: select
     :input_options:
-      - White
-      - Green
-      - Orange
-      - Light
-      - Purple
-      - Slate
-      - Khaki
-      - Beige
-      - Terracotta
-      - Black
-      - Olive
+      - white
+      - green
+      - orange
+      - light-blue
+      - purple
+      - slate
+      - khaki
+      - beige
+      - terracotta
+      - black
+      - olive
   - :name: button_title
     :label: Button Title
     :input_type: text
@@ -1596,17 +1596,17 @@
     :label: Background Color 1
     :input_type: select
     :input_options:
-      - White
-      - Green
-      - Orange
-      - Light
-      - Purple
-      - Slate
-      - Khaki
-      - Beige
-      - Terracotta
-      - Black
-      - Olive
+      - white
+      - green
+      - orange
+      - light-blue
+      - purple
+      - slate
+      - khaki
+      - beige
+      - terracotta
+      - black
+      - olive
   - :name: title_1
     :label: Title 1
     :input_type: text
@@ -1682,17 +1682,17 @@
     :label: Background Color
     :input_type: select
     :input_options:
-      - White
-      - Green
-      - Orange
-      - Light
-      - Purple
-      - Slate
-      - Khaki
-      - Beige
-      - Terracotta
-      - Black
-      - Olive
+      - white
+      - green
+      - orange
+      - light-blue
+      - purple
+      - slate
+      - khaki
+      - beige
+      - terracotta
+      - black
+      - olive
   - :name: title
     :label: Title 1
     :input_type: text
@@ -1757,17 +1757,17 @@
     :label: Background Color
     :input_type: select
     :input_options:
-      - White
-      - Green
-      - Orange
-      - Light
-      - Purple
-      - Slate
-      - Khaki
-      - Beige
-      - Terracotta
-      - Black
-      - Olive
+      - white
+      - green
+      - orange
+      - light-blue
+      - purple
+      - slate
+      - khaki
+      - beige
+      - terracotta
+      - black
+      - olive
   - :name: body_text
     :label: Body Text
     :input_type: text_area
@@ -1826,17 +1826,17 @@
     :label: Background Color
     :input_type: select
     :input_options:
-      - White
-      - Green
-      - Orange
-      - Light
-      - Purple
-      - Slate
-      - Khaki
-      - Beige
-      - Terracotta
-      - Black
-      - Olive
+      - white
+      - green
+      - orange
+      - light-blue
+      - purple
+      - slate
+      - khaki
+      - beige
+      - terracotta
+      - black
+      - olive
   - :name: button_1_title
     :label: Button 1 Title
     :input_type: text
@@ -1916,17 +1916,17 @@
     :label: Background Color
     :input_type: select
     :input_options:
-      - White
-      - Green
-      - Orange
-      - Light
-      - Purple
-      - Slate
-      - Khaki
-      - Beige
-      - Terracotta
-      - Black
-      - Olive
+      - white
+      - green
+      - orange
+      - light-blue
+      - purple
+      - slate
+      - khaki
+      - beige
+      - terracotta
+      - black
+      - olive
   - :name: title_1
     :label: Title 1
     :input_type: text
@@ -2032,17 +2032,17 @@
     :label: Background Color
     :input_type: select
     :input_options:
-      - White
-      - Green
-      - Orange
-      - Light
-      - Purple
-      - Slate
-      - Khaki
-      - Beige
-      - Terracotta
-      - Black
-      - Olive
+      - white
+      - green
+      - orange
+      - light-blue
+      - purple
+      - slate
+      - khaki
+      - beige
+      - terracotta
+      - black
+      - olive
   - :name: facebook_header_1
     :label: Header 1
     :input_type: text
