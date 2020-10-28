@@ -1589,9 +1589,6 @@
   - :name: button_type
 - :name: 2-Column Text
   :fields:
-  - :name: sub_head
-    :label: Sub Heading
-    :input_type: text
   - :name: background_color_1
     :label: Background Color 1
     :input_type: select
@@ -1675,9 +1672,6 @@
       - Open in New Tab
 - :name: 50/50 Partial Image Right
   :fields:
-  - :name: sub_head
-    :label: Sub Heading
-    :input_type: text
   - :name: background_color
     :label: Background Color
     :input_type: select
@@ -1909,9 +1903,6 @@
     :tag_no: 2
 - :name: 3-Column Text
   :fields:
-  - :name: sub_head
-    :label: Sub Heading
-    :input_type: text
   - :name: background_color
     :label: Background Color
     :input_type: select
