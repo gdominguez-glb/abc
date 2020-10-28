@@ -1076,12 +1076,6 @@ marketing_templates:
       <section id="tile_<%= position %>" class="col_container row row-content-2col <%= background_color_1 %>-bg">
         <div class="clearfix">
           <div class="col_container__content col-sm-6">
-            <div class="sub-head">
-              <div class="sub-head__container clearfix">
-                <div class="sub-head__rectangle"> </div>
-                <h4 class="sub-head__text"><%= sub_head %></h4>
-              </div>
-            </div>
             <h6><%= title_1 %></h6>
             <p><%= body_text_1 %></p>
             <% if button_title_1.present? && button_link_1.present? %>
@@ -1114,12 +1108,6 @@ marketing_templates:
       <section id="tile_<%= position %>" class="col_container row row-content-2col <%= background_color %>-bg">
         <div class="clearfix">
           <div class="col_container__content col-sm-6">
-            <div class="sub-head">
-              <div class="sub-head__container clearfix">
-                <div class="sub-head__rectangle"> </div>
-                <h4 class="sub-head__text"><%= sub_head %></h4>
-              </div>
-            </div>
             <h6><%= title %></h6>
             <p><%= body_text %></p>
             <% if button_title.present? && button_link.present? %>
@@ -1216,12 +1204,6 @@ marketing_templates:
       <section id="tile_<%= position %>" class="col_container row row-content-3col <%= background_color %>-bg">
         <div class="clearfix tile-content">
           <div class="col_container__content col-sm-4">
-            <div class="sub-head">
-              <div class="sub-head__container clearfix">
-                <div class="sub-head__rectangle"> </div>
-                <h4 class="sub-head__text"><%= sub_head %></h4>
-              </div>
-            </div>
             <h6><%= title_1 %></h6>
             <p><%= body_text_1 %></p>
             <% if button_title_1.present? && button_link_1.present? %>
