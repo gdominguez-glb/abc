@@ -103,13 +103,9 @@
     :input_options:
       - white
       - green
-      - blue
-      - cream
       - orange
-      - dark-orange
       - light-blue
       - purple
-      - grey
       - slate
       - khaki
       - beige
@@ -144,13 +140,9 @@
     :input_options:
       - white
       - green
-      - blue
-      - cream
       - orange
-      - dark-orange
       - light-blue
       - purple
-      - grey
       - slate
       - khaki
       - beige
@@ -185,13 +177,9 @@
     :input_options:
       - white
       - green
-      - blue
-      - cream
       - orange
-      - dark-orange
       - light-blue
       - purple
-      - grey
       - slate
       - khaki
       - beige
@@ -226,13 +214,9 @@
     :input_options:
       - white
       - green
-      - blue
-      - cream
       - orange
-      - dark-orange
       - light-blue
       - purple
-      - grey
       - slate
       - khaki
       - beige
@@ -267,13 +251,9 @@
     :input_options:
       - white
       - green
-      - blue
-      - cream
       - orange
-      - dark-orange
       - light-blue
       - purple
-      - grey
       - slate
       - khaki
       - beige
@@ -755,13 +735,9 @@
     :input_options:
       - white
       - green
-      - blue
-      - cream
       - orange
-      - dark-orange
       - light-blue
       - purple
-      - grey
       - terracotta
       - black
   - :name: button_1_target
@@ -782,13 +758,9 @@
     :input_options:
       - white
       - green
-      - blue
-      - cream
       - orange
-      - dark-orange
       - light-blue
       - purple
-      - grey
       - terracotta
       - black
   - :name: button_2_target
@@ -905,13 +877,9 @@
     :input_options:
       - white
       - green
-      - blue
-      - cream
       - orange
-      - dark-orange
       - light-blue
       - purple
-      - grey
       - terracotta
       - black
   - :name: button_1_target
@@ -932,13 +900,9 @@
     :input_options:
       - white
       - green
-      - blue
-      - cream
       - orange
-      - dark-orange
       - light-blue
       - purple
-      - grey
       - terracotta
       - black
   - :name: button_2_target
@@ -1622,13 +1586,9 @@
     :input_options:
       - white
       - green
-      - blue
-      - cream
       - orange
-      - dark-orange
       - light-blue
       - purple
-      - grey
       - terracotta
       - black
   - :name: button_target_1
@@ -1655,13 +1615,9 @@
     :input_options:
       - white
       - green
-      - blue
-      - cream
       - orange
-      - dark-orange
       - light-blue
       - purple
-      - grey
       - terracotta
       - black
   - :name: button_target_2
@@ -1705,13 +1661,9 @@
     :input_options:
       - white
       - green
-      - blue
-      - cream
       - orange
-      - dark-orange
       - light-blue
       - purple
-      - grey
       - terracotta
       - black
   - :name: button_target
@@ -1774,13 +1726,9 @@
     :input_options:
       - white
       - green
-      - blue
-      - cream
       - orange
-      - dark-orange
       - light-blue
       - purple
-      - grey
       - terracotta
       - black
   - :name: button_link
@@ -1843,13 +1791,9 @@
     :input_options:
       - white
       - green
-      - blue
-      - cream
       - orange
-      - dark-orange
       - light-blue
       - purple
-      - grey
       - terracotta
       - black
   - :name: button_1_target
@@ -1870,13 +1814,9 @@
     :input_options:
       - white
       - green
-      - blue
-      - cream
       - orange
-      - dark-orange
       - light-blue
       - purple
-      - grey
       - terracotta
       - black
   - :name: button_2_target
@@ -1936,13 +1876,9 @@
     :input_options:
       - white
       - green
-      - blue
-      - cream
       - orange
-      - dark-orange
       - light-blue
       - purple
-      - grey
       - terracotta
       - black
   - :name: button_target_1
@@ -1969,13 +1905,9 @@
     :input_options:
       - white
       - green
-      - blue
-      - cream
       - orange
-      - dark-orange
       - light-blue
       - purple
-      - grey
       - terracotta
       - black
   - :name: button_target_2
@@ -2002,13 +1934,9 @@
     :input_options:
       - white
       - green
-      - blue
-      - cream
       - orange
-      - dark-orange
       - light-blue
       - purple
-      - grey
       - terracotta
       - black
   - :name: button_target_3
