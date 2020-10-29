@@ -113,9 +113,19 @@
         margin-top: 0;
         text-align: center;
       }
+
+      @media screen and (max-width: 1200px) {
+        text-align: center;
+        margin-top: 0;
+      }
     }
 
     @media screen and (max-width: $screen-sm-min) {
+      text-align: center;
+    }
+
+    @media screen and (max-width: 1200px) {
+      width: 100%;
       text-align: center;
     }
   }
@@ -260,7 +270,7 @@
   margin: 0 10px;
   // text-transform: uppercase;
 
-  @media screen and (max-width: $screen-sm-min) {
+  @media screen and (max-width: 767px) {
     display: block;
     line-height: 1.76em;
 
