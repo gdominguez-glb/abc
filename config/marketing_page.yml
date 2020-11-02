@@ -450,15 +450,19 @@ marketing_templates:
     content: !xml |
       <div id="tile_<%= position %>" class="row banner-container">
         <div class="banner-container__content col-sm-4">
-          <div class="banner-container__icon">
-            <span><%= banner_icon_text %></span>
-          </div>
+          <% if banner_icon_text.present? %>
+            <div class="banner-container__icon">
+              <span><%= banner_icon_text %></span>
+            </div>
+          <% end %>
           <div class="banner-container__title">
             <h3><%= title %></h3>
             <p><%= description %></p>
-            <a href="<%= button_link %>" class="btn btn-primary">
-              <%= button_text %>
-            </a>
+            <% if button_link.present? %>
+              <a href="<%= button_link %>" class="btn btn-primary">
+                <%= button_text %>
+              </a>
+            <% end %>
           </div>
         </div>
         <div class="banner-container__img col-sm-8">
@@ -573,7 +577,7 @@ marketing_templates:
         <div class="tile-container__content col-sm-6">
           <% if image_url_1.present? %>
             <img class="tile-container__icon image_url_1" src="<%= image_url_1 %>" alt="<%= image_alt_1 %>" data_attr="featured_image" featured_img="<%= 'featured-image' if (featured_image_text_1 == 'checked' rescue nil) %>" />
-            
+
           <% end %>
           <h6 class="tile-container__title"><%= title %></h6>
           <p class="tile-container__para"><%= body_text %></p>

@@ -4,7 +4,6 @@
   $bc: &;
 
   &__content {
-    background: $background-grey;
     height: 440px;
     padding: 60px 40px 50px;
 
@@ -44,7 +43,6 @@
       letter-spacing: normal;
 
       h3 {
-        font-family: "CircularStd-italic";
         font-size: 24px;
         font-weight: normal;
         letter-spacing: normal;
