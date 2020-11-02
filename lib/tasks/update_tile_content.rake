@@ -16,7 +16,7 @@ namespace :update_tile_content do
       parsed_data = Nokogiri::HTML.parse(html)
       changed_background_color(parsed_data)
       update_html(page, parsed_data)
-      update_tiles(page)
+      update_background_tiles(page)
       page.save
     end
   end
@@ -31,6 +31,7 @@ namespace :update_tile_content do
       parsed_data = Nokogiri::HTML.parse(html)
       update_button_color(parsed_data)
       update_html(page, parsed_data)
+      update_button_tiles(page)
       page.save
     end
   end
@@ -74,12 +75,30 @@ namespace :update_tile_content do
     page.body = parsed_data.to_html
   end
 
-  def update_tiles(page)
+  def update_background_tiles(page)
     if page.tiles.present?
       rows = page.tiles[:rows]
       rows.each do |row|
-        if @tiles_colors.include?(row[:background_color])
-          row[:background_color] = 'white'
+        keys = row.keys
+        keys.each do |key|
+          if key.include?('background_color') && @tiles_colors.include?(row[key])
+            row[:background_color] = 'white'
+          end
+        end
+      end
+      page.tiles[:rows] = rows
+    end
+  end
+
+  def update_button_tiles(page)
+    if page.tiles.present?
+      rows = page.tiles[:rows]
+      rows.each do |row|
+        keys = row.keys
+        keys.each do |key|
+          if key.include?('button_color')
+            row[key] = 'black'
+          end
         end
       end
       page.tiles[:rows] = rows
