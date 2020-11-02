@@ -37,12 +37,41 @@ namespace :update_tile_content do
   end
 
   def update_button_color(parsed_data)
+    update_div_section_button(parsed_data)
     sections = parsed_data.css('section')
     return if sections.empty?
     sections.each do |section|
       childrens = section.children
       childrens.each do |parent|
         parent.children.each do |sub_parent|
+          next if sub_parent.attributes.empty?
+          next if sub_parent.attributes['class'].blank?
+          sub_parent.attributes['class'].value =
+            button_class_change(
+              sub_parent.attributes['class'].value
+            )
+          update_button_classes(sub_parent)
+          sub_parent.children.each do |children|
+            update_button_classes(children)
+          end
+        end
+      end
+    end
+  end
+
+  def update_div_section_button(parsed_data)
+    divs = parsed_data.css('div')
+    return if divs.empty?
+    divs.each do |div|
+      childrens = div.children
+      childrens.each do |parent|
+        parent.children.each do |sub_parent|
+          next if sub_parent.attributes.empty?
+          next if sub_parent.attributes['class'].blank?
+          sub_parent.attributes['class'].value =
+            button_class_change(
+              sub_parent.attributes['class'].value
+            )
           update_button_classes(sub_parent)
           sub_parent.children.each do |children|
             update_button_classes(children)
@@ -65,8 +94,8 @@ namespace :update_tile_content do
 
   def button_class_change(value)
     return value if value.split.include?('btn').blank?
-    secondary_regex = /(btn-secondary--[white|red|blue|purple|orange|green|black]*)|(\s+btn-secondary+\s)/
-    primary_regex = /(btn-primary--[white|red|blue|purple|orange|green|black]*)|(\s+btn-primary+\s)/
+    secondary_regex = /(btn-secondary--[white|red|blue|purple|orange|green|black]*)|(\s+btn-secondary+\s)|(\s+btn-secondary)/
+    primary_regex = /(btn-primary--[white|red|blue|purple|orange|green|black]*)|(\s+btn-primary+\s)|(\s+btn-primary)/
     value.gsub(secondary_regex, '').gsub(primary_regex, '')
   end
 
