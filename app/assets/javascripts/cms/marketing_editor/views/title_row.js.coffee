@@ -7,7 +7,6 @@ class MarketingEditorApp.Views.TileRowView extends Backbone.View
     'change .update-row-type': 'updateRowType',
     'change': 'valueChanged'
     'change .select-container select': 'customSelectChanged'
-    'change .featured-img-title-input': 'featuredImageChanged'
 
   initialize: (options={})->
     @listenTo(@model, 'destroy', this.remove)
@@ -15,7 +14,7 @@ class MarketingEditorApp.Views.TileRowView extends Backbone.View
     @parentView = options.parentView
 
   render: ()->
-    @$el.html(@template(data: @model.attributes, fields: @fields, row_id: @model.cid))
+    @$el.html(@template(data: @model.attributes, fields: @fields))
     @valueChanged()
     @
 
@@ -62,20 +61,3 @@ class MarketingEditorApp.Views.TileRowView extends Backbone.View
       alt_text = url_parts['alt']
       $(el).closest('.col-sm-6').next('.col-sm-6').find('[data-name="alt_text"]').val(alt_text)
 
-  featuredImageChanged: (e)->
-    chkbox_id = e.target.id
-    selected_value =
-      if $("#"+e.target.id).is(":checked")
-        "checked"
-      else
-        "unchecked"
-    $(".#{chkbox_id}").val(selected_value)
-    chkboxs = $(document).find($("input[type='checkbox'].featured-img-title-input"))
-
-    $.each(chkboxs, (index, el)=>
-      if el.id != chkbox_id && el.checked == true
-        $(el).prop('checked', false)
-        $("." + el.id).val('unchecked')
-        $("." + el.id).attr('value', 'unchecked')
-        $("." + el.id).trigger('change')
-    )
