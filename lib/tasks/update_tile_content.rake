@@ -111,7 +111,7 @@ namespace :update_tile_content do
         keys = row.keys
         keys.each do |key|
           if key.include?('background_color') && @tiles_colors.include?(row[key])
-            row[:background_color] = 'white'
+            row[key] = 'white'
           end
         end
       end
@@ -140,6 +140,11 @@ namespace :update_tile_content do
     return if sections.empty?
     sections.each do |section|
       color_classes = section.attributes['class'].value
+      section.children.each do |child|
+        next if child.attributes['class'].blank?
+        child.attributes['class'].value =
+          convert_colors(child.attributes['class'].value)
+      end
       section.attributes['class'].value =
         convert_colors(color_classes)
     end
