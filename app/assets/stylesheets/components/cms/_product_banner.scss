@@ -1,5 +1,4 @@
 .banner-container {
-  background: $white;
   height: 440px;
   $bc: &;
 
@@ -38,15 +37,20 @@
 
     #{$bc}__title {
       color: $primary-text-color;
+      font-size: 24px;
       font-stretch: normal;
       font-style: normal;
+      font-weight: 500;
+      height: 100%;
       letter-spacing: normal;
+      line-height: 1.25;
+      margin: 30px 0 10px;
+      text-transform: none;
+      font-family: "CircularStd-medium";
 
-      h3 {
-        font-size: 24px;
-        font-weight: normal;
-        letter-spacing: normal;
-        line-height: 1.42;
+      h1, h2, h3, h4, h5, h6 {
+        font-size: inherit;
+        line-height: 1.25;
         text-transform: none;
       }
 
