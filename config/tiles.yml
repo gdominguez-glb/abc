@@ -1562,7 +1562,7 @@
     :input_type: text
 - :name: 3-Column Text
   :fields:
-  - :name: background_color_1
+  - :name: background_color
     :label: Background Color 1
     :input_type: select
     :input_options:
