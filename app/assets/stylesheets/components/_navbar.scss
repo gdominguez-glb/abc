@@ -74,6 +74,10 @@
       background-color: transparent;
     }
 
+    @media screen and (max-width: 1100px) and (min-width: $navbar-breakpoint-md) {
+      margin-left: -15px;
+    }
+
     [data-page='english'] & {
       @media screen and (min-width: $navbar-breakpoint-md) {
         background-color: transparent;
@@ -214,6 +218,10 @@
           &:focus {
             color: $black;
           }
+        }
+
+        @media screen and (max-width: 1100px) and (min-width: $navbar-breakpoint-md) {
+          padding: 45px 9px 16px;
         }
       }
 
@@ -628,6 +636,10 @@
 
     @media screen and (min-width: $navbar-breakpoint-md) {
       padding: 35px 0 0;
+    }
+
+    @media screen and (max-width: 1100px) and (min-width: $navbar-breakpoint-md) {
+      width: 125px;
     }
 
     .form-control {
