@@ -448,7 +448,7 @@ marketing_templates:
   -
     name: '25/75 Hero Image Right'
     content: !xml |
-      <div id="tile_<%= position %>" class="row banner-container">
+      <div id="tile_<%= position %>" class="row banner-container <%= background_color %>-bg">
         <div class="banner-container__content col-sm-4">
           <% if banner_icon_text.present? %>
             <div class="banner-container__icon">
@@ -458,8 +458,8 @@ marketing_templates:
           <div class="banner-container__title">
             <h3><%= title %></h3>
             <p><%= description %></p>
-            <% if button_link.present? %>
-              <a href="<%= button_link %>" class="btn btn-default">
+            <% if button_text.present? && button_link.present? %>
+              <a href="<%= button_link %>" class="btn btn-primary btn-default--<%= button_color %>">
                 <%= button_text %>
               </a>
             <% end %>
@@ -1091,7 +1091,7 @@ marketing_templates:
               <a class="btn btn-default btn-default--<%= button_color_1 %> btn-block-xs" href="<%= button_link_1 %>" target="<%= button_target_1 %>"><%= button_title_1 %></a>
             <% end %>
           </div>
-          <div class="col_container__content col-sm-6">
+          <div class="col_container__content col-sm-6 <%= background_color_2 %>-bg">
             <h6><%= title_2 %></h6>
             <p><%= body_text_2 %></p>
             <% if button_title_2.present? && button_link_2.present? %>
@@ -1205,7 +1205,7 @@ marketing_templates:
   -
     name: '3-Column Text'
     content: !xml |
-      <section id="tile_<%= position %>" class="col_container row row-content-3col <%= background_color %>-bg">
+      <section id="tile_<%= position %>" class="col_container row row-content-3col <%= background_color_1 %>-bg">
         <div class="clearfix tile-content">
           <div class="col_container__content col-sm-4">
             <h6><%= title_1 %></h6>
@@ -1219,7 +1219,7 @@ marketing_templates:
               <a class="btn btn-default btn-default--<%= button_color_1 %> btn-block-xs" href="<%= button_link_1 %>" target="<%= button_target_1 %>"><%= button_title_1 %></a>
             <% end %>
           </div>
-          <div class="col_container__content col-sm-4">
+          <div class="col_container__content col-sm-4 <%= background_color_2 %>-bg">
             <h6><%= title_2 %></h6>
             <p><%= body_text_2 %></p>
             <% if button_title_2.present? && button_link_2.present? %>
@@ -1231,7 +1231,7 @@ marketing_templates:
               <a class="btn btn-default btn-default--<%= button_color_2 %> btn-block-xs" href="<%= button_link_2 %>" target="<%= button_target_2 %>"><%= button_title_2 %></a>
             <% end %>
           </div>
-          <div class="col_container__content col-sm-4">
+          <div class="col_container__content col-sm-4 <%= background_color_3 %>-bg">
             <h6><%= title_3 %></h6>
             <p><%= body_text_3 %></p>
             <% if button_title_3.present? && button_link_3.present? %>

@@ -470,12 +470,38 @@
   - :name: description
     :label: Description
     :input_type: text_area
+  - :name: background_color
+    :label: Background Color
+    :input_type: select
+    :input_options:
+      - white
+      - green
+      - orange
+      - light-blue
+      - purple
+      - slate
+      - khaki
+      - beige
+      - terracotta
+      - black
+      - olive
   - :name: button_text
     :label: Button text
     :input_type: text
   - :name: button_link
     :label: Button Link
     :input_type: text
+  - :name: button_color
+    :label: Button Color
+    :input_type: select
+    :input_options:
+      - white
+      - green
+      - orange
+      - light-blue
+      - purple
+      - terracotta
+      - black
   - :name: image
     :label: Image
     :input_type: text
@@ -1308,6 +1334,21 @@
   - :name: title_2
     :label: Title 2
     :input_type: text
+  - :name: background_color_2
+    :label: Background Color 2
+    :input_type: select
+    :input_options:
+      - white
+      - green
+      - orange
+      - light-blue
+      - purple
+      - slate
+      - khaki
+      - beige
+      - terracotta
+      - black
+      - olive
   - :name: body_text_2
     :label: Body Text 2
     :input_type: text_area
@@ -1521,8 +1562,8 @@
     :input_type: text
 - :name: 3-Column Text
   :fields:
-  - :name: background_color
-    :label: Background Color
+  - :name: background_color_1
+    :label: Background Color 1
     :input_type: select
     :input_options:
       - white
@@ -1568,6 +1609,21 @@
   - :name: title_2
     :label: Title 2
     :input_type: text
+  - :name: background_color_2
+    :label: Background Color 2
+    :input_type: select
+    :input_options:
+      - white
+      - green
+      - orange
+      - light-blue
+      - purple
+      - slate
+      - khaki
+      - beige
+      - terracotta
+      - black
+      - olive
   - :name: body_text_2
     :label: Body Text 2
     :input_type: text_area
@@ -1597,6 +1653,21 @@
   - :name: title_3
     :label: Title 3
     :input_type: text
+  - :name: background_color_3
+    :label: Background Color 3
+    :input_type: select
+    :input_options:
+      - white
+      - green
+      - orange
+      - light-blue
+      - purple
+      - slate
+      - khaki
+      - beige
+      - terracotta
+      - black
+      - olive
   - :name: body_text_3
     :label: Body Text 3
     :input_type: text_area
