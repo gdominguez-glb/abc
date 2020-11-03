@@ -458,7 +458,7 @@ marketing_templates:
           <div class="banner-container__title">
             <h3><%= title %></h3>
             <p><%= description %></p>
-            <% if button_link.present? %>
+            <% if button_text.present? && button_link.present? %>
               <a href="<%= button_link %>" class="btn btn-primary btn-primary--<%= button_color %>">
                 <%= button_text %>
               </a>
