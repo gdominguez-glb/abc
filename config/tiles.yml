@@ -19,16 +19,6 @@
   - :name: slide_image_1
     :label: Slide 1 Slide Image
     :input_type: text
-  - :name: image_url_featured_checkbox
-    :label: Featured image
-    :input_type: checkbox
-    :checkbox_no: 1
-    :attr: featured_tag
-  - :name: featured_image_text_1
-    :label: Feature Image Text 1
-    :input_type: text
-    :attr: featured_tag
-    :tag_no: 1
   - :name: title_2
     :label: Slide 2 Title
     :input_type: text
@@ -47,16 +37,6 @@
   - :name: slide_image_2
     :label: Slide 2 Slide Image
     :input_type: text
-  - :name: image_url_featured_checkbox_2
-    :label: Featured image 2
-    :input_type: checkbox
-    :checkbox_no: 2
-    :attr: featured_tag
-  - :name: featured_image_text_2
-    :label: Feature Image Text 2
-    :input_type: text
-    :attr: featured_tag
-    :tag_no: 2
   - :name: title_3
     :label: Slide 3 Title
     :input_type: text
@@ -75,16 +55,6 @@
   - :name: slide_image_3
     :label: Slide 3 Slide Image
     :input_type: text
-  - :name: image_url_featured_checkbox_3
-    :label: Featured image 3
-    :input_type: checkbox
-    :checkbox_no: 3
-    :attr: featured_tag
-  - :name: featured_image_text_3
-    :label: Feature Image Text 3
-    :input_type: text
-    :attr: featured_tag
-    :tag_no: 3
 
 - :name: Page Title
   :fields:
@@ -118,16 +88,6 @@
   - :name: image_1
     :label: Image 1
     :input_type: text
-  - :name: image_url_featured_checkbox
-    :label: Featured image
-    :input_type: checkbox
-    :checkbox_no: 1
-    :attr: featured_tag
-  - :name: featured_image_text_1
-    :label: Feature Image Text 1
-    :input_type: text
-    :attr: featured_tag
-    :tag_no: 1
   - :name: link_1
     :label: Link 1
     :input_type: text
@@ -155,16 +115,6 @@
   - :name: image_2
     :label: Image 2
     :input_type: text
-  - :name: image_url_featured_checkbox_2
-    :label: Featured image 2
-    :input_type: checkbox
-    :checkbox_no: 2
-    :attr: featured_tag
-  - :name: featured_image_text_2
-    :label: Feature Image Text 2
-    :input_type: text
-    :attr: featured_tag
-    :tag_no: 2
   - :name: link_2
     :label: Link 2
     :input_type: text
@@ -192,16 +142,6 @@
   - :name: image_3
     :label: Image 3
     :input_type: text
-  - :name: image_url_featured_checkbox_3
-    :label: Featured image 3
-    :input_type: checkbox
-    :checkbox_no: 3
-    :attr: featured_tag
-  - :name: featured_image_text_3
-    :label: Feature Image Text 3
-    :input_type: text
-    :attr: featured_tag
-    :tag_no: 3
   - :name: link_3
     :label: Link 3
     :input_type: text
@@ -229,16 +169,6 @@
   - :name: image_4
     :label: Image 4
     :input_type: text
-  - :name: image_url_featured_checkbox_4
-    :label: Featured image 4
-    :input_type: checkbox
-    :checkbox_no: 4
-    :attr: featured_tag
-  - :name: featured_image_text_4
-    :label: Feature Image Text 4
-    :input_type: text
-    :attr: featured_tag
-    :tag_no: 4
   - :name: link_4
     :label: Link 4
     :input_type: text
@@ -266,16 +196,6 @@
   - :name: image_5
     :label: Image 5
     :input_type: text
-  - :name: image_url_featured_checkbox_5
-    :label: Featured image 5
-    :input_type: checkbox
-    :checkbox_no: 5
-    :attr: featured_tag
-  - :name: featured_image_text_5
-    :label: Feature Image Text 5
-    :input_type: text
-    :attr: featured_tag
-    :tag_no: 5
   - :name: link_5
     :label: Link 5
     :input_type: text
@@ -323,16 +243,6 @@
     - :name: testimonial_image_alt_1
       :label: Image Alt 1
       :input_type: text
-    - :name: image_url_featured_checkbox
-      :label: Featured image
-      :input_type: checkbox
-      :checkbox_no: 1
-      :attr: featured_tag
-    - :name: featured_image_text_1
-      :label: Feature Image Text 1
-      :input_type: text
-      :attr: featured_tag
-      :tag_no: 1
     - :name: testimonial_video_url_1
       :label: Facebook video url 1
       :input_type: text
@@ -357,16 +267,7 @@
     - :name: testimonial_image_alt_2
       :label: Image Alt 2
       :input_type: text
-    - :name: image_url_featured_checkbox_2
-      :label: Featured image 2
-      :input_type: checkbox
-      :checkbox_no: 2
-      :attr: featured_tag
-    - :name: featured_image_text_2
-      :label: Feature Image Text 2
-      :input_type: text
-      :attr: featured_tag
-      :tag_no: 2
+
     - :name: testimonial_video_url_2
       :label: Facebook video url 2
       :input_type: text
@@ -391,16 +292,7 @@
     - :name: testimonial_image_alt_3
       :label: Image Alt 3
       :input_type: text
-    - :name: image_url_featured_checkbox_3
-      :label: Featured image 3
-      :input_type: checkbox
-      :checkbox_no: 3
-      :attr: featured_tag
-    - :name: featured_image_text_3
-      :label: Feature Image Text 3
-      :input_type: text
-      :attr: featured_tag
-      :tag_no: 3
+
     - :name: testimonial_video_url_3
       :label: Facebook video url 3
       :input_type: text
@@ -425,16 +317,7 @@
     - :name: testimonial_image_alt_4
       :label: Image Alt 4
       :input_type: text
-    - :name: image_url_featured_checkbox_4
-      :label: Featured image 4
-      :input_type: checkbox
-      :checkbox_no: 4
-      :attr: featured_tag
-    - :name: featured_image_text_4
-      :label: Feature Image Text 4
-      :input_type: text
-      :attr: featured_tag
-      :tag_no: 4
+
     - :name: testimonial_video_url_4
       :label: Facebook video url 4
       :input_type: text
@@ -459,16 +342,7 @@
     - :name: testimonial_image_alt_5
       :label: Image Alt 5
       :input_type: text
-    - :name: image_url_featured_checkbox_5
-      :label: Featured image 5
-      :input_type: checkbox
-      :checkbox_no: 5
-      :attr: featured_tag
-    - :name: featured_image_text_5
-      :label: Feature Image Text 5
-      :input_type: text
-      :attr: featured_tag
-      :tag_no: 5
+
     - :name: testimonial_video_url_5
       :label: Facebook video url 5
       :input_type: text
@@ -493,16 +367,7 @@
     - :name: testimonial_image_alt_6
       :label: Image Alt 6
       :input_type: text
-    - :name: image_url_featured_checkbox_6
-      :label: Featured image 6
-      :input_type: checkbox
-      :checkbox_no: 6
-      :attr: featured_tag
-    - :name: featured_image_text_6
-      :label: Feature Image Text 6
-      :input_type: text
-      :attr: featured_tag
-      :tag_no: 6
+
     - :name: testimonial_video_url_6
       :label: Facebook video url 6
       :input_type: text
@@ -527,16 +392,7 @@
     - :name: testimonial_image_alt_7
       :label: Image Alt 7
       :input_type: text
-    - :name: image_url_featured_checkbox_7
-      :label: Featured image 7
-      :input_type: checkbox
-      :checkbox_no: 7
-      :attr: featured_tag
-    - :name: featured_image_text_7
-      :label: Feature Image Text 7
-      :input_type: text
-      :attr: featured_tag
-      :tag_no: 7
+
     - :name: testimonial_video_url_7
       :label: Facebook video url 7
       :input_type: text
@@ -561,16 +417,7 @@
     - :name: testimonial_image_alt_8
       :label: Image Alt 8
       :input_type: text
-    - :name: image_url_featured_checkbox_8
-      :label: Featured image 8
-      :input_type: checkbox
-      :checkbox_no: 8
-      :attr: featured_tag
-    - :name: featured_image_text_8
-      :label: Feature Image Text 8
-      :input_type: text
-      :attr: featured_tag
-      :tag_no: 8
+
     - :name: testimonial_video_url_8
       :label: Facebook video url 8
       :input_type: text
@@ -595,16 +442,7 @@
     - :name: testimonial_image_alt_9
       :label: Image Alt 9
       :input_type: text
-    - :name: image_url_featured_checkbox_9
-      :label: Featured image 9
-      :input_type: checkbox
-      :checkbox_no: 9
-      :attr: featured_tag
-    - :name: featured_image_text_9
-      :label: Feature Image Text 9
-      :input_type: text
-      :attr: featured_tag
-      :tag_no: 9
+
     - :name: testimonial_video_url_9
       :label: Facebook video url 9
       :input_type: text
@@ -641,16 +479,6 @@
   - :name: image
     :label: Image
     :input_type: text
-  - :name: image_url_featured_checkbox
-    :label: Featured image
-    :input_type: checkbox
-    :checkbox_no: 1
-    :attr: featured_tag
-  - :name: featured_image_text_1
-    :label: Feature Image Text 1
-    :input_type: text
-    :attr: featured_tag
-    :tag_no: 1
 
 - :name: Video Hero
   :fields:
@@ -692,16 +520,6 @@
   - :name: image_alt_1
     :label: Image Alt Text 1
     :input_type: text
-  - :name: image_url_featured_checkbox
-    :label: Featured image
-    :input_type: checkbox
-    :checkbox_no: 1
-    :attr: featured_tag
-  - :name: featured_image_text_1
-    :label: Feature Image Text 1
-    :input_type: text
-    :attr: featured_tag
-    :tag_no: 1
   - :name: title
     :label: Title
     :input_type: text
@@ -775,16 +593,6 @@
   - :name: alt_text_2
     :label: Image Alt Text
     :input_type: text
-  - :name: image_url_featured_checkbox_2
-    :label: Featured image 2
-    :input_type: checkbox
-    :checkbox_no: 2
-    :attr: featured_tag
-  - :name: featured_image_text_2
-    :label: Feature Image Text 2
-    :input_type: text
-    :attr: featured_tag
-    :tag_no: 2
 - :name: 50/50 Full-Bleed Image Left, Half Height
   :fields:
   - :name: title
@@ -834,16 +642,6 @@
   - :name: image_alt_1
     :label: Image Alt Text 1
     :input_type: text
-  - :name: image_url_featured_checkbox
-    :label: Featured image
-    :input_type: checkbox
-    :checkbox_no: 1
-    :attr: featured_tag
-  - :name: featured_image_text_1
-    :label: Feature Image Text 1
-    :input_type: text
-    :attr: featured_tag
-    :tag_no: 1
   - :name: title
     :label: Title
     :input_type: text
@@ -917,16 +715,6 @@
   - :name: alt_text_2
     :label: Image Alt Text 2
     :input_type: text
-  - :name: image_url_featured_checkbox_2
-    :label: Featured image 2
-    :input_type: checkbox
-    :checkbox_no: 2
-    :attr: featured_tag
-  - :name: featured_image_text_2
-    :label: Feature Image Text 2
-    :input_type: text
-    :attr: featured_tag
-    :tag_no: 2
 - :name: 50/50 Full-Bleed Image Right, Half Height
   :fields:
   - :name: title
@@ -1035,16 +823,6 @@
   - :name: alt_text
     :label: Image Alt Text
     :input_type: text
-  - :name: image_url_featured_checkbox
-    :label: Featured image
-    :input_type: checkbox
-    :checkbox_no: 1
-    :attr: featured_tag
-  - :name: featured_image_text_1
-    :label: Feature Image Text 1
-    :input_type: text
-    :attr: featured_tag
-    :tag_no: 1
 - :name: 50/50 Content Image Left, Half Height
   :fields:
   - :name: title
@@ -1086,16 +864,6 @@
   - :name: alt_text
     :label: Image Alt Text
     :input_type: text
-  - :name: image_url_featured_checkbox
-    :label: Featured image
-    :input_type: checkbox
-    :checkbox_no: 1
-    :attr: featured_tag
-  - :name: featured_image_text_1
-    :label: Feature Image Text 1
-    :input_type: text
-    :attr: featured_tag
-    :tag_no: 1
 - :name: 50/50 Content Image Right
   :fields:
   - :name: title
@@ -1137,16 +905,6 @@
   - :name: alt_text
     :label: Image Alt Text
     :input_type: text
-  - :name: image_url_featured_checkbox
-    :label: Featured image
-    :input_type: checkbox
-    :checkbox_no: 1
-    :attr: featured_tag
-  - :name: featured_image_text_1
-    :label: Feature Image Text 1
-    :input_type: text
-    :attr: featured_tag
-    :tag_no: 1
 - :name: 50/50 Content Image Right, Half Height
   :fields:
   - :name: title
@@ -1188,16 +946,6 @@
   - :name: alt_text
     :label: Image Alt Text
     :input_type: text
-  - :name: image_url_featured_checkbox
-    :label: Featured image
-    :input_type: checkbox
-    :checkbox_no: 1
-    :attr: featured_tag
-  - :name: featured_image_text_1
-    :label: Feature Image Text 1
-    :input_type: text
-    :attr: featured_tag
-    :tag_no: 1
 - :name: 50/50 Content Image Shadow Left
   :fields:
   - :name: title
@@ -1239,16 +987,6 @@
   - :name: alt_text
     :label: Image Alt Text
     :input_type: text
-  - :name: image_url_featured_checkbox
-    :label: Featured image
-    :input_type: checkbox
-    :checkbox_no: 1
-    :attr: featured_tag
-  - :name: featured_image_text_1
-    :label: Feature Image Text 1
-    :input_type: text
-    :attr: featured_tag
-    :tag_no: 1
 - :name: 50/50 Content Image Shadow Right
   :fields:
   - :name: title
@@ -1290,16 +1028,6 @@
   - :name: alt_text
     :label: Image Alt Text
     :input_type: text
-  - :name: image_url_featured_checkbox
-    :label: Featured image
-    :input_type: checkbox
-    :checkbox_no: 1
-    :attr: featured_tag
-  - :name: featured_image_text_1
-    :label: Feature Image Text 1
-    :input_type: text
-    :attr: featured_tag
-    :tag_no: 1
 - :name: 50/50 Content Image Book Left
   :fields:
   - :name: title
@@ -1341,16 +1069,6 @@
   - :name: alt_text
     :label: Image Alt Text
     :input_type: text
-  - :name: image_url_featured_checkbox
-    :label: Featured image
-    :input_type: checkbox
-    :checkbox_no: 1
-    :attr: featured_tag
-  - :name: featured_image_text_1
-    :label: Feature Image Text 1
-    :input_type: text
-    :attr: featured_tag
-    :tag_no: 1
 - :name: 50/50 Content Image Book Right
   :fields:
   - :name: title
@@ -1392,16 +1110,6 @@
   - :name: alt_text
     :label: Image Alt Text
     :input_type: text
-  - :name: image_url_featured_checkbox
-    :label: Featured image
-    :input_type: checkbox
-    :checkbox_no: 1
-    :attr: featured_tag
-  - :name: featured_image_text_1
-    :label: Feature Image Text 1
-    :input_type: text
-    :attr: featured_tag
-    :tag_no: 1
 - :name: Image Background, Full Width Text
   :fields:
   - :name: black_overlay
@@ -1678,16 +1386,6 @@
   - :name: image_alt
     :label: Image Alt Text
     :input_type: text
-  - :name: image_url_featured_checkbox
-    :label: Featured image
-    :input_type: checkbox
-    :checkbox_no: 1
-    :attr: featured_tag
-  - :name: featured_image_text_1
-    :label: Feature Image Text 1
-    :input_type: text
-    :attr: featured_tag
-    :tag_no: 1
 - :name: 2-Column Video Left, Text Right
   :fields:
   - :name: title
@@ -1748,16 +1446,6 @@
   - :name: image_alt_1
     :label: Image Alt Text 1
     :input_type: text
-  - :name: image_url_featured_checkbox
-    :label: Featured image
-    :input_type: checkbox
-    :checkbox_no: 1
-    :attr: featured_tag
-  - :name: featured_image_text_1
-    :label: Feature Image Text 1
-    :input_type: text
-    :attr: featured_tag
-    :tag_no: 1
   - :name: title
     :label: Title
     :input_type: text_area
@@ -1831,16 +1519,6 @@
   - :name: alt_text_2
     :label: Image Alt Text 2
     :input_type: text
-  - :name: image_url_featured_checkbox_2
-    :label: Featured image 2
-    :input_type: checkbox
-    :checkbox_no: 2
-    :attr: featured_tag
-  - :name: featured_image_text_2
-    :label: Feature Image Text 2
-    :input_type: text
-    :attr: featured_tag
-    :tag_no: 2
 - :name: 3-Column Text
   :fields:
   - :name: background_color
@@ -1971,16 +1649,6 @@
   - :name: facebook_image_alt_1
     :label: Image Alt 1
     :input_type: text
-  - :name: image_url_featured_checkbox
-    :label: Featured image
-    :input_type: checkbox
-    :checkbox_no: 1
-    :attr: featured_tag
-  - :name: featured_image_text_1
-    :label: Feature Image Text 1
-    :input_type: text
-    :attr: featured_tag
-    :tag_no: 1
   - :name: facebook_video_url_1
     :label: Facebook video url 1
     :input_type: text
@@ -2002,16 +1670,6 @@
   - :name: facebook_image_alt_2
     :label: Image Alt 2
     :input_type: text
-  - :name: image_url_featured_checkbox_2
-    :label: Featured image 2
-    :input_type: checkbox
-    :checkbox_no: 2
-    :attr: featured_tag
-  - :name: featured_image_text_2
-    :label: Feature Image Text 2
-    :input_type: text
-    :attr: featured_tag
-    :tag_no: 2
   - :name: facebook_video_url_2
     :label: Facebook video url 2
     :input_type: text
@@ -2033,16 +1691,6 @@
   - :name: facebook_image_alt_3
     :label: Image Alt 3
     :input_type: text
-  - :name: image_url_featured_checkbox_3
-    :label: Featured image 3
-    :input_type: checkbox
-    :checkbox_no: 3
-    :attr: featured_tag
-  - :name: featured_image_text_3
-    :label: Feature Image Text 3
-    :input_type: text
-    :attr: featured_tag
-    :tag_no: 3
   - :name: facebook_video_url_3
     :label: Facebook video url 3
     :input_type: text
