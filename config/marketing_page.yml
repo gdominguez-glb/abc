@@ -22,7 +22,7 @@ marketing_templates:
             <h3><%= title_1 %></h3>
             <p><%= description_1 %></p>
             <% if button_link_1.present? && button_text_1.present? %>
-              <a href="<%= button_link_1 %>" class="btn btn-primary"><%= button_text_1 %></a>
+              <a href="<%= button_link_1 %>" class="btn btn-default"><%= button_text_1 %></a>
             <% end %>
           </div>
         </div>
@@ -35,7 +35,7 @@ marketing_templates:
             <h3><%= title_2 %></h3>
             <p><%= description_2 %></p>
             <% if button_link_2.present? &&  button_text_2.present? %>
-              <a href="<%= button_link_2 %>" class="btn btn-primary"><%= button_text_2 %></a>
+              <a href="<%= button_link_2 %>" class="btn btn-default"><%= button_text_2 %></a>
             <% end %>
           </div>
         </div>
@@ -48,7 +48,7 @@ marketing_templates:
             <h3><%= title_3 %></h3>
             <p><%= description_3 %></p>
             <% if button_link_3.present? && button_text_3.present? %>
-              <a href="<%= button_link_3 %>" class="btn btn-primary"><%= button_text_3 %></a>
+              <a href="<%= button_link_3 %>" class="btn btn-default"><%= button_text_3 %></a>
             <% end %>
           </div>
         </div>
@@ -291,7 +291,7 @@ marketing_templates:
         </div>
       </section>
       <div class="row clear text-center padding-bottom--m <%= background_color %>-bg">
-        <a href='javascript:void(0)' class="testimonial-show-more-link btn btn-primary">Show More</a>
+        <a href='javascript:void(0)' class="testimonial-show-more-link btn btn-default">Show More</a>
       </div>
       <section class="row row-content-3col <%= background_color %>-bg text-left testimonial-more-section padding-bottom padding-top--l hide" data-testimonial-section="2">
         <div class="col-sm-4">
@@ -442,7 +442,7 @@ marketing_templates:
         </div>
       </section>
       <div class="row clear text-center padding-bottom--xl <%= background_color %>-bg">
-        <a href='javascript:void(0)' class='testimonial-show-less-link btn btn-primary hide'>Show Less</a>
+        <a href='javascript:void(0)' class='testimonial-show-less-link btn btn-default hide'>Show Less</a>
       </div>
 
   -
@@ -459,7 +459,7 @@ marketing_templates:
             <h3><%= title %></h3>
             <p><%= description %></p>
             <% if button_text.present? && button_link.present? %>
-              <a href="<%= button_link %>" class="btn btn-primary btn-primary--<%= button_color %>">
+              <a href="<%= button_link %>" class="btn btn-primary btn-default--<%= button_color %>">
                 <%= button_text %>
               </a>
             <% end %>
@@ -527,10 +527,10 @@ marketing_templates:
           <h6 class="tile-container__title"><%= title %></h6>
           <p class="tile-container__para"><%= body_text %></p>
           <% if button_1_title.present? && button_1_link.present? %>
-            <a class="btn btn-secondary btn-secondary--<%= button_color_1 %> btn-block-xs margin-bottom--m" href="<%= button_1_link %>" target="<%= button_1_target %>"><%= button_1_title %></a>
+            <a class="btn btn-default btn-default--<%= button_color_1 %> btn-block-xs margin-bottom--m" href="<%= button_1_link %>" target="<%= button_1_target %>"><%= button_1_title %></a>
           <% end %>
           <% if button_2_title.present? && button_2_link.present? %>
-            <a class="btn btn-secondary btn-secondary--<%= button_color_2 %> btn-block-xs margin-bottom--m" href="<%= button_2_link %>" target="<%= button_2_target %>"><%= button_2_title %></a>
+            <a class="btn btn-default btn-default--<%= button_color_2 %> btn-block-xs margin-bottom--m" href="<%= button_2_link %>" target="<%= button_2_target %>"><%= button_2_title %></a>
           <% end %>
         </div>
       </section>
@@ -582,10 +582,10 @@ marketing_templates:
           <h6 class="tile-container__title"><%= title %></h6>
           <p class="tile-container__para"><%= body_text %></p>
           <% if button_1_title.present? && button_1_link.present? %>
-            <a class="btn btn-secondary btn-secondary--<%= button_color_1 %> btn-block-xs margin-bottom--m" href="<%= button_1_link %>" target="<%= button_1_target %>"><%= button_1_title %></a>
+            <a class="btn btn-default btn-default--<%= button_color_1 %> btn-block-xs margin-bottom--m" href="<%= button_1_link %>" target="<%= button_1_target %>"><%= button_1_title %></a>
           <% end %>
           <% if button_2_title.present? && button_2_link.present? %>
-            <a class="btn btn-secondary btn-secondary--<%= button_color_2 %> btn-block-xs margin-bottom--m" href="<%= button_2_link %>" target="<%= button_2_target %>"><%= button_2_title %></a>
+            <a class="btn btn-default btn-default--<%= button_color_2 %> btn-block-xs margin-bottom--m" href="<%= button_2_link %>" target="<%= button_2_target %>"><%= button_2_title %></a>
           <% end %>
         </div>
         <div class="tile-container__image col-sm-6 img-full-new">
@@ -1120,7 +1120,7 @@ marketing_templates:
               <% else %>
                 <% button_target = '_blank' %>
               <% end %>
-              <a class="btn btn-primary btn-primary--<%= button_color %> btn-block-xs" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+              <a class="btn btn-default btn-default--<%= button_color %> btn-block-xs" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
             <% end %>
           </div>
           <div class="col_container__image col-sm-6">
@@ -1171,7 +1171,7 @@ marketing_templates:
             <% else %>
               <% button_target = '_blank' %>
             <% end %>
-            <a class="video-left-text-right__btn btn btn-secondary btn-secondary--<%= button_color %> btn-block-xs" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+            <a class="video-left-text-right__btn btn btn-default btn-default--<%= button_color %> btn-block-xs" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
           <% end %>
         </div>
       </section>
@@ -1194,10 +1194,10 @@ marketing_templates:
           <h6 class="product-presentation__title"><%= title %></h6>
           <p class="product-presentation__para"><%= body_text %></p>
           <% if button_1_title.present? && button_1_link.present? %>
-            <a class="btn btn-primary btn-primary--<%= button_color_1 %> btn-block-xs margin-bottom--m" href="<%= button_1_link %>" target="<%= button_1_target %>"><%= button_1_title %></a>
+            <a class="btn btn-default btn-default--<%= button_color_1 %> btn-block-xs margin-bottom--m" href="<%= button_1_link %>" target="<%= button_1_target %>"><%= button_1_title %></a>
           <% end %>
           <% if button_2_title.present? && button_2_link.present? %>
-            <a class="btn btn-primary btn-primary--<%= button_color_2 %> btn-block-xs margin-bottom--m" href="<%= button_2_link %>" target="<%= button_2_target %>"><%= button_2_title %></a>
+            <a class="btn btn-default btn-default--<%= button_color_2 %> btn-block-xs margin-bottom--m" href="<%= button_2_link %>" target="<%= button_2_target %>"><%= button_2_title %></a>
           <% end %>
         </div>
       </section>

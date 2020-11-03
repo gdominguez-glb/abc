@@ -30,16 +30,29 @@
   }
 
   &.btn-default {
-    background-color: transparent;
-    border: 1px solid $transperent-button-border;
-    color: $text-link-color;
+    background-color: $white;
+    border: 1px solid $black;
+    color: $black;
 
     &:hover,
     &:active {
-      background-color: $transperent-button-hover-bg;
+      background-color: $terracotta;
+      border: 1px solid $terracotta;
       box-shadow: none;
       color: $white;
       text-decoration: none;
+    }
+
+    .terracotta-bg & {
+      background-color: $white;
+      border-color: $white;
+
+      &:hover,
+      &:active {
+        background-color: $black;
+        border-color: $black;
+        color: $white;
+      }
     }
 
     .blue-bg & {
@@ -57,18 +70,18 @@
       }
     }
 
-    .image-bg & {
-      border-color: $white;
-      color: $white;
+    // .image-bg & {
+    //   // border-color: $white;
+    //   // color: $black;
 
-      &:hover,
-      &:active {
-        background-color: $transperent-button-hover-bg;
-        border-color: $transperent-button-border;
-        box-shadow: none;
-        color: $white;
-      }
-    }
+    //   &:hover,
+    //   &:active {
+    //     // background-color: $transperent-button-hover-bg;
+    //     // // border-color: $transperent-button-border;
+    //     // box-shadow: none;
+    //     // color: $white;
+    //   }
+    // }
 
     &.dashed-border {
       border: 1px dashed;
@@ -78,171 +91,32 @@
       background-color: $c-stable-primary;
     }
 
-    &--red {
-      @include button-variant($primary-text-color, transparent, $button-red);
-
-      &:hover {
-        @include button-variant($white, $button-red, $button-red);
-      }
-    }
-
-    &--blue {
-      @include button-variant($primary-text-color, transparent, $button-blue);
-
-      &:hover {
-        @include button-variant($white, $button-blue, $button-blue);
-      }
+    &--light-blue {
+      color: $button-blue;
     }
 
     &--purple {
-      @include button-variant($primary-text-color, transparent, $button-purple);
-
-      &:hover {
-        @include button-variant($white, $button-purple, $button-purple);
-      }
+      color: $button-purple;
     }
 
     &--orange {
-      @include button-variant($primary-text-color, transparent, $button-orange);
-
-      &:hover {
-        @include button-variant($white, $button-orange, $button-orange);
-      }
+      color: $button-orange;
     }
 
-    &--dark-orange {
-      @include button-variant($primary-text-color, transparent, $button-dark-orange);
-
-      &:hover {
-        @include button-variant($white, $button-dark-orange, $button-dark-orange);
-      }
-    }
-    &--green {
-      @include button-variant($primary-text-color, transparent, $button-green);
-
-      &:hover {
-        @include button-variant($white, $button-green, $button-green);
-      }
-    }
-  }
-
-  &.btn-primary {
-    @include button-variant($white, $primary-button-bg, $primary-button-bg);
-
-    &:hover,
-    &:active {
-      background: transparent;
-      border-color: $primary-button-bg;
-      box-shadow: none;
-      color: $text-link-color;
-      text-decoration: none;
+    &--terracotta {
+      color: $terracotta;
     }
 
-    &--red {
-      @include button-variant($white, $button-red, $button-red);
-
-      &:hover {
-        @include button-variant($primary-text-color, transparent, $button-red);
-      }
+    &--black {
+      color: $black;
     }
 
-    &--blue {
-      @include button-variant($white, $button-blue, $button-blue);
-
-      &:hover {
-        @include button-variant($primary-text-color, transparent, $button-blue);
-      }
-    }
-
-    &--purple {
-      @include button-variant($white, $button-purple, $button-purple);
-
-      &:hover {
-        @include button-variant($primary-text-color, transparent, $button-purple);
-      }
-    }
-
-    &--orange {
-      @include button-variant($white, $button-orange, $button-orange);
-
-      &:hover {
-        @include button-variant($primary-text-color, transparent, $button-orange);
-      }
-    }
-
-    &--dark-orange {
-      @include button-variant($white, $button-dark-orange, $button-dark-orange);
-
-      &:hover {
-        @include button-variant($primary-text-color, transparent, $button-dark-orange);
-      }
+    &--white {
+      color: $white;
     }
 
     &--green {
-      @include button-variant($white, $button-green, $button-green);
-
-      &:hover {
-        @include button-variant($primary-text-color, transparent, $button-green);
-      }
-    }
-  }
-
-  &.btn-secondary {
-    @include button-variant($text-link-color, $white, $white);
-
-    &:hover,
-    &:active {
-      @include button-variant($white, transparent, $white);
-      box-shadow: none;
-      text-decoration: none;
-    }
-
-    &--red {
-      @include button-variant($button-red, $white, $white);
-
-      &:hover {
-        @include button-variant($white, transparent, $white);
-      }
-    }
-
-    &--blue {
-      @include button-variant($button-blue, $white, $white);
-
-      &:hover {
-        @include button-variant($white, transparent, $white);
-      }
-    }
-
-    &--purple {
-      @include button-variant($button-purple, $white, $white);
-
-      &:hover {
-        @include button-variant($white, transparent, $white);
-      }
-    }
-
-    &--orange {
-      @include button-variant($button-orange, $white, $white);
-
-      &:hover {
-        @include button-variant($white, transparent, $white);
-      }
-    }
-
-    &--dark-orange {
-      @include button-variant($dark-orange, $white, $white);
-
-      &:hover {
-        @include button-variant($white, transparent, $white);
-      }
-    }
-
-    &--green {
-      @include button-variant($button-green, $white, $white);
-
-      &:hover {
-        @include button-variant($white, transparent, $white);
-      }
+      color: $button-green;
     }
   }
 
