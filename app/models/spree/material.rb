@@ -6,6 +6,8 @@ class Spree::Material < ActiveRecord::Base
 
   validates_presence_of :name
 
+  searchkick callbacks: :async, personalize: "user_ids"
+
   LINK_ICON_OPTIONS = [['Link', 'open_in_browser'], ['Video Play', 'play_arrow']]
 
   def should_index?
