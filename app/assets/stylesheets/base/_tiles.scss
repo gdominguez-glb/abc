@@ -131,6 +131,12 @@ section {
 
   &.row-content-2col {
     padding: 0;
+    >.clearfix {
+      @media screen and (min-width: $screen-sm-min) {
+        display: flex;
+        flex-grow: 1;
+      }
+    }
 
     @media screen and (min-width: $screen-sm-min) {
       @include display-flex;
@@ -176,19 +182,24 @@ section {
   &.row-content-3col {
 
     @media screen and (min-width: $screen-sm-min) {
+      padding-bottom: 0;
+      
       [class*='col-'] {
         padding: 0 24px;
 
         &:first-child {
           padding-right: 24px;
+          padding-bottom: 84px;
         }
 
         &:nth-child(2) {
           padding: 0 54px;
+          padding-bottom: 84px;
         }
 
         &:last-child {
           padding-left: 24px;
+          padding-bottom: 84px;
         }
       }
     }
