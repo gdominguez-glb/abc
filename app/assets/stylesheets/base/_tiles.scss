@@ -236,15 +236,6 @@ section {
       margin-bottom: 25px;
     }
 
-    &.green-bg,
-    &.orange-bg,
-    &.cream-bg,
-    &.light-blue-bg {
-      .video-title {
-        color: $c-positive-secondary;
-      }
-    }
-
     &.image-bg {
       .video-title {
         color: $c-balanced-primary;
