@@ -323,8 +323,7 @@
         @media screen and (min-width: $navbar-breakpoint-md) {
           a {
             &:hover,
-            &:active,
-            &:focus {
+            &:active {
               border-bottom: 2px solid $c-positive-primary;
             }
 
@@ -339,8 +338,7 @@
         @media screen and (min-width: $navbar-breakpoint-md) {
           a {
             &:hover,
-            &:active,
-            &:focus {
+            &:active {
               border-bottom: 2px solid $c-energized-primary;
             }
 
@@ -355,8 +353,7 @@
         @media screen and (min-width: $navbar-breakpoint-md) {
           a {
             &:hover,
-            &:active,
-            &:focus {
+            &:active {
               border-bottom: 2px solid $c-balanced-primary;
             }
 
@@ -371,8 +368,7 @@
         @media screen and (min-width: $navbar-breakpoint-md) {
           a {
             &:hover,
-            &:active,
-            &:focus {
+            &:active {
               border-bottom: 2px solid $c-science-primary;
             }
 
@@ -410,10 +406,16 @@
         display: block;
 
         &:hover,
-        &:active,
-        &:focus {
+        &:active {
           @media screen and (min-width: $navbar-breakpoint-md) {
             border-bottom: 2px solid $black;
+            text-decoration: none;
+          }
+        }
+
+        &:focus {
+          @media screen and (min-width: $navbar-breakpoint-md) {
+            outline: none;
             text-decoration: none;
           }
         }
