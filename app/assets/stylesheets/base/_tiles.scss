@@ -183,6 +183,9 @@ section {
 
     @media screen and (min-width: $screen-sm-min) {
       padding-bottom: 0;
+      .tile-content {
+        display: flex;
+      }
       
       [class*='col-'] {
         padding: 0 24px;
