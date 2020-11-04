@@ -1334,6 +1334,81 @@
   - :name: title_2
     :label: Title 2
     :input_type: text
+  - :name: body_text_2
+    :label: Body Text 2
+    :input_type: text_area
+  - :name: button_title_2
+    :label: Button Title 2
+    :input_type: text
+  - :name: button_link_2
+    :label: Button Link 2
+    :input_type: text
+  - :name: button_color_2
+    :label: Button Color 2
+    :input_type: select
+    :input_options:
+      - white
+      - green
+      - orange
+      - light-blue
+      - purple
+      - terracotta
+      - black
+  - :name: button_target_2
+    :label: Button Target 2
+    :input_type: select
+    :input_options:
+      - Open in Same Tab
+      - Open in New Tab
+- :name: 2-Column Text With Different Color
+  :fields:
+  - :name: background_color_1
+    :label: Background Color 1
+    :input_type: select
+    :input_options:
+      - white
+      - green
+      - orange
+      - light-blue
+      - purple
+      - slate
+      - khaki
+      - beige
+      - terracotta
+      - black
+      - olive
+  - :name: title_1
+    :label: Title 1
+    :input_type: text
+  - :name: body_text_1
+    :label: Body Text 1
+    :input_type: text_area
+  - :name: button_title_1
+    :label: Button Title 1
+    :input_type: text
+  - :name: button_link_1
+    :label: Button Link 1
+    :input_type: text
+  - :name: button_color_1
+    :label: Button Color 1
+    :input_type: select
+    :input_options:
+      - white
+      - green
+      - orange
+      - light-blue
+      - purple
+      - terracotta
+      - black
+  - :name: button_target_1
+    :label: Button Target 1
+    :input_type: select
+    :input_options:
+      - Open in Same Tab
+      - Open in New Tab
+  - :name: title_2
+    :label: Title 2
+    :input_type: text
   - :name: background_color_2
     :label: Background Color 2
     :input_type: select
@@ -1561,6 +1636,110 @@
     :label: Image Alt Text 2
     :input_type: text
 - :name: 3-Column Text
+  :fields:
+  - :name: background_color
+    :label: Background Color 1
+    :input_type: select
+    :input_options:
+      - white
+      - green
+      - orange
+      - light-blue
+      - purple
+      - slate
+      - khaki
+      - beige
+      - terracotta
+      - black
+      - olive
+  - :name: title_1
+    :label: Title 1
+    :input_type: text
+  - :name: body_text_1
+    :label: Body Text 1
+    :input_type: text_area
+  - :name: button_title_1
+    :label: Button Title 1
+    :input_type: text
+  - :name: button_link_1
+    :label: Button Link 1
+    :input_type: text
+  - :name: button_color_1
+    :label: Button Color 1
+    :input_type: select
+    :input_options:
+      - white
+      - green
+      - orange
+      - light-blue
+      - purple
+      - terracotta
+      - black
+  - :name: button_target_1
+    :label: Button Target 1
+    :input_type: select
+    :input_options:
+      - Open in Same Tab
+      - Open in New Tab
+  - :name: title_2
+    :label: Title 2
+    :input_type: text
+  - :name: body_text_2
+    :label: Body Text 2
+    :input_type: text_area
+  - :name: button_title_2
+    :label: Button Title 2
+    :input_type: text
+  - :name: button_link_2
+    :label: Button Link 2
+    :input_type: text
+  - :name: button_color_2
+    :label: Button Color 2
+    :input_type: select
+    :input_options:
+      - white
+      - green
+      - orange
+      - light-blue
+      - purple
+      - terracotta
+      - black
+  - :name: button_target_2
+    :label: Button Target 2
+    :input_type: select
+    :input_options:
+      - Open in Same Tab
+      - Open in New Tab
+  - :name: title_3
+    :label: Title 3
+    :input_type: text
+  - :name: body_text_3
+    :label: Body Text 3
+    :input_type: text_area
+  - :name: button_title_3
+    :label: Button Title 3
+    :input_type: text
+  - :name: button_link_3
+    :label: Button Link 3
+    :input_type: text
+  - :name: button_color_3
+    :label: Button Color 3
+    :input_type: select
+    :input_options:
+      - white
+      - green
+      - orange
+      - light-blue
+      - purple
+      - terracotta
+      - black
+  - :name: button_target_3
+    :label: Button Target 3
+    :input_type: select
+    :input_options:
+      - Open in Same Tab
+      - Open in New Tab
+- :name: 3-Column Text With Different Color
   :fields:
   - :name: background_color
     :label: Background Color 1
