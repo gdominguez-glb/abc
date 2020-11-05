@@ -75,17 +75,17 @@ h6 {
 
   @media screen and (min-width: $screen-sm-min) {
     font-size: 1.25em;
+  }
 
-    section.row & {
-      font-family: "CircularStd-medium";
-      font-size: 24px;
-      font-stretch: normal;
-      font-style: normal;
-      font-weight: 500;
-      letter-spacing: normal;
-      line-height: 1.25;
-      text-transform: capitalize;
-    }
+  section.row & {
+    font-family: "CircularStd-medium";
+    font-size: 24px;
+    font-stretch: normal;
+    font-style: normal;
+    font-weight: 500;
+    letter-spacing: normal;
+    line-height: 1.25;
+    text-transform: capitalize;
   }
 }
 
