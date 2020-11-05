@@ -88,6 +88,7 @@
     text-align: left;
 
     .footer-terms {
+      border-bottom: 1px solid $white;
       outline: none;
       text-decoration: none;
       text-transform: none;
@@ -169,7 +170,7 @@
 
 .footer-title-link,
 .footer-title-no-link {
-  border-bottom: 2px solid transparent;
+  border-bottom: 2px solid $white;
   color: $black;
   display: inline-block;
   margin: $b-space ($b-space * 3);
