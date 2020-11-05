@@ -140,7 +140,6 @@ section {
 
     @media screen and (min-width: $screen-sm-min) {
       @include display-flex;
-      flex-wrap: wrap;
     }
 
     [class*='col-'] {
