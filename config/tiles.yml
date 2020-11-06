@@ -235,6 +235,7 @@
         - terracotta
         - black
         - olive
+    - :name: testimonial_header_1
       :label: Header 1
       :input_type: text
     - :name: testimonial_image_url_1
@@ -267,7 +268,6 @@
     - :name: testimonial_image_alt_2
       :label: Image Alt 2
       :input_type: text
-
     - :name: testimonial_video_url_2
       :label: Facebook video url 2
       :input_type: text
@@ -292,7 +292,6 @@
     - :name: testimonial_image_alt_3
       :label: Image Alt 3
       :input_type: text
-
     - :name: testimonial_video_url_3
       :label: Facebook video url 3
       :input_type: text
@@ -317,7 +316,6 @@
     - :name: testimonial_image_alt_4
       :label: Image Alt 4
       :input_type: text
-
     - :name: testimonial_video_url_4
       :label: Facebook video url 4
       :input_type: text
@@ -342,7 +340,6 @@
     - :name: testimonial_image_alt_5
       :label: Image Alt 5
       :input_type: text
-
     - :name: testimonial_video_url_5
       :label: Facebook video url 5
       :input_type: text
@@ -367,7 +364,6 @@
     - :name: testimonial_image_alt_6
       :label: Image Alt 6
       :input_type: text
-
     - :name: testimonial_video_url_6
       :label: Facebook video url 6
       :input_type: text
@@ -392,7 +388,6 @@
     - :name: testimonial_image_alt_7
       :label: Image Alt 7
       :input_type: text
-
     - :name: testimonial_video_url_7
       :label: Facebook video url 7
       :input_type: text
@@ -417,7 +412,6 @@
     - :name: testimonial_image_alt_8
       :label: Image Alt 8
       :input_type: text
-
     - :name: testimonial_video_url_8
       :label: Facebook video url 8
       :input_type: text
@@ -442,7 +436,6 @@
     - :name: testimonial_image_alt_9
       :label: Image Alt 9
       :input_type: text
-
     - :name: testimonial_video_url_9
       :label: Facebook video url 9
       :input_type: text
