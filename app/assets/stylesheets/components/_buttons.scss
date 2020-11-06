@@ -139,11 +139,27 @@
       background: $terracotta;
       border: 1px solid $terracotta;
       color: $white;
+      outline: none;
 
       &:hover {
-        background: $white;
-        border: 1px solid $terracotta;
-        color: $terracotta;
+        background: $white !important;
+        border: 1px solid $terracotta !important;
+        color: $terracotta !important;
+        box-shadow: none !important;
+      }
+
+      &:active {
+        background: $white !important;
+        border: 1px solid $terracotta !important;
+        color: $terracotta !important;
+        box-shadow: none !important;
+      }
+
+      &:focus {
+        outline: none !important;
+        background: $white !important;
+        border: 1px solid $terracotta !important;
+        color: $terracotta !important;
       }
     }
   }
