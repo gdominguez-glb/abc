@@ -134,6 +134,18 @@
     &:hover {
       @include button-variant($primary-text-color, transparent, $c-balanced-primary);
     }
+
+    &.btn-success--terracotta {
+      background: $terracotta;
+      border: 1px solid $terracotta;
+      color: $white;
+
+      &:hover {
+        background: $white;
+        border: 1px solid $terracotta;
+        color: $terracotta;
+      }
+    }
   }
 
   &.btn-warning {
