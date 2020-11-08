@@ -27,8 +27,8 @@
           <% end %>
         <% end %>
       <% end %>
-      <li data-primary-nav-item="in-the-news" class="<%= 'active' if params[:slug] == 'news' %> not-dropdown">
-        <a href= <%= generate_news_url %> >News</a>
+      <li data-primary-nav-item="about" class="<%= 'active' if params[:slug] == 'about' %> not-dropdown">
+        <a href="/about"> about</a>
       </li>
       <li data-primary-nav-item="shop" class="not-dropdown store-link js-store-link <%= store_active_class %>">
         <%= link_to "Resources", '/resources', class: store_active_class %>
