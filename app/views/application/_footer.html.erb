@@ -15,8 +15,10 @@
             <li>
               <% if ['Job Openings', 'FAQ'].include?(link.name) %>
                 <%= link_to link.name, link.link, :target => '_blank', :class => 'footer-link' %>
-              <% else %>
+              <% elsif link.name == "DATA" %>
                 <%= link_to link.name, "#{ENV['HUBSPOT_URL']}/aha/tag/data-stories", :class => 'footer-link' %>
+              <% else %>
+                <%= link_to link.name, link.link , :class => 'footer-link' %>
               <% end %>
             </li>
           <% end %>
