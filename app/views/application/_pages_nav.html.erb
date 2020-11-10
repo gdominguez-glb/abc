@@ -33,7 +33,7 @@
 
             <% # we need to check if this is totally ok, maybe, we need to add a new section for create extra subnav links %>
             <% if (bl = @group_page.blogs.displayable.last) != blog && @group_page.slug == "math" %>
-              <% if bl.slug != 'emcase-studies' %>
+              <% if bl.slug != 'champions' %>
                 <%= active_link_to bl.title, curriculum_blog_path(page_slug: @group_page.slug, slug: bl.slug), wrap_tag: :li, active: /#{@group_page.slug}\/blog\/#{bl.slug}/ %>
               <% end %>
             <% end %>
