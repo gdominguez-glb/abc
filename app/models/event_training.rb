@@ -12,7 +12,7 @@ class EventTraining < ActiveRecord::Base
     title.parameterize
   end
 
-  searchkick merge_mappings: true, mappings: {
+   searchkick merge_mappings: true, mappings: {
     event_tranining: {
       properties: {
         content: {type: "string", index: "not_analyzed", ignore_above: 256}
