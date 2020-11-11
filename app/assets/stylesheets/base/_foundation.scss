@@ -18,9 +18,9 @@ body {
 
   padding: 50px 0 0;
   color: $c-positive-secondary;
-  background: $c-firm-accent;
+  background: $base-bg-color;
 
-  @media screen and (min-width: $screen-sm-min) {
+  @media screen and (min-width: $navbar-breakpoint-md) {
     padding: 0;
   }
 
@@ -43,7 +43,6 @@ body {
 
 .container-content {
   padding: 0 12px;
-  background-color: $c-firm-highlight;
 }
 
 .wrapper {
@@ -88,11 +87,5 @@ body {
   > [class*='col-'] {
     padding-right: 0;
     padding-left: 0;
-  }
-}
-
-footer > .row {
-  @media screen and (min-width: $screen-xs-min) {
-    padding: 0 60px;
   }
 }

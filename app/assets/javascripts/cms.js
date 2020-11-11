@@ -11,8 +11,8 @@
 // about supported directives.
 
 //= require jquery.parse_params
-//= require trumbowyg
-//= require trumbowyg/plugins/imageclasses
+//= require trumbowyg.min
+//= require plugins/imageclasses
 //= require_tree ./cms
 
 $.trumbowyg.svgPath = '/icons.svg';
@@ -23,11 +23,18 @@ function initEditor() {
     closable: false,
     removeformatPasted: true,
     semantic: false,
-    btns: ['bold', 'italic', 'underline', 'strikethrough', '|', 'formatting', '|', 'unorderedList', 'orderedList', '|', 'link', '|', 'viewHTML', 'removeformat']
+    btns: [
+      ['bold', 'italic', 'underline', 'strikethrough'],
+      ['superscript', 'subscript'],
+      ['unorderedList', 'orderedList'],
+      ['link'],
+      ['formatting'],
+      ['viewHTML'],
+      ['removeformat'],
+    ],
   });
 }
 
 $(function(){
   initEditor();
 })
-

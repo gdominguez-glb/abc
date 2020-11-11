@@ -60,3 +60,4 @@ class MarketingEditorApp.Views.TileRowView extends Backbone.View
     if url_parts['alt']?
       alt_text = url_parts['alt']
       $(el).closest('.col-sm-6').next('.col-sm-6').find('[data-name="alt_text"]').val(alt_text)
+

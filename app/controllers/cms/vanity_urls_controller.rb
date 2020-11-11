@@ -37,7 +37,7 @@ class Cms::VanityUrlsController < Cms::BaseController
     if @vanity_url.update(vanity_url_params)
       redirect_to cms_vanity_urls_path, notice: 'Successfully updated new vanity url.'
     else
-      render :edit 
+      render :edit
     end
   end
 
