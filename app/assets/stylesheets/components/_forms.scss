@@ -14,7 +14,6 @@ label,
   @include transition(all, .3s);
   @include placeholder(inherit);
 
-  font-family: 'Karla', sans-serif;
   font-size: 16px;
   font-weight: normal;
   color: inherit;
@@ -180,6 +179,7 @@ select {
     border-color: $c-absolute;
     color: $c-absolute;
     background-color: transparent;
+    padding: 12px 10px;
 
     &:focus {
       border-color: $c-firm-secondary;
@@ -221,7 +221,6 @@ select {
   margin-bottom: $b-space-m;
   padding: $b-space 36px $b-space $b-space-m;
   border: 1px solid $c-firm-primary;
-  font-family: 'Karla', sans-serif;
   font-size: 14px;
   font-weight: 700;
   text-transform: uppercase;

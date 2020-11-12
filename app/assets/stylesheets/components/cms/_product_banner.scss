@@ -1,0 +1,74 @@
+.banner-container {
+  height: 440px;
+  $bc: &;
+
+  &__content {
+    height: 440px;
+    padding: 60px 40px 50px;
+
+    @media screen and (max-width: $screen-lg-min) {
+      padding: 30px 40px;
+    }
+
+    #{$bc}__icon {
+      border: 2px solid $primary;
+      border-radius: 100%;
+      display: flex;
+      height: 46px;
+      margin-bottom: 15px;
+      position: relative;
+      text-align: center;
+      vertical-align: middle;
+      width: 46px;
+
+      span {
+        color: $primary;
+        font-size: 12px;
+        font-stretch: normal;
+        font-style: normal;
+        font-weight: bold;
+        letter-spacing: normal;
+        line-height: 2;
+        margin: auto;
+        text-align: center;
+        text-transform: uppercase;
+      }
+    }
+
+    #{$bc}__title {
+      font-size: 24px;
+      font-stretch: normal;
+      font-style: normal;
+      font-weight: 500;
+      height: 100%;
+      letter-spacing: normal;
+      line-height: 1.25;
+      margin: 30px 0 10px;
+      text-transform: none;
+      font-family: "CircularStd-medium";
+
+      h1, h2, h3, h4, h5, h6 {
+        font-size: inherit;
+        line-height: 1.25;
+        text-transform: none;
+      }
+
+      p {
+        font-size: 16px;
+        font-weight: normal;
+        line-height: 1.5;
+        margin-bottom: 25px;
+      }
+    }
+  }
+
+  &__img {
+    height: 440px;
+    padding: 0;
+
+    img {
+      height: 100%;
+      width: 100%;
+    }
+  }
+}
