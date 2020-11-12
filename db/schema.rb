@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191212212018) do
+ActiveRecord::Schema.define(version: 20201022092623) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -564,6 +564,7 @@ ActiveRecord::Schema.define(version: 20191212212018) do
     t.text     "seo_data"
     t.string   "render",         default: ""
     t.text     "data"
+    t.boolean  "hubspot"
   end
 
   create_table "popups", force: :cascade do |t|
@@ -1403,6 +1404,7 @@ ActiveRecord::Schema.define(version: 20191212212018) do
     t.string   "title"
     t.integer  "interested_curriculum_id"
     t.string   "inkling_id"
+    t.boolean  "has_eureka_access",        default: false
   end
 
   add_index "spree_products", ["available_on"], name: "index_spree_products_on_available_on", using: :btree

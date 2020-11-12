@@ -2,9 +2,12 @@ class Api::UserController < Api::BaseController
   def info
     user = Spree::User.find(doorkeeper_token.resource_owner_id)
     render json: {
-             user_id: user.id,
-             name: user.full_name,
-             products: products_of_user(user).as_json(only: [:id, :name])
+            user_id: user.id,
+            name: user.full_name,
+            products: products_of_user(user).
+                      as_json(
+                        only: [:id, :name, :has_eureka_access]
+                      )
            }
   end
 
