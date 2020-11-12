@@ -55,6 +55,42 @@
       }
     }
 
+    .green-bg & {
+      &:hover,
+      &:active {
+        background-color: $black;
+        border-color: $black;
+        color: $white;
+      }
+    }
+
+    .orange-bg & {
+      &:hover,
+      &:active {
+        background-color: $black;
+        border-color: $black;
+        color: $white;
+      }
+    }
+
+    .purple-bg & {
+      &:hover,
+      &:active {
+        background-color: $black;
+        border-color: $black;
+        color: $white;
+      }
+    }
+
+    .light-blue-bg & {
+      &:hover,
+      &:active {
+        background-color: $black;
+        border-color: $black;
+        color: $white;
+      }
+    }
+
     .blue-bg & {
       background-color: $white;
       border-color: $white;
