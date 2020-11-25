@@ -263,6 +263,42 @@
   }
 }
 
+.khaki-bg,
+.beige-bg,
+.black-bg,
+.olive-bg,
+.white-bg,
+.slate-bg {
+  .btn {
+    &.btn-default {
+      background-color: $white;
+
+      &:hover,
+      &:active {
+        background-color: $terracotta;
+        border-color: $terracotta;
+        color: $white;
+      }
+    }
+  }
+}
+
+.green-bg,
+.orange-bg,
+.purple-bg,
+.light-blue-bg {
+  .btn {
+    &.btn-default {
+      &:hover,
+      &:active {
+        background-color: $black;
+        border-color: $black;
+        color: $white;
+      }
+    }
+  }
+}
+
 .btn--md {
   border-radius: 2px;
 }
