@@ -168,6 +168,13 @@
         </div>
       </div>
 
+      <div data-hook='new_product_form_accessable_product' class='col-md-4'>
+        <div class='form-group field' id='product_is_accessable_field'>
+          <%= f.label :has_eureka_access %>
+          <%= f.check_box :has_eureka_access, class: 'form-control' %>
+        </div>
+      </div>
+
     </div>
 
     <%= render :partial => 'spree/admin/shared/new_resource_links' %>
