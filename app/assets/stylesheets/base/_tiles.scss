@@ -522,7 +522,6 @@ section {
 
     #{$sh}__text {
       color: $primary-text-color;
-      font-family: CircularStd-medium;
       font-size: 20px;
       font-stretch: normal;
       font-style: normal;
@@ -561,7 +560,7 @@ section {
     h6 {
       clear: both;
       font-size: 24px;
-      font-family: "CircularStd-medium";
+      font-family: "franklin-gothic-atf-bold",sans-serif;
       letter-spacing: normal;
       margin-top: 70px;
       text-transform: capitalize;
