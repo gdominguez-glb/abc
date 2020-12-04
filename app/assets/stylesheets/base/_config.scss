@@ -198,64 +198,107 @@ $transperent-button-border: #0f526f;
 //   Fonts
 // -------------------------------------
 
-//@font-face {
-//  font-family: "CircularStd";
-//  src: url("CircularStd-Medium.eot");
-//  src: url("CircularStd-Medium.eot?#iefix") format("embedded-opentype"),
-//       url("CircularStd-Medium.woff2") format("woff2"),
-//       url("CircularStd-Medium.woff") format("woff"),
-//       url("CircularStd-Medium.ttf") format("truetype");
-//  font-weight: 500;
-//  font-style: normal;
-//}
+/*
+ * The Typekit service used to deliver this font or fonts for use on websites
+ * is provided by Adobe and is subject to these Terms of Use
+ * http://www.adobe.com/products/eulas/tou_typekit. For font license
+ * information, see the list below.
+ *
+ * athelas:
+ *   - http://typekit.com/eulas/00000000000000000000d834
+ *   - http://typekit.com/eulas/00000000000000000000d835
+ *   - http://typekit.com/eulas/00000000000000000000d836
+ *   - http://typekit.com/eulas/00000000000000000000d837
+ * franklin-gothic-atf:
+ *   - http://typekit.com/eulas/00000000000000003b9b4448
+ *   - http://typekit.com/eulas/00000000000000003b9b4449
+ *   - http://typekit.com/eulas/00000000000000003b9b444a
+ *   - http://typekit.com/eulas/00000000000000003b9b444b
+ *   - http://typekit.com/eulas/00000000000000003b9b444c
+ *   - http://typekit.com/eulas/00000000000000003b9b444d
+ *
+ * © 2009-2020 Adobe Systems Incorporated. All Rights Reserved.
+ */
+/*{"last_published":"2020-10-26 18:42:45 UTC"}*/
+
+@import url("https://p.typekit.net/p.css?s=1&k=nzc1gty&ht=tk&f=1692.1693.1694.1695.44931.44932.44933.44934.44935.44936&a=39537239&app=typekit&e=css");
 
 @font-face {
-  font-family: "CircularStd-black";
-  src: url(font-path("CircularXXWeb-Black.otf"));
-  src: url(font-path("CircularXXWeb-Black.otf?#iefix")) format("embedded-opentype"),
-       url(font-path("CircularXXWeb-Black.woff2")) format("woff2"),
-       url(font-path("CircularXXWeb-Black.woff")) format("woff"),
-       url(font-path("CircularXXWeb-Black.ttf")) format("truetype");
-  font-weight: normal;
+  font-family: "athelas-medium";
+  src: url("https://use.typekit.net/af/adf251/00000000000000000000d834/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff2"),url("https://use.typekit.net/af/adf251/00000000000000000000d834/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff"),url("https://use.typekit.net/af/adf251/00000000000000000000d834/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("opentype");
+  font-display: auto;
   font-style: normal;
+  font-weight: 400;
 }
+
 @font-face {
-  font-family: "CircularStd-bold";
-  src: url(font-path("CircularXXWeb-Bold.otf"));
-  src: url(font-path("CircularXXWeb-Bold.otf?#iefix")) format("embedded-opentype"),
-       url(font-path("CircularXXWeb-Bold.woff2")) format("woff2"),
-       url(font-path("CircularXXWeb-Bold.woff")) format("woff"),
-       url(font-path("CircularXXWeb-Bold.ttf")) format("truetype");
-  font-weight: normal;
-  font-style: normal;
+  font-family: "athelas-italic";
+  src: url("https://use.typekit.net/af/c0afc3/00000000000000000000d835/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3") format("woff2"),url("https://use.typekit.net/af/c0afc3/00000000000000000000d835/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3") format("woff"),url("https://use.typekit.net/af/c0afc3/00000000000000000000d835/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3") format("opentype");
+  font-display: auto;
+  font-style: italic;
+  font-weight: 400;
 }
+
 @font-face {
-  font-family: "CircularStd-book";
-  src: url(font-path("CircularXXWeb-Book.otf"));
-  src: url(font-path("CircularXXWeb-Book.otf?#iefix")) format("embedded-opentype"),
-       url(font-path("CircularXXWeb-Book.woff2")) format("woff2"),
-       url(font-path("CircularXXWeb-Book.woff")) format("woff"),
-       url(font-path("CircularXXWeb-Book.ttf")) format("truetype");
-  font-weight: normal;
+  font-family: "athelas-bold";
+  src: url("https://use.typekit.net/af/a358fc/00000000000000000000d836/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("woff2"),url("https://use.typekit.net/af/a358fc/00000000000000000000d836/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("woff"),url("https://use.typekit.net/af/a358fc/00000000000000000000d836/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("opentype");
+  font-display: auto;
   font-style: normal;
+  font-weight: 700;
 }
+
 @font-face {
-  font-family: "CircularStd-italic";
-  src: url(font-path("CircularXXWeb-Italic.otf"));
-  src: url(font-path("CircularXXWeb-Italic.otf?#iefix")) format("embedded-opentype"),
-       url(font-path("CircularXXWeb-Italic.woff2")) format("woff2"),
-       url(font-path("CircularXXWeb-Italic.woff")) format("woff"),
-       url(font-path("CircularXXWeb-Italic.ttf")) format("truetype");
-  font-weight: normal;
-  font-style: normal;
+  font-family: "athelas-italic-bold";
+  src: url("https://use.typekit.net/af/27d1c7/00000000000000000000d837/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i7&v=3") format("woff2"),url("https://use.typekit.net/af/27d1c7/00000000000000000000d837/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i7&v=3") format("woff"),url("https://use.typekit.net/af/27d1c7/00000000000000000000d837/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i7&v=3") format("opentype");
+  font-display: auto;
+  font-style: italic;
+  font-weight: 700;
 }
+
 @font-face {
-  font-family: "CircularStd-medium";
-  src: url(font-path("CircularXXWeb-Medium.otf"));
-  src: url(font-path("CircularXXWeb-Medium.otf?#iefix")) format("embedded-opentype"),
-       url(font-path("CircularXXWeb-Medium.woff2")) format("woff2"),
-       url(font-path("CircularXXWeb-Medium.woff")) format("woff"),
-       url(font-path("CircularXXWeb-Medium.ttf")) format("truetype");
-  font-weight: normal;
+  font-family: "franklin-gothic-atf-medium";
+  src: url("https://use.typekit.net/af/2727fa/00000000000000003b9b4448/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff2"),url("https://use.typekit.net/af/2727fa/00000000000000003b9b4448/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff"),url("https://use.typekit.net/af/2727fa/00000000000000003b9b4448/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("opentype");
+  font-display: auto;
   font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "franklin-gothic-atf-italic";
+  src: url("https://use.typekit.net/af/45aa8b/00000000000000003b9b4449/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3") format("woff2"),url("https://use.typekit.net/af/45aa8b/00000000000000003b9b4449/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3") format("woff"),url("https://use.typekit.net/af/45aa8b/00000000000000003b9b4449/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3") format("opentype");
+  font-display: auto;
+  font-style: italic;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "franklin-gothic-atf-bold";
+  src: url("https://use.typekit.net/af/317935/00000000000000003b9b444a/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n5&v=3") format("woff2"),url("https://use.typekit.net/af/317935/00000000000000003b9b444a/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n5&v=3") format("woff"),url("https://use.typekit.net/af/317935/00000000000000003b9b444a/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n5&v=3") format("opentype");
+  font-display: auto;
+  font-style: normal;
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "franklin-gothic-atf-italic-bold";
+  src: url("https://use.typekit.net/af/d3d887/00000000000000003b9b444b/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i5&v=3") format("woff2"),url("https://use.typekit.net/af/d3d887/00000000000000003b9b444b/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i5&v=3") format("woff"),url("https://use.typekit.net/af/d3d887/00000000000000003b9b444b/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i5&v=3") format("opentype");
+  font-display: auto;
+  font-style: italic;
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "franklin-gothic-atf-bolder";
+  src: url("https://use.typekit.net/af/a9cf1b/00000000000000003b9b444c/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n6&v=3") format("woff2"),url("https://use.typekit.net/af/a9cf1b/00000000000000003b9b444c/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n6&v=3") format("woff"),url("https://use.typekit.net/af/a9cf1b/00000000000000003b9b444c/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n6&v=3") format("opentype");
+  font-display: auto;
+  font-style: normal;
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "franklin-gothic-atf-italic-bolder";
+  src: url("https://use.typekit.net/af/08fd3b/00000000000000003b9b444d/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i6&v=3") format("woff2"),url("https://use.typekit.net/af/08fd3b/00000000000000003b9b444d/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i6&v=3") format("woff"),url("https://use.typekit.net/af/08fd3b/00000000000000003b9b444d/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i6&v=3") format("opentype");
+  font-display: auto;
+  font-style: italic;
+  font-weight: 600;
 }

@@ -47,9 +47,12 @@
       text-transform: none;
       font-family: "CircularStd-medium";
 
-      h1, h2, h3, h4, h5, h6 {
-        font-size: inherit;
-        line-height: 1.25;
+      h3 {
+        font-family: "franklin-gothic-atf-italic-bold",sans-serif;
+        font-size: 24px;
+        font-weight: normal;
+        letter-spacing: normal;
+        line-height: 1.42;
         text-transform: none;
       }
 
