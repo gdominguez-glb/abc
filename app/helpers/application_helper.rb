@@ -68,4 +68,12 @@ module ApplicationHelper
   def generate_news_url
     "#{ENV['HUBSPOT_URL']}/aha/tag/news-release"
   end
+
+  def generate_webinar_url page
+    if page.slug == 'math'
+      "#{ENV['HUBSPOT_URL']}/webinar?subject=Math&type=show-all&author=show-all&search"
+    elsif page.slug == 'science'
+      "#{ENV['HUBSPOT_URL']}/webinar?subject=Science&type=show-all&author=show-all&search=Independent"
+    end
+  end
 end
