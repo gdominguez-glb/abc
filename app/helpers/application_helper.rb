@@ -74,6 +74,8 @@ module ApplicationHelper
       "#{ENV['HUBSPOT_URL']}/webinar?subject=Math&type=show-all&author=show-all&search"
     elsif page.slug == 'science'
       "#{ENV['HUBSPOT_URL']}/webinar?subject=Science&type=show-all&author=show-all&search=Independent"
+    elsif page.slug == 'english'
+      "#{ENV['HUBSPOT_URL']}/webinar?subject=English&type=show-all&author=show-all&search="
     end
   end
 end
