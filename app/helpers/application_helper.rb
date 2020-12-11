@@ -71,9 +71,9 @@ module ApplicationHelper
 
   def generate_webinar_url page
     if page.slug == 'math'
-      "#{ENV['HUBSPOT_URL']}/webinar?subject=Math&type=show-all&author=show-all&search"
+      "#{ENV['HUBSPOT_URL']}/webinar?subject=Math&type=show-all&author=show-all&search="
     elsif page.slug == 'science'
-      "#{ENV['HUBSPOT_URL']}/webinar?subject=Science&type=show-all&author=show-all&search=Independent"
+      "#{ENV['HUBSPOT_URL']}/webinar?subject=Science&type=show-all&author=show-all&search="
     elsif page.slug == 'english'
       "#{ENV['HUBSPOT_URL']}/webinar?subject=English&type=show-all&author=show-all&search="
     end
