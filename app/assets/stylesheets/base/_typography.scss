@@ -29,7 +29,7 @@ h1 {
   font-size: 1.5625em;
   font-weight: bold;
   letter-spacing: 2.5px;
-  line-height: 2.5;
+  line-height: 1.4;
   text-transform: uppercase;
 
   @media screen and (max-width: $screen-sm-min) {
@@ -67,7 +67,7 @@ h4 {
   font-family: 'franklin-gothic-atf-medium', sans-serif;
   font-size: 1.125em;
   font-weight: normal;
-  letter-spacing: 4px;
+  letter-spacing: 3.6px;
   text-transform: uppercase;
 }
 
@@ -93,10 +93,13 @@ h6 {
 }
 
 blockquote {
+  border-left: none;
   font-family: 'athelas-italic-bold', serif;
   font-size: 2.75em;
   font-style: italic;
   font-weight: bold;
+  line-height: normal;
+  padding: 0;
 
   @media screen and (max-width: $screen-sm-min) {
     text-align: left;
