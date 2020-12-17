@@ -111,6 +111,13 @@ section {
         }
       }
     }
+
+    @media screen and (max-width: $screen-md-min) {
+      .fwtext {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
   }
 
   &.row-video-left {

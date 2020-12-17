@@ -7,7 +7,7 @@
         <%= product.curriculum.try(:name) || 'General' %>
       </div>
       <% cache(@taxon.present? ? [I18n.locale, current_currency, @taxon, product] : [I18n.locale, current_currency, product]) do %>
-        <h4 class="card-title"><%= product.name %></h4>
+        <h6 class="card-title"><%= product.name %></h6>
       <% end %>
       <div class="card-buttons">
         <% if spree_current_user.pinned_product?(product) %>
