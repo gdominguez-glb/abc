@@ -70,7 +70,7 @@
       <%= f.text_field :sf_contact_id, class: 'form-control' %>
     </div>
 
-    <div class="form-group">
+    <div class="form-group", id="total_amount">
       <label>Amount</label>
       <%= f.text_field :amount, class: 'form-control' %>
     </div>
@@ -94,3 +94,21 @@
   </fieldset>
 <% end %>
 <%= render 'form_js' %>
+
+<script>
+  $(document).ready(function() {
+    $("#admin_new_licenses_form_amount").on('change', function () {
+      var total = $('#admin_new_licenses_form_amount').val();
+      $('.text-danger').remove();
+      if ( total > 100000000 ) {
+        $( "#total_amount" ).append( "<p class='text-danger'>Please enter amount less than 100000000</p>" );
+        $(':input[type="submit"]').prop('disabled', true);
+      }
+      else{
+        $(':input[type="submit"]').prop('disabled', false);
+        $('.text-danger').remove();
+      }
+    });
+  });
+
+</script>
