@@ -17,6 +17,9 @@
   <% if group_page && group_page.slug == "math" %>
     <li><a href="https://gm.greatminds.org/webinar?subject=Math&type=show-all&author=show-all&search=">Webinars</a></li>
   <% end %>
+  <% if @group_page %>
+    <li><a href= '<%= generate_webinar_url @group_page %>'>Webinars</a></li>
+  <% end %>
   <% if group_page && blog = group_page.blogs.displayable.first %>
     <%= active_link_to 'Blog', main_app.curriculum_blog_path(page_slug: group_page.slug, slug: blog.slug), wrap_tag: :li, active: /#{group_page.slug}\/blog\/#{blog.slug}/ %>
     <% # we need to check if this is totally ok, maybe, we need to add a new section for create extra subnav links %>
