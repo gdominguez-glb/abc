@@ -22,7 +22,9 @@ marketing_templates:
             <h3><%= title_1 %></h3>
             <p><%= description_1 %></p>
             <% if button_link_1.present? && button_text_1.present? %>
-              <a href="<%= button_link_1 %>" class="btn btn-default"><%= button_text_1 %></a>
+              <div>
+                <a href="<%= button_link_1 %>" class="btn btn-default"><%= button_text_1 %></a>
+              </div>
             <% end %>
           </div>
         </div>
@@ -35,7 +37,9 @@ marketing_templates:
             <h3><%= title_2 %></h3>
             <p><%= description_2 %></p>
             <% if button_link_2.present? &&  button_text_2.present? %>
-              <a href="<%= button_link_2 %>" class="btn btn-default"><%= button_text_2 %></a>
+              <div>
+                <a href="<%= button_link_2 %>" class="btn btn-default"><%= button_text_2 %></a>
+              </div>
             <% end %>
           </div>
         </div>
@@ -48,7 +52,9 @@ marketing_templates:
             <h3><%= title_3 %></h3>
             <p><%= description_3 %></p>
             <% if button_link_3.present? && button_text_3.present? %>
-              <a href="<%= button_link_3 %>" class="btn btn-default"><%= button_text_3 %></a>
+              <div>
+                <a href="<%= button_link_3 %>" class="btn btn-default"><%= button_text_3 %></a>
+              </div>
             <% end %>
           </div>
         </div>
@@ -237,7 +243,9 @@ marketing_templates:
               <% end %>
             </article>
             <% if testimonial_link_url_1.present? && testimonial_link_text_1.present? %>
-              <a class="btn btn-default btn-block-xs" href="<%= testimonial_link_url_1 %>" target="_blank"><%= testimonial_link_text_1 %></a>
+              <div>
+                <a class="btn btn-default btn-block-xs" href="<%= testimonial_link_url_1 %>" target="_blank"><%= testimonial_link_text_1 %></a>
+              </div>
             <% end %>
           </div>
         </div>
@@ -261,7 +269,9 @@ marketing_templates:
               <% end %>
             </article>
             <% if testimonial_link_url_2.present? && testimonial_link_text_2.present? %>
-              <a class="btn btn-default btn-block-xs" href="<%= testimonial_link_url_2 %>" target="_blank"><%= testimonial_link_text_2 %></a>
+              <div>
+                <a class="btn btn-default btn-block-xs" href="<%= testimonial_link_url_2 %>" target="_blank"><%= testimonial_link_text_2 %></a>
+              </div>
             <% end %>
           </div>
         </div>
@@ -285,7 +295,9 @@ marketing_templates:
               <% end %>
             </article>
             <% if testimonial_link_url_3.present? && testimonial_link_text_3.present? %>
-              <a class="btn btn-default btn-block-xs" href="<%= testimonial_link_url_3 %>" target="_blank"><%= testimonial_link_text_3 %></a>
+              <div>
+                <a class="btn btn-default btn-block-xs" href="<%= testimonial_link_url_3 %>" target="_blank"><%= testimonial_link_text_3 %></a>
+              </div>
             <% end %>
           </div>
         </div>
@@ -314,7 +326,9 @@ marketing_templates:
               <% end %>
             </article>
             <% if testimonial_link_url_4.present? && testimonial_link_text_4.present? %>
-              <a class="btn btn-default btn-block-xs" href="<%= testimonial_link_url_4 %>" target="_blank"><%= testimonial_link_text_4 %></a>
+              <div>
+                <a class="btn btn-default btn-block-xs" href="<%= testimonial_link_url_4 %>" target="_blank"><%= testimonial_link_text_4 %></a>
+              </div>
             <% end %>
           </div>
         </div>
@@ -338,7 +352,9 @@ marketing_templates:
               <% end %>
             </article>
             <% if testimonial_link_url_5.present? && testimonial_link_text_5.present? %>
-              <a class="btn btn-default btn-block-xs" href="<%= testimonial_link_url_5 %>" target="_blank"><%= testimonial_link_text_5 %></a>
+              <div>
+                <a class="btn btn-default btn-block-xs" href="<%= testimonial_link_url_5 %>" target="_blank"><%= testimonial_link_text_5 %></a>
+              </div>
             <% end %>
           </div>
         </div>
@@ -362,7 +378,9 @@ marketing_templates:
               <% end %>
             </article>
             <% if testimonial_link_url_6.present? && testimonial_link_text_6.present? %>
-              <a class="btn btn-default btn-block-xs" href="<%= testimonial_link_url_6 %>" target="_blank"><%= testimonial_link_text_6 %></a>
+              <div>
+                <a class="btn btn-default btn-block-xs" href="<%= testimonial_link_url_6 %>" target="_blank"><%= testimonial_link_text_6 %></a>
+              </div>
             <% end %>
           </div>
         </div>
@@ -388,7 +406,9 @@ marketing_templates:
               <% end %>
             </article>
             <% if testimonial_link_url_7.present? && testimonial_link_text_7.present? %>
-              <a class="btn btn-default btn-block-xs" href="<%= testimonial_link_url_7 %>" target="_blank"><%= testimonial_link_text_7 %></a>
+              <div>
+                <a class="btn btn-default btn-block-xs" href="<%= testimonial_link_url_7 %>" target="_blank"><%= testimonial_link_text_7 %></a>
+              </div>
             <% end %>
           </div>
         </div>
@@ -412,7 +432,9 @@ marketing_templates:
               <% end %>
             </article>
             <% if testimonial_link_url_8.present? && testimonial_link_text_8.present? %>
-              <a class="btn btn-default btn-block-xs" href="<%= testimonial_link_url_8 %>" target="_blank"><%= testimonial_link_text_8 %></a>
+              <div>
+                <a class="btn btn-default btn-block-xs" href="<%= testimonial_link_url_8 %>" target="_blank"><%= testimonial_link_text_8 %></a>
+              </div>
             <% end %>
           </div>
         </div>
@@ -436,7 +458,9 @@ marketing_templates:
               <% end %>
             </article>
             <% if testimonial_link_url_9.present? && testimonial_link_text_9.present? %>
-              <a class="btn btn-default btn-block-xs" href="<%= testimonial_link_url_9 %>" target="_blank"><%= testimonial_link_text_9 %></a>
+              <div>
+                <a class="btn btn-default btn-block-xs" href="<%= testimonial_link_url_9 %>" target="_blank"><%= testimonial_link_text_9 %></a>
+              </div>
             <% end %>
           </div>
         </div>
@@ -459,9 +483,11 @@ marketing_templates:
             <h3><%= title %></h3>
             <p><%= description %></p>
             <% if button_text.present? && button_link.present? %>
-              <a href="<%= button_link %>" class="btn btn-default btn-default--<%= button_color %>">
-                <%= button_text %>
-              </a>
+              <div>
+                <a href="<%= button_link %>" class="btn btn-default btn-default--<%= button_color %>">
+                  <%= button_text %>
+                </a>
+              </div>
             <% end %>
           </div>
         </div>
@@ -526,12 +552,14 @@ marketing_templates:
           <% end %>
           <h6 class="tile-container__title"><%= title %></h6>
           <p class="tile-container__para"><%= body_text %></p>
-          <% if button_1_title.present? && button_1_link.present? %>
-            <a class="btn btn-default btn-default--<%= button_color_1 %> btn-block-xs margin-bottom--m" href="<%= button_1_link %>" target="<%= button_1_target %>"><%= button_1_title %></a>
-          <% end %>
-          <% if button_2_title.present? && button_2_link.present? %>
-            <a class="btn btn-default btn-default--<%= button_color_2 %> btn-block-xs margin-bottom--m" href="<%= button_2_link %>" target="<%= button_2_target %>"><%= button_2_title %></a>
-          <% end %>
+          <div>
+            <% if button_1_title.present? && button_1_link.present? %>
+              <a class="btn btn-default btn-default--<%= button_color_1 %> btn-block-xs margin-bottom--m" href="<%= button_1_link %>" target="<%= button_1_target %>"><%= button_1_title %></a>
+            <% end %>
+            <% if button_2_title.present? && button_2_link.present? %>
+              <a class="btn btn-default btn-default--<%= button_color_2 %> btn-block-xs margin-bottom--m" href="<%= button_2_link %>" target="<%= button_2_target %>"><%= button_2_title %></a>
+            <% end %>
+          </div>
         </div>
       </section>
 
@@ -581,12 +609,14 @@ marketing_templates:
           <% end %>
           <h6 class="tile-container__title"><%= title %></h6>
           <p class="tile-container__para"><%= body_text %></p>
-          <% if button_1_title.present? && button_1_link.present? %>
-            <a class="btn btn-default btn-default--<%= button_color_1 %> btn-block-xs margin-bottom--m" href="<%= button_1_link %>" target="<%= button_1_target %>"><%= button_1_title %></a>
-          <% end %>
-          <% if button_2_title.present? && button_2_link.present? %>
-            <a class="btn btn-default btn-default--<%= button_color_2 %> btn-block-xs margin-bottom--m" href="<%= button_2_link %>" target="<%= button_2_target %>"><%= button_2_title %></a>
-          <% end %>
+          <div>
+            <% if button_1_title.present? && button_1_link.present? %>
+              <a class="btn btn-default btn-default--<%= button_color_1 %> btn-block-xs margin-bottom--m" href="<%= button_1_link %>" target="<%= button_1_target %>"><%= button_1_title %></a>
+            <% end %>
+            <% if button_2_title.present? && button_2_link.present? %>
+              <a class="btn btn-default btn-default--<%= button_color_2 %> btn-block-xs margin-bottom--m" href="<%= button_2_link %>" target="<%= button_2_target %>"><%= button_2_title %></a>
+            <% end %>
+          </div>
         </div>
         <div class="tile-container__image col-sm-6 img-full-new">
           <picture>
@@ -624,7 +654,9 @@ marketing_templates:
               <% else %>
                 <% button_target = '_blank' %>
               <% end %>
-              <a class="btn btn-default btn-block-xs" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+              <div>
+                <a class="btn btn-default btn-block-xs" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+              </div>
             <% end %>
           </div>
         </div>
@@ -656,7 +688,9 @@ marketing_templates:
               <% else %>
                 <% button_target = '_blank' %>
               <% end %>
-              <a class="btn btn-default btn-block-xs" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+              <div>
+                <a class="btn btn-default btn-block-xs" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+              </div>
             <% end %>
           </div>
         </div>
@@ -711,7 +745,9 @@ marketing_templates:
               <% else %>
                 <% button_target = '_blank' %>
               <% end %>
-              <a class="btn btn-default btn-block-xs" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+              <div>
+                <a class="btn btn-default btn-block-xs" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+              </div>
             <% end %>
           </div>
         </div>
@@ -731,7 +767,9 @@ marketing_templates:
               <% else %>
                 <% button_target = '_blank' %>
               <% end %>
-              <a class="btn btn-default btn-block-xs" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+              <div>
+                <a class="btn btn-default btn-block-xs" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+              </div>
             <% end %>
           </div>
         </div>
@@ -761,7 +799,9 @@ marketing_templates:
               <% else %>
                 <% button_target = '_blank' %>
               <% end %>
-              <a class="btn btn-default btn-block-xs" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+              <div>
+                <a class="btn btn-default btn-block-xs" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+              </div>
             <% end %>
           </div>
         </div>
@@ -801,7 +841,9 @@ marketing_templates:
               <% else %>
                 <% button_target = '_blank' %>
               <% end %>
-              <a class="btn btn-default btn-block-xs" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+              <div>
+                <a class="btn btn-default btn-block-xs" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+              </div>
             <% end %>
           </div>
         </div>
@@ -821,7 +863,9 @@ marketing_templates:
               <% else %>
                 <% button_target = '_blank' %>
               <% end %>
-              <a class="btn btn-default btn-block-xs" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+              <div>
+                <a class="btn btn-default btn-block-xs" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+              </div>
             <% end %>
           </div>
         </div>
@@ -861,7 +905,9 @@ marketing_templates:
               <% else %>
                 <% button_target = '_blank' %>
               <% end %>
-              <a class="btn btn-default btn-block-xs" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+              <div>
+                <a class="btn btn-default btn-block-xs" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+              </div>
             <% end %>
           </div>
         </div>
@@ -881,7 +927,9 @@ marketing_templates:
               <% else %>
                 <% button_target = '_blank' %>
               <% end %>
-              <a class="btn btn-default btn-block-xs" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+              <div>
+                <a class="btn btn-default btn-block-xs" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+              </div>
             <% end %>
           </div>
         </div>
@@ -929,7 +977,9 @@ marketing_templates:
                 <% else %>
                   <% button_target = '_blank' %>
                 <% end %>
-                <a class="btn btn-default btn-block-xs margin-bottom--s" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+                <div>
+                  <a class="btn btn-default btn-block-xs margin-bottom--s" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+                </div>
               <% end %>
             </div>
           </div>
@@ -970,7 +1020,9 @@ marketing_templates:
                 <% else %>
                   <% button_target = '_blank' %>
                 <% end %>
-                <a class="btn btn-default btn-block-xs margin-bottom--s" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+                <div>
+                  <a class="btn btn-default btn-block-xs margin-bottom--s" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+                </div>
               <% end %>
             </div>
           </div>
@@ -1009,7 +1061,9 @@ marketing_templates:
                 <% else %>
                   <% button_target = '_blank' %>
                 <% end %>
-                <a class="btn btn-default btn-block-xs margin-bottom--s" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+                <div>
+                  <a class="btn btn-default btn-block-xs margin-bottom--s" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+                </div>
               <% end %>
             </div>
           </div>
@@ -1049,7 +1103,9 @@ marketing_templates:
                 <% else %>
                   <% button_target = '_blank' %>
                 <% end %>
-                <a class="btn btn-default btn-block-xs margin-bottom--s" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+                <div>
+                  <a class="btn btn-default btn-block-xs margin-bottom--s" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+                </div>
               <% end %>
             </div>
           </div>
@@ -1069,7 +1125,9 @@ marketing_templates:
             <% else %>
               <% button_target = '_blank' %>
             <% end %>
-            <a class="btn btn-default btn-block-xs" href="<%= button_link %>" target="<%= button_target %>" <% if button_type.present? && button_type == 'Remote' %> data-remote='true' <% end %> ><%= button_title %></a>
+            <div>
+              <a class="btn btn-default btn-block-xs" href="<%= button_link %>" target="<%= button_target %>" <% if button_type.present? && button_type == 'Remote' %> data-remote='true' <% end %> ><%= button_title %></a>
+            </div>
           <% end %>
         </div>
       </section>
@@ -1088,7 +1146,9 @@ marketing_templates:
               <% else %>
                 <% button_target_1 = '_blank' %>
               <% end %>
-              <a class="btn btn-default btn-default--<%= button_color_1 %> btn-block-xs" href="<%= button_link_1 %>" target="<%= button_target_1 %>"><%= button_title_1 %></a>
+              <div>
+                <a class="btn btn-default btn-default--<%= button_color_1 %> btn-block-xs" href="<%= button_link_1 %>" target="<%= button_target_1 %>"><%= button_title_1 %></a>
+              </div>
             <% end %>
           </div>
           <div class="col_container__content col-sm-6">
@@ -1100,7 +1160,9 @@ marketing_templates:
               <% else %>
                 <% button_target_2 = '_blank' %>
               <% end %>
-              <a class="btn btn-default btn-default--<%= button_color_2 %> btn-block-xs" href="<%= button_link_2 %>" target="<%= button_target_2 %>"><%= button_title_2 %></a>
+              <div>
+                <a class="btn btn-default btn-default--<%= button_color_2 %> btn-block-xs" href="<%= button_link_2 %>" target="<%= button_target_2 %>"><%= button_title_2 %></a>
+              </div>
             <% end %>
           </div>
         </div>
@@ -1120,7 +1182,9 @@ marketing_templates:
               <% else %>
                 <% button_target_1 = '_blank' %>
               <% end %>
-              <a class="btn btn-default btn-default--<%= button_color_1 %> btn-block-xs" href="<%= button_link_1 %>" target="<%= button_target_1 %>"><%= button_title_1 %></a>
+              <div>
+                <a class="btn btn-default btn-default--<%= button_color_1 %> btn-block-xs" href="<%= button_link_1 %>" target="<%= button_target_1 %>"><%= button_title_1 %></a>
+              </div>
             <% end %>
           </div>
           <div class="col_container__content col-sm-6 <%= background_color_2 %>-bg">
@@ -1132,7 +1196,9 @@ marketing_templates:
               <% else %>
                 <% button_target_2 = '_blank' %>
               <% end %>
-              <a class="btn btn-default btn-default--<%= button_color_2 %> btn-block-xs" href="<%= button_link_2 %>" target="<%= button_target_2 %>"><%= button_title_2 %></a>
+              <div>
+                <a class="btn btn-default btn-default--<%= button_color_2 %> btn-block-xs" href="<%= button_link_2 %>" target="<%= button_target_2 %>"><%= button_title_2 %></a>
+              </div>
             <% end %>
           </div>
         </div>
@@ -1152,7 +1218,9 @@ marketing_templates:
               <% else %>
                 <% button_target = '_blank' %>
               <% end %>
-              <a class="btn btn-default btn-default--<%= button_color %> btn-block-xs" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+              <div>
+                <a class="btn btn-default btn-default--<%= button_color %> btn-block-xs" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+              </div>
             <% end %>
           </div>
           <div class="col_container__image col-sm-6">
@@ -1203,7 +1271,9 @@ marketing_templates:
             <% else %>
               <% button_target = '_blank' %>
             <% end %>
-            <a class="video-left-text-right__btn btn btn-default btn-default--<%= button_color %> btn-block-xs" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+            <div>
+              <a class="video-left-text-right__btn btn btn-default btn-default--<%= button_color %> btn-block-xs" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+            </div>
           <% end %>
         </div>
       </section>
@@ -1225,12 +1295,14 @@ marketing_templates:
           <% end %>
           <h6 class="product-presentation__title"><%= title %></h6>
           <p class="product-presentation__para"><%= body_text %></p>
-          <% if button_1_title.present? && button_1_link.present? %>
-            <a class="btn btn-default btn-default--<%= button_color_1 %> btn-block-xs margin-bottom--m" href="<%= button_1_link %>" target="<%= button_1_target %>"><%= button_1_title %></a>
-          <% end %>
-          <% if button_2_title.present? && button_2_link.present? %>
-            <a class="btn btn-default btn-default--<%= button_color_2 %> btn-block-xs margin-bottom--m" href="<%= button_2_link %>" target="<%= button_2_target %>"><%= button_2_title %></a>
-          <% end %>
+          <div>
+            <% if button_1_title.present? && button_1_link.present? %>
+              <a class="btn btn-default btn-default--<%= button_color_1 %> btn-block-xs margin-bottom--m" href="<%= button_1_link %>" target="<%= button_1_target %>"><%= button_1_title %></a>
+            <% end %>
+            <% if button_2_title.present? && button_2_link.present? %>
+              <a class="btn btn-default btn-default--<%= button_color_2 %> btn-block-xs margin-bottom--m" href="<%= button_2_link %>" target="<%= button_2_target %>"><%= button_2_title %></a>
+            <% end %>
+          </div>
         </div>
       </section>
 
@@ -1248,7 +1320,9 @@ marketing_templates:
               <% else %>
                 <% button_target_1 = '_blank' %>
               <% end %>
-              <a class="btn btn-default btn-default--<%= button_color_1 %> btn-block-xs" href="<%= button_link_1 %>" target="<%= button_target_1 %>"><%= button_title_1 %></a>
+              <div>
+                <a class="btn btn-default btn-default--<%= button_color_1 %> btn-block-xs" href="<%= button_link_1 %>" target="<%= button_target_1 %>"><%= button_title_1 %></a>
+              </div>
             <% end %>
           </div>
           <div class="col_container__content col-sm-4">
@@ -1260,7 +1334,9 @@ marketing_templates:
               <% else %>
                 <% button_target_2 = '_blank' %>
               <% end %>
-              <a class="btn btn-default btn-default--<%= button_color_2 %> btn-block-xs" href="<%= button_link_2 %>" target="<%= button_target_2 %>"><%= button_title_2 %></a>
+              <div>
+                <a class="btn btn-default btn-default--<%= button_color_2 %> btn-block-xs" href="<%= button_link_2 %>" target="<%= button_target_2 %>"><%= button_title_2 %></a>
+              </div>
             <% end %>
           </div>
           <div class="col_container__content col-sm-4">
@@ -1272,7 +1348,9 @@ marketing_templates:
               <% else %>
                 <% button_target_3 = '_blank' %>
               <% end %>
-              <a class="btn btn-default btn-default--<%= button_color_3 %> btn-block-xs" href="<%= button_link_3 %>" target="<%= button_target_3 %>"><%= button_title_3 %></a>
+              <div>
+                <a class="btn btn-default btn-default--<%= button_color_3 %> btn-block-xs" href="<%= button_link_3 %>" target="<%= button_target_3 %>"><%= button_title_3 %></a>
+              </div>
             <% end %>
           </div>
         </div>
@@ -1292,7 +1370,9 @@ marketing_templates:
               <% else %>
                 <% button_target_1 = '_blank' %>
               <% end %>
-              <a class="btn btn-default btn-default--<%= button_color_1 %> btn-block-xs" href="<%= button_link_1 %>" target="<%= button_target_1 %>"><%= button_title_1 %></a>
+              <div>
+                <a class="btn btn-default btn-default--<%= button_color_1 %> btn-block-xs" href="<%= button_link_1 %>" target="<%= button_target_1 %>"><%= button_title_1 %></a>
+              </div>
             <% end %>
           </div>
           <div class="col_container__content col-sm-4 <%= background_color_2 %>-bg">
@@ -1304,7 +1384,9 @@ marketing_templates:
               <% else %>
                 <% button_target_2 = '_blank' %>
               <% end %>
-              <a class="btn btn-default btn-default--<%= button_color_2 %> btn-block-xs" href="<%= button_link_2 %>" target="<%= button_target_2 %>"><%= button_title_2 %></a>
+              <div>
+                <a class="btn btn-default btn-default--<%= button_color_2 %> btn-block-xs" href="<%= button_link_2 %>" target="<%= button_target_2 %>"><%= button_title_2 %></a>
+              </div>
             <% end %>
           </div>
           <div class="col_container__content col-sm-4 <%= background_color_3 %>-bg">
@@ -1316,7 +1398,9 @@ marketing_templates:
               <% else %>
                 <% button_target_3 = '_blank' %>
               <% end %>
-              <a class="btn btn-default btn-default--<%= button_color_3 %> btn-block-xs" href="<%= button_link_3 %>" target="<%= button_target_3 %>"><%= button_title_3 %></a>
+              <div>
+                <a class="btn btn-default btn-default--<%= button_color_3 %> btn-block-xs" href="<%= button_link_3 %>" target="<%= button_target_3 %>"><%= button_title_3 %></a>
+              </div>
             <% end %>
           </div>
         </div>
@@ -1343,7 +1427,9 @@ marketing_templates:
               <% end %>
             </article>
             <% if facebook_link_url_1.present? && facebook_link_text_1.present? %>
-              <a class="btn btn-default btn-block-xs" href="<%= facebook_link_url_1 %>" target="_blank"><%= facebook_link_text_1 %></a>
+              <div>
+                <a class="btn btn-default btn-block-xs" href="<%= facebook_link_url_1 %>" target="_blank"><%= facebook_link_text_1 %></a>
+              </div>
             <% end %>
           </div>
         </div>
@@ -1364,7 +1450,9 @@ marketing_templates:
               <% end %>
             </article>
             <% if facebook_link_url_2.present? && facebook_link_text_2.present? %>
-              <a class="btn btn-default btn-block-xs" href="<%= facebook_link_url_2 %>" target="_blank"><%= facebook_link_text_2 %></a>
+              <div>
+                <a class="btn btn-default btn-block-xs" href="<%= facebook_link_url_2 %>" target="_blank"><%= facebook_link_text_2 %></a>
+              </div>
             <% end %>
           </div>
         </div>
@@ -1385,7 +1473,9 @@ marketing_templates:
               <% end %>
             </article>
             <% if facebook_link_url_3.present? && facebook_link_text_3.present? %>
-              <a class="btn btn-default btn-block-xs" href="<%= facebook_link_url_3 %>" target="_blank"><%= facebook_link_text_3 %></a>
+              <div>
+                <a class="btn btn-default btn-block-xs" href="<%= facebook_link_url_3 %>" target="_blank"><%= facebook_link_text_3 %></a>
+              </div>
             <% end %>
           </div>
         </div>
