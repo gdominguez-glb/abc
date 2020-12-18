@@ -7,7 +7,7 @@
     <%= text_field_tag :q, params[:q], class: "form-control form-control-search margin-bottom--l", placeholder: "Search" %>
   <% end %>
 
-  <label class="text-left bh4">I am a:</label>
+  <label class="text-left bh4 block">I am a:</label>
 
   <% @taxonomies.where(name: 'I am a...').each do |taxonomy| %>
     <div class="dropdown dropdown-ol">
@@ -19,7 +19,7 @@
     </div>
   <% end %>
 
-  <label class="text-left bh4">Looking for:</label>
+  <label class="text-left bh4 block">Looking for:</label>
 
   <% @taxonomies.where.not(name: 'I am a...').each do |taxonomy| %>
     <div class="dropdown dropdown-ol">
