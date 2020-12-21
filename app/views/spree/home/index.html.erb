@@ -5,5 +5,8 @@
 <% end %>
 
 <div data-hook="homepage_products">
+  <div class="col-sm-12">
+    <h1 class="text-left">Shop</h1>
+  </div>
   <%= render :partial => 'spree/shared/products', :locals => { :products => @products, cache: true } %>
 </div>

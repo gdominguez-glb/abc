@@ -111,6 +111,13 @@ section {
         }
       }
     }
+
+    @media screen and (max-width: $screen-md-min) {
+      .fwtext {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
   }
 
   &.row-video-left {
@@ -522,7 +529,6 @@ section {
 
     #{$sh}__text {
       color: $primary-text-color;
-      font-family: CircularStd-medium;
       font-size: 20px;
       font-stretch: normal;
       font-style: normal;
@@ -560,15 +566,8 @@ section {
 
     h6 {
       clear: both;
-      font-size: 24px;
-      font-family: "CircularStd-medium";
-      letter-spacing: normal;
       margin-top: 70px;
       text-transform: capitalize;
-    }
-
-    p {
-      line-height: 1.38;
     }
   }
 

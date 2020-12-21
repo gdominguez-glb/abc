@@ -14,7 +14,6 @@
 .btn {
   @include transition(all, .3s);
   border-radius: 0;
-  font-family: "CircularStd-bold";
   font-size: 12px;
   font-stretch: normal;
   font-style: normal;
@@ -45,8 +44,43 @@
 
     .terracotta-bg & {
       background-color: $white;
-      border-color: $white;
 
+      &:hover,
+      &:active {
+        background-color: $black;
+        border-color: $black;
+        color: $white;
+      }
+    }
+
+    .green-bg & {
+      &:hover,
+      &:active {
+        background-color: $black;
+        border-color: $black;
+        color: $white;
+      }
+    }
+
+    .orange-bg & {
+      &:hover,
+      &:active {
+        background-color: $black;
+        border-color: $black;
+        color: $white;
+      }
+    }
+
+    .purple-bg & {
+      &:hover,
+      &:active {
+        background-color: $black;
+        border-color: $black;
+        color: $white;
+      }
+    }
+
+    .light-blue-bg & {
       &:hover,
       &:active {
         background-color: $black;
@@ -225,6 +259,42 @@
   &.header-form-control {
     height: 34px;
     padding: 6px 12px;
+  }
+}
+
+.khaki-bg,
+.beige-bg,
+.black-bg,
+.olive-bg,
+.white-bg,
+.slate-bg {
+  .btn {
+    &.btn-default {
+      background-color: $white;
+
+      &:hover,
+      &:active {
+        background-color: $terracotta;
+        border-color: $terracotta;
+        color: $white;
+      }
+    }
+  }
+}
+
+.green-bg,
+.orange-bg,
+.purple-bg,
+.light-blue-bg {
+  .btn {
+    &.btn-default {
+      &:hover,
+      &:active {
+        background-color: $black;
+        border-color: $black;
+        color: $white;
+      }
+    }
   }
 }
 

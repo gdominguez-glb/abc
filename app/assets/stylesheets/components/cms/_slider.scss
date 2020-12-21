@@ -24,7 +24,6 @@
 
 .slider__slide h5 {
   color: $text-link-color;
-  font-family: CircularStd-bold;
   font-size: 12px;
   font-stretch: normal;
   font-style: normal;
@@ -158,23 +157,7 @@
   position: absolute;
 
   h3 {
-    font-family: CircularStd-medium;
-    font-size: 24px;
-    font-stretch: normal;
-    font-style: normal;
-    font-weight: 500;
     letter-spacing: normal;
-    line-height: 1.25;
     text-transform: none;
-  }
-
-  p {
-    font-family: CircularStd-book;
-    font-size: 16px;
-    font-stretch: normal;
-    font-style: normal;
-    font-weight: normal;
-    letter-spacing: normal;
-    line-height: 1.38;
   }
 }
