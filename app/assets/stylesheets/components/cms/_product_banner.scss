@@ -6,10 +6,6 @@
     min-height: 440px;
     padding: 60px 40px 50px;
 
-    @media screen and (max-width: $screen-sm-min) {
-      min-height: auto;
-    }
-
     @media screen and (max-width: $screen-lg-min) {
       padding: 30px 40px;
     }
@@ -53,10 +49,6 @@
   &__img {
     min-height: 440px;
     padding: 0;
-
-    @media screen and (max-width: $screen-sm-min) {
-      min-height: auto;
-    }
 
     img {
       height: 100%;
