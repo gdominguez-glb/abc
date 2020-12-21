@@ -1404,7 +1404,6 @@ ActiveRecord::Schema.define(version: 20201022092623) do
     t.string   "title"
     t.integer  "interested_curriculum_id"
     t.string   "inkling_id"
-    t.boolean  "has_eureka_access",        default: false
   end
 
   add_index "spree_products", ["available_on"], name: "index_spree_products_on_available_on", using: :btree

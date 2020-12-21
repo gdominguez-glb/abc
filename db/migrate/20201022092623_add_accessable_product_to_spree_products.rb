@@ -1,5 +1,0 @@
-class AddAccessableProductToSpreeProducts < ActiveRecord::Migration
-  def change
-    add_column :spree_products, :has_eureka_access, :boolean, default: false
-  end
-end
