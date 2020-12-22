@@ -5,13 +5,22 @@
 
 # server 'example.com', user: 'deploy', roles: %w{app db web}, my_property: :my_value
 # server 'example.com', user: 'deploy', roles: %w{app web}, other_property: :other_value
-server '54.172.94.127', user: 'deploy', roles: %w{app web}
-server '52.91.205.122', user: 'deploy', roles: %w{app web}
 
-server '54.86.188.144', user: 'deploy', roles: %w{search worker}
+
+# server '54.172.94.127', user: 'deploy', roles: %w{app web}
+# server '52.91.205.122', user: 'deploy', roles: %w{app web}
+
+# server '54.86.188.144', user: 'deploy', roles: %w{search worker}
+
+# set :branch, 'master'
+# set :rails_env, 'production'                  # If the environment differs from the stage name
+
+server '54.242.120.155', user: 'deploy', roles: %w{app web}
+server '54.152.65.114', user: 'deploy', roles: %w{app web}
+server '18.212.71.102', user: 'deploy', roles: %w{search worker}
 
 set :branch, 'master'
-set :rails_env, 'production'                  # If the environment differs from the stage name
+set :rails_env, 'production'
 
 
 # role-based syntax

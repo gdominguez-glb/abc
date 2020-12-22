@@ -86,7 +86,7 @@
 </fieldset>
 
 <div class="school-district-details collapse">
-  <h2>Let's get some specifics about your school</h2>
+  <h3>Let's get some specifics about your school</h3>
 
   <% selected_place_type = params[:spree_user].try(:[], :school_district_attributes).try(:[], :place_type) %>
   <% f.object.school_district ||= SchoolDistrict.new(place_type: (selected_place_type || 'school')) %>
