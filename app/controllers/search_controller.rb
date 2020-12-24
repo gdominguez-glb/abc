@@ -15,7 +15,6 @@ class SearchController < ApplicationController
       MediumPublication
     ] }
     if current_spree_user
-      options[:models].concat([Spree::Material, Spree::Video])
       options[:where] = { user_ids: [current_spree_user.id, -1] }
     end
     options
