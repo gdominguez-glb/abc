@@ -27,6 +27,10 @@ section {
     text-align: left;
   }
 
+  @media screen and (max-width: $screen-xs-max) {
+    padding: 30px 0;
+  }
+
   @media screen and (min-width: $screen-sm-min) {
     padding: 84px 0;
   }
@@ -568,6 +572,14 @@ section {
       clear: both;
       margin-top: 70px;
       text-transform: capitalize;
+
+      @media screen and (max-width: $screen-xs-max) {
+        margin-top: 30px;
+      }
+    }
+
+    @media screen and (max-width: $screen-xs-max) {
+      padding: 0 30px 30px !important;
     }
   }
 
@@ -575,5 +587,10 @@ section {
     padding-bottom: 40px !important;
     padding-right: 45px !important;
     padding-top: 40px !important;
+
+    @media screen and (max-width: $screen-sm-min) {
+      padding-left: 30px !important;
+      padding-right: 30px !important;
+    }
   }
 }
