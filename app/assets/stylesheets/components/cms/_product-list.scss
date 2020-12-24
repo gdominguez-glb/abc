@@ -4,7 +4,6 @@
 
   &__heading {
     color: $primary-text-color;
-    font-family: CircularStd-book;
     font-size: 36px;
     font-stretch: normal;
     font-style: normal;
@@ -100,7 +99,6 @@
     }
 
     &--subject {
-      font-family: "CircularStd-bold";
       font-size: 14px;
       font-stretch: normal;
       font-style: normal;
@@ -141,14 +139,8 @@
 
     &--title {
       color: $text-black;
-      font-family: "CircularStd-medium";
-      font-size: 20px;
-      font-stretch: normal;
-      font-style: normal;
-      font-weight: 500;
       height: 52px;
       letter-spacing: normal;
-      line-height: 1.35;
       min-height: 27px;
       text-align: center;
       text-transform: capitalize;

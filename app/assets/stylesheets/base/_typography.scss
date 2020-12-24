@@ -20,72 +20,90 @@
 
 body {
   font-size: 16px;
-  font-family: "CircularStd-book";
+  font-family: "franklin-gothic-atf-medium",sans-serif;
+  line-height: 2;
 }
 
 h1 {
-  font-size: 2em;
-  line-height: 1.7em;
+  font-family: 'franklin-gothic-atf-bold', sans-serif;
+  font-size: 1.5625em;
+  font-weight: bold;
+  letter-spacing: 2.5px;
+  line-height: 1.4;
+  text-transform: uppercase;
 
-  @media screen and (min-width: $screen-sm-min) {
-    font-size: 2.25em;
+  @media screen and (max-width: $screen-sm-min) {
+    font-size: 1.125em;
   }
 }
 
 h2 {
-  font-size: 1.5em;
-  line-height: 1.7em;
+  font-family: 'athelas-bold', serif;
+  font-size: 2.125em;
+  font-weight: bold;
+  letter-spacing: 3px;
+  line-height: 1.2;
+  text-transform: uppercase;
 
-  @media screen and (min-width: $screen-sm-min) {
-    font-size: 1.75em;
+  @media screen and (max-width: $screen-sm-min) {
+    font-size: 1.5em;
   }
 }
 
 h3 {
   font-size: 1.25em;
-  line-height: 1.7em;
+  font-family: 'franklin-gothic-atf-bold', sans-serif;
+  font-weight: bold;
+  line-height: 1.5;
+  letter-spacing: 3.6px;
+  text-transform: uppercase;
 
-  @media screen and (min-width: $screen-sm-min) {
-    font-size: 1.37em;
+  @media screen and (max-width: $screen-sm-min) {
+    font-size: 1.125em;
   }
 }
 
 h4 {
-  font-size: 1.12em;
-  line-height: 1.6em;
-
-  @media screen and (min-width: $screen-sm-min) {
-    font-size: 1.25em;
-  }
+  font-family: 'franklin-gothic-atf-medium', sans-serif;
+  font-size: 1.125em;
+  font-weight: normal;
+  letter-spacing: 3.6px;
+  line-height: 1.2;
+  text-transform: uppercase;
 }
 
 h5 {
   font-size: 1em;
-  line-height: 1.6em;
-
-  @media screen and (min-width: $screen-sm-min) {
-    font-size: 1.5em;
-  }
+  font-family: 'franklin-gothic-atf-medium', sans-serif;
+  font-weight: normal;
+  line-height: 2;
+  text-transform: uppercase;
 }
 
 h6 {
+  font-family: "franklin-gothic-atf-bold",sans-serif;
+  font-size: 1.25em;
+  font-weight: bold;
+  line-height: 1.5;
   margin-bottom: 5px;
-  font-size: .95em;
-  line-height: 1.2em;
+  text-transform: none;
 
-  @media screen and (min-width: $screen-sm-min) {
-    font-size: 1.25em;
+  @media screen and (max-width: $screen-sm-min) {
+    font-size: 1.125em;
   }
+}
 
-  section.row & {
-    font-family: "CircularStd-medium";
-    font-size: 24px;
-    font-stretch: normal;
-    font-style: normal;
-    font-weight: 500;
-    letter-spacing: normal;
-    line-height: 1.25;
-    text-transform: capitalize;
+blockquote {
+  border-left: none;
+  font-family: 'athelas-italic-bold', serif;
+  font-size: 2.75em;
+  font-style: italic;
+  font-weight: bold;
+  line-height: normal;
+  padding: 0;
+
+  @media screen and (max-width: $screen-sm-min) {
+    text-align: left;
   }
 }
 
@@ -96,8 +114,8 @@ h4,
 h5,
 h6 {
   margin: 0 0 10px;
-  font-weight: bold;
-  text-transform: uppercase;
+  // font-weight: bold;
+  // text-transform: uppercase;
 }
 
 h1,
@@ -133,7 +151,7 @@ body {
 
 p {
   margin: 0 0 15px;
-  line-height: 1.38;
+  // line-height: 1.38;
 }
 
 p,
@@ -215,8 +233,6 @@ table {
 }
 
 .blockquote-attribution-icon {
-  @extend .serif;
-
   display: inline-block;
   float: left;
   width: $b-space-l;
@@ -265,8 +281,6 @@ a {
   }
 
   p & {
-    @extend .serif;
-
     text-transform: none;
     text-decoration: underline;
   }
@@ -327,11 +341,11 @@ hr {
 }
 
 .serif {
-  font-family: "CircularStd-book";
+  font-family: "franklin-gothic-atf-medium";
 }
 
 .sans-serif {
-  font-family: "CircularStd-book";
+  font-family: "franklin-gothic-atf-medium";
 }
 
 .bold {

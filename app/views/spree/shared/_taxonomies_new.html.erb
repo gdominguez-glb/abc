@@ -1,5 +1,4 @@
 <nav id="categoryFilters" class="panel-group" data-hook>
-  <h3 class="text-left">Shop</h3>
 
   <%= form_tag '', method: :get do %>
     <% params[:taxon_ids].each do |taxon_id| %>
@@ -8,7 +7,7 @@
     <%= text_field_tag :q, params[:q], class: "form-control form-control-search margin-bottom--l", placeholder: "Search" %>
   <% end %>
 
-  <h4 class="text-left bh4">I am a:</h4>
+  <label class="text-left bh4 block">I am a:</label>
 
   <% @taxonomies.where(name: 'I am a...').each do |taxonomy| %>
     <div class="dropdown dropdown-ol">
@@ -20,7 +19,7 @@
     </div>
   <% end %>
 
-  <h4 class="text-left bh4">Looking for:</h4>
+  <label class="text-left bh4 block">Looking for:</label>
 
   <% @taxonomies.where.not(name: 'I am a...').each do |taxonomy| %>
     <div class="dropdown dropdown-ol">
