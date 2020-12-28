@@ -321,6 +321,13 @@
       </div>
     </div>
 
+    <div data-hook='admin_product_form_accessable_product'>
+      <div class='form-group field' id='product_is_accessable_field'>
+        <%= f.label :has_eureka_access %>
+        <%= f.check_box :has_eureka_access, class: 'form-control' %>
+      </div>
+    </div>
+
     <div data-hook='admin_product_form_inkling_id'>
       <div class='form-group field' id='product_inkling_id_field'>
         <%= f.label :inkling_id, 'Inkling ID' %>
