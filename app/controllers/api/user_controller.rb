@@ -6,7 +6,7 @@ class Api::UserController < Api::BaseController
             name: user.full_name,
             products: products_of_user(user).
                       as_json(
-                        only: [:id, :name]
+                        only: [:id, :name, :has_eureka_access]
                       )
            }
   end
