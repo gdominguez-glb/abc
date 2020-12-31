@@ -1,7 +1,7 @@
-server '52.91.255.197', user: 'deploy', roles: %w{app web}
-server '18.206.157.16', user: 'deploy', roles: %w{app web}
+server 'stage-0.greatminds.org', user: 'deploy', roles: %w{app web}
+server 'stage-1.greatminds.org', user: 'deploy', roles: %w{app web}
 
-server '54.175.200.155', user: 'deploy', roles: %w{search worker}
+server 'stage-es.greatminds.org', user: 'deploy', roles: %w{search worker}
 
-set :branch, 'feature/website-redesign'
+set :branch, 'feature/upgrade-rails-ruby'
 set :rails_env, 'stage'
