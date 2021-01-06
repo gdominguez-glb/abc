@@ -1414,18 +1414,17 @@ ActiveRecord::Schema.define(version: 2020_07_14_140943) do
     t.string "get_in_touch_url"
     t.boolean "archived", default: false
     t.datetime "archived_at"
-    t.integer "position"
-    t.boolean "is_beta", default: false
-    t.string "internal_name"
-    t.text "meta_text"
-    t.boolean "leaving_site_warning", default: true
-    t.boolean "auto_add_on_sign_up", default: false
-    t.boolean "free_deletable", default: false
-    t.string "title"
-    t.integer "interested_curriculum_id"
-    t.string "inkling_id"
-    t.boolean "for_search", default: false
-    t.datetime "discontinue_on"
+    t.integer  "position"
+    t.boolean  "is_beta",                  default: false
+    t.string   "internal_name"
+    t.text     "meta_text"
+    t.boolean  "leaving_site_warning",     default: true
+    t.boolean  "auto_add_on_sign_up",      default: false
+    t.boolean  "free_deletable",           default: false
+    t.string   "title"
+    t.integer  "interested_curriculum_id"
+    t.string   "inkling_id"
+    t.boolean  "has_eureka_access",        default: false
     t.index ["available_on"], name: "index_spree_products_on_available_on"
     t.index ["deleted_at"], name: "index_spree_products_on_deleted_at"
     t.index ["discontinue_on"], name: "index_spree_products_on_discontinue_on"
