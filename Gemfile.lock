@@ -486,6 +486,9 @@ GEM
       loofah (~> 2.3)
     rails-settings-cached (0.5.6)
       rails (>= 4.2.0)
+    rails_same_site_cookie (0.1.8)
+      rack (>= 1.5)
+      user_agent_parser (~> 2.5)
     railties (5.2.4.3)
       actionpack (= 5.2.4.3)
       activesupport (= 5.2.4.3)
@@ -751,6 +754,7 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.7)
+    user_agent_parser (2.7.0)
     uuid (2.3.9)
       macaddr (~> 1.0)
     validate_url (1.0.11)
@@ -848,6 +852,7 @@ DEPENDENCIES
   rails (~> 5.2.0)
   rails-controller-testing
   rails-settings-cached (~> 0.5.5)
+  rails_same_site_cookie (= 0.1.8)
   remotipart (~> 1.2)
   rest-client
   restforce (~> 2.3)

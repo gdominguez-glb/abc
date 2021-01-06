@@ -126,6 +126,8 @@ gem 'net-sftp', '2.1.3.rc2', require: false
 
 gem 'trailblazer-rails'
 
+gem 'rails_same_site_cookie', '0.1.8'
+
 group :development do
   gem 'letter_opener'
   gem 'better_errors'
