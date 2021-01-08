@@ -21,8 +21,16 @@ module Spree
         @order = Spree::Order.new
 
         if @new_licenses_form.valid?
-          @new_licenses_form.perform
-          redirect_to spree.admin_licensed_products_path, notice: 'Licenses successfully distributed'
+          status = @new_licenses_form.perform
+          if status.class.eql?(String)
+            flash[:error] = status
+            render :new
+          else
+            redirect_to(
+              spree.admin_licensed_products_path,
+              notice: 'Licenses successfully distributed'
+            )
+          end
         else
           render :new
         end
