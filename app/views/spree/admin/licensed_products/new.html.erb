@@ -100,7 +100,7 @@
     $("#admin_new_licenses_form_amount").on('change', function () {
       var total = $('#admin_new_licenses_form_amount').val();
       $('.text-danger').remove();
-      if ( total > 100000000 ) {
+      if ( total > 99999999 ) {
         $( "#total_amount" ).append( "<p class='text-danger'>Please enter amount less than 100000000</p>" );
         $(':input[type="submit"]').prop('disabled', true);
       }
