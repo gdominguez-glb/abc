@@ -101,10 +101,6 @@ blockquote {
   font-weight: bold;
   line-height: normal;
   padding: 0;
-
-  @media screen and (max-width: $screen-sm-min) {
-    text-align: left;
-  }
 }
 
 h1,
