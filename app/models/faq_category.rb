@@ -1,4 +1,4 @@
-class FaqCategory < ActiveRecord::Base
+class FaqCategory < ApplicationRecord
   include Displayable
 
   validates_presence_of :name

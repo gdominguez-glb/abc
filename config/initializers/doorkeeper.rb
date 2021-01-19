@@ -3,6 +3,7 @@ Doorkeeper.configure do
   # Currently supported options are :active_record, :mongoid2, :mongoid3,
   # :mongoid4, :mongo_mapper
   orm :active_record
+  default_scopes :public
 
   # This block will be called to check whether the resource owner is authenticated or not.
   resource_owner_authenticator do
@@ -22,8 +23,8 @@ Doorkeeper.configure do
   # access_token_expires_in 2.hours
 
   # Assign a custom TTL for implicit grants.
-  custom_access_token_expires_in do |app|
-    app.name == ENV['SALES_FORCE_SYNC_APP'] ? 4.months.to_i : 2.hours.to_i
+  custom_access_token_expires_in do |context|
+    context.client.name == ENV['SALES_FORCE_SYNC_APP'] ? 4.months.to_i : 2.hours.to_i
   end
 
   # Use a custom class for generating the access token.

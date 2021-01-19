@@ -35,7 +35,7 @@
         <div class="col-sm-3">
           <div class="form-group">
             <label>User Role</label>
-            <%= f.select :user_title, options_for_select(['Global'] + Spree::User::USER_TITLES, (@whats_new.user_title.split(',') rescue [])), {}, class: 'form-control', multiple: true, placeholder: "Select one or more"  %>
+            <%= f.select :user_title, options_for_select(['Global'] + USER_TITLES, (@whats_new.user_title.split(',') rescue [])), {}, class: 'form-control', multiple: true, placeholder: "Select one or more"  %>
           </div>
         </div>
       </div>

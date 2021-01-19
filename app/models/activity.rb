@@ -1,4 +1,4 @@
-class Activity < ActiveRecord::Base
+class Activity < ApplicationRecord
   belongs_to :user, class_name: 'Spree::User'
   belongs_to :item, polymorphic: true
 

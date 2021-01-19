@@ -1,4 +1,4 @@
-class Job < ActiveRecord::Base
+class Job < ApplicationRecord
   include Displayable
   include Archiveable
   include Publishable
@@ -6,7 +6,7 @@ class Job < ActiveRecord::Base
 
   acts_as_list
 
-  searchkick callbacks: :async, personalize: "user_ids"
+  searchkick callbacks: :async
 
   def should_index?
     display?

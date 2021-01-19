@@ -1,5 +1,5 @@
 module Spree
-  class Part < ActiveRecord::Base
+  class Part < ApplicationRecord
     belongs_to :bundle, class_name: 'Spree::Product', foreign_key: 'bundle_id'
     belongs_to :product, class_name: 'Spree::Product', foreign_key: 'product_id'
 

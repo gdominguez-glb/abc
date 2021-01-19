@@ -1,4 +1,4 @@
-class LinkFile < ActiveRecord::Base
+class LinkFile < ApplicationRecord
   has_attached_file :file, {
     path:           "/:class/:attachment/:id_partition/:style/:filename",
     url:            ":s3_alias_url",

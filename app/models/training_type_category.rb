@@ -1,4 +1,4 @@
-class TrainingTypeCategory < ActiveRecord::Base
+class TrainingTypeCategory < ApplicationRecord
   has_many :event_trainings
   has_many :event_training_headers
 

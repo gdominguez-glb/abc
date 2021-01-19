@@ -32,15 +32,14 @@
   <table class="table" id="listing_videos" data-hook>
     <thead>
       <tr data-hook="admin_videos_index_headers">
-        <th>
+        <th width="70%">
           Title
         </th>
-        <th>
+        <th width="15%">
           Video Group
         </th>
-        <th data-hook="admin_videos_index_header_actions" class="actions"></th>
+        <th data-hook="admin_videos_index_header_actions" class="actions" width="15%"></th>
       </tr>
-    </thead>
     <tbody>
       <% @videos.each do |video|%>
         <tr id="<%= spree_dom_id video %>" data-hook="admin_videos_index_rows">

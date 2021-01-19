@@ -1,0 +1,50 @@
+name: Deploy Dev App
+on:
+  push:
+    branches:
+      - develop
+      - staging
+      - feature/website-redesign
+      - feature/upgrade-rails-ruby
+      - feature/responsive-design
+      - feature/ci-cd-with-github-action
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    container:
+      image: greatminds/cds-webstore:ruby-2.6.3
+    steps:
+    - name: checkot the code
+      uses: actions/checkout@v2
+      with:
+          ref: feature/github-action
+
+    - name: Configure ssh Key
+      shell: bash
+      env:
+        SSH_KEY: ${{ secrets.SSH_KEY_PASS }}
+      run: |
+        mkdir -p  /github/home/.ssh/
+        openssl enc -d -aes-256-cbc -md sha512 -salt -in ./.github/actions/ruby-action/ssh_key -out /github/home/.ssh/id_rsa -k "$SSH_KEY" -a -pbkdf2
+        echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+        chmod 600 /github/home/.ssh/id_rsa
+
+    - name: Configure bundler
+      run: bundle install
+
+    - name: Prepare ssh agent to deploy
+      run: |
+        ssh-agent -a /tmp/ssh-auth.sock
+        export SSH_AUTH_SOCK="/tmp/ssh-auth.sock"
+        ssh-add /github/home/.ssh/id_rsa
+        mkdir -p /root/.ssh/
+        echo "Host *" > /root/.ssh/config
+        echo "  StrictHostKeyChecking no" >> /root/.ssh/config
+        echo "Host *" >> /etc/ssh/ssh_config
+        echo "StrictHostKeyChecking no\n\n" >> /etc/ssh/ssh_config
+
+    - name: Deploy on dev server
+      run: |
+        /root/.rbenv/versions/2.6.3/bin/bundle exec cap dev deploy BRANCH=$GITHUB_REF
+

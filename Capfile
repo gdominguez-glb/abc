@@ -4,6 +4,9 @@ require 'capistrano/setup'
 # Include default deployment tasks
 require 'capistrano/deploy'
 
+require 'capistrano/scm/git'
+install_plugin Capistrano::SCM::Git
+
 # Include tasks from other gems included in your Gemfile
 #
 # For documentation on these, see for example:
@@ -20,11 +23,16 @@ require 'capistrano/rbenv'
 # require 'capistrano/chruby'
 require 'capistrano/bundler'
 require 'capistrano/rails'
+
 # require 'capistrano/passenger'
 require 'capistrano/sidekiq'
 
-require "whenever/capistrano"
-require 'capistrano/sitemap_generator'
+require 'whenever/capistrano'
+require 'capistrano/rails/assets'
+require 'capistrano/rails/migrations'
+require 'capistrano/puma'
+install_plugin Capistrano::Puma
 
+require 'capistrano/sitemap_generator'
 # Load custom tasks from `lib/capistrano/tasks` if you have any defined
 Dir.glob('lib/capistrano/tasks/*.rake').each { |r| import r }

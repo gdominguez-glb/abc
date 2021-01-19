@@ -1,12 +1,10 @@
-class Spree::Material < ActiveRecord::Base
+class Spree::Material < ApplicationRecord
   acts_as_nested_set scope: :product_id, counter_cache: :children_count
 
   belongs_to :product, class_name: 'Spree::Product'
   has_many :material_files, class_name: 'Spree::MaterialFile', dependent: :destroy
 
   validates_presence_of :name
-
-  searchkick callbacks: :async, personalize: "user_ids"
 
   LINK_ICON_OPTIONS = [['Link', 'open_in_browser'], ['Video Play', 'play_arrow']]
 

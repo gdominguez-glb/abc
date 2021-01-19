@@ -21,8 +21,16 @@ module Spree
         @order = Spree::Order.new
 
         if @new_licenses_form.valid?
-          @new_licenses_form.perform
-          redirect_to spree.admin_licensed_products_path, notice: 'Licenses successfully distributed'
+          status = @new_licenses_form.perform
+          if status.class.eql?(String)
+            flash[:error] = status
+            render :new
+          else
+            redirect_to(
+              spree.admin_licensed_products_path,
+              notice: 'Licenses successfully distributed'
+            )
+          end
         else
           render :new
         end
@@ -47,7 +55,10 @@ module Spree
       private
 
       def set_payment_methods
-        @payment_methods = Spree::PaymentMethod.where(name: ['Purchase Order', 'Credit Card']).available(:back_end)
+        @payment_methods =
+          Spree::PaymentMethod.where(
+            name: ['Purchase Order', 'Credit Card']
+          ).available_on_back_end
       end
 
       def new_licenses_form_params
@@ -64,7 +75,7 @@ module Spree
           :enable_single_distribution,
           :allow_fulfill_without_salesforce,
           :amount
-        )
+        ).to_h
       end
     end
   end

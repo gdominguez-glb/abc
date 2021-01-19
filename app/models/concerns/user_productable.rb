@@ -79,7 +79,7 @@ module UserProductable
           ) a group by a.product_id
         ) b where b.quantity_count > 3
     SQL
-    result = ActiveRecord::Base.connection.execute(sql)
+    result = ApplicationRecord.connection.execute(sql)
     result.count > 0
   end
 

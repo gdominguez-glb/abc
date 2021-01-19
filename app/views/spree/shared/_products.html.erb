@@ -8,13 +8,13 @@
     %>
 
     <% content_for :head do %>
-      <% if paginated_products.respond_to?(:num_pages) %>
+      <% if paginated_products.respond_to?(:total_pages) %>
         <%= rel_next_prev_link_tags paginated_products %>
       <% end %>
     <% end %>
 
     <div id="products" data-hook class="col-sm-8 col-md-offset-1 margin-bottom--xl">
-      <% if paginated_products.respond_to?(:num_pages) %>
+      <% if paginated_products.respond_to?(:total_pages) %>
         <%= paginate paginated_products, theme: 'twitter-bootstrap-3' %>
       <% end %>
       <%= show_store_welcome_message %>
@@ -34,7 +34,7 @@
       <% else %>
         <%= Spree.t(:no_products_found) %>
       <% end %>
-      <% if paginated_products.respond_to?(:num_pages) %>
+      <% if paginated_products.respond_to?(:total_pages) %>
         <%= paginate paginated_products, theme: 'twitter-bootstrap-3' %>
       <% end %>
     </div>

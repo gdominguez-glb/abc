@@ -1,0 +1,35 @@
+---
+- hosts: default
+  become: True
+  tasks:
+  - name: Add user as deploy 
+    user:
+      name: deploy
+      state: present
+      password: "$6$3mA1Luf6kRzQwUxt$hjnKViDCSPbMpUE6D2nQseQsfM7453JUqh3kMvhjhSJ7xqW.XCqsYQs9hKglqMsVPdRxyLQ6wm7fCvZKATn9G/"
+      groups: 
+        - sudo
+      shell: /bin/bash
+  - name: install packages
+    apt:
+      #name: "{{item}}"
+      state: present
+      install_recommends: no
+      update_cache: yes
+      pkg:
+        - git 
+        - curl 
+        - gnupg2 
+        - libpq-dev 
+        - default-libmysqlclient-dev 
+        - nodejs 
+        - graphviz
+  - name: sudo access to deploy user 
+    copy:
+      dest: /etc/sudoers.d/deploy
+      mode: "0440"
+      content: "deploy ALL=(ALL) NOPASSWD:ALL"
+
+  - include: tasks/ruby.yaml 
+  - include: tasks/nginx.yaml 
+  - include: tasks/redis.yaml 

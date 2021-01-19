@@ -56,10 +56,10 @@ class DataDumper
 
     def with_config
       yield Rails.application.class.parent_name.underscore,
-            ActiveRecord::Base.connection_config[:host],
-            ActiveRecord::Base.connection_config[:database],
-            ActiveRecord::Base.connection_config[:username],
-            ActiveRecord::Base.connection_config[:password]
+            ApplicationRecord.connection_config[:host],
+            ApplicationRecord.connection_config[:database],
+            ApplicationRecord.connection_config[:username],
+            ApplicationRecord.connection_config[:password]
     end
 
     def copy_s3_file(file_path)

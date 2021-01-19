@@ -1,7 +1,7 @@
 Spree::UserSessionsController.class_eval do
   before_action :authenticate_user!, only: [:become]
-  before_filter :require_admin, only: [:become]
-  before_filter :can_switch_user, only: [:become]
+  before_action :require_admin, only: [:become]
+  before_action :can_switch_user, only: [:become]
   skip_before_action :accepted_terms, only: [:destroy]
 
   # override this action to remove login flash message

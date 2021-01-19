@@ -1,2 +1,2 @@
-class DocumentTag < ActiveRecord::Base
+class DocumentTag < ApplicationRecord
 end

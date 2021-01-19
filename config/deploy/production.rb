@@ -15,9 +15,14 @@
 # set :branch, 'master'
 # set :rails_env, 'production'                  # If the environment differs from the stage name
 
-server '54.242.120.155', user: 'deploy', roles: %w{app web}
-server '54.152.65.114', user: 'deploy', roles: %w{app web}
-server '18.212.71.102', user: 'deploy', roles: %w{search worker}
+# server '54.242.120.155', user: 'deploy', roles: %w{app web}
+# server '54.152.65.114', user: 'deploy', roles: %w{app web}
+# server '18.212.71.102', user: 'deploy', roles: %w{search worker}
+
+# TODO: beta server IPS
+server 'prod-0.greatminds.org', user: 'deploy', roles: %w{app web}
+server 'prod-1.greatminds.org', user: 'deploy', roles: %w{app web}
+server 'prod-es.greatminds.org', user: 'deploy', roles: %w{search worker}
 
 set :branch, 'master'
 set :rails_env, 'production'

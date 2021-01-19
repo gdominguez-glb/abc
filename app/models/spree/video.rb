@@ -1,4 +1,4 @@
-class Spree::Video < ActiveRecord::Base
+class Spree::Video < ApplicationRecord
   include Taxonable
 
   has_attached_file :screenshot, {
@@ -9,16 +9,6 @@ class Spree::Video < ActiveRecord::Base
     :styles => {
       :medium => "330x220" }
   }
-
-  searchkick callbacks: :async
-
-  def search_data
-    {
-      title: title,
-      description: description,
-      user_ids: find_user_ids_to_index
-    }
-  end
 
   def find_user_ids_to_index
     return [-1] if self.is_free?

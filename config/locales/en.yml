@@ -107,3 +107,8 @@ en:
         page_id: 'Curriculum'
       vanity_url:
         url: 'Vanity Url'
+
+  controllers:
+    blog:
+      subscribe: 'Thank you for subscribing to %{title}. Whenever a new blog post is published you will receive an email notifying you. If you wish to unsubscribe, go to your settings and click Unsuscribe in the Blog Subscription section.'
+      unsubscribe: 'Successfully unsubscribe %{title}'
