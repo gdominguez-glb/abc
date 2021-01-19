@@ -24,7 +24,7 @@ server 'prod-0.greatminds.org', user: 'deploy', roles: %w{app web}
 server 'prod-1.greatminds.org', user: 'deploy', roles: %w{app web}
 server 'prod-es.greatminds.org', user: 'deploy', roles: %w{search worker}
 
-set :branch, 'feature/upgrade-rails-ruby'
+set :branch, 'master'
 set :rails_env, 'production'
 
 
