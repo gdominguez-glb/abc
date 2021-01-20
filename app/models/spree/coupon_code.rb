@@ -19,7 +19,7 @@ class Spree::CouponCode < ApplicationRecord
   serialize :school_lists, Array
 
   attr_accessor :admin_email, :school_district_id, :products_quantity
-  validates :admin_email, :school_district_id, :products_quantity, presence: true
+  validates :admin_email, :school_district_id, presence: true
 
   def grades_to_select
     sql = <<-SQL
