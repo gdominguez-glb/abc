@@ -1,14 +1,11 @@
 class ReminderMailer < ApplicationMailer
 
-  def invitation_remind(from_user, email, product_names)
-    @from_user = from_user
-    @product_names = product_names
-    mail to: email, subject: "#{@from_user.full_name} wants you to register for your Great Minds account."
+  def invitation_remind(email)
+    MandrillSender.new.deliver_with_template('invite-reminder', email, 'A friendly reminder to finish registering for your Great Minds account.', {})
   end
 
-  def login_remind(from_user, email)
-    @from_user = from_user
-    mail to: email, subject: "Friendly reminder from #{@from_user.full_name}"
+  def login_remind(email)
+    MandrillSender.new.deliver_with_template('login-reminder', email, 'A friendly reminder about your Great Minds login', {})
   end
 
 end

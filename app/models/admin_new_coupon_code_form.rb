@@ -2,9 +2,16 @@ class AdminNewCouponCodeForm
   include ActiveModel::Model
   include ManualOrderable
 
-  attr_accessor :code, :admin_email, :school_district_id, :schools_xls, :school_lists, :product_ids, :total_quantity, :sync_specified_order, :sf_order_id, :amount, :payment_method_id, :products_quantity, :payment_source_params, :coupon_code, :school_lists
+  attr_accessor :code, :admin_email, :school_district_id,
+                :schools_xls, :school_lists, :product_ids,
+                :total_quantity, :sync_specified_order,
+                :sf_order_id, :amount, :payment_method_id,
+                :products_quantity, :payment_source_params,
+                :coupon_code, :school_lists
 
-  validates_presence_of :admin_email, :school_district_id, :products_quantity
+  validates_presence_of :admin_email, :school_district_id
+  # TODO
+  # removed validation for :products_quantity. we need to recheck the details
 
   def perform
     build_coupon_code
@@ -17,6 +24,7 @@ class AdminNewCouponCodeForm
   def build_coupon_code
     @coupon_code = Spree::CouponCode.new(
       code: self.code,
+      admin_email: self.admin_email,
       school_lists: self.school_lists,
       total_quantity: self.total_quantity,
       school_district_id: self.school_district_id,
