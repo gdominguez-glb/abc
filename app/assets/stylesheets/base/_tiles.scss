@@ -216,6 +216,16 @@ section {
         }
       }
     }
+
+    @media screen and (max-width: $screen-sm-min) {
+      .tile-content {
+        display: block;
+
+        .col_container__content {
+          padding: 0 64px 84px 64px;
+        }
+      }
+    }
   }
 
   &.row-content-4col {
