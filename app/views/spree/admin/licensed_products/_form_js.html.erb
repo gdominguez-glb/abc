@@ -4,7 +4,7 @@
    $("#admin_new_licenses_form_user_id").select2({
       placeholder: "Select school district admin",
       ajax: {
-        url: '/storeapi/users',
+        url: '/resources/api/v1/users',
         datatype: 'json',
         data: function (term, page) {
           return {
@@ -36,7 +36,7 @@
       placeholder: "Select product",
       multiple: true,
       ajax: {
-        url: '/storeapi/products',
+        url: '/resources/api/v1/products',
         datatype: 'json',
         data: function (term, page) {
           return {
@@ -52,7 +52,7 @@
         results: function (data, page) {
           var more = page < data.pages;
           return {
-            results: data['products'],
+            results: data.products,
             more: more
           };
         }

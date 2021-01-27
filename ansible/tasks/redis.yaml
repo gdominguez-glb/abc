@@ -1,0 +1,27 @@
+- name: Installing redis and memcachd  package
+  apt:
+      state: present
+      install_recommends: no
+      update_cache: yes
+      pkg:
+       - redis-server
+       - memcached
+       - postgresql 
+       - postgresql-contrib
+
+- name: redis service start and enable 
+  service:
+    name: redis
+    state: started
+    enabled: yes
+- name: memcached service start and enable 
+  service:
+    name: memcached
+    state: started
+    enabled: yes
+- name: postgresql service start
+  service:
+    name: postgresql
+    state: started
+    enabled: yes
+

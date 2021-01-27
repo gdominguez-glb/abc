@@ -1,4 +1,4 @@
-class ContactTopic < ActiveRecord::Base
+class ContactTopic < ApplicationRecord
   validates_presence_of :name
 
   acts_as_list

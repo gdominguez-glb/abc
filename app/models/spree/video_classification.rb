@@ -1,4 +1,4 @@
-class Spree::VideoClassification < ActiveRecord::Base
+class Spree::VideoClassification < ApplicationRecord
   self.table_name = 'spree_taxons_videos'
 
   acts_as_list scope: :taxon

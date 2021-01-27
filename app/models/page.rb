@@ -1,6 +1,6 @@
 require 'marketing_page_renderrer'
 
-class Page < ActiveRecord::Base
+class Page < ApplicationRecord
 
   include Archiveable
   include Publishable
@@ -33,8 +33,8 @@ class Page < ActiveRecord::Base
   validates_presence_of :title, :group_name
 
   serialize :tiles
-  serialize :seo_data, Hash
-  serialize :data, Hash
+  serialize :seo_data
+  serialize :data
 
   scope :visibles, -> { where(visible: true).order('position ASC') }
   scope :curriculum_nav, -> { show_in_top_navigation.joins(:curriculum).where({curriculums: { visible: true }}).order('curriculums.position asc') }

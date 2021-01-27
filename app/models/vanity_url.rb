@@ -1,4 +1,4 @@
-class VanityUrl < ActiveRecord::Base
+class VanityUrl < ApplicationRecord
   include Categorizable
 
   validates :url, presence: true, uniqueness: true, url: true

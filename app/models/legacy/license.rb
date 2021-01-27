@@ -1,4 +1,4 @@
-class Legacy::License < ActiveRecord::Base
+class Legacy::License < ApplicationRecord
 
   belongs_to :user, class_name: 'Legacy::User', primary_key: :ee_id
 

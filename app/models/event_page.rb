@@ -1,4 +1,4 @@
-class EventPage < ActiveRecord::Base
+class EventPage < ApplicationRecord
   include Displayable
   include Archiveable
   include Publishable

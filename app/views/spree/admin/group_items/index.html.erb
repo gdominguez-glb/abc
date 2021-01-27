@@ -32,16 +32,16 @@
       placeholder: "Select product",
       multiple: false,
       initSelection: function (element, callback) {
-        var url = Spree.url('/storeapi/products', {
+        var url = Spree.url('/resources/api/v1/products', {
           ids: element.val(),
           token: Spree.api_key
         });
         return $.getJSON(url, null, function (data) {
-          return callback(data['products'][0]);
+          return callback(data.products);
         });
       },
       ajax: {
-        url: '/storeapi/products',
+        url: '/resources/api/v1/products',
         datatype: 'json',
         data: function (term, page) {
           return {
@@ -57,16 +57,16 @@
         results: function (data, page) {
           var more = page < data.pages;
           return {
-            results: data['products'],
+            results: data.products,
             more: more
           };
         }
       },
       formatResult: function (product) {
-        return product.name + ' (' + product.internal_name + ')';
+        return product.name;
       },
       formatSelection: function (product) {
-        return product.name + ' (' + product.internal_name + ')';
+        return product.name;
       }
    });
 

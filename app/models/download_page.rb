@@ -1,4 +1,4 @@
-class DownloadPage < ActiveRecord::Base
+class DownloadPage < ApplicationRecord
   validates_presence_of :title
   validates :slug, presence: true, uniqueness: true
 

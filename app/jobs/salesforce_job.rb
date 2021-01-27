@@ -1,3 +1,3 @@
 # SalesforceJob
-class SalesforceJob < ActiveJob::Base
+class SalesforceJob < ApplicationJob
 end

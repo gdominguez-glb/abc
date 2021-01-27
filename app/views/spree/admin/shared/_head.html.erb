@@ -9,14 +9,14 @@
     <%= yield :title %>
   <% else %>
     <%= "Spree #{Spree.t('administration')}: " %>
-    <%= Spree.t(controller.controller_name, :default => controller.controller_name.titleize) %>
+    <%= Spree.t(controller.controller_name, default: controller.controller_name.titleize) %>
   <% end %>
 </title>
 
-<%= stylesheet_link_tag 'spree/backend/all' %>
-<%= javascript_include_tag 'spree/backend/all' %>
-<%= render 'google_fonts_inline' %>
+<%= stylesheet_link_tag 'spree/backend/all', media: :all %>
 
+<%= render 'spree/shared/paths' %>
+<%= javascript_include_tag 'spree/backend/all' %>
 <%= render "spree/admin/shared/translations" %>
 
 <%= javascript_tag do %>

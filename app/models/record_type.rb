@@ -1,5 +1,5 @@
 # RecordType
-class RecordType < ActiveRecord::Base
+class RecordType < ApplicationRecord
   include SalesforceAccess
 
   def self.sobject_name

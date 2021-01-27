@@ -1,4 +1,4 @@
-class EventTraining < ActiveRecord::Base
+class EventTraining < ApplicationRecord
   validates_presence_of :title, :content
 
   belongs_to :training_type_category
@@ -12,23 +12,7 @@ class EventTraining < ActiveRecord::Base
     title.parameterize
   end
 
-   searchkick merge_mappings: true, mappings: {
-    event_tranining: {
-      properties: {
-        content: {type: "string", index: "not_analyzed", ignore_above: 256}
-      }
-    }
-  }, callbacks: :async
-
   acts_as_list scope: :training_type_category
-
-  def search_data
-    {
-      title: title,
-      content: content,
-      user_ids: [-1]
-    }
-  end
 
   def title_with_category
     [title, category].compact.join(' - ')

@@ -60,7 +60,7 @@ describe 'Client credentials OAuth flow', type: :request do
       'Authorization' => "Bearer #{token.token}"
     }
 
-    post api_user_path, params, headers
+    post api_user_path, params: params, headers: headers
     data = JSON.parse(response.body)
     data_response = JSON.parse Cypher.decrypt data['spree_user']['id']
     user = Spree::User.find_by email: 'random@example.com'
@@ -239,7 +239,7 @@ describe 'Client credentials OAuth flow', type: :request do
       'Authorization' => "Bearer #{token.token}"
     }
 
-    post api_user_path, params, headers
+    post api_user_path, params: params, headers: headers
     data = JSON.parse(response.body)
     data_response = JSON.parse Cypher.decrypt data['spree_user']['id']
     spree_user = Spree::User.find_by email: user.email
@@ -273,7 +273,7 @@ describe 'Client credentials OAuth flow', type: :request do
       'Authorization' => "Bearer #{token.token}"
     }
 
-    post api_user_path, params, headers
+    post api_user_path, params: params, headers: headers
     data = JSON.parse(response.body)
     data_response = JSON.parse Cypher.decrypt data['spree_user']['id']
     spree_user = Spree::User.find_by email: user.email
@@ -306,7 +306,7 @@ describe 'Client credentials OAuth flow', type: :request do
       'Authorization' => "Bearer #{token.token}"
     }
 
-    post api_user_path, params, headers
+    post api_user_path, params: params, headers: headers
     data = JSON.parse(response.body)
 
     expect(data['errors'][0]).to eq('School/District can\'t be blank')
@@ -331,7 +331,7 @@ describe 'Client credentials OAuth flow', type: :request do
       'Authorization' => "Bearer #{token.token}"
     }
 
-    post api_user_path, params, headers
+    post api_user_path, params: params, headers: headers
     data = JSON.parse(response.body)
     data_response = JSON.parse Cypher.decrypt data['spree_user']['id']
     user = Spree::User.find_by email: 'random@example.com'
@@ -361,7 +361,7 @@ describe 'Client credentials OAuth flow', type: :request do
       'Authorization' => "Bearer #{token.token}"
     }
 
-    post api_user_path, params, headers
+    post api_user_path, params: params, headers: headers
     data = JSON.parse(response.body)
 
     expect(data['errors'][0]).to eq('First name can\'t be blank')
@@ -383,7 +383,7 @@ describe 'Client credentials OAuth flow', type: :request do
       'Authorization' => "Bearer #{token.token}"
     }
 
-    post api_user_path, params, headers
+    post api_user_path, params: params, headers: headers
     data = JSON.parse(response.body)
 
     expect(data['errors'][0]).to eq('Last name can\'t be blank')
@@ -402,7 +402,7 @@ describe 'Client credentials OAuth flow', type: :request do
       'Authorization' => "Bearer #{token.token}"
     }
 
-    post api_user_path, params, headers
+    post api_user_path, params: params, headers: headers
     data = JSON.parse(response.body)
 
     expect(data['errors'][0]).to eq('Email can\'t be blank')
@@ -426,7 +426,7 @@ describe 'Client credentials OAuth flow', type: :request do
       'Authorization' => "Bearer #{token.token}"
     }
 
-    post api_user_path, params, headers
+    post api_user_path, params: params, headers: headers
     data = JSON.parse(response.body)
 
     expect(data['errors'][0]).to eq('School/District can\'t be blank')
@@ -450,7 +450,7 @@ describe 'Client credentials OAuth flow', type: :request do
       'Authorization' => "Bearer #{token.token}"
     }
 
-    post api_user_path, params, headers
+    post api_user_path, params: params, headers: headers
     data = JSON.parse(response.body)
 
     expect(data['errors'][0]).to eq('School/District can\'t be blank')
@@ -474,7 +474,7 @@ describe 'Client credentials OAuth flow', type: :request do
       'Authorization' => "Bearer #{token.token}"
     }
 
-    post api_user_path, params, headers
+    post api_user_path, params: params, headers: headers
     data = JSON.parse(response.body)
 
     expect(data['errors'][0]).to eq('Role can\'t be blank')
@@ -489,7 +489,7 @@ describe 'Client credentials OAuth flow', type: :request do
       'Authorization' => "Bearer #{token}"
     }
 
-    post api_user_path, nil, headers
+    post api_user_path, params: nil, headers: headers
 
     expect(response.status).to eq(401)
   end
@@ -501,10 +501,11 @@ describe 'Client credentials OAuth flow', type: :request do
       'Content-Type' => 'application/x-www-form-urlencoded'
     }
 
-    post oauth_token_path, { client_id: 'invalid client',
-                             secret_id: app.secret,
-                             grant_type: 'client_credentials' },
-                             headers
+    post oauth_token_path, params: {
+      client_id: 'invalid client',
+      secret_id: app.secret,
+      grant_type: 'client_credentials'
+    }, headers: headers
 
     expect(response.status).to eq(401)
   end
@@ -516,10 +517,11 @@ describe 'Client credentials OAuth flow', type: :request do
       'Content-Type' => 'application/x-www-form-urlencoded'
     }
 
-    post oauth_token_path, { client_id: app.uid,
-                             secret_id: 'Invalid Secret',
-                             grant_type: 'client_credentials' },
-                             headers
+    post oauth_token_path, params: {
+      client_id: app.uid,
+      secret_id: 'Invalid Secret',
+      grant_type: 'client_credentials'
+    }, headers: headers
 
     expect(response.status).to eq(401)
   end

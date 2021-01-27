@@ -5,7 +5,7 @@ RSpec.describe WhatsNew, type: :model do
   it { should validate_presence_of :title }
   it { should validate_length_of(:sub_header).is_at_most(168) }
 
-  let(:whats_new) { FactoryGirl.create(:whats_new) }
+  let(:whats_new) { FactoryBot.create(:whats_new) }
 
   describe '#concerns' do
     context '#clickable' do
@@ -24,8 +24,8 @@ RSpec.describe WhatsNew, type: :model do
 
     context '#displayable' do
       it 'should return displayed whats_news' do
-        FactoryGirl.create_list(:whats_new, 3, display: true)
-        FactoryGirl.create_list(:whats_new, 2, display: false)
+        FactoryBot.create_list(:whats_new, 3, display: true)
+        FactoryBot.create_list(:whats_new, 2, display: false)
         expect(WhatsNew.displayable.count).to eq(3)
       end
     end
@@ -33,7 +33,7 @@ RSpec.describe WhatsNew, type: :model do
     context '#orderable' do
       it 'should return latest whats_news' do
         whats_new
-        FactoryGirl.create(:whats_new, created_at: 10.minutes.ago)
+        FactoryBot.create(:whats_new, created_at: 10.minutes.ago)
         expect(WhatsNew.latest.first).to eq(whats_new)
       end
     end

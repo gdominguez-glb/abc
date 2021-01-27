@@ -1,4 +1,4 @@
-class Document < ActiveRecord::Base
+class Document < ApplicationRecord
   has_attached_file :attachment, {
     path:           "/:class/:attachment/:id_partition/:style/:filename",
     url:            ":s3_alias_url",
@@ -47,7 +47,7 @@ class Document < ActiveRecord::Base
     uri.to_s
   end
 
-  require 'rake/pathmap'
+  # require 'rake/pathmap'
   def create_copy!
     copy_doc = self.dup
     copy_doc_name = self.name + ' (copy)'

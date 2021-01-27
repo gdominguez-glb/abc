@@ -1,4 +1,4 @@
-class Popup < ActiveRecord::Base
+class Popup < ApplicationRecord
   include Orderable
 
   validates :title, presence: true

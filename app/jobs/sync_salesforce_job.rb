@@ -1,5 +1,5 @@
 # SyncSalesforceJob
-class SyncSalesforceJob < ActiveJob::Base
+class SyncSalesforceJob < ApplicationJob
   queue_as :default
 
   def perform(classes = nil)

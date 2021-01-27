@@ -48,10 +48,10 @@ namespace :data do
     Spree::PaymentCaptureEvent.delete_all
     Spree::Payment.delete_all
     Spree::Price.delete_all
-    ActiveRecord::Base.connection.execute("delete from spree_products_taxons")
+    ApplicationRecord.connection.execute("delete from spree_products_taxons")
     Spree::PurchaseOrder.delete_all
     Spree::Shipment.delete_all
-    ActiveRecord::Base.connection.execute("delete from spree_taxons_videos")
+    ApplicationRecord.connection.execute("delete from spree_taxons_videos")
     Spree::VideoGroup.delete_all
     Spree::Video.delete_all
 

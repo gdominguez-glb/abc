@@ -1,4 +1,4 @@
-class CurriculumMail < ActiveRecord::Base
+class CurriculumMail < ApplicationRecord
   validates_presence_of :subject, :content, :curriculum
 
   enum status: [:pending, :processing, :done]

@@ -29,17 +29,25 @@
     </div>
   </div>
   <% if is_located_in_usa? %>
-  <div class="row">
-    <div class="col-md-6">
-      <div class="form-group">
-        <label>Zip Code</label>
-        <%= f.text_field :zip_code, class: 'form-control', tabindex: 5 %>
-        <%= f.hidden_field :ip_location, value: 'US' %>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Zip Code</label>
+          <%= f.text_field :zip_code, class: 'form-control', tabindex: 5 %>
+          <%= f.hidden_field :ip_location, value: 'US' %>
+        </div>
       </div>
     </div>
-  </div>
-  <% else %>
-      <%= f.hidden_field :ip_location, value: '' %>
+    <% else %>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Zip Code</label>
+          <%= f.text_field :zip_code, class: 'form-control', tabindex: 5 %>
+          <%= f.hidden_field :ip_location, value: '' %>
+        </div>
+      </div>
+    </div>
   <% end %>
   <div class="row">
     <div class="col-md-6">

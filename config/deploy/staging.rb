@@ -5,10 +5,10 @@
 
 # server 'example.com', user: 'deploy', roles: %w{app db web}, my_property: :my_value
 # server 'example.com', user: 'deploy', roles: %w{app web}, other_property: :other_value
-server 'staging.greatminds.org', user: 'deploy', roles: %w{web app db search worker}
+server '34.204.169.192', user: 'deploy', roles: %w{web app db search worker}
 
 
-set :branch, 'hotfix/webstore-cookie'
+set :branch, 'feature/upgrade-rails-ruby'
 set :rails_env, 'staging'                  # If the environment differs from the stage name
 
 # role-based syntax

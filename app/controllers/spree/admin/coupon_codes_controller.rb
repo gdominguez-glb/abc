@@ -21,7 +21,6 @@ class Spree::Admin::CouponCodesController < Spree::Admin::ResourceController
     if @admin_new_coupon_code_form.perform
       redirect_to admin_coupon_codes_path, notice: 'Product Key generated successfully.'
     else
-      flash[:error] = @admin_new_coupon_code_form.coupon_code.errors.full_messages.join(', ')
       render :new
     end
   end
@@ -64,6 +63,9 @@ class Spree::Admin::CouponCodesController < Spree::Admin::ResourceController
   end
 
   def set_payment_methods
-    @payment_methods = Spree::PaymentMethod.where(name: ['Purchase Order', 'Credit Card']).available(:back_end)
+    @payment_methods =
+      Spree::PaymentMethod.where(
+        name: ['Purchase Order', 'Credit Card']
+      ).available_on_back_end
   end
 end
