@@ -1,12 +1,12 @@
-FROM ruby:2.2.0
+FROM ruby:2.6.3
 
-RUN apt update && \
-  apt install -y --no-install-recommends \
+RUN apt-get update && \
+  apt-get install -y --no-install-recommends \
   git \
   curl \
   gnupg2 \
   libpq-dev \
-  libmysqlclient-dev \
+  default-libmysqlclient-dev \
   nodejs \
   graphviz \
   && rm -rf /var/lib/apt/lists/*
@@ -15,6 +15,6 @@ WORKDIR ./home/
 
 COPY Gemfile Gemfile.lock ./
 
-RUN bundle install --binstubs
+RUN bundle install
 
 COPY . .

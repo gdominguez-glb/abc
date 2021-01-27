@@ -1,0 +1,33 @@
+.product-presentation {
+  height: 534px;
+  padding: 0;
+  $tc: &;
+
+  &__content {
+    #{$tc}__icon {
+      height: 125px;
+      width: 176px;
+    }
+
+    #{$tc}__title {
+      color: $text-black;
+      height: 100%;
+      margin: 30px 0 10px;
+    }
+  }
+
+  &__image {
+    height: 100%;
+
+    #{$tc}__embed {
+      height: 344px;
+      width: 606px;
+    }
+
+    img {
+      display: block;
+      height: auto;
+      max-width: 100%;
+    }
+  }
+}

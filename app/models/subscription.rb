@@ -1,4 +1,4 @@
-class Subscription < ActiveRecord::Base
+class Subscription < ApplicationRecord
   belongs_to :blog
   belongs_to :user, class_name: 'Spree::User'
 

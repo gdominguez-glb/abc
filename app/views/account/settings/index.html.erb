@@ -1,4 +1,4 @@
-<h2>Profile Information</h2>
+<h1>Profile Information</h1>
 <%= form_for(spree_current_user, as: :spree_user, url: '/account/save_profile') do |f| %>
   <% if current_spree_user.errors.any? %>
     <div id="error_explanation">
@@ -65,7 +65,8 @@
     <div class="col-sm-6">
       <div class="form-group">
         <label>Subject(s) you are interested in</label>
-        <%= f.collection_select :interested_subjects, Curriculum.visibles, :id, :name, { include_hidden: false, multiple: true }, { class: 'form-control', tabindex: 7, multiple: 'multiple' } %>
+        <% selected_subject = f.object.interested_subjects ? eval(f.object.interested_subjects).split('').flatten : nil %>
+        <%= f.collection_select :interested_subjects, Curriculum.visibles, :id, :name, { include_hidden: false, multiple: true, selected: selected_subject }, { class: 'form-control', tabindex: 7, multiple: 'multiple' } %>
       </div>
     </div>
     <div class="col-sm-6">
@@ -101,7 +102,7 @@
   <%= render partial: 'spree/shared/custom_field_values_form', locals: { f: f } if $flipper[:expanding_user_profiles].enabled? %>
 
   <div class="school-district-details collapse">
-    <h2>Let's get some specifics about your school</h2>
+    <h3>Let's get some specifics about your school</h3>
 
     <div id="schoolDistrictSelect">
       <p>Is this a school or a district?</p>

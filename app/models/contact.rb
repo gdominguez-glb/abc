@@ -1,3 +1,3 @@
-class Contact < ActiveRecord::Base
+class Contact < ApplicationRecord
   serialize :message
 end

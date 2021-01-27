@@ -1,5 +1,6 @@
 Spree::Admin::ProductsController.class_eval do
   layout :resolve_layout
+  include Spree::Core::ControllerHelpers::Order
 
   def index
     session[:return_to] = request.url
@@ -14,12 +15,10 @@ Spree::Admin::ProductsController.class_eval do
       archived_at: Time.now,
       for_sale: false,
       show_in_storefront: false,
-      for_search: false,
       individual_sale: false,
       can_be_part: false,
       auto_add_on_sign_up: false
     )
-    @product.reindex
 
     redirect_to admin_product_path(@product), notice: 'Successfully archive product'
   end
@@ -45,6 +44,7 @@ Spree::Admin::ProductsController.class_eval do
     redirect_to admin_product_path(@product), notice: 'Successfully un-archive product'
   end
 
+  # TODO: Unused method we need to remove it
   def location_after_save
     session[:return_to] || admin_products_path
   end

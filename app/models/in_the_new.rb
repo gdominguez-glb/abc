@@ -1,4 +1,4 @@
-class InTheNew < ActiveRecord::Base
+class InTheNew < ApplicationRecord
   include Orderable
 
   validates :title, presence: true, length: { maximum: 67 }

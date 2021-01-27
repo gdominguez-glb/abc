@@ -33,7 +33,7 @@ class AdminNewLicensesForm
   def create_order
     order = Spree::Order.new(
       email: email,
-      user_id: (user_id.present? ? user_id : Spree::User.find_by(email: email).try(:id)),
+      user_id: user_details(user_id, email),
       source: 'fulfillment',
       total: (self.amount.blank? ? 0.0 : self.amount),
       item_total: (self.amount.blank? ? 0.0 : self.amount),
@@ -51,6 +51,12 @@ class AdminNewLicensesForm
     create_order_salesforce_reference(order) unless fulfill_without_salesforce?
 
     process_order(order)
+  rescue
+    return order.errors.full_messages.first
+  end
+
+  def user_details(user_id, email)
+    (user_id.present? ? user_id : Spree::User.find_by(email: email).try(:id))
   end
 
   def create_order_salesforce_reference(order)

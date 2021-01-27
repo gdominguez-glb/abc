@@ -23,12 +23,12 @@ RSpec.describe HomeController, type: :controller do
 
   describe "POST #set_filter_preferences" do
     it 'should set session filter_role with param role' do
-      post :set_filter_preferences, role: "rolly"
+      post :set_filter_preferences, params: { role: 'rolly' }
       expect(session[:filter_role]).to eq("rolly")
     end
 
     it 'should set session filter_curriculum with param curriculum' do
-      post :set_filter_preferences, curriculum: "curriculumy"
+      post :set_filter_preferences, params: { curriculum: 'curriculumy' }
       expect(session[:filter_curriculum]).to eq("curriculumy")
     end
 

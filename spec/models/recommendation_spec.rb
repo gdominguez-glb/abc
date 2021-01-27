@@ -9,7 +9,7 @@ RSpec.describe Recommendation, type: :model do
 
   it { should have_and_belong_to_many(:products).class_name('Spree::Product') }
 
-  let(:recommendation) { FactoryGirl.create(:recommendation) }
+  let(:recommendation) { FactoryBot.create(:recommendation) }
 
   describe ".with_subject" do
     it "return recommendation with subject" do
@@ -65,8 +65,8 @@ RSpec.describe Recommendation, type: :model do
 
     context '#displayable' do
       it 'should return displayed recommendations' do
-        FactoryGirl.create_list(:recommendation, 3, display: true)
-        FactoryGirl.create_list(:recommendation, 2, display: false)
+        FactoryBot.create_list(:recommendation, 3, display: true)
+        FactoryBot.create_list(:recommendation, 2, display: false)
         expect(Recommendation.displayable.count).to eq(3)
       end
     end

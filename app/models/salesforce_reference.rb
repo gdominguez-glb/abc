@@ -1,5 +1,5 @@
 # SalesforceReference
-class SalesforceReference < ActiveRecord::Base
+class SalesforceReference < ApplicationRecord
   belongs_to :local_object, polymorphic: true
 
   serialize :object_properties

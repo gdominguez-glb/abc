@@ -1,4 +1,4 @@
-class DownloadProduct < ActiveRecord::Base
+class DownloadProduct < ApplicationRecord
   belongs_to :download_page
   belongs_to :product, class_name: 'Spree::Product'
 

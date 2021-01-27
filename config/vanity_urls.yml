@@ -9,10 +9,17 @@ qa:
   - http://qa.witeng.link
   - http://qa.eurmath.link
 
+stage:
+  - https://stage.greatminds.org
+  - http://stage.witeng.link
+  - http://stage.eurmath.link
+  - http://stage.phdsci.link
+
 staging:
   - https://staging.greatminds.org
   - http://staging.witeng.link
   - http://staging.eurmath.link
+  - http://staging.phdsci.link
 
 production:
   - https://greatminds.org

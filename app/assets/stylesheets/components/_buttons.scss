@@ -13,38 +13,109 @@
 
 .btn {
   @include transition(all, .3s);
-
-  padding: $b-space ($b-space-m * 2);
-  font-family: 'Karla', sans-serif;
-  text-transform: uppercase;
+  border-radius: 0;
+  font-size: 12px;
+  font-stretch: normal;
+  font-style: normal;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+  line-height: 2;
+  padding: 10px 35px;
   text-decoration: none;
-  letter-spacing: .15em;
-  border-radius: $b-border-radius;
+  text-transform: uppercase;
 
   @media screen and (min-width: $screen-sm-min) {
     margin-right: $b-space-s;
   }
 
   &.btn-default {
-    border: 1px solid $c-positive-secondary;
-    color: $c-positive-secondary;
-    background-color: transparent;
+    background-color: $white;
+    border: 1px solid $black;
+    color: $black;
 
-    &:hover {
-      color: $c-absolute;
-      background-color: $c-positive-secondary;
+    &:hover,
+    &:active {
+      background-color: $terracotta;
+      border: 1px solid $terracotta;
+      box-shadow: none;
+      color: $white;
+      text-decoration: none;
     }
 
-    .blue-bg &,
-    .image-bg & {
-      border-color: $c-absolute;
-      color: $c-absolute;
+    .terracotta-bg & {
+      background-color: $white;
 
-      &:hover {
-        color: $c-positive-secondary;
-        background-color: $c-absolute;
+      &:hover,
+      &:active {
+        background-color: $black;
+        border-color: $black;
+        color: $white;
       }
     }
+
+    .green-bg & {
+      &:hover,
+      &:active {
+        background-color: $black;
+        border-color: $black;
+        color: $white;
+      }
+    }
+
+    .orange-bg & {
+      &:hover,
+      &:active {
+        background-color: $black;
+        border-color: $black;
+        color: $white;
+      }
+    }
+
+    .purple-bg & {
+      &:hover,
+      &:active {
+        background-color: $black;
+        border-color: $black;
+        color: $white;
+      }
+    }
+
+    .light-blue-bg & {
+      &:hover,
+      &:active {
+        background-color: $black;
+        border-color: $black;
+        color: $white;
+      }
+    }
+
+    .blue-bg & {
+      background-color: $white;
+      border-color: $white;
+      color: $text-link-color;
+
+      &:hover,
+      &:active {
+        background-color: transparent;
+        border-color: $white;
+        box-shadow: none;
+        color: $white;
+        text-decoration: none;
+      }
+    }
+
+    // .image-bg & {
+    //   // border-color: $white;
+    //   // color: $black;
+
+    //   &:hover,
+    //   &:active {
+    //     // background-color: $transperent-button-hover-bg;
+    //     // // border-color: $transperent-button-border;
+    //     // box-shadow: none;
+    //     // color: $white;
+    //   }
+    // }
 
     &.dashed-border {
       border: 1px dashed;
@@ -53,30 +124,102 @@
     &[disabled] {
       background-color: $c-stable-primary;
     }
-  }
 
-  &.btn-primary {
-    @include button-variant($c-absolute, $c-positive-secondary, darken($c-positive-secondary, 5%));
+    &--light-blue {
+      color: $button-blue;
+    }
+
+    &--purple {
+      color: $button-purple;
+    }
+
+    &--orange {
+      color: $button-orange;
+    }
+
+    &--terracotta {
+      color: $terracotta;
+    }
+
+    &--black {
+      color: $black;
+    }
+
+    &--white {
+      color: $white;
+    }
+
+    &--green {
+      color: $button-green;
+    }
   }
 
   &.btn-info {
-    @include button-variant($c-positive-secondary, $c-positive-primary, $c-positive-secondary);
+    @include button-variant($white, $button-blue, $button-blue);
+
+    &:hover {
+      @include button-variant($primary-text-color, transparent, $button-blue);
+    }
   }
 
   &.btn-success {
-    @include button-variant($c-positive-secondary, $c-balanced-primary, $c-positive-secondary);
+    @include button-variant($white, $c-balanced-primary, $c-balanced-primary);
+
+    &:hover {
+      @include button-variant($primary-text-color, transparent, $c-balanced-primary);
+    }
+
+    &.btn-success--terracotta {
+      background: $terracotta;
+      border: 1px solid $terracotta;
+      color: $white;
+      outline: none;
+
+      &:hover {
+        background: $white !important;
+        border: 1px solid $terracotta !important;
+        color: $terracotta !important;
+        box-shadow: none !important;
+      }
+
+      &:active {
+        background: $white !important;
+        border: 1px solid $terracotta !important;
+        color: $terracotta !important;
+        box-shadow: none !important;
+      }
+
+      &:focus {
+        outline: none !important;
+        background: $white !important;
+        border: 1px solid $terracotta !important;
+        color: $terracotta !important;
+      }
+    }
   }
 
   &.btn-warning {
-    @include button-variant($c-absolute, $c-energized-primary, $c-energized-primary);
+    @include button-variant($white, $button-orange, $button-orange);
+
+    &:hover {
+      @include button-variant($primary-text-color, transparent, $button-orange);
+    }
   }
 
   &.btn-danger {
-    @include button-variant($c-absolute, darken($c-energized-secondary, 10%), darken($c-energized-secondary, 15%));
+    @include button-variant($white, $button-red, $button-red);
+
+    &:hover {
+      @include button-variant($primary-text-color, transparent, $button-red);
+    }
   }
 
   &.btn-danger--alt {
-    @include button-variant($c-absolute, $c-energized-secondary, $c-energized-secondary);
+    @include button-variant($white, $button-red, $button-red);
+
+    &:hover {
+      @include button-variant($primary-text-color, transparent, $button-red);
+    }
   }
 
   &.btn-link {
@@ -116,6 +259,42 @@
   &.header-form-control {
     height: 34px;
     padding: 6px 12px;
+  }
+}
+
+.khaki-bg,
+.beige-bg,
+.black-bg,
+.olive-bg,
+.white-bg,
+.slate-bg {
+  .btn {
+    &.btn-default {
+      background-color: $white;
+
+      &:hover,
+      &:active {
+        background-color: $terracotta;
+        border-color: $terracotta;
+        color: $white;
+      }
+    }
+  }
+}
+
+.green-bg,
+.orange-bg,
+.purple-bg,
+.light-blue-bg {
+  .btn {
+    &.btn-default {
+      &:hover,
+      &:active {
+        background-color: $black;
+        border-color: $black;
+        color: $white;
+      }
+    }
   }
 }
 

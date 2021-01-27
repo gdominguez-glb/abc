@@ -6,9 +6,136 @@
 // *************************************
 
 .footer {
-  padding: $b-space-xl $b-space-l;
+  padding: 40px 26px;
   font-size: 1em;
-  background: $c-balanced-primary;
+  .footer-section {
+    padding-left: 50px;
+
+    &.no-padding {
+      padding-left: 0;
+    }
+
+    .logo-footer {
+      position: relative;
+      height: 115px;
+      background: transparent asset-url('Great-Minds-Logo.svg') no-repeat 50% 50%;
+      background-size: 102px 69px;
+      display: block;
+      margin-top: -15px;
+    }
+
+    .footer-title {
+      color: $primary-text-color;
+      font-size: 12px;
+      font-stretch: normal;
+      font-style: normal;
+      font-weight: bold;
+      letter-spacing: 1.5px;
+      line-height: 2;
+      margin-bottom: 5px;
+      text-transform: uppercase;
+    }
+
+    .footer-link {
+      border-bottom: 1px solid $white;
+      font-size: 10px;
+      font-weight: lighter;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 2.4;
+      letter-spacing: 1.25px;
+      color: $black;
+
+      &:hover {
+        border-bottom: 1px solid $black;
+        text-decoration: none;
+      }
+    }
+  }
+
+  @media screen and (max-width: $screen-sm-min) { 
+    .footer-section {
+      padding-left: 12px;
+
+      &.no-padding {
+        padding-left: 12px;
+      }
+
+      .logo-footer {
+        background-size: contain;
+        margin-top: -18px;
+      }
+    }
+  }
+
+  .col-sm-offset-1 {
+    display: none;
+
+    @media screen and (max-width: $screen-sm-min) {
+      display: block;
+    }
+  }
+
+  .footer-attribution {
+    color: $black;
+    font-size: 12px;
+    font-stretch: normal;
+    font-style: normal;
+    font-weight: normal;
+    letter-spacing: normal;
+    line-height: normal;
+    margin-top: 50px;
+    text-align: left;
+
+    .footer-terms {
+      border-bottom: 1px solid $white;
+      outline: none;
+      text-decoration: none;
+      text-transform: none;
+
+      &:hover {
+        border-bottom: 1px solid $black;
+        color: $black;
+        text-decoration: none;
+      }
+
+      &:active,
+      &:focus {
+        color: $black;
+        outline: none;
+        text-decoration: none;
+      }
+    }
+
+    &.copyright-content {
+      text-align: right;
+
+      @media screen and (max-width: $screen-sm-min) {
+        margin-top: 0;
+        text-align: center;
+      }
+
+      @media screen and (max-width: 1200px) {
+        text-align: center;
+        margin-top: 0;
+      }
+    }
+
+    @media screen and (max-width: $screen-sm-min) {
+      text-align: center;
+    }
+
+    @media screen and (max-width: 1200px) {
+      width: 100%;
+      text-align: center;
+    }
+  }
+  .footer__content {
+    @media screen and (min-width: $screen-sm-min) {
+      display: flex;
+      justify-content: center;
+    }
+  }
 }
 
 .footer-section {
@@ -23,6 +150,7 @@
 .footer-rule {
   margin-top: $b-space;
   color: $c-firm-primary;
+  margin-bottom: 0;
   opacity: .4;
 
   @media screen and (min-width: $screen-sm-min) {
@@ -42,24 +170,62 @@
 
 .footer-title-link,
 .footer-title-no-link {
-  display: block;
-  padding: $b-space ($b-space * 3);
+  border-bottom: 2px solid $white;
+  color: $black;
+  display: inline-block;
+  margin: $b-space ($b-space * 3);
+
+  &:hover {
+    border-bottom: 2px solid $black;
+    color: $black;
+    text-decoration: none;
+  }
+
+  &:active,
+  &:focus {
+    color: $black;
+    outline: none;
+    text-decoration: none;
+  }
 
   @media screen and (min-width: $screen-sm-min) {
     display: inline;
-    padding: initial;
+    margin: initial;
+  }
+}
+
+.footer-title-no-link {
+  border-bottom: 0;
+
+  &:hover {
+    border-bottom: 0;
+    color: $black;
+    text-decoration: none;
   }
 }
 
 .footer-link {
-  display: block;
-  padding: $b-space ($b-space * 3);
+  border-bottom: 1px solid transparent;
+  display: inline-block;
   font-weight: normal;
   letter-spacing: 2px;
+  margin: $b-space ($b-space * 3);
+
+  &:hover {
+    border-bottom: 1px solid $black;
+    text-decoration: none;
+  }
+
+  &:active,
+  &:focus {
+    color: $black;
+    outline: none;
+    text-decoration: none;
+  }
 
   @media screen and (min-width: $screen-sm-min) {
     display: inline;
-    padding: initial;
+    margin: initial;
   }
 }
 
@@ -101,13 +267,13 @@
 .footer-copyright {
   @extend .sans-serif;
 
-  font-weight: bold;
   letter-spacing: 2px;
   margin: 0 10px;
-  text-transform: uppercase;
+  // text-transform: uppercase;
 
-  @media screen and (max-width: $screen-sm-min) {
+  @media screen and (max-width: 767px) {
     display: block;
+    line-height: 1.76em;
 
     .copyright-break {
       display: none;

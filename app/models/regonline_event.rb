@@ -1,4 +1,4 @@
-class RegonlineEvent < ActiveRecord::Base
+class RegonlineEvent < ApplicationRecord
 
   include Displayable
 

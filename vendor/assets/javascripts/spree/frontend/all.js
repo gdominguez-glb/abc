@@ -33,9 +33,20 @@ $(document).ready(function() {
   }
 
   var width = $(window).width();
-  if (width >= 768) {
+  if (width >= 992) {
     nav.find('.navbar-nav > li > a').removeAttr('data-toggle');
   }
+
+  $( window ).resize(function() {
+    if ($(window).width() < 993) {
+      nav.find('.navbar-nav > li > a.dropdown-toggle').attr('data-toggle', 'dropdown');
+    } else {
+      nav.find('.navbar-nav > li > a').removeAttr('data-toggle');
+      if($( ".navbar-nav > li" ).hasClass( "open" )) {
+        nav.find('.navbar-nav > li').removeClass( "open" );
+      }
+    }
+  });
 
   var currentPage = $('body').data('page');
   nav.find('[data-primary-nav-item="'+ currentPage +'"]').addClass('active');

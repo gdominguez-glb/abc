@@ -189,7 +189,7 @@ RSpec.describe Page, type: :model do
 
   describe '#archive_and_unvisible!' do
     it 'should fire archive! and unvisible!' do
-      page = FactoryGirl.create(:page, archived: false, visible: true)
+      page = FactoryBot.create(:page, archived: false, visible: true)
       page.archive_and_unvisible!
       expect(page.visible).to be_falsey
       expect(page.archived).to be_truthy
@@ -205,7 +205,7 @@ RSpec.describe Page, type: :model do
 
   describe '#unvisible!' do
     it 'puts visible on false' do
-      page = FactoryGirl.create(:page, visible: true)
+      page = FactoryBot.create(:page, visible: true)
       page.unvisible!
       expect(page.visible).to be_falsey
     end

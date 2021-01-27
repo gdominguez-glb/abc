@@ -1,0 +1,11 @@
+.video-left-text-right {
+  padding: 67px 113px 63px 78px;
+
+  .col-sm-6 {
+    padding: 0 !important;
+  }
+
+  .col-sm-6:nth-child(2n) {
+    padding-left: 165px !important;
+  }
+}

@@ -1,5 +1,5 @@
 # SchoolDistrict
-class SchoolDistrict < ActiveRecord::Base
+class SchoolDistrict < ApplicationRecord
   include SalesforceAccess
 
   belongs_to :state, class_name: 'Spree::State'

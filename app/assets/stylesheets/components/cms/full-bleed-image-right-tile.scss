@@ -1,0 +1,31 @@
+.tile-container {
+  height: 534px;
+  padding: 0;
+  $tc: &;
+
+  &__content {
+    #{$tc}__icon {
+      height: 66px;
+      width: 166px;
+
+      &--left {
+        height: 126px;
+        width: 196px;
+      }
+    }
+
+    #{$tc}__title {
+      margin: 30px 0 10px;
+    }
+  }
+
+  &__image {
+    height: 100%;
+
+    img {
+      display: block;
+      height: auto;
+      max-width: 100%;
+    }
+  }
+}

@@ -1,15 +1,19 @@
 <%= content_for :body_class, 'without-subnav' if current_spree_user.blank? %>
 <div class="row">
-  <div class="col-sm-10 col-sm-offset-1 margin-top--xxl margin-bottom--xl">
+  <div class="col-sm-10 col-sm-offset-1 margin-top--xl margin-bottom--xl">
+    <div class="row">
+      <div class="col-sm-12">
+        <h1 class="text-left">My Videos (<%= @videos.total_count %>)</h1>
+      </div>
+    </div>
     <div class="row">
       <div class="col-sm-4 col-md-3">
-        <h3 class="text-left">My Videos (<%= @videos.total_count %>)</h3>
 
-        <%= form_tag '', method: :get do %>
+        <%= form_tag '', method: :get, id: 'video_search_form' do %>
           <% params[:taxon_ids].each do |taxon_id| %>
             <%= hidden_field_tag "taxon_ids[]", taxon_id %>
           <% end %>
-          <%= text_field_tag :query, params[:query], class: 'form-control form-control-search margin-bottom--l', placeholder: 'Search' %>
+          <%= text_field_tag :query, params[:query], class: 'form-control form-control-search margin-bottom--l', placeholder: 'Search', id: 'video-search' %>
         <% end %>
 
         <h4 class="text-left bh4">Filter By:</h4>
@@ -41,7 +45,7 @@
           </div>
         <% else %>
           <% @videos.in_groups_of(2, false).each do |group| %>
-            <div class="row display-flex--lg-min">
+            <div class="row display-flex--lg-min video-card">
               <% group.each do |video| %>
                 <div class="col-lg-6 display-flex--lg-min flex-column--lg-min">
                   <%= render partial: 'video', locals: { video: video } %>

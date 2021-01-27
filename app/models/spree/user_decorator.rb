@@ -9,8 +9,6 @@ Spree::User.class_eval do
 
   scope :with_curriculum, ->(curriculum) { where("interested_subjects like '%?%'", curriculum.id) }
 
-  serialize :interested_subjects, Array
-
   validates_format_of :password, with: /\A\S*\z/, message: "can't include spaces", if: :password_required?
   validates :school_district, presence: true, if: :school_district_required?
   validates :title, presence: true, on: :create
@@ -24,6 +22,15 @@ Spree::User.class_eval do
   accepts_nested_attributes_for :custom_field_values
 
   has_many :subscriptions, dependent: :destroy
+
+  def send_reset_password_instructions_notification(token)
+    MandrillSender.new.deliver_with_template(
+      'forgot-password',
+      email,
+      'Great Minds Reset password instructions',
+      { token: token }
+    )
+  end
 
   def need_to_accept_updated_terms?
     accepted_terms? && !accepted_terms_2018?
@@ -190,7 +197,7 @@ Spree::User.class_eval do
 
   belongs_to :school_district
   has_many :materials, -> { uniq }, through: :products, class_name: 'Spree::Material'
-  has_many :to_users, -> { uniq }, through: :product_distributions, class_name: 'Spree::User'
+  has_many :to_users, -> { distinct }, through: :product_distributions, class_name: 'Spree::User'
   has_many :notifications
   has_many :activities
   has_many :download_jobs
@@ -404,5 +411,9 @@ Spree::User.class_eval do
         'Other'
       end
     }
+  end
+
+  def self.ransackable_attributes(auth_object=nil)
+        %w[email title interested_subjects first_name last_name school_district_id]
   end
 end

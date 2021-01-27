@@ -1,6 +1,6 @@
-class Spree::PurchaseOrder < ActiveRecord::Base
+class Spree::PurchaseOrder < ApplicationRecord
   belongs_to :payment_method
-  belongs_to :user, class_name: Spree.user_class, foreign_key: 'user_id'
+  belongs_to :user, class_name: Spree.user_class.to_s, foreign_key: 'user_id'
   has_many :payments, as: :source
 
   # validates_presence_of :po_number

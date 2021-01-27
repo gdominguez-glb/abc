@@ -116,14 +116,30 @@
        closable: false,
        removeformatPasted: true,
        semantic: true,
-       btns: ['bold', 'italic', 'underline', 'strikethrough', '|', 'formatting', '|', 'imageClasses', '|', 'unorderedList', 'orderedList', '|', 'link', '|', 'viewHTML', 'removeformat']
+       btns: [
+         ['bold', 'italic', 'underline', 'strikethrough'],
+         ['superscript', 'subscript'],
+         ['unorderedList', 'orderedList'],
+         ['link'],
+         ['formatting'],
+         ['viewHTML'],
+         ['removeformat'],
+       ],
      });
      $('.preview-editor').trumbowyg({
        fullscreenable: false,
        closable: false,
        removeformatPasted: true,
        semantic: true,
-       btns: ['bold', 'italic', 'underline', 'strikethrough', '|', 'formatting', '|', 'imageClasses', '|', 'unorderedList', 'orderedList', '|', 'link', '|', 'viewHTML', 'removeformat']
+       btns: [
+         ['bold', 'italic', 'underline', 'strikethrough'],
+         ['superscript', 'subscript'],
+         ['unorderedList', 'orderedList'],
+         ['link'],
+         ['formatting'],
+         ['viewHTML'],
+         ['removeformat'],
+       ],
      }).on('tbwchange', function(e){
        updatePreviewCharacterCount();
      });

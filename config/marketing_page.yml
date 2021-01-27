@@ -1,4 +1,146 @@
 marketing_templates:
+
+  -
+    name: 'Page Title'
+    content: !xml |
+      <div id="tile_<%= position %>" class="page-title clearfix row">
+        <h1 class="page-title__text">
+          <%= page_title %>
+        </h1>
+      </div>
+
+  -
+    name: 'Slider'
+    content: !xml |
+      <div id="tile_<%= position %>" class="slider">
+        <div class="slider__slide slider__first-slide active">
+          <% if slide_image_1.present? %>
+            <img src="<%= slide_image_1 %>" />
+          <% end %>
+          <div class="slider__content">
+            <h5><%= tagline_1 %></h5>
+            <h3><%= title_1 %></h3>
+            <p><%= description_1 %></p>
+            <% if button_link_1.present? && button_text_1.present? %>
+              <div>
+                <a href="<%= button_link_1 %>" class="btn btn-default"><%= button_text_1 %></a>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="slider__slide slider__second-slide">
+          <% if slide_image_2.present? %>
+            <img src="<%= slide_image_2 %>" />
+          <% end %>
+          <div class="slider__content">
+            <h5><%= tagline_2 %></h5>
+            <h3><%= title_2 %></h3>
+            <p><%= description_2 %></p>
+            <% if button_link_2.present? &&  button_text_2.present? %>
+              <div>
+                <a href="<%= button_link_2 %>" class="btn btn-default"><%= button_text_2 %></a>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="slider__slide slider__third-slide">
+          <% if slide_image_2.present? %>
+            <img src="<%= slide_image_3 %>" />
+          <% end %>
+          <div class="slider__content">
+            <h5><%= tagline_3 %></h5>
+            <h3><%= title_3 %></h3>
+            <p><%= description_3 %></p>
+            <% if button_link_3.present? && button_text_3.present? %>
+              <div>
+                <a href="<%= button_link_3 %>" class="btn btn-default"><%= button_text_3 %></a>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+  -
+    name: 'Product List'
+    content: !xml |
+      <div id="tile_<%= position %>" class="product-list clearfix row">
+        <div class="col-lg-12 clearfix">
+          <p class="col-lg-9 product-list__heading">
+            Our materials integrate texts from classic literature, history, art, science, and music, transforming skill-building lessons into explorations of the wider world.
+          </p>
+        </div>
+        <div class="product-list__product col-lg-2">
+          <a href="<%= link_1 %>">
+            <h4 class="product-list__product--subject product-list__product--subject--color--<%= color_1 %>">
+              <span class="product-list__product--subject__background"><%= subject_1 %></span>
+            </h4>
+            <h3 class="product-list__product--title">
+              <%= product_name_1 %>&nbsp;<sup>&reg;</sup>
+            </h3>
+            <div class="product-list__product--img">
+              <img src="<%= image_1 %>" />
+            </div>
+          </a>
+          <a href="<%= link_1 %>" class="btn btn--<%= color_1 %>">Learn More</a>
+        </div>
+        <div class="product-list__product col-lg-2">
+          <a href="<%= link_2 %>">
+            <h4 class="product-list__product--subject product-list__product--subject--color--<%= color_2 %>">
+              <span class="product-list__product--subject__background"><%= subject_2 %></span>
+            </h4>
+            <h3 class="product-list__product--title">
+              <%= product_name_2 %>&nbsp;<sup>&reg;</sup>
+            </h3>
+            <div class="product-list__product--img">
+              <img src="<%= image_2 %>" />
+            </div>
+          </a>
+          <a href="<%= link_2 %>" class="btn btn--<%= color_2 %>">Learn More</a>
+        </div>
+        <div class="product-list__product col-lg-2">
+          <a href="<%= link_3 %>">
+            <h4 class="product-list__product--subject product-list__product--subject--color--<%= color_3 %>">
+              <span class="product-list__product--subject__background"><%= subject_3 %></span>
+            </h4>
+            <h3 class="product-list__product--title">
+              <%= product_name_3 %>&nbsp;<sup>&reg;</sup>
+            </h3>
+            <div class="product-list__product--img">
+              <img src="<%= image_3 %>" />
+            </div>
+          </a>
+          <a href="<%= link_3 %>" class="btn btn--<%= color_3 %>">Learn More</a>
+        </div>
+        <div class="product-list__product col-lg-2">
+          <a href="<%= link_4 %>">
+            <h4 class="product-list__product--subject product-list__product--subject--color--<%= color_4 %>">
+              <span class="product-list__product--subject__background"><%= subject_4 %></span>
+            </h4>
+            <h3 class="product-list__product--title">
+              <%= product_name_4 %>&nbsp;<sup>&reg;</sup>
+            </h3>
+            <div class="product-list__product--img">
+              <img src="<%= image_4 %>" />
+            </div>
+          </a>
+          <a href="<%= link_4 %>" class="btn btn--<%= color_4 %>">Learn More</a>
+        </div>
+        <div class="product-list__product col-lg-2">
+          <a href="<%= link_5 %>">
+            <h4 class="product-list__product--subject product-list__product--subject--color--<%= color_5 %>">
+              <span class="product-list__product--subject__background"><%= subject_5 %></span>
+            </h4>
+            <h3 class="product-list__product--title">
+              <%= product_name_5 %>&nbsp;<sup>&reg;</sup>
+            </h3>
+            <div class="product-list__product--img">
+              <img src="<%= image_5 %>" />
+            </div>
+          </a>
+          <a href="<%= link_5 %>" class="btn btn--<%= color_5 %>">Learn More</a>
+        </div>
+      </div>
+
   -
     name: 'Role/Curriculum Selector Hero'
     content: !xml |
@@ -80,12 +222,10 @@ marketing_templates:
   -
     name: 'Testimonials'
     content: !xml |
-      <section id="tile_<%= position %>" class="row row-content-3col <%= background_color %>-bg text-left padding-bottom" data-testimonial-section="1">
+      <section id="tile_<%= position %>" class="row row-content-3col <%= background_color %>-bg text-left padding-bottom testimonial-container" data-testimonial-section="1">
         <div class="col-sm-4">
           <div class="testimonial">
-            <h6><%= testimonial_header_1 %></h6>
             <article class="testimonial__article">
-              <p><%= testimonial_text_1 %></p>
               <% if testimonial_video_url_1.present? && testimonial_image_url_1.present? %>
                 <a class="testimonial__video facebook__video" href="javascript:void(0)" data-video-url="<%= testimonial_video_url_1 %>" data-remote='true'>
                   <img src="<%= testimonial_image_url_1 %>" alt="<%= testimonial_image_alt_1 %>" />
@@ -96,20 +236,22 @@ marketing_templates:
                   <img class="testimonial__image" src="<%= testimonial_image_url_1 %>" alt="<%= testimonial_image_alt_1 %>" />
                 <% end %>
               <% end %>
+              <h6><%= testimonial_header_1 %></h6>
+              <p><%= testimonial_text_1 %></p>
               <% if testimonial_bottom_text_1.present? %>
                 <p><%= testimonial_bottom_text_1 %></p>
               <% end %>
             </article>
             <% if testimonial_link_url_1.present? && testimonial_link_text_1.present? %>
-              <a class="btn btn-default btn-block-xs" href="<%= testimonial_link_url_1 %>" target="_blank"><%= testimonial_link_text_1 %></a>
+              <div>
+                <a class="btn btn-default btn-block-xs" href="<%= testimonial_link_url_1 %>" target="_blank"><%= testimonial_link_text_1 %></a>
+              </div>
             <% end %>
           </div>
         </div>
         <div class="col-sm-4">
           <div class="testimonial">
-            <h6><%= testimonial_header_2 %></h6>
             <article class="testimonial__article">
-              <p><%= testimonial_text_2 %></p>
               <% if testimonial_video_url_2.present? && testimonial_image_url_2.present? %>
                 <a class="testimonial__video facebook__video" href="javascript:void(0)" data-video-url="<%= testimonial_video_url_2 %>" data-remote='true'>
                   <img src="<%= testimonial_image_url_2 %>" alt="<%= testimonial_image_alt_2 %>" />
@@ -120,20 +262,22 @@ marketing_templates:
                   <img class="testimonial__image" src="<%= testimonial_image_url_2 %>" alt="<%= testimonial_image_alt_2 %>" />
                 <% end %>
               <% end %>
+              <h6><%= testimonial_header_2 %></h6>
+              <p><%= testimonial_text_2 %></p>
               <% if testimonial_bottom_text_2.present? %>
                 <p><%= testimonial_bottom_text_2 %></p>
               <% end %>
             </article>
             <% if testimonial_link_url_2.present? && testimonial_link_text_2.present? %>
-              <a class="btn btn-default btn-block-xs" href="<%= testimonial_link_url_2 %>" target="_blank"><%= testimonial_link_text_2 %></a>
+              <div>
+                <a class="btn btn-default btn-block-xs" href="<%= testimonial_link_url_2 %>" target="_blank"><%= testimonial_link_text_2 %></a>
+              </div>
             <% end %>
           </div>
         </div>
         <div class="col-sm-4">
           <div class="testimonial">
-            <h6><%= testimonial_header_3 %></h6>
             <article class="testimonial__article">
-              <p><%= testimonial_text_3 %></p>
               <% if testimonial_video_url_3.present? && testimonial_image_url_3.present? %>
                 <a class="testimonial__video facebook__video" href="javascript:void(0)" data-video-url="<%= testimonial_video_url_3 %>" data-remote='true'>
                   <img src="<%= testimonial_image_url_3 %>" alt="<%= testimonial_image_alt_3 %>" />
@@ -144,25 +288,27 @@ marketing_templates:
                   <img class="testimonial__image" src="<%= testimonial_image_url_3 %>" alt="<%= testimonial_image_alt_3 %>" />
                 <% end %>
               <% end %>
+              <h6><%= testimonial_header_3 %></h6>
+              <p><%= testimonial_text_3 %></p>
               <% if testimonial_bottom_text_3.present? %>
                 <p><%= testimonial_bottom_text_3 %></p>
               <% end %>
             </article>
             <% if testimonial_link_url_3.present? && testimonial_link_text_3.present? %>
-              <a class="btn btn-default btn-block-xs" href="<%= testimonial_link_url_3 %>" target="_blank"><%= testimonial_link_text_3 %></a>
+              <div>
+                <a class="btn btn-default btn-block-xs" href="<%= testimonial_link_url_3 %>" target="_blank"><%= testimonial_link_text_3 %></a>
+              </div>
             <% end %>
           </div>
         </div>
       </section>
       <div class="row clear text-center padding-bottom--m <%= background_color %>-bg">
-        <a href='javascript:void(0)' class="testimonial-show-more-link btn btn-primary">Show More</a>
+        <a href='javascript:void(0)' class="testimonial-show-more-link btn btn-default">Show More</a>
       </div>
       <section class="row row-content-3col <%= background_color %>-bg text-left testimonial-more-section padding-bottom padding-top--l hide" data-testimonial-section="2">
         <div class="col-sm-4">
           <div class="testimonial">
-            <h6><%= testimonial_header_4 %></h6>
             <article class="testimonial__article">
-              <p><%= testimonial_text_4 %></p>
               <% if testimonial_video_url_4.present? && testimonial_image_url_4.present? %>
                 <a class="testimonial__video facebook__video" href="javascript:void(0)" data-video-url="<%= testimonial_video_url_4 %>" data-remote='true'>
                   <img src="<%= testimonial_image_url_4 %>" alt="<%= testimonial_image_alt_4 %>" />
@@ -173,20 +319,22 @@ marketing_templates:
                   <img class="testimonial__image" src="<%= testimonial_image_url_4 %>" alt="<%= testimonial_image_alt_4 %>" />
                 <% end %>
               <% end %>
+              <h6><%= testimonial_header_4 %></h6>
+              <p><%= testimonial_text_4 %></p>
               <% if testimonial_bottom_text_4.present? %>
                 <p><%= testimonial_bottom_text_4 %></p>
               <% end %>
             </article>
             <% if testimonial_link_url_4.present? && testimonial_link_text_4.present? %>
-              <a class="btn btn-default btn-block-xs" href="<%= testimonial_link_url_4 %>" target="_blank"><%= testimonial_link_text_4 %></a>
+              <div>
+                <a class="btn btn-default btn-block-xs" href="<%= testimonial_link_url_4 %>" target="_blank"><%= testimonial_link_text_4 %></a>
+              </div>
             <% end %>
           </div>
         </div>
         <div class="col-sm-4">
           <div class="testimonial">
-            <h6><%= testimonial_header_5 %></h6>
             <article class="testimonial__article">
-              <p><%= testimonial_text_5 %></p>
               <% if testimonial_video_url_5.present? && testimonial_image_url_5.present? %>
                 <a class="testimonial__video facebook__video" href="javascript:void(0)" data-video-url="<%= testimonial_video_url_5 %>" data-remote='true'>
                   <img src="<%= testimonial_image_url_5 %>" alt="<%= testimonial_image_alt_5 %>" />
@@ -197,20 +345,22 @@ marketing_templates:
                   <img class="testimonial__image" src="<%= testimonial_image_url_5 %>" alt="<%= testimonial_image_alt_5 %>" />
                 <% end %>
               <% end %>
+              <h6><%= testimonial_header_5 %></h6>
+              <p><%= testimonial_text_5 %></p>
               <% if testimonial_bottom_text_5.present? %>
                 <p><%= testimonial_bottom_text_5 %></p>
               <% end %>
             </article>
             <% if testimonial_link_url_5.present? && testimonial_link_text_5.present? %>
-              <a class="btn btn-default btn-block-xs" href="<%= testimonial_link_url_5 %>" target="_blank"><%= testimonial_link_text_5 %></a>
+              <div>
+                <a class="btn btn-default btn-block-xs" href="<%= testimonial_link_url_5 %>" target="_blank"><%= testimonial_link_text_5 %></a>
+              </div>
             <% end %>
           </div>
         </div>
         <div class="col-sm-4">
           <div class="testimonial">
-            <h6><%= testimonial_header_6 %></h6>
             <article class="testimonial__article">
-              <p><%= testimonial_text_6 %></p>
               <% if testimonial_video_url_6.present? && testimonial_image_url_6.present? %>
                 <a class="testimonial__video facebook__video" href="javascript:void(0)" data-video-url="<%= testimonial_video_url_6 %>" data-remote='true'>
                   <img src="<%= testimonial_image_url_6 %>" alt="<%= testimonial_image_alt_6 %>" />
@@ -221,12 +371,16 @@ marketing_templates:
                   <img class="testimonial__image" src="<%= testimonial_image_url_6 %>" alt="<%= testimonial_image_alt_6 %>" />
                 <% end %>
               <% end %>
+              <h6><%= testimonial_header_6 %></h6>
+              <p><%= testimonial_text_6 %></p>
               <% if testimonial_bottom_text_6.present? %>
                 <p><%= testimonial_bottom_text_6 %></p>
               <% end %>
             </article>
             <% if testimonial_link_url_6.present? && testimonial_link_text_6.present? %>
-              <a class="btn btn-default btn-block-xs" href="<%= testimonial_link_url_6 %>" target="_blank"><%= testimonial_link_text_6 %></a>
+              <div>
+                <a class="btn btn-default btn-block-xs" href="<%= testimonial_link_url_6 %>" target="_blank"><%= testimonial_link_text_6 %></a>
+              </div>
             <% end %>
           </div>
         </div>
@@ -234,9 +388,7 @@ marketing_templates:
       <section class="row row-content-3col <%= background_color %>-bg text-left testimonial-more-section padding-top--l hide" data-testimonial-section="3">
         <div class="col-sm-4">
           <div class="testimonial">
-            <h6><%= testimonial_header_7 %></h6>
             <article class="testimonial__article">
-              <p><%= testimonial_text_7 %></p>
               <% if testimonial_video_url_7.present? && testimonial_image_url_7.present? %>
                 <a class="testimonial__video facebook__video" href="javascript:void(0)" data-video-url="<%= testimonial_video_url_7 %>" data-remote='true'>
                   <img src="<%= testimonial_image_url_7 %>" alt="<%= testimonial_image_alt_7 %>" />
@@ -247,20 +399,22 @@ marketing_templates:
                   <img class="testimonial__image" src="<%= testimonial_image_url_7 %>" alt="<%= testimonial_image_alt_7 %>" />
                 <% end %>
               <% end %>
+              <h6><%= testimonial_header_7 %></h6>
+              <p><%= testimonial_text_7 %></p>
               <% if testimonial_bottom_text_7.present? %>
                 <p><%= testimonial_bottom_text_7 %></p>
               <% end %>
             </article>
             <% if testimonial_link_url_7.present? && testimonial_link_text_7.present? %>
-              <a class="btn btn-default btn-block-xs" href="<%= testimonial_link_url_7 %>" target="_blank"><%= testimonial_link_text_7 %></a>
+              <div>
+                <a class="btn btn-default btn-block-xs" href="<%= testimonial_link_url_7 %>" target="_blank"><%= testimonial_link_text_7 %></a>
+              </div>
             <% end %>
           </div>
         </div>
         <div class="col-sm-4">
           <div class="testimonial">
-            <h6><%= testimonial_header_8 %></h6>
             <article class="testimonial__article">
-              <p><%= testimonial_text_8 %></p>
               <% if testimonial_video_url_8.present? && testimonial_image_url_8.present? %>
                 <a class="testimonial__video facebook__video" href="javascript:void(0)" data-video-url="<%= testimonial_video_url_8 %>" data-remote='true'>
                   <img src="<%= testimonial_image_url_8 %>" alt="<%= testimonial_image_alt_8 %>" />
@@ -271,20 +425,22 @@ marketing_templates:
                   <img class="testimonial__image" src="<%= testimonial_image_url_8 %>" alt="<%= testimonial_image_alt_8 %>" />
                 <% end %>
               <% end %>
+              <h6><%= testimonial_header_8 %></h6>
+              <p><%= testimonial_text_8 %></p>
               <% if testimonial_bottom_text_8.present? %>
                 <p><%= testimonial_bottom_text_8 %></p>
               <% end %>
             </article>
             <% if testimonial_link_url_8.present? && testimonial_link_text_8.present? %>
-              <a class="btn btn-default btn-block-xs" href="<%= testimonial_link_url_8 %>" target="_blank"><%= testimonial_link_text_8 %></a>
+              <div>
+                <a class="btn btn-default btn-block-xs" href="<%= testimonial_link_url_8 %>" target="_blank"><%= testimonial_link_text_8 %></a>
+              </div>
             <% end %>
           </div>
         </div>
         <div class="col-sm-4">
           <div class="testimonial">
-            <h6><%= testimonial_header_9 %></h6>
             <article class="testimonial__article">
-              <p><%= testimonial_text_9 %></p>
               <% if testimonial_video_url_9.present? && testimonial_image_url_9.present? %>
                 <a class="testimonial__video facebook__video" href="javascript:void(0)" data-video-url="<%= testimonial_video_url_9 %>" data-remote='true'>
                   <img src="<%= testimonial_image_url_9 %>" alt="<%= testimonial_image_alt_9 %>" />
@@ -295,18 +451,49 @@ marketing_templates:
                   <img class="testimonial__image" src="<%= testimonial_image_url_9 %>" alt="<%= testimonial_image_alt_9 %>" />
                 <% end %>
               <% end %>
+              <h6><%= testimonial_header_9 %></h6>
+              <p><%= testimonial_text_9 %></p>
               <% if testimonial_bottom_text_9.present? %>
                 <p><%= testimonial_bottom_text_9 %></p>
               <% end %>
             </article>
             <% if testimonial_link_url_9.present? && testimonial_link_text_9.present? %>
-              <a class="btn btn-default btn-block-xs" href="<%= testimonial_link_url_9 %>" target="_blank"><%= testimonial_link_text_9 %></a>
+              <div>
+                <a class="btn btn-default btn-block-xs" href="<%= testimonial_link_url_9 %>" target="_blank"><%= testimonial_link_text_9 %></a>
+              </div>
             <% end %>
           </div>
         </div>
       </section>
       <div class="row clear text-center padding-bottom--xl <%= background_color %>-bg">
-        <a href='javascript:void(0)' class='testimonial-show-less-link btn btn-primary hide'>Show Less</a>
+        <a href='javascript:void(0)' class='testimonial-show-less-link btn btn-default hide'>Show Less</a>
+      </div>
+
+  -
+    name: '25/75 Hero Image Right'
+    content: !xml |
+      <div id="tile_<%= position %>" class="row banner-container <%= background_color %>-bg">
+        <div class="banner-container__content col-sm-4">
+          <% if banner_icon_text.present? %>
+            <div class="banner-container__icon">
+              <span><%= banner_icon_text %></span>
+            </div>
+          <% end %>
+          <div class="banner-container__title">
+            <h3><%= title %></h3>
+            <p><%= description %></p>
+            <% if button_text.present? && button_link.present? %>
+              <div>
+                <a href="<%= button_link %>" class="btn btn-default btn-default--<%= button_color %>">
+                  <%= button_text %>
+                </a>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="banner-container__img col-sm-8">
+          <img src="<%= image %>" />
+        </div>
       </div>
 
   -
@@ -350,24 +537,29 @@ marketing_templates:
   -
     name: '50/50 Full-Bleed Image Left'
     content: !xml |
-      <section id="tile_<%= position %>" class="row row-tile-new <%= background_color %>-bg">
-        <div class="col-sm-6 img-full-new">
+      <section id="tile_<%= position %>" class="tile-container row row-tile-new <%= background_color %>-bg">
+        <div class="tile-container__image col-sm-6 img-full-new">
           <picture>
             <!--[if IE 9]><video style="display: none;"><![endif]-->
-            <source srcset="<%= image_url.gsub(/original/, 'small') if image_url %>" media="(min-width: 361px)">
+            <source srcset="<%= image_url_2.gsub(/original/, 'small') if image_url_2 %>" media="(min-width: 361px)">
             <!--[if IE 9]></video><![endif]-->
-            <img srcset="<%= image_url.gsub(/original/, 'thumb') if image_url %>" alt="<%= alt_text rescue nil %>" >
+            <img srcset="<%= image_url_2.gsub(/original/, 'thumb') if image_url_2 %>" alt="<%= alt_text rescue nil %>" >
           </picture>
         </div>
-        <div class="col-sm-6">
-          <h6><%= title %></h6>
-          <p><%= body_text %></p>
-          <% if button_1_title.present? && button_1_link.present? %>
-            <a class="btn btn-default btn-block-xs margin-bottom--m" href="<%= button_1_link %>" target="<%= button_1_target %>"><%= button_1_title %></a>
+        <div class="tile-container__content col-sm-6">
+          <% if image_url_1.present? %>
+            <img class="tile-container__icon tile-container__icon--left image_url_1" src="<%= image_url_1 %>" alt="<%= image_alt_1 %>" />
           <% end %>
-          <% if button_2_title.present? && button_2_link.present? %>
-            <a class="btn btn-default btn-block-xs margin-bottom--m" href="<%= button_2_link %>" target="<%= button_2_target %>"><%= button_2_title %></a>
-          <% end %>
+          <h6 class="tile-container__title"><%= title %></h6>
+          <p class="tile-container__para"><%= body_text %></p>
+          <div>
+            <% if button_1_title.present? && button_1_link.present? %>
+              <a class="btn btn-default btn-default--<%= button_color_1 %> btn-block-xs margin-bottom--m" href="<%= button_1_link %>" target="<%= button_1_target %>"><%= button_1_title %></a>
+            <% end %>
+            <% if button_2_title.present? && button_2_link.present? %>
+              <a class="btn btn-default btn-default--<%= button_color_2 %> btn-block-xs margin-bottom--m" href="<%= button_2_link %>" target="<%= button_2_target %>"><%= button_2_title %></a>
+            <% end %>
+          </div>
         </div>
       </section>
 
@@ -409,23 +601,29 @@ marketing_templates:
   -
     name: '50/50 Full-Bleed Image Right'
     content: !xml |
-      <section id="tile_<%= position %>" class="row row-tile-new <%= background_color %>-bg">
-        <div class="col-sm-6">
-          <h6><%= title %></h6>
-          <p><%= body_text %></p>
-          <% if button_1_title.present? && button_1_link.present? %>
-            <a class="btn btn-default btn-block-xs margin-bottom--m" href="<%= button_1_link %>" target="<%= button_1_target %>"><%= button_1_title %></a>
+      <section id="tile_<%= position %>" class="tile-container row row-tile-new <%= background_color %>-bg">
+        <div class="tile-container__content col-sm-6">
+          <% if image_url_1.present? %>
+            <img class="tile-container__icon image_url_1" src="<%= image_url_1 %>" alt="<%= image_alt_1 %>" />
+
           <% end %>
-          <% if button_2_title.present? && button_2_link.present? %>
-            <a class="btn btn-default btn-block-xs margin-bottom--m" href="<%= button_2_link %>" target="<%= button_2_target %>"><%= button_2_title %></a>
-          <% end %>
+          <h6 class="tile-container__title"><%= title %></h6>
+          <p class="tile-container__para"><%= body_text %></p>
+          <div>
+            <% if button_1_title.present? && button_1_link.present? %>
+              <a class="btn btn-default btn-default--<%= button_color_1 %> btn-block-xs margin-bottom--m" href="<%= button_1_link %>" target="<%= button_1_target %>"><%= button_1_title %></a>
+            <% end %>
+            <% if button_2_title.present? && button_2_link.present? %>
+              <a class="btn btn-default btn-default--<%= button_color_2 %> btn-block-xs margin-bottom--m" href="<%= button_2_link %>" target="<%= button_2_target %>"><%= button_2_title %></a>
+            <% end %>
+          </div>
         </div>
-        <div class="col-sm-6 img-full-new">
+        <div class="tile-container__image col-sm-6 img-full-new">
           <picture>
             <!--[if IE 9]><video style="display: none;"><![endif]-->
-            <source srcset="<%= image_url.gsub(/original/, 'small') if image_url %>" media="(min-width: 361px)">
+            <source srcset="<%= image_url_2.gsub(/original/, 'small') if image_url_2 %>" media="(min-width: 361px)">
             <!--[if IE 9]></video><![endif]-->
-            <img srcset="<%= image_url.gsub(/original/, 'thumb') if image_url %>" alt="<%= alt_text rescue nil %>" >
+            <img srcset="<%= image_url_2.gsub(/original/, 'thumb') if image_url_2 %>" alt="<%= alt_text rescue nil %>">
           </picture>
         </div>
       </section>
@@ -456,7 +654,9 @@ marketing_templates:
               <% else %>
                 <% button_target = '_blank' %>
               <% end %>
-              <a class="btn btn-default btn-block-xs" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+              <div>
+                <a class="btn btn-default btn-block-xs" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+              </div>
             <% end %>
           </div>
         </div>
@@ -488,9 +688,36 @@ marketing_templates:
               <% else %>
                 <% button_target = '_blank' %>
               <% end %>
-              <a class="btn btn-default btn-block-xs" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+              <div>
+                <a class="btn btn-default btn-block-xs" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+              </div>
             <% end %>
           </div>
+        </div>
+      </section>
+
+  -
+    name: 'SubNav'
+    content: !xml |
+      <section id="tile_<%= position %>" class="row subnav <%= background_color %>-bg">
+        <div class="col-sm-12">
+          <ul class="nav nav-tabs margin-bottom--m">
+            <% if sub_nav_url_1.present? && sub_nav_text_1.present?%>
+              <li>
+                <a href="<%= sub_nav_url_1 %>"><%= sub_nav_text_1 %></a>
+              </li>
+            <% end %>
+            <% if sub_nav_url_2.present? && sub_nav_text_2.present?%>
+              <li>
+                <a href="<%= sub_nav_url_2 %>"><%= sub_nav_text_2 %></a>
+              </li>
+            <% end %>
+            <% if sub_nav_url_3.present? && sub_nav_text_3.present?%>
+              <li>
+                <a href="<%= sub_nav_url_3 %>"><%= sub_nav_text_3 %></a>
+              </li>
+            <% end %>
+          </ul>
         </div>
       </section>
 
@@ -518,7 +745,9 @@ marketing_templates:
               <% else %>
                 <% button_target = '_blank' %>
               <% end %>
-              <a class="btn btn-default btn-block-xs" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+              <div>
+                <a class="btn btn-default btn-block-xs" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+              </div>
             <% end %>
           </div>
         </div>
@@ -538,7 +767,9 @@ marketing_templates:
               <% else %>
                 <% button_target = '_blank' %>
               <% end %>
-              <a class="btn btn-default btn-block-xs" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+              <div>
+                <a class="btn btn-default btn-block-xs" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+              </div>
             <% end %>
           </div>
         </div>
@@ -568,7 +799,9 @@ marketing_templates:
               <% else %>
                 <% button_target = '_blank' %>
               <% end %>
-              <a class="btn btn-default btn-block-xs" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+              <div>
+                <a class="btn btn-default btn-block-xs" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+              </div>
             <% end %>
           </div>
         </div>
@@ -608,7 +841,9 @@ marketing_templates:
               <% else %>
                 <% button_target = '_blank' %>
               <% end %>
-              <a class="btn btn-default btn-block-xs" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+              <div>
+                <a class="btn btn-default btn-block-xs" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+              </div>
             <% end %>
           </div>
         </div>
@@ -628,7 +863,9 @@ marketing_templates:
               <% else %>
                 <% button_target = '_blank' %>
               <% end %>
-              <a class="btn btn-default btn-block-xs" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+              <div>
+                <a class="btn btn-default btn-block-xs" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+              </div>
             <% end %>
           </div>
         </div>
@@ -668,7 +905,9 @@ marketing_templates:
               <% else %>
                 <% button_target = '_blank' %>
               <% end %>
-              <a class="btn btn-default btn-block-xs" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+              <div>
+                <a class="btn btn-default btn-block-xs" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+              </div>
             <% end %>
           </div>
         </div>
@@ -688,7 +927,9 @@ marketing_templates:
               <% else %>
                 <% button_target = '_blank' %>
               <% end %>
-              <a class="btn btn-default btn-block-xs" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+              <div>
+                <a class="btn btn-default btn-block-xs" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+              </div>
             <% end %>
           </div>
         </div>
@@ -736,7 +977,9 @@ marketing_templates:
                 <% else %>
                   <% button_target = '_blank' %>
                 <% end %>
-                <a class="btn btn-default btn-block-xs margin-bottom--s" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+                <div>
+                  <a class="btn btn-default btn-block-xs margin-bottom--s" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+                </div>
               <% end %>
             </div>
           </div>
@@ -777,7 +1020,9 @@ marketing_templates:
                 <% else %>
                   <% button_target = '_blank' %>
                 <% end %>
-                <a class="btn btn-default btn-block-xs margin-bottom--s" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+                <div>
+                  <a class="btn btn-default btn-block-xs margin-bottom--s" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+                </div>
               <% end %>
             </div>
           </div>
@@ -816,7 +1061,9 @@ marketing_templates:
                 <% else %>
                   <% button_target = '_blank' %>
                 <% end %>
-                <a class="btn btn-default btn-block-xs margin-bottom--s" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+                <div>
+                  <a class="btn btn-default btn-block-xs margin-bottom--s" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+                </div>
               <% end %>
             </div>
           </div>
@@ -845,9 +1092,8 @@ marketing_templates:
         }
       </style>
       <section id="tileImgBgTextRight<%= position %>" class="row row-img-full image-bg">
-        <div class="row-img-full-content <%= 'black-overlay' if (black_overlay.to_i == 1 rescue nil) %>">
-          <div class="col-sm-6"></div>
-          <div class="col-sm-6 col-centered-content">
+        <div class="clearfix row-img-full-content <%= 'black-overlay' if (black_overlay.to_i == 1 rescue nil) %>">
+          <div class="col-sm-6 col-centered-content pull-right">
             <div class="vertical-center">
               <h6><%= title %></h6>
               <p><%= body_text %></p>
@@ -857,7 +1103,9 @@ marketing_templates:
                 <% else %>
                   <% button_target = '_blank' %>
                 <% end %>
-                <a class="btn btn-default btn-block-xs margin-bottom--s" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+                <div>
+                  <a class="btn btn-default btn-block-xs margin-bottom--s" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+                </div>
               <% end %>
             </div>
           </div>
@@ -877,7 +1125,9 @@ marketing_templates:
             <% else %>
               <% button_target = '_blank' %>
             <% end %>
-            <a class="btn btn-default btn-block-xs" href="<%= button_link %>" target="<%= button_target %>" <% if button_type.present? && button_type == 'Remote' %> data-remote='true' <% end %> ><%= button_title %></a>
+            <div>
+              <a class="btn btn-default btn-block-xs" href="<%= button_link %>" target="<%= button_target %>" <% if button_type.present? && button_type == 'Remote' %> data-remote='true' <% end %> ><%= button_title %></a>
+            </div>
           <% end %>
         </div>
       </section>
@@ -885,30 +1135,104 @@ marketing_templates:
   -
     name: '2-Column Text'
     content: !xml |
-      <section id="tile_<%= position %>" class="row row-content-2col">
-        <div class="col-sm-6 <%= background_color_1 %>-bg">
-          <h6><%= title_1 %></h6>
-          <p><%= body_text_1 %></p>
-          <% if button_title_1.present? && button_link_1.present? %>
-            <% if button_target_1 == 'Open in Same Tab' %>
-              <% button_target_1 = '_self' %>
-            <% else %>
-              <% button_target_1 = '_blank' %>
+      <section id="tile_<%= position %>" class="col_container row row-content-2col <%= background_color_1 %>-bg">
+        <div class="clearfix">
+          <div class="col_container__content col-sm-6">
+            <h6><%= title_1 %></h6>
+            <p><%= body_text_1 %></p>
+            <% if button_title_1.present? && button_link_1.present? %>
+              <% if button_target_1 == 'Open in Same Tab' %>
+                <% button_target_1 = '_self' %>
+              <% else %>
+                <% button_target_1 = '_blank' %>
+              <% end %>
+              <div>
+                <a class="btn btn-default btn-default--<%= button_color_1 %> btn-block-xs" href="<%= button_link_1 %>" target="<%= button_target_1 %>"><%= button_title_1 %></a>
+              </div>
             <% end %>
-            <a class="btn btn-default btn-block-xs" href="<%= button_link_1 %>" target="<%= button_target_1 %>"><%= button_title_1 %></a>
-          <% end %>
+          </div>
+          <div class="col_container__content col-sm-6">
+            <h6><%= title_2 %></h6>
+            <p><%= body_text_2 %></p>
+            <% if button_title_2.present? && button_link_2.present? %>
+              <% if button_target_2 == 'Open in Same Tab' %>
+                <% button_target_2 = '_self' %>
+              <% else %>
+                <% button_target_2 = '_blank' %>
+              <% end %>
+              <div>
+                <a class="btn btn-default btn-default--<%= button_color_2 %> btn-block-xs" href="<%= button_link_2 %>" target="<%= button_target_2 %>"><%= button_title_2 %></a>
+              </div>
+            <% end %>
+          </div>
         </div>
-        <div class="col-sm-6 <%= background_color_2 %>-bg">
-          <h6><%= title_2 %></h6>
-          <p><%= body_text_2 %></p>
-          <% if button_title_2.present? && button_link_2.present? %>
-            <% if button_target_2 == 'Open in Same Tab' %>
-              <% button_target_2 = '_self' %>
-            <% else %>
-              <% button_target_2 = '_blank' %>
+      </section>
+
+  -
+    name: '2-Column Text With Different Color'
+    content: !xml |
+      <section id="tile_<%= position %>" class="col_container row row-content-2col <%= background_color_1 %>-bg">
+        <div class="clearfix">
+          <div class="col_container__content col-sm-6">
+            <h6><%= title_1 %></h6>
+            <p><%= body_text_1 %></p>
+            <% if button_title_1.present? && button_link_1.present? %>
+              <% if button_target_1 == 'Open in Same Tab' %>
+                <% button_target_1 = '_self' %>
+              <% else %>
+                <% button_target_1 = '_blank' %>
+              <% end %>
+              <div>
+                <a class="btn btn-default btn-default--<%= button_color_1 %> btn-block-xs" href="<%= button_link_1 %>" target="<%= button_target_1 %>"><%= button_title_1 %></a>
+              </div>
             <% end %>
-            <a class="btn btn-default btn-block-xs" href="<%= button_link_2 %>" target="<%= button_target_2 %>"><%= button_title_2 %></a>
-          <% end %>
+          </div>
+          <div class="col_container__content col-sm-6 <%= background_color_2 %>-bg">
+            <h6><%= title_2 %></h6>
+            <p><%= body_text_2 %></p>
+            <% if button_title_2.present? && button_link_2.present? %>
+              <% if button_target_2 == 'Open in Same Tab' %>
+                <% button_target_2 = '_self' %>
+              <% else %>
+                <% button_target_2 = '_blank' %>
+              <% end %>
+              <div>
+                <a class="btn btn-default btn-default--<%= button_color_2 %> btn-block-xs" href="<%= button_link_2 %>" target="<%= button_target_2 %>"><%= button_title_2 %></a>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </section>
+
+  -
+    name: '50/50 Partial Image Right'
+    content: !xml |
+      <section id="tile_<%= position %>" class="col_container row row-content-2col <%= background_color %>-bg">
+        <div class="clearfix">
+          <div class="col_container__content col-sm-6">
+            <h6><%= title %></h6>
+            <p><%= body_text %></p>
+            <% if button_title.present? && button_link.present? %>
+              <% if button_target == 'Open in Same Tab' %>
+                <% button_target = '_self' %>
+              <% else %>
+                <% button_target = '_blank' %>
+              <% end %>
+              <div>
+                <a class="btn btn-default btn-default--<%= button_color %> btn-block-xs" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
+              </div>
+            <% end %>
+          </div>
+          <div class="col_container__image col-sm-6">
+            <div class="vertical-center">
+              <picture>
+                <!--[if IE 9]><video style="display: none;"><![endif]-->
+                <source srcset="<%= image_url.gsub(/original/, 'small') if image_url %>" media="(min-width: 361px)">
+                <!--[if IE 9]></video><![endif]-->
+                <img srcset="<%= image_url.gsub(/original/, 'thumb') if image_url %>" alt="<%= alt_text rescue nil %>"  class="img-responsive">
+              </picture>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -932,28 +1256,52 @@ marketing_templates:
           }
         }
       </style>
-      <section id="tileVideoLeft<%= position %>" class="row row-img-full row-video-left <%= 'image-bg' if background_image_url.present? %> <%= background_color %>-bg">
-        <div class="row-img-full-content">
-          <div class="col-sm-6 col-centered-content margin-bottom--xl--sm-min">
-            <div class="vertical-center">
-              <div class="embed-responsive embed-responsive-16by9">
-                <iframe src="//fast.wistia.net/embed/iframe/<%= wistia_video_id %>" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" id="wistia-iframe" name="wistia_embed"  webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-              </div>
-            </div>
+      <section id="tileVideoLeft<%= position %>" class="col_container video-left-text-right row <%= 'image-bg' if background_image_url.present? %> <%= background_color %>-bg">
+        <div class="col-sm-6">
+          <div class="embed-responsive embed-responsive-16by9">
+            <iframe src="//fast.wistia.net/embed/iframe/<%= wistia_video_id %>" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" id="wistia-iframe" name="wistia_embed"  webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
           </div>
-          <div class="col-sm-6 col-centered-content">
-            <div class="vertical-center">
-              <h6><%= title %></h6>
-              <p><%= body_text %></p>
-              <% if button_title.present? && button_link.present? %>
-                <% if button_target == 'Open in Same Tab' %>
-                  <% button_target = '_self' %>
-                <% else %>
-                  <% button_target = '_blank' %>
-                <% end %>
-                <a class="btn btn-default btn-block-xs" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
-              <% end %>
+        </div>
+        <div class="col-sm-6 col_container__content">
+          <h6 class="video-left-text-right__title"><%= title %></h6>
+          <p class="video-left-text-right__body"><%= body_text %></p>
+          <% if button_title.present? && button_link.present? %>
+            <% if button_target == 'Open in Same Tab' %>
+              <% button_target = '_self' %>
+            <% else %>
+              <% button_target = '_blank' %>
+            <% end %>
+            <div>
+              <a class="video-left-text-right__btn btn btn-default btn-default--<%= button_color %> btn-block-xs" href="<%= button_link %>" target="<%= button_target %>"><%= button_title %></a>
             </div>
+          <% end %>
+        </div>
+      </section>
+
+  -
+    name: 'Product Presentation'
+    content: !xml |
+      <section id="product-presentation tileImageLeft<%= position %>" class="image-left-text-right row <%= background_color %>-bg">
+        <div class="product-presentation__image col-sm-6">
+          <picture>
+            <% if image_url_1.present? %>
+              <img class="product-presentation__icon image_url_1" src="<%= image_url_1 %>" alt="<%= image_alt_1 %>" />
+            <% end %>
+          </picture>
+        </div>
+        <div class="product-presentation__content col-sm-6">
+          <% if image_url_2.present? %>
+            <img class="product-presentation__icon image_url_2" src="<%= image_url_2 %>" alt="<%= image_alt_1 %>" />
+          <% end %>
+          <h6 class="product-presentation__title"><%= title %></h6>
+          <p class="product-presentation__para"><%= body_text %></p>
+          <div>
+            <% if button_1_title.present? && button_1_link.present? %>
+              <a class="btn btn-default btn-default--<%= button_color_1 %> btn-block-xs margin-bottom--m" href="<%= button_1_link %>" target="<%= button_1_target %>"><%= button_1_title %></a>
+            <% end %>
+            <% if button_2_title.present? && button_2_link.present? %>
+              <a class="btn btn-default btn-default--<%= button_color_2 %> btn-block-xs margin-bottom--m" href="<%= button_2_link %>" target="<%= button_2_target %>"><%= button_2_title %></a>
+            <% end %>
           </div>
         </div>
       </section>
@@ -961,42 +1309,100 @@ marketing_templates:
   -
     name: '3-Column Text'
     content: !xml |
-      <section id="tile_<%= position %>" class="row row-content-3col <%= background_color %>-bg">
-        <div class="col-sm-4">
-          <h6><%= title_1 %></h6>
-          <p><%= body_text_1 %></p>
-          <% if button_title_1.present? && button_link_1.present? %>
-            <% if button_target_1 == 'Open in Same Tab' %>
-              <% button_target_1 = '_self' %>
-            <% else %>
-              <% button_target_1 = '_blank' %>
+      <section id="tile_<%= position %>" class="col_container row row-content-3col <%= background_color %>-bg">
+        <div class="clearfix tile-content">
+          <div class="col_container__content col-sm-4">
+            <h6><%= title_1 %></h6>
+            <p><%= body_text_1 %></p>
+            <% if button_title_1.present? && button_link_1.present? %>
+              <% if button_target_1 == 'Open in Same Tab' %>
+                <% button_target_1 = '_self' %>
+              <% else %>
+                <% button_target_1 = '_blank' %>
+              <% end %>
+              <div>
+                <a class="btn btn-default btn-default--<%= button_color_1 %> btn-block-xs" href="<%= button_link_1 %>" target="<%= button_target_1 %>"><%= button_title_1 %></a>
+              </div>
             <% end %>
-            <a class="btn btn-default btn-block-xs" href="<%= button_link_1 %>" target="<%= button_target_1 %>"><%= button_title_1 %></a>
-          <% end %>
+          </div>
+          <div class="col_container__content col-sm-4">
+            <h6><%= title_2 %></h6>
+            <p><%= body_text_2 %></p>
+            <% if button_title_2.present? && button_link_2.present? %>
+              <% if button_target_2 == 'Open in Same Tab' %>
+                <% button_target_2 = '_self' %>
+              <% else %>
+                <% button_target_2 = '_blank' %>
+              <% end %>
+              <div>
+                <a class="btn btn-default btn-default--<%= button_color_2 %> btn-block-xs" href="<%= button_link_2 %>" target="<%= button_target_2 %>"><%= button_title_2 %></a>
+              </div>
+            <% end %>
+          </div>
+          <div class="col_container__content col-sm-4">
+            <h6><%= title_3 %></h6>
+            <p><%= body_text_3 %></p>
+            <% if button_title_3.present? && button_link_3.present? %>
+              <% if button_target_3 == 'Open in Same Tab' %>
+                <% button_target_3 = '_self' %>
+              <% else %>
+                <% button_target_3 = '_blank' %>
+              <% end %>
+              <div>
+                <a class="btn btn-default btn-default--<%= button_color_3 %> btn-block-xs" href="<%= button_link_3 %>" target="<%= button_target_3 %>"><%= button_title_3 %></a>
+              </div>
+            <% end %>
+          </div>
         </div>
-        <div class="col-sm-4">
-          <h6><%= title_2 %></h6>
-          <p><%= body_text_2 %></p>
-          <% if button_title_2.present? && button_link_2.present? %>
-            <% if button_target_2 == 'Open in Same Tab' %>
-              <% button_target_2 = '_self' %>
-            <% else %>
-              <% button_target_2 = '_blank' %>
+      </section>
+
+  -
+    name: '3-Column Text With Different Color'
+    content: !xml |
+      <section id="tile_<%= position %>" class="col_container row row-content-3col <%= background_color %>-bg">
+        <div class="clearfix tile-content">
+          <div class="col_container__content col-sm-4">
+            <h6><%= title_1 %></h6>
+            <p><%= body_text_1 %></p>
+            <% if button_title_1.present? && button_link_1.present? %>
+              <% if button_target_1 == 'Open in Same Tab' %>
+                <% button_target_1 = '_self' %>
+              <% else %>
+                <% button_target_1 = '_blank' %>
+              <% end %>
+              <div>
+                <a class="btn btn-default btn-default--<%= button_color_1 %> btn-block-xs" href="<%= button_link_1 %>" target="<%= button_target_1 %>"><%= button_title_1 %></a>
+              </div>
             <% end %>
-            <a class="btn btn-default btn-block-xs" href="<%= button_link_2 %>" target="<%= button_target_2 %>"><%= button_title_2 %></a>
-          <% end %>
-        </div>
-        <div class="col-sm-4">
-          <h6><%= title_3 %></h6>
-          <p><%= body_text_3 %></p>
-          <% if button_title_3.present? && button_link_3.present? %>
-            <% if button_target_3 == 'Open in Same Tab' %>
-              <% button_target_3 = '_self' %>
-            <% else %>
-              <% button_target_3 = '_blank' %>
+          </div>
+          <div class="col_container__content col-sm-4 <%= background_color_2 %>-bg">
+            <h6><%= title_2 %></h6>
+            <p><%= body_text_2 %></p>
+            <% if button_title_2.present? && button_link_2.present? %>
+              <% if button_target_2 == 'Open in Same Tab' %>
+                <% button_target_2 = '_self' %>
+              <% else %>
+                <% button_target_2 = '_blank' %>
+              <% end %>
+              <div>
+                <a class="btn btn-default btn-default--<%= button_color_2 %> btn-block-xs" href="<%= button_link_2 %>" target="<%= button_target_2 %>"><%= button_title_2 %></a>
+              </div>
             <% end %>
-            <a class="btn btn-default btn-block-xs" href="<%= button_link_3 %>" target="<%= button_target_3 %>"><%= button_title_3 %></a>
-          <% end %>
+          </div>
+          <div class="col_container__content col-sm-4 <%= background_color_3 %>-bg">
+            <h6><%= title_3 %></h6>
+            <p><%= body_text_3 %></p>
+            <% if button_title_3.present? && button_link_3.present? %>
+              <% if button_target_3 == 'Open in Same Tab' %>
+                <% button_target_3 = '_self' %>
+              <% else %>
+                <% button_target_3 = '_blank' %>
+              <% end %>
+              <div>
+                <a class="btn btn-default btn-default--<%= button_color_3 %> btn-block-xs" href="<%= button_link_3 %>" target="<%= button_target_3 %>"><%= button_title_3 %></a>
+              </div>
+            <% end %>
+          </div>
         </div>
       </section>
 
@@ -1021,7 +1427,9 @@ marketing_templates:
               <% end %>
             </article>
             <% if facebook_link_url_1.present? && facebook_link_text_1.present? %>
-              <a class="btn btn-default btn-block-xs" href="<%= facebook_link_url_1 %>" target="_blank"><%= facebook_link_text_1 %></a>
+              <div>
+                <a class="btn btn-default btn-block-xs" href="<%= facebook_link_url_1 %>" target="_blank"><%= facebook_link_text_1 %></a>
+              </div>
             <% end %>
           </div>
         </div>
@@ -1042,7 +1450,9 @@ marketing_templates:
               <% end %>
             </article>
             <% if facebook_link_url_2.present? && facebook_link_text_2.present? %>
-              <a class="btn btn-default btn-block-xs" href="<%= facebook_link_url_2 %>" target="_blank"><%= facebook_link_text_2 %></a>
+              <div>
+                <a class="btn btn-default btn-block-xs" href="<%= facebook_link_url_2 %>" target="_blank"><%= facebook_link_text_2 %></a>
+              </div>
             <% end %>
           </div>
         </div>
@@ -1063,7 +1473,9 @@ marketing_templates:
               <% end %>
             </article>
             <% if facebook_link_url_3.present? && facebook_link_text_3.present? %>
-              <a class="btn btn-default btn-block-xs" href="<%= facebook_link_url_3 %>" target="_blank"><%= facebook_link_text_3 %></a>
+              <div>
+                <a class="btn btn-default btn-block-xs" href="<%= facebook_link_url_3 %>" target="_blank"><%= facebook_link_text_3 %></a>
+              </div>
             <% end %>
           </div>
         </div>

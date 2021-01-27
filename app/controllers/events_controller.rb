@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_filter :set_filters_param, only: [:curriculum, :list]
+  before_action :set_filters_param, only: [:curriculum, :list]
 
   def index
     @events = RegonlineEvent.displayable.sorted.page(params[:page])

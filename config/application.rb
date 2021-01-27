@@ -46,7 +46,6 @@ module GreatMinds
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
-    config.active_record.raise_in_transactional_callbacks = true
 
     config.generators do |generate|
       generate.test_framework :rspec,
@@ -67,6 +66,10 @@ module GreatMinds
     end
 
     config.active_job.queue_adapter = :sidekiq
-    config.action_view.sanitized_allowed_tags = ['h1', 'h2', 'h3', 'h4', 'br', 'strong', 'em', 'i', 'u', 'a', 'b', 'ul', 'li', 'ol', 'blockquote', 'strike', 'span']
+    config.action_view.sanitized_allowed_tags = ['h1', 'h2', 'h3', 'h4', 'h5',
+                                                 'h6', 'br', 'strong', 'em',
+                                                 'i', 'u', 'a', 'b', 'ul', 'li',
+                                                 'ol', 'blockquote', 'strike',
+                                                 'span', 'sup', 'sub', 'del']
   end
 end

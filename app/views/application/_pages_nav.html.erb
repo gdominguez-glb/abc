@@ -7,7 +7,7 @@
         <%= mi.more_vert %>
       </button>
     </div>
-    <div class="collapse navbar-collapse" id="sub-nav">
+    <div class="collapse navbar-collapse updated-navbar-collapse" id="sub-nav">
       <ul>
         <% cache [@group_page, request.path], expires_in: 2.hours do %>
           <%= active_link_to @group_page.title, "/#{@group_page.slug}", active: (request.path == "/#{@group_page.slug}"), wrap_tag: :li if @group_page %>
@@ -23,21 +23,20 @@
           <% if @group_page && @group_page.shop %>
             <li><%= link_to @group_page.shop.title, @group_page.shop.url  %></li>
           <% end %>
-        
-          <% if @group_page && @group_page.slug == "math" %>
-            <li><a href="https://eurekamath.greatminds.org/webinar-library">Webinars</a></li>
+
+          <% if @group_page %>
+            <li><a href= '<%= generate_webinar_url @group_page %>'>Webinars</a></li>
           <% end %>
 
           <% if @group_page && blog = @group_page.blogs.displayable.first %>
-            <%= active_link_to 'Blog', curriculum_blog_path(page_slug: @group_page.slug, slug: blog.slug), wrap_tag: :li, active: /#{@group_page.slug}\/blog\/#{blog.slug}/ %>
+            <%= active_link_to 'Blog', generate_blog_url(@group_page.slug, blog.slug), wrap_tag: :li, active: /#{@group_page.slug}\/blog\/#{blog.slug}/ %>
 
             <% # we need to check if this is totally ok, maybe, we need to add a new section for create extra subnav links %>
             <% if (bl = @group_page.blogs.displayable.last) != blog && @group_page.slug == "math" %>
-              <%= active_link_to bl.title, curriculum_blog_path(page_slug: @group_page.slug, slug: bl.slug), wrap_tag: :li, active: /#{@group_page.slug}\/blog\/#{bl.slug}/ %>
+              <% if bl.slug != 'champions' %>
+                <%= active_link_to bl.title, curriculum_blog_path(page_slug: @group_page.slug, slug: bl.slug), wrap_tag: :li, active: /#{@group_page.slug}\/blog\/#{bl.slug}/ %>
+              <% end %>
             <% end %>
-          <% end %>
-          <% if @group_page && @group_page.slug == "english" %>
-            <%= active_link_to "Case Studies", "/english/blog/case-studies", active: (request.path == "/english/blog/case-studies"), wrap_tag: :li %>
           <% end %>
           <% if @group_page && event_page = @group_page.available_event_pages.first %>
             <%= active_link_to 'Events', curriculum_events_path(page_slug: @group_page.slug, slug: event_page.slug), wrap_tag: :li, active: /#{@group_page.slug}\/events\/#{event_page.slug}/ %>

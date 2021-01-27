@@ -6,7 +6,6 @@
           <span class="block margin-top">Search results for <strong><%= params[:query] %></strong></span>
         </div>
       </div>
-
     <div class="list-group">
       <% @result.each do |item| %>
         <%= render partial: search_result_partial(item), locals: { item: item } %>

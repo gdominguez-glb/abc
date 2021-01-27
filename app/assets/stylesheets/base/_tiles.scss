@@ -31,6 +31,29 @@ section {
     padding: 84px 0;
   }
 
+  &.subnav {
+    padding: 20px 0 5px;
+
+    &.purple-bg {
+
+      .nav-tabs > li a {
+        opacity: 0.8;
+      }
+
+    }
+
+    &.blue-bg {
+
+      .nav-tabs > li a:hover,
+      .nav-tabs > li a:focus,
+      .nav-tabs > li a.active {
+        border-bottom: 4px solid $white;
+        color: $white;
+      }
+
+    }
+  }
+
   h1,
   h2,
   h3,
@@ -88,6 +111,13 @@ section {
         }
       }
     }
+
+    @media screen and (max-width: $screen-md-min) {
+      .fwtext {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
   }
 
   &.row-video-left {
@@ -108,6 +138,12 @@ section {
 
   &.row-content-2col {
     padding: 0;
+    >.clearfix {
+      @media screen and (min-width: $screen-sm-min) {
+        display: flex;
+        flex-grow: 1;
+      }
+    }
 
     @media screen and (min-width: $screen-sm-min) {
       @include display-flex;
@@ -121,12 +157,25 @@ section {
 
       &:first-child,
       &:last-child {
-        padding-top: 60px;
         padding-bottom: 60px;
+        padding-top: 60px;
 
         @media screen and (min-width: $screen-sm-min) {
-          padding-bottom: 42px;
-          padding-top: 42px;
+          padding-bottom: 60px;
+          padding-top: 30px;
+
+          .col_container__content {
+            padding-top: 100px;
+            padding-left: 80px;
+          }
+        }
+
+        &.sub-head {
+          @media screen and (min-width: $screen-sm-min) {
+            padding: 60px 20px 0 0;
+          }
+
+          padding: 60px 20px 0 0;
         }
 
         .btn {
@@ -139,19 +188,27 @@ section {
   &.row-content-3col {
 
     @media screen and (min-width: $screen-sm-min) {
+      padding-bottom: 0;
+      .tile-content {
+        display: flex;
+      }
+      
       [class*='col-'] {
         padding: 0 24px;
 
         &:first-child {
           padding-right: 24px;
+          padding-bottom: 84px;
         }
 
         &:nth-child(2) {
           padding: 0 54px;
+          padding-bottom: 84px;
         }
 
         &:last-child {
           padding-left: 24px;
+          padding-bottom: 84px;
         }
       }
     }
@@ -186,15 +243,6 @@ section {
   @media screen and (min-width: $screen-sm-min) {
     .video-title {
       margin-bottom: 25px;
-    }
-
-    &.green-bg,
-    &.orange-bg,
-    &.cream-bg,
-    &.light-blue-bg {
-      .video-title {
-        color: $c-positive-secondary;
-      }
     }
 
     &.image-bg {
@@ -359,23 +407,19 @@ section {
 //   Colors
 // -------------------------------------
 
-.blue-bg {
-  color: $c-absolute;
-  background: $c-positive-secondary;
-}
-
-.cream-bg {
-  color: $c-positive-secondary;
-  background: $c-firm-subdue;
+.white-bg {
+  color: $black;
+  background: $white;
 
   &.image-bg {
     color: $c-absolute;
   }
+
 }
 
 .green-bg {
-  color: $c-positive-secondary;
   background: $c-balanced-primary;
+  color: $black;
 
   &.image-bg {
     color: $c-absolute;
@@ -383,7 +427,7 @@ section {
 }
 
 .light-blue-bg {
-  color: $c-positive-secondary;
+  color: $black;
   background: $c-positive-primary;
 
   &.image-bg {
@@ -392,26 +436,66 @@ section {
 }
 
 .orange-bg {
-  color: $c-positive-secondary;
   background: $c-energized-primary;
+  color: $black;
 
   &.image-bg {
     color: $c-absolute;
   }
+}
+
+.dark-orange-bg {
+  background: $dark-orange;
+}
+
+.white-bg {
+  background: $white;
 }
 
 .purple-bg {
-  color: $c-science-secondary;
   background: $c-science-primary;
+  color: $white;
 
   &.image-bg {
     color: $c-absolute;
   }
 }
 
-.coral-bg {
-  color: $c-absolute;
-  background: $c-energized-secondary;
+.slate-bg {
+  background: $slate;
+  color: $black;
+}
+
+.khaki-bg {
+  background: $khaki;
+  color: $black;
+}
+
+.beige-bg {
+  background: $beige;
+  color: $black;
+}
+
+.terracotta-bg {
+  background: $terracotta;
+  color: $white;
+}
+
+.olive-bg {
+  background: $olive;
+  color: $black;
+}
+
+.black-bg {
+  background: $black;
+  color: $white;
+}
+
+// -------------------------------------
+//   Text Color
+// -------------------------------------
+.navy-blue-text {
+  color: $primary-text-color;
 }
 
 // -------------------------------------
@@ -431,4 +515,65 @@ section {
 .post-image {
   max-width: 100% !important;
   max-height: 750px;
+}
+
+.sub-head {
+  $sh: &;
+  padding: 60px 20px 0 0;
+
+  &__container {
+    float: left;
+    padding-bottom: 10px;
+    padding-right: 20px;
+    position: relative;
+
+    #{$sh}__text {
+      color: $primary-text-color;
+      font-size: 20px;
+      font-stretch: normal;
+      font-style: normal;
+      font-weight: 500;
+      letter-spacing: normal;
+      line-height: 1.2;
+      margin: 0;
+      position: relative;
+      text-transform: capitalize;
+      z-index: 1;
+    }
+
+    #{$sh}__rectangle {
+      background-color: $sub-head-bg;
+      height: 13px;
+      margin-top: 12px;
+      position: absolute;
+      width: 100%;
+      z-index: 0;
+    }
+  }
+}
+
+.col_container {
+  padding-top: 0;
+  $cc: &;
+
+  #{$cc}__content {
+    padding-left: 80px !important;
+    padding-top: 0 !important;
+
+    &:first-child {
+      padding-top: 0 !important;
+    }
+
+    h6 {
+      clear: both;
+      margin-top: 70px;
+      text-transform: capitalize;
+    }
+  }
+
+  #{$cc}__image {
+    padding-bottom: 40px !important;
+    padding-right: 45px !important;
+    padding-top: 40px !important;
+  }
 }

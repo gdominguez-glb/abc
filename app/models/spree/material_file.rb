@@ -1,4 +1,4 @@
-class Spree::MaterialFile < ActiveRecord::Base
+class Spree::MaterialFile < ApplicationRecord
   belongs_to :material, class_name: 'Spree::Material', counter_cache: true
 
   has_attached_file :file,

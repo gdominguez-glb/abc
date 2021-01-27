@@ -34,10 +34,18 @@ ActiveRecord::Migration.maintain_test_schema!
 
 require 'database_cleaner'
 require 'ffaker'
+require 'shoulda/matchers'
 
 require 'spree/testing_support/factories'
 require 'spree/testing_support/preferences'
 require 'spree/testing_support/controller_requests'
+
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
+  end
+end
 
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
@@ -53,8 +61,8 @@ RSpec.configure do |config|
 
   config.infer_spec_type_from_file_location!
 
-  config.include Devise::TestHelpers, :type => :controller
-  config.extend ControllerMacros, :type => :controller
+  config.include Devise::Test::ControllerHelpers, type: :controller
+  config.extend ControllerMacros, type: :controller
   config.include MockMandrill
   config.include CapybaraSelect2
 
@@ -119,5 +127,3 @@ RSpec.configure do |config|
     )
   end
 end
-
-TestAfterCommit.enabled = true

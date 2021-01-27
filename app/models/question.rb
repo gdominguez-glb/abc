@@ -1,11 +1,11 @@
-class Question < ActiveRecord::Base
+class Question < ApplicationRecord
   include Archiveable
   include Displayable
   include Publishable
 
   include FriendlyId
   friendly_id :title, use: :slugged
-    
+
   belongs_to :faq_category
 
   has_one :answer
@@ -16,7 +16,7 @@ class Question < ActiveRecord::Base
 
   validates_presence_of :title, :faq_category
 
-  searchkick callbacks: :async, personalize: "user_ids"
+  searchkick callbacks: :async
 
   def should_index?
     display?

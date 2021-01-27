@@ -1,4 +1,4 @@
-class Spree::Bookmark < ActiveRecord::Base
+class Spree::Bookmark < ApplicationRecord
   belongs_to :user, class_name: 'Spree::User'
   belongs_to :bookmarkable, polymorphic: true
 

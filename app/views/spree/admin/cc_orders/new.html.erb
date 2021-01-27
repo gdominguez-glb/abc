@@ -1,4 +1,8 @@
-<%= render :partial => 'spree/admin/shared/error_messages', :locals => { :target => @new_licenses_form } %>
+<% if @cc_order_processor_form.errors.any? %>
+  <%= render :partial => 'spree/admin/shared/error_messages', locals: { target: @cc_order_processor_form } %>
+<% else %>
+  <%= render :partial => 'spree/admin/shared/error_messages', locals: { target: @new_licenses_form } %>
+<% end %>
 
 <% content_for :page_title do %>
   Process Credit Card

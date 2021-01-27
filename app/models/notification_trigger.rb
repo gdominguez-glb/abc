@@ -1,4 +1,4 @@
-class NotificationTrigger < ActiveRecord::Base
+class NotificationTrigger < ApplicationRecord
   serialize :user_ids, Array
   serialize :product_ids, Array
 

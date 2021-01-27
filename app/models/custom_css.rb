@@ -1,4 +1,4 @@
-class CustomCss < ActiveRecord::Base
+class CustomCss < ApplicationRecord
   belongs_to :page
 
   enum custom_type: { global_css: 0, page_css: 1 }

@@ -1,7 +1,9 @@
 module ApplicationHelper
+
   def store_active_class
     return '' if request.fullpath !~ /^\/resources/
     return '' if request.fullpath == '/resources/login'
+    return '' if request.fullpath == '/resources/signup'
     'active'
   end
 
@@ -53,5 +55,27 @@ module ApplicationHelper
     end
 
     var
+  end
+
+  def generate_blog_url page_slug, blog_slug
+    if page_slug == 'science' || blog_slug == 'witwisdom'
+      "#{ENV['HUBSPOT_URL']}/#{blog_slug}"
+    else
+      "#{ENV['HUBSPOT_URL']}/#{page_slug}/blog/#{blog_slug}"
+    end
+  end
+
+  def generate_news_url
+    "#{ENV['HUBSPOT_URL']}/aha/tag/news-release"
+  end
+
+  def generate_webinar_url page
+    if page.slug == 'math'
+      "#{ENV['HUBSPOT_URL']}/webinar?subject=Math&type=show-all&author=show-all&search="
+    elsif page.slug == 'science'
+      "#{ENV['HUBSPOT_URL']}/webinar?subject=Science&type=show-all&author=show-all&search="
+    elsif page.slug == 'english'
+      "#{ENV['HUBSPOT_URL']}/webinar?subject=English&type=show-all&author=show-all&search="
+    end
   end
 end

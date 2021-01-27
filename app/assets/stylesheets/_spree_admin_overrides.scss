@@ -94,7 +94,7 @@
   .index-filter-button {
     .form-control {
       margin-left: -1px;
-      padding: 8px $b-space;
+      padding: 12px 10px 11px;
     }
 
     .btn {
@@ -436,4 +436,8 @@ td.active-circle {
     border-radius: 100%;
     display: inline-block;
   }
+}
+
+.taxon-products-view ul.taxon li.product .image {
+    height: auto;
 }
