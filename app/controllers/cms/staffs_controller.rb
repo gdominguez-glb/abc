@@ -65,7 +65,7 @@ class Cms::StaffsController < Cms::BaseController
     end
 
     update_positions_with_klass(staffs)
-    render nothing: true
+    render body: nil
   end
 
   private

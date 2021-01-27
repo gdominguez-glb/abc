@@ -37,7 +37,7 @@ class Cms::FooterLinksController < Cms::BaseController
 
   def update_positions
     update_positions_with_klass(FooterLink)
-    render nothing: true
+    render body: nil
   end
 
   private
