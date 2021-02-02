@@ -28,7 +28,7 @@ class Cms::EventTrainingsController < Cms::BaseController
 
   def update_positions
     update_positions_with_klass(@training_type_category.event_trainings)
-    render nothing: true
+    render body: nil
   end
 
   private

@@ -45,7 +45,7 @@ module Spree
           @material.move_to_right_of(right_material)
         end
         @material.save
-        render nothing: true
+        render body: nil
       end
 
       private
