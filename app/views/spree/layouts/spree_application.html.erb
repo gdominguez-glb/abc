@@ -10,12 +10,10 @@
   </head>
   <body class="<%= body_class %> spree-store" id="<%= @body_id || 'default' %>" data-hook="body">
     <%= render 'google_tag_manager' if Rails.env.production? %>
-    <%= render partial: 'spree/shared/google_analytics.js' %>
     <%= render partial: 'spree/shared/header' %>
 
     <div class="container container-content">
       <div class="row" data-hook>
-        <%= breadcrumbs(@taxon) %>
 
         <div id="content" class="col-sm-10 col-sm-offset-1 margin-top--xxl margin-bottom--xl" data-hook>
           <%= flash_messages %>

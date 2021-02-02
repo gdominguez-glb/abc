@@ -1,2 +1,2 @@
-class FamisProduct < ActiveRecord::Base
+class FamisProduct < ApplicationRecord
 end

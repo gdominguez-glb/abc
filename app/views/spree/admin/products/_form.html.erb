@@ -102,7 +102,7 @@
       <div data-hook="admin_product_form_product_type">
         <%= f.field_container :product_type, class: ['form-group'] do %>
           <%= f.label :product_type, Spree.t(:product_type) %>
-          <%= f.select(:product_type, Spree::Product::PRODUCT_TYPES, { :include_blank => Spree.t('match_choices.none') }, { :class => 'select2' }) %>
+          <%= f.select(:product_type, PRODUCT_TYPES, { :include_blank => Spree.t('match_choices.none') }, { :class => 'select2' }) %>
           <%= f.error_message_on :product_type %>
         <% end %>
       </div>
@@ -318,6 +318,13 @@
       <div class='form-group field' id='product_is_beta_field'>
         <%= f.label :is_beta %>
         <%= f.check_box :is_beta, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div data-hook='admin_product_form_accessable_product'>
+      <div class='form-group field' id='product_is_accessable_field'>
+        <%= f.label :has_eureka_access %>
+        <%= f.check_box :has_eureka_access, class: 'form-control' %>
       </div>
     </div>
 

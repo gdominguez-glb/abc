@@ -353,4 +353,15 @@ Spree::Product.class_eval do
   def admin_display_name
     self.internal_name.present? ? self.internal_name : self.name
   end
+
+  def self.ransackable_attributes(*)
+    %w[id
+       name
+       updated_at
+       created_at
+       description
+       slug
+       discontinue_on
+       product_type]
+  end
 end

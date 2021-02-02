@@ -1,3 +1,5 @@
+<%= render :partial => 'spree/admin/shared/error_messages', locals: { target: @admin_new_coupon_code_form.coupon_code } %>
+
 <% content_for :page_title do %>
   <%= Spree.t(:new_product_key) %>
 <% end %>
@@ -40,7 +42,7 @@
           <label>SF Order ID (sync assets to the specify order, Optional)</label>
           <%= f.text_field :sf_order_id, class: 'form-control' %>
         </div>
-        <div class="form-group">
+        <div class="form-group" id="total_amount">
           <label>Amount</label>
           <%= f.text_field :amount, class: 'form-control' %>
         </div>
@@ -73,7 +75,7 @@
       placeholder: "Select product",
       multiple: true,
       ajax: {
-        url: '/storeapi/products',
+        url: '/resources/api/v1/products',
         datatype: 'json',
         data: function (term, page) {
           return {
@@ -89,19 +91,19 @@
         results: function (data, page) {
           var more = page < data.pages;
           return {
-            results: data['products'],
+            results: data.products,
             more: more
           };
         }
       },
       formatResult: function (product) {
-        return product.internal_name;
+        return product.name;
       },
       formatSelection: function (product) {
-        return product.internal_name;
+        return product.name;
       }
     });
-    
+
      $("#coupon_code_school_district_id").select2({
         placeholder: "Select school/district",
         multiple: false,
@@ -162,6 +164,21 @@
 
     $(".cardNumber").change(function(){
       $(this).parent().siblings(".ccType").val($.payment.cardType($(this).val()));
+    });
+  });
+
+  $(document).ready(function() {
+    $("#coupon_code_amount").on('change', function () {
+      var total = $('#coupon_code_amount').val();
+      $('.text-danger').remove();
+      if ( total > 99999999 ) {
+        $( "#total_amount" ).append( "<p class='text-danger'>Please enter amount less than 100000000</p>" );
+        $(':input[type="submit"]').prop('disabled', true);
+      }
+      else{
+        $(':input[type="submit"]').prop('disabled', false);
+        $('.text-danger').remove();
+      }
     });
   });
 </script>

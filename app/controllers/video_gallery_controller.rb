@@ -19,10 +19,12 @@ class VideoGalleryController < ApplicationController
     @bought_product_ids = fetch_bought_ids(@videos.map(&:products).flatten.compact)
   end
 
+  # TODO: Unused method we need to remove it
   def show
     log_activity(@video)
   end
 
+  # TODO: Unused method we need to remove it
   def show_description
   end
 
@@ -49,11 +51,13 @@ class VideoGalleryController < ApplicationController
     end
   end
 
+  # TODO: Unused method we need to remove it
   def bookmark
     @video = Spree::Video.find(params[:id])
     current_spree_user.bookmarks.create(bookmarkable: @video)
   end
 
+  # TODO: Unused method we need to remove it
   def remove_bookmark
     @video = Spree::Video.find(params[:id])
     current_spree_user.bookmarks.find_by(bookmarkable: @video).try(:destroy)

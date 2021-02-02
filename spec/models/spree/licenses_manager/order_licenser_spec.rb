@@ -7,7 +7,9 @@ RSpec.describe Spree::LicensesManager::OrderLicenser do
 
   context 'multiple licenses' do
     before(:each) do
-      order.contents.add(product.master, 10)
+      Spree::Cart::AddItem.call(order: order,
+                                variant: product.master,
+                                quantity: 10)
       Spree::LicensesManager::OrderLicenser.new(order).execute
     end
 
@@ -30,7 +32,9 @@ RSpec.describe Spree::LicensesManager::OrderLicenser do
 
   context "single license" do
     before(:each) do
-      order.contents.add(product.master, 1)
+      Spree::Cart::AddItem.call(order: order,
+                                variant: product.master,
+                                quantity: 1)
       Spree::LicensesManager::OrderLicenser.new(order).execute
     end
 
@@ -51,7 +55,9 @@ RSpec.describe Spree::LicensesManager::OrderLicenser do
     let!(:order) { create(:order, user: user, enable_single_distribution: true) }
 
     before(:each) do
-      order.contents.add(product.master, 1)
+      Spree::Cart::AddItem.call(order: order,
+                                variant: product.master,
+                                quantity: 1)
       Spree::LicensesManager::OrderLicenser.new(order).execute
     end
 

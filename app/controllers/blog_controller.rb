@@ -7,7 +7,9 @@ class BlogController < ApplicationController
   # new blog before_actions
   before_action :load_global_blogs, only: [:global, :global_post]
   before_action :load_curriculum_blogs, only: [:curriculum, :curriculum_post]
-  
+
+  include SearchHelper
+
   def global
     @blog_type = 'global'
 
@@ -41,13 +43,19 @@ class BlogController < ApplicationController
   def subscribe
     @blog = Blog.find(params[:id])
     current_spree_user.subscribe!(@blog)
-    redirect_to :back, notice: "Thank you for subscribing to #{@blog.title}. Whenever a new blog post is published you will receive an email notifying you. If you wish to unsubscribe, go to your settings and click \"Unsuscribe\" in the Blog Subscription section."
+    redirect_back(fallback_location: '/', notice: t(
+      'controllers.blog.subscribe',
+      title: @blog.title
+    ))
   end
 
   def unsubscribe
     @blog = Blog.find(params[:id])
     current_spree_user.unsubscribe!(@blog)
-    redirect_to :back, notice: "Successfully unsubscribe #{@blog.title}!"
+    redirect_back(fallback_location: '/', notice: t(
+      'controllers.blog.unsubscribe',
+      title: @blog.title
+    ))
   end
 
   private
@@ -60,12 +68,14 @@ class BlogController < ApplicationController
     @curriculum_publications = MediumPublication.curriculum.displayable.where(page: @group_page).sorted
   end
 
+  # TODO: Unused method we need to remove it
   def load_global_publication
     @medium_publication = MediumPublication.global.find_by(slug: params[:slug])
     raise ActiveRecord::RecordNotFound.new('blog not exist') if @medium_publication.blank?
     @page_title = @medium_publication.title
   end
 
+  # TODO: Unused method we need to remove it
   def load_curriculum_publication
     @medium_publication = MediumPublication.curriculum.find_by(slug: params[:slug])
     raise ActiveRecord::RecordNotFound.new('blog not exist') if @medium_publication.blank?
@@ -83,7 +93,6 @@ class BlogController < ApplicationController
     @sub_nav_items = Page.show_in_sub_navigation(@group_page.group_name)
   end
 
-  include SearchHelper
   def find_post
     post_with_id = Post.find_by(id: params[:id])
     if post_with_id.present?

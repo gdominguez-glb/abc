@@ -65,7 +65,8 @@
     <div class="col-sm-6">
       <div class="form-group">
         <label>Subject(s) you are interested in</label>
-        <%= f.collection_select :interested_subjects, Curriculum.visibles, :id, :name, { include_hidden: false, multiple: true }, { class: 'form-control', tabindex: 7, multiple: 'multiple' } %>
+        <% selected_subject = f.object.interested_subjects ? eval(f.object.interested_subjects).split('').flatten : nil %>
+        <%= f.collection_select :interested_subjects, Curriculum.visibles, :id, :name, { include_hidden: false, multiple: true, selected: selected_subject }, { class: 'form-control', tabindex: 7, multiple: 'multiple' } %>
       </div>
     </div>
     <div class="col-sm-6">

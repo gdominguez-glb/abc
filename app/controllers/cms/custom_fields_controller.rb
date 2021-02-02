@@ -40,7 +40,7 @@ class Cms::CustomFieldsController < Cms::BaseController
 
   def update_positions
     update_positions_with_klass(CustomField)
-    render nothing: true
+    render body: nil
   end
 
   private

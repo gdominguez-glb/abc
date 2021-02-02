@@ -29,8 +29,6 @@ Rails.application.routes.draw do
     mount Flipper::UI.app($flipper) => '/admin/flipper'
   end
 
-  mount Nkss::Engine => '/styleguides'
-
   use_doorkeeper
 
   get '/saml/auth' => 'saml_idp#new'

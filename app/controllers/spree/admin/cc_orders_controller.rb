@@ -9,7 +9,7 @@ module Spree
       end
 
       def create
-        @cc_order_processor_form = CcOrderProcessorForm.new(cc_order_processor_params.merge(
+        @cc_order_processor_form = CcOrderProcessorForm.new(cc_order_processor_params.to_h.merge(
           payment_source_params: params[:payment_source],
           admin_user: current_spree_user
         ))
@@ -26,7 +26,10 @@ module Spree
       private
 
       def set_payment_methods
-        @payment_methods = Spree::PaymentMethod.where(name: ['Credit Card']).available(:back_end)
+        @payment_methods =
+          Spree::PaymentMethod.where(
+            name: ['Credit Card']
+          ).available_on_back_end
       end
 
       def cc_order_processor_params

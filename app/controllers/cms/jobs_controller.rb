@@ -52,7 +52,7 @@ class Cms::JobsController < Cms::BaseController
 
   def update_positions
     update_positions_with_klass(Job)
-    render nothing: true
+    render body: nil
   end
 
   def publish

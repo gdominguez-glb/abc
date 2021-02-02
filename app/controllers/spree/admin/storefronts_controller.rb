@@ -11,7 +11,7 @@ module Spree
         params[:positions].each do |id, position|
           @products.find(id).update_column(:position, position)
         end
-        render nothing: true
+        render body: nil
       end
 
       def set_products

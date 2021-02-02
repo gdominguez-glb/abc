@@ -10,22 +10,22 @@
     <script>
       function loadCSS( href, before, media, callback ){
         "use strict";
-        
+
         var ss = window.document.createElement( "link" );
         var ref = before || window.document.getElementsByTagName( "script" )[0];
         var sheets = window.document.styleSheets;
         ss.rel = "stylesheet";
         ss.href = href;
-        
+
         ss.media = "only x";
-        
+
         if( callback ) {
           ss.onload = callback;
         }
 
-        
+
         ref.parentNode.insertBefore( ss, ref );
-        
+
         ss.onloadcssdefined = function( cb ){
           var defined;
           for( var i = 0; i < sheets.length; i++ ){
@@ -50,6 +50,7 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= render 'google_fonts_inline' %>
     <%= csrf_meta_tags %>
+    <%= render 'spree/shared/paths' %>
     <meta name="google-site-verification" content="dK_DebvSLewL8S2FH_DIBQYgmNFK7tQOROn_eJHBjA0" />
     <%= render 'facebook_pixel_code' if Rails.env.production? %>
     <%= render 'shared/hubspot' %>

@@ -1,5 +1,5 @@
 module Spree
-  class Curriculum < ActiveRecord::Base
+  class Curriculum < ApplicationRecord
     acts_as_paranoid
     acts_as_list
 

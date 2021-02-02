@@ -71,7 +71,7 @@ class Cms::InTheNewsController < Cms::BaseController
   def update_positions
     InTheNew.where(stick_to_top: false).update_all(position: nil)
     update_positions_with_klass(InTheNew.where(stick_to_top: true))
-    render nothing: true
+    render body: nil
   end
 
   private

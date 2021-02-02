@@ -33,7 +33,8 @@ module TaxonsFilterHelper
   def generate_normal_taxon_item(taxon, sibling_ids, allow_multiple_taxons_selected)
     taxon_ids = generate_taxon_ids_param(taxon, params[:taxon_ids], sibling_ids, allow_multiple_taxons_selected)
     content_tag :li, class: "dropdown-ol-item" do
-      link_to(taxon.name, params.merge(taxon_ids: taxon_ids), class: 'dropdown-ol-link')
+      link_to(taxon.name, request.parameters.merge(taxon_ids: taxon_ids),
+                class: 'dropdown-ol-link')
     end
   end
 
