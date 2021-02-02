@@ -36,7 +36,7 @@ class Cms::FooterTitlesController < Cms::BaseController
 
   def update_positions
     update_positions_with_klass(FooterTitle)
-    render nothing: true
+    render body: nil
   end
 
   private

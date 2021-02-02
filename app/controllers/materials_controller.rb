@@ -37,7 +37,7 @@ class MaterialsController < ApplicationController
   def track
     product_track = current_spree_user.product_tracks.find_or_create_by(product_id: params[:product_id])
     product_track.update(material_id: params[:material_id])
-    render nothing: true
+    render body: nil
   end
 
   def untrack
@@ -50,7 +50,7 @@ class MaterialsController < ApplicationController
     else
       product_track.update(material_id: material.parent.id)
     end
-    render nothing: true
+    render body: nil
   end
 
   def preview
