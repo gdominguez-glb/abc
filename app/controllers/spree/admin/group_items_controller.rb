@@ -25,7 +25,7 @@ module Spree
         params[:positions].each do |id, position|
           Spree::GroupItem.find_by(group_id: @product.id, product_id: id).update(position: position)
         end
-        render nothing: true
+        render body: nil
       end
 
       protected

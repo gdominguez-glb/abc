@@ -27,7 +27,7 @@ class Spree::Admin::DownloadProductsController < Spree::Admin::BaseController
 
   def update_positions
     update_positions_with_klass(DownloadProduct)
-    render nothing: true
+    render body: nil
   end
 
   private

@@ -12,13 +12,13 @@ class HomeController < ApplicationController
 
   def turn_off_browser_warning
     session[:turn_off_browser_warning] = 'true'
-    render nothing: true
+    render body: nil
   end
 
   def set_filter_preferences
     session[:filter_role] = params[:role]
     session[:filter_curriculum] = params[:curriculum]
-    render nothing: true
+    render body: nil
   end
 
   def rotate_testimonials_index
