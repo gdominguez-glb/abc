@@ -1311,7 +1311,7 @@ marketing_templates:
     content: !xml |
       <section id="tile_<%= position %>" class="col_container row row-content-3col <%= background_color %>-bg">
         <div class="clearfix tile-content">
-          <div class="col_container__content col-sm-4">
+          <div class="col_container__content col-lg-4 col-sm-12 col-xs-12">
             <h6><%= title_1 %></h6>
             <p><%= body_text_1 %></p>
             <% if button_title_1.present? && button_link_1.present? %>
@@ -1325,7 +1325,7 @@ marketing_templates:
               </div>
             <% end %>
           </div>
-          <div class="col_container__content col-sm-4">
+          <div class="col_container__content col-lg-4 col-sm-12 col-xs-12">
             <h6><%= title_2 %></h6>
             <p><%= body_text_2 %></p>
             <% if button_title_2.present? && button_link_2.present? %>
@@ -1339,7 +1339,7 @@ marketing_templates:
               </div>
             <% end %>
           </div>
-          <div class="col_container__content col-sm-4">
+          <div class="col_container__content col-lg-4 col-sm-12 col-xs-12">
             <h6><%= title_3 %></h6>
             <p><%= body_text_3 %></p>
             <% if button_title_3.present? && button_link_3.present? %>
