@@ -44,6 +44,10 @@
         margin-bottom: 25px;
       }
     }
+
+    @media screen and (max-width: $screen-xs-max) {
+      min-height: auto;
+    }
   }
 
   &__img {
@@ -54,5 +58,22 @@
       height: 100%;
       width: 100%;
     }
+
+    @media screen and (max-width: $screen-xs-max) {
+      min-height: auto;
+    }
+
+    @media screen and (max-width: $navbar-breakpoint-md) {
+      height: 100%;
+    }
+  }
+
+  @media screen and (max-width: $navbar-breakpoint-md) {
+    height: 440px;
+  }
+
+  @media screen and (max-width: $screen-xs-max) {
+    min-height: auto;
+    height: auto;
   }
 }
