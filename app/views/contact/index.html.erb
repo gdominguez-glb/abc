@@ -21,7 +21,7 @@
       </div>
       <div class="row">
         <div class="col-sm-12 margin-bottom--xl">
-          <h1 class="inline-block">Get in Touch About...</h1>
+          <h1 class="inline-block pull-left">Get in Touch About...</h1>
           <%= f.hidden_field :topic %>
           <div class="btn-group dropdown-contact-topic margin-bottom--s margin-left--sm-min--xl" id="topicDropdown">
             <button type="button" class="btn btn-default dropdown-toggle dropdown-ol-btn" data-toggle="dropdown"><i class="dropdown-ol-mi mi md-24 toggle-arrow">keyboard_arrow_down</i>
@@ -73,10 +73,12 @@
             </div>
 
             <div class="col-sm-6">
-              <label>Select your Role</label>
-              <div class="select-container dark-select block margin-bottom--reset">
-                <span>Please select your role</span>
-                <%= f.select :role, ContactForm::ROLES, { prompt: 'Please select your role' }, { class: 'form-control' } %>
+              <div class="form-group">
+                <label>Select your Role</label>
+                <div class="select-container dark-select block margin-bottom--reset">
+                  <span>Please select your role</span>
+                  <%= f.select :role, ContactForm::ROLES, { prompt: 'Please select your role' }, { class: 'form-control' } %>
+                </div>
               </div>
             </div>
 
@@ -114,18 +116,22 @@
 
           <div class="row">
             <div class="col-sm-6 dependent-field hidden" data-name='Country'>
-              <label>Country</label>
-              <div class="select-container dark-select block">
-                <span>Country</span>
-                <%= f.collection_select :country, country_list, :name, :name, { prompt: 'Select Country' }, class: 'form-control' %>
+              <div class="form-group">
+                <label>Country</label>
+                <div class="select-container dark-select block">
+                  <span>Country</span>
+                  <%= f.collection_select :country, country_list, :name, :name, { prompt: 'Select Country' }, class: 'form-control' %>
+                </div>
               </div>
             </div>
 
             <div class="col-sm-6 dependent-field hidden" data-name="State">
-              <label>State</label>
-              <div class="select-container dark-select block">
-                <span>State</span>
-                <%= f.collection_select :state, Spree::Country.default.states, :abbr, :name, { prompt: 'Select State' }, class: 'form-control' %>
+              <div class="form-group">
+                <label>State</label>
+                <div class="select-container dark-select block">
+                  <span>State</span>
+                  <%= f.collection_select :state, Spree::Country.default.states, :abbr, :name, { prompt: 'Select State' }, class: 'form-control' %>
+                </div>
               </div>
             </div>
 
@@ -144,10 +150,12 @@
             </div>
 
             <div class="col-sm-6 dependent-field hidden" data-name="Curriculum">
-              <label>Curriculum</label>
-              <div class="select-container dark-select block">
-                <span>Curriculum</span>
-                <%= f.collection_select :curriculum, Curriculum.visibles, :name, :name, { prompt: 'Select Curriculum' }, class: 'form-control' %>
+              <div class="form-group">
+                <label>Curriculum</label>
+                <div class="select-container dark-select block">
+                  <span>Curriculum</span>
+                  <%= f.collection_select :curriculum, Curriculum.visibles, :name, :name, { prompt: 'Select Curriculum' }, class: 'form-control' %>
+                </div>
               </div>
             </div>
 
@@ -159,10 +167,12 @@
             </div>
 
             <div class="col-sm-6 dependent-field hidden" data-name="School or District Size">
-              <label>Size</label>
-              <div class="select-container dark-select block">
-                <span>School or District Size</span>
-                <%= f.select :school_district_size, ['10+'], {}, class: 'form-control' %>
+              <div class="form-group">  
+                <label>Size</label>
+                <div class="select-container dark-select block">
+                  <span>School or District Size</span>
+                  <%= f.select :school_district_size, ['10+'], {}, class: 'form-control' %>
+                </div>
               </div>
             </div>
 
@@ -257,7 +267,7 @@
 
           <input type="hidden" id="external" name="external" value="1" />
           <div class="row">
-            <div class="col-md-8 col-md-offset-2 form-group" style="text-align: center;">
+            <div class="col-md-8 col-md-offset-2 form-group pull-left" style="text-align: center;">
               <%= render "shared/google_recaptcha" %>
             </div>
             <div class="col-md-4 col-md-offset-4">
