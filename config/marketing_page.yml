@@ -1317,9 +1317,19 @@ marketing_templates:
           <p class="product-presentation__para"><%= body_text %></p>
           <div>
             <% if button_1_title.present? && button_1_link.present? %>
+              <% if button_1_target == 'Open in Same Tab' %>
+                <% button_1_target = '_self' %>
+              <% else %>
+                <% button_1_target = '_blank' %>
+              <% end %>
               <a class="btn btn-default btn-default--<%= button_color_1 %> btn-block-xs margin-bottom--m" href="<%= button_1_link %>" target="<%= button_1_target %>"><%= button_1_title %></a>
             <% end %>
             <% if button_2_title.present? && button_2_link.present? %>
+              <% if button_2_target == 'Open in Same Tab' %>
+                <% button_2_target = '_self' %>
+              <% else %>
+                <% button_2_target = '_blank' %>
+              <% end %>
               <a class="btn btn-default btn-default--<%= button_color_2 %> btn-block-xs margin-bottom--m" href="<%= button_2_link %>" target="<%= button_2_target %>"><%= button_2_title %></a>
             <% end %>
           </div>
