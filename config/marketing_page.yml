@@ -484,7 +484,7 @@ marketing_templates:
             <p><%= description %></p>
             <% if button_text.present? && button_link.present? %>
               <div>
-                <a href="<%= button_link %>" class="btn btn-default btn-default--<%= button_color %>">
+                <a href="<%= button_link %>" class="btn btn-default btn-block-xs margin-bottom--s btn-default--<%= button_color %>">
                   <%= button_text %>
                 </a>
               </div>
