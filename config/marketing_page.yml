@@ -302,8 +302,8 @@ marketing_templates:
           </div>
         </div>
       </section>
-      <div class="row clear text-center padding-bottom--m <%= background_color %>-bg">
-        <a href='javascript:void(0)' class="testimonial-show-more-link btn btn-default">Show More</a>
+      <div class="row clear text-center padding-bottom--m padding-left--lg padding-right--lg  <%= background_color %>-bg">
+          <a href='javascript:void(0)' class="testimonial-show-more-link btn-block-xs btn btn-default">Show More</a>
       </div>
       <section class="row row-content-3col <%= background_color %>-bg text-left testimonial-more-section padding-bottom padding-top--l hide" data-testimonial-section="2">
         <div class="col-sm-4">
@@ -465,8 +465,8 @@ marketing_templates:
           </div>
         </div>
       </section>
-      <div class="row clear text-center padding-bottom--xl <%= background_color %>-bg">
-        <a href='javascript:void(0)' class='testimonial-show-less-link btn btn-default hide'>Show Less</a>
+      <div class="row clear text-center padding-left--lg padding-right--lg padding-bottom--xl <%= background_color %>-bg">
+        <a href='javascript:void(0)' class='testimonial-show-less-link btn-block-xs btn btn-default hide'>Show Less</a>
       </div>
 
   -
@@ -484,7 +484,7 @@ marketing_templates:
             <p><%= description %></p>
             <% if button_text.present? && button_link.present? %>
               <div>
-                <a href="<%= button_link %>" class="btn btn-default btn-default--<%= button_color %>">
+                <a href="<%= button_link %>" class="btn btn-default btn-block-xs margin-bottom--s btn-default--<%= button_color %>">
                   <%= button_text %>
                 </a>
               </div>
@@ -1311,7 +1311,7 @@ marketing_templates:
     content: !xml |
       <section id="tile_<%= position %>" class="col_container row row-content-3col <%= background_color %>-bg">
         <div class="clearfix tile-content">
-          <div class="col_container__content col-sm-4">
+          <div class="col_container__content col-lg-4 col-sm-12 col-xs-12">
             <h6><%= title_1 %></h6>
             <p><%= body_text_1 %></p>
             <% if button_title_1.present? && button_link_1.present? %>
@@ -1325,7 +1325,7 @@ marketing_templates:
               </div>
             <% end %>
           </div>
-          <div class="col_container__content col-sm-4">
+          <div class="col_container__content col-lg-4 col-sm-12 col-xs-12">
             <h6><%= title_2 %></h6>
             <p><%= body_text_2 %></p>
             <% if button_title_2.present? && button_link_2.present? %>
@@ -1339,7 +1339,7 @@ marketing_templates:
               </div>
             <% end %>
           </div>
-          <div class="col_container__content col-sm-4">
+          <div class="col_container__content col-lg-4 col-sm-12 col-xs-12">
             <h6><%= title_3 %></h6>
             <p><%= body_text_3 %></p>
             <% if button_title_3.present? && button_link_3.present? %>

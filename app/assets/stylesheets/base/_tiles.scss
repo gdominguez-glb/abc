@@ -21,10 +21,13 @@ section {
   @include clearfix;
 
   padding: 60px 0;
-  text-align: center;
 
   @media screen and (min-width: $screen-xs-min) {
     text-align: left;
+  }
+
+  @media screen and (max-width: $screen-xs-max) {
+    padding: 30px 0;
   }
 
   @media screen and (min-width: $screen-sm-min) {
@@ -209,6 +212,16 @@ section {
         &:last-child {
           padding-left: 24px;
           padding-bottom: 84px;
+        }
+      }
+    }
+
+    @media screen and (max-width: $screen-sm-min) {
+      .tile-content {
+        display: block;
+
+        .col_container__content {
+          padding: 0 64px 84px 64px;
         }
       }
     }
@@ -568,6 +581,14 @@ section {
       clear: both;
       margin-top: 70px;
       text-transform: capitalize;
+
+      @media screen and (max-width: $screen-xs-max) {
+        margin-top: 30px;
+      }
+    }
+
+    @media screen and (max-width: $screen-xs-max) {
+      padding: 0 30px 30px !important;
     }
   }
 
@@ -575,5 +596,10 @@ section {
     padding-bottom: 40px !important;
     padding-right: 45px !important;
     padding-top: 40px !important;
+
+    @media screen and (max-width: $screen-sm-min) {
+      padding-left: 30px !important;
+      padding-right: 30px !important;
+    }
   }
 }
