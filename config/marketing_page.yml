@@ -702,11 +702,6 @@ marketing_templates:
       <section id="tile_<%= position %>" class="row subnav <%= background_color %>-bg">
         <div class="col-sm-12">
           <ul class="nav nav-tabs margin-bottom--m">
-            <% if sub_nav_url_1.present? && sub_nav_text_1.present?%>
-              <li>
-                <a href="<%= sub_nav_url_1 %>"><%= sub_nav_text_1 %></a>
-              </li>
-            <% end %>
             <% if sub_nav_url_2.present? && sub_nav_text_2.present?%>
               <li>
                 <a href="<%= sub_nav_url_2 %>"><%= sub_nav_text_2 %></a>
