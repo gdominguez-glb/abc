@@ -57,7 +57,11 @@
                 <% if (data[ fields[i].name ]) { %>
                   <%= data[ fields[i].name ] %>
                 <% } else { %>
-                  <%= fields[i].label %>
+                  <% if (fields[i].input_options != null) { %>
+                    <%= fields[i].input_options[0] %>
+                  <% } else { %>
+                    <%= fields[i].label %>
+                  <% } %>
                 <% } %>
               </span>
               <select name="" data-name="<%= fields[i].name %>" class="form-control">
