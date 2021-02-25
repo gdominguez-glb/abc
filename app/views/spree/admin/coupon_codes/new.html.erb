@@ -158,7 +158,8 @@
 
     togglePaymentMethod($('#coupon_code_payment_method_id').val());
 
-    $(".cardNumber").payment('formatCardNumber');
+    // Commented because no spaces should be allowed
+    // $(".cardNumber").payment('formatCardNumber');
     $(".cardExpiry").payment('formatCardExpiry');
     $(".cardCode").payment('formatCardCVC');
 
