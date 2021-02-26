@@ -1,5 +1,5 @@
 .facebook {
-  margin-bottom: $b-space-xl;
+  margin-bottom: 30px;
 
   &__article {
   }
@@ -28,6 +28,10 @@
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 25px;
+  }
+
+  .btn-block-xs {
+    margin-bottom: 0;
   }
 
 }

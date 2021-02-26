@@ -1296,7 +1296,7 @@ marketing_templates:
   -
     name: 'Product Presentation'
     content: !xml |
-      <section id="product-presentation tileImageLeft<%= position %>" class="image-left-text-right row <%= background_color %>-bg">
+      <section id="tileImageLeft<%= position %>" class="product-presentation image-left-text-right row <%= background_color %>-bg">
         <div class="product-presentation__image col-sm-6">
           <picture>
             <% if image_url_1.present? %>
