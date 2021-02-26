@@ -14,6 +14,10 @@
   @media screen and (min-width: $screen-xs-min) {
     padding: 19% 60px;
   }
+
+  @media screen and (max-width: $screen-xs-min) {
+    padding: 30px;
+  }
 }
 
 .masthead-content-video {

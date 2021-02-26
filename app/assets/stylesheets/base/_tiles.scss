@@ -189,6 +189,7 @@ section {
   }
 
   &.row-content-3col {
+    padding-bottom: 0;
 
     @media screen and (min-width: $screen-sm-min) {
       padding-bottom: 0;
@@ -294,10 +295,14 @@ section {
 }
 
 .row-img-full-content {
-  padding: 60px 0;
+  padding: 30px 0;
 
   &.black-overlay {
     background: rgba($c-positive-secondary, .6);
+  }
+
+  @media screen and (max-width: $screen-xs-max) {
+    min-height: 133px;
   }
 
   @media screen and (min-width: $screen-sm-min) {
@@ -326,6 +331,10 @@ section {
   &:first-child {
     margin: -60px 0 60px;
 
+    @media screen and (max-width: $screen-xs-min) {
+      margin: -30px 0 30px;
+    }
+
     @media screen and (min-width: $screen-sm-min) {
       margin: -84px 0;
 
@@ -337,6 +346,10 @@ section {
 
   &:last-child {
     margin: 75px 0 -60px;
+
+    @media screen and (max-width: $screen-xs-min) {
+      margin: 30px 0 -30px;
+    }
 
     @media screen and (min-width: $screen-sm-min) {
       margin: -84px 0;
@@ -573,9 +586,9 @@ section {
     padding-left: 80px !important;
     padding-top: 0 !important;
 
-    &:first-child {
-      padding-top: 0 !important;
-    }
+    // &:first-child {
+    //   padding-top: 0 !important;
+    // }
 
     h6 {
       clear: both;
@@ -583,12 +596,16 @@ section {
       text-transform: capitalize;
 
       @media screen and (max-width: $screen-xs-max) {
-        margin-top: 30px;
+        margin-top: 0;
       }
     }
 
     @media screen and (max-width: $screen-xs-max) {
-      padding: 0 30px 30px !important;
+      padding: 30px !important;
+    }
+    
+    .btn-block-xs {
+      margin-bottom: 0;
     }
   }
 
@@ -596,6 +613,11 @@ section {
     padding-bottom: 40px !important;
     padding-right: 45px !important;
     padding-top: 40px !important;
+
+    @media screen and (max-width: $screen-xs-max) {
+      padding-top: 0 !important;
+      padding-bottom: 30px !important;
+    }
 
     @media screen and (max-width: $screen-sm-min) {
       padding-left: 30px !important;

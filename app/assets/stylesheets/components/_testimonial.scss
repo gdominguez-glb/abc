@@ -1,6 +1,6 @@
 section.row {
   .testimonial {
-    margin-bottom: $b-space-xl;
+    margin-bottom: 30px;
 
     &__video {
       display: block;
@@ -27,7 +27,10 @@ section.row {
       margin-right: auto;
       margin-bottom: 25px;
     }
-
+    
+    .btn-block-xs {
+      margin-bottom: 0;
+    }
   }
 
   .testimonial-container {
