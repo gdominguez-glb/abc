@@ -68,6 +68,10 @@ section {
 
   p {
     margin: 0 0 25px;
+
+    @media screen and (max-width: $screen-xs-min) {
+      margin: 12px 0 0;
+    }
   }
 
   &.image-bg {
@@ -314,6 +318,14 @@ section {
       padding: 64px 0;
     }
   }
+
+  .col-centered-content {
+    &:first-child {
+      @media screen and (max-width: $screen-xs-min) {
+        padding-bottom: 0 !important;
+      }
+    }
+  }
 }
 
 .row-video-left .row-img-full-content {
@@ -396,6 +408,10 @@ section {
   &:first-child {
     margin: -60px 0 60px;
 
+    @media screen and (max-width: $screen-xs-min) {
+      margin: -30px 0 30px;
+    }
+
     @media screen and (min-width: $screen-sm-min) {
       margin: -84px 0;
     }
@@ -404,6 +420,10 @@ section {
   &:last-child {
     margin: 75px 0 -60px;
 
+    @media screen and (max-width: $screen-xs-min) {
+      margin: 30px 0 -30px;
+    }
+
     @media screen and (min-width: $screen-sm-min) {
       margin: -84px 0;
     }
@@ -411,6 +431,23 @@ section {
 }
 
 .col-centered-content {
+  &:first-child {
+    @media screen and (max-width: $screen-xs-min) {
+      padding-bottom: 30px !important;
+    }
+
+    img {
+      @media screen and (max-width: $screen-xs-min) {
+        margin-bottom: 0 !important;
+      }
+    }
+
+    .btn-block-xs {
+      @media screen and (max-width: $screen-xs-min) {
+        margin-bottom: 0 !important;
+      }
+    }
+  }
 
   @media screen and (min-width: $screen-sm-min) {
     @include display-flex;
