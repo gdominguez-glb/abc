@@ -105,6 +105,7 @@ Rails.application.routes.draw do
   resources :team, only: [:index, :show] do
     collection do
       get :trustees
+      get :directors
     end
   end
 
