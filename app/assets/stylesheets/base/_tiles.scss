@@ -26,11 +26,11 @@ section {
     text-align: left;
   }
 
-  @media screen and (max-width: $screen-xs-max) {
+  @media screen and (max-width: $screen-sm-max) {
     padding: 30px 0;
   }
 
-  @media screen and (min-width: $screen-sm-min) {
+  @media screen and (min-width: $screen-sm-max) {
     padding: 84px 0;
   }
 
@@ -86,7 +86,7 @@ section {
     [class*='col-'] {
       padding: 0 30px;
 
-      @media screen and (min-width: $screen-sm-min) {
+      @media screen and (min-width: $screen-sm-max) {
         padding: 0 64px;
 
         &:first-child {
@@ -195,7 +195,7 @@ section {
   &.row-content-3col {
     padding-bottom: 0;
 
-    @media screen and (min-width: $screen-sm-min) {
+    @media screen and (min-width: $screen-sm-max) {
       padding-bottom: 0;
       .tile-content {
         display: flex;
@@ -258,7 +258,7 @@ section {
 
 .row-video-hero {
 
-  @media screen and (min-width: $screen-sm-min) {
+  @media screen and (min-width: $screen-sm-max) {
     .video-title {
       margin-bottom: 25px;
     }
@@ -284,7 +284,7 @@ section {
 
 .half-height {
 
-  @media screen and (min-width: $screen-sm-min) {
+  @media screen and (min-width: $screen-sm-max) {
     min-height: 400px;
     padding: 64px 0;
   }
@@ -632,9 +632,17 @@ section {
       margin-top: 70px;
       text-transform: capitalize;
 
+      @media screen and (max-width: $screen-sm-max) {
+        margin-top: 30px;
+      }
+
       @media screen and (max-width: $screen-xs-max) {
         margin-top: 0;
       }
+    }
+
+    @media screen and (max-width: $screen-sm-max) {
+      padding: 0 30px 30px !important;
     }
 
     @media screen and (max-width: $screen-xs-max) {
