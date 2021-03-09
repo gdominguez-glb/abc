@@ -7,10 +7,10 @@ module Archiveable
   end
 
   def archive!
-    update(archived: true, archived_at: Time.now)
+    update(archived: true, archived_at: Time.now, slug: slug + '-old-' + SecureRandom.hex(3))
   end
 
   def unarchive!
-    update(archived: false, archived_at: nil, publish_status: :pending, draft_status: :draft)
+    update(archived: false, archived_at: nil, publish_status: :pending, draft_status: :draft, slug: slug.split("-old-").first)
   end
 end
