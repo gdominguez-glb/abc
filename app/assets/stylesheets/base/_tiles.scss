@@ -343,11 +343,23 @@ section {
   &:first-child {
     margin: -60px 0 60px;
 
-    @media screen and (max-width: $screen-xs-min) {
-      margin: -30px 0 30px;
+    @media screen and (max-width: $screen-sm-max) {
+      margin: -84px 0;
+
+      .half-height & {
+        margin: -30px 0 30px;
+      }
     }
 
-    @media screen and (min-width: $screen-sm-min) {
+    @media screen and (max-width: $screen-xs-min) {
+      margin: -30px 0 30px;
+
+      .half-height & {
+        margin: -30px 0 30px;
+      }
+    }
+
+    @media screen and (min-width: $screen-sm-max) {
       margin: -84px 0;
 
       .half-height & {
@@ -359,11 +371,23 @@ section {
   &:last-child {
     margin: 75px 0 -60px;
 
-    @media screen and (max-width: $screen-xs-min) {
-      margin: 30px 0 -30px;
+    @media screen and (max-width: $screen-sm-max) {
+      margin: -84px 0;
+
+      .half-height & {
+        margin: -30px 0 30px;
+      }
     }
 
-    @media screen and (min-width: $screen-sm-min) {
+    @media screen and (max-width: $screen-xs-min) {
+      margin: 30px 0 -30px;
+
+      .half-height & {
+        margin: 30px 0 -30px;
+      }
+    }
+
+    @media screen and (min-width: $screen-sm-max) {
       margin: -84px 0;
 
       .half-height & {
