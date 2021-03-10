@@ -223,7 +223,7 @@ marketing_templates:
     name: 'Testimonials'
     content: !xml |
       <section id="tile_<%= position %>" class="row row-content-3col <%= background_color %>-bg text-left padding-bottom testimonial-container" data-testimonial-section="1">
-        <div class="col-sm-4">
+        <div class="col-lg-4 col-sm-12 col-xs-12 testimonial-content">
           <div class="testimonial">
             <article class="testimonial__article">
               <% if testimonial_video_url_1.present? && testimonial_image_url_1.present? %>
@@ -249,7 +249,7 @@ marketing_templates:
             <% end %>
           </div>
         </div>
-        <div class="col-sm-4">
+        <div class="col-lg-4 col-sm-12 col-xs-12 testimonial-content">
           <div class="testimonial">
             <article class="testimonial__article">
               <% if testimonial_video_url_2.present? && testimonial_image_url_2.present? %>
@@ -275,7 +275,7 @@ marketing_templates:
             <% end %>
           </div>
         </div>
-        <div class="col-sm-4">
+        <div class="col-lg-4 col-sm-12 col-xs-12 testimonial-content">
           <div class="testimonial">
             <article class="testimonial__article">
               <% if testimonial_video_url_3.present? && testimonial_image_url_3.present? %>
@@ -306,7 +306,7 @@ marketing_templates:
           <a href='javascript:void(0)' class="testimonial-show-more-link btn-block-xs btn btn-default">Show More</a>
       </div>
       <section class="row row-content-3col <%= background_color %>-bg text-left testimonial-more-section padding-bottom padding-top--l hide" data-testimonial-section="2">
-        <div class="col-sm-4">
+        <div class="col-lg-4 col-sm-12 col-xs-12 testimonial-content">
           <div class="testimonial">
             <article class="testimonial__article">
               <% if testimonial_video_url_4.present? && testimonial_image_url_4.present? %>
@@ -332,7 +332,7 @@ marketing_templates:
             <% end %>
           </div>
         </div>
-        <div class="col-sm-4">
+        <div class="col-lg-4 col-sm-12 col-xs-12 testimonial-content">
           <div class="testimonial">
             <article class="testimonial__article">
               <% if testimonial_video_url_5.present? && testimonial_image_url_5.present? %>
@@ -358,7 +358,7 @@ marketing_templates:
             <% end %>
           </div>
         </div>
-        <div class="col-sm-4">
+        <div class="col-lg-4 col-sm-12 col-xs-12 testimonial-content">
           <div class="testimonial">
             <article class="testimonial__article">
               <% if testimonial_video_url_6.present? && testimonial_image_url_6.present? %>
@@ -386,7 +386,7 @@ marketing_templates:
         </div>
       </section>
       <section class="row row-content-3col <%= background_color %>-bg text-left testimonial-more-section padding-top--l hide" data-testimonial-section="3">
-        <div class="col-sm-4">
+        <div class="col-lg-4 col-sm-12 col-xs-12 testimonial-content">
           <div class="testimonial">
             <article class="testimonial__article">
               <% if testimonial_video_url_7.present? && testimonial_image_url_7.present? %>
@@ -412,7 +412,7 @@ marketing_templates:
             <% end %>
           </div>
         </div>
-        <div class="col-sm-4">
+        <div class="col-lg-4 col-sm-12 col-xs-12 testimonial-content">
           <div class="testimonial">
             <article class="testimonial__article">
               <% if testimonial_video_url_8.present? && testimonial_image_url_8.present? %>
@@ -438,7 +438,7 @@ marketing_templates:
             <% end %>
           </div>
         </div>
-        <div class="col-sm-4">
+        <div class="col-lg-4 col-sm-12 col-xs-12 testimonial-content">
           <div class="testimonial">
             <article class="testimonial__article">
               <% if testimonial_video_url_9.present? && testimonial_image_url_9.present? %>
@@ -1434,8 +1434,8 @@ marketing_templates:
   -
     name: '3-Column Facebook Video Text'
     content: !xml |
-      <section id="tile_<%= position %>" class="row row-content-3col <%= background_color %>-bg text-left">
-        <div class="col-sm-4">
+      <section id="tile_<%= position %>" class="row row-content-3col multi-col-container <%= background_color %>-bg text-left">
+        <div class="col-lg-4 col-sm-12 col-xs-12">
           <div class="facebook">
             <h6><%= facebook_header_1 %></h6>
             <article class="facebook__article">
@@ -1458,7 +1458,7 @@ marketing_templates:
             <% end %>
           </div>
         </div>
-        <div class="col-sm-4">
+        <div class="col-lg-4 col-sm-12 col-xs-12">
           <div class="facebook">
             <h6><%= facebook_header_2 %></h6>
             <article class="facebook__article">
@@ -1481,7 +1481,7 @@ marketing_templates:
             <% end %>
           </div>
         </div>
-        <div class="col-sm-4">
+        <div class="col-lg-4 col-sm-12 col-xs-12">
           <div class="facebook">
             <h6><%= facebook_header_3 %></h6>
             <article class="facebook__article">

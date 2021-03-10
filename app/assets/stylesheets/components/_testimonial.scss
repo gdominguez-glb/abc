@@ -1,4 +1,27 @@
 section.row {
+  &.testimonial-container {
+    @media screen and (min-width: $screen-sm-max) {
+      display: flex;
+    }
+
+    display: block;
+  }
+
+  &.multi-col-container {
+    @media screen and (min-width: $screen-sm-max) {
+      display: flex;
+      padding: 84px 0 0;
+    }
+
+    display: block;
+  }
+
+  .testimonial-content {
+    @media screen and (max-width: $screen-sm-max) {
+      margin-bottom: 30px;
+    }
+  }
+
   .testimonial {
     margin-bottom: 30px;
 
