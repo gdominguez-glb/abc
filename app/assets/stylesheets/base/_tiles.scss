@@ -110,7 +110,9 @@ section {
 
     @media screen and (min-width: $screen-sm-min) {
       text-align: center;
+    }
 
+    @media screen and (min-width: $screen-sm-max) {
       [class*='col-'] {
         &:first-child,
         &:last-child {
@@ -319,6 +321,19 @@ section {
     }
   }
 
+  @media screen and (max-width: $screen-sm-max) {
+    padding: 30px 0;
+    display: flex;
+
+    .half-height & {
+      padding: 30px 0;
+    }
+
+    .pull-right {
+      margin-left: auto;
+    }
+  }
+
   .col-centered-content {
     &:first-child {
       @media screen and (max-width: $screen-xs-min) {
@@ -347,7 +362,7 @@ section {
       margin: -84px 0;
 
       .half-height & {
-        margin: -30px 0 30px;
+        margin: -30px 0 -30px;
       }
     }
 
@@ -375,7 +390,7 @@ section {
       margin: -84px 0;
 
       .half-height & {
-        margin: -30px 0 30px;
+        margin: -30px 0 -30px;
       }
     }
 
@@ -478,8 +493,6 @@ section {
     @include flex-direction(column);
     @include justify-content(center);
 
-    min-height: 432px;
-
     .half-height & {
       min-height: 272px;
     }
@@ -487,6 +500,10 @@ section {
     .row-content-full & {
       float: none;
     }
+  }
+
+  @media screen and (min-width: $screen-sm-max) {
+    min-height: 432px;
   }
 }
 
