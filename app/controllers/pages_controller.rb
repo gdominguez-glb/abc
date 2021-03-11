@@ -43,6 +43,7 @@ class PagesController < ApplicationController
   end
 
   def privacy_policy
+    @seo_title = 'Great Minds Privacy Policy'
   end
 
   def not_found

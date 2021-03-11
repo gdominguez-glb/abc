@@ -1,6 +1,11 @@
 Spree::UserRegistrationsController.class_eval do
   include SchoolDistrictParamProcessor
 
+  def new
+    @seo_title = 'Great Minds Sign Up'
+    super
+  end
+
   # override to remove flash message on sign up
   def create
     @user = build_resource(spree_user_params.merge(
