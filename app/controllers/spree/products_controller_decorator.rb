@@ -21,9 +21,8 @@ Spree::ProductsController.class_eval do
     redirect_to launch_product_path(@product)
   end
 
-
   def get_curriculum_name(id = nil)
-    Curriculum.where(id: id).try(:first).try(:name) ? Curriculum.where(id: id).first.name + " | " : ''
+    Curriculum.where(id: id).try(:first).try(:name) ? Curriculum.where(id: id).first.name + ' | ' : ''
   end
 
   def group
@@ -34,7 +33,7 @@ Spree::ProductsController.class_eval do
     end
 
     # This will display the seo title as 'Great Minds Resources | Math | Eureka Math' for all products of the type 'group'
-    @seo_title = "Great Minds Resources | " + get_curriculum_name(@product_group.try(:curriculum_id)) + @product_group.try(:name)
+    @seo_title = 'Great Minds Resources | ' + get_curriculum_name(@product_group.try(:curriculum_id)) + @product_group.try(:name)
     @products = @product_group.group_items
                               .unexpire
                               .unarchive
