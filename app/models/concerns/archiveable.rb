@@ -11,6 +11,6 @@ module Archiveable
   end
 
   def unarchive!
-    update(archived: false, archived_at: nil, publish_status: :pending, draft_status: :draft, slug: slug.split("-old-").first)
+    update(archived: false, archived_at: nil, publish_status: :pending, draft_status: :draft, slug: slug[0...-11])
   end
 end
