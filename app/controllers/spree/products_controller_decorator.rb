@@ -32,8 +32,10 @@ Spree::ProductsController.class_eval do
       redirect_to not_found_path and return
     end
 
-    # This will display the seo title as 'Great Minds Resources | Math | Eureka Math' for all products of the type 'group'
-    @seo_title = 'Great Minds Resources | ' + get_curriculum_name(@product_group.try(:curriculum_id)) + @product_group.try(:name)
+    if @product_group.title.present?
+      # This will display the seo title as 'Great Minds Resources | Math | Eureka Math'
+      @seo_title = 'Great Minds Resources | ' + get_curriculum_name(@product_group.try(:curriculum_id)) + @product_group.title
+    end
     @products = @product_group.group_items
                               .unexpire
                               .unarchive
