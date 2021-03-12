@@ -4,6 +4,8 @@
   $tc: &;
 
   &__content {
+    padding: 30px !important;
+
     #{$tc}__icon {
       height: 66px;
       width: 166px;
