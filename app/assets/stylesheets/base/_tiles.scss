@@ -708,14 +708,16 @@ section {
     padding-right: 45px !important;
     padding-top: 40px !important;
 
-    @media screen and (max-width: $screen-xs-max) {
-      padding-top: 0 !important;
+    @media screen and (max-width: $screen-sm-max) {
+      padding-left: 30px !important;
+      padding-right: 30px !important;
+      padding-top: 30px !important;
       padding-bottom: 30px !important;
     }
 
-    @media screen and (max-width: $screen-sm-min) {
-      padding-left: 30px !important;
-      padding-right: 30px !important;
+    @media screen and (max-width: $screen-xs-max) {
+      padding-top: 0 !important;
+      padding-bottom: 30px !important;
     }
   }
 }
