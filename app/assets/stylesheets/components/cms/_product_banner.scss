@@ -68,10 +68,6 @@
     }
   }
 
-  @media screen and (max-width: $navbar-breakpoint-md) {
-    height: 440px;
-  }
-
   @media screen and (max-width: $screen-xs-max) {
     min-height: auto;
     height: auto;
