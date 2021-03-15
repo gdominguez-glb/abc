@@ -78,4 +78,9 @@ module ApplicationHelper
       "#{ENV['HUBSPOT_URL']}/webinar?subject=English&type=show-all&author=show-all&search="
     end
   end
+
+  def archived_unarchive page
+    slug = page.slug.split(/-old-(?=[^-old-]*$)/).try(:last)
+    return (slug.length == 6 && slug.match?(/[0-9a-zA-Z_]/)) if slug.present?
+  end
 end
