@@ -344,7 +344,7 @@ section {
 }
 
 .row-video-left .row-img-full-content {
-  @media screen and (min-width: $screen-sm-min) {
+  @media screen and (min-width: $screen-sm-max) {
     min-height: auto;
     padding: 0 0;
   }
@@ -366,7 +366,7 @@ section {
       }
     }
 
-    @media screen and (max-width: $screen-xs-min) {
+    @media screen and (max-width: $screen-xs-max) {
       margin: -30px 0 30px;
 
       .half-height & {
@@ -398,7 +398,7 @@ section {
       margin: 30px 0 -30px;
 
       .half-height & {
-        margin: 30px 0 -30px;
+        margin: 0 0 -30px;
       }
     }
 
@@ -479,7 +479,7 @@ section {
 
 .col-centered-content {
   &:first-child {
-    @media screen and (max-width: $screen-xs-min) {
+    @media screen and (max-width: $screen-xs-max) {
       padding-bottom: 30px !important;
     }
 
