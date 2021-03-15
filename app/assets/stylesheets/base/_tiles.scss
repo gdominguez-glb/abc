@@ -344,9 +344,14 @@ section {
 }
 
 .row-video-left .row-img-full-content {
+  min-height: auto;
+
   @media screen and (min-width: $screen-sm-max) {
-    min-height: auto;
     padding: 0 0;
+  }
+
+  @media screen and (max-width: $screen-xs-max) {
+    display: block;
   }
 }
 
