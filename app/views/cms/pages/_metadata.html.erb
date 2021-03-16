@@ -32,7 +32,7 @@
         </div>
       </div>
       <div class="col-sm-6">
-        <% if archived_unarchive(@page) %>
+        <% if @page.archived && archived_unarchive(@page) %>
           <div class="form-group">
             <%= f.label 'Unique Url' %>
             <%= f.text_field :slug, class: 'form-control', readonly: true %>

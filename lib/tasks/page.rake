@@ -10,7 +10,7 @@ namespace :page do
   desc "Remove old from unarchive page slug"
   task remove_old: :environment do
     Page.unarchive.each do |p|
-      p.slug = p.slug.split(/-old-(?=[^-old-]*$)/).try(:first)
+      p.slug = p.slug.split(/-old-(?=[^-old-][0-9a-zA-Z_])/).try(:first)
       p.save
     end
   end

@@ -80,7 +80,7 @@ module ApplicationHelper
   end
 
   def archived_unarchive page
-    slug = page.slug.split(/-old-(?=[^-old-]*$)/).try(:last)
+    slug = page.slug.split(/-old-(?=[^-old-][0-9a-zA-Z_])/).try(:last)
     return (slug.length == 6 && slug.match?(/[0-9a-zA-Z_]/)) if slug.present?
   end
 end
