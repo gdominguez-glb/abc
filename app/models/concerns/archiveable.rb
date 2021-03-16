@@ -12,6 +12,6 @@ module Archiveable
 
   def unarchive!
     update(archived: false, archived_at: nil, publish_status: :pending, draft_status: :draft, slug:
-      slug.split(/-old-(?=[^-old-]*$)/).try(:first))
+      slug.split(/-old-(?=[^-old-][0-9a-zA-Z_])/).try(:first))
   end
 end
