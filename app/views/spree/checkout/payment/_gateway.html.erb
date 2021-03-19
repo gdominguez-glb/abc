@@ -4,13 +4,13 @@
 
   <p class="field">
     <%= label_tag "name_on_card_#{payment_method.id}", Spree.t(:name_on_card) %><span class="required">*</span><br />
-    <%= text_field_tag "#{param_prefix}[name]", "", { id: "name_on_card_#{payment_method.id}", :class => 'form-control required', maxlength: 250, pattern: "[A-Za-z ]*[A-Za-z][A-Za-z ]*$", title: "Must contain letters", required: "true", oninput: "this.value = this.value.replace(/[^a-zA-Z ]/, '')" } %>
+    <%= text_field_tag "#{param_prefix}[name]", "", { id: "name_on_card_#{payment_method.id}", :class => 'form-control required'} %>
   </p>
 
   <p class="field" data-hook="card_number">
     <%= label_tag "card_number", Spree.t(:card_number) %><span class="required">*</span><br />
     <% options_hash = Rails.env.production? ? {:autocomplete => 'off'} : {} %>
-    <%= text_field_tag "#{param_prefix}[number]", '', options_hash.merge(:id => 'card_number', :class => 'form-control required cardNumber', maxlength: 16, :autocomplete => "off", placeholder: "XXXXXXXXXXXXXXXX", pattern: "^[0-9]{16}$", required: "true", title: "Must be 16 digits", oninput: "this.value = this.value.replace(/[^0-9]/, '')") %>
+    <%= text_field_tag "#{param_prefix}[number]", '', options_hash.merge(:id => 'card_number', :class => 'form-control required cardNumber', :size => 19, :maxlength => 19, :autocomplete => "off") %>
     &nbsp;
     <span id="card_type" style="display:none;">
       ( <span id="looks_like" ><%= Spree.t(:card_type_is) %> <span id="type"></span></span>
@@ -21,11 +21,11 @@
   <div class="row">
     <div class="col-md-8 field" data-hook="card_expiration">
       <%= label_tag "card_expiry", Spree.t(:expiration) %><span class="required">*</span><br />
-      <%= text_field_tag "#{param_prefix}[expiry]", '', :id => 'card_expiry', :class => "form-control required cardExpiry", placeholder: "MM / YYYY", pattern: "[0-9]{2} \/ [0-9]{4}", title: "Must be in MM/YYYY format", maxlength: 9, required: "true" %>
+      <%= text_field_tag "#{param_prefix}[expiry]", '', :id => 'card_expiry', :class => "form-control required cardExpiry", :placeholder => "MM / YY" %>
     </div>
     <div class="col-md-4 field" data-hook="card_code">
       <%= label_tag "card_code", Spree.t(:card_code) %><span class="required">*</span><br />
-      <%= text_field_tag "#{param_prefix}[verification_value]", '', options_hash.merge(:id => 'card_code', required: "true", pattern: "^[0-9]{3,4}$", maxlength: 4, title: "Must be 3/4 digits", :class => 'form-control required cardCode') %>
+      <%= text_field_tag "#{param_prefix}[verification_value]", '', options_hash.merge(:id => 'card_code', :class => 'form-control required cardCode', :size => 5) %>
       <%= link_to "(#{Spree.t(:what_is_this)})", spree.cvv_path('cvv'), :target => '_blank', "data-hook" => "cvv_link", :id => "cvv_link" %>
     </div>
   </div>
