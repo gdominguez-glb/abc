@@ -4,6 +4,8 @@
   $tc: &;
 
   &__content {
+    padding: 30px !important;
+
     #{$tc}__icon {
       height: 66px;
       width: 166px;
@@ -19,7 +21,7 @@
     }
 
     @media screen and (max-width: $screen-xs-max) {
-      padding: 20px 30px !important;
+      padding: 30px 30px 20px !important;
     }
   }
 
@@ -41,7 +43,7 @@
     }
   }
 
-  @media screen and (max-width: $screen-xs-max) {
-    margin: 30px -12px;
-  }
+  // @media screen and (max-width: $screen-xs-max) {
+  //   margin: 30px -12px 0;
+  // }
 }

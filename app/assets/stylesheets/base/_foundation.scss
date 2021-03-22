@@ -43,6 +43,10 @@ body {
 
 .container-content {
   padding: 0 12px;
+
+  @media screen and (max-width: $screen-sm-max) {
+    margin-top: 15px;
+  }
 }
 
 .wrapper {

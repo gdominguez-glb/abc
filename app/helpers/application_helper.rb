@@ -78,4 +78,19 @@ module ApplicationHelper
       "#{ENV['HUBSPOT_URL']}/webinar?subject=English&type=show-all&author=show-all&search="
     end
   end
+
+  def archived_unarchive page
+    slug = page.slug.split(/-old-(?=[^-old-][0-9a-zA-Z_]*$)/).try(:last)
+    return (slug.length == 6 && slug.match?(/[0-9a-zA-Z_]/)) if slug.present?
+  end
+
+  def curriculum_blog_mobile page
+    if page.group_name == 'math'
+      "#{ENV['HUBSPOT_URL']}/math/blog/eureka"
+    elsif page.group_name == 'english'
+      "#{ENV['HUBSPOT_URL']}/witwisdom"
+    elsif page.group_name == 'science'
+      "#{ENV['HUBSPOT_URL']}/phd-science"
+    end
+  end
 end
