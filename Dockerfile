@@ -9,6 +9,7 @@ RUN apt-get update && \
   default-libmysqlclient-dev \
   nodejs \
   graphviz \
+  shared-mime-info \
   && rm -rf /var/lib/apt/lists/*
 
 WORKDIR ./home/
