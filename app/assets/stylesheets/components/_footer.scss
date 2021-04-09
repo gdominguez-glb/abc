@@ -291,3 +291,15 @@
   min-width: $b-space-m;
   font-size: 13.68px;
 }
+
+@media screen and (max-width: $screen-sm-max) {
+     .footer .footer-section .help-center {
+         line-height: 1.2;
+      }
+      .footer .footer-section .help-center .footer-link {
+         line-height: 1;
+      }
+      .footer .footer-section .social-links {
+        line-height: 1.5;
+    }
+}
