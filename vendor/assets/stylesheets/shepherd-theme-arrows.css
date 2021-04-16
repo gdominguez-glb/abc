@@ -176,9 +176,7 @@
           *vertical-align: auto;
           *zoom: 1;
           *display: inline;
-          border-radius: 3px;
           cursor: pointer;
-          border: 0;
           margin: 0 0.5em 0 0;
           font-family: inherit;
           text-transform: uppercase;
@@ -186,10 +184,21 @@
           font-size: .8em;
           line-height: 1em;
           padding: 0.75em 2em;
-          background: #3288e6;
-          color: #fff; }
+          background: #fff;
+          border: 1px solid #000;
+          color: #000; }
+          .shepherd-element.shepherd-theme-arrows .shepherd-content footer .shepherd-buttons li .shepherd-button:hover {
+            background-color: #CA4F00;
+            border: 1px solid #CA4F00;
+            box-shadow: none;
+            color: #fff;
+            text-decoration: none;
+          }
           .shepherd-element.shepherd-theme-arrows .shepherd-content footer .shepherd-buttons li .shepherd-button.shepherd-button-secondary {
             background: #eee;
             color: #888; }
+          .shepherd-element.shepherd-theme-arrows .shepherd-content footer .shepherd-buttons li .shepherd-button.shepherd-button-secondary:hover {
+            border: 1px solid #000;
+          }
         .shepherd-element.shepherd-theme-arrows .shepherd-content footer .shepherd-buttons li:last-child .shepherd-button {
           margin-right: 0; }
