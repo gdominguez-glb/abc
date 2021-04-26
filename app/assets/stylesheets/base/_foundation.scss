@@ -43,6 +43,10 @@ body {
 
 .container-content {
   padding: 0 12px;
+
+  @media screen and (max-width: $screen-sm-max) {
+    margin-top: 15px;
+  }
 }
 
 .wrapper {
@@ -68,7 +72,6 @@ body {
 
 .row {
   margin: 0 -12px;
-  text-align: center;
 
   @media screen and (min-width: $screen-sm-min) {
     text-align: left;

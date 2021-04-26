@@ -21,13 +21,16 @@ section {
   @include clearfix;
 
   padding: 60px 0;
-  text-align: center;
 
   @media screen and (min-width: $screen-xs-min) {
     text-align: left;
   }
 
-  @media screen and (min-width: $screen-sm-min) {
+  @media screen and (max-width: $screen-sm-max) {
+    padding: 30px 0;
+  }
+
+  @media screen and (min-width: $screen-sm-max) {
     padding: 84px 0;
   }
 
@@ -65,6 +68,10 @@ section {
 
   p {
     margin: 0 0 25px;
+
+    @media screen and (max-width: $screen-xs-min) {
+      margin: 12px 0 0;
+    }
   }
 
   &.image-bg {
@@ -79,7 +86,7 @@ section {
     [class*='col-'] {
       padding: 0 30px;
 
-      @media screen and (min-width: $screen-sm-min) {
+      @media screen and (min-width: $screen-sm-max) {
         padding: 0 64px;
 
         &:first-child {
@@ -103,7 +110,9 @@ section {
 
     @media screen and (min-width: $screen-sm-min) {
       text-align: center;
+    }
 
+    @media screen and (min-width: $screen-sm-max) {
       [class*='col-'] {
         &:first-child,
         &:last-child {
@@ -186,8 +195,9 @@ section {
   }
 
   &.row-content-3col {
+    padding-bottom: 0;
 
-    @media screen and (min-width: $screen-sm-min) {
+    @media screen and (min-width: $screen-sm-max) {
       padding-bottom: 0;
       .tile-content {
         display: flex;
@@ -209,6 +219,16 @@ section {
         &:last-child {
           padding-left: 24px;
           padding-bottom: 84px;
+        }
+      }
+    }
+
+    @media screen and (max-width: $screen-sm-min) {
+      .tile-content {
+        display: block;
+
+        .col_container__content {
+          padding: 0 64px 84px 64px;
         }
       }
     }
@@ -240,7 +260,7 @@ section {
 
 .row-video-hero {
 
-  @media screen and (min-width: $screen-sm-min) {
+  @media screen and (min-width: $screen-sm-max) {
     .video-title {
       margin-bottom: 25px;
     }
@@ -266,7 +286,7 @@ section {
 
 .half-height {
 
-  @media screen and (min-width: $screen-sm-min) {
+  @media screen and (min-width: $screen-sm-max) {
     min-height: 400px;
     padding: 64px 0;
   }
@@ -281,10 +301,14 @@ section {
 }
 
 .row-img-full-content {
-  padding: 60px 0;
+  padding: 30px 0;
 
   &.black-overlay {
     background: rgba($c-positive-secondary, .6);
+  }
+
+  @media screen and (max-width: $screen-xs-max) {
+    min-height: 133px;
   }
 
   @media screen and (min-width: $screen-sm-min) {
@@ -296,12 +320,38 @@ section {
       padding: 64px 0;
     }
   }
+
+  @media screen and (max-width: $screen-sm-max) {
+    padding: 30px 0;
+    display: flex;
+
+    .half-height & {
+      padding: 30px 0;
+    }
+
+    .pull-right {
+      margin-left: auto;
+    }
+  }
+
+  .col-centered-content {
+    &:first-child {
+      @media screen and (max-width: $screen-xs-min) {
+        padding-bottom: 0 !important;
+      }
+    }
+  }
 }
 
 .row-video-left .row-img-full-content {
-  @media screen and (min-width: $screen-sm-min) {
-    min-height: auto;
+  min-height: auto;
+
+  @media screen and (min-width: $screen-sm-max) {
     padding: 0 0;
+  }
+
+  @media screen and (max-width: $screen-xs-max) {
+    display: block;
   }
 }
 
@@ -313,7 +363,23 @@ section {
   &:first-child {
     margin: -60px 0 60px;
 
-    @media screen and (min-width: $screen-sm-min) {
+    @media screen and (max-width: $screen-sm-max) {
+      margin: -84px 0;
+
+      .half-height & {
+        margin: -30px 0 -30px;
+      }
+    }
+
+    @media screen and (max-width: $screen-xs-max) {
+      margin: -30px 0 30px;
+
+      .half-height & {
+        margin: -30px 0 30px;
+      }
+    }
+
+    @media screen and (min-width: $screen-sm-max) {
       margin: -84px 0;
 
       .half-height & {
@@ -325,7 +391,23 @@ section {
   &:last-child {
     margin: 75px 0 -60px;
 
-    @media screen and (min-width: $screen-sm-min) {
+    @media screen and (max-width: $screen-sm-max) {
+      margin: -84px 0;
+
+      .half-height & {
+        margin: -30px 0 -30px;
+      }
+    }
+
+    @media screen and (max-width: $screen-xs-min) {
+      margin: 30px 0 -30px;
+
+      .half-height & {
+        margin: 0 0 -30px;
+      }
+    }
+
+    @media screen and (min-width: $screen-sm-max) {
       margin: -84px 0;
 
       .half-height & {
@@ -370,7 +452,15 @@ section {
   &:first-child {
     margin: -60px 0 60px;
 
-    @media screen and (min-width: $screen-sm-min) {
+    @media screen and (max-width: $screen-sm-max) {
+      margin: -30px 0;
+    }
+
+    @media screen and (max-width: $screen-xs-min) {
+      margin: -30px 0 30px;
+    }
+
+    @media screen and (min-width: $screen-sm-max) {
       margin: -84px 0;
     }
   }
@@ -378,20 +468,43 @@ section {
   &:last-child {
     margin: 75px 0 -60px;
 
-    @media screen and (min-width: $screen-sm-min) {
+    @media screen and (max-width: $screen-sm-max) {
+      margin: -30px 0;
+    }
+
+    @media screen and (max-width: $screen-xs-min) {
+      margin: 30px 0 -30px;
+    }
+
+    @media screen and (min-width: $screen-sm-max) {
       margin: -84px 0;
     }
   }
 }
 
 .col-centered-content {
+  &:first-child {
+    @media screen and (max-width: $screen-xs-max) {
+      padding-bottom: 30px !important;
+    }
+
+    img {
+      @media screen and (max-width: $screen-xs-min) {
+        margin-bottom: 0 !important;
+      }
+    }
+
+    .btn-block-xs {
+      @media screen and (max-width: $screen-xs-min) {
+        margin-bottom: 0 !important;
+      }
+    }
+  }
 
   @media screen and (min-width: $screen-sm-min) {
     @include display-flex;
     @include flex-direction(column);
     @include justify-content(center);
-
-    min-height: 432px;
 
     .half-height & {
       min-height: 272px;
@@ -400,6 +513,10 @@ section {
     .row-content-full & {
       float: none;
     }
+  }
+
+  @media screen and (min-width: $screen-sm-max) {
+    min-height: 432px;
   }
 }
 
@@ -560,14 +677,34 @@ section {
     padding-left: 80px !important;
     padding-top: 0 !important;
 
-    &:first-child {
-      padding-top: 0 !important;
-    }
+    // &:first-child {
+    //   padding-top: 0 !important;
+    // }
 
     h6 {
       clear: both;
       margin-top: 70px;
       text-transform: capitalize;
+
+      @media screen and (max-width: $screen-sm-max) {
+        margin-top: 30px;
+      }
+
+      @media screen and (max-width: $screen-xs-max) {
+        margin-top: 0;
+      }
+    }
+
+    @media screen and (max-width: $screen-sm-max) {
+      padding: 0 30px 30px !important;
+    }
+
+    @media screen and (max-width: $screen-xs-max) {
+      padding: 30px !important;
+    }
+    
+    .btn-block-xs {
+      margin-bottom: 0;
     }
   }
 
@@ -575,5 +712,17 @@ section {
     padding-bottom: 40px !important;
     padding-right: 45px !important;
     padding-top: 40px !important;
+
+    @media screen and (max-width: $screen-sm-max) {
+      padding-left: 30px !important;
+      padding-right: 30px !important;
+      padding-top: 30px !important;
+      padding-bottom: 30px !important;
+    }
+
+    @media screen and (max-width: $screen-xs-max) {
+      padding-top: 0 !important;
+      padding-bottom: 30px !important;
+    }
   }
 }

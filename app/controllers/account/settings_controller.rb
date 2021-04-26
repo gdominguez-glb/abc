@@ -28,7 +28,7 @@ class Account::SettingsController < Account::BaseController
 
   def save_grade_option
     current_spree_user.settings[:grade_option] = params[:grade_option]
-    render nothing: true
+    render body: nil
   end
 
   def ghost_login

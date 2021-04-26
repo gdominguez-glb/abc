@@ -6,7 +6,7 @@ module Spree
         SyncSalesforceJob.perform_later
 
         respond_to do |format|
-          format.js { render nothing: true }
+          format.js { render body: nil }
         end
       end
     end

@@ -282,7 +282,7 @@ Spree::Order.class_eval do
       if line_items.any?{ |item| item.product.name == "Eureka Digital Suite - 30 Day Trial" }
         HubspotCustomEventWorker.perform_async("Eureka Digital Suite - 30 Day Trial Purchase", self.user.email)
       end
-     if line_items.any?{ |item| item.product.name == "Math Night Resource Pack" }
+      if line_items.any?{ |item| item.product.name == "Math Night Resource Pack" }
         HubspotCustomEventWorker.perform_async("Eureka Math Night Product Check Out", self.user.email)
       end
       if line_items.any?{ |item| item.product.name == "Eureka Basic Curriculum Files" }
@@ -296,6 +296,11 @@ Spree::Order.class_eval do
       end
       if line_items.any?{ |item| item.product.name == "PHD Science Teacher Resource Pack" }
         HubspotCustomEventWorker.perform_async("PHD Science Teacher Resource Pack Check Out", self.user.email)
+      end
+      if line_items.any? { |item| item.product.name == 'PHD SCIENCE LEVELS K–2 OER' }
+        HubspotCustomEventWorker.perform_async(
+          'PhD Science Curriculum OER Check Out', self.user.email
+        )
       end
     end
   end

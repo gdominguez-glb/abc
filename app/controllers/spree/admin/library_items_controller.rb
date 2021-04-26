@@ -20,7 +20,7 @@ module Spree
 
       def update_position
         update_positions_with_klass(Spree::LibraryItem)
-        render nothing: true
+        render body: nil
       end
     end
   end

@@ -95,7 +95,7 @@ class ApplicationController < ActionController::Base
 
   def require_http_basic_auth
     return false if self.class.ancestors.include?(Api::BaseController)
-    Rails.env.qa? || Rails.env.staging? || Rails.env.stage? || Rails.env.dev?
+    Rails.env.qa? || Rails.env.staging?
   end
 
   def update_positions_with_klass(klass)

@@ -135,6 +135,10 @@
       display: flex;
       justify-content: center;
     }
+
+    @media screen and (max-width: $screen-xs-max) {
+      text-align: center;
+    }
   }
 }
 

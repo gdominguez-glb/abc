@@ -2,7 +2,7 @@ Spree::OrdersController.class_eval do
 
   def update
     unless validate_line_item_quantity!
-      redirect_to :back and return
+      redirect_back(fallback_location: root_path) and return
     end
     if @order.contents.update_cart(order_params)
       respond_with(@order) do |format|

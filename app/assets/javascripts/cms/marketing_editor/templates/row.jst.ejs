@@ -27,7 +27,7 @@
           <div class="col-sm-6">
             <div class="form-group">
               <label><%= fields[i].label %></label>
-              <input type="text" class="form-control title-input" data-name="<%= fields[i].name %>" value="<%= data[fields[i].name] %>"/>
+              <input type="text" class="form-control title-input tile-text-field" data-name="<%= fields[i].name %>" value="<%= data[fields[i].name] %>"/>
             </div>
           </div>
         <% } %>
@@ -57,7 +57,11 @@
                 <% if (data[ fields[i].name ]) { %>
                   <%= data[ fields[i].name ] %>
                 <% } else { %>
-                  <%= fields[i].label %>
+                  <% if (fields[i].input_options != null) { %>
+                    <%= fields[i].input_options[0] %>
+                  <% } else { %>
+                    <%= fields[i].label %>
+                  <% } %>
                 <% } %>
               </span>
               <select name="" data-name="<%= fields[i].name %>" class="form-control">

@@ -317,10 +317,27 @@
   width: 100%;
   margin-bottom: 60px;
 
+  @media screen and (max-width: $screen-xs-min) {
+    margin-top: 25px;
+    padding: 10px 0;
+  }
+
+  @media screen and (max-width: $screen-xs-max) {
+    margin-bottom: 30px;
+  }
+
   @media screen and (min-width: $screen-sm-min) {
     display: inline-block;
     width: auto;
     margin-bottom: 0;
+  }
+
+  &.testimonial-show-more-link {
+    margin: 0;
+  }
+
+  &.testimonial-show-less-link {
+    margin: 0;
   }
 }
 

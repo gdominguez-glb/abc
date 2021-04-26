@@ -267,6 +267,24 @@
   padding-left: $b-space-l !important;
 }
 
+.padding-top--lg {
+  padding-top: $b-space-lg !important;
+}
+
+.padding-right--lg {
+  padding-right: $b-space-lg !important;
+}
+
+.padding-bottom--lg {
+  padding-bottom: $b-space-lg !important;
+}
+
+.padding-left--lg {
+  padding-left: $b-space-lg !important;
+}
+
+
+
 // ----- Extra Large ----- //
 
 .padding-top--xl {
@@ -600,7 +618,7 @@
 }
 
 .margin-bottom--xl--sm-min {
-  margin-bottom: $b-space-xl !important;
+  margin-bottom: $b-space-lg !important;
 
   @media screen and (min-width: $screen-sm-min) {
     margin-bottom: 0 !important;
