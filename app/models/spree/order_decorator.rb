@@ -297,7 +297,7 @@ Spree::Order.class_eval do
       if line_items.any?{ |item| item.product.name == "PHD Science Teacher Resource Pack" }
         HubspotCustomEventWorker.perform_async("PHD Science Teacher Resource Pack Check Out", self.user.email)
       end
-      if line_items.any? { |item| item.product.name == 'PHD SCIENCE LEVELS K–2 OER' }
+      if line_items.any? { |item| item.product.name == 'PhD Science Levels K–2 OER' }
         HubspotCustomEventWorker.perform_async(
           'PhD Science Curriculum OER Check Out', self.user.email
         )
