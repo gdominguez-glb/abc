@@ -93,6 +93,7 @@ GEM
     airbrussh (1.4.0)
       sshkit (>= 1.6.1, != 1.7.0)
     arel (9.0.0)
+    ast (2.4.2)
     autoprefixer-rails (9.8.6.1)
       execjs
     awesome_nested_set (3.2.1)
@@ -440,8 +441,11 @@ GEM
     paperclip-compression (1.1.1)
       os (~> 1.0.0)
       paperclip (>= 5.2.1)
+    parallel (1.20.1)
     paranoia (2.4.2)
       activerecord (>= 4.0, < 6.1)
+    parser (3.0.1.0)
+      ast (~> 2.4.1)
     pg (0.18.1)
     phantomjs (1.9.8.0)
     polyglot (0.3.5)
@@ -516,6 +520,7 @@ GEM
       disposable (>= 0.4.2, < 0.5.0)
       representable (>= 2.4.0, < 3.1.0)
       uber (< 0.2.0)
+    regexp_parser (2.1.1)
     remotipart (1.4.4)
     representable (3.0.4)
       declarative (< 0.1.0)
@@ -534,6 +539,7 @@ GEM
       faraday_middleware (>= 0.8.8, <= 1.0)
       hashie (>= 1.2.0, < 4.0)
       json (>= 1.7.5)
+    rexml (3.2.5)
     roo (1.13.2)
       nokogiri
       rubyzip
@@ -559,7 +565,28 @@ GEM
       rspec-mocks (~> 3.9)
       rspec-support (~> 3.9)
     rspec-support (3.9.3)
+    rubocop (1.13.0)
+      parallel (~> 1.10)
+      parser (>= 3.0.0.0)
+      rainbow (>= 2.2.2, < 4.0)
+      regexp_parser (>= 1.8, < 3.0)
+      rexml
+      rubocop-ast (>= 1.2.0, < 2.0)
+      ruby-progressbar (~> 1.7)
+      unicode-display_width (>= 1.4.0, < 3.0)
+    rubocop-ast (1.4.1)
+      parser (>= 2.7.1.5)
+    rubocop-packaging (0.5.1)
+      rubocop (>= 0.89, < 2.0)
+    rubocop-performance (1.11.0)
+      rubocop (>= 1.7.0, < 2.0)
+      rubocop-ast (>= 0.4.0)
+    rubocop-rails (2.9.1)
+      activesupport (>= 4.2.0)
+      rack (>= 1.1)
+      rubocop (>= 0.90.0, < 2.0)
     ruby-ole (1.2.12.2)
+    ruby-progressbar (1.11.0)
     ruby2_keywords (0.0.2)
     rubyzip (2.3.0)
     safe_yaml (1.0.5)
@@ -759,6 +786,7 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.7)
+    unicode-display_width (2.0.0)
     user_agent_parser (2.7.0)
     uuid (2.3.9)
       macaddr (~> 1.0)
@@ -864,6 +892,9 @@ DEPENDENCIES
   restforce (~> 2.3)
   roo (= 1.13.2)
   rspec-rails (~> 4.0.0)
+  rubocop-packaging
+  rubocop-performance
+  rubocop-rails
   saml_idp (~> 0.7.2)
   sanitize
   sass-rails (~> 5.0, >= 5.0.4)
