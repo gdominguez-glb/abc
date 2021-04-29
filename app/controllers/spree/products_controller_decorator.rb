@@ -21,6 +21,10 @@ Spree::ProductsController.class_eval do
     redirect_to launch_product_path(@product)
   end
 
+  def get_curriculum_name(id = nil)
+    Curriculum.where(id: id).try(:first).try(:name) ? Curriculum.where(id: id).first.name + ' | ' : ''
+  end
+
   def group
     @product_group = Spree::Product.publicable.find_by(slug: params[:id])
 
@@ -28,6 +32,10 @@ Spree::ProductsController.class_eval do
       redirect_to not_found_path and return
     end
 
+    if @product_group.meta_title.present?
+      # This will display the seo title as 'Great Minds Resources | Math | Eureka Math'
+      @seo_title = 'Great Minds Resources | ' + get_curriculum_name(@product_group.try(:curriculum_id)) + @product_group.meta_title
+    end
     @products = @product_group.group_items
                               .unexpire
                               .unarchive

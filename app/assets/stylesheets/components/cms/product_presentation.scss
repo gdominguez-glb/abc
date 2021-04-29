@@ -1,12 +1,17 @@
 .product-presentation {
-  height: 534px;
-  padding: 0;
+  @media screen and (max-width: $screen-xs-max) {
+    padding-bottom: 15px;
+  }
   $tc: &;
 
   &__content {
     #{$tc}__icon {
       height: 125px;
       width: 176px;
+
+      @media screen and (max-width: $screen-xs-max) {
+        margin-top: 30px;
+      }
     }
 
     #{$tc}__title {
@@ -30,4 +35,5 @@
       max-width: 100%;
     }
   }
+
 }

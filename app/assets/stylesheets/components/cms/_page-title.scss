@@ -1,25 +1,22 @@
 .page-title {
   $pt: &;
   background: $white;
-  padding-bottom: 31px;
-  padding-left: 50px;
-  padding-top: 20px;
+  padding: 20px 50px 20px;
 
   &__text {
     color: $primary-text-color;
     font-family: "franklin-gothic-atf-bold",sans-serif;
     font-size: 60px;
-    font-stretch: normal;
-    font-style: normal;
-    font-weight: 900;
-    height: 134px;
     letter-spacing: normal;
     line-height: 1.1;
     text-transform: none;
-    width: 760px;
 
     #{$pt}--blue {
       color: $powder;
     }
+  }
+
+  @media screen and (max-width: $screen-sm-max) {
+    padding: 30px;
   }
 }

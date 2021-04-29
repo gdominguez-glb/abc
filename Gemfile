@@ -138,6 +138,7 @@ group :development do
   gem 'rubocop-rails'
   gem 'rubocop-packaging'
   gem 'rubocop-performance'
+  gem 'pry-byebug', '~> 3.9'
 end
 
 group :development, :test do

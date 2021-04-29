@@ -792,6 +792,9 @@
       - terracotta
       - black
       - olive
+  - :name: sub_nav_text_2
+    :label: SubNav Url Text 2
+    :input_type: text
   - :name: sub_nav_url_2
     :label: SubNav Url 2
     :input_type: text

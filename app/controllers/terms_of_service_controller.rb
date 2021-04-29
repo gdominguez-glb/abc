@@ -7,5 +7,6 @@ class TermsOfServiceController < ApplicationController
   end
 
   def display
+    @seo_title = 'Great Minds Terms of Service'
   end
 end

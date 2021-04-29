@@ -20,6 +20,7 @@ class MarketingEditorApp.Views.Editor extends Backbone.View
     "click .add-tile-row-btn": "addNewTileRow"
     "click .save-btn": "saveRows"
     "change": "tilesChanged"
+    "change .tile-text-field": "tilesChanged"
 
   addNewTileRow: (e)->
     e.preventDefault()

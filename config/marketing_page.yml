@@ -223,7 +223,7 @@ marketing_templates:
     name: 'Testimonials'
     content: !xml |
       <section id="tile_<%= position %>" class="row row-content-3col <%= background_color %>-bg text-left padding-bottom testimonial-container" data-testimonial-section="1">
-        <div class="col-sm-4">
+        <div class="col-lg-4 col-sm-12 col-xs-12 testimonial-content">
           <div class="testimonial">
             <article class="testimonial__article">
               <% if testimonial_video_url_1.present? && testimonial_image_url_1.present? %>
@@ -249,7 +249,7 @@ marketing_templates:
             <% end %>
           </div>
         </div>
-        <div class="col-sm-4">
+        <div class="col-lg-4 col-sm-12 col-xs-12 testimonial-content">
           <div class="testimonial">
             <article class="testimonial__article">
               <% if testimonial_video_url_2.present? && testimonial_image_url_2.present? %>
@@ -275,7 +275,7 @@ marketing_templates:
             <% end %>
           </div>
         </div>
-        <div class="col-sm-4">
+        <div class="col-lg-4 col-sm-12 col-xs-12 testimonial-content">
           <div class="testimonial">
             <article class="testimonial__article">
               <% if testimonial_video_url_3.present? && testimonial_image_url_3.present? %>
@@ -302,11 +302,11 @@ marketing_templates:
           </div>
         </div>
       </section>
-      <div class="row clear text-center padding-bottom--m <%= background_color %>-bg">
-        <a href='javascript:void(0)' class="testimonial-show-more-link btn btn-default">Show More</a>
+      <div class="row clear text-center padding-left--lg padding-right--lg  <%= background_color %>-bg">
+          <a href='javascript:void(0)' class="testimonial-show-more-link btn-block-xs btn btn-default">Show More</a>
       </div>
       <section class="row row-content-3col <%= background_color %>-bg text-left testimonial-more-section padding-bottom padding-top--l hide" data-testimonial-section="2">
-        <div class="col-sm-4">
+        <div class="col-lg-4 col-sm-12 col-xs-12 testimonial-content">
           <div class="testimonial">
             <article class="testimonial__article">
               <% if testimonial_video_url_4.present? && testimonial_image_url_4.present? %>
@@ -332,7 +332,7 @@ marketing_templates:
             <% end %>
           </div>
         </div>
-        <div class="col-sm-4">
+        <div class="col-lg-4 col-sm-12 col-xs-12 testimonial-content">
           <div class="testimonial">
             <article class="testimonial__article">
               <% if testimonial_video_url_5.present? && testimonial_image_url_5.present? %>
@@ -358,7 +358,7 @@ marketing_templates:
             <% end %>
           </div>
         </div>
-        <div class="col-sm-4">
+        <div class="col-lg-4 col-sm-12 col-xs-12 testimonial-content">
           <div class="testimonial">
             <article class="testimonial__article">
               <% if testimonial_video_url_6.present? && testimonial_image_url_6.present? %>
@@ -386,7 +386,7 @@ marketing_templates:
         </div>
       </section>
       <section class="row row-content-3col <%= background_color %>-bg text-left testimonial-more-section padding-top--l hide" data-testimonial-section="3">
-        <div class="col-sm-4">
+        <div class="col-lg-4 col-sm-12 col-xs-12 testimonial-content">
           <div class="testimonial">
             <article class="testimonial__article">
               <% if testimonial_video_url_7.present? && testimonial_image_url_7.present? %>
@@ -412,7 +412,7 @@ marketing_templates:
             <% end %>
           </div>
         </div>
-        <div class="col-sm-4">
+        <div class="col-lg-4 col-sm-12 col-xs-12 testimonial-content">
           <div class="testimonial">
             <article class="testimonial__article">
               <% if testimonial_video_url_8.present? && testimonial_image_url_8.present? %>
@@ -438,7 +438,7 @@ marketing_templates:
             <% end %>
           </div>
         </div>
-        <div class="col-sm-4">
+        <div class="col-lg-4 col-sm-12 col-xs-12 testimonial-content">
           <div class="testimonial">
             <article class="testimonial__article">
               <% if testimonial_video_url_9.present? && testimonial_image_url_9.present? %>
@@ -465,8 +465,8 @@ marketing_templates:
           </div>
         </div>
       </section>
-      <div class="row clear text-center padding-bottom--xl <%= background_color %>-bg">
-        <a href='javascript:void(0)' class='testimonial-show-less-link btn btn-default hide'>Show Less</a>
+      <div class="row clear text-center padding-left--lg padding-right--lg padding-bottom--lg <%= background_color %>-bg">
+        <a href='javascript:void(0)' class='testimonial-show-less-link btn-block-xs btn btn-default hide'>Show Less</a>
       </div>
 
   -
@@ -484,7 +484,7 @@ marketing_templates:
             <p><%= description %></p>
             <% if button_text.present? && button_link.present? %>
               <div>
-                <a href="<%= button_link %>" class="btn btn-default btn-default--<%= button_color %>">
+                <a href="<%= button_link %>" class="btn btn-default btn-block-xs margin-bottom--s btn-default--<%= button_color %>">
                   <%= button_text %>
                 </a>
               </div>
@@ -554,9 +554,19 @@ marketing_templates:
           <p class="tile-container__para"><%= body_text %></p>
           <div>
             <% if button_1_title.present? && button_1_link.present? %>
+              <% if button_1_target == 'Open in Same Tab' %>
+                <% button_1_target = '_self' %>
+              <% else %>
+                <% button_1_target = '_blank' %>
+              <% end %>
               <a class="btn btn-default btn-default--<%= button_color_1 %> btn-block-xs margin-bottom--m" href="<%= button_1_link %>" target="<%= button_1_target %>"><%= button_1_title %></a>
             <% end %>
             <% if button_2_title.present? && button_2_link.present? %>
+              <% if button_2_target == 'Open in Same Tab' %>
+                <% button_2_target = '_self' %>
+              <% else %>
+                <% button_2_target = '_blank' %>
+              <% end %>
               <a class="btn btn-default btn-default--<%= button_color_2 %> btn-block-xs margin-bottom--m" href="<%= button_2_link %>" target="<%= button_2_target %>"><%= button_2_title %></a>
             <% end %>
           </div>
@@ -611,9 +621,19 @@ marketing_templates:
           <p class="tile-container__para"><%= body_text %></p>
           <div>
             <% if button_1_title.present? && button_1_link.present? %>
+              <% if button_1_target == 'Open in Same Tab' %>
+                <% button_1_target = '_self' %>
+              <% else %>
+                <% button_1_target = '_blank' %>
+              <% end %>
               <a class="btn btn-default btn-default--<%= button_color_1 %> btn-block-xs margin-bottom--m" href="<%= button_1_link %>" target="<%= button_1_target %>"><%= button_1_title %></a>
             <% end %>
             <% if button_2_title.present? && button_2_link.present? %>
+              <% if button_2_target == 'Open in Same Tab' %>
+                <% button_2_target = '_self' %>
+              <% else %>
+                <% button_2_target = '_blank' %>
+              <% end %>
               <a class="btn btn-default btn-default--<%= button_color_2 %> btn-block-xs margin-bottom--m" href="<%= button_2_link %>" target="<%= button_2_target %>"><%= button_2_title %></a>
             <% end %>
           </div>
@@ -702,11 +722,6 @@ marketing_templates:
       <section id="tile_<%= position %>" class="row subnav <%= background_color %>-bg">
         <div class="col-sm-12">
           <ul class="nav nav-tabs margin-bottom--m">
-            <% if sub_nav_url_1.present? && sub_nav_text_1.present?%>
-              <li>
-                <a href="<%= sub_nav_url_1 %>"><%= sub_nav_text_1 %></a>
-              </li>
-            <% end %>
             <% if sub_nav_url_2.present? && sub_nav_text_2.present?%>
               <li>
                 <a href="<%= sub_nav_url_2 %>"><%= sub_nav_text_2 %></a>
@@ -1281,7 +1296,7 @@ marketing_templates:
   -
     name: 'Product Presentation'
     content: !xml |
-      <section id="product-presentation tileImageLeft<%= position %>" class="image-left-text-right row <%= background_color %>-bg">
+      <section id="tileImageLeft<%= position %>" class="product-presentation image-left-text-right row <%= background_color %>-bg">
         <div class="product-presentation__image col-sm-6">
           <picture>
             <% if image_url_1.present? %>
@@ -1297,9 +1312,19 @@ marketing_templates:
           <p class="product-presentation__para"><%= body_text %></p>
           <div>
             <% if button_1_title.present? && button_1_link.present? %>
+              <% if button_1_target == 'Open in Same Tab' %>
+                <% button_1_target = '_self' %>
+              <% else %>
+                <% button_1_target = '_blank' %>
+              <% end %>
               <a class="btn btn-default btn-default--<%= button_color_1 %> btn-block-xs margin-bottom--m" href="<%= button_1_link %>" target="<%= button_1_target %>"><%= button_1_title %></a>
             <% end %>
             <% if button_2_title.present? && button_2_link.present? %>
+              <% if button_2_target == 'Open in Same Tab' %>
+                <% button_2_target = '_self' %>
+              <% else %>
+                <% button_2_target = '_blank' %>
+              <% end %>
               <a class="btn btn-default btn-default--<%= button_color_2 %> btn-block-xs margin-bottom--m" href="<%= button_2_link %>" target="<%= button_2_target %>"><%= button_2_title %></a>
             <% end %>
           </div>
@@ -1311,7 +1336,7 @@ marketing_templates:
     content: !xml |
       <section id="tile_<%= position %>" class="col_container row row-content-3col <%= background_color %>-bg">
         <div class="clearfix tile-content">
-          <div class="col_container__content col-sm-4">
+          <div class="col_container__content col-lg-4 col-sm-12 col-xs-12">
             <h6><%= title_1 %></h6>
             <p><%= body_text_1 %></p>
             <% if button_title_1.present? && button_link_1.present? %>
@@ -1325,7 +1350,7 @@ marketing_templates:
               </div>
             <% end %>
           </div>
-          <div class="col_container__content col-sm-4">
+          <div class="col_container__content col-lg-4 col-sm-12 col-xs-12">
             <h6><%= title_2 %></h6>
             <p><%= body_text_2 %></p>
             <% if button_title_2.present? && button_link_2.present? %>
@@ -1339,7 +1364,7 @@ marketing_templates:
               </div>
             <% end %>
           </div>
-          <div class="col_container__content col-sm-4">
+          <div class="col_container__content col-lg-4 col-sm-12 col-xs-12">
             <h6><%= title_3 %></h6>
             <p><%= body_text_3 %></p>
             <% if button_title_3.present? && button_link_3.present? %>
@@ -1361,7 +1386,7 @@ marketing_templates:
     content: !xml |
       <section id="tile_<%= position %>" class="col_container row row-content-3col <%= background_color %>-bg">
         <div class="clearfix tile-content">
-          <div class="col_container__content col-sm-4">
+          <div class="col_container__content col-lg-4 col-sm-12 col-xs-12">
             <h6><%= title_1 %></h6>
             <p><%= body_text_1 %></p>
             <% if button_title_1.present? && button_link_1.present? %>
@@ -1375,7 +1400,7 @@ marketing_templates:
               </div>
             <% end %>
           </div>
-          <div class="col_container__content col-sm-4 <%= background_color_2 %>-bg">
+          <div class="col_container__content col-lg-4 col-sm-12 col-xs-12 <%= background_color_2 %>-bg">
             <h6><%= title_2 %></h6>
             <p><%= body_text_2 %></p>
             <% if button_title_2.present? && button_link_2.present? %>
@@ -1389,7 +1414,7 @@ marketing_templates:
               </div>
             <% end %>
           </div>
-          <div class="col_container__content col-sm-4 <%= background_color_3 %>-bg">
+          <div class="col_container__content col-lg-4 col-sm-12 col-xs-12 <%= background_color_3 %>-bg">
             <h6><%= title_3 %></h6>
             <p><%= body_text_3 %></p>
             <% if button_title_3.present? && button_link_3.present? %>
@@ -1409,8 +1434,8 @@ marketing_templates:
   -
     name: '3-Column Facebook Video Text'
     content: !xml |
-      <section id="tile_<%= position %>" class="row row-content-3col <%= background_color %>-bg text-left">
-        <div class="col-sm-4">
+      <section id="tile_<%= position %>" class="row row-content-3col multi-col-container <%= background_color %>-bg text-left">
+        <div class="col-lg-4 col-sm-12 col-xs-12">
           <div class="facebook">
             <h6><%= facebook_header_1 %></h6>
             <article class="facebook__article">
@@ -1433,7 +1458,7 @@ marketing_templates:
             <% end %>
           </div>
         </div>
-        <div class="col-sm-4">
+        <div class="col-lg-4 col-sm-12 col-xs-12">
           <div class="facebook">
             <h6><%= facebook_header_2 %></h6>
             <article class="facebook__article">
@@ -1456,7 +1481,7 @@ marketing_templates:
             <% end %>
           </div>
         </div>
-        <div class="col-sm-4">
+        <div class="col-lg-4 col-sm-12 col-xs-12">
           <div class="facebook">
             <h6><%= facebook_header_3 %></h6>
             <article class="facebook__article">
