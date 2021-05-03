@@ -33,9 +33,9 @@
             Contact
           </a>
         </li>
-        <li>
-          <a href="https://digitalsupport.greatminds.org/hc/en-us" class="footer-link" target="_blank">
-            Product Support
+        <li class="help-center">
+          <a href="https://digitalsupport.greatminds.org" class="footer-link" target="_blank">
+            Digital Help Center
           </a>
         </li>
         <li>
@@ -47,7 +47,7 @@
     </div>
     <% if (footer_social_links = build_footer_social_links(@group_page)).present? %>
       <div class="col-sm-2 footer-section">
-        <h6 class="section-lead footer-title"><span class="footer-title-no-link">Social Media</span></h6>
+        <h6 class="section-lead footer-title social-links"><span class="footer-title-no-link">Social Media</span></h6>
         <ul>
           <% footer_social_links.each do |social| %>
             <li>
