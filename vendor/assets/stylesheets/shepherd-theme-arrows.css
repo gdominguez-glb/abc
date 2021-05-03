@@ -195,10 +195,15 @@
             text-decoration: none;
           }
           .shepherd-element.shepherd-theme-arrows .shepherd-content footer .shepherd-buttons li .shepherd-button.shepherd-button-secondary {
-            background: #eee;
-            color: #888; }
-          .shepherd-element.shepherd-theme-arrows .shepherd-content footer .shepherd-buttons li .shepherd-button.shepherd-button-secondary:hover {
+            background: #fff;
             border: 1px solid #000;
+            color: #000; }
+          .shepherd-element.shepherd-theme-arrows .shepherd-content footer .shepherd-buttons li .shepherd-button.shepherd-button-secondary:hover {
+            background-color: #CA4F00;
+            border: 1px solid #CA4F00;
+            box-shadow: none;
+            color: #fff;
+            text-decoration: none;
           }
         .shepherd-element.shepherd-theme-arrows .shepherd-content footer .shepherd-buttons li:last-child .shepherd-button {
           margin-right: 0; }
