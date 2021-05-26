@@ -16,14 +16,14 @@
               <li>
                 <%= link_to page.title, 'https://greatminds.org/math/pd' %>
               </li>
-              <% elsif page.slug == 'en-us/professional-learning' %>
+            <% elsif page.slug == 'en-us/professional-learning' %>
               <li>
                 <%= link_to page.title, 'https://eurekamath.greatminds.org/' + page.slug %>
               </li>
-              <% elsif page.group_name == 'science' && page.title.downcase == 'professional learning'  %>
-                <li>
-                  <%= link_to page.title, 'https://science.greatminds.org/professional-learning' %>
-                </li>
+            <% elsif page.group_name == 'science' && page.title.downcase == 'professional learning'  %>
+              <li>
+                <%= link_to page.title, 'https://science.greatminds.org/professional-learning' %>
+              </li>
             <% else %>
               <%= active_link_to page.title, "/#{page.slug}", wrap_tag: :li %>
             <% end %>
