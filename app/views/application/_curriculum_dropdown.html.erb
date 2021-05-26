@@ -7,6 +7,10 @@
       <li>
         <%= link_to sub_page.title, 'https://greatminds.org/math/pd' %>
       </li>
+    <% elsif page.group_name == 'english' && page.title.downcase == 'professional learning'  %>
+      <li>
+        <%= link_to page.title, 'https://ww.greatminds.org/professional-learning' %>
+      </li>
     <% else %>
       <%= active_link_to sub_page.title, "/#{sub_page.slug}", wrap_tag: :li %>
     <% end %>
