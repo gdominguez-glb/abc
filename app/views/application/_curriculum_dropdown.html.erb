@@ -10,9 +10,9 @@
     <% elsif page.group_name == 'english' && page.title.downcase == 'professional learning'  %>
       <li>
         <%= link_to page.title, 'https://ww.greatminds.org/professional-learning' %>
-    <% elsif page.group_name == 'science' && page.title.downcase == 'professional learning'  %>
+    <% elsif sub_page.group_name == 'science' && sub_page.title.downcase == 'professional learning'  %>
       <li>
-        <%= link_to page.title, 'https://science.greatminds.org/professional-learning' %>
+        <%= link_to sub_page.title, 'https://science.greatminds.org/professional-learning' %>
       </li>
     <% else %>
       <%= active_link_to sub_page.title, "/#{sub_page.slug}", wrap_tag: :li %>
