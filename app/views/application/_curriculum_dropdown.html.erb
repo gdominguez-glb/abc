@@ -7,9 +7,9 @@
       <li>
         <%= link_to sub_page.title, 'https://greatminds.org/math/pd' %>
       </li>
-    <% elsif page.group_name == 'english' && page.title.downcase == 'professional learning'  %>
+    <% elsif sub_page.group_name == 'english' && sub_page.title.downcase == 'professional learning'  %>
       <li>
-        <%= link_to page.title, 'https://ww.greatminds.org/professional-learning' %>
+        <%= link_to sub_page.title, 'https://ww.greatminds.org/professional-learning' %>
     <% elsif sub_page.group_name == 'science' && sub_page.title.downcase == 'professional learning'  %>
       <li>
         <%= link_to sub_page.title, 'https://science.greatminds.org/professional-learning' %>
