@@ -19,6 +19,7 @@
             <% elsif page.group_name == 'english' && page.title.downcase == 'professional learning'  %>
               <li>
                 <%= link_to page.title, 'https://ww.greatminds.org/professional-learning' %>
+              </li>
             <% elsif page.slug == 'en-us/professional-learning' %>
               <li>
                 <%= link_to page.title, 'https://eurekamath.greatminds.org/' + page.slug %>
